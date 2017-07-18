@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EarthMagicItems;
+using System;
 using System.Collections.Generic;
 
 namespace DungeonsAndFantasyLands.API.Items
@@ -13,31 +14,31 @@ namespace DungeonsAndFantasyLands.API.Items
         /// <summary>
         /// The base value of the item, that if the player has 100% trading skills, they will get.
         /// </summary>
-        int Value { get; set; }
+        int Value { get; }
 
         /// <summary>
         /// The level of the item. Used to determine what loot table to put it on.
         /// </summary>
-        int Level { get; set; }
+        int Level { get; }
 
         /// <summary>
         /// The ID of the item.
         /// </summary>
-        Guid ID { get; set; }
+        Guid ID { get; }
 
         /// <summary>
         /// The human readable name of the item.
         /// </summary>
-        string Name { get; set; }
+        string Name { get; }
 
         /// <summary>
         /// The flavor text/lore of the item.
         /// </summary>
-        List<string> Lore { get; set; }
+        List<string> Lore { get; }
 
         /// <summary>
         /// Any other information the item might display.
         /// </summary>
-        List<string> OtherInformation { get; set; }
+        List<string> OtherInformation { get; }
     }
 }
