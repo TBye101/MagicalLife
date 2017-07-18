@@ -1,7 +1,51 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Ammo\Arrows\" />
+    <Folder Include="Ammo\Bolts\" />
+    <Folder Include="Ammo\Stones\" />
+    <Folder Include="Amulets\" />
+    <Folder Include="Armor\Boots\" />
+    <Folder Include="Armor\Chestplates\" />
+    <Folder Include="Armor\Gauntlets\" />
+    <Folder Include="Armor\Helmets\" />
+    <Folder Include="Armor\Leggings\" />
+    <Folder Include="Gems\" />
+    <Folder Include="Wands\" />
+    <Folder Include="Rings\" />
+    <Folder Include="Weapons\Normal\Battle Axes\" />
+    <Folder Include="Weapons\Normal\Broadswords\" />
+    <Folder Include="Weapons\Normal\Clubs\" />
+    <Folder Include="Weapons\Normal\Daggers\" />
+    <Folder Include="Weapons\Normal\Flails\" />
+    <Folder Include="Weapons\Normal\Glaives\" />
+    <Folder Include="Weapons\Normal\Halberds\" />
+    <Folder Include="Weapons\Normal\Katanas\" />
+    <Folder Include="Weapons\Normal\Lances\" />
+    <Folder Include="Weapons\Normal\Maces\" />
+    <Folder Include="Weapons\Normal\Morning Stars\" />
+    <Folder Include="Weapons\Normal\Longswords\" />
+    <Folder Include="Weapons\Normal\War Hammers\" />
+    <Folder Include="Weapons\Normal\Short Swords\" />
+    <Folder Include="Weapons\Normal\Scimitars\" />
+    <Folder Include="Weapons\Normal\Sabres\" />
+    <Folder Include="Weapons\Normal\Rapiers\" />
+    <Folder Include="Weapons\Normal\Quaterstaffs\" />
+    <Folder Include="Weapons\Normal\Pikes\" />
+    <Folder Include="Weapons\Ranged\Crossbows\" />
+    <Folder Include="Weapons\Ranged\Longbows\" />
+    <Folder Include="Weapons\Ranged\Slings\" />
+    <Folder Include="Weapons\Ranged\Recurve Bows\" />
+    <Folder Include="Weapons\Throwing\Balanced Daggers\" />
+    <Folder Include="Weapons\Throwing\Darts\" />
+    <Folder Include="Weapons\Throwing\Javalins\" />
+    <Folder Include="Weapons\Throwing\Throwing Knives\" />
+    <Folder Include="Weapons\Throwing\Throwing Axes\" />
+    <Folder Include="Weapons\Throwing\Shurikens\" />
+  </ItemGroup>
 
 </Project>
