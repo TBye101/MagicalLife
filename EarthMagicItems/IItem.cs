@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using static DungeonsAndFantasyLands.Registries.Loot;
 
 namespace DungeonsAndFantasyLands.API.Items
 {
@@ -19,7 +18,7 @@ namespace DungeonsAndFantasyLands.API.Items
         /// <summary>
         /// The level of the item. Used to determine what loot table to put it on.
         /// </summary>
-        Levels Level { get; set; }
+        int Level { get; set; }
 
         /// <summary>
         /// The ID of the item.

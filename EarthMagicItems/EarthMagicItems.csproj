@@ -48,4 +48,8 @@
     <Folder Include="Weapons\Throwing\Shurikens\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\EarthWithMagicAPI\EarthWithMagicAPI.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,11 +1,7 @@
-﻿using DungeonsAndFantasyLands.API.Util;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DungeonsAndFantasyLands.API.Concepts;
-using static DungeonsAndFantasyLands.Registries.Loot;
+using EarthWithMagicAPI.API;
+using EarthWithMagicAPI.API.Util;
 
 namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows
 {
@@ -17,7 +13,7 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows
         private int _Uses = Dice.RollDice(1, 2);
         private bool _QuestItem = false;
         private int _Value = 10;
-        private Levels _Level = Levels.Level1;
+        private int _Level = 1;
         private Guid _ID = new Guid();
         private string _Name = "Handmade Arrow";
         private int _ChanceToHit = 10;
@@ -77,7 +73,7 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows
             }
         }
 
-        public Levels Level
+        public int Level
         {
             get
             {

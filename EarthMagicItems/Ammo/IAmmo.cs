@@ -1,5 +1,5 @@
-﻿using DungeonsAndFantasyLands.API.Concepts;
-using System.Diagnostics.Contracts;
+﻿using EarthWithMagicAPI.API;
+
 namespace DungeonsAndFantasyLands.API.Items.Ammo
 {
     /// <summary>
