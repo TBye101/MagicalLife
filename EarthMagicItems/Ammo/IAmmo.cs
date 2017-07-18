@@ -15,11 +15,11 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo
         /// <summary>
         /// The number of uses the ammo has. 
         /// </summary>
-        int Uses { get; set; }
+        int Uses { get; }
 
         /// <summary>
-        /// The chance to hit.
+        /// The base chance to hit.
         /// </summary>
-        int ChanceToHit { get; set; }
+        int ChanceToHit { get; }
     }
 }
