@@ -18,7 +18,7 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows
         private string _Name = "Handmade Arrow";
         private int _ChanceToHit = 10;
 
-        private List<string> _Lore = new List<string> { "Someone or something has made these arrows by hand.", "It doesn't look like they really know what they are doing." };
+        private List<string> _Lore = new List<string> { };
         private List<string> _OtherInfo = new List<string> { "Does 1d6 piercing damage.", "If you are lucky, you get to use this arrow twice" };
 
         public HandMadeArrow()

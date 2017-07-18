@@ -18,9 +18,7 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows
         private string _Name = "Arrow +3";
         private int _ChanceToHit = 16;
 
-        private List<string> _Lore = new List<string> { "These arrows are far too expensive for the common folk.",
-            "Before magical arrows were common for folks who could afford them, legend has it that a sorcerer made a magical and sentient arrow.",
-        "The sentient arrow served it's master well, and was named \"The Inevitable\". Some say that if you get close to it, you can hear the screams of the lives it has taken."};
+        private List<string> _Lore = new List<string> { };
         private List<string> _OtherInfo = new List<string> { "Does 1d8 +3 piercing damage.", "This arrow COULD be used 6 times." };
 
         public _3Arrow()

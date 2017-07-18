@@ -18,7 +18,7 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows
         private string _Name = "Professional Arrow";
         private int _ChanceToHit = 13;
 
-        private List<string> _Lore = new List<string> { "Someone or something has made these arrows by hand.", "While these arrows seem handmade, they were obviously made by a skilled arrow maker." };
+        private List<string> _Lore = new List<string> {};
         private List<string> _OtherInfo = new List<string> { "Does 1d8 piercing damage.", "If you are lucky, you get to use this arrow 3 times." };
 
         public ProfessionalArrow()

@@ -18,7 +18,7 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows
         private string _Name = "Arrow +2";
         private int _ChanceToHit = 15;
 
-        private List<string> _Lore = new List<string> { "These are the arrows of choice if you are going to cheat at a archery contest.", "With the +2 enchantment, these arrows can make anybody shoot straight.", "The price doesn't hurt either, as 40 gold for a perfect final shot to win the tournament money is seen as money well spent"};
+        private List<string> _Lore = new List<string> {};
         private List<string> _OtherInfo = new List<string> { "Does 1d8 +2 piercing damage.", "This arrow COULD be used 5 times." };
 
         public _2Arrow()

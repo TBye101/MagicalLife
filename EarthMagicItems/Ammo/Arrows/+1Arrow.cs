@@ -18,7 +18,7 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows
         private string _Name = "Arrow +1";
         private int _ChanceToHit = 14;
 
-        private List<string> _Lore = new List<string> { "These arrows were enchanted during the last war, and often used by rangers to kill infantry." };
+        private List<string> _Lore = new List<string> {};
         private List<string> _OtherInfo = new List<string> { "Does 1d8 +1 piercing damage.", "This arrow COULD be used 4 times."};
 
         public _1Arrow()
