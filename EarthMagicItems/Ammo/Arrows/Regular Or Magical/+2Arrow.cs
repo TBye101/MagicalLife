@@ -2,29 +2,26 @@
 using EarthWithMagicAPI.API.Util;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows
 {
     /// <summary>
-    /// A slightly better arrow than the +4 arrow.
+    /// A better version of the <see cref="_1Arrow"/>.
     /// </summary>
-    public class _5Arrow
+    public class _2Arrow : IAmmo
     {
-        private int _Uses = Dice.RollDice(5, 7);
+        private Dice.Die _Uses = new Dice.Die(3, 5, 0);
         private bool _QuestItem = false;
-        private int _Value = 500;
-        private int _Level = 10;
+        private int _Value = 40;
+        private int _Level = 4;
         private Guid _ID = new Guid();
-        private string _Name = "Arrow +5";
-        private int _ChanceToHit = 32;
+        private string _Name = "Arrow +2";
+        private int _ChanceToHit = 23;
 
-        private List<string> _Lore = new List<string> { };
-        private List<string> _OtherInfo = new List<string> { "Does 1d8 +5 piercing damage.", "This arrow COULD be used 7 times." };
+        private List<string> _Lore = new List<string> {};
+        private List<string> _OtherInfo = new List<string> { "Does 1d8 +2 piercing damage.", "This arrow COULD be used 5 times." };
 
-        public _5Arrow()
+        public _2Arrow()
         {
 
         }
@@ -33,11 +30,11 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows
         {
             get
             {
-                return new Damage(0, 0, 0, 0, 0, Dice.RollDice(1, 8) + 3, 0, 0);
+                return new Damage(new Dice.Die(0, 0, 0), new Dice.Die(0, 0, 0), new Dice.Die(0, 0, 0), new Dice.Die(0, 0, 0), new Dice.Die(0, 0, 0), new Dice.Die(2, 8, 2), new Dice.Die(0, 0, 0), new Dice.Die(0, 0, 0));
             }
         }
 
-        public int Uses
+        public Dice.Die Uses
         {
             get
             {

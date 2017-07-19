@@ -1,27 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DungeonsAndFantasyLands.API.Items.Ammo;
 using EarthWithMagicAPI.API;
 using EarthWithMagicAPI.API.Util;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows
+namespace EarthMagicItems.Ammo.Arrows
 {
     /// <summary>
-    /// The worst arrow.
+    /// Used by the arrow generator to automatically create an arrow.
     /// </summary>
-    public class HandMadeArrow : IAmmo
+    public class GeneratedArrow : IAmmo
     {
-        private int _Uses = Dice.RollDice(1, 2);
+        private Dice.Die _Uses = new Dice.Die(2, 4, 0);
         private bool _QuestItem = false;
-        private int _Value = 10;
-        private int _Level = 1;
+        private int _Value = 25;
+        private int _Level = 3;
         private Guid _ID = new Guid();
-        private string _Name = "Handmade Arrow";
-        private int _ChanceToHit = 10;
+        private string _Name = "Arrow +1";
+        private int _ChanceToHit = 20;
 
         private List<string> _Lore = new List<string> { };
-        private List<string> _OtherInfo = new List<string> { "Does 1d6 piercing damage.", "If you are lucky, you get to use this arrow twice" };
+        private List<string> _OtherInfo = new List<string> { "Does 1d8 +1 piercing damage.", "This arrow COULD be used 4 times." };
 
-        public HandMadeArrow()
+        public GeneratedArrow()
         {
 
         }
@@ -30,11 +32,11 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows
         {
             get
             {
-                return new Damage(0, 0, 0, 0, 0, Dice.RollDice(1, 6), 0, 0);
+                return new Damage(new Dice.Die(0, 0, 0), new Dice.Die(0, 0, 0), new Dice.Die(0, 0, 0), new Dice.Die(0, 0, 0), new Dice.Die(0, 0, 0), new Dice.Die(1, 8, 1), new Dice.Die(0, 0, 0), new Dice.Die(0, 0, 0));
             }
         }
 
-        public int Uses
+        public Dice.Die Uses
         {
             get
             {

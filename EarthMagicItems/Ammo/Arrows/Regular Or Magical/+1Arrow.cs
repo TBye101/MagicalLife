@@ -6,22 +6,22 @@ using System.Collections.Generic;
 namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows
 {
     /// <summary>
-    /// A better version of the <see cref="HandMadeArrow"/>
+    /// A better version of the Professional Arrow.
     /// </summary>
-    public class ProfessionalArrow : IAmmo
+    public class _1Arrow : IAmmo
     {
-        private int _Uses = Dice.RollDice(1, 3);
+        private Dice.Die _Uses = new Dice.Die(2, 4, 0);
         private bool _QuestItem = false;
-        private int _Value = 15;
-        private int _Level = 1;
+        private int _Value = 25;
+        private int _Level = 3;
         private Guid _ID = new Guid();
-        private string _Name = "Professional Arrow";
-        private int _ChanceToHit = 17;
+        private string _Name = "Arrow +1";
+        private int _ChanceToHit = 20;
 
         private List<string> _Lore = new List<string> {};
-        private List<string> _OtherInfo = new List<string> { "Does 1d8 piercing damage.", "If you are lucky, you get to use this arrow 3 times." };
+        private List<string> _OtherInfo = new List<string> { "Does 1d8 +1 piercing damage.", "This arrow COULD be used 4 times."};
 
-        public ProfessionalArrow()
+        public _1Arrow()
         {
 
         }
@@ -30,11 +30,11 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows
         {
             get
             {
-                return new Damage(0, 0, 0, 0, 0, Dice.RollDice(1, 8), 0, 0);
+                return new Damage(new Dice.Die(0, 0, 0), new Dice.Die(0, 0, 0), new Dice.Die(0, 0, 0), new Dice.Die(0, 0, 0), new Dice.Die(0, 0, 0), new Dice.Die(2, 8, 1), new Dice.Die(0, 0, 0), new Dice.Die(0, 0, 0));
             }
         }
 
-        public int Uses
+        public Dice.Die Uses
         {
             get
             {

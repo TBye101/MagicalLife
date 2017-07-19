@@ -1,4 +1,5 @@
-﻿using EarthWithMagicAPI.API;
+﻿using EarthWithMagicAPI.API.Util;
+using EarthWithMagicAPI.API;
 
 namespace DungeonsAndFantasyLands.API.Items.Ammo
 {
@@ -15,7 +16,7 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo
         /// <summary>
         /// The number of uses the ammo has. 
         /// </summary>
-        int Uses { get; }
+        Dice.Die Uses { get; }
 
         /// <summary>
         /// The base chance to hit.

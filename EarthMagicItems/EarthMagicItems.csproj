@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Ammo\Arrows\" />
     <Folder Include="Ammo\Bolts\" />
     <Folder Include="Ammo\Stones\" />
     <Folder Include="Amulets\" />
