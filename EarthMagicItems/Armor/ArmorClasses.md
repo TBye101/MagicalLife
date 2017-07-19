@@ -1,5 +1,17 @@
 ﻿# Armor Class Cheat Sheet
 
+## Leather
+
+Leather Helmet = 2
+
+Leather Chestplate = 4
+
+Leather Gauntlets = 1
+
+Leather Leggings = 1
+
+Leather Boots = 1
+
 ## Steel
 
 Steel Helmet = 3
