@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EarthMagicItems.Ammo.Bolts
+namespace EarthMagicItems.Ammo.Stones
 {
-    class HnadMadeBolt
+    class KnockoutStone
     {
     }
 }
