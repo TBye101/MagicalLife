@@ -89,7 +89,40 @@ namespace EarthMagicItems.Armor.Generic.Steel
 
         #region Tempered Steel
 
+        public GenericArmor TemperedSteelHelmet = new GenericArmor(4, false, 3, new List<string> { }, new List<string> { }, "Tempered Steel Helmet");
+        public GenericArmor TemperedSteelHelmet_1 = new GenericArmor(5, false, 4, new List<string> { }, new List<string> { }, "Tempered Steel Helmet +1");
+        public GenericArmor TemperedSteelHelmet_2 = new GenericArmor(6, false, 5, new List<string> { }, new List<string> { }, "Tempered Steel Helmet +2");
+        public GenericArmor TemperedSteelHelmet_3 = new GenericArmor(7, false, 6, new List<string> { }, new List<string> { }, "Tempered Steel Helmet +3");
+        public GenericArmor TemperedSteelHelmet_4 = new GenericArmor(8, false, 7, new List<string> { }, new List<string> { }, "Tempered Steel Helmet +4");
+        public GenericArmor TemperedSteelHelmet_5 = new GenericArmor(9, false, 8, new List<string> { }, new List<string> { }, "Tempered Steel Helmet +5");
 
+        public GenericArmor TemperedSteelChestplate = new GenericArmor(6, false, 3, new List<string> { }, new List<string> { }, "Tempered Steel Chestplate");
+        public GenericArmor TemperedSteelChestplate_1 = new GenericArmor(7, false, 4, new List<string> { }, new List<string> { }, "Tempered Steel Chestplate +1");
+        public GenericArmor TemperedSteelChestplate_2 = new GenericArmor(8, false, 5, new List<string> { }, new List<string> { }, "Tempered Steel Chestplate +2");
+        public GenericArmor TemperedSteelChestplate_3 = new GenericArmor(9, false, 6, new List<string> { }, new List<string> { }, "Tempered Steel Chestplate +3");
+        public GenericArmor TemperedSteelChestplate_4 = new GenericArmor(10, false, 7, new List<string> { }, new List<string> { }, "Tempered Steel Chestplate +4");
+        public GenericArmor TemperedSteelChestplate_5 = new GenericArmor(11, false, 8, new List<string> { }, new List<string> { }, "Tempered Steel Chestplate +5");
+
+        public GenericArmor TemperedSteelGauntlets = new GenericArmor(2, false, 3, new List<string> { }, new List<string> { }, "Tempered Steel Gauntlets");
+        public GenericArmor TemperedSteelGauntlets_1 = new GenericArmor(4, false, 4, new List<string> { }, new List<string> { }, "Tempered Steel Gauntlets +1");
+        public GenericArmor TemperedSteelGauntlets_2 = new GenericArmor(5, false, 5, new List<string> { }, new List<string> { }, "Tempered Steel Gauntlets +2");
+        public GenericArmor TemperedSteelGauntlets_3 = new GenericArmor(6, false, 6, new List<string> { }, new List<string> { }, "Tempered Steel Gauntlets +3");
+        public GenericArmor TemperedSteelGauntlets_4 = new GenericArmor(7, false, 7, new List<string> { }, new List<string> { }, "Tempered Steel Gauntlets +4");
+        public GenericArmor TemperedSteelGauntlets_5 = new GenericArmor(8, false, 8, new List<string> { }, new List<string> { }, "Tempered Steel Gauntlets +5");
+
+        public GenericArmor TemperedSteelLeggings = new GenericArmor(3, false, 3, new List<string> { }, new List<string> { }, "Tempered Steel Leggings");
+        public GenericArmor TemperedSteelLeggings_1 = new GenericArmor(4, false, 4, new List<string> { }, new List<string> { }, "Tempered Steel Leggings +1");
+        public GenericArmor TemperedSteelLeggings_2 = new GenericArmor(5, false, 5, new List<string> { }, new List<string> { }, "Tempered Steel Leggings +2");
+        public GenericArmor TemperedSteelLeggings_3 = new GenericArmor(6, false, 6, new List<string> { }, new List<string> { }, "Tempered Steel Leggings +3");
+        public GenericArmor TemperedSteelLeggings_4 = new GenericArmor(7, false, 7, new List<string> { }, new List<string> { }, "Tempered Steel Leggings +4");
+        public GenericArmor TemperedSteelLeggings_5 = new GenericArmor(8, false, 8, new List<string> { }, new List<string> { }, "Tempered Steel Leggings +5");
+
+        public GenericArmor TemperedSteelBoots = new GenericArmor(3, false, 3, new List<string> { }, new List<string> { }, "Tempered Steel Boots");
+        public GenericArmor TemperedSteelBoots_1 = new GenericArmor(4, false, 4, new List<string> { }, new List<string> { }, "Tempered Steel Boots +1");
+        public GenericArmor TemperedSteelBoots_2 = new GenericArmor(5, false, 5, new List<string> { }, new List<string> { }, "Tempered Steel Boots +2");
+        public GenericArmor TemperedSteelBoots_3 = new GenericArmor(6, false, 6, new List<string> { }, new List<string> { }, "Tempered Steel Boots +3");
+        public GenericArmor TemperedSteelBoots_4 = new GenericArmor(7, false, 7, new List<string> { }, new List<string> { }, "Tempered Steel Boots +4");
+        public GenericArmor TemperedSteelBoots_5 = new GenericArmor(8, false, 8, new List<string> { }, new List<string> { }, "Tempered Steel Boots +5");
 
         #endregion
 
