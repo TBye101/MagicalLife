@@ -1,7 +1,10 @@
-﻿using EarthWithMagicAPI.API;
+﻿using System.Reflection.Metadata;
+using EarthWithMagicAPI.API;
 using EarthWithMagicAPI.API.Util;
 using System;
 using System.Collections.Generic;
+using EarthMagicDynamicMarket;
+using EarthWithMagicAPI.API.Interfaces.Items;
 
 namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows
 {
@@ -12,7 +15,6 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows
     {
         private Dice.Die _Uses = new Dice.Die(2, 4, 0);
         private bool _QuestItem = false;
-        private int _Value = 25;
         private int _Level = 3;
         private Guid _ID = new Guid();
         private string _Name = "Arrow +1";
@@ -64,12 +66,7 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows
         {
             get
             {
-                return this._Value;
-            }
-
-            set
-            {
-                this._Value = value;
+                return Pricer.GetPrice(this);
             }
         }
 

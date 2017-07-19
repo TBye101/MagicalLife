@@ -11,8 +11,11 @@
     <Folder Include="Armor\Helmets\" />
     <Folder Include="Armor\Leggings\" />
     <Folder Include="Gems\" />
+    <Folder Include="Gems\" />
+    <Folder Include="Rings\" />
     <Folder Include="Wands\" />
     <Folder Include="Rings\" />
+    <Folder Include="Wands\" />
     <Folder Include="Weapons\Normal\Battle Axes\" />
     <Folder Include="Weapons\Normal\Broadswords\" />
     <Folder Include="Weapons\Normal\Clubs\" />
@@ -46,6 +49,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\EarthWithMagicAPI\EarthWithMagicAPI.csproj" />
+    <ProjectReference Include="..\EarthMagicDynamicMarket\EarthMagicDynamicMarket.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,6 @@
-﻿using EarthWithMagicAPI.API;
+﻿using EarthWithMagicAPI.API.Interfaces.Items;
+using EarthMagicDynamicMarket;
+using EarthWithMagicAPI.API;
 using EarthWithMagicAPI.API.Util;
 using System;
 using System.Collections.Generic;
@@ -11,11 +13,10 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows
     /// <summary>
     /// A slightly better arrow than the +4 arrow.
     /// </summary>
-    public class _5Arrow
+    public class _5Arrow : IAmmo
     {
-        private int _Uses = Dice.RollDice(5, 7);
+        private Dice.Die _Uses = new Dice.Die(5, 7, 0);
         private bool _QuestItem = false;
-        private int _Value = 500;
         private int _Level = 10;
         private Guid _ID = new Guid();
         private string _Name = "Arrow +5";
@@ -37,7 +38,7 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows
             }
         }
 
-        public int Uses
+        public Dice.Die Uses
         {
             get
             {
@@ -67,12 +68,7 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows
         {
             get
             {
-                return this._Value;
-            }
-
-            set
-            {
-                this._Value = value;
+                return Pricer.GetPrice(this);
             }
         }
 
