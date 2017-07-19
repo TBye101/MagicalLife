@@ -16,7 +16,7 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows
         private int _Level = 3;
         private Guid _ID = new Guid();
         private string _Name = "Arrow +1";
-        private int _ChanceToHit = 14;
+        private int _ChanceToHit = 20;
 
         private List<string> _Lore = new List<string> {};
         private List<string> _OtherInfo = new List<string> { "Does 1d8 +1 piercing damage.", "This arrow COULD be used 4 times."};
