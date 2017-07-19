@@ -7,7 +7,7 @@ namespace EarthMagicItems.Armor.Generic.Steel
     /// <summary>
     /// Holds all of the generic steel armor.
     /// </summary>
-    public class GenericSteelArmor
+    public class GenericArmorStorage
     {
         #region Leather
 

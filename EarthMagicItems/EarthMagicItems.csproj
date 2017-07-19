@@ -5,29 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Armor\Chestplates\Adamantium\" />
-    <Folder Include="Armor\Chestplates\Hardened Adamantium\" />
-    <Folder Include="Armor\Chestplates\Hardened Mithril\" />
-    <Folder Include="Armor\Chestplates\Hardened Steel\" />
-    <Folder Include="Armor\Chestplates\Mithril\" />
-    <Folder Include="Armor\Chestplates\Steel\" />
-    <Folder Include="Armor\Gauntlets\Adamantium\" />
-    <Folder Include="Armor\Gauntlets\Hardened Adamantium\" />
-    <Folder Include="Armor\Gauntlets\Hardened Mithril\" />
-    <Folder Include="Armor\Gauntlets\Hardened Steel\" />
-    <Folder Include="Armor\Gauntlets\Mithril\" />
-    <Folder Include="Armor\Gauntlets\Steel\" />
-    <Folder Include="Armor\Helmets\Adamantium\" />
-    <Folder Include="Armor\Helmets\Hardened Adamantium\" />
-    <Folder Include="Armor\Helmets\Hardened Mithril\" />
-    <Folder Include="Armor\Helmets\Hardened Steel\" />
-    <Folder Include="Armor\Helmets\Mithril\" />
-    <Folder Include="Armor\Leggings\Adamantium\" />
-    <Folder Include="Armor\Leggings\Hardened Adamantium\" />
-    <Folder Include="Armor\Leggings\Hardened Mithril\" />
-    <Folder Include="Armor\Leggings\Hardened Steel\" />
-    <Folder Include="Armor\Leggings\Mithril\" />
-    <Folder Include="Armor\Leggings\Steel\" />
     <Folder Include="Gems\" />
     <Folder Include="Gems\" />
     <Folder Include="Rings\" />
