@@ -5,12 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Armor\Boots\Hardened Adamantium\" />
-    <Folder Include="Armor\Boots\Adamantium\" />
-    <Folder Include="Armor\Boots\Hardened Mithril\" />
-    <Folder Include="Armor\Boots\Mithril\" />
-    <Folder Include="Armor\Boots\Hardened Steel\" />
-    <Folder Include="Armor\Boots\Steel\" />
     <Folder Include="Armor\Chestplates\Adamantium\" />
     <Folder Include="Armor\Chestplates\Hardened Adamantium\" />
     <Folder Include="Armor\Chestplates\Hardened Mithril\" />
