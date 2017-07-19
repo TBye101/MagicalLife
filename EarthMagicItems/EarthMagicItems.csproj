@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Amulets\" />
     <Folder Include="Armor\Boots\" />
     <Folder Include="Armor\Chestplates\" />
     <Folder Include="Armor\Gauntlets\" />
