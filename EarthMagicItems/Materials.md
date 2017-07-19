@@ -1,8 +1,8 @@
 ﻿# Materials Listed By Strength
 
-* Hardened Adamantium
+* Tempered Adamantium
 * Adamantium
-* Hardened Mithril
+* Tempered Mithril
 * Mithril
-* Hardened Steel
+* Tempered Steel
 * Steel

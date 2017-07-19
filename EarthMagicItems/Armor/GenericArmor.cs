@@ -100,5 +100,14 @@ namespace EarthMagicItems.Armor
                 return this._OtherInformation;
             }
         }
+
+        public event EventHandler<IItem> ItemSold;
+        public event EventHandler<IItem> ItemBought;
+        public event EventHandler<IItem> ItemDropped;
+        public event EventHandler<IItem> ItemPickedUp;
+        public event EventHandler<IItem> ItemLost;
+        public event EventHandler<IItem> ItemThrown;
+        public event EventHandler<IItem> ItemDestroyed;
+        public event EventHandler<IItem> ItemEquipped;
     }
 }
