@@ -26,7 +26,16 @@ namespace EarthWithMagicAPI.API.Creature
         /// </summary>
         public Guid ID = new Guid();
 
+        /// <summary>
+        /// The amount of weight the creature can hold.
+        /// </summary>
         public int WeightCapacity;
+
+        /// <summary>
+        /// Returns if the creature is hostile to the player.
+        /// </summary>
+        /// <returns></returns>
+        public abstract bool IsHostile();
 
         /// <summary>
         /// Some attributes of the creature.
