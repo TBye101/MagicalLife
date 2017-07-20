@@ -14,17 +14,22 @@ namespace EarthWithMagicAPI.API.Creature
         /// <summary>
         /// The creature's name, if it has one.
         /// </summary>
-        string Name { get; set; }
+        string Name { get; }
 
         /// <summary>
         /// The name of the type of creature the creature is.
         /// </summary>
-        string CreatureType { get; set; }
+        string CreatureType { get; }
+
+        /// <summary>
+        /// Holds a flag that tells if the creature needs to breath oxygen.
+        /// </summary>
+        bool NeedsOxygen { get; }
 
         /// <summary>
         /// The unique ID of the creature.
         /// </summary>
-        Guid ID { get; set; }
+        Guid ID { get; }
 
         /// <summary>
         /// Some attributes of the creature.

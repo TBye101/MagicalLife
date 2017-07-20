@@ -29,5 +29,15 @@
         /// The chance out of 100 that the creature will make a wisdom save.
         /// </summary>
         public int WisdomSave;
+
+        /// <summary>
+        /// The chance out of 100 that the creature will make a save vs death.
+        /// </summary>
+        public int SaveVsDeath;
+
+        /// <summary>
+        /// The chance out of 100 that the creature will make a save vs fear.
+        /// </summary>
+        public int SaveVsFear;
     }
 }

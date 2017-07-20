@@ -6,6 +6,11 @@
     public class CreatureAttributes
     {
         /// <summary>
+        /// 0 = male, 1 = female, -1 = not applicable.
+        /// </summary>
+        public int Gender = -1;
+
+        /// <summary>
         /// Armor class of the creature.
         /// Damage is reduced by armor class after resistances.
         /// Damage taken is calculated by the following: Damage (After resistance calculations) * AC%.
