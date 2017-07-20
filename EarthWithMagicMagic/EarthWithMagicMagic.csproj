@@ -1,7 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Spells\Monk\" />
+    <Folder Include="Spells\Generic\" />
+    <Folder Include="Spells\Other\" />
+    <Folder Include="Spells\Priest\" />
+    <Folder Include="Spells\Wizard\" />
+  </ItemGroup>
 
 </Project>

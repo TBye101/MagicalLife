@@ -1,7 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\EarthWithMagicAPI\EarthWithMagicAPI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Creatures\" />
+  </ItemGroup>
 
 </Project>
