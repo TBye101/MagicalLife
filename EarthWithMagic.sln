@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EarthWithMagic", "EarthWithMagic\EarthWithMagic.csproj", "{896EFB1D-0696-4863-A32C-56D297DA02C9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EarthWithMagicAPI", "..\EarthWithMagicAPI\EarthWithMagicAPI.csproj", "{8B592F1D-A581-4F9E-ACEC-1624EF3963F1}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EarthMagicItems", "EarthMagicItems\EarthMagicItems.csproj", "{224D71FE-DA99-4AD1-A6FC-C0D229A997EA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EarthMagicCreatures", "EarthMagicCreatures\EarthMagicCreatures.csproj", "{3D396EA1-2157-458E-9D76-E05214EB9B3D}"
@@ -19,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EarthMagicStory", "EarthMag
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EarthWithMagicMagic", "EarthWithMagicMagic\EarthWithMagicMagic.csproj", "{C3AB1B24-CA59-4559-A8DC-FD197888BD27}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EarthWithMagicAPI", "EarthWithMagicAPI\EarthWithMagicAPI.csproj", "{A0E4CF0C-C900-4FDA-8395-8B66EFA68638}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +29,6 @@ Global
 		{896EFB1D-0696-4863-A32C-56D297DA02C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{896EFB1D-0696-4863-A32C-56D297DA02C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{896EFB1D-0696-4863-A32C-56D297DA02C9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8B592F1D-A581-4F9E-ACEC-1624EF3963F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8B592F1D-A581-4F9E-ACEC-1624EF3963F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8B592F1D-A581-4F9E-ACEC-1624EF3963F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8B592F1D-A581-4F9E-ACEC-1624EF3963F1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{224D71FE-DA99-4AD1-A6FC-C0D229A997EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{224D71FE-DA99-4AD1-A6FC-C0D229A997EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{224D71FE-DA99-4AD1-A6FC-C0D229A997EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -57,6 +53,10 @@ Global
 		{C3AB1B24-CA59-4559-A8DC-FD197888BD27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3AB1B24-CA59-4559-A8DC-FD197888BD27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3AB1B24-CA59-4559-A8DC-FD197888BD27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0E4CF0C-C900-4FDA-8395-8B66EFA68638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0E4CF0C-C900-4FDA-8395-8B66EFA68638}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0E4CF0C-C900-4FDA-8395-8B66EFA68638}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0E4CF0C-C900-4FDA-8395-8B66EFA68638}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
