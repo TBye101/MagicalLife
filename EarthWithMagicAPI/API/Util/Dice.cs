@@ -39,6 +39,7 @@ namespace EarthWithMagicAPI.API.Util
 
             ToLog += " -> ";
             ToLog += ret.ToString();
+            Util.WriteLine(ToLog);
 
             return ret;
         }
