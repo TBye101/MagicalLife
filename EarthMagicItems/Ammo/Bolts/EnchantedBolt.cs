@@ -4,7 +4,10 @@ using System.Text;
 
 namespace EarthMagicItems.Ammo.Bolts
 {
-    class EnchantedBolt
+    /// <summary>
+    /// 
+    /// </summary>
+    public class EnchantedBolt
     {
     }
 }
