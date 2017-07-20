@@ -103,5 +103,10 @@
         public int SleepResistence;
 
         #endregion
+
+        /// <summary>
+        /// Holds a flag that tells if the creature needs to breath oxygen.
+        /// </summary>
+        bool NeedsOxygen;
     }
 }

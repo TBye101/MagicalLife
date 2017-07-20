@@ -46,7 +46,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\EarthWithMagicAPI\EarthWithMagicAPI.csproj" />
     <ProjectReference Include="..\EarthMagicDynamicMarket\EarthMagicDynamicMarket.csproj" />
   </ItemGroup>
 
