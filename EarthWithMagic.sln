@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EarthMagicDynamicMarket", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EarthMagicStory", "EarthMagicStory\EarthMagicStory.csproj", "{FD368CEB-5A88-40F1-8B73-7CDC3F3FFCBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EarthWithMagicMagic", "EarthWithMagicMagic\EarthWithMagicMagic.csproj", "{C3AB1B24-CA59-4559-A8DC-FD197888BD27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EarthWithMagicMagic", "EarthWithMagicMagic\EarthWithMagicMagic.csproj", "{C3AB1B24-CA59-4559-A8DC-FD197888BD27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
