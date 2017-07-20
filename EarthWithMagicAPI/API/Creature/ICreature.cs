@@ -1,4 +1,5 @@
-﻿using EarthWithMagicAPI.API.Util;
+﻿using EarthWithMagicAPI.API.Stuff;
+using EarthWithMagicAPI.API.Util;
 using EarthWithMagicAPI.API.Interfaces.Items;
 using System;
 using System.Collections.Generic;
@@ -60,7 +61,7 @@ namespace EarthWithMagicAPI.API.Creature
         /// <summary>
         /// It's this creature's turn for action.
         /// </summary>
-        public abstract void YourTurn();
+        public abstract void YourTurn(Encounter encounter);
 
         /// <summary>
         /// Called whenever the creature receives damage.

@@ -20,17 +20,17 @@ namespace EarthWithMagicAPI.API.Stuff
 
         public Encounter(List<ICreature> friendly, List<ICreature> enemies)
         {
-            AllCombatants.AddRange(friendly);
-            AllCombatants.AddRange(enemies);
+            this.AllCombatants.AddRange(friendly);
+            this.AllCombatants.AddRange(enemies);
             this.AllCombatants = this.AllCombatants.OrderByDescending(ICreature => ICreature.GetAttributes().Initiative).ToList();
 
             while (IsEveryoneDead(friendly) == false && IsEveryoneDead(enemies) == false)
             {
                 Console.WriteLine("Encounter: " + friendly.Count.ToString() + " friendlies, " + enemies.Count.ToString() + " enemies");
 
-                foreach (ICreature item in AllCombatants)
+                foreach (ICreature item in this.AllCombatants)
                 {
-                    item.YourTurn();
+                    item.YourTurn(this);
                     Util.Util.WriteLine("Hit any key to continue the fight to the next combatant....");
                 }
             }

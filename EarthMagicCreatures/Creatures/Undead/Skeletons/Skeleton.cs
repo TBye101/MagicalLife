@@ -1,4 +1,5 @@
-﻿using EarthWithMagicAPI.API.Creature;
+﻿using EarthWithMagicAPI.API.Stuff;
+using EarthWithMagicAPI.API.Creature;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -54,7 +55,7 @@ namespace EarthMagicCreatures.Creatures.Undead.Skeletons
             throw new NotImplementedException();
         }
 
-        public override void YourTurn()
+        public override void YourTurn(Encounter encounter)
         {
             throw new NotImplementedException();
         }
