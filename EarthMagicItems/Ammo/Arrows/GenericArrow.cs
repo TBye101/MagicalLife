@@ -1,39 +1,46 @@
 ﻿using EarthMagicDynamicMarket;
 using EarthWithMagicAPI.API;
 using EarthWithMagicAPI.API.Interfaces.Items;
+using EarthWithMagicAPI.API.Interfaces.Spells;
 using EarthWithMagicAPI.API.Util;
 using System;
 using System.Collections.Generic;
-using EarthWithMagicAPI.API.Interfaces.Spells;
+using System.Text;
 
-namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows
+namespace EarthMagicItems.Ammo.Arrows
 {
-    /// <summary>
-    /// A better version of the <see cref="HandMadeArrow"/>
-    /// </summary>
-    public class ProfessionalArrow : IAmmo
+    public class GenericArrow : IAmmo
     {
-        private Dice.Die _Uses = new Dice.Die(1, 3, 0);
-        private bool _QuestItem = false;
-        private int _Level = 1;
+        private Dice.Die _Uses;
+        private bool _QuestItem;
+        private int _Level;
         private Guid _ID = new Guid();
-        private string _Name = "Professional Arrow";
-        private int _ChanceToHit = 17;
+        private string _Name;
+        private int _ChanceToHit;
         private bool _IsEquipped;
+        public Damage _AttackDamage;
 
-        private List<string> _Lore = new List<string> {};
-        private List<string> _OtherInfo = new List<string> { "Does 1d8 piercing damage.", "If you are lucky, you get to use this arrow 3 times." };
+        private List<string> _Lore;
+        private List<string> _OtherInfo;
 
-        public ProfessionalArrow()
+        public GenericArrow(Dice.Die uses, bool questItem, int level, string name, int chanceToHit, bool isEquipped, Damage attackDamage, List<string> lore, List<string> otherInfo)
         {
-
+            this._Uses = uses;
+            this._QuestItem = questItem;
+            this._Level = level;
+            this._Name = name;
+            this._ChanceToHit = chanceToHit;
+            this._IsEquipped = isEquipped;
+            this._AttackDamage = attackDamage;
+            this._Lore = lore;
+            this._OtherInfo = otherInfo;
         }
 
         public Damage AttackDamage
         {
             get
             {
-                return new Damage(new Dice.Die(0, 0, 0), new Dice.Die(0, 0, 0), new Dice.Die(0, 0, 0), new Dice.Die(0, 0, 0), new Dice.Die(0, 0, 0), new Dice.Die(0, 0, 0), new Dice.Die(1, 8, 0), new Dice.Die(0, 0, 0), new Dice.Die(0, 0, 0));
+                return this._AttackDamage;
             }
         }
 
