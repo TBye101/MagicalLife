@@ -28,7 +28,10 @@
         /// <param name="sleepResistence">The resistance of the creature to sleep (spells and abilities).</param>
         /// <param name="needsOxygen">Holds a flag that tells if the creature needs to breath oxygen.</param>
         /// <param name="initiative">Used to determine the order of creature action.</param>
-        public CreatureAttributes(int gender, int AC, int maxHealth, int health, int dexterity, int strength, int constitution, int charisma, int wisdom, XP xp, int fireResistence, int acidResistence, int poisonResistence, int electricResistence, int coldResistence, int magicResistence, int charmResistence, int sleepResistence, bool needsOxygen, int initiative)
+        public CreatureAttributes(int gender, int AC, int maxHealth, int health, int dexterity, int strength,
+            int constitution, int charisma, int wisdom, XP xp, int fireResistence, int acidResistence, 
+            int poisonResistence, int electricResistence, int coldResistence, int magicResistence, int charmResistence,
+            int sleepResistence, bool needsOxygen, int initiative)
         {
             this.Gender = gender;
             this.AC = AC;

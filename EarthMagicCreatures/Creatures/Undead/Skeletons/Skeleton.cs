@@ -12,6 +12,8 @@ namespace EarthMagicCreatures.Creatures.Undead.Skeletons
     /// </summary>
     public class Skeleton : ICreature
     {
+        CreatureAttributes Attributes = new CreatureAttributes(-1, 7, 10, 10, 10, 14, 13, -1, 8, new XP(1), 0, 0, 100, 0, 100, 0, 0, 100, false, 10);
+
         public Skeleton() : base()
         {
             
@@ -19,32 +21,32 @@ namespace EarthMagicCreatures.Creatures.Undead.Skeletons
 
         public override CreatureAttributes GetAttributes()
         {
-            throw new NotImplementedException();
+            return this.Attributes;
         }
 
         public override void OnCreatureDied(ICreature dead)
         {
-            throw new NotImplementedException();
+
         }
 
         public override void OnCreatureHealed(ICreature healer)
         {
-            throw new NotImplementedException();
+
         }
 
         public override void OnDealDamage()
         {
-            throw new NotImplementedException();
+
         }
 
         public override void OnItemEquipped(IItem item)
         {
-            throw new NotImplementedException();
+
         }
 
         public override void OnItemUnequipped(IItem item)
         {
-            throw new NotImplementedException();
+
         }
 
         public override void OnRecieveDamage(Damage damage)
