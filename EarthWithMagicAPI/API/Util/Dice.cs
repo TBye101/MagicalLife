@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Linq;
+using System;
 
 namespace EarthWithMagicAPI.API.Util
 {
@@ -12,22 +13,7 @@ namespace EarthWithMagicAPI.API.Util
         /// <summary>
         /// Rolls dice, adds up the values, and returns the number.
         /// </summary>
-        /// <param name="DiceRolls">How many times to roll the die.</param>
-        /// <param name="Sides">How many sides on the die.</param>
         /// <returns></returns>
-        public static int RollDice(int DiceRolls, int Sides)
-        {
-            int ret = 0;
-
-            while (DiceRolls > 0)
-            {
-                ret += Rand.Next(1, Sides);
-                DiceRolls--;
-            }
-
-            return ret;
-        }
-
         public static int RollDice(Die die)
         {
             int ret = 0;
@@ -39,6 +25,21 @@ namespace EarthWithMagicAPI.API.Util
             }
 
             ret += die.Modifyer;
+
+            string ToLog = "";
+            ToLog += die.Rolls.ToString();
+            ToLog += "d";
+            ToLog += die.Sides.ToString();
+
+            if (die.Modifyer > 0)
+            {
+                ToLog += " +";
+                ToLog += die.Modifyer.ToString();
+            }
+
+            ToLog += " -> ";
+            ToLog += ret.ToString();
+
             return ret;
         }
 
@@ -47,7 +48,14 @@ namespace EarthWithMagicAPI.API.Util
         /// </summary>
         public struct Die
         {
+            /// <summary>
+            /// Rolls of the die.
+            /// </summary>
             public int Rolls;
+
+            /// <summary>
+            /// Number of sides on the die.
+            /// </summary>
             public int Sides;
 
             /// <summary>
