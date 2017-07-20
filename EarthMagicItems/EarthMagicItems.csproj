@@ -5,9 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Rings\" />
+    <Folder Include="Rings\Rings of Protection\" />
+    <Folder Include="Rings\Rings of Resistence\Ring Of Magic Resistence\" />
+    <Folder Include="Rings\Rings of Resistence\Ring Of Cold Resistence\" />
+    <Folder Include="Rings\Rings of Resistence\Ring Of Fire Resistence\" />
+    <Folder Include="Rings\Rings of Resistence\Ring Of Electric Resistence\" />
+    <Folder Include="Rings\Rings of Resistence\Ring Of Poison Resistence\" />
+    <Folder Include="Rings\Rings of Resistence\Ring Of Acid Resistence\" />
     <Folder Include="Wands\" />
-    <Folder Include="Rings\" />
     <Folder Include="Wands\" />
     <Folder Include="Weapons\Normal\Battle Axes\" />
     <Folder Include="Weapons\Normal\Broadswords\" />

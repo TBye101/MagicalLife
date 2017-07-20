@@ -5,42 +5,29 @@ using System.Collections.Generic;
 using System.Text;
 using EarthWithMagicAPI.API.Interfaces.Spells;
 
-namespace EarthMagicItems.Armor
+namespace EarthMagicItems.Amulets
 {
     /// <summary>
-    /// Used to reduce boilerplate code for the simpler armor.
+    /// A generic amulet.
     /// </summary>
-    public class GenericArmor : IArmor
+    public class GenericAmulet : IItem
     {
-        /// <summary>
-        /// The armor bonus of the armor.
-        /// </summary>
-        private int _AC;
         private bool _QuestItem;
         private int _Level;
         private Guid _ID = new Guid();
         private List<string> _OtherInformation;
         private List<string> _Lore;
         private string _Name;
-        private bool _IsEquipped;
+        private bool _IsEquipped = false;
 
-        public GenericArmor(int armorClass, bool questItem, bool isEquipped, int level, List<string> otherInformation, List<string> lore, string name)
+        public GenericAmulet(bool questItem, bool isEquipped, int level, List<string> otherInformation, List<string> lore, string name)
         {
-            this._AC = armorClass;
             this._QuestItem = questItem;
             this._IsEquipped = isEquipped;
             this._Level = level;
             this._OtherInformation = otherInformation;
             this._Lore = lore;
             this._Name = name;
-        }
-
-        public int AC
-        {
-            get
-            {
-                return this._AC;
-            }
         }
 
         public bool QuestItem
@@ -139,7 +126,7 @@ namespace EarthMagicItems.Armor
 
         public void SpellHit(ISpell spell)
         {
-            //Need to handle spells such as a dispel here.
+            //Need to handle a dispel
             throw new NotImplementedException();
         }
 
