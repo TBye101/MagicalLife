@@ -8,8 +8,4 @@
     <ProjectReference Include="..\..\EarthWithMagicAPI\EarthWithMagicAPI.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Creatures\" />
-  </ItemGroup>
-
 </Project>
