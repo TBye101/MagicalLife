@@ -9,7 +9,7 @@ using System.Text;
 
 namespace EarthMagicItems.Ammo.Arrows
 {
-    public class GenericArrow : IAmmo
+    public class GenericAmmo : IAmmo
     {
         private Dice.Die _Uses;
         private bool _QuestItem;
@@ -23,7 +23,7 @@ namespace EarthMagicItems.Ammo.Arrows
         private List<string> _Lore;
         private List<string> _OtherInfo;
 
-        public GenericArrow(Dice.Die uses, bool questItem, int level, string name, int chanceToHit, Damage attackDamage, List<string> lore, List<string> otherInfo)
+        public GenericAmmo(Dice.Die uses, bool questItem, int level, string name, int chanceToHit, Damage attackDamage, List<string> lore, List<string> otherInfo)
         {
             this._Uses = uses;
             this._QuestItem = questItem;
