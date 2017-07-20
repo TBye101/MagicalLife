@@ -5,8 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Gems\" />
-    <Folder Include="Gems\" />
     <Folder Include="Rings\" />
     <Folder Include="Wands\" />
     <Folder Include="Rings\" />
