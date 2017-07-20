@@ -1,7 +1,4 @@
 ﻿using EarthWithMagicAPI.API.Interfaces.Items;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EarthMagicDynamicMarket
 {

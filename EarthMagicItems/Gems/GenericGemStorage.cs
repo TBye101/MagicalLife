@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace EarthMagicItems.Gems
 {
@@ -26,7 +24,7 @@ namespace EarthMagicItems.Gems
         public GenericGem Natrolite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Natrolite");
         public GenericGem Goosecreekite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Goosecreekite");
 
-        #endregion
+        #endregion Level1
 
         #region Level2
 
@@ -44,7 +42,7 @@ namespace EarthMagicItems.Gems
         public GenericGem Vlasovite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Vlasovite");
         public GenericGem Villiaumite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Villiaumite");
 
-        #endregion
+        #endregion Level2
 
         #region Level3
 
@@ -62,7 +60,7 @@ namespace EarthMagicItems.Gems
         public GenericGem Rossmanite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Rossmanite");
         public GenericGem Paraiba = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Paraiba");
 
-        #endregion
+        #endregion Level3
 
         #region Level4
 
@@ -80,7 +78,7 @@ namespace EarthMagicItems.Gems
         public GenericGem Taaffeite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Taaffeite");
         public GenericGem Sylvite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Sylvite");
 
-        #endregion
+        #endregion Level4
 
         #region Level5
 
@@ -98,7 +96,7 @@ namespace EarthMagicItems.Gems
         public GenericGem Spinel = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Spinel");
         public GenericGem Spessartite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Spessartite");
 
-        #endregion
+        #endregion Level5
 
         #region Level6
 
@@ -116,7 +114,7 @@ namespace EarthMagicItems.Gems
         public GenericGem Williamsite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Williamsite");
         public GenericGem Lizardite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Lizardite");
 
-        #endregion
+        #endregion Level6
 
         #region Level7
 
@@ -134,7 +132,7 @@ namespace EarthMagicItems.Gems
         public GenericGem Scapolite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Scapolite");
         public GenericGem Sapphire = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Sapphire");
 
-        #endregion
+        #endregion Level7
 
         #region Level8
 
@@ -152,7 +150,7 @@ namespace EarthMagicItems.Gems
         public GenericGem Prasiolite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Prasiolite");
         public GenericGem MilkyQuartz = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Milky quartz");
 
-        #endregion
+        #endregion Level8
 
         #region Level9
 
@@ -170,7 +168,7 @@ namespace EarthMagicItems.Gems
         public GenericGem Pyromorphite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Pyromorphite");
         public GenericGem Pyrargyrite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Pyrargyrite");
 
-        #endregion
+        #endregion Level9
 
         #region Level10
 
@@ -188,7 +186,7 @@ namespace EarthMagicItems.Gems
         public GenericGem Plumbogummite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Plumbogummite");
         public GenericGem Pietersite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Pietersite");
 
-        #endregion
+        #endregion Level10
 
         #region Level11
 
@@ -207,7 +205,7 @@ namespace EarthMagicItems.Gems
         public GenericGem Olenite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Olenite");
         public GenericGem Nuummite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Nuummite");
 
-        #endregion
+        #endregion Level11
 
         #region Level12
 
@@ -225,7 +223,7 @@ namespace EarthMagicItems.Gems
         public GenericGem Wernerite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Wernerite");
         public GenericGem Malachite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Malachite");
 
-        #endregion
+        #endregion Level12
 
         #region Level13
 
@@ -244,7 +242,7 @@ namespace EarthMagicItems.Gems
         public GenericGem Tsavorite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Tsavorite");
         public GenericGem Rosolite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Rosolite");
 
-        #endregion
+        #endregion Level13
 
         #region Level14
 
@@ -258,7 +256,7 @@ namespace EarthMagicItems.Gems
         public GenericGem Diopside = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Diopside");
         public GenericGem Diamond = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Diamond");
 
-        #endregion
+        #endregion Level14
 
         #region Level15
 
@@ -275,6 +273,6 @@ namespace EarthMagicItems.Gems
         public GenericGem Andesine = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Andesine");
         public GenericGem FireAgate = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Fire Agate");
 
-        #endregion
+        #endregion Level15
     }
 }

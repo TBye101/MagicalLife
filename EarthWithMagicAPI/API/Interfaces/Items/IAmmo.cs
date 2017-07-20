@@ -1,5 +1,4 @@
 ﻿using EarthWithMagicAPI.API.Util;
-using EarthWithMagicAPI.API;
 
 namespace EarthWithMagicAPI.API.Interfaces.Items
 {
@@ -14,7 +13,7 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         Damage AttackDamage { get; }
 
         /// <summary>
-        /// The number of uses the ammo has. 
+        /// The number of uses the ammo has.
         /// </summary>
         Dice.Die Uses { get; }
 

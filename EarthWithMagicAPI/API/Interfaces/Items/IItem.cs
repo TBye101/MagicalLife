@@ -71,7 +71,7 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         /// Ex: Given to another player, or removed from an inventory due to a quest.
         /// </summary>
         event EventHandler<IItem> ItemLost;
-        
+
         /// <summary>
         /// Raised whenever an item is thrown.
         /// </summary>

@@ -1,9 +1,8 @@
 ﻿using EarthMagicDynamicMarket;
 using EarthWithMagicAPI.API.Interfaces.Items;
+using EarthWithMagicAPI.API.Interfaces.Spells;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using EarthWithMagicAPI.API.Interfaces.Spells;
 
 namespace EarthMagicItems.Amulets
 {
@@ -100,28 +99,33 @@ namespace EarthMagicItems.Amulets
         }
 
         public event EventHandler<IItem> ItemSold;
+
         public event EventHandler<IItem> ItemBought;
+
         public event EventHandler<IItem> ItemDropped;
+
         public event EventHandler<IItem> ItemPickedUp;
+
         public event EventHandler<IItem> ItemLost;
+
         public event EventHandler<IItem> ItemThrown;
+
         public event EventHandler<IItem> ItemDestroyed;
+
         public event EventHandler<IItem> ItemEquipped;
+
         public event EventHandler<IItem> StatusChanged;
 
         public void Bought()
         {
-
         }
 
         public void Equip()
         {
-
         }
 
         public void Sold()
         {
-
         }
 
         public void SpellHit(ISpell spell)
@@ -132,12 +136,10 @@ namespace EarthMagicItems.Amulets
 
         public void Unequip()
         {
-
         }
 
         public void WeaponHit(IWeapon attacker)
         {
-
         }
     }
 }

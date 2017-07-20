@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Creatures\" />
+    <Folder Include="Creatures\Demonic\" />
   </ItemGroup>
 
 </Project>

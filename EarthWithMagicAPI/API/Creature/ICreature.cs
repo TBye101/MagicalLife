@@ -1,8 +1,7 @@
-﻿using EarthWithMagicAPI.API;
+﻿using EarthWithMagicAPI.API.Util;
 using EarthWithMagicAPI.API.Interfaces.Items;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace EarthWithMagicAPI.API.Creature
 {
@@ -24,32 +23,44 @@ namespace EarthWithMagicAPI.API.Creature
         /// <summary>
         /// The unique ID of the creature.
         /// </summary>
-        public Guid ID;
+        public Guid ID = new Guid();
+
+        public int WeightCapacity;
 
         /// <summary>
         /// Some attributes of the creature.
         /// </summary>
-        public CreatureAttributes Attributes;
+        public abstract CreatureAttributes GetAttributes();
 
         /// <summary>
         /// All the equipped armor that the creature has.
         /// </summary>
-        public List<IArmor> Armoring;
+        public List<IArmor> Armoring = new List<IArmor>();
 
         /// <summary>
         /// All of the equipped rings that the creature has.
         /// </summary>
-        public List<IRing> Rings;
+        public List<IRing> Rings = new List<IRing>();
 
         /// <summary>
         /// All of the equipped amulets that the creature has.
         /// </summary>
-        public List<IAmulet> Amulets;
+        public List<IAmulet> Amulets = new List<IAmulet>();
 
         /// <summary>
         /// The equipped weapons that the creature has.
         /// </summary>
-        public List<IWeapon> Weapons;
+        public List<IWeapon> Weapons = new List<IWeapon>();
+
+        /// <summary>
+        /// All items on a creature that are not equipped go here.
+        /// </summary>
+        public List<IItem> Inventory = new List<IItem>();
+
+        /// <summary>
+        /// It's this creature's turn for action.
+        /// </summary>
+        public abstract void YourTurn();
 
         /// <summary>
         /// Called whenever the creature receives damage.
@@ -116,5 +127,12 @@ namespace EarthWithMagicAPI.API.Creature
         /// </summary>
         public event EventHandler<ICreature> CreatureHealed;
 
+        /// <summary>
+        /// The default constructor for this class. Must be called on initialization.
+        /// </summary>
+        public ICreature()
+        {
+            this.WeightCapacity = WeightCapacityUtil.Calculate(this);
+        }
     }
 }

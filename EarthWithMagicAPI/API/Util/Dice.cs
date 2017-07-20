@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EarthWithMagicAPI.API.Util
 {
@@ -31,6 +27,7 @@ namespace EarthWithMagicAPI.API.Util
 
             return ret;
         }
+
         public static int RollDice(Die die)
         {
             int ret = 0;
@@ -52,6 +49,7 @@ namespace EarthWithMagicAPI.API.Util
         {
             public int Rolls;
             public int Sides;
+
             /// <summary>
             /// Your +Damage.
             /// </summary>

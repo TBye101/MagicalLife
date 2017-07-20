@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EarthWithMagicAPI.API.Creature
+﻿namespace EarthWithMagicAPI.API.Creature
 {
     /// <summary>
     /// Holds a list of flags that determine what abilities a creature has.

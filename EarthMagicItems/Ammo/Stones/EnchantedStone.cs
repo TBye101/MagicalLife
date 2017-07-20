@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EarthMagicItems.Ammo.Stones
+﻿namespace EarthMagicItems.Ammo.Stones
 {
-    class EnchantedStone
+    internal class EnchantedStone
     {
     }
 }

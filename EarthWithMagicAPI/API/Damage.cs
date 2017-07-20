@@ -1,4 +1,5 @@
 ﻿using EarthWithMagicAPI.API.Util;
+
 namespace EarthWithMagicAPI.API
 {
     /// <summary>

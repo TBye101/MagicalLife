@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace EarthMagicItems.Armor.Generic.Steel
 {
@@ -46,7 +44,7 @@ namespace EarthMagicItems.Armor.Generic.Steel
         public GenericArmor LeatherBoots_4 = new GenericArmor(5, false, 5, new List<string> { }, new List<string> { }, "Leather Boots +4");
         public GenericArmor LeatherBoots_5 = new GenericArmor(6, false, 6, new List<string> { }, new List<string> { }, "Leather Boots +5");
 
-        #endregion
+        #endregion Leather
 
         #region Steel
 
@@ -85,7 +83,7 @@ namespace EarthMagicItems.Armor.Generic.Steel
         public GenericArmor SteelBoots_4 = new GenericArmor(6, false, 6, new List<string> { }, new List<string> { }, "Steel Boots +4");
         public GenericArmor SteelBoots_5 = new GenericArmor(7, false, 7, new List<string> { }, new List<string> { }, "Steel Boots +5");
 
-        #endregion
+        #endregion Steel
 
         #region Tempered Steel
 
@@ -124,7 +122,7 @@ namespace EarthMagicItems.Armor.Generic.Steel
         public GenericArmor TemperedSteelBoots_4 = new GenericArmor(7, false, 7, new List<string> { }, new List<string> { }, "Tempered Steel Boots +4");
         public GenericArmor TemperedSteelBoots_5 = new GenericArmor(8, false, 8, new List<string> { }, new List<string> { }, "Tempered Steel Boots +5");
 
-        #endregion
+        #endregion Tempered Steel
 
         #region Mithril
 
@@ -163,7 +161,7 @@ namespace EarthMagicItems.Armor.Generic.Steel
         public GenericArmor MithrilBoots_4 = new GenericArmor(8, false, 8, new List<string> { }, new List<string> { }, "Mithril Boots +4");
         public GenericArmor MithrilBoots_5 = new GenericArmor(9, false, 9, new List<string> { }, new List<string> { }, "Mithril Boots +5");
 
-        #endregion
+        #endregion Mithril
 
         #region Tempered Mithril
 
@@ -202,7 +200,7 @@ namespace EarthMagicItems.Armor.Generic.Steel
         public GenericArmor TemperedMithrilBoots_4 = new GenericArmor(9, false, 9, new List<string> { }, new List<string> { }, "Tempered Mithril Boots +4");
         public GenericArmor TemperedMithrilBoots_5 = new GenericArmor(10, false, 10, new List<string> { }, new List<string> { }, "Tempered Mithril Boots +5");
 
-        #endregion
+        #endregion Tempered Mithril
 
         #region Adamantium
 
@@ -241,7 +239,7 @@ namespace EarthMagicItems.Armor.Generic.Steel
         public GenericArmor AdamantiumBoots_4 = new GenericArmor(10, false, 10, new List<string> { }, new List<string> { }, "Adamantium Boots +4");
         public GenericArmor AdamantiumBoots_5 = new GenericArmor(11, false, 11, new List<string> { }, new List<string> { }, "Adamantium Boots +5");
 
-        #endregion
+        #endregion Adamantium
 
         #region Tempered Adamantium
 
@@ -280,6 +278,6 @@ namespace EarthMagicItems.Armor.Generic.Steel
         public GenericArmor TemperedAdamantiumBoots_4 = new GenericArmor(11, false, 11, new List<string> { }, new List<string> { }, "Tempered Adamantium Boots +4");
         public GenericArmor TemperedAdamantiumBoots_5 = new GenericArmor(12, false, 12, new List<string> { }, new List<string> { }, "Tempered Adamantium Boots +5");
 
-        #endregion
+        #endregion Tempered Adamantium
     }
 }
