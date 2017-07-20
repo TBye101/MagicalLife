@@ -22,13 +22,12 @@ namespace EarthMagicItems.Armor
         private List<string> _OtherInformation;
         private List<string> _Lore;
         private string _Name;
-        private bool _IsEquipped;
+        private bool _IsEquipped = false;
 
-        public GenericArmor(int armorClass, bool questItem, bool isEquipped, int level, List<string> otherInformation, List<string> lore, string name)
+        public GenericArmor(int armorClass, bool questItem, int level, List<string> otherInformation, List<string> lore, string name)
         {
             this._AC = armorClass;
             this._QuestItem = questItem;
-            this._IsEquipped = isEquipped;
             this._Level = level;
             this._OtherInformation = otherInformation;
             this._Lore = lore;

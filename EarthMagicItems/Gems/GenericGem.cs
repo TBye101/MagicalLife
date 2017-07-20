@@ -18,12 +18,11 @@ namespace EarthMagicItems.Gems
         private List<string> _OtherInformation;
         private List<string> _Lore;
         private string _Name;
-        private bool _IsEquipped;
+        private bool _IsEquipped = false;
 
-        public GenericGem(bool questItem, bool isEquipped, int level, List<string> otherInformation, List<string> lore, string name)
+        public GenericGem(bool questItem, int level, List<string> otherInformation, List<string> lore, string name)
         {
             this._QuestItem = questItem;
-            this._IsEquipped = isEquipped;
             this._Level = level;
             this._OtherInformation = otherInformation;
             this._Lore = lore;

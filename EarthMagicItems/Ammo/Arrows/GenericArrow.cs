@@ -17,20 +17,19 @@ namespace EarthMagicItems.Ammo.Arrows
         private Guid _ID = new Guid();
         private string _Name;
         private int _ChanceToHit;
-        private bool _IsEquipped;
+        private bool _IsEquipped = false;
         public Damage _AttackDamage;
 
         private List<string> _Lore;
         private List<string> _OtherInfo;
 
-        public GenericArrow(Dice.Die uses, bool questItem, int level, string name, int chanceToHit, bool isEquipped, Damage attackDamage, List<string> lore, List<string> otherInfo)
+        public GenericArrow(Dice.Die uses, bool questItem, int level, string name, int chanceToHit, Damage attackDamage, List<string> lore, List<string> otherInfo)
         {
             this._Uses = uses;
             this._QuestItem = questItem;
             this._Level = level;
             this._Name = name;
             this._ChanceToHit = chanceToHit;
-            this._IsEquipped = isEquipped;
             this._AttackDamage = attackDamage;
             this._Lore = lore;
             this._OtherInfo = otherInfo;
