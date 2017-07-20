@@ -5,17 +5,19 @@ VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EarthWithMagic", "EarthWithMagic\EarthWithMagic.csproj", "{896EFB1D-0696-4863-A32C-56D297DA02C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EarthWithMagicAPI", "..\EarthWithMagicAPI\EarthWithMagicAPI.csproj", "{8B592F1D-A581-4F9E-ACEC-1624EF3963F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EarthWithMagicAPI", "..\EarthWithMagicAPI\EarthWithMagicAPI.csproj", "{8B592F1D-A581-4F9E-ACEC-1624EF3963F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EarthMagicItems", "EarthMagicItems\EarthMagicItems.csproj", "{224D71FE-DA99-4AD1-A6FC-C0D229A997EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EarthMagicItems", "EarthMagicItems\EarthMagicItems.csproj", "{224D71FE-DA99-4AD1-A6FC-C0D229A997EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EarthMagicCreatures", "EarthMagicCreatures\EarthMagicCreatures.csproj", "{3D396EA1-2157-458E-9D76-E05214EB9B3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EarthMagicCreatures", "EarthMagicCreatures\EarthMagicCreatures.csproj", "{3D396EA1-2157-458E-9D76-E05214EB9B3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EarthMagicCharacters", "EarthMagicCharacters\EarthMagicCharacters.csproj", "{D44CB7A8-9713-492A-89B3-A1E872DADA88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EarthMagicCharacters", "EarthMagicCharacters\EarthMagicCharacters.csproj", "{D44CB7A8-9713-492A-89B3-A1E872DADA88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EarthMagicDynamicMarket", "EarthMagicDynamicMarket\EarthMagicDynamicMarket.csproj", "{6FDBE2F6-A635-40B6-B7EC-4ACEE14A653C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EarthMagicDynamicMarket", "EarthMagicDynamicMarket\EarthMagicDynamicMarket.csproj", "{6FDBE2F6-A635-40B6-B7EC-4ACEE14A653C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EarthMagicStory", "EarthMagicStory\EarthMagicStory.csproj", "{FD368CEB-5A88-40F1-8B73-7CDC3F3FFCBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EarthMagicStory", "EarthMagicStory\EarthMagicStory.csproj", "{FD368CEB-5A88-40F1-8B73-7CDC3F3FFCBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EarthWithMagicMagic", "EarthWithMagicMagic\EarthWithMagicMagic.csproj", "{C3AB1B24-CA59-4559-A8DC-FD197888BD27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{FD368CEB-5A88-40F1-8B73-7CDC3F3FFCBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD368CEB-5A88-40F1-8B73-7CDC3F3FFCBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD368CEB-5A88-40F1-8B73-7CDC3F3FFCBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3AB1B24-CA59-4559-A8DC-FD197888BD27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3AB1B24-CA59-4559-A8DC-FD197888BD27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3AB1B24-CA59-4559-A8DC-FD197888BD27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3AB1B24-CA59-4559-A8DC-FD197888BD27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
