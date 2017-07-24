@@ -15,7 +15,7 @@
     <Folder Include="Classes\Monk\Divine Monk\" />
     <Folder Include="Classes\Monk\Martial Specialist\" />
     <Folder Include="Classes\Monk\Tainted Monk\" />
-    <Folder Include="Classes\NewFolder\" />
+    <Folder Include="Classes\Shape Shifter\Generic Shape Shifter\" />
     <Folder Include="Classes\Thief\Generic Thief\" />
     <Folder Include="Classes\Thief\Gymnist\" />
     <Folder Include="Classes\Thief\Shadow Walker\" />
