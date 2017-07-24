@@ -73,8 +73,28 @@ namespace EarthWithMagicAPI.API.Stuff
 
             string input = Console.ReadLine();
 
-            int choice;
-            bool a = Int32.TryParse(input, choice);
+            int Choice = Convert.ToInt32(input);
+            this.Decided(Choice);
+        }
+
+        /// <summary>
+        /// Follows the path that the user chose.
+        /// </summary>
+        /// <param name="decision"></param>
+        private void Decided(int decision)
+        {
+            if (decision > this.ProgressionOfChoices.Count || decision < 1)
+            {
+                Console.WriteLine("Invalid choice! Try again!");
+                string input = Console.ReadLine();
+
+                int Choice = Convert.ToInt32(input);
+                this.Decided(Choice);
+            }
+            else
+            {
+                this.ProgressionOfChoices[decision - 1].Display();
+            }
         }
     }
 }
