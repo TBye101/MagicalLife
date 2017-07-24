@@ -1,7 +1,28 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Classes\Cleric\Necromancer\" />
+    <Folder Include="Classes\Cleric\Generic Cleric\" />
+    <Folder Include="Classes\Cleric\Sun Touched\" />
+    <Folder Include="Classes\Fighter\Knight\" />
+    <Folder Include="Classes\Fighter\Barbarian\" />
+    <Folder Include="Classes\Fighter\Generic Fighter\" />
+    <Folder Include="Classes\Monk\Generic Monk\" />
+    <Folder Include="Classes\Monk\Divine Monk\" />
+    <Folder Include="Classes\Monk\Martial Specialist\" />
+    <Folder Include="Classes\Monk\Tainted Monk\" />
+    <Folder Include="Classes\NewFolder\" />
+    <Folder Include="Classes\Thief\Generic Thief\" />
+    <Folder Include="Classes\Thief\Gymnist\" />
+    <Folder Include="Classes\Thief\Shadow Walker\" />
+    <Folder Include="Classes\Wizard\Elementalist\" />
+    <Folder Include="Classes\Wizard\Generic Wizard\" />
+    <Folder Include="Classes\Wizard\Illusionist\" />
+    <Folder Include="Classes\Wizard\Planeswalker\" />
+  </ItemGroup>
 
 </Project>
