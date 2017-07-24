@@ -7,6 +7,11 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
     public interface IItem
     {
         /// <summary>
+        /// The weight of the item.
+        /// </summary>
+        int Weight { get; }
+
+        /// <summary>
         /// Holds whether or not the item is equipped.
         /// </summary>
         bool IsEquipped { get; }
