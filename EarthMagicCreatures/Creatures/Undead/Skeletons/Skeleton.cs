@@ -17,7 +17,7 @@ namespace EarthMagicCreatures.Creatures.Undead.Skeletons
 
         public Skeleton() : base()
         {
-            
+            this.
         }
 
         public override CreatureAttributes GetAttributes()
@@ -27,7 +27,7 @@ namespace EarthMagicCreatures.Creatures.Undead.Skeletons
 
         public override bool IsHostile()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public override void OnCreatureDied(ICreature dead)
