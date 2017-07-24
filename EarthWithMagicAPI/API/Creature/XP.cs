@@ -10,7 +10,7 @@ namespace EarthWithMagicAPI.API.Creature
         /// <summary>
         /// The number of level ups the creature needs to do.
         /// </summary>
-        public int LevelUpsAvailible;
+        public int LevelUpsAvailible = 0;
 
         /// <summary>
         /// The level of creature.
@@ -32,7 +32,7 @@ namespace EarthWithMagicAPI.API.Creature
         /// </summary>
         public XP(int creatureLevel)
         {
-            throw new NotImplementedException();
+            this.CreatureLevel = creatureLevel;
         }
 
         /// <summary>
@@ -41,7 +41,14 @@ namespace EarthWithMagicAPI.API.Creature
         /// <param name="xp"></param>
         public void RecieveXP(UInt64 xp)
         {
-            throw new NotImplementedException();
+            this.CurrentXP += xp;
+
+            if (this.CurrentXP >= this.XPToNextLevel)
+            {
+                ++this.CreatureLevel;
+                this.CurrentXP -= this.XPToNextLevel;
+                ++this.LevelUpsAvailible;
+            }
         }
 
         /// <summary>
@@ -50,7 +57,11 @@ namespace EarthWithMagicAPI.API.Creature
         /// <param name="xp"></param>
         public void RemoveXP(UInt64 xp)
         {
-            throw new NotImplementedException();
+            this.CurrentXP -= xp;
+            if (this.CurrentXP < 0)
+            {
+                this.CurrentXP = 0;
+            }
         }
     }
 }
