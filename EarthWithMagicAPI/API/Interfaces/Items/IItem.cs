@@ -9,7 +9,7 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         /// <summary>
         /// The weight of the item.
         /// </summary>
-        int Weight { get; }
+        double Weight { get; }
 
         /// <summary>
         /// Holds whether or not the item is equipped.

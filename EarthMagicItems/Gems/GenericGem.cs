@@ -97,6 +97,14 @@ namespace EarthMagicItems.Gems
             }
         }
 
+        public double Weight
+        {
+            get
+            {
+                return .3;
+            }
+        }
+
         public event EventHandler<IItem> ItemSold;
 
         public event EventHandler<IItem> ItemBought;

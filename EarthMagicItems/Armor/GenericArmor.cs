@@ -111,6 +111,14 @@ namespace EarthMagicItems.Armor
             }
         }
 
+        public double Weight
+        {
+            get
+            {
+                return 5;
+            }
+        }
+
         public event EventHandler<IItem> ItemSold;
 
         public event EventHandler<IItem> ItemBought;

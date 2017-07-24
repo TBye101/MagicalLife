@@ -98,6 +98,14 @@ namespace EarthMagicItems.Amulets
             }
         }
 
+        public double Weight
+        {
+            get
+            {
+                return 1;
+            }
+        }
+
         public event EventHandler<IItem> ItemSold;
 
         public event EventHandler<IItem> ItemBought;

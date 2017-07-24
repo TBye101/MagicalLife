@@ -25,6 +25,11 @@ namespace EarthMagicCreatures.Creatures.Undead.Skeletons
             return this.Attributes;
         }
 
+        public override bool IsHostile()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void OnCreatureDied(ICreature dead)
         {
 

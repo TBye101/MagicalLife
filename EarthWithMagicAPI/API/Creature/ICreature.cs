@@ -12,6 +12,11 @@ namespace EarthWithMagicAPI.API.Creature
     public abstract class ICreature
     {
         /// <summary>
+        /// The title of the creature, if any.
+        /// </summary>
+        public string Title;
+
+        /// <summary>
         /// The creature's name, if it has one.
         /// </summary>
         public string Name;
