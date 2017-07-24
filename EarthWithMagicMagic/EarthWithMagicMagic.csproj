@@ -5,19 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Spells\Cleric\Generic Cleric\" />
-    <Folder Include="Spells\Cleric\Necromancer\" />
-    <Folder Include="Spells\Cleric\Sun Touched\" />
+    <Compile Remove="Spells\Cleric\**" />
+    <EmbeddedResource Remove="Spells\Cleric\**" />
+    <None Remove="Spells\Cleric\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Spells\Generic\" />
-    <Folder Include="Spells\Monk\Divine Monk\" />
-    <Folder Include="Spells\Monk\Generic Monk\" />
-    <Folder Include="Spells\Monk\Martial Specialist\" />
-    <Folder Include="Spells\Monk\Tainted Monk\" />
     <Folder Include="Spells\Other\" />
-    <Folder Include="Spells\Wizard\Illusionist\" />
-    <Folder Include="Spells\Wizard\Generic Wizard\" />
-    <Folder Include="Spells\Wizard\Elementalist\" />
-    <Folder Include="Spells\Wizard\Planeswalker\" />
   </ItemGroup>
 
 </Project>
