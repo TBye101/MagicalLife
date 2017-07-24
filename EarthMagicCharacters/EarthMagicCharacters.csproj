@@ -35,4 +35,8 @@
     <Folder Include="Classes\Wizard\Planeswalker\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EarthWithMagicAPI\EarthWithMagicAPI.csproj" />
+  </ItemGroup>
+
 </Project>

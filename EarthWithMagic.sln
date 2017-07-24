@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EarthMagicCharacters", "Ear
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EarthMagicDynamicMarket", "EarthMagicDynamicMarket\EarthMagicDynamicMarket.csproj", "{6FDBE2F6-A635-40B6-B7EC-4ACEE14A653C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EarthMagicStory", "EarthMagicStory\EarthMagicStory.csproj", "{FD368CEB-5A88-40F1-8B73-7CDC3F3FFCBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EarthMagicMainStory", "EarthMagicStory\EarthMagicMainStory.csproj", "{FD368CEB-5A88-40F1-8B73-7CDC3F3FFCBC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EarthWithMagicMagic", "EarthWithMagicMagic\EarthWithMagicMagic.csproj", "{C3AB1B24-CA59-4559-A8DC-FD197888BD27}"
 EndProject
