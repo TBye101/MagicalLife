@@ -12,6 +12,11 @@ namespace EarthWithMagicAPI.API.Creature
     public abstract class ICreature
     {
         /// <summary>
+        /// 0 = Lawful evil, 1 = chaotic evil, 2 = neutral, 3 = chaotic good, 4 = lawful good.
+        /// </summary>
+        public int Aligntment;
+
+        /// <summary>
         /// The title of the creature, if any.
         /// </summary>
         public string Title;

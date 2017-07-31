@@ -1,4 +1,5 @@
-﻿using EarthWithMagicAPI.API.Creature;
+﻿using EarthWithMagicAPI.API.Interfaces.Spells;
+using EarthWithMagicAPI.API.Creature;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,5 +13,10 @@ namespace EarthMagicCharacters.Classes
         /// The player should control the level up.
         /// </summary>
         public abstract void LevelUp();
+
+        /// <summary>
+        /// A list of all spells known to the creature.
+        /// </summary>
+        public List<ISpell> SpellsAvailible;
     }
 }
