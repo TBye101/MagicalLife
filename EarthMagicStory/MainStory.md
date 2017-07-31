@@ -18,6 +18,21 @@ The demon whispers a few arcane words, and disappears.
 
 7 Years later....
 
+You never truly recovered from the trauma of your mother's death. Bosworth, a friend of your deceased mother, took you in after that fateful night. 
+He treated you well, and raised you on stories of his old adventure's. He used to be a (Player class). 
 
+Bosworth had the wisdom to know that you would 
+never give up on (Bringing your mother's killer to justice/revenge), so he took it upon himself to teach you the basics so you might survive your journey.
+
+Bosworth: Happy birthday (Playername)! You are now considered in society to be a (man/woman).
+Bosworth: It is time for me to let you take your own path, if you choose. 
+(Playername): So you mean, I can finally hunt down my mother's killers?
+Bosworth: Yes, if that is what you wish. I will give you my old equipment I used when adventuring, and you may leave tomorrow.
+
+The next day:
+
+Bosworth: Goodbye (Playername), I will miss you.
+(Playername): I know. I will come and visit you when this is all done.
+Bosworth: Have a safe journey, and make the most of your opportunities.
 
 1. 

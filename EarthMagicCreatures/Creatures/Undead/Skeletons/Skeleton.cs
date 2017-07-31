@@ -17,7 +17,6 @@ namespace EarthMagicCreatures.Creatures.Undead.Skeletons
 
         public Skeleton() : base()
         {
-            this.
         }
 
         public override CreatureAttributes GetAttributes()
