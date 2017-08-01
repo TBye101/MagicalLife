@@ -17,10 +17,10 @@
     <Folder Include="Classes\Fighter\Knight\" />
     <Folder Include="Classes\Fighter\Barbarian\" />
     <Folder Include="Classes\Fighter\Generic Fighter\" />
-    <Folder Include="Classes\Monk\Generic Monk\" />
     <Folder Include="Classes\Monk\Divine Monk\" />
     <Folder Include="Classes\Monk\Martial Specialist\" />
     <Folder Include="Classes\Monk\Tainted Monk\" />
+    <Folder Include="Classes\Witch\" />
     <Folder Include="Classes\Ranger\Beastmaster\" />
     <Folder Include="Classes\Ranger\Herbalist\" />
     <Folder Include="Classes\Ranger\Marksman\" />

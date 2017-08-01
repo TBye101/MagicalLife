@@ -148,6 +148,28 @@ namespace EarthWithMagicAPI.API.Creature
         public event EventHandler<ICreature> CreatureHealed;
 
         /// <summary>
+        /// Determines based on gender if we should be referring to this creature as a him/her/it.
+        /// </summary>
+        /// <returns></returns>
+        public string HimHerIT()
+        {
+            if (this.GetAttributes().Gender == 0)
+            {
+                return "him";
+            }
+            if (this.GetAttributes().Gender == 1)
+            {
+                return "her";
+            }
+            if (this.GetAttributes().Gender == -1)
+            {
+                return "IT";
+            }
+
+            return "IT";
+        }
+
+        /// <summary>
         /// The default constructor for this class. Must be called on initialization.
         /// </summary>
         public ICreature()
