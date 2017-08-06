@@ -31,7 +31,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             Attributes = new CreatureAttributes(gender, 4, startingHealth, startingHealth,
             Dice.RollDice(new Dice.Die(3, 6, 0)), Dice.RollDice(new Dice.Die(3, 6, 0)),
             Dice.RollDice(new Dice.Die(3, 6, 0)), Dice.RollDice(new Dice.Die(3, 6, 0)),
-            Dice.RollDice(new Dice.Die(3, 6, 0)), new XP(1), 0, 0, 0, 0, 0, 0, 0, 0, true, 12);
+            Dice.RollDice(new Dice.Die(3, 6, 0)), new XP(1), 0, 0, 0, 0, 0, 0, 0, 0, true, 12, 20);
         }
 
         public override CreatureAttributes GetAttributes()

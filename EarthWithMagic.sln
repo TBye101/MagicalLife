@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EarthWithMagic", "EarthWithMagic\EarthWithMagic.csproj", "{896EFB1D-0696-4863-A32C-56D297DA02C9}"
 EndProject
@@ -21,6 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EarthWithMagicAPI", "EarthW
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{09293283-6E6D-4652-A633-5B70452244DA}"
 	ProjectSection(SolutionItems) = preProject
+		ClassDescriptions.md = ClassDescriptions.md
 		Reference.md = Reference.md
 		Todo.md = Todo.md
 	EndProjectSection
