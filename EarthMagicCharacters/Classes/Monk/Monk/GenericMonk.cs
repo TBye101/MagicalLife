@@ -395,7 +395,14 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level9()
         {
-            List<string> levelUpReport = new List<string> {   };
+            List<string> levelUpReport = new List<string> { "Title: Disciple", "+5% magic resistance", "Fist: 1d10 +1", "AC: +1"};
+
+            this.Title = "Disciple";
+            this.Attributes.MagicResistence += 5;
+            this.BareHands.FistDamage.BluntDamage = new Dice.Die(1, 10, 1);
+            this.Attributes.AC++;
+
+            Util.WriteLine(levelUpReport);
         }
 
         /// <summary>
