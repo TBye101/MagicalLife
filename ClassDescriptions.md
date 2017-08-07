@@ -12,7 +12,10 @@ Hit die: 1d10 +2
 
 2nd Level:
 
-Upon 
+Stunning blow: 
+
+Upon reaching level 2, monks recieve training on how to perform a stunning blow. This attack uses the TH of the monk's fists, but if it hits it will stun the target. A sucessful save vs impact will reduce the amount of stunned time by half. An additional save vs impact will render the stun part of stunning blow, useless.
+
 HP: + 1d10 +2
 TH (To Hit): + 1
 
