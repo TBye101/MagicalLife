@@ -378,7 +378,16 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level8()
         {
-            List<string> levelUpReport = new List<string> {   };
+            List<string> levelUpReport = new List<string> { "Title: Faithful Brother", "+20% resistance to charms", "+5% hide in shadows", "+5% walk silently", "To hit +1", "AC: +1"};
+
+            this.Title = "Faithful Brother";
+            this.Attributes.CharmResistence += 20;
+            this.Abilities.HideInShadows += 5;
+            this.Abilities.WalkSilently += 5;
+            ++this.Attributes.ToHit;
+            ++this.Attributes.AC;
+
+            Util.WriteLine(levelUpReport);
         }
 
         /// <summary>
