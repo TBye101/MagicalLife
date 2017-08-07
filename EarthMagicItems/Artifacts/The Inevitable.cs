@@ -14,160 +14,30 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows.Artifacts
     /// </summary>
     public class The_Inevitable : IAmmo
     {
-        private Dice.Die _Uses = new Dice.Die(-1, -1, 0);
-        private bool _QuestItem = false;
-        private int _Level = 11;
-        private Guid _ID = new Guid();
-        private string _Name = "The Inevitable";
-        private int _ChanceToHit = 100;
+        /// <summary>
+        /// The constructor for The_Inevitable.
+        /// </summary>
+        public The_Inevitable()
+        {
+            this.AttackDamage = new Damage(new Dice.Die(2, 8, 5), new Dice.Die(2, 8, 5), new Dice.Die(2, 8, 5), new Dice.Die(2, 8, 5), new Dice.Die(2, 8, 5), new Dice.Die(2, 8, 5), new Dice.Die(2, 8, 5), new Dice.Die(0, 0, 0), new Dice.Die(0, 0, 0));
+            this.Uses = new Dice.Die(-1, -1, 0);
+            this.ChanceToHit = 100;
+            this.QuestItem = false;
+            this.Level = 11;
 
-        private List<string> _Lore = new List<string> { "Some say that The Inevitable was the very first magical arrow.",
+            this.Lore = new List<string> { "Some say that The Inevitable was the very first magical arrow.",
         "Others say that it was the only sentient arrow ever made.",
             "The only thing the legends agree on is The Inevitable is fueled by the souls of it's victims.",
             "If The Inevitable cannot kill the entity it was shot at, it will attack creature's nearby until it kills one as a price for their betrayal." };
 
-        private List<string> _OtherInfo = new List<string> { "Does 2d8 +5 piercing damage.", "Does 2d8 +5 acid damage", "Does 2d8 +5 poison damage.",
+            this.Name = "The Inevitable";
+            this.ID = new Guid();
+
+            this.OtherInformation = new List<string> { "Does 2d8 +5 piercing damage.", "Does 2d8 +5 acid damage", "Does 2d8 +5 poison damage.",
             "Does 2d8 +5 electric damage.", "Does 2d8 + 5 fire damage.", "Does 2d8 +5 cold damage.",
-        "Does 2d8 +5 magic damage."};
+        "Does 2d8 +5 magic damage." };
 
-        public The_Inevitable()
-        {
-        }
-
-        public Damage AttackDamage
-        {
-            get
-            {
-                return new Damage(new Dice.Die(2, 8, 5), new Dice.Die(2, 8, 5), new Dice.Die(2, 8, 5), new Dice.Die(2, 8, 5), new Dice.Die(2, 8, 5), new Dice.Die(2, 8, 5), new Dice.Die(2, 8, 5), new Dice.Die(0, 0, 0), new Dice.Die(0, 0, 0));
-            }
-        }
-
-        public Dice.Die Uses
-        {
-            get
-            {
-                return this._Uses;
-            }
-
-            set
-            {
-                this._Uses = value;
-            }
-        }
-
-        public bool QuestItem
-        {
-            get
-            {
-                return this._QuestItem;
-            }
-
-            set
-            {
-                this._QuestItem = value;
-            }
-        }
-
-        public int Value
-        {
-            get
-            {
-                return Pricer.GetPrice(this);
-            }
-        }
-
-        public int Level
-        {
-            get
-            {
-                return this._Level;
-            }
-
-            set
-            {
-                this._Level = value;
-            }
-        }
-
-        public Guid ID
-        {
-            get
-            {
-                return this._ID;
-            }
-
-            set
-            {
-                this._ID = value;
-            }
-        }
-
-        public string Name
-        {
-            get
-            {
-                return this._Name;
-            }
-
-            set
-            {
-                this._Name = value;
-            }
-        }
-
-        public List<string> Lore
-        {
-            get
-            {
-                return this._Lore;
-            }
-
-            set
-            {
-                this._Lore = value;
-            }
-        }
-
-        public List<string> OtherInformation
-        {
-            get
-            {
-                return this._OtherInfo;
-            }
-
-            set
-            {
-                this._OtherInfo = value;
-            }
-        }
-
-        public int ChanceToHit
-        {
-            get
-            {
-                return this._ChanceToHit;
-            }
-
-            set
-            {
-                this._ChanceToHit = value;
-            }
-        }
-
-        public bool IsEquipped
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public double Weight
-        {
-            get
-            {
-                return .5;
-            }
+            this.Value = Pricer.GetPrice(this);
         }
 
         public event EventHandler<IItem> ItemSold;
@@ -188,30 +58,35 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows.Artifacts
 
         public event EventHandler<IItem> StatusChanged;
 
-        public void Bought()
+        public override void Bought()
         {
+            throw new NotImplementedException();
         }
 
-        public void Equip()
+        public override void Equip()
         {
+            throw new NotImplementedException();
         }
 
-        public void Sold()
+        public override void Sold()
         {
+            throw new NotImplementedException();
         }
 
-        public void SpellHit(ISpell spell)
+        public override void SpellHit(ISpell spell)
         {
             //Gotta handle a dispel here
             throw new NotImplementedException();
         }
 
-        public void Unequip()
+        public override void Unequip()
         {
+            throw new NotImplementedException();
         }
 
-        public void WeaponHit(IWeapon attacker)
+        public override void WeaponHit(IWeapon attacker)
         {
+            throw new NotImplementedException();
         }
     }
 }

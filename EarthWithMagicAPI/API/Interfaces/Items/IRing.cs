@@ -1,6 +1,6 @@
 ﻿namespace EarthWithMagicAPI.API.Interfaces.Items
 {
-    public interface IRing : IItem
+    public abstract class IRing : IItem
     {
     }
 }

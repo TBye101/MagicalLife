@@ -3,13 +3,13 @@
     /// <summary>
     /// Implemented by all armors.
     /// </summary>
-    public interface IArmor : IItem
+    public abstract class IArmor : IItem
     {
         /// <summary>
         /// The AC bonus of the armor.
         /// The higher, the better.
         /// The to hit roll must be higher than the creature's AC to hit.
         /// </summary>
-        int AC { get; }
+        public int AC;
     }
 }

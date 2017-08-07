@@ -5,21 +5,21 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
     /// <summary>
     /// Implemented by anything that is considered "ammo".
     /// </summary>
-    public interface IAmmo : IItem
+    public abstract class IAmmo : IItem
     {
         /// <summary>
         /// Gets the attack damage of the ammo.
         /// </summary>
-        Damage AttackDamage { get; }
+        public Damage AttackDamage;
 
         /// <summary>
         /// The number of uses the ammo has.
         /// </summary>
-        Dice.Die Uses { get; }
+        public Dice.Die Uses;
 
         /// <summary>
         /// The base chance to hit.
         /// </summary>
-        int ChanceToHit { get; }
+        public int ChanceToHit;
     }
 }

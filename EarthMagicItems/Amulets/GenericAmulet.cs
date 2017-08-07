@@ -11,99 +11,17 @@ namespace EarthMagicItems.Amulets
     /// </summary>
     public class GenericAmulet : IItem
     {
-        private bool _QuestItem;
-        private int _Level;
-        private Guid _ID = new Guid();
-        private List<string> _OtherInformation;
-        private List<string> _Lore;
-        private string _Name;
-        private bool _IsEquipped = false;
-
         public GenericAmulet(bool questItem, bool isEquipped, int level, List<string> otherInformation, List<string> lore, string name)
         {
-            this._QuestItem = questItem;
-            this._IsEquipped = isEquipped;
-            this._Level = level;
-            this._OtherInformation = otherInformation;
-            this._Lore = lore;
-            this._Name = name;
-        }
-
-        public bool QuestItem
-        {
-            get
-            {
-                return this._QuestItem;
-            }
-
-            set
-            {
-                this._QuestItem = value;
-            }
-        }
-
-        public int Value
-        {
-            get
-            {
-                return Pricer.GetPrice(this);
-            }
-        }
-
-        public int Level
-        {
-            get
-            {
-                return this._Level;
-            }
-        }
-
-        public Guid ID
-        {
-            get
-            {
-                return this._ID;
-            }
-        }
-
-        public string Name
-        {
-            get
-            {
-                return this._Name;
-            }
-        }
-
-        public List<string> Lore
-        {
-            get
-            {
-                return this._Lore;
-            }
-        }
-
-        public List<string> OtherInformation
-        {
-            get
-            {
-                return this._OtherInformation;
-            }
-        }
-
-        public bool IsEquipped
-        {
-            get
-            {
-                return this._IsEquipped;
-            }
-        }
-
-        public double Weight
-        {
-            get
-            {
-                return 1;
-            }
+            this.QuestItem = questItem;
+            this.IsEquipped = false;
+            this.Level = level;
+            this.OtherInformation = otherInformation;
+            this.Lore = lore;
+            this.Name = name;
+            this.ID = new Guid();
+            this.Value = Pricer.GetPrice(this);
+            this.Weight = 1;
         }
 
         public event EventHandler<IItem> ItemSold;
@@ -124,29 +42,29 @@ namespace EarthMagicItems.Amulets
 
         public event EventHandler<IItem> StatusChanged;
 
-        public void Bought()
+        public override void Bought()
         {
         }
 
-        public void Equip()
+        public override void Equip()
         {
         }
 
-        public void Sold()
+        public override void Sold()
         {
         }
 
-        public void SpellHit(ISpell spell)
+        public override void SpellHit(ISpell spell)
         {
             //Need to handle a dispel
             throw new NotImplementedException();
         }
 
-        public void Unequip()
+        public override void Unequip()
         {
         }
 
-        public void WeaponHit(IWeapon attacker)
+        public override void WeaponHit(IWeapon attacker)
         {
         }
     }
