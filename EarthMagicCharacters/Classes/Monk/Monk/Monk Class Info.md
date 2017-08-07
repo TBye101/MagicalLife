@@ -156,12 +156,14 @@ Fist: 1d12 +2
 TH (To Hit): + 1
 AC: +1
 #### 17th Level: Master of the North Wind
+To make ones faith exceed even more, one must understand nature, so that one might understand the faithless.
 
 +5% Hide In Shadows.
 +5% Walk Silently.
 AC: +1
 +5% magic resistance.
 #### 18th Level: Master of the West Wind
+Master of the west wind is no small task.
 
 Immunity to Non Magical Weapons:
 Because of their extensive pain resistance training, monks can use a combination of faith and willpower to ignore all non-magical wounds.
@@ -170,6 +172,8 @@ Gain immunity to non magical weapons.
 TH (To Hit): + 1
 AC: +1
 #### 19th Level: Master of the South Wind
+Some say that the south wind is more difficult to master than the west wind.
+
 Fist: 1d14 +3
 
 +5% Hide In Shadows.
@@ -177,40 +181,47 @@ Fist: 1d14 +3
 AC: +1
 +5% magic resistance.
 #### 20th Level: Master of the East Wind
+When one masters all the winds, one truly can begin to understand nature. This leads to understanding the faithless.
 
-Recieve another stunning blow.
+Receive another stunning blow.
 TH (To Hit): + 1
 +5% Hide In Shadows.
 +5% Walk Silently.
 AC: +1
 #### 21st Level: Master of Winter
+One cannot truly master winter, but one can master their own faith so strongly that winter can be ignored.
 
 Fist: 1d16 +3
 AC: +1
 +5% magic resistance.
 #### 22nd Level: Master of Autumn
+The journey is almost half done, but the road ahead seems even longer than the road behind.
 
 +5% Hide In Shadows.
 +5% Walk Silently.
 TH (To Hit): + 1
 AC: +1
 #### 23rd Level: Master of Summer
+Understanding crops is yet another step in understanding the faithless.
 
 Fist: 1d18 +3
 AC: +1
 +5% magic resistance.
 #### 24th Level: Master of Spring
+There is much one can learn by studying nature.
 
 +5% Hide In Shadows.
 +5% Walk Silently.
 TH (To Hit): + 1
 AC: +1
 #### 25th Level: Student of the Oceans
+If one's faith is strong enough, one can hope to become as constant as the ocean.
 
 Fist: 1d20 +3
 Recieve another stunning blow.
 AC: +1
 #### 26th Level: Equal of the Oceans
+Learning to breath underwater is impossible. Only through faith can this be accomplished.
 
 +5% Hide In Shadows.
 +5% Walk Silently.
@@ -218,10 +229,13 @@ TH (To Hit): + 1
 AC: +1
 +5% magic resistance.
 #### 27th Level: Master of the Oceans
+Your deity grants you the ability to breath underwater, so that you might spread your faith throughout the seas.
 
+Gain breath water ability.
 Fist: 1d20 +4
 AC: +1
 #### 28th Level: Eldritch apprentice
+The study of the mystical arts is no laughing matter. 
 
 +5% Hide In Shadows.
 +5% Walk Silently.
@@ -229,16 +243,19 @@ TH (To Hit): + 1
 AC: +1
 +5% magic resistance.
 #### 29th Level: Eldritch Master
+Mastery of the mystical arts is not easily achievable. Only through faith might one understand the mystical arts.
 
 Fist: 1d20 +5
 AC: +1
 #### 30th Level: Windwalker
+
 
 Recieve another stunning blow.
 TH (To Hit): + 1
 AC: +1
 +5% magic resistance.
 #### 31st Level: Elder
+
 
 Fire: 
 Monks can use their faith to burn their enemies via touch.
@@ -313,22 +330,27 @@ AC: +1
 TH (To Hit): + 1
 AC: +1
 #### 47th Level: Elder Grandmaster
+The most powerful monks that are completely human are called Elder Grandmasters.
 
 Fist: 1d20 +5, 1d20 +5 fire damage
 AC: +1
 #### 48th Level: Divine Apprentice
+Your service to your deity has been noticed. You now serve your deity directly.
 
 TH (To Hit): + 1
 AC: +1
 #### 49th Level: Holy Commander
+Your deity has authorized you to command a small squadron of their troops, if necessary.
 
 Fist: 1d24 +5, 1d20 +5 fire damage
 AC: +1
 #### 50th Level: Lesser Divinity
+Your deity has transformed you into a lesser deity, so that you might be more useful.
 
 Fist: 1d24 +5, 1d24 +5 fire damage
 AC: +1
 ### 51th Level: Divine Commander
+Your deity has authorized you to control a battalion of their troops, to perform his/her work.
 
 Receive another stunning blow.
 TH (To Hit): + 1
