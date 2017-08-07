@@ -66,5 +66,42 @@
         /// If true, the creature can communicate without speaking.
         /// </summary>
         public bool Telepathy = false;
+
+        /// <summary>
+        /// How good the creature is at hiding in the shadows.
+        /// </summary>
+        public int HideInShadows = 0;
+
+        /// <summary>
+        /// How quite the creature walks. 0 is loud, 100 is quiet.
+        /// </summary>
+        public int WalkSilently = 0;
+
+        /// <summary>
+        /// The creature's ability to pick pockets successfully.
+        /// If the creature makes a successful roll of this, they pick the pocket.
+        /// They must make another roll to determine if their thievery was detected.
+        /// </summary>
+        public int PickPocket = 0;
+
+        /// <summary>
+        /// The creature's ability to detect traps.
+        /// </summary>
+        public int DetectTraps = 0;
+
+        /// <summary>
+        /// The creature's ability to disarm traps.
+        /// </summary>
+        public int DisarmTraps = 0;
+
+        /// <summary>
+        /// The creature's ability to detect illusions.
+        /// </summary>
+        public int DetectIllusions = 0;
+
+        /// <summary>
+        /// The creature's ability to back stab.
+        /// </summary>
+        public int Backstab = 0;
     }
 }

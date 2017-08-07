@@ -23,6 +23,10 @@ Poison resistance:
 A monks willpower can be strong enough to force internal organs to keep working, even if they should have stopped working a long time ago.
 +20% poison resistance.
 
+Monks are trained in stealth from a young age, so that they might have the edge in battle.
++30% Hide In Shadows.
++30% Walk Silently.
+
 HP: + 1d10 +2
 TH (To Hit): + 1
 
@@ -36,6 +40,8 @@ Monks voluntarily submit their hands to fire, and through their faith, they igno
 
 #### 4th Level: Apprentice
 Often times a monk will become an apprentice to another monk, so that they might learn some of their wisdom.
++5% Hide In Shadows.
++5% Walk Silently.
 
 TH (To Hit): + 1
 #### 5th Level: Faithful Apprentice
@@ -52,6 +58,8 @@ Cold Resistance:
 When a monks faith grows strong enough they can use their faith as a fuel, to heat their body.
 +20% cold resistance.
 
++5% Hide In Shadows.
++5% Walk Silently.
 TH (To Hit): + 1
 #### 7th Level: Brother
 To attain the status of brother, a monk must undergo a intense trial. The trial must be administered by someone of Disciple or higher.
@@ -68,6 +76,8 @@ Charm Resistance:
 Monks use willpower and faith to avoid being charmed.
 +20% resistance to charms.
 
++5% Hide In Shadows.
++5% Walk Silently.
 TH (To Hit): + 1
 #### 9th Level: Disciple
 Disciples normally follow a Superior Master, in the hopes that they will be marked as faithful.
@@ -88,24 +98,33 @@ This exercise teaches the monk how to sense enemies.
 
 Receive another stunning blow.
 
++5% Hide In Shadows.
++5% Walk Silently.
 TH (To Hit): + 1
 #### 11th Level: Elite Disciple
 Elite disciples are a rare thing. 
 Those who have strong enough faith will shoot past this rank, and those whose faith is not strong enough normally stop long before this rank.
 
+
 #### 12th Level: Master
 Master is only the beginning. If ones faith is strong enough, one can become the master of not only oneself, but of other forces as well.
 
++5% Hide In Shadows.
++5% Walk Silently.
 TH (To Hit): + 1
 #### 13th Level: Faithful Master
 
 #### 14th Level: Elite Master
 
++5% Hide In Shadows.
++5% Walk Silently.
 TH (To Hit): + 1
 #### 15th Level: Superior Master
 Superior Masters are well known to be bold, intelligent, and decisive battle commanders.
 If an enemy force sees a Superior Master in command, they may surrender on the spot.
 
++5% Hide In Shadows.
++5% Walk Silently.
 Receive another stunning blow.
 #### 16th Level: Dragonmaster
 Dragonmaster is the highest rank achievable to monks who have not been accepted by their deity.
@@ -114,35 +133,49 @@ To be accepted by their deity, a monk must pass a test of wisdom, character, and
 TH (To Hit): + 1
 #### 17th Level: Master of the North Wind
 
++5% Hide In Shadows.
++5% Walk Silently.
 #### 18th Level: Master of the West Wind
 
 TH (To Hit): + 1
 #### 19th Level: Master of the South Wind
 
++5% Hide In Shadows.
++5% Walk Silently.
 #### 20th Level: Master of the East Wind
 
 Recieve another stunning blow.
 TH (To Hit): + 1
++5% Hide In Shadows.
++5% Walk Silently.
 #### 21st Level: Master of Winter
 
 #### 22nd Level: Master of Autumn
 
++5% Hide In Shadows.
++5% Walk Silently.
 TH (To Hit): + 1
 #### 23rd Level: Master of Summer
 
 #### 24th Level: Master of Spring
 
++5% Hide In Shadows.
++5% Walk Silently.
 TH (To Hit): + 1
 #### 25th Level: Student of the Oceans
 
 Recieve another stunning blow.
 #### 26th Level: Equal of the Oceans
 
++5% Hide In Shadows.
++5% Walk Silently.
 TH (To Hit): + 1
 #### 27th Level: Master of the Oceans
 
 #### 28th Level: Eldritch apprentice
 
++5% Hide In Shadows.
++5% Walk Silently.
 TH (To Hit): + 1
 #### 29th Level: Eldritch Master
 
