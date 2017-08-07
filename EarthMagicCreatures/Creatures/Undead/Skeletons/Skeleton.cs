@@ -13,7 +13,10 @@ namespace EarthMagicCreatures.Creatures.Undead.Skeletons
     /// </summary>
     public class Skeleton : ICreature
     {
-        CreatureAttributes Attributes = new CreatureAttributes(-1, 7, 10, 10, 10, 14, 13, -1, 8, new XP(1), 0, 0, 100, 0, 100, 0, 0, 100, false, 10);
+        /// <summary>
+        /// The attributes of this skeleton.
+        /// </summary>
+        private CreatureAttributes Attributes = new CreatureAttributes(-1, 7, 10, 10, 10, 14, 13, -1, 8, new XP(1), 0, 0, 100, 0, 100, 0, 0, 100, false, 10, 30, 15);
 
         public Skeleton() : base()
         {

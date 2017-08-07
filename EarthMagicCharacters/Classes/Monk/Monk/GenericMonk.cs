@@ -14,6 +14,19 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
     /// </summary>
     public class GenericMonk : ICharacter
     {
+        /// <summary>
+        /// The maximum amount of stunning blows this monk could use.
+        /// </summary>
+        private int MaxStunningBlows = 0;
+
+        /// <summary>
+        /// The amount of stunning blows this monk has left.
+        /// </summary>
+        private int StunningBlows = 0;
+
+        /// <summary>
+        /// The attributes of this monk.
+        /// </summary>
         private CreatureAttributes Attributes;
 
         /// <summary>
@@ -322,6 +335,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Faithful Apprentice", "+1 stunning blow", "Fist: 1d10", "AC: +1"};
 
             this.Title = "Faithful Apprentice";
+
 
             Util.WriteLine(levelUpReport);
         }
