@@ -303,7 +303,15 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level4()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> { "Apprentice", "AC: +1", "To hit +1", "+5% hide in shadows", "+5% walk silently"};
+
+            this.Abilities.HideInShadows += 5;
+            this.Abilities.WalkSilently += 5;
+            ++this.Attributes.ToHit;
+            ++this.Attributes.AC;
+            this.Title = "Apprentice";
+
+            Util.WriteLine(levelUpReport);
         }
 
         /// <summary>
@@ -311,7 +319,11 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level5()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> { "Title: Faithful Apprentice", "+1 stunning blow", "Fist: 1d10", "AC: +1"};
+
+            this.Title = "Faithful Apprentice";
+
+            Util.WriteLine(levelUpReport);
         }
 
         /// <summary>
@@ -319,7 +331,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level6()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -327,7 +339,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level7()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -335,7 +347,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level8()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -343,7 +355,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level9()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -351,7 +363,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level10()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -359,7 +371,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level11()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -367,7 +379,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level12()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -375,7 +387,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level13()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -383,7 +395,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level14()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
 
         }
 
@@ -392,7 +404,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level15()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -400,7 +412,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level16()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -408,7 +420,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level17()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -416,7 +428,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level18()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -424,7 +436,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level19()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -432,7 +444,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level20()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -440,7 +452,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level21()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -448,7 +460,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level22()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -456,7 +468,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level23()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -464,7 +476,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level24()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -472,7 +484,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level25()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -480,7 +492,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level26()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -488,7 +500,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level27()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -496,7 +508,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level28()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -504,7 +516,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level29()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -512,7 +524,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level30()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -520,7 +532,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level31()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -528,7 +540,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level32()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -536,7 +548,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level33()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -544,7 +556,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level34()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -552,7 +564,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level35()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -560,7 +572,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level36()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -568,7 +580,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level37()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -576,7 +588,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level38()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -584,7 +596,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level39()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -592,7 +604,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level40()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -600,7 +612,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level41()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -608,7 +620,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level42()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -616,7 +628,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level43()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -624,7 +636,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level44()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -632,7 +644,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level45()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -640,7 +652,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level46()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -648,7 +660,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level47()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -656,7 +668,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level48()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -664,7 +676,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level49()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -672,7 +684,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level50()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         /// <summary>
@@ -680,7 +692,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level51()
         {
-            List<string> levelUpReport = new List<string>();
+            List<string> levelUpReport = new List<string> {   };
         }
 
         #endregion
