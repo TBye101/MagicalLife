@@ -29,10 +29,11 @@
         /// <param name="needsOxygen">Holds a flag that tells if the creature needs to breath oxygen.</param>
         /// <param name="initiative">Used to determine the order of creature action.</param>
         /// <param name="toHit">Used to determine if we will hit a creature with our current state of equipment.</param>
+        /// <param name="dodge">The chance that the character will dodge something.</param>
         public CreatureAttributes(int gender, int AC, int maxHealth, int health, int dexterity, int strength,
             int constitution, int charisma, int wisdom, XP xp, int fireResistence, int acidResistence,
             int poisonResistence, int electricResistence, int coldResistence, int magicResistence, int charmResistence,
-            int sleepResistence, bool needsOxygen, int initiative, int toHit)
+            int sleepResistence, bool needsOxygen, int initiative, int toHit, int dodge)
         {
             this.Gender = gender;
             this.AC = AC;
@@ -55,6 +56,7 @@
             this.NeedsOxygen = needsOxygen;
             this.Initiative = initiative;
             this.ToHit = toHit;
+            this.Dodge = dodge;
         }
 
         /// <summary>
@@ -174,5 +176,10 @@
         /// Used to determine the order of creature action.
         /// </summary>
         public int Initiative;
+
+        /// <summary>
+        /// The chance that the creature will dodge.
+        /// </summary>
+        public int Dodge;
     }
 }

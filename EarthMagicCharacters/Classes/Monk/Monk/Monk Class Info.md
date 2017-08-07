@@ -64,11 +64,27 @@ Monks are forced to sleep repetitively until they can resist the call of unnatur
 
 #### 8th Level: Faithful Brother
 
+Charm Resistance:
+Monks use willpower and faith to avoid being charmed.
++20% resistance to charms.
+
 TH (To Hit): + 1
 #### 9th Level: Disciple
 Disciples normally follow a Superior Master, in the hopes that they will be marked as faithful.
 
+Magic Resistance: 
+Monks start receiving resistances to magic as their faith grow stronger.
++5% magic resistance.
+
 #### 10th Level: Faithful Disciple
+
+Dodge: 
+
+To become more elusive and hard to hit in battle, monks are trained to not be hit.
+The monk in training will be blindfolded, and have his/her ears plugged up with beeswax.
+The monk will them practice combat against 8 enemies who will attack from all sides.
+This exercise teaches the monk how to sense enemies. 
++10% dodge.
 
 Receive another stunning blow.
 
