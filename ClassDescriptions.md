@@ -17,6 +17,9 @@ TH (To Hit): + 1
 
 3rd Level:
 
+Fire Resistence:
+
+Upon reaching level 3, it is time for monks to be trained in fire resistence. A monks body is burned TODO:
 4th Level:
 
 TH (To Hit): + 1
