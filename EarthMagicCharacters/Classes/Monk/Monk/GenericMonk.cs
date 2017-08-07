@@ -363,8 +363,14 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// Does level up logic to bring the monk up to the next level.
         /// </summary>
         private void Level7()
-        {
-            List<string> levelUpReport = new List<string> {   };
+        { 
+            List<string> levelUpReport = new List<string> { "Title: Brother", "+20% resistance to sleep", "AC: +1"};
+
+            this.Title = "Brother";
+            this.Attributes.SleepResistence += 20;
+            ++this.Attributes.AC;
+
+            Util.WriteLine(levelUpReport);
         }
 
         /// <summary>
