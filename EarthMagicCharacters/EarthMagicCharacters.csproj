@@ -5,6 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Classes\Monk\Divine Monk\**" />
+    <Compile Remove="Classes\Monk\Martial Specialist\**" />
+    <Compile Remove="Classes\Monk\Tainted Monk\**" />
+    <EmbeddedResource Remove="Classes\Monk\Divine Monk\**" />
+    <EmbeddedResource Remove="Classes\Monk\Martial Specialist\**" />
+    <EmbeddedResource Remove="Classes\Monk\Tainted Monk\**" />
+    <None Remove="Classes\Monk\Divine Monk\**" />
+    <None Remove="Classes\Monk\Martial Specialist\**" />
+    <None Remove="Classes\Monk\Tainted Monk\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Classes\Bard\Standard Bard\" />
     <Folder Include="Classes\Cleric\Necromancer\" />
     <Folder Include="Classes\Cleric\Generic Cleric\" />
@@ -17,9 +29,6 @@
     <Folder Include="Classes\Fighter\Knight\" />
     <Folder Include="Classes\Fighter\Barbarian\" />
     <Folder Include="Classes\Fighter\Generic Fighter\" />
-    <Folder Include="Classes\Monk\Divine Monk\" />
-    <Folder Include="Classes\Monk\Martial Specialist\" />
-    <Folder Include="Classes\Monk\Tainted Monk\" />
     <Folder Include="Classes\Witch\" />
     <Folder Include="Classes\Ranger\Beastmaster\" />
     <Folder Include="Classes\Ranger\Herbalist\" />
