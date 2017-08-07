@@ -38,7 +38,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             this.CreatureType = "Monk";
             this.Name = name;
             this.Title = "Trainee";
-            this.Aligntment = alignment;
+            this.Alignment = alignment;
 
 
             Attributes = new CreatureAttributes(gender, 4, startingHealth, startingHealth,
@@ -221,7 +221,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         {
             if (!dead.IsHostile() && Dice.RollDice(new Dice.Die(1, 100, 0)) > 80)
             {
-                switch (this.Aligntment)
+                switch (this.Alignment)
                 {
                     //Lawful Evil
                     case 0:
@@ -335,7 +335,9 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Faithful Apprentice", "+1 stunning blow", "Fist: 1d10", "AC: +1"};
 
             this.Title = "Faithful Apprentice";
-
+            ++this.MaxStunningBlows;
+            ++this.Attributes.AC;
+            this.BareHands.FistDamage.BluntDamage = new Dice.Die(1, 10, 0);
 
             Util.WriteLine(levelUpReport);
         }

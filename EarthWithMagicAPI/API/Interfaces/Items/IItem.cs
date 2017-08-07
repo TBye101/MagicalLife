@@ -34,7 +34,7 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         /// <summary>
         /// The ID of the item.
         /// </summary>
-        public Guid ID;
+        public Guid ID = new Guid();
 
         /// <summary>
         /// The human readable name of the item.

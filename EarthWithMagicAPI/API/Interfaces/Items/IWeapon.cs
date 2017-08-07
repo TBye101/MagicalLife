@@ -4,7 +4,7 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
     /// <summary>
     /// The interface of all weapons.
     /// </summary>
-    public abstract class IWeapon
+    public abstract class IWeapon : IItem
     {
         /// <summary>
         /// Called when this weapon is thrown.
