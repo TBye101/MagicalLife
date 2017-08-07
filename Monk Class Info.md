@@ -14,7 +14,7 @@ AC: 4
 Hit die: 1d10 +2
 
 #### 2nd Level: Faithless
-
+TODO: Tell how the monk became faithless.
 
 
 Poison resistance:
