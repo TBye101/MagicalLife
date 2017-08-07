@@ -12,10 +12,6 @@ Hit die: 1d10 +2
 
 2nd Level:
 
-Stunning blow: 
-
-Upon reaching level 2, monks recieve training on how to perform a stunning blow. This attack uses the TH of the monk's fists, but if it hits it will stun the target. A sucessful save vs impact will reduce the amount of stunned time by half. An additional save vs impact will render the stun part of stunning blow, useless.
-
 HP: + 1d10 +2
 TH (To Hit): + 1
 
@@ -26,6 +22,9 @@ TH (To Hit): + 1
 TH (To Hit): + 1
 5th Level:
 
+Stunning blow (Ability): 
+
+Upon reaching level 2, monks recieve training on how to perform a stunning blow. This attack uses the TH of the monk's fists, but if it hits it will stun the target. A sucessful save vs impact will reduce the amount of stunned time by half. An additional save vs impact will render the stun part of stunning blow, useless. Monks recieve a stunning blow at their 5th level, and every level after that.
 
 6th Level:
 
@@ -38,6 +37,8 @@ TH (To Hit): + 1
 9th Level:
 
 10th Level:
+
+Recieve another stunning blow.
 
 TH (To Hit): + 1
 11th Level:
@@ -52,6 +53,7 @@ TH (To Hit): + 1
 TH (To Hit): + 1
 15th Level:
 
+Recieve another stunning blow.
 16th Level:
 
 TH (To Hit): + 1
@@ -64,6 +66,7 @@ TH (To Hit): + 1
 
 20th Level:
 
+Recieve another stunning blow.
 TH (To Hit): + 1
 21st Level:
 
@@ -77,6 +80,7 @@ TH (To Hit): + 1
 TH (To Hit): + 1
 25th Level:
 
+Recieve another stunning blow.
 26th Level:
 
 TH (To Hit): + 1
@@ -89,6 +93,7 @@ TH (To Hit): + 1
 
 30th Level:
 
+Recieve another stunning blow.
 TH (To Hit): + 1
 31st Level:
 
@@ -102,6 +107,7 @@ TH (To Hit): + 1
 TH (To Hit): + 1
 35th Level:
 
+Recieve another stunning blow.
 36th Level:
 
 TH (To Hit): + 1
@@ -114,6 +120,7 @@ TH (To Hit): + 1
 
 40th Level:
 
+Recieve another stunning blow.
 TH (To Hit): + 1
 41st Level:
 
@@ -127,6 +134,7 @@ TH (To Hit): + 1
 TH (To Hit): + 1
 45th Level:
 
+Recieve another stunning blow.
 46th Level:
 
 TH (To Hit): + 1
@@ -139,4 +147,5 @@ TH (To Hit): + 1
 
 50th Level:
 
+Recieve another stunning blow.
 TH (To Hit): + 1
