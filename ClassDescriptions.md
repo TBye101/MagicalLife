@@ -12,14 +12,22 @@ Hit die: 1d10 +2
 
 2nd Level:
 
+Poison resistance:
+
+A monks willpower can be strong enough to force internal organs to keep working, even if they should have stopped working a long time ago.
++20% poison resistance.
+
 HP: + 1d10 +2
 TH (To Hit): + 1
 
 3rd Level:
 
-Fire Resistence:
+Fire Resistance:
 
-Upon reaching level 3, it is time for monks to be trained in fire resistence. A monks body is burned TODO:
+Upon reaching level 3, it is time to be trained in fire resistance. 
+Monks voluntarily submit their hands to fire, and through their faith, they ignore the pain. Their deity may choose to have the fire take no effect.
++20% fire resistance.
+
 4th Level:
 
 TH (To Hit): + 1
@@ -27,9 +35,14 @@ TH (To Hit): + 1
 
 Stunning blow (Ability): 
 
-Upon reaching level 2, monks recieve training on how to perform a stunning blow. This attack uses the TH of the monk's fists, but if it hits it will stun the target. A sucessful save vs impact will reduce the amount of stunned time by half. An additional save vs impact will render the stun part of stunning blow, useless. Monks recieve a stunning blow at their 5th level, and every level after that.
+Upon reaching level 2, monks receive training on how to perform a stunning blow. This attack uses the TH of the monk's fists, but if it hits it will stun the target. A sucessful save vs impact will reduce the amount of stunned time by half. An additional save vs impact will render the stun part of stunning blow, useless. Monks recieve a stunning blow at their 5th level, and every level after that.
 
 6th Level:
+
+Cold Resistance:
+
+When a monks faith grows strong enough they can use their faith as a fuel, to heat their body.
++20% cold resistence.
 
 TH (To Hit): + 1
 7th Level:
