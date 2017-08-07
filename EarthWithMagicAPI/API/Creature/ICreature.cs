@@ -12,6 +12,11 @@ namespace EarthWithMagicAPI.API.Creature
     public abstract class ICreature
     {
         /// <summary>
+        /// The abilities of the creature.
+        /// </summary>
+        public CreatureAbilities Abilities = new CreatureAbilities();
+
+        /// <summary>
         /// 0 = Lawful evil, 1 = chaotic evil, 2 = neutral, 3 = chaotic good, 4 = lawful good.
         /// </summary>
         public int Aligntment;

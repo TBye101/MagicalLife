@@ -14,5 +14,12 @@ namespace EarthWithMagicAPI.API.Util
         {
             Console.WriteLine(message);
         }
+        public static void WriteLine(List<string> message)
+        {
+            foreach (string item in message)
+            {
+                Console.WriteLine(item);
+            }
+        }
     }
 }
