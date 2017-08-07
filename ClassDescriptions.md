@@ -23,94 +23,120 @@ TH (To Hit): + 1
 
 4th Level:
 
+TH (To Hit): + 1
 5th Level:
+
 
 6th Level:
 
+TH (To Hit): + 1
 7th Level:
 
 8th Level:
 
+TH (To Hit): + 1
 9th Level:
 
 10th Level:
 
+TH (To Hit): + 1
 11th Level:
 
 12th Level:
 
+TH (To Hit): + 1
 13th Level:
 
 14th Level:
 
+TH (To Hit): + 1
 15th Level:
 
 16th Level:
 
+TH (To Hit): + 1
 17th Level:
 
 18th Level:
 
+TH (To Hit): + 1
 19th Level:
 
 20th Level:
 
+TH (To Hit): + 1
 21st Level:
 
 22nd Level:
 
+TH (To Hit): + 1
 23rd Level:
 
 24th Level:
 
+TH (To Hit): + 1
 25th Level:
 
 26th Level:
 
+TH (To Hit): + 1
 27th Level:
 
 28th Level:
 
+TH (To Hit): + 1
 29th Level:
 
 30th Level:
 
+TH (To Hit): + 1
 31st Level:
 
 32nd Level:
 
+TH (To Hit): + 1
 33rd Level:
 
 34th Level:
 
+TH (To Hit): + 1
 35th Level:
 
 36th Level:
 
+TH (To Hit): + 1
 37th Level:
 
 38th Level:
 
+TH (To Hit): + 1
 39th Level:
 
 40th Level:
 
+TH (To Hit): + 1
 41st Level:
 
 42nd Level:
 
+TH (To Hit): + 1
 43rd Level:
 
 44th Level:
 
+TH (To Hit): + 1
 45th Level:
 
 46th Level:
 
+TH (To Hit): + 1
 47th Level:
 
 48th Level:
 
+TH (To Hit): + 1
 49th Level:
 
 50th Level:
+
+TH (To Hit): + 1
