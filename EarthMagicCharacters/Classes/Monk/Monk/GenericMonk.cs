@@ -489,7 +489,16 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level15()
         {
-            List<string> levelUpReport = new List<string> {   };
+            List<string> levelUpReport = new List<string> { "Title: Superior Master", "+5% hide in shadows", "+5% walk silently", "+1 stunning blow", "AC: +1", "+5% magic resistance"};
+
+            this.Title = "Superior Master";
+            this.Abilities.HideInShadows += 5;
+            this.Abilities.WalkSilently += 5;
+            this.MaxStunningBlows++;
+            this.Attributes.AC++;
+            this.Attributes.MagicResistence += 5;
+
+            Util.WriteLine(levelUpReport);
         }
 
         /// <summary>
