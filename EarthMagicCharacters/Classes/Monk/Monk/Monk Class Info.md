@@ -58,7 +58,8 @@ To attain the status of brother, a monk must undergo a intense trial. The trial 
 More than half of monks that attempt this trial die in the process. However, they die knowing that their faith was absolute in their deity.
 
 Sleep Resistance:
-
+Monks are forced to sleep repetitively until they can resist the call of unnatural sleep.
++20% resistance to sleep.
 
 
 #### 8th Level: Faithful Brother
@@ -69,7 +70,7 @@ Disciples normally follow a Superior Master, in the hopes that they will be mark
 
 #### 10th Level: Faithful Disciple
 
-Recieve another stunning blow.
+Receive another stunning blow.
 
 TH (To Hit): + 1
 #### 11th Level: Elite Disciple
@@ -93,7 +94,6 @@ Receive another stunning blow.
 #### 16th Level: Dragonmaster
 Dragonmaster is the highest rank achievable to monks who have not been accepted by their deity.
 To be accepted by their deity, a monk must pass a test of wisdom, character, and battle prowess.
-
 
 TH (To Hit): + 1
 #### 17th Level: Master of the North Wind
