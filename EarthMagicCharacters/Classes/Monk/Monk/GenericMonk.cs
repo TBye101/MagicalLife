@@ -506,7 +506,14 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level16()
         {
-            List<string> levelUpReport = new List<string> {   };
+            List<string> levelUpReport = new List<string> { "Title: Dragonmaster", "Fist: 1d12 +2", "TH: +1", "AC: +1"};
+
+            this.Title = "Dragonmaster";
+            this.BareHands.FistDamage.BluntDamage = new Dice.Die(1, 12, 2);
+            this.Attributes.ToHit++;
+            this.Attributes.AC++;
+
+            Util.WriteLine(levelUpReport);
         }
 
         /// <summary>
