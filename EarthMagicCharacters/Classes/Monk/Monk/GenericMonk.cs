@@ -259,12 +259,13 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         {
             List<string> levelUpReport = new List<string>();
             levelUpReport.Add("Level up report: ");
+            levelUpReport.Add("Title: Faithless");
+            levelUpReport.Add("HP: +  1d10 +2");
+            levelUpReport.Add("AC: +1");
+            levelUpReport.Add("To hit: +1");
             levelUpReport.Add("+20% poison resistance.");
             levelUpReport.Add("+30% hide in shadows");
             levelUpReport.Add("+30% walk silently");
-            levelUpReport.Add("HP: +  1d10 +2");
-            levelUpReport.Add("To hit: +1");
-            levelUpReport.Add("AC: +1");
 
             this.Attributes.PoisonResistence += 20;
             this.Abilities.HideInShadows += 30;
@@ -272,252 +273,264 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             this.Attributes.MaxHealth += Dice.RollDice(new Dice.Die(1, 10, 2));
             this.Attributes.ToHit++;
             this.Attributes.AC++;
+            this.Title = "Faithless";
             Util.WriteLine(levelUpReport);
         }
 
         private void Level3()
         {
+            List<string> levelUpReport = new List<string>();
 
+            levelUpReport.Add("Title: Faithful");
+            levelUpReport.Add("AC: +1");
+            levelUpReport.Add("+20% fire resistance");
+
+            this.Title = "Faithful";
+            ++this.Attributes.AC;
+            this.Attributes.FireResistence += 20;
+
+            Util.WriteLine(levelUpReport);
         }
 
         private void Level4()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level5()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level6()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level7()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level8()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level9()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level10()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level11()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level12()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level13()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level14()
         {
+            List<string> levelUpReport = new List<string>();
 
         }
 
         private void Level15()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level16()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level17()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level18()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level19()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level20()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level21()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level22()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level23()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level24()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level25()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level26()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level27()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level28()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level29()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level30()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level31()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level32()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level33()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level34()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level35()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level36()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level37()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level38()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level39()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level40()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level41()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level42()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level43()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level44()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level45()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level46()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level47()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level48()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level49()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level50()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         private void Level51()
         {
-
+            List<string> levelUpReport = new List<string>();
         }
 
         #endregion
