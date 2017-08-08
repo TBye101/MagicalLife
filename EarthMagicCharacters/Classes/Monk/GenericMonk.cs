@@ -521,7 +521,15 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level17()
         {
-            List<string> levelUpReport = new List<string> {   };
+            List<string> levelUpReport = new List<string> { "Title: Master of the North Wind", "+5% hide in shadows", "+5% walk silently", "AC: +1", "+5% magic resistance"};
+
+            this.Title = "Master of the North Wind";
+            this.Abilities.HideInShadows += 5;
+            this.Abilities.WalkSilently += 5;
+            this.Attributes.AC++;
+            this.Attributes.MagicResistence += 5;
+
+            Util.WriteLine(levelUpReport);
         }
 
         /// <summary>
