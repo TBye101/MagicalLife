@@ -562,7 +562,16 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level20()
         {
-            List<string> levelUpReport = new List<string> {   };
+            List<string> levelUpReport = new List<string> { "Title: Master of the East Wind", "+1 stunning blow", "TH: +1", "+5% hide in shadows", "+5% walk silently", "AC: +1" };
+
+            this.Title = "Master of the East Wind";
+            this.Abilities.MaxStunningBlows++;
+            this.Attributes.ToHit++;
+            this.Abilities.HideInShadows += 5;
+            this.Abilities.WalkSilently += 5;
+            this.Attributes.AC++;
+
+            Util.WriteLine(levelUpReport);
         }
 
         /// <summary>
