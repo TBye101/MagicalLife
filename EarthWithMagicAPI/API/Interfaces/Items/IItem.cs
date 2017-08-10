@@ -16,13 +16,43 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         public int Constitution;
         public int Wisdom;
 
-        public StatsImpact(int charisma, int dexterity, int strength, int constitution, int wisdom)
+        public int AC;
+        public int Health;
+        public int WeightCapacity;
+        public int FireResistance;
+        public int AcidResistance;
+        public int PoisonResistance;
+        public int ElectricResistance;
+        public int ColdResistance;
+        public int MagicResistance;
+        public int CharmResistance;
+        public int SleepResistance;
+        public int Initiative;
+        public int Dodge;
+
+        public StatsImpact(int charisma, int dexterity, int strength, int constitution, int wisdom, int ac,
+            int health, int weightCapacity, int fireResistance, int acidResistance, int poisonResistance, int electricResistance, int coldResistance, int magicResistance, int charmResistance,
+            int sleepResistance, int initiative, int dodge)
         {
             this.Charisma = charisma;
             this.Dexterity = dexterity;
             this.Strength = strength;
             this.Constitution = constitution;
             this.Wisdom = wisdom;
+
+            this.AC = ac;
+            this.Health = health;
+            this.WeightCapacity = weightCapacity;
+            this.FireResistance = fireResistance;
+            this.AcidResistance = acidResistance;
+            this.PoisonResistance = poisonResistance;
+            this.ElectricResistance = electricResistance;
+            this.ColdResistance = coldResistance;
+            this.MagicResistance = magicResistance;
+            this.CharmResistance = charmResistance;
+            this.SleepResistance = sleepResistance;
+            this.Initiative = initiative;
+            this.Dodge = dodge;
         }
     }
 
