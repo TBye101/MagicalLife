@@ -28,11 +28,15 @@ namespace EarthWithMagicAPI.API.Creature
     /// </summary>
     public abstract class ICreature
     {
+        /// <summary>
+        /// A list of the creatures that this creature can summon right now, via abilities.
+        /// </summary>
+        public List<ICreature> Summonable = new List<ICreature>();
 
         /// <summary>
         /// A list of all spells known to the creature.
         /// </summary>
-        public List<ISpell> SpellsAvailible;
+        public List<ISpell> SpellsAvailible = new List<ISpell>();
 
         /// <summary>
         /// If true, the creature is part of the player's party.

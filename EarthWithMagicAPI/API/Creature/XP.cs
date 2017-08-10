@@ -30,6 +30,7 @@ namespace EarthWithMagicAPI.API.Creature
         /// <summary>
         /// The constructor for the xp class.
         /// </summary>
+        /// <param name="creatureLevel"></param>
         public XP(int creatureLevel)
         {
             this.CreatureLevel = creatureLevel;

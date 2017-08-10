@@ -371,6 +371,12 @@ Faehau has transformed you into a lesser deity, so that you might be more useful
 
 Fist: 1d24 +5, 1d24 +5 fire damage
 AC: +1
++3 dexterity
++3 strength
++1 charisma
++1 wisdom
++3 constitution
++5d10 +2 HP
 ### 51th Level: Divine Commander
 Faehau has authorized you to control a squad (8) of his troops, to perform his/her work.
 
@@ -378,8 +384,3 @@ Receive another stunning blow.
 TH (To Hit): + 1
 AC: +10
 +5d10 +2 HP
-+3 dexterity
-+3 strength
-+1 charisma
-+1 wisdom
-+3 constitution

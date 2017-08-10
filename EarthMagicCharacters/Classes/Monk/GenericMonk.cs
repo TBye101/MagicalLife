@@ -6,6 +6,7 @@ using EarthWithMagicAPI.API;
 using EarthWithMagicAPI.API.Creature;
 using EarthWithMagicAPI.API.Interfaces.Items;
 using EarthWithMagicAPI.API.Stuff;
+using EarthMagicCreatures.Creatures.Heavenly.Angels;
 
 namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 {
@@ -980,7 +981,18 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level49()
         {
-            List<string> levelUpReport = new List<string> {   };
+            List<string> levelUpReport = new List<string> { "Title: Holy Commander", "Summon 4 angels", "Fist: 1d24 +5, 1d20 +5 fire", "AC: +1" };
+
+            this.Title = "Holy Commander";
+            this.Summonable.Add(new LesserAngel());
+            this.Summonable.Add(new LesserAngel());
+            this.Summonable.Add(new LesserAngel());
+            this.Summonable.Add(new LesserAngel());
+            this.BareHands.FistDamage.BluntDamage = new Dice.Die(1, 24, 5);
+            this.BareHands.FistDamage.FireDamage = new Dice.Die(1, 20, 5);
+            this.Attributes.AC++;
+
+            Util.WriteLine(levelUpReport);
         }
 
         /// <summary>
