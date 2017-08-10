@@ -10,4 +10,8 @@
     <None Remove="dll\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="API\Creature\Commands\" />
+  </ItemGroup>
+
 </Project>

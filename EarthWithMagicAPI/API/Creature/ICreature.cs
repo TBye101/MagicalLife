@@ -135,13 +135,13 @@ namespace EarthWithMagicAPI.API.Creature
         /// Called whenever the creature receives damage.
         /// </summary>
         /// <param name="damage"></param>
-        public abstract void OnRecieveDamage(Damage damage);
+        public abstract void RecieveDamage(Damage damage);
 
         /// <summary>
         /// Called whenever the creature has a new item equipped.
         /// </summary>
         /// <param name="item"></param>
-        public abstract void OnItemEquipped(IItem item);
+        public abstract void EquipItem(IItem item);
 
         /// <summary>
         /// Called whenever the creature has a item unequipped.
