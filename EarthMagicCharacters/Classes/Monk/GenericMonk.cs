@@ -1000,7 +1000,21 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level50()
         {
-            List<string> levelUpReport = new List<string> {   };
+            List<string> levelUpReport = new List<string> { "Title: Lesser Divinity", "Fists: 1d24 +5, 1d24 +5 fire", "AC: +1",
+                "+3 dexterity", "+3 strength", "+1 charisma", "+1 wisdom", "+3 constitution", "+ 5d10 HP"
+            };
+
+            this.Title = "Lesser Divinity";
+            this.BareHands.FistDamage.FireDamage = new Dice.Die(1, 24, 5);
+            this.Attributes.AC++;
+            this.Attributes.Dexterity += 3;
+            this.Attributes.Strength += 3;
+            this.Attributes.Charisma++;
+            this.Attributes.Wisdom++;
+            this.Attributes.Constitution += 3;
+            this.Attributes.MaxHealth += Dice.RollDice(new Dice.Die(5, 10, 0));
+
+            Util.WriteLine(levelUpReport);
         }
 
         /// <summary>
@@ -1008,7 +1022,18 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level51()
         {
-            List<string> levelUpReport = new List<string> {   };
+            List<string> levelUpReport = new List<string> { "Title: Divine Commander", "Summon 8 angels", "+1 stunning blow", "TH: +1", "AC: +1"};
+
+            this.Title = "Divine Commander";
+            this.Summonable.Add(new LesserAngel());
+            this.Summonable.Add(new LesserAngel());
+            this.Summonable.Add(new LesserAngel());
+            this.Summonable.Add(new LesserAngel());
+            this.Abilities.MaxStunningBlows++;
+            this.Attributes.ToHit++;
+            this.Attributes.AC++;
+
+            Util.WriteLine(levelUpReport);
         }
 
         #endregion

@@ -383,4 +383,3 @@ Faehau has authorized you to control a squad (8) of his troops, to perform his/h
 Receive another stunning blow.
 TH (To Hit): + 1
 AC: +10
-+5d10 +2 HP
