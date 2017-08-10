@@ -936,7 +936,14 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level46()
         {
-            List<string> levelUpReport = new List<string> {   };
+            List<string> levelUpReport = new List<string> { "Title: Grandmaster", "Immunity to charm", "TH: +1", "AC: +1" };
+
+            this.Title = "Grandmaster";
+            this.Abilities.ImmunityToCharm = true;
+            this.Attributes.AC++;
+            this.Attributes.ToHit++;
+
+            Util.WriteLine(levelUpReport);
         }
 
         /// <summary>
