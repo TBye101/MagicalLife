@@ -219,23 +219,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         {
             if (!dead.IsHostile() && Dice.RollDice(new Dice.Die(1, 100, 0)) > 80)
             {
-                switch (this.Alignment)
-                {
-                    //Lawful Evil
-                    case Alignment.LawfulEvil:
-                        Console.WriteLine(dead.Name + " was weak. " + this.HimHerIT() + "got what " + this.HimHerIT() + " deserved.");
-                        break;
-                    //Neutral
-                    case Alignment.LawfulNeutral:
-                        Console.WriteLine("I never really knew " + dead.HimHerIT() + " very well.");
-                        break;
-                    //Lawful good
-                    case Alignment.LawfulGood:
-                        Console.WriteLine("We have lost a comrade today. No matter " + dead.HimHerIT() + "'s personal struggles, " + dead.HimHerIT() + " was a valuable member of this party.");
-                        break;
-                    default:
-                        throw new Exception("Alignment in Generic Monk not supported!");
-                }
+                Console.WriteLine("We have lost a comrade today. No matter " + dead.HimHerIT() + "'s personal struggles, " + dead.HimHerIT() + " was a valuable member of this party.");
             }
         }
 
@@ -777,7 +761,14 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level34()
         {
-            List<string> levelUpReport = new List<string> {   };
+            List<string> levelUpReport = new List<string> {  "Title: Mistwalker", "TH: +1", "AC: +1", "+5% magic resistance" };
+
+            this.Title = "Mistwalker";
+            this.Attributes.ToHit++;
+            this.Attributes.AC++;
+            this.Attributes.MagicResistence += 5;
+
+            Util.WriteLine(levelUpReport);
         }
 
         /// <summary>

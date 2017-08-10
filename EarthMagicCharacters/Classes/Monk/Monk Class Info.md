@@ -270,63 +270,66 @@ AC: +1
 #### 33rd Level: Divinely Guided
 
 AC: +1
-#### 34th Level: 
+#### 34th Level: Mistwalker
 
 TH (To Hit): + 1
 AC: +1
 +5% magic resistance.
-#### 35th Level:
+#### 35th Level: Blinding Light
 
 Fist: 1d20 +5, 1d6 fire damage
 Recieve another stunning blow.
 AC: +1
-#### 36th Level:
+#### 36th Level: Faithful Soldier
 
 TH (To Hit): + 1
 AC: +1
 +5% magic resistance.
-#### 37th Level:
+Immunity to sleep.
+#### 37th Level: Faithful Leader
 
 Fist: 1d20 +5, 1d8 +1 fire damage
 AC: +1
-#### 38th Level:
+#### 38th Level: Chosen One
 
 TH (To Hit): + 1
 AC: +1
 +5% magic resistance.
-#### 39th Level:
+#### 39th Level: Divine Servant
 
 Fist: 1d20 +5, 1d10 +1 fire damage
+Immunity to Poison.
 AC: +1
-#### 40th Level:
+#### 40th Level: Beacon of Faith
 
 Receive another stunning blow.
 AC: +1
 TH (To Hit): + 1
 +5% magic resistance.
-#### 41st Level:
+#### 41st Level: Beacon of Hope
 
 Fist: 1d20 +5, 1d14 +2 fire damage.
 AC: +1
-#### 42nd Level:
+#### 42nd Level: Hero
 
 TH (To Hit): + 1
 AC: +1
-#### 43rd Level:
+#### 43rd Level: Renown Hero
 
 Fist: 1d20 +5, 1d16 +3 fire damage
 AC: +1
-#### 44th Level:
+#### 44th Level: Legendary Hero
 
 TH (To Hit): + 1
 AC: +1
-#### 45th Level:
+#### 45th Level: Inspiring Legend
 Fist: 1d20 +5, 1d20 +4 fire damage
 
 Receive another stunning blow.
 AC: +1
 #### 46th Level: Grandmaster
 
+Immunity to charm.
 TH (To Hit): + 1
 AC: +1
 #### 47th Level: Elder Grandmaster
@@ -342,6 +345,8 @@ AC: +1
 #### 49th Level: Holy Commander
 Your deity has authorized you to command a small squadron of their troops, if necessary.
 
+Troop type: Angel.
+
 Fist: 1d24 +5, 1d20 +5 fire damage
 AC: +1
 #### 50th Level: Lesser Divinity
@@ -356,8 +361,8 @@ Receive another stunning blow.
 TH (To Hit): + 1
 AC: +10
 +5d10 +2 HP
-+1 dexterity
-+1 strength
++3 dexterity
++3 strength
 +1 charisma
 +1 wisdom
-+1 constitution
++3 constitution
