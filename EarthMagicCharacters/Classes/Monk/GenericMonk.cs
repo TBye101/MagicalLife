@@ -537,7 +537,14 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level18()
         {
-            List<string> levelUpReport = new List<string> {   };
+            List<string> levelUpReport = new List<string> { "Title: Master of the West Wind", "Immunity to Non Magical Weapons", "TH: +1", "AC: +1" };
+
+            this.Title = "Master of the West Wind";
+            this.Abilities.ImmunityToNonMagicWeapons = true;
+            this.Attributes.ToHit++;
+            this.Attributes.AC++;
+
+            Util.WriteLine(levelUpReport);
         }
 
         /// <summary>
