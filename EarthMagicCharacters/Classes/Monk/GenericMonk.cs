@@ -838,7 +838,10 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
             this.Title = "Divine Servant";
             this.BareHands.FistDamage.FireDamage = new Dice.Die(1, 10, 1);
-            
+            this.Abilities.ImmunityToPoison = true;
+            this.Attributes.AC++;
+
+            Util.WriteLine(levelUpReport);
         }
 
         /// <summary>
