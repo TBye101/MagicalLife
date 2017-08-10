@@ -273,15 +273,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level2()
         {
-            List<string> levelUpReport = new List<string>();
-            levelUpReport.Add("Level up report: ");
-            levelUpReport.Add("Title: Faithless");
-            levelUpReport.Add("HP: +  1d10 +2");
-            levelUpReport.Add("AC: +1");
-            levelUpReport.Add("To hit: +1");
-            levelUpReport.Add("+20% poison resistance.");
-            levelUpReport.Add("+30% hide in shadows");
-            levelUpReport.Add("+30% walk silently");
+            List<string> levelUpReport = new List<string> {"Level up report: ", "Title: Faithless", "HP: +  1d10 +2", "AC: +1", "To hit: +1", "+20% poison resistance.", "+30% hide in shadows", "+30% walk silently"};
 
             this.Attributes.PoisonResistence += 20;
             this.Abilities.HideInShadows += 30;
@@ -298,11 +290,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level3()
         {
-            List<string> levelUpReport = new List<string>();
-
-            levelUpReport.Add("Title: Faithful");
-            levelUpReport.Add("AC: +1");
-            levelUpReport.Add("+20% fire resistance");
+            List<string> levelUpReport = new List<string> {"Title: Faithful", "AC: +1", "+20% fire resistance"};
 
             this.Title = "Faithful";
             ++this.Attributes.AC;
@@ -363,7 +351,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// Does level up logic to bring the monk up to the next level.
         /// </summary>
         private void Level7()
-        { 
+        {
             List<string> levelUpReport = new List<string> { "Title: Brother", "+20% resistance to sleep", "AC: +1"};
 
             this.Title = "Brother";
