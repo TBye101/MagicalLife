@@ -1,4 +1,5 @@
-﻿using EarthWithMagicAPI.API.Creature;
+﻿using EarthMagicCharacters.Classes.Monk.Generic_Monk;
+using EarthWithMagicAPI.API.Creature;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,7 +12,7 @@ namespace EarthMagicCharacters.Classes.Monk
     /// </summary>
     public class MonkAI : IAI
     {
-        public void YourTurn(Encounter encounter)
+        public void YourTurn(Encounter encounter, ICreature monk)
         {
             throw new NotImplementedException();
         }

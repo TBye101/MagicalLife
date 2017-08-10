@@ -14,7 +14,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
     /// </summary>
     public class GenericMonk : ICharacter
     {
-
+        private MonkAI AI = new MonkAI();
 
         /// <summary>
         /// The attributes of this monk.
@@ -261,7 +261,14 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
         public override void YourTurn(Encounter encounter)
         {
-            throw new NotImplementedException();
+            if (this.IsInParty)
+            {
+                CombatControl.YourTurn(this, encounter);
+            }
+            else
+            {
+                this.AI.YourTurn(encounter, this);
+            }
         }
 
         #region LevelUps

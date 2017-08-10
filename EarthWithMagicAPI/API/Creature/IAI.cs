@@ -13,7 +13,8 @@ namespace EarthWithMagicAPI.API.Creature
         /// <summary>
         /// Your turn in combat.
         /// </summary>
-        /// <param name="encounter"></param>
-        void YourTurn(Encounter encounter);
+        /// <param name="encounter">The current encounter.</param>
+        /// <param name="creature">The monk this method must control.</param>
+        void YourTurn(Encounter encounter, ICreature creature);
     }
 }
