@@ -4,8 +4,37 @@ using System.Collections.Generic;
 
 namespace EarthWithMagicAPI.API.Interfaces.Items
 {
+    /// <summary>
+    /// Holds the impact an item will have on a player's stats.
+    /// Ex: If you set Strength to -2, the player that equips this will have their strength lowered by 2.
+    /// </summary>
+    public struct StatsImpact
+    {
+        public int Charisma;
+        public int Dexterity;
+        public int Strength;
+        public int Constitution;
+        public int Wisdom;
+
+        public StatsImpact(int charisma, int dexterity, int strength, int constitution, int wisdom)
+        {
+            this.Charisma = charisma;
+            this.Dexterity = dexterity;
+            this.Strength = strength;
+            this.Constitution = constitution;
+            this.Wisdom = wisdom;
+        }
+    }
+
     public abstract class IItem
     {
+        /// <summary>
+        /// Gets the impact an item has on the character when it is equipped.
+        /// </summary>
+        /// <returns></returns>
+        public abstract StatsImpact EquipImpact();
+
+        public bool IsCursed = false;
         /// <summary>
         /// The weight of the item.
         /// </summary>
@@ -14,12 +43,12 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         /// <summary>
         /// Holds whether or not the item is equipped.
         /// </summary>
-        public bool IsEquipped;
+        public bool IsEquipped = false;
 
         /// <summary>
         /// Returns if the item is a quest item.
         /// </summary>
-        public bool QuestItem;
+        public bool QuestItem = false;
 
         /// <summary>
         /// The base value of the item, that if the player has 100% trading skills, they will get.
@@ -54,48 +83,48 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         /// <summary>
         /// Raised whenever an item is sold.
         /// </summary>
-        event EventHandler<IItem> ItemSold;
+        public event EventHandler<IItem> ItemSold;
 
         /// <summary>
         /// Raised whenever an item is bought.
         /// </summary>
-        event EventHandler<IItem> ItemBought;
+        public event EventHandler<IItem> ItemBought;
 
         /// <summary>
         /// Raised whenever an item is dropped on the ground.
         /// </summary>
-        event EventHandler<IItem> ItemDropped;
+        public event EventHandler<IItem> ItemDropped;
 
         /// <summary>
         /// Raised whenever an item is picked up.
         /// </summary>
-        event EventHandler<IItem> ItemPickedUp;
+        public event EventHandler<IItem> ItemPickedUp;
 
         /// <summary>
         /// Raised whenever an item is lost.
         /// Ex: Given to another player, or removed from an inventory due to a quest.
         /// </summary>
-        event EventHandler<IItem> ItemLost;
+        public event EventHandler<IItem> ItemLost;
 
         /// <summary>
         /// Raised whenever an item is thrown.
         /// </summary>
-        event EventHandler<IItem> ItemThrown;
+        public event EventHandler<IItem> ItemThrown;
 
         /// <summary>
         /// Raised whenever an item is destroyed.
         /// </summary>
-        event EventHandler<IItem> ItemDestroyed;
+        public event EventHandler<IItem> ItemDestroyed;
 
         /// <summary>
         /// Raised whenever an item is equipped.
         /// </summary>
-        event EventHandler<IItem> ItemEquipped;
+        public event EventHandler<IItem> ItemEquipped;
 
         /// <summary>
         /// Raised whenever an item has it's status changed, such as being temporarily dispelled. This just means the player's stats need to be recalculated.
         /// </summary>
-        event EventHandler<IItem> StatusChanged;
+        public event EventHandler<IItem> StatusChanged;
 
         /// <summary>
         /// Called whenever the player equips the item.
