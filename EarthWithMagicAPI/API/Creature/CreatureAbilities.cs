@@ -103,5 +103,15 @@
         /// The creature's ability to back stab.
         /// </summary>
         public int Backstab = 0;
+
+        /// <summary>
+        /// The maximum amount of stunning blows this monk could use.
+        /// </summary>
+        public int MaxStunningBlows = 0;
+
+        /// <summary>
+        /// The amount of stunning blows this monk has left.
+        /// </summary>
+        public int StunningBlows = 0;
     }
 }

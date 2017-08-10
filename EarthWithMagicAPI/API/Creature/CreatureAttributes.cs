@@ -30,7 +30,7 @@
         /// <param name="initiative">Used to determine the order of creature action.</param>
         /// <param name="toHit">Used to determine if we will hit a creature with our current state of equipment.</param>
         /// <param name="dodge">The chance that the character will dodge something.</param>
-        public CreatureAttributes(int gender, int AC, int maxHealth, int health, int dexterity, int strength,
+        public CreatureAttributes(Gender gender, int AC, int maxHealth, int health, int dexterity, int strength,
             int constitution, int charisma, int wisdom, XP xp, int fireResistence, int acidResistence,
             int poisonResistence, int electricResistence, int coldResistence, int magicResistence, int charmResistence,
             int sleepResistence, bool needsOxygen, int initiative, int toHit, int dodge)
@@ -65,9 +65,9 @@
         public int ToHit;
 
         /// <summary>
-        /// 0 = male, 1 = female, -1 = not applicable.
+        /// The gender of the creature.
         /// </summary>
-        public int Gender = -1;
+        public Gender Gender = Gender.Unspecified;
 
         /// <summary>
         /// Armor class of the creature.

@@ -3,12 +3,24 @@ using EarthWithMagicAPI.API.Util;
 using EarthWithMagicAPI.API.Interfaces.Items;
 using System;
 using System.Collections.Generic;
+using EarthWithMagicAPI.API.Interfaces.Spells;
 
 namespace EarthWithMagicAPI.API.Creature
 {
+    /// <summary>
+    /// Used to store and compare alignments.
+    /// </summary>
     public enum Alignment
     {
         LawfulGood, NeutralGood, ChaoticGood, LawfulNeutral, TrueNeutral, ChaoticNeutral, LawfulEvil, NeutralEvil, ChaoticEvil
+    }
+
+    /// <summary>
+    /// Used to store and compare genders.
+    /// </summary>
+    public enum Gender
+    {
+        Male, Female, Unspecified
     }
 
     /// <summary>
@@ -16,6 +28,12 @@ namespace EarthWithMagicAPI.API.Creature
     /// </summary>
     public abstract class ICreature
     {
+
+        /// <summary>
+        /// A list of all spells known to the creature.
+        /// </summary>
+        public List<ISpell> SpellsAvailible;
+
         /// <summary>
         /// If true, the creature is part of the player's party.
         /// </summary>
@@ -170,15 +188,15 @@ namespace EarthWithMagicAPI.API.Creature
         /// <returns></returns>
         public string HimHerIT()
         {
-            if (this.GetAttributes().Gender == 0)
+            if (this.GetAttributes().Gender == Gender.Male)
             {
                 return "him";
             }
-            if (this.GetAttributes().Gender == 1)
+            if (this.GetAttributes().Gender == Gender.Female)
             {
                 return "her";
             }
-            if (this.GetAttributes().Gender == -1)
+            if (this.GetAttributes().Gender == Gender.Unspecified)
             {
                 return "IT";
             }

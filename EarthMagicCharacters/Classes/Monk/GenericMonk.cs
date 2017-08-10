@@ -14,32 +14,30 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
     /// </summary>
     public class GenericMonk : ICharacter
     {
-        /// <summary>
-        /// The maximum amount of stunning blows this monk could use.
-        /// </summary>
-        private int MaxStunningBlows = 0;
 
-        /// <summary>
-        /// The amount of stunning blows this monk has left.
-        /// </summary>
-        private int StunningBlows = 0;
 
         /// <summary>
         /// The attributes of this monk.
         /// </summary>
         private CreatureAttributes Attributes;
 
+        private bool _Hostile;
+
         /// <summary>
         /// Constructor for the GenericMonk class.
         /// </summary>
-        public GenericMonk(int gender, Alignment alignment, string name)
+        /// <param name="gender"></param>
+        /// <param name="alignment"></param>
+        /// <param name="name"></param>
+        /// <param name="isHostile"></param>
+        public GenericMonk(Gender gender, Alignment alignment = Alignment.LawfulGood, string name = "Monk", bool isHostile = false)
         {
             int startingHealth = Dice.RollDice(new Dice.Die(2, 10, 2));
             this.CreatureType = "Monk";
             this.Name = name;
             this.Title = "Trainee";
             this.Alignment = alignment;
-
+            this._Hostile = isHostile;
 
             Attributes = new CreatureAttributes(gender, 4, startingHealth, startingHealth,
             Dice.RollDice(new Dice.Die(3, 6, 0)), Dice.RollDice(new Dice.Die(3, 6, 0)),
@@ -54,7 +52,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
         public override bool IsHostile()
         {
-            return false;
+            return this._Hostile;
         }
 
         public override void LevelUp()
@@ -323,7 +321,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Faithful Apprentice", "+1 stunning blow", "Fist: 1d10", "AC: +1"};
 
             this.Title = "Faithful Apprentice";
-            ++this.MaxStunningBlows;
+            this.Abilities.MaxStunningBlows++;
             ++this.Attributes.AC;
             this.BareHands.FistDamage.BluntDamage = new Dice.Die(1, 10, 0);
 
@@ -402,7 +400,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
             this.Title = "Faithful Disciple";
             this.Attributes.Dodge += 10;
-            this.MaxStunningBlows++;
+            this.Abilities.MaxStunningBlows++;
             this.Abilities.HideInShadows += 5;
             this.Abilities.WalkSilently += 5;
             this.Attributes.ToHit++;
@@ -482,7 +480,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             this.Title = "Superior Master";
             this.Abilities.HideInShadows += 5;
             this.Abilities.WalkSilently += 5;
-            this.MaxStunningBlows++;
+            this.Abilities.MaxStunningBlows++;
             this.Attributes.AC++;
             this.Attributes.MagicResistence += 5;
 

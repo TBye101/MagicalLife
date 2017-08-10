@@ -13,10 +13,5 @@ namespace EarthMagicCharacters.Classes
         /// The player should control the level up.
         /// </summary>
         public abstract void LevelUp();
-
-        /// <summary>
-        /// A list of all spells known to the creature.
-        /// </summary>
-        public List<ISpell> SpellsAvailible;
     }
 }
