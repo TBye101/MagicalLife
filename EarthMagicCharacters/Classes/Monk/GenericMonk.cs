@@ -849,7 +849,15 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level40()
         {
-            List<string> levelUpReport = new List<string> {   };
+            List<string> levelUpReport = new List<string> { "Title: Beacon of Faith", "+1 stunning blow", "AC: +1", "TH: +1", "+5% magic resistance" };
+
+            this.Title = "Beacon of Faith";
+            this.Abilities.MaxStunningBlows++;
+            this.Attributes.AC++;
+            this.Attributes.ToHit++;
+            this.Attributes.MagicResistence += 5;
+
+            Util.WriteLine(levelUpReport);
         }
 
         /// <summary>
