@@ -893,7 +893,13 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level43()
         {
-            List<string> levelUpReport = new List<string> {   };
+            List<string> levelUpReport = new List<string> { "Title: Renown Hero", "Fist: 1d20 +5, 1d16 +3 fire", "AC: +1" };
+
+            this.Title = "Renown Hero";
+            this.BareHands.FistDamage.FireDamage = new Dice.Die(1, 16, 3);
+            this.Attributes.AC++;
+
+            Util.WriteLine(levelUpReport);
         }
 
         /// <summary>
