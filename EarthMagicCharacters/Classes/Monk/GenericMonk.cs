@@ -579,7 +579,14 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level21()
         {
-            List<string> levelUpReport = new List<string> {   };
+            List<string> levelUpReport = new List<string> { "Title: Master of Winter", "Fist: 1d16 +3", "AC: +1", "+5% magic resistance" };
+
+            this.Title = "Master of Winter";
+            this.BareHands.FistDamage.BluntDamage = new Dice.Die(1, 16, 3);
+            this.Attributes.AC++;
+            this.Attributes.MagicResistence += 5;
+
+            Util.WriteLine(levelUpReport);
         }
 
         /// <summary>
