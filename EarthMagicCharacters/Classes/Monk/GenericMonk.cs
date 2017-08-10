@@ -951,7 +951,14 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level47()
         {
-            List<string> levelUpReport = new List<string> {   };
+            List<string> levelUpReport = new List<string> { "Title: Elder Grandmaster", "Fist: 1d20 +5, 1d20 +5 fire", "TH: +1", "AC: +1" };
+
+            this.Title = "Elder Grandmaster";
+            this.BareHands.FistDamage.FireDamage = new Dice.Die(1, 20, 5);
+            this.Attributes.ToHit++;
+            this.Attributes.AC++;
+
+            Util.WriteLine(levelUpReport);
         }
 
         /// <summary>
@@ -959,7 +966,13 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level48()
         {
-            List<string> levelUpReport = new List<string> {   };
+            List<string> levelUpReport = new List<string> { "Title: Divine Apprentice", "TH: +1", "AC: +1" };
+
+            this.Title = "Divine Apprentice";
+            this.Attributes.ToHit++;
+            this.Attributes.AC++;
+
+            Util.WriteLine(levelUpReport);
         }
 
         /// <summary>

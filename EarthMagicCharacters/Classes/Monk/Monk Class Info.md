@@ -355,7 +355,7 @@ The most powerful monks that are completely human are called Elder Grandmasters.
 Fist: 1d20 +5, 1d20 +5 fire damage
 AC: +1
 #### 48th Level: Divine Apprentice
-Your service to your deity has been noticed. You now serve your deity directly.
+Your service to your Faehau has been noticed. You now serve Faehau directly.
 
 TH (To Hit): + 1
 AC: +1
