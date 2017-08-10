@@ -879,7 +879,13 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level42()
         {
-            List<string> levelUpReport = new List<string> {   };
+            List<string> levelUpReport = new List<string> { "Title: Hero", "TH: +1", "AC: +1" };
+
+            this.Title = "Hero";
+            this.Attributes.ToHit++;
+            this.Attributes.AC++;
+
+            Util.WriteLine(levelUpReport);
         }
 
         /// <summary>

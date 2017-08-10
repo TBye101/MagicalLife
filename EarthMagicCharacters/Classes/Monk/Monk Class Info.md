@@ -3,6 +3,7 @@
 ## Monk
 
 Monks are a very powerful type of warrior. They are renown for fighting without weapons or armor.
+The only equipment that their god allows them to use is a robe.
 A Monk can perform physical, mental, and magical feats that would be impossible, if they didn't have their faith.
 Every monk worships and puts faith in their patron god or goddess. 
 As they perform works of good or evil, their deity may reward or punish them.
