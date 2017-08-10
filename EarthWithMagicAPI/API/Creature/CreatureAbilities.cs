@@ -113,5 +113,40 @@
         /// The amount of stunning blows this monk has left.
         /// </summary>
         public int StunningBlows = 0;
+
+        /// <summary>
+        /// Is the creature immune to poison?
+        /// </summary>
+        public bool ImmunityToPoison = false;
+
+        /// <summary>
+        /// Is the creature immune to fire?
+        /// </summary>
+        public bool ImmunityToFire = false;
+
+        /// <summary>
+        /// Is the creature immune to acid?
+        /// </summary>
+        public bool ImmunityToAcid = false;
+
+        /// <summary>
+        /// Is the creature immune to electricity?
+        /// </summary>
+        public bool ImmunityToElectricity = false;
+
+        /// <summary>
+        /// Is the creature immune to cold?
+        /// </summary>
+        public bool ImmunityToCold = false;
+
+        /// <summary>
+        /// Is the creature immune to charms?
+        /// </summary>
+        public bool ImmunityToCharm = false;
+
+        /// <summary>
+        /// Is the creature immune to sleep?
+        /// </summary>
+        public bool ImmunityToSleep = false;
     }
 }

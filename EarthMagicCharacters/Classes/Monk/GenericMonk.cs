@@ -834,7 +834,11 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level39()
         {
-            List<string> levelUpReport = new List<string> {   };
+            List<string> levelUpReport = new List<string> { "Title: Divine Servant", "Fist: 1d20 +5, 1d10 +1 fire", "Immunity to poison", "AC: +1"};
+
+            this.Title = "Divine Servant";
+            this.BareHands.FistDamage.FireDamage = new Dice.Die(1, 10, 1);
+            
         }
 
         /// <summary>
