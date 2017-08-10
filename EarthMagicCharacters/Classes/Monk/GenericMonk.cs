@@ -776,7 +776,14 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level35()
         {
-            List<string> levelUpReport = new List<string> {   };
+            List<string> levelUpReport = new List<string> { "Title: Blinding Light", "Fist: 1d20 +5, 1d6 fire", "+1 stunning blow", "AC: +1" };
+
+            this.Title = "Blinding Light";
+            this.BareHands.FistDamage.FireDamage = new Dice.Die(1, 6, 0);
+            this.Abilities.MaxStunningBlows++;
+            this.Attributes.AC++;
+
+            Util.WriteLine(levelUpReport);
         }
 
         /// <summary>
