@@ -749,7 +749,14 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level32()
         {
-            List<string> levelUpReport = new List<string> {   };
+            List<string> levelUpReport = new List<string> { "Title: Sacred Elder", "TH: +1", "AC: +1", "+5% magic resistance" };
+
+            this.Title = "Sacred Elder";
+            this.Attributes.ToHit++;
+            this.Attributes.AC++;
+            this.Attributes.MagicResistence += 5;
+
+            Util.WriteLine(levelUpReport);
         }
 
         /// <summary>
