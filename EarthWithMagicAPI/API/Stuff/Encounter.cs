@@ -24,7 +24,7 @@ namespace EarthWithMagicAPI.API.Stuff
             this.AllCombatants.AddRange(enemies);
             this.AllCombatants = this.AllCombatants.OrderByDescending(ICreature => ICreature.GetAttributes().Initiative).ToList();
 
-            while (IsEveryoneDead(friendly) == false && IsEveryoneDead(enemies) == false)
+            while (!IsEveryoneDead(friendly) && !IsEveryoneDead(enemies))
             {
                 Console.WriteLine("Encounter: " + friendly.Count.ToString() + " friendlies, " + enemies.Count.ToString() + " enemies");
 

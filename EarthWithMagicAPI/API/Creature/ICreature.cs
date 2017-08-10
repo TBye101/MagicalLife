@@ -6,11 +6,21 @@ using System.Collections.Generic;
 
 namespace EarthWithMagicAPI.API.Creature
 {
+    public enum Alignment
+    {
+        LawfulGood, NeutralGood, ChaoticGood, LawfulNeutral, TrueNeutral, ChaoticNeutral, LawfulEvil, NeutralEvil, ChaoticEvil
+    }
+
     /// <summary>
     /// Holds various things that every creature has or should implement.
     /// </summary>
     public abstract class ICreature
     {
+        /// <summary>
+        /// If true, the creature is part of the player's party.
+        /// </summary>
+        public bool IsInParty = false;
+
         /// <summary>
         /// The fists of the creature. Mainly used in combat by monks.
         /// </summary>
@@ -21,10 +31,7 @@ namespace EarthWithMagicAPI.API.Creature
         /// </summary>
         public CreatureAbilities Abilities = new CreatureAbilities();
 
-        /// <summary>
-        /// 0 = Lawful evil, 1 = chaotic evil, 2 = neutral, 3 = chaotic good, 4 = lawful good.
-        /// </summary>
-        public int Alignment;
+        public Alignment Alignment;
 
         /// <summary>
         /// The title of the creature, if any.

@@ -32,7 +32,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// <summary>
         /// Constructor for the GenericMonk class.
         /// </summary>
-        public GenericMonk(int gender, int alignment, string name)
+        public GenericMonk(int gender, Alignment alignment, string name)
         {
             int startingHealth = Dice.RollDice(new Dice.Die(2, 10, 2));
             this.CreatureType = "Monk";
@@ -224,15 +224,15 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
                 switch (this.Alignment)
                 {
                     //Lawful Evil
-                    case 0:
+                    case Alignment.LawfulEvil:
                         Console.WriteLine(dead.Name + " was weak. " + this.HimHerIT() + "got what " + this.HimHerIT() + " deserved.");
                         break;
                     //Neutral
-                    case 2:
+                    case Alignment.LawfulNeutral:
                         Console.WriteLine("I never really knew " + dead.HimHerIT() + " very well.");
                         break;
                     //Lawful good
-                    case 4:
+                    case Alignment.LawfulGood:
                         Console.WriteLine("We have lost a comrade today. No matter " + dead.HimHerIT() + "'s personal struggles, " + dead.HimHerIT() + " was a valuable member of this party.");
                         break;
                     default:
