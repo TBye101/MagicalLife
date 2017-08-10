@@ -673,7 +673,14 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level27()
         {
-            List<string> levelUpReport = new List<string> {   };
+            List<string> levelUpReport = new List<string> { "Title: Master of the Oceans", "Breath Water", "Fist: 1d20 +4", "AC: +1" };
+
+            this.Title = "Master of the Oceans";
+            this.Abilities.BreathWater = true;
+            this.BareHands.FistDamage.BluntDamage = new Dice.Die(1, 20, 4);
+            this.Attributes.AC++;
+
+            Util.WriteLine(levelUpReport);
         }
 
         /// <summary>
