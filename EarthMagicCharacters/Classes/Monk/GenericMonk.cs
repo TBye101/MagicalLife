@@ -865,7 +865,13 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level41()
         {
-            List<string> levelUpReport = new List<string> {   };
+            List<string> levelUpReport = new List<string> { "Title: Beacon of Hope", "Fist: 1d20 +5, 1d14 +2 fire", "AC: +1" };
+
+            this.Title = "Beacon of Hope";
+            this.BareHands.FistDamage.FireDamage = new Dice.Die(1, 14, 2);
+            this.Attributes.AC++;
+
+            Util.WriteLine(levelUpReport);
         }
 
         /// <summary>
