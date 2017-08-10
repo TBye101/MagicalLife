@@ -8,73 +8,87 @@
         /// <summary>
         /// If the creature has dark vision, it can see perfectly fine in the dark.
         /// </summary>
+        public bool BaseDarkVision = false;
         public bool DarkVision = false;
 
         /// <summary>
         /// If true, the creature can breath water.
         /// </summary>
+        public bool BaseBreathWater = false;
         public bool BreathWater = false;
 
         /// <summary>
         /// If true, the creature can kill another creature with a look.
         /// </summary>
+        public bool BaseDeathStare = false;
         public bool DeathStare = false;
 
         /// <summary>
         /// If true, the creature can turn another to stone with a look.
         /// Saving throw: Fear
         /// </summary>
+        public bool BaseStoneStare = false;
         public bool StoneStare = false;
 
         /// <summary>
         /// If true, the creature can suck the blood of another creature, and actually benefit from it.
         /// </summary>
+        public bool BaseBloodSucking = false;
         public bool BloodSucking = false;
 
         /// <summary>
         /// If true, the creature is immune to non magical weapons.
         /// </summary>
+        public bool BaseImmunityToNonMagicWeapons = false;
         public bool ImmunityToNonMagicWeapons = false;
 
         /// <summary>
         /// If true, the creature can shoot a web from their body.
         /// </summary>
+        public bool BaseShootWeb = false;
         public bool ShootWeb = false;
 
         /// <summary>
         /// If true, the creature can shoot poison from their body.
         /// Ex: Spider.
         /// </summary>
+        public bool BaseShootPoison = false;
         public bool ShootPoison = false;
 
         /// <summary>
         /// If true, the creature can fly.
         /// </summary>
+        public bool BaseFly = false;
         public bool Fly = false;
 
         /// <summary>
         /// If true, the creature can take a gaseous form.
         /// </summary>
+        public bool BaseTakeGaseousForm = false;
         public bool TakeGaseousForm = false;
 
         /// <summary>
         /// If true, the creature can become incorporeal.
         /// </summary>
+        public bool BaseCanBecomeIncorporeal = false;
         public bool CanBecomeIncorporeal = false;
 
         /// <summary>
         /// If true, the creature can communicate without speaking.
         /// </summary>
+        public bool BaseTelepathy = false;
         public bool Telepathy = false;
 
         /// <summary>
         /// How good the creature is at hiding in the shadows.
         /// </summary>
+        public int BaseHideInShadows = 0;
         public int HideInShadows = 0;
 
         /// <summary>
         /// How quite the creature walks. 0 is loud, 100 is quiet.
         /// </summary>
+        public int BaseWalkSilently = 0;
         public int WalkSilently = 0;
 
         /// <summary>
@@ -82,32 +96,37 @@
         /// If the creature makes a successful roll of this, they pick the pocket.
         /// They must make another roll to determine if their thievery was detected.
         /// </summary>
+        public int BasePickPocket = 0;
         public int PickPocket = 0;
 
         /// <summary>
         /// The creature's ability to detect traps.
         /// </summary>
+        public int BaseDetectTraps = 0;
         public int DetectTraps = 0;
 
         /// <summary>
         /// The creature's ability to disarm traps.
         /// </summary>
+        public int BaseDisarmTraps = 0;
         public int DisarmTraps = 0;
 
         /// <summary>
         /// The creature's ability to detect illusions.
         /// </summary>
+        public int BaseDetectIllusions = 0;
         public int DetectIllusions = 0;
 
         /// <summary>
         /// The creature's ability to back stab.
         /// </summary>
+        public int BaseBackstab = 0;
         public int Backstab = 0;
 
         /// <summary>
         /// The maximum amount of stunning blows this monk could use.
         /// </summary>
-        public int MaxStunningBlows = 0;
+        public int BaseStunningBlows = 0;
 
         /// <summary>
         /// The amount of stunning blows this monk has left.

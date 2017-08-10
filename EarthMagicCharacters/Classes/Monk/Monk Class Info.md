@@ -361,7 +361,6 @@ TH (To Hit): + 1
 AC: +1
 #### 49th Level: Holy Commander
 Faehau has authorized you to command a section (4) of his troops, if necessary.
-
 Troop type: Angel.
 
 Fist: 1d24 +5, 1d20 +5 fire damage

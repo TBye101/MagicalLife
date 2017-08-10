@@ -58,9 +58,9 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
         public override void LevelUp()
         {
-            this.Attributes.MaxHealth += Dice.RollDice(new Dice.Die(1, 10, 2));
+            this.Attributes.BaseHealth += Dice.RollDice(new Dice.Die(1, 10, 2));
 
-            switch (this.Attributes.Xp.CreatureLevel)
+            switch (this.Attributes.BaseXP.CreatureLevel)
             {
                 case 1:
                     this.Level2();
@@ -267,12 +267,12 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         {
             List<string> levelUpReport = new List<string> {"Level up report: ", "Title: Faithless", "HP: +  1d10 +2", "AC: +1", "To hit: +1", "+20% poison resistance.", "+30% hide in shadows", "+30% walk silently"};
 
-            this.Attributes.PoisonResistence += 20;
-            this.Abilities.HideInShadows += 30;
-            this.Abilities.WalkSilently += 30;
-            this.Attributes.MaxHealth += Dice.RollDice(new Dice.Die(1, 10, 2));
-            this.Attributes.ToHit++;
-            this.Attributes.AC++;
+            this.Attributes.BasePoisonResistance += 20;
+            this.Abilities.BaseHideInShadows += 30;
+            this.Abilities.BaseWalkSilently += 30;
+            this.Attributes.BaseHealth += Dice.RollDice(new Dice.Die(1, 10, 2));
+            this.Attributes.BaseToHit++;
+            this.Attributes.BaseAC++;
             this.Title = "Faithless";
             Util.WriteLine(levelUpReport);
         }
@@ -285,8 +285,8 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> {"Title: Faithful", "AC: +1", "+20% fire resistance"};
 
             this.Title = "Faithful";
-            ++this.Attributes.AC;
-            this.Attributes.FireResistence += 20;
+            ++this.Attributes.BaseAC;
+            this.Attributes.BaseFireResistance += 20;
 
             Util.WriteLine(levelUpReport);
         }
@@ -298,10 +298,10 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         {
             List<string> levelUpReport = new List<string> { "Apprentice", "AC: +1", "To hit +1", "+5% hide in shadows", "+5% walk silently"};
 
-            this.Abilities.HideInShadows += 5;
-            this.Abilities.WalkSilently += 5;
-            ++this.Attributes.ToHit;
-            ++this.Attributes.AC;
+            this.Abilities.BaseHideInShadows += 5;
+            this.Abilities.BaseWalkSilently += 5;
+            ++this.Attributes.BaseToHit;
+            ++this.Attributes.BaseAC;
             this.Title = "Apprentice";
 
             Util.WriteLine(levelUpReport);
@@ -315,8 +315,8 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Faithful Apprentice", "+1 stunning blow", "Fist: 1d10", "AC: +1"};
 
             this.Title = "Faithful Apprentice";
-            this.Abilities.MaxStunningBlows++;
-            ++this.Attributes.AC;
+            this.Abilities.BaseStunningBlows++;
+            ++this.Attributes.BaseAC;
             this.BareHands.FistDamage.BluntDamage = new Dice.Die(1, 10, 0);
 
             Util.WriteLine(levelUpReport);
@@ -330,11 +330,11 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Novice", "+20% cold resistance", "+5% hide in shadows", "+5% walk silently", "To hit: +1", "Ac: +1" };
 
             this.Title = "Novice";
-            this.Attributes.ColdResistence += 20;
-            this.Abilities.HideInShadows += 5;
-            this.Abilities.WalkSilently += 5;
-            ++this.Attributes.ToHit;
-            ++this.Attributes.AC;
+            this.Attributes.BaseColdResistance += 20;
+            this.Abilities.BaseHideInShadows += 5;
+            this.Abilities.BaseWalkSilently += 5;
+            ++this.Attributes.BaseToHit;
+            ++this.Attributes.BaseAC;
 
             Util.WriteLine(levelUpReport);
         }
@@ -347,8 +347,8 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Brother", "+20% resistance to sleep", "AC: +1"};
 
             this.Title = "Brother";
-            this.Attributes.SleepResistence += 20;
-            ++this.Attributes.AC;
+            this.Attributes.BaseSleepResistance += 20;
+            ++this.Attributes.BaseAC;
 
             Util.WriteLine(levelUpReport);
         }
@@ -361,11 +361,11 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Faithful Brother", "+20% resistance to charms", "+5% hide in shadows", "+5% walk silently", "To hit +1", "AC: +1"};
 
             this.Title = "Faithful Brother";
-            this.Attributes.CharmResistence += 20;
-            this.Abilities.HideInShadows += 5;
-            this.Abilities.WalkSilently += 5;
-            ++this.Attributes.ToHit;
-            ++this.Attributes.AC;
+            this.Attributes.BaseCharmResistance += 20;
+            this.Abilities.BaseHideInShadows += 5;
+            this.Abilities.BaseWalkSilently += 5;
+            ++this.Attributes.BaseToHit;
+            ++this.Attributes.BaseAC;
 
             Util.WriteLine(levelUpReport);
         }
@@ -378,9 +378,9 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Disciple", "+5% magic resistance", "Fist: 1d10 +1", "AC: +1"};
 
             this.Title = "Disciple";
-            this.Attributes.MagicResistence += 5;
+            this.Attributes.BaseMagicResistance += 5;
             this.BareHands.FistDamage.BluntDamage = new Dice.Die(1, 10, 1);
-            this.Attributes.AC++;
+            this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
         }
@@ -393,12 +393,12 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Faithful Disciple", "+10% dodge", "+1 stunning blow", "+5% hide in shadows", "+5% walk silently", "To hit: +1", "AC: +1" };
 
             this.Title = "Faithful Disciple";
-            this.Attributes.Dodge += 10;
-            this.Abilities.MaxStunningBlows++;
-            this.Abilities.HideInShadows += 5;
-            this.Abilities.WalkSilently += 5;
-            this.Attributes.ToHit++;
-            this.Attributes.AC++;
+            this.Attributes.BaseDodge += 10;
+            this.Abilities.BaseStunningBlows++;
+            this.Abilities.BaseHideInShadows += 5;
+            this.Abilities.BaseWalkSilently += 5;
+            this.Attributes.BaseToHit++;
+            this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
         }
@@ -411,8 +411,8 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Elite Disciple", "AC: +1", "+5% magic resistance" };
 
             this.Title = "Elite Disciple";
-            this.Attributes.AC++;
-            this.Attributes.MagicResistence += 5;
+            this.Attributes.BaseAC++;
+            this.Attributes.BaseMagicResistance += 5;
 
             Util.WriteLine(levelUpReport);
         }
@@ -425,10 +425,10 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Master", "+5% hide in shadows", "+5% walk silently", "To hit: +1", "AC: +1"};
 
             this.Title = "Master";
-            this.Abilities.HideInShadows += 5;
-            this.Abilities.WalkSilently += 5;
-            this.Attributes.ToHit++;
-            this.Attributes.AC++;
+            this.Abilities.BaseHideInShadows += 5;
+            this.Abilities.BaseWalkSilently += 5;
+            this.Attributes.BaseToHit++;
+            this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
         }
@@ -442,8 +442,8 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
             this.Title = "Faithful Master";
             this.BareHands.FistDamage.BluntDamage = new Dice.Die(1, 12, 1);
-            this.Attributes.AC++;
-            this.Attributes.MagicResistence += 5;
+            this.Attributes.BaseAC++;
+            this.Attributes.BaseMagicResistance += 5;
 
             Util.WriteLine(levelUpReport);
         }
@@ -456,10 +456,10 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Elite Master", "+5% hide in shadows", "+5% walk silently", "To hit: +1", "AC: +1"};
 
             this.Title = "Elite Master";
-            this.Abilities.HideInShadows += 5;
-            this.Abilities.WalkSilently += 5;
-            this.Attributes.ToHit++;
-            this.Attributes.AC++;
+            this.Abilities.BaseHideInShadows += 5;
+            this.Abilities.BaseWalkSilently += 5;
+            this.Attributes.BaseToHit++;
+            this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
         }
@@ -472,11 +472,11 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Superior Master", "+5% hide in shadows", "+5% walk silently", "+1 stunning blow", "AC: +1", "+5% magic resistance"};
 
             this.Title = "Superior Master";
-            this.Abilities.HideInShadows += 5;
-            this.Abilities.WalkSilently += 5;
-            this.Abilities.MaxStunningBlows++;
-            this.Attributes.AC++;
-            this.Attributes.MagicResistence += 5;
+            this.Abilities.BaseHideInShadows += 5;
+            this.Abilities.BaseWalkSilently += 5;
+            this.Abilities.BaseStunningBlows++;
+            this.Attributes.BaseAC++;
+            this.Attributes.BaseMagicResistance += 5;
 
             Util.WriteLine(levelUpReport);
         }
@@ -490,8 +490,8 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
             this.Title = "Dragonmaster";
             this.BareHands.FistDamage.BluntDamage = new Dice.Die(1, 12, 2);
-            this.Attributes.ToHit++;
-            this.Attributes.AC++;
+            this.Attributes.BaseToHit++;
+            this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
         }
@@ -504,10 +504,10 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Master of the North Wind", "+5% hide in shadows", "+5% walk silently", "AC: +1", "+5% magic resistance"};
 
             this.Title = "Master of the North Wind";
-            this.Abilities.HideInShadows += 5;
-            this.Abilities.WalkSilently += 5;
-            this.Attributes.AC++;
-            this.Attributes.MagicResistence += 5;
+            this.Abilities.BaseHideInShadows += 5;
+            this.Abilities.BaseWalkSilently += 5;
+            this.Attributes.BaseAC++;
+            this.Attributes.BaseMagicResistance += 5;
 
             Util.WriteLine(levelUpReport);
         }
@@ -520,9 +520,9 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Master of the West Wind", "Immunity to Non Magical Weapons", "TH: +1", "AC: +1" };
 
             this.Title = "Master of the West Wind";
-            this.Abilities.ImmunityToNonMagicWeapons = true;
-            this.Attributes.ToHit++;
-            this.Attributes.AC++;
+            this.Abilities.BaseImmunityToNonMagicWeapons = true;
+            this.Attributes.BaseToHit++;
+            this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
         }
@@ -536,10 +536,10 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
             this.Title = "Master of the South Wind";
             this.BareHands.FistDamage.BluntDamage = new Dice.Die(1, 14, 3);
-            this.Abilities.HideInShadows += 5;
-            this.Abilities.WalkSilently += 5;
-            this.Attributes.AC++;
-            this.Attributes.MagicResistence += 5;
+            this.Abilities.BaseHideInShadows += 5;
+            this.Abilities.BaseWalkSilently += 5;
+            this.Attributes.BaseAC++;
+            this.Attributes.BaseMagicResistance += 5;
 
             Util.WriteLine(levelUpReport);
         }
@@ -552,11 +552,11 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Master of the East Wind", "+1 stunning blow", "TH: +1", "+5% hide in shadows", "+5% walk silently", "AC: +1" };
 
             this.Title = "Master of the East Wind";
-            this.Abilities.MaxStunningBlows++;
-            this.Attributes.ToHit++;
-            this.Abilities.HideInShadows += 5;
-            this.Abilities.WalkSilently += 5;
-            this.Attributes.AC++;
+            this.Abilities.BaseStunningBlows++;
+            this.Attributes.BaseToHit++;
+            this.Abilities.BaseHideInShadows += 5;
+            this.Abilities.BaseWalkSilently += 5;
+            this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
         }
@@ -570,8 +570,8 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
             this.Title = "Master of Winter";
             this.BareHands.FistDamage.BluntDamage = new Dice.Die(1, 16, 3);
-            this.Attributes.AC++;
-            this.Attributes.MagicResistence += 5;
+            this.Attributes.BaseAC++;
+            this.Attributes.BaseMagicResistance += 5;
 
             Util.WriteLine(levelUpReport);
         }
@@ -584,10 +584,10 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Master of Autumn", "+5% hide in shadows", "+5% walk silently", "TH: +1", "AC: +1" };
 
             this.Title = "Master of Autumn";
-            this.Abilities.HideInShadows += 5;
-            this.Abilities.WalkSilently += 5;
-            this.Attributes.ToHit++;
-            this.Attributes.AC++;
+            this.Abilities.BaseHideInShadows += 5;
+            this.Abilities.BaseWalkSilently += 5;
+            this.Attributes.BaseToHit++;
+            this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
         }
@@ -601,8 +601,8 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
             this.Title = "Master of Summer";
             this.BareHands.FistDamage.BluntDamage = new Dice.Die(1, 18, 3);
-            this.Attributes.AC++;
-            this.Attributes.MagicResistence += 5;
+            this.Attributes.BaseAC++;
+            this.Attributes.BaseMagicResistance += 5;
 
             Util.WriteLine(levelUpReport);
         }
@@ -615,10 +615,10 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Master of Spring", "+5% hide in shadows", "+5% walk silently", "TH: +1", "AC: +1" };
 
             this.Title = "Master of Spring";
-            this.Abilities.HideInShadows += 5;
-            this.Abilities.WalkSilently += 5;
-            this.Attributes.ToHit++;
-            this.Attributes.AC++;
+            this.Abilities.BaseHideInShadows += 5;
+            this.Abilities.BaseWalkSilently += 5;
+            this.Attributes.BaseToHit++;
+            this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
         }
@@ -632,8 +632,8 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
             this.Title = "Student of the Oceans";
             this.BareHands.FistDamage.BluntDamage = new Dice.Die(1, 20, 3);
-            this.Abilities.MaxStunningBlows++;
-            this.Attributes.AC++;
+            this.Abilities.BaseStunningBlows++;
+            this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
         }
@@ -646,11 +646,11 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Equal of the Oceans", "+5% hide in shadows", "+5% walk silently", "TH: +1", "AC: +1", "+5% magic resistance" };
 
             this.Title = "Equal of the Oceans";
-            this.Abilities.HideInShadows += 5;
-            this.Abilities.WalkSilently += 5;
-            this.Attributes.ToHit++;
-            this.Attributes.AC++;
-            this.Attributes.MagicResistence += 5;
+            this.Abilities.BaseHideInShadows += 5;
+            this.Abilities.BaseWalkSilently += 5;
+            this.Attributes.BaseToHit++;
+            this.Attributes.BaseAC++;
+            this.Attributes.BaseMagicResistance += 5;
 
             Util.WriteLine(levelUpReport);
         }
@@ -663,9 +663,9 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Master of the Oceans", "Breath Water", "Fist: 1d20 +4", "AC: +1" };
 
             this.Title = "Master of the Oceans";
-            this.Abilities.BreathWater = true;
+            this.Abilities.BaseBreathWater = true;
             this.BareHands.FistDamage.BluntDamage = new Dice.Die(1, 20, 4);
-            this.Attributes.AC++;
+            this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
         }
@@ -678,11 +678,11 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Eldritch Apprentice", "+5% hide in shadows", "+5% walk silently", "TH: +1", "AC: +1", "+5% magic resistance" };
 
             this.Title = "Eldritch Apprentice";
-            this.Abilities.HideInShadows += 5;
-            this.Abilities.WalkSilently += 5;
-            this.Attributes.ToHit++;
-            this.Attributes.AC++;
-            this.Attributes.MagicResistence += 5;
+            this.Abilities.BaseHideInShadows += 5;
+            this.Abilities.BaseWalkSilently += 5;
+            this.Attributes.BaseToHit++;
+            this.Attributes.BaseAC++;
+            this.Attributes.BaseMagicResistance += 5;
 
             Util.WriteLine(levelUpReport);
         }
@@ -696,7 +696,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
             this.Title = "Eldritch Master";
             this.BareHands.FistDamage.BluntDamage = new Dice.Die(1, 20, 5);
-            this.Attributes.AC++;
+            this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
         }
@@ -709,9 +709,9 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Windwalker", "TH: +1", "AC: +1", "+5% magic resistance" };
 
             this.Title = "Windwalker";
-            this.Attributes.ToHit++;
-            this.Attributes.AC++;
-            this.Attributes.MagicResistence += 5;
+            this.Attributes.BaseToHit++;
+            this.Attributes.BaseAC++;
+            this.Attributes.BaseMagicResistance += 5;
 
             Util.WriteLine(levelUpReport);
         }
@@ -726,7 +726,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             this.Title = "Elder";
             this.BareHands.FistDamage.BluntDamage = new Dice.Die(1, 20, 5);
             this.BareHands.FistDamage.FireDamage = new Dice.Die(1, 4, 0);
-            this.Attributes.AC++;
+            this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
         }
@@ -739,9 +739,9 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Sacred Elder", "TH: +1", "AC: +1", "+5% magic resistance" };
 
             this.Title = "Sacred Elder";
-            this.Attributes.ToHit++;
-            this.Attributes.AC++;
-            this.Attributes.MagicResistence += 5;
+            this.Attributes.BaseToHit++;
+            this.Attributes.BaseAC++;
+            this.Attributes.BaseMagicResistance += 5;
 
             Util.WriteLine(levelUpReport);
         }
@@ -754,7 +754,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Divinely Guided", "AC: +1" };
 
             this.Title = "Divinely Guided";
-            this.Attributes.AC++;
+            this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
         }
@@ -767,9 +767,9 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> {  "Title: Mistwalker", "TH: +1", "AC: +1", "+5% magic resistance" };
 
             this.Title = "Mistwalker";
-            this.Attributes.ToHit++;
-            this.Attributes.AC++;
-            this.Attributes.MagicResistence += 5;
+            this.Attributes.BaseToHit++;
+            this.Attributes.BaseAC++;
+            this.Attributes.BaseMagicResistance += 5;
 
             Util.WriteLine(levelUpReport);
         }
@@ -783,8 +783,8 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
             this.Title = "Blinding Light";
             this.BareHands.FistDamage.FireDamage = new Dice.Die(1, 6, 0);
-            this.Abilities.MaxStunningBlows++;
-            this.Attributes.AC++;
+            this.Abilities.BaseStunningBlows++;
+            this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
         }
@@ -798,7 +798,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
             this.Title = "Faithful Soldier";
             this.BareHands.FistDamage.FireDamage = new Dice.Die(1, 8, 1);
-            this.Attributes.AC++;
+            this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
         }
@@ -812,7 +812,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
             this.Title = "Faithful Leader";
             this.BareHands.FistDamage.FireDamage = new Dice.Die(1, 8, 1);
-            this.Attributes.AC++;
+            this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
         }
@@ -825,9 +825,9 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Chosen One", "TH: +1", "AC: +1", "+5% magic resistance" };
 
             this.Title = "Chosen One";
-            this.Attributes.ToHit++;
-            this.Attributes.AC++;
-            this.Attributes.MagicResistence += 5;
+            this.Attributes.BaseToHit++;
+            this.Attributes.BaseAC++;
+            this.Attributes.BaseMagicResistance += 5;
 
             Util.WriteLine(levelUpReport);
         }
@@ -841,8 +841,8 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
             this.Title = "Divine Servant";
             this.BareHands.FistDamage.FireDamage = new Dice.Die(1, 10, 1);
-            this.Abilities.ImmunityToPoison = true;
-            this.Attributes.AC++;
+            this.Abilities.BaseImmunityToPoison = true;
+            this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
         }
@@ -855,10 +855,10 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Beacon of Faith", "+1 stunning blow", "AC: +1", "TH: +1", "+5% magic resistance" };
 
             this.Title = "Beacon of Faith";
-            this.Abilities.MaxStunningBlows++;
-            this.Attributes.AC++;
-            this.Attributes.ToHit++;
-            this.Attributes.MagicResistence += 5;
+            this.Abilities.BaseStunningBlows++;
+            this.Attributes.BaseAC++;
+            this.Attributes.BaseToHit++;
+            this.Attributes.BaseMagicResistance += 5;
 
             Util.WriteLine(levelUpReport);
         }
@@ -872,7 +872,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
             this.Title = "Beacon of Hope";
             this.BareHands.FistDamage.FireDamage = new Dice.Die(1, 14, 2);
-            this.Attributes.AC++;
+            this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
         }
@@ -885,8 +885,8 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Hero", "TH: +1", "AC: +1" };
 
             this.Title = "Hero";
-            this.Attributes.ToHit++;
-            this.Attributes.AC++;
+            this.Attributes.BaseToHit++;
+            this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
         }
@@ -900,7 +900,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
             this.Title = "Renown Hero";
             this.BareHands.FistDamage.FireDamage = new Dice.Die(1, 16, 3);
-            this.Attributes.AC++;
+            this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
         }
@@ -913,8 +913,8 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Legendary Hero", "TH: +1", "AC: +1" };
 
             this.Title = "Legendary Hero";
-            this.Attributes.ToHit++;
-            this.Attributes.AC++;
+            this.Attributes.BaseToHit++;
+            this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
         }
@@ -928,8 +928,8 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
             this.Title = "Inspiring Legend";
             this.BareHands.FistDamage.FireDamage = new Dice.Die(1, 20, 4);
-            this.Abilities.MaxStunningBlows++;
-            this.Attributes.AC++;
+            this.Abilities.BaseStunningBlows++;
+            this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
         }
@@ -943,8 +943,8 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
             this.Title = "Grandmaster";
             this.Abilities.ImmunityToCharm = true;
-            this.Attributes.AC++;
-            this.Attributes.ToHit++;
+            this.Attributes.BaseAC++;
+            this.Attributes.BaseToHit++;
 
             Util.WriteLine(levelUpReport);
         }
@@ -958,8 +958,8 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
             this.Title = "Elder Grandmaster";
             this.BareHands.FistDamage.FireDamage = new Dice.Die(1, 20, 5);
-            this.Attributes.ToHit++;
-            this.Attributes.AC++;
+            this.Attributes.BaseToHit++;
+            this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
         }
@@ -972,8 +972,8 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Divine Apprentice", "TH: +1", "AC: +1" };
 
             this.Title = "Divine Apprentice";
-            this.Attributes.ToHit++;
-            this.Attributes.AC++;
+            this.Attributes.BaseToHit++;
+            this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
         }
@@ -992,7 +992,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             this.Summonable.Add(new LesserAngel());
             this.BareHands.FistDamage.BluntDamage = new Dice.Die(1, 24, 5);
             this.BareHands.FistDamage.FireDamage = new Dice.Die(1, 20, 5);
-            this.Attributes.AC++;
+            this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
         }
@@ -1008,13 +1008,13 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
             this.Title = "Lesser Divinity";
             this.BareHands.FistDamage.FireDamage = new Dice.Die(1, 24, 5);
-            this.Attributes.AC++;
-            this.Attributes.Dexterity += 3;
-            this.Attributes.Strength += 3;
-            this.Attributes.Charisma++;
-            this.Attributes.Wisdom++;
-            this.Attributes.Constitution += 3;
-            this.Attributes.MaxHealth += Dice.RollDice(new Dice.Die(5, 10, 0));
+            this.Attributes.BaseAC++;
+            this.Attributes.BaseDexterity += 3;
+            this.Attributes.BaseStrength += 3;
+            this.Attributes.BaseCharisma++;
+            this.Attributes.BaseWisdom++;
+            this.Attributes.BaseConstitution += 3;
+            this.Attributes.BaseHealth += Dice.RollDice(new Dice.Die(5, 10, 0));
 
             Util.WriteLine(levelUpReport);
         }
@@ -1031,9 +1031,9 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             this.Summonable.Add(new LesserAngel());
             this.Summonable.Add(new LesserAngel());
             this.Summonable.Add(new LesserAngel());
-            this.Abilities.MaxStunningBlows++;
-            this.Attributes.ToHit++;
-            this.Attributes.AC++;
+            this.Abilities.BaseStunningBlows++;
+            this.Attributes.BaseToHit++;
+            this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
         }

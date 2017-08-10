@@ -36,32 +36,33 @@
             int sleepResistence, bool needsOxygen, int initiative, int toHit, int dodge)
         {
             this.Gender = gender;
-            this.AC = AC;
-            this.MaxHealth = maxHealth;
+            this.BaseAC = AC;
+            this.BaseHealth = maxHealth;
             this.Health = health;
-            this.Dexterity = dexterity;
-            this.Strength = strength;
-            this.Constitution = constitution;
-            this.Charisma = charisma;
-            this.Wisdom = wisdom;
-            this.Xp = xp;
-            this.FireResistence = fireResistence;
-            this.AcidResistence = acidResistence;
-            this.PoisonResistence = poisonResistence;
-            this.ElectricResistence = electricResistence;
-            this.ColdResistence = coldResistence;
-            this.MagicResistence = magicResistence;
-            this.CharmResistence = charmResistence;
-            this.SleepResistence = sleepResistence;
+            this.BaseDexterity = dexterity;
+            this.BaseStrength = strength;
+            this.BaseConstitution = constitution;
+            this.BaseCharisma = charisma;
+            this.BaseWisdom = wisdom;
+            this.BaseXP = xp;
+            this.BaseFireResistance = fireResistence;
+            this.BaseAcidResistance = acidResistence;
+            this.BasePoisonResistance = poisonResistence;
+            this.BaseElectricResistance = electricResistence;
+            this.BaseColdResistance = coldResistence;
+            this.BaseMagicResistance = magicResistence;
+            this.BaseCharmResistance = charmResistence;
+            this.BaseSleepResistance = sleepResistence;
             this.NeedsOxygen = needsOxygen;
-            this.Initiative = initiative;
-            this.ToHit = toHit;
-            this.Dodge = dodge;
+            this.BaseInitiative = initiative;
+            this.BaseToHit = toHit;
+            this.BaseDodge = dodge;
         }
 
         /// <summary>
         /// The chance that we will successfully hit with the currently equipped weapon.
         /// </summary>
+        public int BaseToHit;
         public int ToHit;
 
         /// <summary>
@@ -74,12 +75,13 @@
         /// Damage is reduced by armor class after resistances.
         /// Damage taken is calculated by the following: Damage (After resistance calculations) * AC%.
         /// </summary>
+        public int BaseAC;
         public int AC;
 
         /// <summary>
         /// The maximum health of the creature.
         /// </summary>
-        public int MaxHealth;
+        public int BaseHealth;
 
         /// <summary>
         /// The actual health of the creature.
@@ -89,34 +91,40 @@
         /// <summary>
         /// The dexterity of the creature.
         /// </summary>
+        public int BaseDexterity;
         public int Dexterity;
 
         /// <summary>
         /// The strength of the creature.
         /// </summary>
+        public int BaseStrength;
         public int Strength;
 
         /// <summary>
         /// The constitution of the creature.
         /// Constitution affects how many hit points the creature can get.
         /// </summary>
+        public int BaseConstitution;
         public int Constitution;
 
         /// <summary>
         /// The charisma of the creature.
         /// The ability of the creature to sway others.
         /// </summary>
+        public int BaseCharisma;
         public int Charisma;
 
         /// <summary>
         /// The creature's wisdom.
         /// </summary>
+        public int BaseWisdom;
         public int Wisdom;
 
         /// <summary>
         /// Xp information about the creature.
         /// </summary>
-        public XP Xp;
+        public XP BaseXP;
+        public XP XP;
 
         /// <summary>
         /// How much weight the creature can carry around.
@@ -128,42 +136,50 @@
         /// <summary>
         /// The resistance of the creature to fire.
         /// </summary>
-        public int FireResistence;
+        public int BaseFireResistance;
+        public int FireResistance;
 
         /// <summary>
         /// The resistance of the creature to acid.
         /// </summary>
-        public int AcidResistence;
+        public int BaseAcidResistance;
+        public int AcidResistance;
 
         /// <summary>
         /// The resistance of the creature to poison.
         /// </summary>
-        public int PoisonResistence;
+        public int BasePoisonResistance;
+        public int PoisonResistance;
 
         /// <summary>
         /// The resistance of the creature to electricity.
         /// </summary>
-        public int ElectricResistence;
+        public int BaseElectricResistance;
+        public int ElectricResistance;
 
         /// <summary>
         /// The resistance of the creature to cold.
         /// </summary>
-        public int ColdResistence;
+        public int BaseColdResistance;
+        public int ColdResistance;
 
         /// <summary>
         /// The resistance of the creature to magic.
         /// </summary>
-        public int MagicResistence;
+        public int BaseMagicResistance;
+        public int MagicResistance;
 
         /// <summary>
         /// The resistance of the creature to charms.
         /// </summary>
-        public int CharmResistence;
+        public int BaseCharmResistance;
+        public int CharmResistance;
 
         /// <summary>
         /// The resistance of the creature to sleep (spells and abilities).
         /// </summary>
-        public int SleepResistence;
+        public int BaseSleepResistance;
+        public int SleepResistance;
 
         #endregion Resistances
 
@@ -175,11 +191,13 @@
         /// <summary>
         /// Used to determine the order of creature action.
         /// </summary>
+        public int BaseInitiative;
         public int Initiative;
 
         /// <summary>
         /// The chance that the creature will dodge.
         /// </summary>
+        public int BaseDodge;
         public int Dodge;
     }
 }

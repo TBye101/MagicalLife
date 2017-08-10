@@ -29,14 +29,24 @@ namespace EarthWithMagicAPI.API.Creature
     public abstract class ICreature
     {
         /// <summary>
-        /// A list of the creatures that this creature can summon right now, via abilities.
+        /// A list of the creatures that this creature can summon when rested, via abilities.
         /// </summary>
         public List<ICreature> Summonable = new List<ICreature>();
 
         /// <summary>
+        /// A list of the creatures that this creature can summon right now, via abilities.
+        /// </summary>
+        public List<ICreature> ActuallySummonable = new List<ICreature>();
+
+        /// <summary>
         /// A list of all spells known to the creature.
         /// </summary>
-        public List<ISpell> SpellsAvailible = new List<ISpell>();
+        public List<ISpell> SpellsKnown = new List<ISpell>();
+
+        /// <summary>
+        /// A list of the spells that this creature can actually use right now.
+        /// </summary>
+        public List<ISpell> UsableSpells = new List<ISpell>();
 
         /// <summary>
         /// If true, the creature is part of the player's party.
@@ -185,6 +195,12 @@ namespace EarthWithMagicAPI.API.Creature
         /// Raised whenever a creature is healed.
         /// </summary>
         public event EventHandler<ICreature> CreatureHealed;
+
+        /// <summary>
+        /// Raised whenever a creature is summoned.
+        /// <ICreature>The creature that was summoned.</ICreature>
+        /// </summary>
+        public event EventHandler<ICreature> CreatureSummoned;
 
         /// <summary>
         /// Determines based on gender if we should be referring to this creature as a him/her/it.

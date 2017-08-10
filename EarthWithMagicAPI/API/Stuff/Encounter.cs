@@ -22,7 +22,7 @@ namespace EarthWithMagicAPI.API.Stuff
         {
             this.AllCombatants.AddRange(friendly);
             this.AllCombatants.AddRange(enemies);
-            this.AllCombatants = this.AllCombatants.OrderByDescending(ICreature => ICreature.GetAttributes().Initiative).ToList();
+            this.AllCombatants = this.AllCombatants.OrderByDescending(ICreature => ICreature.GetAttributes().BaseInitiative).ToList();
 
             while (!IsEveryoneDead(friendly) && !IsEveryoneDead(enemies))
             {
