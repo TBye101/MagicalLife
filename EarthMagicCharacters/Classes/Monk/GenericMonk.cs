@@ -222,7 +222,17 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         {
             if (!dead.IsHostile() && Dice.RollDice(new Die(1, 100, 0)) > 80)
             {
-                Console.WriteLine("We have lost a comrade today. No matter " + dead.HimHerIT() + "'s personal struggles, " + dead.HimHerIT() + " was a valuable member of this party.");
+                switch (Dice.RollDice(new Die(1, 2, 0)))
+                {
+                    case 1:
+                        Console.WriteLine("We have lost a comrade today. No matter " + dead.HimHerIT() + "'s personal struggles, " + dead.HimHerIT() + " was a valuable member of this party.");
+                        break;
+                    case 2:
+                        Console.Write(dead.HeSheIT() + "was a friend. " + dead.HeSheIT() + " will be remembered.");
+                        break;
+                    default:
+                        throw new Exception("Error! Switch not handled!");
+                }
             }
         }
 

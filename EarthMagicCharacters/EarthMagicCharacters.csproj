@@ -17,34 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Classes\Bard\Standard Bard\" />
-    <Folder Include="Classes\Cleric\Necromancer\" />
-    <Folder Include="Classes\Cleric\Generic Cleric\" />
-    <Folder Include="Classes\Cleric\Sun Touched\" />
-    <Folder Include="Classes\Druid\Cold\" />
-    <Folder Include="Classes\Druid\Electric\" />
-    <Folder Include="Classes\Druid\Fire\" />
-    <Folder Include="Classes\Druid\Life\" />
-    <Folder Include="Classes\Druid\Water\" />
-    <Folder Include="Classes\Fighter\Knight\" />
-    <Folder Include="Classes\Fighter\Barbarian\" />
-    <Folder Include="Classes\Fighter\Generic Fighter\" />
-    <Folder Include="Classes\Witch\" />
-    <Folder Include="Classes\Ranger\Beastmaster\" />
-    <Folder Include="Classes\Ranger\Herbalist\" />
-    <Folder Include="Classes\Ranger\Marksman\" />
-    <Folder Include="Classes\Ranger\Scout\" />
-    <Folder Include="Classes\Shape Shifter\Generic Shape Shifter\" />
-    <Folder Include="Classes\Thief\Generic Thief\" />
-    <Folder Include="Classes\Thief\Gymnist\" />
-    <Folder Include="Classes\Thief\Shadewalker\" />
-    <Folder Include="Classes\Wizard\Elementalist\" />
-    <Folder Include="Classes\Wizard\Generic Wizard\" />
-    <Folder Include="Classes\Wizard\Illusionist\" />
-    <Folder Include="Classes\Wizard\Planeswalker\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\EarthMagicCreatures\EarthMagicCreatures.csproj" />
     <ProjectReference Include="..\EarthWithMagicAPI\EarthWithMagicAPI.csproj" />
   </ItemGroup>

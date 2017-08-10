@@ -5,6 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Armor\Cloaks\" />
+    <Folder Include="Armor\Robes\" />
+    <Folder Include="Potions\" />
     <Folder Include="Rings\Rings of Protection\" />
     <Folder Include="Rings\Rings of Resistence\Ring Of Magic Resistence\" />
     <Folder Include="Rings\Rings of Resistence\Ring Of Cold Resistence\" />

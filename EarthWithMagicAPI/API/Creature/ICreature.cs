@@ -224,6 +224,22 @@ namespace EarthWithMagicAPI.API.Creature
             return "IT";
         }
 
+        public string HeSheIT()
+        {
+            if (this.GetAttributes().Gender == Gender.Male)
+            {
+                return "Him";
+            }
+            if (this.GetAttributes().Gender == Gender.Female)
+            {
+                return "She";
+            }
+            else
+            {
+                return "It";
+            }
+        }
+
         /// <summary>
         /// The default constructor for this class. Must be called on initialization.
         /// </summary>
