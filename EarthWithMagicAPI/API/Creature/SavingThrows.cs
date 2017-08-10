@@ -75,6 +75,15 @@
         /// </summary>
         public int SaveVsFear;
 
-        public SavingThrows()
+        public SavingThrows(int baseDexteritySave, int baseStrengthSave, int baseConstitutionSave, int baseCharismaSave, int baseWisdomSave, int baseSaveVsDeath, int baseSaveVsFear)
+        {
+            this.BaseDexteritySave = baseDexteritySave;
+            this.BaseStrengthSave = baseStrengthSave;
+            this.BaseConstitutionSave = baseConstitutionSave;
+            this.BaseCharismaSave = baseCharismaSave;
+            this.BaseWisdomSave = baseWisdomSave;
+            this.BaseSaveVsDeath = baseSaveVsDeath;
+            this.BaseSaveVsFear = baseSaveVsFear;
+        }
     }
 }
