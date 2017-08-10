@@ -719,7 +719,14 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level30()
         {
-            List<string> levelUpReport = new List<string> {   };
+            List<string> levelUpReport = new List<string> { "Title: Windwalker", "TH: +1", "AC: +1", "+5% magic resistance" };
+
+            this.Title = "Windwalker";
+            this.Attributes.ToHit++;
+            this.Attributes.AC++;
+            this.Attributes.MagicResistence += 5;
+
+            Util.WriteLine(levelUpReport);
         }
 
         /// <summary>
