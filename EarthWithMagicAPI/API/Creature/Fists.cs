@@ -11,8 +11,8 @@ namespace EarthWithMagicAPI.API.Creature
         /// <summary>
         /// The damage of the fists.
         /// </summary>
-        public Damage FistDamage = new Damage(new Util.Dice.Die(0, 0, 0), new Util.Dice.Die(0, 0, 0), new Util.Dice.Die(0, 0, 0), new Util.Dice.Die(0, 0, 0), new Util.Dice.Die(0, 0, 0), new Util.Dice.Die(0, 0, 0),
-                new Util.Dice.Die(0, 0, 0), new Util.Dice.Die(0, 0, 0), new Util.Dice.Die(1, 4, 0));
+        public Damage FistDamage = new Damage(new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0),
+                new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(1, 4, 0));
         public Fists()
         {
             this.IsEquipped = false;
@@ -36,6 +36,11 @@ namespace EarthWithMagicAPI.API.Creature
         }
 
         public override void Equip()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override StatsImpact EquipImpact()
         {
             throw new NotImplementedException();
         }

@@ -52,6 +52,11 @@ namespace EarthMagicItems.Armor
         {
         }
 
+        public override StatsImpact EquipImpact()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void Sold()
         {
         }

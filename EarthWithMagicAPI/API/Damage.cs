@@ -10,52 +10,52 @@ namespace EarthWithMagicAPI.API
         /// <summary>
         /// How much acid damage to deal.
         /// </summary>
-        public Dice.Die AcidDamage;
+        public Die AcidDamage;
 
         /// <summary>
         /// How much poison damage is dealt every turn.
         /// </summary>
-        public Dice.Die PoisonDamage;
+        public Die PoisonDamage;
 
         /// <summary>
         /// How much electric damage to deal.s
         /// </summary>
-        public Dice.Die ElectricDamage;
+        public Die ElectricDamage;
 
         /// <summary>
         /// How much fire damage to deal.
         /// </summary>
-        public Dice.Die FireDamage;
+        public Die FireDamage;
 
         /// <summary>
         /// How much cold damage to deal.
         /// </summary>
-        public Dice.Die ColdDamage;
+        public Die ColdDamage;
 
         /// <summary>
         /// How much pure magic damage.
         /// </summary>
-        public Dice.Die MagicDamage;
+        public Die MagicDamage;
 
         /// <summary>
         /// How much piercing damage to deal. (Ex: Arrows, stabs)
         /// </summary>
-        public Dice.Die PiercingDamage;
+        public Die PiercingDamage;
 
         /// <summary>
         /// How much slashing damage to deal. (Ex: Sword slashes)
         /// </summary>
-        public Dice.Die SlashingDamage;
+        public Die SlashingDamage;
 
         /// <summary>
         /// How much blunt damage to deal. (Ex: Rock, club)
         /// </summary>
-        public Dice.Die BluntDamage;
+        public Die BluntDamage;
 
         /// <summary>
         /// The constructor for the damage class.
         /// </summary>
-        public Damage(Dice.Die acidDamage, Dice.Die poisonDamage, Dice.Die electricDamage, Dice.Die fireDamage, Dice.Die coldDamage, Dice.Die magicDamage, Dice.Die piercingDamage, Dice.Die slashingDamage, Dice.Die bluntDamage)
+        public Damage(Die acidDamage, Die poisonDamage, Die electricDamage, Die fireDamage, Die coldDamage, Die magicDamage, Die piercingDamage, Die slashingDamage, Die bluntDamage)
         {
             this.AcidDamage = acidDamage;
             this.PoisonDamage = poisonDamage;

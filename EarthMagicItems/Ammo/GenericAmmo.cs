@@ -10,7 +10,7 @@ namespace EarthMagicItems.Ammo.Arrows
 {
     public class GenericAmmo : IAmmo
     {
-        public GenericAmmo(Dice.Die uses, bool questItem, int level, string name, int chanceToHit, Damage attackDamage, List<string> lore, List<string> otherInfo)
+        public GenericAmmo(Die uses, bool questItem, int level, string name, int chanceToHit, Damage attackDamage, List<string> lore, List<string> otherInfo)
         {
             this.Uses = uses;
             this.QuestItem = questItem;
@@ -50,6 +50,11 @@ namespace EarthMagicItems.Ammo.Arrows
 
         public override void Equip()
         {
+        }
+
+        public override StatsImpact EquipImpact()
+        {
+            throw new NotImplementedException();
         }
 
         public override void Sold()

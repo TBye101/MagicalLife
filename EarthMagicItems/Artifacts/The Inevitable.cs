@@ -19,8 +19,8 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows.Artifacts
         /// </summary>
         public The_Inevitable()
         {
-            this.AttackDamage = new Damage(new Dice.Die(2, 8, 5), new Dice.Die(2, 8, 5), new Dice.Die(2, 8, 5), new Dice.Die(2, 8, 5), new Dice.Die(2, 8, 5), new Dice.Die(2, 8, 5), new Dice.Die(2, 8, 5), new Dice.Die(0, 0, 0), new Dice.Die(0, 0, 0));
-            this.Uses = new Dice.Die(-1, -1, 0);
+            this.AttackDamage = new Damage(new Die(2, 8, 5), new Die(2, 8, 5), new Die(2, 8, 5), new Die(2, 8, 5), new Die(2, 8, 5), new Die(2, 8, 5), new Die(2, 8, 5), new Die(0, 0, 0), new Die(0, 0, 0));
+            this.Uses = new Die(-1, -1, 0);
             this.ChanceToHit = 100;
             this.QuestItem = false;
             this.Level = 11;
@@ -64,6 +64,11 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows.Artifacts
         }
 
         public override void Equip()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override StatsImpact EquipImpact()
         {
             throw new NotImplementedException();
         }

@@ -15,7 +15,7 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         /// <summary>
         /// The number of uses the ammo has.
         /// </summary>
-        public Dice.Die Uses;
+        public Die Uses;
 
         /// <summary>
         /// The base chance to hit.
