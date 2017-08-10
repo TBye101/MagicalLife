@@ -58,6 +58,8 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
         public override void LevelUp()
         {
+            this.Attributes.MaxHealth += Dice.RollDice(new Dice.Die(1, 10, 2));
+
             switch (this.Attributes.Xp.CreatureLevel)
             {
                 case 1:
