@@ -688,7 +688,16 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level28()
         {
-            List<string> levelUpReport = new List<string> {   };
+            List<string> levelUpReport = new List<string> { "Title: Eldritch Apprentice", "+5% hide in shadows", "+5% walk silently", "TH: +1", "AC: +1", "+5% magic resistance" };
+
+            this.Title = "Eldritch Apprentice";
+            this.Abilities.HideInShadows += 5;
+            this.Abilities.WalkSilently += 5;
+            this.Attributes.ToHit++;
+            this.Attributes.AC++;
+            this.Attributes.MagicResistence += 5;
+
+            Util.WriteLine(levelUpReport);
         }
 
         /// <summary>
