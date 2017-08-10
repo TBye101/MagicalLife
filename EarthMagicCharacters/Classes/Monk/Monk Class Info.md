@@ -360,19 +360,19 @@ Your service to your Faehau has been noticed. You now serve Faehau directly.
 TH (To Hit): + 1
 AC: +1
 #### 49th Level: Holy Commander
-Your deity has authorized you to command a small squadron of their troops, if necessary.
+Faehau has authorized you to command a section (4) of his troops, if necessary.
 
 Troop type: Angel.
 
 Fist: 1d24 +5, 1d20 +5 fire damage
 AC: +1
 #### 50th Level: Lesser Divinity
-Your deity has transformed you into a lesser deity, so that you might be more useful.
+Faehau has transformed you into a lesser deity, so that you might be more useful.
 
 Fist: 1d24 +5, 1d24 +5 fire damage
 AC: +1
 ### 51th Level: Divine Commander
-Your deity has authorized you to control a battalion of their troops, to perform his/her work.
+Faehau has authorized you to control a squad (8) of his troops, to perform his/her work.
 
 Receive another stunning blow.
 TH (To Hit): + 1
