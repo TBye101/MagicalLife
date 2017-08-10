@@ -248,14 +248,14 @@ Mastery of the mystical arts is not easily achievable. Only through faith might 
 Fist: 1d20 +5
 AC: +1
 #### 30th Level: Windwalker
-
+Some say that the ancient Windwalkers could walk into the wind and ride it, to great adventures.
 
 Recieve another stunning blow.
 TH (To Hit): + 1
 AC: +1
 +5% magic resistance.
 #### 31st Level: Elder
-
+Elders are widely respected, for the journey and dedication to Elder is no laughing matter.
 
 Fire: 
 Monks can use their faith to burn their enemies via touch.
@@ -263,71 +263,87 @@ Fist: 1d20 +5, 1d4 fire damage
 AC: +1
 
 #### 32nd Level: Sacred Elder
+Some Elders who have done great deeds are rewarded the title Sacred Elder, in honor of their faith and deeds.
 
 TH (To Hit): + 1
 AC: +1
 +5% magic resistance.
 #### 33rd Level: Divinely Guided
+While it is forbidden to speak of to those who have not received this title, rumor say that you must get a audience with Faehau to get this title.
 
 AC: +1
 #### 34th Level: Mistwalker
+A monk's faith can be spread across the land like mist.s
 
 TH (To Hit): + 1
 AC: +1
 +5% magic resistance.
 #### 35th Level: Blinding Light
+Your faith is strong enough to blind those who can see it.
 
 Fist: 1d20 +5, 1d6 fire damage
 Recieve another stunning blow.
 AC: +1
 #### 36th Level: Faithful Soldier
+The gods regard you as a faithful soldier of Faehau.
 
 TH (To Hit): + 1
 AC: +1
 +5% magic resistance.
 Immunity to sleep.
 #### 37th Level: Faithful Leader
+The gods regard you as a leader of monks.
 
 Fist: 1d20 +5, 1d8 +1 fire damage
 AC: +1
 #### 38th Level: Chosen One
+Faehau has chosen you, to do his work.
 
 TH (To Hit): + 1
 AC: +1
 +5% magic resistance.
 #### 39th Level: Divine Servant
+Faehau gives you missions, in addition to your worldly work.
 
 Fist: 1d20 +5, 1d10 +1 fire damage
 Immunity to Poison.
 AC: +1
 #### 40th Level: Beacon of Faith
+When the going gets hard, those of lesser faith look to yours.
 
 Receive another stunning blow.
 AC: +1
 TH (To Hit): + 1
 +5% magic resistance.
 #### 41st Level: Beacon of Hope
+Your faith is a beacon of hope. Even your presence can boost the morale of a group.
 
 Fist: 1d20 +5, 1d14 +2 fire damage.
 AC: +1
 #### 42nd Level: Hero
+Your deeds have earned you the title.
 
 TH (To Hit): + 1
 AC: +1
 #### 43rd Level: Renown Hero
+Your fame grows and spreads by rumor, but you will not be remembered forever.
 
 Fist: 1d20 +5, 1d16 +3 fire damage
 AC: +1
 #### 44th Level: Legendary Hero
+Your deeds have become the stuff of legend. Books were written about you, and children in centuries to come will learn of your deeds.
 
 TH (To Hit): + 1
 AC: +1
 #### 45th Level: Inspiring Legend
+Your presence inspires others, to the point where you can incite a army to a new level of bravery.
+
 Fist: 1d20 +5, 1d20 +4 fire damage
 
 Receive another stunning blow.
 AC: +1
 #### 46th Level: Grandmaster
+To become a Grandmaster, you must endure a combat training session with Faehau. Some monks do not survive.
 
 Immunity to charm.
 TH (To Hit): + 1
