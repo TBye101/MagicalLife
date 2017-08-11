@@ -27,48 +27,24 @@ namespace EarthWithMagicAPI.API.Creature
         /// </summary>
         public bool AOESpell;
 
+        public int MaxUses;
+        public int AvailibleUses;
+
         /// <summary>
         /// Base constructor.
         /// </summary>
         /// <param name="name"></param>
-        /// <param name="lore"></param>
-        /// <param name="otherInformation"></param>
-        /// <param name="powerRequired"></param>
+        /// <param name="DocumentationPath"></param>
+        /// <param name="Uses">The amount of uses this ability can be used right after resting.</param>
         /// <param name="AOE">Area of effect spell?</param>
-        public IAbility(string name, string DocumentationPath, bool AOE)
+        public IAbility(string name, string DocumentationPath, bool AOE, int Uses)
         {
             this.Name = name;
             this.AOESpell = AOE;
             Info = ResourceGM.GetResource(DocumentationPath);
+            this.MaxUses = Uses;
         }
 
-        /// <summary>
-        /// Called when the spell is cast on a creature.
-        /// </summary>
-        /// <param name="creature"></param>
-        public abstract void ApplyToCreature(ICreature creature, List<ICreature> Party, List<ICreature> Enemies);
-
-        /// <summary>
-        /// Applies the spell to every creature on the list that qualifies as an enemy.
-        /// </summary>
-        /// <param name="creatures"></param>
-        /// <param name="toFriendlies">Used to determine who to target. If false, it applies the spell to all of the player's enemies.</param>
-        public void ApplySpellTo(List<ICreature> Enemies, List<ICreature> Party, bool toFriendlies, IAbility ability)
-        {
-            if (toFriendlies)
-            {
-                foreach (ICreature item in Party)
-                {
-                    this.ApplyToCreature(item, Party, Enemies);
-                }
-            }
-            else
-            {
-                foreach (ICreature item in Enemies)
-                {
-                    this.ApplyToCreature(item, Party, Enemies);
-                }
-            }
-        }
+        public abstract void Go(List<ICreature> Party, List<ICreature> Enemies);
     }
 }

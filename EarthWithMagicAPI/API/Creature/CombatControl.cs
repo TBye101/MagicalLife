@@ -1,4 +1,5 @@
-﻿using EarthWithMagicAPI.API.Interfaces.Items;
+﻿using System.Linq;
+using EarthWithMagicAPI.API.Interfaces.Items;
 using EarthWithMagicAPI.API.Util;
 using EarthWithMagicAPI.API.Interfaces.Spells;
 using EarthWithMagicAPI.API.Stuff;
@@ -64,12 +65,39 @@ namespace EarthWithMagicAPI.API.Creature
 
         private static void ListAbilities(ICreature creature, Encounter encounter, string[] Command)
         {
-            throw new NotImplementedException();
+            foreach (IAbility item in creature.ClassAbilities)
+            {
+                Util.Util.WriteLine(item.Name + " [" + item.AvailibleUses.ToString() + "]");
+            }
         }
 
         private static void UseAbility(ICreature creature, Encounter encounter, string[] Command)
         {
-            throw new NotImplementedException();
+            if (Command.Length < 2)
+            {
+                Util.Util.WriteLine("Missing argument!");
+            }
+            else
+            {
+                foreach (IAbility item in creature.ClassAbilities)
+                {
+                    if (item.Name == Command[1])
+                    {
+                        if (item.AvailibleUses > 0)
+                        {
+                            item.Go(encounter.Party, encounter.Enemies);
+                        }
+                        else
+                        {
+                            Util.Util.WriteLine("Ability has been used up!");
+                        }
+
+                        return;
+                    }
+                }
+
+                Util.Util.WriteLine("Ability not found!");
+            }
         }
 
         private static void ListSpells(ICreature creature, Encounter encounter, string[] Command)

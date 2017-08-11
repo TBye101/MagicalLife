@@ -999,7 +999,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Holy Commander", "Summon 4 angels", "Fist: 1d24 +5, 1d20 +5 fire", "AC: +1" };
 
             this.Title = "Holy Commander";
-            this.ClassAbilities.Add(new SummonHolySection());
+            this.ClassAbilities.Add(new SummonHolySection(1));
             this.BareHands.FistDamage.BluntDamage = new Die(1, 24, 5);
             this.BareHands.FistDamage.FireDamage = new Die(1, 20, 5);
             this.Attributes.BaseAC++;
@@ -1037,7 +1037,15 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Divine Commander", "Summon 8 angels", "+1 stunning blow", "TH: +1", "AC: +1"};
 
             this.Title = "Divine Commander";
-            this.ClassAbilities.Add(new SummonHolySection());
+
+            foreach (IAbility item in this.ClassAbilities)
+            {
+                if (item.Name == "Summon Holy Section")
+                {
+                    item.MaxUses++;
+                }
+            }
+
             this.Abilities.BaseStunningBlows++;
             this.Attributes.BaseToHit++;
             this.Attributes.BaseAC++;

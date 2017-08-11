@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="API\Creature\Commands\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\EarthMagicDocumentation\EarthMagicDocumentation.csproj" />
   </ItemGroup>
 

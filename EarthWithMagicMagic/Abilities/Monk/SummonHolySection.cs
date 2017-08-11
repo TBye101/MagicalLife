@@ -11,7 +11,7 @@ namespace EarthWithMagicMagic.Abilities.Monk
     /// </summary>
     public class SummonHolySection : IAbility
     {
-        public SummonHolySection() : base("Summon Holy Section", "EarthMagicDocumentation.Abilities.Summon Holy Section.md", false)
+        public SummonHolySection(int uses) : base("Summon Holy Section", "EarthMagicDocumentation.Abilities.Summon Holy Section.md", false, uses)
         {
         }
 
