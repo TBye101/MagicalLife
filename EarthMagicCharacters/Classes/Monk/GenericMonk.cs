@@ -271,6 +271,11 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             throw new NotImplementedException();
         }
 
+        public override void EncounterEnded(Encounter fight)
+        {
+            throw new NotImplementedException();
+        }
+
         #region LevelUps
 
         /// <summary>

@@ -67,35 +67,9 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
         }
 
         /// <summary>
-        /// Called when the spell is cast on a creature.
+        /// Called when the spell is cast.
         /// </summary>
         /// <param name="creature"></param>
-        public abstract void ApplyToCreature(ICreature creature);
-
-        /// <summary>
-        /// Applies the spell to every creature on the list that qualifies as an enemy.
-        /// </summary>
-        /// <param name="creatures"></param>
-        /// <param name="toFriendlies">Used to determine who to target. If false, it applies the spell to all of the player's enemies.</param>
-        public static void ApplySpellTo(List<ICreature> creatures, bool toFriendlies, ISpell spell)
-        {
-            foreach (ICreature item in creatures)
-            {
-                if (toFriendlies)
-                {
-                    if (!item.IsHostile())
-                    {
-                        spell.ApplyToCreature(item);
-                    }
-                }
-                else
-                {
-                    if (item.IsHostile())
-                    {
-                        spell.ApplyToCreature(item);
-                    }
-                }
-            }
-        }
+        public abstract void Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster);
     }
 }

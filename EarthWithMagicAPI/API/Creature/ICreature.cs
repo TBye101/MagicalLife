@@ -29,6 +29,16 @@ namespace EarthWithMagicAPI.API.Creature
     public abstract class ICreature
     {
         /// <summary>
+        /// The amount of casting power the creature has after resting.
+        /// </summary>
+        public int MaxCastingPower = 0;
+
+        /// <summary>
+        /// The amount of casting power the creature currently has.
+        /// </summary>
+        public int CastingPower = 0;
+
+        /// <summary>
         /// A list of abilities the creature has.
         /// </summary>
         public List<IAbility> ClassAbilities = new List<IAbility>();
@@ -242,5 +252,11 @@ namespace EarthWithMagicAPI.API.Creature
         {
             this.WeightCapacity = WeightCapacityUtil.Calculate(this);
         }
+
+        /// <summary>
+        /// Called whenever an encounter ends, so summoned creatures can be unsummoned.
+        /// </summary>
+        /// <param name="fight"></param>
+        public abstract void EncounterEnded(Encounter fight);
     }
 }

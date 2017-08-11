@@ -69,6 +69,11 @@ namespace EarthMagicItems.Gems
         {
         }
 
+        public override void Use()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void WeaponHit(IWeapon attacker)
         {
         }

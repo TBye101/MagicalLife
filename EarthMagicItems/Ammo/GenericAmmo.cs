@@ -71,6 +71,11 @@ namespace EarthMagicItems.Ammo.Arrows
         {
         }
 
+        public override void Use()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void WeaponHit(IWeapon attacker)
         {
         }

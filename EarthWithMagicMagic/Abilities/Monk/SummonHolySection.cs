@@ -15,12 +15,17 @@ namespace EarthWithMagicMagic.Abilities.Monk
         {
         }
 
-        public override void ApplyToCreature(ICreature creature, List<ICreature> Party, List<ICreature> Enemies)
+        public override void Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster)
         {
             Party.Add(new LesserAngel());
             Party.Add(new LesserAngel());
             Party.Add(new LesserAngel());
             Party.Add(new LesserAngel());
         }
+
+        //public void ApplyToCreature(ICreature creature, List<ICreature> Party, List<ICreature> Enemies)
+        //{
+
+        //}
     }
 }

@@ -22,6 +22,11 @@ namespace EarthMagicCreatures.Creatures.Undead.Skeletons
         {
         }
 
+        public override void EncounterEnded(Encounter fight)
+        {
+            throw new NotImplementedException();
+        }
+
         public override void EquipItem(IItem item)
         {
             throw new NotImplementedException();

@@ -85,7 +85,7 @@ namespace EarthWithMagicAPI.API.Creature
                     {
                         if (item.AvailibleUses > 0)
                         {
-                            item.Go(encounter.Party, encounter.Enemies);
+                            item.Go(encounter.Party, encounter.Enemies, creature);
                         }
                         else
                         {
@@ -154,7 +154,30 @@ namespace EarthWithMagicAPI.API.Creature
 
         private static void Cast(ICreature creature, Encounter encounter, string[] Command)
         {
-            throw new NotImplementedException();
+            if (Command.Length > 1)
+            {
+                foreach (ISpell item in creature.SpellsKnown)
+                {
+                    if (item.Name == Command[1])
+                    {
+                        if (item.PowerRequired > creature.CastingPower)
+                        {
+                            Util.Util.WriteLine("Not enough casting power!");
+                        }
+                        else
+                        {
+                            creature.CastingPower -= item.PowerRequired;
+                            item.Go(encounter.Party, encounter.Enemies, creature);
+                        }
+                    }
+                }
+
+                Util.Util.WriteLine("Spell not found!");
+            }
+            else
+            {
+                Util.Util.WriteLine("Missing argument!");
+            }
         }
 
         private static void Swing(ICreature creature, Encounter encounter, string[] Command)

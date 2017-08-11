@@ -45,6 +45,6 @@ namespace EarthWithMagicAPI.API.Creature
             this.MaxUses = Uses;
         }
 
-        public abstract void Go(List<ICreature> Party, List<ICreature> Enemies);
+        public abstract void Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster);
     }
 }
