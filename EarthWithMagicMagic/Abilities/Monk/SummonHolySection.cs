@@ -27,6 +27,7 @@ namespace EarthWithMagicMagic.Abilities.Monk
 "Due to that incident, monks have become well respected fighters in Faehau's plane. Faehau granted the monk a small section (4 angels) of his army."
         }, new List<string> { "Summons 4 lesser angels." }, false)
         {
+            
         }
 
         public override void ApplyToCreature(ICreature creature, List<ICreature> Party, List<ICreature> Enemies)

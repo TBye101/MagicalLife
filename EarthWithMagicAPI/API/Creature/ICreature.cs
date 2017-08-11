@@ -31,7 +31,7 @@ namespace EarthWithMagicAPI.API.Creature
         /// <summary>
         /// A list of abilities the creature has.
         /// </summary>
-        public List<ICreature> ClassAbilities = new List<ICreature>();
+        public List<IAbility> ClassAbilities = new List<IAbility>();
 
         /// <summary>
         /// A list of all spells known to the creature.

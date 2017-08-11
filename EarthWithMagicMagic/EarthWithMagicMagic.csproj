@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EarthMagicCreatures\EarthMagicCreatures.csproj" />
+    <ProjectReference Include="..\EarthMagicDocumentation\EarthMagicDocumentation.csproj" />
     <ProjectReference Include="..\EarthWithMagicAPI\EarthWithMagicAPI.csproj" />
   </ItemGroup>
 
