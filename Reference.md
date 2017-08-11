@@ -1,3 +1,3 @@
 Faehau
     -Martial arts god
-    -Neutral alignment
+    -Lawful good alignment

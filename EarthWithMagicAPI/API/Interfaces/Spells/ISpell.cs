@@ -39,6 +39,16 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
         public bool AOESpell;
 
         /// <summary>
+        /// After resting, this is how many uses this ability could be used.
+        /// </summary>
+        public int MaxUses;
+
+        /// <summary>
+        /// The amount of uses that we have available right now.
+        /// </summary>
+        public int AvailibleUses;
+
+        /// <summary>
         /// Base constructor.
         /// </summary>
         /// <param name="name"></param>
@@ -46,13 +56,14 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
         /// <param name="otherInformation"></param>
         /// <param name="powerRequired"></param>
         /// <param name="AOE">Area of effect spell?</param>
-        public ISpell(string name, List<string> lore, List<string> otherInformation, int powerRequired, bool AOE)
+        public ISpell(string name, List<string> lore, List<string> otherInformation, int powerRequired, bool AOE, int maxUses)
         {
             this.Name = name;
             this.Lore = lore;
             this.OtherInformation = otherInformation;
             this.PowerRequired = powerRequired;
             this.AOESpell = AOE;
+            this.MaxUses = maxUses;
         }
 
         /// <summary>

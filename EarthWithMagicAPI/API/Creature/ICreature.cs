@@ -29,14 +29,9 @@ namespace EarthWithMagicAPI.API.Creature
     public abstract class ICreature
     {
         /// <summary>
-        /// A list of the creatures that this creature can summon when rested, via abilities.
+        /// A list of abilities the creature has.
         /// </summary>
-        public List<ICreature> Summonable = new List<ICreature>();
-
-        /// <summary>
-        /// A list of the creatures that this creature can summon right now, via abilities.
-        /// </summary>
-        public List<ICreature> ActuallySummonable = new List<ICreature>();
+        public List<ICreature> ClassAbilities = new List<ICreature>();
 
         /// <summary>
         /// A list of all spells known to the creature.

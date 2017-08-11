@@ -10,6 +10,11 @@ namespace EarthMagicCreatures.Creatures.Heavenly.Angels
 {
     public class LesserAngel : ICreature
     {
+        public override void EquipItem(IItem item)
+        {
+            throw new NotImplementedException();
+        }
+
         public override CreatureAttributes GetAttributes()
         {
             throw new NotImplementedException();
@@ -35,17 +40,12 @@ namespace EarthMagicCreatures.Creatures.Heavenly.Angels
             throw new NotImplementedException();
         }
 
-        public override void OnItemEquipped(IItem item)
-        {
-            throw new NotImplementedException();
-        }
-
         public override void OnItemUnequipped(IItem item)
         {
             throw new NotImplementedException();
         }
 
-        public override void OnRecieveDamage(Damage damage)
+        public override void RecieveDamage(Damage damage)
         {
             throw new NotImplementedException();
         }

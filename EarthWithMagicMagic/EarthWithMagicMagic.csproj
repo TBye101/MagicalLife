@@ -15,4 +15,8 @@
     <Folder Include="Spells\Other\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EarthWithMagicAPI\EarthWithMagicAPI.csproj" />
+  </ItemGroup>
+
 </Project>

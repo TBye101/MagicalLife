@@ -56,12 +56,6 @@ namespace EarthWithMagicAPI.API.Creature
                     case "list party":
                         ListParty(creature, encounter, Command);
                         break;
-                    case "summon":
-                        Summon(creature, encounter, Command);
-                        break;
-                    case "list summons":
-                        ListSummons(creature, encounter, Command);
-                        break;
                     default:
                         break;
                 }
@@ -84,19 +78,6 @@ namespace EarthWithMagicAPI.API.Creature
             {
                 Util.Util.WriteLine(item.Name + ", " + item.PowerRequired.ToString());
             }
-        }
-
-        private static void ListSummons(ICreature creature, Encounter encounter, string[] Command)
-        {
-            foreach (ICreature item in creature.ActuallySummonable)
-            {
-                Util.Util.WriteLine(item.CreatureType);
-            }
-        }
-
-        private static void Summon(ICreature creature, Encounter encounter, string[] Command)
-        {
-            throw new NotImplementedException();
         }
 
         private static void ListParty(ICreature creature, Encounter encounter, string[] Command)

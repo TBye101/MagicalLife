@@ -244,15 +244,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         {
         }
 
-        public override void OnItemEquipped(IItem item)
-        {
-        }
-
         public override void OnItemUnequipped(IItem item)
-        {
-        }
-
-        public override void OnRecieveDamage(Damage damage)
         {
         }
 
@@ -266,6 +258,16 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             {
                 this.AI.YourTurn(encounter, this);
             }
+        }
+
+        public override void RecieveDamage(Damage damage)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void EquipItem(IItem item)
+        {
+            throw new NotImplementedException();
         }
 
         #region LevelUps

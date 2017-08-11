@@ -22,6 +22,11 @@ namespace EarthMagicCreatures.Creatures.Undead.Skeletons
         {
         }
 
+        public override void EquipItem(IItem item)
+        {
+            throw new NotImplementedException();
+        }
+
         public override CreatureAttributes GetAttributes()
         {
             return this.Attributes;
@@ -47,17 +52,12 @@ namespace EarthMagicCreatures.Creatures.Undead.Skeletons
 
         }
 
-        public override void OnItemEquipped(IItem item)
-        {
-
-        }
-
         public override void OnItemUnequipped(IItem item)
         {
 
         }
 
-        public override void OnRecieveDamage(Damage damage)
+        public override void RecieveDamage(Damage damage)
         {
             throw new NotImplementedException();
         }
