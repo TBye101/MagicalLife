@@ -1,4 +1,6 @@
-﻿using EarthWithMagicAPI.API.Interfaces.Spells;
+﻿using EarthWithMagicAPI.API.Interfaces.Items;
+using EarthWithMagicAPI.API.Util;
+using EarthWithMagicAPI.API.Interfaces.Spells;
 using EarthWithMagicAPI.API.Stuff;
 using System;
 using System.Collections.Generic;
@@ -80,7 +82,7 @@ namespace EarthWithMagicAPI.API.Creature
         {
             foreach (ISpell item in creature.UsableSpells)
             {
-                Console.WriteLine(item.Name + ", " + item.PowerRequired.ToString());
+                Util.Util.WriteLine(item.Name + ", " + item.PowerRequired.ToString());
             }
         }
 
@@ -88,7 +90,7 @@ namespace EarthWithMagicAPI.API.Creature
         {
             foreach (ICreature item in creature.ActuallySummonable)
             {
-                Console.Write(item.CreatureType);
+                Util.Util.WriteLine(item.CreatureType);
             }
         }
 
@@ -99,15 +101,18 @@ namespace EarthWithMagicAPI.API.Creature
 
         private static void ListParty(ICreature creature, Encounter encounter, string[] Command)
         {
-            foreach (ICreature item in encounter.)
+            foreach (ICreature item in encounter.Party)
             {
-
+                Util.Util.WriteLine(item.Name + " HP: [" + item.GetAttributes().Health.ToString() + "]");
             }
         }
 
         private static void ListEnemies(ICreature creature, Encounter encounter, string[] Command)
         {
-            throw new NotImplementedException();
+            foreach (ICreature item in encounter.Enemies)
+            {
+                Util.Util.WriteLine(item.Name + " HP: [" + item.GetAttributes().Health.ToString() + "]");
+            }
         }
 
         private static void Use(ICreature creature, Encounter encounter, string[] Command)
@@ -132,7 +137,41 @@ namespace EarthWithMagicAPI.API.Creature
 
         private static void ViewInventory(ICreature creature, Encounter encounter, string[] Command)
         {
-            throw new NotImplementedException();
+            string Items = "";
+            foreach (IItem item in creature.Amulets)
+            {
+                Items += item.Name;
+                Items += ", ";
+            }
+            Util.Util.WriteLine(Items);
+            Items = "";
+            foreach (IItem item in creature.Armoring)
+            {
+                Items += item.Name;
+                Items += ", ";
+            }
+            Util.Util.WriteLine(Items);
+            Items = "";
+            foreach (IItem item in creature.Inventory)
+            {
+                Items += item.Name;
+                Items += ", ";
+            }
+            Util.Util.WriteLine(Items);
+            Items = "";
+            foreach (IItem item in creature.Rings)
+            {
+                Items += item.Name;
+                Items += ", ";
+            }
+            Util.Util.WriteLine(Items);
+            Items = "";
+            foreach (IItem item in creature.Weapons)
+            {
+                Items += item.Name;
+                Items += ", ";
+            }
+            Util.Util.WriteLine(Items);
         }
 
         /// <summary>
