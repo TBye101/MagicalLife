@@ -1037,10 +1037,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Divine Commander", "Summon 8 angels", "+1 stunning blow", "TH: +1", "AC: +1"};
 
             this.Title = "Divine Commander";
-            this.Summonable.Add(new LesserAngel());
-            this.Summonable.Add(new LesserAngel());
-            this.Summonable.Add(new LesserAngel());
-            this.Summonable.Add(new LesserAngel());
+            this.ClassAbilities.Add(new SummonHolySection());
             this.Abilities.BaseStunningBlows++;
             this.Attributes.BaseToHit++;
             this.Attributes.BaseAC++;

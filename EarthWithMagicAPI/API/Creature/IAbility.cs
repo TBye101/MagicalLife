@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EarthMagicDocumentation;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -14,12 +15,7 @@ namespace EarthWithMagicAPI.API.Creature
         /// <summary>
         /// Lore about the spell.
         /// </summary>
-        public List<string> Lore;
-
-        /// <summary>
-        /// Any other information about the spell.
-        /// </summary>
-        public List<string> OtherInformation;
+        public List<string> Info;
 
         /// <summary>
         /// The unique id for this spell instance.
@@ -39,12 +35,11 @@ namespace EarthWithMagicAPI.API.Creature
         /// <param name="otherInformation"></param>
         /// <param name="powerRequired"></param>
         /// <param name="AOE">Area of effect spell?</param>
-        public IAbility(string name, List<string> lore, List<string> otherInformation, bool AOE)
+        public IAbility(string name, string DocumentationPath, bool AOE)
         {
             this.Name = name;
-            this.Lore = lore;
-            this.OtherInformation = otherInformation;
             this.AOESpell = AOE;
+            Info = ResourceGM.GetResource(DocumentationPath);
         }
 
         /// <summary>

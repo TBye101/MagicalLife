@@ -5,6 +5,90 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Abilities\Summon Holy Section.md" />
+    <None Remove="Classes\Barbarian Class Info.md" />
+    <None Remove="Classes\Bard Class Info.md" />
+    <None Remove="Classes\Beastmaster Class Info.md" />
+    <None Remove="Classes\Cleric Class Info.md" />
+    <None Remove="Classes\Cold Druid Class Info.md" />
+    <None Remove="Classes\Dragonborn Class Info.md" />
+    <None Remove="Classes\Duelist Class Info.md" />
+    <None Remove="Classes\Dwarven Defender Class Info.md" />
+    <None Remove="Classes\Eldritch Knight Class Info.md" />
+    <None Remove="Classes\Electric Druid Class Info.md" />
+    <None Remove="Classes\Elementalist Class Info.md" />
+    <None Remove="Classes\Fighter Class Info.md" />
+    <None Remove="Classes\Fire Druid Class Info.md" />
+    <None Remove="Classes\Gymnist Class Info.md" />
+    <None Remove="Classes\Herbalist Class Info.md" />
+    <None Remove="Classes\Illusionist Class Info.md" />
+    <None Remove="Classes\Knight Class Info.md" />
+    <None Remove="Classes\Marksman Class Info.md" />
+    <None Remove="Classes\Monk Class Info.md" />
+    <None Remove="Classes\Necromancer Class Info.md" />
+    <None Remove="Classes\Paladin Class Info.md" />
+    <None Remove="Classes\Planeswalker Class Info.md" />
+    <None Remove="Classes\Ranger Class Info.md" />
+    <None Remove="Classes\Samurai Class Info.md" />
+    <None Remove="Classes\Scout Class Info.md" />
+    <None Remove="Classes\Shadewalker Class Info.md" />
+    <None Remove="Classes\Shape Shifter Class Info.md" />
+    <None Remove="Classes\Sun Touched Class Info.md" />
+    <None Remove="Classes\Thief Class Info.md" />
+    <None Remove="Classes\Water Druid Class Info.md" />
+    <None Remove="Classes\Witch Class Info.md" />
+    <None Remove="Classes\Wizard Class Info.md" />
+    <None Remove="Other\ArmorClasses.md" />
+    <None Remove="Other\CreatureList.md" />
+    <None Remove="Other\GemRarityList.md" />
+    <None Remove="Other\Materials.md" />
+    <None Remove="Other\Reference.md" />
+    <None Remove="Other\Todo.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Abilities\Summon Holy Section.md" />
+    <EmbeddedResource Include="Classes\Barbarian Class Info.md" />
+    <EmbeddedResource Include="Classes\Bard Class Info.md" />
+    <EmbeddedResource Include="Classes\Beastmaster Class Info.md" />
+    <EmbeddedResource Include="Classes\Cleric Class Info.md" />
+    <EmbeddedResource Include="Classes\Cold Druid Class Info.md" />
+    <EmbeddedResource Include="Classes\Dragonborn Class Info.md" />
+    <EmbeddedResource Include="Classes\Duelist Class Info.md" />
+    <EmbeddedResource Include="Classes\Dwarven Defender Class Info.md" />
+    <EmbeddedResource Include="Classes\Eldritch Knight Class Info.md" />
+    <EmbeddedResource Include="Classes\Electric Druid Class Info.md" />
+    <EmbeddedResource Include="Classes\Elementalist Class Info.md" />
+    <EmbeddedResource Include="Classes\Fighter Class Info.md" />
+    <EmbeddedResource Include="Classes\Fire Druid Class Info.md" />
+    <EmbeddedResource Include="Classes\Gymnist Class Info.md" />
+    <EmbeddedResource Include="Classes\Herbalist Class Info.md" />
+    <EmbeddedResource Include="Classes\Illusionist Class Info.md" />
+    <EmbeddedResource Include="Classes\Knight Class Info.md" />
+    <EmbeddedResource Include="Classes\Marksman Class Info.md" />
+    <EmbeddedResource Include="Classes\Monk Class Info.md" />
+    <EmbeddedResource Include="Classes\Necromancer Class Info.md" />
+    <EmbeddedResource Include="Classes\Paladin Class Info.md" />
+    <EmbeddedResource Include="Classes\Planeswalker Class Info.md" />
+    <EmbeddedResource Include="Classes\Ranger Class Info.md" />
+    <EmbeddedResource Include="Classes\Samurai Class Info.md" />
+    <EmbeddedResource Include="Classes\Scout Class Info.md" />
+    <EmbeddedResource Include="Classes\Shadewalker Class Info.md" />
+    <EmbeddedResource Include="Classes\Shape Shifter Class Info.md" />
+    <EmbeddedResource Include="Classes\Sun Touched Class Info.md" />
+    <EmbeddedResource Include="Classes\Thief Class Info.md" />
+    <EmbeddedResource Include="Classes\Water Druid Class Info.md" />
+    <EmbeddedResource Include="Classes\Witch Class Info.md" />
+    <EmbeddedResource Include="Classes\Wizard Class Info.md" />
+    <EmbeddedResource Include="Other\ArmorClasses.md" />
+    <EmbeddedResource Include="Other\CreatureList.md" />
+    <EmbeddedResource Include="Other\GemRarityList.md" />
+    <EmbeddedResource Include="Other\Materials.md" />
+    <EmbeddedResource Include="Other\Reference.md" />
+    <EmbeddedResource Include="Other\Todo.md" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Creatures.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -29,11 +113,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Abilities\" />
-    <Folder Include="Classes\" />
     <Folder Include="Creatures\" />
     <Folder Include="Items\" />
-    <Folder Include="Other\" />
     <Folder Include="Spells\" />
   </ItemGroup>
 
