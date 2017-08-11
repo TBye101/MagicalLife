@@ -183,6 +183,11 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         public abstract void Bought();
 
         /// <summary>
+        /// If the item has a special ability, or can be consumed it should happen when this is called.
+        /// </summary>
+        public abstract void Use();
+
+        /// <summary>
         /// Called whenever the player is hit by a weapon.
         /// </summary>
         /// <param name="attacker"></param>

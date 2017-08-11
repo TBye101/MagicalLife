@@ -126,7 +126,30 @@ namespace EarthWithMagicAPI.API.Creature
 
         private static void Use(ICreature creature, Encounter encounter, string[] Command)
         {
-            throw new NotImplementedException();
+            if (Command.Length < 2)
+            {
+                Util.Util.WriteLine("Missing argument!");
+            }
+            else
+            {
+                List<IItem> Items = new List<IItem>();
+                Items.AddRange(creature.Amulets);
+                Items.AddRange(creature.Armoring);
+                Items.AddRange(creature.Inventory);
+                Items.AddRange(creature.Rings);
+                Items.AddRange(creature.Weapons);
+
+                foreach (IItem item in Items)
+                {
+                    if (item.Name == Command[1])
+                    {
+                        item.Use();
+                        return;
+                    }
+                }
+
+                Util.Util.WriteLine("Item not found!");
+            }
         }
 
         private static void Cast(ICreature creature, Encounter encounter, string[] Command)

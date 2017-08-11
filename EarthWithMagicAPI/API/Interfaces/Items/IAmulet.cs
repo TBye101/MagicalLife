@@ -1,6 +1,6 @@
 ﻿namespace EarthWithMagicAPI.API.Interfaces.Items
 {
-    public interface IAmulet
+    public abstract class IAmulet : IItem
     {
     }
 }

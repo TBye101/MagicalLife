@@ -70,6 +70,11 @@ namespace EarthWithMagicAPI.API.Creature
             throw new NotImplementedException();
         }
 
+        public override void Use()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void WeaponHit(IWeapon attacker)
         {
             throw new NotImplementedException();
