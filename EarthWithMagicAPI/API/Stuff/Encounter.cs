@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using Microsoft.VisualBasic.CompilerServices;
+using System.Linq;
 using EarthWithMagicAPI.API.Creature;
 using System;
 using System.Collections.Generic;
@@ -16,24 +17,70 @@ namespace EarthWithMagicAPI.API.Stuff
         /// <summary>
         /// A list of all the combatants sorted by initiative.
         /// </summary>
-        private List<ICreature> AllCombatants = new List<ICreature>();
+        public List<ICreature> AllCombatants = new List<ICreature>();
+
+        /// <summary>
+        /// The party.
+        /// </summary>
+        public List<ICreature> Party;
+
+        /// <summary>
+        /// The party's enemies.
+        /// </summary>
+        public List<ICreature> Enemies;
 
         public Encounter(List<ICreature> friendly, List<ICreature> enemies)
         {
+            this.Party = friendly;
+            this.Enemies = enemies;
             this.AllCombatants.AddRange(friendly);
             this.AllCombatants.AddRange(enemies);
             this.AllCombatants = this.AllCombatants.OrderByDescending(ICreature => ICreature.GetAttributes().BaseInitiative).ToList();
+        }
 
-            while (!IsEveryoneDead(friendly) && !IsEveryoneDead(enemies))
+        /// <summary>
+        /// Returns the party after the fight.
+        /// </summary>
+        /// <returns></returns>
+        public List<ICreature> Fight()
+        {
+            while (!IsEveryoneDead(this.Party) && !IsEveryoneDead(this.Enemies))
             {
-                Console.WriteLine("Encounter: " + friendly.Count.ToString() + " friendlies, " + enemies.Count.ToString() + " enemies");
+                Util.Util.WriteLine("Encounter: " + this.Party.Count.ToString() + " friendlies, " + this.Enemies.Count.ToString() + " enemies");
 
                 foreach (ICreature item in this.AllCombatants)
                 {
-                    item.YourTurn(this);
-                    Util.Util.WriteLine("Hit any key to continue the fight to the next combatant....");
+                    if (!this.IsEveryoneDead(this.Enemies) && !this.IsEveryoneDead(Party))
+                    {
+                        if (item.IsHostile())
+                        {
+                            foreach (ICreature iitem in this.Enemies)
+                            {
+                                if (iitem.ID == item.ID && item.GetAttributes().Health > 0)
+                                {
+                                    item.YourTurn(this);
+                                    Util.Util.WriteLine("Hit any key to continue the fight to the next combatant....");
+                                    Console.ReadKey();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            foreach (ICreature iitem in this.Party)
+                            {
+                                if (iitem.ID == item.ID && item.GetAttributes().Health > 0)
+                                {
+                                    item.YourTurn(this);
+                                    Util.Util.WriteLine("Hit any key to continue the fight to the next combatant....");
+                                    Console.ReadKey();
+                                }
+                            }
+                        }
+                    }
                 }
             }
+
+            return this.Party;
         }
 
         /// <summary>

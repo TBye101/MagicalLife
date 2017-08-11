@@ -1,4 +1,5 @@
-﻿using EarthWithMagicAPI.API.Stuff;
+﻿using EarthWithMagicAPI.API.Interfaces.Spells;
+using EarthWithMagicAPI.API.Stuff;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -77,12 +78,18 @@ namespace EarthWithMagicAPI.API.Creature
 
         private static void ListSpells(ICreature creature, Encounter encounter, string[] Command)
         {
-            throw new NotImplementedException();
+            foreach (ISpell item in creature.UsableSpells)
+            {
+                Console.WriteLine(item.Name + ", " + item.PowerRequired.ToString());
+            }
         }
 
         private static void ListSummons(ICreature creature, Encounter encounter, string[] Command)
         {
-            throw new NotImplementedException();
+            foreach (ICreature item in creature.ActuallySummonable)
+            {
+                Console.Write(item.CreatureType);
+            }
         }
 
         private static void Summon(ICreature creature, Encounter encounter, string[] Command)
@@ -92,7 +99,10 @@ namespace EarthWithMagicAPI.API.Creature
 
         private static void ListParty(ICreature creature, Encounter encounter, string[] Command)
         {
-            throw new NotImplementedException();
+            foreach (ICreature item in encounter.)
+            {
+
+            }
         }
 
         private static void ListEnemies(ICreature creature, Encounter encounter, string[] Command)
