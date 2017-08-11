@@ -19,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\EarthMagicCreatures\EarthMagicCreatures.csproj" />
     <ProjectReference Include="..\EarthWithMagicAPI\EarthWithMagicAPI.csproj" />
+    <ProjectReference Include="..\EarthWithMagicMagic\EarthWithMagicMagic.csproj" />
   </ItemGroup>
 
 </Project>

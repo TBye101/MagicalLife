@@ -19,4 +19,4 @@ Due to that incident, monks have become well respected fighters in Faehau's plan
 
 ### Information
 
-Summon 4 lesser angels.
+Summons 4 lesser angels.
