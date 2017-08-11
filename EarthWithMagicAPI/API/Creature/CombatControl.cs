@@ -143,6 +143,7 @@ namespace EarthWithMagicAPI.API.Creature
                 {
                     if (item.Name == Command[1])
                     {
+                        Util.Util.WriteLine("Using " + item.Name);
                         item.Use();
                         return;
                     }
@@ -168,6 +169,8 @@ namespace EarthWithMagicAPI.API.Creature
                         {
                             creature.CastingPower -= item.PowerRequired;
                             item.Go(encounter.Party, encounter.Enemies, creature);
+                            Util.Util.WriteLine("Casting " + item.Name);
+                            return;
                         }
                     }
                 }
