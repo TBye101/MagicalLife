@@ -25,11 +25,6 @@ namespace EarthWithMagicAPI.API.Creature
             this.Weight = 0;
         }
 
-        public override Damage Attack()
-        {
-            return this.FistDamage;
-        }
-
         public override void Bought()
         {
             throw new NotImplementedException();

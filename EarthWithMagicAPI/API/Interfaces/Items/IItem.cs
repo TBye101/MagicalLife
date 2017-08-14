@@ -59,6 +59,16 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
     public abstract class IItem
     {
         /// <summary>
+        /// The name of the creature that possesses this item.
+        /// </summary>
+        public string Owner = "";
+
+        /// <summary>
+        /// The damage this item does when it is used to attack.
+        /// </summary>
+        public Damage Damage = new Damage(new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 1));
+
+        /// <summary>
         /// Gets the impact an item has on the character when it is equipped.
         /// </summary>
         /// <returns></returns>
