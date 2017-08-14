@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using EarthWithMagicAPI.API.Creature;
+using System.Security.Cryptography.X509Certificates;
 namespace EarthWithMagicAPI.API.Interfaces.Items
 {
     /// <summary>
@@ -17,9 +18,9 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         public abstract void OnAttack();
 
         /// <summary>
-        /// Called by the creature when it wants to know what this weapon's attack roll is.
+        /// Called when attacking another creature.
         /// </summary>
         /// <returns></returns>
-        public abstract Damage Attack();
+        public abstract Damage Attack(ICreature creature);
     }
 }
