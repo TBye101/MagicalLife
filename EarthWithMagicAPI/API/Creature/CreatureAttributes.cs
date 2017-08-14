@@ -30,10 +30,10 @@
         /// <param name="initiative">Used to determine the order of creature action.</param>
         /// <param name="toHit">Used to determine if we will hit a creature with our current state of equipment.</param>
         /// <param name="dodge">The chance that the character will dodge something.</param>
-        public CreatureAttributes(Gender gender, int AC, int maxHealth, int health, int dexterity, int strength,
-            int constitution, int charisma, int wisdom, XP xp, int fireResistence, int acidResistence,
-            int poisonResistence, int electricResistence, int coldResistence, int magicResistence, int charmResistence,
-            int sleepResistence, bool needsOxygen, int initiative, int toHit, int dodge)
+        public CreatureAttributes(Gender gender = Gender.Unspecified, int AC = 0, int maxHealth = 0, int health = 0, int dexterity = 0, int strength = 0,
+            int constitution = 0, int charisma = 0, int wisdom = 0, int fireResistence = 0, int acidResistence = 0,
+            int poisonResistence = 0, int electricResistence = 0, int coldResistence = 0, int magicResistence = 0, int charmResistence = 0,
+            int sleepResistence = 0, bool needsOxygen = false, int initiative = 0, int toHit = 0, int dodge = 0)
         {
             this.Gender = gender;
             this.BaseAC = AC;
@@ -44,7 +44,6 @@
             this.BaseConstitution = constitution;
             this.BaseCharisma = charisma;
             this.BaseWisdom = wisdom;
-            this.BaseXP = xp;
             this.BaseFireResistance = fireResistence;
             this.BaseAcidResistance = acidResistence;
             this.BasePoisonResistance = poisonResistence;
@@ -69,6 +68,16 @@
         /// The gender of the creature.
         /// </summary>
         public Gender Gender = Gender.Unspecified;
+
+        /// <summary>
+        /// The race of the creature.
+        /// </summary>
+        public Race Race = Race.Unspecified;
+
+        /// <summary>
+        /// The alignment of the creature.
+        /// </summary>
+        public Alignment Alignment;
 
         /// <summary>
         /// Armor class of the creature.
@@ -124,7 +133,7 @@
         /// Xp information about the creature.
         /// </summary>
         public XP BaseXP;
-        public XP XP;
+        public XP XP = new XP(1);
 
         /// <summary>
         /// How much weight the creature can carry around.

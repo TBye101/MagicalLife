@@ -1,8 +1,9 @@
-﻿using System;
+﻿using EarthWithMagicAPI.API.Stuff;
+using System;
 
 namespace EarthWithMagic
 {
-    internal class Program
+    public static class Program
     {
         private static void Main(string[] args)
         {

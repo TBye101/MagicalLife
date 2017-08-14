@@ -13,5 +13,8 @@ namespace EarthMagicCharacters.Classes
         /// The player should control the level up.
         /// </summary>
         public abstract void LevelUp();
+
+        public ICharacter(Gender gender, Race race, Alignment alignment) : base(gender, race, alignment)
+        {}
     }
 }

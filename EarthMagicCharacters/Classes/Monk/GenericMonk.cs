@@ -32,19 +32,19 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// <param name="alignment"></param>
         /// <param name="name"></param>
         /// <param name="isHostile"></param>
-        public GenericMonk(Gender gender, Alignment alignment = Alignment.LawfulGood, string name = "Monk", bool isHostile = false)
+        public GenericMonk(Gender gender, Race race, Alignment alignment = Alignment.LawfulGood, string name = "Monk", bool isHostile = false) : base(gender, race, alignment)
         {
             int startingHealth = Dice.RollDice(new Die(2, 10, 2));
             this.CreatureType = "Monk";
             this.Name = name;
             this.Title = "Trainee";
-            this.Alignment = alignment;
+            this.Attributes.Alignment = alignment;
             this._Hostile = isHostile;
 
             Attributes = new CreatureAttributes(gender, 4, startingHealth, startingHealth,
             Dice.RollDice(new Die(3, 6, 0)), Dice.RollDice(new Die(3, 6, 0)),
             Dice.RollDice(new Die(3, 6, 0)), Dice.RollDice(new Die(3, 6, 0)),
-            Dice.RollDice(new Die(3, 6, 0)), new XP(1), 0, 0, 0, 0, 0, 0, 0, 0, true, 12, 40, 30);
+            Dice.RollDice(new Die(3, 6, 0)), 0, 0, 0, 0, 0, 0, 0, 0, true, 12, 40, 30);
         }
 
         public override CreatureAttributes GetAttributes()

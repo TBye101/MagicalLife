@@ -16,6 +16,14 @@ namespace EarthWithMagicAPI.API.Creature
     }
 
     /// <summary>
+    /// The race of the creature.
+    /// </summary>
+    public enum Race
+    {
+        Human, Elf, Dwarf, Kender, Drow, Duergar, HalfElf, Dragonborn, Planeswalker, Unspecified
+    }
+
+    /// <summary>
     /// Used to store and compare genders.
     /// </summary>
     public enum Gender
@@ -28,6 +36,24 @@ namespace EarthWithMagicAPI.API.Creature
     /// </summary>
     public abstract class ICreature
     {
+        /// <summary>
+        /// The constructor for the ICreature abstract class.
+        /// </summary>
+        /// <param name="gender"></param>
+        /// <param name="race"></param>
+        /// <param name="alignment"></param>
+        public ICreature(Gender gender, Race race, Alignment alignment)
+        {
+            this.Attributes.Gender = gender;
+            this.Attributes.Race = race;
+            this.Attributes.Alignment = alignment;
+        }
+
+        /// <summary>
+        /// The attributes for this creature.
+        /// </summary>
+        public CreatureAttributes Attributes = new CreatureAttributes();
+
         /// <summary>
         /// The amount of casting power the creature has after resting.
         /// </summary>
@@ -67,8 +93,6 @@ namespace EarthWithMagicAPI.API.Creature
         /// The abilities of the creature.
         /// </summary>
         public CreatureAbilities Abilities = new CreatureAbilities();
-
-        public Alignment Alignment;
 
         /// <summary>
         /// The title of the creature, if any.
