@@ -1,8 +1,9 @@
-﻿using System;
+﻿using EarthWithMagicAPI.API.Creature;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EarthWithMagicAPI.API.Creature
+namespace EarthWithMagic.CreatureGen
 {
     /// <summary>
     /// Generates a monk character by asking the user questions.

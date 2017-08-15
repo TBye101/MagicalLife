@@ -18,11 +18,6 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
     {
         private MonkAI AI = new MonkAI();
 
-        /// <summary>
-        /// The attributes of this monk.
-        /// </summary>
-        private CreatureAttributes Attributes;
-
         private bool _Hostile;
 
         /// <summary>

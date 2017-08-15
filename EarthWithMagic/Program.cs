@@ -1,4 +1,6 @@
-﻿using EarthWithMagicAPI.API.Stuff;
+﻿using EarthWithMagicAPI.API.Party;
+using EarthWithMagicAPI.API.Creature;
+using EarthWithMagicAPI.API.Stuff;
 using System;
 
 namespace EarthWithMagic
@@ -7,8 +9,16 @@ namespace EarthWithMagic
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            Console.ReadLine();
+            string input;
+
+            MainCreatureGenerator gen = new MainCreatureGenerator();
+            Party.TheParty.Add(gen.GetMainCharacter());
+            while (true)
+            {
+                input = Console.ReadLine();
+
+
+            }
         }
     }
 }

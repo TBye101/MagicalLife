@@ -4,6 +4,7 @@ using EarthMagicCharacters.Classes.Monk.Generic_Monk;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using EarthWithMagic.CreatureGen;
 
 namespace EarthMagicCharacters.Classes.Monk
 {
