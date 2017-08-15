@@ -94,8 +94,8 @@ namespace EarthWithMagicAPI.API.Stuff
                     //If dead
                     if (item.Attributes.Health < 1)
                     {
-                        this.Party[i].Attributes.XP.RecieveXP(item.XPValue);
-                        TotalGained += item.XPValue;
+                        this.Party[i].Attributes.XP.RecieveXP(item.XPValue());
+                        TotalGained += item.XPValue();
                     }
 
                     Util.Util.WriteLine(this.Party[i].Name + " gained " + TotalGained.ToString() + " xp");
