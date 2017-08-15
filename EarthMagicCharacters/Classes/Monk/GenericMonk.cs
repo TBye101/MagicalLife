@@ -27,16 +27,19 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// <param name="alignment"></param>
         /// <param name="name"></param>
         /// <param name="isHostile"></param>
-        public GenericMonk(Gender gender, Race race = Race.Human, Alignment alignment = Alignment.LawfulGood, string name = "Monk", bool isHostile = false) : base(gender, race, alignment)
+        public GenericMonk(Gender gender, Race race = Race.Human, Alignment alignment = Alignment.LawfulGood, string name = "Monk", bool isHostile = false) : base(GetAtt(gender, race, alignment), new CreatureAbilities())
         {
-            int startingHealth = Dice.RollDice(new Die(2, 10, 2), "Starting Health");
             this.CreatureType = "Monk";
             this.Name = name;
             this.Title = "Trainee";
-            this.Attributes.Alignment = alignment;
             this._Hostile = isHostile;
             this.BareHands.Damage.BluntDamage = new Die(1, 8, 0);
-            Attributes = new CreatureAttributes(gender, 4, startingHealth, startingHealth,
+        }
+
+        private static CreatureAttributes GetAtt(Gender gender, Race race, Alignment alignment)
+        {
+            int startingHealth = Dice.RollDice(new Die(2, 10, 2), "Starting Health");
+            return new CreatureAttributes(gender, alignment, race, 4, startingHealth, startingHealth,
             Dice.RollDice(new Die(3, 6, 0), "Dexterity"), Dice.RollDice(new Die(3, 6, 0), "Strength"),
             Dice.RollDice(new Die(3, 6, 0), "Constitution"), Dice.RollDice(new Die(3, 6, 0), "Charisma"),
             Dice.RollDice(new Die(3, 6, 0), "Wisdom"), 0, 0, 0, 0, 0, 0, 0, 0, true, 12, 40, 30);

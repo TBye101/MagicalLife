@@ -42,11 +42,10 @@ namespace EarthWithMagicAPI.API.Creature
         /// <param name="gender"></param>
         /// <param name="race"></param>
         /// <param name="alignment"></param>
-        public ICreature(Gender gender, Race race, Alignment alignment)
+        public ICreature(CreatureAttributes attributes, CreatureAbilities abilities)
         {
-            this.Attributes.Gender = gender;
-            this.Attributes.Race = race;
-            this.Attributes.Alignment = alignment;
+            this.Attributes = attributes;
+            this.Abilities = abilities;
         }
 
         public int XPValue()
@@ -57,7 +56,7 @@ namespace EarthWithMagicAPI.API.Creature
         /// <summary>
         /// The attributes for this creature.
         /// </summary>
-        public CreatureAttributes Attributes = new CreatureAttributes();
+        public CreatureAttributes Attributes;
 
         /// <summary>
         /// The amount of casting power the creature has after resting.

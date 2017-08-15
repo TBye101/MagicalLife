@@ -14,7 +14,7 @@ namespace EarthMagicCharacters.Classes
         /// </summary>
         public abstract void LevelUp();
 
-        public ICharacter(Gender gender, Race race, Alignment alignment) : base(gender, race, alignment)
+        public ICharacter(CreatureAttributes attributes, CreatureAbilities abilities) : base(attributes, abilities)
         {}
     }
 }

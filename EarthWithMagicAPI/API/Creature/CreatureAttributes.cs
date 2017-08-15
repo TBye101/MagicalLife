@@ -30,7 +30,7 @@
         /// <param name="initiative">Used to determine the order of creature action.</param>
         /// <param name="toHit">Used to determine if we will hit a creature with our current state of equipment.</param>
         /// <param name="dodge">The chance that the character will dodge something.</param>
-        public CreatureAttributes(Gender gender = Gender.Unspecified, int AC = 0, int maxHealth = 0, int health = 0, int dexterity = 0, int strength = 0,
+        public CreatureAttributes(Gender gender = Gender.Unspecified, Alignment alignment = Alignment.LawfulGood, Race race = Race.Human, int AC = 0, int maxHealth = 0, int health = 0, int dexterity = 0, int strength = 0,
             int constitution = 0, int charisma = 0, int wisdom = 0, int fireResistence = 0, int acidResistence = 0,
             int poisonResistence = 0, int electricResistence = 0, int coldResistence = 0, int magicResistence = 0, int charmResistence = 0,
             int sleepResistence = 0, bool needsOxygen = false, int initiative = 0, int toHit = 0, int dodge = 0, int intelligence = 0)
@@ -57,6 +57,8 @@
             this.BaseToHit = toHit;
             this.BaseDodge = dodge;
             this.BaseIntelligence = intelligence;
+            this.Race = race;
+            this.Alignment = alignment;
         }
 
         /// <summary>
