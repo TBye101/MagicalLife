@@ -170,7 +170,26 @@
 
         public void Rest()
         {
-            //TODO: Make this reset things
+            this.DarkVision = this.BaseDarkVision;
+            this.BreathWater = this.BaseBreathWater;
+            this.DeathStare = this.BaseDeathStare;
+            this.StoneStare = this.BaseStoneStare;
+            this.BloodSucking = this.BaseBloodSucking;
+            this.ImmunityToNonMagicWeapons = this.BaseImmunityToNonMagicWeapons;
+            this.ShootWeb = this.BaseShootWeb;
+            this.ShootPoison = this.BaseShootPoison;
+            this.Fly = this.BaseFly;
+            this.TakeGaseousForm = this.BaseTakeGaseousForm;
+            this.CanBecomeIncorporeal = this.BaseCanBecomeIncorporeal;
+            this.Telepathy = this.BaseTelepathy;
+            this.HideInShadows = this.BaseHideInShadows;
+            this.WalkSilently = this.BaseWalkSilently;
+            this.PickPocket = this.BasePickPocket;
+            this.DetectTraps = this.BaseDetectTraps;
+            this.DisarmTraps = this.BaseDisarmTraps;
+            this.DetectIllusions = this.BaseDetectIllusions;
+            this.Backstab = this.BaseBackstab;
+            this.StunningBlows = this.BaseStunningBlows;
         }
     }
 }

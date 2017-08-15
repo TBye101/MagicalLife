@@ -46,6 +46,16 @@ namespace EarthWithMagicAPI.API.Creature
         {
             this.Attributes = attributes;
             this.Abilities = abilities;
+            this.Rest();
+        }
+
+        /// <summary>
+        /// Resets a bunch of stuff.
+        /// </summary>
+        public void Rest()
+        {
+            this.Abilities.Rest();
+            this.Attributes.Rest();
         }
 
         public int XPValue()
