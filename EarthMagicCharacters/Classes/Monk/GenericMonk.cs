@@ -59,7 +59,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         {
             this.Attributes.BaseHealth += Dice.RollDice(new Die(1, 10, 2), "Monk gains hit points: ");
 
-            switch (this.Attributes.BaseXP.CreatureLevel)
+            switch (this.Attributes.XP.CreatureLevel)
             {
                 case 1:
                     this.Level2();

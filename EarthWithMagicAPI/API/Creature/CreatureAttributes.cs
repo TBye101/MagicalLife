@@ -135,7 +135,6 @@
         /// <summary>
         /// Xp information about the creature.
         /// </summary>
-        public XP BaseXP;
         public XP XP = new XP(1);
 
         /// <summary>
@@ -224,7 +223,31 @@
 
         public void Rest()
         {
-            //TODO: Make this reset things. Then call it whenever we create a new character, so we can actually have stats.
+            this.ToHit = this.BaseToHit;
+            this.AC = this.BaseAC;
+            this.Health++;
+
+            if (this.Health > this.BaseHealth)
+            {
+                this.Health = this.BaseHealth;
+            }
+
+            this.Dexterity = this.BaseDexterity;
+            this.Strength = this.BaseStrength;
+            this.Constitution = this.BaseConstitution;
+            this.Charisma = this.BaseCharisma;
+            this.Wisdom = this.BaseWisdom;
+            this.FireResistance = this.BaseFireResistance;
+            this.AcidResistance = this.BaseAcidResistance;
+            this.PoisonResistance = this.BasePoisonResistance;
+            this.ElectricResistance = this.BaseElectricResistance;
+            this.ColdResistance = this.BaseColdResistance;
+            this.MagicResistance = this.BaseMagicResistance;
+            this.CharmResistance = this.BaseCharmResistance;
+            this.SleepResistance = this.BaseSleepResistance;
+            this.Initiative = this.BaseInitiative;
+            this.Dodge = this.BaseDodge;
+            this.Intelligence = this.BaseIntelligence;
         }
     }
 }

@@ -19,25 +19,25 @@ namespace EarthWithMagicAPI.API.Creature
         {
             int XPValue = 0;
 
-            XPValue += Convert.ToInt32(creature.Attributes.AC * 100);
-            XPValue += Convert.ToInt32(creature.Attributes.AcidResistance * 100);
-            XPValue += creature.Attributes.Charisma;
-            XPValue += Convert.ToInt32(creature.Attributes.CharmResistance * 100);
-            XPValue += Convert.ToInt32(creature.Attributes.ColdResistance * 100);
-            XPValue += creature.Attributes.Constitution * 4;
-            XPValue += creature.Attributes.Dexterity * 3;
-            XPValue += creature.Attributes.Dodge * 5;
-            XPValue += Convert.ToInt32(creature.Attributes.ElectricResistance * 100);
-            XPValue += Convert.ToInt32(creature.Attributes.FireResistance * 100);
-            XPValue += Convert.ToInt32(creature.Attributes.Health * 2);
-            XPValue += creature.Attributes.Initiative;
-            XPValue += Convert.ToInt32(creature.Attributes.MagicResistance * 300);
-            XPValue += Convert.ToInt32(creature.Attributes.PoisonResistance * 100);
-            XPValue += Convert.ToInt32(creature.Attributes.SleepResistance * 100);
-            XPValue += creature.Attributes.Strength * 5;
-            XPValue += creature.Attributes.ToHit * 2;
-            XPValue += creature.Attributes.Wisdom * 2;
-            XPValue += creature.Attributes.Intelligence * 2;
+            XPValue += Convert.ToInt32(creature.Attributes.BaseAC * 100);
+            XPValue += Convert.ToInt32(creature.Attributes.BaseAcidResistance * 100);
+            XPValue += creature.Attributes.BaseCharisma;
+            XPValue += Convert.ToInt32(creature.Attributes.BaseCharmResistance * 100);
+            XPValue += Convert.ToInt32(creature.Attributes.BaseColdResistance * 100);
+            XPValue += creature.Attributes.BaseConstitution * 4;
+            XPValue += creature.Attributes.BaseDexterity * 3;
+            XPValue += creature.Attributes.BaseDodge * 5;
+            XPValue += Convert.ToInt32(creature.Attributes.BaseElectricResistance * 100);
+            XPValue += Convert.ToInt32(creature.Attributes.BaseFireResistance * 100);
+            XPValue += Convert.ToInt32(creature.Attributes.BaseHealth * 2);
+            XPValue += creature.Attributes.BaseInitiative;
+            XPValue += Convert.ToInt32(creature.Attributes.BaseMagicResistance * 300);
+            XPValue += Convert.ToInt32(creature.Attributes.BasePoisonResistance * 100);
+            XPValue += Convert.ToInt32(creature.Attributes.BaseSleepResistance * 100);
+            XPValue += creature.Attributes.BaseStrength * 5;
+            XPValue += creature.Attributes.BaseToHit * 2;
+            XPValue += creature.Attributes.BaseWisdom * 2;
+            XPValue += creature.Attributes.BaseIntelligence * 2;
 
             foreach (ISpell item in creature.SpellsKnown)
             {
