@@ -84,8 +84,8 @@
         /// Damage is reduced by armor class after resistances.
         /// Damage taken is calculated by the following: Damage (After resistance calculations) * AC%.
         /// </summary>
-        public int BaseAC;
-        public int AC;
+        public double BaseAC;
+        public double AC;
 
         /// <summary>
         /// The maximum health of the creature.
@@ -145,50 +145,50 @@
         /// <summary>
         /// The resistance of the creature to fire.
         /// </summary>
-        public int BaseFireResistance;
-        public int FireResistance;
+        public double BaseFireResistance;
+        public double FireResistance;
 
         /// <summary>
         /// The resistance of the creature to acid.
         /// </summary>
-        public int BaseAcidResistance;
-        public int AcidResistance;
+        public double BaseAcidResistance;
+        public double AcidResistance;
 
         /// <summary>
         /// The resistance of the creature to poison.
         /// </summary>
-        public int BasePoisonResistance;
-        public int PoisonResistance;
+        public double BasePoisonResistance;
+        public double PoisonResistance;
 
         /// <summary>
         /// The resistance of the creature to electricity.
         /// </summary>
-        public int BaseElectricResistance;
-        public int ElectricResistance;
+        public double BaseElectricResistance;
+        public double ElectricResistance;
 
         /// <summary>
         /// The resistance of the creature to cold.
         /// </summary>
-        public int BaseColdResistance;
-        public int ColdResistance;
+        public double BaseColdResistance;
+        public double ColdResistance;
 
         /// <summary>
         /// The resistance of the creature to magic.
         /// </summary>
-        public int BaseMagicResistance;
-        public int MagicResistance;
+        public double BaseMagicResistance;
+        public double MagicResistance;
 
         /// <summary>
         /// The resistance of the creature to charms.
         /// </summary>
-        public int BaseCharmResistance;
-        public int CharmResistance;
+        public double BaseCharmResistance;
+        public double CharmResistance;
 
         /// <summary>
         /// The resistance of the creature to sleep (spells and abilities).
         /// </summary>
-        public int BaseSleepResistance;
-        public int SleepResistance;
+        public double BaseSleepResistance;
+        public double SleepResistance;
 
         #endregion Resistances
 

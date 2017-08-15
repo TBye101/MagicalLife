@@ -54,8 +54,10 @@ namespace EarthWithMagicAPI.API.Stuff
                     {
                         if (item.IsHostile())
                         {
-                            foreach (ICreature iitem in this.Enemies)
+                            int length = this.Enemies.Count;
+                            for (int i = 0; i < length; i++)
                             {
+                                ICreature iitem = this.Enemies[i];
                                 if (iitem.ID == item.ID && item.GetAttributes().Health > 0)
                                 {
                                     item.YourTurn(this);
@@ -66,8 +68,10 @@ namespace EarthWithMagicAPI.API.Stuff
                         }
                         else
                         {
-                            foreach (ICreature iitem in this.Party)
+                            int length = this.Party.Count;
+                            for (int i = 0; i < length; i++)
                             {
+                                ICreature iitem = this.Party[i];
                                 if (iitem.ID == item.ID && item.GetAttributes().Health > 0)
                                 {
                                     item.YourTurn(this);

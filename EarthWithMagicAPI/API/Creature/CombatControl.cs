@@ -14,6 +14,11 @@ namespace EarthWithMagicAPI.API.Creature
     /// </summary>
     public static class CombatControl
     {
+        /// <summary>
+        /// If true, don't allow another action.
+        /// </summary>
+        public static bool TakenAction = false;
+
         public static void YourTurn(ICreature creature, Encounter encounter)
         {
             Util.Util.WriteLine("Combat for " + creature.Name + " initiated! Type 'help' for commands");
@@ -134,30 +139,38 @@ namespace EarthWithMagicAPI.API.Creature
 
         private static void UseAbility(ICreature creature, Encounter encounter, string[] Command)
         {
-            if (Command.Length < 2)
+            if (!TakenAction)
             {
-                Util.Util.WriteLine("Missing argument!");
+                TakenAction = true;
+                if (Command.Length < 2)
+                {
+                    Util.Util.WriteLine("Missing argument!");
+                }
+                else
+                {
+                    foreach (IAbility item in creature.ClassAbilities)
+                    {
+                        if (item.Name == Command[1])
+                        {
+                            if (item.AvailibleUses > 0)
+                            {
+                                item.Go(encounter.Party, encounter.Enemies, creature);
+                            }
+                            else
+                            {
+                                Util.Util.WriteLine("Ability has been used up!");
+                            }
+
+                            return;
+                        }
+                    }
+
+                    Util.Util.WriteLine("Ability not found!");
+                }
             }
             else
             {
-                foreach (IAbility item in creature.ClassAbilities)
-                {
-                    if (item.Name == Command[1])
-                    {
-                        if (item.AvailibleUses > 0)
-                        {
-                            item.Go(encounter.Party, encounter.Enemies, creature);
-                        }
-                        else
-                        {
-                            Util.Util.WriteLine("Ability has been used up!");
-                        }
-
-                        return;
-                    }
-                }
-
-                Util.Util.WriteLine("Ability not found!");
+                Util.Util.WriteLine("Action already taken!");
             }
         }
 
@@ -190,75 +203,99 @@ namespace EarthWithMagicAPI.API.Creature
 
         private static void Use(ICreature creature, Encounter encounter, string[] Command)
         {
-            if (Command.Length < 2)
+            if (!TakenAction)
             {
-                Util.Util.WriteLine("Missing argument!");
+                TakenAction = true;
+                if (Command.Length < 2)
+                {
+                    Util.Util.WriteLine("Missing argument!");
+                }
+                else
+                {
+                    List<IItem> Items = new List<IItem>();
+                    Items.AddRange(creature.Amulets);
+                    Items.AddRange(creature.Armoring);
+                    Items.AddRange(creature.Inventory);
+                    Items.AddRange(creature.Rings);
+                    Items.AddRange(creature.Weapons);
+
+                    foreach (IItem item in Items)
+                    {
+                        if (item.Name == Command[1])
+                        {
+                            Util.Util.WriteLine("Using " + item.Name);
+                            item.Use();
+                            return;
+                        }
+                    }
+
+                    Util.Util.WriteLine("Item not found!");
+                }
             }
             else
             {
-                List<IItem> Items = new List<IItem>();
-                Items.AddRange(creature.Amulets);
-                Items.AddRange(creature.Armoring);
-                Items.AddRange(creature.Inventory);
-                Items.AddRange(creature.Rings);
-                Items.AddRange(creature.Weapons);
-
-                foreach (IItem item in Items)
-                {
-                    if (item.Name == Command[1])
-                    {
-                        Util.Util.WriteLine("Using " + item.Name);
-                        item.Use();
-                        return;
-                    }
-                }
-
-                Util.Util.WriteLine("Item not found!");
+                Util.Util.WriteLine("Action already taken!");
             }
         }
 
         private static void Cast(ICreature creature, Encounter encounter, string[] Command)
         {
-            if (Command.Length > 1)
+            if (!TakenAction)
             {
-                foreach (ISpell item in creature.SpellsKnown)
+                TakenAction = true;
+                if (Command.Length > 1)
                 {
-                    if (item.Name == Command[1])
+                    foreach (ISpell item in creature.SpellsKnown)
                     {
-                        if (item.PowerRequired > creature.CastingPower)
+                        if (item.Name == Command[1])
                         {
-                            Util.Util.WriteLine("Not enough casting power!");
-                        }
-                        else
-                        {
-                            creature.CastingPower -= item.PowerRequired;
-                            item.Go(encounter.Party, encounter.Enemies, creature);
-                            Util.Util.WriteLine("Casting " + item.Name);
-                            return;
+                            if (item.PowerRequired > creature.CastingPower)
+                            {
+                                Util.Util.WriteLine("Not enough casting power!");
+                            }
+                            else
+                            {
+                                creature.CastingPower -= item.PowerRequired;
+                                item.Go(encounter.Party, encounter.Enemies, creature);
+                                Util.Util.WriteLine("Casting " + item.Name);
+                                return;
+                            }
                         }
                     }
-                }
 
-                Util.Util.WriteLine("Spell not found!");
+                    Util.Util.WriteLine("Spell not found!");
+                }
+                else
+                {
+                    Util.Util.WriteLine("Missing argument!");
+                }
             }
             else
             {
-                Util.Util.WriteLine("Missing argument!");
+                Util.Util.WriteLine("Action already taken!");
             }
         }
 
         private static void Swing(ICreature creature, Encounter encounter, string[] Command)
         {
-            if (creature.Weapons.Count > 0)
+            if (!TakenAction)
             {
-                foreach (IWeapon item in creature.Weapons)
+                TakenAction = true;
+                if (creature.Weapons.Count > 0)
                 {
-                    item.Attack(encounter.Enemies[0]);
+                    foreach (IWeapon item in creature.Weapons)
+                    {
+                        item.Attack(encounter.Enemies[0]);
+                    }
+                }
+                else
+                {
+                    creature.BareHands.Attack(encounter.Enemies[0]);
                 }
             }
             else
             {
-                creature.BareHands.Attack(encounter.Enemies[0]);
+                Util.Util.WriteLine("Action already taken!");
             }
         }
 

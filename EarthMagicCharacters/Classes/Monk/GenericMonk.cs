@@ -261,7 +261,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             Util.WriteLine(this.Name + " is taking damage!");
             int dodgeChance = this.Attributes.Dodge / 2;
 
-            if (Dice.RollDice(new Die(1, 100, 0), "Chance to dodge") > dodgeChance)
+            if (Dice.RollDice(new Die(1, 100, 0), "Chance to not dodge") > dodgeChance)
             {
                 //Don't dodge
                 Util.WriteLine(this.Name + " failed to dodge the attack");
