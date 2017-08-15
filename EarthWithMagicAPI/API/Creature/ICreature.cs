@@ -50,6 +50,11 @@ namespace EarthWithMagicAPI.API.Creature
         }
 
         /// <summary>
+        /// The xp gained when this creature dies.
+        /// </summary>
+        public int XPValue = 0;
+
+        /// <summary>
         /// The attributes for this creature.
         /// </summary>
         public CreatureAttributes Attributes = new CreatureAttributes();
@@ -278,7 +283,7 @@ namespace EarthWithMagicAPI.API.Creature
         }
 
         /// <summary>
-        /// Called whenever an encounter ends, so summoned creatures can be unsummoned.
+        /// Called whenever an encounter ends, so summoned creatures can be un-summoned.
         /// </summary>
         /// <param name="fight"></param>
         public abstract void EncounterEnded(Encounter fight);

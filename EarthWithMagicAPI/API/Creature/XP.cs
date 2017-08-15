@@ -20,12 +20,12 @@ namespace EarthWithMagicAPI.API.Creature
         /// <summary>
         /// Our current xp to the next level.
         /// </summary>
-        public UInt64 CurrentXP = 0;
+        public int CurrentXP = 0;
 
         /// <summary>
         /// The xp needed to level up.
         /// </summary>
-        public UInt64 XPToNextLevel = 100;
+        public int XPToNextLevel = 100;
 
         /// <summary>
         /// The constructor for the xp class.
@@ -40,7 +40,7 @@ namespace EarthWithMagicAPI.API.Creature
         /// Used to add xp to the creature.
         /// </summary>
         /// <param name="xp"></param>
-        public void RecieveXP(UInt64 xp)
+        public void RecieveXP(int xp)
         {
             this.CurrentXP += xp;
 
@@ -56,7 +56,7 @@ namespace EarthWithMagicAPI.API.Creature
         /// Used to remove xp from the character.
         /// </summary>
         /// <param name="xp"></param>
-        public void RemoveXP(UInt64 xp)
+        public void RemoveXP(int xp)
         {
             this.CurrentXP -= xp;
             if (this.CurrentXP < 0)

@@ -84,6 +84,24 @@ namespace EarthWithMagicAPI.API.Stuff
                 }
             }
 
+
+            int l = this.Party.Count;
+            for (int i = 0; i < l; i++)
+            {
+                foreach (ICreature item in this.Enemies)
+                {
+                    int TotalGained = 0;
+                    //If dead
+                    if (item.Attributes.Health < 1)
+                    {
+                        this.Party[i].Attributes.XP.RecieveXP(item.XPValue);
+                        TotalGained += item.XPValue;
+                    }
+
+                    Util.Util.WriteLine(this.Party[i].Name + " gained " + TotalGained.ToString() + " xp");
+                }
+            }
+
             return this.Party;
         }
 

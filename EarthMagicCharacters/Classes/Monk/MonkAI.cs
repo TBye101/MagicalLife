@@ -15,7 +15,7 @@ namespace EarthMagicCharacters.Classes.Monk
     {
         public void YourTurn(Encounter encounter, ICreature monk)
         {
-            monk.BareHands.Attack(encounter.Party.ElementAt(0));
+            monk.BareHands.Attack(encounter.Party[0]);
         }
     }
 }
