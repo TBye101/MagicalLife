@@ -26,7 +26,7 @@ namespace EarthWithMagicAPI.API.Creature
             XPValue += Convert.ToInt32(creature.Attributes.BaseColdResistance * 100);
             XPValue += creature.Attributes.BaseConstitution * 4;
             XPValue += creature.Attributes.BaseDexterity * 3;
-            XPValue += creature.Attributes.BaseDodge * 5;
+            XPValue += Convert.ToInt32(creature.Attributes.BaseDodge * 5);
             XPValue += Convert.ToInt32(creature.Attributes.BaseElectricResistance * 100);
             XPValue += Convert.ToInt32(creature.Attributes.BaseFireResistance * 100);
             XPValue += Convert.ToInt32(creature.Attributes.BaseHealth * 2);
@@ -35,7 +35,7 @@ namespace EarthWithMagicAPI.API.Creature
             XPValue += Convert.ToInt32(creature.Attributes.BasePoisonResistance * 100);
             XPValue += Convert.ToInt32(creature.Attributes.BaseSleepResistance * 100);
             XPValue += creature.Attributes.BaseStrength * 5;
-            XPValue += creature.Attributes.BaseToHit * 2;
+            XPValue += Convert.ToInt32(creature.Attributes.BaseToHit * 200);
             XPValue += creature.Attributes.BaseWisdom * 2;
             XPValue += creature.Attributes.BaseIntelligence * 2;
 

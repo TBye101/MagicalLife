@@ -39,7 +39,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         private static CreatureAttributes GetAtt(Gender gender, Race race, Alignment alignment)
         {
             int startingHealth = Dice.RollDice(new Die(2, 10, 2), "Starting Health");
-            return new CreatureAttributes(gender, alignment, race, 4, startingHealth, startingHealth,
+            return new CreatureAttributes(gender, alignment, race, .04, startingHealth, startingHealth,
             Dice.RollDice(new Die(3, 6, 0), "Dexterity"), Dice.RollDice(new Die(3, 6, 0), "Strength"),
             Dice.RollDice(new Die(3, 6, 0), "Constitution"), Dice.RollDice(new Die(3, 6, 0), "Charisma"),
             Dice.RollDice(new Die(3, 6, 0), "Wisdom"), 0, 0, 0, 0, 0, 0, 0, 0, true, 12, 40, 30);
@@ -262,7 +262,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         public override void RecieveDamage(Damage damage)
         {
             Util.WriteLine(this.Name + " is taking damage!");
-            int dodgeChance = this.Attributes.Dodge / 2;
+            double dodgeChance = this.Attributes.Dodge / 2;
 
             if (Dice.RollDice(new Die(1, 100, 0), "Chance to not dodge") > dodgeChance)
             {
