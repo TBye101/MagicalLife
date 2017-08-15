@@ -1,4 +1,5 @@
-﻿using EarthWithMagicAPI.API.Creature;
+﻿using EarthWithMagicAPI.API.Util;
+using EarthWithMagicAPI.API.Creature;
 using EarthMagicCharacters.Classes.Monk.Generic_Monk;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,42 @@ namespace EarthMagicCharacters.Classes.Monk
         /// <returns></returns>
         public ICreature Generate()
         {
-            
+            return new GenericMonk(this.GetGender(), Race.Human, Alignment.LawfulGood, this.GetName());
+        }
+
+        /// <summary>
+        /// Returns the chosen name of the character.
+        /// </summary>
+        /// <returns></returns>
+        private string GetName()
+        {
+            Util.WriteLine("What is your name?");
+            return Console.ReadLine();
+        }
+
+        /// <summary>
+        /// Returns the player's chosen gender.
+        /// </summary>
+        /// <returns></returns>
+        private Gender GetGender()
+        {
+            Util.WriteLine("Male, Female, or Unspecified?");
+            string input = Console.ReadLine();
+
+            switch (input.ToLower())
+            {
+                case "male":
+                    return Gender.Male;
+                case "female":
+
+                    return Gender.Female;
+                case "unspecified":
+
+                    return Gender.Unspecified;
+                default:
+                    Util.WriteLine("Invalid input!");
+                    return this.GetGender();
+            }
         }
     }
 }
