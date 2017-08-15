@@ -49,10 +49,10 @@ namespace EarthWithMagicAPI.API.Creature
             this.Attributes.Alignment = alignment;
         }
 
-        /// <summary>
-        /// The xp gained when this creature dies.
-        /// </summary>
-        public int XPValue = 0;
+        public int XPValue()
+        {
+            return ExperienceCalculator.Calculate(this);
+        }
 
         /// <summary>
         /// The attributes for this creature.

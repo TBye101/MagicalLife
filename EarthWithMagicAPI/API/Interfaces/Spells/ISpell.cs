@@ -9,6 +9,11 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
     public abstract class ISpell
     {
         /// <summary>
+        /// The xp value that this ability adds to the creature which has this.
+        /// </summary>
+        public int XPValue = 0;
+
+        /// <summary>
         /// The name of the spell.
         /// </summary>
         public string Name;

@@ -13,11 +13,11 @@ namespace EarthWithMagic
             string input;
             MainCreatureGenerator gen = new MainCreatureGenerator();
             Party.TheParty.Add(gen.GetMainCharacter());
-            Encounter continous = new Encounter(Party.TheParty, new System.Collections.Generic.List<ICreature> { new GenericMonk(Gender.Male, Race.Human) });
             while (true)
             {
                 input = Console.ReadLine();
 
+                Encounter continous = new Encounter(Party.TheParty, new System.Collections.Generic.List<ICreature> { new GenericMonk(Gender.Male, Race.Human) });
                 Party.TheParty = continous.Fight();
             }
         }
