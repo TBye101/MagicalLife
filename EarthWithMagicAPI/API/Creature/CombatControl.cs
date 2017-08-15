@@ -16,6 +16,7 @@ namespace EarthWithMagicAPI.API.Creature
     {
         public static void YourTurn(ICreature creature, Encounter encounter)
         {
+            Util.Util.WriteLine("Combat for " + creature.Name + " initiated! Type 'help' for commands");
             string Input = "";
             string[] Command = Input.Split(' ');
             while (Input != "end turn")
@@ -335,6 +336,7 @@ namespace EarthWithMagicAPI.API.Creature
             Util.Util.WriteLine("list party: Lists all of the members of the party, including dead ones");
             Util.Util.WriteLine("unequip: Un-equips something");
             Util.Util.WriteLine("rotate: Rotates the person at the front of the party to the back.");
+            Util.Util.WriteLine("end turn: Ends this round for the current creature");
         }
     }
 }

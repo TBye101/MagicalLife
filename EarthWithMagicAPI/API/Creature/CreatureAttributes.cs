@@ -90,12 +90,12 @@
         /// <summary>
         /// The maximum health of the creature.
         /// </summary>
-        public int BaseHealth;
+        public double BaseHealth;
 
         /// <summary>
         /// The actual health of the creature.
         /// </summary>
-        public int Health;
+        public double Health;
 
         /// <summary>
         /// The dexterity of the creature.

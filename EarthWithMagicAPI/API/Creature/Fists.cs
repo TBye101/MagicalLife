@@ -8,11 +8,6 @@ namespace EarthWithMagicAPI.API.Creature
 {
     public class Fists : IWeapon
     {
-        /// <summary>
-        /// The damage of the fists.
-        /// </summary>
-        public Damage FistDamage = new Damage(new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0),
-                new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(1, 4, 0));
         public Fists()
         {
             this.IsEquipped = false;
@@ -23,6 +18,8 @@ namespace EarthWithMagicAPI.API.Creature
             this.QuestItem = false;
             this.Value = 0;
             this.Weight = 0;
+            this.Damage = new Damage(new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0),
+        new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(1, 4, 0));
         }
 
         public override void Bought()
