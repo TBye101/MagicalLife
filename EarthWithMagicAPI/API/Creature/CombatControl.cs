@@ -21,6 +21,7 @@ namespace EarthWithMagicAPI.API.Creature
 
         public static void YourTurn(ICreature creature, Encounter encounter)
         {
+            TakenAction = false;
             Util.Util.WriteLine("Combat for " + creature.Name + " initiated! Type 'help' for commands");
             string Input = "";
             string[] Command = Input.Split(' ');
