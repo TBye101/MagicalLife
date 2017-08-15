@@ -29,7 +29,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// <param name="isHostile"></param>
         public GenericMonk(Gender gender, Race race, Alignment alignment = Alignment.LawfulGood, string name = "Monk", bool isHostile = false) : base(gender, race, alignment)
         {
-            int startingHealth = Dice.RollDice(new Die(2, 10, 2));
+            int startingHealth = Dice.RollDice(new Die(2, 10, 2), "Starting Health");
             this.CreatureType = "Monk";
             this.Name = name;
             this.Title = "Trainee";
@@ -37,9 +37,9 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             this._Hostile = isHostile;
 
             Attributes = new CreatureAttributes(gender, 4, startingHealth, startingHealth,
-            Dice.RollDice(new Die(3, 6, 0)), Dice.RollDice(new Die(3, 6, 0)),
-            Dice.RollDice(new Die(3, 6, 0)), Dice.RollDice(new Die(3, 6, 0)),
-            Dice.RollDice(new Die(3, 6, 0)), 0, 0, 0, 0, 0, 0, 0, 0, true, 12, 40, 30);
+            Dice.RollDice(new Die(3, 6, 0), "Dexterity"), Dice.RollDice(new Die(3, 6, 0), "Strength"),
+            Dice.RollDice(new Die(3, 6, 0), "Constitution"), Dice.RollDice(new Die(3, 6, 0), "Charisma"),
+            Dice.RollDice(new Die(3, 6, 0), "Wisdom"), 0, 0, 0, 0, 0, 0, 0, 0, true, 12, 40, 30);
         }
 
         public override CreatureAttributes GetAttributes()
@@ -54,7 +54,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
         public override void LevelUp()
         {
-            this.Attributes.BaseHealth += Dice.RollDice(new Die(1, 10, 2));
+            this.Attributes.BaseHealth += Dice.RollDice(new Die(1, 10, 2), "Monk gains hit points: ");
 
             switch (this.Attributes.BaseXP.CreatureLevel)
             {

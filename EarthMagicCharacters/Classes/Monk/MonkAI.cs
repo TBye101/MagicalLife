@@ -1,4 +1,5 @@
-﻿using EarthMagicCharacters.Classes.Monk.Generic_Monk;
+﻿using System.Linq;
+using EarthMagicCharacters.Classes.Monk.Generic_Monk;
 using EarthWithMagicAPI.API.Creature;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace EarthMagicCharacters.Classes.Monk
     {
         public void YourTurn(Encounter encounter, ICreature monk)
         {
-            throw new NotImplementedException();
+            monk.BareHands.Attack(encounter.Party.ElementAt(0));
         }
     }
 }

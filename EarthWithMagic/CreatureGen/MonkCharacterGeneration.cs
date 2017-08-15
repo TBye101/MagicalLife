@@ -19,7 +19,9 @@ namespace EarthMagicCharacters.Classes.Monk
         /// <returns></returns>
         public ICreature Generate()
         {
-            return new GenericMonk(this.GetGender(), Race.Human, Alignment.LawfulGood, this.GetName());
+            GenericMonk monk = new GenericMonk(this.GetGender(), Race.Human, Alignment.LawfulGood, this.GetName());
+            monk.IsInParty = true;
+            return monk;
         }
 
         /// <summary>

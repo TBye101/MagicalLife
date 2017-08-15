@@ -24,63 +24,63 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         /// <returns></returns>
         public void Attack(ICreature creature)
         {
-            int D = Dice.RollDice(this.Damage.AcidDamage);
+            int D = Dice.RollDice(this.Damage.AcidDamage, "Acid damage");
 
             if (D > 0)
             {
                 Util.Util.WriteLine(this.Owner + " dealt " + D.ToString() + " acid damage.");
             }
 
-            D = Dice.RollDice(this.Damage.BluntDamage);
+            D = Dice.RollDice(this.Damage.BluntDamage, "Blunt damage");
 
             if (D > 0)
             {
                 Util.Util.WriteLine(this.Owner + " dealt " + D.ToString() + " blunt damage.");
             }
 
-            D = Dice.RollDice(this.Damage.ColdDamage);
+            D = Dice.RollDice(this.Damage.ColdDamage, "Cold damage");
 
             if (D > 0)
             {
                 Util.Util.WriteLine(this.Owner + " dealt " + D.ToString() + " cold damage.");
             }
 
-            D = Dice.RollDice(this.Damage.ElectricDamage);
+            D = Dice.RollDice(this.Damage.ElectricDamage, "Electric damage");
 
             if (D > 0)
             {
                 Util.Util.WriteLine(this.Owner + " dealt " + D.ToString() + " electric damage.");
             }
 
-            D = Dice.RollDice(this.Damage.FireDamage);
+            D = Dice.RollDice(this.Damage.FireDamage, "Fire damage");
 
             if (D > 0)
             {
                 Util.Util.WriteLine(this.Owner + " dealt " + D.ToString() + " fire damage.");
             }
 
-            D = Dice.RollDice(this.Damage.MagicDamage);
+            D = Dice.RollDice(this.Damage.MagicDamage, "Magic damage");
 
             if (D > 0)
             {
                 Util.Util.WriteLine(this.Owner + " dealt " + D.ToString() + " magic damage.");
             }
 
-            D = Dice.RollDice(this.Damage.PiercingDamage);
+            D = Dice.RollDice(this.Damage.PiercingDamage, "Piercing damage");
 
             if (D > 0)
             {
                 Util.Util.WriteLine(this.Owner + " dealt " + D.ToString() + " piercing damage.");
             }
 
-            D = Dice.RollDice(this.Damage.PoisonDamage);
+            D = Dice.RollDice(this.Damage.PoisonDamage, "Poison damage");
 
             if (D > 0)
             {
                 Util.Util.WriteLine(this.Owner + " dealt " + D.ToString() + " poison damage.");
             }
 
-            D = Dice.RollDice(this.Damage.SlashingDamage);
+            D = Dice.RollDice(this.Damage.SlashingDamage, "Slashing damage");
 
             if (D > 0)
             {

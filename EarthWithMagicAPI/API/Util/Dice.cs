@@ -14,10 +14,10 @@ namespace EarthWithMagicAPI.API.Util
         /// Rolls dice, adds up the values, and returns the number.
         /// </summary>
         /// <returns></returns>
-        public static int RollDice(Die die)
+        public static int RollDice(Die die, string Description = "")
         {
             int ret = 0;
-
+            int OriginalRolls = die.Rolls;
             while (die.Rolls > 0)
             {
                 ret += Rand.Next(1, die.Sides);
@@ -26,8 +26,9 @@ namespace EarthWithMagicAPI.API.Util
 
             ret += die.Modifyer;
 
-            string ToLog = "";
-            ToLog += die.Rolls.ToString();
+            string ToLog = Description;
+            ToLog += ": ";
+            ToLog += OriginalRolls.ToString();
             ToLog += "d";
             ToLog += die.Sides.ToString();
 

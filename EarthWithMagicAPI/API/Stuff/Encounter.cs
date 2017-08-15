@@ -46,7 +46,7 @@ namespace EarthWithMagicAPI.API.Stuff
         {
             while (!IsEveryoneDead(this.Party) && !IsEveryoneDead(this.Enemies))
             {
-                Util.Util.WriteLine("Encounter: " + this.Party.Count.ToString() + " friendlies, " + this.Enemies.Count.ToString() + " enemies");
+                Util.Util.WriteLine("Encounter: " + this.Party.Count.ToString() + " friendly, " + this.Enemies.Count.ToString() + " enemies");
 
                 foreach (ICreature item in this.AllCombatants)
                 {
