@@ -42,7 +42,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             return new CreatureAttributes(gender, alignment, race, .04, startingHealth, startingHealth,
             Dice.RollDice(new Die(3, 6, 0), "Dexterity"), Dice.RollDice(new Die(3, 6, 0), "Strength"),
             Dice.RollDice(new Die(3, 6, 0), "Constitution"), Dice.RollDice(new Die(3, 6, 0), "Charisma"),
-            Dice.RollDice(new Die(3, 6, 0), "Wisdom"), 0, 0, 0, 0, 0, 0, 0, 0, true, 12, 40, 30);
+            Dice.RollDice(new Die(3, 6, 0), "Wisdom"), 0, 0, 0, 0, 0, 0, 0, 0, true, 12, .4, 30, Dice.RollDice(new Die(3, 6, 0), "Intelligence"));
         }
 
         public override CreatureAttributes GetAttributes()
