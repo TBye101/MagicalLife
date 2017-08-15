@@ -221,5 +221,10 @@
         /// The current intelligence of the creature.
         /// </summary>
         public int Intelligence;
+
+        public void Rest()
+        {
+            //TODO: Make this reset things. Then call it whenever we create a new character, so we can actually have stats.
+        }
     }
 }

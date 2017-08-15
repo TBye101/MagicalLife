@@ -167,5 +167,10 @@
         /// Is the creature immune to sleep?
         /// </summary>
         public bool ImmunityToSleep = false;
+
+        public void Rest()
+        {
+            //TODO: Make this reset things
+        }
     }
 }
