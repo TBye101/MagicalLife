@@ -8,6 +8,7 @@
   <ItemGroup>
     <ProjectReference Include="..\EarthMagicCharacters\EarthMagicCharacters.csproj" />
     <ProjectReference Include="..\EarthMagicCreatures\EarthMagicCreatures.csproj" />
+    <ProjectReference Include="..\EarthMagicDocumentation\EarthMagicDocumentation.csproj" />
     <ProjectReference Include="..\EarthMagicDynamicMarket\EarthMagicDynamicMarket.csproj" />
     <ProjectReference Include="..\EarthMagicItems\EarthMagicItems.csproj" />
     <ProjectReference Include="..\EarthMagicStory\EarthMagicMainStory.csproj" />
