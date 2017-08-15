@@ -25,7 +25,7 @@ namespace EarthWithMagicAPI.API.Creature
         /// <summary>
         /// The xp needed to level up.
         /// </summary>
-        public int XPToNextLevel = 100;
+        public int XPToNextLevel = 500;
 
         /// <summary>
         /// The constructor for the xp class.
@@ -49,6 +49,8 @@ namespace EarthWithMagicAPI.API.Creature
                 ++this.CreatureLevel;
                 this.CurrentXP -= this.XPToNextLevel;
                 ++this.LevelUpsAvailible;
+                this.XPToNextLevel *= 2;
+                Util.Util.WriteLine("Ready to level up!");
             }
         }
 

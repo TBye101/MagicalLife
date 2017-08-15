@@ -13,6 +13,7 @@ namespace EarthWithMagic
             string input;
             MainCreatureGenerator gen = new MainCreatureGenerator();
             Party.TheParty.Add(gen.GetMainCharacter());
+            Party.TheParty[0].Attributes.Health += 100;
             while (true)
             {
                 input = Console.ReadLine();
