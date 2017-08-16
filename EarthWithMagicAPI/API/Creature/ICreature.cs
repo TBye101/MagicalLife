@@ -4,6 +4,7 @@ using EarthWithMagicAPI.API.Interfaces.Items;
 using System;
 using System.Collections.Generic;
 using EarthWithMagicAPI.API.Interfaces.Spells;
+using EarthMagicCharacters.Classes;
 
 namespace EarthWithMagicAPI.API.Creature
 {
@@ -376,6 +377,14 @@ namespace EarthWithMagicAPI.API.Creature
         /// Called whenever an encounter ends, so summoned creatures can be un-summoned.
         /// </summary>
         /// <param name="fight"></param>
-        public abstract void EncounterEnded(Encounter fight);
+        public void EncounterEnded(Encounter fight)
+        {
+            //Checks to see if this is a character that can level up.
+            if (this.Attributes.XP.LevelUpsAvailible > 0 && this.GetType() == typeof(ICharacter))
+            {
+                ICharacter dis = (ICharacter)this;
+                dis.LevelUp();
+            }
+        }
     }
 }

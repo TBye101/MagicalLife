@@ -94,6 +94,7 @@ namespace EarthWithMagicAPI.API.Stuff
                 int l = this.Party.Count;
                 for (int i = 0; i < l; i++)
                 {
+                    //Gives xp for killing enemies.
                     foreach (ICreature item in this.Enemies)
                     {
                         int TotalGained = 0;
@@ -106,6 +107,8 @@ namespace EarthWithMagicAPI.API.Stuff
 
                         Util.Util.WriteLine(this.Party[i].Name + " gained " + TotalGained.ToString() + " xp");
                     }
+
+                    this.Party[i].EncounterEnded(this);
                 }
             }
 

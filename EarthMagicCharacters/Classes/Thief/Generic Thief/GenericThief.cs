@@ -50,11 +50,6 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
             return new CreatureAbilities();
         }
 
-        public override void EncounterEnded(Encounter fight)
-        {
-            throw new NotImplementedException();
-        }
-
         public override void EquipItem(IItem item)
         {
             throw new NotImplementedException();

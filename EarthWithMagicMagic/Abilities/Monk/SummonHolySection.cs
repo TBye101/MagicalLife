@@ -11,7 +11,7 @@ namespace EarthWithMagicMagic.Abilities.Monk
     /// </summary>
     public class SummonHolySection : IAbility
     {
-        public SummonHolySection(int uses) : base("Summon Holy Section", "EarthMagicDocumentation.Abilities.Summon Holy Section.md", false, uses)
+        public SummonHolySection(int uses) : base("Summon Holy Section", "EarthMagicDocumentation.Abilities.Summon Holy Section.md", false, uses, 8)
         {
         }
 
@@ -23,9 +23,19 @@ namespace EarthWithMagicMagic.Abilities.Monk
             Party.Add(new LesserAngel());
         }
 
-        //public void ApplyToCreature(ICreature creature, List<ICreature> Party, List<ICreature> Enemies)
-        //{
+        public override bool OnAction(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
+        {
+            throw new NotImplementedException();
+        }
 
-        //}
+        public override bool OnTurn(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void OnWearOff(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

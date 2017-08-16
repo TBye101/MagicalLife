@@ -10,10 +10,6 @@ namespace EarthMagicCreatures.Creatures.Heavenly.Angels
 {
     public class LesserAngel : ICreature
     {
-        public override void EncounterEnded(Encounter fight)
-        {
-            throw new NotImplementedException();
-        }
 
         public override void EquipItem(IItem item)
         {
