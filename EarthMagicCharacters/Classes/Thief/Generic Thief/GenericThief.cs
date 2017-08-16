@@ -15,7 +15,7 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
     public class GenericThief : ICharacter
     {
         /// <summary>
-        /// The ai used for the thief.
+        /// The AI used for the thief.
         /// </summary>
         public ThiefAI AI = new ThiefAI();
 
