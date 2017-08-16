@@ -202,15 +202,25 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level51()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Ghost", "Dexterity: +1", "Constitution: +1", "Wisdom: +2", "Dodge: +3", "AC: +1"};
+
+            this.Title = "Ghost";
+            this.Attributes.BaseDexterity++;
+            this.Attributes.BaseAC++;
+            this.Attributes.BaseConstitution++;
+            this.Attributes.BaseWisdom += 2;
+            this.Attributes.BaseDodge += 3;
+            this.Attributes.BaseDodge += 3;
+
+            Util.WriteLine(report);
         }
 
         private void Level50()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
-            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
+            List<string> report = new List<string> { "Title: Never Seen, Never Heard", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1", "Dexterity: +1"};
 
-            this.Title = "Hungry";
+            this.Title = "Never Seen, Never Heard";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseBackstab += 3;
             this.Abilities.BaseWalkSilently += 2;
@@ -220,16 +230,17 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
             this.Abilities.BaseDisarmTraps += 2;
             this.Abilities.BaseDetectIllusions += 2;
             this.Attributes.AC++;
+            this.Attributes.BaseDexterity++;
 
             Util.WriteLine(report);
         }
 
         private void Level49()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Thief King", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
 
-            this.Title = "Hungry";
+            this.Title = "Thief King";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseWalkSilently += 2;
             this.Abilities.BaseHideInShadows += 2;
@@ -244,10 +255,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level48()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Herzes' Favorite", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
 
-            this.Title = "Hungry";
+            this.Title = "Herzes' Favorite";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseBackstab += 3;
             this.Abilities.BaseWalkSilently += 2;
@@ -263,10 +274,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level47()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Wraith", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
 
-            this.Title = "Hungry";
+            this.Title = "Wraith";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseWalkSilently += 2;
             this.Abilities.BaseHideInShadows += 2;
@@ -281,10 +292,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level46()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Shining Thief", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
 
-            this.Title = "Hungry";
+            this.Title = "Shining Thief";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseBackstab += 3;
             this.Abilities.BaseWalkSilently += 2;
@@ -300,10 +311,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level45()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Dragon's Jealousy", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
 
-            this.Title = "Hungry";
+            this.Title = "Dragon's Jealousy";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseWalkSilently += 2;
             this.Abilities.BaseHideInShadows += 2;
@@ -318,10 +329,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level44()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Hoard Amasser", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
 
-            this.Title = "Hungry";
+            this.Title = "Hoard Amasser";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseBackstab += 3;
             this.Abilities.BaseWalkSilently += 2;
@@ -337,10 +348,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level43()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Exotic Item Collector", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
 
-            this.Title = "Hungry";
+            this.Title = "Exotic Item Collector";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseWalkSilently += 2;
             this.Abilities.BaseHideInShadows += 2;
@@ -355,10 +366,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level42()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Mythical Whisper", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
 
-            this.Title = "Hungry";
+            this.Title = "Mythical Whisper";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseBackstab += 3;
             this.Abilities.BaseWalkSilently += 2;
@@ -374,10 +385,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level41()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Liver of Chance", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
 
-            this.Title = "Hungry";
+            this.Title = "Liver of Chance";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseWalkSilently += 2;
             this.Abilities.BaseHideInShadows += 2;
@@ -392,10 +403,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level40()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Gambler", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
 
-            this.Title = "Hungry";
+            this.Title = "Gambler";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseBackstab += 3;
             this.Abilities.BaseWalkSilently += 2;
@@ -411,10 +422,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level39()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Well Equipped", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
 
-            this.Title = "Hungry";
+            this.Title = "Well Equipped";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseWalkSilently += 2;
             this.Abilities.BaseHideInShadows += 2;
@@ -429,10 +440,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level38()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Collector", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
 
-            this.Title = "Hungry";
+            this.Title = "Collector";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseBackstab += 3;
             this.Abilities.BaseWalkSilently += 2;
@@ -448,11 +459,12 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level37()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
-            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
+            List<string> report = new List<string> { "Title: True Follower of Herzes", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "Dexterity: +1"};
 
-            this.Title = "Hungry";
+            this.Title = "True Follower of Herzes";
             this.Abilities.BaseOpenLock += 2;
+            this.Attributes.BaseDexterity++;
             this.Abilities.BaseWalkSilently += 2;
             this.Abilities.BaseHideInShadows += 2;
             this.Abilities.BasePickPocket += 2;
@@ -466,10 +478,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level36()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Silent Mist", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
 
-            this.Title = "Hungry";
+            this.Title = "Silent Mist";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseBackstab += 3;
             this.Abilities.BaseWalkSilently += 2;
@@ -485,10 +497,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level35()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Legendary Whisper", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
 
-            this.Title = "Hungry";
+            this.Title = "Legendary Whisper";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseWalkSilently += 2;
             this.Abilities.BaseHideInShadows += 2;
@@ -503,10 +515,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level34()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Shadow", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
 
-            this.Title = "Hungry";
+            this.Title = "Shadow";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseBackstab += 3;
             this.Abilities.BaseWalkSilently += 2;
@@ -522,10 +534,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level33()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Sketchy Figure", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
 
-            this.Title = "Hungry";
+            this.Title = "Sketchy Figure";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseWalkSilently += 2;
             this.Abilities.BaseHideInShadows += 2;
@@ -540,10 +552,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level32()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Bent Fence", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
 
-            this.Title = "Hungry";
+            this.Title = "Bent Fence";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseBackstab += 3;
             this.Abilities.BaseWalkSilently += 2;
@@ -559,10 +571,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level31()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Shuffler", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
 
-            this.Title = "Hungry";
+            this.Title = "Shuffler";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseWalkSilently += 2;
             this.Abilities.BaseHideInShadows += 2;
@@ -577,10 +589,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level30()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Deft Hand", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
 
-            this.Title = "Hungry";
+            this.Title = "Deft Hand";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseBackstab += 3;
             this.Abilities.BaseWalkSilently += 2;
@@ -596,10 +608,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level29()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Platinum Ear", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
 
-            this.Title = "Hungry";
+            this.Title = "Platinum Ear";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseWalkSilently += 2;
             this.Abilities.BaseHideInShadows += 2;
@@ -614,10 +626,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level28()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Diamond Eye", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
 
-            this.Title = "Hungry";
+            this.Title = "Diamond Eye";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseBackstab += 3;
             this.Abilities.BaseWalkSilently += 2;
@@ -633,10 +645,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level27()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Goldtooth", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
 
-            this.Title = "Hungry";
+            this.Title = "Goldtooth";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseWalkSilently += 2;
             this.Abilities.BaseHideInShadows += 2;
@@ -651,10 +663,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level26()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Silvertongue", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
 
-            this.Title = "Hungry";
+            this.Title = "Silvertongue";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseBackstab += 3;
             this.Abilities.BaseWalkSilently += 2;
@@ -670,10 +682,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level25()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: One of Many Pockets", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
 
-            this.Title = "Hungry";
+            this.Title = "One of Many Pockets";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseWalkSilently += 2;
             this.Abilities.BaseHideInShadows += 2;
@@ -688,10 +700,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level24()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: One of Quick Hands", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
 
-            this.Title = "Hungry";
+            this.Title = "One of Quick Hands";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseBackstab += 3;
             this.Abilities.BaseWalkSilently += 2;
@@ -707,10 +719,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level23()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Hoarder", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
 
-            this.Title = "Hungry";
+            this.Title = "Hoarder";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseWalkSilently += 2;
             this.Abilities.BaseHideInShadows += 2;
@@ -725,10 +737,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level22()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Whispered Secret", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
 
-            this.Title = "Hungry";
+            this.Title = "Whispered Secret";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseBackstab += 3;
             this.Abilities.BaseWalkSilently += 2;
@@ -744,10 +756,11 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level21()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
-            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
+            List<string> report = new List<string> { "Title: Shadow Worker", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "Gain Darkvision"};
 
-            this.Title = "Hungry";
+            this.Title = "Shadow Worker";
+            this.Abilities.BaseDarkVision = true;
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseWalkSilently += 2;
             this.Abilities.BaseHideInShadows += 2;
@@ -762,10 +775,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level20()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Silent", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
 
-            this.Title = "Hungry";
+            this.Title = "Silent";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseBackstab += 3;
             this.Abilities.BaseWalkSilently += 2;
@@ -781,10 +794,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level19()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Asset Worker", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
 
-            this.Title = "Hungry";
+            this.Title = "Asset Worker";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseWalkSilently += 2;
             this.Abilities.BaseHideInShadows += 2;
@@ -799,10 +812,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level18()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
-            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
+            List<string> report = new List<string> { "Title: Master Thief", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1", "Dexterity: +1"};
 
-            this.Title = "Hungry";
+            this.Title = "Master Thief";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseBackstab += 3;
             this.Abilities.BaseWalkSilently += 2;
@@ -812,16 +825,17 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
             this.Abilities.BaseDisarmTraps += 2;
             this.Abilities.BaseDetectIllusions += 2;
             this.Attributes.AC++;
+            this.Attributes.BaseDexterity++;
 
             Util.WriteLine(report);
         }
 
         private void Level17()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Thief's Guild Leader", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
 
-            this.Title = "Hungry";
+            this.Title = "Thief's Guild Leader";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseWalkSilently += 2;
             this.Abilities.BaseHideInShadows += 2;
@@ -836,10 +850,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level16()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Thief's Guild HQ Member", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
 
-            this.Title = "Hungry";
+            this.Title = "Thief's Guild HQ Member";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseBackstab += 3;
             this.Abilities.BaseWalkSilently += 2;
@@ -855,10 +869,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level15()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Thief's Guild Sect Leader", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
 
-            this.Title = "Hungry";
+            this.Title = "Thief's Guild Sect Leader";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseWalkSilently += 2;
             this.Abilities.BaseHideInShadows += 2;
@@ -873,10 +887,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level14()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Thief's Guild Member", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
 
-            this.Title = "Hungry";
+            this.Title = "Thief's Guild Member";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseBackstab += 3;
             this.Abilities.BaseWalkSilently += 2;
@@ -892,10 +906,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level13()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Master Planner", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
 
-            this.Title = "Hungry";
+            this.Title = "Master Planner";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseWalkSilently += 2;
             this.Abilities.BaseHideInShadows += 2;
@@ -910,10 +924,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level12()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Guild Marked", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
 
-            this.Title = "Hungry";
+            this.Title = "Guild Marked";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseBackstab += 3;
             this.Abilities.BaseWalkSilently += 2;
@@ -929,10 +943,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level11()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Thief's Guild Associate", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
 
-            this.Title = "Hungry";
+            this.Title = "Thief's Guild Associate";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseWalkSilently += 2;
             this.Abilities.BaseHideInShadows += 2;
@@ -947,10 +961,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level10()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Scout", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
 
-            this.Title = "Hungry";
+            this.Title = "Scout";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseBackstab += 3;
             this.Abilities.BaseWalkSilently += 2;
@@ -966,10 +980,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level9()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Target Planner", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
 
-            this.Title = "Hungry";
+            this.Title = "Target Planner";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseWalkSilently += 2;
             this.Abilities.BaseHideInShadows += 2;
@@ -984,10 +998,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level8()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Recon Worker", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
 
-            this.Title = "Hungry";
+            this.Title = "Recon Worker";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseBackstab += 3;
             this.Abilities.BaseWalkSilently += 2;
@@ -1003,10 +1017,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level7()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Gang Member", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
 
-            this.Title = "Hungry";
+            this.Title = "Gang Member";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseWalkSilently += 2;
             this.Abilities.BaseHideInShadows += 2;
@@ -1021,10 +1035,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level6()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Gang Associate", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
 
-            this.Title = "Hungry";
+            this.Title = "Gang Associate";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseBackstab += 3;
             this.Abilities.BaseWalkSilently += 2;
@@ -1040,10 +1054,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level5()
         {
-            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            List<string> report = new List<string> { "Title: Street Thief", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
             "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
 
-            this.Title = "Hungry";
+            this.Title = "Street Thief";
             this.Abilities.BaseOpenLock += 2;
             this.Abilities.BaseWalkSilently += 2;
             this.Abilities.BaseHideInShadows += 2;
