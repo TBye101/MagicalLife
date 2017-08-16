@@ -178,7 +178,73 @@ namespace EarthWithMagicAPI.API.Creature
         /// Called whenever the creature receives damage.
         /// </summary>
         /// <param name="damage"></param>
-        public abstract void RecieveDamage(Damage damage);
+        public void RecieveDamage(Damage damage)
+        {
+            Util.Util.WriteLine(this.Name + " is taking damage!");
+            double dodgeChance = this.Attributes.Dodge / 2; 
+
+            if (Dice.RollDice(new Die(1, 100, 0), "Chance to not dodge") > dodgeChance)
+            {
+                //Don't dodge
+                Util.Util.WriteLine(this.Name + " failed to dodge the attack");
+
+                if (damage.AcidDamage.Rolls > 0)
+                {
+                    this.Attributes.Health -= this.TakeDamage(damage.AcidDamage, "acid damage", this.Attributes.AcidResistance);
+                }
+                if (damage.BluntDamage.Rolls > 0)
+                {
+                    this.Attributes.Health -= this.TakeDamage(damage.BluntDamage, "blunt damage", this.Attributes.AC);
+                }
+                if (damage.ColdDamage.Rolls > 0)
+                {
+                    this.Attributes.Health -= this.TakeDamage(damage.ColdDamage, "cold damage", this.Attributes.ColdResistance);
+                }
+                if (damage.ElectricDamage.Rolls > 0)
+                {
+                    this.Attributes.Health -= this.TakeDamage(damage.ElectricDamage, "electric damage", this.Attributes.ElectricResistance);
+                }
+                if (damage.FireDamage.Rolls > 0)
+                {
+                    this.Attributes.Health -= this.TakeDamage(damage.FireDamage, "fire damage", this.Attributes.FireResistance);
+                }
+                if (damage.MagicDamage.Rolls > 0)
+                {
+                    this.Attributes.Health -= this.TakeDamage(damage.MagicDamage, "magic damage", this.Attributes.MagicResistance);
+                }
+                if (damage.PiercingDamage.Rolls > 0)
+                {
+                    this.Attributes.Health -= this.TakeDamage(damage.PiercingDamage, "piercing damage", this.Attributes.AC);
+                }
+                if (damage.PoisonDamage.Rolls > 0)
+                {
+                    this.Attributes.Health -= this.TakeDamage(damage.PoisonDamage, "poison damage", this.Attributes.PoisonResistance);
+                }
+                if (damage.SlashingDamage.Rolls > 0)
+                {
+                    this.Attributes.Health -= this.TakeDamage(damage.SlashingDamage, "slashing damage", this.Attributes.AC);
+                }
+            }
+            else
+            {
+                //Dodge
+                Util.Util.WriteLine(this.Name + " dodged!");
+            }
+        }
+
+
+        /// <summary>
+        /// Takes damage
+        /// </summary>
+        /// <returns></returns>
+        private double TakeDamage(Die elementalDamage, string nameOfDamage, double resistance)
+        {
+            double Damage = Dice.RollDice(elementalDamage, "Base incoming " + nameOfDamage);
+            double DamageToReduce = Damage * resistance;
+            double ActualDamage = Damage - DamageToReduce;
+            Util.Util.WriteLine(this.Name + " takes " + ActualDamage.ToString() + " " + nameOfDamage + " (" + resistance + "% resisted");
+            return ActualDamage;
+        }
 
         /// <summary>
         /// Called whenever the creature has a new item equipped.

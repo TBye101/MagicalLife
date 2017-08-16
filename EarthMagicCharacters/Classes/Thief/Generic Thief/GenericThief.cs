@@ -200,6 +200,8 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
             }
         }
 
+
+        #region LevelUps
         private void Level51()
         {
             List<string> report = new List<string> { "Title: Ghost", "Dexterity: +1", "Constitution: +1", "Wisdom: +2", "Dodge: +3", "AC: +1"};
@@ -1126,9 +1128,24 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
             Util.WriteLine(report);
         }
 
+        #endregion
+
         public override void OnCreatureDied(ICreature dead)
         {
-            throw new NotImplementedException();
+            if (!dead.IsHostile() && Dice.RollDice(new Die(1, 100, 0)) > 80)
+            {
+                switch (Dice.RollDice(new Die(1, 2, 0)))
+                {
+                    case 1:
+                        Console.WriteLine("Maybe I should have given " + dead.HimHerIT() + " the lucky coin back");
+                        break;
+                    case 2:
+                        Console.Write("Now who is going to pull me out of trouble?");
+                        break;
+                    default:
+                        throw new Exception("Error! Switch not handled!");
+                }
+            }
         }
 
         public override void OnCreatureHealed(ICreature healer)
