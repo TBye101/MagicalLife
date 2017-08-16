@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualBasic.CompilerServices;
+﻿using EarthWithMagicAPI.API.Interfaces.Spells;
+using Microsoft.VisualBasic.CompilerServices;
 using System.Linq;
 using EarthWithMagicAPI.API.Creature;
 using System;
@@ -79,6 +80,60 @@ namespace EarthWithMagicAPI.API.Stuff
                                     Console.ReadKey();
                                 }
                             }
+                        }
+                    }
+                }
+
+                foreach (ICreature item in this.Enemies)
+                {
+                    //Remove spells that have expired. AKA an effect wore off.
+                    int length = item.SpellsAffectedBy.Count;
+                    for (int i = 0; i < length; i++)
+                    {
+                        if (item.SpellsAffectedBy[i].RoundsLeft < 1)
+                        {
+                            item.SpellsAffectedBy.RemoveAt(i);
+                            i--;
+                            length--;
+                        }
+                    }
+
+                    //Remove abilities that have expired. AKA an effect wore off.
+                    length = item.AbilitiesAffectedBy.Count;
+                    for (int i = 0; i < length; i++)
+                    {
+                        if (item.AbilitiesAffectedBy[i].RoundsLeft < 1)
+                        {
+                            item.AbilitiesAffectedBy.RemoveAt(i);
+                            i--;
+                            length--;
+                        }
+                    }
+                }
+
+                foreach (ICreature item in this.Party)
+                {
+                    //Remove spells that have expired. AKA an effect wore off.
+                    int length = item.SpellsAffectedBy.Count;
+                    for (int i = 0; i < length; i++)
+                    {
+                        if (item.SpellsAffectedBy[i].RoundsLeft < 1)
+                        {
+                            item.SpellsAffectedBy.RemoveAt(i);
+                            i--;
+                            length--;
+                        }
+                    }
+
+                    //Remove abilities that have expired. AKA an effect wore off.
+                    length = item.AbilitiesAffectedBy.Count;
+                    for (int i = 0; i < length; i++)
+                    {
+                        if (item.AbilitiesAffectedBy[i].RoundsLeft < 1)
+                        {
+                            item.AbilitiesAffectedBy.RemoveAt(i);
+                            i--;
+                            length--;
                         }
                     }
                 }

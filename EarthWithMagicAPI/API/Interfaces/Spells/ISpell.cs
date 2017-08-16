@@ -8,6 +8,9 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
     /// </summary>
     public abstract class ISpell
     {
+
+        public int RoundsLeft;
+
         /// <summary>
         /// The xp value that this ability adds to the creature which has this.
         /// </summary>
@@ -61,7 +64,7 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
         /// <param name="otherInformation"></param>
         /// <param name="powerRequired"></param>
         /// <param name="AOE">Area of effect spell?</param>
-        protected ISpell(string name, List<string> lore, List<string> otherInformation, int powerRequired, bool AOE, int maxUses)
+        protected ISpell(string name, List<string> lore, List<string> otherInformation, int powerRequired, bool AOE, int maxUses, int roundsLeft)
         {
             this.Name = name;
             this.Lore = lore;
@@ -69,6 +72,7 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
             this.PowerRequired = powerRequired;
             this.AOESpell = AOE;
             this.MaxUses = maxUses;
+            this.RoundsLeft = roundsLeft;
         }
 
         /// <summary>
