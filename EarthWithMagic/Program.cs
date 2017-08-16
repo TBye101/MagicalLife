@@ -13,7 +13,9 @@ namespace EarthWithMagic
     {
         private static void Main(string[] args)
         {
+            Console.OutputEncoding = System.Text.Encoding.Unicode;
             Util.WriteLine(ResourceGM.GetResource("EarthMagicDocumentation.ASCII_Art.Title.txt"));
+            //Util.WriteLine(ResourceGM.GetResource("EarthMagicDocumentation.ASCII_Art.Dragon_Breathing_Fire.txt"));
 
             string input;
             MainCreatureGenerator gen = new MainCreatureGenerator();

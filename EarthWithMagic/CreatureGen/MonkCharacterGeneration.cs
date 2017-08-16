@@ -1,4 +1,5 @@
-﻿using EarthWithMagicAPI.API.Util;
+﻿using EarthMagicDocumentation;
+using EarthWithMagicAPI.API.Util;
 using EarthWithMagicAPI.API.Creature;
 using EarthMagicCharacters.Classes.Monk.Generic_Monk;
 using System;
@@ -19,6 +20,7 @@ namespace EarthMagicCharacters.Classes.Monk
         /// <returns></returns>
         public ICreature Generate()
         {
+            Util.WriteLine(ResourceGM.GetResource("EarthMagicDocumentation.ASCII_Art.Monk.txt"));
             GenericMonk monk = new GenericMonk(this.GetGender(), Race.Human, Alignment.LawfulGood, this.GetName());
             monk.IsInParty = true;
             return monk;
