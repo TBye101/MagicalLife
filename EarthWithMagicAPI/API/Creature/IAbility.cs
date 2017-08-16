@@ -53,6 +53,14 @@ namespace EarthWithMagicAPI.API.Creature
             this.RoundsLeft = roundsLeft;
         }
 
+        /// <summary>
+        /// Resets the uses count.
+        /// </summary>
+        public void Rest()
+        {
+            this.AvailibleUses = this.MaxUses;
+        }
+
         public abstract void Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster);
 
         /// <summary>

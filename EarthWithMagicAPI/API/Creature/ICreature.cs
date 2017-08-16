@@ -56,6 +56,11 @@ namespace EarthWithMagicAPI.API.Creature
         {
             this.Abilities.Rest();
             this.Attributes.Rest();
+
+            foreach (IAbility item in this.ClassAbilities)
+            {
+                item.Rest();
+            }
         }
 
         public int XPValue()
@@ -92,6 +97,16 @@ namespace EarthWithMagicAPI.API.Creature
         /// A list of the spells that this creature can actually use right now.
         /// </summary>
         public List<ISpell> UsableSpells = new List<ISpell>();
+
+        /// <summary>
+        /// A list of spells currently affecting this creature.
+        /// </summary>
+        public List<ISpell> SpellsAffectedBy = new List<ISpell>();
+
+        /// <summary>
+        /// A list of abilities currently affecting this creature.
+        /// </summary>
+        public List<IAbility> AbilitiesAffectedBy = new List<IAbility>();
 
         /// <summary>
         /// If true, the creature is part of the player's party.

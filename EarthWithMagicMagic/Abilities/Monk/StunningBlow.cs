@@ -1,4 +1,5 @@
-﻿using EarthWithMagicAPI.API.Creature;
+﻿using EarthWithMagicAPI.API.Util;
+using EarthWithMagicAPI.API.Creature;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,6 +17,14 @@ namespace EarthWithMagicMagic.Abilities.Monk
 
         public override void Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster)
         {
+            if (Caster.IsHostile())
+            {
+                Party[0].AbilitiesAffectedBy.Add(this);
+            }
+            else
+            {
+                Enemies[0].AbilitiesAffectedBy.Add(this);
+            }
         }
 
         public override bool OnAction(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
@@ -25,12 +34,12 @@ namespace EarthWithMagicMagic.Abilities.Monk
 
         public override bool OnTurn(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
         {
+            Util.WriteLine(Affected.Name + " is affected by a stunning blow and cannot move!");
             return false;
         }
 
         public override void OnWearOff(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
-        {
-            
+        {   
         }
     }
 }

@@ -21,59 +21,89 @@ namespace EarthWithMagicAPI.API.Creature
 
         public static void YourTurn(ICreature creature, Encounter encounter)
         {
-            TakenAction = false;
-            Util.Util.WriteLine("Combat for " + creature.Name + " initiated! Type 'help' for commands");
-            string Input = "";
-            string[] Command = Input.Split(' ');
-            while (Input != "end turn")
+            if (CanTakeTurn(creature, encounter))
             {
-                Input = Console.ReadLine().ToLower();
-
-                switch (Input)
+                TakenAction = false;
+                Util.Util.WriteLine("Combat for " + creature.Name + " initiated! Type 'help' for commands");
+                string Input = "";
+                string[] Command = Input.Split(' ');
+                while (Input != "end turn")
                 {
-                    case "help":
-                        Help(creature, encounter, Command);
-                        break;
-                    case "view inventory":
-                        ViewInventory(creature, encounter, Command);
-                        break;
-                    case "equip":
-                        Equip(creature);
-                        break;
-                    case "swing":
-                        Swing(creature, encounter, Command);
-                        break;
-                    case "use ability":
-                        UseAbility(creature, encounter, Command);
-                        break;
-                    case "list abilities":
-                        ListAbilities(creature, encounter, Command);
-                        break;
-                    case "cast":
-                        Cast(creature, encounter, Command);
-                        break;
-                    case "list spells":
-                        ListSpells(creature, encounter, Command);
-                        break;
-                    case "use":
-                        Use(creature, encounter, Command);
-                        break;
-                    case "list enemies":
-                        ListEnemies(creature, encounter, Command);
-                        break;
-                    case "list party":
-                        ListParty(creature, encounter, Command);
-                        break;
-                    case "unequip":
-                        Unequip(creature, encounter, Command);
-                        break;
-                    case "rotate":
-                        Rotate(creature, encounter, Command);
-                        break;
-                    default:
-                        break;
+                    Input = Console.ReadLine().ToLower();
+
+                    switch (Input)
+                    {
+                        case "help":
+                            Help(creature, encounter, Command);
+                            break;
+                        case "view inventory":
+                            ViewInventory(creature, encounter, Command);
+                            break;
+                        case "equip":
+                            Equip(creature);
+                            break;
+                        case "swing":
+                            Swing(creature, encounter, Command);
+                            break;
+                        case "use ability":
+                            UseAbility(creature, encounter, Command);
+                            break;
+                        case "list abilities":
+                            ListAbilities(creature, encounter, Command);
+                            break;
+                        case "cast":
+                            Cast(creature, encounter, Command);
+                            break;
+                        case "list spells":
+                            ListSpells(creature, encounter, Command);
+                            break;
+                        case "use":
+                            Use(creature, encounter, Command);
+                            break;
+                        case "list enemies":
+                            ListEnemies(creature, encounter, Command);
+                            break;
+                        case "list party":
+                            ListParty(creature, encounter, Command);
+                            break;
+                        case "unequip":
+                            Unequip(creature, encounter, Command);
+                            break;
+                        case "rotate":
+                            Rotate(creature, encounter, Command);
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
+        }
+
+        /// <summary>
+        /// Determines if the creature gets to take a turn.
+        /// </summary>
+        /// <param name="creature"></param>
+        /// <param name="encounter"></param>
+        /// <returns></returns>
+        private static bool CanTakeTurn(ICreature creature, Encounter encounter)
+        {
+            foreach (IAbility item in creature.AbilitiesAffectedBy)
+            {
+                if (!item.OnTurn(encounter.Party, encounter.Enemies, creature))
+                {
+                    return false;
+                }
+            }
+
+            foreach (ISpell item in creature.SpellsAffectedBy)
+            {
+                if (!item.OnTurn(encounter.Party, encounter.Enemies, creature))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         private static void Rotate(ICreature creature, Encounter encounter, string[] Command)
