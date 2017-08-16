@@ -76,7 +76,7 @@
     <EmbeddedResource Include="Classes\WIP\Shadewalker Class Info.md" />
     <EmbeddedResource Include="Classes\WIP\Shape Shifter Class Info.md" />
     <EmbeddedResource Include="Classes\WIP\Sun Touched Class Info.md" />
-    <EmbeddedResource Include="Classes\WIP\Thief Class Info.md" />
+    <EmbeddedResource Include="Classes\Thief Class Info.md" />
     <EmbeddedResource Include="Classes\WIP\Water Druid Class Info.md" />
     <EmbeddedResource Include="Classes\WIP\Witch Class Info.md" />
     <EmbeddedResource Include="Classes\WIP\Wizard Class Info.md" />
