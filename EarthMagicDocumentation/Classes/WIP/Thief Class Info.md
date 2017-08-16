@@ -1,102 +1,109 @@
-﻿# Markdown file
+﻿## Thief
 
+Thieves are the staple of the adventuring world. Clear out a big dungeon? That's nice, but how are you going to get into the chest?
+Thieves are renown for their ability to pickpocket, pick locks, hide in shadows, walk silently, detect traps, and disarm traps.
+To increase their skills by level up, they must complete a heist of appropriate challenge for their level. If they are successful, they level up.
+If they aren't, then they gotta try until they are.
 
-#### 2nd Level: 
+AC: 3
+Hit die: 1d4 +3
 
-#### 3rd Level: 
+#### 2nd Level: Hungry Orphan
 
-#### 4th Level: 
+#### 3rd Level: Kitchen Thief
 
-#### 5th Level:  
+#### 4th Level: Orphan
 
-#### 6th Level: 
+#### 5th Level: Street Thief
 
-#### 7th Level: 
+#### 6th Level: Gang Associate
 
-#### 8th Level:  
+#### 7th Level: Gang Member
 
-#### 9th Level: 
+#### 8th Level: Recon Worker
 
-#### 10th Level:  
+#### 9th Level: Target Planner
 
-#### 11th Level:  
+#### 10th Level: Scout
 
-#### 12th Level: 
+#### 11th Level: Thief's Guild Associate
 
-#### 13th Level:  
+#### 12th Level: Guild Marked
 
-#### 14th Level:  
+#### 13th Level: Master Planner
 
-#### 15th Level:  
+#### 14th Level: Thief's Guild Member
 
-#### 16th Level: 
+#### 15th Level: Thief's Guild Sect Leader
 
-#### 17th Level:     
+#### 16th Level: Thief's Guild HQ Member
 
-#### 18th Level:
+#### 17th Level: Thief's Guild Leader
 
-#### 19th Level:
+#### 18th Level: Master Thief
 
-#### 20th Level: 
+#### 19th Level: Asset Worker
 
-#### 21st Level: 
+#### 20th Level: Silent
 
-#### 22nd Level: 
+#### 21st Level: Shadow Worker
 
-#### 23rd Level: 
+#### 22nd Level: Whispered Secret
 
-#### 24th Level: 
+#### 23rd Level: Hoarder
 
-#### 25th Level: 
+#### 24th Level: One of Quick Hands
 
-#### 26th Level: 
+#### 25th Level: One of Many Pockets
 
-#### 27th Level: 
+#### 26th Level: Silvertongue
 
-#### 28th Level:  
+#### 27th Level: Goldtooth
 
-#### 29th Level:  
+#### 28th Level: Diamond Eye
 
-#### 30th Level: 
+#### 29th Level: Platinum Ear
 
-#### 31st Level: 
+#### 30th Level: Deft Hand
 
-#### 32nd Level:  
+#### 31st Level: Shuffler
 
-#### 33rd Level:  
+#### 32nd Level: Bent Fence
 
-#### 34th Level: 
+#### 33rd Level: Sketchy Figure
 
-#### 35th Level:  
+#### 34th Level: Shadow
 
-#### 36th Level:  
+#### 35th Level: Legendary Whisper
 
-#### 37th Level:  
+#### 36th Level: Silent Mist
 
-#### 38th Level:  
+#### 37th Level: True Follower of Herzes
 
-#### 39th Level:  
+#### 38th Level: Collector
 
-#### 40th Level:  
+#### 39th Level: Well Equiped
 
-#### 41st Level: 
+#### 40th Level: Gambler
 
-#### 42nd Level: 
+#### 41st Level: Liver of Chance
 
-#### 43rd Level:  
+#### 42nd Level: Mythical Whisper
 
-#### 44th Level:  
+#### 43rd Level: Exotic Item Collector 
 
-#### 45th Level:  
+#### 44th Level: Hoard Amasser
 
-#### 46th Level: 
+#### 45th Level: Dragon's Jealousy
 
-#### 47th Level: 
+#### 46th Level: Shining Thief
 
-#### 48th Level:  
+#### 47th Level: Wraith
 
-#### 49th Level:  
+#### 48th Level: Herzes' Favorite
 
-#### 50th Level:  
+#### 49th Level: Thief King
 
-### 51th Level:  
+#### 50th Level: Never Seen, Never Heard
+
+### 51th Level: Ghost
