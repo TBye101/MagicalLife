@@ -57,7 +57,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
         public override void LevelUp()
         {
-            this.Attributes.BaseHealth += Dice.RollDice(new Die(1, 10, 2), "Monk gains hit points: ");
+            this.Attributes.BaseHealth += Dice.RollDice(new Die(1, 10, 2), this.Name + " gains hit points: ");
 
             switch (this.Attributes.XP.CreatureLevel)
             {
