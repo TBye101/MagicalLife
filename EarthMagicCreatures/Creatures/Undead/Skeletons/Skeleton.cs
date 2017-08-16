@@ -62,11 +62,6 @@ namespace EarthMagicCreatures.Creatures.Undead.Skeletons
 
         }
 
-        public override void RecieveDamage(Damage damage)
-        {
-            throw new NotImplementedException();
-        }
-
         public override void YourTurn(Encounter encounter)
         {
             throw new NotImplementedException();

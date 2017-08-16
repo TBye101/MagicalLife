@@ -42,7 +42,7 @@ namespace EarthWithMagicAPI.API.Creature
         /// <param name="DocumentationPath"></param>
         /// <param name="Uses">The amount of uses this ability can be used right after resting.</param>
         /// <param name="AOE">Area of effect spell?</param>
-        public IAbility(string name, string DocumentationPath, bool AOE, int Uses)
+        protected IAbility(string name, string DocumentationPath, bool AOE, int Uses)
         {
             this.Name = name;
             this.AOESpell = AOE;

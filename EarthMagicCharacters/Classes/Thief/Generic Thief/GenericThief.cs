@@ -1163,11 +1163,6 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
             throw new NotImplementedException();
         }
 
-        public override void RecieveDamage(Damage damage)
-        {
-            throw new NotImplementedException();
-        }
-
         public override void YourTurn(Encounter encounter)
         {
             throw new NotImplementedException();
