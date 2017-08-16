@@ -84,59 +84,8 @@ namespace EarthWithMagicAPI.API.Stuff
                     }
                 }
 
-                foreach (ICreature item in this.Enemies)
-                {
-                    //Remove spells that have expired. AKA an effect wore off.
-                    int length = item.SpellsAffectedBy.Count;
-                    for (int i = 0; i < length; i++)
-                    {
-                        if (item.SpellsAffectedBy[i].RoundsLeft < 1)
-                        {
-                            item.SpellsAffectedBy.RemoveAt(i);
-                            i--;
-                            length--;
-                        }
-                    }
-
-                    //Remove abilities that have expired. AKA an effect wore off.
-                    length = item.AbilitiesAffectedBy.Count;
-                    for (int i = 0; i < length; i++)
-                    {
-                        if (item.AbilitiesAffectedBy[i].RoundsLeft < 1)
-                        {
-                            item.AbilitiesAffectedBy.RemoveAt(i);
-                            i--;
-                            length--;
-                        }
-                    }
-                }
-
-                foreach (ICreature item in this.Party)
-                {
-                    //Remove spells that have expired. AKA an effect wore off.
-                    int length = item.SpellsAffectedBy.Count;
-                    for (int i = 0; i < length; i++)
-                    {
-                        if (item.SpellsAffectedBy[i].RoundsLeft < 1)
-                        {
-                            item.SpellsAffectedBy.RemoveAt(i);
-                            i--;
-                            length--;
-                        }
-                    }
-
-                    //Remove abilities that have expired. AKA an effect wore off.
-                    length = item.AbilitiesAffectedBy.Count;
-                    for (int i = 0; i < length; i++)
-                    {
-                        if (item.AbilitiesAffectedBy[i].RoundsLeft < 1)
-                        {
-                            item.AbilitiesAffectedBy.RemoveAt(i);
-                            i--;
-                            length--;
-                        }
-                    }
-                }
+                this.RemoveExpired(this.Enemies);
+                this.RemoveExpired(this.Party);
             }
 
             if (this.IsEveryoneDead(this.Party))
@@ -168,6 +117,40 @@ namespace EarthWithMagicAPI.API.Stuff
             }
 
             return this.Party;
+        }
+
+        /// <summary>
+        /// Removes expired spells an abilities that were effecting the creatures.
+        /// </summary>
+        /// <param name="creatures"></param>
+        private void RemoveExpired(List<ICreature> creatures)
+        {
+            foreach (ICreature item in creatures)
+            {
+                //Remove spells that have expired. AKA an effect wore off.
+                int length = item.SpellsAffectedBy.Count;
+                for (int i = 0; i < length; i++)
+                {
+                    if (item.SpellsAffectedBy[i].RoundsLeft < 1)
+                    {
+                        item.SpellsAffectedBy.RemoveAt(i);
+                        i--;
+                        length--;
+                    }
+                }
+
+                //Remove abilities that have expired. AKA an effect wore off.
+                length = item.AbilitiesAffectedBy.Count;
+                for (int i = 0; i < length; i++)
+                {
+                    if (item.AbilitiesAffectedBy[i].RoundsLeft < 1)
+                    {
+                        item.AbilitiesAffectedBy.RemoveAt(i);
+                        i--;
+                        length--;
+                    }
+                }
+            }
         }
 
         /// <summary>
