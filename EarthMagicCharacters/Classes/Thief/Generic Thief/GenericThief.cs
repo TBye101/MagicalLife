@@ -14,8 +14,40 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
     /// </summary>
     public class GenericThief : ICharacter
     {
-        public GenericThief(CreatureAttributes attributes, CreatureAbilities abilities) : base(attributes, abilities)
+        /// <summary>
+        /// The ai used for the thief.
+        /// </summary>
+        public ThiefAI AI = new ThiefAI();
+
+        private bool _Hostile;
+
+        public GenericThief(Gender gender, Race race, Alignment alignment, string name = "Thief", bool isHostile = false) : base(GetAttributes(gender, race, alignment), GetAbilities())
         {
+            this.CreatureType = "Thief";
+            this.Name = name;
+            this._Hostile = isHostile;
+        }
+
+        /// <summary>
+        /// Gets the initial attributes of a thief.
+        /// </summary>
+        /// <returns></returns>
+        private static CreatureAttributes GetAttributes(Gender gender, Race race, Alignment alignment)
+        {
+            int startingHealth = Dice.RollDice(new Die(2, 4, 3), "Starting Health");
+            return new CreatureAttributes(gender, alignment, race, .03, startingHealth, startingHealth,
+            Dice.RollDice(new Die(3, 6, 0), "Dexterity"), Dice.RollDice(new Die(3, 6, 0), "Strength"),
+            Dice.RollDice(new Die(3, 6, 0), "Constitution"), Dice.RollDice(new Die(3, 6, 0), "Charisma"),
+            Dice.RollDice(new Die(3, 6, 0), "Wisdom"), 0, 0, 0, 0, 0, 0, 0, 0, true, 30, .35, 0, Dice.RollDice(new Die(3, 6, 0), "Intelligence"));
+        }
+
+        /// <summary>
+        /// Gets the initial abilities of a thief.
+        /// </summary>
+        /// <returns></returns>
+        private static CreatureAbilities GetAbilities()
+        {
+            return new CreatureAbilities();
         }
 
         public override void EncounterEnded(Encounter fight)
@@ -30,12 +62,12 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         public override CreatureAttributes GetAttributes()
         {
-            throw new NotImplementedException();
+            return this.Attributes;
         }
 
         public override bool IsHostile()
         {
-            throw new NotImplementedException();
+            return this._Hostile;
         }
 
         public override void LevelUp()
@@ -1165,7 +1197,14 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         public override void YourTurn(Encounter encounter)
         {
-            throw new NotImplementedException();
+            if (this.IsInParty)
+            {
+                CombatControl.YourTurn(this, encounter);
+            }
+            else
+            {
+                this.AI.YourTurn(encounter, this);
+            }
         }
     }
 }
