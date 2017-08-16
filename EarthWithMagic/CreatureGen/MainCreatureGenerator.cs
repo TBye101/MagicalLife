@@ -1,4 +1,5 @@
-﻿using EarthMagicCharacters.Classes.Monk;
+﻿using EarthWithMagic.CreatureGen;
+using EarthMagicCharacters.Classes.Monk;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,7 +13,7 @@ namespace EarthWithMagicAPI.API.Creature
     {
         public ICreature GetMainCharacter()
         {
-            Util.Util.WriteLine("Monk?");
+            Util.Util.WriteLine("Monk or Thief?");
             string input = Console.ReadLine();
 
             switch (input.ToLower())
@@ -20,6 +21,9 @@ namespace EarthWithMagicAPI.API.Creature
                 case "monk":
                     MonkCharacterGeneration gen = new MonkCharacterGeneration();
                     return gen.Generate();
+                case "thief":
+                    ThiefCharacterGenerator thief = new ThiefCharacterGenerator();
+                    return thief.Generate();
                 default:
                     Util.Util.WriteLine("Invalid input!");
                     return GetMainCharacter();

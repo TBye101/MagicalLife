@@ -5,6 +5,9 @@ Thieves are renown for their ability to pickpocket, pick locks, hide in shadows,
 To increase their skills by level up, they must complete a heist of appropriate challenge for their level. If they are successful, they level up.
 If they aren't, then they gotta try until they are.
 
+Race Options: Human, Elf, Dwarf, Kender, Drow, Dragonborn, and Unspecified.
+Alignment Options: Lawful Good, Chaotic Good, Lawful Neutral, True Neutral, Chaotic Neutral, Lawful Evil, Neutral Evil, and Chaotic Evil.
+
 AC: 3
 Hit die: 1d4 +3
 

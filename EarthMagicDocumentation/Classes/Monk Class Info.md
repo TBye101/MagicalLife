@@ -10,6 +10,8 @@ As they perform works of good or evil, their deity may reward or punish them.
 Whenever a monk is deemed ready to advance and they believe they are ready to advance, their deity will issue them a challenge.
 If they pass the challenge, they will advance to a higher rank of monk. If they fail, they are allowed to grow in power and character before trying again.
 
+Race Options: Human
+Alignment Options: Lawful Good
 
 AC: 4
 Hit die: 1d10 +2

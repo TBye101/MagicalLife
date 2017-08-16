@@ -8,6 +8,7 @@
     <None Remove="Abilities\Summon Holy Section.md" />
     <None Remove="ASCII Art\Dragon_Breathing_Fire.txt" />
     <None Remove="ASCII Art\Monk.txt" />
+    <None Remove="ASCII Art\Thief.txt" />
     <None Remove="ASCII Art\Title.txt" />
     <None Remove="Classes\Barbarian Class Info.md" />
     <None Remove="Classes\Bard Class Info.md" />
@@ -53,6 +54,7 @@
     <EmbeddedResource Include="Abilities\Summon Holy Section.md" />
     <EmbeddedResource Include="ASCII Art\Dragon_Breathing_Fire.txt" />
     <EmbeddedResource Include="ASCII Art\Monk.txt" />
+    <EmbeddedResource Include="ASCII Art\Thief.txt" />
     <EmbeddedResource Include="ASCII Art\Title.txt" />
     <EmbeddedResource Include="Classes\WIP\Barbarian Class Info.md" />
     <EmbeddedResource Include="Classes\WIP\Bard Class Info.md" />
