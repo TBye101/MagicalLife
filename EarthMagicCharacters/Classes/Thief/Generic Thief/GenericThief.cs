@@ -207,247 +207,909 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private void Level50()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseBackstab += 3;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.AC++;
+
+            Util.WriteLine(report);
         }
 
         private void Level49()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.BaseDodge += 3;
+
+            Util.WriteLine(report);
         }
 
         private void Level48()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseBackstab += 3;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.AC++;
+
+            Util.WriteLine(report);
         }
 
         private void Level47()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.BaseDodge += 3;
+
+            Util.WriteLine(report);
         }
 
         private void Level46()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseBackstab += 3;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.AC++;
+
+            Util.WriteLine(report);
         }
 
         private void Level45()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.BaseDodge += 3;
+
+            Util.WriteLine(report);
         }
 
         private void Level44()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseBackstab += 3;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.AC++;
+
+            Util.WriteLine(report);
         }
 
         private void Level43()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.BaseDodge += 3;
+
+            Util.WriteLine(report);
         }
 
         private void Level42()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseBackstab += 3;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.AC++;
+
+            Util.WriteLine(report);
         }
 
         private void Level41()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.BaseDodge += 3;
+
+            Util.WriteLine(report);
         }
 
         private void Level40()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseBackstab += 3;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.AC++;
+
+            Util.WriteLine(report);
         }
 
         private void Level39()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.BaseDodge += 3;
+
+            Util.WriteLine(report);
         }
 
         private void Level38()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseBackstab += 3;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.AC++;
+
+            Util.WriteLine(report);
         }
 
         private void Level37()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.BaseDodge += 3;
+
+            Util.WriteLine(report);
         }
 
         private void Level36()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseBackstab += 3;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.AC++;
+
+            Util.WriteLine(report);
         }
 
         private void Level35()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.BaseDodge += 3;
+
+            Util.WriteLine(report);
         }
 
         private void Level34()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseBackstab += 3;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.AC++;
+
+            Util.WriteLine(report);
         }
 
         private void Level33()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.BaseDodge += 3;
+
+            Util.WriteLine(report);
         }
 
         private void Level32()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseBackstab += 3;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.AC++;
+
+            Util.WriteLine(report);
         }
 
         private void Level31()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.BaseDodge += 3;
+
+            Util.WriteLine(report);
         }
 
         private void Level30()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseBackstab += 3;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.AC++;
+
+            Util.WriteLine(report);
         }
 
         private void Level29()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.BaseDodge += 3;
+
+            Util.WriteLine(report);
         }
 
         private void Level28()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseBackstab += 3;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.AC++;
+
+            Util.WriteLine(report);
         }
 
         private void Level27()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.BaseDodge += 3;
+
+            Util.WriteLine(report);
         }
 
         private void Level26()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseBackstab += 3;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.AC++;
+
+            Util.WriteLine(report);
         }
 
         private void Level25()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.BaseDodge += 3;
+
+            Util.WriteLine(report);
         }
 
         private void Level24()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseBackstab += 3;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.AC++;
+
+            Util.WriteLine(report);
         }
 
         private void Level23()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.BaseDodge += 3;
+
+            Util.WriteLine(report);
         }
 
         private void Level22()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseBackstab += 3;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.AC++;
+
+            Util.WriteLine(report);
         }
 
         private void Level21()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.BaseDodge += 3;
+
+            Util.WriteLine(report);
         }
 
         private void Level20()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseBackstab += 3;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.AC++;
+
+            Util.WriteLine(report);
         }
 
         private void Level19()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.BaseDodge += 3;
+
+            Util.WriteLine(report);
         }
 
         private void Level18()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseBackstab += 3;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.AC++;
+
+            Util.WriteLine(report);
         }
 
         private void Level17()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.BaseDodge += 3;
+
+            Util.WriteLine(report);
         }
 
         private void Level16()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseBackstab += 3;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.AC++;
+
+            Util.WriteLine(report);
         }
 
         private void Level15()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.BaseDodge += 3;
+
+            Util.WriteLine(report);
         }
 
         private void Level14()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseBackstab += 3;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.AC++;
+
+            Util.WriteLine(report);
         }
 
         private void Level13()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.BaseDodge += 3;
+
+            Util.WriteLine(report);
         }
 
         private void Level12()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseBackstab += 3;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.AC++;
+
+            Util.WriteLine(report);
         }
 
         private void Level11()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.BaseDodge += 3;
+
+            Util.WriteLine(report);
         }
 
         private void Level10()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseBackstab += 3;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.AC++;
+
+            Util.WriteLine(report);
         }
 
         private void Level9()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.BaseDodge += 3;
+
+            Util.WriteLine(report);
         }
 
         private void Level8()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseBackstab += 3;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.AC++;
+
+            Util.WriteLine(report);
         }
 
         private void Level7()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.BaseDodge += 3;
+
+            Util.WriteLine(report);
         }
 
         private void Level6()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseBackstab += 3;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.AC++;
+
+            Util.WriteLine(report);
         }
 
         private void Level5()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
+
+            this.Title = "Hungry";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.BaseDodge += 3;
+
+            Util.WriteLine(report);
         }
 
         private void Level4()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Orphan", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
+
+            this.Title = "Orphan";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseBackstab += 3;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.AC++;
+
+            Util.WriteLine(report);
         }
 
         private void Level3()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Kitchen Thief", "Open Lock: +2", "Dodge: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2"};
+
+            this.Title = "Kitchen Thief";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.BaseDodge += 3;
+
+            Util.WriteLine(report);
         }
 
         private void Level2()
         {
-            throw new NotImplementedException();
+            List<string> report = new List<string> { "Title: Hungry Orphan", "Open Lock: +2", "Backstab: +3", "Walk Silently: +2", "Hide in Shadows: +2",
+            "Pickpocket: +2", "Detect Traps: +2", "Disarm Traps: +2", "Detect Illusions: +2", "AC: +1"};
+
+            this.Title = "Hungry Orphan";
+            this.Abilities.BaseOpenLock += 2;
+            this.Abilities.BaseBackstab += 3;
+            this.Abilities.BaseWalkSilently += 2;
+            this.Abilities.BaseHideInShadows += 2;
+            this.Abilities.BasePickPocket += 2;
+            this.Abilities.BaseDetectTraps += 2;
+            this.Abilities.BaseDisarmTraps += 2;
+            this.Abilities.BaseDetectIllusions += 2;
+            this.Attributes.AC++;
+
+            Util.WriteLine(report);
         }
 
         public override void OnCreatureDied(ICreature dead)
