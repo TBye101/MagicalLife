@@ -42,7 +42,7 @@ namespace EarthWithMagicAPI.API.Creature
         /// <param name="gender"></param>
         /// <param name="race"></param>
         /// <param name="alignment"></param>
-        public ICreature(CreatureAttributes attributes, CreatureAbilities abilities)
+        protected ICreature(CreatureAttributes attributes, CreatureAbilities abilities)
         {
             this.Attributes = attributes;
             this.Abilities = abilities;
@@ -352,7 +352,7 @@ namespace EarthWithMagicAPI.API.Creature
         /// <summary>
         /// The default constructor for this class. Must be called on initialization.
         /// </summary>
-        public ICreature()
+        protected ICreature()
         {
             this.WeightCapacity = WeightCapacityUtil.Calculate(this);
         }

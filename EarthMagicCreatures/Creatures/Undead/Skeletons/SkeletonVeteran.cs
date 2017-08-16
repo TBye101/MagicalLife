@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EarthMagicCreatures.Creatures.Undead.Skeletons
 {
-    class SkeletonVeteran
+    public class SkeletonVeteran
     {
     }
 }

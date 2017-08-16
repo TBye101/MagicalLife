@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EarthWithMagicMagic.Spells.Necromancer
 {
-    class LifeTransfusion
+    public class LifeTransfusion
     {
     }
 }

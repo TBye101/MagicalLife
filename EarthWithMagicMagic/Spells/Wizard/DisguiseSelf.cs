@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EarthWithMagicMagic.Spells.Wizard
 {
-    class DisguiseSelf
+    public class DisguiseSelf
     {
     }
 }

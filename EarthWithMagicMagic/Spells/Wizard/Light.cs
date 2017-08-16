@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EarthWithMagicMagic.Spells.Wizard
 {
-    class Light
+    public class Light
     {
     }
 }

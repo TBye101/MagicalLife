@@ -38,7 +38,7 @@ namespace EarthWithMagicAPI.API.Creature
                         ViewInventory(creature, encounter, Command);
                         break;
                     case "equip":
-                        Equip(creature, encounter, Command);
+                        Equip(creature);
                         break;
                     case "swing":
                         Swing(creature, encounter, Command);
@@ -300,7 +300,7 @@ namespace EarthWithMagicAPI.API.Creature
             }
         }
 
-        private static void Equip(ICreature creature, Encounter encounter, string[] Command)
+        private static void Equip(ICreature creature)
         {
             Util.Util.WriteLine("Which item? (Specify by name)");
             string name = Console.ReadLine();

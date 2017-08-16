@@ -46,7 +46,7 @@ namespace EarthWithMagicAPI.API.Creature
         {
             this.Name = name;
             this.AOESpell = AOE;
-            Info = ResourceGM.GetResource(DocumentationPath);
+            this.Info = ResourceGM.GetResource(DocumentationPath);
             this.MaxUses = Uses;
         }
 
