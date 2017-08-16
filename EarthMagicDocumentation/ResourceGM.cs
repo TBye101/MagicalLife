@@ -9,7 +9,7 @@ namespace EarthMagicDocumentation
     /// <summary>
     /// Facilitates in the fetching of resources.
     /// </summary>
-    public class ResourceGM
+    public static class ResourceGM
     {
         /// <summary>
         /// Returns a string list of the file specified.
