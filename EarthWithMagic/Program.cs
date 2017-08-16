@@ -1,4 +1,7 @@
-﻿using EarthMagicCharacters.Classes.Monk.Generic_Monk;
+﻿using System.Diagnostics;
+using EarthWithMagicAPI.API.Util;
+using EarthMagicDocumentation;
+using EarthMagicCharacters.Classes.Monk.Generic_Monk;
 using EarthWithMagicAPI.API.Party;
 using EarthWithMagicAPI.API.Creature;
 using EarthWithMagicAPI.API.Stuff;
@@ -10,6 +13,8 @@ namespace EarthWithMagic
     {
         private static void Main(string[] args)
         {
+            Util.WriteLine(ResourceGM.GetResource("EarthMagicDocumentation.ASCII_Art.Title.txt"));
+
             string input;
             MainCreatureGenerator gen = new MainCreatureGenerator();
             Party.TheParty.Add(gen.GetMainCharacter());

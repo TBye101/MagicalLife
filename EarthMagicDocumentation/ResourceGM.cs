@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using Microsoft.VisualBasic.CompilerServices;
+using System.IO;
 using System.Reflection;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,12 @@ namespace EarthMagicDocumentation
         public static List<string> GetResource(string Path)
         {
             Assembly docAsm = typeof(ResourceGM).GetTypeInfo().Assembly;
+
+            //foreach (string item in docAsm.GetManifestResourceNames())
+            //{
+            //    Console.Write(item + "\r\n");
+            //}
+
             Stream resource = docAsm.GetManifestResourceStream(Path);
             StreamReader reader = new StreamReader(resource);
 

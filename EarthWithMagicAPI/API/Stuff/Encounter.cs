@@ -84,8 +84,8 @@ namespace EarthWithMagicAPI.API.Stuff
                     }
                 }
 
-                this.RemoveExpired(this.Enemies);
-                this.RemoveExpired(this.Party);
+                this.RemoveExpired(this.Enemies, this.Party, this.Enemies);
+                this.RemoveExpired(this.Party, this.Party, this.Enemies);
             }
 
             if (this.IsEveryoneDead(this.Party))

@@ -49,7 +49,7 @@ namespace EarthWithMagicMagic.Abilities.Monk
 
         public override void OnWearOff(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
         {
-
+            Util.WriteLine(Affected.Name + " is no longer affected by stunning blow");
         }
     }
 }
