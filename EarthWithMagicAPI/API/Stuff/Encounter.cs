@@ -123,7 +123,7 @@ namespace EarthWithMagicAPI.API.Stuff
         /// Removes expired spells an abilities that were effecting the creatures.
         /// </summary>
         /// <param name="creatures"></param>
-        private void RemoveExpired(List<ICreature> creatures)
+        private void RemoveExpired(List<ICreature> creatures, List<ICreature> party, List<ICreature> enemies)
         {
             foreach (ICreature item in creatures)
             {
@@ -133,6 +133,7 @@ namespace EarthWithMagicAPI.API.Stuff
                 {
                     if (item.SpellsAffectedBy[i].RoundsLeft < 1)
                     {
+                        item.SpellsAffectedBy[i].OnWearOff(party, enemies, item);
                         item.SpellsAffectedBy.RemoveAt(i);
                         i--;
                         length--;
@@ -145,6 +146,7 @@ namespace EarthWithMagicAPI.API.Stuff
                 {
                     if (item.AbilitiesAffectedBy[i].RoundsLeft < 1)
                     {
+                        item.AbilitiesAffectedBy[i].OnWearOff(party, enemies, item);
                         item.AbilitiesAffectedBy.RemoveAt(i);
                         i--;
                         length--;

@@ -196,6 +196,15 @@ namespace EarthWithMagicAPI.API.Creature
         /// <param name="damage"></param>
         public void RecieveDamage(Damage damage)
         {
+            if (this.IsInParty)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+            }
+
             Util.Util.WriteLine(this.Name + " is taking damage!");
             double dodgeChance = this.Attributes.Dodge / 2; 
 
@@ -246,6 +255,8 @@ namespace EarthWithMagicAPI.API.Creature
                 //Dodge
                 Util.Util.WriteLine(this.Name + " dodged!");
             }
+
+            Console.ResetColor();
         }
 
 
