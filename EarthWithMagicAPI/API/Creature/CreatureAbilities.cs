@@ -85,6 +85,15 @@
         public int BaseHideInShadows = 0;
         public int HideInShadows = 0;
 
+       /// <summary>
+       /// The creature's ability to pick a lock.
+       /// </summary>
+        public int BaseOpenLock = 0;
+        /// <summary>
+        /// The creature's current ability to pick a lock.
+        /// </summary>
+        public int OpenLock = 0;
+
         /// <summary>
         /// How quite the creature walks. 0 is loud, 100 is quiet.
         /// </summary>
