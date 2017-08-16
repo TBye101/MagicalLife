@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <None Remove="Abilities\Summon Holy Section.md" />
+    <None Remove="ASCII Art\Bard.txt" />
     <None Remove="ASCII Art\Dragon_Breathing_Fire.txt" />
     <None Remove="ASCII Art\Monk.txt" />
     <None Remove="ASCII Art\Thief.txt" />
@@ -52,6 +53,7 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Abilities\Summon Holy Section.md" />
+    <EmbeddedResource Include="ASCII Art\Bard.txt" />
     <EmbeddedResource Include="ASCII Art\Dragon_Breathing_Fire.txt" />
     <EmbeddedResource Include="ASCII Art\Monk.txt" />
     <EmbeddedResource Include="ASCII Art\Thief.txt" />

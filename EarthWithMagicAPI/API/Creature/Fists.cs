@@ -19,7 +19,7 @@ namespace EarthWithMagicAPI.API.Creature
             this.Value = 0;
             this.Weight = 0;
             this.Damage = new Damage(new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0),
-        new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(1, 4, 0));
+        new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(1, 2, 0));
         }
 
         public override void Bought()
