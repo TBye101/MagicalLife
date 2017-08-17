@@ -13,13 +13,13 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         public Damage AttackDamage;
 
         /// <summary>
-        /// The number of uses the ammo has.
-        /// </summary>
-        public Die Uses;
-
-        /// <summary>
         /// The base chance to hit.
         /// </summary>
         public int ChanceToHit;
+
+        /// <summary>
+        /// The number of uses the ammo has.
+        /// </summary>
+        public Die Uses;
     }
 }

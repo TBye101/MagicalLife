@@ -11,6 +11,24 @@ namespace EarthMagicItems.Armor
     /// </summary>
     public class GenericArmor : IArmor
     {
+        public event EventHandler<IItem> ItemBought;
+
+        public event EventHandler<IItem> ItemDestroyed;
+
+        public event EventHandler<IItem> ItemDropped;
+
+        public event EventHandler<IItem> ItemEquipped;
+
+        public event EventHandler<IItem> ItemLost;
+
+        public event EventHandler<IItem> ItemPickedUp;
+
+        public event EventHandler<IItem> ItemSold;
+
+        public event EventHandler<IItem> ItemThrown;
+
+        public event EventHandler<IItem> StatusChanged;
+
         public GenericArmor(int armorClass, bool questItem, int level, List<string> otherInformation, List<string> lore, string name)
         {
             this.AC = armorClass;
@@ -24,24 +42,6 @@ namespace EarthMagicItems.Armor
             this.IsEquipped = false;
             this.Weight = 5;
         }
-
-        public event EventHandler<IItem> ItemSold;
-
-        public event EventHandler<IItem> ItemBought;
-
-        public event EventHandler<IItem> ItemDropped;
-
-        public event EventHandler<IItem> ItemPickedUp;
-
-        public event EventHandler<IItem> ItemLost;
-
-        public event EventHandler<IItem> ItemThrown;
-
-        public event EventHandler<IItem> ItemDestroyed;
-
-        public event EventHandler<IItem> ItemEquipped;
-
-        public event EventHandler<IItem> StatusChanged;
 
         public override void Bought()
         {

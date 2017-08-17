@@ -14,6 +14,24 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows.Artifacts
     /// </summary>
     public class The_Inevitable : IAmmo
     {
+        public event EventHandler<IItem> ItemBought;
+
+        public event EventHandler<IItem> ItemDestroyed;
+
+        public event EventHandler<IItem> ItemDropped;
+
+        public event EventHandler<IItem> ItemEquipped;
+
+        public event EventHandler<IItem> ItemLost;
+
+        public event EventHandler<IItem> ItemPickedUp;
+
+        public event EventHandler<IItem> ItemSold;
+
+        public event EventHandler<IItem> ItemThrown;
+
+        public event EventHandler<IItem> StatusChanged;
+
         /// <summary>
         /// The constructor for The_Inevitable.
         /// </summary>
@@ -39,24 +57,6 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows.Artifacts
 
             this.Value = Pricer.GetPrice(this);
         }
-
-        public event EventHandler<IItem> ItemSold;
-
-        public event EventHandler<IItem> ItemBought;
-
-        public event EventHandler<IItem> ItemDropped;
-
-        public event EventHandler<IItem> ItemPickedUp;
-
-        public event EventHandler<IItem> ItemLost;
-
-        public event EventHandler<IItem> ItemThrown;
-
-        public event EventHandler<IItem> ItemDestroyed;
-
-        public event EventHandler<IItem> ItemEquipped;
-
-        public event EventHandler<IItem> StatusChanged;
 
         public override void Bought()
         {

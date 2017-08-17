@@ -20,76 +20,6 @@ namespace EarthWithMagic.CreatureGen
             return monk;
         }
 
-        /// <summary>
-        /// Returns the chosen name of the character.
-        /// </summary>
-        /// <returns></returns>
-        private string GetName()
-        {
-            Util.WriteLine("What is your name?");
-            return Console.ReadLine();
-        }
-
-        /// <summary>
-        /// Returns the player's chosen gender.
-        /// </summary>
-        /// <returns></returns>
-        private Gender GetGender()
-        {
-            Util.WriteLine("Male, Female, or Unspecified?");
-            string input = Console.ReadLine();
-
-            switch (input.ToLower())
-            {
-                case "male":
-                    return Gender.Male;
-
-                case "female":
-
-                    return Gender.Female;
-
-                case "unspecified":
-
-                    return Gender.Unspecified;
-
-                default:
-                    Util.WriteLine("Invalid input!");
-                    return this.GetGender();
-            }
-        }
-
-        private Race GetRace()
-        {
-            Util.WriteLine("Human, Elf, Dwarf, Kender, Drow, Dragonborn, or Unspecified?");
-
-            string Input = Console.ReadLine();
-
-            switch (Input.ToLower())
-            {
-                case "human":
-                    return Race.Human;
-
-                case "elf":
-                    return Race.Elf;
-
-                case "dwarf":
-                    return Race.Dwarf;
-
-                case "kender":
-                    return Race.Kender;
-
-                case "dragonborn":
-                    return Race.Dragonborn;
-
-                case "unspecified":
-                    return Race.Unspecified;
-
-                default:
-                    Util.WriteLine("Invalid race!");
-                    return this.GetRace();
-            }
-        }
-
         private Alignment GetAlignment()
         {
             Util.WriteLine("Lawful Good, Chaotic Good, Lawful Neutral, True Neutral, Chaotic Neutral, Lawful Evil, Neutral Evil, or Chaotic Evil?");
@@ -124,6 +54,76 @@ namespace EarthWithMagic.CreatureGen
                 default:
                     Util.WriteLine("Invalid alignment!");
                     return this.GetAlignment();
+            }
+        }
+
+        /// <summary>
+        /// Returns the player's chosen gender.
+        /// </summary>
+        /// <returns></returns>
+        private Gender GetGender()
+        {
+            Util.WriteLine("Male, Female, or Unspecified?");
+            string input = Console.ReadLine();
+
+            switch (input.ToLower())
+            {
+                case "male":
+                    return Gender.Male;
+
+                case "female":
+
+                    return Gender.Female;
+
+                case "unspecified":
+
+                    return Gender.Unspecified;
+
+                default:
+                    Util.WriteLine("Invalid input!");
+                    return this.GetGender();
+            }
+        }
+
+        /// <summary>
+        /// Returns the chosen name of the character.
+        /// </summary>
+        /// <returns></returns>
+        private string GetName()
+        {
+            Util.WriteLine("What is your name?");
+            return Console.ReadLine();
+        }
+
+        private Race GetRace()
+        {
+            Util.WriteLine("Human, Elf, Dwarf, Kender, Drow, Dragonborn, or Unspecified?");
+
+            string Input = Console.ReadLine();
+
+            switch (Input.ToLower())
+            {
+                case "human":
+                    return Race.Human;
+
+                case "elf":
+                    return Race.Elf;
+
+                case "dwarf":
+                    return Race.Dwarf;
+
+                case "kender":
+                    return Race.Kender;
+
+                case "dragonborn":
+                    return Race.Dragonborn;
+
+                case "unspecified":
+                    return Race.Unspecified;
+
+                default:
+                    Util.WriteLine("Invalid race!");
+                    return this.GetRace();
             }
         }
     }

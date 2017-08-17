@@ -11,6 +11,24 @@ namespace EarthMagicItems.Amulets
     /// </summary>
     public class GenericAmulet : IItem
     {
+        public event EventHandler<IItem> ItemBought;
+
+        public event EventHandler<IItem> ItemDestroyed;
+
+        public event EventHandler<IItem> ItemDropped;
+
+        public event EventHandler<IItem> ItemEquipped;
+
+        public event EventHandler<IItem> ItemLost;
+
+        public event EventHandler<IItem> ItemPickedUp;
+
+        public event EventHandler<IItem> ItemSold;
+
+        public event EventHandler<IItem> ItemThrown;
+
+        public event EventHandler<IItem> StatusChanged;
+
         public GenericAmulet(bool questItem, bool isEquipped, int level, List<string> otherInformation, List<string> lore, string name)
         {
             this.QuestItem = questItem;
@@ -23,24 +41,6 @@ namespace EarthMagicItems.Amulets
             this.Value = Pricer.GetPrice(this);
             this.Weight = 1;
         }
-
-        public event EventHandler<IItem> ItemSold;
-
-        public event EventHandler<IItem> ItemBought;
-
-        public event EventHandler<IItem> ItemDropped;
-
-        public event EventHandler<IItem> ItemPickedUp;
-
-        public event EventHandler<IItem> ItemLost;
-
-        public event EventHandler<IItem> ItemThrown;
-
-        public event EventHandler<IItem> ItemDestroyed;
-
-        public event EventHandler<IItem> ItemEquipped;
-
-        public event EventHandler<IItem> StatusChanged;
 
         public override void Bought()
         {

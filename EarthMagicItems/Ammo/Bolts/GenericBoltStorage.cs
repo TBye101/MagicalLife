@@ -12,13 +12,13 @@ namespace EarthMagicItems.Ammo.Bolts
     {
         #region NormalBolts
 
-        private GenericAmmo HandMadeBolt = new GenericAmmo(new Die(1, 2, 0), false, 1, "Handmade Bolt", 13, GenericBoltStorage.StandardBolt(new Die(1, 4, 0)), new List<string> { }, new List<string> { });
-        private GenericAmmo ProfessionalBolt = new GenericAmmo(new Die(1, 3, 0), false, 2, "Professional Bolt", 20, GenericBoltStorage.StandardBolt(new Die(1, 6, 0)), new List<string> { }, new List<string> { });
         private GenericAmmo _1Bolt = new GenericAmmo(new Die(2, 4, 0), false, 3, "+1 Bolt", 23, GenericBoltStorage.StandardBolt(new Die(1, 6, 1)), new List<string> { }, new List<string> { });
         private GenericAmmo _2Bolt = new GenericAmmo(new Die(3, 5, 0), false, 5, "+2 Bolt", 26, GenericBoltStorage.StandardBolt(new Die(1, 6, 2)), new List<string> { }, new List<string> { });
         private GenericAmmo _3Bolt = new GenericAmmo(new Die(4, 6, 0), false, 7, "+3 Bolt", 29, GenericBoltStorage.StandardBolt(new Die(1, 6, 3)), new List<string> { }, new List<string> { });
         private GenericAmmo _4Bolt = new GenericAmmo(new Die(5, 7, 0), false, 9, "+4 Bolt", 32, GenericBoltStorage.StandardBolt(new Die(1, 6, 4)), new List<string> { }, new List<string> { });
         private GenericAmmo _5Bolt = new GenericAmmo(new Die(6, 7, 0), false, 11, "+5 Bolt", 35, GenericBoltStorage.StandardBolt(new Die(1, 6, 5)), new List<string> { }, new List<string> { });
+        private GenericAmmo HandMadeBolt = new GenericAmmo(new Die(1, 2, 0), false, 1, "Handmade Bolt", 13, GenericBoltStorage.StandardBolt(new Die(1, 4, 0)), new List<string> { }, new List<string> { });
+        private GenericAmmo ProfessionalBolt = new GenericAmmo(new Die(1, 3, 0), false, 2, "Professional Bolt", 20, GenericBoltStorage.StandardBolt(new Die(1, 6, 0)), new List<string> { }, new List<string> { });
 
         #endregion NormalBolts
 

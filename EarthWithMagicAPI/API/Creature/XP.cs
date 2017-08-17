@@ -6,11 +6,6 @@
     public class XP
     {
         /// <summary>
-        /// The number of level ups the creature needs to do.
-        /// </summary>
-        public int LevelUpsAvailible = 0;
-
-        /// <summary>
         /// The level of creature.
         /// </summary>
         public int CreatureLevel;
@@ -19,6 +14,11 @@
         /// Our current xp to the next level.
         /// </summary>
         public int CurrentXP = 0;
+
+        /// <summary>
+        /// The number of level ups the creature needs to do.
+        /// </summary>
+        public int LevelUpsAvailible = 0;
 
         /// <summary>
         /// The xp needed to level up.

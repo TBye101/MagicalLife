@@ -51,6 +51,11 @@ namespace EarthWithMagicAPI.API.Util
     public struct Die
     {
         /// <summary>
+        /// Your +Damage.
+        /// </summary>
+        public int Modifyer;
+
+        /// <summary>
         /// Rolls of the die.
         /// </summary>
         public int Rolls;
@@ -59,11 +64,6 @@ namespace EarthWithMagicAPI.API.Util
         /// Number of sides on the die.
         /// </summary>
         public int Sides;
-
-        /// <summary>
-        /// Your +Damage.
-        /// </summary>
-        public int Modifyer;
 
         /// <summary>
         /// The constructor for the Die struct.

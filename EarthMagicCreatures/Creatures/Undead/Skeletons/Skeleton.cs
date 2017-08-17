@@ -10,11 +10,6 @@ namespace EarthMagicCreatures.Creatures.Undead.Skeletons
     /// </summary>
     public class Skeleton : ICreature
     {
-        /// <summary>
-        /// The attributes of this skeleton.
-        /// </summary>
-        //private CreatureAttributes Attributes = new CreatureAttributes(Gender.Unspecified, 7, 10, 10, 10, 14, 13, -1, 8, 0, 0, 100, 0, 100, 0, 0, 100, false, 10, 30, 15);
-
         public Skeleton() : base()
         {
         }

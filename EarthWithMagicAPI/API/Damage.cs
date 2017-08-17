@@ -13,9 +13,14 @@ namespace EarthWithMagicAPI.API
         public Die AcidDamage;
 
         /// <summary>
-        /// How much poison damage is dealt every turn.
+        /// How much blunt damage to deal. (Ex: Rock, club)
         /// </summary>
-        public Die PoisonDamage;
+        public Die BluntDamage;
+
+        /// <summary>
+        /// How much cold damage to deal.
+        /// </summary>
+        public Die ColdDamage;
 
         /// <summary>
         /// How much electric damage to deal.s
@@ -28,11 +33,6 @@ namespace EarthWithMagicAPI.API
         public Die FireDamage;
 
         /// <summary>
-        /// How much cold damage to deal.
-        /// </summary>
-        public Die ColdDamage;
-
-        /// <summary>
         /// How much pure magic damage.
         /// </summary>
         public Die MagicDamage;
@@ -43,14 +43,14 @@ namespace EarthWithMagicAPI.API
         public Die PiercingDamage;
 
         /// <summary>
+        /// How much poison damage is dealt every turn.
+        /// </summary>
+        public Die PoisonDamage;
+
+        /// <summary>
         /// How much slashing damage to deal. (Ex: Sword slashes)
         /// </summary>
         public Die SlashingDamage;
-
-        /// <summary>
-        /// How much blunt damage to deal. (Ex: Rock, club)
-        /// </summary>
-        public Die BluntDamage;
 
         /// <summary>
         /// The constructor for the damage class.

@@ -5,6 +5,123 @@
     /// </summary>
     public class CreatureAttributes
     {
+        public double AC;
+
+        /// <summary>
+        /// The alignment of the creature.
+        /// </summary>
+        public Alignment Alignment;
+
+        /// <summary>
+        /// Armor class of the creature.
+        /// Damage is reduced by armor class after resistances.
+        /// Damage taken is calculated by the following: Damage (After resistance calculations) * AC%.
+        /// </summary>
+        public double BaseAC;
+
+        /// <summary>
+        /// The charisma of the creature.
+        /// The ability of the creature to sway others.
+        /// </summary>
+        public int BaseCharisma;
+
+        /// <summary>
+        /// The constitution of the creature.
+        /// Constitution affects how many hit points the creature can get.
+        /// </summary>
+        public int BaseConstitution;
+
+        /// <summary>
+        /// The dexterity of the creature.
+        /// </summary>
+        public int BaseDexterity;
+
+        /// <summary>
+        /// The chance that the creature will dodge.
+        /// </summary>
+        public double BaseDodge;
+
+        /// <summary>
+        /// The maximum health of the creature.
+        /// </summary>
+        public double BaseHealth;
+
+        /// <summary>
+        /// Used to determine the order of creature action.
+        /// </summary>
+        public int BaseInitiative;
+
+        /// <summary>
+        /// The intelligence of the creature.
+        /// </summary>
+        public int BaseIntelligence;
+
+        /// <summary>
+        /// The strength of the creature.
+        /// </summary>
+        public int BaseStrength;
+
+        /// <summary>
+        /// The chance that we will successfully hit with the currently equipped weapon.
+        /// </summary>
+        public double BaseToHit;
+
+        /// <summary>
+        /// The creature's wisdom.
+        /// </summary>
+        public int BaseWisdom;
+
+        public int Charisma;
+
+        public int Constitution;
+
+        public int Dexterity;
+
+        public double Dodge;
+
+        /// <summary>
+        /// The gender of the creature.
+        /// </summary>
+        public Gender Gender = Gender.Unspecified;
+
+        /// <summary>
+        /// The actual health of the creature.
+        /// </summary>
+        public double Health;
+
+        public int Initiative;
+
+        /// <summary>
+        /// The current intelligence of the creature.
+        /// </summary>
+        public int Intelligence;
+
+        /// <summary>
+        /// Holds a flag that tells if the creature needs to breath oxygen.
+        /// </summary>
+        public bool NeedsOxygen;
+
+        /// <summary>
+        /// The race of the creature.
+        /// </summary>
+        public Race Race = Race.Unspecified;
+
+        public int Strength;
+
+        public double ToHit;
+
+        /// <summary>
+        /// How much weight the creature can carry around.
+        /// </summary>
+        public int WeightCapacity;
+
+        public int Wisdom;
+
+        /// <summary>
+        /// Xp information about the creature.
+        /// </summary>
+        public XP XP = new XP(1);
+
         /// <summary>
         /// The instructor for the CreatureAttributes class.
         /// </summary>
@@ -61,182 +178,59 @@
             this.Alignment = alignment;
         }
 
-        /// <summary>
-        /// The chance that we will successfully hit with the currently equipped weapon.
-        /// </summary>
-        public double BaseToHit;
-
-        public double ToHit;
-
-        /// <summary>
-        /// The gender of the creature.
-        /// </summary>
-        public Gender Gender = Gender.Unspecified;
-
-        /// <summary>
-        /// The race of the creature.
-        /// </summary>
-        public Race Race = Race.Unspecified;
-
-        /// <summary>
-        /// The alignment of the creature.
-        /// </summary>
-        public Alignment Alignment;
-
-        /// <summary>
-        /// Armor class of the creature.
-        /// Damage is reduced by armor class after resistances.
-        /// Damage taken is calculated by the following: Damage (After resistance calculations) * AC%.
-        /// </summary>
-        public double BaseAC;
-
-        public double AC;
-
-        /// <summary>
-        /// The maximum health of the creature.
-        /// </summary>
-        public double BaseHealth;
-
-        /// <summary>
-        /// The actual health of the creature.
-        /// </summary>
-        public double Health;
-
-        /// <summary>
-        /// The dexterity of the creature.
-        /// </summary>
-        public int BaseDexterity;
-
-        public int Dexterity;
-
-        /// <summary>
-        /// The strength of the creature.
-        /// </summary>
-        public int BaseStrength;
-
-        public int Strength;
-
-        /// <summary>
-        /// The constitution of the creature.
-        /// Constitution affects how many hit points the creature can get.
-        /// </summary>
-        public int BaseConstitution;
-
-        public int Constitution;
-
-        /// <summary>
-        /// The charisma of the creature.
-        /// The ability of the creature to sway others.
-        /// </summary>
-        public int BaseCharisma;
-
-        public int Charisma;
-
-        /// <summary>
-        /// The creature's wisdom.
-        /// </summary>
-        public int BaseWisdom;
-
-        public int Wisdom;
-
-        /// <summary>
-        /// Xp information about the creature.
-        /// </summary>
-        public XP XP = new XP(1);
-
-        /// <summary>
-        /// How much weight the creature can carry around.
-        /// </summary>
-        public int WeightCapacity;
-
         #region Resistances
 
-        /// <summary>
-        /// The resistance of the creature to fire.
-        /// </summary>
-        public double BaseFireResistance;
-
-        public double FireResistance;
+        public double AcidResistance;
 
         /// <summary>
         /// The resistance of the creature to acid.
         /// </summary>
         public double BaseAcidResistance;
 
-        public double AcidResistance;
-
         /// <summary>
-        /// The resistance of the creature to poison.
+        /// The resistance of the creature to charms.
         /// </summary>
-        public double BasePoisonResistance;
-
-        public double PoisonResistance;
-
-        /// <summary>
-        /// The resistance of the creature to electricity.
-        /// </summary>
-        public double BaseElectricResistance;
-
-        public double ElectricResistance;
+        public double BaseCharmResistance;
 
         /// <summary>
         /// The resistance of the creature to cold.
         /// </summary>
         public double BaseColdResistance;
 
-        public double ColdResistance;
+        /// <summary>
+        /// The resistance of the creature to electricity.
+        /// </summary>
+        public double BaseElectricResistance;
+
+        /// <summary>
+        /// The resistance of the creature to fire.
+        /// </summary>
+        public double BaseFireResistance;
 
         /// <summary>
         /// The resistance of the creature to magic.
         /// </summary>
         public double BaseMagicResistance;
 
-        public double MagicResistance;
-
         /// <summary>
-        /// The resistance of the creature to charms.
+        /// The resistance of the creature to poison.
         /// </summary>
-        public double BaseCharmResistance;
-
-        public double CharmResistance;
+        public double BasePoisonResistance;
 
         /// <summary>
         /// The resistance of the creature to sleep (spells and abilities).
         /// </summary>
         public double BaseSleepResistance;
 
+        public double CharmResistance;
+        public double ColdResistance;
+        public double ElectricResistance;
+        public double FireResistance;
+        public double MagicResistance;
+        public double PoisonResistance;
         public double SleepResistance;
 
         #endregion Resistances
-
-        /// <summary>
-        /// Holds a flag that tells if the creature needs to breath oxygen.
-        /// </summary>
-        public bool NeedsOxygen;
-
-        /// <summary>
-        /// Used to determine the order of creature action.
-        /// </summary>
-        public int BaseInitiative;
-
-        public int Initiative;
-
-        /// <summary>
-        /// The chance that the creature will dodge.
-        /// </summary>
-        public double BaseDodge;
-
-        public double Dodge;
-
-        /// <summary>
-        /// The intelligence of the creature.
-        /// </summary>
-        public int BaseIntelligence;
-
-        /// <summary>
-        /// The current intelligence of the creature.
-        /// </summary>
-        public int Intelligence;
 
         public void Rest()
         {

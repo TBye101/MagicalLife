@@ -10,12 +10,15 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
     /// </summary>
     public abstract class ISpell
     {
-        public int RoundsLeft;
+        /// <summary>
+        /// The unique id for this spell instance.
+        /// </summary>
+        public Guid ID = new Guid();
 
         /// <summary>
-        /// The xp value that this ability adds to the creature which has this.
+        /// Lore about the spell.
         /// </summary>
-        public int XPValue = 0;
+        public List<string> Info;
 
         /// <summary>
         /// The name of the spell.
@@ -23,19 +26,16 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
         public string Name;
 
         /// <summary>
-        /// The unique id for this spell instance.
-        /// </summary>
-        public Guid ID = new Guid();
-
-        /// <summary>
         /// The amount of power this spell consumes when cast.
         /// </summary>
         public int PowerRequired;
 
+        public int RoundsLeft;
+
         /// <summary>
-        /// Lore about the spell.
+        /// The xp value that this ability adds to the creature which has this.
         /// </summary>
-        public List<string> Info;
+        public int XPValue = 0;
 
         private string ImagePath;
 
@@ -69,11 +69,6 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
         public abstract void Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster);
 
         /// <summary>
-        /// Called when the creature's affect wears off.
-        /// </summary>
-        public abstract void OnWearOff(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected);
-
-        /// <summary>
         /// Called whenever the creature tries to take an action.
         /// Returns whether or not the creature is allowed to take an action.
         /// </summary>
@@ -87,5 +82,10 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
         /// <param name="Affected"></param>
         /// <returns></returns>
         public abstract bool OnTurn(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected);
+
+        /// <summary>
+        /// Called when the creature's affect wears off.
+        /// </summary>
+        public abstract void OnWearOff(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected);
     }
 }

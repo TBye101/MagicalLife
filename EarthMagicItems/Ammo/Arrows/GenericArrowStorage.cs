@@ -11,13 +11,13 @@ namespace EarthMagicItems.Ammo.Arrows
     {
         #region NormalArrows
 
-        private GenericAmmo HandMadeArrow = new GenericAmmo(new Die(1, 2, 0), false, 1, "Handmade Arrow", 10, GenericArrowStorage.StandardArrow(new Die(1, 6, 0)), new List<string> { }, new List<string> { });
-        private GenericAmmo ProfessionalArrow = new GenericAmmo(new Die(1, 3, 0), false, 2, "Professional Arrow", 17, GenericArrowStorage.StandardArrow(new Die(1, 8, 0)), new List<string> { }, new List<string> { });
         private GenericAmmo _1Arrow = new GenericAmmo(new Die(2, 4, 0), false, 3, "+1 Arrow", 20, GenericArrowStorage.StandardArrow(new Die(1, 8, 1)), new List<string> { }, new List<string> { });
         private GenericAmmo _2Arrow = new GenericAmmo(new Die(3, 5, 0), false, 5, "+2 Arrow", 23, GenericArrowStorage.StandardArrow(new Die(1, 8, 2)), new List<string> { }, new List<string> { });
         private GenericAmmo _3Arrow = new GenericAmmo(new Die(4, 6, 0), false, 7, "+3 Arrow", 26, GenericArrowStorage.StandardArrow(new Die(1, 8, 3)), new List<string> { }, new List<string> { });
         private GenericAmmo _4Arrow = new GenericAmmo(new Die(5, 7, 0), false, 9, "+4 Arrow", 29, GenericArrowStorage.StandardArrow(new Die(1, 8, 4)), new List<string> { }, new List<string> { });
         private GenericAmmo _5Arrow = new GenericAmmo(new Die(6, 7, 0), false, 11, "+5 Arrow", 32, GenericArrowStorage.StandardArrow(new Die(1, 8, 5)), new List<string> { }, new List<string> { });
+        private GenericAmmo HandMadeArrow = new GenericAmmo(new Die(1, 2, 0), false, 1, "Handmade Arrow", 10, GenericArrowStorage.StandardArrow(new Die(1, 6, 0)), new List<string> { }, new List<string> { });
+        private GenericAmmo ProfessionalArrow = new GenericAmmo(new Die(1, 3, 0), false, 2, "Professional Arrow", 17, GenericArrowStorage.StandardArrow(new Die(1, 8, 0)), new List<string> { }, new List<string> { });
 
         #endregion NormalArrows
 

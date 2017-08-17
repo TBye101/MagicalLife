@@ -9,34 +9,151 @@ using System.Collections.Generic;
 namespace EarthWithMagicAPI.API.Creature
 {
     /// <summary>
-    /// Used to store and compare alignments.
-    /// </summary>
-    public enum Alignment
-    {
-        LawfulGood, NeutralGood, ChaoticGood, LawfulNeutral, TrueNeutral, ChaoticNeutral, LawfulEvil, NeutralEvil, ChaoticEvil
-    }
-
-    /// <summary>
-    /// The race of the creature.
-    /// </summary>
-    public enum Race
-    {
-        Human, Elf, Dwarf, Kender, Drow, Duergar, HalfElf, Dragonborn, Planeswalker, Unspecified
-    }
-
-    /// <summary>
-    /// Used to store and compare genders.
-    /// </summary>
-    public enum Gender
-    {
-        Male, Female, Unspecified
-    }
-
-    /// <summary>
     /// Holds various things that every creature has or should implement.
     /// </summary>
     public abstract class ICreature
     {
+        /// <summary>
+        /// The abilities of the creature.
+        /// </summary>
+        public CreatureAbilities Abilities = new CreatureAbilities();
+
+        /// <summary>
+        /// A list of abilities currently affecting this creature.
+        /// </summary>
+        public List<IAbility> AbilitiesAffectedBy = new List<IAbility>();
+
+        /// <summary>
+        /// All of the equipped amulets that the creature has.
+        /// </summary>
+        public List<IAmulet> Amulets = new List<IAmulet>();
+
+        /// <summary>
+        /// All the equipped armor that the creature has.
+        /// </summary>
+        public List<IArmor> Armoring = new List<IArmor>();
+
+        /// <summary>
+        /// The attributes for this creature.
+        /// </summary>
+        public CreatureAttributes Attributes;
+
+        /// <summary>
+        /// The fists of the creature. Mainly used in combat by monks.
+        /// </summary>
+        public Fists BareHands = new Fists();
+
+        /// <summary>
+        /// The amount of casting power the creature currently has.
+        /// </summary>
+        public int CastingPower = 0;
+
+        /// <summary>
+        /// A list of abilities the creature has.
+        /// </summary>
+        public List<IAbility> ClassAbilities = new List<IAbility>();
+
+        /// <summary>
+        /// The name of the type of creature the creature is.
+        /// </summary>
+        public string CreatureType;
+
+        /// <summary>
+        /// The unique ID of the creature.
+        /// </summary>
+        public Guid ID = new Guid();
+
+        /// <summary>
+        /// All items on a creature that are not equipped go here.
+        /// </summary>
+        public List<IItem> Inventory = new List<IItem>();
+
+        /// <summary>
+        /// If true, the creature is part of the player's party.
+        /// </summary>
+        public bool IsInParty = false;
+
+        /// <summary>
+        /// The amount of casting power the creature has after resting.
+        /// </summary>
+        public int MaxCastingPower = 0;
+
+        /// <summary>
+        /// The creature's name, if it has one.
+        /// </summary>
+        public string Name;
+
+        /// <summary>
+        /// All of the equipped rings that the creature has.
+        /// </summary>
+        public List<IRing> Rings = new List<IRing>();
+
+        /// <summary>
+        /// A list of spells currently affecting this creature.
+        /// </summary>
+        public List<ISpell> SpellsAffectedBy = new List<ISpell>();
+
+        /// <summary>
+        /// A list of all spells known to the creature.
+        /// </summary>
+        public List<ISpell> SpellsKnown = new List<ISpell>();
+
+        /// <summary>
+        /// The title of the creature, if any.
+        /// </summary>
+        public string Title;
+
+        /// <summary>
+        /// A list of the spells that this creature can actually use right now.
+        /// </summary>
+        public List<ISpell> UsableSpells = new List<ISpell>();
+
+        /// <summary>
+        /// The equipped weapons that the creature has.
+        /// </summary>
+        public List<IWeapon> Weapons = new List<IWeapon>();
+
+        /// <summary>
+        /// The amount of weight the creature can hold.
+        /// </summary>
+        public int WeightCapacity;
+
+        /// <summary>
+        /// Raised whenever a creature dies.
+        /// </summary>
+        public event EventHandler<ICreature> CreatureDied;
+
+        /// <summary>
+        /// Raised whenever a creature is healed.
+        /// </summary>
+        public event EventHandler<ICreature> CreatureHealed;
+
+        /// <summary>
+        /// Raised whenever a creature is summoned.
+        /// <ICreature>The creature that was summoned.</ICreature>
+        /// </summary>
+        public event EventHandler<ICreature> CreatureSummoned;
+
+        /// <summary>
+        /// Raised whenever a creature deals damage to another creature.
+        /// </summary>
+        public event EventHandler<Damage> DealDamageEvent;
+
+        /// <summary>
+        /// Raised whenever a new item is equipped.
+        /// </summary>
+        public event EventHandler<ICreature> ItemEquipped;
+
+        /// <summary>
+        /// Raised whenever a item is unequipped.
+        /// </summary>
+        public event EventHandler<ICreature> ItemUnequipped;
+
+        /// <summary>
+        /// Raised whenever a creature takes damage.
+        /// </summary>
+        public event EventHandler<Damage> TakeDamageEvent;
+
         /// <summary>
         /// The constructor for the ICreature abstract class.
         /// </summary>
@@ -51,103 +168,75 @@ namespace EarthWithMagicAPI.API.Creature
         }
 
         /// <summary>
-        /// Resets a bunch of stuff.
+        /// The default constructor for this class. Must be called on initialization.
         /// </summary>
-        public void Rest()
+        protected ICreature()
         {
-            this.Abilities.Rest();
-            this.Attributes.Rest();
+            this.WeightCapacity = WeightCapacityUtil.Calculate(this);
+        }
 
-            foreach (IAbility item in this.ClassAbilities)
+        /// <summary>
+        /// Called whenever an encounter ends, so summoned creatures can be un-summoned.
+        /// </summary>
+        /// <param name="fight"></param>
+        public void EncounterEnded(Encounter fight)
+        {
+            //Checks to see if this is a character that can level up.
+            if (this.Attributes.XP.LevelUpsAvailible > 0 && this.GetType() == typeof(ICharacter))
             {
-                item.Rest();
+                ICharacter dis = (ICharacter)this;
+                dis.LevelUp();
             }
         }
 
-        public int XPValue()
+        /// <summary>
+        /// Called whenever the creature has a new item equipped.
+        /// </summary>
+        /// <param name="item"></param>
+        public abstract void EquipItem(IItem item);
+
+        /// <summary>
+        /// Some attributes of the creature.
+        /// </summary>
+        public abstract CreatureAttributes GetAttributes();
+
+        public string HeSheIT()
         {
-            return ExperienceCalculator.Calculate(this);
+            if (this.GetAttributes().Gender == Gender.Male)
+            {
+                return "Him";
+            }
+            if (this.GetAttributes().Gender == Gender.Female)
+            {
+                return "She";
+            }
+            else
+            {
+                return "It";
+            }
         }
 
         /// <summary>
-        /// The attributes for this creature.
+        /// Determines based on gender if we should be referring to this creature as a him/her/it.
         /// </summary>
-        public CreatureAttributes Attributes;
+        /// <returns></returns>
+        public string HimHerIT()
+        {
+            if (this.GetAttributes().Gender == Gender.Male)
+            {
+                return "him";
+            }
+            if (this.GetAttributes().Gender == Gender.Female)
+            {
+                return "her";
+            }
+            if (this.GetAttributes().Gender == Gender.Unspecified)
+            {
+                return "IT";
+            }
 
-        /// <summary>
-        /// The amount of casting power the creature has after resting.
-        /// </summary>
-        public int MaxCastingPower = 0;
-
-        /// <summary>
-        /// The amount of casting power the creature currently has.
-        /// </summary>
-        public int CastingPower = 0;
-
-        /// <summary>
-        /// A list of abilities the creature has.
-        /// </summary>
-        public List<IAbility> ClassAbilities = new List<IAbility>();
-
-        /// <summary>
-        /// A list of all spells known to the creature.
-        /// </summary>
-        public List<ISpell> SpellsKnown = new List<ISpell>();
-
-        /// <summary>
-        /// A list of the spells that this creature can actually use right now.
-        /// </summary>
-        public List<ISpell> UsableSpells = new List<ISpell>();
-
-        /// <summary>
-        /// A list of spells currently affecting this creature.
-        /// </summary>
-        public List<ISpell> SpellsAffectedBy = new List<ISpell>();
-
-        /// <summary>
-        /// A list of abilities currently affecting this creature.
-        /// </summary>
-        public List<IAbility> AbilitiesAffectedBy = new List<IAbility>();
-
-        /// <summary>
-        /// If true, the creature is part of the player's party.
-        /// </summary>
-        public bool IsInParty = false;
-
-        /// <summary>
-        /// The fists of the creature. Mainly used in combat by monks.
-        /// </summary>
-        public Fists BareHands = new Fists();
-
-        /// <summary>
-        /// The abilities of the creature.
-        /// </summary>
-        public CreatureAbilities Abilities = new CreatureAbilities();
-
-        /// <summary>
-        /// The title of the creature, if any.
-        /// </summary>
-        public string Title;
-
-        /// <summary>
-        /// The creature's name, if it has one.
-        /// </summary>
-        public string Name;
-
-        /// <summary>
-        /// The name of the type of creature the creature is.
-        /// </summary>
-        public string CreatureType;
-
-        /// <summary>
-        /// The unique ID of the creature.
-        /// </summary>
-        public Guid ID = new Guid();
-
-        /// <summary>
-        /// The amount of weight the creature can hold.
-        /// </summary>
-        public int WeightCapacity;
+            return "IT";
+        }
 
         /// <summary>
         /// Returns if the creature is hostile to the player.
@@ -156,39 +245,27 @@ namespace EarthWithMagicAPI.API.Creature
         public abstract bool IsHostile();
 
         /// <summary>
-        /// Some attributes of the creature.
+        /// Called whenever a creature dies.
         /// </summary>
-        public abstract CreatureAttributes GetAttributes();
+        /// <param name="dead">The creature that is now dead.</param>
+        public abstract void OnCreatureDied(ICreature dead);
 
         /// <summary>
-        /// All the equipped armor that the creature has.
+        /// Called whenever the creature is healed.
         /// </summary>
-        public List<IArmor> Armoring = new List<IArmor>();
+        /// <param name="healer">The creature that healed this creature.</param>
+        public abstract void OnCreatureHealed(ICreature healer);
 
         /// <summary>
-        /// All of the equipped rings that the creature has.
+        /// Called whenever this creature deals damage.
         /// </summary>
-        public List<IRing> Rings = new List<IRing>();
+        public abstract void OnDealDamage();
 
         /// <summary>
-        /// All of the equipped amulets that the creature has.
+        /// Called whenever the creature has a item unequipped.
         /// </summary>
-        public List<IAmulet> Amulets = new List<IAmulet>();
-
-        /// <summary>
-        /// The equipped weapons that the creature has.
-        /// </summary>
-        public List<IWeapon> Weapons = new List<IWeapon>();
-
-        /// <summary>
-        /// All items on a creature that are not equipped go here.
-        /// </summary>
-        public List<IItem> Inventory = new List<IItem>();
-
-        /// <summary>
-        /// It's this creature's turn for action.
-        /// </summary>
-        public abstract void YourTurn(Encounter encounter);
+        /// <param name="item"></param>
+        public abstract void OnItemUnequipped(IItem item);
 
         /// <summary>
         /// Called whenever the creature receives damage.
@@ -260,6 +337,30 @@ namespace EarthWithMagicAPI.API.Creature
         }
 
         /// <summary>
+        /// Resets a bunch of stuff.
+        /// </summary>
+        public void Rest()
+        {
+            this.Abilities.Rest();
+            this.Attributes.Rest();
+
+            foreach (IAbility item in this.ClassAbilities)
+            {
+                item.Rest();
+            }
+        }
+
+        public int XPValue()
+        {
+            return ExperienceCalculator.Calculate(this);
+        }
+
+        /// <summary>
+        /// It's this creature's turn for action.
+        /// </summary>
+        public abstract void YourTurn(Encounter encounter);
+
+        /// <summary>
         /// Takes damage
         /// </summary>
         /// <returns></returns>
@@ -271,130 +372,29 @@ namespace EarthWithMagicAPI.API.Creature
             Util.Util.WriteLine(this.Name + " takes " + ActualDamage.ToString() + " " + nameOfDamage + " (" + resistance + "% resisted");
             return ActualDamage;
         }
+    }
 
-        /// <summary>
-        /// Called whenever the creature has a new item equipped.
-        /// </summary>
-        /// <param name="item"></param>
-        public abstract void EquipItem(IItem item);
+    /// <summary>
+    /// Used to store and compare alignments.
+    /// </summary>
+    public enum Alignment
+    {
+        LawfulGood, NeutralGood, ChaoticGood, LawfulNeutral, TrueNeutral, ChaoticNeutral, LawfulEvil, NeutralEvil, ChaoticEvil
+    }
 
-        /// <summary>
-        /// Called whenever the creature has a item unequipped.
-        /// </summary>
-        /// <param name="item"></param>
-        public abstract void OnItemUnequipped(IItem item);
+    /// <summary>
+    /// Used to store and compare genders.
+    /// </summary>
+    public enum Gender
+    {
+        Male, Female, Unspecified
+    }
 
-        /// <summary>
-        /// Called whenever the creature is healed.
-        /// </summary>
-        /// <param name="healer">The creature that healed this creature.</param>
-        public abstract void OnCreatureHealed(ICreature healer);
-
-        /// <summary>
-        /// Called whenever a creature dies.
-        /// </summary>
-        /// <param name="dead">The creature that is now dead.</param>
-        public abstract void OnCreatureDied(ICreature dead);
-
-        /// <summary>
-        /// Called whenever this creature deals damage.
-        /// </summary>
-        public abstract void OnDealDamage();
-
-        /// <summary>
-        /// Raised whenever a creature takes damage.
-        /// </summary>
-        public event EventHandler<Damage> TakeDamageEvent;
-
-        /// <summary>
-        /// Raised whenever a creature deals damage to another creature.
-        /// </summary>
-        public event EventHandler<Damage> DealDamageEvent;
-
-        /// <summary>
-        /// Raised whenever a new item is equipped.
-        /// </summary>
-        public event EventHandler<ICreature> ItemEquipped;
-
-        /// <summary>
-        /// Raised whenever a item is unequipped.
-        /// </summary>
-        public event EventHandler<ICreature> ItemUnequipped;
-
-        /// <summary>
-        /// Raised whenever a creature dies.
-        /// </summary>
-        public event EventHandler<ICreature> CreatureDied;
-
-        /// <summary>
-        /// Raised whenever a creature is healed.
-        /// </summary>
-        public event EventHandler<ICreature> CreatureHealed;
-
-        /// <summary>
-        /// Raised whenever a creature is summoned.
-        /// <ICreature>The creature that was summoned.</ICreature>
-        /// </summary>
-        public event EventHandler<ICreature> CreatureSummoned;
-
-        /// <summary>
-        /// Determines based on gender if we should be referring to this creature as a him/her/it.
-        /// </summary>
-        /// <returns></returns>
-        public string HimHerIT()
-        {
-            if (this.GetAttributes().Gender == Gender.Male)
-            {
-                return "him";
-            }
-            if (this.GetAttributes().Gender == Gender.Female)
-            {
-                return "her";
-            }
-            if (this.GetAttributes().Gender == Gender.Unspecified)
-            {
-                return "IT";
-            }
-
-            return "IT";
-        }
-
-        public string HeSheIT()
-        {
-            if (this.GetAttributes().Gender == Gender.Male)
-            {
-                return "Him";
-            }
-            if (this.GetAttributes().Gender == Gender.Female)
-            {
-                return "She";
-            }
-            else
-            {
-                return "It";
-            }
-        }
-
-        /// <summary>
-        /// The default constructor for this class. Must be called on initialization.
-        /// </summary>
-        protected ICreature()
-        {
-            this.WeightCapacity = WeightCapacityUtil.Calculate(this);
-        }
-
-        /// <summary>
-        /// Called whenever an encounter ends, so summoned creatures can be un-summoned.
-        /// </summary>
-        /// <param name="fight"></param>
-        public void EncounterEnded(Encounter fight)
-        {
-            //Checks to see if this is a character that can level up.
-            if (this.Attributes.XP.LevelUpsAvailible > 0 && this.GetType() == typeof(ICharacter))
-            {
-                ICharacter dis = (ICharacter)this;
-                dis.LevelUp();
-            }
-        }
+    /// <summary>
+    /// The race of the creature.
+    /// </summary>
+    public enum Race
+    {
+        Human, Elf, Dwarf, Kender, Drow, Duergar, HalfElf, Dragonborn, Planeswalker, Unspecified
     }
 }

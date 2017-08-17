@@ -6,22 +6,12 @@ namespace EarthWithMagicAPI.API.Creature
 {
     public abstract class IAbility
     {
-        public int RoundsLeft;
-
         /// <summary>
-        /// The xp value that this ability adds to the creature which has this.
+        /// Area of Effect Spell?
         /// </summary>
-        public int XPValue = 0;
+        public bool AOESpell;
 
-        /// <summary>
-        /// The name of the spell.
-        /// </summary>
-        public string Name;
-
-        /// <summary>
-        /// Lore about the spell.
-        /// </summary>
-        public List<string> Info;
+        public int AvailibleUses;
 
         /// <summary>
         /// The unique id for this spell instance.
@@ -29,12 +19,23 @@ namespace EarthWithMagicAPI.API.Creature
         public Guid ID = new Guid();
 
         /// <summary>
-        /// Area of Effect Spell?
+        /// Lore about the spell.
         /// </summary>
-        public bool AOESpell;
+        public List<string> Info;
 
         public int MaxUses;
-        public int AvailibleUses;
+
+        /// <summary>
+        /// The name of the spell.
+        /// </summary>
+        public string Name;
+
+        public int RoundsLeft;
+
+        /// <summary>
+        /// The xp value that this ability adds to the creature which has this.
+        /// </summary>
+        public int XPValue = 0;
 
         private string ImagePath;
 
@@ -63,20 +64,7 @@ namespace EarthWithMagicAPI.API.Creature
             Util.Util.WriteLine(ResourceGM.GetResource(this.ImagePath));
         }
 
-        /// <summary>
-        /// Resets the uses count.
-        /// </summary>
-        public void Rest()
-        {
-            this.AvailibleUses = this.MaxUses;
-        }
-
         public abstract void Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster);
-
-        /// <summary>
-        /// Called when the creature's affect wears off.
-        /// </summary>
-        public abstract void OnWearOff(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected);
 
         /// <summary>
         /// Called whenever the creature tries to take an action.
@@ -92,5 +80,18 @@ namespace EarthWithMagicAPI.API.Creature
         /// <param name="Affected"></param>
         /// <returns></returns>
         public abstract bool OnTurn(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected);
+
+        /// <summary>
+        /// Called when the creature's affect wears off.
+        /// </summary>
+        public abstract void OnWearOff(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected);
+
+        /// <summary>
+        /// Resets the uses count.
+        /// </summary>
+        public void Rest()
+        {
+            this.AvailibleUses = this.MaxUses;
+        }
     }
 }

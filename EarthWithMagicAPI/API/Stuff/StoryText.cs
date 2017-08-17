@@ -9,11 +9,6 @@ namespace EarthWithMagicAPI.API.Stuff
     public class StoryText
     {
         /// <summary>
-        /// The text above the choices, if any.
-        /// </summary>
-        private List<string> TextAbove = new List<string>();
-
-        /// <summary>
         /// The choices below the text, if any.
         /// </summary>
         private List<string> Choices = new List<string>();
@@ -22,6 +17,11 @@ namespace EarthWithMagicAPI.API.Stuff
         /// The story text to show based on the player's choice.
         /// </summary>
         private List<StoryText> ProgressionOfChoices = new List<StoryText>();
+
+        /// <summary>
+        /// The text above the choices, if any.
+        /// </summary>
+        private List<string> TextAbove = new List<string>();
 
         public StoryText()
         {

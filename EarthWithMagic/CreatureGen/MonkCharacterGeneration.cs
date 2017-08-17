@@ -25,16 +25,6 @@ namespace EarthMagicCharacters.Classes.Monk
         }
 
         /// <summary>
-        /// Returns the chosen name of the character.
-        /// </summary>
-        /// <returns></returns>
-        private string GetName()
-        {
-            Util.WriteLine("What is your name?");
-            return Console.ReadLine();
-        }
-
-        /// <summary>
         /// Returns the player's chosen gender.
         /// </summary>
         /// <returns></returns>
@@ -60,6 +50,16 @@ namespace EarthMagicCharacters.Classes.Monk
                     Util.WriteLine("Invalid input!");
                     return this.GetGender();
             }
+        }
+
+        /// <summary>
+        /// Returns the chosen name of the character.
+        /// </summary>
+        /// <returns></returns>
+        private string GetName()
+        {
+            Util.WriteLine("What is your name?");
+            return Console.ReadLine();
         }
     }
 }

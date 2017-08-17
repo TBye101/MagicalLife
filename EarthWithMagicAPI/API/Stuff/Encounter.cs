@@ -16,14 +16,14 @@ namespace EarthWithMagicAPI.API.Stuff
         public List<ICreature> AllCombatants = new List<ICreature>();
 
         /// <summary>
-        /// The party.
-        /// </summary>
-        public List<ICreature> Party;
-
-        /// <summary>
         /// The party's enemies.
         /// </summary>
         public List<ICreature> Enemies;
+
+        /// <summary>
+        /// The party.
+        /// </summary>
+        public List<ICreature> Party;
 
         public Encounter(List<ICreature> friendly, List<ICreature> enemies)
         {
@@ -121,6 +121,24 @@ namespace EarthWithMagicAPI.API.Stuff
         }
 
         /// <summary>
+        /// Determines if everyone on one side is dead yet.
+        /// </summary>
+        /// <param name="creatures"></param>
+        /// <returns></returns>
+        private bool IsEveryoneDead(List<ICreature> creatures)
+        {
+            foreach (ICreature item in creatures)
+            {
+                if (item.GetAttributes().Health > 0)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        /// <summary>
         /// Removes expired spells an abilities that were effecting the creatures.
         /// </summary>
         /// <param name="creatures"></param>
@@ -154,24 +172,6 @@ namespace EarthWithMagicAPI.API.Stuff
                     }
                 }
             }
-        }
-
-        /// <summary>
-        /// Determines if everyone on one side is dead yet.
-        /// </summary>
-        /// <param name="creatures"></param>
-        /// <returns></returns>
-        private bool IsEveryoneDead(List<ICreature> creatures)
-        {
-            foreach (ICreature item in creatures)
-            {
-                if (item.GetAttributes().Health > 0)
-                {
-                    return false;
-                }
-            }
-
-            return true;
         }
     }
 }

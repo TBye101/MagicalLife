@@ -8,16 +8,6 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
     public abstract class IWeapon : IItem
     {
         /// <summary>
-        /// Called when this weapon is thrown.
-        /// </summary>
-        public abstract void OnThrow();
-
-        /// <summary>
-        /// Called whenever this weapon is attacked with.
-        /// </summary>
-        public abstract void OnAttack();
-
-        /// <summary>
         /// Called when attacking another creature.
         /// </summary>
         /// <returns></returns>
@@ -25,5 +15,15 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         {
             creature.RecieveDamage(this.Damage);
         }
+
+        /// <summary>
+        /// Called whenever this weapon is attacked with.
+        /// </summary>
+        public abstract void OnAttack();
+
+        /// <summary>
+        /// Called when this weapon is thrown.
+        /// </summary>
+        public abstract void OnThrow();
     }
 }

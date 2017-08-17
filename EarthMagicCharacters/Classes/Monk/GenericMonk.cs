@@ -13,9 +13,8 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
     /// </summary>
     public class GenericMonk : ICharacter
     {
-        private MonkAI AI = new MonkAI();
-
         private bool _Hostile;
+        private MonkAI AI = new MonkAI();
 
         /// <summary>
         /// Constructor for the GenericMonk class.
@@ -33,13 +32,9 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             this.BareHands.Damage.BluntDamage = new Die(1, 8, 0);
         }
 
-        private static CreatureAttributes GetAtt(Gender gender, Race race, Alignment alignment)
+        public override void EquipItem(IItem item)
         {
-            int startingHealth = Dice.RollDice(new Die(2, 10, 2), "Starting Health");
-            return new CreatureAttributes(gender, alignment, race, .04, startingHealth, startingHealth,
-            Dice.RollDice(new Die(3, 6, 0), "Dexterity"), Dice.RollDice(new Die(3, 6, 0), "Strength"),
-            Dice.RollDice(new Die(3, 6, 0), "Constitution"), Dice.RollDice(new Die(3, 6, 0), "Charisma"),
-            Dice.RollDice(new Die(3, 6, 0), "Wisdom"), 0, 0, 0, 0, 0, 0, 0, 0, true, 12, .4, 30, Dice.RollDice(new Die(3, 6, 0), "Intelligence"));
+            throw new NotImplementedException();
         }
 
         public override CreatureAttributes GetAttributes()
@@ -308,9 +303,13 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             }
         }
 
-        public override void EquipItem(IItem item)
+        private static CreatureAttributes GetAtt(Gender gender, Race race, Alignment alignment)
         {
-            throw new NotImplementedException();
+            int startingHealth = Dice.RollDice(new Die(2, 10, 2), "Starting Health");
+            return new CreatureAttributes(gender, alignment, race, .04, startingHealth, startingHealth,
+            Dice.RollDice(new Die(3, 6, 0), "Dexterity"), Dice.RollDice(new Die(3, 6, 0), "Strength"),
+            Dice.RollDice(new Die(3, 6, 0), "Constitution"), Dice.RollDice(new Die(3, 6, 0), "Charisma"),
+            Dice.RollDice(new Die(3, 6, 0), "Wisdom"), 0, 0, 0, 0, 0, 0, 0, 0, true, 12, .4, 30, Dice.RollDice(new Die(3, 6, 0), "Intelligence"));
         }
 
         #region LevelUps
@@ -329,133 +328,6 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
                     return;
                 }
             }
-        }
-
-        /// <summary>
-        /// Does level up logic to bring the monk up to the next level.
-        /// </summary>
-        private void Level2()
-        {
-            List<string> levelUpReport = new List<string> { "Level up report: ", "Title: Faithless", "HP: +  1d10 +2", "AC: +1", "To hit: +1", "+20% poison resistance.", "+30% hide in shadows", "+30% walk silently" };
-
-            this.Attributes.BasePoisonResistance += 20;
-            this.Abilities.BaseHideInShadows += 30;
-            this.Abilities.BaseWalkSilently += 30;
-            this.Attributes.BaseHealth += Dice.RollDice(new Die(1, 10, 2));
-            this.Attributes.BaseToHit++;
-            this.Attributes.BaseAC++;
-            this.Title = "Faithless";
-            Util.WriteLine(levelUpReport);
-        }
-
-        /// <summary>
-        /// Does level up logic to bring the monk up to the next level.
-        /// </summary>
-        private void Level3()
-        {
-            List<string> levelUpReport = new List<string> { "Title: Faithful", "AC: +1", "+20% fire resistance" };
-
-            this.Title = "Faithful";
-            ++this.Attributes.BaseAC;
-            this.Attributes.BaseFireResistance += 20;
-
-            Util.WriteLine(levelUpReport);
-        }
-
-        /// <summary>
-        /// Does level up logic to bring the monk up to the next level.
-        /// </summary>
-        private void Level4()
-        {
-            List<string> levelUpReport = new List<string> { "Apprentice", "AC: +1", "To hit +1", "+5% hide in shadows", "+5% walk silently" };
-
-            this.Abilities.BaseHideInShadows += 5;
-            this.Abilities.BaseWalkSilently += 5;
-            ++this.Attributes.BaseToHit;
-            ++this.Attributes.BaseAC;
-            this.Title = "Apprentice";
-
-            Util.WriteLine(levelUpReport);
-        }
-
-        /// <summary>
-        /// Does level up logic to bring the monk up to the next level.
-        /// </summary>
-        private void Level5()
-        {
-            List<string> levelUpReport = new List<string> { "Title: Faithful Apprentice", "+1 stunning blow", "Fist: 1d10", "AC: +1" };
-
-            this.Title = "Faithful Apprentice";
-            StunningBlow a = new StunningBlow();
-            a.DisplayImage();
-            this.ClassAbilities.Add(a);
-            ++this.Attributes.BaseAC;
-            this.BareHands.Damage.BluntDamage = new Die(1, 10, 0);
-
-            Util.WriteLine(levelUpReport);
-        }
-
-        /// <summary>
-        /// Does level up logic to bring the monk up to the next level.
-        /// </summary>
-        private void Level6()
-        {
-            List<string> levelUpReport = new List<string> { "Title: Novice", "+20% cold resistance", "+5% hide in shadows", "+5% walk silently", "To hit: +1", "Ac: +1" };
-
-            this.Title = "Novice";
-            this.Attributes.BaseColdResistance += 20;
-            this.Abilities.BaseHideInShadows += 5;
-            this.Abilities.BaseWalkSilently += 5;
-            ++this.Attributes.BaseToHit;
-            ++this.Attributes.BaseAC;
-
-            Util.WriteLine(levelUpReport);
-        }
-
-        /// <summary>
-        /// Does level up logic to bring the monk up to the next level.
-        /// </summary>
-        private void Level7()
-        {
-            List<string> levelUpReport = new List<string> { "Title: Brother", "+20% resistance to sleep", "AC: +1" };
-
-            this.Title = "Brother";
-            this.Attributes.BaseSleepResistance += 20;
-            ++this.Attributes.BaseAC;
-
-            Util.WriteLine(levelUpReport);
-        }
-
-        /// <summary>
-        /// Does level up logic to bring the monk up to the next level.
-        /// </summary>
-        private void Level8()
-        {
-            List<string> levelUpReport = new List<string> { "Title: Faithful Brother", "+20% resistance to charms", "+5% hide in shadows", "+5% walk silently", "To hit +1", "AC: +1" };
-
-            this.Title = "Faithful Brother";
-            this.Attributes.BaseCharmResistance += 20;
-            this.Abilities.BaseHideInShadows += 5;
-            this.Abilities.BaseWalkSilently += 5;
-            ++this.Attributes.BaseToHit;
-            ++this.Attributes.BaseAC;
-
-            Util.WriteLine(levelUpReport);
-        }
-
-        /// <summary>
-        /// Does level up logic to bring the monk up to the next level.
-        /// </summary>
-        private void Level9()
-        {
-            List<string> levelUpReport = new List<string> { "Title: Disciple", "+5% magic resistance", "Fist: 1d10 +1", "AC: +1" };
-
-            this.Title = "Disciple";
-            this.Attributes.BaseMagicResistance += 5;
-            this.BareHands.Damage.BluntDamage = new Die(1, 10, 1);
-            this.Attributes.BaseAC++;
-
-            Util.WriteLine(levelUpReport);
         }
 
         /// <summary>
@@ -620,6 +492,23 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// <summary>
         /// Does level up logic to bring the monk up to the next level.
         /// </summary>
+        private void Level2()
+        {
+            List<string> levelUpReport = new List<string> { "Level up report: ", "Title: Faithless", "HP: +  1d10 +2", "AC: +1", "To hit: +1", "+20% poison resistance.", "+30% hide in shadows", "+30% walk silently" };
+
+            this.Attributes.BasePoisonResistance += 20;
+            this.Abilities.BaseHideInShadows += 30;
+            this.Abilities.BaseWalkSilently += 30;
+            this.Attributes.BaseHealth += Dice.RollDice(new Die(1, 10, 2));
+            this.Attributes.BaseToHit++;
+            this.Attributes.BaseAC++;
+            this.Title = "Faithless";
+            Util.WriteLine(levelUpReport);
+        }
+
+        /// <summary>
+        /// Does level up logic to bring the monk up to the next level.
+        /// </summary>
         private void Level20()
         {
             List<string> levelUpReport = new List<string> { "Title: Master of the East Wind", "+1 stunning blow", "TH: +1", "+5% hide in shadows", "+5% walk silently", "AC: +1" };
@@ -777,6 +666,20 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// <summary>
         /// Does level up logic to bring the monk up to the next level.
         /// </summary>
+        private void Level3()
+        {
+            List<string> levelUpReport = new List<string> { "Title: Faithful", "AC: +1", "+20% fire resistance" };
+
+            this.Title = "Faithful";
+            ++this.Attributes.BaseAC;
+            this.Attributes.BaseFireResistance += 20;
+
+            Util.WriteLine(levelUpReport);
+        }
+
+        /// <summary>
+        /// Does level up logic to bring the monk up to the next level.
+        /// </summary>
         private void Level30()
         {
             List<string> levelUpReport = new List<string> { "Title: Windwalker", "TH: +1", "AC: +1", "+5% magic resistance" };
@@ -916,6 +819,22 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             this.BareHands.Damage.FireDamage = new Die(1, 10, 1);
             this.Abilities.ImmunityToPoison = true;
             this.Attributes.BaseAC++;
+
+            Util.WriteLine(levelUpReport);
+        }
+
+        /// <summary>
+        /// Does level up logic to bring the monk up to the next level.
+        /// </summary>
+        private void Level4()
+        {
+            List<string> levelUpReport = new List<string> { "Apprentice", "AC: +1", "To hit +1", "+5% hide in shadows", "+5% walk silently" };
+
+            this.Abilities.BaseHideInShadows += 5;
+            this.Abilities.BaseWalkSilently += 5;
+            ++this.Attributes.BaseToHit;
+            ++this.Attributes.BaseAC;
+            this.Title = "Apprentice";
 
             Util.WriteLine(levelUpReport);
         }
@@ -1072,6 +991,23 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// <summary>
         /// Does level up logic to bring the monk up to the next level.
         /// </summary>
+        private void Level5()
+        {
+            List<string> levelUpReport = new List<string> { "Title: Faithful Apprentice", "+1 stunning blow", "Fist: 1d10", "AC: +1" };
+
+            this.Title = "Faithful Apprentice";
+            StunningBlow a = new StunningBlow();
+            a.DisplayImage();
+            this.ClassAbilities.Add(a);
+            ++this.Attributes.BaseAC;
+            this.BareHands.Damage.BluntDamage = new Die(1, 10, 0);
+
+            Util.WriteLine(levelUpReport);
+        }
+
+        /// <summary>
+        /// Does level up logic to bring the monk up to the next level.
+        /// </summary>
         private void Level50()
         {
             List<string> levelUpReport = new List<string> { "Title: Lesser Divinity", "Fists: 1d24 +5, 1d24 +5 fire", "AC: +1",
@@ -1112,6 +1048,69 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
             this.AddStunningBlow();
             this.Attributes.BaseToHit++;
+            this.Attributes.BaseAC++;
+
+            Util.WriteLine(levelUpReport);
+        }
+
+        /// <summary>
+        /// Does level up logic to bring the monk up to the next level.
+        /// </summary>
+        private void Level6()
+        {
+            List<string> levelUpReport = new List<string> { "Title: Novice", "+20% cold resistance", "+5% hide in shadows", "+5% walk silently", "To hit: +1", "Ac: +1" };
+
+            this.Title = "Novice";
+            this.Attributes.BaseColdResistance += 20;
+            this.Abilities.BaseHideInShadows += 5;
+            this.Abilities.BaseWalkSilently += 5;
+            ++this.Attributes.BaseToHit;
+            ++this.Attributes.BaseAC;
+
+            Util.WriteLine(levelUpReport);
+        }
+
+        /// <summary>
+        /// Does level up logic to bring the monk up to the next level.
+        /// </summary>
+        private void Level7()
+        {
+            List<string> levelUpReport = new List<string> { "Title: Brother", "+20% resistance to sleep", "AC: +1" };
+
+            this.Title = "Brother";
+            this.Attributes.BaseSleepResistance += 20;
+            ++this.Attributes.BaseAC;
+
+            Util.WriteLine(levelUpReport);
+        }
+
+        /// <summary>
+        /// Does level up logic to bring the monk up to the next level.
+        /// </summary>
+        private void Level8()
+        {
+            List<string> levelUpReport = new List<string> { "Title: Faithful Brother", "+20% resistance to charms", "+5% hide in shadows", "+5% walk silently", "To hit +1", "AC: +1" };
+
+            this.Title = "Faithful Brother";
+            this.Attributes.BaseCharmResistance += 20;
+            this.Abilities.BaseHideInShadows += 5;
+            this.Abilities.BaseWalkSilently += 5;
+            ++this.Attributes.BaseToHit;
+            ++this.Attributes.BaseAC;
+
+            Util.WriteLine(levelUpReport);
+        }
+
+        /// <summary>
+        /// Does level up logic to bring the monk up to the next level.
+        /// </summary>
+        private void Level9()
+        {
+            List<string> levelUpReport = new List<string> { "Title: Disciple", "+5% magic resistance", "Fist: 1d10 +1", "AC: +1" };
+
+            this.Title = "Disciple";
+            this.Attributes.BaseMagicResistance += 5;
+            this.BareHands.Damage.BluntDamage = new Die(1, 10, 1);
             this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
