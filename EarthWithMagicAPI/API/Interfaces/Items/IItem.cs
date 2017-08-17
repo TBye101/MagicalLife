@@ -66,7 +66,7 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         /// <summary>
         /// The damage this item does when it is used to attack.
         /// </summary>
-        public Damage Damage = new Damage(new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 1));
+        public Damage Damage = new Damage(Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), new Util.Die(0, 0, 1));
 
         /// <summary>
         /// Gets the impact an item has on the character when it is equipped.

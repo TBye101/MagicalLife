@@ -79,5 +79,10 @@ namespace EarthWithMagicAPI.API.Util
             this.Sides = sides;
             this.Modifyer = modifyer;
         }
+
+        public static Die Zero()
+        {
+            return new Die(0, 0, 0);
+        }
     }
 }

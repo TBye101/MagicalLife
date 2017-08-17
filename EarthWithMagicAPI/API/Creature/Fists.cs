@@ -18,8 +18,8 @@ namespace EarthWithMagicAPI.API.Creature
             this.QuestItem = false;
             this.Value = 0;
             this.Weight = 0;
-            this.Damage = new Damage(new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(0, 0, 0),
-        new Util.Die(0, 0, 0), new Util.Die(0, 0, 0), new Util.Die(1, 2, 0));
+            this.Damage = new Damage(Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(),
+        Util.Die.Zero(), Util.Die.Zero(), new Util.Die(1, 2, 0));
         }
 
         public override void Bought()

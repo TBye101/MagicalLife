@@ -21,10 +21,10 @@ namespace EarthMagicItems.Ammo.Stones
 
         #endregion NormalStones
 
-        private GenericAmmo AcidStone = new GenericAmmo(new Die(1, 3, 0), false, 3, "Acid Stone", 17, new Damage(new Die(1, 8, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(1, 4, 0), new Die(0, 0, 0), new Die(0, 0, 0)), new List<string> { }, new List<string> { });
-        private GenericAmmo FireStone = new GenericAmmo(new Die(1, 3, 0), false, 3, "Fire Stone", 17, new Damage(new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(1, 8, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(1, 4, 0), new Die(0, 0, 0), new Die(0, 0, 0)), new List<string> { }, new List<string> { });
-        private GenericAmmo FrostStone = new GenericAmmo(new Die(1, 3, 0), false, 3, "Frost Stone", 17, new Damage(new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(1, 8, 0), new Die(0, 0, 0), new Die(1, 4, 0), new Die(0, 0, 0), new Die(0, 0, 0)), new List<string> { }, new List<string> { });
-        private GenericAmmo PoisonStone = new GenericAmmo(new Die(1, 3, 0), false, 3, "Poison Stone", 17, new Damage(new Die(0, 0, 0), new Die(1, 8, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(1, 4, 0), new Die(0, 0, 0), new Die(0, 0, 0)), new List<string> { }, new List<string> { });
+        private GenericAmmo AcidStone = new GenericAmmo(new Die(1, 3, 0), false, 3, "Acid Stone", 17, new Damage(new Die(1, 8, 0), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 4, 0), Die.Zero(), Die.Zero()), new List<string> { }, new List<string> { });
+        private GenericAmmo FireStone = new GenericAmmo(new Die(1, 3, 0), false, 3, "Fire Stone", 17, new Damage(Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 8, 0), Die.Zero(), Die.Zero(), new Die(1, 4, 0), Die.Zero(), Die.Zero()), new List<string> { }, new List<string> { });
+        private GenericAmmo FrostStone = new GenericAmmo(new Die(1, 3, 0), false, 3, "Frost Stone", 17, new Damage(Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 8, 0), Die.Zero(), new Die(1, 4, 0), Die.Zero(), Die.Zero()), new List<string> { }, new List<string> { });
+        private GenericAmmo PoisonStone = new GenericAmmo(new Die(1, 3, 0), false, 3, "Poison Stone", 17, new Damage(Die.Zero(), new Die(1, 8, 0), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 4, 0), Die.Zero(), Die.Zero()), new List<string> { }, new List<string> { });
 
         /// <summary>
         /// Creates a damage object for a arrow that only does normal piercing damage.
@@ -33,7 +33,7 @@ namespace EarthMagicItems.Ammo.Stones
         /// <returns></returns>
         private static Damage StandardStone(Die bluntDamage)
         {
-            return new Damage(new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), bluntDamage);
+            return new Damage(Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), bluntDamage);
         }
     }
 }

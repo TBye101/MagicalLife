@@ -22,10 +22,10 @@ namespace EarthMagicItems.Ammo.Bolts
 
         #endregion NormalBolts
 
-        private GenericAmmo AcidBolt = new GenericAmmo(new Die(1, 3, 0), false, 3, "Acid Bolt", 17, new Damage(new Die(1, 8, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(1, 6, 0), new Die(0, 0, 0), new Die(0, 0, 0)), new List<string> { }, new List<string> { });
-        private GenericAmmo FireBolt = new GenericAmmo(new Die(1, 3, 0), false, 3, "Fire Bolt", 17, new Damage(new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(1, 8, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(1, 6, 0), new Die(0, 0, 0), new Die(0, 0, 0)), new List<string> { }, new List<string> { });
-        private GenericAmmo FrostBolt = new GenericAmmo(new Die(1, 3, 0), false, 3, "Frost Bolt", 17, new Damage(new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(1, 8, 0), new Die(0, 0, 0), new Die(1, 6, 0), new Die(0, 0, 0), new Die(0, 0, 0)), new List<string> { }, new List<string> { });
-        private GenericAmmo PoisonBolt = new GenericAmmo(new Die(1, 3, 0), false, 3, "Poison Bolt", 17, new Damage(new Die(0, 0, 0), new Die(1, 8, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(1, 6, 0), new Die(0, 0, 0), new Die(0, 0, 0)), new List<string> { }, new List<string> { });
+        private GenericAmmo AcidBolt = new GenericAmmo(new Die(1, 3, 0), false, 3, "Acid Bolt", 17, new Damage(new Die(1, 8, 0), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 6, 0), Die.Zero(), Die.Zero()), new List<string> { }, new List<string> { });
+        private GenericAmmo FireBolt = new GenericAmmo(new Die(1, 3, 0), false, 3, "Fire Bolt", 17, new Damage(Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 8, 0), Die.Zero(), Die.Zero(), new Die(1, 6, 0), Die.Zero(), Die.Zero()), new List<string> { }, new List<string> { });
+        private GenericAmmo FrostBolt = new GenericAmmo(new Die(1, 3, 0), false, 3, "Frost Bolt", 17, new Damage(Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 8, 0), Die.Zero(), new Die(1, 6, 0), Die.Zero(), Die.Zero()), new List<string> { }, new List<string> { });
+        private GenericAmmo PoisonBolt = new GenericAmmo(new Die(1, 3, 0), false, 3, "Poison Bolt", 17, new Damage(Die.Zero(), new Die(1, 8, 0), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 6, 0), Die.Zero(), Die.Zero()), new List<string> { }, new List<string> { });
 
         /// <summary>
         /// Creates a damage object for a arrow that only does normal piercing damage.
@@ -34,7 +34,7 @@ namespace EarthMagicItems.Ammo.Bolts
         /// <returns></returns>
         private static Damage StandardBolt(Die piercingDamage)
         {
-            return new Damage(new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), piercingDamage, new Die(0, 0, 0), new Die(0, 0, 0));
+            return new Damage(Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), piercingDamage, Die.Zero(), Die.Zero());
         }
     }
 }

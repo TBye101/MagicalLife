@@ -1,4 +1,5 @@
-﻿using EarthWithMagicAPI.API;
+﻿using EarthWithMagicAPI.API.Util;
+using EarthWithMagicAPI.API;
 using EarthWithMagicAPI.API.Interfaces.Spells;
 using System;
 using System.Collections.Generic;
@@ -15,9 +16,9 @@ namespace EarthWithMagicMagic.Spells.Wizard
 
         public override void Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster)
         {
-            Damage damage = new Damage(new EarthWithMagicAPI.API.Util.Die(0, 0, 0), new EarthWithMagicAPI.API.Util.Die(0, 0, 0), new EarthWithMagicAPI.API.Util.Die(0, 0, 0),
-                new EarthWithMagicAPI.API.Util.Die(0, 0, 0), new EarthWithMagicAPI.API.Util.Die(0, 0, 0), new EarthWithMagicAPI.API.Util.Die(1, 6, 2),
-                new EarthWithMagicAPI.API.Util.Die(0, 0, 0), new EarthWithMagicAPI.API.Util.Die(0, 0, 0), new EarthWithMagicAPI.API.Util.Die(0, 0, 0));
+            Damage damage = new Damage(EarthWithMagicAPI.API.Util.Die.Zero(), EarthWithMagicAPI.API.Util.Die.Zero(), EarthWithMagicAPI.API.Util.Die.Zero(),
+                EarthWithMagicAPI.API.Util.Die.Zero(), EarthWithMagicAPI.API.Util.Die.Zero(), new EarthWithMagicAPI.API.Util.Die(1, 6, 2),
+                EarthWithMagicAPI.API.Util.Die.Zero(), EarthWithMagicAPI.API.Util.Die.Zero(), EarthWithMagicAPI.API.Util.Die.Zero());
             if (Caster.IsHostile())
             {
                 Party[0].RecieveDamage(damage);

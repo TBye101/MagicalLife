@@ -21,10 +21,10 @@ namespace EarthMagicItems.Ammo.Arrows
 
         #endregion NormalArrows
 
-        private GenericAmmo AcidArrow = new GenericAmmo(new Die(1, 3, 0), false, 3, "Acid Arrow", 17, new Damage(new Die(1, 8, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(1, 8, 0), new Die(0, 0, 0), new Die(0, 0, 0)), new List<string> { }, new List<string> { });
-        private GenericAmmo FireArrow = new GenericAmmo(new Die(1, 3, 0), false, 3, "Fire Arrow", 17, new Damage(new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(1, 8, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(1, 8, 0), new Die(0, 0, 0), new Die(0, 0, 0)), new List<string> { }, new List<string> { });
-        private GenericAmmo FrostArrow = new GenericAmmo(new Die(1, 3, 0), false, 3, "Frost Arrow", 17, new Damage(new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(1, 8, 0), new Die(0, 0, 0), new Die(1, 8, 0), new Die(0, 0, 0), new Die(0, 0, 0)), new List<string> { }, new List<string> { });
-        private GenericAmmo PoisonArrow = new GenericAmmo(new Die(1, 3, 0), false, 3, "Poison Arrow", 17, new Damage(new Die(0, 0, 0), new Die(1, 8, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(1, 8, 0), new Die(0, 0, 0), new Die(0, 0, 0)), new List<string> { }, new List<string> { });
+        private GenericAmmo AcidArrow = new GenericAmmo(new Die(1, 3, 0), false, 3, "Acid Arrow", 17, new Damage(new Die(1, 8, 0), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 8, 0), Die.Zero(), Die.Zero()), new List<string> { }, new List<string> { });
+        private GenericAmmo FireArrow = new GenericAmmo(new Die(1, 3, 0), false, 3, "Fire Arrow", 17, new Damage(Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 8, 0), Die.Zero(), Die.Zero(), new Die(1, 8, 0), Die.Zero(), Die.Zero()), new List<string> { }, new List<string> { });
+        private GenericAmmo FrostArrow = new GenericAmmo(new Die(1, 3, 0), false, 3, "Frost Arrow", 17, new Damage(Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 8, 0), Die.Zero(), new Die(1, 8, 0), Die.Zero(), Die.Zero()), new List<string> { }, new List<string> { });
+        private GenericAmmo PoisonArrow = new GenericAmmo(new Die(1, 3, 0), false, 3, "Poison Arrow", 17, new Damage(Die.Zero(), new Die(1, 8, 0), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 8, 0), Die.Zero(), Die.Zero()), new List<string> { }, new List<string> { });
 
         /// <summary>
         /// Creates a damage object for a arrow that only does normal piercing damage.
@@ -33,7 +33,7 @@ namespace EarthMagicItems.Ammo.Arrows
         /// <returns></returns>
         private static Damage StandardArrow(Die piercingDamage)
         {
-            return new Damage(new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), new Die(0, 0, 0), piercingDamage, new Die(0, 0, 0), new Die(0, 0, 0));
+            return new Damage(Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), piercingDamage, Die.Zero(), Die.Zero());
         }
     }
 }
