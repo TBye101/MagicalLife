@@ -9,6 +9,7 @@
     <None Remove="ASCII Art\Bard.txt" />
     <None Remove="ASCII Art\Dragon_Breathing_Fire.txt" />
     <None Remove="ASCII Art\Monk.txt" />
+    <None Remove="ASCII Art\Spells\Wizard\Firebolt.txt" />
     <None Remove="ASCII Art\Spells\Wizard\Magic_Missile.txt" />
     <None Remove="ASCII Art\Thief.txt" />
     <None Remove="ASCII Art\Title.txt" />
@@ -58,6 +59,7 @@
     <EmbeddedResource Include="ASCII Art\Bard.txt" />
     <EmbeddedResource Include="ASCII Art\Dragon_Breathing_Fire.txt" />
     <EmbeddedResource Include="ASCII Art\Monk.txt" />
+    <EmbeddedResource Include="ASCII Art\Spells\Wizard\Firebolt.txt" />
     <EmbeddedResource Include="ASCII Art\Spells\Wizard\Magic_Missile.txt" />
     <EmbeddedResource Include="ASCII Art\Thief.txt" />
     <EmbeddedResource Include="ASCII Art\Title.txt" />
