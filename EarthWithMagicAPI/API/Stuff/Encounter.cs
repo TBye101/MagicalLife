@@ -78,11 +78,20 @@ namespace EarthWithMagicAPI.API.Stuff
                         }
                     }
                 }
+                this.AwardXP();
 
                 this.RemoveExpired(this.Enemies, this.Party, this.Enemies);
                 this.RemoveExpired(this.Party, this.Party, this.Enemies);
             }
 
+            return this.Party;
+        }
+
+        /// <summary>
+        /// Awards XP to the party for each enemy killed.
+        /// </summary>
+        private void AwardXP()
+        {
             if (this.IsEveryoneDead(this.Party))
             {
                 Util.Util.WriteLine("Y'all are dead. Try again.");
@@ -109,8 +118,6 @@ namespace EarthWithMagicAPI.API.Stuff
                     this.Party[i].EncounterEnded(this);
                 }
             }
-
-            return this.Party;
         }
 
         /// <summary>
