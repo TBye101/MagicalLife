@@ -120,42 +120,6 @@ namespace EarthWithMagicAPI.API.Creature
         public int WeightCapacity;
 
         /// <summary>
-        /// Raised whenever a creature dies.
-        /// </summary>
-        public event EventHandler<ICreature> CreatureDied;
-
-        /// <summary>
-        /// Raised whenever a creature is healed.
-        /// </summary>
-        public event EventHandler<ICreature> CreatureHealed;
-
-        /// <summary>
-        /// Raised whenever a creature is summoned.
-        /// <ICreature>The creature that was summoned.</ICreature>
-        /// </summary>
-        public event EventHandler<ICreature> CreatureSummoned;
-
-        /// <summary>
-        /// Raised whenever a creature deals damage to another creature.
-        /// </summary>
-        public event EventHandler<Damage> DealDamageEvent;
-
-        /// <summary>
-        /// Raised whenever a new item is equipped.
-        /// </summary>
-        public event EventHandler<ICreature> ItemEquipped;
-
-        /// <summary>
-        /// Raised whenever a item is unequipped.
-        /// </summary>
-        public event EventHandler<ICreature> ItemUnequipped;
-
-        /// <summary>
-        /// Raised whenever a creature takes damage.
-        /// </summary>
-        public event EventHandler<Damage> TakeDamageEvent;
-
-        /// <summary>
         /// The path to the documentation about this creature.
         /// </summary>
         private string DocumentationPath;
