@@ -42,6 +42,8 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
         /// </summary>
         public List<string> Info;
 
+        private string ImagePath;
+
         /// <summary>
         /// Base constructor.
         /// </summary>
@@ -50,13 +52,20 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
         /// <param name="otherInformation"></param>
         /// <param name="powerRequired"></param>
         /// <param name="AOE">Area of effect spell?</param>
-        protected ISpell(string name, string documentationPath, int powerRequired, bool AOE, int roundsLeft)
+        protected ISpell(string name, string documentationPath, int powerRequired, bool AOE, int roundsLeft, string imagePath)
         {
             this.Name = name;
             this.PowerRequired = powerRequired;
             this.AOESpell = AOE;
             this.RoundsLeft = roundsLeft;
             this.Info = ResourceGM.GetResource(documentationPath);
+            this.ImagePath = imagePath;
+        }
+
+        public void DisplayImage()
+        {
+            List<string> image = ResourceGM.GetResource(this.ImagePath);
+            Util.Util.WriteLine(image);
         }
 
         /// <summary>
