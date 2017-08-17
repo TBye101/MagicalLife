@@ -16,17 +16,28 @@ namespace EarthWithMagicMagic.Spells.Wizard
 
         public override void Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster)
         {
+            Util.WriteLine(Caster.Name + " is casting Magic Missile!");
             Damage damage = new Damage(EarthWithMagicAPI.API.Util.Die.Zero(), EarthWithMagicAPI.API.Util.Die.Zero(), EarthWithMagicAPI.API.Util.Die.Zero(),
                 EarthWithMagicAPI.API.Util.Die.Zero(), EarthWithMagicAPI.API.Util.Die.Zero(), new EarthWithMagicAPI.API.Util.Die(1, 6, 2),
                 EarthWithMagicAPI.API.Util.Die.Zero(), EarthWithMagicAPI.API.Util.Die.Zero(), EarthWithMagicAPI.API.Util.Die.Zero());
+            int Missiles = Caster.Attributes.XP.CreatureLevel / 4;
 
-            if (Caster.IsHostile())
+            if (Missiles < 1)
             {
-                Party[0].RecieveDamage(damage);
+                Missiles = 1;
             }
-            else
+
+            while (Missiles != 0)
             {
-                Enemies[0].RecieveDamage(damage);
+                Missiles--;
+                if (Caster.IsHostile())
+                {
+                    Party[0].RecieveDamage(damage);
+                }
+                else
+                {
+                    Enemies[0].RecieveDamage(damage);
+                }
             }
         }
 
