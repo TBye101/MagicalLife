@@ -49,6 +49,7 @@
     <None Remove="Other\Materials.md" />
     <None Remove="Other\Reference.md" />
     <None Remove="Other\Todo.md" />
+    <None Remove="Spells\Wizard\Magic_Missile.md" />
   </ItemGroup>
 
   <ItemGroup>
@@ -96,6 +97,7 @@
     <EmbeddedResource Include="Other\Materials.md" />
     <EmbeddedResource Include="Other\Reference.md" />
     <EmbeddedResource Include="Other\Todo.md" />
+    <EmbeddedResource Include="Spells\Wizard\Magic_Missile.md" />
   </ItemGroup>
 
   <ItemGroup>
@@ -125,7 +127,6 @@
   <ItemGroup>
     <Folder Include="Creatures\" />
     <Folder Include="Items\" />
-    <Folder Include="Spells\" />
   </ItemGroup>
 
 </Project>
