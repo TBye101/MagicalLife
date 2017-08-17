@@ -10,7 +10,7 @@ namespace EarthWithMagicMagic.Abilities.Monk
     /// </summary>
     public class StunningBlow : IAbility
     {
-        public StunningBlow() : base("Stunning Blow", "EarthMagicDocumentation.Abilities.Monk.StunningBlow.md", false, 1, 2)
+        public StunningBlow() : base("Stunning Blow", "EarthMagicDocumentation.Abilities.Monk.StunningBlow.md", false, 1, 2, "EarthMagicDocumentation.ASCII_Art.Abilities.StunningBlow.txt")
         {
         }
 

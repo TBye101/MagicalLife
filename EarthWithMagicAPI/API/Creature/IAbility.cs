@@ -36,6 +36,8 @@ namespace EarthWithMagicAPI.API.Creature
         public int MaxUses;
         public int AvailibleUses;
 
+        private string ImagePath;
+
         /// <summary>
         /// Base constructor.
         /// </summary>
@@ -43,13 +45,22 @@ namespace EarthWithMagicAPI.API.Creature
         /// <param name="DocumentationPath"></param>
         /// <param name="Uses">The amount of uses this ability can be used right after resting.</param>
         /// <param name="AOE">Area of effect spell?</param>
-        protected IAbility(string name, string DocumentationPath, bool AOE, int Uses, int roundsLeft)
+        protected IAbility(string name, string DocumentationPath, bool AOE, int Uses, int roundsLeft, string imagePath)
         {
             this.Name = name;
             this.AOESpell = AOE;
             this.Info = ResourceGM.GetResource(DocumentationPath);
             this.MaxUses = Uses;
             this.RoundsLeft = roundsLeft;
+            this.ImagePath = imagePath;
+        }
+
+        /// <summary>
+        /// Displays this ability's image.
+        /// </summary>
+        public void DisplayImage()
+        {
+            Util.Util.WriteLine(ResourceGM.GetResource(this.ImagePath));
         }
 
         /// <summary>

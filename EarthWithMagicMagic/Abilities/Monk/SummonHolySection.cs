@@ -16,7 +16,7 @@ namespace EarthWithMagicMagic.Abilities.Monk
         /// </summary>
         private List<Guid> Angels = new List<Guid>();
 
-        public SummonHolySection(int uses) : base("Summon Holy Section", "EarthMagicDocumentation.Abilities.Summon Holy Section.md", false, uses, 8)
+        public SummonHolySection(int uses) : base("Summon Holy Section", "EarthMagicDocumentation.Abilities.Summon Holy Section.md", false, uses, 8, "EarthMagicDocumentation.ASCII_Art.Abilities.SummonHolySection.txt")
         {
         }
 
