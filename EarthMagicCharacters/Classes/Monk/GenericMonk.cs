@@ -316,6 +316,22 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         #region LevelUps
 
         /// <summary>
+        /// Gives this monk the ability to do 1 more stunning blow.
+        /// </summary>
+        private void AddStunningBlow()
+        {
+            StunningBlow a = new StunningBlow();
+            foreach (IAbility item in this.ClassAbilities)
+            {
+                if (item.Name == a.Name)
+                {
+                    item.MaxUses++;
+                    return;
+                }
+            }
+        }
+
+        /// <summary>
         /// Does level up logic to bring the monk up to the next level.
         /// </summary>
         private void Level2()
@@ -370,7 +386,9 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Faithful Apprentice", "+1 stunning blow", "Fist: 1d10", "AC: +1" };
 
             this.Title = "Faithful Apprentice";
-            this.Abilities.BaseStunningBlows++;
+            StunningBlow a = new StunningBlow();
+            a.DisplayImage();
+            this.ClassAbilities.Add(a);
             ++this.Attributes.BaseAC;
             this.BareHands.Damage.BluntDamage = new Die(1, 10, 0);
 
@@ -449,7 +467,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
             this.Title = "Faithful Disciple";
             this.Attributes.BaseDodge += 10;
-            this.Abilities.BaseStunningBlows++;
+            this.AddStunningBlow();
             this.Abilities.BaseHideInShadows += 5;
             this.Abilities.BaseWalkSilently += 5;
             this.Attributes.BaseToHit++;
@@ -529,7 +547,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             this.Title = "Superior Master";
             this.Abilities.BaseHideInShadows += 5;
             this.Abilities.BaseWalkSilently += 5;
-            this.Abilities.BaseStunningBlows++;
+            this.AddStunningBlow();
             this.Attributes.BaseAC++;
             this.Attributes.BaseMagicResistance += 5;
 
@@ -607,7 +625,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Master of the East Wind", "+1 stunning blow", "TH: +1", "+5% hide in shadows", "+5% walk silently", "AC: +1" };
 
             this.Title = "Master of the East Wind";
-            this.Abilities.BaseStunningBlows++;
+            this.AddStunningBlow();
             this.Attributes.BaseToHit++;
             this.Abilities.BaseHideInShadows += 5;
             this.Abilities.BaseWalkSilently += 5;
@@ -687,7 +705,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
             this.Title = "Student of the Oceans";
             this.BareHands.Damage.BluntDamage = new Die(1, 20, 3);
-            this.Abilities.BaseStunningBlows++;
+            this.AddStunningBlow();
             this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
@@ -838,7 +856,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
             this.Title = "Blinding Light";
             this.BareHands.Damage.FireDamage = new Die(1, 6, 0);
-            this.Abilities.BaseStunningBlows++;
+            this.AddStunningBlow();
             this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
@@ -910,7 +928,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Beacon of Faith", "+1 stunning blow", "AC: +1", "TH: +1", "+5% magic resistance" };
 
             this.Title = "Beacon of Faith";
-            this.Abilities.BaseStunningBlows++;
+            this.AddStunningBlow();
             this.Attributes.BaseAC++;
             this.Attributes.BaseToHit++;
             this.Attributes.BaseMagicResistance += 5;
@@ -983,7 +1001,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
             this.Title = "Inspiring Legend";
             this.BareHands.Damage.FireDamage = new Die(1, 20, 4);
-            this.Abilities.BaseStunningBlows++;
+            this.AddStunningBlow();
             this.Attributes.BaseAC++;
 
             Util.WriteLine(levelUpReport);
@@ -1041,7 +1059,9 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             List<string> levelUpReport = new List<string> { "Title: Holy Commander", "Summon 4 angels", "Fist: 1d24 +5, 1d20 +5 fire", "AC: +1" };
 
             this.Title = "Holy Commander";
-            this.ClassAbilities.Add(new SummonHolySection(1));
+            SummonHolySection a = new SummonHolySection(1);
+            a.DisplayImage();
+            this.ClassAbilities.Add(a);
             this.BareHands.Damage.BluntDamage = new Die(1, 24, 5);
             this.BareHands.Damage.FireDamage = new Die(1, 20, 5);
             this.Attributes.BaseAC++;
@@ -1088,7 +1108,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
                 }
             }
 
-            this.Abilities.BaseStunningBlows++;
+            this.AddStunningBlow();
             this.Attributes.BaseToHit++;
             this.Attributes.BaseAC++;
 
