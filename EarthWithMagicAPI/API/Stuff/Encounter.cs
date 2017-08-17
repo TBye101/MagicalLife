@@ -46,7 +46,7 @@ namespace EarthWithMagicAPI.API.Stuff
 
                 foreach (ICreature item in this.AllCombatants)
                 {
-                    if (!this.IsEveryoneDead(this.Enemies) && !this.IsEveryoneDead(Party))
+                    if (!this.IsEveryoneDead(this.Enemies) && !this.IsEveryoneDead(this.Party))
                     {
                         if (item.IsHostile())
                         {
@@ -141,6 +141,8 @@ namespace EarthWithMagicAPI.API.Stuff
         /// <summary>
         /// Removes expired spells an abilities that were effecting the creatures.
         /// </summary>
+        /// <param name="party"></param>
+        /// <param name="enemies"></param>
         /// <param name="creatures"></param>
         private void RemoveExpired(List<ICreature> creatures, List<ICreature> party, List<ICreature> enemies)
         {

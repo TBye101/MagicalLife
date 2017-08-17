@@ -11,6 +11,7 @@ namespace EarthWithMagicAPI.API.Util
         /// <summary>
         /// Determines how much weight a creature can carry.
         /// </summary>
+        /// <param name="creature"></param>
         /// <returns></returns>
         public static int Calculate(ICreature creature)
         {

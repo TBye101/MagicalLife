@@ -84,6 +84,7 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         /// <summary>
         /// Called whenever the player is hit by a spell, such as a dispel.
         /// </summary>
+        /// <param name="spell"></param>
         public abstract void SpellHit(ISpell spell);
 
         /// <summary>

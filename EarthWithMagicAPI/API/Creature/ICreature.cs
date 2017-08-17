@@ -135,6 +135,10 @@ namespace EarthWithMagicAPI.API.Creature
         /// <param name="gender"></param>
         /// <param name="race"></param>
         /// <param name="alignment"></param>
+        /// <param name="attributes"></param>
+        /// <param name="abilities"></param>
+        /// <param name="documentationPath"></param>
+        /// <param name="imagePath"></param>
         protected ICreature(CreatureAttributes attributes, CreatureAbilities abilities, string documentationPath, string imagePath)
         {
             this.Attributes = attributes;
@@ -339,11 +343,15 @@ namespace EarthWithMagicAPI.API.Creature
         /// <summary>
         /// It's this creature's turn for action.
         /// </summary>
+        /// <param name="encounter"></param>
         public abstract void YourTurn(Encounter encounter);
 
         /// <summary>
         /// Takes damage
         /// </summary>
+        /// <param name="elementalDamage"></param>
+        /// <param name="nameOfDamage"></param>
+        /// <param name="resistance"></param>
         /// <returns></returns>
         private double TakeDamage(Die elementalDamage, string nameOfDamage, double resistance)
         {

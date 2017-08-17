@@ -55,6 +55,15 @@ namespace EarthWithMagicAPI.API
         /// <summary>
         /// The constructor for the damage class.
         /// </summary>
+        /// <param name="acidDamage"></param>
+        /// <param name="poisonDamage"></param>
+        /// <param name="electricDamage"></param>
+        /// <param name="fireDamage"></param>
+        /// <param name="coldDamage"></param>
+        /// <param name="magicDamage"></param>
+        /// <param name="piercingDamage"></param>
+        /// <param name="slashingDamage"></param>
+        /// <param name="bluntDamage"></param>
         public Damage(Die acidDamage, Die poisonDamage, Die electricDamage, Die fireDamage, Die coldDamage, Die magicDamage, Die piercingDamage, Die slashingDamage, Die bluntDamage)
         {
             this.AcidDamage = acidDamage;

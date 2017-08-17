@@ -10,6 +10,7 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         /// <summary>
         /// Called when attacking another creature.
         /// </summary>
+        /// <param name="creature"></param>
         /// <returns></returns>
         public void Attack(ICreature creature)
         {

@@ -45,6 +45,8 @@ namespace EarthWithMagicAPI.API.Creature
         /// <param name="name"></param>
         /// <param name="DocumentationPath"></param>
         /// <param name="Uses">The amount of uses this ability can be used right after resting.</param>
+        /// <param name="roundsLeft"></param>
+        /// <param name="imagePath"></param>
         /// <param name="AOE">Area of effect spell?</param>
         protected IAbility(string name, string DocumentationPath, bool AOE, int Uses, int roundsLeft, string imagePath)
         {
@@ -70,6 +72,9 @@ namespace EarthWithMagicAPI.API.Creature
         /// Called whenever the creature tries to take an action.
         /// Returns whether or not the creature is allowed to take an action.
         /// </summary>
+        /// <param name="Party"></param>
+        /// <param name="Enemies"></param>
+        /// <param name="Affected"></param>
         public abstract bool OnAction(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected);
 
         /// <summary>
@@ -84,6 +89,9 @@ namespace EarthWithMagicAPI.API.Creature
         /// <summary>
         /// Called when the creature's affect wears off.
         /// </summary>
+        /// <param name="Party"></param>
+        /// <param name="Enemies"></param>
+        /// <param name="Affected"></param>
         public abstract void OnWearOff(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected);
 
         /// <summary>

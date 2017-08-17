@@ -12,6 +12,8 @@ namespace EarthWithMagicAPI.API.Util
         /// <summary>
         /// Rolls dice, adds up the values, and returns the number.
         /// </summary>
+        /// <param name="die"></param>
+        /// <param name="Description"></param>
         /// <returns></returns>
         public static int RollDice(Die die, string Description = "")
         {

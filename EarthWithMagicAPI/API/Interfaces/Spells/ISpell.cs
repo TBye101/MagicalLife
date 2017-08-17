@@ -43,9 +43,12 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
         /// Base constructor.
         /// </summary>
         /// <param name="name"></param>
+        /// <param name="documentationPath"></param>
         /// <param name="lore"></param>
         /// <param name="otherInformation"></param>
         /// <param name="powerRequired"></param>
+        /// <param name="roundsLeft"></param>
+        /// <param name="imagePath"></param>
         /// <param name="AOE">Area of effect spell?</param>
         protected ISpell(string name, string documentationPath, int powerRequired, int roundsLeft, string imagePath)
         {
@@ -66,12 +69,19 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
         /// Called when the spell is cast.
         /// </summary>
         /// <param name="creature"></param>
+        /// <param name="Party"></param>
+        /// <param name="Enemies"></param>
+        /// <param name="Caster"></param>
         public abstract void Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster);
 
         /// <summary>
         /// Called whenever the creature tries to take an action.
         /// Returns whether or not the creature is allowed to take an action.
+        /// <paramref name="Affected"/>
         /// </summary>
+        /// <param name="Party"></param>
+        /// <param name="Enemies"></param>
+        /// <param name="Affected"></param>
         public abstract bool OnAction(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected);
 
         /// <summary>
@@ -86,6 +96,9 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
         /// <summary>
         /// Called when the creature's affect wears off.
         /// </summary>
+        /// <param name="Party"></param>
+        /// <param name="Enemies"></param>
+        /// <param name="Affected"></param>
         public abstract void OnWearOff(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected);
     }
 }

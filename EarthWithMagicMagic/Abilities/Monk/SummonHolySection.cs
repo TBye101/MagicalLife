@@ -27,10 +27,10 @@ namespace EarthWithMagicMagic.Abilities.Monk
             LesserAngel c = new LesserAngel();
             LesserAngel d = new LesserAngel();
 
-            Angels.Add(a.ID);
-            Angels.Add(b.ID);
-            Angels.Add(c.ID);
-            Angels.Add(d.ID);
+            this.Angels.Add(a.ID);
+            this.Angels.Add(b.ID);
+            this.Angels.Add(c.ID);
+            this.Angels.Add(d.ID);
 
             Party.Add(a);
             Party.Add(b);

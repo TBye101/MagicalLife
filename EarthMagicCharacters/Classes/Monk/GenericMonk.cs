@@ -20,6 +20,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// Constructor for the GenericMonk class.
         /// </summary>
         /// <param name="gender"></param>
+        /// <param name="race"></param>
         /// <param name="alignment"></param>
         /// <param name="name"></param>
         /// <param name="isHostile"></param>
