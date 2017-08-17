@@ -10,7 +10,7 @@ namespace EarthMagicCreatures.Creatures.Undead.Skeletons
     /// </summary>
     public class Skeleton : ICreature
     {
-        public Skeleton() : base()
+        public Skeleton(CreatureAttributes attributes, CreatureAbilities abilities) : base(attributes, abilities)
         {
         }
 

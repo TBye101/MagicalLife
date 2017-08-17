@@ -1,4 +1,5 @@
-﻿using EarthMagicCharacters.Classes;
+﻿using EarthMagicDocumentation;
+using EarthMagicCharacters.Classes;
 using EarthWithMagicAPI.API.Interfaces.Items;
 using EarthWithMagicAPI.API.Interfaces.Spells;
 using EarthWithMagicAPI.API.Stuff;
@@ -155,24 +156,45 @@ namespace EarthWithMagicAPI.API.Creature
         public event EventHandler<Damage> TakeDamageEvent;
 
         /// <summary>
+        /// The path to the documentation about this creature.
+        /// </summary>
+        private string DocumentationPath;
+
+        /// <summary>
+        /// The path to the image representing this type of creature.
+        /// </summary>
+        private string ImagePath;
+
+        /// <summary>
         /// The constructor for the ICreature abstract class.
         /// </summary>
         /// <param name="gender"></param>
         /// <param name="race"></param>
         /// <param name="alignment"></param>
-        protected ICreature(CreatureAttributes attributes, CreatureAbilities abilities)
+        protected ICreature(CreatureAttributes attributes, CreatureAbilities abilities, string documentationPath, string imagePath)
         {
             this.Attributes = attributes;
             this.Abilities = abilities;
+            this.DocumentationPath = documentationPath;
+            this.ImagePath = imagePath;
             this.Rest();
+            this.WeightCapacity = WeightCapacityUtil.Calculate(this);
         }
 
         /// <summary>
-        /// The default constructor for this class. Must be called on initialization.
+        /// Displays the information about this creature.
         /// </summary>
-        protected ICreature()
+        public void DisplayInformation()
         {
-            this.WeightCapacity = WeightCapacityUtil.Calculate(this);
+            Util.Util.WriteLine(ResourceGM.GetResource(this.DocumentationPath));
+        }
+
+        /// <summary>
+        /// Displays the image representing this creature.
+        /// </summary>
+        public void DisplayImage()
+        {
+            Util.Util.WriteLine(ResourceGM.GetResource(this.ImagePath));
         }
 
         /// <summary>
