@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EarthMagicItems.Weapons.Normal.Scimitars
+﻿namespace EarthMagicItems.Weapons.Normal.Scimitars
 {
-    class GenericScimitarStorage
+    internal class GenericScimitarStorage
     {
     }
 }

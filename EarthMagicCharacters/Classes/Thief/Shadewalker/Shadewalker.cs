@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EarthMagicCharacters.Classes.Thief.Shadewalker
+﻿namespace EarthMagicCharacters.Classes.Thief.Shadewalker
 {
-    class Shadewalker
+    internal class Shadewalker
     {
     }
 }

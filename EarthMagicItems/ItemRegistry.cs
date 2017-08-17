@@ -1,11 +1,8 @@
-﻿using EarthMagicItems.Gems;
-using EarthMagicItems.Armor.Generic.Steel;
-using EarthMagicItems.Ammo.Stones;
+﻿using EarthMagicItems.Ammo.Arrows;
 using EarthMagicItems.Ammo.Bolts;
-using EarthMagicItems.Ammo.Arrows;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using EarthMagicItems.Ammo.Stones;
+using EarthMagicItems.Armor.Generic.Steel;
+using EarthMagicItems.Gems;
 
 namespace EarthMagicItems
 {
@@ -16,9 +13,9 @@ namespace EarthMagicItems
     {
         //Ammo
         public static GenericArrowStorage Arrows = new GenericArrowStorage();
+
         public static GenericBoltStorage Bolts = new GenericBoltStorage();
         public static GenericStoneStorage Stones = new GenericStoneStorage();
-
 
         //Armor
         public static GenericArmorStorage Armor = new GenericArmorStorage();

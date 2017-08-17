@@ -1,8 +1,7 @@
 ﻿using EarthWithMagicAPI.API.Interfaces.Items;
+using EarthWithMagicAPI.API.Interfaces.Spells;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using EarthWithMagicAPI.API.Interfaces.Spells;
 
 namespace EarthWithMagicAPI.API.Creature
 {

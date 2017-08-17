@@ -1,10 +1,9 @@
-﻿using System.Diagnostics;
-using EarthWithMagicAPI.API.Util;
+﻿using EarthMagicCharacters.Classes.Monk.Generic_Monk;
 using EarthMagicDocumentation;
-using EarthMagicCharacters.Classes.Monk.Generic_Monk;
-using EarthWithMagicAPI.API.Party;
 using EarthWithMagicAPI.API.Creature;
+using EarthWithMagicAPI.API.Party;
 using EarthWithMagicAPI.API.Stuff;
+using EarthWithMagicAPI.API.Util;
 using System;
 
 namespace EarthWithMagic

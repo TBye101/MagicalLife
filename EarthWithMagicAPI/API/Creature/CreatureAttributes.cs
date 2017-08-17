@@ -65,6 +65,7 @@
         /// The chance that we will successfully hit with the currently equipped weapon.
         /// </summary>
         public double BaseToHit;
+
         public double ToHit;
 
         /// <summary>
@@ -88,6 +89,7 @@
         /// Damage taken is calculated by the following: Damage (After resistance calculations) * AC%.
         /// </summary>
         public double BaseAC;
+
         public double AC;
 
         /// <summary>
@@ -104,12 +106,14 @@
         /// The dexterity of the creature.
         /// </summary>
         public int BaseDexterity;
+
         public int Dexterity;
 
         /// <summary>
         /// The strength of the creature.
         /// </summary>
         public int BaseStrength;
+
         public int Strength;
 
         /// <summary>
@@ -117,6 +121,7 @@
         /// Constitution affects how many hit points the creature can get.
         /// </summary>
         public int BaseConstitution;
+
         public int Constitution;
 
         /// <summary>
@@ -124,12 +129,14 @@
         /// The ability of the creature to sway others.
         /// </summary>
         public int BaseCharisma;
+
         public int Charisma;
 
         /// <summary>
         /// The creature's wisdom.
         /// </summary>
         public int BaseWisdom;
+
         public int Wisdom;
 
         /// <summary>
@@ -148,48 +155,56 @@
         /// The resistance of the creature to fire.
         /// </summary>
         public double BaseFireResistance;
+
         public double FireResistance;
 
         /// <summary>
         /// The resistance of the creature to acid.
         /// </summary>
         public double BaseAcidResistance;
+
         public double AcidResistance;
 
         /// <summary>
         /// The resistance of the creature to poison.
         /// </summary>
         public double BasePoisonResistance;
+
         public double PoisonResistance;
 
         /// <summary>
         /// The resistance of the creature to electricity.
         /// </summary>
         public double BaseElectricResistance;
+
         public double ElectricResistance;
 
         /// <summary>
         /// The resistance of the creature to cold.
         /// </summary>
         public double BaseColdResistance;
+
         public double ColdResistance;
 
         /// <summary>
         /// The resistance of the creature to magic.
         /// </summary>
         public double BaseMagicResistance;
+
         public double MagicResistance;
 
         /// <summary>
         /// The resistance of the creature to charms.
         /// </summary>
         public double BaseCharmResistance;
+
         public double CharmResistance;
 
         /// <summary>
         /// The resistance of the creature to sleep (spells and abilities).
         /// </summary>
         public double BaseSleepResistance;
+
         public double SleepResistance;
 
         #endregion Resistances
@@ -203,12 +218,14 @@
         /// Used to determine the order of creature action.
         /// </summary>
         public int BaseInitiative;
+
         public int Initiative;
 
         /// <summary>
         /// The chance that the creature will dodge.
         /// </summary>
         public double BaseDodge;
+
         public double Dodge;
 
         /// <summary>

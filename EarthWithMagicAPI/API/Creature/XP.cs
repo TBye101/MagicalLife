@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace EarthWithMagicAPI.API.Creature
+﻿namespace EarthWithMagicAPI.API.Creature
 {
     /// <summary>
     /// Holds information about a creature's xp.

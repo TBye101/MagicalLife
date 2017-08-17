@@ -1,10 +1,10 @@
-﻿using EarthWithMagicAPI.API.Stuff;
-using EarthWithMagicAPI.API.Util;
+﻿using EarthMagicCharacters.Classes;
 using EarthWithMagicAPI.API.Interfaces.Items;
+using EarthWithMagicAPI.API.Interfaces.Spells;
+using EarthWithMagicAPI.API.Stuff;
+using EarthWithMagicAPI.API.Util;
 using System;
 using System.Collections.Generic;
-using EarthWithMagicAPI.API.Interfaces.Spells;
-using EarthMagicCharacters.Classes;
 
 namespace EarthWithMagicAPI.API.Creature
 {
@@ -206,7 +206,7 @@ namespace EarthWithMagicAPI.API.Creature
             }
 
             Util.Util.WriteLine(this.Name + " is taking damage!");
-            double dodgeChance = this.Attributes.Dodge / 2; 
+            double dodgeChance = this.Attributes.Dodge / 2;
 
             if (Dice.RollDice(new Die(1, 100, 0), "Chance to not dodge") > dodgeChance)
             {
@@ -258,7 +258,6 @@ namespace EarthWithMagicAPI.API.Creature
 
             Console.ResetColor();
         }
-
 
         /// <summary>
         /// Takes damage

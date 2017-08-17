@@ -1,12 +1,7 @@
-﻿using EarthWithMagicAPI.API.Interfaces.Spells;
-using Microsoft.VisualBasic.CompilerServices;
-using System.Linq;
-using EarthWithMagicAPI.API.Creature;
+﻿using EarthWithMagicAPI.API.Creature;
 using System;
 using System.Collections.Generic;
-using System.Text;
-
-using EarthWithMagicAPI.API.Util;
+using System.Linq;
 
 namespace EarthWithMagicAPI.API.Stuff
 {
@@ -94,7 +89,6 @@ namespace EarthWithMagicAPI.API.Stuff
             }
             else
             {
-
                 int l = this.Party.Count;
                 for (int i = 0; i < l; i++)
                 {

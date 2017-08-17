@@ -1,7 +1,4 @@
 ﻿using EarthWithMagicAPI.API.Stuff;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EarthWithMagicAPI.API.Creature
 {

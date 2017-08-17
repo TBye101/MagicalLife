@@ -1,6 +1,5 @@
-﻿using EarthWithMagicAPI.API.Util;
-using EarthWithMagicAPI.API.Creature;
-using System.Security.Cryptography.X509Certificates;
+﻿using EarthWithMagicAPI.API.Creature;
+
 namespace EarthWithMagicAPI.API.Interfaces.Items
 {
     /// <summary>

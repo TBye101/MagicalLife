@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System;
+﻿using System;
 
 namespace EarthWithMagicAPI.API.Util
 {
@@ -45,7 +44,6 @@ namespace EarthWithMagicAPI.API.Util
             return ret;
         }
     }
-
 
     /// <summary>
     /// Used to store dice rolls.

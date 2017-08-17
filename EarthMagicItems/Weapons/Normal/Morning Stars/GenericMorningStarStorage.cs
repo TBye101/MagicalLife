@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EarthMagicItems.Weapons.Normal.Morning_Stars
+﻿namespace EarthMagicItems.Weapons.Normal.Morning_Stars
 {
-    class GenericMorningStarStorage
+    internal class GenericMorningStarStorage
     {
     }
 }

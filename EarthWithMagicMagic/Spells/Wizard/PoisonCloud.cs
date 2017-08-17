@@ -1,9 +1,7 @@
-﻿using EarthWithMagicAPI.API.Util;
+﻿using EarthWithMagicAPI.API.Creature;
 using EarthWithMagicAPI.API.Interfaces.Spells;
-using System;
+using EarthWithMagicAPI.API.Util;
 using System.Collections.Generic;
-using System.Text;
-using EarthWithMagicAPI.API.Creature;
 
 namespace EarthWithMagicMagic.Spells.Wizard
 {

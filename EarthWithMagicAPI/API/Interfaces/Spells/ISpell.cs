@@ -2,6 +2,7 @@
 using EarthWithMagicAPI.API.Creature;
 using System;
 using System.Collections.Generic;
+
 namespace EarthWithMagicAPI.API.Interfaces.Spells
 {
     /// <summary>
@@ -9,7 +10,6 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
     /// </summary>
     public abstract class ISpell
     {
-
         public int RoundsLeft;
 
         /// <summary>
@@ -67,7 +67,6 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
         /// </summary>
         /// <param name="creature"></param>
         public abstract void Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster);
-
 
         /// <summary>
         /// Called when the creature's affect wears off.

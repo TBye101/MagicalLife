@@ -1,15 +1,12 @@
 ﻿using EarthMagicCharacters.Classes.Thief.Generic_Thief;
-using EarthWithMagicAPI.API.Creature;
-using EarthMagicCharacters.Classes;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using EarthMagicDocumentation;
+using EarthWithMagicAPI.API.Creature;
 using EarthWithMagicAPI.API.Util;
+using System;
 
 namespace EarthWithMagic.CreatureGen
 {
-    class ThiefCharacterGenerator : ICreatureGenerator
+    internal class ThiefCharacterGenerator : ICreatureGenerator
     {
         /// <summary>
         /// Asks the user to choose items from a list of options until the character is created.
@@ -46,12 +43,15 @@ namespace EarthWithMagic.CreatureGen
             {
                 case "male":
                     return Gender.Male;
+
                 case "female":
 
                     return Gender.Female;
+
                 case "unspecified":
 
                     return Gender.Unspecified;
+
                 default:
                     Util.WriteLine("Invalid input!");
                     return this.GetGender();
@@ -68,16 +68,22 @@ namespace EarthWithMagic.CreatureGen
             {
                 case "human":
                     return Race.Human;
+
                 case "elf":
                     return Race.Elf;
+
                 case "dwarf":
                     return Race.Dwarf;
+
                 case "kender":
                     return Race.Kender;
+
                 case "dragonborn":
                     return Race.Dragonborn;
+
                 case "unspecified":
                     return Race.Unspecified;
+
                 default:
                     Util.WriteLine("Invalid race!");
                     return this.GetRace();
@@ -93,20 +99,28 @@ namespace EarthWithMagic.CreatureGen
             {
                 case "lawful good":
                     return Alignment.LawfulGood;
+
                 case "chaotic good":
                     return Alignment.ChaoticGood;
+
                 case "lawful neutral":
                     return Alignment.LawfulNeutral;
+
                 case "true neutral":
                     return Alignment.TrueNeutral;
+
                 case "chaotic neutral":
                     return Alignment.ChaoticNeutral;
+
                 case "lawful evil":
                     return Alignment.LawfulEvil;
+
                 case "neutral evil":
                     return Alignment.NeutralEvil;
+
                 case "chaotic evil":
                     return Alignment.ChaoticEvil;
+
                 default:
                     Util.WriteLine("Invalid alignment!");
                     return this.GetAlignment();

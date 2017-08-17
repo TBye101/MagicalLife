@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EarthMagicCharacters.Classes.Cleric.Sun_Touched
+﻿namespace EarthMagicCharacters.Classes.Cleric.Sun_Touched
 {
-    class SunTouched
+    internal class SunTouched
     {
     }
 }

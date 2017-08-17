@@ -1,11 +1,8 @@
-﻿using System.Linq;
-using EarthWithMagicAPI.API.Interfaces.Items;
-using EarthWithMagicAPI.API.Util;
+﻿using EarthWithMagicAPI.API.Interfaces.Items;
 using EarthWithMagicAPI.API.Interfaces.Spells;
 using EarthWithMagicAPI.API.Stuff;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace EarthWithMagicAPI.API.Creature
 {
@@ -36,42 +33,55 @@ namespace EarthWithMagicAPI.API.Creature
                         case "help":
                             Help(creature, encounter, Command);
                             break;
+
                         case "view inventory":
                             ViewInventory(creature, encounter, Command);
                             break;
+
                         case "equip":
                             Equip(creature);
                             break;
+
                         case "swing":
                             Swing(creature, encounter, Command);
                             break;
+
                         case "use ability":
                             UseAbility(creature, encounter, Command);
                             break;
+
                         case "list abilities":
                             ListAbilities(creature, encounter, Command);
                             break;
+
                         case "cast":
                             Cast(creature, encounter, Command);
                             break;
+
                         case "list spells":
                             ListSpells(creature, encounter, Command);
                             break;
+
                         case "use":
                             Use(creature, encounter, Command);
                             break;
+
                         case "list enemies":
                             ListEnemies(creature, encounter, Command);
                             break;
+
                         case "list party":
                             ListParty(creature, encounter, Command);
                             break;
+
                         case "unequip":
                             Unequip(creature, encounter, Command);
                             break;
+
                         case "rotate":
                             Rotate(creature, encounter, Command);
                             break;
+
                         default:
                             break;
                     }

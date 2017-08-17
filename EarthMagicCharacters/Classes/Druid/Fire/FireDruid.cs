@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EarthMagicCharacters.Classes.Druid.Fire
+﻿namespace EarthMagicCharacters.Classes.Druid.Fire
 {
-    class FireDruid
+    internal class FireDruid
     {
     }
 }

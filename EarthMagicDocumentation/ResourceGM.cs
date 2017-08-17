@@ -1,9 +1,6 @@
-﻿using Microsoft.VisualBasic.CompilerServices;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EarthMagicDocumentation
 {

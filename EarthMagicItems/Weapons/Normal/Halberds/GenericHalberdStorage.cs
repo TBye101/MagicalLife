@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EarthMagicItems.Weapons.Normal.Halberds
+﻿namespace EarthMagicItems.Weapons.Normal.Halberds
 {
-    class GenericHalberdStorage
+    internal class GenericHalberdStorage
     {
     }
 }

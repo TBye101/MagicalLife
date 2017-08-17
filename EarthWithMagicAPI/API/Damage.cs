@@ -1,5 +1,4 @@
-﻿using EarthWithMagicAPI.API.Creature;
-using EarthWithMagicAPI.API.Util;
+﻿using EarthWithMagicAPI.API.Util;
 
 namespace EarthWithMagicAPI.API
 {

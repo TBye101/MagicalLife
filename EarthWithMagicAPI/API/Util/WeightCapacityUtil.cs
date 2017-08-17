@@ -1,7 +1,5 @@
 ﻿using EarthWithMagicAPI.API.Creature;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EarthWithMagicAPI.API.Util
 {

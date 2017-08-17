@@ -1,13 +1,10 @@
-﻿using EarthWithMagicAPI.API.Util;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using EarthWithMagicAPI.API;
-using EarthWithMagicAPI.API.Creature;
+﻿using EarthWithMagicAPI.API.Creature;
 using EarthWithMagicAPI.API.Interfaces.Items;
 using EarthWithMagicAPI.API.Stuff;
-using EarthMagicCreatures.Creatures.Heavenly.Angels;
+using EarthWithMagicAPI.API.Util;
 using EarthWithMagicMagic.Abilities.Monk;
+using System;
+using System.Collections.Generic;
 
 namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 {
@@ -64,153 +61,203 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
                 case 1:
                     this.Level2();
                     break;
+
                 case 2:
                     this.Level3();
                     break;
+
                 case 3:
                     this.Level4();
                     break;
+
                 case 4:
                     this.Level5();
                     break;
+
                 case 5:
                     this.Level6();
                     break;
+
                 case 6:
                     this.Level7();
                     break;
+
                 case 7:
                     this.Level8();
                     break;
+
                 case 8:
                     this.Level9();
                     break;
+
                 case 9:
                     this.Level10();
                     break;
+
                 case 10:
                     this.Level11();
                     break;
+
                 case 11:
                     this.Level12();
                     break;
+
                 case 12:
                     this.Level13();
                     break;
+
                 case 13:
                     this.Level14();
                     break;
+
                 case 14:
                     this.Level15();
                     break;
+
                 case 15:
                     this.Level16();
                     break;
+
                 case 16:
                     this.Level17();
                     break;
+
                 case 17:
                     this.Level18();
                     break;
+
                 case 18:
                     this.Level19();
                     break;
+
                 case 19:
                     this.Level20();
                     break;
+
                 case 20:
                     this.Level21();
                     break;
+
                 case 21:
                     this.Level22();
                     break;
+
                 case 22:
                     this.Level23();
                     break;
+
                 case 23:
                     this.Level24();
                     break;
+
                 case 24:
                     this.Level25();
                     break;
+
                 case 25:
                     this.Level26();
                     break;
+
                 case 26:
                     this.Level27();
                     break;
+
                 case 27:
                     this.Level28();
                     break;
+
                 case 28:
                     this.Level29();
                     break;
+
                 case 29:
                     this.Level30();
                     break;
+
                 case 30:
                     this.Level31();
                     break;
+
                 case 31:
                     this.Level32();
                     break;
+
                 case 32:
                     this.Level33();
                     break;
+
                 case 33:
                     this.Level34();
                     break;
+
                 case 34:
                     this.Level35();
                     break;
+
                 case 35:
                     this.Level36();
                     break;
+
                 case 36:
                     this.Level37();
                     break;
+
                 case 37:
                     this.Level38();
                     break;
+
                 case 38:
                     this.Level39();
                     break;
+
                 case 39:
                     this.Level40();
                     break;
+
                 case 40:
                     this.Level41();
                     break;
+
                 case 41:
                     this.Level42();
                     break;
+
                 case 42:
                     this.Level43();
                     break;
+
                 case 43:
                     this.Level44();
                     break;
+
                 case 44:
                     this.Level45();
                     break;
+
                 case 45:
                     this.Level46();
                     break;
+
                 case 46:
                     this.Level47();
                     break;
+
                 case 47:
                     this.Level48();
                     break;
+
                 case 48:
                     this.Level49();
                     break;
+
                 case 49:
                     this.Level50();
                     break;
+
                 case 50:
                     this.Level51();
                     break;
+
                 default:
                     Console.WriteLine("Level up not supported!");
                     break;
@@ -226,9 +273,11 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
                     case 1:
                         Console.WriteLine("We have lost a comrade today. No matter " + dead.HimHerIT() + "'s personal struggles, " + dead.HimHerIT() + " was a valuable member of this party.");
                         break;
+
                     case 2:
                         Console.Write(dead.HeSheIT() + "was a friend. " + dead.HeSheIT() + " will be remembered.");
                         break;
+
                     default:
                         throw new Exception("Error! Switch not handled!");
                 }
@@ -271,7 +320,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level2()
         {
-            List<string> levelUpReport = new List<string> {"Level up report: ", "Title: Faithless", "HP: +  1d10 +2", "AC: +1", "To hit: +1", "+20% poison resistance.", "+30% hide in shadows", "+30% walk silently"};
+            List<string> levelUpReport = new List<string> { "Level up report: ", "Title: Faithless", "HP: +  1d10 +2", "AC: +1", "To hit: +1", "+20% poison resistance.", "+30% hide in shadows", "+30% walk silently" };
 
             this.Attributes.BasePoisonResistance += 20;
             this.Abilities.BaseHideInShadows += 30;
@@ -288,7 +337,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level3()
         {
-            List<string> levelUpReport = new List<string> {"Title: Faithful", "AC: +1", "+20% fire resistance"};
+            List<string> levelUpReport = new List<string> { "Title: Faithful", "AC: +1", "+20% fire resistance" };
 
             this.Title = "Faithful";
             ++this.Attributes.BaseAC;
@@ -302,7 +351,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level4()
         {
-            List<string> levelUpReport = new List<string> { "Apprentice", "AC: +1", "To hit +1", "+5% hide in shadows", "+5% walk silently"};
+            List<string> levelUpReport = new List<string> { "Apprentice", "AC: +1", "To hit +1", "+5% hide in shadows", "+5% walk silently" };
 
             this.Abilities.BaseHideInShadows += 5;
             this.Abilities.BaseWalkSilently += 5;
@@ -318,7 +367,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level5()
         {
-            List<string> levelUpReport = new List<string> { "Title: Faithful Apprentice", "+1 stunning blow", "Fist: 1d10", "AC: +1"};
+            List<string> levelUpReport = new List<string> { "Title: Faithful Apprentice", "+1 stunning blow", "Fist: 1d10", "AC: +1" };
 
             this.Title = "Faithful Apprentice";
             this.Abilities.BaseStunningBlows++;
@@ -350,7 +399,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level7()
         {
-            List<string> levelUpReport = new List<string> { "Title: Brother", "+20% resistance to sleep", "AC: +1"};
+            List<string> levelUpReport = new List<string> { "Title: Brother", "+20% resistance to sleep", "AC: +1" };
 
             this.Title = "Brother";
             this.Attributes.BaseSleepResistance += 20;
@@ -364,7 +413,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level8()
         {
-            List<string> levelUpReport = new List<string> { "Title: Faithful Brother", "+20% resistance to charms", "+5% hide in shadows", "+5% walk silently", "To hit +1", "AC: +1"};
+            List<string> levelUpReport = new List<string> { "Title: Faithful Brother", "+20% resistance to charms", "+5% hide in shadows", "+5% walk silently", "To hit +1", "AC: +1" };
 
             this.Title = "Faithful Brother";
             this.Attributes.BaseCharmResistance += 20;
@@ -381,7 +430,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level9()
         {
-            List<string> levelUpReport = new List<string> { "Title: Disciple", "+5% magic resistance", "Fist: 1d10 +1", "AC: +1"};
+            List<string> levelUpReport = new List<string> { "Title: Disciple", "+5% magic resistance", "Fist: 1d10 +1", "AC: +1" };
 
             this.Title = "Disciple";
             this.Attributes.BaseMagicResistance += 5;
@@ -428,7 +477,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level12()
         {
-            List<string> levelUpReport = new List<string> { "Title: Master", "+5% hide in shadows", "+5% walk silently", "To hit: +1", "AC: +1"};
+            List<string> levelUpReport = new List<string> { "Title: Master", "+5% hide in shadows", "+5% walk silently", "To hit: +1", "AC: +1" };
 
             this.Title = "Master";
             this.Abilities.BaseHideInShadows += 5;
@@ -459,7 +508,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level14()
         {
-            List<string> levelUpReport = new List<string> { "Title: Elite Master", "+5% hide in shadows", "+5% walk silently", "To hit: +1", "AC: +1"};
+            List<string> levelUpReport = new List<string> { "Title: Elite Master", "+5% hide in shadows", "+5% walk silently", "To hit: +1", "AC: +1" };
 
             this.Title = "Elite Master";
             this.Abilities.BaseHideInShadows += 5;
@@ -475,7 +524,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level15()
         {
-            List<string> levelUpReport = new List<string> { "Title: Superior Master", "+5% hide in shadows", "+5% walk silently", "+1 stunning blow", "AC: +1", "+5% magic resistance"};
+            List<string> levelUpReport = new List<string> { "Title: Superior Master", "+5% hide in shadows", "+5% walk silently", "+1 stunning blow", "AC: +1", "+5% magic resistance" };
 
             this.Title = "Superior Master";
             this.Abilities.BaseHideInShadows += 5;
@@ -492,7 +541,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level16()
         {
-            List<string> levelUpReport = new List<string> { "Title: Dragonmaster", "Fist: 1d12 +2", "TH: +1", "AC: +1"};
+            List<string> levelUpReport = new List<string> { "Title: Dragonmaster", "Fist: 1d12 +2", "TH: +1", "AC: +1" };
 
             this.Title = "Dragonmaster";
             this.BareHands.Damage.BluntDamage = new Die(1, 12, 2);
@@ -507,7 +556,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level17()
         {
-            List<string> levelUpReport = new List<string> { "Title: Master of the North Wind", "+5% hide in shadows", "+5% walk silently", "AC: +1", "+5% magic resistance"};
+            List<string> levelUpReport = new List<string> { "Title: Master of the North Wind", "+5% hide in shadows", "+5% walk silently", "AC: +1", "+5% magic resistance" };
 
             this.Title = "Master of the North Wind";
             this.Abilities.BaseHideInShadows += 5;
@@ -770,7 +819,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level34()
         {
-            List<string> levelUpReport = new List<string> {  "Title: Mistwalker", "TH: +1", "AC: +1", "+5% magic resistance" };
+            List<string> levelUpReport = new List<string> { "Title: Mistwalker", "TH: +1", "AC: +1", "+5% magic resistance" };
 
             this.Title = "Mistwalker";
             this.Attributes.BaseToHit++;
@@ -800,7 +849,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level36()
         {
-            List<string> levelUpReport = new List<string> { "Title: Faithful Soldier", "Fist: 1d20 +5, 1d6 +1 fire", "AC: +1"};
+            List<string> levelUpReport = new List<string> { "Title: Faithful Soldier", "Fist: 1d20 +5, 1d6 +1 fire", "AC: +1" };
 
             this.Title = "Faithful Soldier";
             this.BareHands.Damage.FireDamage = new Die(1, 8, 1);
@@ -814,7 +863,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level37()
         {
-            List<string> levelUpReport = new List<string> { "Title: Faithful Leader", "Fist: 1d20 +5, 1d8 +1 fire", "AC: +1"};
+            List<string> levelUpReport = new List<string> { "Title: Faithful Leader", "Fist: 1d20 +5, 1d8 +1 fire", "AC: +1" };
 
             this.Title = "Faithful Leader";
             this.BareHands.Damage.FireDamage = new Die(1, 8, 1);
@@ -843,7 +892,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level39()
         {
-            List<string> levelUpReport = new List<string> { "Title: Divine Servant", "Fist: 1d20 +5, 1d10 +1 fire", "Immunity to poison", "AC: +1"};
+            List<string> levelUpReport = new List<string> { "Title: Divine Servant", "Fist: 1d20 +5, 1d10 +1 fire", "Immunity to poison", "AC: +1" };
 
             this.Title = "Divine Servant";
             this.BareHands.Damage.FireDamage = new Die(1, 10, 1);
@@ -1027,7 +1076,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// </summary>
         private void Level51()
         {
-            List<string> levelUpReport = new List<string> { "Title: Divine Commander", "Summon 8 angels", "+1 stunning blow", "TH: +1", "AC: +1"};
+            List<string> levelUpReport = new List<string> { "Title: Divine Commander", "Summon 8 angels", "+1 stunning blow", "TH: +1", "AC: +1" };
 
             this.Title = "Divine Commander";
 
@@ -1046,6 +1095,6 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             Util.WriteLine(levelUpReport);
         }
 
-        #endregion
+        #endregion LevelUps
     }
 }

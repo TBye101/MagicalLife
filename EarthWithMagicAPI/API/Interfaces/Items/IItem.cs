@@ -75,6 +75,7 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         public abstract StatsImpact EquipImpact();
 
         public bool IsCursed = false;
+
         /// <summary>
         /// The weight of the item.
         /// </summary>

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EarthMagicItems.Weapons.Normal.Katanas
+﻿namespace EarthMagicItems.Weapons.Normal.Katanas
 {
-    class GenericKatanaStorage
+    internal class GenericKatanaStorage
     {
     }
 }

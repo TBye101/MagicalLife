@@ -1,9 +1,8 @@
-﻿using EarthWithMagicAPI.API.Util;
-using EarthMagicCreatures.Creatures.Heavenly.Angels;
+﻿using EarthMagicCreatures.Creatures.Heavenly.Angels;
 using EarthWithMagicAPI.API.Creature;
+using EarthWithMagicAPI.API.Util;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace EarthWithMagicMagic.Abilities.Monk
 {

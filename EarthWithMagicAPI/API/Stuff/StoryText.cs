@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace EarthWithMagicAPI.API.Stuff
 {
@@ -26,7 +25,6 @@ namespace EarthWithMagicAPI.API.Stuff
 
         public StoryText()
         {
-
         }
 
         /// <summary>

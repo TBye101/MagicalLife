@@ -1,16 +1,12 @@
 ﻿using EarthWithMagicAPI.API.Creature;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using EarthWithMagicAPI.API;
 using EarthWithMagicAPI.API.Interfaces.Items;
 using EarthWithMagicAPI.API.Stuff;
+using System;
 
 namespace EarthMagicCreatures.Creatures.Heavenly.Angels
 {
     public class LesserAngel : ICreature
     {
-
         public override void EquipItem(IItem item)
         {
             throw new NotImplementedException();

@@ -1,8 +1,6 @@
-﻿using EarthWithMagicAPI.API.Util;
-using EarthWithMagicAPI.API.Creature;
-using System;
+﻿using EarthWithMagicAPI.API.Creature;
+using EarthWithMagicAPI.API.Util;
 using System.Collections.Generic;
-using System.Text;
 
 namespace EarthWithMagicMagic.Abilities.Monk
 {
@@ -18,8 +16,6 @@ namespace EarthWithMagicMagic.Abilities.Monk
 
         public override void Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster)
         {
-            
-
             string N;
             if (Caster.IsHostile())
             {

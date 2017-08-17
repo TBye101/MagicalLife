@@ -1,10 +1,8 @@
-﻿using EarthWithMagicAPI.API.Util;
-using EarthWithMagicAPI.API;
-using EarthWithMagicAPI.API.Interfaces.Spells;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using EarthWithMagicAPI.API;
 using EarthWithMagicAPI.API.Creature;
+using EarthWithMagicAPI.API.Interfaces.Spells;
+using EarthWithMagicAPI.API.Util;
+using System.Collections.Generic;
 
 namespace EarthWithMagicMagic.Spells.Wizard
 {
@@ -47,7 +45,6 @@ namespace EarthWithMagicMagic.Spells.Wizard
 
         public override void OnWearOff(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
         {
-
         }
     }
 }

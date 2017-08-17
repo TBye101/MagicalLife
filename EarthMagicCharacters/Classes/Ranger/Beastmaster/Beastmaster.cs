@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EarthMagicCharacters.Classes.Ranger.Beastmaster
+﻿namespace EarthMagicCharacters.Classes.Ranger.Beastmaster
 {
-    class Beastmaster
+    internal class Beastmaster
     {
     }
 }

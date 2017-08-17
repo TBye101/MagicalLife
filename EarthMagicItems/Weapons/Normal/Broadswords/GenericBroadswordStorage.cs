@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EarthMagicItems.Weapons.Normal.Broadswords
+﻿namespace EarthMagicItems.Weapons.Normal.Broadswords
 {
-    class GenericBroadswordStorage
+    internal class GenericBroadswordStorage
     {
     }
 }

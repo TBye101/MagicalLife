@@ -1,11 +1,9 @@
-﻿using EarthMagicDocumentation;
-using EarthWithMagicAPI.API.Util;
-using EarthWithMagicAPI.API.Creature;
-using EarthMagicCharacters.Classes.Monk.Generic_Monk;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using EarthMagicCharacters.Classes.Monk.Generic_Monk;
+using EarthMagicDocumentation;
 using EarthWithMagic.CreatureGen;
+using EarthWithMagicAPI.API.Creature;
+using EarthWithMagicAPI.API.Util;
+using System;
 
 namespace EarthMagicCharacters.Classes.Monk
 {
@@ -49,12 +47,15 @@ namespace EarthMagicCharacters.Classes.Monk
             {
                 case "male":
                     return Gender.Male;
+
                 case "female":
 
                     return Gender.Female;
+
                 case "unspecified":
 
                     return Gender.Unspecified;
+
                 default:
                     Util.WriteLine("Invalid input!");
                     return this.GetGender();

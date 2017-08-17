@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EarthMagicItems.Weapons.Normal.Clubs
+﻿namespace EarthMagicItems.Weapons.Normal.Clubs
 {
-    class GenericClubStorage
+    internal class GenericClubStorage
     {
     }
 }

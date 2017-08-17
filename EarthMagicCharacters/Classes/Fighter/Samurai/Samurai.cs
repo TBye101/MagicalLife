@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EarthMagicCharacters.Classes.Fighter.Samurai
+﻿namespace EarthMagicCharacters.Classes.Fighter.Samurai
 {
-    class Samurai
+    internal class Samurai
     {
     }
 }

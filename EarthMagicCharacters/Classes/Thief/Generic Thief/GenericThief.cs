@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using EarthWithMagicAPI.API;
-using EarthWithMagicAPI.API.Creature;
+﻿using EarthWithMagicAPI.API.Creature;
 using EarthWithMagicAPI.API.Interfaces.Items;
 using EarthWithMagicAPI.API.Stuff;
 using EarthWithMagicAPI.API.Util;
+using System;
+using System.Collections.Generic;
 
 namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 {
@@ -74,164 +72,214 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
                 case 1:
                     this.Level2();
                     break;
+
                 case 2:
                     this.Level3();
                     break;
+
                 case 3:
                     this.Level4();
                     break;
+
                 case 4:
                     this.Level5();
                     break;
+
                 case 5:
                     this.Level6();
                     break;
+
                 case 6:
                     this.Level7();
                     break;
+
                 case 7:
                     this.Level8();
                     break;
+
                 case 8:
                     this.Level9();
                     break;
+
                 case 9:
                     this.Level10();
                     break;
+
                 case 10:
                     this.Level11();
                     break;
+
                 case 11:
                     this.Level12();
                     break;
+
                 case 12:
                     this.Level13();
                     break;
+
                 case 13:
                     this.Level14();
                     break;
+
                 case 14:
                     this.Level15();
                     break;
+
                 case 15:
                     this.Level16();
                     break;
+
                 case 16:
                     this.Level17();
                     break;
+
                 case 17:
                     this.Level18();
                     break;
+
                 case 18:
                     this.Level19();
                     break;
+
                 case 19:
                     this.Level20();
                     break;
+
                 case 20:
                     this.Level21();
                     break;
+
                 case 21:
                     this.Level22();
                     break;
+
                 case 22:
                     this.Level23();
                     break;
+
                 case 23:
                     this.Level24();
                     break;
+
                 case 24:
                     this.Level25();
                     break;
+
                 case 25:
                     this.Level26();
                     break;
+
                 case 26:
                     this.Level27();
                     break;
+
                 case 27:
                     this.Level28();
                     break;
+
                 case 28:
                     this.Level29();
                     break;
+
                 case 29:
                     this.Level30();
                     break;
+
                 case 30:
                     this.Level31();
                     break;
+
                 case 31:
                     this.Level32();
                     break;
+
                 case 32:
                     this.Level33();
                     break;
+
                 case 33:
                     this.Level34();
                     break;
+
                 case 34:
                     this.Level35();
                     break;
+
                 case 35:
                     this.Level36();
                     break;
+
                 case 36:
                     this.Level37();
                     break;
+
                 case 37:
                     this.Level38();
                     break;
+
                 case 38:
                     this.Level39();
                     break;
+
                 case 39:
                     this.Level40();
                     break;
+
                 case 40:
                     this.Level41();
                     break;
+
                 case 41:
                     this.Level42();
                     break;
+
                 case 42:
                     this.Level43();
                     break;
+
                 case 43:
                     this.Level44();
                     break;
+
                 case 44:
                     this.Level45();
                     break;
+
                 case 45:
                     this.Level46();
                     break;
+
                 case 46:
                     this.Level47();
                     break;
+
                 case 47:
                     this.Level48();
                     break;
+
                 case 48:
                     this.Level49();
                     break;
+
                 case 49:
                     this.Level50();
                     break;
+
                 case 50:
                     this.Level51();
                     break;
+
                 default:
                     Console.WriteLine("Level up not supported!");
                     break;
             }
         }
 
-
         #region LevelUps
+
         private void Level51()
         {
-            List<string> report = new List<string> { "Title: Ghost", "Dexterity: +1", "Constitution: +1", "Wisdom: +2", "Dodge: +3", "AC: +1"};
+            List<string> report = new List<string> { "Title: Ghost", "Dexterity: +1", "Constitution: +1", "Wisdom: +2", "Dodge: +3", "AC: +1" };
 
             this.Title = "Ghost";
             this.Attributes.BaseDexterity++;
@@ -1155,7 +1203,7 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
             Util.WriteLine(report);
         }
 
-        #endregion
+        #endregion LevelUps
 
         public override void OnCreatureDied(ICreature dead)
         {
@@ -1166,9 +1214,11 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
                     case 1:
                         Console.WriteLine("Maybe I should have given " + dead.HimHerIT() + " the lucky coin back");
                         break;
+
                     case 2:
                         Console.Write("Now who is going to pull me out of trouble?");
                         break;
+
                     default:
                         throw new Exception("Error! Switch not handled!");
                 }

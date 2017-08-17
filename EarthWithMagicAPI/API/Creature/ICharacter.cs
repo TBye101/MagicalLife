@@ -1,8 +1,4 @@
-﻿using EarthWithMagicAPI.API.Interfaces.Spells;
-using EarthWithMagicAPI.API.Creature;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using EarthWithMagicAPI.API.Creature;
 
 namespace EarthMagicCharacters.Classes
 {
@@ -15,6 +11,6 @@ namespace EarthMagicCharacters.Classes
         public abstract void LevelUp();
 
         protected ICharacter(CreatureAttributes attributes, CreatureAbilities abilities) : base(attributes, abilities)
-        {}
+        { }
     }
 }

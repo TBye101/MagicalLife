@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EarthMagicCharacters.Classes.Druid.Water
+﻿namespace EarthMagicCharacters.Classes.Druid.Water
 {
-    class WaterDruid
+    internal class WaterDruid
     {
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EarthMagicDocumentation
+﻿namespace EarthMagicDocumentation
 {
     public class ForTypeReference
     {

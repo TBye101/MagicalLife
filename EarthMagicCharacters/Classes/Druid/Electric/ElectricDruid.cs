@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EarthMagicCharacters.Classes.Druid.Electric
+﻿namespace EarthMagicCharacters.Classes.Druid.Electric
 {
-    class ElectricDruid
+    internal class ElectricDruid
     {
     }
 }

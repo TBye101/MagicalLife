@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EarthWithMagicAPI.API.ThreadPool
+﻿namespace EarthWithMagicAPI.API.ThreadPool
 {
     /// <summary>
     /// Utilizes the CPU and the GPU(s) for a thread pool.
@@ -11,7 +7,6 @@ namespace EarthWithMagicAPI.API.ThreadPool
     {
         public void Test()
         {
-            
         }
     }
 }

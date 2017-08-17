@@ -1,9 +1,4 @@
-﻿using System.Linq;
-using EarthMagicCharacters.Classes.Monk.Generic_Monk;
-using EarthWithMagicAPI.API.Creature;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using EarthWithMagicAPI.API.Creature;
 using EarthWithMagicAPI.API.Stuff;
 
 namespace EarthMagicCharacters.Classes.Monk

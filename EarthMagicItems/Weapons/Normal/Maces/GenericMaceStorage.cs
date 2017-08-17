@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EarthMagicItems.Weapons.Normal.Maces
+﻿namespace EarthMagicItems.Weapons.Normal.Maces
 {
-    class GenericMaceStorage
+    internal class GenericMaceStorage
     {
     }
 }

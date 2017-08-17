@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EarthMagicCharacters.Classes.Fighter.Knight
+﻿namespace EarthMagicCharacters.Classes.Fighter.Knight
 {
-    class Knight
+    internal class Knight
     {
     }
 }

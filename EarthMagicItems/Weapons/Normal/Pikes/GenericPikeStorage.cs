@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EarthMagicItems.Weapons.Normal.Pikes
+﻿namespace EarthMagicItems.Weapons.Normal.Pikes
 {
-    class GenericPikeStorage
+    internal class GenericPikeStorage
     {
     }
 }
