@@ -64,52 +64,6 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         public double Weight;
 
         /// <summary>
-        /// Raised whenever an item is bought.
-        /// </summary>
-        public event EventHandler<IItem> ItemBought;
-
-        /// <summary>
-        /// Raised whenever an item is destroyed.
-        /// </summary>
-        public event EventHandler<IItem> ItemDestroyed;
-
-        /// <summary>
-        /// Raised whenever an item is dropped on the ground.
-        /// </summary>
-        public event EventHandler<IItem> ItemDropped;
-
-        /// <summary>
-        /// Raised whenever an item is equipped.
-        /// </summary>
-        public event EventHandler<IItem> ItemEquipped;
-
-        /// <summary>
-        /// Raised whenever an item is lost.
-        /// Ex: Given to another player, or removed from an inventory due to a quest.
-        /// </summary>
-        public event EventHandler<IItem> ItemLost;
-
-        /// <summary>
-        /// Raised whenever an item is picked up.
-        /// </summary>
-        public event EventHandler<IItem> ItemPickedUp;
-
-        /// <summary>
-        /// Raised whenever an item is sold.
-        /// </summary>
-        public event EventHandler<IItem> ItemSold;
-
-        /// <summary>
-        /// Raised whenever an item is thrown.
-        /// </summary>
-        public event EventHandler<IItem> ItemThrown;
-
-        /// <summary>
-        /// Raised whenever an item has it's status changed, such as being temporarily dispelled. This just means the player's stats need to be recalculated.
-        /// </summary>
-        public event EventHandler<IItem> StatusChanged;
-
-        /// <summary>
         /// Called whenever the item is bought.
         /// </summary>
         public abstract void Bought();

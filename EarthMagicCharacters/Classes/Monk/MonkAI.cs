@@ -8,9 +8,9 @@ namespace EarthMagicCharacters.Classes.Monk
     /// </summary>
     public class MonkAI : IAI
     {
-        public void YourTurn(Encounter encounter, ICreature monk)
+        public void YourTurn(Encounter encounter, ICreature creature)
         {
-            monk.BareHands.Attack(encounter.Party[0]);
+            creature.BareHands.Attack(encounter.Party[0]);
         }
     }
 }
