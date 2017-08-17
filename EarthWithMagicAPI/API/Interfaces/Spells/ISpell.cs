@@ -1,4 +1,5 @@
-﻿using EarthWithMagicAPI.API.Creature;
+﻿using EarthMagicDocumentation;
+using EarthWithMagicAPI.API.Creature;
 using System;
 using System.Collections.Generic;
 namespace EarthWithMagicAPI.API.Interfaces.Spells
@@ -22,16 +23,6 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
         public string Name;
 
         /// <summary>
-        /// Lore about the spell.
-        /// </summary>
-        public List<string> Lore;
-
-        /// <summary>
-        /// Any other information about the spell.
-        /// </summary>
-        public List<string> OtherInformation;
-
-        /// <summary>
         /// The unique id for this spell instance.
         /// </summary>
         public Guid ID = new Guid();
@@ -47,14 +38,9 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
         public bool AOESpell;
 
         /// <summary>
-        /// After resting, this is how many uses this ability could be used.
+        /// Lore about the spell.
         /// </summary>
-        public int MaxUses;
-
-        /// <summary>
-        /// The amount of uses that we have available right now.
-        /// </summary>
-        public int AvailibleUses;
+        public List<string> Info;
 
         /// <summary>
         /// Base constructor.
@@ -64,15 +50,13 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
         /// <param name="otherInformation"></param>
         /// <param name="powerRequired"></param>
         /// <param name="AOE">Area of effect spell?</param>
-        protected ISpell(string name, List<string> lore, List<string> otherInformation, int powerRequired, bool AOE, int maxUses, int roundsLeft)
+        protected ISpell(string name, string documentationPath, int powerRequired, bool AOE, int roundsLeft)
         {
             this.Name = name;
-            this.Lore = lore;
-            this.OtherInformation = otherInformation;
             this.PowerRequired = powerRequired;
             this.AOESpell = AOE;
-            this.MaxUses = maxUses;
             this.RoundsLeft = roundsLeft;
+            this.Info = ResourceGM.GetResource(documentationPath);
         }
 
         /// <summary>
