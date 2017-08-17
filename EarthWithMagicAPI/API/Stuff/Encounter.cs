@@ -31,7 +31,7 @@ namespace EarthWithMagicAPI.API.Stuff
             this.Enemies = enemies;
             this.AllCombatants.AddRange(friendly);
             this.AllCombatants.AddRange(enemies);
-            this.AllCombatants = this.AllCombatants.OrderByDescending(ICreature => ICreature.GetAttributes().BaseInitiative).ToList();
+            this.AllCombatants = this.AllCombatants.OrderByDescending(ICreature => ICreature.Attributes.BaseInitiative).ToList();
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace EarthWithMagicAPI.API.Stuff
                             for (int i = 0; i < length; i++)
                             {
                                 ICreature iitem = this.Enemies[i];
-                                if (iitem.ID == item.ID && item.GetAttributes().Health > 0)
+                                if (iitem.ID == item.ID && item.Attributes.Health > 0)
                                 {
                                     item.YourTurn(this);
                                     Util.Util.WriteLine("Hit any key to continue the fight to the next combatant....");
@@ -68,7 +68,7 @@ namespace EarthWithMagicAPI.API.Stuff
                             for (int i = 0; i < length; i++)
                             {
                                 ICreature iitem = this.Party[i];
-                                if (iitem.ID == item.ID && item.GetAttributes().Health > 0)
+                                if (iitem.ID == item.ID && item.Attributes.Health > 0)
                                 {
                                     item.YourTurn(this);
                                     Util.Util.WriteLine("Hit any key to continue the fight to the next combatant....");
@@ -129,7 +129,7 @@ namespace EarthWithMagicAPI.API.Stuff
         {
             foreach (ICreature item in creatures)
             {
-                if (item.GetAttributes().Health > 0)
+                if (item.Attributes.Health > 0)
                 {
                     return false;
                 }

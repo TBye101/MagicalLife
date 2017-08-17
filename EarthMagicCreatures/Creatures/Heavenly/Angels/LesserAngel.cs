@@ -22,13 +22,12 @@ namespace EarthMagicCreatures.Creatures.Heavenly.Angels
 
         public override void EquipItem(IItem item)
         {
-            throw new NotImplementedException();
         }
 
-        public override CreatureAttributes GetAttributes()
-        {
-            throw new NotImplementedException();
-        }
+        //public override CreatureAttributes GetAttributes()
+        //{
+
+        //}
 
         public override bool IsHostile()
         {

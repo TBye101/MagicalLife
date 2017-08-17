@@ -204,9 +204,9 @@ namespace EarthWithMagicAPI.API.Creature
         {
             foreach (ICreature item in encounter.Enemies)
             {
-                if (item.GetAttributes().Health > 0)
+                if (item.Attributes.Health > 0)
                 {
-                    Util.Util.WriteLine(item.Name + " HP: [" + item.GetAttributes().Health.ToString() + "]");
+                    Util.Util.WriteLine(item.Name + " HP: [" + item.Attributes.Health.ToString() + "]");
                 }
             }
         }
@@ -215,7 +215,7 @@ namespace EarthWithMagicAPI.API.Creature
         {
             foreach (ICreature item in encounter.Party)
             {
-                Util.Util.WriteLine(item.Name + " HP: [" + item.GetAttributes().Health.ToString() + "]");
+                Util.Util.WriteLine(item.Name + " HP: [" + item.Attributes.Health.ToString() + "]");
             }
         }
 

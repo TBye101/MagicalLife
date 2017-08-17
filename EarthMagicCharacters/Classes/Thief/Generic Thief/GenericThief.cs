@@ -19,7 +19,8 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         private bool _Hostile;
 
-        public GenericThief(Gender gender, Race race, Alignment alignment, string name = "Thief", bool isHostile = false) : base(GetAttributes(gender, race, alignment), GetAbilities())
+        public GenericThief(Gender gender, Race race, Alignment alignment, string name = "Thief", bool isHostile = false) : base(GetAttributes(gender, race, alignment), GetAbilities(),
+            "EarthMagicDocumentation.Classes.Thief_Class_Info.md", "EarthMagicDocumentation.ASCII_Art.Thief.txt")
         {
             this.CreatureType = "Thief";
             this.Name = name;
@@ -29,11 +30,6 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
         public override void EquipItem(IItem item)
         {
             throw new NotImplementedException();
-        }
-
-        public override CreatureAttributes GetAttributes()
-        {
-            return this.Attributes;
         }
 
         public override bool IsHostile()

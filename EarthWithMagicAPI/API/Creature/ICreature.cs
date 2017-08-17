@@ -217,18 +217,13 @@ namespace EarthWithMagicAPI.API.Creature
         /// <param name="item"></param>
         public abstract void EquipItem(IItem item);
 
-        /// <summary>
-        /// Some attributes of the creature.
-        /// </summary>
-        public abstract CreatureAttributes GetAttributes();
-
         public string HeSheIT()
         {
-            if (this.GetAttributes().Gender == Gender.Male)
+            if (this.Attributes.Gender == Gender.Male)
             {
                 return "Him";
             }
-            if (this.GetAttributes().Gender == Gender.Female)
+            if (this.Attributes.Gender == Gender.Female)
             {
                 return "She";
             }
@@ -244,15 +239,15 @@ namespace EarthWithMagicAPI.API.Creature
         /// <returns></returns>
         public string HimHerIT()
         {
-            if (this.GetAttributes().Gender == Gender.Male)
+            if (this.Attributes.Gender == Gender.Male)
             {
                 return "him";
             }
-            if (this.GetAttributes().Gender == Gender.Female)
+            if (this.Attributes.Gender == Gender.Female)
             {
                 return "her";
             }
-            if (this.GetAttributes().Gender == Gender.Unspecified)
+            if (this.Attributes.Gender == Gender.Unspecified)
             {
                 return "IT";
             }

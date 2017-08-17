@@ -10,18 +10,13 @@ namespace EarthMagicCreatures.Creatures.Undead.Skeletons
     /// </summary>
     public class Skeleton : ICreature
     {
-        public Skeleton(CreatureAttributes attributes, CreatureAbilities abilities) : base(attributes, abilities)
+        public Skeleton(CreatureAttributes attributes, CreatureAbilities abilities) : base(attributes, abilities, null, null)
         {
         }
 
         public override void EquipItem(IItem item)
         {
             throw new NotImplementedException();
-        }
-
-        public override CreatureAttributes GetAttributes()
-        {
-            return this.Attributes;
         }
 
         public override bool IsHostile()

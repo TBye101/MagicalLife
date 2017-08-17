@@ -4,7 +4,7 @@ namespace EarthMagicCharacters.Classes
 {
     public abstract class ICharacter : ICreature
     {
-        protected ICharacter(CreatureAttributes attributes, CreatureAbilities abilities) : base(attributes, abilities)
+        protected ICharacter(CreatureAttributes attributes, CreatureAbilities abilities, string documentationPath, string imagePath) : base(attributes, abilities, documentationPath, imagePath)
         { }
 
         /// <summary>
