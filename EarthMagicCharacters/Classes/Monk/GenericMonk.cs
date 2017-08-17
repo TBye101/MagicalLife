@@ -1100,9 +1100,11 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
             this.Title = "Divine Commander";
 
+            SummonHolySection a = new SummonHolySection(1);
+
             foreach (IAbility item in this.ClassAbilities)
             {
-                if (item.Name == "Summon Holy Section")
+                if (item.Name == a.Name)
                 {
                     item.MaxUses++;
                 }
