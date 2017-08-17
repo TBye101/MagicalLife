@@ -30,6 +30,7 @@ namespace EarthMagicItems.Ammo.Stones
         /// Creates a damage object for a arrow that only does normal piercing damage.
         /// </summary>
         /// <param name="piercingDamage"></param>
+        /// <param name="bluntDamage"></param>
         /// <returns></returns>
         private static Damage StandardStone(Die bluntDamage)
         {

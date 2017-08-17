@@ -11,7 +11,6 @@ namespace EarthMagicItems.Amulets
     /// </summary>
     public class GenericAmulet : IItem
     {
-
         public GenericAmulet(bool questItem, bool isEquipped, int level, List<string> otherInformation, List<string> lore, string name)
         {
             this.QuestItem = questItem;

@@ -12,8 +12,7 @@ namespace EarthMagicCreatures.Creatures.AI
     public class MeleeAI : IAI
     {
         public void YourTurn(Encounter encounter, ICreature creature)
-        {
-            
+        {           
         }
     }
 }

@@ -308,6 +308,9 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
         /// <summary>
         /// Gets the initial attributes of a thief.
         /// </summary>
+        /// <param name="gender"></param>
+        /// <param name="race"></param>
+        /// <param name="alignment"></param>
         /// <returns></returns>
         private static CreatureAttributes GetAttributes(Gender gender, Race race, Alignment alignment)
         {

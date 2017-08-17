@@ -174,6 +174,9 @@ namespace EarthWithMagicAPI.API.Creature
         /// <summary>
         /// Displays some help information.
         /// </summary>
+        /// <param name="creature"></param>
+        /// <param name="encounter"></param>
+        /// <param name="Command"></param>
         private static void Help(ICreature creature, Encounter encounter, string[] Command)
         {
             Util.Util.WriteLine("help: displays help information");

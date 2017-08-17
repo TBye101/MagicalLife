@@ -14,7 +14,6 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows.Artifacts
     /// </summary>
     public class The_Inevitable : IAmmo
     {
-
         /// <summary>
         /// The constructor for The_Inevitable.
         /// </summary>
