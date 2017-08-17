@@ -19,25 +19,29 @@ namespace EarthWithMagicMagic.Spells.Wizard
             Damage damage = new Damage(EarthWithMagicAPI.API.Util.Die.Zero(), EarthWithMagicAPI.API.Util.Die.Zero(), EarthWithMagicAPI.API.Util.Die.Zero(),
                 EarthWithMagicAPI.API.Util.Die.Zero(), EarthWithMagicAPI.API.Util.Die.Zero(), new EarthWithMagicAPI.API.Util.Die(1, 6, 2),
                 EarthWithMagicAPI.API.Util.Die.Zero(), EarthWithMagicAPI.API.Util.Die.Zero(), EarthWithMagicAPI.API.Util.Die.Zero());
+
             if (Caster.IsHostile())
             {
                 Party[0].RecieveDamage(damage);
+            }
+            else
+            {
+                Enemies[0].RecieveDamage(damage);
             }
         }
 
         public override bool OnAction(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public override bool OnTurn(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public override void OnWearOff(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
         {
-            throw new NotImplementedException();
         }
     }
 }
