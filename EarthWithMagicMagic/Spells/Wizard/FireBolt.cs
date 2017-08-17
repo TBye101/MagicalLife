@@ -10,7 +10,7 @@ namespace EarthWithMagicMagic.Spells.Wizard
 {
     public class Fire_Bolt : ISpell
     {
-        public Fire_Bolt() : base("Firebolt", "EarthMagicDocumentation.Spells.Wizard.Firebolt.md", 9, false, 0, "EarthMagicDocumentation.ASCII_Art.Spells.Wizard.Firebolt.txt")
+        public Fire_Bolt() : base("Firebolt", "EarthMagicDocumentation.Spells.Wizard.Firebolt.md", 9, 0, "EarthMagicDocumentation.ASCII_Art.Spells.Wizard.Firebolt.txt")
         {
         }
 

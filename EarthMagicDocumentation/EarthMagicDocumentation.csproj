@@ -11,6 +11,7 @@
     <None Remove="ASCII Art\Monk.txt" />
     <None Remove="ASCII Art\Spells\Wizard\Firebolt.txt" />
     <None Remove="ASCII Art\Spells\Wizard\Magic_Missile.txt" />
+    <None Remove="ASCII Art\Spells\Wizard\PoisonCloud.txt" />
     <None Remove="ASCII Art\Thief.txt" />
     <None Remove="ASCII Art\Title.txt" />
     <None Remove="Classes\Barbarian Class Info.md" />
@@ -52,6 +53,7 @@
     <None Remove="Other\Reference.md" />
     <None Remove="Other\Todo.md" />
     <None Remove="Spells\Wizard\Magic_Missile.md" />
+    <None Remove="Spells\Wizard\PoisonCloud.md" />
   </ItemGroup>
 
   <ItemGroup>
@@ -61,6 +63,7 @@
     <EmbeddedResource Include="ASCII Art\Monk.txt" />
     <EmbeddedResource Include="ASCII Art\Spells\Wizard\Firebolt.txt" />
     <EmbeddedResource Include="ASCII Art\Spells\Wizard\Magic_Missile.txt" />
+    <EmbeddedResource Include="ASCII Art\Spells\Wizard\PoisonCloud.txt" />
     <EmbeddedResource Include="ASCII Art\Thief.txt" />
     <EmbeddedResource Include="ASCII Art\Title.txt" />
     <EmbeddedResource Include="Classes\WIP\Barbarian Class Info.md" />
@@ -102,6 +105,7 @@
     <EmbeddedResource Include="Other\Reference.md" />
     <EmbeddedResource Include="Other\Todo.md" />
     <EmbeddedResource Include="Spells\Wizard\Magic_Missile.md" />
+    <EmbeddedResource Include="Spells\Wizard\PoisonCloud.md" />
   </ItemGroup>
 
   <ItemGroup>

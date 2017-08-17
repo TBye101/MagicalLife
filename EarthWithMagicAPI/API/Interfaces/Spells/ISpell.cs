@@ -33,11 +33,6 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
         public int PowerRequired;
 
         /// <summary>
-        /// Area of Effect Spell?
-        /// </summary>
-        public bool AOESpell;
-
-        /// <summary>
         /// Lore about the spell.
         /// </summary>
         public List<string> Info;
@@ -52,11 +47,10 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
         /// <param name="otherInformation"></param>
         /// <param name="powerRequired"></param>
         /// <param name="AOE">Area of effect spell?</param>
-        protected ISpell(string name, string documentationPath, int powerRequired, bool AOE, int roundsLeft, string imagePath)
+        protected ISpell(string name, string documentationPath, int powerRequired, int roundsLeft, string imagePath)
         {
             this.Name = name;
             this.PowerRequired = powerRequired;
-            this.AOESpell = AOE;
             this.RoundsLeft = roundsLeft;
             this.Info = ResourceGM.GetResource(documentationPath);
             this.ImagePath = imagePath;

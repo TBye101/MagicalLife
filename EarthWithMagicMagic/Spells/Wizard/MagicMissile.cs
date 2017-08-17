@@ -10,7 +10,7 @@ namespace EarthWithMagicMagic.Spells.Wizard
 {
     public class MagicMissle : ISpell
     {
-        public MagicMissle() : base("Magic Missile", "EarthMagicDocumentation.Spells.Wizard.Magic_Missile.md", 3, false, 0, "EarthMagicDocumentation.ASCII_Art.Spells.Wizard.Magic_Missile.txt")
+        public MagicMissle() : base("Magic Missile", "EarthMagicDocumentation.Spells.Wizard.Magic_Missile.md", 3, 0, "EarthMagicDocumentation.ASCII_Art.Spells.Wizard.Magic_Missile.txt")
         {
         }
 
