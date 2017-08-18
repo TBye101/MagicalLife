@@ -5,4 +5,4 @@ The magical enchantment provides that extra boost to penetrate some armors, and 
 
 Uses: 2d4
 
-Damage: 1d8 +1
+Damage: 1d8 +1 piercing

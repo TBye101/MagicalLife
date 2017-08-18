@@ -2,4 +2,4 @@
 
 Uses: 6d7
 
-Damage: 1d8 +5
+Damage: 1d8 +5 piercing
