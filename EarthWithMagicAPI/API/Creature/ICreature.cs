@@ -1,5 +1,5 @@
-﻿using EarthMagicDocumentation;
-using EarthMagicCharacters.Classes;
+﻿using EarthMagicCharacters.Classes;
+using EarthMagicDocumentation;
 using EarthWithMagicAPI.API.Interfaces.Items;
 using EarthWithMagicAPI.API.Interfaces.Spells;
 using EarthWithMagicAPI.API.Stuff;
@@ -14,11 +14,6 @@ namespace EarthWithMagicAPI.API.Creature
     /// </summary>
     public abstract class ICreature
     {
-        /// <summary>
-        /// Determines if the creature is mortal or not.
-        /// </summary>
-        public bool IsMortal = true;
-
         /// <summary>
         /// The abilities of the creature.
         /// </summary>
@@ -78,6 +73,11 @@ namespace EarthWithMagicAPI.API.Creature
         /// If true, the creature is part of the player's party.
         /// </summary>
         public bool IsInParty = false;
+
+        /// <summary>
+        /// Determines if the creature is mortal or not.
+        /// </summary>
+        public bool IsMortal = true;
 
         /// <summary>
         /// The amount of casting power the creature has after resting.
@@ -155,19 +155,19 @@ namespace EarthWithMagicAPI.API.Creature
         }
 
         /// <summary>
-        /// Displays the information about this creature.
-        /// </summary>
-        public void DisplayInformation()
-        {
-            Util.Util.WriteLine(ResourceGM.GetResource(this.DocumentationPath));
-        }
-
-        /// <summary>
         /// Displays the image representing this creature.
         /// </summary>
         public void DisplayImage()
         {
             Util.Util.WriteLine(ResourceGM.GetResource(this.ImagePath));
+        }
+
+        /// <summary>
+        /// Displays the information about this creature.
+        /// </summary>
+        public void DisplayInformation()
+        {
+            Util.Util.WriteLine(ResourceGM.GetResource(this.DocumentationPath));
         }
 
         /// <summary>

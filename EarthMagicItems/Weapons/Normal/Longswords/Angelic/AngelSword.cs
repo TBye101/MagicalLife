@@ -1,10 +1,8 @@
-﻿using EarthWithMagicAPI.API.Util;
+﻿using EarthWithMagicAPI.API.Creature;
 using EarthWithMagicAPI.API.Interfaces.Items;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using EarthWithMagicAPI.API.Interfaces.Spells;
-using EarthWithMagicAPI.API.Creature;
+using EarthWithMagicAPI.API.Util;
+using System;
 
 namespace EarthMagicItems.Weapons.Normal.Longswords.Angelic
 {
