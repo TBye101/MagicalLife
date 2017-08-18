@@ -9,7 +9,7 @@ namespace EarthWithMagicAPI.API.Creature
     {
         public Fists() : base(new Damage(Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(),
         Util.Die.Zero(), Util.Die.Zero(), new Util.Die(1, 2, 0)),
-            "Fists", 0)
+            "Fists", 0, "EarthMagicDocumentation.ASCII_Art.Items.Fists.txt", "EarthMagicDocumentation.Items.Fists.md")
         {
             this.IsEquipped = false;
             this.Level = -1;
