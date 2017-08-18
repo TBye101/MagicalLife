@@ -15,7 +15,10 @@
     <None Remove="ASCII Art\Dragon_Breathing_Fire.txt" />
     <None Remove="ASCII Art\Druid.txt" />
     <None Remove="ASCII Art\Duelist.txt" />
+    <None Remove="ASCII Art\Items\Ammo\Arrows\ColdArrow.txt" />
+    <None Remove="ASCII Art\Items\Ammo\Arrows\FireArrow.txt" />
     <None Remove="ASCII Art\Items\Ammo\Arrows\HandMadeArrow.txt" />
+    <None Remove="ASCII Art\Items\Ammo\Arrows\PoisonAcidArrow.txt" />
     <None Remove="ASCII Art\Items\Ammo\Arrows\ProfessionalArrow.txt" />
     <None Remove="ASCII Art\Items\Ammo\Special\TheInevitable.txt" />
     <None Remove="ASCII Art\Items\Fists.txt" />
@@ -87,7 +90,10 @@
     <EmbeddedResource Include="ASCII Art\Dragon_Breathing_Fire.txt" />
     <EmbeddedResource Include="ASCII Art\Druid.txt" />
     <EmbeddedResource Include="ASCII Art\Duelist.txt" />
+    <EmbeddedResource Include="ASCII Art\Items\Ammo\Arrows\ColdArrow.txt" />
+    <EmbeddedResource Include="ASCII Art\Items\Ammo\Arrows\FireArrow.txt" />
     <EmbeddedResource Include="ASCII Art\Items\Ammo\Arrows\HandMadeArrow.txt" />
+    <EmbeddedResource Include="ASCII Art\Items\Ammo\Arrows\PoisonAcidArrow.txt" />
     <EmbeddedResource Include="ASCII Art\Items\Ammo\Arrows\ProfessionalArrow.txt" />
     <EmbeddedResource Include="ASCII Art\Items\Ammo\Special\TheInevitable.txt" />
     <EmbeddedResource Include="ASCII Art\Items\Fists.txt" />
