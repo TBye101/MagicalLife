@@ -21,5 +21,9 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         /// The number of uses the ammo has.
         /// </summary>
         public Die Uses;
+
+        public IAmmo(string name, double weight, string imagePath, string documentationPath) : base(name, weight, imagePath, documentationPath)
+        {
+        }
     }
 }

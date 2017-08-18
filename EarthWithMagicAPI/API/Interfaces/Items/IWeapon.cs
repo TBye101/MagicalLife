@@ -7,6 +7,13 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
     /// </summary>
     public abstract class IWeapon : IItem
     {
+        protected IWeapon(Damage damage, string name, double weight, string imagePath, string documentationPath) : base(name, weight, imagePath, documentationPath)
+        {
+            this.Damage = damage;
+            this.Name = name;
+            this.Weight = weight;
+        }
+
         /// <summary>
         /// Called when attacking another creature.
         /// </summary>

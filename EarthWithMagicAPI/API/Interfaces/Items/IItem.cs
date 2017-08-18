@@ -7,6 +7,24 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
 {
     public abstract class IItem
     {
+        protected IItem(string name, double weight, string imagePath, string documentationPath)
+        {
+            this.Name = name;
+            this.Weight = weight;
+            this.ImagePath = imagePath;
+            this.DocumentationPath = documentationPath;
+        }
+
+        /// <summary>
+        /// The resource path to the ASCII art image.
+        /// </summary>
+        public string ImagePath;
+
+        /// <summary>
+        /// The resource path to the documentation about this item.
+        /// </summary>
+        public string DocumentationPath;
+
         /// <summary>
         /// The damage this item does when it is used to attack.
         /// </summary>

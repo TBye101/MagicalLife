@@ -11,16 +11,11 @@ namespace EarthMagicItems.Ammo.Arrows
 {
     public class GenericAmmo : IAmmo
     {
-        public GenericAmmo(Die uses, bool questItem, int level, string name, int chanceToHit, Damage attackDamage, List<string> lore, List<string> otherInfo)
+        public GenericAmmo(Die uses, string name, Damage attackDamage, string imagePath, string documentationPath, double weight) : base(name, weight, imagePath, documentationPath)
         {
             this.Uses = uses;
-            this.QuestItem = questItem;
-            this.Level = level;
             this.Name = name;
-            this.ChanceToHit = chanceToHit;
             this.AttackDamage = attackDamage;
-            this.Lore = lore;
-            this.OtherInformation = otherInfo;
             this.Value = Pricer.GetPrice(this);
             this.ID = new Guid();
             this.IsEquipped = false;

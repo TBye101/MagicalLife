@@ -18,7 +18,7 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows.Artifacts
         /// <summary>
         /// The constructor for The_Inevitable.
         /// </summary>
-        public The_Inevitable()
+        public The_Inevitable() : base("The Inevitable", .2, "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Special.TheInevitable.txt", "EarthMagicDocumentation.Items.Ammo.Special.TheInevitable.md")
         {
             this.AttackDamage = new Damage(new Die(2, 8, 5), new Die(2, 8, 5), new Die(2, 8, 5), new Die(2, 8, 5), new Die(2, 8, 5), new Die(2, 8, 5), new Die(2, 8, 5), Die.Zero(), Die.Zero());
             this.Uses = new Die(-1, -1, 0);

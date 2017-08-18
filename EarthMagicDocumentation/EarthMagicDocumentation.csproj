@@ -15,6 +15,7 @@
     <None Remove="ASCII Art\Dragon_Breathing_Fire.txt" />
     <None Remove="ASCII Art\Druid.txt" />
     <None Remove="ASCII Art\Duelist.txt" />
+    <None Remove="ASCII Art\Items\Ammo\Special\TheInevitable.txt" />
     <None Remove="ASCII Art\Items\Weapons\Normal\Scimitars\AngelSword.txt" />
     <None Remove="ASCII Art\Monk.txt" />
     <None Remove="ASCII Art\Necromancer.txt" />
@@ -59,6 +60,7 @@
     <None Remove="Creatures\Heavenly\AngelSquadLeader.md" />
     <None Remove="Creatures\Heavenly\AngelWarrior.md" />
     <None Remove="Creatures\Heavenly\LesserAngel.md" />
+    <None Remove="Items\Ammo\Special\TheInevitable.md" />
     <None Remove="Items\Weapons\Normal\Scimitars\AngelSword.md" />
     <None Remove="Other\ArmorClasses.md" />
     <None Remove="Other\CreatureList.md" />
@@ -81,6 +83,7 @@
     <EmbeddedResource Include="ASCII Art\Dragon_Breathing_Fire.txt" />
     <EmbeddedResource Include="ASCII Art\Druid.txt" />
     <EmbeddedResource Include="ASCII Art\Duelist.txt" />
+    <EmbeddedResource Include="ASCII Art\Items\Ammo\Special\TheInevitable.txt" />
     <EmbeddedResource Include="ASCII Art\Items\Weapons\Normal\Scimitars\AngelSword.txt" />
     <EmbeddedResource Include="ASCII Art\Monk.txt" />
     <EmbeddedResource Include="ASCII Art\Necromancer.txt" />
@@ -125,6 +128,7 @@
     <EmbeddedResource Include="Creatures\Heavenly\AngelSquadLeader.md" />
     <EmbeddedResource Include="Creatures\Heavenly\AngelWarrior.md" />
     <EmbeddedResource Include="Creatures\Heavenly\LesserAngel.md" />
+    <EmbeddedResource Include="Items\Ammo\Special\TheInevitable.md" />
     <EmbeddedResource Include="Items\Weapons\Normal\Scimitars\AngelSword.md" />
     <EmbeddedResource Include="Other\ArmorClasses.md" />
     <EmbeddedResource Include="Other\CreatureList.md" />

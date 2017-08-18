@@ -7,18 +7,16 @@ namespace EarthWithMagicAPI.API.Creature
 {
     public class Fists : IWeapon
     {
-        public Fists()
+        public Fists() : base(new Damage(Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(),
+        Util.Die.Zero(), Util.Die.Zero(), new Util.Die(1, 2, 0)),
+            "Fists", 0)
         {
             this.IsEquipped = false;
             this.Level = -1;
             this.Lore = new List<string>();
-            this.Name = "Fists";
             this.OtherInformation = new List<string>();
             this.QuestItem = false;
             this.Value = 0;
-            this.Weight = 0;
-            this.Damage = new Damage(Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(),
-        Util.Die.Zero(), Util.Die.Zero(), new Util.Die(1, 2, 0));
         }
 
         public override void Bought()

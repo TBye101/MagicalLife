@@ -12,7 +12,7 @@ namespace EarthMagicItems.Armor
     /// </summary>
     public class GenericArmor : IArmor
     {
-        public GenericArmor(int armorClass, bool questItem, int level, List<string> otherInformation, List<string> lore, string name)
+        public GenericArmor(int armorClass, string name)
         {
             this.AC = armorClass;
             this.QuestItem = questItem;

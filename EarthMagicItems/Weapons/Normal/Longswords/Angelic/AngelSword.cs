@@ -8,6 +8,13 @@ namespace EarthMagicItems.Weapons.Normal.Longswords.Angelic
 {
     public class AngelSword : IWeapon
     {
+        public AngelSword() : base(new EarthWithMagicAPI.API.Damage(
+                Die.Zero(), Die.Zero(), Die.Zero(), new Die(2, 8, 6), Die.Zero(), Die.Zero(), Die.Zero(), new Die(2, 8, 6), Die.Zero()),
+            "Angel Sword", 4, "EarthMagicDocumentation.ASCII_Art.Items.Weapons.Normal.Scimitars.AngelSword.txt",
+            "EarthMagicDocumentation.Items.Weapons.Normal.Scimitars.AngelSword.md")
+        {
+        }
+
         public override void Bought()
         {
             throw new Exception("These shouldn't be sold anywhere!");

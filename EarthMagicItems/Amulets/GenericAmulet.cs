@@ -12,18 +12,22 @@ namespace EarthMagicItems.Amulets
     /// </summary>
     public class GenericAmulet : IItem
     {
-        public GenericAmulet(bool questItem, bool isEquipped, int level, List<string> otherInformation, List<string> lore, string name)
+        public GenericAmulet(string name, double weight, string imagePath, string documentationPath) : base(name, weight, imagePath, documentationPath)
         {
-            this.QuestItem = questItem;
-            this.IsEquipped = false;
-            this.Level = level;
-            this.OtherInformation = otherInformation;
-            this.Lore = lore;
-            this.Name = name;
-            this.ID = new Guid();
-            this.Value = Pricer.GetPrice(this);
-            this.Weight = 1;
         }
+
+        //public GenericAmulet(bool questItem, bool isEquipped, int level, List<string> otherInformation, List<string> lore, string name)
+        //{
+        //    this.QuestItem = questItem;
+        //    this.IsEquipped = false;
+        //    this.Level = level;
+        //    this.OtherInformation = otherInformation;
+        //    this.Lore = lore;
+        //    this.Name = name;
+        //    this.ID = new Guid();
+        //    this.Value = Pricer.GetPrice(this);
+        //    this.Weight = 1;
+        //}
 
         public override void Bought()
         {
