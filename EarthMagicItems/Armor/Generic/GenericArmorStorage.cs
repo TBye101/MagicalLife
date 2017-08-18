@@ -9,10 +9,10 @@ namespace EarthMagicItems.Armor.Generic.Steel
     {
         #region Leather
 
-        public GenericArmor LeatherBoots = new GenericArmor(1, false, 1, new List<string> { }, new List<string> { }, "Leather Boots");
-        public GenericArmor LeatherBoots_1 = new GenericArmor(2, false, 2, new List<string> { }, new List<string> { }, "Leather Boots +1");
-        public GenericArmor LeatherBoots_2 = new GenericArmor(3, false, 3, new List<string> { }, new List<string> { }, "Leather Boots +2");
-        public GenericArmor LeatherBoots_3 = new GenericArmor(4, false, 4, new List<string> { }, new List<string> { }, "Leather Boots +3");
+        public GenericArmor LeatherBoots = new GenericArmor(1, "Leather Boots", 1.5);
+        public GenericArmor LeatherBoots_1 = new GenericArmor(2, "Leather Boots +1", 1.5);
+        public GenericArmor LeatherBoots_2 = new GenericArmor(3, "Leather Boots +2", 1.5);
+        public GenericArmor LeatherBoots_3 = new GenericArmor(4, "Leather Boots +3", 1.5);
         public GenericArmor LeatherBoots_4 = new GenericArmor(5, false, 5, new List<string> { }, new List<string> { }, "Leather Boots +4");
         public GenericArmor LeatherBoots_5 = new GenericArmor(6, false, 6, new List<string> { }, new List<string> { }, "Leather Boots +5");
         public GenericArmor LeatherChestplate = new GenericArmor(4, false, 1, new List<string> { }, new List<string> { }, "Leather Chestplate");

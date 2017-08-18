@@ -16,6 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\EarthMagicCreatures\EarthMagicCreatures.csproj" />
     <ProjectReference Include="..\EarthMagicDocumentation\EarthMagicDocumentation.csproj" />
     <ProjectReference Include="..\EarthWithMagicAPI\EarthWithMagicAPI.csproj" />

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using Microsoft.VisualBasic.CompilerServices;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 
@@ -12,18 +14,24 @@ namespace EarthMagicDocumentation
         /// <summary>
         /// Returns a string list of the file specified.
         /// </summary>
-        /// <param name="Path">Ex: Namespace.Folder.Folder.File.Extension</param>
+        /// <param name="path">Ex: Namespace.Folder.Folder.File.Extension</param>
         /// <returns></returns>
-        public static List<string> GetResource(string Path)
+        public static List<string> GetResource(string path)
         {
             Assembly docAsm = typeof(ResourceGM).GetTypeInfo().Assembly;
 
-            //foreach (string item in docAsm.GetManifestResourceNames())
-            //{
-            //    Console.Write(item + "\r\n");
-            //}
+            Stream resource = docAsm.GetManifestResourceStream(path);
 
-            Stream resource = docAsm.GetManifestResourceStream(Path);
+            if (resource == null)
+            {
+                resource = docAsm.GetManifestResourceStream("EarthMagicDocumentation.ASCII_Art.Error.txt");
+                if (resource == null)
+                {
+                    Console.WriteLine("A critical error has occurred in resource loading.");
+                    return new List<string>();
+                }
+            }
+
             StreamReader reader = new StreamReader(resource);
 
             List<string> ret = new List<string>();

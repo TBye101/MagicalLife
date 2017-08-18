@@ -12,14 +12,10 @@ namespace EarthMagicItems.Armor
     /// </summary>
     public class GenericArmor : IArmor
     {
-        public GenericArmor(int armorClass, string name, double weight, string imagePath, string documentationPath) : base(name, weight, imagePath, documentationPath)
+        public GenericArmor(int armorClass, string name, double weight, string imagePath = "", string documentationPath = "") : base(name, weight, imagePath, documentationPath)
         {
             this.EquipImpact.AC = armorClass;
-            this.Name = name;
             this.Value = Pricer.GetPrice(this);
-            this.ID = new Guid();
-            this.IsEquipped = false;
-            this.Weight = 5;
         }
 
         public override void Bought()

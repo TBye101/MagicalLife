@@ -18,11 +18,6 @@ namespace EarthWithMagicAPI.API.Creature
         /// </summary>
         public Guid ID = new Guid();
 
-        /// <summary>
-        /// Lore about the spell.
-        /// </summary>
-        public List<string> Info;
-
         public int MaxUses;
 
         /// <summary>
@@ -37,25 +32,33 @@ namespace EarthWithMagicAPI.API.Creature
         /// </summary>
         public int XPValue = 0;
 
+        /// <summary>
+        /// The resource path to the documentation for this ability.
+        /// </summary>
+        private string DocumentationPath;
+
+        /// <summary>
+        /// The resource path to the image for this ability.
+        /// </summary>
         private string ImagePath;
 
         /// <summary>
         /// Base constructor.
         /// </summary>
         /// <param name="name"></param>
-        /// <param name="DocumentationPath"></param>
-        /// <param name="Uses">The amount of uses this ability can be used right after resting.</param>
+        /// <param name="documentationPath"></param>
+        /// <param name="uses">The amount of uses this ability can be used right after resting.</param>
         /// <param name="roundsLeft"></param>
         /// <param name="imagePath"></param>
         /// <param name="AOE">Area of effect spell?</param>
-        protected IAbility(string name, string DocumentationPath, bool AOE, int Uses, int roundsLeft, string imagePath)
+        protected IAbility(string name, string documentationPath, bool AOE, int uses, int roundsLeft, string imagePath)
         {
             this.Name = name;
             this.AOESpell = AOE;
-            this.Info = ResourceGM.GetResource(DocumentationPath);
-            this.MaxUses = Uses;
+            this.MaxUses = uses;
             this.RoundsLeft = roundsLeft;
             this.ImagePath = imagePath;
+            this.DocumentationPath = documentationPath;
         }
 
         /// <summary>
@@ -64,6 +67,11 @@ namespace EarthWithMagicAPI.API.Creature
         public void DisplayImage()
         {
             Util.Util.WriteLine(ResourceGM.GetResource(this.ImagePath));
+        }
+
+        public void DisplayDocumentation()
+        {
+            Util.Util.WriteLine(ResourceGM.GetResource(this.DocumentationPath));
         }
 
         public abstract void Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster);
