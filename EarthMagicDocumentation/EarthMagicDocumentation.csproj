@@ -139,7 +139,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Items\" />
+    <Folder Include="Items\Weapons\Normal\Longswords\" />
   </ItemGroup>
 
 </Project>
