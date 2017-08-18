@@ -3,6 +3,7 @@ using EarthWithMagicAPI.API.Interfaces.Items;
 using EarthWithMagicAPI.API.Interfaces.Spells;
 using System;
 using System.Collections.Generic;
+using EarthWithMagicAPI.API.Creature;
 
 namespace EarthMagicItems.Gems
 {
@@ -28,8 +29,9 @@ namespace EarthMagicItems.Gems
         {
         }
 
-        public override void Equip()
+        public override bool CanEquip(ICreature creature)
         {
+            return true;
         }
 
         public override StatsImpact EquipImpact()

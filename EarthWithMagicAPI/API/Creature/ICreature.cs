@@ -15,6 +15,11 @@ namespace EarthWithMagicAPI.API.Creature
     public abstract class ICreature
     {
         /// <summary>
+        /// Determines if the creature is mortal or not.
+        /// </summary>
+        public bool IsMortal = true;
+
+        /// <summary>
         /// The abilities of the creature.
         /// </summary>
         public CreatureAbilities Abilities = new CreatureAbilities();

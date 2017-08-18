@@ -1,4 +1,5 @@
-﻿using EarthWithMagicAPI.API.Interfaces.Spells;
+﻿using EarthWithMagicAPI.API.Creature;
+using EarthWithMagicAPI.API.Interfaces.Spells;
 using System;
 using System.Collections.Generic;
 
@@ -68,7 +69,11 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         /// </summary>
         public abstract void Bought();
 
-        public abstract void Equip();
+        /// <summary>
+        /// Called whenever the creature tries to equip this.
+        /// </summary>
+        /// <returns></returns>
+        public abstract bool CanEquip(ICreature creature);
 
         /// <summary>
         /// Gets the impact an item has on the character when it is equipped.

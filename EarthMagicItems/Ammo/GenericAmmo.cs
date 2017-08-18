@@ -5,6 +5,7 @@ using EarthWithMagicAPI.API.Interfaces.Spells;
 using EarthWithMagicAPI.API.Util;
 using System;
 using System.Collections.Generic;
+using EarthWithMagicAPI.API.Creature;
 
 namespace EarthMagicItems.Ammo.Arrows
 {
@@ -30,8 +31,9 @@ namespace EarthMagicItems.Ammo.Arrows
         {
         }
 
-        public override void Equip()
+        public override bool CanEquip(ICreature creature)
         {
+            return true;
         }
 
         public override StatsImpact EquipImpact()

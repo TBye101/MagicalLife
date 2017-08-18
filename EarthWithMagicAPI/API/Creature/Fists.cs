@@ -26,9 +26,9 @@ namespace EarthWithMagicAPI.API.Creature
             throw new NotImplementedException();
         }
 
-        public override void Equip()
+        public override bool CanEquip(ICreature creature)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public override StatsImpact EquipImpact()

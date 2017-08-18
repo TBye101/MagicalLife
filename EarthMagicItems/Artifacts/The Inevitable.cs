@@ -5,6 +5,7 @@ using EarthWithMagicAPI.API.Interfaces.Spells;
 using EarthWithMagicAPI.API.Util;
 using System;
 using System.Collections.Generic;
+using EarthWithMagicAPI.API.Creature;
 
 namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows.Artifacts
 {
@@ -45,9 +46,9 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows.Artifacts
             throw new NotImplementedException();
         }
 
-        public override void Equip()
+        public override bool CanEquip(ICreature creature)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public override StatsImpact EquipImpact()
@@ -57,7 +58,6 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows.Artifacts
 
         public override void Sold()
         {
-            throw new NotImplementedException();
         }
 
         public override void SpellHit(ISpell spell)
@@ -68,17 +68,14 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows.Artifacts
 
         public override void Unequip()
         {
-            throw new NotImplementedException();
         }
 
         public override void Use()
         {
-            throw new NotImplementedException();
         }
 
         public override void WeaponHit(IWeapon attacker)
         {
-            throw new NotImplementedException();
         }
     }
 }

@@ -1008,7 +1008,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         private void Level50()
         {
             List<string> levelUpReport = new List<string> { "Title: Lesser Divinity", "Fists: 1d24 +5, 1d24 +5 fire", "AC: +1",
-                "+3 dexterity", "+3 strength", "+1 charisma", "+1 wisdom", "+3 constitution", "+ 5d10 HP"
+                "+3 dexterity", "+3 strength", "+1 charisma", "+1 wisdom", "+3 constitution", "+ 5d10 HP", "You are no longer a mere mortal"
             };
 
             this.Title = "Lesser Divinity";
@@ -1020,6 +1020,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             this.Attributes.BaseWisdom++;
             this.Attributes.BaseConstitution += 3;
             this.Attributes.BaseHealth += Dice.RollDice(new Die(5, 10, 0));
+            this.IsMortal = false;
 
             Util.WriteLine(levelUpReport);
         }

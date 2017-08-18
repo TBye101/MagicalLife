@@ -162,8 +162,14 @@ namespace EarthWithMagicAPI.API.Creature
             {
                 if (item.Name == name)
                 {
-                    item.Equip();
-                    Util.Util.WriteLine("Item equipped!");
+                    if (item.CanEquip(creature))
+                    {
+                        Util.Util.WriteLine("Item equipped!");
+                    }
+                    else
+                    {
+                        Util.Util.WriteLine("Failed to equip " + item.Name);
+                    }
                     return;
                 }
             }
