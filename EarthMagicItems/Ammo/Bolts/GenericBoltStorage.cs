@@ -12,20 +12,44 @@ namespace EarthMagicItems.Ammo.Bolts
     {
         #region NormalBolts
 
-        private GenericAmmo _1Bolt = new GenericAmmo(new Die(2, 4, 0), false, 3, "+1 Bolt", 23, GenericBoltStorage.StandardBolt(new Die(1, 6, 1)), new List<string> { }, new List<string> { });
-        private GenericAmmo _2Bolt = new GenericAmmo(new Die(3, 5, 0), false, 5, "+2 Bolt", 26, GenericBoltStorage.StandardBolt(new Die(1, 6, 2)), new List<string> { }, new List<string> { });
-        private GenericAmmo _3Bolt = new GenericAmmo(new Die(4, 6, 0), false, 7, "+3 Bolt", 29, GenericBoltStorage.StandardBolt(new Die(1, 6, 3)), new List<string> { }, new List<string> { });
-        private GenericAmmo _4Bolt = new GenericAmmo(new Die(5, 7, 0), false, 9, "+4 Bolt", 32, GenericBoltStorage.StandardBolt(new Die(1, 6, 4)), new List<string> { }, new List<string> { });
-        private GenericAmmo _5Bolt = new GenericAmmo(new Die(6, 7, 0), false, 11, "+5 Bolt", 35, GenericBoltStorage.StandardBolt(new Die(1, 6, 5)), new List<string> { }, new List<string> { });
-        private GenericAmmo HandMadeBolt = new GenericAmmo(new Die(1, 2, 0), false, 1, "Handmade Bolt", 13, GenericBoltStorage.StandardBolt(new Die(1, 4, 0)), new List<string> { }, new List<string> { });
-        private GenericAmmo ProfessionalBolt = new GenericAmmo(new Die(1, 3, 0), false, 2, "Professional Bolt", 20, GenericBoltStorage.StandardBolt(new Die(1, 6, 0)), new List<string> { }, new List<string> { });
+        private GenericAmmo _1Bolt = new GenericAmmo(new Die(2, 4, 0), "+1 Bolt", GenericBoltStorage.StandardBolt(new Die(1, 6, 1)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.CrossbowBolt.txt", 
+            "EarthMagicDocumentation.Items.Ammo.Bolts.+1Bolt.md", .15);
+
+        private GenericAmmo _2Bolt = new GenericAmmo(new Die(3, 5, 0), "+2 Bolt", GenericBoltStorage.StandardBolt(new Die(1, 6, 2)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.CrossbowBolt.txt",
+            "EarthMagicDocumentation.Items.Ammo.Bolts.+2Bolt.md", .15);
+
+        private GenericAmmo _3Bolt = new GenericAmmo(new Die(4, 6, 0), "+3 Bolt", GenericBoltStorage.StandardBolt(new Die(1, 6, 3)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.CrossbowBolt.txt",
+            "EarthMagicDocumentation.Items.Ammo.Bolts.+3Bolt.md", .15);
+
+        private GenericAmmo _4Bolt = new GenericAmmo(new Die(5, 7, 0), "+4 Bolt", GenericBoltStorage.StandardBolt(new Die(1, 6, 4)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.CrossbowBolt.txt",
+            "EarthMagicDocumentation.Items.Ammo.Bolts.+4Bolt.md", .15);
+
+        private GenericAmmo _5Bolt = new GenericAmmo(new Die(6, 7, 0), "+5 Bolt", GenericBoltStorage.StandardBolt(new Die(1, 6, 5)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.CrossbowBolt.txt",
+            "EarthMagicDocumentation.Items.Ammo.Bolts.+5Bolt.md", .15);
+
+        private GenericAmmo HandMadeBolt = new GenericAmmo(new Die(1, 2, 0), "Handmade Bolt", GenericBoltStorage.StandardBolt(new Die(1, 4, 0)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.CrossbowBolt.txt",
+            "EarthMagicDocumentation.Items.Ammo.Bolts.HandMadeBolt.md", .25);
+
+        private GenericAmmo ProfessionalBolt = new GenericAmmo(new Die(1, 3, 0), "Professional Bolt", GenericBoltStorage.StandardBolt(new Die(1, 6, 0)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.CrossbowBolt.txt",
+            "EarthMagicDocumentation.Items.Ammo.Bolts.ProfessionalBolt.md", .15);
 
         #endregion NormalBolts
 
-        private GenericAmmo AcidBolt = new GenericAmmo(new Die(1, 3, 0), false, 3, "Acid Bolt", 17, new Damage(new Die(1, 8, 0), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 6, 0), Die.Zero(), Die.Zero()), new List<string> { }, new List<string> { });
-        private GenericAmmo FireBolt = new GenericAmmo(new Die(1, 3, 0), false, 3, "Fire Bolt", 17, new Damage(Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 8, 0), Die.Zero(), Die.Zero(), new Die(1, 6, 0), Die.Zero(), Die.Zero()), new List<string> { }, new List<string> { });
-        private GenericAmmo FrostBolt = new GenericAmmo(new Die(1, 3, 0), false, 3, "Frost Bolt", 17, new Damage(Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 8, 0), Die.Zero(), new Die(1, 6, 0), Die.Zero(), Die.Zero()), new List<string> { }, new List<string> { });
-        private GenericAmmo PoisonBolt = new GenericAmmo(new Die(1, 3, 0), false, 3, "Poison Bolt", 17, new Damage(Die.Zero(), new Die(1, 8, 0), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 6, 0), Die.Zero(), Die.Zero()), new List<string> { }, new List<string> { });
+        private GenericAmmo AcidBolt = new GenericAmmo(new Die(1, 3, 0), "Acid Bolt", new Damage(new Die(1, 8, 0), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 6, 0), Die.Zero(), Die.Zero()), 
+            "EarthMagicDocumentation.ASCII_Art.Items.Ammo.CrossbowBolt.txt",
+            "EarthMagicDocumentation.Items.Ammo.Bolts.AcidBolt.md", .15);
+
+        private GenericAmmo FireBolt = new GenericAmmo(new Die(1, 3, 0), "Fire Bolt", new Damage(Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 8, 0), Die.Zero(), Die.Zero(), new Die(1, 6, 0), Die.Zero(), Die.Zero()), 
+            "EarthMagicDocumentation.ASCII_Art.Items.Ammo.CrossbowBolt.txt",
+            "EarthMagicDocumentation.Items.Ammo.Bolts.FireBolt.md", .15);
+
+        private GenericAmmo FrostBolt = new GenericAmmo(new Die(1, 3, 0), "Frost Bolt", new Damage(Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 8, 0), Die.Zero(), new Die(1, 6, 0), Die.Zero(), Die.Zero()), 
+            "EarthMagicDocumentation.ASCII_Art.Items.Ammo.CrossbowBolt.txt",
+            "EarthMagicDocumentation.Items.Ammo.Bolts.FrostBolt.md", .15);
+
+        private GenericAmmo PoisonBolt = new GenericAmmo(new Die(1, 3, 0), "Poison Bolt", new Damage(Die.Zero(), new Die(1, 8, 0), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 6, 0), Die.Zero(), Die.Zero()), 
+            "EarthMagicDocumentation.ASCII_Art.Items.Ammo.CrossbowBolt.txt",
+            "EarthMagicDocumentation.Items.Ammo.Bolts.PoisonBolt.md", .15);
 
         /// <summary>
         /// Creates a damage object for a arrow that only does normal piercing damage.
