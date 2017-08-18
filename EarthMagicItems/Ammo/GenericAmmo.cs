@@ -31,11 +31,6 @@ namespace EarthMagicItems.Ammo.Arrows
             return true;
         }
 
-        public override StatsImpact EquipImpact()
-        {
-            throw new NotImplementedException();
-        }
-
         public override void Sold()
         {
         }

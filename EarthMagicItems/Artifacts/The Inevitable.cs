@@ -26,17 +26,8 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows.Artifacts
             this.QuestItem = false;
             this.Level = 11;
 
-            this.Lore = new List<string> { "Some say that The Inevitable was the very first magical arrow.",
-        "Others say that it was the only sentient arrow ever made.",
-            "The only thing the legends agree on is The Inevitable is fueled by the souls of it's victims.",
-            "If The Inevitable cannot kill the entity it was shot at, it will attack creature's nearby until it kills one as a price for their betrayal." };
-
             this.Name = "The Inevitable";
             this.ID = new Guid();
-
-            this.OtherInformation = new List<string> { "Does 2d8 +5 piercing damage.", "Does 2d8 +5 acid damage", "Does 2d8 +5 poison damage.",
-            "Does 2d8 +5 electric damage.", "Does 2d8 + 5 fire damage.", "Does 2d8 +5 cold damage.",
-        "Does 2d8 +5 magic damage." };
 
             this.Value = Pricer.GetPrice(this);
         }
@@ -49,11 +40,6 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows.Artifacts
         public override bool CanEquip(ICreature creature)
         {
             return true;
-        }
-
-        public override StatsImpact EquipImpact()
-        {
-            throw new NotImplementedException();
         }
 
         public override void Sold()

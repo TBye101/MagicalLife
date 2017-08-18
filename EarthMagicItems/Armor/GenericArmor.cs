@@ -12,13 +12,9 @@ namespace EarthMagicItems.Armor
     /// </summary>
     public class GenericArmor : IArmor
     {
-        public GenericArmor(int armorClass, string name)
+        public GenericArmor(int armorClass, string name, double weight, string imagePath, string documentationPath) : base(name, weight, imagePath, documentationPath)
         {
-            this.AC = armorClass;
-            this.QuestItem = questItem;
-            this.Level = level;
-            this.OtherInformation = otherInformation;
-            this.Lore = lore;
+            this.EquipImpact.AC = armorClass;
             this.Name = name;
             this.Value = Pricer.GetPrice(this);
             this.ID = new Guid();
@@ -33,11 +29,6 @@ namespace EarthMagicItems.Armor
         public override bool CanEquip(ICreature creature)
         {
             return true;
-        }
-
-        public override StatsImpact EquipImpact()
-        {
-            throw new NotImplementedException();
         }
 
         public override void Sold()

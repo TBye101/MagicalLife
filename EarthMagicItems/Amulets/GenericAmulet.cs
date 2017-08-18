@@ -38,11 +38,6 @@ namespace EarthMagicItems.Amulets
             return true;
         }
 
-        public override StatsImpact EquipImpact()
-        {
-            throw new NotImplementedException();
-        }
-
         public override void Sold()
         {
         }

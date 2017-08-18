@@ -12,15 +12,11 @@ namespace EarthMagicItems.Gems
     /// </summary>
     public class GenericGem : IGem
     {
-        public GenericGem(bool questItem, int level, List<string> otherInformation, List<string> lore, string name)
+        public GenericGem(string name, double weight, string imagePath, string documentationPath) : base(name, weight, imagePath, documentationPath)
         {
             this.Value = Pricer.GetPrice(this);
-            this.QuestItem = questItem;
-            this.Level = level;
             this.ID = new Guid();
             this.Name = name;
-            this.Lore = lore;
-            this.OtherInformation = otherInformation;
             this.IsEquipped = false;
             this.Weight = .3;
         }
@@ -32,11 +28,6 @@ namespace EarthMagicItems.Gems
         public override bool CanEquip(ICreature creature)
         {
             return true;
-        }
-
-        public override StatsImpact EquipImpact()
-        {
-            throw new NotImplementedException();
         }
 
         public override void Sold()

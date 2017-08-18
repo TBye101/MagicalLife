@@ -48,19 +48,9 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         public int Level;
 
         /// <summary>
-        /// The flavor text/lore of the item.
-        /// </summary>
-        public List<string> Lore;
-
-        /// <summary>
         /// The human readable name of the item.
         /// </summary>
         public string Name;
-
-        /// <summary>
-        /// Any other information the item might display.
-        /// </summary>
-        public List<string> OtherInformation;
 
         /// <summary>
         /// The name of the creature that possesses this item.
@@ -97,7 +87,7 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         /// Gets the impact an item has on the character when it is equipped.
         /// </summary>
         /// <returns></returns>
-        public abstract StatsImpact EquipImpact();
+        public StatsImpact EquipImpact = new StatsImpact();
 
         /// <summary>
         /// Called whenever the item is sold.
@@ -134,26 +124,31 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
     /// Holds the impact an item will have on a player's stats.
     /// Ex: If you set Strength to -2, the player that equips this will have their strength lowered by 2.
     /// </summary>
-    public struct StatsImpact
+    public class StatsImpact
     {
-        public int AC;
-        public int AcidResistance;
-        public int Charisma;
-        public int CharmResistance;
-        public int ColdResistance;
-        public int Constitution;
-        public int Dexterity;
-        public int Dodge;
-        public int ElectricResistance;
-        public int FireResistance;
-        public int Health;
-        public int Initiative;
-        public int MagicResistance;
-        public int PoisonResistance;
-        public int SleepResistance;
-        public int Strength;
-        public int WeightCapacity;
-        public int Wisdom;
+        public int AC = 0;
+        public int AcidResistance = 0;
+        public int Charisma = 0;
+        public int CharmResistance = 0;
+        public int ColdResistance = 0;
+        public int Constitution = 0;
+        public int Dexterity = 0;
+        public int Dodge = 0;
+        public int ElectricResistance = 0;
+        public int FireResistance = 0;
+        public int Health = 0;
+        public int Initiative = 0;
+        public int MagicResistance = 0;
+        public int PoisonResistance = 0;
+        public int SleepResistance = 0;
+        public int Strength = 0;
+        public int WeightCapacity = 0;
+        public int Wisdom = 0;
+
+        public StatsImpact()
+        {
+
+        }
 
         public StatsImpact(int charisma, int dexterity, int strength, int constitution, int wisdom, int ac,
             int health, int weightCapacity, int fireResistance, int acidResistance, int poisonResistance, int electricResistance, int coldResistance, int magicResistance, int charmResistance,

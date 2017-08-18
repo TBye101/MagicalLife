@@ -35,11 +35,6 @@ namespace EarthMagicItems.Weapons.Normal.Longswords.Angelic
             }
         }
 
-        public override StatsImpact EquipImpact()
-        {
-            throw new NotImplementedException();
-        }
-
         public override void OnAttack()
         {
             throw new NotImplementedException();

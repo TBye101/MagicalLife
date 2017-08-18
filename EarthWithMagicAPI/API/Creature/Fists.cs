@@ -13,8 +13,6 @@ namespace EarthWithMagicAPI.API.Creature
         {
             this.IsEquipped = false;
             this.Level = -1;
-            this.Lore = new List<string>();
-            this.OtherInformation = new List<string>();
             this.QuestItem = false;
             this.Value = 0;
         }
@@ -27,11 +25,6 @@ namespace EarthWithMagicAPI.API.Creature
         public override bool CanEquip(ICreature creature)
         {
             return true;
-        }
-
-        public override StatsImpact EquipImpact()
-        {
-            throw new NotImplementedException();
         }
 
         public override void OnAttack()
