@@ -225,6 +225,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Items\Ammo\Stones\" />
     <Folder Include="Items\Weapons\Normal\Longswords\" />
   </ItemGroup>
 
