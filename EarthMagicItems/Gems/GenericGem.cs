@@ -12,13 +12,10 @@ namespace EarthMagicItems.Gems
     /// </summary>
     public class GenericGem : IGem
     {
-        public GenericGem(string name, double weight, string imagePath, string documentationPath) : base(name, weight, imagePath, documentationPath)
+        public GenericGem(string name, double weight = .25, string imagePath = "", string documentationPath = "")
+            : base(name, weight, imagePath, documentationPath)
         {
             this.Value = Pricer.GetPrice(this);
-            this.ID = new Guid();
-            this.Name = name;
-            this.IsEquipped = false;
-            this.Weight = .3;
         }
 
         public override void Bought()

@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace EarthMagicItems.Gems
+﻿namespace EarthMagicItems.Gems
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// Holds all sorts of generically created gems.
     /// 192 gems!
@@ -10,268 +10,268 @@ namespace EarthMagicItems.Gems
     {
         #region Level1
 
-        public GenericGem Goosecreekite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Goosecreekite");
-        public GenericGem Jacinth = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Jacinth");
-        public GenericGem Natrolite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Natrolite");
-        public GenericGem Stellarite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Stellarite");
-        public GenericGem Tanzanite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Tanzanite");
-        public GenericGem Thomsonite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Thomsonite");
-        public GenericGem Thulite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Thulite");
-        public GenericGem Yugawaralite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Yugawaralite");
-        public GenericGem Zincite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Zincite");
-        public GenericGem Zinnwaldite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Zinnwaldite");
-        public GenericGem Zircon = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Zircon");
-        public GenericGem Zoisite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Zoisite");
-        public GenericGem Zultanite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Zultanite");
+        public GenericGem Goosecreekite = new GenericGem("Goosecreekite");
+        public GenericGem Jacinth = new GenericGem("Jacinth");
+        public GenericGem Natrolite = new GenericGem("Natrolite");
+        public GenericGem Stellarite = new GenericGem("Stellarite");
+        public GenericGem Tanzanite = new GenericGem("Tanzanite");
+        public GenericGem Thomsonite = new GenericGem("Thomsonite");
+        public GenericGem Thulite = new GenericGem("Thulite");
+        public GenericGem Yugawaralite = new GenericGem("Yugawaralite");
+        public GenericGem Zincite = new GenericGem("Zincite");
+        public GenericGem Zinnwaldite = new GenericGem("Zinnwaldite");
+        public GenericGem Zircon = new GenericGem("Zircon");
+        public GenericGem Zoisite = new GenericGem("Zoisite");
+        public GenericGem Zultanite = new GenericGem("Zultanite");
 
         #endregion Level1
 
         #region Level2
 
-        public GenericGem Analcite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Analcite");
-        public GenericGem Apophyllite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Apophyllite");
-        public GenericGem Chabazite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Chabazite");
-        public GenericGem Villiaumite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Villiaumite");
-        public GenericGem Vlasovite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Vlasovite");
-        public GenericGem Wavellite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Wavellite");
-        public GenericGem Weberite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Weberite");
-        public GenericGem Weloganite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Weloganite");
-        public GenericGem Willemite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Willemite");
-        public GenericGem Wulfenite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Wulfenite");
-        public GenericGem Xonotlite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Xonotlite");
-        public GenericGem Zektzerite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Zektzerite");
-        public GenericGem Zeolites = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Zeolites");
+        public GenericGem Analcite = new GenericGem("Analcite");
+        public GenericGem Apophyllite = new GenericGem("Apophyllite");
+        public GenericGem Chabazite = new GenericGem("Chabazite");
+        public GenericGem Villiaumite = new GenericGem("Villiaumite");
+        public GenericGem Vlasovite = new GenericGem("Vlasovite");
+        public GenericGem Wavellite = new GenericGem("Wavellite");
+        public GenericGem Weberite = new GenericGem("Weberite");
+        public GenericGem Weloganite = new GenericGem("Weloganite");
+        public GenericGem Willemite = new GenericGem("Willemite");
+        public GenericGem Wulfenite = new GenericGem("Wulfenite");
+        public GenericGem Xonotlite = new GenericGem("Xonotlite");
+        public GenericGem Zektzerite = new GenericGem("Zektzerite");
+        public GenericGem Zeolites = new GenericGem("Zeolites");
 
         #endregion Level2
 
         #region Level3
 
-        public GenericGem Californite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Californite");
-        public GenericGem Endlichite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Endlichite");
-        public GenericGem Hexagonite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Hexagonite");
-        public GenericGem Paraiba = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Paraiba");
-        public GenericGem Rossmanite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Rossmanite");
-        public GenericGem Rubellite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Rubellite");
-        public GenericGem Tremolite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Tremolite");
-        public GenericGem Tugtupite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Tugtupite");
-        public GenericGem Turquoise = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Turquoise");
-        public GenericGem Vanadinite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Vanadinite");
-        public GenericGem Variscite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Variscite");
-        public GenericGem Väyrynenite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Väyrynenite");
-        public GenericGem Vesuvianite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Vesuvianite");
+        public GenericGem Californite = new GenericGem("Californite");
+        public GenericGem Endlichite = new GenericGem("Endlichite");
+        public GenericGem Hexagonite = new GenericGem("Hexagonite");
+        public GenericGem Paraiba = new GenericGem("Paraiba");
+        public GenericGem Rossmanite = new GenericGem("Rossmanite");
+        public GenericGem Rubellite = new GenericGem("Rubellite");
+        public GenericGem Tremolite = new GenericGem("Tremolite");
+        public GenericGem Tugtupite = new GenericGem("Tugtupite");
+        public GenericGem Turquoise = new GenericGem("Turquoise");
+        public GenericGem Vanadinite = new GenericGem("Vanadinite");
+        public GenericGem Variscite = new GenericGem("Variscite");
+        public GenericGem Väyrynenite = new GenericGem("Väyrynenite");
+        public GenericGem Vesuvianite = new GenericGem("Vesuvianite");
 
         #endregion Level3
 
         #region Level4
 
-        public GenericGem Achroite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Achroite");
-        public GenericGem Dravite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Dravite");
-        public GenericGem Elbaite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Elbaite");
-        public GenericGem Sylvite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Sylvite");
-        public GenericGem Taaffeite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Taaffeite");
-        public GenericGem Talc = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Talc");
-        public GenericGem Tantalite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Tantalite");
-        public GenericGem Thalenite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Thalenite");
-        public GenericGem Thaumasite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Thaumasite");
-        public GenericGem Tinaksite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Tinaksite");
-        public GenericGem Titanite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Titanite");
-        public GenericGem Topaz = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Topaz");
-        public GenericGem Tourmaline = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Tourmaline");
+        public GenericGem Achroite = new GenericGem("Achroite");
+        public GenericGem Dravite = new GenericGem("Dravite");
+        public GenericGem Elbaite = new GenericGem("Elbaite");
+        public GenericGem Sylvite = new GenericGem("Sylvite");
+        public GenericGem Taaffeite = new GenericGem("Taaffeite");
+        public GenericGem Talc = new GenericGem("Talc");
+        public GenericGem Tantalite = new GenericGem("Tantalite");
+        public GenericGem Thalenite = new GenericGem("Thalenite");
+        public GenericGem Thaumasite = new GenericGem("Thaumasite");
+        public GenericGem Tinaksite = new GenericGem("Tinaksite");
+        public GenericGem Titanite = new GenericGem("Titanite");
+        public GenericGem Topaz = new GenericGem("Topaz");
+        public GenericGem Tourmaline = new GenericGem("Tourmaline");
 
         #endregion Level4
 
         #region Level5
 
-        public GenericGem Bustamite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Bustamite");
-        public GenericGem Ceylonite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Ceylonite");
-        public GenericGem Hiddenite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Hiddenite");
-        public GenericGem Kunzite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Kunzite");
-        public GenericGem Richterite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Richterite");
-        public GenericGem Spessartite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Spessartite");
-        public GenericGem Spinel = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Spinel");
-        public GenericGem Spodumene = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Spodumene");
-        public GenericGem Staurolite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Staurolite");
-        public GenericGem Stichtite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Stichtite");
-        public GenericGem Stolzite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Stolzite");
-        public GenericGem Sugilite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Sugilite");
-        public GenericGem Svabite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Svabite");
+        public GenericGem Bustamite = new GenericGem("Bustamite");
+        public GenericGem Ceylonite = new GenericGem("Ceylonite");
+        public GenericGem Hiddenite = new GenericGem("Hiddenite");
+        public GenericGem Kunzite = new GenericGem("Kunzite");
+        public GenericGem Richterite = new GenericGem("Richterite");
+        public GenericGem Spessartite = new GenericGem("Spessartite");
+        public GenericGem Spinel = new GenericGem("Spinel");
+        public GenericGem Spodumene = new GenericGem("Spodumene");
+        public GenericGem Staurolite = new GenericGem("Staurolite");
+        public GenericGem Stichtite = new GenericGem("Stichtite");
+        public GenericGem Stolzite = new GenericGem("Stolzite");
+        public GenericGem Sugilite = new GenericGem("Sugilite");
+        public GenericGem Svabite = new GenericGem("Svabite");
 
         #endregion Level5
 
         #region Level6
 
-        public GenericGem Hackmanite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Hackmanite");
-        public GenericGem Lizardite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Lizardite");
-        public GenericGem Shattuckite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Shattuckite");
-        public GenericGem Shigaite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Shigaite");
-        public GenericGem Shortite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Shortite");
-        public GenericGem Shungite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Shungite");
-        public GenericGem Siderite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Siderite");
-        public GenericGem Sillimanite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Sillimanite");
-        public GenericGem Sinhalite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Sinhalite");
-        public GenericGem Smaragdite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Smaragdite");
-        public GenericGem Smithsonite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Smithsonite");
-        public GenericGem Sodalite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Sodalite");
-        public GenericGem Williamsite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Williamsite");
+        public GenericGem Hackmanite = new GenericGem("Hackmanite");
+        public GenericGem Lizardite = new GenericGem("Lizardite");
+        public GenericGem Shattuckite = new GenericGem("Shattuckite");
+        public GenericGem Shigaite = new GenericGem("Shigaite");
+        public GenericGem Shortite = new GenericGem("Shortite");
+        public GenericGem Shungite = new GenericGem("Shungite");
+        public GenericGem Siderite = new GenericGem("Siderite");
+        public GenericGem Sillimanite = new GenericGem("Sillimanite");
+        public GenericGem Sinhalite = new GenericGem("Sinhalite");
+        public GenericGem Smaragdite = new GenericGem("Smaragdite");
+        public GenericGem Smithsonite = new GenericGem("Smithsonite");
+        public GenericGem Sodalite = new GenericGem("Sodalite");
+        public GenericGem Williamsite = new GenericGem("Williamsite");
 
         #endregion Level6
 
         #region Level7
 
-        public GenericGem Bowenite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Bowenite");
-        public GenericGem Chrysotile = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Chrysotile");
-        public GenericGem Sapphire = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Sapphire");
-        public GenericGem Scapolite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Scapolite");
-        public GenericGem Scheelite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Scheelite");
-        public GenericGem Scolecite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Scolecite");
-        public GenericGem Scorodite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Scorodite");
-        public GenericGem Selenite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Selenite");
-        public GenericGem Sellaite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Sellaite");
-        public GenericGem Senarmontite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Senarmontite");
-        public GenericGem Sérandite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Sérandite");
-        public GenericGem Seraphinite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Seraphinite");
-        public GenericGem Serendibite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Serendibite");
+        public GenericGem Bowenite = new GenericGem("Bowenite");
+        public GenericGem Chrysotile = new GenericGem("Chrysotile");
+        public GenericGem Sapphire = new GenericGem("Sapphire");
+        public GenericGem Scapolite = new GenericGem("Scapolite");
+        public GenericGem Scheelite = new GenericGem("Scheelite");
+        public GenericGem Scolecite = new GenericGem("Scolecite");
+        public GenericGem Scorodite = new GenericGem("Scorodite");
+        public GenericGem Selenite = new GenericGem("Selenite");
+        public GenericGem Sellaite = new GenericGem("Sellaite");
+        public GenericGem Senarmontite = new GenericGem("Senarmontite");
+        public GenericGem Sérandite = new GenericGem("Sérandite");
+        public GenericGem Seraphinite = new GenericGem("Seraphinite");
+        public GenericGem Serendibite = new GenericGem("Serendibite");
 
         #endregion Level7
 
         #region Level8
 
-        public GenericGem Crocidolite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Crocidolite");
-        public GenericGem MilkyQuartz = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Milky quartz");
-        public GenericGem Prasiolite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Prasiolite");
-        public GenericGem Rhodizite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Rhodizite");
-        public GenericGem Rhodochrosite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Rhodochrosite");
-        public GenericGem Riebeckite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Riebeckite");
-        public GenericGem RockCrystal = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Rock crystal");
-        public GenericGem Rosasite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Rosasite");
-        public GenericGem RoseQuartz = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Rose quartz");
-        public GenericGem Ruby = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Ruby");
-        public GenericGem Rutile = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Rutile");
-        public GenericGem SmokyQuartz = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Smoky quartz");
-        public GenericGem TigersEye = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Tiger's-eye");
+        public GenericGem Crocidolite = new GenericGem("Crocidolite");
+        public GenericGem MilkyQuartz = new GenericGem("Milky quartz");
+        public GenericGem Prasiolite = new GenericGem("Prasiolite");
+        public GenericGem Rhodizite = new GenericGem("Rhodizite");
+        public GenericGem Rhodochrosite = new GenericGem("Rhodochrosite");
+        public GenericGem Riebeckite = new GenericGem("Riebeckite");
+        public GenericGem RockCrystal = new GenericGem("Rock crystal");
+        public GenericGem Rosasite = new GenericGem("Rosasite");
+        public GenericGem RoseQuartz = new GenericGem("Rose quartz");
+        public GenericGem Ruby = new GenericGem("Ruby");
+        public GenericGem Rutile = new GenericGem("Rutile");
+        public GenericGem SmokyQuartz = new GenericGem("Smoky quartz");
+        public GenericGem TigersEye = new GenericGem("Tiger's-eye");
 
         #endregion Level8
 
         #region Level9
 
-        public GenericGem Agate = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Agate");
-        public GenericGem Amethyst = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Amethyst");
-        public GenericGem Ametrine = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Ametrine");
-        public GenericGem Chalcedony = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Chalcedony");
-        public GenericGem Citrine = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Citrine");
-        public GenericGem Druzy = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Druzy");
-        public GenericGem Hawkseye = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Hawk's eye");
-        public GenericGem Jasper = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Jasper");
-        public GenericGem Pyrargyrite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Pyrargyrite");
-        public GenericGem Pyromorphite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Pyromorphite");
-        public GenericGem Pyrrhotite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Pyrrhotite");
-        public GenericGem Quartz = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Quartz");
-        public GenericGem QuartzCatsEye = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Quartz cat's eye");
+        public GenericGem Agate = new GenericGem("Agate");
+        public GenericGem Amethyst = new GenericGem("Amethyst");
+        public GenericGem Ametrine = new GenericGem("Ametrine");
+        public GenericGem Chalcedony = new GenericGem("Chalcedony");
+        public GenericGem Citrine = new GenericGem("Citrine");
+        public GenericGem Druzy = new GenericGem("Druzy");
+        public GenericGem Hawkseye = new GenericGem("Hawk's eye");
+        public GenericGem Jasper = new GenericGem("Jasper");
+        public GenericGem Pyrargyrite = new GenericGem("Pyrargyrite");
+        public GenericGem Pyromorphite = new GenericGem("Pyromorphite");
+        public GenericGem Pyrrhotite = new GenericGem("Pyrrhotite");
+        public GenericGem Quartz = new GenericGem("Quartz");
+        public GenericGem QuartzCatsEye = new GenericGem("Quartz cat's eye");
 
         #endregion Level9
 
         #region Level10
 
-        public GenericGem Chlorastrolite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Chlorastrolite");
-        public GenericGem Pietersite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Pietersite");
-        public GenericGem Plumbogummite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Plumbogummite");
-        public GenericGem Pollucite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Pollucite");
-        public GenericGem Polyhalite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Polyhalite");
-        public GenericGem Poudretteite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Poudretteite");
-        public GenericGem Prehnite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Prehnite");
-        public GenericGem Priceite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Priceite");
-        public GenericGem Prismatine = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Prismatine");
-        public GenericGem Proustite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Proustite");
-        public GenericGem Pumpellyite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Pumpellyite");
-        public GenericGem Purpurite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Purpurite");
-        public GenericGem Pyrite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Pyrite");
+        public GenericGem Chlorastrolite = new GenericGem("Chlorastrolite");
+        public GenericGem Pietersite = new GenericGem("Pietersite");
+        public GenericGem Plumbogummite = new GenericGem("Plumbogummite");
+        public GenericGem Pollucite = new GenericGem("Pollucite");
+        public GenericGem Polyhalite = new GenericGem("Polyhalite");
+        public GenericGem Poudretteite = new GenericGem("Poudretteite");
+        public GenericGem Prehnite = new GenericGem("Prehnite");
+        public GenericGem Priceite = new GenericGem("Priceite");
+        public GenericGem Prismatine = new GenericGem("Prismatine");
+        public GenericGem Proustite = new GenericGem("Proustite");
+        public GenericGem Pumpellyite = new GenericGem("Pumpellyite");
+        public GenericGem Purpurite = new GenericGem("Purpurite");
+        public GenericGem Pyrite = new GenericGem("Pyrite");
 
         #endregion Level10
 
         #region Level11
 
-        public GenericGem Larimar = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Larimar");
-        public GenericGem Nuummite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Nuummite");
-        public GenericGem Olenite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Olenite");
-        public GenericGem Opal = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Opal");
-        public GenericGem Papagoite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Papagoite");
-        public GenericGem Pargasite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Pargasite");
-        public GenericGem Pectolite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Pectolite");
-        public GenericGem Periclase = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Periclase");
-        public GenericGem Peridot = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Peridot");
-        public GenericGem Pezzottaite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Pezzottaite");
-        public GenericGem Phenakite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Phenakite");
-        public GenericGem Phlogopite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Phlogopite");
-        public GenericGem Phosgenite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Phosgenite");
-        public GenericGem Piemontite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Piemontite");
+        public GenericGem Larimar = new GenericGem("Larimar");
+        public GenericGem Nuummite = new GenericGem("Nuummite");
+        public GenericGem Olenite = new GenericGem("Olenite");
+        public GenericGem Opal = new GenericGem("Opal");
+        public GenericGem Papagoite = new GenericGem("Papagoite");
+        public GenericGem Pargasite = new GenericGem("Pargasite");
+        public GenericGem Pectolite = new GenericGem("Pectolite");
+        public GenericGem Periclase = new GenericGem("Periclase");
+        public GenericGem Peridot = new GenericGem("Peridot");
+        public GenericGem Pezzottaite = new GenericGem("Pezzottaite");
+        public GenericGem Phenakite = new GenericGem("Phenakite");
+        public GenericGem Phlogopite = new GenericGem("Phlogopite");
+        public GenericGem Phosgenite = new GenericGem("Phosgenite");
+        public GenericGem Piemontite = new GenericGem("Piemontite");
 
         #endregion Level11
 
         #region Level12
 
-        public GenericGem Adularia = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Adularia");
-        public GenericGem Fuchsite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Fuchsite");
-        public GenericGem Malachite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Malachite");
-        public GenericGem Milarite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Milarite");
-        public GenericGem Mimetite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Mimetite");
-        public GenericGem Moissanite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Moissanite");
-        public GenericGem Moonstone = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Moonstone");
-        public GenericGem Mottramite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Mottramite");
-        public GenericGem Muscovite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Muscovite");
-        public GenericGem Musgravite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Musgravite");
-        public GenericGem Narsarsukite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Narsarsukite");
-        public GenericGem Nepheline = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Nepheline");
-        public GenericGem Wernerite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Wernerite");
+        public GenericGem Adularia = new GenericGem("Adularia");
+        public GenericGem Fuchsite = new GenericGem("Fuchsite");
+        public GenericGem Malachite = new GenericGem("Malachite");
+        public GenericGem Milarite = new GenericGem("Milarite");
+        public GenericGem Mimetite = new GenericGem("Mimetite");
+        public GenericGem Moissanite = new GenericGem("Moissanite");
+        public GenericGem Moonstone = new GenericGem("Moonstone");
+        public GenericGem Mottramite = new GenericGem("Mottramite");
+        public GenericGem Muscovite = new GenericGem("Muscovite");
+        public GenericGem Musgravite = new GenericGem("Musgravite");
+        public GenericGem Narsarsukite = new GenericGem("Narsarsukite");
+        public GenericGem Nepheline = new GenericGem("Nepheline");
+        public GenericGem Wernerite = new GenericGem("Wernerite");
 
         #endregion Level12
 
         #region Level13
 
-        public GenericGem Gypsum = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Gypsum");
-        public GenericGem Gyrolite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Gyrolite");
-        public GenericGem Hauyne = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Hauyne");
-        public GenericGem Hibonite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Hibonite");
-        public GenericGem Humite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Humite");
-        public GenericGem Inderite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Inderite");
-        public GenericGem Jadeite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Jadeite");
-        public GenericGem Kurnakovite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Kurnakovite");
-        public GenericGem Kyanite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Kyanite");
-        public GenericGem Londonite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Londonite");
-        public GenericGem Ludlamite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Ludlamite");
-        public GenericGem Rosolite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Rosolite");
-        public GenericGem Tsavorite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Tsavorite");
-        public GenericGem Uvarovite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Uvarovite");
+        public GenericGem Gypsum = new GenericGem("Gypsum");
+        public GenericGem Gyrolite = new GenericGem("Gyrolite");
+        public GenericGem Hauyne = new GenericGem("Hauyne");
+        public GenericGem Hibonite = new GenericGem("Hibonite");
+        public GenericGem Humite = new GenericGem("Humite");
+        public GenericGem Inderite = new GenericGem("Inderite");
+        public GenericGem Jadeite = new GenericGem("Jadeite");
+        public GenericGem Kurnakovite = new GenericGem("Kurnakovite");
+        public GenericGem Kyanite = new GenericGem("Kyanite");
+        public GenericGem Londonite = new GenericGem("Londonite");
+        public GenericGem Ludlamite = new GenericGem("Ludlamite");
+        public GenericGem Rosolite = new GenericGem("Rosolite");
+        public GenericGem Tsavorite = new GenericGem("Tsavorite");
+        public GenericGem Uvarovite = new GenericGem("Uvarovite");
 
         #endregion Level13
 
         #region Level14
 
-        public GenericGem Anorthite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Anorthite");
-        public GenericGem Bytownite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Bytownite");
-        public GenericGem Diamond = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Diamond");
-        public GenericGem Diopside = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Diopside");
-        public GenericGem Esperite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Esperite");
-        public GenericGem Leuco = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Leuco");
-        public GenericGem Orthoclase = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Orthoclase");
-        public GenericGem Sunstone = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Sunstone");
-        public GenericGem TrapicheEmerald = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Trapiche emerald");
+        public GenericGem Anorthite = new GenericGem("Anorthite");
+        public GenericGem Bytownite = new GenericGem("Bytownite");
+        public GenericGem Diamond = new GenericGem("Diamond");
+        public GenericGem Diopside = new GenericGem("Diopside");
+        public GenericGem Esperite = new GenericGem("Esperite");
+        public GenericGem Leuco = new GenericGem("Leuco");
+        public GenericGem Orthoclase = new GenericGem("Orthoclase");
+        public GenericGem Sunstone = new GenericGem("Sunstone");
+        public GenericGem TrapicheEmerald = new GenericGem("Trapiche emerald");
 
         #endregion Level14
 
         #region Level15
 
-        public GenericGem Andesine = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Andesine");
-        public GenericGem Apatite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Apatite");
-        public GenericGem Boracite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Boracite");
-        public GenericGem Brookite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Brookite");
-        public GenericGem Chrysocolla = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Chrysocolla");
-        public GenericGem Clintonite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Clintonite");
-        public GenericGem Cordierite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Cordierite");
-        public GenericGem Corundum = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Corundum");
-        public GenericGem Covellite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Covellite");
-        public GenericGem Emerald = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Emerald");
-        public GenericGem FireAgate = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Fire Agate");
-        public GenericGem Iolite = new GenericGem(false, 1, new List<string> { }, new List<string> { }, "Iolite");
+        public GenericGem Andesine = new GenericGem("Andesine");
+        public GenericGem Apatite = new GenericGem("Apatite");
+        public GenericGem Boracite = new GenericGem("Boracite");
+        public GenericGem Brookite = new GenericGem("Brookite");
+        public GenericGem Chrysocolla = new GenericGem("Chrysocolla");
+        public GenericGem Clintonite = new GenericGem("Clintonite");
+        public GenericGem Cordierite = new GenericGem("Cordierite");
+        public GenericGem Corundum = new GenericGem("Corundum");
+        public GenericGem Covellite = new GenericGem("Covellite");
+        public GenericGem Emerald = new GenericGem("Emerald");
+        public GenericGem FireAgate = new GenericGem("Fire Agate");
+        public GenericGem Iolite = new GenericGem("Iolite");
 
         #endregion Level15
     }
