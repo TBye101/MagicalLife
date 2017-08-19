@@ -29,6 +29,30 @@
                     Input = Console.ReadLine().ToLower();
                     Command = Input.Split(' ');
 
+                    if (Command[0] == "use" && Command[1] == "ability")
+                    {
+                        UseAbility(creature, encounter, Command);
+                        continue;
+                    }
+
+                    if (Command[0] == "cast")
+                    {
+                        Cast(creature, encounter, Command);
+                        continue;
+                    }
+
+                    if (Command[0] == "use")
+                    {
+                        Use(creature, encounter, Command);
+                        continue;
+                    }
+
+                    if (Command[0] == "view" && Command[1] == "item")
+                    {
+                        ViewItem(creature, encounter, Command);
+                        continue;
+                    }
+
                     switch (Input)
                     {
                         case "help":
@@ -47,24 +71,12 @@
                             Swing(creature, encounter, Command);
                             break;
 
-                        case "use ability":
-                            UseAbility(creature, encounter, Command);
-                            break;
-
                         case "list abilities":
                             ListAbilities(creature, encounter, Command);
                             break;
 
-                        case "cast":
-                            Cast(creature, encounter, Command);
-                            break;
-
                         case "list spells":
                             ListSpells(creature, encounter, Command);
-                            break;
-
-                        case "use":
-                            Use(creature, encounter, Command);
                             break;
 
                         case "list enemies":
@@ -81,9 +93,6 @@
 
                         case "rotate":
                             Rotate(creature, encounter, Command);
-                            break;
-                        case "view item":
-                            ViewItem(creature, encounter, Command);
                             break;
                         default:
                             Util.Util.WriteLine("Command not recognized!");
@@ -210,20 +219,21 @@
         /// <param name="Command"></param>
         private static void Help(ICreature creature, Encounter encounter, string[] Command)
         {
-            Util.Util.WriteLine("help: displays help information");
-            Util.Util.WriteLine("view inventory: displays the player's inventory");
-            Util.Util.WriteLine("equip: equips an item, that you may choose in a bit");
-            Util.Util.WriteLine("swing: Attacks the enemy at the front of the line via melee");
-            Util.Util.WriteLine("use ability: Allows you to use an ability");
-            Util.Util.WriteLine("list abilities: Spits out a list of available abilities to the current character");
-            Util.Util.WriteLine("cast: Allows you to choose a spell to cast");
-            Util.Util.WriteLine("list spells: Lists all of the spells available");
+            Util.Util.WriteLine("help: displays help information.");
+            Util.Util.WriteLine("view inventory: displays the player's inventory.");
+            Util.Util.WriteLine("equip: equips an item, that you may choose in a bit.");
+            Util.Util.WriteLine("swing: Attacks the enemy at the front of the line via melee.");
+            Util.Util.WriteLine("use ability: Allows you to use an ability.");
+            Util.Util.WriteLine("list abilities: Spits out a list of available abilities to the current character.");
+            Util.Util.WriteLine("cast: Allows you to choose a spell to cast.");
+            Util.Util.WriteLine("list spells: Lists all of the spells available.");
             Util.Util.WriteLine("use: Allows you to use a potion, or other item.");
-            Util.Util.WriteLine("list enemies: Lists all the enemies still alive");
-            Util.Util.WriteLine("list party: Lists all of the members of the party, including dead ones");
-            Util.Util.WriteLine("unequip: Un-equips something");
+            Util.Util.WriteLine("list enemies: Lists all the enemies still alive.");
+            Util.Util.WriteLine("list party: Lists all of the members of the party, including dead ones.");
+            Util.Util.WriteLine("unequip: Un-equips something.");
             Util.Util.WriteLine("rotate: Rotates the person at the front of the party to the back.");
-            Util.Util.WriteLine("end turn: Ends this round for the current creature");
+            Util.Util.WriteLine("end turn: Ends this round for the current creature.");
+            Util.Util.WriteLine("view item: Views the specified items image and information.");
         }
 
         private static void ListAbilities(ICreature creature, Encounter encounter, string[] Command)
@@ -293,6 +303,7 @@
 
         private static void Unequip(ICreature creature, Encounter encounter, string[] Command)
         {
+            Util.Util.WriteLine("Unequip what?");
             string name = Console.ReadLine();
 
             foreach (IItem item in creature.Amulets)
