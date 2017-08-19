@@ -1,8 +1,8 @@
-﻿using EarthWithMagicAPI.API.Creature;
-using System;
-
-namespace EarthWithMagicAPI.API.Util
+﻿namespace EarthWithMagicAPI.API.Util
 {
+    using System;
+    using EarthWithMagicAPI.API.Creature;
+
     /// <summary>
     /// Used to calculate the carrying capacity of a creature.
     /// </summary>
@@ -15,7 +15,7 @@ namespace EarthWithMagicAPI.API.Util
         /// <returns></returns>
         public static int Calculate(ICreature creature)
         {
-            throw new NotImplementedException();
+            return creature.Attributes.Strength *= 20;
         }
     }
 }

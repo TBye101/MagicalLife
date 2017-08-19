@@ -1,11 +1,11 @@
-﻿using EarthWithMagicAPI.API.Interfaces.Items;
-using EarthWithMagicAPI.API.Interfaces.Spells;
-using EarthWithMagicAPI.API.Stuff;
-using System;
-using System.Collections.Generic;
-
-namespace EarthWithMagicAPI.API.Creature
+﻿namespace EarthWithMagicAPI.API.Creature
 {
+    using System;
+    using System.Collections.Generic;
+    using EarthWithMagicAPI.API.Interfaces.Items;
+    using EarthWithMagicAPI.API.Interfaces.Spells;
+    using EarthWithMagicAPI.API.Stuff;
+
     /// <summary>
     /// Gives the player options for each creature in their party in combat.
     /// </summary>
@@ -22,11 +22,12 @@ namespace EarthWithMagicAPI.API.Creature
             {
                 TakenAction = false;
                 Util.Util.WriteLine("Combat for " + creature.Name + " initiated! Type 'help' for commands");
-                string Input = "";
-                string[] Command = Input.Split(' ');
+                string Input = string.Empty;
+                string[] Command;
                 while (Input != "end turn")
                 {
                     Input = Console.ReadLine().ToLower();
+                    Command = Input.Split(' ');
 
                     switch (Input)
                     {
@@ -81,8 +82,8 @@ namespace EarthWithMagicAPI.API.Creature
                         case "rotate":
                             Rotate(creature, encounter, Command);
                             break;
-
                         default:
+                            Util.Util.WriteLine("Command not recognized!");
                             break;
                     }
                 }
@@ -355,15 +356,16 @@ namespace EarthWithMagicAPI.API.Creature
             if (!TakenAction)
             {
                 TakenAction = true;
-                if (Command.Length < 2)
+                if (Command.Length < 3)
                 {
                     Util.Util.WriteLine("Missing argument!");
+                    Util.Util.WriteLine("3rd argument should be the name of the ability to use!");
                 }
                 else
                 {
                     foreach (IAbility item in creature.ClassAbilities)
                     {
-                        if (item.Name == Command[1])
+                        if (item.Name == Command[2])
                         {
                             if (item.AvailibleUses > 0)
                             {
@@ -389,35 +391,35 @@ namespace EarthWithMagicAPI.API.Creature
 
         private static void ViewInventory(ICreature creature, Encounter encounter, string[] Command)
         {
-            string Items = "";
+            string Items = string.Empty;
             foreach (IItem item in creature.Amulets)
             {
                 Items += item.Name;
                 Items += ", ";
             }
             Util.Util.WriteLine(Items);
-            Items = "";
+            Items = string.Empty;
             foreach (IItem item in creature.Armoring)
             {
                 Items += item.Name;
                 Items += ", ";
             }
             Util.Util.WriteLine(Items);
-            Items = "";
+            Items = string.Empty;
             foreach (IItem item in creature.Inventory)
             {
                 Items += item.Name;
                 Items += ", ";
             }
             Util.Util.WriteLine(Items);
-            Items = "";
+            Items = string.Empty;
             foreach (IItem item in creature.Rings)
             {
                 Items += item.Name;
                 Items += ", ";
             }
             Util.Util.WriteLine(Items);
-            Items = "";
+            Items = string.Empty;
             foreach (IItem item in creature.Weapons)
             {
                 Items += item.Name;
