@@ -65,7 +65,30 @@ Cracked helmet
 Cauldron
 Oakwood Wand
 
-[]
+[IF] Bard
+Handmade Lute
+Harmonica
+Horn
+
+[IF] Cleric
+Well used Holy Symbol of Tali
+Oily leather armor
+
+[IF] Necromancer
+Staff of Soul Storage
+Dark Idol
+
+[IF] Suntouched
+Well used Holy Symbol of Tali
+Itchy Scale mail
+
+[IF] Druid
+Elemental quarterstaff
+Itchy leather armor.
+
+[IF] Fighter
+Rusted chainmail
+Dull sword
 
 Bosworth: Goodbye (Player name), I will miss you.
 (Player name): I know. I will come and visit you when this is all done.
