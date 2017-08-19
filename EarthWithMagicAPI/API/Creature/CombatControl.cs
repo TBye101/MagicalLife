@@ -82,9 +82,33 @@
                         case "rotate":
                             Rotate(creature, encounter, Command);
                             break;
+                        case "view item":
+                            ViewItem(creature, encounter, Command);
+                            break;
                         default:
                             Util.Util.WriteLine("Command not recognized!");
                             break;
+                    }
+                }
+            }
+        }
+
+        private static void ViewItem(ICreature creature, Encounter encounter, string[] command)
+        {
+            if (command.Length < 3)
+            {
+                Util.Util.WriteLine("Missing argument(s)!");
+                Util.Util.WriteLine("Third argument should be the name of the argument to view!");
+            }
+            else
+            {
+                foreach (IItem item in ICreature.GetAllItems(creature))
+                {
+                    if (item.Name == command[2])
+                    {
+                        item.DisplayImage();
+                        item.DisplayDocumentation();
+                        return;
                     }
                 }
             }

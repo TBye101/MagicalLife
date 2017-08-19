@@ -196,6 +196,7 @@ namespace EarthWithMagicAPI.API.Creature
             {
                 return "Him";
             }
+
             if (this.Attributes.Gender == Gender.Female)
             {
                 return "She";
@@ -216,10 +217,12 @@ namespace EarthWithMagicAPI.API.Creature
             {
                 return "him";
             }
+
             if (this.Attributes.Gender == Gender.Female)
             {
                 return "her";
             }
+
             if (this.Attributes.Gender == Gender.Unspecified)
             {
                 return "IT";
@@ -284,34 +287,42 @@ namespace EarthWithMagicAPI.API.Creature
                 {
                     this.Attributes.Health -= this.TakeDamage(damage.AcidDamage, "acid damage", this.Attributes.AcidResistance);
                 }
+
                 if (damage.BluntDamage.Rolls > 0)
                 {
                     this.Attributes.Health -= this.TakeDamage(damage.BluntDamage, "blunt damage", this.Attributes.AC);
                 }
+
                 if (damage.ColdDamage.Rolls > 0)
                 {
                     this.Attributes.Health -= this.TakeDamage(damage.ColdDamage, "cold damage", this.Attributes.ColdResistance);
                 }
+
                 if (damage.ElectricDamage.Rolls > 0)
                 {
                     this.Attributes.Health -= this.TakeDamage(damage.ElectricDamage, "electric damage", this.Attributes.ElectricResistance);
                 }
+
                 if (damage.FireDamage.Rolls > 0)
                 {
                     this.Attributes.Health -= this.TakeDamage(damage.FireDamage, "fire damage", this.Attributes.FireResistance);
                 }
+
                 if (damage.MagicDamage.Rolls > 0)
                 {
                     this.Attributes.Health -= this.TakeDamage(damage.MagicDamage, "magic damage", this.Attributes.MagicResistance);
                 }
+
                 if (damage.PiercingDamage.Rolls > 0)
                 {
                     this.Attributes.Health -= this.TakeDamage(damage.PiercingDamage, "piercing damage", this.Attributes.AC);
                 }
+
                 if (damage.PoisonDamage.Rolls > 0)
                 {
                     this.Attributes.Health -= this.TakeDamage(damage.PoisonDamage, "poison damage", this.Attributes.PoisonResistance);
                 }
+
                 if (damage.SlashingDamage.Rolls > 0)
                 {
                     this.Attributes.Health -= this.TakeDamage(damage.SlashingDamage, "slashing damage", this.Attributes.AC);
@@ -365,6 +376,42 @@ namespace EarthWithMagicAPI.API.Creature
             double ActualDamage = Damage - DamageToReduce;
             Util.Util.WriteLine(this.Name + " takes " + ActualDamage.ToString() + " " + nameOfDamage + " (" + resistance + "% resisted");
             return ActualDamage;
+        }
+
+        /// <summary>
+        /// Returns a list of all items, whether they be in the inventory, or equipped somewhere.
+        /// </summary>
+        /// <returns></returns>
+        public static List<IItem> GetAllItems(ICreature creature)
+        {
+            List<IItem> All = new List<IItem>();
+
+            foreach (IItem item in creature.Amulets)
+            {
+                All.Add(item);
+            }
+
+            foreach (IItem item in creature.Armoring)
+            {
+                All.Add(item);
+            }
+
+            foreach (IItem item in creature.Inventory)
+            {
+                All.Add(item);
+            }
+
+            foreach (IItem item in creature.Rings)
+            {
+                All.Add(item);
+            }
+
+            foreach (IItem item in creature.Weapons)
+            {
+                All.Add(item);
+            }
+
+            return All;
         }
     }
 

@@ -1,4 +1,5 @@
-﻿using EarthWithMagicAPI.API.Creature;
+﻿using EarthMagicDocumentation;
+using EarthWithMagicAPI.API.Creature;
 using EarthWithMagicAPI.API.Interfaces.Spells;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,22 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
             this.Weight = weight;
             this.ImagePath = imagePath;
             this.DocumentationPath = documentationPath;
+        }
+
+        /// <summary>
+        /// Displays information about this item.
+        /// </summary>
+        public void DisplayDocumentation()
+        {
+            Util.Util.WriteLine(ResourceGM.GetResource(this.DocumentationPath));
+        }
+
+        /// <summary>
+        /// Displays the image of this item.
+        /// </summary>
+        public void DisplayImage()
+        {
+            Util.Util.WriteLine(ResourceGM.GetResource(this.ImagePath));
         }
 
         /// <summary>
