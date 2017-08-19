@@ -58,6 +58,14 @@ Holy symbol of Faehau
 Well Patched Robe
 
 [IF] Ranger
+Bent Shortbow
+Cracked helmet
+
+[IF] Witch
+Cauldron
+Oakwood Wand
+
+[]
 
 Bosworth: Goodbye (Player name), I will miss you.
 (Player name): I know. I will come and visit you when this is all done.

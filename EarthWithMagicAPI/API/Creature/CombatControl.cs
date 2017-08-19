@@ -14,7 +14,7 @@
         /// <summary>
         /// If true, don't allow another action.
         /// </summary>
-        public static bool TakenAction = false;
+        private static bool TakenAction = false;
 
         public static void YourTurn(ICreature creature, Encounter encounter)
         {
