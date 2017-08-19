@@ -39,7 +39,7 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 
         public override void LevelUp()
         {
-            this.Attributes.BaseHealth += Dice.RollDice(new Die(1, 10, 2), this.Name + " gains hit points: ");
+            this.Attributes.BaseHealth += Dice.RollDice(new Die(1, 4, 3), this.Name + " gains hit points: ");
 
             switch (this.Attributes.XP.CreatureLevel)
             {
