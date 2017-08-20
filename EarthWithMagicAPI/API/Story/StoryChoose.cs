@@ -6,7 +6,7 @@ namespace EarthWithMagicAPI.API.Stuff
     /// <summary>
     /// Used whenever the character has to read some text, or make a decision.
     /// </summary>
-    public class StoryText
+    public class StoryChoose
     {
         /// <summary>
         /// The choices below the text, if any.
@@ -16,14 +16,14 @@ namespace EarthWithMagicAPI.API.Stuff
         /// <summary>
         /// The story text to show based on the player's choice.
         /// </summary>
-        private List<StoryText> ProgressionOfChoices = new List<StoryText>();
+        private List<StoryChoose> ProgressionOfChoices = new List<StoryChoose>();
 
         /// <summary>
         /// The text above the choices, if any.
         /// </summary>
         private List<string> TextAbove = new List<string>();
 
-        public StoryText()
+        public StoryChoose()
         {
         }
 
@@ -32,7 +32,7 @@ namespace EarthWithMagicAPI.API.Stuff
         /// </summary>
         /// <param name="choice"></param>
         /// <param name="nextOptions"></param>
-        public void AddChoice(string choice, StoryText nextOptions)
+        public void AddChoice(string choice, StoryChoose nextOptions)
         {
             if (choice != null)
             {
