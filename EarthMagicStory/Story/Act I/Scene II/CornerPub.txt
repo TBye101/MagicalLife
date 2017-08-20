@@ -61,10 +61,40 @@ Third man: I'm sorry about those two. They had been deep into their tankard alre
 			Liam: Goodbye then, and good luck.
 
 	C. "I need to go, my journey must continue":
-		
-		TODO:
+		Liam: I too need to leave this place. It will be good for me to leave this place.
+		Liam: Might I join you on your journey, until I discover my place in life?
 
+			A: "Yes":
+			Liam joins your party.
+			B: "No":
+			Liam: Goodbye then, and good luck.
 
 2. "How did you end up with those two? You seem different than them.":
+	Third man: A few weeks ago, I arrived at this city. A local gang confronted me, and was going to rob and kill me.
+	Third man: They were didn't like that gang encroaching on their territory. They fought off my attackers, and for a modesty fee gave me their gangs protection.
 
-THIRD PLAYER DOESN'T BELONG WITH THOSE TWO, WILL JOIN PLAYER PARTY
+	The third man introduces himself as Liam. He seems like a decent guy.
+	You spend the whole morning talking about yourselves. You look outside, and realize that it is now midday.
+
+	A. "I need to go.":
+		Liam: Okay, nice meeting you. Sorry again.
+
+	B. "I need to go, my search for revenge must continue.":
+		Liam: Revenge? What are you trying to get revenge for?
+
+		1. "My mother's murder":
+			Liam: That seems like a worthy cause. Did you need help?
+
+			A: "Yes":
+			Liam joins your party.
+			B: "No":
+			Liam: Goodbye then, and good luck.
+
+	C. "I need to go, my journey must continue":
+		Liam: I too need to leave this place. It will be good for me to leave this place.
+		Liam: Might I join you on your journey, until I discover my place in life?
+
+			A: "Yes":
+			Liam joins your party.
+			B: "No":
+			Liam: Goodbye then, and good luck.
