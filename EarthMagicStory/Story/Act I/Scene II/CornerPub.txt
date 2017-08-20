@@ -22,10 +22,49 @@ The second one only served to confirm this, as he was twirling a knife around.
 
 First man: Hey! You'r' in our seat!
 Second man: Beat him up!
-
 Innkeeper: No fighting! At least, no unsanctioned fighting.
-Third man: A challange!
+Third man: It's fine, leave him alone.
 Second man: I challange (him/her/it)!
-
 Innkeeper: To what?
+Second man: A fight!
+Innkeeper: Do you accept?
 
+1. "Yes": Player fights 2nd man
+2. "No, I will not fight.": Player leaves tavern, and goes to a different one.
+
+[IF] 1:
+
+Initiate fight between second man and player.
+
+[IF] player wins, the third man comes to talk to the player the next day.
+
+Third man: I notice you handled yourself back there last night.
+Third man: I'm sorry about those two. They had been deep into their tankard already.
+
+1. "That's okay.": 
+
+	The third man introduces himself as Liam. He seems like a decent guy.
+	You spend the whole morning talking about yourselves. You look outside, and realize that it is now midday.
+
+	A. "I need to go.":
+		Liam: Okay, nice meeting you. Sorry again.
+
+	B. "I need to go, my search for revenge must continue.":
+		Liam: Revenge? What are you trying to get revenge for?
+
+		1. "My mother's murder":
+			Liam: That seems like a worthy cause. Did you need help?
+
+			A: "Yes":
+			Liam joins your party.
+			B: "No":
+			Liam: Goodbye then, and good luck.
+
+	C. "I need to go, my journey must continue":
+		
+		TODO:
+
+
+2. "How did you end up with those two? You seem different than them.":
+
+THIRD PLAYER DOESN'T BELONG WITH THOSE TWO, WILL JOIN PLAYER PARTY

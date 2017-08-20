@@ -57,11 +57,11 @@ namespace EarthWithMagicAPI.API.Stuff
 
             int i = 0;
             int siz = this.Choices.Count;
-            string choice = "";
+            string choice = string.Empty;
 
             while (i != siz)
             {
-                choice = "";
+                choice = string.Empty;
                 choice += i.ToString();
                 choice += ".";
                 choice += " ";
@@ -71,8 +71,8 @@ namespace EarthWithMagicAPI.API.Stuff
 
             string input = Console.ReadLine();
 
-            int Choice = Convert.ToInt32(input);
-            this.Decided(Choice);
+            int choice1 = Convert.ToInt32(input);
+            this.Decided(choice1);
         }
 
         /// <summary>
