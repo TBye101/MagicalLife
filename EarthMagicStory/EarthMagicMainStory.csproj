@@ -8,4 +8,8 @@
     <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Story\Act I\Scene III\" />
+  </ItemGroup>
+
 </Project>

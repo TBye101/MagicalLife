@@ -23,8 +23,9 @@ namespace EarthWithMagicAPI.API.Stuff
         /// </summary>
         private List<string> TextAbove = new List<string>();
 
-        public StoryChoose()
+        public StoryChoose(List<string> textAbove)
         {
+            this.TextAbove = textAbove;
         }
 
         /// <summary>
@@ -86,8 +87,8 @@ namespace EarthWithMagicAPI.API.Stuff
                 Console.WriteLine("Invalid choice! Try again!");
                 string input = Console.ReadLine();
 
-                int Choice = Convert.ToInt32(input);
-                this.Decided(Choice);
+                int choice = Convert.ToInt32(input);
+                this.Decided(choice);
             }
             else
             {

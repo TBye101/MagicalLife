@@ -1,6 +1,6 @@
 ﻿namespace EarthMagicCharacters.Classes.Witch
 {
-    internal class Witch
+    internal class Alchemist
     {
     }
 }
