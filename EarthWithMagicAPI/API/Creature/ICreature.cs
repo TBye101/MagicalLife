@@ -1,14 +1,14 @@
-﻿using EarthMagicCharacters.Classes;
-using EarthMagicDocumentation;
-using EarthWithMagicAPI.API.Interfaces.Items;
-using EarthWithMagicAPI.API.Interfaces.Spells;
-using EarthWithMagicAPI.API.Stuff;
-using EarthWithMagicAPI.API.Util;
-using System;
-using System.Collections.Generic;
-
-namespace EarthWithMagicAPI.API.Creature
+﻿namespace EarthWithMagicAPI.API.Creature
 {
+    using System;
+    using System.Collections.Generic;
+    using EarthMagicCharacters.Classes;
+    using EarthMagicDocumentation;
+    using EarthWithMagicAPI.API.Interfaces.Items;
+    using EarthWithMagicAPI.API.Interfaces.Spells;
+    using EarthWithMagicAPI.API.Stuff;
+    using EarthWithMagicAPI.API.Util;
+
     /// <summary>
     /// Holds various things that every creature has or should implement.
     /// </summary>
@@ -159,7 +159,7 @@ namespace EarthWithMagicAPI.API.Creature
         /// </summary>
         public void DisplayImage()
         {
-            Util.Util.WriteLine(ResourceGM.GetResource(this.ImagePath));
+            Util.WriteLine(ResourceGM.GetResource(this.ImagePath));
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace EarthWithMagicAPI.API.Creature
         /// </summary>
         public void DisplayInformation()
         {
-            Util.Util.WriteLine(ResourceGM.GetResource(this.DocumentationPath));
+            Util.WriteLine(ResourceGM.GetResource(this.DocumentationPath));
         }
 
         /// <summary>
@@ -275,13 +275,13 @@ namespace EarthWithMagicAPI.API.Creature
                 Console.ForegroundColor = ConsoleColor.Green;
             }
 
-            Util.Util.WriteLine(this.Name + " is taking damage!");
+            Util.WriteLine(this.Name + " is taking damage!");
             double dodgeChance = this.Attributes.Dodge / 2;
 
             if (Dice.RollDice(new Die(1, 100, 0), "Chance to not dodge") > dodgeChance)
             {
                 //Don't dodge
-                Util.Util.WriteLine(this.Name + " failed to dodge the attack");
+                Util.WriteLine(this.Name + " failed to dodge the attack");
 
                 if (damage.AcidDamage.Rolls > 0)
                 {
@@ -331,7 +331,7 @@ namespace EarthWithMagicAPI.API.Creature
             else
             {
                 //Dodge
-                Util.Util.WriteLine(this.Name + " dodged!");
+                Util.WriteLine(this.Name + " dodged!");
             }
 
             Console.ResetColor();
@@ -374,7 +374,7 @@ namespace EarthWithMagicAPI.API.Creature
             double Damage = Dice.RollDice(elementalDamage, "Base incoming " + nameOfDamage);
             double DamageToReduce = Damage * resistance;
             double ActualDamage = Damage - DamageToReduce;
-            Util.Util.WriteLine(this.Name + " takes " + ActualDamage.ToString() + " " + nameOfDamage + " (" + resistance + "% resisted");
+            Util.WriteLine(this.Name + " takes " + ActualDamage.ToString() + " " + nameOfDamage + " (" + resistance + "% resisted");
             return ActualDamage;
         }
 
