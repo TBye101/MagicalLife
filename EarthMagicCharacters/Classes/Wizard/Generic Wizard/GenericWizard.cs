@@ -32,8 +32,10 @@
 
         public override void LevelUp()
         {
+#pragma warning disable SA1119 // Statement must not use unnecessary parenthesis
+
             this.Attributes.BaseHealth += Dice.RollDice(new Die(1, 4, 1), this.Name + " gains hit points: ");
-            int CastingPower = this.MaxCastingPower;
+            int castingPower = this.MaxCastingPower;
             switch (this.Attributes.XP.CreatureLevel)
             {
                 case int n when (n >= 1 && n <= 4):
@@ -73,7 +75,9 @@
                     break;
             }
 
-            Util.WriteLine("Casting power: +" + (this.MaxCastingPower - CastingPower).ToString());
+            Util.WriteLine("Casting power: +" + (this.MaxCastingPower - castingPower).ToString());
+
+#pragma warning restore SA1119 // Statement must not use unnecessary parenthesis
         }
 
         public override void OnCreatureDied(ICreature dead)
