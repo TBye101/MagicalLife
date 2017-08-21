@@ -20,12 +20,14 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EarthWithMagicAPI", "EarthWithMagicAPI\EarthWithMagicAPI.csproj", "{A0E4CF0C-C900-4FDA-8395-8B66EFA68638}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{09293283-6E6D-4652-A633-5B70452244DA}"
-	ProjectSection(SolutionItems) = preProject
-		Wiki.html = Wiki.html
-		Wiki.html.vsspell = Wiki.html.vsspell
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EarthMagicDocumentation", "EarthMagicDocumentation\EarthMagicDocumentation.csproj", "{1441B37F-08A1-493C-A963-717F566BB455}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wikis", "Wikis", "{AE027B2C-CE8B-475B-A56B-76CD42542145}"
+	ProjectSection(SolutionItems) = preProject
+		Wiki Version 1.html = Wiki Version 1.html
+		Wiki Version 2.html = Wiki Version 2.html
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,5 +74,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AE027B2C-CE8B-475B-A56B-76CD42542145} = {09293283-6E6D-4652-A633-5B70452244DA}
 	EndGlobalSection
 EndGlobal
