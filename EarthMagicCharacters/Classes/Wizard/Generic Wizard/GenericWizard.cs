@@ -10,8 +10,8 @@
     /// </summary>
     public class GenericWizard : ICreature
     {
-        public GenericWizard(CreatureAttributes attributes, CreatureAbilities abilities, string documentationPath, string imagePath)
-            : base(attributes, abilities, documentationPath, imagePath)
+        public GenericWizard(CreatureAttributes attributes, CreatureAbilities abilities, string documentationPath)
+            : base(attributes, abilities, documentationPath, "EarthMagicDocumentation.ASCII_Art.Wizard.txt")
         {
         }
 
