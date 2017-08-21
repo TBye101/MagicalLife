@@ -13,7 +13,7 @@
         {
         }
 
-        public override void Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster)
+        protected override bool Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster)
         {
             Util.WriteLine(Caster.Name + " is casting Magic Missile!");
             Damage damage = new Damage(Die.Zero(), Die.Zero(), Die.Zero(),
@@ -38,6 +38,8 @@
                     Enemies[0].RecieveDamage(damage);
                 }
             }
+
+            return true;
         }
 
         public override bool OnAction(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)

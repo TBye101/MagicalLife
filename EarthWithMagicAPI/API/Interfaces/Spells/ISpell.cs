@@ -65,6 +65,28 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
             Util.Util.WriteLine(image);
         }
 
+        public bool Cast(List<ICreature> party, List<ICreature> enemies, ICreature caster)
+        {
+            if (caster.CastingPower >= this.PowerRequired)
+            {
+                if (this.Go(party, enemies, caster))
+                {
+                    caster.CastingPower -= this.PowerRequired;
+                    return true;
+                }
+                else
+                {
+                    Util.Util.WriteLine(caster.Name + " failed to cast " + this.Name);
+                    return false;
+                }
+            }
+            else
+            {
+                Util.Util.WriteLine("Not enough power to cast " + this.Name);
+                return false;
+            }
+        }
+
         /// <summary>
         /// Called when the spell is cast.
         /// </summary>
@@ -72,7 +94,8 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
         /// <param name="Party"></param>
         /// <param name="Enemies"></param>
         /// <param name="Caster"></param>
-        public abstract void Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster);
+        /// <returns>Returns if the caster was able to cast the spell.</returns>
+        protected abstract bool Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster);
 
         /// <summary>
         /// Called whenever the creature tries to take an action.

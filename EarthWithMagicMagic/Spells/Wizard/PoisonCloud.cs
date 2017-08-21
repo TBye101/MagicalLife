@@ -12,7 +12,23 @@
         {
         }
 
-        public override void Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster)
+        public override bool OnAction(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
+        {
+            return true;
+        }
+
+        public override bool OnTurn(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
+        {
+            this.RoundsLeft--;
+            Affected.RecieveDamage(new EarthWithMagicAPI.API.Damage(Die.Zero(), new Die(1, 8, 2), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero()));
+            return true;
+        }
+
+        public override void OnWearOff(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
+        {
+        }
+
+        protected override bool Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster)
         {
             if (Caster.IsHostile())
             {
@@ -28,22 +44,7 @@
                     item.SpellsAffectedBy.Add(new PoisonCloud());
                 }
             }
-        }
-
-        public override bool OnAction(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
-        {
             return true;
-        }
-
-        public override bool OnTurn(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
-        {
-            this.RoundsLeft--;
-            Affected.RecieveDamage(new EarthWithMagicAPI.API.Damage(Die.Zero(), new Die(1, 8, 2), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero()));
-            return true;
-        }
-
-        public override void OnWearOff(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
-        {
         }
     }
 }

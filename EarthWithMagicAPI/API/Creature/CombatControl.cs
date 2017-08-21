@@ -168,7 +168,7 @@
                             else
                             {
                                 creature.CastingPower -= item.PowerRequired;
-                                item.Go(encounter.Party, encounter.Enemies, creature);
+                                item.Cast(encounter.Party, encounter.Enemies, creature);
                                 Util.Util.WriteLine("Casting " + item.Name);
                                 return;
                             }
