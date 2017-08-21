@@ -11,7 +11,7 @@
     public class GenericWizard : ICreature
     {
         public GenericWizard(CreatureAttributes attributes, CreatureAbilities abilities, string documentationPath)
-            : base(attributes, abilities, documentationPath, "EarthMagicDocumentation.ASCII_Art.Wizard.txt")
+            : base(attributes, abilities, "EarthMagicDocumentation.Classes.Wizard_Class_Info.md", "EarthMagicDocumentation.ASCII_Art.Wizard.txt")
         {
         }
 

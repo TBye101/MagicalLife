@@ -189,7 +189,7 @@
     <EmbeddedResource Include="Classes\Thief Class Info.md" />
     <EmbeddedResource Include="Classes\WIP\Water Druid Class Info.md" />
     <EmbeddedResource Include="Classes\WIP\Alchemist Class Info.md" />
-    <EmbeddedResource Include="Classes\WIP\Wizard\Wizard Class Info.md" />
+    <EmbeddedResource Include="Classes\Wizard Class Info.md" />
     <EmbeddedResource Include="Creatures\Heavenly\AngelCommander.md" />
     <EmbeddedResource Include="Creatures\Heavenly\AngelSquadLeader.md" />
     <EmbeddedResource Include="Creatures\Heavenly\AngelWarrior.md" />
