@@ -1,13 +1,14 @@
-﻿using EarthWithMagicAPI.API.Creature;
-using EarthWithMagicAPI.API.Interfaces.Spells;
-using EarthWithMagicAPI.API.Util;
-using System.Collections.Generic;
-
-namespace EarthWithMagicMagic.Spells.Wizard
+﻿namespace EarthWithMagicMagic.Spells.Wizard
 {
+    using System.Collections.Generic;
+    using EarthWithMagicAPI.API.Creature;
+    using EarthWithMagicAPI.API.Interfaces.Spells;
+    using EarthWithMagicAPI.API.Util;
+
     public class PoisonCloud : ISpell
     {
-        public PoisonCloud() : base("Poison Cloud", "EarthMagicDocumentation.Spells.Wizard.PoisonCloud.md", 21, 4, "EarthMagicDocumentation.ASCII_Art.Spells.Wizard.PoisonCloud.txt")
+        public PoisonCloud()
+            : base("Poison Cloud", "EarthMagicDocumentation.Spells.Wizard.PoisonCloud.md", 21, 4, "EarthMagicDocumentation.ASCII_Art.Spells.Wizard.PoisonCloud.txt")
         {
         }
 
