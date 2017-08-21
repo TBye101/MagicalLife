@@ -11,7 +11,7 @@ namespace EarthWithMagicAPI.API.Creature
     {
         public ICreature GetMainCharacter()
         {
-            Util.Util.WriteLine("Monk or Thief?");
+            Util.Util.WriteLine("Monk, Wizard, or Thief?");
             string input = Console.ReadLine();
 
             switch (input.ToLower())
@@ -23,7 +23,9 @@ namespace EarthWithMagicAPI.API.Creature
                 case "thief":
                     ThiefCharacterGenerator thief = new ThiefCharacterGenerator();
                     return thief.Generate();
-
+                case "wizard":
+                    WizardCharacterGenerator wizard = new WizardCharacterGenerator();
+                    return wizard.Generate();
                 default:
                     Util.Util.WriteLine("Invalid input!");
                     return GetMainCharacter();
