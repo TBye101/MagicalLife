@@ -1,42 +1,43 @@
-﻿namespace EarthMagicItems.Amulets
+﻿using EarthWithMagicAPI.API.Interfaces.Items;
+namespace EarthMagicItems.Amulets.Clerical
 {
     using System;
     using System.Collections.Generic;
-    using EarthMagicDynamicMarket;
+    using System.Text;
     using EarthWithMagicAPI.API.Creature;
-    using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Interfaces.Spells;
 
-    /// <summary>
-    /// A generic amulet.
-    /// </summary>
-    public class GenericAmulet : IItem
+    public class HolySymbolOfTali : IAmulet
     {
-        public GenericAmulet(string name, double weight, string imagePath, string documentationPath) : base(name, weight, imagePath, documentationPath)
+        public HolySymbolOfTali()
+            : base("Holy Symbol of Tali", 3, "EarthMagicDocumentation.ASCII_Art.Items.Amulets.Clerical.HolySymbolOfTali.txt",
+            "EarthMagicDocumentation.Items.Amulets.Clerical.HolySymbolOfTali.md")
         {
         }
 
         public override void Bought()
         {
+            throw new NotImplementedException();
         }
 
         public override bool CanEquip(ICreature creature)
         {
-            return true;
+            throw new NotImplementedException();
         }
 
         public override void Sold()
         {
+            throw new NotImplementedException();
         }
 
         public override void SpellHit(ISpell spell)
         {
-            //Need to handle a dispel
             throw new NotImplementedException();
         }
 
         public override void Unequip()
         {
+            throw new NotImplementedException();
         }
 
         public override void Use()
@@ -46,6 +47,7 @@
 
         public override void WeaponHit(IWeapon attacker)
         {
+            throw new NotImplementedException();
         }
     }
 }

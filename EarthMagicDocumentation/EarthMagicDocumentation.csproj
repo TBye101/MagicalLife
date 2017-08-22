@@ -26,6 +26,7 @@
     <None Remove="ASCII Art\Items\Ammo\Arrows\ProfessionalArrow.txt" />
     <None Remove="ASCII Art\Items\Ammo\CrossbowBolt.txt" />
     <None Remove="ASCII Art\Items\Ammo\Special\TheInevitable.txt" />
+    <None Remove="ASCII Art\Items\Amulets\Clerical\HolySymbolOfTali.txt" />
     <None Remove="ASCII Art\Items\Fists.txt" />
     <None Remove="ASCII Art\Items\Weapons\Normal\Scimitars\AngelSword.txt" />
     <None Remove="ASCII Art\Knight.txt" />
@@ -110,6 +111,7 @@
     <None Remove="Items\Ammo\Stones\FrostStone.md" />
     <None Remove="Items\Ammo\Stones\PoisonStone.md" />
     <None Remove="Items\Ammo\Stones\Stone.md" />
+    <None Remove="Items\Amulets\Clerical\HolySymbolOfTali.md" />
     <None Remove="Items\Fists.md" />
     <None Remove="Items\Weapons\Normal\Scimitars\AngelSword.md" />
     <None Remove="Other\ArmorClasses.md" />
@@ -144,6 +146,7 @@
     <EmbeddedResource Include="ASCII Art\Items\Ammo\Arrows\ProfessionalArrow.txt" />
     <EmbeddedResource Include="ASCII Art\Items\Ammo\CrossbowBolt.txt" />
     <EmbeddedResource Include="ASCII Art\Items\Ammo\Special\TheInevitable.txt" />
+    <EmbeddedResource Include="ASCII Art\Items\Amulets\Clerical\HolySymbolOfTali.txt" />
     <EmbeddedResource Include="ASCII Art\Items\Fists.txt" />
     <EmbeddedResource Include="ASCII Art\Items\Weapons\Normal\Scimitars\AngelSword.txt" />
     <EmbeddedResource Include="ASCII Art\Knight.txt" />
@@ -227,6 +230,7 @@
     <EmbeddedResource Include="Items\Ammo\Stones\FrostStone.md" />
     <EmbeddedResource Include="Items\Ammo\Stones\PoisonStone.md" />
     <EmbeddedResource Include="Items\Ammo\Stones\Stone.md" />
+    <EmbeddedResource Include="Items\Amulets\Clerical\HolySymbolOfTali.md" />
     <EmbeddedResource Include="Items\Fists.md" />
     <EmbeddedResource Include="Items\Weapons\Normal\Scimitars\AngelSword.md" />
     <EmbeddedResource Include="Other\ArmorClasses.md" />

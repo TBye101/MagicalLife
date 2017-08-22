@@ -20,12 +20,12 @@
             {
                 takenAction = false;
                 Util.Util.WriteLine("Combat for " + creature.Name + " initiated! Type 'help' for commands");
-                string Input = string.Empty;
+                string input = string.Empty;
                 string[] command;
-                while (Input != "end turn")
+                while (input != "end turn")
                 {
-                    Input = Console.ReadLine().ToLower();
-                    command = Input.Split(' ');
+                    input = Console.ReadLine().ToLower();
+                    command = input.Split(' ');
 
                     if (command[0] == "use" && command[1] == "ability")
                     {
@@ -51,7 +51,7 @@
                         continue;
                     }
 
-                    switch (Input)
+                    switch (input)
                     {
                         case "help":
                             Help();
@@ -205,6 +205,7 @@
                     {
                         Util.Util.WriteLine("Failed to equip " + item.Name);
                     }
+
                     return;
                 }
             }
@@ -399,6 +400,7 @@
                 Items += item.Name;
                 Items += ", ";
             }
+
             Util.Util.WriteLine(Items);
             Items = string.Empty;
             foreach (IItem item in creature.Armoring)
@@ -406,6 +408,7 @@
                 Items += item.Name;
                 Items += ", ";
             }
+
             Util.Util.WriteLine(Items);
             Items = string.Empty;
             foreach (IItem item in creature.Inventory)
@@ -413,6 +416,7 @@
                 Items += item.Name;
                 Items += ", ";
             }
+
             Util.Util.WriteLine(Items);
             Items = string.Empty;
             foreach (IItem item in creature.Rings)
@@ -420,6 +424,7 @@
                 Items += item.Name;
                 Items += ", ";
             }
+
             Util.Util.WriteLine(Items);
             Items = string.Empty;
             foreach (IItem item in creature.Weapons)
@@ -427,6 +432,7 @@
                 Items += item.Name;
                 Items += ", ";
             }
+
             Util.Util.WriteLine(Items);
         }
     }
