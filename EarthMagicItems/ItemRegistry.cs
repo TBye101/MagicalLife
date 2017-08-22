@@ -22,6 +22,7 @@ namespace EarthMagicItems
         //Gems
         public static GenericGemStorage Gems = new GenericGemStorage();
 
+        //Stones
         public static GenericStoneStorage Stones = new GenericStoneStorage();
     }
 }
