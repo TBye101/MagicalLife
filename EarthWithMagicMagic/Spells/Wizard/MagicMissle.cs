@@ -1,5 +1,6 @@
 ﻿namespace EarthWithMagicMagic.Spells.Wizard
 {
+    using System;
     using System.Collections.Generic;
     using EarthWithMagicAPI.API;
     using EarthWithMagicAPI.API.Creature;
@@ -9,7 +10,7 @@
     public class MagicMissle : ISpell
     {
         public MagicMissle()
-            : base("Magic Missile", "EarthMagicDocumentation.Spells.Wizard.Magic_Missile.md", 3, 0, "EarthMagicDocumentation.ASCII_Art.Spells.Wizard.Magic_Missile.txt")
+            : base("Magic Missile", "EarthMagicDocumentation.Spells.Wizard.Magic_Missile.md", 3, 0, "EarthMagicDocumentation.ASCII_Art.Spells.Wizard.Magic_Missile.txt", true)
         {
         }
 
@@ -54,6 +55,16 @@
 
         public override void OnWearOff(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
         {
+        }
+
+        protected override bool Go(List<ICreature> theParty, ICreature creature)
+        {
+            return false;
+        }
+
+        public override bool OnTurn(List<ICreature> Party, ICreature Affected)
+        {
+            return true;
         }
     }
 }

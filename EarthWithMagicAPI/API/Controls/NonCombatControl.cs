@@ -134,7 +134,7 @@
         {
             foreach (IAbility item in creature.AbilitiesAffectedBy)
             {
-                if (!item.OnTurn(Party.Party.TheParty, encounter.Enemies, creature))
+                if (!item.OnTurn(Party.Party.TheParty, creature))
                 {
                     return false;
                 }
@@ -142,7 +142,7 @@
 
             foreach (ISpell item in creature.SpellsAffectedBy)
             {
-                if (!item.OnTurn(Party.Party.TheParty, encounter.Enemies, creature))
+                if (!item.OnTurn(Party.Party.TheParty, creature))
                 {
                     return false;
                 }

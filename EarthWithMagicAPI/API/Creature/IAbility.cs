@@ -147,7 +147,7 @@ namespace EarthWithMagicAPI.API.Creature
         /// <param name="Enemies"></param>
         /// <param name="Affected"></param>
         /// <returns></returns>
-        public abstract bool OnTurn(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected);
+        public abstract bool OnTurn(List<ICreature> Party, ICreature Affected);
 
         /// <summary>
         /// Called when the creature's affect wears off.

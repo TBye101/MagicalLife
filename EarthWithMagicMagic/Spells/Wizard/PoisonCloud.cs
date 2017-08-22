@@ -1,5 +1,6 @@
 ﻿namespace EarthWithMagicMagic.Spells.Wizard
 {
+    using System;
     using System.Collections.Generic;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Spells;
@@ -8,7 +9,7 @@
     public class PoisonCloud : ISpell
     {
         public PoisonCloud()
-            : base("Poison Cloud", "EarthMagicDocumentation.Spells.Wizard.PoisonCloud.md", 21, 4, "EarthMagicDocumentation.ASCII_Art.Spells.Wizard.PoisonCloud.txt")
+            : base("Poison Cloud", "EarthMagicDocumentation.Spells.Wizard.PoisonCloud.md", 21, 4, "EarthMagicDocumentation.ASCII_Art.Spells.Wizard.PoisonCloud.txt", true)
         {
         }
 
@@ -22,6 +23,11 @@
             this.RoundsLeft--;
             Affected.RecieveDamage(new EarthWithMagicAPI.API.Damage(Die.Zero(), new Die(1, 8, 2), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero()));
             return true;
+        }
+
+        public override bool OnTurn(List<ICreature> Party, ICreature Affected)
+        {
+            throw new NotImplementedException();
         }
 
         public override void OnWearOff(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
@@ -45,6 +51,11 @@
                 }
             }
             return true;
+        }
+
+        protected override bool Go(List<ICreature> theParty, ICreature creature)
+        {
+            throw new NotImplementedException();
         }
     }
 }

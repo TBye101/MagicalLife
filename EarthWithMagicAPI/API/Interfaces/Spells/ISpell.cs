@@ -39,8 +39,10 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
 
         private string ImagePath;
 
+        readonly bool CombatOnly;
+
         /// <summary>
-        /// Base constructor.
+        /// Initializes a new instance of the <see cref="ISpell"/> class.
         /// </summary>
         /// <param name="name"></param>
         /// <param name="documentationPath"></param>
@@ -50,13 +52,14 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
         /// <param name="roundsLeft"></param>
         /// <param name="imagePath"></param>
         /// <param name="AOE">Area of effect spell?</param>
-        protected ISpell(string name, string documentationPath, int powerRequired, int roundsLeft, string imagePath)
+        protected ISpell(string name, string documentationPath, int powerRequired, int roundsLeft, string imagePath, bool combatOnly)
         {
             this.Name = name;
             this.PowerRequired = powerRequired;
             this.RoundsLeft = roundsLeft;
             this.Info = ResourceGM.GetResource(documentationPath);
             this.ImagePath = imagePath;
+            this.CombatOnly = combatOnly;
         }
 
         public void DisplayImage()
@@ -87,6 +90,44 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
             }
         }
 
+        public bool Cast(List<ICreature> party, ICreature caster)
+        {
+            if (!this.CombatOnly)
+            {
+                if (caster.CastingPower >= this.PowerRequired)
+                {
+                    if (this.Go(party, caster))
+                    {
+                        caster.CastingPower -= this.PowerRequired;
+                        return true;
+                    }
+                    else
+                    {
+                        Util.Util.WriteLine(caster.Name + " failed to cast " + this.Name);
+                        return false;
+                    }
+                }
+                else
+                {
+                    Util.Util.WriteLine("Not enough power to cast " + this.Name);
+                    return false;
+                }
+            }
+            else
+            {
+                Util.Util.WriteLine(this.Name + " is a combat only spell!");
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Called when the spell is cast in peace.
+        /// </summary>
+        /// <param name="theParty"></param>
+        /// <param name="creature"></param>
+        /// <returns></returns>
+        protected abstract bool Go(List<ICreature> theParty, ICreature creature);
+
         /// <summary>
         /// Called when the spell is cast.
         /// </summary>
@@ -115,6 +156,14 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
         /// <param name="Affected"></param>
         /// <returns></returns>
         public abstract bool OnTurn(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected);
+
+        /// <summary>
+        /// Called when it is peace.
+        /// </summary>
+        /// <param name="Party"></param>
+        /// <param name="Affected"></param>
+        /// <returns></returns>
+        public abstract bool OnTurn(List<ICreature> Party, ICreature Affected);
 
         /// <summary>
         /// Called when the creature's affect wears off.

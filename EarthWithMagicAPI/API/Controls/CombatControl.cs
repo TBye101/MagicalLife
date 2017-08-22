@@ -133,7 +133,7 @@
         {
             foreach (IAbility item in creature.AbilitiesAffectedBy)
             {
-                if (!item.OnTurn(encounter.Party, encounter.Enemies, creature))
+                if (!item.OnTurn(encounter.Party, creature))
                 {
                     return false;
                 }

@@ -26,7 +26,7 @@
             return true;
         }
 
-        public override bool OnTurn(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
+        public override bool OnTurn(List<ICreature> Party, ICreature Affected)
         {
             this.RoundsLeft--;
             return true;

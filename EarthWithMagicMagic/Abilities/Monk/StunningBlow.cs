@@ -43,7 +43,7 @@ namespace EarthWithMagicMagic.Abilities.Monk
             return false;
         }
 
-        public override bool OnTurn(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
+        public override bool OnTurn(List<ICreature> Party, ICreature Affected)
         {
             Util.WriteLine(Affected.Name + " is affected by a stunning blow and cannot move!");
             this.RoundsLeft--;

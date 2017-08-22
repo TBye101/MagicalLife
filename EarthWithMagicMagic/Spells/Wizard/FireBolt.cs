@@ -1,5 +1,6 @@
 ﻿namespace EarthWithMagicMagic.Spells.Wizard
 {
+    using System;
     using System.Collections.Generic;
     using EarthWithMagicAPI.API;
     using EarthWithMagicAPI.API.Creature;
@@ -8,7 +9,8 @@
 
     public class Fire_Bolt : ISpell
     {
-        public Fire_Bolt() : base("Firebolt", "EarthMagicDocumentation.Spells.Wizard.Firebolt.md", 9, 0, "EarthMagicDocumentation.ASCII_Art.Spells.Wizard.Firebolt.txt")
+        public Fire_Bolt()
+            : base("Firebolt", "EarthMagicDocumentation.Spells.Wizard.Firebolt.md", 9, 0, "EarthMagicDocumentation.ASCII_Art.Spells.Wizard.Firebolt.txt", true)
         {
         }
 
@@ -47,6 +49,16 @@
 
         public override void OnWearOff(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
         {
+        }
+
+        protected override bool Go(List<ICreature> theParty, ICreature creature)
+        {
+            return false;
+        }
+
+        public override bool OnTurn(List<ICreature> Party, ICreature Affected)
+        {
+            return true;
         }
     }
 }
