@@ -20,7 +20,7 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
         private bool _Hostile;
 
         public GenericThief(Gender gender, Race race, Alignment alignment, string name = "Thief", bool isHostile = false) : base(GetAttributes(gender, race, alignment), GetAbilities(),
-            "EarthMagicDocumentation.Classes.Thief_Class_Info.md", "EarthMagicDocumentation.ASCII_Art.Thief.txt")
+            "EarthMagicDocumentation.Classes.Thief_Class_Info.md", "EarthMagicDocumentation.ASCII_Art.Thief.txt", new ThiefAI())
         {
             this.CreatureType = "Thief";
             this.Name = name;
@@ -282,18 +282,6 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
         public override void OnItemUnequipped(IItem item)
         {
             throw new NotImplementedException();
-        }
-
-        public override void YourTurn(Encounter encounter)
-        {
-            if (this.IsInParty)
-            {
-                CombatControl.YourTurn(this, encounter);
-            }
-            else
-            {
-                this.AI.YourTurn(encounter, this);
-            }
         }
 
         /// <summary>

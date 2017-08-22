@@ -4,8 +4,10 @@ namespace EarthMagicCharacters.Classes
 {
     public abstract class ICharacter : ICreature
     {
-        protected ICharacter(CreatureAttributes attributes, CreatureAbilities abilities, string documentationPath, string imagePath) : base(attributes, abilities, documentationPath, imagePath)
-        { }
+        protected ICharacter(CreatureAttributes attributes, CreatureAbilities abilities, string documentationPath, string imagePath, IAI AI)
+            : base(attributes, abilities, documentationPath, imagePath, AI)
+        {
+        }
 
         /// <summary>
         /// Called whenever it is time to level up this creature.

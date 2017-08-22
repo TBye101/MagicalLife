@@ -8,7 +8,7 @@ namespace EarthMagicCreatures.Creatures.Heavenly.Angels
 {
     public class LesserAngel : ICreature
     {
-        public LesserAngel() : base(GetBaseAttributes(), new CreatureAbilities(), "EarthMagicDocumentation.Creatures.Heavenly.LesserAngel.md", "EarthMagicDocumentation.ASCII_Art.Creatures.Heavenly.Angels.LesserAngel.txt")
+        public LesserAngel() : base(GetBaseAttributes(), new CreatureAbilities(), "EarthMagicDocumentation.Creatures.Heavenly.LesserAngel.md", "EarthMagicDocumentation.ASCII_Art.Creatures.Heavenly.Angels.LesserAngel.txt", null)
         {
         }
 
@@ -21,14 +21,11 @@ namespace EarthMagicCreatures.Creatures.Heavenly.Angels
             throw new NotImplementedException();
         }
 
-        //}
         public override void OnCreatureDied(ICreature dead)
         {
             throw new NotImplementedException();
         }
 
-        //public override CreatureAttributes GetAttributes()
-        //{
         public override void OnCreatureHealed(ICreature healer)
         {
             throw new NotImplementedException();
@@ -40,11 +37,6 @@ namespace EarthMagicCreatures.Creatures.Heavenly.Angels
         }
 
         public override void OnItemUnequipped(IItem item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void YourTurn(Encounter encounter)
         {
             throw new NotImplementedException();
         }

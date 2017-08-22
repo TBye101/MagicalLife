@@ -14,7 +14,6 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
     public class GenericMonk : ICharacter
     {
         private bool _Hostile;
-        private MonkAI AI = new MonkAI();
 
         /// <summary>
         /// Constructor for the GenericMonk class.
@@ -25,7 +24,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// <param name="name"></param>
         /// <param name="isHostile"></param>
         public GenericMonk(Gender gender, Race race = Race.Human, Alignment alignment = Alignment.LawfulGood, string name = "Monk", bool isHostile = false) : base(GetAtt(gender, race, alignment), new CreatureAbilities(),
-            "EarthMagicDocumentation.Classes.Monk_Class_Info.md", "EarthMagicDocumentation.ASCII_Art.Monk.txt")
+            "EarthMagicDocumentation.Classes.Monk_Class_Info.md", "EarthMagicDocumentation.ASCII_Art.Monk.txt", new MonkAI())
         {
             this.CreatureType = "Monk";
             this.Name = name;
@@ -286,18 +285,6 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
         public override void OnItemUnequipped(IItem item)
         {
-        }
-
-        public override void YourTurn(Encounter encounter)
-        {
-            if (this.IsInParty)
-            {
-                CombatControl.YourTurn(this, encounter);
-            }
-            else
-            {
-                this.AI.YourTurn(encounter, this);
-            }
         }
 
         private static CreatureAttributes GetAtt(Gender gender, Race race, Alignment alignment)

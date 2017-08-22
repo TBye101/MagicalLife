@@ -1,4 +1,6 @@
-﻿namespace EarthWithMagicAPI.API.Creature
+﻿using EarthWithMagicAPI.API.Controls;
+using EarthWithMagicAPI.API.Story;
+namespace EarthWithMagicAPI.API.Creature
 {
     using System;
     using System.Collections.Generic;
@@ -134,6 +136,8 @@
         /// </summary>
         private string ImagePath;
 
+        public IAI myAI;
+
         /// <summary>
         /// The constructor for the ICreature abstract class.
         /// </summary>
@@ -144,7 +148,7 @@
         /// <param name="abilities"></param>
         /// <param name="documentationPath"></param>
         /// <param name="imagePath"></param>
-        protected ICreature(CreatureAttributes attributes, CreatureAbilities abilities, string documentationPath, string imagePath)
+        protected ICreature(CreatureAttributes attributes, CreatureAbilities abilities, string documentationPath, string imagePath, IAI AI)
         {
             this.Attributes = attributes;
             this.Abilities = abilities;
@@ -152,6 +156,7 @@
             this.ImagePath = imagePath;
             this.Rest();
             this.WeightCapacity = WeightCapacityUtil.Calculate(this);
+            this.myAI = AI;
         }
 
         /// <summary>
@@ -360,7 +365,28 @@
         /// It's this creature's turn for action.
         /// </summary>
         /// <param name="encounter"></param>
-        public abstract void YourTurn(Encounter encounter);
+        public void YourTurn(Encounter encounter)
+        {
+            if (this.IsInParty)
+            {
+                CombatControl.YourTurn(this, encounter);
+            }
+            else
+            {
+                this.myAI.YourTurn(encounter, this);
+            }
+        }
+        public void YourTurn()
+        {
+            if (this.IsInParty)
+            {
+                NonCombatControl.YourTurn(this);
+            }
+            else
+            {
+                throw new NotSupportedException();
+            }
+        }
 
         /// <summary>
         /// Takes damage

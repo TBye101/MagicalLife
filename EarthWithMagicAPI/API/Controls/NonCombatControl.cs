@@ -14,7 +14,7 @@
         /// </summary>
         private static bool takenAction = false;
 
-        public static void YourTurn(ICreature creature, Encounter encounter)
+        public static void YourTurn(ICreature creature)
         {
             if (CanTakeTurn(creature))
             {
@@ -81,7 +81,7 @@
                             Unequip(creature);
                             break;
                         case "rest":
-                            Rest(encounter);
+                            Rest();
                             break;
 
                         case "rotate":
@@ -95,9 +95,9 @@
             }
         }
 
-        private static void Rest(Encounter encounter)
+        private static void Rest()
         {
-            foreach (ICreature item in encounter.Party)
+            foreach (ICreature item in Party.Party.TheParty)
             {
                 item.Rest();
             }

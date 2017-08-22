@@ -10,7 +10,7 @@ namespace EarthMagicCreatures.Creatures.Undead.Skeletons
     /// </summary>
     public class Skeleton : ICreature
     {
-        public Skeleton(CreatureAttributes attributes, CreatureAbilities abilities) : base(attributes, abilities, null, null)
+        public Skeleton(CreatureAttributes attributes, CreatureAbilities abilities) : base(attributes, abilities, null, null, null)
         {
         }
 
@@ -38,11 +38,6 @@ namespace EarthMagicCreatures.Creatures.Undead.Skeletons
 
         public override void OnItemUnequipped(IItem item)
         {
-        }
-
-        public override void YourTurn(Encounter encounter)
-        {
-            throw new NotImplementedException();
         }
     }
 }

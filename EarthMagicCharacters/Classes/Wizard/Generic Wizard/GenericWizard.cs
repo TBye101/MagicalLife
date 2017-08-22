@@ -12,7 +12,7 @@
     public class GenericWizard : ICharacter
     {
         public GenericWizard(Gender gender, Race race, Alignment alignment, string name = "Wizard", bool isHostile = false)
-            : base(GetAtt(gender, race, alignment), new CreatureAbilities(), "EarthMagicDocumentation.Classes.Wizard_Class_Info.md", "EarthMagicDocumentation.ASCII_Art.Wizard.txt")
+            : base(GetAtt(gender, race, alignment), new CreatureAbilities(), "EarthMagicDocumentation.Classes.Wizard_Class_Info.md", "EarthMagicDocumentation.ASCII_Art.Wizard.txt", new WizardAI())
         {
             this.MaxCastingPower += 5;
         }
@@ -94,11 +94,6 @@
 
         public override void OnItemUnequipped(IItem item)
         {
-        }
-
-        public override void YourTurn(Encounter encounter)
-        {
-            throw new NotImplementedException();
         }
 
         /// <summary>
