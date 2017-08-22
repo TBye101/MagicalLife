@@ -74,7 +74,61 @@ namespace EarthWithMagicAPI.API.Creature
             Util.Util.WriteLine(ResourceGM.GetResource(this.DocumentationPath));
         }
 
-        public abstract void Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster);
+        /// <summary>
+        /// For use during a battle.
+        /// </summary>
+        /// <param name="Party"></param>
+        /// <param name="Enemies"></param>
+        /// <param name="Caster"></param>
+        /// <returns>Returns whether we successfully activated the ability.</returns>
+        public bool Use(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster)
+        {
+            if (this.AvailibleUses > 0)
+            {
+                this.Go(Party, Enemies, Caster);
+                return true;
+            }
+            else
+            {
+                Util.Util.WriteLine(Caster.Name + " failed to activate " + this.Name + " because there were no ability uses left.");
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// For use during peaceful times.
+        /// </summary>
+        /// <param name="Party"></param>
+        /// <param name="Caster"></param>
+        /// <returns>Returns whether we successfully activated the ability.</returns>
+        public bool Use(List<ICreature> Party, ICreature Caster)
+        {
+            if (this.AvailibleUses > 0)
+            {
+                this.Go(Party, Caster);
+                return true;
+            }
+            else
+            {
+                Util.Util.WriteLine(Caster.Name + " failed to activate " + this.Name + " because there were no ability uses left.");
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Actually activates the ability.
+        /// </summary>
+        /// <param name="Party"></param>
+        /// <param name="Enemies"></param>
+        /// <param name="Caster"></param>
+        protected abstract void Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster);
+
+        /// <summary>
+        /// Actually activates the ability.
+        /// </summary>
+        /// <param name="Party"></param>
+        /// <param name="Caster"></param>
+        protected abstract void Go(List<ICreature> Party, ICreature Caster);
 
         /// <summary>
         /// Called whenever the creature tries to take an action.
@@ -83,6 +137,7 @@ namespace EarthWithMagicAPI.API.Creature
         /// <param name="Party"></param>
         /// <param name="Enemies"></param>
         /// <param name="Affected"></param>
+        /// <returns></returns>
         public abstract bool OnAction(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected);
 
         /// <summary>

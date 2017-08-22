@@ -1,6 +1,7 @@
 ﻿using EarthWithMagicAPI.API.Creature;
 using EarthWithMagicAPI.API.Util;
 using System.Collections.Generic;
+using System;
 
 namespace EarthWithMagicMagic.Abilities.Monk
 {
@@ -14,7 +15,7 @@ namespace EarthWithMagicMagic.Abilities.Monk
         {
         }
 
-        public override void Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster)
+        protected override void Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster)
         {
             string N;
             if (Caster.IsHostile())
@@ -29,6 +30,12 @@ namespace EarthWithMagicMagic.Abilities.Monk
             }
 
             Util.WriteLine(Caster.Name + " uses Stunning Blow on " + N);
+        }
+
+        protected override void Go(List<ICreature> Party, ICreature Caster)
+        {
+            this.AvailibleUses++;
+            Util.WriteLine("This ability is not available when not in battle!");
         }
 
         public override bool OnAction(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)

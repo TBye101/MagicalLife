@@ -404,7 +404,7 @@
                         {
                             if (item.AvailibleUses > 0)
                             {
-                                item.Go(encounter.Party, encounter.Enemies, creature);
+                                item.Use(encounter.Party, encounter.Enemies, creature);
                             }
                             else
                             {

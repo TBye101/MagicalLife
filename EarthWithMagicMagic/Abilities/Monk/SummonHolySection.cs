@@ -1,11 +1,11 @@
-﻿using EarthMagicCreatures.Creatures.Heavenly.Angels;
-using EarthWithMagicAPI.API.Creature;
-using EarthWithMagicAPI.API.Util;
-using System;
-using System.Collections.Generic;
-
-namespace EarthWithMagicMagic.Abilities.Monk
+﻿namespace EarthWithMagicMagic.Abilities.Monk
 {
+    using System;
+    using System.Collections.Generic;
+    using EarthMagicCreatures.Creatures.Heavenly.Angels;
+    using EarthWithMagicAPI.API.Creature;
+    using EarthWithMagicAPI.API.Util;
+
     /// <summary>
     /// Summons 4 lesser angels.
     /// </summary>
@@ -14,28 +14,11 @@ namespace EarthWithMagicMagic.Abilities.Monk
         /// <summary>
         /// The IDs of the angels we added.
         /// </summary>
-        private List<Guid> Angels = new List<Guid>();
+        private List<Guid> angels = new List<Guid>();
 
-        public SummonHolySection(int uses) : base("Summon Holy Section", "EarthMagicDocumentation.Abilities.Summon Holy Section.md", false, uses, 8, "EarthMagicDocumentation.ASCII_Art.Abilities.SummonHolySection.txt")
+        public SummonHolySection(int uses)
+            : base("Summon Holy Section", "EarthMagicDocumentation.Abilities.Summon Holy Section.md", false, uses, 8, "EarthMagicDocumentation.ASCII_Art.Abilities.SummonHolySection.txt")
         {
-        }
-
-        public override void Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster)
-        {
-            LesserAngel a = new LesserAngel();
-            LesserAngel b = new LesserAngel();
-            LesserAngel c = new LesserAngel();
-            LesserAngel d = new LesserAngel();
-
-            this.Angels.Add(a.ID);
-            this.Angels.Add(b.ID);
-            this.Angels.Add(c.ID);
-            this.Angels.Add(d.ID);
-
-            Party.Add(a);
-            Party.Add(b);
-            Party.Add(c);
-            Party.Add(d);
         }
 
         public override bool OnAction(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
@@ -51,7 +34,7 @@ namespace EarthWithMagicMagic.Abilities.Monk
 
         public override void OnWearOff(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
         {
-            foreach (Guid item in this.Angels)
+            foreach (Guid item in this.angels)
             {
                 int length = Party.Count;
                 for (int i = 0; i < length; i++)
@@ -65,9 +48,45 @@ namespace EarthWithMagicMagic.Abilities.Monk
                 }
             }
 
-            this.Angels.Clear();
+            this.angels.Clear();
 
             Util.WriteLine("Lesser Angels despawning!");
+        }
+
+        protected override void Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster)
+        {
+            LesserAngel a = new LesserAngel();
+            LesserAngel b = new LesserAngel();
+            LesserAngel c = new LesserAngel();
+            LesserAngel d = new LesserAngel();
+
+            this.angels.Add(a.ID);
+            this.angels.Add(b.ID);
+            this.angels.Add(c.ID);
+            this.angels.Add(d.ID);
+
+            Party.Add(a);
+            Party.Add(b);
+            Party.Add(c);
+            Party.Add(d);
+        }
+
+        protected override void Go(List<ICreature> Party, ICreature Caster)
+        {
+            LesserAngel a = new LesserAngel();
+            LesserAngel b = new LesserAngel();
+            LesserAngel c = new LesserAngel();
+            LesserAngel d = new LesserAngel();
+
+            this.angels.Add(a.ID);
+            this.angels.Add(b.ID);
+            this.angels.Add(c.ID);
+            this.angels.Add(d.ID);
+
+            Party.Add(a);
+            Party.Add(b);
+            Party.Add(c);
+            Party.Add(d);
         }
     }
 }

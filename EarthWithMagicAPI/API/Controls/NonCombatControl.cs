@@ -16,7 +16,7 @@
 
         public static void YourTurn(ICreature creature, Encounter encounter)
         {
-            if (CanTakeTurn(creature, encounter))
+            if (CanTakeTurn(creature))
             {
                 takenAction = false;
                 Util.Util.WriteLine("Combat for " + creature.Name + " initiated! Type 'help' for commands");
@@ -29,36 +29,36 @@
 
                     if (command[0] == "use" && command[1] == "ability")
                     {
-                        UseAbility(creature, encounter, command);
+                        UseAbility(creature, command);
                         continue;
                     }
 
                     if (command[0] == "cast")
                     {
-                        Cast(creature, encounter, command);
+                        Cast(creature, command);
                         continue;
                     }
 
                     if (command[0] == "use")
                     {
-                        Use(creature, encounter, command);
+                        Use(creature, command);
                         continue;
                     }
 
                     if (command[0] == "view" && command[1] == "item")
                     {
-                        ViewItem(creature, encounter, command);
+                        ViewItem(creature, command);
                         continue;
                     }
 
                     switch (Input)
                     {
                         case "help":
-                            Help(creature, encounter, command);
+                            Help();
                             break;
 
                         case "view inventory":
-                            ViewInventory(creature, encounter, command);
+                            ViewInventory(creature);
                             break;
 
                         case "equip":
@@ -66,26 +66,26 @@
                             break;
 
                         case "list abilities":
-                            ListAbilities(creature, encounter, command);
+                            ListAbilities(creature);
                             break;
 
                         case "list spells":
-                            ListSpells(creature, encounter, command);
+                            ListSpells(creature);
                             break;
 
                         case "list party":
-                            ListParty(creature, encounter, command);
+                            ListParty();
                             break;
 
                         case "unequip":
-                            Unequip(creature, encounter, command);
+                            Unequip(creature);
                             break;
                         case "rest":
                             Rest(encounter);
                             break;
 
                         case "rotate":
-                            Rotate(creature, encounter, command);
+                            Rotate();
                             break;
                         default:
                             Util.Util.WriteLine("Command not recognized!");
@@ -103,7 +103,7 @@
             }
         }
 
-        private static void ViewItem(ICreature creature, Encounter encounter, string[] command)
+        private static void ViewItem(ICreature creature, string[] command)
         {
             if (command.Length < 3)
             {
@@ -130,11 +130,11 @@
         /// <param name="creature"></param>
         /// <param name="encounter"></param>
         /// <returns></returns>
-        private static bool CanTakeTurn(ICreature creature, Encounter encounter)
+        private static bool CanTakeTurn(ICreature creature)
         {
             foreach (IAbility item in creature.AbilitiesAffectedBy)
             {
-                if (!item.OnTurn(encounter.Party, encounter.Enemies, creature))
+                if (!item.OnTurn(Party.Party.TheParty, encounter.Enemies, creature))
                 {
                     return false;
                 }
@@ -142,7 +142,7 @@
 
             foreach (ISpell item in creature.SpellsAffectedBy)
             {
-                if (!item.OnTurn(encounter.Party, encounter.Enemies, creature))
+                if (!item.OnTurn(Party.Party.TheParty, encounter.Enemies, creature))
                 {
                     return false;
                 }
@@ -151,7 +151,7 @@
             return true;
         }
 
-        private static void Cast(ICreature creature, Encounter encounter, string[] Command)
+        private static void Cast(ICreature creature, string[] Command)
         {
             if (!takenAction)
             {
@@ -169,7 +169,7 @@
                             else
                             {
                                 creature.CastingPower -= item.PowerRequired;
-                                item.Cast(encounter.Party, encounter.Enemies, creature);
+                                item.Cast(Party.Party.TheParty, creature);
                                 Util.Util.WriteLine("Casting " + item.Name);
                                 return;
                             }
@@ -218,7 +218,7 @@
         /// <param name="creature"></param>
         /// <param name="encounter"></param>
         /// <param name="Command"></param>
-        private static void Help(ICreature creature, Encounter encounter, string[] Command)
+        private static void Help()
         {
             Util.Util.WriteLine("help: displays help information.");
             Util.Util.WriteLine("view inventory: displays the player's inventory.");
@@ -229,7 +229,7 @@
             Util.Util.WriteLine("cast: Allows you to choose a spell to cast.");
             Util.Util.WriteLine("list spells: Lists all of the spells available.");
             Util.Util.WriteLine("use: Allows you to use a potion, or other item.");
-            Util.Util.WriteLine("list enemies: Lists all the enemies still alive.");
+            Util.Util.WriteLine("rest: Has the party try and rest.");
             Util.Util.WriteLine("list party: Lists all of the members of the party, including dead ones.");
             Util.Util.WriteLine("unequip: Un-equips something.");
             Util.Util.WriteLine("rotate: Rotates the person at the front of the party to the back.");
@@ -237,7 +237,7 @@
             Util.Util.WriteLine("view item: Views the specified items image and information.");
         }
 
-        private static void ListAbilities(ICreature creature, Encounter encounter, string[] Command)
+        private static void ListAbilities(ICreature creature)
         {
             foreach (IAbility item in creature.ClassAbilities)
             {
@@ -245,15 +245,15 @@
             }
         }
 
-        private static void ListParty(ICreature creature, Encounter encounter, string[] Command)
+        private static void ListParty()
         {
-            foreach (ICreature item in encounter.Party)
+            foreach (ICreature item in Party.Party.TheParty)
             {
                 Util.Util.WriteLine(item.Name + " HP: [" + item.Attributes.Health.ToString() + "]");
             }
         }
 
-        private static void ListSpells(ICreature creature, Encounter encounter, string[] Command)
+        private static void ListSpells(ICreature creature)
         {
             foreach (ISpell item in creature.UsableSpells)
             {
@@ -261,14 +261,14 @@
             }
         }
 
-        private static void Rotate(ICreature creature, Encounter encounter, string[] Command)
+        private static void Rotate()
         {
-            ICreature Front = encounter.Party[0];
-            encounter.Party.RemoveAt(0);
-            encounter.Party.Add(Front);
+            ICreature front = Party.Party.TheParty[0];
+            Party.Party.TheParty.RemoveAt(0);
+            Party.Party.TheParty.Add(front);
         }
 
-        private static void Unequip(ICreature creature, Encounter encounter, string[] Command)
+        private static void Unequip(ICreature creature)
         {
             Util.Util.WriteLine("Unequip what?");
             string name = Console.ReadLine();
@@ -316,7 +316,7 @@
             Util.Util.WriteLine("Item not found!");
         }
 
-        private static void Use(ICreature creature, Encounter encounter, string[] Command)
+        private static void Use(ICreature creature, string[] Command)
         {
             if (!takenAction)
             {
@@ -327,14 +327,14 @@
                 }
                 else
                 {
-                    List<IItem> Items = new List<IItem>();
-                    Items.AddRange(creature.Amulets);
-                    Items.AddRange(creature.Armoring);
-                    Items.AddRange(creature.Inventory);
-                    Items.AddRange(creature.Rings);
-                    Items.AddRange(creature.Weapons);
+                    List<IItem> items = new List<IItem>();
+                    items.AddRange(creature.Amulets);
+                    items.AddRange(creature.Armoring);
+                    items.AddRange(creature.Inventory);
+                    items.AddRange(creature.Rings);
+                    items.AddRange(creature.Weapons);
 
-                    foreach (IItem item in Items)
+                    foreach (IItem item in items)
                     {
                         if (item.Name == Command[1])
                         {
@@ -353,7 +353,7 @@
             }
         }
 
-        private static void UseAbility(ICreature creature, Encounter encounter, string[] Command)
+        private static void UseAbility(ICreature creature, string[] Command)
         {
             if (!takenAction)
             {
@@ -371,7 +371,7 @@
                         {
                             if (item.AvailibleUses > 0)
                             {
-                                item.Go(encounter.Party, encounter.Enemies, creature);
+                                item.Use(Party.Party.TheParty, creature);
                             }
                             else
                             {
@@ -391,7 +391,7 @@
             }
         }
 
-        private static void ViewInventory(ICreature creature, Encounter encounter, string[] Command)
+        private static void ViewInventory(ICreature creature)
         {
             string Items = string.Empty;
             foreach (IItem item in creature.Amulets)
