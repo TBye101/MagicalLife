@@ -17,7 +17,6 @@ namespace EarthMagicItems.Amulets.Clerical
 
         public override void Bought()
         {
-            throw new NotImplementedException();
         }
 
         public override bool CanEquip(ICreature creature)
@@ -27,17 +26,15 @@ namespace EarthMagicItems.Amulets.Clerical
 
         public override void Sold()
         {
-            throw new NotImplementedException();
         }
 
-        public override void SpellHit(ISpell spell)
+        public override void SpellHit(ISpell spell)//Need to handle dispels, and spells from evil casters.
         {
             throw new NotImplementedException();
         }
 
         public override void Unequip()
         {
-            throw new NotImplementedException();
         }
 
         public override void Use()
@@ -47,7 +44,6 @@ namespace EarthMagicItems.Amulets.Clerical
 
         public override void WeaponHit(IWeapon attacker)
         {
-            throw new NotImplementedException();
         }
     }
 }

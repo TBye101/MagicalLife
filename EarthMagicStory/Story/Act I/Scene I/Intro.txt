@@ -42,7 +42,7 @@ Items Offered:
 
 Rusty steel lock pick.
 Unbalanced dagger.
-Leather breastplate.
+Leather breastplate.✓
 Leather Boots of Soft Stepping
 
 [IF] Wizard
@@ -61,7 +61,7 @@ Well Patched Robe
 Bent Shortbow
 Cracked helmet
 
-[IF] Witch
+[IF] Alchemist
 Cauldron
 Oakwood Wand
 
@@ -71,23 +71,23 @@ Harmonica
 Horn
 
 [IF] Cleric
-Well used Holy Symbol of Tali
-Oily leather armor
+Well used Holy Symbol of Tali ✓
+Oily leather armor ✓
 
 [IF] Necromancer
 Staff of Soul Storage
 Dark Idol
 
 [IF] Suntouched
-Well used Holy Symbol of Tali
-Itchy Scale mail
+Well used Holy Symbol of Tali ✓
+Rusted armor
 
 [IF] Druid
 Elemental quarterstaff
-Itchy leather armor.
+Itchy leather armor. ✓
 
 [IF] Fighter
-Rusted chainmail
+Rusted armor✓
 Dull sword
 
 Bosworth: Goodbye (Player name), I will miss you.
