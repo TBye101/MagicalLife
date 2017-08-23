@@ -43,7 +43,7 @@
 
                     if (Command[0] == "use")
                     {
-                        Use(creature, encounter, Command);
+                        Use(creature, Command);
                         continue;
                     }
 
@@ -60,7 +60,7 @@
                             break;
 
                         case "view inventory":
-                            ViewInventory(creature, encounter, Command);
+                            ViewInventory(creature);
                             break;
 
                         case "equip":
@@ -68,31 +68,31 @@
                             break;
 
                         case "swing":
-                            Swing(creature, encounter, Command);
+                            Swing(creature, encounter);
                             break;
 
                         case "list abilities":
-                            ListAbilities(creature, encounter, Command);
+                            ListAbilities(creature);
                             break;
 
                         case "list spells":
-                            ListSpells(creature, encounter, Command);
+                            ListSpells(creature);
                             break;
 
                         case "list enemies":
-                            ListEnemies(creature, encounter, Command);
+                            ListEnemies(encounter);
                             break;
 
                         case "list party":
-                            ListParty(creature, encounter, Command);
+                            ListParty(creature, encounter);
                             break;
 
                         case "unequip":
-                            Unequip(creature, encounter, Command);
+                            Unequip(creature);
                             break;
 
                         case "rotate":
-                            Rotate(creature, encounter, Command);
+                            Rotate(encounter);
                             break;
                         default:
                             Util.Util.WriteLine("Command not recognized!");
@@ -236,7 +236,7 @@
             Util.Util.WriteLine("view item: Views the specified items image and information.");
         }
 
-        private static void ListAbilities(ICreature creature, Encounter encounter, string[] Command)
+        private static void ListAbilities(ICreature creature)
         {
             foreach (IAbility item in creature.ClassAbilities)
             {
@@ -244,7 +244,7 @@
             }
         }
 
-        private static void ListEnemies(ICreature creature, Encounter encounter, string[] Command)
+        private static void ListEnemies(Encounter encounter)
         {
             foreach (ICreature item in encounter.Enemies)
             {
@@ -255,7 +255,7 @@
             }
         }
 
-        private static void ListParty(ICreature creature, Encounter encounter, string[] Command)
+        private static void ListParty(ICreature creature, Encounter encounter)
         {
             foreach (ICreature item in encounter.Party)
             {
@@ -263,7 +263,7 @@
             }
         }
 
-        private static void ListSpells(ICreature creature, Encounter encounter, string[] Command)
+        private static void ListSpells(ICreature creature)
         {
             foreach (ISpell item in creature.UsableSpells)
             {
@@ -271,14 +271,14 @@
             }
         }
 
-        private static void Rotate(ICreature creature, Encounter encounter, string[] Command)
+        private static void Rotate(Encounter encounter)
         {
             ICreature Front = encounter.Party[0];
             encounter.Party.RemoveAt(0);
             encounter.Party.Add(Front);
         }
 
-        private static void Swing(ICreature creature, Encounter encounter, string[] Command)
+        private static void Swing(ICreature creature, Encounter encounter)
         {
             if (!TakenAction)
             {
@@ -301,7 +301,7 @@
             }
         }
 
-        private static void Unequip(ICreature creature, Encounter encounter, string[] Command)
+        private static void Unequip(ICreature creature)
         {
             Util.Util.WriteLine("Unequip what?");
             string name = Console.ReadLine();
@@ -349,7 +349,7 @@
             Util.Util.WriteLine("Item not found!");
         }
 
-        private static void Use(ICreature creature, Encounter encounter, string[] Command)
+        private static void Use(ICreature creature, string[] Command)
         {
             if (!TakenAction)
             {
@@ -424,7 +424,7 @@
             }
         }
 
-        private static void ViewInventory(ICreature creature, Encounter encounter, string[] Command)
+        private static void ViewInventory(ICreature creature)
         {
             string Items = string.Empty;
             foreach (IItem item in creature.Amulets)
