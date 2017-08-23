@@ -41,7 +41,7 @@ Items Offered:
 [IF] Thief✓
 
 Rusty steel lock pick.✓
-Unbalanced dagger. 1d5
+Unbalanced dagger.✓
 Leather breastplate.✓
 Leather Boots of Soft Stepping✓
 
