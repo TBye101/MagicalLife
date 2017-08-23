@@ -52,7 +52,7 @@ namespace EarthWithMagicAPI.API.Creature
             throw new NotImplementedException();
         }
 
-        public override void Use()
+        public override void Use(ICreature user)
         {
             throw new NotImplementedException();
         }

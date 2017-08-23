@@ -56,7 +56,7 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows.Artifacts
         {
         }
 
-        public override void Use()
+        public override void Use(ICreature user)
         {
         }
 

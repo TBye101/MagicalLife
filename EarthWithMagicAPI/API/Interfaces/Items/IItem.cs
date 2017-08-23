@@ -128,7 +128,8 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         /// <summary>
         /// If the item has a special ability, or can be consumed it should happen when this is called.
         /// </summary>
-        public abstract void Use();
+        /// <param name="user"></param>
+        public abstract void Use(ICreature user);
 
         /// <summary>
         /// Called whenever the player is hit by a weapon.

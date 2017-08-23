@@ -340,7 +340,7 @@
                         if (item.Name == Command[1])
                         {
                             Util.Util.WriteLine("Using " + item.Name);
-                            item.Use();
+                            item.Use(creature);
                             return;
                         }
                     }

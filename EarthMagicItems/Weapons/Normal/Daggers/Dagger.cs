@@ -50,7 +50,7 @@ namespace EarthMagicItems.Weapons.Normal.Daggers
         {
         }
 
-        public override void Use()
+        public override void Use(ICreature user)
         {
         }
 

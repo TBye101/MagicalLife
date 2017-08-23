@@ -41,7 +41,7 @@ namespace EarthMagicItems.Gems
         {
         }
 
-        public override void Use()
+        public override void Use(ICreature user)
         {
             throw new NotImplementedException();
         }
