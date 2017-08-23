@@ -10,7 +10,7 @@ namespace EarthMagicItems.Other.Lockpicks
 
     public class SteelLockpick : ILockpick
     {
-        public SteelLockpick(string documentationPath)
+        public SteelLockpick()
             : base(
                   "Steel Lockpick",
                   .25,

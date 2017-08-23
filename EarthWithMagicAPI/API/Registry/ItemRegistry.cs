@@ -1,4 +1,5 @@
-﻿namespace EarthWithMagicAPI.API.Registry
+﻿using System.Reflection;
+namespace EarthWithMagicAPI.API.Registry
 {
     using System;
     using System.Collections.Generic;
@@ -17,10 +18,25 @@
 
             foreach (Type item in itemAssembly.GetTypes())
             {
-                if (interfaceType.IsAssignableFrom(item))
+                if (interfaceType.IsAssignableFrom(item) && !item.GetTypeInfo().IsAbstract)
                 {
-                    IItem someItem = (IItem)itemAssembly.CreateInstance(item.FullName, false);
-                    Items.Add(someItem);
+                    foreach (ConstructorInfo constructor in item.GetTypeInfo().DeclaredConstructors)
+                    {
+                        if (constructor.GetParameters().Length == 0)
+                        {
+                            IItem someItem = (IItem)itemAssembly.CreateInstance(item.FullName, false);
+                            Items.Add(someItem);
+                        }
+                    }
+                }
+
+                foreach (PropertyInfo ob in item.GetProperties())
+                {
+                    if (interfaceType.IsAssignableFrom(ob.GetType()))
+                    {
+                        IItem someItem = (IItem)itemAssembly.CreateInstance(ob.GetType().FullName, false);
+                        Items.Add(someItem);
+                    }
                 }
             }
         }

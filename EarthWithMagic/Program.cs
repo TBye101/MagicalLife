@@ -1,4 +1,7 @@
-﻿using EarthMagicCharacters.Classes.Monk.Generic_Monk;
+﻿using EarthWithMagicAPI.API.Interfaces.Items;
+using System.Collections.Generic;
+using EarthWithMagicAPI.API.Registry;
+using EarthMagicCharacters.Classes.Monk.Generic_Monk;
 using EarthMagicDocumentation;
 using EarthWithMagicAPI.API.Creature;
 using EarthWithMagicAPI.API.Party;
@@ -15,7 +18,7 @@ namespace EarthWithMagic
             Console.OutputEncoding = System.Text.Encoding.Unicode;
             Console.SetBufferSize(Console.BufferWidth, 32766);
             Util.WriteLine(ResourceGM.GetResource("EarthMagicDocumentation.ASCII_Art.Title.txt"));
-            //Util.WriteLine(ResourceGM.GetResource("EarthMagicDocumentation.ASCII_Art.Dragon_Breathing_Fire.txt"));
+            List<IItem> a = ItemRegistry.Items;
 
             string input;
             MainCreatureGenerator gen = new MainCreatureGenerator();
