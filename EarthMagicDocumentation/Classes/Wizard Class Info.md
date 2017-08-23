@@ -170,6 +170,6 @@ Casting power: +10
 #### 50th Level:  
 
 Casting power: +11
-### 51th Level:  
+### 51th Level: Spell Inventor
 
 Casting power: +11
