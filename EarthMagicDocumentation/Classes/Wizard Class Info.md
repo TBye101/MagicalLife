@@ -35,13 +35,13 @@ Casting power: +1
 #### 5th Level: Arcane apprentice
 
 Casting power: +2
-#### 6th Level: 
+#### 6th Level: Arcane Partner
 
 Casting power: +2
-#### 7th Level: 
+#### 7th Level: Traveler
 
 Casting power: +2
-#### 8th Level:  
+#### 8th Level: 
 
 Casting power: +2
 #### 9th Level: 
@@ -122,7 +122,7 @@ Casting power: +7
 #### 34th Level: 
 
 Casting power: +7
-#### 35th Level:  
+#### 35th Level: Archmage
 
 Casting power: +8
 #### 36th Level:  
@@ -149,7 +149,7 @@ Casting power: +9
 #### 43rd Level:  
 
 Casting power: +9
-#### 44th Level:  
+#### 44th Level: Tide Turner
 
 Casting power: +9
 #### 45th Level:  
@@ -164,10 +164,10 @@ Casting power: +10
 #### 48th Level:  
 
 Casting power: +10
-#### 49th Level:  
+#### 49th Level: Summoner
 
 Casting power: +10
-#### 50th Level:  
+#### 50th Level: Plane Traveler
 
 Casting power: +11
 ### 51th Level: Spell Inventor
