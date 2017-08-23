@@ -9,7 +9,7 @@ namespace EarthMagicItems
     /// <summary>
     /// Holds all items
     /// </summary>
-    public static class ItemRegistry
+    public static class ItemReg
     {
         //Armor
         public static GenericArmorStorage Armor = new GenericArmorStorage();
