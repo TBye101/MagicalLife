@@ -17,16 +17,39 @@
     <Folder Include="Rings\Rings of Resistence\Ring Of Acid Resistence\" />
     <Folder Include="Wands\" />
     <Folder Include="Wands\" />
-    <Folder Include="Weapons\Ranged\Crossbows\" />
-    <Folder Include="Weapons\Ranged\Longbows\" />
-    <Folder Include="Weapons\Ranged\Slings\" />
-    <Folder Include="Weapons\Ranged\Recurve Bows\" />
+    <Folder Include="Weapons\Normal\Battle Axes\" />
+    <Folder Include="Weapons\Normal\Broadswords\" />
+    <Folder Include="Weapons\Normal\Clubs\" />
+    <Folder Include="Weapons\Normal\Daggers\" />
+    <Folder Include="Weapons\Normal\Flails\" />
+    <Folder Include="Weapons\Normal\Glaives\" />
+    <Folder Include="Weapons\Normal\Halberds\" />
+    <Folder Include="Weapons\Normal\Katanas\" />
+    <Folder Include="Weapons\Normal\Lances\" />
+    <Folder Include="Weapons\Normal\Maces\" />
+    <Folder Include="Weapons\Normal\Morning Stars\" />
+    <Folder Include="Weapons\Normal\Pikes\" />
+    <Folder Include="Weapons\Normal\Quaterstaffs\" />
+    <Folder Include="Weapons\Normal\Ranged\Crossbows\" />
+    <Folder Include="Weapons\Normal\Ranged\Longbows\" />
+    <Folder Include="Weapons\Normal\Ranged\Recurve Bows\" />
+    <Folder Include="Weapons\Normal\Ranged\Slings\" />
+    <Folder Include="Weapons\Normal\Rapiers\" />
+    <Folder Include="Weapons\Normal\Sabres\" />
+    <Folder Include="Weapons\Normal\Scimitars\" />
+    <Folder Include="Weapons\Normal\Short Swords\" />
+    <Folder Include="Weapons\Normal\War Hammers\" />
     <Folder Include="Weapons\Throwing\Balanced Daggers\" />
     <Folder Include="Weapons\Throwing\Darts\" />
+    <Folder Include="Weapons\Throwing\Darts\" />
     <Folder Include="Weapons\Throwing\Javalins\" />
+    <Folder Include="Weapons\Throwing\Javalins\" />
+    <Folder Include="Weapons\Throwing\Shurikens\" />
+    <Folder Include="Weapons\Throwing\Throwing Axes\" />
     <Folder Include="Weapons\Throwing\Throwing Knives\" />
     <Folder Include="Weapons\Throwing\Throwing Axes\" />
     <Folder Include="Weapons\Throwing\Shurikens\" />
+    <Folder Include="Weapons\Throwing\Throwing Knives\" />
   </ItemGroup>
 
   <ItemGroup>
