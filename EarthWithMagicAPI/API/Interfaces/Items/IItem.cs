@@ -162,6 +162,7 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         public int WeightCapacity = 0;
         public int Wisdom = 0;
         public int Lockpick = 0;
+        public int WalkSilently = 0;
 
         public StatsImpact()
         {
@@ -170,7 +171,7 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
 
         public StatsImpact(int charisma, int dexterity, int strength, int constitution, int wisdom, int ac,
             int health, int weightCapacity, int fireResistance, int acidResistance, int poisonResistance, int electricResistance, int coldResistance, int magicResistance, int charmResistance,
-            int sleepResistance, int initiative, int dodge, int lockpick)
+            int sleepResistance, int initiative, int dodge, int lockpick, int walkSilently)
         {
             this.Charisma = charisma;
             this.Dexterity = dexterity;
@@ -192,6 +193,7 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
             this.Initiative = initiative;
             this.Dodge = dodge;
             this.Lockpick = lockpick;
+            this.WalkSilently = walkSilently;
         }
     }
 }
