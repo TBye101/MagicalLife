@@ -27,6 +27,7 @@
     <None Remove="ASCII Art\Items\Ammo\CrossbowBolt.txt" />
     <None Remove="ASCII Art\Items\Ammo\Special\TheInevitable.txt" />
     <None Remove="ASCII Art\Items\Amulets\Clerical\HolySymbolOfTali.txt" />
+    <None Remove="ASCII Art\Items\Armor\Boots\LeatherBootsOfSoftStepping.txt" />
     <None Remove="ASCII Art\Items\Fists.txt" />
     <None Remove="ASCII Art\Items\Other\Lockpick.txt" />
     <None Remove="ASCII Art\Items\Weapons\Normal\Scimitars\AngelSword.txt" />
@@ -113,6 +114,7 @@
     <None Remove="Items\Ammo\Stones\PoisonStone.md" />
     <None Remove="Items\Ammo\Stones\Stone.md" />
     <None Remove="Items\Amulets\Clerical\HolySymbolOfTali.md" />
+    <None Remove="Items\Armor\Boots\LeatherBootsOfSoftStepping.md" />
     <None Remove="Items\Fists.md" />
     <None Remove="Items\Other\Lockpicks\SteelLockpick.md" />
     <None Remove="Items\Weapons\Normal\Scimitars\AngelSword.md" />
@@ -149,6 +151,7 @@
     <EmbeddedResource Include="ASCII Art\Items\Ammo\CrossbowBolt.txt" />
     <EmbeddedResource Include="ASCII Art\Items\Ammo\Special\TheInevitable.txt" />
     <EmbeddedResource Include="ASCII Art\Items\Amulets\Clerical\HolySymbolOfTali.txt" />
+    <EmbeddedResource Include="ASCII Art\Items\Armor\Boots\LeatherBootsOfSoftStepping.txt" />
     <EmbeddedResource Include="ASCII Art\Items\Fists.txt" />
     <EmbeddedResource Include="ASCII Art\Items\Other\Lockpick.txt" />
     <EmbeddedResource Include="ASCII Art\Items\Weapons\Normal\Scimitars\AngelSword.txt" />
@@ -234,6 +237,7 @@
     <EmbeddedResource Include="Items\Ammo\Stones\PoisonStone.md" />
     <EmbeddedResource Include="Items\Ammo\Stones\Stone.md" />
     <EmbeddedResource Include="Items\Amulets\Clerical\HolySymbolOfTali.md" />
+    <EmbeddedResource Include="Items\Armor\Boots\LeatherBootsOfSoftStepping.md" />
     <EmbeddedResource Include="Items\Fists.md" />
     <EmbeddedResource Include="Items\Other\Lockpicks\SteelLockpick.md" />
     <EmbeddedResource Include="Items\Weapons\Normal\Scimitars\AngelSword.md" />

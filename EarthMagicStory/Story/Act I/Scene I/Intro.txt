@@ -38,21 +38,21 @@ Bosworth: I really need to sell my old adventuring gear, so I can buy that new o
 
 Items Offered:
 
-[IF] Thief
+[IF] Thief✓
 
-Rusty steel lock pick.
+Rusty steel lock pick.✓
 Unbalanced dagger.
 Leather breastplate.✓
 Leather Boots of Soft Stepping
 
-[IF] Wizard
+[IF] Wizard✓
 
 Tattered Spellbook.
 Splintering Quarterstaff
 Stained Robe
 
 
-[IF] Monk
+[IF] Monk✓
 
 Holy symbol of Faehau
 Well Patched Robe
@@ -80,7 +80,7 @@ Dark Idol
 
 [IF] Suntouched
 Well used Holy Symbol of Tali ✓
-Rusted armor
+Rusted armor✓
 
 [IF] Druid
 Elemental quarterstaff
