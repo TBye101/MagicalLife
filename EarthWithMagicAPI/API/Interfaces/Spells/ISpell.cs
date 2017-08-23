@@ -1,10 +1,10 @@
-﻿using EarthMagicDocumentation;
-using EarthWithMagicAPI.API.Creature;
-using System;
-using System.Collections.Generic;
-
-namespace EarthWithMagicAPI.API.Interfaces.Spells
+﻿namespace EarthWithMagicAPI.API.Interfaces.Spells
 {
+    using System;
+    using System.Collections.Generic;
+    using EarthMagicDocumentation;
+    using EarthWithMagicAPI.API.Creature;
+
     /// <summary>
     /// The base class for spells.
     /// </summary>
@@ -37,9 +37,10 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
         /// </summary>
         public int XPValue = 0;
 
+        private readonly bool CombatOnly;
         private string ImagePath;
 
-        readonly bool CombatOnly;
+        public int MemorizationDifficulty;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ISpell"/> class.
@@ -60,12 +61,7 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
             this.Info = ResourceGM.GetResource(documentationPath);
             this.ImagePath = imagePath;
             this.CombatOnly = combatOnly;
-        }
-
-        public void DisplayImage()
-        {
-            List<string> image = ResourceGM.GetResource(this.ImagePath);
-            Util.Util.WriteLine(image);
+            this.MemorizationDifficulty = this.PowerRequired * (this.RoundsLeft + 1);
         }
 
         public bool Cast(List<ICreature> party, List<ICreature> enemies, ICreature caster)
@@ -120,23 +116,11 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
             }
         }
 
-        /// <summary>
-        /// Called when the spell is cast in peace.
-        /// </summary>
-        /// <param name="theParty"></param>
-        /// <param name="creature"></param>
-        /// <returns></returns>
-        protected abstract bool Go(List<ICreature> theParty, ICreature creature);
-
-        /// <summary>
-        /// Called when the spell is cast.
-        /// </summary>
-        /// <param name="creature"></param>
-        /// <param name="Party"></param>
-        /// <param name="Enemies"></param>
-        /// <param name="Caster"></param>
-        /// <returns>Returns if the caster was able to cast the spell.</returns>
-        protected abstract bool Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster);
+        public void DisplayImage()
+        {
+            List<string> image = ResourceGM.GetResource(this.ImagePath);
+            Util.Util.WriteLine(image);
+        }
 
         /// <summary>
         /// Called whenever the creature tries to take an action.
@@ -172,5 +156,23 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
         /// <param name="Enemies"></param>
         /// <param name="Affected"></param>
         public abstract void OnWearOff(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected);
+
+        /// <summary>
+        /// Called when the spell is cast in peace.
+        /// </summary>
+        /// <param name="theParty"></param>
+        /// <param name="creature"></param>
+        /// <returns></returns>
+        protected abstract bool Go(List<ICreature> theParty, ICreature creature);
+
+        /// <summary>
+        /// Called when the spell is cast.
+        /// </summary>
+        /// <param name="creature"></param>
+        /// <param name="Party"></param>
+        /// <param name="Enemies"></param>
+        /// <param name="Caster"></param>
+        /// <returns>Returns if the caster was able to cast the spell.</returns>
+        protected abstract bool Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster);
     }
 }
