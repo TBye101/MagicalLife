@@ -118,6 +118,7 @@
     <None Remove="Items\Armor\Boots\LeatherBootsOfSoftStepping.md" />
     <None Remove="Items\Fists.md" />
     <None Remove="Items\Other\Lockpicks\SteelLockpick.md" />
+    <None Remove="Items\Weapons\Normal\Daggers\Dagger.md" />
     <None Remove="Items\Weapons\Normal\Scimitars\AngelSword.md" />
     <None Remove="Other\ArmorClasses.md" />
     <None Remove="Other\CreatureList.md" />
@@ -242,6 +243,7 @@
     <EmbeddedResource Include="Items\Armor\Boots\LeatherBootsOfSoftStepping.md" />
     <EmbeddedResource Include="Items\Fists.md" />
     <EmbeddedResource Include="Items\Other\Lockpicks\SteelLockpick.md" />
+    <EmbeddedResource Include="Items\Weapons\Normal\Daggers\Dagger.md" />
     <EmbeddedResource Include="Items\Weapons\Normal\Scimitars\AngelSword.md" />
     <EmbeddedResource Include="Other\ArmorClasses.md" />
     <EmbeddedResource Include="Other\CreatureList.md" />
