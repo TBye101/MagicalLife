@@ -183,6 +183,16 @@
         public bool Telepathy = false;
         public int WalkSilently = 0;
 
+        /// <summary>
+        /// The base number of prayers this creature can pray.
+        /// </summary>
+        public int BasePrayers = 0;
+
+        /// <summary>
+        /// The number of prayers left for this creature.
+        /// </summary>
+        public int Prayers = 0;
+
         public void Rest()
         {
             this.DarkVision = this.BaseDarkVision;
@@ -205,6 +215,7 @@
             this.DetectIllusions = this.BaseDetectIllusions;
             this.Backstab = this.BaseBackstab;
             this.StunningBlows = this.BaseStunningBlows;
+            this.Prayers = this.BasePrayers;
         }
     }
 }

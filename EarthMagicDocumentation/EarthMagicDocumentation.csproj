@@ -177,7 +177,7 @@
     <EmbeddedResource Include="Classes\WIP\Barbarian Class Info.md" />
     <EmbeddedResource Include="Classes\WIP\Bard Class Info.md" />
     <EmbeddedResource Include="Classes\WIP\Beastmaster Class Info.md" />
-    <EmbeddedResource Include="Classes\WIP\Cleric Class Info.md" />
+    <EmbeddedResource Include="Classes\Cleric Class Info.md" />
     <EmbeddedResource Include="Classes\WIP\Cold Druid Class Info.md" />
     <EmbeddedResource Include="Classes\WIP\Wizard\Dragonborn Class Info.md" />
     <EmbeddedResource Include="Classes\WIP\Duelist Class Info.md" />

@@ -92,7 +92,6 @@ Prayers to Tali: +1
 Prayers to Tali: +1
 #### 25th Level: 
 
-Prayers to Tali: +1
 +1 Wisdom
 #### 26th Level: 
 
@@ -172,4 +171,3 @@ Prayers to Tali: +1
 ### 51th Level:  
 
 +1 Wisdom
-Prayers to Tali: +1

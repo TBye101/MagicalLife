@@ -23,7 +23,8 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         /// <param name="alignment"></param>
         /// <param name="name"></param>
         /// <param name="isHostile"></param>
-        public GenericMonk(Gender gender, Race race = Race.Human, Alignment alignment = Alignment.LawfulGood, string name = "Monk", bool isHostile = false) : base(GetAtt(gender, race, alignment), new CreatureAbilities(),
+        public GenericMonk(Gender gender, Race race = Race.Human, Alignment alignment = Alignment.LawfulGood, string name = "Monk", bool isHostile = false)
+            : base(GetAtt(gender, race, alignment), new CreatureAbilities(),
             "EarthMagicDocumentation.Classes.Monk_Class_Info.md", "EarthMagicDocumentation.ASCII_Art.Monk.txt", new MonkAI())
         {
             this.CreatureType = "Monk";
