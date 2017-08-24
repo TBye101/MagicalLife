@@ -12,7 +12,7 @@
 
         static SpellRegistry()
         {
-            Assembly itemAssembly = Assembly.Load(new AssemblyName("EarthMagicItems"));
+            Assembly itemAssembly = Assembly.Load(new AssemblyName("EarthWithMagicMagic"));
             Type interfaceType = typeof(ISpell);
 
             foreach (Type item in itemAssembly.GetTypes())
@@ -38,6 +38,11 @@
         /// <returns></returns>
         public static List<ISpell> GetSpellsUnderPower(int power)
         {
+            if (Spells.Count == 0)
+            {
+                
+            }
+
             List<ISpell> spells = new List<ISpell>();
 
             foreach (ISpell item in Spells)

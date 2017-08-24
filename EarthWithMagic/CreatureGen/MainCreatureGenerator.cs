@@ -1,9 +1,9 @@
-﻿using EarthMagicCharacters.Classes.Monk;
-using EarthWithMagic.CreatureGen;
-using System;
-
-namespace EarthWithMagicAPI.API.Creature
+﻿namespace EarthWithMagicAPI.API.Creature
 {
+    using System;
+    using EarthMagicCharacters.Classes.Monk;
+    using EarthWithMagic.CreatureGen;
+
     /// <summary>
     /// Switches and determines which class generator to launch.
     /// </summary>
@@ -11,11 +11,14 @@ namespace EarthWithMagicAPI.API.Creature
     {
         public ICreature GetMainCharacter()
         {
-            Util.Util.WriteLine("Monk, Wizard, or Thief?");
+            Util.Util.WriteLine("Monk, Wizard, Cleric, or Thief?");
             string input = Console.ReadLine();
 
             switch (input.ToLower())
             {
+                case "cleric":
+                    ClericCharacterGenerator cleric = new ClericCharacterGenerator();
+                    return cleric.Generate();
                 case "monk":
                     MonkCharacterGeneration gen = new MonkCharacterGeneration();
                     return gen.Generate();
@@ -28,7 +31,7 @@ namespace EarthWithMagicAPI.API.Creature
                     return wizard.Generate();
                 default:
                     Util.Util.WriteLine("Invalid input!");
-                    return GetMainCharacter();
+                    return this.GetMainCharacter();
             }
         }
     }

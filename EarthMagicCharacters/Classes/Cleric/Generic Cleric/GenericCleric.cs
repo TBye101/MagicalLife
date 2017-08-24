@@ -7,7 +7,7 @@
 
     public class GenericCleric : ICharacter
     {
-        private bool _Hostile;
+        private bool hostile;
 
         public GenericCleric(Gender gender, Race race, Alignment alignment, string name = "Cleric", bool isHostile = false)
             : base(GetAtt(gender, race, alignment), new CreatureAbilities(), "EarthMagicDocumentation.Classes.Cleric_Class_Info.md", "EarthMagicDocumentation.ASCII_Art.Cleric.txt", new ClericAI())
@@ -15,7 +15,7 @@
             this.CreatureType = "Cleric";
             this.Abilities.BasePrayers = 1;
             this.Name = name;
-            this._Hostile = isHostile;
+            this.hostile = isHostile;
         }
 
         private static CreatureAttributes GetAtt(Gender gender, Race race, Alignment alignment)
@@ -29,12 +29,11 @@
 
         public override void EquipItem(IItem item)
         {
-            throw new NotImplementedException();
         }
 
         public override bool IsHostile()
         {
-            return this._Hostile;
+            return this.hostile;
         }
 
         public override void LevelUp()

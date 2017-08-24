@@ -1,12 +1,14 @@
 ﻿namespace EarthWithMagic.CreatureGen
 {
     using System;
-    using EarthMagicCharacters.Classes.Thief.Generic_Thief;
+    using System.Collections.Generic;
+    using System.Text;
+    using EarthMagicCharacters.Classes.Cleric.Generic_Cleric;
     using EarthMagicDocumentation;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Util;
 
-    public class ThiefCharacterGenerator : ICreatureGenerator
+    public class ClericCharacterGenerator
     {
         /// <summary>
         /// Asks the user to choose items from a list of options until the character is created.
@@ -14,15 +16,15 @@
         /// <returns></returns>
         public ICreature Generate()
         {
-            Util.WriteLine(ResourceGM.GetResource("EarthMagicDocumentation.ASCII_Art.Thief.txt"));
-            GenericThief monk = new GenericThief(this.GetGender(), this.GetRace(), this.GetAlignment(), this.GetName());
-            monk.IsInParty = true;
-            return monk;
+            Util.WriteLine(ResourceGM.GetResource("EarthMagicDocumentation.ASCII_Art.Cleric.txt"));
+            GenericCleric cleric = new GenericCleric(this.GetGender(), this.GetRace(), this.GetAlignment(), this.GetName());
+            cleric.IsInParty = true;
+            return cleric;
         }
 
         private Alignment GetAlignment()
         {
-            Util.WriteLine("Lawful Good, Chaotic Good, Lawful Neutral, True Neutral, Chaotic Neutral, Lawful Evil, Neutral Evil, or Chaotic Evil?");
+            Util.WriteLine("Lawful Good, Lawful Neutral, or Lawful Evil?");
             string input = Console.ReadLine();
 
             switch (input.ToLower())
@@ -30,26 +32,11 @@
                 case "lawful good":
                     return Alignment.LawfulGood;
 
-                case "chaotic good":
-                    return Alignment.ChaoticGood;
-
                 case "lawful neutral":
                     return Alignment.LawfulNeutral;
 
-                case "true neutral":
-                    return Alignment.TrueNeutral;
-
-                case "chaotic neutral":
-                    return Alignment.ChaoticNeutral;
-
                 case "lawful evil":
                     return Alignment.LawfulEvil;
-
-                case "neutral evil":
-                    return Alignment.NeutralEvil;
-
-                case "chaotic evil":
-                    return Alignment.ChaoticEvil;
 
                 default:
                     Util.WriteLine("Invalid alignment!");
@@ -97,7 +84,7 @@
 
         private Race GetRace()
         {
-            Util.WriteLine("Human, Elf, Dwarf, Kender, Drow, Dragonborn, or Unspecified?");
+            Util.WriteLine("Human, Elf, Dwarf, Kender, Duergar, or Unspecified?");
 
             string Input = Console.ReadLine();
 
@@ -115,8 +102,8 @@
                 case "kender":
                     return Race.Kender;
 
-                case "dragonborn":
-                    return Race.Dragonborn;
+                case "duergar":
+                    return Race.Duergar;
 
                 case "unspecified":
                     return Race.Unspecified;
