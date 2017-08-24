@@ -1,7 +1,7 @@
-﻿using EarthWithMagicAPI.API.Interfaces.Items;
-
-namespace EarthMagicDynamicMarket
+﻿namespace EarthMagicDynamicMarket
 {
+    using EarthWithMagicAPI.API.Interfaces.Items;
+
     /// <summary>
     /// Returns a price for an item
     /// </summary>

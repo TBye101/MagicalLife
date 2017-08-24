@@ -1,9 +1,9 @@
-﻿using EarthWithMagicAPI.API;
-using EarthWithMagicAPI.API.Util;
-using System.Collections.Generic;
-
-namespace EarthMagicItems.Ammo.Arrows
+﻿namespace EarthMagicItems.Ammo.Arrows
 {
+    using System.Collections.Generic;
+    using EarthWithMagicAPI.API;
+    using EarthWithMagicAPI.API.Util;
+
     /// <summary>
     /// Storage for the generic arrows.
     /// </summary>

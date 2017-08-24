@@ -1,7 +1,7 @@
-﻿using EarthWithMagicAPI.API.Stuff;
-
-namespace EarthWithMagicAPI.API.Creature
+﻿namespace EarthWithMagicAPI.API.Creature
 {
+    using EarthWithMagicAPI.API.Stuff;
+
     /// <summary>
     /// Used to abstract AI combat.
     /// </summary>

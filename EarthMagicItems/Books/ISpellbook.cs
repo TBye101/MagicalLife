@@ -1,5 +1,4 @@
-﻿using EarthWithMagicAPI.API.Util;
-namespace EarthMagicItems.Books
+﻿namespace EarthMagicItems.Books
 {
     using System;
     using System.Collections.Generic;
@@ -7,6 +6,7 @@ namespace EarthMagicItems.Books
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Interfaces.Spells;
+    using EarthWithMagicAPI.API.Util;
 
     /// <summary>
     /// Shared logic for all spellbooks.

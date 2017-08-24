@@ -1,12 +1,12 @@
-﻿using EarthWithMagicAPI.API.Util;
-using System.Linq;
-namespace EarthMagicCharacters.Classes.Wizard.Generic_Wizard
+﻿namespace EarthMagicCharacters.Classes.Wizard.Generic_Wizard
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Stuff;
+    using EarthWithMagicAPI.API.Util;
 
     public class WizardAI : IAI
     {

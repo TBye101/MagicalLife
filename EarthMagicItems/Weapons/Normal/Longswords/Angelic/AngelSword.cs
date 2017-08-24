@@ -1,11 +1,12 @@
-﻿using EarthWithMagicAPI.API.Creature;
-using EarthWithMagicAPI.API.Interfaces.Items;
-using EarthWithMagicAPI.API.Interfaces.Spells;
-using EarthWithMagicAPI.API.Util;
-using System;
-
-namespace EarthMagicItems.Weapons.Normal.Longswords.Angelic
+﻿namespace EarthMagicItems.Weapons.Normal.Longswords.Angelic
 {
+    using System;
+    using EarthWithMagicAPI.API.Creature;
+    using EarthWithMagicAPI.API.Interfaces.Items;
+    using EarthWithMagicAPI.API.Interfaces.Spells;
+    using EarthWithMagicAPI.API.Stuff;
+    using EarthWithMagicAPI.API.Util;
+
     public class AngelSword : IWeapon
     {
         public AngelSword() : base(new EarthWithMagicAPI.API.Damage(
@@ -61,6 +62,11 @@ namespace EarthMagicItems.Weapons.Normal.Longswords.Angelic
         }
 
         public override void Use(ICreature user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Use(ICreature user, Encounter encounter)
         {
             throw new NotImplementedException();
         }

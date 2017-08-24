@@ -1,10 +1,10 @@
-﻿using EarthWithMagicAPI.API.Creature;
-using EarthWithMagicAPI.API.Util;
-using System.Collections.Generic;
-using System;
-
-namespace EarthWithMagicMagic.Abilities.Monk
+﻿namespace EarthWithMagicMagic.Abilities.Monk
 {
+    using System;
+    using System.Collections.Generic;
+    using EarthWithMagicAPI.API.Creature;
+    using EarthWithMagicAPI.API.Util;
+
     /// <summary>
     /// Stuns the target creature, if the hit is successful.
     /// Uses fists only for stunning blow.

@@ -1,9 +1,9 @@
-﻿using EarthWithMagicAPI.API.Creature;
-namespace EarthWithMagicAPI.API.Story
+﻿namespace EarthWithMagicAPI.API.Story
 {
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using EarthWithMagicAPI.API.Creature;
 
     /// <summary>
     /// Used when the party could rest, or is in a peaceful area.

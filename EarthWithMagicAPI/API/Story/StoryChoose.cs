@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace EarthWithMagicAPI.API.Stuff
+﻿namespace EarthWithMagicAPI.API.Stuff
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
     /// Used whenever the character has to read some text, or make a decision.
     /// </summary>

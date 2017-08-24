@@ -1,11 +1,11 @@
-﻿using EarthMagicItems.Ammo.Arrows;
-using EarthMagicItems.Ammo.Bolts;
-using EarthMagicItems.Ammo.Stones;
-using EarthMagicItems.Armor.Generic.Steel;
-using EarthMagicItems.Gems;
-
-namespace EarthMagicItems
+﻿namespace EarthMagicItems
 {
+    using EarthMagicItems.Ammo.Arrows;
+    using EarthMagicItems.Ammo.Bolts;
+    using EarthMagicItems.Ammo.Stones;
+    using EarthMagicItems.Armor.Generic.Steel;
+    using EarthMagicItems.Gems;
+
     /// <summary>
     /// Holds all items
     /// </summary>

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace EarthWithMagicAPI.API.Util
+﻿namespace EarthWithMagicAPI.API.Util
 {
+    using System;
+    using System.Collections.Generic;
+
     public static class Util
     {
         /// <summary>

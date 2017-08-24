@@ -1,12 +1,12 @@
-﻿using EarthWithMagicAPI.API.Creature;
-using EarthWithMagicAPI.API.Interfaces.Items;
-using EarthWithMagicAPI.API.Stuff;
-using EarthWithMagicAPI.API.Util;
-using System;
-using System.Collections.Generic;
-
-namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
+﻿namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 {
+    using System;
+    using System.Collections.Generic;
+    using EarthWithMagicAPI.API.Creature;
+    using EarthWithMagicAPI.API.Interfaces.Items;
+    using EarthWithMagicAPI.API.Stuff;
+    using EarthWithMagicAPI.API.Util;
+
     /// <summary>
     /// The generic thief class implementation.
     /// </summary>

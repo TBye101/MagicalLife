@@ -1,8 +1,8 @@
-﻿using EarthWithMagicAPI.API.Interfaces.Spells;
-using System;
-
-namespace EarthWithMagicAPI.API.Creature
+﻿namespace EarthWithMagicAPI.API.Creature
 {
+    using System;
+    using EarthWithMagicAPI.API.Interfaces.Spells;
+
     /// <summary>
     /// Dynamically calculates the experience value of a creature.
     /// </summary>

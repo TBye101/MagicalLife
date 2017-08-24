@@ -1,16 +1,16 @@
-﻿using EarthWithMagicAPI.API.Interfaces.Items;
-using System.Collections.Generic;
-using EarthWithMagicAPI.API.Registry;
-using EarthMagicCharacters.Classes.Monk.Generic_Monk;
-using EarthMagicDocumentation;
-using EarthWithMagicAPI.API.Creature;
-using EarthWithMagicAPI.API.Party;
-using EarthWithMagicAPI.API.Stuff;
-using EarthWithMagicAPI.API.Util;
-using System;
-
-namespace EarthWithMagic
+﻿namespace EarthWithMagic
 {
+    using System;
+    using System.Collections.Generic;
+    using EarthMagicCharacters.Classes.Monk.Generic_Monk;
+    using EarthMagicDocumentation;
+    using EarthWithMagicAPI.API.Creature;
+    using EarthWithMagicAPI.API.Interfaces.Items;
+    using EarthWithMagicAPI.API.Party;
+    using EarthWithMagicAPI.API.Registry;
+    using EarthWithMagicAPI.API.Stuff;
+    using EarthWithMagicAPI.API.Util;
+
     public static class Program
     {
         private static void Main(string[] args)

@@ -1,5 +1,4 @@
-﻿using EarthWithMagicAPI.API.Util;
-namespace EarthMagicItems.Other.Lockpicks
+﻿namespace EarthMagicItems.Other.Lockpicks
 {
     using System;
     using System.Collections.Generic;
@@ -7,6 +6,8 @@ namespace EarthMagicItems.Other.Lockpicks
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Interfaces.Spells;
+    using EarthWithMagicAPI.API.Stuff;
+    using EarthWithMagicAPI.API.Util;
 
     public class SteelLockpick : ILockpick
     {
@@ -44,6 +45,11 @@ namespace EarthMagicItems.Other.Lockpicks
         }
 
         public override void Use(ICreature user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Use(ICreature user, Encounter encounter)
         {
             throw new NotImplementedException();
         }

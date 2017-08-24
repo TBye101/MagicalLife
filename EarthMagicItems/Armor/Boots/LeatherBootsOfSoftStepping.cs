@@ -6,6 +6,7 @@
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Interfaces.Spells;
+    using EarthWithMagicAPI.API.Stuff;
 
     public class LeatherBootsOfSoftStepping : IArmor
     {
@@ -40,6 +41,11 @@
 
         public override void Use(ICreature user)
         {
+        }
+
+        public override void Use(ICreature user, Encounter encounter)
+        {
+            throw new NotImplementedException();
         }
 
         public override void WeaponHit(IWeapon attacker)

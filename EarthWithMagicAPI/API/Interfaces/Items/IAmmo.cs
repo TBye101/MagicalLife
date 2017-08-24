@@ -1,7 +1,7 @@
-﻿using EarthWithMagicAPI.API.Util;
-
-namespace EarthWithMagicAPI.API.Interfaces.Items
+﻿namespace EarthWithMagicAPI.API.Interfaces.Items
 {
+    using EarthWithMagicAPI.API.Util;
+
     /// <summary>
     /// Implemented by anything that is considered "ammo".
     /// </summary>

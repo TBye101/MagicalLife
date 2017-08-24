@@ -1,14 +1,15 @@
-﻿using EarthMagicDynamicMarket;
-using EarthWithMagicAPI.API;
-using EarthWithMagicAPI.API.Creature;
-using EarthWithMagicAPI.API.Interfaces.Items;
-using EarthWithMagicAPI.API.Interfaces.Spells;
-using EarthWithMagicAPI.API.Util;
-using System;
-using System.Collections.Generic;
-
-namespace EarthMagicItems.Ammo.Arrows
+﻿namespace EarthMagicItems.Ammo.Arrows
 {
+    using System;
+    using System.Collections.Generic;
+    using EarthMagicDynamicMarket;
+    using EarthWithMagicAPI.API;
+    using EarthWithMagicAPI.API.Creature;
+    using EarthWithMagicAPI.API.Interfaces.Items;
+    using EarthWithMagicAPI.API.Interfaces.Spells;
+    using EarthWithMagicAPI.API.Stuff;
+    using EarthWithMagicAPI.API.Util;
+
     public class GenericAmmo : IAmmo
     {
         public GenericAmmo(Die uses, string name, Damage attackDamage, string imagePath, string documentationPath, double weight) : base(name, weight, imagePath, documentationPath)
@@ -46,6 +47,11 @@ namespace EarthMagicItems.Ammo.Arrows
         }
 
         public override void Use(ICreature user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Use(ICreature user, Encounter encounter)
         {
             throw new NotImplementedException();
         }

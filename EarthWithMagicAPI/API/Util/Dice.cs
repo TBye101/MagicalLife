@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace EarthWithMagicAPI.API.Util
+﻿namespace EarthWithMagicAPI.API.Util
 {
+    using System;
+
     /// <summary>
     /// Simulated dice roller.
     /// </summary>

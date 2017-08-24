@@ -1,7 +1,7 @@
-﻿using EarthWithMagicAPI.API.Creature;
-
-namespace EarthWithMagicAPI.API.Interfaces.Items
+﻿namespace EarthWithMagicAPI.API.Interfaces.Items
 {
+    using EarthWithMagicAPI.API.Creature;
+
     /// <summary>
     /// The interface of all weapons.
     /// </summary>

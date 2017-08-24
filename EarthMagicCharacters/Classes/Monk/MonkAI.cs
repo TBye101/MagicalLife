@@ -1,8 +1,8 @@
-﻿using EarthWithMagicAPI.API.Creature;
-using EarthWithMagicAPI.API.Stuff;
-
-namespace EarthMagicCharacters.Classes.Monk
+﻿namespace EarthMagicCharacters.Classes.Monk
 {
+    using EarthWithMagicAPI.API.Creature;
+    using EarthWithMagicAPI.API.Stuff;
+
     /// <summary>
     /// The AI for a monk.
     /// </summary>

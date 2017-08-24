@@ -1,5 +1,4 @@
-﻿using EarthWithMagicAPI.API.Util;
-namespace EarthMagicItems.Weapons.Normal.Daggers
+﻿namespace EarthMagicItems.Weapons.Normal.Daggers
 {
     using System;
     using System.Collections.Generic;
@@ -8,6 +7,8 @@ namespace EarthMagicItems.Weapons.Normal.Daggers
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Interfaces.Spells;
+    using EarthWithMagicAPI.API.Stuff;
+    using EarthWithMagicAPI.API.Util;
 
     public class Dagger : IWeapon
     {
@@ -52,6 +53,11 @@ namespace EarthMagicItems.Weapons.Normal.Daggers
 
         public override void Use(ICreature user)
         {
+        }
+
+        public override void Use(ICreature user, Encounter encounter)
+        {
+            throw new NotImplementedException();
         }
 
         public override void WeaponHit(IWeapon attacker)

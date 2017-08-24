@@ -1,11 +1,11 @@
-﻿using EarthWithMagicAPI.API.Creature;
-using EarthWithMagicAPI.API.Interfaces.Items;
-using EarthWithMagicAPI.API.Stuff;
-using EarthWithMagicAPI.API.Util;
-using System;
-
-namespace EarthMagicCreatures.Creatures.Heavenly.Angels
+﻿namespace EarthMagicCreatures.Creatures.Heavenly.Angels
 {
+    using System;
+    using EarthWithMagicAPI.API.Creature;
+    using EarthWithMagicAPI.API.Interfaces.Items;
+    using EarthWithMagicAPI.API.Stuff;
+    using EarthWithMagicAPI.API.Util;
+
     public class LesserAngel : ICreature
     {
         public LesserAngel() : base(GetBaseAttributes(), new CreatureAbilities(), "EarthMagicDocumentation.Creatures.Heavenly.LesserAngel.md", "EarthMagicDocumentation.ASCII_Art.Creatures.Heavenly.Angels.LesserAngel.txt", null)

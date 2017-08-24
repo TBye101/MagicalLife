@@ -1,7 +1,7 @@
-﻿using EarthWithMagicAPI.API.Util;
-
-namespace EarthWithMagicAPI.API
+﻿namespace EarthWithMagicAPI.API
 {
+    using EarthWithMagicAPI.API.Util;
+
     /// <summary>
     /// Holds all of the different types of damages.
     /// </summary>

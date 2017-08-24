@@ -1,10 +1,11 @@
-﻿using EarthWithMagicAPI.API.Interfaces.Items;
-using EarthWithMagicAPI.API.Interfaces.Spells;
-using System;
-using System.Collections.Generic;
-
-namespace EarthWithMagicAPI.API.Creature
+﻿namespace EarthWithMagicAPI.API.Creature
 {
+    using System;
+    using System.Collections.Generic;
+    using EarthWithMagicAPI.API.Interfaces.Items;
+    using EarthWithMagicAPI.API.Interfaces.Spells;
+    using EarthWithMagicAPI.API.Stuff;
+
     public class Fists : IWeapon
     {
         public Fists() : base(new Damage(Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(),
@@ -53,6 +54,11 @@ namespace EarthWithMagicAPI.API.Creature
         }
 
         public override void Use(ICreature user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Use(ICreature user, Encounter encounter)
         {
             throw new NotImplementedException();
         }

@@ -1,14 +1,15 @@
-﻿using EarthMagicDynamicMarket;
-using EarthWithMagicAPI.API;
-using EarthWithMagicAPI.API.Creature;
-using EarthWithMagicAPI.API.Interfaces.Items;
-using EarthWithMagicAPI.API.Interfaces.Spells;
-using EarthWithMagicAPI.API.Util;
-using System;
-using System.Collections.Generic;
-
-namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows.Artifacts
+﻿namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows.Artifacts
 {
+    using System;
+    using System.Collections.Generic;
+    using EarthMagicDynamicMarket;
+    using EarthWithMagicAPI.API;
+    using EarthWithMagicAPI.API.Creature;
+    using EarthWithMagicAPI.API.Interfaces.Items;
+    using EarthWithMagicAPI.API.Interfaces.Spells;
+    using EarthWithMagicAPI.API.Stuff;
+    using EarthWithMagicAPI.API.Util;
+
     /// <summary>
     /// Before magical arrows were common for folks who could afford them, legend has it that a sorcerer made a magical and sentient arrow.
     /// The sentient arrow served it's master well, and was named "The Inevitable". Some say that if you get close to it, you can hear the screams of the lives it has taken.
@@ -58,6 +59,11 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows.Artifacts
 
         public override void Use(ICreature user)
         {
+        }
+
+        public override void Use(ICreature user, Encounter encounter)
+        {
+            throw new NotImplementedException();
         }
 
         public override void WeaponHit(IWeapon attacker)

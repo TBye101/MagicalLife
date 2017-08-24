@@ -1,13 +1,13 @@
-﻿using EarthWithMagicAPI.API.Controls;
-using EarthWithMagicAPI.API.Story;
-namespace EarthWithMagicAPI.API.Creature
+﻿namespace EarthWithMagicAPI.API.Creature
 {
     using System;
     using System.Collections.Generic;
     using EarthMagicCharacters.Classes;
     using EarthMagicDocumentation;
+    using EarthWithMagicAPI.API.Controls;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Interfaces.Spells;
+    using EarthWithMagicAPI.API.Story;
     using EarthWithMagicAPI.API.Stuff;
     using EarthWithMagicAPI.API.Util;
 

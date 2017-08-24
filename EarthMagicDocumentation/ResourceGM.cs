@@ -1,11 +1,11 @@
-﻿using System;
-using Microsoft.VisualBasic.CompilerServices;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-
-namespace EarthMagicDocumentation
+﻿namespace EarthMagicDocumentation
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Reflection;
+    using Microsoft.VisualBasic.CompilerServices;
+
     /// <summary>
     /// Facilitates in the fetching of resources.
     /// </summary>

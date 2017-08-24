@@ -1,8 +1,8 @@
-﻿using EarthWithMagicAPI.API.Creature;
-using System.Collections.Generic;
-
-namespace EarthWithMagicAPI.API.Party
+﻿namespace EarthWithMagicAPI.API.Party
 {
+    using System.Collections.Generic;
+    using EarthWithMagicAPI.API.Creature;
+
     /// <summary>
     /// The party that the main character is traveling with. This includes the main character.
     /// </summary>

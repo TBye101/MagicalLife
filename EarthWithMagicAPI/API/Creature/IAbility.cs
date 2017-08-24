@@ -1,9 +1,9 @@
-﻿using EarthMagicDocumentation;
-using System;
-using System.Collections.Generic;
-
-namespace EarthWithMagicAPI.API.Creature
+﻿namespace EarthWithMagicAPI.API.Creature
 {
+    using System;
+    using System.Collections.Generic;
+    using EarthMagicDocumentation;
+
     public abstract class IAbility
     {
         /// <summary>

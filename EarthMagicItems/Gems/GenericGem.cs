@@ -1,12 +1,13 @@
-﻿using EarthMagicDynamicMarket;
-using EarthWithMagicAPI.API.Creature;
-using EarthWithMagicAPI.API.Interfaces.Items;
-using EarthWithMagicAPI.API.Interfaces.Spells;
-using System;
-using System.Collections.Generic;
-
-namespace EarthMagicItems.Gems
+﻿namespace EarthMagicItems.Gems
 {
+    using System;
+    using System.Collections.Generic;
+    using EarthMagicDynamicMarket;
+    using EarthWithMagicAPI.API.Creature;
+    using EarthWithMagicAPI.API.Interfaces.Items;
+    using EarthWithMagicAPI.API.Interfaces.Spells;
+    using EarthWithMagicAPI.API.Stuff;
+
     /// <summary>
     /// The generic class for a gem.
     /// </summary>
@@ -42,6 +43,11 @@ namespace EarthMagicItems.Gems
         }
 
         public override void Use(ICreature user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Use(ICreature user, Encounter encounter)
         {
             throw new NotImplementedException();
         }

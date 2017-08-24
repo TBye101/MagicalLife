@@ -1,8 +1,8 @@
-﻿using EarthWithMagicAPI.API.Creature;
-using EarthWithMagicAPI.API.Stuff;
-
-namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
+﻿namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 {
+    using EarthWithMagicAPI.API.Creature;
+    using EarthWithMagicAPI.API.Stuff;
+
     public class ThiefAI : IAI
     {
         public void YourTurn(Encounter encounter, ICreature creature)

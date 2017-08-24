@@ -14,49 +14,49 @@
         /// <summary>
         /// If true, don't allow another action.
         /// </summary>
-        private static bool TakenAction = false;
+        private static bool takenAction = false;
 
         public static void YourTurn(ICreature creature, Encounter encounter)
         {
             if (CanTakeTurn(creature, encounter))
             {
-                TakenAction = false;
+                takenAction = false;
                 Util.Util.WriteLine("Combat for " + creature.Name + " initiated! Type 'help' for commands");
-                string Input = string.Empty;
-                string[] Command;
-                while (Input != "end turn")
+                string input = string.Empty;
+                string[] command;
+                while (input != "end turn")
                 {
-                    Input = Console.ReadLine().ToLower();
-                    Command = Input.Split(' ');
+                    input = Console.ReadLine().ToLower();
+                    command = input.Split(' ');
 
-                    if (Command[0] == "use" && Command[1] == "ability")
+                    if (command[0] == "use" && command[1] == "ability")
                     {
-                        UseAbility(creature, encounter, Command);
+                        UseAbility(creature, encounter, command);
                         continue;
                     }
 
-                    if (Command[0] == "cast")
+                    if (command[0] == "cast")
                     {
-                        Cast(creature, encounter, Command);
+                        Cast(creature, encounter, command);
                         continue;
                     }
 
-                    if (Command[0] == "use")
+                    if (command[0] == "use")
                     {
-                        Use(creature, Command);
+                        Use(creature, encounter, command);
                         continue;
                     }
 
-                    if (Command[0] == "view" && Command[1] == "item")
+                    if (command[0] == "view" && command[1] == "item")
                     {
-                        ViewItem(creature, encounter, Command);
+                        ViewItem(creature, encounter, command);
                         continue;
                     }
 
-                    switch (Input)
+                    switch (input)
                     {
                         case "help":
-                            Help(creature, encounter, Command);
+                            Help(creature, encounter, command);
                             break;
 
                         case "view inventory":
@@ -152,9 +152,9 @@
 
         private static void Cast(ICreature creature, Encounter encounter, string[] Command)
         {
-            if (!TakenAction)
+            if (!takenAction)
             {
-                TakenAction = true;
+                takenAction = true;
                 if (Command.Length > 1)
                 {
                     foreach (ISpell item in creature.SpellsKnown)
@@ -280,9 +280,9 @@
 
         private static void Swing(ICreature creature, Encounter encounter)
         {
-            if (!TakenAction)
+            if (!takenAction)
             {
-                TakenAction = true;
+                takenAction = true;
                 if (creature.Weapons.Count > 0)
                 {
                     foreach (IWeapon item in creature.Weapons)
@@ -349,11 +349,11 @@
             Util.Util.WriteLine("Item not found!");
         }
 
-        private static void Use(ICreature creature, string[] Command)
+        private static void Use(ICreature creature, Encounter encounter, string[] Command)
         {
-            if (!TakenAction)
+            if (!takenAction)
             {
-                TakenAction = true;
+                takenAction = true;
                 if (Command.Length < 2)
                 {
                     Util.Util.WriteLine("Missing argument!");
@@ -372,7 +372,7 @@
                         if (item.Name == Command[1])
                         {
                             Util.Util.WriteLine("Using " + item.Name);
-                            item.Use(creature);
+                            item.Use(creature, encounter);
                             return;
                         }
                     }
@@ -388,9 +388,9 @@
 
         private static void UseAbility(ICreature creature, Encounter encounter, string[] Command)
         {
-            if (!TakenAction)
+            if (!takenAction)
             {
-                TakenAction = true;
+                takenAction = true;
                 if (Command.Length < 3)
                 {
                     Util.Util.WriteLine("Missing argument!");

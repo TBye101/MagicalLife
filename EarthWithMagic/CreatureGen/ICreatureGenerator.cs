@@ -1,7 +1,7 @@
-﻿using EarthWithMagicAPI.API.Creature;
-
-namespace EarthWithMagic.CreatureGen
+﻿namespace EarthWithMagic.CreatureGen
 {
+    using EarthWithMagicAPI.API.Creature;
+
     /// <summary>
     /// Generates a monk character by asking the user questions.
     /// </summary>

@@ -1,11 +1,12 @@
-﻿using EarthMagicDocumentation;
-using EarthWithMagicAPI.API.Creature;
-using EarthWithMagicAPI.API.Interfaces.Spells;
-using System;
-using System.Collections.Generic;
-
-namespace EarthWithMagicAPI.API.Interfaces.Items
+﻿namespace EarthWithMagicAPI.API.Interfaces.Items
 {
+    using System;
+    using System.Collections.Generic;
+    using EarthMagicDocumentation;
+    using EarthWithMagicAPI.API.Creature;
+    using EarthWithMagicAPI.API.Interfaces.Spells;
+    using EarthWithMagicAPI.API.Stuff;
+
     public abstract class IItem
     {
         protected IItem(string name, double weight, string imagePath, string documentationPath)
@@ -130,6 +131,13 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         /// </summary>
         /// <param name="user"></param>
         public abstract void Use(ICreature user);
+
+        /// <summary>
+        /// Called when an item is used during a battle. May have different results than the other Use().
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="encounter"></param>
+        public abstract void Use(ICreature user, Encounter encounter);
 
         /// <summary>
         /// Called whenever the player is hit by a weapon.

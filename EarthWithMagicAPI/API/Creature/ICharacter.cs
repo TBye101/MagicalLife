@@ -1,7 +1,7 @@
-﻿using EarthWithMagicAPI.API.Creature;
-
-namespace EarthMagicCharacters.Classes
+﻿namespace EarthMagicCharacters.Classes
 {
+    using EarthWithMagicAPI.API.Creature;
+
     public abstract class ICharacter : ICreature
     {
         protected ICharacter(CreatureAttributes attributes, CreatureAbilities abilities, string documentationPath, string imagePath, IAI AI)

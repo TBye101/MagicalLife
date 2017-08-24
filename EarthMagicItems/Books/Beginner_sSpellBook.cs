@@ -6,6 +6,7 @@
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Interfaces.Spells;
     using EarthWithMagicAPI.API.Registry;
+    using EarthWithMagicAPI.API.Stuff;
 
     /// <summary>
     /// The beginner's spellbook holds 3 random spells under power level 5.
@@ -47,6 +48,11 @@
         public override void Unequip()
         {
             throw new Exception("How the heck did you equip this!?!?!?");
+        }
+
+        public override void Use(ICreature user, Encounter encounter)
+        {
+            throw new NotImplementedException();
         }
 
         public override void WeaponHit(IWeapon attacker)
