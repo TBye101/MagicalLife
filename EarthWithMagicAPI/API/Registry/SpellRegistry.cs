@@ -4,10 +4,10 @@
 
 namespace EarthWithMagicAPI.API.Registry
 {
-    using EarthWithMagicAPI.API.Interfaces.Spells;
     using System;
     using System.Collections.Generic;
     using System.Reflection;
+    using EarthWithMagicAPI.API.Interfaces.Spells;
 
     public static class SpellRegistry
     {

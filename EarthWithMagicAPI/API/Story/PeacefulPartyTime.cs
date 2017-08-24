@@ -51,7 +51,7 @@ namespace EarthWithMagicAPI.API.Story
                     {
                         foreach (ICreature item in Party.Party.TheParty)
                         {
-                            item.YourTurn(null);
+                            item.YourTurn();
                         }
                     }
                 }
