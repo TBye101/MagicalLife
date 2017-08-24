@@ -22,7 +22,7 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
         public GenericThief(Gender gender, Race race, Alignment alignment, string name = "Thief", bool isHostile = false) : base(GetAttributes(gender, race, alignment), GetAbilities(),
             "EarthMagicDocumentation.Classes.Thief_Class_Info.md", "EarthMagicDocumentation.ASCII_Art.Thief.txt", new ThiefAI())
         {
-            this.CreatureType = "Thief";
+            this.creatureType = CreatureType.Humanoid;
             this.Name = name;
             this._Hostile = isHostile;
         }

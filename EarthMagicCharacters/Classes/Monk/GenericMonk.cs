@@ -27,7 +27,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             : base(GetAtt(gender, race, alignment), new CreatureAbilities(),
             "EarthMagicDocumentation.Classes.Monk_Class_Info.md", "EarthMagicDocumentation.ASCII_Art.Monk.txt", new MonkAI())
         {
-            this.CreatureType = "Monk";
+            this.creatureType = CreatureType.Humanoid;
             this.Name = name;
             this.Title = "Trainee";
             this._Hostile = isHostile;

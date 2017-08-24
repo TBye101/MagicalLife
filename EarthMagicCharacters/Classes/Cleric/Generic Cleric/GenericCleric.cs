@@ -12,7 +12,7 @@
         public GenericCleric(Gender gender, Race race, Alignment alignment, string name = "Cleric", bool isHostile = false)
             : base(GetAtt(gender, race, alignment), new CreatureAbilities(), "EarthMagicDocumentation.Classes.Cleric_Class_Info.md", "EarthMagicDocumentation.ASCII_Art.Cleric.txt", new ClericAI())
         {
-            this.CreatureType = "Cleric";
+            this.creatureType = CreatureType.Humanoid;
             this.Abilities.BasePrayers = 1;
             this.Name = name;
             this.hostile = isHostile;

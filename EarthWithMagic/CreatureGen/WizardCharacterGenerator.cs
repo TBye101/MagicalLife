@@ -1,10 +1,10 @@
-﻿using EarthMagicCharacters.Classes.Wizard.Generic_Wizard;
-namespace EarthWithMagic.CreatureGen
+﻿namespace EarthWithMagic.CreatureGen
 {
     using System;
+    using EarthMagicCharacters.Classes.Wizard.Generic_Wizard;
+    using EarthMagicDocumentation;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Util;
-    using EarthMagicDocumentation;
 
     public class WizardCharacterGenerator : ICreatureGenerator
     {

@@ -59,7 +59,7 @@ namespace EarthWithMagicAPI.API.Creature
         /// <summary>
         /// The name of the type of creature the creature is.
         /// </summary>
-        public string CreatureType;
+        public CreatureType creatureType;
 
         /// <summary>
         /// The unique ID of the creature.
@@ -439,6 +439,14 @@ namespace EarthWithMagicAPI.API.Creature
 
             return All;
         }
+    }
+
+    /// <summary>
+    /// The type of creature this creature is.
+    /// </summary>
+    public enum CreatureType
+    {
+        Humanoid, Angelic, Demonic, Undead, Unknown
     }
 
     /// <summary>
