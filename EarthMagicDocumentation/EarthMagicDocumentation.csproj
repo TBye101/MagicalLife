@@ -28,6 +28,7 @@
     <None Remove="ASCII Art\Items\Ammo\Special\TheInevitable.txt" />
     <None Remove="ASCII Art\Items\Amulets\Clerical\HolySymbolOfTali.txt" />
     <None Remove="ASCII Art\Items\Armor\Boots\LeatherBootsOfSoftStepping.txt" />
+    <None Remove="ASCII Art\Items\Armor\Robes\MonkRobe.txt" />
     <None Remove="ASCII Art\Items\Books\Spellbook.txt" />
     <None Remove="ASCII Art\Items\Fists.txt" />
     <None Remove="ASCII Art\Items\Other\Lockpick.txt" />
@@ -156,6 +157,7 @@
     <EmbeddedResource Include="ASCII Art\Items\Ammo\Special\TheInevitable.txt" />
     <EmbeddedResource Include="ASCII Art\Items\Amulets\Clerical\HolySymbolOfTali.txt" />
     <EmbeddedResource Include="ASCII Art\Items\Armor\Boots\LeatherBootsOfSoftStepping.txt" />
+    <EmbeddedResource Include="ASCII Art\Items\Armor\Robes\MonkRobe.txt" />
     <EmbeddedResource Include="ASCII Art\Items\Books\Spellbook.txt" />
     <EmbeddedResource Include="ASCII Art\Items\Fists.txt" />
     <EmbeddedResource Include="ASCII Art\Items\Other\Lockpick.txt" />

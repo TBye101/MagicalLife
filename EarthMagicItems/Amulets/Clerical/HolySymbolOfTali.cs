@@ -1,10 +1,10 @@
-﻿using EarthWithMagicAPI.API;
-// <copyright file="HolySymbolOfTali.cs" company="PlaceholderCompany">
+﻿// <copyright file="HolySymbolOfTali.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace EarthMagicItems.Amulets.Clerical
 {
+    using System;
     using EarthMagicCharacters.Classes.Cleric.Generic_Cleric;
     using EarthWithMagicAPI.API;
     using EarthWithMagicAPI.API.Creature;
@@ -12,7 +12,6 @@ namespace EarthMagicItems.Amulets.Clerical
     using EarthWithMagicAPI.API.Interfaces.Spells;
     using EarthWithMagicAPI.API.Stuff;
     using EarthWithMagicAPI.API.Util;
-    using System;
 
     public class HolySymbolOfTali : IAmulet
     {
