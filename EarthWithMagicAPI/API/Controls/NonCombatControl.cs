@@ -25,7 +25,7 @@ namespace EarthWithMagicAPI.API.Controls
             if (CanTakeTurn(creature))
             {
                 takenAction = false;
-                Util.WriteLine("Combat for " + creature.Name + " initiated! Type 'help' for commands");
+                Util.WriteLine("Turn for " + creature.Name + " initiated! Type 'help' for commands");
                 string input = string.Empty;
                 string[] command;
                 while (input != "end turn")

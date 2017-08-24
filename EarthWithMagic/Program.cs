@@ -1,20 +1,20 @@
-﻿using EarthWithMagicAPI.API.Story;
-// <copyright file="Program.cs" company="PlaceholderCompany">
+﻿// <copyright file="Program.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace EarthWithMagic
 {
+    using System;
+    using System.Collections.Generic;
     using EarthMagicCharacters.Classes.Monk.Generic_Monk;
     using EarthMagicDocumentation;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Party;
     using EarthWithMagicAPI.API.Registry;
+    using EarthWithMagicAPI.API.Story;
     using EarthWithMagicAPI.API.Stuff;
     using EarthWithMagicAPI.API.Util;
-    using System;
-    using System.Collections.Generic;
 
     public static class Program
     {
@@ -28,12 +28,13 @@ namespace EarthWithMagic
             string input;
             MainCreatureGenerator gen = new MainCreatureGenerator();
             Party.TheParty.Add(gen.GetMainCharacter());
-            //Party.TheParty[0].Attributes.Health += 100;
+            Party.TheParty[0].Attributes.Health += 100;
+
             while (true)
             {
                 input = Console.ReadLine();
 
-                Encounter continous = new Encounter(Party.TheParty, new System.Collections.Generic.List<ICreature> { new GenericMonk(Gender.Male, Race.Human) });
+                Encounter continous = new Encounter(Party.TheParty, new List<ICreature> { new GenericMonk(Gender.Male, Race.Human) });
                 Party.TheParty = continous.Fight();
                 PeacefulPartyTime peaceful = new PeacefulPartyTime(true, 0);
                 peaceful.Go();

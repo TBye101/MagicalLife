@@ -28,10 +28,15 @@ namespace EarthWithMagicAPI.API.Creature
                 Util.Util.WriteLine("Combat for " + creature.Name + " initiated! Type 'help' for commands");
                 string input = string.Empty;
                 string[] command;
-                while (input != "end turn")
+                while (true)
                 {
                     input = Console.ReadLine().ToLower();
                     command = input.Split(' ');
+
+                    if (command[0] == "end")
+                    {
+                        break;
+                    }
 
                     if (command[0] == "use" && command[1] == "ability")
                     {
