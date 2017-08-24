@@ -1,4 +1,5 @@
-﻿// <copyright file="NonCombatControl.cs" company="PlaceholderCompany">
+﻿using EarthMagicCharacters.Classes;
+// <copyright file="NonCombatControl.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -101,12 +102,28 @@ namespace EarthWithMagicAPI.API.Controls
                         case "list prayers":
                             ListPrayers(creature);
                             break;
-
+                        case "level up":
+                            LevelUp(creature);
+                            break;
                         default:
                             Util.WriteLine("Command not recognized!");
                             break;
                     }
                 }
+            }
+        }
+
+        private static void LevelUp(ICreature creature)
+        {
+            if (creature is ICharacter)
+            {
+                ICharacter character = (ICharacter)creature;
+                character.LevelUp();
+                Util.WriteLine("Leveling up " + character.Name);
+            }
+            else
+            {
+                Util.WriteLine(creature.Name + " cannot be leveled up!");
             }
         }
 
