@@ -4,6 +4,8 @@
 
 namespace EarthWithMagicAPI.API.Creature
 {
+    using System;
+    using System.Collections.Generic;
     using EarthMagicCharacters.Classes;
     using EarthMagicDocumentation;
     using EarthWithMagicAPI.API.Controls;
@@ -11,8 +13,6 @@ namespace EarthWithMagicAPI.API.Creature
     using EarthWithMagicAPI.API.Interfaces.Spells;
     using EarthWithMagicAPI.API.Stuff;
     using EarthWithMagicAPI.API.Util;
-    using System;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Holds various things that every creature has or should implement.
@@ -112,6 +112,11 @@ namespace EarthWithMagicAPI.API.Creature
         public List<ISpell> SpellsKnown = new List<ISpell>();
 
         /// <summary>
+        /// A list of all know prayers to the creature.
+        /// </summary>
+        public List<IPrayer> PrayersKnown = new List<IPrayer>();
+
+        /// <summary>
         /// The title of the creature, if any.
         /// </summary>
         public string Title;
@@ -151,6 +156,7 @@ namespace EarthWithMagicAPI.API.Creature
         /// <param name="abilities"></param>
         /// <param name="documentationPath"></param>
         /// <param name="imagePath"></param>
+        /// <param name="aI"></param>
         protected ICreature(CreatureAttributes attributes, CreatureAbilities abilities, string documentationPath, string imagePath, IAI aI)
         {
             this.Attributes = attributes;
@@ -165,6 +171,7 @@ namespace EarthWithMagicAPI.API.Creature
         /// <summary>
         /// Returns a list of all items, whether they be in the inventory, or equipped somewhere.
         /// </summary>
+        /// <param name="creature"></param>
         /// <returns></returns>
         public static List<IItem> GetAllItems(ICreature creature)
         {

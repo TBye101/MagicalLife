@@ -4,10 +4,10 @@
 
 namespace EarthWithMagicAPI.API.Interfaces.Spells
 {
-    using EarthMagicDocumentation;
-    using EarthWithMagicAPI.API.Creature;
     using System;
     using System.Collections.Generic;
+    using EarthMagicDocumentation;
+    using EarthWithMagicAPI.API.Creature;
 
     public abstract class IPrayer
     {
@@ -61,7 +61,7 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
             this.MemorizationDifficulty = memorizationDifficulty;
         }
 
-        public bool Cast(List<ICreature> party, List<ICreature> enemies, ICreature caster)
+        public bool Pray(List<ICreature> party, List<ICreature> enemies, ICreature caster)
         {
             if (caster.Abilities.Prayers > 0)
             {
@@ -83,7 +83,7 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
             }
         }
 
-        public bool Cast(List<ICreature> party, ICreature caster)
+        public bool Pray(List<ICreature> party, ICreature caster)
         {
             if (!this.CombatOnly)
             {

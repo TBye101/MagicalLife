@@ -4,11 +4,13 @@
 
 namespace EarthWithMagicAPI.API.Controls
 {
+    using System;
+    using System.Collections.Generic;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Interfaces.Spells;
-    using System;
-    using System.Collections.Generic;
+    using EarthWithMagicAPI.API.Party;
+    using EarthWithMagicAPI.API.Util;
 
     public static class NonCombatControl
     {
@@ -22,7 +24,7 @@ namespace EarthWithMagicAPI.API.Controls
             if (CanTakeTurn(creature))
             {
                 takenAction = false;
-                Util.Util.WriteLine("Combat for " + creature.Name + " initiated! Type 'help' for commands");
+                Util.WriteLine("Combat for " + creature.Name + " initiated! Type 'help' for commands");
                 string input = string.Empty;
                 string[] command;
                 while (input != "end turn")
@@ -52,6 +54,11 @@ namespace EarthWithMagicAPI.API.Controls
                     {
                         ViewItem(creature, command);
                         continue;
+                    }
+
+                    if (command[0] == "pray")
+                    {
+                        Pray(creature, command);
                     }
 
                     switch (input)
@@ -91,12 +98,54 @@ namespace EarthWithMagicAPI.API.Controls
                         case "rotate":
                             Rotate();
                             break;
+                        case "list prayers":
+                            ListPrayers(creature);
+                            break;
 
                         default:
-                            Util.Util.WriteLine("Command not recognized!");
+                            Util.WriteLine("Command not recognized!");
                             break;
                     }
                 }
+            }
+        }
+
+        private static void Pray(ICreature creature, string[] command)
+        {
+            if (!takenAction)
+            {
+                if (command.Length >= command.Length)
+                {
+                    foreach (IPrayer item in creature.PrayersKnown)
+                    {
+                        if (string.Equals(item.Name, command[1], StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            if (item.Pray(Party.TheParty, creature))
+                            {
+                                takenAction = true;
+                                return;
+                            }
+                        }
+                    }
+
+                    Util.WriteLine("Prayer not found!");
+                }
+                else
+                {
+                    Util.WriteLine("Missing argument!");
+                }
+            }
+            else
+            {
+                Util.WriteLine(creature.Name + " has already used it's action!");
+            }
+        }
+
+        private static void ListPrayers(ICreature creature)
+        {
+            foreach (IPrayer item in creature.PrayersKnown)
+            {
+                Util.WriteLine(item.Name);
             }
         }
 
@@ -110,7 +159,7 @@ namespace EarthWithMagicAPI.API.Controls
         {
             foreach (IAbility item in creature.AbilitiesAffectedBy)
             {
-                if (!item.OnTurn(Party.Party.TheParty, creature))
+                if (!item.OnTurn(Party.TheParty, creature))
                 {
                     return false;
                 }
@@ -118,7 +167,7 @@ namespace EarthWithMagicAPI.API.Controls
 
             foreach (ISpell item in creature.SpellsAffectedBy)
             {
-                if (!item.OnTurn(Party.Party.TheParty, creature))
+                if (!item.OnTurn(Party.TheParty, creature))
                 {
                     return false;
                 }
@@ -140,34 +189,34 @@ namespace EarthWithMagicAPI.API.Controls
                         {
                             if (item.PowerRequired > creature.CastingPower)
                             {
-                                Util.Util.WriteLine("Not enough casting power!");
+                                Util.WriteLine("Not enough casting power!");
                             }
                             else
                             {
                                 creature.CastingPower -= item.PowerRequired;
-                                item.Cast(Party.Party.TheParty, creature);
-                                Util.Util.WriteLine("Casting " + item.Name);
+                                item.Cast(Party.TheParty, creature);
+                                Util.WriteLine("Casting " + item.Name);
                                 return;
                             }
                         }
                     }
 
-                    Util.Util.WriteLine("Spell not found!");
+                    Util.WriteLine("Spell not found!");
                 }
                 else
                 {
-                    Util.Util.WriteLine("Missing argument!");
+                    Util.WriteLine("Missing argument!");
                 }
             }
             else
             {
-                Util.Util.WriteLine("Action already taken!");
+                Util.WriteLine("Action already taken!");
             }
         }
 
         private static void Equip(ICreature creature)
         {
-            Util.Util.WriteLine("Which item? (Specify by name)");
+            Util.WriteLine("Which item? (Specify by name)");
             string name = Console.ReadLine();
             foreach (IItem item in creature.Inventory)
             {
@@ -175,18 +224,18 @@ namespace EarthWithMagicAPI.API.Controls
                 {
                     if (item.CanEquip(creature))
                     {
-                        Util.Util.WriteLine("Item equipped!");
+                        Util.WriteLine("Item equipped!");
                     }
                     else
                     {
-                        Util.Util.WriteLine("Failed to equip " + item.Name);
+                        Util.WriteLine("Failed to equip " + item.Name);
                     }
 
                     return;
                 }
             }
 
-            Util.Util.WriteLine("Item not found!");
+            Util.WriteLine("Item not found!");
         }
 
         /// <summary>
@@ -197,36 +246,38 @@ namespace EarthWithMagicAPI.API.Controls
         /// <param name="Command"></param>
         private static void Help()
         {
-            Util.Util.WriteLine("help: displays help information.");
-            Util.Util.WriteLine("view inventory: displays the player's inventory.");
-            Util.Util.WriteLine("equip: equips an item, that you may choose in a bit.");
-            Util.Util.WriteLine("swing: Attacks the enemy at the front of the line via melee.");
-            Util.Util.WriteLine("use ability: Allows you to use an ability.");
-            Util.Util.WriteLine("list abilities: Spits out a list of available abilities to the current character.");
-            Util.Util.WriteLine("cast: Allows you to choose a spell to cast.");
-            Util.Util.WriteLine("list spells: Lists all of the spells available.");
-            Util.Util.WriteLine("use: Allows you to use a potion, or other item.");
-            Util.Util.WriteLine("rest: Has the party try and rest.");
-            Util.Util.WriteLine("list party: Lists all of the members of the party, including dead ones.");
-            Util.Util.WriteLine("unequip: Un-equips something.");
-            Util.Util.WriteLine("rotate: Rotates the person at the front of the party to the back.");
-            Util.Util.WriteLine("end turn: Ends this round for the current creature.");
-            Util.Util.WriteLine("view item: Views the specified items image and information.");
+            Util.WriteLine("help: displays help information.");
+            Util.WriteLine("view inventory: displays the player's inventory.");
+            Util.WriteLine("equip: equips an item, that you may choose in a bit.");
+            Util.WriteLine("swing: Attacks the enemy at the front of the line via melee.");
+            Util.WriteLine("use ability: Allows you to use an ability.");
+            Util.WriteLine("list abilities: Spits out a list of available abilities to the current character.");
+            Util.WriteLine("cast: Allows you to choose a spell to cast.");
+            Util.WriteLine("list spells: Lists all of the spells available.");
+            Util.WriteLine("use: Allows you to use a potion, or other item.");
+            Util.WriteLine("rest: Has the party try and rest.");
+            Util.WriteLine("list party: Lists all of the members of the party, including dead ones.");
+            Util.WriteLine("unequip: Un-equips something.");
+            Util.WriteLine("rotate: Rotates the person at the front of the party to the back.");
+            Util.WriteLine("end turn: Ends this round for the current creature.");
+            Util.WriteLine("view item: Views the specified items image and information.");
+            Util.WriteLine("list prayers: Displays all known prayers to the creature.");
+            Util.WriteLine("pray: attempts to pray the specified prayer");
         }
 
         private static void ListAbilities(ICreature creature)
         {
             foreach (IAbility item in creature.ClassAbilities)
             {
-                Util.Util.WriteLine(item.Name + " [" + item.AvailibleUses.ToString() + "]");
+                Util.WriteLine(item.Name + " [" + item.AvailibleUses.ToString() + "]");
             }
         }
 
         private static void ListParty()
         {
-            foreach (ICreature item in Party.Party.TheParty)
+            foreach (ICreature item in Party.TheParty)
             {
-                Util.Util.WriteLine(item.Name + " HP: [" + item.Attributes.Health.ToString() + "]");
+                Util.WriteLine(item.Name + " HP: [" + item.Attributes.Health.ToString() + "]");
             }
         }
 
@@ -234,13 +285,13 @@ namespace EarthWithMagicAPI.API.Controls
         {
             foreach (ISpell item in creature.UsableSpells)
             {
-                Util.Util.WriteLine(item.Name + ", " + item.PowerRequired.ToString());
+                Util.WriteLine(item.Name + ", " + item.PowerRequired.ToString());
             }
         }
 
         private static void Rest()
         {
-            foreach (ICreature item in Party.Party.TheParty)
+            foreach (ICreature item in Party.TheParty)
             {
                 item.Rest();
             }
@@ -248,14 +299,14 @@ namespace EarthWithMagicAPI.API.Controls
 
         private static void Rotate()
         {
-            ICreature front = Party.Party.TheParty[0];
-            Party.Party.TheParty.RemoveAt(0);
-            Party.Party.TheParty.Add(front);
+            ICreature front = Party.TheParty[0];
+            Party.TheParty.RemoveAt(0);
+            Party.TheParty.Add(front);
         }
 
         private static void Unequip(ICreature creature)
         {
-            Util.Util.WriteLine("Unequip what?");
+            Util.WriteLine("Unequip what?");
             string name = Console.ReadLine();
 
             foreach (IItem item in creature.Amulets)
@@ -263,7 +314,7 @@ namespace EarthWithMagicAPI.API.Controls
                 if (item.Name == name)
                 {
                     item.Unequip();
-                    Util.Util.WriteLine("Item unequipped!");
+                    Util.WriteLine("Item unequipped!");
                     return;
                 }
             }
@@ -273,7 +324,7 @@ namespace EarthWithMagicAPI.API.Controls
                 if (item.Name == name)
                 {
                     item.Unequip();
-                    Util.Util.WriteLine("Item unequipped!");
+                    Util.WriteLine("Item unequipped!");
                     return;
                 }
             }
@@ -283,7 +334,7 @@ namespace EarthWithMagicAPI.API.Controls
                 if (item.Name == name)
                 {
                     item.Unequip();
-                    Util.Util.WriteLine("Item unequipped!");
+                    Util.WriteLine("Item unequipped!");
                     return;
                 }
             }
@@ -293,12 +344,12 @@ namespace EarthWithMagicAPI.API.Controls
                 if (item.Name == name)
                 {
                     item.Unequip();
-                    Util.Util.WriteLine("Item unequipped!");
+                    Util.WriteLine("Item unequipped!");
                     return;
                 }
             }
 
-            Util.Util.WriteLine("Item not found!");
+            Util.WriteLine("Item not found!");
         }
 
         private static void Use(ICreature creature, string[] command)
@@ -308,7 +359,7 @@ namespace EarthWithMagicAPI.API.Controls
                 takenAction = true;
                 if (command.Length < 2)
                 {
-                    Util.Util.WriteLine("Missing argument!");
+                    Util.WriteLine("Missing argument!");
                 }
                 else
                 {
@@ -323,18 +374,18 @@ namespace EarthWithMagicAPI.API.Controls
                     {
                         if (item.Name == command[1])
                         {
-                            Util.Util.WriteLine("Using " + item.Name);
+                            Util.WriteLine("Using " + item.Name);
                             item.Use(creature);
                             return;
                         }
                     }
 
-                    Util.Util.WriteLine("Item not found!");
+                    Util.WriteLine("Item not found!");
                 }
             }
             else
             {
-                Util.Util.WriteLine("Action already taken!");
+                Util.WriteLine("Action already taken!");
             }
         }
 
@@ -345,8 +396,8 @@ namespace EarthWithMagicAPI.API.Controls
                 takenAction = true;
                 if (command.Length < 3)
                 {
-                    Util.Util.WriteLine("Missing argument!");
-                    Util.Util.WriteLine("3rd argument should be the name of the ability to use!");
+                    Util.WriteLine("Missing argument!");
+                    Util.WriteLine("3rd argument should be the name of the ability to use!");
                 }
                 else
                 {
@@ -356,23 +407,23 @@ namespace EarthWithMagicAPI.API.Controls
                         {
                             if (item.AvailibleUses > 0)
                             {
-                                item.Use(Party.Party.TheParty, creature);
+                                item.Use(Party.TheParty, creature);
                             }
                             else
                             {
-                                Util.Util.WriteLine("Ability has been used up!");
+                                Util.WriteLine("Ability has been used up!");
                             }
 
                             return;
                         }
                     }
 
-                    Util.Util.WriteLine("Ability not found!");
+                    Util.WriteLine("Ability not found!");
                 }
             }
             else
             {
-                Util.Util.WriteLine("Action already taken!");
+                Util.WriteLine("Action already taken!");
             }
         }
 
@@ -385,7 +436,7 @@ namespace EarthWithMagicAPI.API.Controls
                 items += ", ";
             }
 
-            Util.Util.WriteLine(items);
+            Util.WriteLine(items);
             items = string.Empty;
             foreach (IItem item in creature.Armoring)
             {
@@ -393,7 +444,7 @@ namespace EarthWithMagicAPI.API.Controls
                 items += ", ";
             }
 
-            Util.Util.WriteLine(items);
+            Util.WriteLine(items);
             items = string.Empty;
             foreach (IItem item in creature.Inventory)
             {
@@ -401,7 +452,7 @@ namespace EarthWithMagicAPI.API.Controls
                 items += ", ";
             }
 
-            Util.Util.WriteLine(items);
+            Util.WriteLine(items);
             items = string.Empty;
             foreach (IItem item in creature.Rings)
             {
@@ -409,7 +460,7 @@ namespace EarthWithMagicAPI.API.Controls
                 items += ", ";
             }
 
-            Util.Util.WriteLine(items);
+            Util.WriteLine(items);
             items = string.Empty;
             foreach (IItem item in creature.Weapons)
             {
@@ -417,15 +468,15 @@ namespace EarthWithMagicAPI.API.Controls
                 items += ", ";
             }
 
-            Util.Util.WriteLine(items);
+            Util.WriteLine(items);
         }
 
         private static void ViewItem(ICreature creature, string[] command)
         {
             if (command.Length < 3)
             {
-                Util.Util.WriteLine("Missing argument(s)!");
-                Util.Util.WriteLine("Third argument should be the name of the argument to view!");
+                Util.WriteLine("Missing argument(s)!");
+                Util.WriteLine("Third argument should be the name of the argument to view!");
             }
             else
             {

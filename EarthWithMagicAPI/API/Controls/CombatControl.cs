@@ -57,6 +57,11 @@ namespace EarthWithMagicAPI.API.Creature
                         continue;
                     }
 
+                    if (command[0] == "pray")
+                    {
+                        Pray(creature, encounter, command);
+                    }
+
                     switch (input)
                     {
                         case "help":
@@ -98,12 +103,51 @@ namespace EarthWithMagicAPI.API.Creature
                         case "rotate":
                             Rotate(encounter);
                             break;
+                        case "list prayers":
+                            ListPrayers(creature);
+                            break;
 
                         default:
                             Util.Util.WriteLine("Command not recognized!");
                             break;
                     }
                 }
+            }
+        }
+
+        private static void Pray(ICreature creature, Encounter encounter, string[] command)
+        {
+            if (!takenAction)
+            {
+                if (command.Length >= command.Length)
+                {
+                    foreach (IPrayer item in creature.PrayersKnown)
+                    {
+                        if (string.Equals(item.Name, command[1], StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            if (item.Pray(encounter.Party, encounter.Enemies, creature))
+                            {
+                                takenAction = true;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    Util.Util.WriteLine("Missing argument!");
+                }
+            }
+            else
+            {
+                Util.Util.WriteLine(creature.Name + " has already used it's action!");
+            }
+        }
+
+        private static void ListPrayers(ICreature creature)
+        {
+            foreach (IPrayer item in creature.PrayersKnown)
+            {
+                Util.Util.WriteLine(item.Name);
             }
         }
 
@@ -218,6 +262,8 @@ namespace EarthWithMagicAPI.API.Creature
             Util.Util.WriteLine("rotate: Rotates the person at the front of the party to the back.");
             Util.Util.WriteLine("end turn: Ends this round for the current creature.");
             Util.Util.WriteLine("view item: Views the specified items image and information.");
+            Util.Util.WriteLine("list prayers: Displays all known prayers to the creature.");
+            Util.Util.WriteLine("pray: attempts to pray the specified prayer");
         }
 
         private static void ListAbilities(ICreature creature)
