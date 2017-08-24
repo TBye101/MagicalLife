@@ -398,46 +398,46 @@ namespace EarthWithMagicAPI.API.Controls
 
         private static void ViewInventory(ICreature creature)
         {
-            string Items = string.Empty;
+            string items = string.Empty;
             foreach (IItem item in creature.Amulets)
             {
-                Items += item.Name;
-                Items += ", ";
+                items += item.Name;
+                items += ", ";
             }
 
-            Util.Util.WriteLine(Items);
-            Items = string.Empty;
+            Util.Util.WriteLine(items);
+            items = string.Empty;
             foreach (IItem item in creature.Armoring)
             {
-                Items += item.Name;
-                Items += ", ";
+                items += item.Name;
+                items += ", ";
             }
 
-            Util.Util.WriteLine(Items);
-            Items = string.Empty;
+            Util.Util.WriteLine(items);
+            items = string.Empty;
             foreach (IItem item in creature.Inventory)
             {
-                Items += item.Name;
-                Items += ", ";
+                items += item.Name;
+                items += ", ";
             }
 
-            Util.Util.WriteLine(Items);
-            Items = string.Empty;
+            Util.Util.WriteLine(items);
+            items = string.Empty;
             foreach (IItem item in creature.Rings)
             {
-                Items += item.Name;
-                Items += ", ";
+                items += item.Name;
+                items += ", ";
             }
 
-            Util.Util.WriteLine(Items);
-            Items = string.Empty;
+            Util.Util.WriteLine(items);
+            items = string.Empty;
             foreach (IItem item in creature.Weapons)
             {
-                Items += item.Name;
-                Items += ", ";
+                items += item.Name;
+                items += ", ";
             }
 
-            Util.Util.WriteLine(Items);
+            Util.Util.WriteLine(items);
         }
     }
 }

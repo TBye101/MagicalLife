@@ -22,7 +22,7 @@ namespace EarthWithMagicAPI.API.Util
         public static int RollDice(Die die, string description = "")
         {
             int ret = 0;
-            int OriginalRolls = die.Rolls;
+            int originalRolls = die.Rolls;
             while (die.Rolls > 0)
             {
                 ret += Rand.Next(1, die.Sides);
@@ -31,21 +31,21 @@ namespace EarthWithMagicAPI.API.Util
 
             ret += die.Modifyer;
 
-            string ToLog = description;
-            ToLog += ": ";
-            ToLog += OriginalRolls.ToString();
-            ToLog += "d";
-            ToLog += die.Sides.ToString();
+            string toLog = description;
+            toLog += ": ";
+            toLog += originalRolls.ToString();
+            toLog += "d";
+            toLog += die.Sides.ToString();
 
             if (die.Modifyer > 0)
             {
-                ToLog += " +";
-                ToLog += die.Modifyer.ToString();
+                toLog += " +";
+                toLog += die.Modifyer.ToString();
             }
 
-            ToLog += " -> ";
-            ToLog += ret.ToString();
-            Util.WriteLine(ToLog);
+            toLog += " -> ";
+            toLog += ret.ToString();
+            Util.WriteLine(toLog);
 
             return ret;
         }

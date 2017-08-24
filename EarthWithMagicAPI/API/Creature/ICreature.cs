@@ -401,11 +401,11 @@ namespace EarthWithMagicAPI.API.Creature
         /// <returns></returns>
         private double TakeDamage(Die elementalDamage, string nameOfDamage, double resistance)
         {
-            double Damage = Dice.RollDice(elementalDamage, "Base incoming " + nameOfDamage);
-            double DamageToReduce = Damage * resistance;
-            double ActualDamage = Damage - DamageToReduce;
-            Util.WriteLine(this.Name + " takes " + ActualDamage.ToString() + " " + nameOfDamage + " (" + resistance + "% resisted");
-            return ActualDamage;
+            double damage = Dice.RollDice(elementalDamage, "Base incoming " + nameOfDamage);
+            double damageToReduce = damage * resistance;
+            double actualDamage = damage - damageToReduce;
+            Util.WriteLine(this.Name + " takes " + actualDamage.ToString() + " " + nameOfDamage + " (" + resistance + "% resisted");
+            return actualDamage;
         }
 
         /// <summary>
@@ -414,34 +414,34 @@ namespace EarthWithMagicAPI.API.Creature
         /// <returns></returns>
         public static List<IItem> GetAllItems(ICreature creature)
         {
-            List<IItem> All = new List<IItem>();
+            List<IItem> all = new List<IItem>();
 
             foreach (IItem item in creature.Amulets)
             {
-                All.Add(item);
+                all.Add(item);
             }
 
             foreach (IItem item in creature.Armoring)
             {
-                All.Add(item);
+                all.Add(item);
             }
 
             foreach (IItem item in creature.Inventory)
             {
-                All.Add(item);
+                all.Add(item);
             }
 
             foreach (IItem item in creature.Rings)
             {
-                All.Add(item);
+                all.Add(item);
             }
 
             foreach (IItem item in creature.Weapons)
             {
-                All.Add(item);
+                all.Add(item);
             }
 
-            return All;
+            return all;
         }
     }
 

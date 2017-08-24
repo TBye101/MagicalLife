@@ -47,8 +47,8 @@ namespace EarthMagicCreatures.Creatures.Heavenly.Angels
 
         private static CreatureAttributes GetBaseAttributes()
         {
-            int HP = Dice.RollDice(new Die(50, 12, 3), "Lesser Angel hit points");
-            CreatureAttributes baseAtt = new CreatureAttributes(Gender.Female, Alignment.LawfulGood, Race.Unspecified, .75, HP, HP, 20,
+            int hP = Dice.RollDice(new Die(50, 12, 3), "Lesser Angel hit points");
+            CreatureAttributes baseAtt = new CreatureAttributes(Gender.Female, Alignment.LawfulGood, Race.Unspecified, .75, hP, hP, 20,
                 22, 19, 15, 23, 1, 0, .5, 0, -.2, .4, .75, .25, true, 45, 0, .5, 16);
             return baseAtt;
         }

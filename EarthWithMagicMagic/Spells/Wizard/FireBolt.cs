@@ -46,11 +46,11 @@ namespace EarthWithMagicMagic.Spells.Wizard
         {
             Damage damage = new Damage(Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 10, 0), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero());
 
-            int Missiles = 4;
+            int missiles = 4;
 
-            while (Missiles != 0)
+            while (missiles != 0)
             {
-                Missiles--;
+                missiles--;
 
                 if (caster.IsHostile())
                 {

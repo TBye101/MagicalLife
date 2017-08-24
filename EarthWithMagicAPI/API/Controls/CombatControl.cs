@@ -277,9 +277,9 @@ namespace EarthWithMagicAPI.API.Creature
 
         private static void Rotate(Encounter encounter)
         {
-            ICreature Front = encounter.Party[0];
+            ICreature front = encounter.Party[0];
             encounter.Party.RemoveAt(0);
-            encounter.Party.Add(Front);
+            encounter.Party.Add(front);
         }
 
         private static void Swing(ICreature creature, Encounter encounter)
@@ -364,14 +364,14 @@ namespace EarthWithMagicAPI.API.Creature
                 }
                 else
                 {
-                    List<IItem> Items = new List<IItem>();
-                    Items.AddRange(creature.Amulets);
-                    Items.AddRange(creature.Armoring);
-                    Items.AddRange(creature.Inventory);
-                    Items.AddRange(creature.Rings);
-                    Items.AddRange(creature.Weapons);
+                    List<IItem> items = new List<IItem>();
+                    items.AddRange(creature.Amulets);
+                    items.AddRange(creature.Armoring);
+                    items.AddRange(creature.Inventory);
+                    items.AddRange(creature.Rings);
+                    items.AddRange(creature.Weapons);
 
-                    foreach (IItem item in Items)
+                    foreach (IItem item in items)
                     {
                         if (item.Name == command[1])
                         {
@@ -430,41 +430,41 @@ namespace EarthWithMagicAPI.API.Creature
 
         private static void ViewInventory(ICreature creature)
         {
-            string Items = string.Empty;
+            string items = string.Empty;
             foreach (IItem item in creature.Amulets)
             {
-                Items += item.Name;
-                Items += ", ";
+                items += item.Name;
+                items += ", ";
             }
-            Util.Util.WriteLine(Items);
-            Items = string.Empty;
+            Util.Util.WriteLine(items);
+            items = string.Empty;
             foreach (IItem item in creature.Armoring)
             {
-                Items += item.Name;
-                Items += ", ";
+                items += item.Name;
+                items += ", ";
             }
-            Util.Util.WriteLine(Items);
-            Items = string.Empty;
+            Util.Util.WriteLine(items);
+            items = string.Empty;
             foreach (IItem item in creature.Inventory)
             {
-                Items += item.Name;
-                Items += ", ";
+                items += item.Name;
+                items += ", ";
             }
-            Util.Util.WriteLine(Items);
-            Items = string.Empty;
+            Util.Util.WriteLine(items);
+            items = string.Empty;
             foreach (IItem item in creature.Rings)
             {
-                Items += item.Name;
-                Items += ", ";
+                items += item.Name;
+                items += ", ";
             }
-            Util.Util.WriteLine(Items);
-            Items = string.Empty;
+            Util.Util.WriteLine(items);
+            items = string.Empty;
             foreach (IItem item in creature.Weapons)
             {
-                Items += item.Name;
-                Items += ", ";
+                items += item.Name;
+                items += ", ";
             }
-            Util.Util.WriteLine(Items);
+            Util.Util.WriteLine(items);
         }
     }
 }

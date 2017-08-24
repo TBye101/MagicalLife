@@ -108,15 +108,15 @@ namespace EarthWithMagicAPI.API.Stuff
                     //Gives xp for killing enemies.
                     foreach (ICreature item in this.Enemies)
                     {
-                        int TotalGained = 0;
+                        int totalGained = 0;
                         //If dead
                         if (item.Attributes.Health < 1)
                         {
                             this.Party[i].Attributes.XP.RecieveXP(item.XPValue());
-                            TotalGained += item.XPValue();
+                            totalGained += item.XPValue();
                         }
 
-                        Util.Util.WriteLine(this.Party[i].Name + " gained " + TotalGained.ToString() + " xp");
+                        Util.Util.WriteLine(this.Party[i].Name + " gained " + totalGained.ToString() + " xp");
                     }
 
                     this.Party[i].EncounterEnded(this);

@@ -15,48 +15,49 @@ namespace EarthWithMagicMagic.Abilities.Monk
     /// </summary>
     public class StunningBlow : IAbility
     {
-        public StunningBlow() : base("Stunning Blow", "EarthMagicDocumentation.Abilities.Monk.StunningBlow.md", false, 1, 2, "EarthMagicDocumentation.ASCII_Art.Abilities.StunningBlow.txt")
+        public StunningBlow()
+            : base("Stunning Blow", "EarthMagicDocumentation.Abilities.Monk.StunningBlow.md", false, 1, 2, "EarthMagicDocumentation.ASCII_Art.Abilities.StunningBlow.txt")
         {
         }
 
-        protected override void Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster)
+        protected override void Go(List<ICreature> party, List<ICreature> enemies, ICreature caster)
         {
-            string N;
-            if (Caster.IsHostile())
+            string n;
+            if (caster.IsHostile())
             {
-                Party[0].AbilitiesAffectedBy.Add(this);
-                N = Party[0].Name;
+                party[0].AbilitiesAffectedBy.Add(this);
+                n = party[0].Name;
             }
             else
             {
-                Enemies[0].AbilitiesAffectedBy.Add(this);
-                N = Party[0].Name;
+                enemies[0].AbilitiesAffectedBy.Add(this);
+                n = party[0].Name;
             }
 
-            Util.WriteLine(Caster.Name + " uses Stunning Blow on " + N);
+            Util.WriteLine(caster.Name + " uses Stunning Blow on " + n);
         }
 
-        protected override void Go(List<ICreature> Party, ICreature Caster)
+        protected override void Go(List<ICreature> party, ICreature caster)
         {
             this.AvailibleUses++;
             Util.WriteLine("This ability is not available when not in battle!");
         }
 
-        public override bool OnAction(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
+        public override bool OnAction(List<ICreature> party, List<ICreature> enemies, ICreature affected)
         {
             return false;
         }
 
-        public override bool OnTurn(List<ICreature> Party, ICreature Affected)
+        public override bool OnTurn(List<ICreature> party, ICreature affected)
         {
-            Util.WriteLine(Affected.Name + " is affected by a stunning blow and cannot move!");
+            Util.WriteLine(affected.Name + " is affected by a stunning blow and cannot move!");
             this.RoundsLeft--;
             return false;
         }
 
-        public override void OnWearOff(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
+        public override void OnWearOff(List<ICreature> party, List<ICreature> enemies, ICreature affected)
         {
-            Util.WriteLine(Affected.Name + " is no longer affected by stunning blow");
+            Util.WriteLine(affected.Name + " is no longer affected by stunning blow");
         }
     }
 }

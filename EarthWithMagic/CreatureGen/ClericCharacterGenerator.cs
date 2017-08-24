@@ -90,9 +90,9 @@ namespace EarthWithMagic.CreatureGen
         {
             Util.WriteLine("Human, Elf, Dwarf, Kender, Duergar, or Unspecified?");
 
-            string Input = Console.ReadLine();
+            string input = Console.ReadLine();
 
-            switch (Input.ToLower())
+            switch (input.ToLower())
             {
                 case "human":
                     return Race.Human;
