@@ -161,10 +161,10 @@ Casting power: +10
 #### 47th Level: 
 
 Casting power: +10
-#### 48th Level:  
+#### 48th Level: Summoner
 
 Casting power: +10
-#### 49th Level: Summoner
+#### 49th Level: Mythical Mage
 
 Casting power: +10
 #### 50th Level: Plane Traveler
