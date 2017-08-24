@@ -4,11 +4,11 @@
 
 namespace EarthWithMagic.CreatureGen
 {
-    using System;
     using EarthMagicCharacters.Classes.Thief.Generic_Thief;
     using EarthMagicDocumentation;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Util;
+    using System;
 
     public class ThiefCharacterGenerator : ICreatureGenerator
     {

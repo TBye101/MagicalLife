@@ -4,7 +4,6 @@
 
 namespace EarthMagicItems.Ammo.Stones
 {
-    using System.Collections.Generic;
     using EarthMagicItems.Ammo.Arrows;
     using EarthWithMagicAPI.API;
     using EarthWithMagicAPI.API.Util;
@@ -16,8 +15,8 @@ namespace EarthMagicItems.Ammo.Stones
     {
         #region NormalStones
 
-        private GenericAmmo _1Stone = new GenericAmmo(new Die(2, 4, 0), "+1 Stone", GenericStoneStorage.StandardStone(new Die(1, 4, 1)), 
-            "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Stone.txt", 
+        private GenericAmmo _1Stone = new GenericAmmo(new Die(2, 4, 0), "+1 Stone", GenericStoneStorage.StandardStone(new Die(1, 4, 1)),
+            "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Stone.txt",
             "EarthMagicDocumentation.Items.Ammo.Stones.+1Stone.md", .1);
 
         private GenericAmmo _2Stone = new GenericAmmo(new Die(3, 5, 0), "+2 Stone", GenericStoneStorage.StandardStone(new Die(1, 4, 2)),

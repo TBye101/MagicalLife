@@ -4,11 +4,11 @@
 
 namespace EarthWithMagicMagic.Spells.Wizard
 {
-    using System;
-    using System.Collections.Generic;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Spells;
     using EarthWithMagicAPI.API.Util;
+    using System;
+    using System.Collections.Generic;
 
     public class PoisonCloud : ISpell
     {

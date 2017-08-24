@@ -4,7 +4,6 @@
 
 namespace EarthMagicCharacters.Classes.Cleric.Generic_Cleric
 {
-    using System;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Util;
@@ -20,15 +19,6 @@ namespace EarthMagicCharacters.Classes.Cleric.Generic_Cleric
             this.Abilities.BasePrayers = 1;
             this.Name = name;
             this.hostile = isHostile;
-        }
-
-        private static CreatureAttributes GetAtt(Gender gender, Race race, Alignment alignment)
-        {
-            int startingHealth = Dice.RollDice(new Die(2, 10, 3), "Starting Health");
-            return new CreatureAttributes(gender, alignment, race, .06, startingHealth, startingHealth,
-            Dice.RollDice(new Die(3, 6, 0), "Dexterity"), Dice.RollDice(new Die(3, 6, 0), "Strength"),
-            Dice.RollDice(new Die(3, 6, 0), "Constitution"), Dice.RollDice(new Die(3, 6, 0), "Charisma"),
-            Dice.RollDice(new Die(3, 6, 0), "Wisdom"), 0, 0, 0, 0, 0, 0, 0, 0, true, 8, .4, 30, Dice.RollDice(new Die(3, 6, 0), "Intelligence"));
         }
 
         public override void EquipItem(IItem item)
@@ -69,6 +59,15 @@ namespace EarthMagicCharacters.Classes.Cleric.Generic_Cleric
 
         public override void OnItemUnequipped(IItem item)
         {
+        }
+
+        private static CreatureAttributes GetAtt(Gender gender, Race race, Alignment alignment)
+        {
+            int startingHealth = Dice.RollDice(new Die(2, 10, 3), "Starting Health");
+            return new CreatureAttributes(gender, alignment, race, .06, startingHealth, startingHealth,
+            Dice.RollDice(new Die(3, 6, 0), "Dexterity"), Dice.RollDice(new Die(3, 6, 0), "Strength"),
+            Dice.RollDice(new Die(3, 6, 0), "Constitution"), Dice.RollDice(new Die(3, 6, 0), "Charisma"),
+            Dice.RollDice(new Die(3, 6, 0), "Wisdom"), 0, 0, 0, 0, 0, 0, 0, 0, true, 8, .4, 30, Dice.RollDice(new Die(3, 6, 0), "Intelligence"));
         }
     }
 }

@@ -4,25 +4,23 @@
 
 namespace EarthMagicItems.Books
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Interfaces.Spells;
     using EarthWithMagicAPI.API.Util;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Shared logic for all spellbooks.
     /// </summary>
     public abstract class ISpellbook : IItem
     {
-        private int memorizationProgress = 0;
-
         /// <summary>
         /// A list of spells in the spellbook.
         /// </summary>
         public List<ISpell> Spells = new List<ISpell>();
+
+        private int memorizationProgress = 0;
 
         public ISpellbook(string name, double weight, string imagePath, string documentationPath)
             : base(name, weight, imagePath, documentationPath)

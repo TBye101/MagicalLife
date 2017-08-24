@@ -4,9 +4,6 @@
 
 namespace EarthMagicItems.Amulets.Clerical
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
     using EarthMagicCharacters.Classes.Cleric.Generic_Cleric;
     using EarthWithMagicAPI.API;
     using EarthWithMagicAPI.API.Creature;
@@ -14,6 +11,7 @@ namespace EarthMagicItems.Amulets.Clerical
     using EarthWithMagicAPI.API.Interfaces.Spells;
     using EarthWithMagicAPI.API.Stuff;
     using EarthWithMagicAPI.API.Util;
+    using System;
 
     public class HolySymbolOfTali : IAmulet
     {

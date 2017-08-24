@@ -8,7 +8,6 @@ namespace EarthMagicDocumentation
     using System.Collections.Generic;
     using System.IO;
     using System.Reflection;
-    using Microsoft.VisualBasic.CompilerServices;
 
     /// <summary>
     /// Facilitates in the fetching of resources.

@@ -4,11 +4,10 @@
 
 namespace EarthWithMagicAPI.API.Creature
 {
-    using System;
-    using System.Collections.Generic;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Interfaces.Spells;
     using EarthWithMagicAPI.API.Stuff;
+    using System;
 
     public class Fists : IWeapon
     {

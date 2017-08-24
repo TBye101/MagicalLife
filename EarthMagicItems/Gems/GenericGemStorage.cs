@@ -4,8 +4,6 @@
 
 namespace EarthMagicItems.Gems
 {
-    using System.Collections.Generic;
-
     /// <summary>
     /// Holds all sorts of generically created gems.
     /// 192 gems!

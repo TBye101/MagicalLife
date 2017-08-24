@@ -4,10 +4,10 @@
 
 namespace EarthWithMagicAPI.API.Stuff
 {
+    using EarthWithMagicAPI.API.Creature;
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using EarthWithMagicAPI.API.Creature;
 
     /// <summary>
     /// Used whenever a fight occurs.

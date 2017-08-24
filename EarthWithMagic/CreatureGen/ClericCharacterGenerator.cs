@@ -4,13 +4,11 @@
 
 namespace EarthWithMagic.CreatureGen
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
     using EarthMagicCharacters.Classes.Cleric.Generic_Cleric;
     using EarthMagicDocumentation;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Util;
+    using System;
 
     public class ClericCharacterGenerator
     {

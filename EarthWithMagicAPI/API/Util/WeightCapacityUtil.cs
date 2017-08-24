@@ -4,7 +4,6 @@
 
 namespace EarthWithMagicAPI.API.Util
 {
-    using System;
     using EarthWithMagicAPI.API.Creature;
 
     /// <summary>

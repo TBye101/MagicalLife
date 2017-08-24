@@ -4,43 +4,18 @@
 
 namespace EarthWithMagicAPI.API.Interfaces.Items
 {
-    using System;
-    using System.Collections.Generic;
     using EarthMagicDocumentation;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Spells;
     using EarthWithMagicAPI.API.Stuff;
+    using System;
 
     public abstract class IItem
     {
-        protected IItem(string name, double weight, string imagePath, string documentationPath)
-        {
-            this.Name = name;
-            this.Weight = weight;
-            this.ImagePath = imagePath;
-            this.DocumentationPath = documentationPath;
-        }
-
         /// <summary>
-        /// Displays information about this item.
+        /// The damage this item does when it is used to attack.
         /// </summary>
-        public void DisplayDocumentation()
-        {
-            Util.Util.WriteLine(ResourceGM.GetResource(this.DocumentationPath));
-        }
-
-        /// <summary>
-        /// Displays the image of this item.
-        /// </summary>
-        public void DisplayImage()
-        {
-            Util.Util.WriteLine(ResourceGM.GetResource(this.ImagePath));
-        }
-
-        /// <summary>
-        /// The resource path to the ASCII art image.
-        /// </summary>
-        public string ImagePath;
+        public Damage Damage = new Damage(Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), new Util.Die(0, 0, 1));
 
         /// <summary>
         /// The resource path to the documentation about this item.
@@ -48,14 +23,20 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         public string DocumentationPath;
 
         /// <summary>
-        /// The damage this item does when it is used to attack.
+        /// Gets the impact an item has on the character when it is equipped.
         /// </summary>
-        public Damage Damage = new Damage(Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), new Util.Die(0, 0, 1));
+        /// <returns></returns>
+        public StatsImpact EquipImpact = new StatsImpact();
 
         /// <summary>
         /// The ID of the item.
         /// </summary>
         public Guid ID = new Guid();
+
+        /// <summary>
+        /// The resource path to the ASCII art image.
+        /// </summary>
+        public string ImagePath;
 
         public bool IsCursed = false;
 
@@ -94,6 +75,14 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         /// </summary>
         public double Weight;
 
+        protected IItem(string name, double weight, string imagePath, string documentationPath)
+        {
+            this.Name = name;
+            this.Weight = weight;
+            this.ImagePath = imagePath;
+            this.DocumentationPath = documentationPath;
+        }
+
         /// <summary>
         /// Called whenever the item is bought.
         /// </summary>
@@ -106,10 +95,20 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         public abstract bool CanEquip(ICreature creature);
 
         /// <summary>
-        /// Gets the impact an item has on the character when it is equipped.
+        /// Displays information about this item.
         /// </summary>
-        /// <returns></returns>
-        public StatsImpact EquipImpact = new StatsImpact();
+        public void DisplayDocumentation()
+        {
+            Util.Util.WriteLine(ResourceGM.GetResource(this.DocumentationPath));
+        }
+
+        /// <summary>
+        /// Displays the image of this item.
+        /// </summary>
+        public void DisplayImage()
+        {
+            Util.Util.WriteLine(ResourceGM.GetResource(this.ImagePath));
+        }
 
         /// <summary>
         /// Called whenever the item is sold.
@@ -168,18 +167,17 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         public int FireResistance = 0;
         public int Health = 0;
         public int Initiative = 0;
+        public int Lockpick = 0;
         public int MagicResistance = 0;
         public int PoisonResistance = 0;
         public int SleepResistance = 0;
         public int Strength = 0;
+        public int WalkSilently = 0;
         public int WeightCapacity = 0;
         public int Wisdom = 0;
-        public int Lockpick = 0;
-        public int WalkSilently = 0;
 
         public StatsImpact()
         {
-
         }
 
         public StatsImpact(int charisma, int dexterity, int strength, int constitution, int wisdom, int ac,

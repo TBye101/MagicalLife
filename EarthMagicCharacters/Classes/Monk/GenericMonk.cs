@@ -4,13 +4,12 @@
 
 namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 {
-    using System;
-    using System.Collections.Generic;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
-    using EarthWithMagicAPI.API.Stuff;
     using EarthWithMagicAPI.API.Util;
     using EarthWithMagicMagic.Abilities.Monk;
+    using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// The base monk.

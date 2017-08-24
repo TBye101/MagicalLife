@@ -4,7 +4,6 @@
 
 namespace EarthMagicItems.Ammo.Bolts
 {
-    using System.Collections.Generic;
     using EarthMagicItems.Ammo.Arrows;
     using EarthWithMagicAPI.API;
     using EarthWithMagicAPI.API.Util;
@@ -16,7 +15,7 @@ namespace EarthMagicItems.Ammo.Bolts
     {
         #region NormalBolts
 
-        private GenericAmmo _1Bolt = new GenericAmmo(new Die(2, 4, 0), "+1 Bolt", GenericBoltStorage.StandardBolt(new Die(1, 6, 1)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.CrossbowBolt.txt", 
+        private GenericAmmo _1Bolt = new GenericAmmo(new Die(2, 4, 0), "+1 Bolt", GenericBoltStorage.StandardBolt(new Die(1, 6, 1)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.CrossbowBolt.txt",
             "EarthMagicDocumentation.Items.Ammo.Bolts.+1Bolt.md", .15);
 
         private GenericAmmo _2Bolt = new GenericAmmo(new Die(3, 5, 0), "+2 Bolt", GenericBoltStorage.StandardBolt(new Die(1, 6, 2)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.CrossbowBolt.txt",
@@ -39,19 +38,19 @@ namespace EarthMagicItems.Ammo.Bolts
 
         #endregion NormalBolts
 
-        private GenericAmmo AcidBolt = new GenericAmmo(new Die(1, 3, 0), "Acid Bolt", new Damage(new Die(1, 8, 0), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 6, 0), Die.Zero(), Die.Zero()), 
+        private GenericAmmo AcidBolt = new GenericAmmo(new Die(1, 3, 0), "Acid Bolt", new Damage(new Die(1, 8, 0), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 6, 0), Die.Zero(), Die.Zero()),
             "EarthMagicDocumentation.ASCII_Art.Items.Ammo.CrossbowBolt.txt",
             "EarthMagicDocumentation.Items.Ammo.Bolts.AcidBolt.md", .15);
 
-        private GenericAmmo FireBolt = new GenericAmmo(new Die(1, 3, 0), "Fire Bolt", new Damage(Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 8, 0), Die.Zero(), Die.Zero(), new Die(1, 6, 0), Die.Zero(), Die.Zero()), 
+        private GenericAmmo FireBolt = new GenericAmmo(new Die(1, 3, 0), "Fire Bolt", new Damage(Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 8, 0), Die.Zero(), Die.Zero(), new Die(1, 6, 0), Die.Zero(), Die.Zero()),
             "EarthMagicDocumentation.ASCII_Art.Items.Ammo.CrossbowBolt.txt",
             "EarthMagicDocumentation.Items.Ammo.Bolts.FireBolt.md", .15);
 
-        private GenericAmmo FrostBolt = new GenericAmmo(new Die(1, 3, 0), "Frost Bolt", new Damage(Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 8, 0), Die.Zero(), new Die(1, 6, 0), Die.Zero(), Die.Zero()), 
+        private GenericAmmo FrostBolt = new GenericAmmo(new Die(1, 3, 0), "Frost Bolt", new Damage(Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 8, 0), Die.Zero(), new Die(1, 6, 0), Die.Zero(), Die.Zero()),
             "EarthMagicDocumentation.ASCII_Art.Items.Ammo.CrossbowBolt.txt",
             "EarthMagicDocumentation.Items.Ammo.Bolts.FrostBolt.md", .15);
 
-        private GenericAmmo PoisonBolt = new GenericAmmo(new Die(1, 3, 0), "Poison Bolt", new Damage(Die.Zero(), new Die(1, 8, 0), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 6, 0), Die.Zero(), Die.Zero()), 
+        private GenericAmmo PoisonBolt = new GenericAmmo(new Die(1, 3, 0), "Poison Bolt", new Damage(Die.Zero(), new Die(1, 8, 0), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 6, 0), Die.Zero(), Die.Zero()),
             "EarthMagicDocumentation.ASCII_Art.Items.Ammo.CrossbowBolt.txt",
             "EarthMagicDocumentation.Items.Ammo.Bolts.PoisonBolt.md", .15);
 

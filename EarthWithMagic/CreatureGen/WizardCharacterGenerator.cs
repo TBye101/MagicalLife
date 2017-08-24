@@ -4,11 +4,11 @@
 
 namespace EarthWithMagic.CreatureGen
 {
-    using System;
     using EarthMagicCharacters.Classes.Wizard.Generic_Wizard;
     using EarthMagicDocumentation;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Util;
+    using System;
 
     public class WizardCharacterGenerator : ICreatureGenerator
     {

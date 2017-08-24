@@ -6,9 +6,7 @@ namespace EarthMagicCharacters.Classes.Wizard.Generic_Wizard
 {
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
-    using EarthWithMagicAPI.API.Stuff;
     using EarthWithMagicAPI.API.Util;
-    using System;
 
     /// <summary>
     /// The base wizard class.
@@ -45,36 +43,47 @@ namespace EarthMagicCharacters.Classes.Wizard.Generic_Wizard
                 case int n when (n >= 1 && n <= 4):
                     this.MaxCastingPower++;
                     break;
+
                 case int n when (n >= 5 && n <= 8):
                     this.MaxCastingPower += 2;
                     break;
+
                 case int n when (n >= 9 && n <= 13):
                     this.MaxCastingPower += 3;
                     break;
+
                 case int n when (n >= 14 && n <= 18):
                     this.MaxCastingPower += 4;
                     break;
+
                 case int n when (n >= 19 && n <= 23):
                     this.MaxCastingPower += 5;
                     break;
+
                 case int n when (n >= 24 && n <= 28):
                     this.MaxCastingPower += 6;
                     break;
+
                 case int n when (n >= 29 && n <= 33):
                     this.MaxCastingPower += 7;
                     break;
+
                 case int n when (n >= 34 && n <= 38):
                     this.MaxCastingPower += 8;
                     break;
+
                 case int n when (n >= 39 && n <= 43):
                     this.MaxCastingPower += 9;
                     break;
+
                 case int n when (n >= 44 && n <= 48):
                     this.MaxCastingPower += 10;
                     break;
+
                 case int n when (n == 49 || n == 50):
                     this.MaxCastingPower += 11;
                     break;
+
                 default:
                     break;
             }

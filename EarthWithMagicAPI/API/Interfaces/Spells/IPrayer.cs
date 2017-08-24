@@ -4,10 +4,10 @@
 
 namespace EarthWithMagicAPI.API.Interfaces.Spells
 {
-    using System;
-    using System.Collections.Generic;
     using EarthMagicDocumentation;
     using EarthWithMagicAPI.API.Creature;
+    using System;
+    using System.Collections.Generic;
 
     public abstract class IPrayer
     {
@@ -20,6 +20,8 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
         /// Lore about the spell.
         /// </summary>
         public List<string> Info;
+
+        public int MemorizationDifficulty;
 
         /// <summary>
         /// The name of the spell.
@@ -34,11 +36,8 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
         public int XPValue = 0;
 
         private readonly bool CombatOnly;
-        private string ImagePath;
-
-        public int MemorizationDifficulty;
-
         private string documentationPath;
+        private string ImagePath;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IPrayer"/> class.
@@ -114,16 +113,16 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
             }
         }
 
-        public void DisplayImage()
-        {
-            List<string> image = ResourceGM.GetResource(this.ImagePath);
-            Util.Util.WriteLine(image);
-        }
-
         public void DisplayDocumentation()
         {
             List<string> docs = ResourceGM.GetResource(this.documentationPath);
             Util.Util.WriteLine(docs);
+        }
+
+        public void DisplayImage()
+        {
+            List<string> image = ResourceGM.GetResource(this.ImagePath);
+            Util.Util.WriteLine(image);
         }
 
         /// <summary>

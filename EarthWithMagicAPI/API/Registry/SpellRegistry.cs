@@ -4,11 +4,10 @@
 
 namespace EarthWithMagicAPI.API.Registry
 {
+    using EarthWithMagicAPI.API.Interfaces.Spells;
     using System;
     using System.Collections.Generic;
     using System.Reflection;
-    using System.Text;
-    using EarthWithMagicAPI.API.Interfaces.Spells;
 
     public static class SpellRegistry
     {
@@ -44,7 +43,6 @@ namespace EarthWithMagicAPI.API.Registry
         {
             if (Spells.Count == 0)
             {
-                
             }
 
             List<ISpell> spells = new List<ISpell>();

@@ -4,11 +4,11 @@
 
 namespace EarthWithMagicAPI.API.Creature
 {
-    using System;
-    using System.Collections.Generic;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Interfaces.Spells;
     using EarthWithMagicAPI.API.Stuff;
+    using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Gives the player options for each creature in their party in combat.
@@ -98,30 +98,10 @@ namespace EarthWithMagicAPI.API.Creature
                         case "rotate":
                             Rotate(encounter);
                             break;
+
                         default:
                             Util.Util.WriteLine("Command not recognized!");
                             break;
-                    }
-                }
-            }
-        }
-
-        private static void ViewItem(ICreature creature, Encounter encounter, string[] command)
-        {
-            if (command.Length < 3)
-            {
-                Util.Util.WriteLine("Missing argument(s)!");
-                Util.Util.WriteLine("Third argument should be the name of the argument to view!");
-            }
-            else
-            {
-                foreach (IItem item in ICreature.GetAllItems(creature))
-                {
-                    if (item.Name == command[2])
-                    {
-                        item.DisplayImage();
-                        item.DisplayDocumentation();
-                        return;
                     }
                 }
             }
@@ -465,6 +445,27 @@ namespace EarthWithMagicAPI.API.Creature
                 items += ", ";
             }
             Util.Util.WriteLine(items);
+        }
+
+        private static void ViewItem(ICreature creature, Encounter encounter, string[] command)
+        {
+            if (command.Length < 3)
+            {
+                Util.Util.WriteLine("Missing argument(s)!");
+                Util.Util.WriteLine("Third argument should be the name of the argument to view!");
+            }
+            else
+            {
+                foreach (IItem item in ICreature.GetAllItems(creature))
+                {
+                    if (item.Name == command[2])
+                    {
+                        item.DisplayImage();
+                        item.DisplayDocumentation();
+                        return;
+                    }
+                }
+            }
         }
     }
 }

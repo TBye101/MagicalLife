@@ -4,16 +4,15 @@
 
 namespace EarthWithMagicAPI.API.Creature
 {
-    using System;
-    using System.Collections.Generic;
     using EarthMagicCharacters.Classes;
     using EarthMagicDocumentation;
     using EarthWithMagicAPI.API.Controls;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Interfaces.Spells;
-    using EarthWithMagicAPI.API.Story;
     using EarthWithMagicAPI.API.Stuff;
     using EarthWithMagicAPI.API.Util;
+    using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Holds various things that every creature has or should implement.
@@ -90,6 +89,8 @@ namespace EarthWithMagicAPI.API.Creature
         /// </summary>
         public int MaxCastingPower = 0;
 
+        public IAI myAI;
+
         /// <summary>
         /// The creature's name, if it has one.
         /// </summary>
@@ -140,8 +141,6 @@ namespace EarthWithMagicAPI.API.Creature
         /// </summary>
         private string ImagePath;
 
-        public IAI myAI;
-
         /// <summary>
         /// The constructor for the ICreature abstract class.
         /// </summary>
@@ -161,6 +160,42 @@ namespace EarthWithMagicAPI.API.Creature
             this.Rest();
             this.WeightCapacity = WeightCapacityUtil.Calculate(this);
             this.myAI = aI;
+        }
+
+        /// <summary>
+        /// Returns a list of all items, whether they be in the inventory, or equipped somewhere.
+        /// </summary>
+        /// <returns></returns>
+        public static List<IItem> GetAllItems(ICreature creature)
+        {
+            List<IItem> all = new List<IItem>();
+
+            foreach (IItem item in creature.Amulets)
+            {
+                all.Add(item);
+            }
+
+            foreach (IItem item in creature.Armoring)
+            {
+                all.Add(item);
+            }
+
+            foreach (IItem item in creature.Inventory)
+            {
+                all.Add(item);
+            }
+
+            foreach (IItem item in creature.Rings)
+            {
+                all.Add(item);
+            }
+
+            foreach (IItem item in creature.Weapons)
+            {
+                all.Add(item);
+            }
+
+            return all;
         }
 
         /// <summary>
@@ -380,6 +415,7 @@ namespace EarthWithMagicAPI.API.Creature
                 this.myAI.YourTurn(encounter, this);
             }
         }
+
         public void YourTurn()
         {
             if (this.IsInParty)
@@ -407,50 +443,6 @@ namespace EarthWithMagicAPI.API.Creature
             Util.WriteLine(this.Name + " takes " + actualDamage.ToString() + " " + nameOfDamage + " (" + resistance + "% resisted");
             return actualDamage;
         }
-
-        /// <summary>
-        /// Returns a list of all items, whether they be in the inventory, or equipped somewhere.
-        /// </summary>
-        /// <returns></returns>
-        public static List<IItem> GetAllItems(ICreature creature)
-        {
-            List<IItem> all = new List<IItem>();
-
-            foreach (IItem item in creature.Amulets)
-            {
-                all.Add(item);
-            }
-
-            foreach (IItem item in creature.Armoring)
-            {
-                all.Add(item);
-            }
-
-            foreach (IItem item in creature.Inventory)
-            {
-                all.Add(item);
-            }
-
-            foreach (IItem item in creature.Rings)
-            {
-                all.Add(item);
-            }
-
-            foreach (IItem item in creature.Weapons)
-            {
-                all.Add(item);
-            }
-
-            return all;
-        }
-    }
-
-    /// <summary>
-    /// The type of creature this creature is.
-    /// </summary>
-    public enum CreatureType
-    {
-        Humanoid, Angelic, Demonic, Undead, Unknown
     }
 
     /// <summary>
@@ -459,6 +451,14 @@ namespace EarthWithMagicAPI.API.Creature
     public enum Alignment
     {
         LawfulGood, NeutralGood, ChaoticGood, LawfulNeutral, TrueNeutral, ChaoticNeutral, LawfulEvil, NeutralEvil, ChaoticEvil
+    }
+
+    /// <summary>
+    /// The type of creature this creature is.
+    /// </summary>
+    public enum CreatureType
+    {
+        Humanoid, Angelic, Demonic, Undead, Unknown
     }
 
     /// <summary>

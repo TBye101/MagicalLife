@@ -4,12 +4,11 @@
 
 namespace EarthWithMagicAPI.API.Controls
 {
-    using System;
-    using System.Collections.Generic;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Interfaces.Spells;
-    using EarthWithMagicAPI.API.Stuff;
+    using System;
+    using System.Collections.Generic;
 
     public static class NonCombatControl
     {
@@ -84,6 +83,7 @@ namespace EarthWithMagicAPI.API.Controls
                         case "unequip":
                             Unequip(creature);
                             break;
+
                         case "rest":
                             Rest();
                             break;
@@ -91,38 +91,10 @@ namespace EarthWithMagicAPI.API.Controls
                         case "rotate":
                             Rotate();
                             break;
+
                         default:
                             Util.Util.WriteLine("Command not recognized!");
                             break;
-                    }
-                }
-            }
-        }
-
-        private static void Rest()
-        {
-            foreach (ICreature item in Party.Party.TheParty)
-            {
-                item.Rest();
-            }
-        }
-
-        private static void ViewItem(ICreature creature, string[] command)
-        {
-            if (command.Length < 3)
-            {
-                Util.Util.WriteLine("Missing argument(s)!");
-                Util.Util.WriteLine("Third argument should be the name of the argument to view!");
-            }
-            else
-            {
-                foreach (IItem item in ICreature.GetAllItems(creature))
-                {
-                    if (item.Name == command[2])
-                    {
-                        item.DisplayImage();
-                        item.DisplayDocumentation();
-                        return;
                     }
                 }
             }
@@ -263,6 +235,14 @@ namespace EarthWithMagicAPI.API.Controls
             foreach (ISpell item in creature.UsableSpells)
             {
                 Util.Util.WriteLine(item.Name + ", " + item.PowerRequired.ToString());
+            }
+        }
+
+        private static void Rest()
+        {
+            foreach (ICreature item in Party.Party.TheParty)
+            {
+                item.Rest();
             }
         }
 
@@ -438,6 +418,27 @@ namespace EarthWithMagicAPI.API.Controls
             }
 
             Util.Util.WriteLine(items);
+        }
+
+        private static void ViewItem(ICreature creature, string[] command)
+        {
+            if (command.Length < 3)
+            {
+                Util.Util.WriteLine("Missing argument(s)!");
+                Util.Util.WriteLine("Third argument should be the name of the argument to view!");
+            }
+            else
+            {
+                foreach (IItem item in ICreature.GetAllItems(creature))
+                {
+                    if (item.Name == command[2])
+                    {
+                        item.DisplayImage();
+                        item.DisplayDocumentation();
+                        return;
+                    }
+                }
+            }
         }
     }
 }

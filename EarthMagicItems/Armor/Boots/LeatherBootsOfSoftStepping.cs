@@ -4,13 +4,11 @@
 
 namespace EarthMagicItems.Armor.Boots
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Interfaces.Spells;
     using EarthWithMagicAPI.API.Stuff;
+    using System;
 
     public class LeatherBootsOfSoftStepping : IArmor
     {

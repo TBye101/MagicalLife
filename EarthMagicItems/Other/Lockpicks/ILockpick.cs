@@ -4,9 +4,6 @@
 
 namespace EarthMagicItems.Other.Lockpicks
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
     using EarthWithMagicAPI.API.Interfaces.Items;
 
     /// <summary>

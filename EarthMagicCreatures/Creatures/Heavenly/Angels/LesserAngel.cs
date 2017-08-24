@@ -4,11 +4,10 @@
 
 namespace EarthMagicCreatures.Creatures.Heavenly.Angels
 {
-    using System;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
-    using EarthWithMagicAPI.API.Stuff;
     using EarthWithMagicAPI.API.Util;
+    using System;
 
     public class LesserAngel : ICreature
     {

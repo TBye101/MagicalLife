@@ -4,12 +4,12 @@
 
 namespace EarthMagicCharacters.Classes.Monk
 {
-    using System;
     using EarthMagicCharacters.Classes.Monk.Generic_Monk;
     using EarthMagicDocumentation;
     using EarthWithMagic.CreatureGen;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Util;
+    using System;
 
     /// <summary>
     /// Handles generation of monk characters.

@@ -4,8 +4,6 @@
 
 namespace EarthWithMagic
 {
-    using System;
-    using System.Collections.Generic;
     using EarthMagicCharacters.Classes.Monk.Generic_Monk;
     using EarthMagicDocumentation;
     using EarthWithMagicAPI.API.Creature;
@@ -14,6 +12,8 @@ namespace EarthWithMagic
     using EarthWithMagicAPI.API.Registry;
     using EarthWithMagicAPI.API.Stuff;
     using EarthWithMagicAPI.API.Util;
+    using System;
+    using System.Collections.Generic;
 
     public static class Program
     {

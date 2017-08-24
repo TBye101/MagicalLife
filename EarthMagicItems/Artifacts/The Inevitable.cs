@@ -4,8 +4,6 @@
 
 namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows.Artifacts
 {
-    using System;
-    using System.Collections.Generic;
     using EarthMagicDynamicMarket;
     using EarthWithMagicAPI.API;
     using EarthWithMagicAPI.API.Creature;
@@ -13,6 +11,7 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows.Artifacts
     using EarthWithMagicAPI.API.Interfaces.Spells;
     using EarthWithMagicAPI.API.Stuff;
     using EarthWithMagicAPI.API.Util;
+    using System;
 
     /// <summary>
     /// Before magical arrows were common for folks who could afford them, legend has it that a sorcerer made a magical and sentient arrow.

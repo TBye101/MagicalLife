@@ -4,10 +4,10 @@
 
 namespace EarthWithMagicAPI.API.Interfaces.Spells
 {
-    using System;
-    using System.Collections.Generic;
     using EarthMagicDocumentation;
     using EarthWithMagicAPI.API.Creature;
+    using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// The base class for spells.
@@ -23,6 +23,8 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
         /// Lore about the spell.
         /// </summary>
         public List<string> Info;
+
+        public int MemorizationDifficulty;
 
         /// <summary>
         /// The name of the spell.
@@ -43,8 +45,6 @@ namespace EarthWithMagicAPI.API.Interfaces.Spells
 
         private readonly bool CombatOnly;
         private string ImagePath;
-
-        public int MemorizationDifficulty;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ISpell"/> class.

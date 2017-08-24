@@ -4,10 +4,9 @@
 
 namespace EarthMagicCreatures.Creatures.Undead.Skeletons
 {
-    using System;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
-    using EarthWithMagicAPI.API.Stuff;
+    using System;
 
     /// <summary>
     /// A undead but weak creature.

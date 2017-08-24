@@ -4,9 +4,9 @@
 
 namespace EarthWithMagicAPI.API.Creature
 {
-    using System;
     using EarthMagicCharacters.Classes.Monk;
     using EarthWithMagic.CreatureGen;
+    using System;
 
     /// <summary>
     /// Switches and determines which class generator to launch.
@@ -23,6 +23,7 @@ namespace EarthWithMagicAPI.API.Creature
                 case "cleric":
                     ClericCharacterGenerator cleric = new ClericCharacterGenerator();
                     return cleric.Generate();
+
                 case "monk":
                     MonkCharacterGeneration gen = new MonkCharacterGeneration();
                     return gen.Generate();
@@ -30,9 +31,11 @@ namespace EarthWithMagicAPI.API.Creature
                 case "thief":
                     ThiefCharacterGenerator thief = new ThiefCharacterGenerator();
                     return thief.Generate();
+
                 case "wizard":
                     WizardCharacterGenerator wizard = new WizardCharacterGenerator();
                     return wizard.Generate();
+
                 default:
                     Util.Util.WriteLine("Invalid input!");
                     return this.GetMainCharacter();

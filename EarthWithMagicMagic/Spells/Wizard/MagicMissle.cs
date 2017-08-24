@@ -4,17 +4,35 @@
 
 namespace EarthWithMagicMagic.Spells.Wizard
 {
-    using System;
-    using System.Collections.Generic;
     using EarthWithMagicAPI.API;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Spells;
     using EarthWithMagicAPI.API.Util;
+    using System.Collections.Generic;
 
     public class MagicMissle : ISpell
     {
         public MagicMissle()
             : base("Magic Missile", "EarthMagicDocumentation.Spells.Wizard.Magic_Missile.md", 3, 0, "EarthMagicDocumentation.ASCII_Art.Spells.Wizard.Magic_Missile.txt", true)
+        {
+        }
+
+        public override bool OnAction(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
+        {
+            return true;
+        }
+
+        public override bool OnTurn(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
+        {
+            return true;
+        }
+
+        public override bool OnTurn(List<ICreature> Party, ICreature Affected)
+        {
+            return true;
+        }
+
+        public override void OnWearOff(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
         {
         }
 
@@ -47,28 +65,9 @@ namespace EarthWithMagicMagic.Spells.Wizard
             return true;
         }
 
-        public override bool OnAction(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
-        {
-            return true;
-        }
-
-        public override bool OnTurn(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
-        {
-            return true;
-        }
-
-        public override void OnWearOff(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
-        {
-        }
-
         protected override bool Go(List<ICreature> theParty, ICreature creature)
         {
             return false;
-        }
-
-        public override bool OnTurn(List<ICreature> Party, ICreature Affected)
-        {
-            return true;
         }
     }
 }

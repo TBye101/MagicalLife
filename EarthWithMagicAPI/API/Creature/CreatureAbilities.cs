@@ -84,6 +84,11 @@ namespace EarthWithMagicAPI.API.Creature
         public int BasePickPocket = 0;
 
         /// <summary>
+        /// The base number of prayers this creature can pray.
+        /// </summary>
+        public int BasePrayers = 0;
+
+        /// <summary>
         /// If true, the creature can shoot poison from their body.
         /// Ex: Spider.
         /// </summary>
@@ -174,6 +179,12 @@ namespace EarthWithMagicAPI.API.Creature
         public int OpenLock = 0;
 
         public int PickPocket = 0;
+
+        /// <summary>
+        /// The number of prayers left for this creature.
+        /// </summary>
+        public int Prayers = 0;
+
         public bool ShootPoison = false;
         public bool ShootWeb = false;
         public bool StoneStare = false;
@@ -186,16 +197,6 @@ namespace EarthWithMagicAPI.API.Creature
         public bool TakeGaseousForm = false;
         public bool Telepathy = false;
         public int WalkSilently = 0;
-
-        /// <summary>
-        /// The base number of prayers this creature can pray.
-        /// </summary>
-        public int BasePrayers = 0;
-
-        /// <summary>
-        /// The number of prayers left for this creature.
-        /// </summary>
-        public int Prayers = 0;
 
         public void Rest()
         {

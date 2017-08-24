@@ -4,7 +4,6 @@
 
 namespace EarthMagicItems.Ammo.Arrows
 {
-    using System.Collections.Generic;
     using EarthWithMagicAPI.API;
     using EarthWithMagicAPI.API.Util;
 

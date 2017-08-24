@@ -4,8 +4,6 @@
 
 namespace EarthMagicItems.Armor.Generic.Steel
 {
-    using System.Collections.Generic;
-
     /// <summary>
     /// Holds all of the generic steel armor.
     /// </summary>

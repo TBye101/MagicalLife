@@ -4,9 +4,9 @@
 
 namespace EarthWithMagicAPI.API.Creature
 {
+    using EarthMagicDocumentation;
     using System;
     using System.Collections.Generic;
-    using EarthMagicDocumentation;
 
     public abstract class IAbility
     {
@@ -65,6 +65,11 @@ namespace EarthWithMagicAPI.API.Creature
             this.DocumentationPath = documentationPath;
         }
 
+        public void DisplayDocumentation()
+        {
+            Util.Util.WriteLine(ResourceGM.GetResource(this.DocumentationPath));
+        }
+
         /// <summary>
         /// Displays this ability's image.
         /// </summary>
@@ -73,9 +78,39 @@ namespace EarthWithMagicAPI.API.Creature
             Util.Util.WriteLine(ResourceGM.GetResource(this.ImagePath));
         }
 
-        public void DisplayDocumentation()
+        /// <summary>
+        /// Called whenever the creature tries to take an action.
+        /// Returns whether or not the creature is allowed to take an action.
+        /// </summary>
+        /// <param name="party"></param>
+        /// <param name="enemies"></param>
+        /// <param name="affected"></param>
+        /// <returns></returns>
+        public abstract bool OnAction(List<ICreature> party, List<ICreature> enemies, ICreature affected);
+
+        /// <summary>
+        /// Does stuff if it wants to on the creature's turn. Returns if the creature gets to do anything, or if it just has to end it's turn.
+        /// </summary>
+        /// <param name="party"></param>
+        /// <param name="Enemies"></param>
+        /// <param name="affected"></param>
+        /// <returns></returns>
+        public abstract bool OnTurn(List<ICreature> party, ICreature affected);
+
+        /// <summary>
+        /// Called when the creature's affect wears off.
+        /// </summary>
+        /// <param name="party"></param>
+        /// <param name="enemies"></param>
+        /// <param name="affected"></param>
+        public abstract void OnWearOff(List<ICreature> party, List<ICreature> enemies, ICreature affected);
+
+        /// <summary>
+        /// Resets the uses count.
+        /// </summary>
+        public void Rest()
         {
-            Util.Util.WriteLine(ResourceGM.GetResource(this.DocumentationPath));
+            this.AvailibleUses = this.MaxUses;
         }
 
         /// <summary>
@@ -133,40 +168,5 @@ namespace EarthWithMagicAPI.API.Creature
         /// <param name="party"></param>
         /// <param name="caster"></param>
         protected abstract void Go(List<ICreature> party, ICreature caster);
-
-        /// <summary>
-        /// Called whenever the creature tries to take an action.
-        /// Returns whether or not the creature is allowed to take an action.
-        /// </summary>
-        /// <param name="party"></param>
-        /// <param name="enemies"></param>
-        /// <param name="affected"></param>
-        /// <returns></returns>
-        public abstract bool OnAction(List<ICreature> party, List<ICreature> enemies, ICreature affected);
-
-        /// <summary>
-        /// Does stuff if it wants to on the creature's turn. Returns if the creature gets to do anything, or if it just has to end it's turn.
-        /// </summary>
-        /// <param name="party"></param>
-        /// <param name="Enemies"></param>
-        /// <param name="affected"></param>
-        /// <returns></returns>
-        public abstract bool OnTurn(List<ICreature> party, ICreature affected);
-
-        /// <summary>
-        /// Called when the creature's affect wears off.
-        /// </summary>
-        /// <param name="party"></param>
-        /// <param name="enemies"></param>
-        /// <param name="affected"></param>
-        public abstract void OnWearOff(List<ICreature> party, List<ICreature> enemies, ICreature affected);
-
-        /// <summary>
-        /// Resets the uses count.
-        /// </summary>
-        public void Rest()
-        {
-            this.AvailibleUses = this.MaxUses;
-        }
     }
 }

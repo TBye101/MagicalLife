@@ -4,10 +4,8 @@
 
 namespace EarthWithMagicAPI.API.Story
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
     using EarthWithMagicAPI.API.Creature;
+    using System;
 
     /// <summary>
     /// Used when the party could rest, or is in a peaceful area.
@@ -15,14 +13,14 @@ namespace EarthWithMagicAPI.API.Story
     public class PeacefulPartyTime
     {
         /// <summary>
-        /// If true, the player could sit in this loop forever.
-        /// </summary>
-        private bool _unlimited;
-
-        /// <summary>
         /// If unlimited is false, the player gets this many turns more in the loop, before we move on.
         /// </summary>
         private int _duration;
+
+        /// <summary>
+        /// If true, the player could sit in this loop forever.
+        /// </summary>
+        private bool _unlimited;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PeacefulPartyTime"/> class.
