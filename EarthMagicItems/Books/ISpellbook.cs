@@ -18,7 +18,7 @@ namespace EarthMagicItems.Books
         /// <summary>
         /// A list of spells in the spellbook.
         /// </summary>
-        private List<ISpell> Spells = new List<ISpell>();
+        public List<ISpell> Spells = new List<ISpell>();
 
         public ISpellbook(string name, double weight, string imagePath, string documentationPath)
             : base(name, weight, imagePath, documentationPath)
@@ -27,6 +27,8 @@ namespace EarthMagicItems.Books
 
         public override void Use(ICreature user)
         {
+            this.RemoveKnown(user);
+
             if (this.Spells.Count > 0)
             {
                 int progress = Dice.RollDice(new Die(1, user.Attributes.XP.CreatureLevel, 1), "Memorization progress towards " + Spells[0].Name);
@@ -48,6 +50,30 @@ namespace EarthMagicItems.Books
             else
             {
                 Util.WriteLine("You can't use learn anything more from this!");
+            }
+        }
+
+        /// <summary>
+        /// Removes all known spells in the book.
+        /// </summary>
+        /// <param name="user"></param>
+        private void RemoveKnown(ICreature user)
+        {
+            int length = this.Spells.Count;
+
+            for (int i = 0; i < length; i++)
+            {
+                ISpell item = this.Spells[i];
+
+                foreach (ISpell ob in user.SpellsKnown)
+                {
+                    if (item == ob)
+                    {
+                        this.Spells.RemoveAt(i);
+                        i--;
+                        length--;
+                    }
+                }
             }
         }
     }

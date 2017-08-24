@@ -8,7 +8,7 @@
 
     public static class SpellRegistry
     {
-        public static List<ISpell> Items = new List<ISpell>();
+        public static List<ISpell> Spells = new List<ISpell>();
 
         static SpellRegistry()
         {
@@ -24,11 +24,31 @@
                         if (constructor.GetParameters().Length == 0)
                         {
                             ISpell someItem = (ISpell)itemAssembly.CreateInstance(item.FullName, false);
-                            Items.Add(someItem);
+                            Spells.Add(someItem);
                         }
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Returns a list of all the spells that are under or equal to the specified power.
+        /// </summary>
+        /// <param name="power"></param>
+        /// <returns></returns>
+        public static List<ISpell> GetSpellsUnderPower(int power)
+        {
+            List<ISpell> spells = new List<ISpell>();
+
+            foreach (ISpell item in Spells)
+            {
+                if (item.PowerRequired <= power)
+                {
+                    spells.Add(item);
+                }
+            }
+
+            return spells;
         }
     }
 }
