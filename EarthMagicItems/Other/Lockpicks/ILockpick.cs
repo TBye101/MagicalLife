@@ -1,4 +1,8 @@
-﻿namespace EarthMagicItems.Other.Lockpicks
+﻿// <copyright file="ILockpick.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthMagicItems.Other.Lockpicks
 {
     using System;
     using System.Collections.Generic;

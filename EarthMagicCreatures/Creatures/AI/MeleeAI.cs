@@ -1,4 +1,8 @@
-﻿namespace EarthMagicCreatures.Creatures.AI
+﻿// <copyright file="MeleeAI.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthMagicCreatures.Creatures.AI
 {
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Stuff;

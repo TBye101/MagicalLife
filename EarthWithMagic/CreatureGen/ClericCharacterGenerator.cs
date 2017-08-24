@@ -1,4 +1,8 @@
-﻿namespace EarthWithMagic.CreatureGen
+﻿// <copyright file="ClericCharacterGenerator.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthWithMagic.CreatureGen
 {
     using System;
     using System.Collections.Generic;

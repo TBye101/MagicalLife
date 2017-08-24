@@ -1,4 +1,8 @@
-﻿namespace EarthMagicCreatures.Creatures.Undead.Skeletons
+﻿// <copyright file="Skeleton.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthMagicCreatures.Creatures.Undead.Skeletons
 {
     using System;
     using EarthWithMagicAPI.API.Creature;

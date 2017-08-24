@@ -1,4 +1,8 @@
-﻿namespace EarthWithMagicAPI.API.Util
+﻿// <copyright file="Dice.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthWithMagicAPI.API.Util
 {
     using System;
 
@@ -13,9 +17,9 @@
         /// Rolls dice, adds up the values, and returns the number.
         /// </summary>
         /// <param name="die"></param>
-        /// <param name="Description"></param>
+        /// <param name="description"></param>
         /// <returns></returns>
-        public static int RollDice(Die die, string Description = "")
+        public static int RollDice(Die die, string description = "")
         {
             int ret = 0;
             int OriginalRolls = die.Rolls;
@@ -27,7 +31,7 @@
 
             ret += die.Modifyer;
 
-            string ToLog = Description;
+            string ToLog = description;
             ToLog += ": ";
             ToLog += OriginalRolls.ToString();
             ToLog += "d";

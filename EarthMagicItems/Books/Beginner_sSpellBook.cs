@@ -1,4 +1,8 @@
-﻿namespace EarthMagicItems.Books
+﻿// <copyright file="Beginner_sSpellBook.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthMagicItems.Books
 {
     using System;
     using System.Collections.Generic;

@@ -1,4 +1,8 @@
-﻿namespace EarthWithMagicAPI.API.Creature
+﻿// <copyright file="ExperienceCalculator.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthWithMagicAPI.API.Creature
 {
     using System;
     using EarthWithMagicAPI.API.Interfaces.Spells;

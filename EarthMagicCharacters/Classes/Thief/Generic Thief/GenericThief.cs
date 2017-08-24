@@ -1,4 +1,8 @@
-﻿namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
+﻿// <copyright file="GenericThief.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 {
     using System;
     using System.Collections.Generic;

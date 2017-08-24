@@ -1,4 +1,8 @@
-﻿namespace EarthMagicCharacters.Classes.Wizard.Generic_Wizard
+﻿// <copyright file="GenericWizard.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthMagicCharacters.Classes.Wizard.Generic_Wizard
 {
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;

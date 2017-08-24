@@ -1,4 +1,8 @@
-﻿namespace EarthMagicItems.Ammo.Arrows
+﻿// <copyright file="GenericArrowStorage.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthMagicItems.Ammo.Arrows
 {
     using System.Collections.Generic;
     using EarthWithMagicAPI.API;

@@ -1,4 +1,8 @@
-﻿namespace EarthWithMagicAPI.API.Interfaces.Items
+﻿// <copyright file="IWeapon.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthWithMagicAPI.API.Interfaces.Items
 {
     using EarthWithMagicAPI.API.Creature;
 

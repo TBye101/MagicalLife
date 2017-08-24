@@ -1,4 +1,8 @@
-﻿namespace EarthMagicItems.Ammo.Stones
+﻿// <copyright file="GenericStoneStorage.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthMagicItems.Ammo.Stones
 {
     using System.Collections.Generic;
     using EarthMagicItems.Ammo.Arrows;

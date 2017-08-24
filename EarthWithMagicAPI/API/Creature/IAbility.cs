@@ -1,4 +1,8 @@
-﻿namespace EarthWithMagicAPI.API.Creature
+﻿// <copyright file="IAbility.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthWithMagicAPI.API.Creature
 {
     using System;
     using System.Collections.Generic;
@@ -50,11 +54,11 @@
         /// <param name="uses">The amount of uses this ability can be used right after resting.</param>
         /// <param name="roundsLeft"></param>
         /// <param name="imagePath"></param>
-        /// <param name="AOE">Area of effect spell?</param>
-        protected IAbility(string name, string documentationPath, bool AOE, int uses, int roundsLeft, string imagePath)
+        /// <param name="aOE">Area of effect spell?</param>
+        protected IAbility(string name, string documentationPath, bool aOE, int uses, int roundsLeft, string imagePath)
         {
             this.Name = name;
-            this.AOESpell = AOE;
+            this.AOESpell = aOE;
             this.MaxUses = uses;
             this.RoundsLeft = roundsLeft;
             this.ImagePath = imagePath;
@@ -77,20 +81,20 @@
         /// <summary>
         /// For use during a battle.
         /// </summary>
-        /// <param name="Party"></param>
-        /// <param name="Enemies"></param>
-        /// <param name="Caster"></param>
+        /// <param name="party"></param>
+        /// <param name="enemies"></param>
+        /// <param name="caster"></param>
         /// <returns>Returns whether we successfully activated the ability.</returns>
-        public bool Use(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster)
+        public bool Use(List<ICreature> party, List<ICreature> enemies, ICreature caster)
         {
             if (this.AvailibleUses > 0)
             {
-                this.Go(Party, Enemies, Caster);
+                this.Go(party, enemies, caster);
                 return true;
             }
             else
             {
-                Util.Util.WriteLine(Caster.Name + " failed to activate " + this.Name + " because there were no ability uses left.");
+                Util.Util.WriteLine(caster.Name + " failed to activate " + this.Name + " because there were no ability uses left.");
                 return false;
             }
         }
@@ -98,19 +102,19 @@
         /// <summary>
         /// For use during peaceful times.
         /// </summary>
-        /// <param name="Party"></param>
-        /// <param name="Caster"></param>
+        /// <param name="party"></param>
+        /// <param name="caster"></param>
         /// <returns>Returns whether we successfully activated the ability.</returns>
-        public bool Use(List<ICreature> Party, ICreature Caster)
+        public bool Use(List<ICreature> party, ICreature caster)
         {
             if (this.AvailibleUses > 0)
             {
-                this.Go(Party, Caster);
+                this.Go(party, caster);
                 return true;
             }
             else
             {
-                Util.Util.WriteLine(Caster.Name + " failed to activate " + this.Name + " because there were no ability uses left.");
+                Util.Util.WriteLine(caster.Name + " failed to activate " + this.Name + " because there were no ability uses left.");
                 return false;
             }
         }
@@ -118,44 +122,44 @@
         /// <summary>
         /// Actually activates the ability.
         /// </summary>
-        /// <param name="Party"></param>
-        /// <param name="Enemies"></param>
-        /// <param name="Caster"></param>
-        protected abstract void Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster);
+        /// <param name="party"></param>
+        /// <param name="enemies"></param>
+        /// <param name="caster"></param>
+        protected abstract void Go(List<ICreature> party, List<ICreature> enemies, ICreature caster);
 
         /// <summary>
         /// Actually activates the ability.
         /// </summary>
-        /// <param name="Party"></param>
-        /// <param name="Caster"></param>
-        protected abstract void Go(List<ICreature> Party, ICreature Caster);
+        /// <param name="party"></param>
+        /// <param name="caster"></param>
+        protected abstract void Go(List<ICreature> party, ICreature caster);
 
         /// <summary>
         /// Called whenever the creature tries to take an action.
         /// Returns whether or not the creature is allowed to take an action.
         /// </summary>
-        /// <param name="Party"></param>
-        /// <param name="Enemies"></param>
-        /// <param name="Affected"></param>
+        /// <param name="party"></param>
+        /// <param name="enemies"></param>
+        /// <param name="affected"></param>
         /// <returns></returns>
-        public abstract bool OnAction(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected);
+        public abstract bool OnAction(List<ICreature> party, List<ICreature> enemies, ICreature affected);
 
         /// <summary>
         /// Does stuff if it wants to on the creature's turn. Returns if the creature gets to do anything, or if it just has to end it's turn.
         /// </summary>
-        /// <param name="Party"></param>
+        /// <param name="party"></param>
         /// <param name="Enemies"></param>
-        /// <param name="Affected"></param>
+        /// <param name="affected"></param>
         /// <returns></returns>
-        public abstract bool OnTurn(List<ICreature> Party, ICreature Affected);
+        public abstract bool OnTurn(List<ICreature> party, ICreature affected);
 
         /// <summary>
         /// Called when the creature's affect wears off.
         /// </summary>
-        /// <param name="Party"></param>
-        /// <param name="Enemies"></param>
-        /// <param name="Affected"></param>
-        public abstract void OnWearOff(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected);
+        /// <param name="party"></param>
+        /// <param name="enemies"></param>
+        /// <param name="affected"></param>
+        public abstract void OnWearOff(List<ICreature> party, List<ICreature> enemies, ICreature affected);
 
         /// <summary>
         /// Resets the uses count.

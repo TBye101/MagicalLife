@@ -1,4 +1,8 @@
-﻿namespace EarthMagicCharacters.Classes.Monk
+﻿// <copyright file="MonkCharacterGeneration.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthMagicCharacters.Classes.Monk
 {
     using System;
     using EarthMagicCharacters.Classes.Monk.Generic_Monk;

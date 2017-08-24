@@ -1,4 +1,8 @@
-﻿namespace EarthMagicItems.Armor.Generic.Steel
+﻿// <copyright file="GenericArmorStorage.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthMagicItems.Armor.Generic.Steel
 {
     using System.Collections.Generic;
 

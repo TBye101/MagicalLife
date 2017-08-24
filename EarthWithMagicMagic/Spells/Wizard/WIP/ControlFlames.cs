@@ -1,4 +1,8 @@
-﻿namespace EarthWithMagicMagic.Spells.Wizard
+﻿// <copyright file="ControlFlames.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthWithMagicMagic.Spells.Wizard
 {
     public class Control_Flames
     {

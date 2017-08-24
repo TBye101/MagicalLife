@@ -1,4 +1,8 @@
-﻿namespace EarthWithMagic.CreatureGen
+﻿// <copyright file="ThiefCharacterGenerator.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthWithMagic.CreatureGen
 {
     using System;
     using EarthMagicCharacters.Classes.Thief.Generic_Thief;

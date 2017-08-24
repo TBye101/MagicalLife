@@ -1,4 +1,8 @@
-﻿namespace EarthMagicItems.Ammo.Bolts
+﻿// <copyright file="GenericBoltStorage.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthMagicItems.Ammo.Bolts
 {
     using System.Collections.Generic;
     using EarthMagicItems.Ammo.Arrows;

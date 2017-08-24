@@ -1,4 +1,8 @@
-﻿namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows.Artifacts
+﻿// <copyright file="The Inevitable.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows.Artifacts
 {
     using System;
     using System.Collections.Generic;

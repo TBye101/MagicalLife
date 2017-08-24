@@ -1,4 +1,8 @@
-﻿namespace EarthWithMagicAPI.API.Creature
+﻿// <copyright file="IAI.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthWithMagicAPI.API.Creature
 {
     using EarthWithMagicAPI.API.Stuff;
 

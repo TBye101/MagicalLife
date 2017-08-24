@@ -1,4 +1,8 @@
-﻿namespace EarthWithMagicAPI.API.Creature
+﻿// <copyright file="ICreature.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthWithMagicAPI.API.Creature
 {
     using System;
     using System.Collections.Generic;
@@ -148,7 +152,7 @@
         /// <param name="abilities"></param>
         /// <param name="documentationPath"></param>
         /// <param name="imagePath"></param>
-        protected ICreature(CreatureAttributes attributes, CreatureAbilities abilities, string documentationPath, string imagePath, IAI AI)
+        protected ICreature(CreatureAttributes attributes, CreatureAbilities abilities, string documentationPath, string imagePath, IAI aI)
         {
             this.Attributes = attributes;
             this.Abilities = abilities;
@@ -156,7 +160,7 @@
             this.ImagePath = imagePath;
             this.Rest();
             this.WeightCapacity = WeightCapacityUtil.Calculate(this);
-            this.myAI = AI;
+            this.myAI = aI;
         }
 
         /// <summary>

@@ -1,4 +1,8 @@
-﻿namespace EarthMagicDynamicMarket
+﻿// <copyright file="Pricer.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthMagicDynamicMarket
 {
     using EarthWithMagicAPI.API.Interfaces.Items;
 

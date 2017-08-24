@@ -1,4 +1,8 @@
-﻿namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
+﻿// <copyright file="ThiefAI.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 {
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Stuff;

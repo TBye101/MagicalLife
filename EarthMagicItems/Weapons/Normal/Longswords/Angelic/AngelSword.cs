@@ -1,4 +1,8 @@
-﻿namespace EarthMagicItems.Weapons.Normal.Longswords.Angelic
+﻿// <copyright file="AngelSword.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthMagicItems.Weapons.Normal.Longswords.Angelic
 {
     using System;
     using EarthWithMagicAPI.API.Creature;

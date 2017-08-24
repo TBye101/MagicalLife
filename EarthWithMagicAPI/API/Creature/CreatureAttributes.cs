@@ -1,4 +1,8 @@
-﻿namespace EarthWithMagicAPI.API.Creature
+﻿// <copyright file="CreatureAttributes.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthWithMagicAPI.API.Creature
 {
     /// <summary>
     /// Some stats of a creature.
@@ -128,7 +132,7 @@
         /// <param name="gender">0 = male, 1 = female, -1 = not applicable.</param>
         /// <param name="alignment">A baseline for how the creature should act.</param>
         /// <param name="race">The race of the creature.</param>
-        /// <param name="AC">Armor class of the creature. Damage is reduced by armor class after resistances. Damage taken is calculated by the following: Damage (After resistance calculations) * AC%.</param>
+        /// <param name="aC">Armor class of the creature. Damage is reduced by armor class after resistances. Damage taken is calculated by the following: Damage (After resistance calculations) * AC%.</param>
         /// <param name="maxHealth">The maximum health of the creature.</param>
         /// <param name="health">The actual health of the creature.</param>
         /// <param name="dexterity">The dexterity of the creature.</param>
@@ -150,13 +154,13 @@
         /// <param name="toHit">Used to determine if we will hit a creature with our current state of equipment.</param>
         /// <param name="dodge">The chance that the character will dodge something.</param>
         /// <param name="intelligence">The intelligence of the creature.</param>
-        public CreatureAttributes(Gender gender = Gender.Unspecified, Alignment alignment = Alignment.LawfulGood, Race race = Race.Human, double AC = 0, double maxHealth = 0, double health = 0, int dexterity = 0, int strength = 0,
+        public CreatureAttributes(Gender gender = Gender.Unspecified, Alignment alignment = Alignment.LawfulGood, Race race = Race.Human, double aC = 0, double maxHealth = 0, double health = 0, int dexterity = 0, int strength = 0,
             int constitution = 0, int charisma = 0, int wisdom = 0, double fireResistence = 0, double acidResistence = 0,
             double poisonResistence = 0, double electricResistence = 0, double coldResistence = 0, double magicResistence = 0, double charmResistence = 0,
             double sleepResistence = 0, bool needsOxygen = false, int initiative = 0, double toHit = 0, double dodge = 0, int intelligence = 0)
         {
             this.Gender = gender;
-            this.BaseAC = AC;
+            this.BaseAC = aC;
             this.BaseHealth = maxHealth;
             this.Health = health;
             this.BaseDexterity = dexterity;

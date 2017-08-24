@@ -1,4 +1,8 @@
-﻿namespace EarthMagicCharacters.Classes.Monk
+﻿// <copyright file="MonkAI.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthMagicCharacters.Classes.Monk
 {
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Stuff;

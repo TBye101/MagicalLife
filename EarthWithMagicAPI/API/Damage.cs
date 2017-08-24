@@ -1,4 +1,8 @@
-﻿namespace EarthWithMagicAPI.API
+﻿// <copyright file="Damage.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthWithMagicAPI.API
 {
     using EarthWithMagicAPI.API.Util;
 

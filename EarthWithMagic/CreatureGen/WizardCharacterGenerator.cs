@@ -1,4 +1,8 @@
-﻿namespace EarthWithMagic.CreatureGen
+﻿// <copyright file="WizardCharacterGenerator.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthWithMagic.CreatureGen
 {
     using System;
     using EarthMagicCharacters.Classes.Wizard.Generic_Wizard;

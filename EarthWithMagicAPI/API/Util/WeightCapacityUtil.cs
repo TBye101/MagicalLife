@@ -1,4 +1,8 @@
-﻿namespace EarthWithMagicAPI.API.Util
+﻿// <copyright file="WeightCapacityUtil.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthWithMagicAPI.API.Util
 {
     using System;
     using EarthWithMagicAPI.API.Creature;

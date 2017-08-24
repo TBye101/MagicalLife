@@ -1,4 +1,8 @@
-﻿namespace EarthMagicItems.Amulets.Clerical
+﻿// <copyright file="HolySymbolOfTali.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthMagicItems.Amulets.Clerical
 {
     using System;
     using System.Collections.Generic;

@@ -1,0 +1,7 @@
+﻿// <copyright file="GlobalSuppressions.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.ReadabilityRules", "SA1117:Parameters must be on same line or separate lines", Justification = "<Pending>", Scope = "member", Target = "~M:EarthMagicCharacters.Classes.Monk.Generic_Monk.GenericMonk.#ctor(EarthWithMagicAPI.API.Creature.Gender,EarthWithMagicAPI.API.Creature.Race,EarthWithMagicAPI.API.Creature.Alignment,System.String,System.Boolean)")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.ReadabilityRules", "SA1117:Parameters must be on same line or separate lines", Justification = "<Pending>", Scope = "member", Target = "~M:EarthMagicCharacters.Classes.Monk.Generic_Monk.GenericMonk.GetAtt(EarthWithMagicAPI.API.Creature.Gender,EarthWithMagicAPI.API.Creature.Race,EarthWithMagicAPI.API.Creature.Alignment)~EarthWithMagicAPI.API.Creature.CreatureAttributes")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.ReadabilityRules", "SA1117:Parameters must be on same line or separate lines", Justification = "<Pending>", Scope = "member", Target = "~M:EarthMagicCharacters.Classes.Cleric.Generic_Cleric.GenericCleric.GetAtt(EarthWithMagicAPI.API.Creature.Gender,EarthWithMagicAPI.API.Creature.Race,EarthWithMagicAPI.API.Creature.Alignment)~EarthWithMagicAPI.API.Creature.CreatureAttributes")]

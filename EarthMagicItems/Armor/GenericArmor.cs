@@ -1,4 +1,8 @@
-﻿namespace EarthMagicItems.Armor
+﻿// <copyright file="GenericArmor.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthMagicItems.Armor
 {
     using System;
     using System.Collections.Generic;

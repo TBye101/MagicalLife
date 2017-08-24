@@ -1,4 +1,8 @@
-﻿namespace EarthWithMagicAPI.API.Interfaces.Spells
+﻿// <copyright file="ISpell.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthWithMagicAPI.API.Interfaces.Spells
 {
     using System;
     using System.Collections.Generic;
@@ -127,35 +131,35 @@
         /// Returns whether or not the creature is allowed to take an action.
         /// <paramref name="Affected"/>
         /// </summary>
-        /// <param name="Party"></param>
-        /// <param name="Enemies"></param>
+        /// <param name="party"></param>
+        /// <param name="enemies"></param>
         /// <param name="Affected"></param>
-        public abstract bool OnAction(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected);
+        public abstract bool OnAction(List<ICreature> party, List<ICreature> enemies, ICreature Affected);
 
         /// <summary>
         /// Does stuff if it wants to on the creature's turn. Returns if the creature gets to do anything, or if it just has to end it's turn.
         /// </summary>
-        /// <param name="Party"></param>
-        /// <param name="Enemies"></param>
-        /// <param name="Affected"></param>
+        /// <param name="party"></param>
+        /// <param name="enemies"></param>
+        /// <param name="affected"></param>
         /// <returns></returns>
-        public abstract bool OnTurn(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected);
+        public abstract bool OnTurn(List<ICreature> party, List<ICreature> enemies, ICreature affected);
 
         /// <summary>
         /// Called when it is peace.
         /// </summary>
-        /// <param name="Party"></param>
-        /// <param name="Affected"></param>
+        /// <param name="party"></param>
+        /// <param name="affected"></param>
         /// <returns></returns>
-        public abstract bool OnTurn(List<ICreature> Party, ICreature Affected);
+        public abstract bool OnTurn(List<ICreature> party, ICreature affected);
 
         /// <summary>
         /// Called when the creature's affect wears off.
         /// </summary>
-        /// <param name="Party"></param>
-        /// <param name="Enemies"></param>
-        /// <param name="Affected"></param>
-        public abstract void OnWearOff(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected);
+        /// <param name="party"></param>
+        /// <param name="enemies"></param>
+        /// <param name="affected"></param>
+        public abstract void OnWearOff(List<ICreature> party, List<ICreature> enemies, ICreature affected);
 
         /// <summary>
         /// Called when the spell is cast in peace.
@@ -169,10 +173,10 @@
         /// Called when the spell is cast.
         /// </summary>
         /// <param name="creature"></param>
-        /// <param name="Party"></param>
-        /// <param name="Enemies"></param>
-        /// <param name="Caster"></param>
+        /// <param name="party"></param>
+        /// <param name="enemies"></param>
+        /// <param name="caster"></param>
         /// <returns>Returns if the caster was able to cast the spell.</returns>
-        protected abstract bool Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster);
+        protected abstract bool Go(List<ICreature> party, List<ICreature> enemies, ICreature caster);
     }
 }

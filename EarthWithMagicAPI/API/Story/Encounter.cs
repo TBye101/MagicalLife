@@ -1,4 +1,8 @@
-﻿namespace EarthWithMagicAPI.API.Stuff
+﻿// <copyright file="Encounter.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthWithMagicAPI.API.Stuff
 {
     using System;
     using System.Collections.Generic;
@@ -31,7 +35,7 @@
             this.Enemies = enemies;
             this.AllCombatants.AddRange(friendly);
             this.AllCombatants.AddRange(enemies);
-            this.AllCombatants = this.AllCombatants.OrderByDescending(ICreature => ICreature.Attributes.BaseInitiative).ToList();
+            this.AllCombatants = this.AllCombatants.OrderByDescending(iCreature => iCreature.Attributes.BaseInitiative).ToList();
         }
 
         /// <summary>

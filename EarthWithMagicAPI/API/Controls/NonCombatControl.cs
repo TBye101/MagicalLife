@@ -1,4 +1,8 @@
-﻿namespace EarthWithMagicAPI.API.Controls
+﻿// <copyright file="NonCombatControl.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthWithMagicAPI.API.Controls
 {
     using System;
     using System.Collections.Generic;
@@ -151,16 +155,16 @@
             return true;
         }
 
-        private static void Cast(ICreature creature, string[] Command)
+        private static void Cast(ICreature creature, string[] command)
         {
             if (!takenAction)
             {
                 takenAction = true;
-                if (Command.Length > 1)
+                if (command.Length > 1)
                 {
                     foreach (ISpell item in creature.SpellsKnown)
                     {
-                        if (item.Name == Command[1])
+                        if (item.Name == command[1])
                         {
                             if (item.PowerRequired > creature.CastingPower)
                             {
@@ -317,12 +321,12 @@
             Util.Util.WriteLine("Item not found!");
         }
 
-        private static void Use(ICreature creature, string[] Command)
+        private static void Use(ICreature creature, string[] command)
         {
             if (!takenAction)
             {
                 takenAction = true;
-                if (Command.Length < 2)
+                if (command.Length < 2)
                 {
                     Util.Util.WriteLine("Missing argument!");
                 }
@@ -337,7 +341,7 @@
 
                     foreach (IItem item in items)
                     {
-                        if (item.Name == Command[1])
+                        if (item.Name == command[1])
                         {
                             Util.Util.WriteLine("Using " + item.Name);
                             item.Use(creature);
@@ -354,12 +358,12 @@
             }
         }
 
-        private static void UseAbility(ICreature creature, string[] Command)
+        private static void UseAbility(ICreature creature, string[] command)
         {
             if (!takenAction)
             {
                 takenAction = true;
-                if (Command.Length < 3)
+                if (command.Length < 3)
                 {
                     Util.Util.WriteLine("Missing argument!");
                     Util.Util.WriteLine("3rd argument should be the name of the ability to use!");
@@ -368,7 +372,7 @@
                 {
                     foreach (IAbility item in creature.ClassAbilities)
                     {
-                        if (item.Name == Command[2])
+                        if (item.Name == command[2])
                         {
                             if (item.AvailibleUses > 0)
                             {

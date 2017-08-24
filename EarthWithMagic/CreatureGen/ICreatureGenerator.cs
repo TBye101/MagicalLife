@@ -1,4 +1,8 @@
-﻿namespace EarthWithMagic.CreatureGen
+﻿// <copyright file="ICreatureGenerator.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthWithMagic.CreatureGen
 {
     using EarthWithMagicAPI.API.Creature;
 

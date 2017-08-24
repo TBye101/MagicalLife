@@ -1,4 +1,8 @@
-﻿namespace EarthWithMagicMagic.Abilities.Monk
+﻿// <copyright file="SummonHolySection.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthWithMagicMagic.Abilities.Monk
 {
     using System;
     using System.Collections.Generic;

@@ -1,4 +1,8 @@
-﻿namespace EarthMagicItems.Amulets
+﻿// <copyright file="GenericAmulet.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthMagicItems.Amulets
 {
     using System;
     using System.Collections.Generic;

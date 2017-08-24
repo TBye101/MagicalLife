@@ -1,4 +1,8 @@
-﻿namespace EarthWithMagicAPI.API.Party
+﻿// <copyright file="Party.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthWithMagicAPI.API.Party
 {
     using System.Collections.Generic;
     using EarthWithMagicAPI.API.Creature;

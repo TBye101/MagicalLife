@@ -1,4 +1,8 @@
-﻿namespace EarthWithMagicMagic.Spells.Wizard
+﻿// <copyright file="PoisonCloud.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthWithMagicMagic.Spells.Wizard
 {
     using System;
     using System.Collections.Generic;

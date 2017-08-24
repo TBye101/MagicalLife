@@ -1,4 +1,8 @@
-﻿namespace EarthMagicItems.Gems
+﻿// <copyright file="GenericGemStorage.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthMagicItems.Gems
 {
     using System.Collections.Generic;
 

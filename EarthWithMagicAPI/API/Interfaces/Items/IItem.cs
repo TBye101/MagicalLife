@@ -1,4 +1,8 @@
-﻿namespace EarthWithMagicAPI.API.Interfaces.Items
+﻿// <copyright file="IItem.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthWithMagicAPI.API.Interfaces.Items
 {
     using System;
     using System.Collections.Generic;

@@ -1,4 +1,8 @@
-﻿namespace EarthMagicItems.Armor.Boots
+﻿// <copyright file="LeatherBootsOfSoftStepping.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthMagicItems.Armor.Boots
 {
     using System;
     using System.Collections.Generic;

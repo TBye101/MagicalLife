@@ -1,6 +1,9 @@
-﻿namespace EarthWithMagicMagic.Spells.Wizard
+﻿// <copyright file="FireBolt.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthWithMagicMagic.Spells.Wizard
 {
-    using System;
     using System.Collections.Generic;
     using EarthWithMagicAPI.API;
     using EarthWithMagicAPI.API.Creature;
@@ -14,7 +17,32 @@
         {
         }
 
-        protected override bool Go(List<ICreature> Party, List<ICreature> Enemies, ICreature Caster)
+        public override bool OnAction(List<ICreature> party, List<ICreature> enemies, ICreature Affected)
+        {
+            return true;
+        }
+
+        public override bool OnTurn(List<ICreature> party, List<ICreature> enemies, ICreature affected)
+        {
+            return true;
+        }
+
+        /// <summary>
+        /// Called when it is peace.
+        /// </summary>
+        /// <param name="party"></param>
+        /// <param name="affected"></param>
+        /// <returns></returns>
+        public override bool OnTurn(List<ICreature> party, ICreature affected)
+        {
+            return true;
+        }
+
+        public override void OnWearOff(List<ICreature> party, List<ICreature> enemies, ICreature affected)
+        {
+        }
+
+        protected override bool Go(List<ICreature> party, List<ICreature> enemies, ICreature caster)
         {
             Damage damage = new Damage(Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 10, 0), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero());
 
@@ -24,41 +52,22 @@
             {
                 Missiles--;
 
-                if (Caster.IsHostile())
+                if (caster.IsHostile())
                 {
-                    Party[0].RecieveDamage(damage);
+                    party[0].RecieveDamage(damage);
                 }
                 else
                 {
-                    Enemies[0].RecieveDamage(damage);
+                    enemies[0].RecieveDamage(damage);
                 }
             }
 
             return true;
         }
 
-        public override bool OnAction(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
-        {
-            return true;
-        }
-
-        public override bool OnTurn(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
-        {
-            return true;
-        }
-
-        public override void OnWearOff(List<ICreature> Party, List<ICreature> Enemies, ICreature Affected)
-        {
-        }
-
         protected override bool Go(List<ICreature> theParty, ICreature creature)
         {
             return false;
-        }
-
-        public override bool OnTurn(List<ICreature> Party, ICreature Affected)
-        {
-            return true;
         }
     }
 }

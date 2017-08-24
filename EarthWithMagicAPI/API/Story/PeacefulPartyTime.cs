@@ -1,4 +1,8 @@
-﻿namespace EarthWithMagicAPI.API.Story
+﻿// <copyright file="PeacefulPartyTime.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthWithMagicAPI.API.Story
 {
     using System;
     using System.Collections.Generic;

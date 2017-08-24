@@ -1,4 +1,8 @@
-﻿namespace EarthWithMagicAPI.API.Interfaces.Items
+﻿// <copyright file="IGem.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthWithMagicAPI.API.Interfaces.Items
 {
     /// <summary>
     /// The interface for a gem.

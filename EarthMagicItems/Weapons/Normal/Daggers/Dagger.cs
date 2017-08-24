@@ -1,4 +1,8 @@
-﻿namespace EarthMagicItems.Weapons.Normal.Daggers
+﻿// <copyright file="Dagger.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthMagicItems.Weapons.Normal.Daggers
 {
     using System;
     using System.Collections.Generic;

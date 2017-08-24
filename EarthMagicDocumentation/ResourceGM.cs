@@ -1,4 +1,8 @@
-﻿namespace EarthMagicDocumentation
+﻿// <copyright file="ResourceGM.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthMagicDocumentation
 {
     using System;
     using System.Collections.Generic;

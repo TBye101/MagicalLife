@@ -1,4 +1,8 @@
-﻿namespace EarthMagicCreatures.Creatures.Heavenly.Angels
+﻿// <copyright file="LesserAngel.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace EarthMagicCreatures.Creatures.Heavenly.Angels
 {
     using System;
     using EarthWithMagicAPI.API.Creature;
