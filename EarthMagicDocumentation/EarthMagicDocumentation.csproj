@@ -188,7 +188,6 @@
     <EmbeddedResource Include="Classes\WIP\Fire Druid Class Info.md" />
     <EmbeddedResource Include="Classes\WIP\Gymnist Class Info.md" />
     <EmbeddedResource Include="Classes\WIP\Herbalist Class Info.md" />
-    <EmbeddedResource Include="Classes\WIP\Wizard\Illusionist Class Info.md" />
     <EmbeddedResource Include="Classes\WIP\Knight Class Info.md" />
     <EmbeddedResource Include="Classes\WIP\Marksman Class Info.md" />
     <EmbeddedResource Include="Classes\Monk Class Info.md" />
@@ -200,7 +199,6 @@
     <EmbeddedResource Include="Classes\WIP\Scout Class Info.md" />
     <EmbeddedResource Include="Classes\WIP\Shadewalker Class Info.md" />
     <EmbeddedResource Include="Classes\WIP\Shape Shifter Class Info.md" />
-    <EmbeddedResource Include="Classes\WIP\Sun Touched Class Info.md" />
     <EmbeddedResource Include="Classes\Thief Class Info.md" />
     <EmbeddedResource Include="Classes\WIP\Water Druid Class Info.md" />
     <EmbeddedResource Include="Classes\WIP\Alchemist Class Info.md" />
