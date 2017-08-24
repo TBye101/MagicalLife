@@ -4,8 +4,8 @@
 
 namespace EarthWithMagicAPI.API.Story
 {
-    using EarthWithMagicAPI.API.Creature;
     using System;
+    using EarthWithMagicAPI.API.Creature;
 
     /// <summary>
     /// Used when the party could rest, or is in a peaceful area.
@@ -15,30 +15,31 @@ namespace EarthWithMagicAPI.API.Story
         /// <summary>
         /// If unlimited is false, the player gets this many turns more in the loop, before we move on.
         /// </summary>
-        private int _duration;
+        private int duration;
 
         /// <summary>
         /// If true, the player could sit in this loop forever.
         /// </summary>
-        private bool _unlimited;
+        private bool unlimited;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PeacefulPartyTime"/> class.
         /// </summary>
-        /// <param name="unlimited">If true, the player could sit in this loop forever.</param>
-        /// <param name="duration">If unlimited is false, the player gets this many turns in the loop, before we move on.</param>
-        public PeacefulPartyTime(bool unlimited, int duration)
+        /// <param name="_unlimited">If true, the player could sit in this loop forever.</param>
+        /// <param name="_duration">If unlimited is false, the player gets this many turns in the loop, before we move on.</param>
+        public PeacefulPartyTime(bool _unlimited, int _duration)
         {
-            this._unlimited = unlimited;
-            this._duration = duration;
+            this.unlimited = _unlimited;
+            this.duration = _duration;
         }
 
         public void Go()
         {
-            if (this._unlimited)
+            bool dontStop = true;
+            if (this.unlimited)
             {
                 string input;
-                while (true)
+                while (dontStop)
                 {
                     Util.Util.WriteLine("To end this peaceful cycle, type: end cycle");
                     input = Console.ReadLine().ToLower();
@@ -51,7 +52,10 @@ namespace EarthWithMagicAPI.API.Story
                     {
                         foreach (ICreature item in Party.Party.TheParty)
                         {
-                            item.YourTurn();
+                            if (item.YourTurn())
+                            {
+                                dontStop = true;
+                            }
                         }
                     }
                 }
@@ -59,10 +63,10 @@ namespace EarthWithMagicAPI.API.Story
             else
             {
                 string input;
-                while (true)
+                while (dontStop)
                 {
-                    this._duration--;
-                    if (this._duration == 0)
+                    this.duration--;
+                    if (this.duration == 0)
                     {
                         Util.Util.WriteLine("Cycle ended, times up!");
                         break;
@@ -79,7 +83,10 @@ namespace EarthWithMagicAPI.API.Story
                     {
                         foreach (ICreature item in Party.Party.TheParty)
                         {
-                            item.YourTurn(null);
+                            if (item.YourTurn())
+                            {
+                                dontStop = true;
+                            }
                         }
                     }
                 }

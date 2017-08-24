@@ -423,11 +423,11 @@ namespace EarthWithMagicAPI.API.Creature
             }
         }
 
-        public void YourTurn()
+        public bool YourTurn()
         {
             if (this.IsInParty)
             {
-                NonCombatControl.YourTurn(this);
+                return NonCombatControl.YourTurn(this);
             }
             else
             {

@@ -20,7 +20,12 @@ namespace EarthWithMagicAPI.API.Controls
         /// </summary>
         private static bool takenAction = false;
 
-        public static void YourTurn(ICreature creature)
+        /// <summary>
+        /// Gives the player some peaceful options.
+        /// </summary>
+        /// <param name="creature"></param>
+        /// <returns>Returns true if we should break the peaceful cycle.</returns>
+        public static bool YourTurn(ICreature creature)
         {
             if (CanTakeTurn(creature))
             {
@@ -105,12 +110,16 @@ namespace EarthWithMagicAPI.API.Controls
                         case "level up":
                             LevelUp(creature);
                             break;
+                        case "end cycle":
+                            return true;
                         default:
                             Util.WriteLine("Command not recognized!");
                             break;
                     }
                 }
             }
+
+            return false;
         }
 
         private static void LevelUp(ICreature creature)
