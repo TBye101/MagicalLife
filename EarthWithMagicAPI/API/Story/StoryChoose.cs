@@ -10,27 +10,32 @@ namespace EarthWithMagicAPI.API.Stuff
     /// <summary>
     /// Used whenever the character has to read some text, or make a decision.
     /// </summary>
-    public class StoryChoose
+    public abstract class StoryChoose
     {
         /// <summary>
         /// The choices below the text, if any.
         /// </summary>
-        private List<string> Choices = new List<string>();
+        private List<string> choices = new List<string>();
 
         /// <summary>
         /// The story text to show based on the player's choice.
         /// </summary>
-        private List<StoryChoose> ProgressionOfChoices = new List<StoryChoose>();
+        private List<StoryChoose> progressionOfChoices = new List<StoryChoose>();
 
         /// <summary>
         /// The text above the choices, if any.
         /// </summary>
-        private List<string> TextAbove = new List<string>();
+        private List<string> textAbove = new List<string>();
 
         public StoryChoose(List<string> textAbove)
         {
-            this.TextAbove = textAbove;
+            this.textAbove = textAbove;
         }
+
+        /// <summary>
+        /// This method is called when this story choice is chosen or displayed.
+        /// </summary>
+        public abstract void OnChosen();
 
         /// <summary>
         /// Adds a new choice that can be chosen.
@@ -41,8 +46,8 @@ namespace EarthWithMagicAPI.API.Stuff
         {
             if (choice != null)
             {
-                this.Choices.Add(choice);
-                this.ProgressionOfChoices.Add(nextOptions);
+                this.choices.Add(choice);
+                this.progressionOfChoices.Add(nextOptions);
             }
         }
 
@@ -53,7 +58,7 @@ namespace EarthWithMagicAPI.API.Stuff
         {
             Console.WriteLine(" ");
 
-            foreach (string item in this.TextAbove)
+            foreach (string item in this.textAbove)
             {
                 Console.WriteLine(item);
             }
@@ -61,7 +66,7 @@ namespace EarthWithMagicAPI.API.Stuff
             Console.WriteLine(" ");
 
             int i = 0;
-            int siz = this.Choices.Count;
+            int siz = this.choices.Count;
             string choice = string.Empty;
 
             while (i != siz)
@@ -70,7 +75,7 @@ namespace EarthWithMagicAPI.API.Stuff
                 choice += i.ToString();
                 choice += ".";
                 choice += " ";
-                choice += this.Choices[i];
+                choice += this.choices[i];
                 i++;
             }
 
@@ -86,7 +91,7 @@ namespace EarthWithMagicAPI.API.Stuff
         /// <param name="decision"></param>
         private void Decided(int decision)
         {
-            if (decision > this.ProgressionOfChoices.Count || decision < 1)
+            if (decision > this.progressionOfChoices.Count || decision < 1)
             {
                 Console.WriteLine("Invalid choice! Try again!");
                 string input = Console.ReadLine();
@@ -96,7 +101,7 @@ namespace EarthWithMagicAPI.API.Stuff
             }
             else
             {
-                this.ProgressionOfChoices[decision - 1].Display();
+                this.progressionOfChoices[decision - 1].Display();
             }
         }
     }

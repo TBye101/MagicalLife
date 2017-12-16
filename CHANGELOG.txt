@@ -1,0 +1,8 @@
+		SneakyTactician  <SneakyTactician@outlook.com>
+	[Version 0.0.0.0]
+		
+		### Features
+			*
+		
+		### Bugs
+			*

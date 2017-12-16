@@ -112,6 +112,9 @@ namespace EarthMagicCharacters.Classes.Wizard.Generic_Wizard
         /// <summary>
         /// Generates the base wizard, at character creation.
         /// </summary>
+        /// <param name="gender"></param>
+        /// <param name="race"></param>
+        /// <param name="alignment"></param>
         /// <returns></returns>
         private static CreatureAttributes GetAtt(Gender gender, Race race, Alignment alignment)
         {
