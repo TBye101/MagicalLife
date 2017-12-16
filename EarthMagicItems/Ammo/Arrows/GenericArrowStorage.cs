@@ -14,37 +14,24 @@ namespace EarthMagicItems.Ammo.Arrows
     {
         #region NormalArrows
 
-        private GenericAmmo _1Arrow = new GenericAmmo(new Die(2, 4, 0), "+1 Arrow", GenericArrowStorage.StandardArrow(new Die(1, 8, 1)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Arrows.ProfessionalArrow.txt",
+        private GenericAmmo _1Arrow = new GenericAmmo(new Die(2, 4, 0), "+1 Arrow", AmmoUtil.StandardArrow(new Die(1, 8, 1)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Arrows.ProfessionalArrow.txt",
             "EarthMagicDocumentation.Items.Ammo.Arrows.+1Arrow.md", .2);
 
-        private GenericAmmo _2Arrow = new GenericAmmo(new Die(3, 5, 0), "+2 Arrow", GenericArrowStorage.StandardArrow(new Die(1, 8, 2)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Arrows.ProfessionalArrow.txt",
+        private GenericAmmo _2Arrow = new GenericAmmo(new Die(3, 5, 0), "+2 Arrow", AmmoUtil.StandardArrow(new Die(1, 8, 2)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Arrows.ProfessionalArrow.txt",
             "EarthMagicDocumentation.Items.Ammo.Arrows.+2Arrow.md", .2);
 
-        private GenericAmmo _3Arrow = new GenericAmmo(new Die(4, 6, 0), "+3 Arrow", GenericArrowStorage.StandardArrow(new Die(1, 8, 3)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Arrows.ProfessionalArrow.txt",
+        private GenericAmmo _3Arrow = new GenericAmmo(new Die(4, 6, 0), "+3 Arrow", AmmoUtil.StandardArrow(new Die(1, 8, 3)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Arrows.ProfessionalArrow.txt",
             "EarthMagicDocumentation.Items.Ammo.Arrows.+3Arrow.md", .2);
 
-        private GenericAmmo _4Arrow = new GenericAmmo(new Die(5, 7, 0), "+4 Arrow", GenericArrowStorage.StandardArrow(new Die(1, 8, 4)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Arrows.ProfessionalArrow.txt",
+        private GenericAmmo _4Arrow = new GenericAmmo(new Die(5, 7, 0), "+4 Arrow", AmmoUtil.StandardArrow(new Die(1, 8, 4)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Arrows.ProfessionalArrow.txt",
             "EarthMagicDocumentation.Items.Ammo.Arrows.+4Arrow.md", .2);
 
-        private GenericAmmo _5Arrow = new GenericAmmo(new Die(6, 7, 0), "+5 Arrow", GenericArrowStorage.StandardArrow(new Die(1, 8, 5)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Arrows.ProfessionalArrow.txt",
+        private GenericAmmo _5Arrow = new GenericAmmo(new Die(6, 7, 0), "+5 Arrow", AmmoUtil.StandardArrow(new Die(1, 8, 5)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Arrows.ProfessionalArrow.txt",
             "EarthMagicDocumentation.Items.Ammo.Arrows.+5Arrow.md", .2);
 
-        private GenericAmmo HandMadeArrow = new GenericAmmo(new Die(1, 2, 0), "Handmade Arrow", GenericArrowStorage.StandardArrow(new Die(1, 6, 0)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Arrows.HandMadeArrow.txt",
-            "EarthMagicDocumentation.Items.Ammo.Arrows.HandMadeArrow.md", .3);
-
-        private GenericAmmo ProfessionalArrow = new GenericAmmo(new Die(1, 3, 0), "Professional Arrow", GenericArrowStorage.StandardArrow(new Die(1, 8, 0)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Arrows.ProfessionalArrow.txt",
+        private GenericAmmo ProfessionalArrow = new GenericAmmo(new Die(1, 3, 0), "Professional Arrow", AmmoUtil.StandardArrow(new Die(1, 8, 0)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Arrows.ProfessionalArrow.txt",
             "EarthMagicDocumentation.Items.Ammo.Arrows.ProfessionalArrow.md", .2);
 
         #endregion NormalArrows
-
-        /// <summary>
-        /// Creates a damage object for a arrow that only does normal piercing damage.
-        /// </summary>
-        /// <param name="piercingDamage"></param>
-        /// <returns></returns>
-        private static Damage StandardArrow(Die piercingDamage)
-        {
-            return new Damage(Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), piercingDamage, Die.Zero(), Die.Zero());
-        }
     }
 }
