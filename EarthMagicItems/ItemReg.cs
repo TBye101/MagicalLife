@@ -15,18 +15,14 @@ namespace EarthMagicItems
     /// </summary>
     public static class ItemReg
     {
-        //Armor
-        public static GenericArmorStorage Armor = new GenericArmorStorage();
+        public static GenericArmorStorage Armor { get; set; } = new GenericArmorStorage();
 
-        //Ammo
-        public static GenericArrowStorage Arrows = new GenericArrowStorage();
+        public static GenericArrowStorage Arrows { get; set; } = new GenericArrowStorage();
 
-        public static GenericBoltStorage Bolts = new GenericBoltStorage();
+        public static GenericBoltStorage Bolts { get; set; } = new GenericBoltStorage();
 
-        //Gems
-        public static GenericGemStorage Gems = new GenericGemStorage();
+        public static GenericGemStorage Gems { get; set; } = new GenericGemStorage();
 
-        //Stones
-        public static GenericStoneStorage Stones = new GenericStoneStorage();
+        public static GenericStoneStorage Stones { get; set; } = new GenericStoneStorage();
     }
 }
