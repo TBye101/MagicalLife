@@ -2,6 +2,9 @@
 	[Version 0.0.0.0]
 		
 		### Features
+			*[12/16/2017]: Added the acid arrow item
+		
+		### Tweaks
 			*
 		
 		### Bugs

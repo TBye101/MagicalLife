@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Ammo\Arrows\Special\" />
+    <Folder Include="Ammo\Arrows\Normal\" />
     <Folder Include="Armor\Cloaks\" />
     <Folder Include="Potions\" />
     <Folder Include="Rings\Rings of Protection\" />
@@ -27,7 +29,7 @@
     <Folder Include="Weapons\Normal\Maces\" />
     <Folder Include="Weapons\Normal\Morning Stars\" />
     <Folder Include="Weapons\Normal\Pikes\" />
-    <Folder Include="Weapons\Normal\Quaterstaffs\" />
+    <Folder Include="Weapons\Normal\Quarterstaffs\" />
     <Folder Include="Weapons\Normal\Ranged\Crossbows\" />
     <Folder Include="Weapons\Normal\Ranged\Longbows\" />
     <Folder Include="Weapons\Normal\Ranged\Recurve Bows\" />
