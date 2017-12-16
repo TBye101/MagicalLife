@@ -10,6 +10,7 @@
 			*[12/16/2017]: Added the professional arrow item
 			*[12/16/2017]: Added the +1 arrow item
 			*[12/16/2017]: Added the +2 arrow item
+			*[12/16/2017]: Added the +3 arrow item
 		
 		### Tweaks
 			*
