@@ -1,5 +1,5 @@
 		SneakyTactician  <SneakyTactician@outlook.com>
-	[Version 0.0.0.0]
+	[Version 0.0.1.0]
 		
 		### Features
 			*[12/16/2017]: Added the acid arrow item
@@ -11,6 +11,8 @@
 			*[12/16/2017]: Added the +1 arrow item
 			*[12/16/2017]: Added the +2 arrow item
 			*[12/16/2017]: Added the +3 arrow item
+			*[12/16/2017]: Added the +4 arrow item
+			*[12/16/2017]: Added the +5 arrow item
 		
 		### Tweaks
 			*
