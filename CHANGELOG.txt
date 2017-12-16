@@ -5,6 +5,7 @@
 			*[12/16/2017]: Added the acid arrow item
 			*[12/16/2017]: Added the fire arrow item
 			*[12/16/2017]: Added the frost arrow item
+			*[12/16/2017]: Added the poison arrow item
 		
 		### Tweaks
 			*

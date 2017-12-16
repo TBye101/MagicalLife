@@ -37,11 +37,6 @@ namespace EarthMagicItems.Ammo.Arrows
 
         #endregion NormalArrows
 
-
-        private GenericAmmo PoisonArrow = new GenericAmmo(new Die(1, 3, 0), "Poison Arrow", new Damage(Die.Zero(), new Die(1, 8, 0), Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 8, 0), Die.Zero(), Die.Zero()),
-            "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Arrows.PoisonAcidArrow.txt",
-            "EarthMagicDocumentation.Items.Ammo.Arrows.PoisonArrow.md", .21);
-
         /// <summary>
         /// Creates a damage object for a arrow that only does normal piercing damage.
         /// </summary>
