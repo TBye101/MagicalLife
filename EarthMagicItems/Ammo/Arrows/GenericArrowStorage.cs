@@ -12,11 +12,6 @@ namespace EarthMagicItems.Ammo.Arrows
     /// </summary>
     public class GenericArrowStorage
     {
-        #region NormalArrows
-
-        private GenericAmmo _1Arrow = new GenericAmmo(new Die(2, 4, 0), "+1 Arrow", AmmoUtil.StandardArrow(new Die(1, 8, 1)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Arrows.ProfessionalArrow.txt",
-            "EarthMagicDocumentation.Items.Ammo.Arrows.+1Arrow.md", .2);
-
         private GenericAmmo _2Arrow = new GenericAmmo(new Die(3, 5, 0), "+2 Arrow", AmmoUtil.StandardArrow(new Die(1, 8, 2)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Arrows.ProfessionalArrow.txt",
             "EarthMagicDocumentation.Items.Ammo.Arrows.+2Arrow.md", .2);
 
@@ -28,7 +23,5 @@ namespace EarthMagicItems.Ammo.Arrows
 
         private GenericAmmo _5Arrow = new GenericAmmo(new Die(6, 7, 0), "+5 Arrow", AmmoUtil.StandardArrow(new Die(1, 8, 5)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Arrows.ProfessionalArrow.txt",
             "EarthMagicDocumentation.Items.Ammo.Arrows.+5Arrow.md", .2);
-
-        #endregion NormalArrows
     }
 }

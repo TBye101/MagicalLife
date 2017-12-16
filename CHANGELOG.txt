@@ -8,6 +8,7 @@
 			*[12/16/2017]: Added the poison arrow item
 			*[12/16/2017]: Added the handmade arrow item
 			*[12/16/2017]: Added the professional arrow item
+			*[12/16/2017]: Added the +1 arrow item
 		
 		### Tweaks
 			*
