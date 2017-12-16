@@ -4,6 +4,7 @@
 
 namespace EarthMagicItems.Ammo.Arrows
 {
+    using System;
     using EarthMagicDynamicMarket;
     using EarthWithMagicAPI.API;
     using EarthWithMagicAPI.API.Creature;
@@ -11,7 +12,6 @@ namespace EarthMagicItems.Ammo.Arrows
     using EarthWithMagicAPI.API.Interfaces.Spells;
     using EarthWithMagicAPI.API.Stuff;
     using EarthWithMagicAPI.API.Util;
-    using System;
 
     public class GenericAmmo : IAmmo
     {
@@ -21,7 +21,7 @@ namespace EarthMagicItems.Ammo.Arrows
             this.Name = name;
             this.AttackDamage = attackDamage;
             this.Value = Pricer.GetPrice(this);
-            this.ID = new Guid();
+            this.ID = Guid.NewGuid();
             this.IsEquipped = false;
             this.Weight = .05;
         }

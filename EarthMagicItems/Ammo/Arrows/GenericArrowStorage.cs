@@ -37,10 +37,6 @@ namespace EarthMagicItems.Ammo.Arrows
 
         #endregion NormalArrows
 
-        private GenericAmmo FireArrow = new GenericAmmo(new Die(1, 3, 0), "Fire Arrow", new Damage(Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 8, 0), Die.Zero(), Die.Zero(), new Die(1, 8, 0), Die.Zero(), Die.Zero()),
-            "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Arrows.FireArrow.txt",
-            "EarthMagicDocumentation.Items.Ammo.Arrows.FireArrow.md", .25);
-
         private GenericAmmo FrostArrow = new GenericAmmo(new Die(1, 3, 0), "Frost Arrow", new Damage(Die.Zero(), Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 8, 0), Die.Zero(), new Die(1, 8, 0), Die.Zero(), Die.Zero()),
             "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Arrows.ColdArrow.txt",
             "EarthMagicDocumentation.Items.Ammo.Arrows.FrostArrow.md", .2);

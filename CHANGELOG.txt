@@ -3,9 +3,10 @@
 		
 		### Features
 			*[12/16/2017]: Added the acid arrow item
+			*[12/16/2017]: Added the fire arrow item
 		
 		### Tweaks
 			*
 		
 		### Bugs
-			*
+			*[12/16/2017]: Fixed a bug where all items would have the exact same ID
