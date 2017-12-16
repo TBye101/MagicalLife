@@ -1,0 +1,21 @@
+		SneakyTactician  <SneakyTactician@outlook.com>
+	[Version 0.0.1.0]
+		
+		### Features
+			*[12/16/2017]: Added the acid arrow item
+			*[12/16/2017]: Added the fire arrow item
+			*[12/16/2017]: Added the frost arrow item
+			*[12/16/2017]: Added the poison arrow item
+			*[12/16/2017]: Added the handmade arrow item
+			*[12/16/2017]: Added the professional arrow item
+			*[12/16/2017]: Added the +1 arrow item
+			*[12/16/2017]: Added the +2 arrow item
+			*[12/16/2017]: Added the +3 arrow item
+			*[12/16/2017]: Added the +4 arrow item
+			*[12/16/2017]: Added the +5 arrow item
+		
+		### Tweaks
+			*
+		
+		### Bugs
+			*[12/16/2017]: Fixed a bug where all items would have the exact same ID
