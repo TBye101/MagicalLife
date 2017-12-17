@@ -13,7 +13,10 @@ namespace EarthMagicItems.Armor.Boots
     public class LeatherBootsOfSoftStepping : IArmor
     {
         public LeatherBootsOfSoftStepping()
-            : base("Leather Boots of Soft Stepping", 1, "EarthMagicDocumentation.ASCII_Art.Items.Armor.Boots.LeatherBootsOfSoftStepping.txt",
+            : base(
+                "Leather Boots of Soft Stepping",
+                  1,
+                  "EarthMagicDocumentation.ASCII_Art.Items.Armor.Boots.LeatherBootsOfSoftStepping.txt",
                 "EarthMagicDocumentation.Items.Armor.Boots.LeatherBootsOfSoftStepping.md")
         {
             this.EquipImpact.WalkSilently = 20;

@@ -11,7 +11,7 @@ namespace EarthWithMagicAPI.API.Registry
 
     public static class SpellRegistry
     {
-        public static List<ISpell> Spells = new List<ISpell>();
+        private static List<ISpell> spells = new List<ISpell>();
 
         static SpellRegistry()
         {
@@ -31,6 +31,19 @@ namespace EarthWithMagicAPI.API.Registry
                         }
                     }
                 }
+            }
+        }
+
+        public static List<ISpell> Spells
+        {
+            get
+            {
+                return spells;
+            }
+
+            set
+            {
+                spells = value;
             }
         }
 
