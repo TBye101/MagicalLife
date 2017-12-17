@@ -1,11 +1,8 @@
-﻿using EarthMagicItems.Ammo.Arrows;
-using EarthWithMagicAPI.API.Util;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EarthMagicItems.Ammo.Bolts.Normal
+﻿namespace EarthMagicItems.Ammo.Bolts.Normal
 {
+    using EarthMagicItems.Ammo.Arrows;
+    using EarthWithMagicAPI.API.Util;
+
     public class _1Bolt : GenericAmmo
     {
         public _1Bolt()

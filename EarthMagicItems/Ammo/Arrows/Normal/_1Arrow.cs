@@ -1,7 +1,7 @@
-﻿using EarthWithMagicAPI.API.Util;
-
-namespace EarthMagicItems.Ammo.Arrows.Normal
+﻿namespace EarthMagicItems.Ammo.Arrows.Normal
 {
+    using EarthWithMagicAPI.API.Util;
+
     /// <summary>
     /// A enchanted +1 arrow.
     /// </summary>

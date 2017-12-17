@@ -51,7 +51,6 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
         {
             if (this.Attributes.XP.LevelUpsAvailible > 0)
             {
-
                 this.Attributes.BaseHealth += Dice.RollDice(new Die(1, 10, 2), this.Name + " gains hit points: ");
 
                 switch (this.Attributes.XP.CreatureLevel)

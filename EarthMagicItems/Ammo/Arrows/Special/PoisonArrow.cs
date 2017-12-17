@@ -1,8 +1,5 @@
 ﻿namespace EarthMagicItems.Ammo.Arrows.Special
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
     using EarthWithMagicAPI.API;
     using EarthWithMagicAPI.API.Util;
 

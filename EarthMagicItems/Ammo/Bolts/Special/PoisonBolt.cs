@@ -1,12 +1,9 @@
-﻿using EarthMagicItems.Ammo.Arrows;
-using EarthWithMagicAPI.API;
-using EarthWithMagicAPI.API.Util;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EarthMagicItems.Ammo.Bolts.Special
+﻿namespace EarthMagicItems.Ammo.Bolts.Special
 {
+    using EarthMagicItems.Ammo.Arrows;
+    using EarthWithMagicAPI.API;
+    using EarthWithMagicAPI.API.Util;
+
     public class PoisonBolt : GenericAmmo
     {
         public PoisonBolt()

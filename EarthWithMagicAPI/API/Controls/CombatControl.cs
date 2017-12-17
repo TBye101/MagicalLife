@@ -4,11 +4,11 @@
 
 namespace EarthWithMagicAPI.API.Creature
 {
-    using System;
-    using System.Collections.Generic;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Interfaces.Spells;
     using EarthWithMagicAPI.API.Stuff;
+    using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Gives the player options for each creature in their party in combat.
@@ -108,6 +108,7 @@ namespace EarthWithMagicAPI.API.Creature
                         case "rotate":
                             Rotate(encounter);
                             break;
+
                         case "list prayers":
                             ListPrayers(creature);
                             break;

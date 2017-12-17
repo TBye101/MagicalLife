@@ -1,5 +1,4 @@
-﻿using EarthMagicCharacters.Classes;
-// <copyright file="NonCombatControl.cs" company="PlaceholderCompany">
+﻿// <copyright file="NonCombatControl.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -7,6 +6,7 @@ namespace EarthWithMagicAPI.API.Controls
 {
     using System;
     using System.Collections.Generic;
+    using EarthMagicCharacters.Classes;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Interfaces.Spells;
@@ -104,14 +104,18 @@ namespace EarthWithMagicAPI.API.Controls
                         case "rotate":
                             Rotate();
                             break;
+
                         case "list prayers":
                             ListPrayers(creature);
                             break;
+
                         case "level up":
                             LevelUp(creature);
                             break;
+
                         case "end cycle":
                             return true;
+
                         default:
                             Util.WriteLine("Command not recognized!");
                             break;

@@ -4,10 +4,10 @@
 
 namespace EarthWithMagicAPI.API.Interfaces.Spells
 {
-    using System;
-    using System.Collections.Generic;
     using EarthMagicDocumentation;
     using EarthWithMagicAPI.API.Creature;
+    using System;
+    using System.Collections.Generic;
 
     public abstract class IPrayer
     {

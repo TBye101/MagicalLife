@@ -4,7 +4,6 @@
 
 namespace EarthMagicItems.Ammo.Arrows
 {
-    using System;
     using EarthMagicDynamicMarket;
     using EarthWithMagicAPI.API;
     using EarthWithMagicAPI.API.Creature;
@@ -12,6 +11,7 @@ namespace EarthMagicItems.Ammo.Arrows
     using EarthWithMagicAPI.API.Interfaces.Spells;
     using EarthWithMagicAPI.API.Stuff;
     using EarthWithMagicAPI.API.Util;
+    using System;
 
     public class GenericAmmo : IAmmo
     {
