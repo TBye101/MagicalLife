@@ -19,47 +19,47 @@ namespace EarthWithMagicAPI.API
         /// <summary>
         /// How much acid damage to deal.
         /// </summary>
-        private Die acidDamage;
+        private Die acidDamage = Die.Zero();
 
         /// <summary>
         /// How much blunt damage to deal. (Ex: Rock, club)
         /// </summary>
-        private Die bluntDamage;
+        private Die bluntDamage = Die.Zero();
 
         /// <summary>
         /// How much cold damage to deal.
         /// </summary>
-        private Die coldDamage;
+        private Die coldDamage = Die.Zero();
 
         /// <summary>
         /// How much electric damage to deal.s
         /// </summary>
-        private Die electricDamage;
+        private Die electricDamage = Die.Zero();
 
         /// <summary>
         /// How much fire damage to deal.
         /// </summary>
-        private Die fireDamage;
+        private Die fireDamage = Die.Zero();
 
         /// <summary>
         /// How much pure magic damage.
         /// </summary>
-        private Die magicDamage;
+        private Die magicDamage = Die.Zero();
 
         /// <summary>
         /// How much piercing damage to deal. (Ex: Arrows, stabs)
         /// </summary>
-        private Die piercingDamage;
+        private Die piercingDamage = Die.Zero();
 
         /// <summary>
         /// How much poison damage is dealt every turn.
         /// </summary>
-        private Die poisonDamage;
+        private Die poisonDamage = Die.Zero();
 
         /// <summary>
         /// How much slashing damage to deal. (Ex: Sword slashes)
         /// </summary>
-        private Die slashingDamage;
+        private Die slashingDamage = Die.Zero();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Damage"/> class.
@@ -94,16 +94,6 @@ namespace EarthWithMagicAPI.API
         /// <param name="type">The type of damage to not set to zero.</param>
         public Damage(Die damage, DamageType type)
         {
-            this.AcidDamage = new Die(0, 0, 0);
-            this.PoisonDamage = new Die(0, 0, 0);
-            this.ElectricDamage = new Die(0, 0, 0);
-            this.FireDamage = new Die(0, 0, 0);
-            this.ColdDamage = new Die(0, 0, 0);
-            this.MagicDamage = new Die(0, 0, 0);
-            this.PiercingDamage = new Die(0, 0, 0);
-            this.SlashingDamage = new Die(0, 0, 0);
-            this.BluntDamage = new Die(0, 0, 0);
-
             switch (type)
             {
                 case DamageType.Acid:
