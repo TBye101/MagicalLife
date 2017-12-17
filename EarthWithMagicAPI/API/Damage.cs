@@ -1,6 +1,15 @@
-﻿namespace EarthWithMagicAPI.API
+﻿using Microsoft.Win32.SafeHandles;
+namespace EarthWithMagicAPI.API
 {
     using EarthWithMagicAPI.API.Util;
+
+    /// <summary>
+    /// Used to differentiate between damage types.
+    /// </summary>
+    public enum DamageType
+    {
+        Acid, Blunt, Cold, Electric, Fire, Magic, Piercing, Poison, Slashing
+    }
 
     /// <summary>
     /// Holds all of the different types of damages.
@@ -75,6 +84,56 @@
             this.PiercingDamage = piercingDamage;
             this.SlashingDamage = slashingDamage;
             this.BluntDamage = bluntDamage;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Damage"/> class.
+        /// This constructor is used to initialize damage to all zeros except for one type of damage.
+        /// </summary>
+        /// <param name="damage">The dice roll of the non zero damage type.</param>
+        /// <param name="type">The type of damage to not set to zero.</param>
+        public Damage(Die damage, DamageType type)
+        {
+            this.AcidDamage = new Die(0, 0, 0);
+            this.PoisonDamage = new Die(0, 0, 0);
+            this.ElectricDamage = new Die(0, 0, 0);
+            this.FireDamage = new Die(0, 0, 0);
+            this.ColdDamage = new Die(0, 0, 0);
+            this.MagicDamage = new Die(0, 0, 0);
+            this.PiercingDamage = new Die(0, 0, 0);
+            this.SlashingDamage = new Die(0, 0, 0);
+            this.BluntDamage = new Die(0, 0, 0);
+
+            switch (type)
+            {
+                case DamageType.Acid:
+                    this.AcidDamage = damage;
+                    break;
+                case DamageType.Blunt:
+                    this.BluntDamage = damage;
+                    break;
+                case DamageType.Cold:
+                    this.ColdDamage = damage;
+                    break;
+                case DamageType.Electric:
+                    this.ElectricDamage = damage;
+                    break;
+                case DamageType.Fire:
+                    this.FireDamage = damage;
+                    break;
+                case DamageType.Magic:
+                    this.MagicDamage = damage;
+                    break;
+                case DamageType.Piercing:
+                    this.PiercingDamage = damage;
+                    break;
+                case DamageType.Poison:
+                    this.PoisonDamage = damage;
+                    break;
+                case DamageType.Slashing:
+                    this.SlashingDamage = damage;
+                    break;
+            }
         }
 
         public Die AcidDamage
