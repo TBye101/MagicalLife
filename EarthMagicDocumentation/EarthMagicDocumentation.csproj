@@ -33,6 +33,7 @@
     <None Remove="ASCII Art\Items\Fists.txt" />
     <None Remove="ASCII Art\Items\Other\Lockpick.txt" />
     <None Remove="ASCII Art\Items\Weapons\Normal\Daggers\Dagger.txt" />
+    <None Remove="ASCII Art\Items\Weapons\Normal\Quarterstaffs\Quarterstaff.txt" />
     <None Remove="ASCII Art\Items\Weapons\Normal\Scimitars\AngelSword.txt" />
     <None Remove="ASCII Art\Knight.txt" />
     <None Remove="ASCII Art\Monk.txt" />
@@ -122,6 +123,7 @@
     <None Remove="Items\Fists.md" />
     <None Remove="Items\Other\Lockpicks\SteelLockpick.md" />
     <None Remove="Items\Weapons\Normal\Daggers\Dagger.md" />
+    <None Remove="Items\Weapons\Normal\Quarterstaff\Quarterstaff.md" />
     <None Remove="Items\Weapons\Normal\Scimitars\AngelSword.md" />
     <None Remove="Other\ArmorClasses.md" />
     <None Remove="Other\CreatureList.md" />
@@ -131,6 +133,10 @@
     <None Remove="Other\Todo.md" />
     <None Remove="Spells\Wizard\Magic_Missile.md" />
     <None Remove="Spells\Wizard\PoisonCloud.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Items\Weapons\Normal\Quarterstaff\Quarterstaff.md" />
   </ItemGroup>
 
   <ItemGroup>
@@ -162,6 +168,7 @@
     <EmbeddedResource Include="ASCII Art\Items\Fists.txt" />
     <EmbeddedResource Include="ASCII Art\Items\Other\Lockpick.txt" />
     <EmbeddedResource Include="ASCII Art\Items\Weapons\Normal\Daggers\Dagger.txt" />
+    <EmbeddedResource Include="ASCII Art\Items\Weapons\Normal\Quarterstaffs\Quarterstaff.txt" />
     <EmbeddedResource Include="ASCII Art\Items\Weapons\Normal\Scimitars\AngelSword.txt" />
     <EmbeddedResource Include="ASCII Art\Knight.txt" />
     <EmbeddedResource Include="ASCII Art\Monk.txt" />
