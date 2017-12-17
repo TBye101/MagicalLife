@@ -1,5 +1,6 @@
 ﻿namespace EarthMagicItems.Ammo.Arrows.Normal
 {
+    using EarthWithMagicAPI.API;
     using EarthWithMagicAPI.API.Util;
 
     /// <summary>
@@ -8,7 +9,7 @@
     public class _2Arrow : GenericAmmo
     {
         public _2Arrow()
-            : base(new Die(3, 5, 0), "+2 Arrow", AmmoUtil.StandardArrow(new Die(1, 8, 2)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Arrows.ProfessionalArrow.txt",
+            : base(new Die(3, 5, 0), "+2 Arrow", new Damage(new Die(1, 8, 2), DamageType.Piercing), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Arrows.ProfessionalArrow.txt",
             "EarthMagicDocumentation.Items.Ammo.Arrows.+2Arrow.md", .2)
         {
         }
