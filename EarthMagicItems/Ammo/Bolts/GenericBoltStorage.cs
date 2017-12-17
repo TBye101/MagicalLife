@@ -13,9 +13,6 @@ namespace EarthMagicItems.Ammo.Bolts
     /// </summary>
     public class GenericBoltStorage
     {
-        private GenericAmmo _4Bolt = new GenericAmmo(new Die(5, 7, 0), "+4 Bolt", AmmoUtil.StandardBolt(new Die(1, 6, 4)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.CrossbowBolt.txt",
-            "EarthMagicDocumentation.Items.Ammo.Bolts.+4Bolt.md", .15);
-
         private GenericAmmo _5Bolt = new GenericAmmo(new Die(6, 7, 0), "+5 Bolt", AmmoUtil.StandardBolt(new Die(1, 6, 5)), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.CrossbowBolt.txt",
             "EarthMagicDocumentation.Items.Ammo.Bolts.+5Bolt.md", .15);
 
