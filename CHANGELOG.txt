@@ -18,6 +18,7 @@
 			*[12/17/2017]: Added the +3 bolt item
 			*[12/17/2017]: Added the +4 bolt item
 			*[12/17/2017]: Added the +5 bolt item
+			*[12/17/2017]: Added the handmade bolt item
 		
 		### Tweaks
 			*
