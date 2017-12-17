@@ -20,6 +20,10 @@
 			*[12/17/2017]: Added the +5 bolt item
 			*[12/17/2017]: Added the handmade bolt item
 			*[12/17/2017]: Added the professional bolt item
+			*[12/17/2017]: Added the acid bolt item
+			*[12/17/2017]: Added the fire bolt item
+			*[12/17/2017]: Added the frost bolt item
+			*[12/17/2017]: Added the poison bolt item
 		
 		### Tweaks
 			*
