@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Ammo\Bolts\Special\" />
     <Folder Include="Armor\Cloaks\" />
     <Folder Include="Potions\" />
     <Folder Include="Rings\Rings of Protection\" />
