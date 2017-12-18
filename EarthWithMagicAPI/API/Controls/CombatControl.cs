@@ -254,23 +254,23 @@ namespace EarthWithMagicAPI.API.Creature
         /// <param name="command"></param>
         private static void Help(ICreature creature, Encounter encounter, string[] command)
         {
-            Util.Util.WriteLine("help: displays help information.");
-            Util.Util.WriteLine("view inventory: displays the player's inventory.");
-            Util.Util.WriteLine("equip: equips an item, that you may choose in a bit.");
-            Util.Util.WriteLine("swing: Attacks the enemy at the front of the line via melee.");
-            Util.Util.WriteLine("use ability: Allows you to use an ability.");
-            Util.Util.WriteLine("list abilities: Spits out a list of available abilities to the current character.");
-            Util.Util.WriteLine("cast: Allows you to choose a spell to cast.");
-            Util.Util.WriteLine("list spells: Lists all of the spells available.");
-            Util.Util.WriteLine("use: Allows you to use a potion, or other item.");
-            Util.Util.WriteLine("list enemies: Lists all the enemies still alive.");
-            Util.Util.WriteLine("list party: Lists all of the members of the party, including dead ones.");
-            Util.Util.WriteLine("unequip: Un-equips something.");
-            Util.Util.WriteLine("rotate: Rotates the person at the front of the party to the back.");
-            Util.Util.WriteLine("end turn: Ends this round for the current creature.");
-            Util.Util.WriteLine("view item: Views the specified items image and information.");
-            Util.Util.WriteLine("list prayers: Displays all known prayers to the creature.");
-            Util.Util.WriteLine("pray: attempts to pray the specified prayer");
+            Util.Util.WriteLine("   help: displays help information.");
+            Util.Util.WriteLine("   view inventory: displays the player's inventory.");
+            Util.Util.WriteLine("   equip: equips an item, that you may choose in a bit.");
+            Util.Util.WriteLine("   swing: Attacks the enemy at the front of the line via melee.");
+            Util.Util.WriteLine("   use ability: Allows you to use an ability.");
+            Util.Util.WriteLine("   list abilities: Spits out a list of available abilities to the current character.");
+            Util.Util.WriteLine("   cast: Allows you to choose a spell to cast.");
+            Util.Util.WriteLine("   list spells: Lists all of the spells available.");
+            Util.Util.WriteLine("   use: Allows you to use a potion, or other item.");
+            Util.Util.WriteLine("   list enemies: Lists all the enemies still alive.");
+            Util.Util.WriteLine("   list party: Lists all of the members of the party, including dead ones.");
+            Util.Util.WriteLine("   unequip: Un-equips something.");
+            Util.Util.WriteLine("   rotate: Rotates the person at the front of the party to the back.");
+            Util.Util.WriteLine("   end turn: Ends this round for the current creature.");
+            Util.Util.WriteLine("   view item: Views the specified items image and information.");
+            Util.Util.WriteLine("   list prayers: Displays all known prayers to the creature.");
+            Util.Util.WriteLine("   pray: attempts to pray the specified prayer");
         }
 
         private static void ListAbilities(ICreature creature)

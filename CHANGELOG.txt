@@ -2,6 +2,11 @@
 	[Version 0.0.0.1]
 		
 		### Features
+
+		#### API
+			*[12/17/2017]: Console input and output is now logged
+
+		#### Items
 			*[12/16/2017]: Added the acid arrow item
 			*[12/16/2017]: Added the fire arrow item
 			*[12/16/2017]: Added the frost arrow item
@@ -27,7 +32,7 @@
 			*[12/17/2017]: Added the quarterstaff item
 		
 		### Tweaks
-			*
+			*Help command now displays it's messages indented for readability reasons
 		
 		### Bugs
 			*[12/16/2017]: Fixed a bug where all items would have the exact same ID
