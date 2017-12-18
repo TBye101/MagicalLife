@@ -32,7 +32,7 @@ namespace EarthMagicItems.Weapons.Normal.Quarterstaffs.Normal
 
         public override bool CanEquip(ICreature creature)
         {
-            //Don't allow monk or shapeshifter
+            throw new NotImplementedException();
         }
 
         public override void OnAttack()

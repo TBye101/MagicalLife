@@ -4,10 +4,10 @@
 
 namespace EarthMagicDocumentation
 {
-    using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Reflection;
+    using EarthWithMagicAPI.API.Util;
 
     /// <summary>
     /// Facilitates in the fetching of resources.
@@ -21,7 +21,7 @@ namespace EarthMagicDocumentation
         /// <returns></returns>
         public static List<string> GetResource(string path)
         {
-            Assembly docAsm = typeof(ResourceGM).GetTypeInfo().Assembly;
+            Assembly docAsm = typeof(ForTypeReference).GetTypeInfo().Assembly;
 
             Stream resource = docAsm.GetManifestResourceStream(path);
 

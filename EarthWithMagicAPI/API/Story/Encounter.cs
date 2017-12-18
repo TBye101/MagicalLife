@@ -5,6 +5,7 @@
 namespace EarthWithMagicAPI.API.Stuff
 {
     using EarthWithMagicAPI.API.Creature;
+    using EarthWithMagicAPI.API.Util;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -46,7 +47,7 @@ namespace EarthWithMagicAPI.API.Stuff
         {
             while (!IsEveryoneDead(this.Party) && !IsEveryoneDead(this.Enemies))
             {
-                Util.Util.WriteLine("Encounter: " + this.Party.Count.ToString() + " friendly, " + this.Enemies.Count.ToString() + " enemies");
+                Filing.Writeline("Encounter: " + this.Party.Count.ToString() + " friendly, " + this.Enemies.Count.ToString() + " enemies");
 
                 foreach (ICreature item in this.AllCombatants)
                 {
@@ -61,7 +62,7 @@ namespace EarthWithMagicAPI.API.Stuff
                                 if (iitem.ID == item.ID && item.Attributes.Health > 0)
                                 {
                                     item.YourTurn(this);
-                                    Util.Util.WriteLine("Hit any key to continue the fight to the next combatant....");
+                                    Filing.Writeline("Hit any key to continue the fight to the next combatant....");
                                     Console.ReadKey();
                                 }
                             }
@@ -75,7 +76,7 @@ namespace EarthWithMagicAPI.API.Stuff
                                 if (iitem.ID == item.ID && item.Attributes.Health > 0)
                                 {
                                     item.YourTurn(this);
-                                    Util.Util.WriteLine("Hit any key to continue the fight to the next combatant....");
+                                    Filing.Writeline("Hit any key to continue the fight to the next combatant....");
                                     Console.ReadKey();
                                 }
                             }
@@ -98,8 +99,8 @@ namespace EarthWithMagicAPI.API.Stuff
         {
             if (this.IsEveryoneDead(this.Party))
             {
-                Util.Util.WriteLine("Y'all are dead. Try again.");
-                Filing.Readline();
+                Filing.Writeline("Y'all are dead. Try again.");
+                Filing.ReadLine();
                 Environment.Exit(0);
             }
             else
@@ -118,7 +119,7 @@ namespace EarthWithMagicAPI.API.Stuff
                             totalGained += item.XPValue();
                         }
 
-                        Util.Util.WriteLine(this.Party[i].Name + " gained " + totalGained.ToString() + " xp");
+                        Filing.Writeline(this.Party[i].Name + " gained " + totalGained.ToString() + " xp");
                     }
 
                     this.Party[i].EncounterEnded(this);

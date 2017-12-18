@@ -4,6 +4,7 @@
 
 namespace EarthWithMagicAPI.API.Stuff
 {
+    using EarthWithMagicAPI.API.Util;
     using System;
     using System.Collections.Generic;
 
@@ -79,7 +80,7 @@ namespace EarthWithMagicAPI.API.Stuff
                 i++;
             }
 
-            string input = Filing.Readline();
+            string input = Filing.ReadLine();
 
             int choice1 = Convert.ToInt32(input);
             this.Decided(choice1);
@@ -94,7 +95,7 @@ namespace EarthWithMagicAPI.API.Stuff
             if (decision > this.progressionOfChoices.Count || decision < 1)
             {
                 Filing.Writeline("Invalid choice! Try again!");
-                string input = Filing.Readline();
+                string input = Filing.ReadLine();
 
                 int choice = Convert.ToInt32(input);
                 this.Decided(choice);

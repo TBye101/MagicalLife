@@ -35,7 +35,7 @@ namespace EarthWithMagicAPI.API.Controls
                 string[] command;
                 while (input != "end turn")
                 {
-                    input = Filing.Readline().ToLower();
+                    input = Filing.ReadLine().ToLower();
                     command = input.Split(' ');
 
                     if (command[0] == "use" && command[1] == "ability")
@@ -247,7 +247,7 @@ namespace EarthWithMagicAPI.API.Controls
         private static void Equip(ICreature creature)
         {
             Util.WriteLine("Which item? (Specify by name)");
-            string name = Filing.Readline();
+            string name = Filing.ReadLine();
             foreach (IItem item in creature.Inventory)
             {
                 if (item.Name == name)
@@ -337,7 +337,7 @@ namespace EarthWithMagicAPI.API.Controls
         private static void Unequip(ICreature creature)
         {
             Util.WriteLine("Unequip what?");
-            string name = Filing.Readline();
+            string name = Filing.ReadLine();
 
             foreach (IItem item in creature.Amulets)
             {

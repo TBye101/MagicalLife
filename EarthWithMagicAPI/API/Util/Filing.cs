@@ -74,7 +74,8 @@ namespace EarthWithMagicAPI.API.Util
         /// <returns></returns>
         private static string GetIOSafeTime()
         {
-            return string.Format("{0:[yyyy-MM-dd][hh-mm-ss-tt}]",
+            return string.Format(
+                "{0:[yyyy-MM-dd][hh-mm-ss-tt}]",
             DateTime.Now);
         }
 

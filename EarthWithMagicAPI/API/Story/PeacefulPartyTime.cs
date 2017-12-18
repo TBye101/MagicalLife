@@ -5,6 +5,7 @@
 namespace EarthWithMagicAPI.API.Story
 {
     using EarthWithMagicAPI.API.Creature;
+    using EarthWithMagicAPI.API.Util;
     using System;
 
     /// <summary>
@@ -41,8 +42,8 @@ namespace EarthWithMagicAPI.API.Story
                 string input;
                 while (dontStop)
                 {
-                    Util.Util.WriteLine("To end this peaceful cycle, type: end cycle");
-                    input = Filing.Readline().ToLower();
+                    Filing.Writeline("To end this peaceful cycle, type: end cycle");
+                    input = Filing.ReadLine().ToLower();
 
                     if (input == "end cycle")
                     {
@@ -68,12 +69,12 @@ namespace EarthWithMagicAPI.API.Story
                     this.duration--;
                     if (this.duration == 0)
                     {
-                        Util.Util.WriteLine("Cycle ended, times up!");
+                        Filing.Writeline("Cycle ended, times up!");
                         break;
                     }
 
-                    Util.Util.WriteLine("To end this peaceful cycle, type: end cycle");
-                    input = Filing.Readline().ToLower();
+                    Filing.Writeline("To end this peaceful cycle, type: end cycle");
+                    input = Filing.ReadLine().ToLower();
 
                     if (input == "end cycle")
                     {

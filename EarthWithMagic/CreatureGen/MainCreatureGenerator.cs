@@ -16,7 +16,7 @@ namespace EarthWithMagicAPI.API.Creature
     {
         public ICreature GetMainCharacter()
         {
-            Util.Util.WriteLine("Monk, Wizard, Cleric, or Thief?");
+            Filing.Writeline("Monk, Wizard, Cleric, or Thief?");
             string input = Filing.ReadLine();
 
             switch (input.ToLower())
@@ -38,7 +38,7 @@ namespace EarthWithMagicAPI.API.Creature
                     return wizard.Generate();
 
                 default:
-                    Util.Util.WriteLine("Invalid input!");
+                    Filing.Writeline("Invalid input!");
                     return this.GetMainCharacter();
             }
         }
