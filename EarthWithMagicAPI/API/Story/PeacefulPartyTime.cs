@@ -42,7 +42,7 @@ namespace EarthWithMagicAPI.API.Story
                 while (dontStop)
                 {
                     Util.Util.WriteLine("To end this peaceful cycle, type: end cycle");
-                    input = Console.ReadLine().ToLower();
+                    input = Filing.Readline().ToLower();
 
                     if (input == "end cycle")
                     {
@@ -73,7 +73,7 @@ namespace EarthWithMagicAPI.API.Story
                     }
 
                     Util.Util.WriteLine("To end this peaceful cycle, type: end cycle");
-                    input = Console.ReadLine().ToLower();
+                    input = Filing.Readline().ToLower();
 
                     if (input == "end cycle")
                     {

@@ -256,7 +256,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
                         break;
 
                     default:
-                        Console.WriteLine("Level up not supported!");
+                        Filing.Writeline("Level up not supported!");
                         break;
                 }
             }
@@ -273,7 +273,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
                 switch (Dice.RollDice(new Die(1, 2, 0)))
                 {
                     case 1:
-                        Console.WriteLine("We have lost a comrade today. No matter " + dead.HimHerIT() + "'s personal struggles, " + dead.HimHerIT() + " was a valuable member of this party.");
+                        Filing.Writeline("We have lost a comrade today. No matter " + dead.HimHerIT() + "'s personal struggles, " + dead.HimHerIT() + " was a valuable member of this party.");
                         break;
 
                     case 2:

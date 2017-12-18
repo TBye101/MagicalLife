@@ -99,7 +99,7 @@ namespace EarthWithMagicAPI.API.Stuff
             if (this.IsEveryoneDead(this.Party))
             {
                 Util.Util.WriteLine("Y'all are dead. Try again.");
-                Console.ReadLine();
+                Filing.Readline();
                 Environment.Exit(0);
             }
             else

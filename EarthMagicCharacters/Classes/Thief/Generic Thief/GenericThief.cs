@@ -247,7 +247,7 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
                     break;
 
                 default:
-                    Console.WriteLine("Level up not supported!");
+                    Filing.Writeline("Level up not supported!");
                     break;
             }
         }
@@ -259,7 +259,7 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
                 switch (Dice.RollDice(new Die(1, 2, 0)))
                 {
                     case 1:
-                        Console.WriteLine("Maybe I should have given " + dead.HimHerIT() + " the lucky coin back");
+                        Filing.Writeline("Maybe I should have given " + dead.HimHerIT() + " the lucky coin back");
                         break;
 
                     case 2:

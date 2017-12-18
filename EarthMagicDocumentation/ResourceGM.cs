@@ -30,7 +30,7 @@ namespace EarthMagicDocumentation
                 resource = docAsm.GetManifestResourceStream("EarthMagicDocumentation.ASCII_Art.Error.txt");
                 if (resource == null)
                 {
-                    Console.WriteLine("A critical error has occurred in resource loading.");
+                    Filing.Writeline("A critical error has occurred in resource loading.");
                     return new List<string>();
                 }
             }

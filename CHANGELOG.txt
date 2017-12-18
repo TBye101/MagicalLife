@@ -24,6 +24,7 @@
 			*[12/17/2017]: Added the fire bolt item
 			*[12/17/2017]: Added the frost bolt item
 			*[12/17/2017]: Added the poison bolt item
+			*[12/17/2017]: Added the quarterstaff item
 		
 		### Tweaks
 			*

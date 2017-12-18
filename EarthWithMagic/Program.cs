@@ -32,7 +32,7 @@ namespace EarthWithMagic
 
             while (true)
             {
-                input = Console.ReadLine();
+                input = Filing.ReadLine();
 
                 Encounter continous = new Encounter(Party.TheParty, new List<ICreature> { new GenericMonk(Gender.Male, Race.Human) });
                 Party.TheParty = continous.Fight();

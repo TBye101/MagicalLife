@@ -1,4 +1,5 @@
-﻿// <copyright file="CombatControl.cs" company="PlaceholderCompany">
+﻿using EarthWithMagicAPI.API.Util;
+// <copyright file="CombatControl.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -30,7 +31,7 @@ namespace EarthWithMagicAPI.API.Creature
                 string[] command;
                 while (true)
                 {
-                    input = Console.ReadLine().ToLower();
+                    input = Filing.ReadLine().ToLower();
                     command = input.Split(' ');
 
                     if (command[0] == "end")
@@ -225,7 +226,7 @@ namespace EarthWithMagicAPI.API.Creature
         private static void Equip(ICreature creature)
         {
             Util.Util.WriteLine("Which item? (Specify by name)");
-            string name = Console.ReadLine();
+            string name = Filing.ReadLine();
             foreach (IItem item in creature.Inventory)
             {
                 if (item.Name == name)
@@ -340,7 +341,7 @@ namespace EarthWithMagicAPI.API.Creature
         private static void Unequip(ICreature creature)
         {
             Util.Util.WriteLine("Unequip what?");
-            string name = Console.ReadLine();
+            string name = Filing.ReadLine();
 
             foreach (IItem item in creature.Amulets)
             {

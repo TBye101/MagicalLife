@@ -56,14 +56,14 @@ namespace EarthWithMagicAPI.API.Stuff
         /// </summary>
         public void Display()
         {
-            Console.WriteLine(" ");
+            Filing.Writeline(" ");
 
             foreach (string item in this.textAbove)
             {
-                Console.WriteLine(item);
+                Filing.Writeline(item);
             }
 
-            Console.WriteLine(" ");
+            Filing.Writeline(" ");
 
             int i = 0;
             int siz = this.choices.Count;
@@ -79,7 +79,7 @@ namespace EarthWithMagicAPI.API.Stuff
                 i++;
             }
 
-            string input = Console.ReadLine();
+            string input = Filing.Readline();
 
             int choice1 = Convert.ToInt32(input);
             this.Decided(choice1);
@@ -93,8 +93,8 @@ namespace EarthWithMagicAPI.API.Stuff
         {
             if (decision > this.progressionOfChoices.Count || decision < 1)
             {
-                Console.WriteLine("Invalid choice! Try again!");
-                string input = Console.ReadLine();
+                Filing.Writeline("Invalid choice! Try again!");
+                string input = Filing.Readline();
 
                 int choice = Convert.ToInt32(input);
                 this.Decided(choice);

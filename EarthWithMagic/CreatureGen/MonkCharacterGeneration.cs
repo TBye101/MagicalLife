@@ -35,7 +35,7 @@ namespace EarthMagicCharacters.Classes.Monk
         private Gender GetGender()
         {
             Util.WriteLine("Male, Female, or Unspecified?");
-            string input = Console.ReadLine();
+            string input = Filing.ReadLine();
 
             switch (input.ToLower())
             {
@@ -63,7 +63,7 @@ namespace EarthMagicCharacters.Classes.Monk
         private string GetName()
         {
             Util.WriteLine("What is your name?");
-            return Console.ReadLine();
+            return Filing.ReadLine();
         }
     }
 }

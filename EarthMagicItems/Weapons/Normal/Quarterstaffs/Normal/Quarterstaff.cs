@@ -1,4 +1,5 @@
-﻿namespace EarthMagicItems.Weapons.Normal.Quarterstaffs.Normal
+﻿using EarthMagicCharacters.Classes.Monk.Generic_Monk;
+namespace EarthMagicItems.Weapons.Normal.Quarterstaffs.Normal
 {
     using System;
     using System.Collections.Generic;
@@ -31,7 +32,7 @@
 
         public override bool CanEquip(ICreature creature)
         {
-            throw new NotImplementedException();
+            //Don't allow monk or shapeshifter
         }
 
         public override void OnAttack()

@@ -6,6 +6,7 @@ namespace EarthWithMagicAPI.API.Creature
 {
     using EarthMagicCharacters.Classes.Monk;
     using EarthWithMagic.CreatureGen;
+    using EarthWithMagicAPI.API.Util;
     using System;
 
     /// <summary>
@@ -16,7 +17,7 @@ namespace EarthWithMagicAPI.API.Creature
         public ICreature GetMainCharacter()
         {
             Util.Util.WriteLine("Monk, Wizard, Cleric, or Thief?");
-            string input = Console.ReadLine();
+            string input = Filing.ReadLine();
 
             switch (input.ToLower())
             {

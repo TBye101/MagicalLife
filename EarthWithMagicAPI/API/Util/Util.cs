@@ -15,14 +15,14 @@ namespace EarthWithMagicAPI.API.Util
         /// <param name="message"></param>
         public static void WriteLine(string message)
         {
-            Console.WriteLine(message);
+            Filing.Writeline(message);
         }
 
         public static void WriteLine(List<string> message)
         {
             foreach (string item in message)
             {
-                Console.WriteLine(item);
+                Filing.Writeline(item);
             }
         }
     }

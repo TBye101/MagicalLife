@@ -27,7 +27,7 @@ namespace EarthWithMagic.CreatureGen
         private Alignment GetAlignment()
         {
             Util.WriteLine("Lawful Good, Chaotic Good, Lawful Neutral, True Neutral, Chaotic Neutral, Lawful Evil, Neutral Evil, or Chaotic Evil?");
-            string input = Console.ReadLine();
+            string input = Filing.ReadLine();
 
             switch (input.ToLower())
             {
@@ -68,7 +68,7 @@ namespace EarthWithMagic.CreatureGen
         private Gender GetGender()
         {
             Util.WriteLine("Male, Female, or Unspecified?");
-            string input = Console.ReadLine();
+            string input = Filing.ReadLine();
 
             switch (input.ToLower())
             {
@@ -96,14 +96,14 @@ namespace EarthWithMagic.CreatureGen
         private string GetName()
         {
             Util.WriteLine("What is your name?");
-            return Console.ReadLine();
+            return Filing.ReadLine();
         }
 
         private Race GetRace()
         {
             Util.WriteLine("Human, Elf, Dwarf, Kender, Drow, Dragonborn, or Unspecified?");
 
-            string input = Console.ReadLine();
+            string input = Filing.ReadLine();
 
             switch (input.ToLower())
             {
