@@ -11,7 +11,6 @@ namespace EarthWithMagicAPI.API.Registry
 
     public static class ItemRegistry
     {
-        public static List<IItem> Items = new List<IItem>();
 
         static ItemRegistry()
         {
@@ -33,5 +32,7 @@ namespace EarthWithMagicAPI.API.Registry
                 }
             }
         }
+
+        public static List<IItem> Items { get; set; } = new List<IItem>();
     }
 }
