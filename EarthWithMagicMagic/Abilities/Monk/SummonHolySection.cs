@@ -4,11 +4,11 @@
 
 namespace EarthWithMagicMagic.Abilities.Monk
 {
+    using System;
+    using System.Collections.Generic;
     using EarthMagicCreatures.Creatures.Heavenly.Angels;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Util;
-    using System;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Summons 4 lesser angels.

@@ -4,11 +4,11 @@
 
 namespace EarthMagicItems.Amulets
 {
+    using System;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Interfaces.Spells;
     using EarthWithMagicAPI.API.Stuff;
-    using System;
 
     /// <summary>
     /// A generic amulet.

@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Weapons\Throwing\Throwing Knives\**" />
+    <EmbeddedResource Remove="Weapons\Throwing\Throwing Knives\**" />
+    <None Remove="Weapons\Throwing\Throwing Knives\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Armor\Cloaks\" />
     <Folder Include="Potions\" />
     <Folder Include="Rings\Rings of Protection\" />
@@ -37,17 +43,6 @@
     <Folder Include="Weapons\Normal\Scimitars\" />
     <Folder Include="Weapons\Normal\Short Swords\" />
     <Folder Include="Weapons\Normal\War Hammers\" />
-    <Folder Include="Weapons\Throwing\Balanced Daggers\" />
-    <Folder Include="Weapons\Throwing\Darts\" />
-    <Folder Include="Weapons\Throwing\Darts\" />
-    <Folder Include="Weapons\Throwing\Javalins\" />
-    <Folder Include="Weapons\Throwing\Javalins\" />
-    <Folder Include="Weapons\Throwing\Shurikens\" />
-    <Folder Include="Weapons\Throwing\Throwing Axes\" />
-    <Folder Include="Weapons\Throwing\Throwing Knives\" />
-    <Folder Include="Weapons\Throwing\Throwing Axes\" />
-    <Folder Include="Weapons\Throwing\Shurikens\" />
-    <Folder Include="Weapons\Throwing\Throwing Knives\" />
   </ItemGroup>
 
   <ItemGroup>

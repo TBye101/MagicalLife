@@ -1,7 +1,7 @@
-﻿using Microsoft.Win32.SafeHandles;
-namespace EarthWithMagicAPI.API
+﻿namespace EarthWithMagicAPI.API
 {
     using EarthWithMagicAPI.API.Util;
+    using Microsoft.Win32.SafeHandles;
 
     /// <summary>
     /// Used to differentiate between damage types.

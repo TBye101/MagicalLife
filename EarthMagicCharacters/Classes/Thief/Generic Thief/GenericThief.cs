@@ -4,11 +4,11 @@
 
 namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 {
+    using System;
+    using System.Collections.Generic;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Util;
-    using System;
-    using System.Collections.Generic;
 
     /// <summary>
     /// The generic thief class implementation.

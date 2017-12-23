@@ -17,6 +17,8 @@ AC: 4
 Hit die: 1d10 +2
 Fist: 1d8
 
+Monks cannot use wands, or regular weapons.
+
 #### 2nd Level: Faithless
 Along the journey to becoming a great monk, one must hit rock bottom. For when you hit rock bottom, the only way you can go is up.
 After this point, a monk's life will be built on faith, and faith alone.

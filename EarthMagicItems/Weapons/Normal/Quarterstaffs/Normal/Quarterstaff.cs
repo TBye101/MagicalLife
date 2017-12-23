@@ -1,10 +1,10 @@
-﻿using EarthMagicCharacters.Classes.Monk.Generic_Monk;
-namespace EarthMagicItems.Weapons.Normal.Quarterstaffs.Normal
+﻿namespace EarthMagicItems.Weapons.Normal.Quarterstaffs.Normal
 {
     using System;
     using System.Collections.Generic;
     using System.Text;
     using EarthMagicCharacters.Classes;
+    using EarthMagicCharacters.Classes.Monk.Generic_Monk;
     using EarthWithMagicAPI.API;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;

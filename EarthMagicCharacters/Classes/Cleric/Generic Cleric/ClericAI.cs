@@ -4,9 +4,9 @@
 
 namespace EarthMagicCharacters.Classes.Cleric.Generic_Cleric
 {
+    using System;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Stuff;
-    using System;
 
     /// <summary>
     /// The default AI for a cleric.

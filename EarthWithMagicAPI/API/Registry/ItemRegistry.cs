@@ -4,10 +4,10 @@
 
 namespace EarthWithMagicAPI.API.Registry
 {
-    using EarthWithMagicAPI.API.Interfaces.Items;
     using System;
     using System.Collections.Generic;
     using System.Reflection;
+    using EarthWithMagicAPI.API.Interfaces.Items;
 
     public static class ItemRegistry
     {

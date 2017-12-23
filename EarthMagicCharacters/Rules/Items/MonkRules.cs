@@ -10,24 +10,52 @@
     /// </summary>
     public class MonkRules : ICreatureRules
     {
-        public bool canEquip(IItem item)
-        {
-            
-        }
-
-        public bool canUse(IItem item)
+        public bool CanUse(IItem item)
         {
             throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// Determines if this monk can use the specified weapon.
-        /// </summary>
-        /// <param name="weapon"></param>
-        /// <returns></returns>
-        public bool canUseWeapon(IWeapon weapon)
+        public bool CanUse(IAmmo ammo)
         {
+            return false;
+        }
 
+        public bool CanUse(IAmulet amulet)
+        {
+            return true;
+        }
+
+        public bool CanUse(IArmor armor)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CanUse(IRangedWeapon rangedWeapon)
+        {
+            return false;
+        }
+
+        public bool CanUse(IRing ring)
+        {
+            return true;
+        }
+
+        public bool CanUse(IThrowableWeapon weapon)
+        {
+            //Type weaponType = weapon.GetType();
+            //weaponType.IsAssignableFrom(DartBase)
+            return false;
+        }
+
+        public bool CanUse(IWand wand)
+        {
+            // Monks cannot use wands
+            return false;
+        }
+
+        public bool CanUse(IWeapon weapon)
+        {
+            return false;
         }
     }
 }

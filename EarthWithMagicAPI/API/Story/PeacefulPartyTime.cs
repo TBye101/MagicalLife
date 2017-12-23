@@ -4,9 +4,9 @@
 
 namespace EarthWithMagicAPI.API.Story
 {
+    using System;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Util;
-    using System;
 
     /// <summary>
     /// Used when the party could rest, or is in a peaceful area.

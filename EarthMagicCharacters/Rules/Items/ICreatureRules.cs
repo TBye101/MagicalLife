@@ -10,7 +10,14 @@
     /// </summary>
     public interface ICreatureRules
     {
-        bool canEquip(IItem item);
-        bool canUse(IItem item);
+        bool CanUse(IItem item);
+        bool CanUse(IWeapon weapon);
+        bool CanUse(IThrowableWeapon weapon);
+        bool CanUse(IAmmo ammo);
+        bool CanUse(IAmulet amulet);
+        bool CanUse(IRing ring);
+        bool CanUse(IWand wand);
+        bool CanUse(IRangedWeapon rangedWeapon);
+        bool CanUse(IArmor armor);
     }
 }

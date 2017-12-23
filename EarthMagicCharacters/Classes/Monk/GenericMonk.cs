@@ -4,20 +4,19 @@
 
 namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 {
+    using System;
+    using System.Collections.Generic;
+    using EarthMagicCharacters.Rules.Items;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Util;
     using EarthWithMagicMagic.Abilities.Monk;
-    using System;
-    using System.Collections.Generic;
 
     /// <summary>
     /// The base monk.
     /// </summary>
     public class GenericMonk : ICharacter
     {
-        private bool _Hostile;
-
         /// <summary>
         /// Constructor for the GenericMonk class.
         /// </summary>
@@ -33,9 +32,13 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             this.creatureType = CreatureType.Humanoid;
             this.Name = name;
             this.Title = "Trainee";
-            this._Hostile = isHostile;
+            this.Hostile = isHostile;
             this.BareHands.Damage.BluntDamage = new Die(1, 8, 0);
         }
+
+        public bool Hostile { get; set; }
+
+        public MonkRules Rules { get; set; } = new MonkRules();
 
         public override void EquipItem(IItem item)
         {
@@ -44,7 +47,7 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 
         public override bool IsHostile()
         {
-            return this._Hostile;
+            return this.Hostile;
         }
 
         public override void LevelUp()

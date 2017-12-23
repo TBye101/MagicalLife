@@ -4,9 +4,9 @@
 
 namespace EarthWithMagicAPI.API.Creature
 {
-    using EarthMagicDocumentation;
     using System;
     using System.Collections.Generic;
+    using EarthMagicDocumentation;
 
     public abstract class IAbility
     {

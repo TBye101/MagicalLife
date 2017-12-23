@@ -4,6 +4,8 @@
 
 namespace EarthWithMagicAPI.API.Creature
 {
+    using System;
+    using System.Collections.Generic;
     using EarthMagicCharacters.Classes;
     using EarthMagicDocumentation;
     using EarthWithMagicAPI.API.Controls;
@@ -11,8 +13,6 @@ namespace EarthWithMagicAPI.API.Creature
     using EarthWithMagicAPI.API.Interfaces.Spells;
     using EarthWithMagicAPI.API.Stuff;
     using EarthWithMagicAPI.API.Util;
-    using System;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Holds various things that every creature has or should implement.

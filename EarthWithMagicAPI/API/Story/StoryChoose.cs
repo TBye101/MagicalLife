@@ -4,9 +4,9 @@
 
 namespace EarthWithMagicAPI.API.Stuff
 {
-    using EarthWithMagicAPI.API.Util;
     using System;
     using System.Collections.Generic;
+    using EarthWithMagicAPI.API.Util;
 
     /// <summary>
     /// Used whenever the character has to read some text, or make a decision.
