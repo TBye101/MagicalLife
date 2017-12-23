@@ -10,7 +10,8 @@
 				*
 
 		### Tweaks
-			*
+			* Many small code quality tweaks
+			* Lesser Angels now respond to healing with a "eerie otherworldly" thank you
 
 		### Bugs
 			*
