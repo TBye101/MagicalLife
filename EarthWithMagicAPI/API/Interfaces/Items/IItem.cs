@@ -4,76 +4,245 @@
 
 namespace EarthWithMagicAPI.API.Interfaces.Items
 {
+    using System;
     using EarthMagicDocumentation;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Spells;
     using EarthWithMagicAPI.API.Stuff;
-    using System;
 
     public abstract class IItem
     {
         /// <summary>
         /// The damage this item does when it is used to attack.
         /// </summary>
-        public Damage Damage = new Damage(Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), new Util.Die(0, 0, 1));
+        private Damage damage = new Damage(Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), new Util.Die(0, 0, 1));
 
         /// <summary>
         /// The resource path to the documentation about this item.
         /// </summary>
-        public string DocumentationPath;
+        private string documentationPath;
 
         /// <summary>
         /// Gets the impact an item has on the character when it is equipped.
         /// </summary>
         /// <returns></returns>
-        public StatsImpact EquipImpact = new StatsImpact();
+        private StatsImpact equipImpact = new StatsImpact();
 
         /// <summary>
         /// The ID of the item.
         /// </summary>
-        public Guid ID = new Guid();
+        private Guid iD = Guid.NewGuid();
 
         /// <summary>
         /// The resource path to the ASCII art image.
         /// </summary>
-        public string ImagePath;
+        private string imagePath;
 
-        public bool IsCursed = false;
+        private bool isCursed = false;
 
         /// <summary>
         /// Holds whether or not the item is equipped.
         /// </summary>
-        public bool IsEquipped = false;
+        private bool isEquipped = false;
 
         /// <summary>
         /// The level of the item. Used to determine what loot table to put it on.
         /// </summary>
-        public int Level;
+        private int level;
 
         /// <summary>
         /// The human readable name of the item.
         /// </summary>
-        public string Name;
+        private string name;
 
         /// <summary>
         /// The name of the creature that possesses this item.
         /// </summary>
-        public string Owner = "";
+        private string owner = "";
 
         /// <summary>
         /// Returns if the item is a quest item.
         /// </summary>
-        public bool QuestItem = false;
+        private bool questItem = false;
 
         /// <summary>
         /// The base value of the item, that if the player has 100% trading skills, they will get.
         /// </summary>
-        public int Value;
+        private int value;
 
         /// <summary>
         /// The weight of the item.
         /// </summary>
-        public double Weight;
+        private double weight;
+
+        public Damage Damage
+        {
+            get
+            {
+                return this.damage;
+            }
+
+            set
+            {
+                this.damage = value;
+            }
+        }
+
+        public string DocumentationPath
+        {
+            get
+            {
+                return this.documentationPath;
+            }
+
+            set
+            {
+                this.documentationPath = value;
+            }
+        }
+
+        public StatsImpact EquipImpact
+        {
+            get
+            {
+                return this.equipImpact;
+            }
+
+            set
+            {
+                this.equipImpact = value;
+            }
+        }
+
+        public Guid ID
+        {
+            get
+            {
+                return this.iD;
+            }
+
+            set
+            {
+                this.iD = value;
+            }
+        }
+
+        public string ImagePath
+        {
+            get
+            {
+                return this.imagePath;
+            }
+
+            set
+            {
+                this.imagePath = value;
+            }
+        }
+
+        public bool IsCursed
+        {
+            get
+            {
+                return this.isCursed;
+            }
+
+            set
+            {
+                this.isCursed = value;
+            }
+        }
+
+        public bool IsEquipped
+        {
+            get
+            {
+                return this.isEquipped;
+            }
+
+            set
+            {
+                this.isEquipped = value;
+            }
+        }
+
+        public int Level
+        {
+            get
+            {
+                return this.level;
+            }
+
+            set
+            {
+                this.level = value;
+            }
+        }
+
+        public string Name
+        {
+            get
+            {
+                return this.name;
+            }
+
+            set
+            {
+                this.name = value;
+            }
+        }
+
+        public string Owner
+        {
+            get
+            {
+                return this.owner;
+            }
+
+            set
+            {
+                this.owner = value;
+            }
+        }
+
+        public bool QuestItem
+        {
+            get
+            {
+                return this.questItem;
+            }
+
+            set
+            {
+                this.questItem = value;
+            }
+        }
+
+        public int Value
+        {
+            get
+            {
+                return this.value;
+            }
+
+            set
+            {
+                this.value = value;
+            }
+        }
+
+        public double Weight
+        {
+            get
+            {
+                return this.weight;
+            }
+
+            set
+            {
+                this.weight = value;
+            }
+        }
 
         protected IItem(string name, double weight, string imagePath, string documentationPath)
         {
@@ -147,64 +316,5 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         /// </summary>
         /// <param name="attacker"></param>
         public abstract void WeaponHit(IWeapon attacker);
-    }
-
-    /// <summary>
-    /// Holds the impact an item will have on a player's stats.
-    /// Ex: If you set Strength to -2, the player that equips this will have their strength lowered by 2.
-    /// </summary>
-    public class StatsImpact
-    {
-        public int AC = 0;
-        public int AcidResistance = 0;
-        public int Charisma = 0;
-        public int CharmResistance = 0;
-        public int ColdResistance = 0;
-        public int Constitution = 0;
-        public int Dexterity = 0;
-        public int Dodge = 0;
-        public int ElectricResistance = 0;
-        public int FireResistance = 0;
-        public int Health = 0;
-        public int Initiative = 0;
-        public int Lockpick = 0;
-        public int MagicResistance = 0;
-        public int PoisonResistance = 0;
-        public int SleepResistance = 0;
-        public int Strength = 0;
-        public int WalkSilently = 0;
-        public int WeightCapacity = 0;
-        public int Wisdom = 0;
-
-        public StatsImpact()
-        {
-        }
-
-        public StatsImpact(int charisma, int dexterity, int strength, int constitution, int wisdom, int ac,
-            int health, int weightCapacity, int fireResistance, int acidResistance, int poisonResistance, int electricResistance, int coldResistance, int magicResistance, int charmResistance,
-            int sleepResistance, int initiative, int dodge, int lockpick, int walkSilently)
-        {
-            this.Charisma = charisma;
-            this.Dexterity = dexterity;
-            this.Strength = strength;
-            this.Constitution = constitution;
-            this.Wisdom = wisdom;
-
-            this.AC = ac;
-            this.Health = health;
-            this.WeightCapacity = weightCapacity;
-            this.FireResistance = fireResistance;
-            this.AcidResistance = acidResistance;
-            this.PoisonResistance = poisonResistance;
-            this.ElectricResistance = electricResistance;
-            this.ColdResistance = coldResistance;
-            this.MagicResistance = magicResistance;
-            this.CharmResistance = charmResistance;
-            this.SleepResistance = sleepResistance;
-            this.Initiative = initiative;
-            this.Dodge = dodge;
-            this.Lockpick = lockpick;
-            this.WalkSilently = walkSilently;
-        }
     }
 }
