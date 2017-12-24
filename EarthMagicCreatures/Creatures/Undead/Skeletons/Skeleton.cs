@@ -18,10 +18,6 @@ namespace EarthMagicCreatures.Creatures.Undead.Skeletons
         {
         }
 
-        public override void EquipItem(IItem item)
-        {
-        }
-
         public override bool IsHostile()
         {
             return true;

@@ -20,11 +20,6 @@
         {
         }
 
-        public override bool CanEquip(ICreature creature)
-        {
-            throw new NotImplementedException();
-        }
-
         public override void OnAttack()
         {
         }

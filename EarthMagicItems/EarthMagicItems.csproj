@@ -50,7 +50,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EarthMagicCharacters\EarthMagicCharacters.csproj" />
     <ProjectReference Include="..\EarthMagicDynamicMarket\EarthMagicDynamicMarket.csproj" />
   </ItemGroup>
 

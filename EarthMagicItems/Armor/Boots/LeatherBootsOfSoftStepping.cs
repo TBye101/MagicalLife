@@ -26,11 +26,6 @@ namespace EarthMagicItems.Armor.Boots
         {
         }
 
-        public override bool CanEquip(ICreature creature)
-        {
-            return true;
-        }
-
         public override void Sold()
         {
         }

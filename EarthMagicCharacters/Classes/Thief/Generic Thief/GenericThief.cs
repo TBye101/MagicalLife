@@ -30,11 +30,6 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
             this._Hostile = isHostile;
         }
 
-        public override void EquipItem(IItem item)
-        {
-            throw new NotImplementedException();
-        }
-
         public override bool IsHostile()
         {
             return this._Hostile;
@@ -310,6 +305,11 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
             Dice.RollDice(new Die(3, 6, 0), "Dexterity"), Dice.RollDice(new Die(3, 6, 0), "Strength"),
             Dice.RollDice(new Die(3, 6, 0), "Constitution"), Dice.RollDice(new Die(3, 6, 0), "Charisma"),
             Dice.RollDice(new Die(3, 6, 0), "Wisdom"), 0, 0, 0, 0, 0, 0, 0, 0, true, 30, .35, 0, Dice.RollDice(new Die(3, 6, 0), "Intelligence"));
+        }
+
+        public override bool CanUse(IItem item)
+        {
+            return item.Usability.CanThief;
         }
 
         #region LevelUps

@@ -4,7 +4,6 @@
     using System.Collections.Generic;
     using System.Text;
     using EarthMagicCharacters.Classes;
-    using EarthMagicCharacters.Classes.Monk.Generic_Monk;
     using EarthWithMagicAPI.API;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
@@ -28,11 +27,6 @@
         }
         public override void Bought()
         {
-        }
-
-        public override bool CanEquip(ICreature creature)
-        {
-            throw new NotImplementedException();
         }
 
         public override void OnAttack()

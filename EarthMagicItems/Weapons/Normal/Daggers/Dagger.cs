@@ -28,11 +28,6 @@ namespace EarthMagicItems.Weapons.Normal.Daggers
         {
         }
 
-        public override bool CanEquip(ICreature creature)
-        {
-            return true;
-        }
-
         public override void OnAttack()
         {
         }

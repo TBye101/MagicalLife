@@ -20,5 +20,10 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
                 creature.Weapons[0].Attack(encounter.Party[0]);
             }
         }
+
+        public void YourTurn()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

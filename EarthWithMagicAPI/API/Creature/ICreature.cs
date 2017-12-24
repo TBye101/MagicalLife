@@ -236,10 +236,13 @@ namespace EarthWithMagicAPI.API.Creature
         }
 
         /// <summary>
-        /// Called whenever the creature has a new item equipped.
+        /// Called whenever we need to equip a new item to the creature.
         /// </summary>
         /// <param name="item"></param>
-        public abstract void EquipItem(IItem item);
+        public void EquipItem(IItem item)
+        {
+            throw new NotImplementedException();// We need to actually equip the item.
+        }
 
         public string HeSheIT()
         {
@@ -411,28 +414,15 @@ namespace EarthWithMagicAPI.API.Creature
         /// It's this creature's turn for action.
         /// </summary>
         /// <param name="encounter"></param>
-        public void YourTurn(Encounter encounter)
+        public virtual void YourTurn(Encounter encounter)
         {
-            if (this.IsInParty)
-            {
-                CombatControl.YourTurn(this, encounter);
-            }
-            else
-            {
                 this.myAI.YourTurn(encounter, this);
-            }
         }
 
-        public bool YourTurn()
+        public virtual bool YourTurn()
         {
-            if (this.IsInParty)
-            {
-                return NonCombatControl.YourTurn(this);
-            }
-            else
-            {
-                throw new NotSupportedException();
-            }
+            this.myAI.YourTurn();
+            return true;
         }
 
         /// <summary>

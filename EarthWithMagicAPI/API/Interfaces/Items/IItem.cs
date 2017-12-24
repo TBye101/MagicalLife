@@ -12,237 +12,34 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
 
     public abstract class IItem
     {
-        /// <summary>
-        /// The damage this item does when it is used to attack.
-        /// </summary>
-        private Damage damage = new Damage(Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), new Util.Die(0, 0, 1));
 
-        /// <summary>
-        /// The resource path to the documentation about this item.
-        /// </summary>
-        private string documentationPath;
+        public Damage Damage { get; set; } = new Damage(Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), Util.Die.Zero(), new Util.Die(0, 0, 1));
 
-        /// <summary>
-        /// Gets the impact an item has on the character when it is equipped.
-        /// </summary>
-        /// <returns></returns>
-        private StatsImpact equipImpact = new StatsImpact();
+        public string DocumentationPath { get; set; }
 
-        /// <summary>
-        /// The ID of the item.
-        /// </summary>
-        private Guid iD = Guid.NewGuid();
+        public StatsImpact EquipImpact { get; set; } = new StatsImpact();
 
-        /// <summary>
-        /// The resource path to the ASCII art image.
-        /// </summary>
-        private string imagePath;
+        public Guid ID { get; set; } = Guid.NewGuid();
 
-        private bool isCursed = false;
+        public string ImagePath { get; set; }
 
-        /// <summary>
-        /// Holds whether or not the item is equipped.
-        /// </summary>
-        private bool isEquipped = false;
+        public bool IsCursed { get; set; } = false;
 
-        /// <summary>
-        /// The level of the item. Used to determine what loot table to put it on.
-        /// </summary>
-        private int level;
+        public bool IsEquipped { get; set; } = false;
 
-        /// <summary>
-        /// The human readable name of the item.
-        /// </summary>
-        private string name;
+        public int Level { get; set; }
 
-        /// <summary>
-        /// The name of the creature that possesses this item.
-        /// </summary>
-        private string owner = "";
+        public string Name { get; set; }
 
-        /// <summary>
-        /// Returns if the item is a quest item.
-        /// </summary>
-        private bool questItem = false;
+        public string Owner { get; set; } = "";
 
-        /// <summary>
-        /// The base value of the item, that if the player has 100% trading skills, they will get.
-        /// </summary>
-        private int value;
+        public bool QuestItem { get; set; } = false;
 
-        /// <summary>
-        /// The weight of the item.
-        /// </summary>
-        private double weight;
+        public int Value { get; set; }
 
-        public Damage Damage
-        {
-            get
-            {
-                return this.damage;
-            }
+        public double Weight { get; set; }
 
-            set
-            {
-                this.damage = value;
-            }
-        }
-
-        public string DocumentationPath
-        {
-            get
-            {
-                return this.documentationPath;
-            }
-
-            set
-            {
-                this.documentationPath = value;
-            }
-        }
-
-        public StatsImpact EquipImpact
-        {
-            get
-            {
-                return this.equipImpact;
-            }
-
-            set
-            {
-                this.equipImpact = value;
-            }
-        }
-
-        public Guid ID
-        {
-            get
-            {
-                return this.iD;
-            }
-
-            set
-            {
-                this.iD = value;
-            }
-        }
-
-        public string ImagePath
-        {
-            get
-            {
-                return this.imagePath;
-            }
-
-            set
-            {
-                this.imagePath = value;
-            }
-        }
-
-        public bool IsCursed
-        {
-            get
-            {
-                return this.isCursed;
-            }
-
-            set
-            {
-                this.isCursed = value;
-            }
-        }
-
-        public bool IsEquipped
-        {
-            get
-            {
-                return this.isEquipped;
-            }
-
-            set
-            {
-                this.isEquipped = value;
-            }
-        }
-
-        public int Level
-        {
-            get
-            {
-                return this.level;
-            }
-
-            set
-            {
-                this.level = value;
-            }
-        }
-
-        public string Name
-        {
-            get
-            {
-                return this.name;
-            }
-
-            set
-            {
-                this.name = value;
-            }
-        }
-
-        public string Owner
-        {
-            get
-            {
-                return this.owner;
-            }
-
-            set
-            {
-                this.owner = value;
-            }
-        }
-
-        public bool QuestItem
-        {
-            get
-            {
-                return this.questItem;
-            }
-
-            set
-            {
-                this.questItem = value;
-            }
-        }
-
-        public int Value
-        {
-            get
-            {
-                return this.value;
-            }
-
-            set
-            {
-                this.value = value;
-            }
-        }
-
-        public double Weight
-        {
-            get
-            {
-                return this.weight;
-            }
-
-            set
-            {
-                this.weight = value;
-            }
-        }
+        public UsabilityDescription Usability { get; set; } = new UsabilityDescription();
 
         protected IItem(string name, double weight, string imagePath, string documentationPath)
         {
@@ -256,12 +53,6 @@ namespace EarthWithMagicAPI.API.Interfaces.Items
         /// Called whenever the item is bought.
         /// </summary>
         public abstract void Bought();
-
-        /// <summary>
-        /// Called whenever the creature tries to equip this.
-        /// </summary>
-        /// <returns></returns>
-        public abstract bool CanEquip(ICreature creature);
 
         /// <summary>
         /// Displays information about this item.

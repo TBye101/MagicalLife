@@ -27,12 +27,6 @@ namespace EarthMagicItems.Other.Lockpicks
         {
         }
 
-        public override bool CanEquip(ICreature creature)
-        {
-            Util.WriteLine("You don't need to equip lockpicks! The best one in your thief's inventory will be used.");
-            return false;
-        }
-
         public override void Sold()
         {
         }

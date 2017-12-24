@@ -25,7 +25,7 @@ namespace EarthWithMagicAPI.API.Controls
         /// </summary>
         /// <param name="creature"></param>
         /// <returns>Returns true if we should break the peaceful cycle.</returns>
-        public static bool YourTurn(ICreature creature)
+        public static bool YourTurn(ICharacter creature)
         {
             if (CanTakeTurn(creature))
             {
@@ -244,7 +244,7 @@ namespace EarthWithMagicAPI.API.Controls
             }
         }
 
-        private static void Equip(ICreature creature)
+        private static void Equip(ICharacter creature)
         {
             Util.WriteLine("Which item? (Specify by name)");
             string name = Filing.ReadLine();
@@ -252,9 +252,10 @@ namespace EarthWithMagicAPI.API.Controls
             {
                 if (item.Name == name)
                 {
-                    if (item.CanEquip(creature))
+                    if (creature.CanUse(item))
                     {
                         Util.WriteLine("Item equipped!");
+                        creature.EquipItem(item);
                     }
                     else
                     {

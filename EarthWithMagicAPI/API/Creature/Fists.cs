@@ -26,11 +26,6 @@ namespace EarthWithMagicAPI.API.Creature
             throw new NotImplementedException();
         }
 
-        public override bool CanEquip(ICreature creature)
-        {
-            return true;
-        }
-
         public override void OnAttack()
         {
             throw new NotImplementedException();

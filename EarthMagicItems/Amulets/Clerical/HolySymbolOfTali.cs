@@ -5,7 +5,6 @@
 namespace EarthMagicItems.Amulets.Clerical
 {
     using System;
-    using EarthMagicCharacters.Classes.Cleric.Generic_Cleric;
     using EarthWithMagicAPI.API;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
@@ -22,20 +21,6 @@ namespace EarthMagicItems.Amulets.Clerical
 
         public override void Bought()
         {
-        }
-
-        public override bool CanEquip(ICreature creature)
-        {
-            if (creature.GetType() == typeof(GenericCleric))
-            {
-                return true;
-            }
-            else
-            {
-                Util.WriteLine("Only a true cleric of Tali can use this amulet!");
-                creature.RecieveDamage(new Damage(Die.Zero(), Die.Zero(), Die.Zero(), new Die(1, 10, 2), Die.Zero(), new Die(1, 10, 2), Die.Zero(), Die.Zero(), Die.Zero()));
-                return false;
-            }
         }
 
         public override void Sold()

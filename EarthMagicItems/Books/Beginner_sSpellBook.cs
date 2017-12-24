@@ -36,11 +36,6 @@ namespace EarthMagicItems.Books
         {
         }
 
-        public override bool CanEquip(ICreature creature)
-        {
-            return false;
-        }
-
         public override void Sold()
         {
         }

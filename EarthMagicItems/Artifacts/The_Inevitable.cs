@@ -43,11 +43,6 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows.Artifacts
             throw new NotImplementedException();
         }
 
-        public override bool CanEquip(ICreature creature)
-        {
-            return true;
-        }
-
         public override void Sold()
         {
         }

@@ -1,4 +1,5 @@
-﻿// <copyright file="CombatControl.cs" company="PlaceholderCompany">
+﻿using EarthMagicCharacters.Classes;
+// <copyright file="CombatControl.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
@@ -21,7 +22,7 @@ namespace EarthWithMagicAPI.API.Creature
         /// </summary>
         private static bool takenAction = false;
 
-        public static void YourTurn(ICreature creature, Encounter encounter)
+        public static void YourTurn(ICharacter creature, Encounter encounter)
         {
             if (CanTakeTurn(creature, encounter))
             {
@@ -223,7 +224,7 @@ namespace EarthWithMagicAPI.API.Creature
             }
         }
 
-        private static void Equip(ICreature creature)
+        private static void Equip(ICharacter creature)
         {
             Util.WriteLine("Which item? (Specify by name)");
             string name = Filing.ReadLine();
@@ -231,9 +232,10 @@ namespace EarthWithMagicAPI.API.Creature
             {
                 if (item.Name == name)
                 {
-                    if (item.CanEquip(creature))
+                    if (creature.CanUse(item))
                     {
                         Util.WriteLine("Item equipped!");
+                        creature.EquipItem(item);
                     }
                     else
                     {

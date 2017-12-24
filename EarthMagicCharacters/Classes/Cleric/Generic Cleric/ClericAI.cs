@@ -17,5 +17,10 @@ namespace EarthMagicCharacters.Classes.Cleric.Generic_Cleric
         {
             throw new NotImplementedException();
         }
+
+        public void YourTurn()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

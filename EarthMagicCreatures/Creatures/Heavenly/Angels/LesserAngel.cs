@@ -16,10 +16,6 @@ namespace EarthMagicCreatures.Creatures.Heavenly.Angels
         {
         }
 
-        public override void EquipItem(IItem item)
-        {
-        }
-
         public override bool IsHostile()
         {
             return !this.IsInParty;
