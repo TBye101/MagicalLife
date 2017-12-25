@@ -33,6 +33,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wikis", "Wikis", "{AE027B2C
 		Wiki Version 2.html = Wiki Version 2.html
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonsOfTheGodsAPI", "DungeonsOfTheGodsAPI\DungeonsOfTheGodsAPI.csproj", "{354A8755-5C6F-4CCF-AD44-470EB9E93D26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonsOfTheGodsModAPI", "DungeonsOfTheGodsModAPI\DungeonsOfTheGodsModAPI.csproj", "{1BAF673C-F18E-4FAC-BE1C-BFBF53E79718}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonsOfTheGods", "DungeonsOfTheGods\DungeonsOfTheGods.csproj", "{813629DD-2ECD-42DD-982A-855E483897B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +81,18 @@ Global
 		{1441B37F-08A1-493C-A963-717F566BB455}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1441B37F-08A1-493C-A963-717F566BB455}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1441B37F-08A1-493C-A963-717F566BB455}.Release|Any CPU.Build.0 = Release|Any CPU
+		{354A8755-5C6F-4CCF-AD44-470EB9E93D26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{354A8755-5C6F-4CCF-AD44-470EB9E93D26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{354A8755-5C6F-4CCF-AD44-470EB9E93D26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{354A8755-5C6F-4CCF-AD44-470EB9E93D26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BAF673C-F18E-4FAC-BE1C-BFBF53E79718}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BAF673C-F18E-4FAC-BE1C-BFBF53E79718}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BAF673C-F18E-4FAC-BE1C-BFBF53E79718}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BAF673C-F18E-4FAC-BE1C-BFBF53E79718}.Release|Any CPU.Build.0 = Release|Any CPU
+		{813629DD-2ECD-42DD-982A-855E483897B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{813629DD-2ECD-42DD-982A-855E483897B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{813629DD-2ECD-42DD-982A-855E483897B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{813629DD-2ECD-42DD-982A-855E483897B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
