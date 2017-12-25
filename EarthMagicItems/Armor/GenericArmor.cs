@@ -4,12 +4,12 @@
 
 namespace EarthMagicItems.Armor
 {
+    using System;
     using EarthMagicDynamicMarket;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Interfaces.Spells;
     using EarthWithMagicAPI.API.Stuff;
-    using System;
 
     /// <summary>
     /// Used to reduce boilerplate code for the simpler armor.
@@ -24,11 +24,6 @@ namespace EarthMagicItems.Armor
 
         public override void Bought()
         {
-        }
-
-        public override bool CanEquip(ICreature creature)
-        {
-            return true;
         }
 
         public override void Sold()

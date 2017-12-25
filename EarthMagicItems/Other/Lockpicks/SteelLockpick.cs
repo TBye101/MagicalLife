@@ -4,12 +4,12 @@
 
 namespace EarthMagicItems.Other.Lockpicks
 {
+    using System;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Interfaces.Spells;
     using EarthWithMagicAPI.API.Stuff;
     using EarthWithMagicAPI.API.Util;
-    using System;
 
     public class SteelLockpick : ILockpick
     {
@@ -25,12 +25,6 @@ namespace EarthMagicItems.Other.Lockpicks
 
         public override void Bought()
         {
-        }
-
-        public override bool CanEquip(ICreature creature)
-        {
-            Util.WriteLine("You don't need to equip lockpicks! The best one in your thief's inventory will be used.");
-            return false;
         }
 
         public override void Sold()

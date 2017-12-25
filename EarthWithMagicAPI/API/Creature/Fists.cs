@@ -4,10 +4,10 @@
 
 namespace EarthWithMagicAPI.API.Creature
 {
+    using System;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Interfaces.Spells;
     using EarthWithMagicAPI.API.Stuff;
-    using System;
 
     public class Fists : IWeapon
     {
@@ -24,11 +24,6 @@ namespace EarthWithMagicAPI.API.Creature
         public override void Bought()
         {
             throw new NotImplementedException();
-        }
-
-        public override bool CanEquip(ICreature creature)
-        {
-            return true;
         }
 
         public override void OnAttack()

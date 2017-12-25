@@ -21,10 +21,6 @@ namespace EarthMagicCharacters.Classes.Cleric.Generic_Cleric
             this.hostile = isHostile;
         }
 
-        public override void EquipItem(IItem item)
-        {
-        }
-
         public override bool IsHostile()
         {
             return this.hostile;
@@ -68,6 +64,11 @@ namespace EarthMagicCharacters.Classes.Cleric.Generic_Cleric
             Dice.RollDice(new Die(3, 6, 0), "Dexterity"), Dice.RollDice(new Die(3, 6, 0), "Strength"),
             Dice.RollDice(new Die(3, 6, 0), "Constitution"), Dice.RollDice(new Die(3, 6, 0), "Charisma"),
             Dice.RollDice(new Die(3, 6, 0), "Wisdom"), 0, 0, 0, 0, 0, 0, 0, 0, true, 8, .4, 30, Dice.RollDice(new Die(3, 6, 0), "Intelligence"));
+        }
+
+        public override bool CanUse(IItem item)
+        {
+            return item.Usability.CanCleric;
         }
     }
 }

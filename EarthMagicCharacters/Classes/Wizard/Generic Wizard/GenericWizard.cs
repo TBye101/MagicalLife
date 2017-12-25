@@ -19,14 +19,6 @@ namespace EarthMagicCharacters.Classes.Wizard.Generic_Wizard
             this.MaxCastingPower += 5;
         }
 
-        /// <summary>
-        /// Called whenever the creature has a new item equipped.
-        /// </summary>
-        /// <param name="item"></param>
-        public override void EquipItem(IItem item)
-        {
-        }
-
         public override bool IsHostile()
         {
             return !this.IsInParty;
@@ -123,6 +115,11 @@ namespace EarthMagicCharacters.Classes.Wizard.Generic_Wizard
             Dice.RollDice(new Die(3, 6, 0), "Dexterity"), Dice.RollDice(new Die(3, 6, 0), "Strength"),
             Dice.RollDice(new Die(3, 6, 0), "Constitution"), Dice.RollDice(new Die(3, 6, 0), "Charisma"),
             Dice.RollDice(new Die(3, 6, 0), "Wisdom"), 0, 0, 0, 0, 0, 0, 0, 0, true, 12, .4, 30, Dice.RollDice(new Die(3, 6, 0), "Intelligence"));
+        }
+
+        public override bool CanUse(IItem item)
+        {
+            return item.Usability.CanWizard;
         }
     }
 }

@@ -4,13 +4,13 @@
 
 namespace EarthMagicItems.Weapons.Normal.Daggers
 {
+    using System;
     using EarthWithMagicAPI.API;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Interfaces.Spells;
     using EarthWithMagicAPI.API.Stuff;
     using EarthWithMagicAPI.API.Util;
-    using System;
 
     public class Dagger : IWeapon
     {
@@ -26,11 +26,6 @@ namespace EarthMagicItems.Weapons.Normal.Daggers
 
         public override void Bought()
         {
-        }
-
-        public override bool CanEquip(ICreature creature)
-        {
-            return true;
         }
 
         public override void OnAttack()

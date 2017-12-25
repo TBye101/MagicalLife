@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-using System.Text;
-
-namespace EarthWithMagicAPI.API.Util
+﻿namespace EarthWithMagicAPI.API.Util
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Reflection;
+    using System.Text;
+
     public class Filing
     {
         static Filing()

@@ -4,6 +4,7 @@
 
 namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows.Artifacts
 {
+    using System;
     using EarthMagicDynamicMarket;
     using EarthWithMagicAPI.API;
     using EarthWithMagicAPI.API.Creature;
@@ -11,7 +12,6 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows.Artifacts
     using EarthWithMagicAPI.API.Interfaces.Spells;
     using EarthWithMagicAPI.API.Stuff;
     using EarthWithMagicAPI.API.Util;
-    using System;
 
     /// <summary>
     /// Before magical arrows were common for folks who could afford them, legend has it that a sorcerer made a magical and sentient arrow.
@@ -41,11 +41,6 @@ namespace DungeonsAndFantasyLands.API.Items.Ammo.Arrows.Artifacts
         public override void Bought()
         {
             throw new NotImplementedException();
-        }
-
-        public override bool CanEquip(ICreature creature)
-        {
-            return true;
         }
 
         public override void Sold()

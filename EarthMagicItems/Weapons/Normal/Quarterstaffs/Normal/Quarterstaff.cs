@@ -1,5 +1,4 @@
-﻿using EarthMagicCharacters.Classes.Monk.Generic_Monk;
-namespace EarthMagicItems.Weapons.Normal.Quarterstaffs.Normal
+﻿namespace EarthMagicItems.Weapons.Normal.Quarterstaffs.Normal
 {
     using System;
     using System.Collections.Generic;
@@ -28,11 +27,6 @@ namespace EarthMagicItems.Weapons.Normal.Quarterstaffs.Normal
         }
         public override void Bought()
         {
-        }
-
-        public override bool CanEquip(ICreature creature)
-        {
-            throw new NotImplementedException();
         }
 
         public override void OnAttack()

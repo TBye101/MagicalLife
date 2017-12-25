@@ -4,11 +4,11 @@
 
 namespace EarthMagicItems.Books
 {
+    using System.Collections.Generic;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Interfaces.Spells;
     using EarthWithMagicAPI.API.Util;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Shared logic for all spellbooks.

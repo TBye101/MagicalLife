@@ -37,5 +37,10 @@ namespace EarthMagicCreatures.Creatures.AI
                 }
             }
         }
+
+        public void YourTurn()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

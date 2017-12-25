@@ -4,11 +4,11 @@
 
 namespace EarthMagicItems.Armor.Boots
 {
+    using System;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Interfaces.Spells;
     using EarthWithMagicAPI.API.Stuff;
-    using System;
 
     public class LeatherBootsOfSoftStepping : IArmor
     {
@@ -24,11 +24,6 @@ namespace EarthMagicItems.Armor.Boots
 
         public override void Bought()
         {
-        }
-
-        public override bool CanEquip(ICreature creature)
-        {
-            return true;
         }
 
         public override void Sold()

@@ -4,11 +4,11 @@
 
 namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
 {
+    using System;
+    using System.Collections.Generic;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Util;
-    using System;
-    using System.Collections.Generic;
 
     /// <summary>
     /// The generic thief class implementation.
@@ -28,11 +28,6 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
             this.creatureType = CreatureType.Humanoid;
             this.Name = name;
             this._Hostile = isHostile;
-        }
-
-        public override void EquipItem(IItem item)
-        {
-            throw new NotImplementedException();
         }
 
         public override bool IsHostile()
@@ -310,6 +305,11 @@ namespace EarthMagicCharacters.Classes.Thief.Generic_Thief
             Dice.RollDice(new Die(3, 6, 0), "Dexterity"), Dice.RollDice(new Die(3, 6, 0), "Strength"),
             Dice.RollDice(new Die(3, 6, 0), "Constitution"), Dice.RollDice(new Die(3, 6, 0), "Charisma"),
             Dice.RollDice(new Die(3, 6, 0), "Wisdom"), 0, 0, 0, 0, 0, 0, 0, 0, true, 30, .35, 0, Dice.RollDice(new Die(3, 6, 0), "Intelligence"));
+        }
+
+        public override bool CanUse(IItem item)
+        {
+            return item.Usability.CanThief;
         }
 
         #region LevelUps

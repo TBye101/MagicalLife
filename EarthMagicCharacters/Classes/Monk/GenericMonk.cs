@@ -4,20 +4,18 @@
 
 namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
 {
+    using System;
+    using System.Collections.Generic;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Util;
     using EarthWithMagicMagic.Abilities.Monk;
-    using System;
-    using System.Collections.Generic;
 
     /// <summary>
     /// The base monk.
     /// </summary>
     public class GenericMonk : ICharacter
     {
-        private bool _Hostile;
-
         /// <summary>
         /// Constructor for the GenericMonk class.
         /// </summary>
@@ -33,18 +31,15 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             this.creatureType = CreatureType.Humanoid;
             this.Name = name;
             this.Title = "Trainee";
-            this._Hostile = isHostile;
+            this.Hostile = isHostile;
             this.BareHands.Damage.BluntDamage = new Die(1, 8, 0);
         }
 
-        public override void EquipItem(IItem item)
-        {
-            throw new NotImplementedException();
-        }
+        public bool Hostile { get; set; }
 
         public override bool IsHostile()
         {
-            return this._Hostile;
+            return this.Hostile;
         }
 
         public override void LevelUp()
@@ -305,6 +300,11 @@ namespace EarthMagicCharacters.Classes.Monk.Generic_Monk
             Dice.RollDice(new Die(3, 6, 0), "Dexterity"), Dice.RollDice(new Die(3, 6, 0), "Strength"),
             Dice.RollDice(new Die(3, 6, 0), "Constitution"), Dice.RollDice(new Die(3, 6, 0), "Charisma"),
             Dice.RollDice(new Die(3, 6, 0), "Wisdom"), 0, 0, 0, 0, 0, 0, 0, 0, true, 12, .4, 30, Dice.RollDice(new Die(3, 6, 0), "Intelligence"));
+        }
+
+        public override bool CanUse(IItem item)
+        {
+            return item.Usability.CanMonk;
         }
 
         #region LevelUps

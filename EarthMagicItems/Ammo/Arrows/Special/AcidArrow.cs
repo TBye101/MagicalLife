@@ -13,6 +13,10 @@
             "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Arrows.PoisonAcidArrow.txt",
             "EarthMagicDocumentation.Items.Ammo.Arrows.AcidArrow.md", .22)
         {
+            this.Usability.CanFighter = true;
+            this.Usability.CanMarksman = true;
+            this.Usability.CanThief = true;
+            this.Usability.CanRanger = true;
         }
     }
 }

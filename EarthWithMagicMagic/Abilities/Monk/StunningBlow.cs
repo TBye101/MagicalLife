@@ -4,9 +4,9 @@
 
 namespace EarthWithMagicMagic.Abilities.Monk
 {
+    using System.Collections.Generic;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Util;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Stuns the target creature, if the hit is successful.

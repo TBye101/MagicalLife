@@ -4,12 +4,12 @@
 
 namespace EarthMagicItems.Weapons.Normal.Longswords.Angelic
 {
+    using System;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Interfaces.Spells;
     using EarthWithMagicAPI.API.Stuff;
     using EarthWithMagicAPI.API.Util;
-    using System;
 
     public class AngelSword : IWeapon
     {
@@ -23,21 +23,6 @@ namespace EarthMagicItems.Weapons.Normal.Longswords.Angelic
         public override void Bought()
         {
             throw new Exception("These shouldn't be sold anywhere!");
-        }
-
-        public override bool CanEquip(ICreature creature)
-        {
-            if (creature.IsMortal)
-            {
-                Util.WriteLine("I will not allow a mere mortal to wield me!");
-                creature.RecieveDamage(new EarthWithMagicAPI.API.Damage(Die.Zero(), Die.Zero(), new Die(1, 100, 10), new Die(1, 100, 10), Die.Zero(), new Die(1, 100, 10), Die.Zero(),
-                    Die.Zero(), Die.Zero()));
-                return false;
-            }
-            else
-            {
-                return true;
-            }
         }
 
         public override void OnAttack()

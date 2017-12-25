@@ -4,14 +4,13 @@
 
 namespace EarthWithMagicAPI.API.Registry
 {
-    using EarthWithMagicAPI.API.Interfaces.Spells;
     using System;
     using System.Collections.Generic;
     using System.Reflection;
+    using EarthWithMagicAPI.API.Interfaces.Spells;
 
     public static class SpellRegistry
     {
-        private static List<ISpell> spells = new List<ISpell>();
 
         static SpellRegistry()
         {
@@ -34,18 +33,7 @@ namespace EarthWithMagicAPI.API.Registry
             }
         }
 
-        public static List<ISpell> Spells
-        {
-            get
-            {
-                return spells;
-            }
-
-            set
-            {
-                spells = value;
-            }
-        }
+        public static List<ISpell> Spells { get; set; } = new List<ISpell>();
 
         /// <summary>
         /// Returns a list of all the spells that are under or equal to the specified power.

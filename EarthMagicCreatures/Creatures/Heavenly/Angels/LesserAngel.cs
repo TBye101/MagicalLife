@@ -4,44 +4,38 @@
 
 namespace EarthMagicCreatures.Creatures.Heavenly.Angels
 {
+    using System;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Util;
-    using System;
 
     public class LesserAngel : ICreature
     {
-        public LesserAngel() : base(GetBaseAttributes(), new CreatureAbilities(), "EarthMagicDocumentation.Creatures.Heavenly.LesserAngel.md", "EarthMagicDocumentation.ASCII_Art.Creatures.Heavenly.Angels.LesserAngel.txt", null)
-        {
-        }
-
-        public override void EquipItem(IItem item)
+        public LesserAngel()
+            : base(GetBaseAttributes(), new CreatureAbilities(), "EarthMagicDocumentation.Creatures.Heavenly.LesserAngel.md", "EarthMagicDocumentation.ASCII_Art.Creatures.Heavenly.Angels.LesserAngel.txt", null)
         {
         }
 
         public override bool IsHostile()
         {
-            throw new NotImplementedException();
+            return !this.IsInParty;
         }
 
         public override void OnCreatureDied(ICreature dead)
         {
-            throw new NotImplementedException();
         }
 
         public override void OnCreatureHealed(ICreature healer)
         {
-            throw new NotImplementedException();
+            Filing.Writeline("You hear a eerie otherworldly whisper that seems to come from everywhere and nowhere: Thank you");
         }
 
         public override void OnDealDamage()
         {
-            throw new NotImplementedException();
         }
 
         public override void OnItemUnequipped(IItem item)
         {
-            throw new NotImplementedException();
         }
 
         private static CreatureAttributes GetBaseAttributes()

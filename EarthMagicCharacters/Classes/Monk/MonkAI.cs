@@ -16,5 +16,10 @@ namespace EarthMagicCharacters.Classes.Monk
         {
             creature.BareHands.Attack(encounter.Party[0]);
         }
+
+        public void YourTurn()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

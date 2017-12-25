@@ -12,6 +12,10 @@
             : base(new Die(1, 2, 0), "Handmade Arrow", new Damage(new Die(1, 6, 0), DamageType.Piercing), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Arrows.HandMadeArrow.txt",
             "EarthMagicDocumentation.Items.Ammo.Arrows.HandMadeArrow.md", .3)
         {
+            this.Usability.CanFighter = true;
+            this.Usability.CanMarksman = true;
+            this.Usability.CanThief = true;
+            this.Usability.CanRanger = true;
         }
     }
 }

@@ -4,13 +4,13 @@
 
 namespace EarthMagicItems.Books
 {
+    using System;
+    using System.Collections.Generic;
     using EarthWithMagicAPI.API.Creature;
     using EarthWithMagicAPI.API.Interfaces.Items;
     using EarthWithMagicAPI.API.Interfaces.Spells;
     using EarthWithMagicAPI.API.Registry;
     using EarthWithMagicAPI.API.Stuff;
-    using System;
-    using System.Collections.Generic;
 
     /// <summary>
     /// The beginner's spellbook holds 3 random spells under power level 5.
@@ -34,11 +34,6 @@ namespace EarthMagicItems.Books
 
         public override void Bought()
         {
-        }
-
-        public override bool CanEquip(ICreature creature)
-        {
-            return false;
         }
 
         public override void Sold()
