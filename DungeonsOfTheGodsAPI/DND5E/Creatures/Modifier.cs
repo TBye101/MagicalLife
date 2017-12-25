@@ -47,11 +47,11 @@ namespace DungeonsOfTheGodsAPI.DND5E.Creatures
 
         public void RoundEnd()
         {
+            this.duration--;
         }
 
         public void RoundStart()
         {
-            this.duration--;
         }
 
         public void TurnEnd()
