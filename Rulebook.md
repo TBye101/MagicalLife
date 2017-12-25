@@ -24,11 +24,16 @@ Saving throws are stats that are used to determine if a creature ignores the eff
 Acid Resistance
 Fire Resistance
 Cold Resistance
+Charm Resistance
 
 Magic Resistance
-
+Abjuration Resistance
+Divination Resistance
+Transmutation Resistance
 
 ## Races
+
+Elves
 
 ## Classes
 
