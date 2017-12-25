@@ -22,16 +22,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{09293283-6E6D-4652-A633-5B70452244DA}"
 	ProjectSection(SolutionItems) = preProject
 		CHANGELOG.txt = CHANGELOG.txt
-		Combat.md = Combat.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EarthMagicDocumentation", "EarthMagicDocumentation\EarthMagicDocumentation.csproj", "{1441B37F-08A1-493C-A963-717F566BB455}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wikis", "Wikis", "{AE027B2C-CE8B-475B-A56B-76CD42542145}"
-	ProjectSection(SolutionItems) = preProject
-		Wiki Version 1.html = Wiki Version 1.html
-		Wiki Version 2.html = Wiki Version 2.html
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonsOfTheGodsAPI", "DungeonsOfTheGodsAPI\DungeonsOfTheGodsAPI.csproj", "{354A8755-5C6F-4CCF-AD44-470EB9E93D26}"
 EndProject
@@ -96,9 +89,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{AE027B2C-CE8B-475B-A56B-76CD42542145} = {09293283-6E6D-4652-A633-5B70452244DA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FF8B4622-BBFB-41B1-9FEC-01091A7B38BB}
