@@ -47,5 +47,50 @@ namespace DungeonsOfTheGodsAPI.DND5E.Creatures
         /// The chance that the creature will be able to resist acid damage and only take half damage.
         /// </summary>
         public Attribute AcidResistance { get; }
+
+        /// <summary>
+        /// The chance that the creature will be able to resist cold damage and only take half damage.
+        /// </summary>
+        public Attribute ColdResistance { get; }
+
+        /// <summary>
+        /// The chance that the creature will be able to resist fire damage and only take half damage.
+        /// </summary>
+        public Attribute FireResistance { get; }
+
+        /// <summary>
+        /// The chance that the creature will be able to resist force damage and only take half damage.
+        /// </summary>
+        public Attribute ForceResistance { get; }
+
+        /// <summary>
+        /// The chance that the creature will be able to resist lightning damage and only take half damage.
+        /// </summary>
+        public Attribute LightningResistance { get; }
+
+        /// <summary>
+        /// The chance that the creature will be able to resist necrotic damage and only take half damage.
+        /// </summary>
+        public Attribute NecroticResistance { get; }
+
+        /// <summary>
+        /// The chance that the creature will be able to resist poison damage and only take half damage.
+        /// </summary>
+        public Attribute PoisonResistance { get; }
+
+        /// <summary>
+        /// The chance that the creature will be able to resist psychic damage and only take half damage.
+        /// </summary>
+        public Attribute PsychicResistance { get; }
+
+        /// <summary>
+        /// The chance that the creature will be able to resist radiant damage and only take half damage.
+        /// </summary>
+        public Attribute RadiantResistance { get; }
+
+        /// <summary>
+        /// The chance that the creature will be able to resist thunder damage and only take half damage.
+        /// </summary>
+        public Attribute ThunderResistance { get; }
     }
 }
