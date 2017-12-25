@@ -38,7 +38,7 @@ namespace DungeonsOfTheGodsAPI.DND5E.Creatures
         /// The constructor for the <see cref="Modifier"/> class.
         /// </summary>
         /// <param name="effect">The additive or subtractive effect this modifier will have on something else.</param>
-        /// <param name="duration">How many rounds this modifier will effect what it is applied to.</param>
+        /// <param name="duration">How many rounds this modifier will effect what it is applied to. If this is -1, then this modifier will last forever.</param>
         public Modifier(double effect, int duration)
         {
             this.effect = effect;
@@ -47,7 +47,10 @@ namespace DungeonsOfTheGodsAPI.DND5E.Creatures
 
         public void RoundEnd()
         {
-            this.duration--;
+            if (this.duration != -1)
+            {
+                this.duration--;
+            }
         }
 
         public void RoundStart()

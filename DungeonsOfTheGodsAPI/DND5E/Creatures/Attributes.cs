@@ -11,31 +11,36 @@ namespace DungeonsOfTheGodsAPI.DND5E.Creatures
     {
         public Attributes(int strength, int dexterity, int constitution, int wisdom, int intelligence)
         {
+            this.Strength = new Attribute(strength);
+            this.Dexterity = new Attribute(dexterity);
+            this.Constitution = new Attribute(constitution);
+            this.Wisdom = new Attribute(wisdom);
+            this.Intelligence = new Attribute(intelligence);
         }
 
         /// <summary>
         /// How strong the creature is.
         /// </summary>
-        public int Strength { get; }
+        public Attribute Strength { get; }
 
         /// <summary>
         /// How nimble the creature is.
         /// </summary>
-        public int Dexterity { get; }
+        public Attribute Dexterity { get; }
 
         /// <summary>
         /// How tough the creature is.
         /// </summary>
-        public int Constitution { get; }
+        public Attribute Constitution { get; }
 
         /// <summary>
         /// How wise the creature is.
         /// </summary>
-        public int Wisdom { get; }
+        public Attribute Wisdom { get; }
 
         /// <summary>
         /// How smart the creature is.
         /// </summary>
-        public int Intelligence { get; }
+        public Attribute Intelligence { get; }
     }
 }

@@ -64,7 +64,7 @@ namespace DungeonsOfTheGodsAPI.DND5E.Creatures
 
             foreach (Modifier item in this.Modifiers)
             {
-                if (item.Duration <= 0)
+                if (item.Duration == 0)
                 {
                     remove.Add(item);
                 }
