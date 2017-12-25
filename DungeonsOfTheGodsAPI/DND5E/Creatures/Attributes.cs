@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Data;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,13 +10,25 @@ namespace DungeonsOfTheGodsAPI.DND5E.Creatures
     /// </summary>
     public class Attributes
     {
-        public Attributes(int strength, int dexterity, int constitution, int wisdom, int intelligence)
+        public Attributes(int strength, int dexterity, int constitution, int wisdom, int intelligence,
+            int acidResistance, int coldResistance, int fireResistance, int forceResistance, int lightningResistance,
+            int necroticResistance, int poisonResistance, int psychicResistance, int radiantResistance, int thunderResistance)
         {
             this.Strength = new Attribute(strength);
             this.Dexterity = new Attribute(dexterity);
             this.Constitution = new Attribute(constitution);
             this.Wisdom = new Attribute(wisdom);
             this.Intelligence = new Attribute(intelligence);
+            this.AcidResistance = new Attribute(acidResistance);
+            this.ColdResistance = new Attribute(coldResistance);
+            this.FireResistance = new Attribute(fireResistance);
+            this.ForceResistance = new Attribute(forceResistance);
+            this.LightningResistance = new Attribute(lightningResistance);
+            this.NecroticResistance = new Attribute(necroticResistance);
+            this.PoisonResistance = new Attribute(poisonResistance);
+            this.PsychicResistance = new Attribute(psychicResistance);
+            this.RadiantResistance = new Attribute(radiantResistance);
+            this.ThunderResistance = new Attribute(thunderResistance);
         }
 
         /// <summary>
