@@ -12,6 +12,7 @@
 		### Tweaks
 			* Many small code quality tweaks
 			* Lesser Angels now respond to healing with a "eerie otherworldly" thank you
+			* Fighters, marksmen, thieves, and rangers are now able to use arrows
 
 		### Bugs
 			*

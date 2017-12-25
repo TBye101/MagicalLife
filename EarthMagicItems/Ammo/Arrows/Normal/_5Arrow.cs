@@ -12,6 +12,10 @@
             : base(new Die(6, 7, 0), "+5 Arrow", new Damage(new Die(1, 8, 5), DamageType.Piercing), "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Arrows.ProfessionalArrow.txt",
             "EarthMagicDocumentation.Items.Ammo.Arrows.+5Arrow.md", .2)
         {
+            this.Usability.CanFighter = true;
+            this.Usability.CanMarksman = true;
+            this.Usability.CanThief = true;
+            this.Usability.CanRanger = true;
         }
     }
 }

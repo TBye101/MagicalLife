@@ -13,6 +13,10 @@
             "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Arrows.FireArrow.txt",
             "EarthMagicDocumentation.Items.Ammo.Arrows.FireArrow.md", .25)
         {
+            this.Usability.CanFighter = true;
+            this.Usability.CanMarksman = true;
+            this.Usability.CanThief = true;
+            this.Usability.CanRanger = true;
         }
     }
 }

@@ -13,6 +13,10 @@
             "EarthMagicDocumentation.ASCII_Art.Items.Ammo.Arrows.ColdArrow.txt",
             "EarthMagicDocumentation.Items.Ammo.Arrows.FrostArrow.md", .2)
         {
+            this.Usability.CanFighter = true;
+            this.Usability.CanMarksman = true;
+            this.Usability.CanThief = true;
+            this.Usability.CanRanger = true;
         }
     }
 }
