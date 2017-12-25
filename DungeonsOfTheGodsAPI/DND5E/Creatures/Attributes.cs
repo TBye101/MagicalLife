@@ -42,5 +42,10 @@ namespace DungeonsOfTheGodsAPI.DND5E.Creatures
         /// How smart the creature is.
         /// </summary>
         public Attribute Intelligence { get; }
+
+        /// <summary>
+        /// The chance that the creature will be able to resist acid damage and only take half damage.
+        /// </summary>
+        public Attribute AcidResistance { get; }
     }
 }
