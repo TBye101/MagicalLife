@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="DND5E\Creatures\Monsters\" />
+    <Folder Include="DND5E\Creatures\Other\" />
+  </ItemGroup>
+
 </Project>
