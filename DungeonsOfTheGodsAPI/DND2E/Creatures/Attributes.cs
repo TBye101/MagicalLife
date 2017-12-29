@@ -10,25 +10,22 @@ namespace DungeonsOfTheGodsAPI.DND5E.Creatures
     /// </summary>
     public class Attributes
     {
-        public Attributes(int strength, int dexterity, int constitution, int wisdom, int intelligence,
-            int acidResistance, int coldResistance, int fireResistance, int forceResistance, int lightningResistance,
-            int necroticResistance, int poisonResistance, int psychicResistance, int radiantResistance, int thunderResistance)
+        public Attributes(int strength, int dexterity, int constitution, int wisdom, int intelligence)
         {
             this.Strength = new Attribute(strength);
             this.Dexterity = new Attribute(dexterity);
             this.Constitution = new Attribute(constitution);
             this.Wisdom = new Attribute(wisdom);
             this.Intelligence = new Attribute(intelligence);
-            this.AcidResistance = new Attribute(acidResistance);
-            this.ColdResistance = new Attribute(coldResistance);
-            this.FireResistance = new Attribute(fireResistance);
-            this.ForceResistance = new Attribute(forceResistance);
-            this.LightningResistance = new Attribute(lightningResistance);
-            this.NecroticResistance = new Attribute(necroticResistance);
-            this.PoisonResistance = new Attribute(poisonResistance);
-            this.PsychicResistance = new Attribute(psychicResistance);
-            this.RadiantResistance = new Attribute(radiantResistance);
-            this.ThunderResistance = new Attribute(thunderResistance);
+        }
+
+        public Attributes(Attribute strength, Attribute dexterity, Attribute constitution, Attribute wisdom, Attribute intelligence)
+        {
+            this.Strength = strength;
+            this.Dexterity = dexterity;
+            this.Constitution = constitution;
+            this.Wisdom = wisdom;
+            this.Intelligence = intelligence;
         }
 
         /// <summary>
@@ -55,55 +52,5 @@ namespace DungeonsOfTheGodsAPI.DND5E.Creatures
         /// How smart the creature is.
         /// </summary>
         public Attribute Intelligence { get; }
-
-        /// <summary>
-        /// The chance that the creature will be able to resist acid damage and only take half damage.
-        /// </summary>
-        public Attribute AcidResistance { get; }
-
-        /// <summary>
-        /// The chance that the creature will be able to resist cold damage and only take half damage.
-        /// </summary>
-        public Attribute ColdResistance { get; }
-
-        /// <summary>
-        /// The chance that the creature will be able to resist fire damage and only take half damage.
-        /// </summary>
-        public Attribute FireResistance { get; }
-
-        /// <summary>
-        /// The chance that the creature will be able to resist force damage and only take half damage.
-        /// </summary>
-        public Attribute ForceResistance { get; }
-
-        /// <summary>
-        /// The chance that the creature will be able to resist lightning damage and only take half damage.
-        /// </summary>
-        public Attribute LightningResistance { get; }
-
-        /// <summary>
-        /// The chance that the creature will be able to resist necrotic damage and only take half damage.
-        /// </summary>
-        public Attribute NecroticResistance { get; }
-
-        /// <summary>
-        /// The chance that the creature will be able to resist poison damage and only take half damage.
-        /// </summary>
-        public Attribute PoisonResistance { get; }
-
-        /// <summary>
-        /// The chance that the creature will be able to resist psychic damage and only take half damage.
-        /// </summary>
-        public Attribute PsychicResistance { get; }
-
-        /// <summary>
-        /// The chance that the creature will be able to resist radiant damage and only take half damage.
-        /// </summary>
-        public Attribute RadiantResistance { get; }
-
-        /// <summary>
-        /// The chance that the creature will be able to resist thunder damage and only take half damage.
-        /// </summary>
-        public Attribute ThunderResistance { get; }
     }
 }

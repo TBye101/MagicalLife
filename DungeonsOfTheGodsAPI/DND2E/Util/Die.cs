@@ -9,12 +9,12 @@ namespace DungeonsOfTheGodsAPI.DND2E.Util
     /// </summary>
     public class Die
     {
-        private Random rng = new Random();
+        private readonly Random rng = new Random();
 
         /// <summary>
         /// The number of sides on this die.
         /// </summary>
-        private int sides;
+        private readonly int sides;
 
         public Die(int sides)
         {

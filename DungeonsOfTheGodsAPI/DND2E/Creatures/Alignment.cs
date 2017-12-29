@@ -169,6 +169,7 @@ namespace DungeonsOfTheGodsAPI.DND5E.Creatures
         /// <summary>
         /// Calculates the creature's average choices between good, evil, order, and chaos.
         /// </summary>
+        /// <param name="newChoices"></param>
         /// <returns></returns>
         private AlignmentValue CalculateAlignmentValueAverage(AlignmentValue newChoices)
         {

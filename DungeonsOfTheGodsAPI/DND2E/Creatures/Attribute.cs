@@ -13,7 +13,7 @@ namespace DungeonsOfTheGodsAPI.DND5E.Creatures
         /// <summary>
         /// The actual value of this attribute.
         /// </summary>
-        private double value;
+        private readonly double value;
 
         /// <summary>
         /// The current <see cref="Modifer"/>s that are effecting this attribute.

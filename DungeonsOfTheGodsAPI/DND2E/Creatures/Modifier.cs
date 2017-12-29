@@ -9,19 +9,12 @@ namespace DungeonsOfTheGodsAPI.DND5E.Creatures
     /// </summary>
     public class Modifier : ITimeDependent
     {
-        private double effect;
         private int duration;
 
         /// <summary>
         /// The effect (adding or subtracting) this modifer has on whatever it is applied to.
         /// </summary>
-        public double Effect
-        {
-            get
-            {
-                return this.effect;
-            }
-        }
+        public double Effect { get; }
 
         /// <summary>
         /// The duration of this modifier in rounds.
@@ -41,7 +34,7 @@ namespace DungeonsOfTheGodsAPI.DND5E.Creatures
         /// <param name="duration">How many rounds this modifier will effect what it is applied to. If this is -1, then this modifier will last forever.</param>
         public Modifier(double effect, int duration)
         {
-            this.effect = effect;
+            this.Effect = effect;
             this.duration = duration;
         }
 
