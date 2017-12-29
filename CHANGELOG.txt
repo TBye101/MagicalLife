@@ -6,6 +6,8 @@
 		#### API
 			*Attributes are now usable
 			*Resistances against damage are stored, but not used
+			*Alignments changes can now be tracked. Character alignment could change.
+			*Added dice rolling capabilities
 		### Tweaks
 			*
 		### Bugs
