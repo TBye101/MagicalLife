@@ -15,7 +15,7 @@ namespace DungeonsOfTheGodsAPI.DND2E.Creatures.Character_Generation
         /// <returns></returns>
         public Character CreateCharacter()
         {
-            return null;
+            
         }
     }
 }
