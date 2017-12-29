@@ -11,6 +11,6 @@
 
 		### Tweaks
 			*Modifiers now have text to describe what they are, or at least their name.
-
+			*Die rolling now can handle stuff such as +1 to the roll
 		### Bugs
 			*

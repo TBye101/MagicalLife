@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DungeonsOfTheGodsAPI.DND5E
+namespace DungeonsOfTheGodsAPI.DND2E
 {
     /// <summary>
     /// All consumers of <see cref="ITimeDependent"/> recieve calls to the methods defined in order to provide uniformed time management.

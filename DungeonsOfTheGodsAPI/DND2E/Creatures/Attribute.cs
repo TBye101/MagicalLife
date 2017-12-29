@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DungeonsOfTheGodsAPI.DND5E.Creatures
+namespace DungeonsOfTheGodsAPI.DND2E.Creatures
 {
     /// <summary>
     /// Represents a single attribute of a creature.

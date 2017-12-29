@@ -5,7 +5,7 @@ using System.Text;
 namespace DungeonsOfTheGodsAPI.DND2E.Util
 {
     /// <summary>
-    /// Used to output to a console or file, if necessary.
+    /// Used to output to the <see cref="Console"/> or file, if necessary.
     /// </summary>
     public static class Output
     {

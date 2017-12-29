@@ -5,7 +5,7 @@ using System.Text;
 namespace DungeonsOfTheGodsAPI.DND2E.Util
 {
     /// <summary>
-    /// Handles a lot of stuff involving dice rolling.
+    /// Handles a lot of stuff involving <see cref="Die"/> rolling.
     /// </summary>
     public static class Dice
     {
@@ -14,13 +14,14 @@ namespace DungeonsOfTheGodsAPI.DND2E.Util
         /// </summary>
         /// <param name="times"></param>
         /// <param name="sides"></param>
+        /// <param name="modifier">The amount to add or subtract from the roll after the roll.</param>
         /// <returns></returns>
-        public static int Roll(int times, int sides)
+        public static int Roll(int times, int sides, int modifier)
         {
-            Die die = new Die(sides);
+            Die die = new Die(sides, modifier);
             int sum = die.Roll(times);
 
-            Output.Writeline(times.ToString() + "d" + sides.ToString() + " -> " + sum.ToString());
+            Output.Writeline(times.ToString() + "d" + sides.ToString() + "+" + modifier.ToString() + " -> " + sum.ToString());
             return sum;
         }
     }

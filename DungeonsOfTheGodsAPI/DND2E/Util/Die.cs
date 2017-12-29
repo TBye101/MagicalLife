@@ -12,17 +12,23 @@ namespace DungeonsOfTheGodsAPI.DND2E.Util
         private readonly Random rng = new Random();
 
         /// <summary>
-        /// The number of sides on this die.
+        /// The number of sides on this <see cref="Die"/>.
         /// </summary>
         private readonly int sides;
 
-        public Die(int sides)
+        /// <summary>
+        /// The amount to be added or subtracted from the roll after each roll.
+        /// </summary>
+        private readonly int modifier;
+
+        public Die(int sides, int modifier)
         {
             this.sides = sides;
+            this.modifier = modifier;
         }
 
         /// <summary>
-        /// Rolls this die a number of times, and returns the sum of the values.
+        /// Rolls this <see cref="Die"/> a number of times, and returns the sum of the values.
         /// </summary>
         /// <param name="times"></param>
         /// <returns></returns>
@@ -35,6 +41,7 @@ namespace DungeonsOfTheGodsAPI.DND2E.Util
                 sum += this.rng.Next(1, this.sides + 1);
                 times--;
             }
+            sum += times * this.modifier;
 
             return sum;
         }

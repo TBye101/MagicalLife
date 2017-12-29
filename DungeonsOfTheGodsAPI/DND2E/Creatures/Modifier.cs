@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DungeonsOfTheGodsAPI.DND5E.Creatures
+namespace DungeonsOfTheGodsAPI.DND2E.Creatures
 {
     /// <summary>
     /// A <see cref="Modifier"/> changes or adjusts an <see cref="Attribute"/> for a amount of time or indefinetly.

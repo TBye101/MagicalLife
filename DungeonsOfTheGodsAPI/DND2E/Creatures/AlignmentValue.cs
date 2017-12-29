@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DungeonsOfTheGodsAPI.DND5E.Creatures
+namespace DungeonsOfTheGodsAPI.DND2E.Creatures
 {
     /// <summary>
     /// Used to hold two values about alignment: ethics, and morals.
