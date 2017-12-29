@@ -26,8 +26,10 @@ namespace DungeonsOfTheGodsAPI.DND2E.Creatures.Character_Generation
             Attribute wisdom = new Attribute(Dice.Roll(3, 6, 0));
             Output.Writeline("Rolling for intelligence value");
             Attribute intelligence = new Attribute(Dice.Roll(3, 6, 0));
+            Output.Writeline("Rolling for charisma value");
+            Attribute charisma = new Attribute(Dice.Roll(3, 6, 0));
 
-            return new Abilities(strength, dexterity, constitution, wisdom, intelligence);
+            return new Abilities(strength, dexterity, constitution, wisdom, intelligence, charisma);
         }
     }
 }
