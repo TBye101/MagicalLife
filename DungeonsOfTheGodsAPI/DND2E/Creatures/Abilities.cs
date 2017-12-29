@@ -8,9 +8,9 @@ namespace DungeonsOfTheGodsAPI.DND5E.Creatures
     /// <summary>
     /// Holds and manages many attribures of a creature.
     /// </summary>
-    public class Attributes
+    public class Abilities
     {
-        public Attributes(int strength, int dexterity, int constitution, int wisdom, int intelligence)
+        public Abilities(int strength, int dexterity, int constitution, int wisdom, int intelligence)
         {
             this.Strength = new Attribute(strength);
             this.Dexterity = new Attribute(dexterity);
@@ -19,7 +19,7 @@ namespace DungeonsOfTheGodsAPI.DND5E.Creatures
             this.Intelligence = new Attribute(intelligence);
         }
 
-        public Attributes(Attribute strength, Attribute dexterity, Attribute constitution, Attribute wisdom, Attribute intelligence)
+        public Abilities(Attribute strength, Attribute dexterity, Attribute constitution, Attribute wisdom, Attribute intelligence)
         {
             this.Strength = strength;
             this.Dexterity = dexterity;
