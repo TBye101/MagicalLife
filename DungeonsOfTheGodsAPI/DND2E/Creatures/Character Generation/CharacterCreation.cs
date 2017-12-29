@@ -9,5 +9,13 @@ namespace DungeonsOfTheGodsAPI.DND2E.Creatures.Character_Generation
     /// </summary>
     public class CharacterCreation
     {
+        /// <summary>
+        /// Creates a character.
+        /// </summary>
+        /// <returns></returns>
+        //public Character CreateCharacter()
+        //{
+
+        //}
     }
 }
