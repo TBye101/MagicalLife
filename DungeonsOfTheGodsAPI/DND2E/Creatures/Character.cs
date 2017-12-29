@@ -9,5 +9,6 @@ namespace DungeonsOfTheGodsAPI.DND2E.Creatures
     /// </summary>
     public abstract class Character
     {
+
     }
 }

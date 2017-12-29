@@ -28,14 +28,25 @@ namespace DungeonsOfTheGodsAPI.DND5E.Creatures
         }
 
         /// <summary>
+        /// Some text so we know why this was applied.
+        /// </summary>
+        public string Name { get; }
+
+        /// <summary>
+        /// The unique ID of this modifier.
+        /// </summary>
+        public Guid ID { get; } = Guid.NewGuid();
+
+        /// <summary>
         /// The constructor for the <see cref="Modifier"/> class.
         /// </summary>
         /// <param name="effect">The additive or subtractive effect this modifier will have on something else.</param>
         /// <param name="duration">How many rounds this modifier will effect what it is applied to. If this is -1, then this modifier will last forever.</param>
-        public Modifier(double effect, int duration)
+        public Modifier(double effect, int duration, string name)
         {
             this.Effect = effect;
             this.duration = duration;
+            this.Name = name;
         }
 
         public void RoundEnd()

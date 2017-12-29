@@ -18,7 +18,7 @@ namespace DungeonsOfTheGodsAPI.DND5E.Creatures
         /// <summary>
         /// The current <see cref="Modifer"/>s that are effecting this attribute.
         /// </summary>
-        public ObservableCollection<Modifier> Modifiers { get; set; } = new ObservableCollection<Modifier>();
+        public List<Modifier> Modifiers { get; set; } = new List<Modifier>();
 
         /// <summary>
         /// The value of this attribute.

@@ -8,7 +8,9 @@
 			*Resistances against damage are stored, but not used
 			*Alignments changes can now be tracked. Character alignment could change.
 			*Added dice rolling capabilities
+
 		### Tweaks
-			*
+			*Modifiers now have text to describe what they are, or at least their name.
+
 		### Bugs
 			*
