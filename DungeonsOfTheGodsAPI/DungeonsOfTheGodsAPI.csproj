@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DND5E\Creatures\Monsters\" />
-    <Folder Include="DND5E\Creatures\Other\" />
+    <Folder Include="DND2E\Creatures\Monsters\" />
+    <Folder Include="DND2E\Creatures\Other\" />
   </ItemGroup>
 
 </Project>

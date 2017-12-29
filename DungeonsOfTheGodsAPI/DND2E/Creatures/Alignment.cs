@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Runtime.Serialization;
+using System.Runtime.CompilerServices;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -27,6 +28,85 @@ namespace DungeonsOfTheGodsAPI.DND5E.Creatures
         public Alignment(AlignmentNames initial)
         {
             this.averageAlignment = this.GetValueForName(initial);
+        }
+
+        /// <summary>
+        /// Gets the name of our current alignment.
+        /// </summary>
+        /// <returns></returns>
+        public AlignmentNames GetAlignment()
+        {
+            MoralsNames moral = this.GetMoralName();
+            EthicsNames ethic = this.GetEthicName();
+
+            if (ethic == EthicsNames.Lawful && moral == MoralsNames.Good)
+            {
+                return AlignmentNames.LawfulGood;
+            }
+            if (ethic == EthicsNames.Neutral && moral == MoralsNames.Good)
+            {
+                return AlignmentNames.NeutralGood;
+            }
+            if (ethic == EthicsNames.Chaotic && moral == MoralsNames.Good)
+            {
+                return AlignmentNames.ChaoticGood;
+            }
+            if (ethic == EthicsNames.Lawful && moral == MoralsNames.Neutral)
+            {
+                return AlignmentNames.LawfulNeutral;
+            }
+            if (ethic == EthicsNames.Neutral && moral == MoralsNames.Neutral)
+            {
+                return AlignmentNames.TrueNeutral;
+            }
+            if (ethic == EthicsNames.Chaotic && moral == MoralsNames.Neutral)
+            {
+                return AlignmentNames.ChaoticNeutral;
+            }
+            if (ethic == EthicsNames.Lawful && moral == MoralsNames.Evil)
+            {
+                return AlignmentNames.LawfulEvil;
+            }
+            if (ethic == EthicsNames.Neutral && moral == MoralsNames.Evil)
+            {
+                return AlignmentNames.NeutralEvil;
+            }
+
+            return AlignmentNames.ChaoticEvil;
+        }
+
+        /// <summary>
+        /// Gets the name of this creature's current morals level.
+        /// </summary>
+        /// <returns></returns>
+        private MoralsNames GetMoralName()
+        {
+            if (this.AverageAlignment.Morals > 65)
+            {
+                return MoralsNames.Good;
+            }
+            if (this.AverageAlignment.Morals < 35)
+            {
+                return MoralsNames.Evil;
+            }
+            return MoralsNames.Neutral;
+        }
+
+        /// <summary>
+        /// Gets the name of this creature's current ethics level.
+        /// </summary>
+        /// <returns></returns>
+        private EthicsNames GetEthicName()
+        {
+            if (this.AverageAlignment.Ethics > 65)
+            {
+                return EthicsNames.Lawful;
+            }
+            if (this.AverageAlignment.Ethics < 35)
+            {
+                return EthicsNames.Chaotic;
+            }
+            return EthicsNames.Neutral;
         }
 
         private AlignmentValue GetValueForName(AlignmentNames name)
@@ -59,6 +139,22 @@ namespace DungeonsOfTheGodsAPI.DND5E.Creatures
         public enum AlignmentNames
         {
             LawfulGood, NeutralGood, ChaoticGood, LawfulNeutral, TrueNeutral, ChaoticNeutral, LawfulEvil, NeutralEvil, ChaoticEvil
+        }
+
+        /// <summary>
+        /// Names of value ranges for a creature's ethics.
+        /// </summary>
+        private enum EthicsNames
+        {
+            Lawful, Neutral, Chaotic
+        }
+
+        /// <summary>
+        /// Names of value ranges for a creature's morals.
+        /// </summary>
+        private enum MoralsNames
+        {
+            Good, Evil, Neutral
         }
 
         /// <summary>
