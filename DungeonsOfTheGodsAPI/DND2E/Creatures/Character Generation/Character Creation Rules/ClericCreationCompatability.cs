@@ -8,13 +8,13 @@ namespace DungeonsOfTheGodsAPI.DND2E.Creatures.Character_Generation.Character_Cr
     /// <summary>
     /// Used to determine if a cleric could be created from the ability score, and what races it could be.
     /// </summary>
-    public class ClericCreationCompatability
+    public class ClericCreationCompatability : ICharacterOptionsCompatibility
     {
         /// <summary>
         /// Returns all possible combinations involving a cleric that are availible to the current ability score.
         /// </summary>
         /// <returns></returns>
-        public List<CharacterOption> GetClericOptions(Abilities abilities)
+        public List<CharacterOption> GetOptions(Abilities abilities)
         {
             List<CharacterOption> options = new List<CharacterOption>();
 

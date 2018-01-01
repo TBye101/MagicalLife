@@ -16,7 +16,7 @@ namespace DungeonsOfTheGodsAPI.DND2E.Creatures.Character_Generation
     /// The names of all classes playable by characters in D & D.
     /// </summary>
     public enum ClassName
-    {
+    {// Cleric, 
         Cleric, Druid, Fighter, Paladin, Ranger, Thief, Assasin, Wizard, Illusionist, Monk, None
     }
 
