@@ -11,5 +11,9 @@ namespace MagicalLifeAPI.World
     /// </summary>
     public class World
     {
+        /// <summary>
+        /// A 3D array that holds every tile in the current world.
+        /// </summary>
+        public Tile[,,] Tiles { get; }
     }
 }
