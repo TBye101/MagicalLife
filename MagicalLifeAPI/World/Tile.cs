@@ -11,6 +11,11 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// The loss of movement by stepping on this tile.
         /// </summary>
-        public int MovementCost { get; set; } = 1;
+        public int MovementCost { get; } = 1;
+
+        /// <summary>
+        /// The resources that can be found in this tile.
+        /// </summary>
+        public List<Resource> Resources { get; } = new List<Resource>();
     }
 }
