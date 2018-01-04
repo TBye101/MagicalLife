@@ -8,11 +8,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		CHANGELOG.txt = CHANGELOG.txt
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DungeonsOfTheGodsAPI", "DungeonsOfTheGodsAPI\DungeonsOfTheGodsAPI.csproj", "{354A8755-5C6F-4CCF-AD44-470EB9E93D26}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeAPI", "MagicalLifeAPI\MagicalLifeAPI.csproj", "{FE8400A7-9DC8-4AB4-8C54-AC5F36BF7639}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DungeonsOfTheGodsModAPI", "DungeonsOfTheGodsModAPI\DungeonsOfTheGodsModAPI.csproj", "{1BAF673C-F18E-4FAC-BE1C-BFBF53E79718}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DungeonsOfTheGods", "DungeonsOfTheGods\DungeonsOfTheGods.csproj", "{813629DD-2ECD-42DD-982A-855E483897B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeGUI", "MagicalLifeGUI\MagicalLifeGUI.csproj", "{CD2F2BA2-767D-4827-BAAD-E49597DA487E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,18 +18,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{354A8755-5C6F-4CCF-AD44-470EB9E93D26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{354A8755-5C6F-4CCF-AD44-470EB9E93D26}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{354A8755-5C6F-4CCF-AD44-470EB9E93D26}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{354A8755-5C6F-4CCF-AD44-470EB9E93D26}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1BAF673C-F18E-4FAC-BE1C-BFBF53E79718}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1BAF673C-F18E-4FAC-BE1C-BFBF53E79718}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1BAF673C-F18E-4FAC-BE1C-BFBF53E79718}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1BAF673C-F18E-4FAC-BE1C-BFBF53E79718}.Release|Any CPU.Build.0 = Release|Any CPU
-		{813629DD-2ECD-42DD-982A-855E483897B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{813629DD-2ECD-42DD-982A-855E483897B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{813629DD-2ECD-42DD-982A-855E483897B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{813629DD-2ECD-42DD-982A-855E483897B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE8400A7-9DC8-4AB4-8C54-AC5F36BF7639}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE8400A7-9DC8-4AB4-8C54-AC5F36BF7639}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE8400A7-9DC8-4AB4-8C54-AC5F36BF7639}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE8400A7-9DC8-4AB4-8C54-AC5F36BF7639}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD2F2BA2-767D-4827-BAAD-E49597DA487E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD2F2BA2-767D-4827-BAAD-E49597DA487E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD2F2BA2-767D-4827-BAAD-E49597DA487E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD2F2BA2-767D-4827-BAAD-E49597DA487E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

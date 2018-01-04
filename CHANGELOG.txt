@@ -2,15 +2,13 @@
 	[Version 0.0.0.1]
 		
 		### Features
+			*
 
 		#### API
-			*Attribute is now usable
-			*Resistances against damage are stored, but not used
-			*Alignments changes can now be tracked. Character alignment could change.
-			*Added dice rolling capabilities
+			*
 
 		### Tweaks
-			*Modifiers now have text to describe what they are, or at least their name.
-			*Die rolling now can handle stuff such as +1 to the roll
+			*
+
 		### Bugs
 			*
