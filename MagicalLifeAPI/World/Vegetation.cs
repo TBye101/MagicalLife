@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MagicalLifeAPI.Universal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,8 +10,10 @@ namespace MagicalLifeAPI.World
     /// <summary>
     /// A base class used by anything that can grow, and is alive.
     /// </summary>
-    public abstract class Vegetation
+    public abstract class Vegetation : Unique
     {
+        public string Name { get; }
+
         /// <summary>
         /// The percent that this vegetation has currently grown.
         /// </summary>

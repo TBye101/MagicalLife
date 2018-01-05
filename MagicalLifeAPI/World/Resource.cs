@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MagicalLifeAPI.Universal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace MagicalLifeAPI.World
     /// A base class for all resources.
     /// Resources in tiles are things such as stone, iron, and gravel.
     /// </summary>
-    public abstract class Resource
+    public abstract class Resource : Unique
     {
         /// <summary>
         /// The display name of the resource.
