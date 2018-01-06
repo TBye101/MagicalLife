@@ -15,6 +15,11 @@ namespace MagicalLifeAPI.World
         public string Name { get; }
 
         /// <summary>
+        /// Returns the movement cost that this vegetation adds to the tile.
+        /// </summary>
+        public double MovementCost { get; }
+
+        /// <summary>
         /// The percent that this vegetation has currently grown.
         /// </summary>
         private double PercentGrown { get; set; }

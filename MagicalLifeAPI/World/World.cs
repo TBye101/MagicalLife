@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MagicalLifeAPI.Universal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace MagicalLifeAPI.World
     /// <summary>
     /// The world, which contains all of the tiles.
     /// </summary>
-    public class World
+    public class World : Unique
     {
         /// <summary>
         /// A 3D array that holds every tile in the current world.
