@@ -17,6 +17,21 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// The percent that this vegetation has currently grown.
         /// </summary>
-        public double PercentGrown { get; }
+        private double PercentGrown { get; set; }
+
+        /// <summary>
+        /// Returns the percent that this vegetation has currently grown.
+        /// </summary>
+        /// <returns></returns>
+        public double GetPercentGrown()
+        {
+            return this.PercentGrown;
+        }
+
+        /// <summary>
+        /// Gets the current yield of this vegatation.
+        /// </summary>
+        /// <returns></returns>
+        public abstract double GetCurrentYield();
     }
 }

@@ -9,7 +9,7 @@ namespace MagicalLifeAPI.World
 {
     /// <summary>
     /// A base class for all resources.
-    /// Resources in tiles are things such as stone, iron, and gravel.
+    /// Resources in tiles are things such as minerals.
     /// </summary>
     public abstract class Resource : Unique
     {
