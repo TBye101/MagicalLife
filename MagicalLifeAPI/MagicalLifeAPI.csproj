@@ -33,6 +33,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,6 +50,7 @@
     <Compile Include="World\Base\Item.cs" />
     <Compile Include="World\Tiles\Dirt.cs" />
     <Compile Include="World\Veggies\OakTree.cs" />
+    <Compile Include="World\World Generation\Generators\Dirtland.cs" />
     <Compile Include="World\WorldGenerator.cs" />
     <Compile Include="World\Base\Resource.cs" />
     <Compile Include="World\Base\Tile.cs" />
@@ -57,7 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="World\Items\" />
-    <Folder Include="World\World Generation\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

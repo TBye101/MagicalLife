@@ -17,7 +17,7 @@ namespace MagicalLifeAPI.World
         /// Populates the passed in array with the name of a biome for each tile.
         /// </summary>
         /// <returns></returns>
-        public abstract string[,,] AssignBiomes(string[,,] biomeMap);
+        public abstract string[,,] AssignBiomes(int xSize, int ySize, int zSize);
 
         /// <summary>
         /// Generates things such as rock, dirt, grassland, and sand for each and every tile.

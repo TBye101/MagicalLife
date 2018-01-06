@@ -13,7 +13,12 @@ namespace MagicalLifeAPI.World.Tiles
     {
         public Dirt()
         {
-            this.AdditionalMovementCost = 0;
+            //this.AdditionalMovementCost = 0;
+        }
+
+        public override string GetName()
+        {
+            return "dirt";
         }
     }
 }
