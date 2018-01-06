@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MagicalLifeAPI.World
+namespace MagicalLifeAPI.World.Base
 {
     /// <summary>
     /// A base class used by anything that can grow, and is alive.
