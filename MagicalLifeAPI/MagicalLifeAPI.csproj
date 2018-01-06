@@ -44,7 +44,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Universal\Unique.cs" />
     <Compile Include="Universal\MajorEvents.cs" />
+    <Compile Include="Util\MathUtil.cs" />
+    <Compile Include="Util\StaticRandom.cs" />
     <Compile Include="World\Base\Item.cs" />
+    <Compile Include="World\Tiles\Dirt.cs" />
     <Compile Include="World\Veggies\OakTree.cs" />
     <Compile Include="World\WorldGenerator.cs" />
     <Compile Include="World\Base\Resource.cs" />
@@ -54,7 +57,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="World\Items\" />
-    <Folder Include="World\Tiles\" />
     <Folder Include="World\World Generation\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

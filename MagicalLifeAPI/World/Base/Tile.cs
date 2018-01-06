@@ -22,6 +22,11 @@ namespace MagicalLifeAPI.World
         }
 
         /// <summary>
+        /// The additional movement cost that the terrain of the tile adds to the total movement cost of moving here.
+        /// </summary>
+        protected double AdditionalMovementCost { get; set; }
+
+        /// <summary>
         /// The last calculated movement cost of this tile.
         /// </summary>
         private double LastMovementCost { get; set; }
