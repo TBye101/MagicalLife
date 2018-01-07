@@ -1,4 +1,6 @@
-﻿namespace MagicalLifeAPI.World.Tiles
+﻿using System.Drawing;
+
+namespace MagicalLifeAPI.World.Tiles
 {
     /// <summary>
     /// A dirt tile.
@@ -14,5 +16,15 @@
         {
             return "dirt";
         }
+
+        public override string GetTextureName()
+        {
+            return "DirtTile.png";
+        }
+
+        //public override Bitmap GetOriginalTexture()
+        //{
+        //    throw new System.NotImplementedException();
+        //}
     }
 }

@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Universal;
+﻿using System.Drawing;
+using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Base;
 using System.Collections.Generic;
 using System.Web.UI.DataVisualization.Charting;
@@ -38,6 +39,12 @@ namespace MagicalLifeAPI.World
         /// </summary>
         /// <returns></returns>
         public abstract string GetName();
+
+        /// <summary>
+        /// Returns the name of the texture used by this tile, including the file extension.
+        /// </summary>
+        /// <returns></returns>
+        public abstract string GetTextureName();
 
         ///// <summary>
         ///// Returns the last calculated value of the temperature of this tile.
