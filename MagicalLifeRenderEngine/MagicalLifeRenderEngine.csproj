@@ -48,6 +48,7 @@
     <Compile Include="Wave Function Collapse\OverlappingModel.cs" />
     <Compile Include="Wave Function Collapse\SimpleTiledModel.cs" />
     <Compile Include="Wave Function Collapse\Stuff.cs" />
+    <Compile Include="Wave Function Collapse\WaveFunctionAPI.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MagicalLifeAPI\MagicalLifeAPI.csproj">

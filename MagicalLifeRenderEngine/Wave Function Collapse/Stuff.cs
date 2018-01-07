@@ -41,7 +41,11 @@ internal static class Stuff
     public static long Power(int a, int n)
     {
         long product = 1;
-        for (int i = 0; i < n; i++) product *= a;
+        for (int i = 0; i < n; i++)
+        {
+            product *= a;
+        }
+
         return product;
     }
 
