@@ -1,9 +1,4 @@
 ﻿using MagicalLifeAPI.Universal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.World.Base
 {
@@ -87,7 +82,6 @@ namespace MagicalLifeAPI.World.Base
         ///// The highest amount of yield this vegetation can produce when fully grown.
         ///// </summary>
         //public double MaxYield { get; protected set; }
-
 
         ///// <summary>
         ///// Returns the percent that this vegetation has currently grown.

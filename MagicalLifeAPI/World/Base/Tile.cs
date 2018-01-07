@@ -1,11 +1,6 @@
-﻿using System.Drawing;
-using MagicalLifeAPI.Universal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Base;
+using System.Collections.Generic;
 using System.Web.UI.DataVisualization.Charting;
 
 namespace MagicalLifeAPI.World
