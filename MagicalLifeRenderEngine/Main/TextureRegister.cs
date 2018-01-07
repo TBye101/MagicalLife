@@ -39,6 +39,21 @@ namespace MagicalLifeRenderEngine.Main
             }
         }
 
+        public static Bitmap GetTexture(string name)
+        {
+            Bitmap ret;
+            TextureRegister.NameToTextureBindings.TryGetValue(name, out ret);
+
+            if (ret != null)
+            {
+                return ret;
+            }
+            else
+            {
+                throw new Exception("Invalid texture request!");
+            }
+        }
+
         /// <summary>
         /// Adds a texture to the internal texture dictionary.
         /// </summary>

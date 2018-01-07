@@ -1,4 +1,6 @@
-﻿using MagicalLifeAPI.World;
+﻿using FastBitmapLib;
+using MagicalLifeAPI.World.Tiles;
+using MagicalLifeAPI.World;
 using System;
 using System.Drawing;
 
@@ -18,7 +20,37 @@ namespace MagicalLifeRenderEngine.Main
         /// <returns></returns>
         public Bitmap GetTiles(int height, World world)
         {
-            throw new NotImplementedException();
+            int x = 0;
+            int y = 0;
+            int z = height;
+            int xSize = world.Tiles.GetLength(0);
+            int ySize = world.Tiles.GetLength(1);
+
+            Tile[,,] tiles = world.Tiles;
+
+            //The entire map, at the specified height.
+            Bitmap entireMap = new Bitmap(Tile.GetTileSize().Height * xSize, Tile.GetTileSize().Width * ySize);
+            FastBitmap fastMap = new FastBitmap(entireMap);
+            fastMap.Lock();
+
+            //Iterate over each row.
+            for (int i = 0; i < xSize; i++)
+            {
+                //Iterate over each column
+                for (int ii = 0; ii < ySize; ii++)
+                {
+                    //Draw constructed tile onto "entireMap" at the proper section.
+                    Bitmap temp = new Bitmap(TileImageGenerator.GenerateTileImage(tiles[x, y, z]));
+                    Rectangle destination = new Rectangle(new Point(Tile.GetTileSize().Height * x, Tile.GetTileSize().Width * y), Tile.GetTileSize());
+                    fastMap.CopyRegion(temp, new Rectangle(new Point(0, 0), Tile.GetTileSize()), destination);
+                    y++;
+                }
+                y = 0;
+                x++;
+            }
+
+            fastMap.Unlock();
+            return entireMap;
         }
     }
 }

@@ -35,6 +35,15 @@ namespace MagicalLifeAPI.World
         public string BiomeName { get; }
 
         /// <summary>
+        /// The size, in pixels of how big each tile is.
+        /// </summary>
+        /// <returns></returns>
+        public static Size GetTileSize()
+        {
+            return new Size(64, 64);
+        }
+
+        /// <summary>
         /// Returns the name of this tile.
         /// </summary>
         /// <returns></returns>
