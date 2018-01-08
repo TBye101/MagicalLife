@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.World.Tiles;
+﻿using System.Web.UI.DataVisualization.Charting;
+using MagicalLifeAPI.World.Tiles;
 
 namespace MagicalLifeAPI.World.World_Generation.Generators
 {
@@ -25,7 +26,7 @@ namespace MagicalLifeAPI.World.World_Generation.Generators
                     for (int iii = 0; iii < zSize; iii++)
                     {
                         //Each tile can be accessed by the xyz coordinates from this inner loop properly.
-                        Dirt dirt = new Dirt();
+                        Dirt dirt = new Dirt(new Point3D(x, y, z));
                         ret[x, y, z] = dirt.GetName();
 
                         z++;
@@ -68,7 +69,7 @@ namespace MagicalLifeAPI.World.World_Generation.Generators
                     for (int iii = 0; iii < zSize; iii++)
                     {
                         //Each tile can be accessed by the xyz coordinates from this inner loop properly.
-                        ret[x, y, z] = new Dirt();
+                        ret[x, y, z] = new Dirt(new Point3D(x, y, z));
                         z++;
                     }
                     y++;
