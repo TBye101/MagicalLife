@@ -13,7 +13,11 @@ namespace MagicalLifeGUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            Form1 mainForm = new Form1();
+            StartupForm formStartup = new StartupForm();
+            formStartup.RunAll(mainForm);
+            Application.Run(mainForm);
         }
     }
 }
