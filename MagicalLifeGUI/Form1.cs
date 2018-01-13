@@ -40,7 +40,8 @@ namespace MagicalLifeGUI
         {
             if (this.screen != null)
             {
-                e.Graphics.DrawImage(this.screen, new Point(0, 0));
+                //e.Graphics.DrawImage(this.screen, new Point(0, 0));
+                e.Graphics.DrawImage(this.screen, new Rectangle(new Point(0, 0), MainWindow.Default.ScreenSize));
             }
         }
     }
