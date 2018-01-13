@@ -50,12 +50,6 @@
     <Compile Include="Main\TileImageGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\ResourceLoader.cs" />
-    <Compile Include="Wave Function Collapse\Main.cs" />
-    <Compile Include="Wave Function Collapse\Model.cs" />
-    <Compile Include="Wave Function Collapse\OverlappingModel.cs" />
-    <Compile Include="Wave Function Collapse\SimpleTiledModel.cs" />
-    <Compile Include="Wave Function Collapse\Stuff.cs" />
-    <Compile Include="Wave Function Collapse\WaveFunctionAPI.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MagicalLifeAPI\MagicalLifeAPI.csproj">
