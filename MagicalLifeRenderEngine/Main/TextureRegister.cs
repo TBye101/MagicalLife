@@ -11,6 +11,8 @@ namespace MagicalLifeRenderEngine.Main
 {
     public static class TextureRegister
     {
+        private static Assembly resourceAssembly;
+
         /// <summary>
         /// Contains the name of each texture, and the image that goes along with it.
         /// </summary>
@@ -18,7 +20,8 @@ namespace MagicalLifeRenderEngine.Main
 
         static TextureRegister()
         {
-
+            TextureRegister.resourceAssembly = Assembly.GetAssembly(typeof(TextureRegister));
+            TextureRegister.DiscoverInternalTextures();
         }
 
         /// <summary>
@@ -26,7 +29,6 @@ namespace MagicalLifeRenderEngine.Main
         /// </summary>
         private static void DiscoverInternalTextures()
         {
-            Assembly resourceAssembly = Assembly.GetAssembly(typeof(TextureRegister));
             string textureFolder = string.Format("{0}.Resource.Texture", resourceAssembly.GetName().Name);
 
             List<string> textureNames = resourceAssembly.GetManifestResourceNames().Where(r => r.StartsWith(textureFolder)).ToList();
@@ -35,14 +37,17 @@ namespace MagicalLifeRenderEngine.Main
             ResourceLoader loader = new ResourceLoader();
             foreach (string item in textureNames)
             {
-                textures.Add(loader.LoadImage(textureFolder + "." + item));
+                TextureRegister.NameToTextureBindings.Add(item, loader.LoadImage(item));
             }
+
         }
 
         public static Bitmap GetTexture(string name)
         {
+            string textureFolder = string.Format("{0}.Resource.Texture", resourceAssembly.GetName().Name);
+
             Bitmap ret;
-            TextureRegister.NameToTextureBindings.TryGetValue(name, out ret);
+            TextureRegister.NameToTextureBindings.TryGetValue(textureFolder + "." + name, out ret);
 
             if (ret != null)
             {

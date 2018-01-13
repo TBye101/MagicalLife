@@ -19,7 +19,7 @@ namespace MagicalLifeAPI.World
         /// <param name="width"></param>
         /// <param name="depth"></param>
         /// <param name="generator"></param>
-        public World(int height, int width, int depth, WorldGenerator generator)
+        public World(int width, int height, int depth, WorldGenerator generator)
         {
             this.Tiles = this.GenerateWorld(height, width, depth, generator);
         }
