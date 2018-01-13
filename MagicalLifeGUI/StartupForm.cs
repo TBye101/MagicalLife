@@ -22,7 +22,7 @@ namespace MagicalLifeGUI
             this.InitializeForm(form);
         }
 
-        private void InitializeForm(Form1 form)
+        private void InitializeForm(Form form)
         {
             if (!Universal.Default.GameHasRunBefore)
             {

@@ -14,10 +14,10 @@ namespace MagicalLifeGUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Form1 mainForm = new Form1();
             StartupForm formStartup = new StartupForm();
-            formStartup.RunAll(mainForm);
-            Application.Run(mainForm);
+            Form1 form = new Form1();
+            formStartup.RunAll(form);
+            Application.Run(form);
         }
     }
 }

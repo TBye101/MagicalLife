@@ -25,7 +25,7 @@ namespace MagicalLifeGUI.Storage {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1024, 768")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1920, 1080")]
         public global::System.Drawing.Size ScreenSize {
             get {
                 return ((global::System.Drawing.Size)(this["ScreenSize"]));
