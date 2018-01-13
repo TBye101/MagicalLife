@@ -1,55 +1,14 @@
 		SneakyTactician  <SneakyTactician@outlook.com>
-	[Version 0.0.0.2]
-		
-		### Features
-
-			#### API
-				*
-
-			#### Items
-				*
-
-		### Tweaks
-			* Many small code quality tweaks
-			* Lesser Angels now respond to healing with a "eerie otherworldly" thank you
-			* Fighters, marksmen, thieves, and rangers are now able to use arrows
-
-		### Bugs
-			*
 	[Version 0.0.0.1]
 		
 		### Features
+			*The world displays when told to generate a new world
 
 		#### API
-			*[12/17/2017]: Console input and output is now logged
+			*World generates properly
 
-		#### Items
-			*[12/16/2017]: Added the acid arrow item
-			*[12/16/2017]: Added the fire arrow item
-			*[12/16/2017]: Added the frost arrow item
-			*[12/16/2017]: Added the poison arrow item
-			*[12/16/2017]: Added the handmade arrow item
-			*[12/16/2017]: Added the professional arrow item
-			*[12/16/2017]: Added the +1 arrow item
-			*[12/16/2017]: Added the +2 arrow item
-			*[12/16/2017]: Added the +3 arrow item
-			*[12/16/2017]: Added the +4 arrow item
-			*[12/16/2017]: Added the +5 arrow item
-			*[12/17/2017]: Added the +1 bolt item
-			*[12/17/2017]: Added the +2 bolt item
-			*[12/17/2017]: Added the +3 bolt item
-			*[12/17/2017]: Added the +4 bolt item
-			*[12/17/2017]: Added the +5 bolt item
-			*[12/17/2017]: Added the handmade bolt item
-			*[12/17/2017]: Added the professional bolt item
-			*[12/17/2017]: Added the acid bolt item
-			*[12/17/2017]: Added the fire bolt item
-			*[12/17/2017]: Added the frost bolt item
-			*[12/17/2017]: Added the poison bolt item
-			*[12/17/2017]: Added the quarterstaff item
-		
 		### Tweaks
-			*Help command now displays it's messages indented for readability reasons
-		
+			*
+
 		### Bugs
-			*[12/16/2017]: Fixed a bug where all items would have the exact same ID
+			*
