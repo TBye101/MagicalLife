@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MagicalLifeAPI.Entities.Util
+{
+    /// <summary>
+    /// Utilized to allow for custom events/circumstances to be used to determine when a modifier wears off.
+    /// </summary>
+    public interface IModifierRemoveCondition
+    {
+        /// <summary>
+        /// Returns true if this modifier should be removed from the attribute it is effecting.
+        /// </summary>
+        /// <returns></returns>
+        bool WearOff();
+    }
+}
