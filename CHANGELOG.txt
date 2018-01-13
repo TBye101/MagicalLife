@@ -2,10 +2,10 @@
 	[Version 0.0.0.1]
 		
 		### Features
-			*
+			*The world displays when told to generate a new world
 
 		#### API
-			*
+			*World generates properly
 
 		### Tweaks
 			*
