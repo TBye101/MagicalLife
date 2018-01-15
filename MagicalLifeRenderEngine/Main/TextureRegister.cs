@@ -1,11 +1,9 @@
 ﻿using MagicalLifeRenderEngine.Util;
-using System.Reflection;
-using System.Drawing;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 
 namespace MagicalLifeRenderEngine.Main
 {
@@ -39,7 +37,6 @@ namespace MagicalLifeRenderEngine.Main
             {
                 TextureRegister.NameToTextureBindings.Add(item, loader.LoadImage(item));
             }
-
         }
 
         public static Bitmap GetTexture(string name)
@@ -51,7 +48,7 @@ namespace MagicalLifeRenderEngine.Main
 
             if (ret != null)
             {
-                return ret;
+                return new Bitmap(ret);
             }
             else
             {

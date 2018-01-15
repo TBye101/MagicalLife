@@ -1,10 +1,10 @@
-﻿using MagicalLifeRenderEngine.Main;
+﻿using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.World_Generation.Generators;
 using MagicalLifeGUI.Storage;
-using MagicalLifeAPI.World;
+using MagicalLifeRenderEngine.Main;
 using System;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace MagicalLifeGUI
 {
@@ -23,7 +23,6 @@ namespace MagicalLifeGUI
 
         private void Form1_Load(object sender, System.EventArgs e)
         {
-
         }
 
         private void QuitButton_Click(object sender, System.EventArgs e)
@@ -36,7 +35,7 @@ namespace MagicalLifeGUI
             this.ToggleMainMenu();
             this.world = new World(MainWindow.Default.ScreenSize.Height / Tile.GetTileSize().Height,
                MainWindow.Default.ScreenSize.Width / Tile.GetTileSize().Width, 2, new Dirtland());
-            screen = pipe.GetTiles(0, this.world);
+            screen = pipe.GetTiles(1, this.world);
         }
 
         /// <summary>

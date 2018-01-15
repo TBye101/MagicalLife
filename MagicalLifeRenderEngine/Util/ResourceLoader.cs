@@ -1,12 +1,8 @@
-﻿using System.IO;
-using MagicalLifeRenderEngine.Main;
-using System.Reflection;
-using System.Drawing;
+﻿using MagicalLifeRenderEngine.Main;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
+using System.IO;
+using System.Reflection;
 
 namespace MagicalLifeRenderEngine.Util
 {
@@ -25,7 +21,7 @@ namespace MagicalLifeRenderEngine.Util
         public Bitmap LoadImage(string path)
         {
             Stream loader = this.ResourceAssembly.GetManifestResourceStream(path);
-            
+
             if (loader != null)
             {
                 return new Bitmap(loader);

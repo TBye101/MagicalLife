@@ -1,14 +1,14 @@
-﻿using System.Drawing;
+﻿using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Base;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Web.UI.DataVisualization.Charting;
 
 namespace MagicalLifeAPI.World
 {
     public abstract class Tile : Unique
     {
-
         /// <summary>
         /// Initializes a new tile object.
         /// </summary>
@@ -55,5 +55,10 @@ namespace MagicalLifeAPI.World
         /// The location of this tile in the tilemap.
         /// </summary>
         public Point3D Location { get; protected set; }
+
+        /// <summary>
+        /// A list containing all living entities on this tile.
+        /// </summary>
+        public Queue<Living> Living { get; set; } = new Queue<Entities.Living>();
     }
 }
