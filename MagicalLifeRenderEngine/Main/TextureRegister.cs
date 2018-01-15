@@ -51,7 +51,7 @@ namespace MagicalLifeRenderEngine.Main
 
             if (ret != null)
             {
-                return ret;
+                return new Bitmap(ret);
             }
             else
             {

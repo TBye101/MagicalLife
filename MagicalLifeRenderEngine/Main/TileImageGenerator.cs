@@ -20,8 +20,16 @@ namespace MagicalLifeRenderEngine.Main
         /// <returns></returns>
         public static Bitmap GenerateTileImage(Tile tile)
         {
-            
-            return TextureRegister.GetTexture(tile.GetTextureName());
+            Bitmap tileImage = TextureRegister.GetTexture(tile.GetTextureName());
+
+            Graphics g = Graphics.FromImage(tileImage);
+
+            if (tile.Living.Count > 0)
+            {
+                g.DrawImage(TextureRegister.GetTexture(tile.Living.ElementAt(0).GetTextureName()), new Point(0, 0));
+            }
+
+            return tileImage;
         }
     }
 }

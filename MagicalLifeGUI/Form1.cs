@@ -36,7 +36,7 @@ namespace MagicalLifeGUI
             this.ToggleMainMenu();
             this.world = new World(MainWindow.Default.ScreenSize.Height / Tile.GetTileSize().Height,
                MainWindow.Default.ScreenSize.Width / Tile.GetTileSize().Width, 2, new Dirtland());
-            screen = pipe.GetTiles(0, this.world);
+            screen = pipe.GetTiles(1, this.world);
         }
 
         /// <summary>

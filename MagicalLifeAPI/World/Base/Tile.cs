@@ -1,8 +1,10 @@
-﻿using System.Drawing;
+﻿using MagicalLifeAPI.Entities;
+using System.Drawing;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Base;
 using System.Collections.Generic;
 using System.Web.UI.DataVisualization.Charting;
+using System.Collections;
 
 namespace MagicalLifeAPI.World
 {
@@ -55,5 +57,10 @@ namespace MagicalLifeAPI.World
         /// The location of this tile in the tilemap.
         /// </summary>
         public Point3D Location { get; protected set; }
+
+        /// <summary>
+        /// A list containing all living entities on this tile.
+        /// </summary>
+        public Queue<Living> Living { get; set; } = new Queue<Entities.Living>();
     }
 }
