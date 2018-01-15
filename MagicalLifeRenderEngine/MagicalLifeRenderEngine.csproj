@@ -69,5 +69,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Resource\Texture\GrassTile.png" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource\Texture\Basic Human.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

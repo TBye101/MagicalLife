@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Entity Factory\HumanFactory.cs" />
+    <Compile Include="Entities\Humanoid\Human.cs" />
     <Compile Include="Entities\Living.cs" />
     <Compile Include="Entities\Util\Attribute.cs" />
     <Compile Include="Entities\Util\IModifierRemoveCondition.cs" />
@@ -64,7 +66,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\Animal\" />
-    <Folder Include="Entities\Humanoid\" />
     <Folder Include="World\Items\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
