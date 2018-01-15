@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-using System.Web.UI.DataVisualization.Charting;
+﻿using System.Web.UI.DataVisualization.Charting;
 
 namespace MagicalLifeAPI.World.Tiles
 {

@@ -2,10 +2,10 @@
 
 	[Version 0.0.0.2]
 		### Features
-			*
+			*Living creatures are now rendered
 
 		#### API
-			*
+			*Living creatures are now supported
 
 		### Tweaks
 			*

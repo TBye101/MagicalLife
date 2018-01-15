@@ -1,16 +1,14 @@
 ﻿using MagicalLifeAPI.Entities;
-using System.Drawing;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Base;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Web.UI.DataVisualization.Charting;
-using System.Collections;
 
 namespace MagicalLifeAPI.World
 {
     public abstract class Tile : Unique
     {
-
         /// <summary>
         /// Initializes a new tile object.
         /// </summary>

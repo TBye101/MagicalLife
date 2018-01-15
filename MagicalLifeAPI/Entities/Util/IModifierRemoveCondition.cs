@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MagicalLifeAPI.Entities.Util
+﻿namespace MagicalLifeAPI.Entities.Util
 {
     /// <summary>
     /// Utilized to allow for custom events/circumstances to be used to determine when a modifier wears off.

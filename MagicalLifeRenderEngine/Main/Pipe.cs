@@ -1,7 +1,5 @@
 ﻿using FastBitmapLib;
-using MagicalLifeAPI.World.Tiles;
 using MagicalLifeAPI.World;
-using System;
 using System.Drawing;
 
 namespace MagicalLifeRenderEngine.Main

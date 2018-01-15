@@ -1,9 +1,5 @@
 ﻿using MagicalLifeAPI.Entities.Util;
 using MagicalLifeAPI.Universal;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Entities
 {

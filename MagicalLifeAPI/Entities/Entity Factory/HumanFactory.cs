@@ -1,5 +1,5 @@
-﻿using MagicalLifeAPI.Util;
-using MagicalLifeAPI.Entities.Humanoid;
+﻿using MagicalLifeAPI.Entities.Humanoid;
+using MagicalLifeAPI.Util;
 
 namespace MagicalLifeAPI.Entities.Entity_Factory
 {
@@ -27,7 +27,6 @@ namespace MagicalLifeAPI.Entities.Entity_Factory
         /// The slowest a human could possibly be without some significant injuries.
         /// </summary>
         private readonly int MinHumanMovement = 25;
-
 
         /// <summary>
         /// Returns a fully generated human character.

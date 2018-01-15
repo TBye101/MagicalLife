@@ -1,8 +1,7 @@
-﻿using MagicalLifeAPI.Entities.Humanoid;
-using MagicalLifeAPI.Entities.Entity_Factory;
+﻿using MagicalLifeAPI.Entities.Entity_Factory;
 using MagicalLifeAPI.Util;
-using System.Web.UI.DataVisualization.Charting;
 using MagicalLifeAPI.World.Tiles;
+using System.Web.UI.DataVisualization.Charting;
 
 namespace MagicalLifeAPI.World.World_Generation.Generators
 {
