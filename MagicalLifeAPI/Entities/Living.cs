@@ -10,7 +10,7 @@ namespace MagicalLifeAPI.Entities
     /// <summary>
     /// All living things inherit from this, and utilize it.
     /// </summary>
-    public class Living : Unique
+    public abstract class Living : Unique
     {
         /// <summary>
         /// How many hit points this creature has.
@@ -32,5 +32,11 @@ namespace MagicalLifeAPI.Entities
             this.Health = new Attribute(health);
             this.MovementSpeed = new Attribute(movementSpeed);
         }
+
+        /// <summary>
+        /// Returns the name of the texture.
+        /// </summary>
+        /// <returns></returns>
+        public abstract string GetTextureName();
     }
 }

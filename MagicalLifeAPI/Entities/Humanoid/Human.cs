@@ -14,5 +14,10 @@ namespace MagicalLifeAPI.Entities.Humanoid
         public Human(int health, int movementSpeed) : base(health, movementSpeed)
         {
         }
+
+        public override string GetTextureName()
+        {
+            return "Basic Human.png";
+        }
     }
 }
