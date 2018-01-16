@@ -1,0 +1,4 @@
+Credit for things I used that I didn't make:
+
+Libraries: 
+https://github.com/agabani/DijkstraAlgorithm optimal pathfinding algorithm

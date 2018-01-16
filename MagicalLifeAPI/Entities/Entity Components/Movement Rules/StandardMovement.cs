@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MagicalLifeAPI.World;
+using DijkstraAlgorithm.Pathing;
 
 namespace MagicalLifeAPI.Entities.Entity_Components.Movement_Rules
 {
@@ -15,16 +16,9 @@ namespace MagicalLifeAPI.Entities.Entity_Components.Movement_Rules
     /// </summary>
     public class StandardMovement : IMovementRule
     {
-        public bool CanMoveHere(Tile destination, Tile start, World.World world, Living creature)
+        public Path GetOptimalPath(Tile start, Tile destination, World.World world, Living creature, out bool isPossible)
         {
-            Point3D One = start.Location;
-            Point3D Two = destination.Location;
-            Point A = new Point((int)One.X, (int)One.Y);
-            Point B = new Point((int)Two.X, (int)Two.Y);
-
-            int distance = MathUtil.GetDistance(A, B);
-
-            return distance <= 1;
+            throw new NotImplementedException();
         }
     }
 }
