@@ -12,12 +12,7 @@ namespace MagicalLifeAPI.Entities.Util
             MajorEvents.TurnEnd += this.MajorEvents_TurnEnd;
         }
 
-        public Attribute(int value) : this()
-        {
-            this.AddModifier(new Tuple<long, IModifierRemoveCondition, string>(value, new NeverRemoveCondition(), "Base value"));
-        }
-
-        private void MajorEvents_TurnEnd(object sender, EventArgs e)
+        private void MajorEvents_TurnEnd(World.World world)
         {
             List<Tuple<Int64, IModifierRemoveCondition, string>> remove = new List<Tuple<Int64, IModifierRemoveCondition, string>>();
             foreach (Tuple<Int64, IModifierRemoveCondition, string> item in this.Modifiers)
@@ -32,6 +27,11 @@ namespace MagicalLifeAPI.Entities.Util
             {
                 this.Modifiers.Remove(item);
             }
+        }
+
+        public Attribute(int value) : this()
+        {
+            this.AddModifier(new Tuple<long, IModifierRemoveCondition, string>(value, new NeverRemoveCondition(), "Base value"));
         }
 
         public Int64 GetValue()

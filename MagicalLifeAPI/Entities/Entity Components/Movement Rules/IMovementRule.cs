@@ -14,6 +14,7 @@ namespace MagicalLifeAPI.Entities.Entity_Components.Movement_Rules
     {
         /// <summary>
         /// Used to determine if a creature can move from it's start to a destination.
+        /// This doesn't take into account the movement points required.
         /// </summary>
         /// <param name="destination">The tile to determine if the creature can get there.</param>
         /// <param name="start">The tile the creature is starting from.</param>

@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Entity Components\Movement Rules\IMovementRule.cs" />
+    <Compile Include="Entities\Entity Components\Movement Rules\StandardMovement.cs" />
     <Compile Include="Entities\Entity Factory\HumanFactory.cs" />
     <Compile Include="Entities\Humanoid\Human.cs" />
     <Compile Include="Entities\Living.cs" />
