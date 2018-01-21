@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.World;
+﻿using DijkstraAlgorithm.Pathing;
+using MagicalLifeAPI.World;
 using DijkstraAlgorithm.Graphing;
 using System;
 using System.Collections.Generic;
@@ -19,8 +20,25 @@ namespace MagicalLifeAPI.Entities.Util
         /// </summary>
         private static GraphBuilder tileConnectionGraph = new GraphBuilder();
 
-        static StandardPathFinder()
+        private static Graph builtGraph;
+
+        /// <summary>
+        /// Used to determine the fastest route between two points.
+        /// </summary>
+        private static PathFinder pathFinder;
+
+        /// <summary>
+        /// Returns the fastest route between the source and destination tiles.
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="destination"></param>
+        /// <returns></returns>
+        public static Path GetFastestPath(Tile source, Tile destination)
         {
+            Path path = pathFinder.FindShortestPath(
+                StandardPathFinder.builtGraph.Nodes.Single(node => node.Id == source.ID.ToString()),
+                StandardPathFinder.builtGraph.Nodes.Single(node => node.Id == destination.ID.ToString()));
+            return path;
         }
 
         /// <summary>
@@ -32,6 +50,8 @@ namespace MagicalLifeAPI.Entities.Util
         {
             StandardPathFinder.AddNodes(world);
             StandardPathFinder.AddLinkes(world);
+            StandardPathFinder.builtGraph = StandardPathFinder.tileConnectionGraph.Build();
+            StandardPathFinder.pathFinder = new PathFinder(StandardPathFinder.builtGraph);
         }
 
         /// <summary>
