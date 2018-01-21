@@ -13,15 +13,23 @@ namespace MagicalLifeAPI.World
         /// Initializes a new tile object.
         /// </summary>
         /// <param name="location">The 3D location of this tile in the map.</param>
-        public Tile(Point3D location)
+        /// <param name="movementCost">This value is the movement cost of walking on this tile. It should be between 1 and 100</param>
+        public Tile(Point3D location, int movementCost)
         {
             this.Location = location;
+            this.MovementCost = movementCost;
         }
 
         /// <summary>
         /// Returns the name of the biome that this tile belongs to.
         /// </summary>
         public string BiomeName { get; }
+
+        /// <summary>
+        /// Returns the movement cost of this tile.
+        /// Should be between 1-100.
+        /// </summary>
+        public int MovementCost { get; protected set; }
 
         /// <summary>
         /// The size, in pixels of how big each tile is.

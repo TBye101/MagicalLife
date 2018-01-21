@@ -7,7 +7,7 @@ namespace MagicalLifeAPI.World.Tiles
     /// </summary>
     public class Dirt : Tile
     {
-        public Dirt(Point3D location) : base(location)
+        public Dirt(Point3D location) : base(location, 10)
         {
             //this.AdditionalMovementCost = 0;
         }

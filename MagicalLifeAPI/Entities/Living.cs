@@ -1,5 +1,4 @@
-﻿using MagicalLifeAPI.Entities.Entity_Components.Movement_Rules;
-using MagicalLifeAPI.Entities.Util;
+﻿using MagicalLifeAPI.Entities.Util;
 using MagicalLifeAPI.Universal;
 
 namespace MagicalLifeAPI.Entities
@@ -20,20 +19,14 @@ namespace MagicalLifeAPI.Entities
         public Attribute MovementSpeed { get; set; }
 
         /// <summary>
-        /// The rules concerning where the creature is allowed to move.
-        /// </summary>
-        public IMovementRule MovementRules { get; set; }
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="Living"/> base class.
         /// </summary>
         /// <param name="health"></param>
         /// <param name="movementSpeed"></param>
-        public Living(int health, int movementSpeed, IMovementRule movementRules)
+        public Living(int health, int movementSpeed)
         {
             this.Health = new Attribute(health);
             this.MovementSpeed = new Attribute(movementSpeed);
-            this.MovementRules = movementRules;
         }
 
         /// <summary>

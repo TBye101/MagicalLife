@@ -46,14 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Entity Components\Movement Rules\IMovementRule.cs" />
-    <Compile Include="Entities\Entity Components\Movement Rules\StandardMovement.cs" />
     <Compile Include="Entities\Entity Factory\HumanFactory.cs" />
     <Compile Include="Entities\Humanoid\Human.cs" />
     <Compile Include="Entities\Living.cs" />
     <Compile Include="Entities\Util\Attribute.cs" />
     <Compile Include="Entities\Util\IModifierRemoveCondition.cs" />
     <Compile Include="Entities\Util\IModifierRemoveConditions\NeverRemoveCondition.cs" />
+    <Compile Include="Entities\Util\StandardPathFinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Universal\Unique.cs" />
     <Compile Include="Universal\MajorEvents.cs" />
@@ -71,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\Animal\" />
+    <Folder Include="Entities\Entity Components\" />
     <Folder Include="World\Items\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
