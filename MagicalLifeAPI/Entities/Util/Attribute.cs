@@ -9,10 +9,10 @@ namespace MagicalLifeAPI.Entities.Util
     {
         public Attribute()
         {
-            MajorEvents.TurnEnd += this.MajorEvents_TurnEnd;
+            World.World.TurnEnd += this.World_TurnEnd;
         }
 
-        private void MajorEvents_TurnEnd(World.World world)
+        private void World_TurnEnd(object sender, World.WorldEventArgs e)
         {
             List<Tuple<Int64, IModifierRemoveCondition, string>> remove = new List<Tuple<Int64, IModifierRemoveCondition, string>>();
             foreach (Tuple<Int64, IModifierRemoveCondition, string> item in this.Modifiers)

@@ -21,6 +21,16 @@ namespace MagicalLifeAPI.World
         public event EventHandler<WorldEventArgs> WorldGenerated;
 
         /// <summary>
+        /// Raised at the start of each turn.
+        /// </summary>
+        public static event EventHandler<WorldEventArgs> TurnStart;
+
+        /// <summary>
+        /// Raised at the end of each turn.
+        /// </summary>
+        public static event EventHandler<WorldEventArgs> TurnEnd;
+
+        /// <summary>
         /// Generates a new world with the specified height, width, depth, and world generator.
         /// </summary>
         /// <param name="height"></param>
@@ -34,6 +44,8 @@ namespace MagicalLifeAPI.World
             WorldEventArgs worldEventArgs = new WorldEventArgs(this);
             this.WorldGeneratedHandler(worldEventArgs);
             StandardPathFinder.BuildPathGraph(this);
+
+            this.TurnStartHandler(new WorldEventArgs(this));
         }
 
         /// <summary>
@@ -57,6 +69,12 @@ namespace MagicalLifeAPI.World
             return stage2;
         }
 
+        public void EndTurn()
+        {
+            this.TurnEndHandler(new WorldEventArgs(this));
+            this.TurnStartHandler(new WorldEventArgs(this));
+        }
+
         /// <summary>
         /// Raises the world generated event.
         /// </summary>
@@ -64,6 +82,32 @@ namespace MagicalLifeAPI.World
         protected virtual void WorldGeneratedHandler(WorldEventArgs e)
         {
             EventHandler<WorldEventArgs> handler = WorldGenerated;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        /// <summary>
+        /// Raises the world generated event.
+        /// </summary>
+        /// <param name="e"></param>
+        protected virtual void TurnStartHandler(WorldEventArgs e)
+        {
+            EventHandler<WorldEventArgs> handler = TurnStart;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        /// <summary>
+        /// Raises the world generated event.
+        /// </summary>
+        /// <param name="e"></param>
+        protected virtual void TurnEndHandler(WorldEventArgs e)
+        {
+            EventHandler<WorldEventArgs> handler = TurnEnd;
             if (handler != null)
             {
                 handler(this, e);
