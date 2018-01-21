@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.Entities;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Base;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Web.UI.DataVisualization.Charting;
 
 namespace MagicalLifeAPI.World
 {
@@ -67,6 +67,6 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// A list containing all living entities on this tile.
         /// </summary>
-        public Queue<Living> Living { get; set; } = new Queue<Entities.Living>();
+        public List<Living> Living { get; set; } = new List<Entities.Living>();
     }
 }

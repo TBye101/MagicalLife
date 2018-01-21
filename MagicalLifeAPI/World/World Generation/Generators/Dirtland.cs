@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.Entities.Entity_Factory;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Entities.Entity_Factory;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Tiles;
-using System.Web.UI.DataVisualization.Charting;
 
 namespace MagicalLifeAPI.World.World_Generation.Generators
 {
@@ -54,7 +54,7 @@ namespace MagicalLifeAPI.World.World_Generation.Generators
             int z = zSize - 1;
 
             HumanFactory hFactory = new HumanFactory();
-            map[x, y, z].Living.Enqueue(hFactory.GenerateHuman());
+            map[x, y, z].Living.Add(hFactory.GenerateHuman());
 
             return map;
         }

@@ -1,4 +1,4 @@
-﻿using MagicalLifeAPI.Entities.Util.IModifierRemoveConditions;
+﻿using MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions;
 using MagicalLifeAPI.Universal;
 using System;
 using System.Collections.Generic;

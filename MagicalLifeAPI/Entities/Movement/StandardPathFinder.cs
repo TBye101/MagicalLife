@@ -32,8 +32,8 @@ namespace MagicalLifeAPI.Entities.Movement
         public static Path GetFastestPath(Tile source, Tile destination)
         {
             Path path = pathFinder.FindShortestPath(
-                StandardPathFinder.builtGraph.Nodes.Single(node => node.Id == source.ID.ToString()),
-                StandardPathFinder.builtGraph.Nodes.Single(node => node.Id == destination.ID.ToString()));
+                StandardPathFinder.builtGraph.Nodes.Single(node => node.Id == source.Location.ToString()),
+                StandardPathFinder.builtGraph.Nodes.Single(node => node.Id == destination.Location.ToString()));
             return path;
         }
 
@@ -135,7 +135,7 @@ namespace MagicalLifeAPI.Entities.Movement
                 return;
             }
 
-            StandardPathFinder.tileConnectionGraph.AddLink(source.ID.ToString(), tiles[x, y, z].ID.ToString(), 101 - tiles[x, y, z].MovementCost);
+            StandardPathFinder.tileConnectionGraph.AddLink(source.Location.ToString(), tiles[x, y, z].Location.ToString(), 101 - tiles[x, y, z].MovementCost);
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace MagicalLifeAPI.Entities.Movement
                     for (int iii = 0; iii < zSize; iii++)
                     {
                         //Each tile can be accessed by the xyz coordinates from this inner loop properly.
-                        StandardPathFinder.tileConnectionGraph.AddNode(tiles[x, y, z].ID.ToString());
+                        StandardPathFinder.tileConnectionGraph.AddNode(tiles[x, y, z].Location.ToString());
                         z++;
                     }
                     y++;
