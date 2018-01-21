@@ -1,4 +1,10 @@
-﻿using MagicalLifeAPI.Entities.Movement;
+﻿using MagicalLifeAPI.Util;
+using System.Collections.Generic;
+using System.Collections;
+using System.Runtime.CompilerServices;
+using DijkstraAlgorithm.Pathing;
+using MagicalLifeAPI.Entities;
+using MagicalLifeAPI.Entities.Movement;
 using MagicalLifeAPI.Entities.Util;
 using MagicalLifeAPI.Universal;
 using System;
@@ -13,7 +19,7 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// A 3D array that holds every tile in the current world.
         /// </summary>
-        public Tile[,,] Tiles { get; }
+        public Tile[,,] Tiles { get; private set; }
 
         /// <summary>
         /// Raised when the world is finished generating for the first time.
@@ -46,6 +52,53 @@ namespace MagicalLifeAPI.World
             StandardPathFinder.BuildPathGraph(this);
 
             this.TurnStartHandler(new WorldEventArgs(this));
+        }
+
+        private void TestMove()
+        {
+            Living found = TestFindEntity(this.Tiles).Living[0];
+            Tile start = TestFindEntity(this.Tiles);
+            Path pth = StandardPathFinder.GetFastestPath(start, this.Tiles[10, 2, 1]);
+
+            Extensions.EnqueueCollection(found.QueuedMovement, pth.Segments);
+            World wrld = this;
+            EntityWorldMovement.MoveEntity(ref found, ref wrld);
+            this.Tiles = wrld.Tiles;
+        }
+
+        private Tile TestFindEntity(Tile[,,] tiles)
+        {
+            int xSize = tiles.GetLength(0);
+            int ySize = tiles.GetLength(1);
+            int zSize = tiles.GetLength(2);
+
+            int x = 0;
+            int y = 0;
+            int z = 0;
+
+            //Iterate over each row.
+            for (int i = 0; i < xSize; i++)
+            {
+                //Iterate over each column
+                for (int ii = 0; ii < ySize; ii++)
+                {
+                    //Iterate over the depth of each tile in the z axis.
+                    for (int iii = 0; iii < zSize; iii++)
+                    {
+                        //Each tile can be accessed by the xyz coordinates from this inner loop properly.
+                        if (tiles[x, y, z].Living.Count > 0)
+                        {
+                            return tiles[x, y, z];
+                        }
+                        z++;
+                    }
+                    y++;
+                    z = 0;
+                }
+                y = 0;
+                x++;
+            }
+            return null;
         }
 
         /// <summary>
