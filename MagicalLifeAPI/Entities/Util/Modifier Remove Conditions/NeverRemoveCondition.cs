@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeAPI.Entities.Util.IModifierRemoveConditions
+﻿namespace MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions
 {
     /// <summary>
     /// We shall never remove this modifier.

@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeAPI.Entities.Util
+﻿namespace MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions
 {
     /// <summary>
     /// Utilized to allow for custom events/circumstances to be used to determine when a modifier wears off.

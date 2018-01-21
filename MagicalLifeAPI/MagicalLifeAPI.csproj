@@ -46,13 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataTypes\Point3D.cs" />
     <Compile Include="Entities\Entity Factory\HumanFactory.cs" />
     <Compile Include="Entities\Humanoid\Human.cs" />
     <Compile Include="Entities\Living.cs" />
+    <Compile Include="Entities\Movement\EntityWorldMovement.cs" />
     <Compile Include="Entities\Util\Attribute.cs" />
-    <Compile Include="Entities\Util\IModifierRemoveCondition.cs" />
-    <Compile Include="Entities\Util\IModifierRemoveConditions\NeverRemoveCondition.cs" />
-    <Compile Include="Entities\Util\StandardPathFinder.cs" />
+    <Compile Include="Entities\Util\Modifier Remove Conditions\IModifierRemoveCondition.cs" />
+    <Compile Include="Entities\Util\Modifier Remove Conditions\NeverRemoveCondition.cs" />
+    <Compile Include="Entities\Movement\StandardPathFinder.cs" />
+    <Compile Include="Entities\Util\Modifier Remove Conditions\TimeRemoveCondition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Universal\Unique.cs" />
     <Compile Include="Universal\MajorEvents.cs" />
@@ -68,6 +71,7 @@
     <Compile Include="World\Base\Tile.cs" />
     <Compile Include="World\Base\Vegetation.cs" />
     <Compile Include="World\World.cs" />
+    <Compile Include="World\WorldUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\Animal\" />

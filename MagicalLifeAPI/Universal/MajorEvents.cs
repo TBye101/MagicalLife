@@ -1,7 +1,4 @@
-﻿using MagicalLifeAPI.World;
-using System;
-
-namespace MagicalLifeAPI.Universal
+﻿namespace MagicalLifeAPI.Universal
 {
     /// <summary>
     /// This class holds major events that are often used by many components of the game.

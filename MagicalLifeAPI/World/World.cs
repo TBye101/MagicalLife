@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Entities.Util;
+﻿using MagicalLifeAPI.Entities.Movement;
+using MagicalLifeAPI.Entities.Util;
 using MagicalLifeAPI.Universal;
 using System;
 
@@ -14,12 +15,10 @@ namespace MagicalLifeAPI.World
         /// </summary>
         public Tile[,,] Tiles { get; }
 
-
         /// <summary>
         /// Raised when the world is finished generating for the first time.
         /// </summary>
         public event EventHandler<WorldEventArgs> WorldGenerated;
-
 
         /// <summary>
         /// Generates a new world with the specified height, width, depth, and world generator.

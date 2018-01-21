@@ -1,5 +1,5 @@
-﻿using System.Drawing;
-using System;
+﻿using System;
+using System.Drawing;
 
 namespace MagicalLifeAPI.Util
 {

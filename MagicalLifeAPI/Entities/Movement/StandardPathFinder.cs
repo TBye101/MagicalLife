@@ -1,13 +1,9 @@
-﻿using DijkstraAlgorithm.Pathing;
+﻿using DijkstraAlgorithm.Graphing;
+using DijkstraAlgorithm.Pathing;
 using MagicalLifeAPI.World;
-using DijkstraAlgorithm.Graphing;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MagicalLifeAPI.Entities.Util
+namespace MagicalLifeAPI.Entities.Movement
 {
     /// <summary>
     /// A class that handles the construction of the graph used to do optimal pathfinding.
