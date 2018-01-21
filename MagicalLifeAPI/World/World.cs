@@ -1,4 +1,6 @@
-﻿using MagicalLifeAPI.Universal;
+﻿using MagicalLifeAPI.Entities.Util;
+using MagicalLifeAPI.Universal;
+using System;
 
 namespace MagicalLifeAPI.World
 {
@@ -12,6 +14,13 @@ namespace MagicalLifeAPI.World
         /// </summary>
         public Tile[,,] Tiles { get; }
 
+
+        /// <summary>
+        /// Raised when the world is finished generating for the first time.
+        /// </summary>
+        public event EventHandler<WorldEventArgs> WorldGenerated;
+
+
         /// <summary>
         /// Generates a new world with the specified height, width, depth, and world generator.
         /// </summary>
@@ -22,6 +31,10 @@ namespace MagicalLifeAPI.World
         public World(int width, int height, int depth, WorldGenerator generator)
         {
             this.Tiles = this.GenerateWorld(height, width, depth, generator);
+
+            WorldEventArgs worldEventArgs = new WorldEventArgs(this);
+            this.WorldGeneratedHandler(worldEventArgs);
+            StandardPathFinder.BuildPathGraph(this);
         }
 
         /// <summary>
@@ -43,6 +56,19 @@ namespace MagicalLifeAPI.World
             stage2 = generator.GenerateDetails(stage2);
 
             return stage2;
+        }
+
+        /// <summary>
+        /// Raises the world generated event.
+        /// </summary>
+        /// <param name="e"></param>
+        protected virtual void WorldGeneratedHandler(WorldEventArgs e)
+        {
+            EventHandler<WorldEventArgs> handler = WorldGenerated;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
         }
     }
 }
