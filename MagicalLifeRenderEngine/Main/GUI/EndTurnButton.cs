@@ -1,4 +1,7 @@
-﻿using System.Drawing;
+﻿using MagicalLifeAPI.World;
+using FastBitmapLib;
+using MagicalLifeSettings.Storage;
+using System.Drawing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +18,20 @@ namespace MagicalLifeRenderEngine.Main.GUI
         private static Bitmap State1;
         private static Bitmap State2;
 
+        private static readonly int scaleSize = 10;
+        private static Size ImageSize;
+        private static Size screenSize;
+
         static EndTurnButtonGUI()
         {
-            //Size ImageSize = new Size()
-            //Magical
+            screenSize = MainWindow.Default.ScreenSize;
+            ImageSize = new Size(screenSize.Width / scaleSize, screenSize.Height / scaleSize);
+
+            Bitmap s1 = TextureRegister.GetTexture("EndTurnButtonState1.png");
+            Bitmap s2 = TextureRegister.GetTexture("EndTurnButtonState2.png");
+
+            EndTurnButtonGUI.State1 = new Bitmap(s1, ImageSize);
+            EndTurnButtonGUI.State2 = new Bitmap(s2, ImageSize);
         }
 
         /// <summary>
@@ -27,7 +40,23 @@ namespace MagicalLifeRenderEngine.Main.GUI
         /// <param name="screen"></param>
         public static void Draw(ref Bitmap screen)
         {
+            FastBitmap fast = new FastBitmap(screen);
+            fast.Lock();
 
+            Bitmap currentTexture;
+
+            if (World.IsPlayersTurn)
+            {
+                currentTexture = State2;
+            }
+            else
+            {
+                currentTexture = State1;
+            }
+
+            Rectangle destination = new Rectangle(new Point(screenSize.Width - ImageSize.Width, screenSize.Height - ImageSize.Height), ImageSize);
+            fast.CopyRegion(currentTexture, new Rectangle(new Point(0, 0), ImageSize), destination);
+            fast.Unlock();
         }
     }
 }

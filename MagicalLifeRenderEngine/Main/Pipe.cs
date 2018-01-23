@@ -1,4 +1,5 @@
-﻿using FastBitmapLib;
+﻿using MagicalLifeRenderEngine.Main.GUI;
+using FastBitmapLib;
 using MagicalLifeAPI.World;
 using System.Drawing;
 
@@ -18,20 +19,10 @@ namespace MagicalLifeRenderEngine.Main
         public Bitmap GetScreen(int height, World world)
         {
             Bitmap tiles = this.GetTiles(height, world);
-
+            EndTurnButtonGUI.Draw(ref tiles);
             
 
             return tiles;
-        }
-
-        /// <summary>
-        /// Draws the end turn button onto the passed in screen bitmap.
-        /// </summary>
-        /// <param name="screen">The screen to draw the end turn button onto.</param>
-        /// <returns></returns>
-        private void DrawEndTurnButton(ref Bitmap screen)
-        {
-            
         }
 
         /// <summary>
