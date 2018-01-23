@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MagicalLifeGUI.Storage {
+namespace MagicalLifeSettings.Storage {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

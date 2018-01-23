@@ -1,7 +1,7 @@
 ﻿using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.World_Generation.Generators;
-using MagicalLifeGUI.Storage;
 using MagicalLifeRenderEngine.Main;
+using MagicalLifeSettings.Storage;
 using System;
 using System.Drawing;
 using System.Windows.Forms;

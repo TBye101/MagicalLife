@@ -18,6 +18,7 @@ namespace MagicalLifeRenderEngine.Main.GUI
         static EndTurnButtonGUI()
         {
             //Size ImageSize = new Size()
+            //Magical
         }
 
         /// <summary>

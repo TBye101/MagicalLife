@@ -43,36 +43,36 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings\KeyBindings.Designer.cs">
+    <Compile Include="Storage\KeyBindings.Designer.cs">
       <DependentUpon>KeyBindings.settings</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Settings\MainWindow.Designer.cs">
+    <Compile Include="Storage\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.settings</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Settings\Universal.Designer.cs">
+    <Compile Include="Storage\Universal.Designer.cs">
       <DependentUpon>Universal.settings</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Settings\KeyBindings.settings">
+    <Content Include="Storage\KeyBindings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>KeyBindings.Designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Settings\MainWindow.settings">
+    <Content Include="Storage\MainWindow.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>MainWindow.Designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Settings\Universal.settings">
+    <Content Include="Storage\Universal.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Universal.Designer.cs</LastGenOutput>
     </Content>

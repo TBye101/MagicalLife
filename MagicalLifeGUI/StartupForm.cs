@@ -1,4 +1,4 @@
-﻿using MagicalLifeGUI.Storage;
+﻿using MagicalLifeSettings.Storage;
 using System.Windows.Forms;
 
 namespace MagicalLifeGUI

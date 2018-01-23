@@ -55,39 +55,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StartupForm.cs" />
-    <Compile Include="Storage\KeyBindings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>KeyBindings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Storage\MainWindow.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>MainWindow.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Storage\Universal.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Universal.settings</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <Content Include="Storage\MainWindow.settings">
-      <Generator>PublicSettingsSingleFileGenerator</Generator>
-      <LastGenOutput>MainWindow.Designer.cs</LastGenOutput>
-    </Content>
-    <Content Include="Storage\Universal.settings">
-      <Generator>PublicSettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Universal.Designer.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <Content Include="Storage\KeyBindings.settings">
-      <Generator>PublicSettingsSingleFileGenerator</Generator>
-      <LastGenOutput>KeyBindings.Designer.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MagicalLifeAPI\MagicalLifeAPI.csproj">
@@ -97,6 +70,10 @@
     <ProjectReference Include="..\MagicalLifeRenderEngine\MagicalLifeRenderEngine.csproj">
       <Project>{c1553f02-e940-4f5e-8c8c-dd6184922d86}</Project>
       <Name>MagicalLifeRenderEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MagicalLifeSettings\MagicalLifeSettings.csproj">
+      <Project>{76b12b63-df5d-40fd-8e90-03395095dd71}</Project>
+      <Name>MagicalLifeSettings</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
