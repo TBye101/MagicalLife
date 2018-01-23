@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C1553F02-E940-4F5E-8C8C-DD6184922D86}</ProjectGuid>
+    <ProjectGuid>{76B12B63-DF5D-40FD-8E90-03395095DD71}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MagicalLifeRenderEngine</RootNamespace>
-    <AssemblyName>MagicalLifeRenderEngine</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <RootNamespace>MagicalLifeSettings</RootNamespace>
+    <AssemblyName>MagicalLifeSettings</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,12 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FastBitmapLib, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FastBitmapLib.1.1.2\lib\net452\FastBitmapLib.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,38 +42,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Main\GUI\EndTurnButton.cs" />
-    <Compile Include="Main\Pipe.cs" />
-    <Compile Include="Main\TextureRegister.cs" />
-    <Compile Include="Main\TileImageGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Util\ResourceLoader.cs" />
+    <Compile Include="Settings\KeyBindings.Designer.cs">
+      <DependentUpon>KeyBindings.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Settings\MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Settings\Universal.Designer.cs">
+      <DependentUpon>Universal.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MagicalLifeAPI\MagicalLifeAPI.csproj">
-      <Project>{fe8400a7-9dc8-4ab4-8c54-ac5f36bf7639}</Project>
-      <Name>MagicalLifeAPI</Name>
-    </ProjectReference>
+    <Content Include="Settings\KeyBindings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>KeyBindings.Designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <Content Include="Settings\MainWindow.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>MainWindow.Designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resource\Texture\DirtTile.png" />
+    <Content Include="Settings\Universal.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Universal.Designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resource\Texture\TestTile.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resource\Texture\GrassTile.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resource\Texture\Basic Human.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resource\Texture\EndTurnButtonState1.png" />
-    <EmbeddedResource Include="Resource\Texture\EndTurnButtonState2.png" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

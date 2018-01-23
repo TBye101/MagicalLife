@@ -10,6 +10,31 @@ namespace MagicalLifeRenderEngine.Main
     public class Pipe
     {
         /// <summary>
+        /// Generates the entire screen. The tiles as well as the gui.
+        /// </summary>
+        /// <param name="height">The level (z axis) that we should generate an image of all the tiles at.</param>
+        /// <param name="world"></param>
+        /// <returns></returns>
+        public Bitmap GetScreen(int height, World world)
+        {
+            Bitmap tiles = this.GetTiles(height, world);
+
+            
+
+            return tiles;
+        }
+
+        /// <summary>
+        /// Draws the end turn button onto the passed in screen bitmap.
+        /// </summary>
+        /// <param name="screen">The screen to draw the end turn button onto.</param>
+        /// <returns></returns>
+        private void DrawEndTurnButton(ref Bitmap screen)
+        {
+            
+        }
+
+        /// <summary>
         /// Returns what each tile on the map at a specified height looks like.
         /// This is a 2D array.
         /// </summary>

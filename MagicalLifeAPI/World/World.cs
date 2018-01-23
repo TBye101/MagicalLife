@@ -37,6 +37,11 @@ namespace MagicalLifeAPI.World
         public static event EventHandler<WorldEventArgs> TurnEnd;
 
         /// <summary>
+        /// If true, it is the player's turn. If not, AI logic and other logic should be running.
+        /// </summary>
+        public static bool IsPlayersTurn { get; private set; } = false;
+
+        /// <summary>
         /// Generates a new world with the specified height, width, depth, and world generator.
         /// </summary>
         /// <param name="height"></param>
@@ -150,6 +155,7 @@ namespace MagicalLifeAPI.World
             EventHandler<WorldEventArgs> handler = TurnStart;
             if (handler != null)
             {
+                World.IsPlayersTurn = true;
                 handler(this, e);
             }
         }
@@ -163,6 +169,7 @@ namespace MagicalLifeAPI.World
             EventHandler<WorldEventArgs> handler = TurnEnd;
             if (handler != null)
             {
+                World.IsPlayersTurn = false;
                 handler(this, e);
             }
         }
