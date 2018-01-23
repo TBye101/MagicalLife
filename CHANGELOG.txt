@@ -3,9 +3,9 @@
 		### Features
 			*
 		#### API
-			*
+			*Support for creature movement
 		### Tweaks
-			*
+			*Changed many data structures under the hood
 		### Bugs
 			*
 

@@ -72,5 +72,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Resource\Texture\Basic Human.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resource\Texture\EndTurnButtonState1.png" />
+    <Content Include="Resource\Texture\EndTurnButtonState2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
