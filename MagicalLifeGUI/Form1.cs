@@ -1,4 +1,5 @@
-﻿using MagicalLifeRenderEngine.Main.GUI.Click;
+﻿using MagicalLifeAPI.Universal;
+using MagicalLifeRenderEngine.Main.GUI.Click;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.World_Generation.Generators;
 using MagicalLifeRenderEngine.Main;
@@ -11,7 +12,6 @@ namespace MagicalLifeGUI
 {
     public partial class Form1 : Form
     {
-        private World world;
         private Pipe pipe = new Pipe();
         private Bitmap screen;
 
@@ -34,9 +34,9 @@ namespace MagicalLifeGUI
         private void NewGameButton_Click(object sender, EventArgs e)
         {
             this.ToggleMainMenu();
-            this.world = new World(MainWindow.Default.ScreenSize.Height / Tile.GetTileSize().Height,
+            World.Initialize(MainWindow.Default.ScreenSize.Height / Tile.GetTileSize().Height,
                MainWindow.Default.ScreenSize.Width / Tile.GetTileSize().Width, 2, new Dirtland());
-            screen = pipe.GetScreen(1, this.world);
+            screen = pipe.GetScreen(1, World.mainWorld);
         }
 
         /// <summary>

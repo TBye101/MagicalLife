@@ -36,42 +36,45 @@ namespace MagicalLifeAPI.World
         /// </summary>
         public static event EventHandler<WorldEventArgs> TurnEnd;
 
+        public static World mainWorld { get; protected set; }
+
         /// <summary>
         /// If true, it is the player's turn. If not, AI logic and other logic should be running.
         /// </summary>
         public static bool IsPlayersTurn { get; private set; } = false;
 
+        public World()
+        {
+        }
+
         /// <summary>
         /// Generates a new world with the specified height, width, depth, and world generator.
         /// </summary>
-        /// <param name="height"></param>
-        /// <param name="width"></param>
-        /// <param name="depth"></param>
-        /// <param name="generator"></param>
-        public World(int width, int height, int depth, WorldGenerator generator)
+        public static void Initialize(int width, int height, int depth, WorldGenerator generator)
         {
-            this.Tiles = this.GenerateWorld(height, width, depth, generator);
+            mainWorld = new World();
+            mainWorld.Tiles = mainWorld.GenerateWorld(height, width, depth, generator);
 
-            WorldEventArgs worldEventArgs = new WorldEventArgs(this);
-            this.WorldGeneratedHandler(worldEventArgs);
-            StandardPathFinder.BuildPathGraph(this);
+            WorldEventArgs worldEventArgs = new WorldEventArgs(mainWorld);
+            mainWorld.WorldGeneratedHandler(worldEventArgs);
+            StandardPathFinder.BuildPathGraph(mainWorld);
 
-            this.TurnStartHandler(new WorldEventArgs(this));
+            World.TurnStartHandler(new WorldEventArgs(mainWorld));
         }
 
-        private void TestMove()
+        private static void TestMove()
         {
-            Living found = TestFindEntity(this.Tiles).Living[0];
-            Tile start = TestFindEntity(this.Tiles);
-            Path pth = StandardPathFinder.GetFastestPath(start, this.Tiles[10, 2, 1]);
+            Living found = TestFindEntity(mainWorld.Tiles).Living[0];
+            Tile start = TestFindEntity(mainWorld.Tiles);
+            Path pth = StandardPathFinder.GetFastestPath(start, mainWorld.Tiles[10, 2, 1]);
 
             Extensions.EnqueueCollection(found.QueuedMovement, pth.Segments);
-            World wrld = this;
+            World wrld = mainWorld;
             EntityWorldMovement.MoveEntity(ref found, ref wrld);
-            this.Tiles = wrld.Tiles;
+            mainWorld.Tiles = wrld.Tiles;
         }
 
-        private Tile TestFindEntity(Tile[,,] tiles)
+        private static Tile TestFindEntity(Tile[,,] tiles)
         {
             int xSize = tiles.GetLength(0);
             int ySize = tiles.GetLength(1);
@@ -127,10 +130,11 @@ namespace MagicalLifeAPI.World
             return stage2;
         }
 
-        public void EndTurn()
+        public static void EndTurn()
         {
-            this.TurnEndHandler(new WorldEventArgs(this));
-            this.TurnStartHandler(new WorldEventArgs(this));
+            TestMove();
+            TurnEndHandler(new WorldEventArgs(mainWorld));
+            TurnStartHandler(new WorldEventArgs(mainWorld));
         }
 
         /// <summary>
@@ -150,13 +154,13 @@ namespace MagicalLifeAPI.World
         /// Raises the world generated event.
         /// </summary>
         /// <param name="e"></param>
-        protected virtual void TurnStartHandler(WorldEventArgs e)
+        public static void TurnStartHandler(WorldEventArgs e)
         {
             EventHandler<WorldEventArgs> handler = TurnStart;
             if (handler != null)
             {
                 World.IsPlayersTurn = true;
-                handler(this, e);
+                handler(World.mainWorld, e);
             }
         }
 
@@ -164,13 +168,13 @@ namespace MagicalLifeAPI.World
         /// Raises the world generated event.
         /// </summary>
         /// <param name="e"></param>
-        protected virtual void TurnEndHandler(WorldEventArgs e)
+        public static void TurnEndHandler(WorldEventArgs e)
         {
             EventHandler<WorldEventArgs> handler = TurnEnd;
             if (handler != null)
             {
                 World.IsPlayersTurn = false;
-                handler(this, e);
+                handler(World.mainWorld, e);
             }
         }
     }

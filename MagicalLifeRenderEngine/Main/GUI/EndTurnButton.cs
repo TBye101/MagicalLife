@@ -1,4 +1,5 @@
-﻿using MagicalLifeRenderEngine.Util;
+﻿using MagicalLifeRenderEngine.Main.GUI.Click;
+using MagicalLifeRenderEngine.Util;
 using MagicalLifeAPI.World;
 using FastBitmapLib;
 using MagicalLifeSettings.Storage;
@@ -23,6 +24,15 @@ namespace MagicalLifeRenderEngine.Main.GUI
         private static Size ImageSize;
         private static Size screenSize;
 
+        private static Point drawLocation = new Point(screenSize.Width - ImageSize.Width, screenSize.Height - (int)(ImageSize.Height * 1.75));
+
+        
+
+        /// <summary>
+        /// The ID of our click bounds.
+        /// </summary>
+        private static Guid boundsID;
+
         static EndTurnButtonGUI()
         {
             screenSize = MainWindow.Default.ScreenSize;
@@ -33,6 +43,16 @@ namespace MagicalLifeRenderEngine.Main.GUI
 
             EndTurnButtonGUI.State1 = new Bitmap(s1, ImageSize);
             EndTurnButtonGUI.State2 = new Bitmap(s2, ImageSize);
+
+            ClickBounds bounds = new ClickBounds(new Rectangle(drawLocation, ImageSize), int.MaxValue);
+            bounds.Clicked += Bounds_Clicked;
+            boundsID = bounds.ID;
+            ClickDistributor.AddClickBounds(bounds);
+        }
+
+        private static void Bounds_Clicked(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            World.EndTurn();
         }
 
         /// <summary>
@@ -51,7 +71,7 @@ namespace MagicalLifeRenderEngine.Main.GUI
             {
                 currentTexture = State1;
             }
-            GraphicalUtils.DrawBitmapOnBitmap(currentTexture, screen, new Point(screenSize.Width - ImageSize.Width, screenSize.Height - (int)(ImageSize.Height * 1.75)));
+            GraphicalUtils.DrawBitmapOnBitmap(currentTexture, screen, drawLocation);
         }
     }
 }
