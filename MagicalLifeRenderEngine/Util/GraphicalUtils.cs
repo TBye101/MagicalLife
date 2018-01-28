@@ -16,11 +16,12 @@ namespace MagicalLifeRenderEngine.Util
     {
         /// <summary>
         /// Draws the source bitmap onto the target bitmap.
+        /// The target bitmap must be of equal or greater size to the source bitmap.
         /// </summary>
         /// <param name="source"></param>
         /// <param name="target"></param>
         /// <returns></returns>
-        public static Bitmap DrawBitmapOnBitmap(Bitmap source, Bitmap target)
+        public static Bitmap DrawBitmapOnBitmap(Bitmap source, Bitmap target, Point startingDestination)
         {
             int width = source.Width;
             int height = source.Height;
@@ -31,7 +32,7 @@ namespace MagicalLifeRenderEngine.Util
                 {
                     for (int x = 0; x < width; x++)
                     {
-                        fastTarget.SetPixel(x, y, FlattenColor(fastTarget.GetPixelUInt(x, y), fastForeBitmap.GetPixelUInt(x, y)));
+                        fastTarget.SetPixel(x + startingDestination.X, y + startingDestination.Y, FlattenColor(fastTarget.GetPixelUInt(x, y), fastForeBitmap.GetPixelUInt(x, y)));
                     }
                 }
             }

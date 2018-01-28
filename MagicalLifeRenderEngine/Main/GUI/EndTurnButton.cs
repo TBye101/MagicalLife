@@ -56,7 +56,7 @@ namespace MagicalLifeRenderEngine.Main.GUI
 
             //Rectangle destination = new Rectangle(new Point(screenSize.Width - ImageSize.Width, screenSize.Height - ImageSize.Height), ImageSize);
             //fast.CopyRegion(currentTexture, new Rectangle(new Point(0, 0), ImageSize), destination);
-            GraphicalUtils.DrawBitmapOnBitmap(currentTexture, screen);
+            GraphicalUtils.DrawBitmapOnBitmap(currentTexture, screen, new Point(screenSize.Width - ImageSize.Width, screenSize.Height - (int)(ImageSize.Height * 1.75)));
 
             //fast.Unlock();
         }
