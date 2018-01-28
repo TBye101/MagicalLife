@@ -1,7 +1,7 @@
 		SneakyTactician  <SneakyTactician@outlook.com>
 	[Version 0.0.0.3]
 		### Features
-			*
+			*End turn button is now rendered
 		#### API
 			*Support for creature movement
 		### Tweaks

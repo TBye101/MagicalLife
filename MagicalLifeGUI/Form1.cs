@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.World;
+﻿using MagicalLifeRenderEngine.Main.GUI.Click;
+using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.World_Generation.Generators;
 using MagicalLifeRenderEngine.Main;
 using MagicalLifeSettings.Storage;
@@ -76,6 +77,11 @@ namespace MagicalLifeGUI
             {
                 this.ToggleMainMenu();
             }
+        }
+
+        private void Form1_MouseClick(object sender, MouseEventArgs e)
+        {
+            ClickDistributor.Click(e);
         }
     }
 }

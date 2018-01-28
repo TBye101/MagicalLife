@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Universal;
+﻿using System.Windows.Forms;
+using MagicalLifeAPI.Universal;
 using System.Drawing;
 using System;
 using System.Collections.Generic;
@@ -14,18 +15,13 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
     public class ClickBounds : Unique
     {
         /// <summary>
-        /// The point where this click bounds begins.
+        /// The range of this <see cref="ClickBounds"/> obejct.
         /// </summary>
-        public Point StartingLocation { get; set; }
-
-        /// <summary>
-        /// The size of this click bounds.
-        /// </summary>
-        public Size Size { get; set; }
+        public Rectangle Bounds { get; set; }
 
         /// <summary>
         /// The priority of this click bounds.
-        /// Must be equal to or greater than 0, unless this clickbounds ALWAYS has priority over other click bounds.
+        /// The higher the value, the higher the priority.
         /// </summary>
         public int Priority { get; set; }
 
@@ -35,25 +31,24 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         /// <param name="startingLocation">The point where this click bounds begins.</param>
         /// <param name="size">The size of this click bounds.</param>
         /// <param name="priority">The priority of this click bounds. Must be equal to or greater than 0, unless this clickbounds ALWAYS has priority over other click bounds.</param>
-        public ClickBounds(Point startingLocation, Size size, int priority)
+        public ClickBounds(Rectangle bounds, int priority)
         {
-            this.StartingLocation = startingLocation;
-            this.Size = size;
+            this.Bounds = bounds;
             this.Priority = priority;
         }
 
         /// <summary>
         /// This event is raised whenever this clickbounds is clicked on, and given priority.
         /// </summary>
-        public event EventHandler<Point> Clicked;
+        public event EventHandler<MouseEventArgs> Clicked;
 
         /// <summary>
         /// Raises the Clicked event.
         /// </summary>
         /// <param name="e"></param>
-        public virtual void ClickMe(Point e)
+        public virtual void ClickMe(MouseEventArgs e)
         {
-            EventHandler<Point> handler = Clicked;
+            EventHandler<MouseEventArgs> handler = Clicked;
             if (handler != null)
             {
                 handler(this, e);

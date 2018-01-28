@@ -1,4 +1,6 @@
-﻿using System;
+﻿using System.Drawing;
+using System.Windows.Forms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +17,22 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         /// Contains all of the ClickBounds this class handles.
         /// </summary>
         private static SortedSet<ClickBounds> Bounds = new SortedSet<ClickBounds>(new BoundsSorter());
+
+        /// <summary>
+        /// Handles a click.
+        /// </summary>
+        /// <param name="clickData"></param>
+        public static void Click(MouseEventArgs clickData)
+        {
+            foreach (ClickBounds item in Bounds)
+            {
+                if (item.Bounds.Contains(clickData.Location))
+                {
+                    item.ClickMe(clickData);
+                    break;
+                }
+            }
+        }
 
         /// <summary>
         /// Adds a <see cref="ClickBounds"/> object to the system to be handled.
