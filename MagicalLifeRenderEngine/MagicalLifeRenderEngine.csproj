@@ -50,6 +50,7 @@
     <Compile Include="Main\TextureRegister.cs" />
     <Compile Include="Main\TileImageGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\GraphicalUtils.cs" />
     <Compile Include="Util\ResourceLoader.cs" />
   </ItemGroup>
   <ItemGroup>

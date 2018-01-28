@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.World;
+﻿using MagicalLifeRenderEngine.Util;
+using MagicalLifeAPI.World;
 using FastBitmapLib;
 using MagicalLifeSettings.Storage;
 using System.Drawing;
@@ -18,7 +19,7 @@ namespace MagicalLifeRenderEngine.Main.GUI
         private static Bitmap State1;
         private static Bitmap State2;
 
-        private static readonly int scaleSize = 10;
+        private static readonly int scaleSize = 20;
         private static Size ImageSize;
         private static Size screenSize;
 
@@ -40,8 +41,7 @@ namespace MagicalLifeRenderEngine.Main.GUI
         /// <param name="screen"></param>
         public static void Draw(ref Bitmap screen)
         {
-            FastBitmap fast = new FastBitmap(screen);
-            fast.Lock();
+            //FastBitmap fast = screen.FastLock();
 
             Bitmap currentTexture;
 
@@ -54,9 +54,11 @@ namespace MagicalLifeRenderEngine.Main.GUI
                 currentTexture = State1;
             }
 
-            Rectangle destination = new Rectangle(new Point(screenSize.Width - ImageSize.Width, screenSize.Height - ImageSize.Height), ImageSize);
-            fast.CopyRegion(currentTexture, new Rectangle(new Point(0, 0), ImageSize), destination);
-            fast.Unlock();
+            //Rectangle destination = new Rectangle(new Point(screenSize.Width - ImageSize.Width, screenSize.Height - ImageSize.Height), ImageSize);
+            //fast.CopyRegion(currentTexture, new Rectangle(new Point(0, 0), ImageSize), destination);
+            GraphicalUtils.DrawBitmapOnBitmap(currentTexture, screen);
+
+            //fast.Unlock();
         }
     }
 }
