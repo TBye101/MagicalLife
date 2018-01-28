@@ -20,6 +20,7 @@ namespace MagicalLifeRenderEngine.Util
         /// </summary>
         /// <param name="source"></param>
         /// <param name="target"></param>
+        /// <param name="startingDestination">The point to begin drawing the source bitmap at onto the target bitmap.</param>
         /// <returns></returns>
         public static Bitmap DrawBitmapOnBitmap(Bitmap source, Bitmap target, Point startingDestination)
         {

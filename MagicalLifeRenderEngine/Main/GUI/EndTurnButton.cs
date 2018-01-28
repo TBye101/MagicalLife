@@ -16,10 +16,10 @@ namespace MagicalLifeRenderEngine.Main.GUI
     /// </summary>
     public static class EndTurnButtonGUI
     {
-        private static Bitmap State1;
-        private static Bitmap State2;
+        private static readonly Bitmap State1;
+        private static readonly Bitmap State2;
 
-        private static readonly int scaleSize = 20;
+        private const int scaleSize = 20;
         private static Size ImageSize;
         private static Size screenSize;
 
@@ -41,8 +41,6 @@ namespace MagicalLifeRenderEngine.Main.GUI
         /// <param name="screen"></param>
         public static void Draw(ref Bitmap screen)
         {
-            //FastBitmap fast = screen.FastLock();
-
             Bitmap currentTexture;
 
             if (World.IsPlayersTurn)
@@ -53,12 +51,7 @@ namespace MagicalLifeRenderEngine.Main.GUI
             {
                 currentTexture = State1;
             }
-
-            //Rectangle destination = new Rectangle(new Point(screenSize.Width - ImageSize.Width, screenSize.Height - ImageSize.Height), ImageSize);
-            //fast.CopyRegion(currentTexture, new Rectangle(new Point(0, 0), ImageSize), destination);
             GraphicalUtils.DrawBitmapOnBitmap(currentTexture, screen, new Point(screenSize.Width - ImageSize.Width, screenSize.Height - (int)(ImageSize.Height * 1.75)));
-
-            //fast.Unlock();
         }
     }
 }

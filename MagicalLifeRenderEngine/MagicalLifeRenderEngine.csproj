@@ -45,6 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Main\GUI\Click\BoundsSorter.cs" />
+    <Compile Include="Main\GUI\Click\ClickBounds.cs" />
+    <Compile Include="Main\GUI\Click\ClickDistributor.cs" />
     <Compile Include="Main\GUI\EndTurnButton.cs" />
     <Compile Include="Main\Pipe.cs" />
     <Compile Include="Main\TextureRegister.cs" />
