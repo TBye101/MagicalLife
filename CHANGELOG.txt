@@ -1,4 +1,15 @@
 		SneakyTactician  <SneakyTactician@outlook.com>
+
+	[Version 0.0.0.4]
+		### Features
+			*
+		#### API
+			*
+		### Tweaks
+			*End turn button now displays an X when it is the player's turn, and gives the player a check mark when it is not their turn
+		### Bugs
+			*
+
 	[Version 0.0.0.3]
 		### Features
 			*End turn button is now rendered
@@ -6,8 +17,6 @@
 			*Support for creature movement
 		### Tweaks
 			*Changed many data structures under the hood
-		### Bugs
-			*
 
 	[Version 0.0.0.2]
 		### Features

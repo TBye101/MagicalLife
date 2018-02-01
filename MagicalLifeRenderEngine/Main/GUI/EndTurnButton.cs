@@ -65,11 +65,11 @@ namespace MagicalLifeRenderEngine.Main.GUI
 
             if (World.IsPlayersTurn)
             {
-                currentTexture = State2;
+                currentTexture = State1;
             }
             else
             {
-                currentTexture = State1;
+                currentTexture = State2;
             }
             GraphicalUtils.DrawBitmapOnBitmap(currentTexture, screen, drawLocation);
         }

@@ -74,8 +74,9 @@ namespace MagicalLifeGUI
         {
             if (this.screen != null)
             {
+                Bitmap scr = this.pipe.GetScreen(1);
                 //e.Graphics.DrawImage(this.screen, new Point(0, 0));
-                e.Graphics.DrawImage(this.pipe.GetScreen(1), new Rectangle(new Point(0, 0), MainWindow.Default.ScreenSize));
+                e.Graphics.DrawImage(scr, new Rectangle(new Point(0, 0), MainWindow.Default.ScreenSize));
             }
         }
 
