@@ -1,5 +1,5 @@
-﻿using System;
-
+﻿using MagicalLifeAPI.World;
+using System;
 namespace MagicalLifeAPI.Universal
 {
     /// <summary>
@@ -8,15 +8,5 @@ namespace MagicalLifeAPI.Universal
     public static class MajorEvents
     {
         //https://www.codeproject.com/Articles/11541/The-Simplest-C-Events-Example-Imaginable
-
-        /// <summary>
-        /// Raised at the start of each turn.
-        /// </summary>
-        public static event EventHandler TurnStart;
-
-        /// <summary>
-        /// Raised at the end of each turn.
-        /// </summary>
-        public static event EventHandler TurnEnd;
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.Web.UI.DataVisualization.Charting;
+﻿using MagicalLifeAPI.DataTypes;
 
 namespace MagicalLifeAPI.World.Tiles
 {
@@ -7,7 +7,7 @@ namespace MagicalLifeAPI.World.Tiles
     /// </summary>
     public class Dirt : Tile
     {
-        public Dirt(Point3D location) : base(location)
+        public Dirt(Point3D location) : base(location, 10)
         {
             //this.AdditionalMovementCost = 0;
         }
@@ -20,6 +20,7 @@ namespace MagicalLifeAPI.World.Tiles
         public override string GetTextureName()
         {
             return "DirtTile.png";
+            //return "TestTile.png";
         }
     }
 }

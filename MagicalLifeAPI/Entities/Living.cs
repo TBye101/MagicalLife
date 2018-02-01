@@ -1,4 +1,8 @@
-﻿using MagicalLifeAPI.Entities.Util;
+﻿using System.Collections.Generic;
+using DijkstraAlgorithm.Pathing;
+using System.Collections.Concurrent;
+using System.Collections;
+using MagicalLifeAPI.Entities.Util;
 using MagicalLifeAPI.Universal;
 
 namespace MagicalLifeAPI.Entities
@@ -8,6 +12,11 @@ namespace MagicalLifeAPI.Entities
     /// </summary>
     public abstract class Living : Unique
     {
+        /// <summary>
+        /// A queue that holds the queued movement steps up for this living creature.
+        /// </summary>
+        public Queue<PathSegment> QueuedMovement { get; set; } = new Queue<PathSegment>();
+
         /// <summary>
         /// How many hit points this creature has.
         /// </summary>

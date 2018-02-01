@@ -1,4 +1,14 @@
-﻿using MagicalLifeAPI.Universal;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Util;
+using System.Collections.Generic;
+using System.Collections;
+using System.Runtime.CompilerServices;
+using DijkstraAlgorithm.Pathing;
+using MagicalLifeAPI.Entities;
+using MagicalLifeAPI.Entities.Movement;
+using MagicalLifeAPI.Entities.Util;
+using MagicalLifeAPI.Universal;
+using System;
 
 namespace MagicalLifeAPI.World
 {
@@ -10,18 +20,97 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// A 3D array that holds every tile in the current world.
         /// </summary>
-        public Tile[,,] Tiles { get; }
+        public Tile[,,] Tiles { get; private set; }
+
+        /// <summary>
+        /// Raised when the world is finished generating for the first time.
+        /// </summary>
+        public event EventHandler<WorldEventArgs> WorldGenerated;
+
+        /// <summary>
+        /// Raised at the start of each turn.
+        /// </summary>
+        public static event EventHandler<WorldEventArgs> TurnStart;
+
+        /// <summary>
+        /// Raised at the end of each turn.
+        /// </summary>
+        public static event EventHandler<WorldEventArgs> TurnEnd;
+
+        public static World mainWorld { get; protected set; }
+
+        /// <summary>
+        /// If true, it is the player's turn. If not, AI logic and other logic should be running.
+        /// </summary>
+        public static bool IsPlayersTurn { get; private set; } = false;
+
+        public World()
+        {
+        }
 
         /// <summary>
         /// Generates a new world with the specified height, width, depth, and world generator.
         /// </summary>
-        /// <param name="height"></param>
-        /// <param name="width"></param>
-        /// <param name="depth"></param>
-        /// <param name="generator"></param>
-        public World(int width, int height, int depth, WorldGenerator generator)
+        public static void Initialize(int width, int height, int depth, WorldGenerator generator)
         {
-            this.Tiles = this.GenerateWorld(height, width, depth, generator);
+            mainWorld = new World();
+            mainWorld.Tiles = mainWorld.GenerateWorld(height, width, depth, generator);
+
+            WorldEventArgs worldEventArgs = new WorldEventArgs(mainWorld);
+            mainWorld.WorldGeneratedHandler(worldEventArgs);
+            StandardPathFinder.BuildPathGraph(mainWorld);
+
+            World.TurnStartHandler(new WorldEventArgs(mainWorld));
+        }
+
+        private static void TestMove()
+        {
+            Living found = TestFindEntity(mainWorld.Tiles).Living[0];
+            Tile start = TestFindEntity(mainWorld.Tiles);
+
+            Point3D des = new Point3D(10, 2, 1);
+            if (start.Location != des && found.QueuedMovement.Count == 0)
+            {
+                Path pth = StandardPathFinder.GetFastestPath(start, mainWorld.Tiles[10, 2, 1]);
+
+                Extensions.EnqueueCollection(found.QueuedMovement, pth.Segments);
+                EntityWorldMovement.MoveEntity(ref found);
+            }
+        }
+
+        private static Tile TestFindEntity(Tile[,,] tiles)
+        {
+            int xSize = tiles.GetLength(0);
+            int ySize = tiles.GetLength(1);
+            int zSize = tiles.GetLength(2);
+
+            int x = 0;
+            int y = 0;
+            int z = 0;
+
+            //Iterate over each row.
+            for (int i = 0; i < xSize; i++)
+            {
+                //Iterate over each column
+                for (int ii = 0; ii < ySize; ii++)
+                {
+                    //Iterate over the depth of each tile in the z axis.
+                    for (int iii = 0; iii < zSize; iii++)
+                    {
+                        //Each tile can be accessed by the xyz coordinates from this inner loop properly.
+                        if (tiles[x, y, z].Living.Count > 0)
+                        {
+                            return tiles[x, y, z];
+                        }
+                        z++;
+                    }
+                    y++;
+                    z = 0;
+                }
+                y = 0;
+                x++;
+            }
+            return null;
         }
 
         /// <summary>
@@ -43,6 +132,54 @@ namespace MagicalLifeAPI.World
             stage2 = generator.GenerateDetails(stage2);
 
             return stage2;
+        }
+
+        public static void EndTurn()
+        {
+            TestMove();
+            TurnEndHandler(new WorldEventArgs(mainWorld));
+            TurnStartHandler(new WorldEventArgs(mainWorld));
+        }
+
+        /// <summary>
+        /// Raises the world generated event.
+        /// </summary>
+        /// <param name="e"></param>
+        protected virtual void WorldGeneratedHandler(WorldEventArgs e)
+        {
+            EventHandler<WorldEventArgs> handler = WorldGenerated;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        /// <summary>
+        /// Raises the world generated event.
+        /// </summary>
+        /// <param name="e"></param>
+        public static void TurnStartHandler(WorldEventArgs e)
+        {
+            EventHandler<WorldEventArgs> handler = TurnStart;
+            if (handler != null)
+            {
+                World.IsPlayersTurn = true;
+                handler(World.mainWorld, e);
+            }
+        }
+
+        /// <summary>
+        /// Raises the world generated event.
+        /// </summary>
+        /// <param name="e"></param>
+        public static void TurnEndHandler(WorldEventArgs e)
+        {
+            EventHandler<WorldEventArgs> handler = TurnEnd;
+            if (handler != null)
+            {
+                World.IsPlayersTurn = false;
+                handler(World.mainWorld, e);
+            }
         }
     }
 }

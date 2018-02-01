@@ -1,7 +1,9 @@
-﻿using MagicalLifeAPI.World;
+﻿using MagicalLifeAPI.Universal;
+using MagicalLifeRenderEngine.Main.GUI.Click;
+using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.World_Generation.Generators;
-using MagicalLifeGUI.Storage;
 using MagicalLifeRenderEngine.Main;
+using MagicalLifeSettings.Storage;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -10,7 +12,6 @@ namespace MagicalLifeGUI
 {
     public partial class Form1 : Form
     {
-        private World world;
         private Pipe pipe = new Pipe();
         private Bitmap screen;
 
@@ -19,6 +20,18 @@ namespace MagicalLifeGUI
         public Form1()
         {
             InitializeComponent();
+            World.TurnStart += this.World_TurnStart;
+            World.TurnEnd += this.World_TurnEnd;
+        }
+
+        private void World_TurnEnd(object sender, WorldEventArgs e)
+        {
+            this.Refresh();
+        }
+
+        private void World_TurnStart(object sender, WorldEventArgs e)
+        {
+            this.Refresh();
         }
 
         private void Form1_Load(object sender, System.EventArgs e)
@@ -33,9 +46,9 @@ namespace MagicalLifeGUI
         private void NewGameButton_Click(object sender, EventArgs e)
         {
             this.ToggleMainMenu();
-            this.world = new World(MainWindow.Default.ScreenSize.Height / Tile.GetTileSize().Height,
+            World.Initialize(MainWindow.Default.ScreenSize.Height / Tile.GetTileSize().Height,
                MainWindow.Default.ScreenSize.Width / Tile.GetTileSize().Width, 2, new Dirtland());
-            screen = pipe.GetTiles(1, this.world);
+            screen = pipe.GetScreen(1);
         }
 
         /// <summary>
@@ -62,7 +75,7 @@ namespace MagicalLifeGUI
             if (this.screen != null)
             {
                 //e.Graphics.DrawImage(this.screen, new Point(0, 0));
-                e.Graphics.DrawImage(this.screen, new Rectangle(new Point(0, 0), MainWindow.Default.ScreenSize));
+                e.Graphics.DrawImage(this.pipe.GetScreen(1), new Rectangle(new Point(0, 0), MainWindow.Default.ScreenSize));
             }
         }
 
@@ -76,6 +89,11 @@ namespace MagicalLifeGUI
             {
                 this.ToggleMainMenu();
             }
+        }
+
+        private void Form1_MouseClick(object sender, MouseEventArgs e)
+        {
+            ClickDistributor.Click(e);
         }
     }
 }

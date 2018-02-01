@@ -37,6 +37,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,16 +46,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Main\GUI\Click\BoundsSorter.cs" />
+    <Compile Include="Main\GUI\Click\ClickBounds.cs" />
+    <Compile Include="Main\GUI\Click\ClickDistributor.cs" />
+    <Compile Include="Main\GUI\EndTurnButton.cs" />
     <Compile Include="Main\Pipe.cs" />
     <Compile Include="Main\TextureRegister.cs" />
     <Compile Include="Main\TileImageGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\GraphicalUtils.cs" />
     <Compile Include="Util\ResourceLoader.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MagicalLifeAPI\MagicalLifeAPI.csproj">
       <Project>{fe8400a7-9dc8-4ab4-8c54-ac5f36bf7639}</Project>
       <Name>MagicalLifeAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MagicalLifeSettings\MagicalLifeSettings.csproj">
+      <Project>{76b12b63-df5d-40fd-8e90-03395095dd71}</Project>
+      <Name>MagicalLifeSettings</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -72,5 +82,10 @@
   <ItemGroup>
     <EmbeddedResource Include="Resource\Texture\Basic Human.png" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource\Texture\EndTurnButtonState1.png" />
+    <EmbeddedResource Include="Resource\Texture\EndTurnButtonState2.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
