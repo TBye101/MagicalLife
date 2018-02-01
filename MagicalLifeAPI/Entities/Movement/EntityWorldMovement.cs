@@ -19,17 +19,18 @@ namespace MagicalLifeAPI.Entities.Movement
         /// Moves an entity from it's current position to as close to it's target destination as it can get. This will appear like teleporting.
         /// </summary>
         /// <param name="entity"></param>
-        public static void MoveEntity(ref Living entity, ref World.World world)
+        public static void MoveEntity(ref Living entity)
         {
-            while (entity.MovementSpeed.GetValue() > 0)
+            Queue<PathSegment> path = entity.QueuedMovement;
+            while (entity.MovementSpeed.GetValue() > 0 && path.Count > 0)
             {
-                PathSegment destination = entity.QueuedMovement.Dequeue();
-                Tile sourceTile = WorldUtil.GetTileByID(world.Tiles, destination.Origin.Id);
-                Tile destinationTile = WorldUtil.GetTileByID(world.Tiles, destination.Destination.Id);
+                PathSegment destination = path.Dequeue();
+                Tile sourceTile = WorldUtil.GetTileByID(World.World.mainWorld.Tiles, destination.Origin.Id);
+                Tile destinationTile = WorldUtil.GetTileByID(World.World.mainWorld.Tiles, destination.Destination.Id);
                 string modifierReason = "Moved onto a " + destinationTile.GetName() + " tile";
                 entity.MovementSpeed.AddModifier(new Tuple<long, IModifierRemoveCondition, string>(-1 * destinationTile.MovementCost, new TimeRemoveCondition(1), modifierReason));
-                world.Tiles[sourceTile.Location.X, sourceTile.Location.Y, sourceTile.Location.Z].Living.RemoveAt(EntityWorldMovement.GetIndexOfEntity(sourceTile.Living, entity));
-                world.Tiles[destinationTile.Location.X, destinationTile.Location.Y, destinationTile.Location.Z].Living.Add(entity);
+                World.World.mainWorld.Tiles[sourceTile.Location.X, sourceTile.Location.Y, sourceTile.Location.Z].Living.RemoveAt(EntityWorldMovement.GetIndexOfEntity(sourceTile.Living, entity));
+                World.World.mainWorld.Tiles[destinationTile.Location.X, destinationTile.Location.Y, destinationTile.Location.Z].Living.Add(entity);
             }
         }
 

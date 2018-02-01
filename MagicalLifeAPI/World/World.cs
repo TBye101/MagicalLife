@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Util;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Util;
 using System.Collections.Generic;
 using System.Collections;
 using System.Runtime.CompilerServices;
@@ -66,12 +67,15 @@ namespace MagicalLifeAPI.World
         {
             Living found = TestFindEntity(mainWorld.Tiles).Living[0];
             Tile start = TestFindEntity(mainWorld.Tiles);
-            Path pth = StandardPathFinder.GetFastestPath(start, mainWorld.Tiles[10, 2, 1]);
 
-            Extensions.EnqueueCollection(found.QueuedMovement, pth.Segments);
-            World wrld = mainWorld;
-            EntityWorldMovement.MoveEntity(ref found, ref wrld);
-            mainWorld.Tiles = wrld.Tiles;
+            Point3D des = new Point3D(10, 2, 1);
+            if (start.Location != des)
+            {
+                Path pth = StandardPathFinder.GetFastestPath(start, mainWorld.Tiles[10, 2, 1]);
+
+                Extensions.EnqueueCollection(found.QueuedMovement, pth.Segments);
+                EntityWorldMovement.MoveEntity(ref found);
+            }
         }
 
         private static Tile TestFindEntity(Tile[,,] tiles)
