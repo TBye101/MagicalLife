@@ -69,7 +69,7 @@ namespace MagicalLifeAPI.World
             Tile start = TestFindEntity(mainWorld.Tiles);
 
             Point3D des = new Point3D(10, 2, 1);
-            if (start.Location != des)
+            if (start.Location != des && found.QueuedMovement.Count == 0)
             {
                 Path pth = StandardPathFinder.GetFastestPath(start, mainWorld.Tiles[10, 2, 1]);
 

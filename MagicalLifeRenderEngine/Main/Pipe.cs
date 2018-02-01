@@ -16,9 +16,9 @@ namespace MagicalLifeRenderEngine.Main
         /// <param name="height">The level (z axis) that we should generate an image of all the tiles at.</param>
         /// <param name="world"></param>
         /// <returns></returns>
-        public Bitmap GetScreen(int height, World world)
+        public Bitmap GetScreen(int height)
         {
-            Bitmap tiles = this.GetTiles(height, world);
+            Bitmap tiles = this.GetTiles(height);
             EndTurnButtonGUI.Draw(ref tiles);
             
 
@@ -32,15 +32,15 @@ namespace MagicalLifeRenderEngine.Main
         /// <param name="height">The level (z axis) that we should generate an image of all the tiles at. </param>
         /// <param name="world"></param>
         /// <returns></returns>
-        public Bitmap GetTiles(int height, World world)
+        public Bitmap GetTiles(int height)
         {
             int x = 0;
             int y = 0;
             int z = height;
-            int xSize = world.Tiles.GetLength(0);
-            int ySize = world.Tiles.GetLength(1);
+            int xSize = World.mainWorld.Tiles.GetLength(0);
+            int ySize = World.mainWorld.Tiles.GetLength(1);
 
-            Tile[,,] tiles = world.Tiles;
+            Tile[,,] tiles = World.mainWorld.Tiles;
 
             //The entire map, at the specified height.
             Bitmap entireMap = new Bitmap(Tile.GetTileSize().Height * xSize, Tile.GetTileSize().Width * ySize);
