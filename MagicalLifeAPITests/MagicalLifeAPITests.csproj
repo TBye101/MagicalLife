@@ -57,6 +57,10 @@
   </Choose>
   <ItemGroup>
     <Compile Include="DataTypes\Point3DTests.cs" />
+    <Compile Include="Entities\Entity Factory\HumanFactoryTests.cs" />
+    <Compile Include="Entities\Humanoid\HumanTests.cs" />
+    <Compile Include="Entities\Util\Modifier Remove Conditions\NeverRemoveConditionTests.cs" />
+    <Compile Include="Entities\Util\Modifier Remove Conditions\TimeRemoveConditionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
