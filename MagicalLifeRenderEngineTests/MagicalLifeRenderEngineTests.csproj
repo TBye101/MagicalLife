@@ -46,6 +46,8 @@
       <HintPath>..\packages\MSTest.TestFramework.1.2.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -63,6 +65,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MagicalLifeAPI\MagicalLifeAPI.csproj">
+      <Project>{FE8400A7-9DC8-4AB4-8C54-AC5F36BF7639}</Project>
+      <Name>MagicalLifeAPI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MagicalLifeRenderEngine\MagicalLifeRenderEngine.csproj">
       <Project>{C1553F02-E940-4F5E-8C8C-DD6184922D86}</Project>
       <Name>MagicalLifeRenderEngine</Name>
