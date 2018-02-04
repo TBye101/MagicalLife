@@ -11,6 +11,11 @@ namespace MagicalLifeRenderEngine.Main
     public class Pipe
     {
         /// <summary>
+        /// The z level of the last map drawing rendered.
+        /// </summary>
+        public static int RenderedHeight = 0;
+
+        /// <summary>
         /// Generates the entire screen. The tiles as well as the gui.
         /// </summary>
         /// <param name="height">The level (z axis) that we should generate an image of all the tiles at.</param>
@@ -37,6 +42,7 @@ namespace MagicalLifeRenderEngine.Main
             int x = 0;
             int y = 0;
             int z = height;
+            Pipe.RenderedHeight = height;
             int xSize = World.mainWorld.Tiles.GetLength(0);
             int ySize = World.mainWorld.Tiles.GetLength(1);
 

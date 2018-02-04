@@ -50,6 +50,7 @@
     <Compile Include="Main\GUI\Click\ClickBounds.cs" />
     <Compile Include="Main\GUI\Click\ClickDistributor.cs" />
     <Compile Include="Main\GUI\EndTurnButton.cs" />
+    <Compile Include="Main\Map\CoordinatesTranslator.cs" />
     <Compile Include="Main\Pipe.cs" />
     <Compile Include="Main\TextureRegister.cs" />
     <Compile Include="Main\TileImageGenerator.cs" />

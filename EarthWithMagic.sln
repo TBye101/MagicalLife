@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Snippets", "Snippets", "{EE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeSettings", "MagicalLifeSettings\MagicalLifeSettings.csproj", "{76B12B63-DF5D-40FD-8E90-03395095DD71}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeRenderEngineTests", "MagicalLifeRenderEngineTests\MagicalLifeRenderEngineTests.csproj", "{0C88AD2F-20B9-4C96-A5AD-A1D36122D708}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{76B12B63-DF5D-40FD-8E90-03395095DD71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76B12B63-DF5D-40FD-8E90-03395095DD71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76B12B63-DF5D-40FD-8E90-03395095DD71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C88AD2F-20B9-4C96-A5AD-A1D36122D708}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C88AD2F-20B9-4C96-A5AD-A1D36122D708}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C88AD2F-20B9-4C96-A5AD-A1D36122D708}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C88AD2F-20B9-4C96-A5AD-A1D36122D708}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
