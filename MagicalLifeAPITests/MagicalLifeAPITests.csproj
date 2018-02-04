@@ -59,9 +59,16 @@
     <Compile Include="DataTypes\Point3DTests.cs" />
     <Compile Include="Entities\Entity Factory\HumanFactoryTests.cs" />
     <Compile Include="Entities\Humanoid\HumanTests.cs" />
+    <Compile Include="Entities\LivingTests.cs" />
+    <Compile Include="Entities\Util\AttributeTests.cs" />
     <Compile Include="Entities\Util\Modifier Remove Conditions\NeverRemoveConditionTests.cs" />
     <Compile Include="Entities\Util\Modifier Remove Conditions\TimeRemoveConditionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Universal\UniqueTests.cs" />
+    <Compile Include="World\Base\TileTests.cs" />
+    <Compile Include="World\Base\VegetationTests.cs" />
+    <Compile Include="World\World Generation\Generators\DirtlandTests.cs" />
+    <Compile Include="World\WorldTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

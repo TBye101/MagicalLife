@@ -8,5 +8,9 @@ namespace MagicalLifeAPI.Universal
     public class Unique
     {
         public Guid ID { get; } = Guid.NewGuid();
+        public Unique()
+        {
+
+        }
     }
 }
