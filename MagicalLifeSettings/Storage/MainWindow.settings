@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MagicalLifeGUI.Storage" GeneratedClassName="MainWindow">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MagicalLifeSettings.Storage" GeneratedClassName="MainWindow">
   <Profiles />
   <Settings>
     <Setting Name="ScreenSize" Type="System.Drawing.Size" Scope="User">

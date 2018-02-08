@@ -33,7 +33,7 @@ namespace MagicalLifeRenderEngine.Util
                 {
                     for (int x = 0; x < width; x++)
                     {
-                        fastTarget.SetPixel(x + startingDestination.X, y + startingDestination.Y, FlattenColor(fastTarget.GetPixelUInt(x, y), fastForeBitmap.GetPixelUInt(x, y)));
+                        fastTarget.SetPixel(-1 + x + startingDestination.X, -1 + y + startingDestination.Y, FlattenColor(fastTarget.GetPixelUInt(x, y), fastForeBitmap.GetPixelUInt(x, y)));
                     }
                 }
             }

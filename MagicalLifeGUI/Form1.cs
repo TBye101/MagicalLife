@@ -16,6 +16,7 @@ namespace MagicalLifeGUI
         private Bitmap screen;
 
         private bool showMainMenu = true;
+        private bool showCoordinateBox = false;
 
         public Form1()
         {
@@ -70,6 +71,23 @@ namespace MagicalLifeGUI
             }
         }
 
+        /// <summary>
+        /// Shows and hides the coordinates box.
+        /// </summary>
+        private void ToggleCoordinateTestBox()
+        {
+            if (this.showCoordinateBox)
+            {
+                this.CoordinateTestBox.Visible = false;
+                this.showCoordinateBox = false;
+            }
+            else
+            {
+                this.CoordinateTestBox.Visible = true;
+                this.showCoordinateBox = true;
+            }
+        }
+
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             if (this.screen != null)
@@ -89,6 +107,10 @@ namespace MagicalLifeGUI
             if (e.KeyCode == Keys.Escape)
             {
                 this.ToggleMainMenu();
+            }
+            if (e.KeyCode == Keys.F1)
+            {
+                this.ToggleCoordinateTestBox();
             }
         }
 

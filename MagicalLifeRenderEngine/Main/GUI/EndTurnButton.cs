@@ -24,8 +24,8 @@ namespace MagicalLifeRenderEngine.Main.GUI
         private static Size ImageSize;
         private static Size screenSize;
 
-        private static Point drawLocation = new Point(screenSize.Width - ImageSize.Width, screenSize.Height - (int)(ImageSize.Height * 1.75));
-
+        private static Point drawLocation;
+        //private static Point drawLocation = new Point(0, 0);
         
 
         /// <summary>
@@ -37,6 +37,7 @@ namespace MagicalLifeRenderEngine.Main.GUI
         {
             screenSize = MainWindow.Default.ScreenSize;
             ImageSize = new Size(screenSize.Width / scaleSize, screenSize.Height / scaleSize);
+            EndTurnButtonGUI.drawLocation = new Point(screenSize.Width - ImageSize.Width, screenSize.Height - (ImageSize.Height + 35));
 
             Bitmap s1 = TextureRegister.GetTexture("EndTurnButtonState1.png");
             Bitmap s2 = TextureRegister.GetTexture("EndTurnButtonState2.png");

@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeRenderEngineTest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeAPITests", "MagicalLifeAPITests\MagicalLifeAPITests.csproj", "{565125B9-D61B-49B4-9DBB-39CBF2D77882}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeGUIPortable", "MagicalLifeGUIPortable\MagicalLifeGUIPortable.csproj", "{0C2E6A82-7451-46EE-823E-E3E849CEBA3B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +58,10 @@ Global
 		{565125B9-D61B-49B4-9DBB-39CBF2D77882}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{565125B9-D61B-49B4-9DBB-39CBF2D77882}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{565125B9-D61B-49B4-9DBB-39CBF2D77882}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C2E6A82-7451-46EE-823E-E3E849CEBA3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C2E6A82-7451-46EE-823E-E3E849CEBA3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C2E6A82-7451-46EE-823E-E3E849CEBA3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C2E6A82-7451-46EE-823E-E3E849CEBA3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
