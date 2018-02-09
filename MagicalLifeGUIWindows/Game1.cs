@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MagicalLifeGUIWindows.Load;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -9,8 +10,8 @@ namespace MagicalLifeGUIWindows
     /// </summary>
     public class Game1 : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        public GraphicsDeviceManager graphics { get; set; }
+        public SpriteBatch spriteBatch { get; set; }
 
         public Game1()
         {
@@ -29,6 +30,8 @@ namespace MagicalLifeGUIWindows
             // TODO: Add your initialization logic here
 
             base.Initialize();
+            WindowConfig winConfig = new WindowConfig();
+            winConfig.ConfigureMainWindow(this);
         }
 
         /// <summary>

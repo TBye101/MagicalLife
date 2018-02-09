@@ -12,6 +12,10 @@ namespace MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions
     public class TimeRemoveCondition : IModifierRemoveCondition
     {
         private int Turns;
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="turns">The number of turns until the modifier is allowed to expire.</param>
         public TimeRemoveCondition(int turns)
         {
