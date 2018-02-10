@@ -42,7 +42,9 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Asset\AssetManager.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Load\IGameLoader.cs" />
     <Compile Include="Load\WindowConfig.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

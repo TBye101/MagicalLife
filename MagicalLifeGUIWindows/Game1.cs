@@ -14,8 +14,8 @@ namespace MagicalLifeGUIWindows
 
         public Game1()
         {
-            graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
+            this.graphics = new GraphicsDeviceManager(this);
+            this.Content.RootDirectory = "Content";
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace MagicalLifeGUIWindows
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
-
+            
             // TODO: use this.Content to load your game content here
         }
 
