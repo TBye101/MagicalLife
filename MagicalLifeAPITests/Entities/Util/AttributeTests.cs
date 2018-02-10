@@ -1,11 +1,6 @@
 ﻿using MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MagicalLifeAPI.Entities.Util;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Entities.Util.Tests
 {

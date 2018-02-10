@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using DijkstraAlgorithm.Pathing;
-using System.Collections.Concurrent;
-using System.Collections;
+﻿using DijkstraAlgorithm.Pathing;
 using MagicalLifeAPI.Entities.Util;
 using MagicalLifeAPI.Universal;
+using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Entities
 {

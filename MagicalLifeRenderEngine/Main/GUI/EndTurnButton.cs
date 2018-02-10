@@ -1,14 +1,9 @@
-﻿using MagicalLifeRenderEngine.Main.GUI.Click;
+﻿using MagicalLifeAPI.World;
+using MagicalLifeRenderEngine.Main.GUI.Click;
 using MagicalLifeRenderEngine.Util;
-using MagicalLifeAPI.World;
-using FastBitmapLib;
 using MagicalLifeSettings.Storage;
-using System.Drawing;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
 
 namespace MagicalLifeRenderEngine.Main.GUI
 {
@@ -26,7 +21,6 @@ namespace MagicalLifeRenderEngine.Main.GUI
 
         private static Point drawLocation;
         //private static Point drawLocation = new Point(0, 0);
-        
 
         /// <summary>
         /// The ID of our click bounds.

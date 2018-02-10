@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions
+﻿namespace MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions
 {
     /// <summary>
     /// This modifier condition allows remove of the modifier after a certain number of turns.
@@ -14,7 +8,7 @@ namespace MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions
         private int Turns;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="turns">The number of turns until the modifier is allowed to expire.</param>
         public TimeRemoveCondition(int turns)

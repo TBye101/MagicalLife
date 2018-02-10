@@ -1,13 +1,9 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Util;
-using System.Collections.Generic;
-using System.Collections;
-using System.Runtime.CompilerServices;
-using DijkstraAlgorithm.Pathing;
+﻿using DijkstraAlgorithm.Pathing;
+using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Entities.Movement;
-using MagicalLifeAPI.Entities.Util;
 using MagicalLifeAPI.Universal;
+using MagicalLifeAPI.Util;
 using System;
 
 namespace MagicalLifeAPI.World

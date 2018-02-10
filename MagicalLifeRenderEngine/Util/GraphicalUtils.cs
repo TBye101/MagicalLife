@@ -1,11 +1,7 @@
-﻿using System.Drawing;
+﻿using FastBitmapLib;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics.Contracts;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FastBitmapLib;
+using System.Drawing;
 
 namespace MagicalLifeRenderEngine.Util
 {
@@ -37,7 +33,7 @@ namespace MagicalLifeRenderEngine.Util
                     }
                 }
             }
-            
+
             return target;
         }
 

@@ -1,6 +1,6 @@
-﻿using MagicalLifeRenderEngine.Main.GUI;
-using FastBitmapLib;
+﻿using FastBitmapLib;
 using MagicalLifeAPI.World;
+using MagicalLifeRenderEngine.Main.GUI;
 using System.Drawing;
 
 namespace MagicalLifeRenderEngine.Main
@@ -25,7 +25,6 @@ namespace MagicalLifeRenderEngine.Main
         {
             Bitmap tiles = this.GetTiles(height);
             EndTurnButtonGUI.Draw(ref tiles);
-            
 
             return tiles;
         }

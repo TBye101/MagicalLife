@@ -1,11 +1,7 @@
-﻿using System.Windows.Forms;
-using MagicalLifeAPI.Universal;
-using System.Drawing;
+﻿using MagicalLifeAPI.Universal;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace MagicalLifeRenderEngine.Main.GUI.Click
 {
