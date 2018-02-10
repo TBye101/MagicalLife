@@ -11,7 +11,7 @@ namespace MagicalLifeAPI.World.Base
         /// The constructor for <see cref="Vegetation"/>.
         /// </summary>
         /// <param name="name">The name of this vegetation.</param>
-        public Vegetation(string name)
+        protected Vegetation(string name)
         {
             this.Name = name;
         }

@@ -1,4 +1,5 @@
-﻿using MagicalLifeGUIWindows.Load;
+﻿using MagicalLifeAPI.Universal;
+using MagicalLifeGUIWindows.Load;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace MagicalLifeGUIWindows.Asset
 
         public void InitialStartup(ref int progress)
         {
-            AssetManager.Textures = new List<Texture2D>();
+            Textures = new List<Texture2D>();
             progress++;
         }
 
@@ -37,7 +38,7 @@ namespace MagicalLifeGUIWindows.Asset
         public static int RegisterTexture(Texture2D texture)
         {
             Textures.Add(texture);
-            return AssetManager.Textures.Count - 1;
+            return Textures.Count - 1;
         }
     }
 }

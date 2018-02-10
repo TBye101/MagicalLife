@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MagicalLifeGUIWindows.Load
+namespace MagicalLifeAPI.Universal
 {
     /// <summary>
     /// Implemented by anything that does initial startup code.

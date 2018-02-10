@@ -22,5 +22,14 @@ namespace MagicalLifeAPI.World.Tiles
             return "DirtTile.png";
             //return "TestTile.png";
         }
+
+        public override int GetTotalOperations()
+        {
+            return 0;
+        }
+
+        public override void InitialStartup(ref int progress)
+        {
+        }
     }
 }

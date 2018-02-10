@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace MagicalLifeAPI.World
 {
-    public abstract class Tile : Unique
+    public abstract class Tile : Unique, IGameLoader
     {
         /// <summary>
         /// Initializes a new tile object.
@@ -51,6 +51,18 @@ namespace MagicalLifeAPI.World
         /// </summary>
         /// <returns></returns>
         public abstract string GetTextureName();
+
+        /// <summary>
+        /// See <see cref="IGameLoader.GetTotalOperations"/> for information.
+        /// </summary>
+        /// <returns></returns>
+        public abstract int GetTotalOperations();
+
+        /// <summary>
+        /// See <see cref="IGameLoader.InitialStartup(ref int)"/> for information.
+        /// </summary>
+        /// <returns></returns>
+        public abstract void InitialStartup(ref int progress);
 
         /// <summary>
         /// The resources that can be found in this tile.

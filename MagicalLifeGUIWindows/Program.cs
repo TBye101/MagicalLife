@@ -15,8 +15,10 @@ namespace MagicalLifeGUIWindows
         [STAThread]
         private static void Main()
         {
-            using (var game = new Game1())
+            using (Game1 game = new Game1())
+            {
                 game.Run();
+            }
         }
     }
 
