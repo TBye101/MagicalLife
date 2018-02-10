@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Universal;
+﻿using MagicalLifeAPI.Util;
+using MagicalLifeAPI.Universal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,11 +29,6 @@ namespace MagicalLifeGUIWindows.Load
         private Queue<IGameLoader> Jobs { get; set; } = new Queue<IGameLoader>();
 
         /// <summary>
-        /// The message to display.
-        /// </summary>
-        public string message { get; set; } = "Calculating Jobs";
-
-        /// <summary>
         /// Adds a job to the queue.
         /// </summary>
         /// <param name="job"></param>
@@ -42,10 +38,23 @@ namespace MagicalLifeGUIWindows.Load
             this.Jobs.Enqueue(job);
         }
 
+        public void AddJobs(List<IGameLoader> jobs)
+        {
+            int jobsAdded = 0;
+
+            foreach (IGameLoader item in jobs)
+            {
+                jobsAdded += item.GetTotalOperations();
+            }
+
+            Extensions.EnqueueCollection(this.Jobs, jobs);
+            this.JobCount += jobsAdded;
+        }
+
         /// <summary>
         /// Begins execution of the jobs.
         /// </summary>
-        public void ExecuteJobs()
+        public void ExecuteJobs(ref string message)
         {
             IGameLoader job;
             int progress;
@@ -55,13 +64,8 @@ namespace MagicalLifeGUIWindows.Load
                 job = this.Jobs.Dequeue();
                 job.InitialStartup(ref progress);
                 this.JobsCompleted += job.GetTotalOperations();
-                this.UpdateMessage();
+                message = this.JobsCompleted.ToString() + "out of " + this.JobCount.ToString() + " jobs completed";
             }
-        }
-
-        private void UpdateMessage()
-        {
-            this.message = this.JobsCompleted.ToString() + "out of " + this.JobCount.ToString() + " jobs completed";
         }
     }
 }

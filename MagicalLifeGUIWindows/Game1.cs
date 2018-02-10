@@ -41,6 +41,8 @@ namespace MagicalLifeGUIWindows
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
+
+            Loader load = new Loader();
             
             // TODO: use this.Content to load your game content here
         }

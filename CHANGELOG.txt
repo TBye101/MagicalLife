@@ -1,14 +1,8 @@
 		SneakyTactician  <SneakyTactician@outlook.com>
 
 	[Version 0.0.0.4]
-		### Features
-			*
 		#### API
-			*
-		### Tweaks
-			*End turn button now displays an X when it is the player's turn, and gives the player a check mark when it is not their turn
-		### Bugs
-			*
+			* Now using Monogame
 
 	[Version 0.0.0.3]
 		### Features
