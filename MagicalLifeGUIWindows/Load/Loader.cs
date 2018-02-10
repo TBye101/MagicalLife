@@ -26,6 +26,7 @@ namespace MagicalLifeGUIWindows.Load
 
             AllJobs.AddRange(this.LoadTiles());
             loadMoniter.AddJobs(AllJobs);
+            loadMoniter.ExecuteJobs(ref message);
         }
 
         /// <summary>
@@ -39,7 +40,7 @@ namespace MagicalLifeGUIWindows.Load
 
             foreach (Type item in apiAssembly.ExportedTypes)
             {
-                if (!item.IsAbstract && item.IsAssignableFrom(typeof(Tile)))
+                if (!item.IsAbstract && item.IsSubclassOf(typeof(Tile)))
                 {
                     object tileObject = Activator.CreateInstance(item);
 

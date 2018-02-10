@@ -7,6 +7,9 @@ using System.Drawing;
 
 namespace MagicalLifeAPI.World
 {
+    /// <summary>
+    /// Every tile that implements this class must provide a parameterless version of itself for reflection purposes. That constructor will not be used during gameplay.
+    /// </summary>
     public abstract class Tile : Unique, IGameLoader
     {
         /// <summary>
@@ -18,6 +21,14 @@ namespace MagicalLifeAPI.World
         {
             this.Location = location;
             this.MovementCost = movementCost;
+        }
+
+        /// <summary>
+        /// This constructor is used during loading/reflection only.
+        /// </summary>
+        public Tile()
+        {
+
         }
 
         /// <summary>

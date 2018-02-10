@@ -64,7 +64,7 @@ namespace MagicalLifeGUIWindows.Load
                 job = this.Jobs.Dequeue();
                 job.InitialStartup(ref progress);
                 this.JobsCompleted += job.GetTotalOperations();
-                message = this.JobsCompleted.ToString() + "out of " + this.JobCount.ToString() + " jobs completed";
+                message = this.JobsCompleted.ToString() + " out of " + this.JobCount.ToString() + " jobs completed";
             }
         }
     }

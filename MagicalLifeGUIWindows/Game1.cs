@@ -43,6 +43,8 @@ namespace MagicalLifeGUIWindows
             this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
 
             Loader load = new Loader();
+            string msg = string.Empty;
+            load.LoadAll(ref msg);
             
             // TODO: use this.Content to load your game content here
         }
