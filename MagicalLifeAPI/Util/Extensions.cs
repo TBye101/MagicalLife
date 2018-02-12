@@ -1,5 +1,4 @@
-﻿using DijkstraAlgorithm.Pathing;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Util
 {

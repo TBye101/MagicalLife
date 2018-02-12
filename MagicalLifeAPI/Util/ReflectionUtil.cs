@@ -1,9 +1,7 @@
-﻿using System.Reflection;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 
 namespace MagicalLifeAPI.Util
 {
@@ -24,7 +22,7 @@ namespace MagicalLifeAPI.Util
 
             foreach (Type item in containing.ExportedTypes)
             {
-                if (!item.IsInterface &&!item.IsAbstract && item.GetInterfaces().Contains(typeof(T)))
+                if (!item.IsInterface && !item.IsAbstract && item.GetInterfaces().Contains(typeof(T)))
                 {
                     object tileObject = Activator.CreateInstance(item);
 

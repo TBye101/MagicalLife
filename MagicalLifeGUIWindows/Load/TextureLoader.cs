@@ -1,14 +1,9 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using MagicalLifeGUIWindows.Asset;
-using System.Reflection;
-using MagicalLifeAPI.World;
+﻿using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.Util;
-using MagicalLifeAPI.Universal;
-using System;
+using MagicalLifeAPI.World;
+using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 
 namespace MagicalLifeGUIWindows.Load
 {

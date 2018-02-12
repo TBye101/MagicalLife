@@ -14,7 +14,6 @@ namespace MagicalLifeAPI.World.Tiles
 
         public Dirt()
         {
-
         }
 
         public override string GetName()

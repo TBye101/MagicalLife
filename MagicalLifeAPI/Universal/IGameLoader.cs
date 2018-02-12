@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MagicalLifeAPI.Universal
+﻿namespace MagicalLifeAPI.Universal
 {
     /// <summary>
     /// Implemented by anything that does initial startup code.

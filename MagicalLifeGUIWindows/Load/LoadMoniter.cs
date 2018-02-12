@@ -1,10 +1,6 @@
-﻿using MagicalLifeAPI.Util;
-using MagicalLifeAPI.Universal;
-using System;
+﻿using MagicalLifeAPI.Universal;
+using MagicalLifeAPI.Util;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.Load
 {

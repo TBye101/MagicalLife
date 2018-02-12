@@ -1,6 +1,6 @@
-﻿using Microsoft.Xna.Framework.Content;
-using MagicalLifeGUIWindows.Load;
+﻿using MagicalLifeGUIWindows.Load;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace MagicalLifeGUIWindows
@@ -49,7 +49,7 @@ namespace MagicalLifeGUIWindows
             Loader load = new Loader();
             string msg = string.Empty;
             load.LoadAll(ref msg);
-            
+
             // TODO: use this.Content to load your game content here
         }
 

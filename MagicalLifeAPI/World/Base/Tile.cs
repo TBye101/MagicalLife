@@ -28,7 +28,6 @@ namespace MagicalLifeAPI.World
         /// </summary>
         public Tile()
         {
-
         }
 
         /// <summary>
