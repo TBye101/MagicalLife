@@ -1,4 +1,5 @@
-﻿using MagicalLifeGUIWindows.Load;
+﻿using Microsoft.Xna.Framework.Content;
+using MagicalLifeGUIWindows.Load;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -12,10 +13,13 @@ namespace MagicalLifeGUIWindows
         public GraphicsDeviceManager graphics { get; set; }
         public SpriteBatch spriteBatch { get; set; }
 
+        public static ContentManager AssetManager { get; set; }
+
         public Game1()
         {
             this.graphics = new GraphicsDeviceManager(this);
             this.Content.RootDirectory = "Content";
+            Game1.AssetManager = this.Content;
         }
 
         /// <summary>

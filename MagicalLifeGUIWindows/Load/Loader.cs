@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.World;
+﻿using MagicalLifeAPI.Util;
+using MagicalLifeAPI.World;
 using System.Reflection;
 using MagicalLifeAPI.Universal;
 using System;
@@ -24,34 +25,10 @@ namespace MagicalLifeGUIWindows.Load
 
             List<IGameLoader> AllJobs = new List<IGameLoader>();
 
-            AllJobs.AddRange(this.LoadTiles());
+            AllJobs.AddRange(ReflectionUtil.LoadAllInterface<IGameLoader>(Assembly.GetAssembly(typeof(World))));
+            AllJobs.AddRange(ReflectionUtil.LoadAllInterface<IGameLoader>(Assembly.GetAssembly(typeof(TextureLoader))));
             loadMoniter.AddJobs(AllJobs);
             loadMoniter.ExecuteJobs(ref message);
-        }
-
-        /// <summary>
-        /// Finds all the tiles.
-        /// </summary>
-        /// <returns></returns>
-        private List<IGameLoader> LoadTiles()
-        {
-            List<IGameLoader> modules = new List<IGameLoader>();
-            Assembly apiAssembly = Assembly.GetAssembly(typeof(World));
-
-            foreach (Type item in apiAssembly.ExportedTypes)
-            {
-                if (!item.IsAbstract && item.IsSubclassOf(typeof(Tile)))
-                {
-                    object tileObject = Activator.CreateInstance(item);
-
-                    if (tileObject is Tile)
-                    {
-                        modules.Add((IGameLoader)tileObject);
-                    }
-                }
-            }
-
-            return modules;
         }
     }
 }

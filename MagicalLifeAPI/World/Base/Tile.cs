@@ -10,7 +10,7 @@ namespace MagicalLifeAPI.World
     /// <summary>
     /// Every tile that implements this class must provide a parameterless version of itself for reflection purposes. That constructor will not be used during gameplay.
     /// </summary>
-    public abstract class Tile : Unique, IGameLoader
+    public abstract class Tile : Unique
     {
         /// <summary>
         /// Initializes a new tile object.
@@ -62,18 +62,6 @@ namespace MagicalLifeAPI.World
         /// </summary>
         /// <returns></returns>
         public abstract string GetTextureName();
-
-        /// <summary>
-        /// See <see cref="IGameLoader.GetTotalOperations"/> for information.
-        /// </summary>
-        /// <returns></returns>
-        public abstract int GetTotalOperations();
-
-        /// <summary>
-        /// See <see cref="IGameLoader.InitialStartup(ref int)"/> for information.
-        /// </summary>
-        /// <returns></returns>
-        public abstract void InitialStartup(ref int progress);
 
         /// <summary>
         /// The resources that can be found in this tile.

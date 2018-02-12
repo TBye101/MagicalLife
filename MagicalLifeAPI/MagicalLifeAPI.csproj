@@ -61,6 +61,7 @@
     <Compile Include="Universal\Unique.cs" />
     <Compile Include="Util\Extensions.cs" />
     <Compile Include="Util\MathUtil.cs" />
+    <Compile Include="Util\ReflectionUtil.cs" />
     <Compile Include="Util\StaticRandom.cs" />
     <Compile Include="World\Base\Item.cs" />
     <Compile Include="World\Tiles\Dirt.cs" />
