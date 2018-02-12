@@ -2,6 +2,8 @@
 using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Base;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 
@@ -21,6 +23,7 @@ namespace MagicalLifeAPI.World
         {
             this.Location = location;
             this.MovementCost = movementCost;
+            Tile.TileCreatedHandler(new TileEventArg(this));
         }
 
         /// <summary>
@@ -29,6 +32,11 @@ namespace MagicalLifeAPI.World
         public Tile()
         {
         }
+
+        /// <summary>
+        /// The index of the texture in our asset manager.
+        /// </summary>
+        public int TextureIndex { get; set; }
 
         /// <summary>
         /// Returns the name of the biome that this tile belongs to.
@@ -78,5 +86,23 @@ namespace MagicalLifeAPI.World
         /// A list containing all living entities on this tile.
         /// </summary>
         public List<Living> Living { get; set; } = new List<Entities.Living>();
+
+        /// <summary>
+        /// Raised when the world is finished generating for the first time.
+        /// </summary>
+        public static event EventHandler<TileEventArg> TileCreated;
+
+        /// <summary>
+        /// Raises the world generated event.
+        /// </summary>
+        /// <param name="e"></param>
+        public static void TileCreatedHandler(TileEventArg e)
+        {
+            EventHandler<TileEventArg> handler = TileCreated;
+            if (handler != null)
+            {
+                handler(World.mainWorld, e);
+            }
+        }
     }
 }

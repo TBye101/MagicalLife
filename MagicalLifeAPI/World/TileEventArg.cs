@@ -1,0 +1,23 @@
+﻿using MagicalLifeAPI.World;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MagicalLifeAPI.World
+{
+    public class TileEventArg : EventArgs
+    {
+        public Tile Tile { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TileEventArg"/> class.
+        /// </summary>
+        /// <param name="tile"></param>
+        public TileEventArg(Tile tile)
+        {
+            this.Tile = tile;
+        }
+    }
+}

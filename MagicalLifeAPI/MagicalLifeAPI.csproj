@@ -34,6 +34,7 @@
     <Reference Include="DijkstraAlgorithm">
       <HintPath>..\Libs\DijkstraAlgorithm.dll</HintPath>
     </Reference>
+    <Reference Include="MonoGame.Framework, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -64,6 +65,7 @@
     <Compile Include="Util\ReflectionUtil.cs" />
     <Compile Include="Util\StaticRandom.cs" />
     <Compile Include="World\Base\Item.cs" />
+    <Compile Include="World\TileEventArg.cs" />
     <Compile Include="World\Tiles\Dirt.cs" />
     <Compile Include="World\Veggies\OakTree.cs" />
     <Compile Include="World\World Generation\Generators\Dirtland.cs" />

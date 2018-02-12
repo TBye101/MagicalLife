@@ -3,6 +3,7 @@
 	[Version 0.0.0.4]
 		#### API
 			* Now using Monogame
+			* Now supports a load game progress bar
 
 	[Version 0.0.0.3]
 		### Features
