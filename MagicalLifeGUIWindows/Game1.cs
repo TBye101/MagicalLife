@@ -1,4 +1,7 @@
-﻿using MagicalLifeGUIWindows.Load;
+﻿using MagicalLifeRenderEngine.Main.GUI.Click;
+using System.Linq;
+using Microsoft.Xna.Framework.Input;
+using MagicalLifeGUIWindows.Load;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -69,12 +72,7 @@ namespace MagicalLifeGUIWindows
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-            //{
-            //    Exit();
-            //}
-
-            // TODO: Add your update logic here
+            MouseHandler.Click(Mouse.GetState());
 
             base.Update(gameTime);
         }
