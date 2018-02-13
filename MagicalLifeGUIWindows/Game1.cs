@@ -10,14 +10,14 @@ namespace MagicalLifeGUIWindows
     /// </summary>
     public class Game1 : Game
     {
-        public GraphicsDeviceManager graphics { get; set; }
-        public SpriteBatch spriteBatch { get; set; }
+        public GraphicsDeviceManager Graphics { get; set; }
+        public SpriteBatch SpriteBatch { get; set; }
 
         public static ContentManager AssetManager { get; set; }
 
         public Game1()
         {
-            this.graphics = new GraphicsDeviceManager(this);
+            this.Graphics = new GraphicsDeviceManager(this);
             this.Content.RootDirectory = "Content";
             Game1.AssetManager = this.Content;
         }
@@ -44,7 +44,7 @@ namespace MagicalLifeGUIWindows
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
+            this.SpriteBatch = new SpriteBatch(this.GraphicsDevice);
 
             Loader load = new Loader();
             string msg = string.Empty;

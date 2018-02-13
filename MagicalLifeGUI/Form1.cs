@@ -46,9 +46,9 @@ namespace MagicalLifeGUI
         private void NewGameButton_Click(object sender, EventArgs e)
         {
             this.ToggleMainMenu();
-            World.Initialize(MainWindow.Default.ScreenSize.Height / Tile.GetTileSize().Height,
-               MainWindow.Default.ScreenSize.Width / Tile.GetTileSize().Width, 2, new Dirtland());
-            screen = pipe.GetScreen(1);
+            World.Initialize(MainWindow.Default.ScreenSize.Height / Tile.GetTileSize().Y,
+               MainWindow.Default.ScreenSize.Width / Tile.GetTileSize().X, 2, new Dirtland());
+            this.screen = this.pipe.GetScreen(1);
         }
 
         /// <summary>

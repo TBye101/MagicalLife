@@ -48,7 +48,7 @@ namespace MagicalLifeRenderEngine.Main
             Tile[,,] tiles = World.mainWorld.Tiles;
 
             //The entire map, at the specified height.
-            Bitmap entireMap = new Bitmap(Tile.GetTileSize().Height * xSize, Tile.GetTileSize().Width * ySize);
+            Bitmap entireMap = new Bitmap(Tile.GetTileSize().Y * xSize, Tile.GetTileSize().X * ySize);
             FastBitmap fastMap = new FastBitmap(entireMap);
             fastMap.Lock();
 
@@ -60,7 +60,7 @@ namespace MagicalLifeRenderEngine.Main
                 {
                     //Draw constructed tile onto "entireMap" at the proper section.
                     Bitmap temp = new Bitmap(TileImageGenerator.GenerateTileImage(tiles[x, y, z]));
-                    Rectangle destination = new Rectangle(new Point(Tile.GetTileSize().Height * x, Tile.GetTileSize().Width * y), Tile.GetTileSize());
+                    Rectangle destination = new Rectangle(new Point(Tile.GetTileSize().Y * x, Tile.GetTileSize().X * y), Tile.GetTileSize());
                     fastMap.CopyRegion(temp, new Rectangle(new Point(0, 0), Tile.GetTileSize()), destination);
                     y++;
                 }

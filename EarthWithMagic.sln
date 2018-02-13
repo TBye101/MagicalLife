@@ -11,18 +11,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeAPI", "MagicalLifeAPI\MagicalLifeAPI.csproj", "{FE8400A7-9DC8-4AB4-8C54-AC5F36BF7639}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeGUI", "MagicalLifeGUI\MagicalLifeGUI.csproj", "{CD2F2BA2-767D-4827-BAAD-E49597DA487E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeRenderEngine", "MagicalLifeRenderEngine\MagicalLifeRenderEngine.csproj", "{C1553F02-E940-4F5E-8C8C-DD6184922D86}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Snippets", "Snippets", "{EE5F9F76-E1DE-4746-BEC3-4D63543E0F68}"
 	ProjectSection(SolutionItems) = preProject
 		TilesEnumeration.snippet = TilesEnumeration.snippet
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeSettings", "MagicalLifeSettings\MagicalLifeSettings.csproj", "{76B12B63-DF5D-40FD-8E90-03395095DD71}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeRenderEngineTests", "MagicalLifeRenderEngineTests\MagicalLifeRenderEngineTests.csproj", "{0C88AD2F-20B9-4C96-A5AD-A1D36122D708}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeAPITests", "MagicalLifeAPITests\MagicalLifeAPITests.csproj", "{565125B9-D61B-49B4-9DBB-39CBF2D77882}"
 EndProject
@@ -44,22 +38,6 @@ Global
 		{FE8400A7-9DC8-4AB4-8C54-AC5F36BF7639}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FE8400A7-9DC8-4AB4-8C54-AC5F36BF7639}.Release|x86.ActiveCfg = Release|Any CPU
 		{FE8400A7-9DC8-4AB4-8C54-AC5F36BF7639}.Release|x86.Build.0 = Release|Any CPU
-		{CD2F2BA2-767D-4827-BAAD-E49597DA487E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CD2F2BA2-767D-4827-BAAD-E49597DA487E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CD2F2BA2-767D-4827-BAAD-E49597DA487E}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{CD2F2BA2-767D-4827-BAAD-E49597DA487E}.Debug|x86.Build.0 = Debug|Any CPU
-		{CD2F2BA2-767D-4827-BAAD-E49597DA487E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CD2F2BA2-767D-4827-BAAD-E49597DA487E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CD2F2BA2-767D-4827-BAAD-E49597DA487E}.Release|x86.ActiveCfg = Release|Any CPU
-		{CD2F2BA2-767D-4827-BAAD-E49597DA487E}.Release|x86.Build.0 = Release|Any CPU
-		{C1553F02-E940-4F5E-8C8C-DD6184922D86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C1553F02-E940-4F5E-8C8C-DD6184922D86}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C1553F02-E940-4F5E-8C8C-DD6184922D86}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{C1553F02-E940-4F5E-8C8C-DD6184922D86}.Debug|x86.Build.0 = Debug|Any CPU
-		{C1553F02-E940-4F5E-8C8C-DD6184922D86}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C1553F02-E940-4F5E-8C8C-DD6184922D86}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C1553F02-E940-4F5E-8C8C-DD6184922D86}.Release|x86.ActiveCfg = Release|Any CPU
-		{C1553F02-E940-4F5E-8C8C-DD6184922D86}.Release|x86.Build.0 = Release|Any CPU
 		{76B12B63-DF5D-40FD-8E90-03395095DD71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{76B12B63-DF5D-40FD-8E90-03395095DD71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76B12B63-DF5D-40FD-8E90-03395095DD71}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -68,14 +46,6 @@ Global
 		{76B12B63-DF5D-40FD-8E90-03395095DD71}.Release|Any CPU.Build.0 = Release|Any CPU
 		{76B12B63-DF5D-40FD-8E90-03395095DD71}.Release|x86.ActiveCfg = Release|Any CPU
 		{76B12B63-DF5D-40FD-8E90-03395095DD71}.Release|x86.Build.0 = Release|Any CPU
-		{0C88AD2F-20B9-4C96-A5AD-A1D36122D708}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0C88AD2F-20B9-4C96-A5AD-A1D36122D708}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0C88AD2F-20B9-4C96-A5AD-A1D36122D708}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{0C88AD2F-20B9-4C96-A5AD-A1D36122D708}.Debug|x86.Build.0 = Debug|Any CPU
-		{0C88AD2F-20B9-4C96-A5AD-A1D36122D708}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0C88AD2F-20B9-4C96-A5AD-A1D36122D708}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0C88AD2F-20B9-4C96-A5AD-A1D36122D708}.Release|x86.ActiveCfg = Release|Any CPU
-		{0C88AD2F-20B9-4C96-A5AD-A1D36122D708}.Release|x86.Build.0 = Release|Any CPU
 		{565125B9-D61B-49B4-9DBB-39CBF2D77882}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{565125B9-D61B-49B4-9DBB-39CBF2D77882}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{565125B9-D61B-49B4-9DBB-39CBF2D77882}.Debug|x86.ActiveCfg = Debug|Any CPU

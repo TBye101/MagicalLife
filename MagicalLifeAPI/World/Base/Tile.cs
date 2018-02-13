@@ -53,9 +53,9 @@ namespace MagicalLifeAPI.World
         /// The size, in pixels of how big each tile is.
         /// </summary>
         /// <returns></returns>
-        public static Size GetTileSize()
+        public static Microsoft.Xna.Framework.Point GetTileSize()
         {
-            return new Size(64, 64);
+            return new Microsoft.Xna.Framework.Point(64, 64);
         }
 
         /// <summary>

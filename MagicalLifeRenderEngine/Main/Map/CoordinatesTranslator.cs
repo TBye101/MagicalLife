@@ -22,10 +22,10 @@ namespace MagicalLifeRenderEngine.Main.Map
         /// <returns></returns>
         public static Point3D GetTileLocation(Point mouse)
         {
-            Size tileSize = Tile.GetTileSize();
+            Microsoft.Xna.Framework.Point tileSize = Tile.GetTileSize();
             Point adjusted = new Point(mouse.X - TopLeft.X, mouse.Y - TopLeft.Y);
 
-            return new Point3D(adjusted.X / tileSize.Width, adjusted.Y / tileSize.Height, Pipe.RenderedHeight);
+            return new Point3D(adjusted.X / tileSize.X, adjusted.Y / tileSize.Y, Pipe.RenderedHeight);
         }
     }
 }

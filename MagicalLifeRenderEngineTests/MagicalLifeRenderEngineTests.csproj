@@ -69,10 +69,6 @@
       <Project>{FE8400A7-9DC8-4AB4-8C54-AC5F36BF7639}</Project>
       <Name>MagicalLifeAPI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MagicalLifeRenderEngine\MagicalLifeRenderEngine.csproj">
-      <Project>{C1553F02-E940-4F5E-8C8C-DD6184922D86}</Project>
-      <Name>MagicalLifeRenderEngine</Name>
-    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

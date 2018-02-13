@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MonoGame.Framework, Version=3.6.0.1625, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -66,10 +67,6 @@
     <ProjectReference Include="..\MagicalLifeAPI\MagicalLifeAPI.csproj">
       <Project>{fe8400a7-9dc8-4ab4-8c54-ac5f36bf7639}</Project>
       <Name>MagicalLifeAPI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MagicalLifeRenderEngine\MagicalLifeRenderEngine.csproj">
-      <Project>{c1553f02-e940-4f5e-8c8c-dd6184922d86}</Project>
-      <Name>MagicalLifeRenderEngine</Name>
     </ProjectReference>
     <ProjectReference Include="..\MagicalLifeSettings\MagicalLifeSettings.csproj">
       <Project>{76b12b63-df5d-40fd-8e90-03395095dd71}</Project>

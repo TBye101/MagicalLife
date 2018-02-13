@@ -11,9 +11,9 @@
         /// <param name="game"></param>
         public void ConfigureMainWindow(Game1 game)
         {
-            game.graphics.PreferredBackBufferHeight = MagicalLifeSettings.Storage.MainWindow.Default.ScreenSize.Height;
-            game.graphics.PreferredBackBufferWidth = MagicalLifeSettings.Storage.MainWindow.Default.ScreenSize.Width;
-            game.graphics.ToggleFullScreen();
+            game.Graphics.PreferredBackBufferHeight = MagicalLifeSettings.Storage.MainWindow.Default.ScreenSize.Height;
+            game.Graphics.PreferredBackBufferWidth = MagicalLifeSettings.Storage.MainWindow.Default.ScreenSize.Width;
+            game.Graphics.ToggleFullScreen();
         }
     }
 }
