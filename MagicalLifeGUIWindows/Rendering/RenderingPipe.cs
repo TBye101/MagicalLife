@@ -35,8 +35,9 @@ namespace MagicalLifeGUIWindows.Rendering
             if (World.mainWorld != null)
             {
                 DrawMap(ref spBatch);
-                DrawGUI(ref spBatch);
             }
+
+            DrawGUI(ref spBatch);
         }
 
         /// <summary>
@@ -45,7 +46,15 @@ namespace MagicalLifeGUIWindows.Rendering
         /// <param name="spBatch"></param>
         private static void DrawGUI(ref SpriteBatch spBatch)
         {
+            DrawMainMenu(ref spBatch);
+        }
 
+        private static void DrawMainMenu(ref SpriteBatch spBatch)
+        {
+            if (MainMenu.NewGameButton.Visible)
+            {
+                spBatch.Draw(MainMenu.NewGameButton.Image, MainMenu.NewGameButton.DrawingBounds, colorMask);
+            }
         }
 
         /// <summary>

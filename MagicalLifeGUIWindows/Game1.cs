@@ -1,4 +1,5 @@
-﻿using MagicalLifeRenderEngine.Main.GUI.Click;
+﻿using MagicalLifeGUIWindows.Rendering;
+using MagicalLifeRenderEngine.Main.GUI.Click;
 using System.Linq;
 using Microsoft.Xna.Framework.Input;
 using MagicalLifeGUIWindows.Load;
@@ -14,7 +15,7 @@ namespace MagicalLifeGUIWindows
     public class Game1 : Game
     {
         public GraphicsDeviceManager Graphics { get; set; }
-        public SpriteBatch SpriteBatch { get; set; }
+        public SpriteBatch SpriteBatch;
 
         public static ContentManager AssetManager { get; set; }
 
@@ -84,6 +85,7 @@ namespace MagicalLifeGUIWindows
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            RenderingPipe.DrawScreen(ref this.SpriteBatch);
 
             // TODO: Add your drawing code here
 

@@ -20,6 +20,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             this.Image = Game1.AssetManager.Load<Texture2D>(imageName);
             this.Text = text;
             this.MouseBounds = new ClickBounds(displayArea, -1);
+            this.DrawingBounds = displayArea;
         }
 
         /// <summary>
