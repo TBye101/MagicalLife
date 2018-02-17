@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Asset\AssetManager.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="GUI\Reusable\MonoButton.cs" />
     <Compile Include="Input\BoundsSorter.cs" />
     <Compile Include="Input\ClickBounds.cs" />
     <Compile Include="Input\MouseHandler.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Map\RenderingData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rendering\MainMenu.cs" />
     <Compile Include="Rendering\RenderingPipe.cs" />
   </ItemGroup>
   <ItemGroup>

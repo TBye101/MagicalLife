@@ -35,9 +35,23 @@ namespace MagicalLifeGUIWindows.Rendering
             if (World.mainWorld != null)
             {
                 DrawMap(ref spBatch);
+                DrawGUI(ref spBatch);
             }
         }
 
+        /// <summary>
+        /// Draws the GUI onto the screen.
+        /// </summary>
+        /// <param name="spBatch"></param>
+        private static void DrawGUI(ref SpriteBatch spBatch)
+        {
+
+        }
+
+        /// <summary>
+        /// Draws the tiles that make up the map.
+        /// </summary>
+        /// <param name="spBatch"></param>
         private static void DrawMap(ref SpriteBatch spBatch)
         {
             Tile[,,] tiles = World.mainWorld.Tiles;
