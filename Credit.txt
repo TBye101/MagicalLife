@@ -2,3 +2,7 @@ Credit for things I used that I didn't make:
 
 Libraries: 
 https://github.com/agabani/DijkstraAlgorithm optimal pathfinding algorithm
+
+Code Snippets:
+
+	Text Centering: https://stackoverflow.com/a/10263903/5294414

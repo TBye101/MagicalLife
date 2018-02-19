@@ -1,4 +1,5 @@
-﻿using MagicalLifeSettings.Storage;
+﻿using Microsoft.Xna.Framework.Graphics;
+using MagicalLifeSettings.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,21 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
     /// </summary>
     public static class MainMenuLayout
     {
+        static MainMenuLayout()
+        {
+            switch ((Resolution)MainWindow.Default.Resolution)
+            {
+                case Resolution._1920x1080:
+                    MainMenuFont = Game1.AssetManager.Load<SpriteFont>("MainMenuFont24x");
+                    break;
+                default:
+                    MainMenuFont = Game1.AssetManager.Load<SpriteFont>("MainMenuFont24x");
+                    break;
+            }
+        }
+
+        public static SpriteFont MainMenuFont { get; private set; }
+
         /// <summary>
         /// The x position at which the left part of the buttons on the main menu begin.
         /// </summary>
@@ -77,6 +93,40 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
                         return MainMenuLayout1920x1080.NewGameButtonY;
                     default:
                         return MainMenuLayout1920x1080.NewGameButtonY;
+                }
+            }
+        }
+
+        /// <summary>
+        /// How much to offset the text by in the X direction.
+        /// </summary>
+        public static int NewGameButtonTextXOffset
+        {
+            get
+            {
+                switch ((Resolution)MainWindow.Default.Resolution)
+                {
+                    case Resolution._1920x1080:
+                        return MainMenuLayout1920x1080.NewGameButtonTextXOffset;
+                    default:
+                        return MainMenuLayout1920x1080.NewGameButtonTextXOffset;
+                }
+            }
+        }
+
+        /// <summary>
+        /// How much to offset the text by in the Y direction.
+        /// </summary>
+        public static int NewGameButtonTextYOffset
+        {
+            get
+            {
+                switch ((Resolution)MainWindow.Default.Resolution)
+                {
+                    case Resolution._1920x1080:
+                        return MainMenuLayout1920x1080.NewGameButtonTextYOffset;
+                    default:
+                        return MainMenuLayout1920x1080.NewGameButtonTextYOffset;
                 }
             }
         }

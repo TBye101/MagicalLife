@@ -58,8 +58,50 @@ namespace MagicalLifeGUIWindows.Rendering
             if (MainMenu.NewGameButton.Visible)
             {
                 spBatch.Draw(MainMenu.NewGameButton.Image, MainMenu.NewGameButton.DrawingBounds, colorMask);
-                spBatch.DrawString()
+                //spBatch.DrawString(MainMenuLayout.MainMenuFont, MainMenu.NewGameButton.Text, new Vector2(MainMenu.NewGameButton.DrawingBounds.X + MainMenuLayout.NewGameButtonTextXOffset, MainMenu.NewGameButton.DrawingBounds.Y + MainMenuLayout.NewGameButtonTextYOffset), colorMask);
+                RenderingPipe.DrawString(MainMenuLayout.MainMenuFont, MainMenu.NewGameButton.Text, MainMenu.NewGameButton.DrawingBounds, Alignment.Center, colorMask, ref spBatch);
             }
+        }
+
+        [Flags]
+        public enum Alignment { Center = 0, Left = 1, Right = 2, Top = 4, Bottom = 8 }
+
+        /// <summary>
+        /// Slightly modified version of: https://stackoverflow.com/a/10263903/5294414
+        /// </summary>
+        /// <param name="font"></param>
+        /// <param name="text"></param>
+        /// <param name="bounds"></param>
+        /// <param name="align"></param>
+        /// <param name="color"></param>
+        /// <param name="spBatch"></param>
+        private static void DrawString(SpriteFont font, string text, Microsoft.Xna.Framework.Rectangle bounds, Alignment align, Microsoft.Xna.Framework.Color color, ref SpriteBatch spBatch)
+        {
+            Vector2 size = font.MeasureString(text);
+            Vector2 pos = new Vector2(bounds.Center.X, bounds.Center.Y);
+            Vector2 origin = size * 0.5f;
+
+            if (align.HasFlag(Alignment.Left))
+            {
+                origin.X += bounds.Width / 2 - size.X / 2;
+            }
+
+            if (align.HasFlag(Alignment.Right))
+            {
+                origin.X -= bounds.Width / 2 - size.X / 2;
+            }
+
+            if (align.HasFlag(Alignment.Top))
+            {
+                origin.Y += bounds.Height / 2 - size.Y / 2;
+            }
+
+            if (align.HasFlag(Alignment.Bottom))
+            {
+                origin.Y -= bounds.Height / 2 - size.Y / 2;
+            }
+
+            spBatch.DrawString(font, text, pos, color, 0, origin, 1, SpriteEffects.None, 0);
         }
 
         /// <summary>
