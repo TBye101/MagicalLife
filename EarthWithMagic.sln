@@ -11,11 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeAPI", "MagicalLifeAPI\MagicalLifeAPI.csproj", "{FE8400A7-9DC8-4AB4-8C54-AC5F36BF7639}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Snippets", "Snippets", "{EE5F9F76-E1DE-4746-BEC3-4D63543E0F68}"
-	ProjectSection(SolutionItems) = preProject
-		TilesEnumeration.snippet = TilesEnumeration.snippet
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeSettings", "MagicalLifeSettings\MagicalLifeSettings.csproj", "{76B12B63-DF5D-40FD-8E90-03395095DD71}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeAPITests", "MagicalLifeAPITests\MagicalLifeAPITests.csproj", "{565125B9-D61B-49B4-9DBB-39CBF2D77882}"

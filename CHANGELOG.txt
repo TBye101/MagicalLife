@@ -1,6 +1,9 @@
 		SneakyTactician  <SneakyTactician@outlook.com>
 
 	[Version 0.0.0.4]
+		### GUI
+			*
+
 		#### API
 			* Now using Monogame
 			* Now supports a load game progress bar

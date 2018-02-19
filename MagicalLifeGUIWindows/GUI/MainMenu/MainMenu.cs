@@ -19,12 +19,12 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
 
         public static void Initialize(Game1 window)
         {
-            NewGameButton = new MonoButton("MenuButton", GetNewGameButtonLocation(window), "New Game");
+            NewGameButton = new MonoButton("MenuButton", GetNewGameButtonLocation(), "New Game");
         }
 
         public static MonoButton NewGameButton { get; private set; }
 
-        private static Rectangle GetNewGameButtonLocation(Game1 window)
+        private static Rectangle GetNewGameButtonLocation()
         {
             int width = MainMenuLayout.ButtonWidth;
             int height = MainMenuLayout.ButtonHeight;
