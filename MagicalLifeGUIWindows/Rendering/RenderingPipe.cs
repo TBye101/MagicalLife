@@ -1,4 +1,6 @@
-﻿using System.Drawing;
+﻿using System.Runtime.CompilerServices;
+using System.Diagnostics;
+using System.Drawing;
 using Microsoft.Xna.Framework;
 using MagicalLifeGUIWindows.Asset;
 using MagicalLifeAPI.World;
@@ -24,7 +26,7 @@ namespace MagicalLifeGUIWindows.Rendering
         /// <summary>
         /// The standard color mask to apply to all tiles.
         /// </summary>
-        private static readonly Microsoft.Xna.Framework.Color colorMask = new Microsoft.Xna.Framework.Color();
+        private static readonly Microsoft.Xna.Framework.Color colorMask = Microsoft.Xna.Framework.Color.White;
 
         /// <summary>
         /// Draws the screen.
@@ -53,6 +55,9 @@ namespace MagicalLifeGUIWindows.Rendering
         {
             if (MainMenu.NewGameButton.Visible)
             {
+                Debug.WriteLine(MainMenu.NewGameButton.Image.Height);
+                Debug.WriteLine(MainMenu.NewGameButton.DrawingBounds.ToString());
+
                 spBatch.Draw(MainMenu.NewGameButton.Image, MainMenu.NewGameButton.DrawingBounds, colorMask);
             }
         }
