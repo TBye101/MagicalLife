@@ -26,12 +26,10 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
 
         private static Rectangle GetNewGameButtonLocation(Game1 window)
         {
-            Rectangle mainWindowClientBounds = window.Window.ClientBounds;
-            int width = mainWindowClientBounds.Width / 4;
-            int height = mainWindowClientBounds.Height / 10;
-            int x = (mainWindowClientBounds.Width / 2);// - (width / 2);
-            x = 20;
-            int y = mainWindowClientBounds.Height / 5;
+            int width = MainMenuLayout.ButtonWidth;
+            int height = MainMenuLayout.ButtonHeight;
+            int x = MainMenuLayout.ButtonX;
+            int y = MainMenuLayout.NewGameButtonY;
 
             return new Rectangle(x, y, width, height);
         }
