@@ -57,10 +57,8 @@ namespace MagicalLifeGUIWindows.Rendering
         {
             if (MainMenu.NewGameButton.Visible)
             {
-                Debug.WriteLine(MainMenu.NewGameButton.Image.Height);
-                Debug.WriteLine(MainMenu.NewGameButton.DrawingBounds.ToString());
-
                 spBatch.Draw(MainMenu.NewGameButton.Image, MainMenu.NewGameButton.DrawingBounds, colorMask);
+                spBatch.DrawString()
             }
         }
 
