@@ -1,4 +1,5 @@
-﻿using MagicalLifeGUIWindows.Rendering;
+﻿using MagicalLifeSettings.Storage;
+using MagicalLifeGUIWindows.Rendering;
 using MagicalLifeRenderEngine.Main.GUI.Click;
 using System.Linq;
 using Microsoft.Xna.Framework.Input;
@@ -39,6 +40,8 @@ namespace MagicalLifeGUIWindows
             base.Initialize();
             WindowConfig winConfig = new WindowConfig();
             winConfig.ConfigureMainWindow(this);
+
+            Universal.Default.GameHasRunBefore = true;
         }
 
         /// <summary>
