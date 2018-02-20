@@ -37,17 +37,14 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
 
         private static void MouseListener_MouseWheelMoved(object sender, MouseEventArgs e)
         {
-            Debug.WriteLine("Mouse moved!");
         }
 
         private static void MouseListener_MouseDoubleClicked(object sender, MouseEventArgs e)
         {
-            Debug.WriteLine("Double click!");
         }
 
         private static void MouseListener_MouseClicked(object sender, MouseEventArgs e)
         {
-            Debug.WriteLine("Mouse click!");
         }
 
         /// <summary>
@@ -78,7 +75,6 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         public static void AddClickBounds(ClickBounds bounds)
         {
             Bounds.Add(bounds);
-            
         }
 
         /// <summary>

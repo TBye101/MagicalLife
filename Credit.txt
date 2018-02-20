@@ -5,6 +5,7 @@ https://github.com/agabani/DijkstraAlgorithm optimal pathfinding algorithm
 https://github.com/craftworkgames/MonoGame.Extended
 https://github.com/JamesNK/Newtonsoft.Json
 http://www.monogame.net/
+https://github.com/serilog/serilog
 
 Code Snippets:
 

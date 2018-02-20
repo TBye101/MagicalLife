@@ -3,6 +3,7 @@
 	[Version 0.0.0.4]
 		### GUI
 			*Now displays new game button
+			*Now recieves mouse input as events
 
 		#### API
 			* Now using Monogame
