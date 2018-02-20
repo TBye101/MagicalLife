@@ -76,7 +76,7 @@ namespace MagicalLifeGUIWindows
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            MouseHandler.Click(Mouse.GetState());
+            MouseHandler.UpdateMouseInput(gameTime);
 
             base.Update(gameTime);
         }

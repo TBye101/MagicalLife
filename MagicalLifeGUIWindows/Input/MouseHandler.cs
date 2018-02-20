@@ -1,4 +1,8 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿using System.Diagnostics;
+using Microsoft.Xna.Framework;
+using MonoGame.Extended.ViewportAdapters;
+using MonoGame.Extended.Input.InputListeners;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 
@@ -19,11 +23,43 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         /// </summary>
         private static MouseState LastMouseAction { get; set; } = new MouseState();
 
+        public static MouseListener MouseListner = new MouseListener();
+
+        /// <summary>
+        /// Constructs the <see cref="MouseHandler"/> class.
+        /// </summary>
+        public static void Initialize()
+        {
+            MouseListner.MouseClicked += MouseListener_MouseClicked;
+            MouseListner.MouseDoubleClicked += MouseListener_MouseDoubleClicked;
+            MouseListner.MouseWheelMoved += MouseListener_MouseWheelMoved;
+        }
+
+        private static void MouseListener_MouseWheelMoved(object sender, MouseEventArgs e)
+        {
+            Debug.WriteLine("Mouse moved!");
+        }
+
+        private static void MouseListener_MouseDoubleClicked(object sender, MouseEventArgs e)
+        {
+            Debug.WriteLine("Double click!");
+        }
+
+        private static void MouseListener_MouseClicked(object sender, MouseEventArgs e)
+        {
+            Debug.WriteLine("Mouse click!");
+        }
+
         /// <summary>
         /// Handles a click.
         /// </summary>
         /// <param name="clickData"></param>
-        public static void Click(MouseState clickData)
+        public static void UpdateMouseInput(GameTime time)
+        {
+            MouseListner.Update(time);
+        }
+
+        private static void Process(MouseState clickData)
         {
             foreach (ClickBounds item in Bounds)
             {

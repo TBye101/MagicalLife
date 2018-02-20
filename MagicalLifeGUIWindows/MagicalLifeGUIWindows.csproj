@@ -79,6 +79,7 @@
     <Compile Include="Input\BoundsSorter.cs" />
     <Compile Include="Input\ClickBounds.cs" />
     <Compile Include="Input\MouseHandler.cs" />
+    <Compile Include="Load\InputLoader.cs" />
     <Compile Include="Load\Loader.cs" />
     <Compile Include="Load\LoadMoniter.cs" />
     <Compile Include="Load\TextureLoader.cs" />
