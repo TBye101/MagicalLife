@@ -1,0 +1,25 @@
+﻿using System.IO;
+using Serilog;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MagicalLifeAPI.Filing.Logging
+{
+    /// <summary>
+    /// The master log class where we log everything that happens, that isn't historical/statistical information.
+    /// </summary>
+    public static class MasterLog
+    {
+        private static string LogPath = FileSystemManager.rootFolder + Path.DirectorySeparatorChar + "MasterLog.txt";
+
+        public static void Initialize()
+        {
+            Log.Logger = new LoggerConfiguration().MinimumLevel.Information().WriteTo.File(LogPath).CreateLogger();
+            Log.Information("Log initialized!");
+            Log.Information("Session: " + Guid.NewGuid());
+        }
+    }
+}

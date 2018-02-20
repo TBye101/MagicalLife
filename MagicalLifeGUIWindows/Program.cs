@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.Filing;
+using System;
 
 namespace MagicalLifeGUIWindows
 {
@@ -15,6 +17,9 @@ namespace MagicalLifeGUIWindows
         [STAThread]
         private static void Main()
         {
+            FileSystemManager.Initialize();
+            MasterLog.Initialize();
+
             using (Game1 game = new Game1())
             {
                 game.Run();
