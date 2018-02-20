@@ -42,6 +42,7 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         public static void AddClickBounds(ClickBounds bounds)
         {
             Bounds.Add(bounds);
+            
         }
 
         /// <summary>
