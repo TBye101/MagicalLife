@@ -2,7 +2,7 @@
 
 	[Version 0.0.0.4]
 		### GUI
-			*
+			*Now displays new game button
 
 		#### API
 			* Now using Monogame
