@@ -1,4 +1,6 @@
-﻿using MagicalLifeAPI.Universal;
+﻿using MagicalLifeAPI.Filing.Logging;
+using System.Runtime.Remoting.Messaging;
+using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.Util;
 using System.Collections.Generic;
 
@@ -55,6 +57,8 @@ namespace MagicalLifeGUIWindows.Load
         {
             IGameLoader job;
             int progress;
+            MasterLog.DebugWriteLine("Executing loading jobs!");
+
             while (this.Jobs.Count > 0)
             {
                 progress = 0;
@@ -62,6 +66,7 @@ namespace MagicalLifeGUIWindows.Load
                 job.InitialStartup(ref progress);
                 this.JobsCompleted += job.GetTotalOperations();
                 message = this.JobsCompleted.ToString() + " out of " + this.JobCount.ToString() + " jobs completed";
+                MasterLog.DebugWriteLine(message);
             }
         }
     }
