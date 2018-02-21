@@ -19,7 +19,7 @@ namespace MagicalLifeAPI.World
         /// </summary>
         /// <param name="location">The 3D location of this tile in the map.</param>
         /// <param name="movementCost">This value is the movement cost of walking on this tile. It should be between 1 and 100</param>
-        public Tile(Point3D location, int movementCost)
+        protected Tile(Point3D location, int movementCost)
         {
             this.Location = location;
             this.MovementCost = movementCost;
@@ -29,7 +29,7 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// This constructor is used during loading/reflection only.
         /// </summary>
-        public Tile()
+        protected Tile()
         {
         }
 

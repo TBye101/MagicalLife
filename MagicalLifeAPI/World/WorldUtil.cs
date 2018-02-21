@@ -12,6 +12,8 @@ namespace MagicalLifeAPI.World
         /// Returns a tile based on it's location in string format.
         /// </summary>
         /// <param name="world"></param>
+        /// <param name="tiles"></param>
+        /// <param name="str"></param>
         /// <returns></returns>
         public static Tile GetTileByID(Tile[,,] tiles, string str)
         {

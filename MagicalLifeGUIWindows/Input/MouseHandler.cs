@@ -18,10 +18,6 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         /// </summary>
         private static SortedSet<ClickBounds> Bounds = new SortedSet<ClickBounds>(new BoundsSorter());
 
-        /// <summary>
-        /// Holds the last state of the mouse.
-        /// </summary>
-        private static MouseState LastMouseAction { get; set; } = new MouseState();
 
         public static MouseListener MouseListner = new MouseListener();
 
@@ -51,6 +47,7 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         /// Handles a click.
         /// </summary>
         /// <param name="clickData"></param>
+        /// <param name="time"></param>
         public static void UpdateMouseInput(GameTime time)
         {
             MouseListner.Update(time);

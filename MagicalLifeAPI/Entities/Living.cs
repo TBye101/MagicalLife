@@ -30,7 +30,7 @@ namespace MagicalLifeAPI.Entities
         /// </summary>
         /// <param name="health"></param>
         /// <param name="movementSpeed"></param>
-        public Living(int health, int movementSpeed)
+        protected Living(int health, int movementSpeed)
         {
             this.Health = new Attribute(health);
             this.MovementSpeed = new Attribute(movementSpeed);

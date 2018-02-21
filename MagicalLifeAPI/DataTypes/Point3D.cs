@@ -23,13 +23,10 @@ namespace MagicalLifeAPI.DataTypes
             string[] delimiter = new string[] { ", " };
             string[] numbers = str.Split(delimiter, 3, StringSplitOptions.RemoveEmptyEntries);
 
-            int x;
-            int y;
-            int z;
 
-            int.TryParse(numbers[0], out x);
-            int.TryParse(numbers[1], out y);
-            int.TryParse(numbers[2], out z);
+            int.TryParse(numbers[0], out int x);
+            int.TryParse(numbers[1], out int y);
+            int.TryParse(numbers[2], out int z);
 
             this.X = x;
             this.Y = y;

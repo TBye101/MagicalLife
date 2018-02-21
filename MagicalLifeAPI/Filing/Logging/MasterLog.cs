@@ -13,7 +13,7 @@ namespace MagicalLifeAPI.Filing.Logging
     /// </summary>
     public static class MasterLog
     {
-        private static string LogPath = FileSystemManager.rootFolder + Path.DirectorySeparatorChar + "MasterLog.txt";
+        private static readonly string LogPath = FileSystemManager.rootFolder + Path.DirectorySeparatorChar + "MasterLog.txt";
 
         public static void Initialize()
         {
@@ -21,10 +21,6 @@ namespace MagicalLifeAPI.Filing.Logging
             Log.Logger = new LoggerConfiguration().MinimumLevel.Information().WriteTo.File(LogPath).CreateLogger();
             Log.Information("Log initialized!");
             Log.Information("Session: " + Guid.NewGuid());
-            //Log.CloseAndFlush();
-            //Log.Logger = new LoggerConfiguration().MinimumLevel.Information().WriteTo.File(LogPath).CreateLogger();
-            //Log.Information("Second!");
-            //Log.CloseAndFlush();
         }
     }
 }

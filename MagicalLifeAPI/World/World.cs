@@ -47,6 +47,10 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// Generates a new world with the specified height, width, depth, and world generator.
         /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="depth"></param>
+        /// <param name="generator"></param>
         public static void Initialize(int width, int height, int depth, WorldGenerator generator)
         {
             mainWorld = new World();

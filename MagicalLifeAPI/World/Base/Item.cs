@@ -21,6 +21,7 @@ namespace MagicalLifeAPI.World.Base
         /// <summary>
         /// See <see cref="IGameLoader.InitialStartup(ref int)"/> for information.
         /// </summary>
+        /// <param name="progress"></param>
         /// <returns></returns>
         public abstract void InitialStartup(ref int progress);
     }

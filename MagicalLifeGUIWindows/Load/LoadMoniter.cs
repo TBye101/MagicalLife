@@ -50,6 +50,7 @@ namespace MagicalLifeGUIWindows.Load
         /// <summary>
         /// Begins execution of the jobs.
         /// </summary>
+        /// <param name="message"></param>
         public void ExecuteJobs(ref string message)
         {
             IGameLoader job;
