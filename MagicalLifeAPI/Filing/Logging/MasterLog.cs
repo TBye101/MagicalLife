@@ -17,9 +17,14 @@ namespace MagicalLifeAPI.Filing.Logging
 
         public static void Initialize()
         {
+            //Just proved that telling it to write to the same file will not overwrite it.
             Log.Logger = new LoggerConfiguration().MinimumLevel.Information().WriteTo.File(LogPath).CreateLogger();
             Log.Information("Log initialized!");
             Log.Information("Session: " + Guid.NewGuid());
+            //Log.CloseAndFlush();
+            //Log.Logger = new LoggerConfiguration().MinimumLevel.Information().WriteTo.File(LogPath).CreateLogger();
+            //Log.Information("Second!");
+            //Log.CloseAndFlush();
         }
     }
 }
