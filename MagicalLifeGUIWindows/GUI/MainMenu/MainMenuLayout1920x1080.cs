@@ -1,11 +1,4 @@
-﻿using System.Linq.Expressions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MagicalLifeGUIWindows.GUI.MainMenu
+﻿namespace MagicalLifeGUIWindows.GUI.MainMenu
 {
     /// <summary>
     /// Holds some constants used to render the main menu when at the 1920 by 1080 resolution.
@@ -26,7 +19,6 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
         /// How tall the buttons are.
         /// </summary>
         public static readonly int ButtonHeight = 50;
-
 
         /// <summary>
         /// The y position of the top of the new game button.

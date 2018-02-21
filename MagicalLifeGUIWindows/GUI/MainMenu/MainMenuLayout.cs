@@ -1,10 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using MagicalLifeSettings.Storage;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MagicalLifeSettings.Storage;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MagicalLifeGUIWindows.GUI.MainMenu
 {
@@ -20,6 +15,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
                 case Resolution._1920x1080:
                     MainMenuFont = Game1.AssetManager.Load<SpriteFont>("MainMenuFont24x");
                     break;
+
                 default:
                     MainMenuFont = Game1.AssetManager.Load<SpriteFont>("MainMenuFont24x");
                     break;
@@ -39,6 +35,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
                 {
                     case Resolution._1920x1080:
                         return MainMenuLayout1920x1080.ButtonX;
+
                     default:
                         return MainMenuLayout1920x1080.ButtonX;
                 }
@@ -56,6 +53,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
                 {
                     case Resolution._1920x1080:
                         return MainMenuLayout1920x1080.ButtonWidth;
+
                     default:
                         return MainMenuLayout1920x1080.ButtonWidth;
                 }
@@ -73,12 +71,12 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
                 {
                     case Resolution._1920x1080:
                         return MainMenuLayout1920x1080.ButtonHeight;
+
                     default:
                         return MainMenuLayout1920x1080.ButtonHeight;
                 }
             }
         }
-
 
         /// <summary>
         /// The y position of the top of the new game button.
@@ -91,6 +89,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
                 {
                     case Resolution._1920x1080:
                         return MainMenuLayout1920x1080.NewGameButtonY;
+
                     default:
                         return MainMenuLayout1920x1080.NewGameButtonY;
                 }
@@ -108,6 +107,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
                 {
                     case Resolution._1920x1080:
                         return MainMenuLayout1920x1080.NewGameButtonTextXOffset;
+
                     default:
                         return MainMenuLayout1920x1080.NewGameButtonTextXOffset;
                 }
@@ -125,6 +125,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
                 {
                     case Resolution._1920x1080:
                         return MainMenuLayout1920x1080.NewGameButtonTextYOffset;
+
                     default:
                         return MainMenuLayout1920x1080.NewGameButtonTextYOffset;
                 }

@@ -1,8 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using System.Drawing;
-using MagicalLifeSettings.Storage;
-using MagicalLifeGUIWindows.Rendering;
-using System.Windows.Forms;
+﻿using MagicalLifeSettings.Storage;
 
 namespace MagicalLifeGUIWindows.Load
 {

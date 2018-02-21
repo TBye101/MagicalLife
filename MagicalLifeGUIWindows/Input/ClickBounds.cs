@@ -1,7 +1,7 @@
-﻿using Microsoft.Xna.Framework.Input;
-using MagicalLifeAPI.Universal;
-using System;
+﻿using MagicalLifeAPI.Universal;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace MagicalLifeRenderEngine.Main.GUI.Click
 {

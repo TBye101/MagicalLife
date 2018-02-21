@@ -1,5 +1,5 @@
-﻿using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Filing;
+﻿using MagicalLifeAPI.Filing;
+using MagicalLifeAPI.Filing.Logging;
 using System;
 
 namespace MagicalLifeGUIWindows

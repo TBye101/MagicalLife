@@ -2,10 +2,8 @@
 using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Base;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 
 namespace MagicalLifeAPI.World
 {

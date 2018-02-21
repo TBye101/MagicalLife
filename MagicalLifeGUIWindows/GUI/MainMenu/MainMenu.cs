@@ -1,10 +1,5 @@
-﻿using Microsoft.Xna.Framework;
-using MagicalLifeGUIWindows.GUI.Reusable;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MagicalLifeGUIWindows.GUI.Reusable;
+using Microsoft.Xna.Framework;
 
 namespace MagicalLifeGUIWindows.GUI.MainMenu
 {

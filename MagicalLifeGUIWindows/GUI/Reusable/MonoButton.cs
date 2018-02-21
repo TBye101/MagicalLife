@@ -1,12 +1,6 @@
 ﻿using MagicalLifeRenderEngine.Main.GUI.Click;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MagicalLifeGUIWindows;
 
 namespace MagicalLifeGUIWindows.GUI.Reusable
 {

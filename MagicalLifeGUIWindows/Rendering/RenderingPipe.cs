@@ -1,17 +1,9 @@
-﻿using System.Runtime.CompilerServices;
-using System.Diagnostics;
-using System.Drawing;
-using Microsoft.Xna.Framework;
+﻿using MagicalLifeAPI.World;
 using MagicalLifeGUIWindows.Asset;
-using MagicalLifeAPI.World;
+using MagicalLifeGUIWindows.GUI.MainMenu;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MagicalLifeGUIWindows.GUI;
-using MagicalLifeGUIWindows.GUI.MainMenu;
 
 namespace MagicalLifeGUIWindows.Rendering
 {

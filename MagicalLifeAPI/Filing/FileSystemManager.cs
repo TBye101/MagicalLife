@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Filing
 {
@@ -50,6 +46,5 @@ namespace MagicalLifeAPI.Filing
             return string.Format("{0:[yyyy-MM-dd][hh-mm-ss-tt}]",
             DateTime.Now);
         }
-
     }
 }

@@ -1,8 +1,6 @@
-﻿using System.Diagnostics;
-using Microsoft.Xna.Framework;
-using MonoGame.Extended.ViewportAdapters;
-using MonoGame.Extended.Input.InputListeners;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using MonoGame.Extended.Input.InputListeners;
 using System;
 using System.Collections.Generic;
 
@@ -17,7 +15,6 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         /// Contains all of the ClickBounds this class handles.
         /// </summary>
         private static SortedSet<ClickBounds> Bounds = new SortedSet<ClickBounds>(new BoundsSorter());
-
 
         public static MouseListener MouseListner = new MouseListener();
 
