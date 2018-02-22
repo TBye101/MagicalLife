@@ -1,4 +1,6 @@
-﻿using MagicalLifeGUIWindows.Load;
+﻿using MagicalLifeAPI.Filing.Logging;
+using MonoGame.Extended.Input.InputListeners;
+using MagicalLifeGUIWindows.Load;
 using MagicalLifeGUIWindows.Rendering;
 using MagicalLifeRenderEngine.Main.GUI.Click;
 using MagicalLifeSettings.Storage;
@@ -74,7 +76,11 @@ namespace MagicalLifeGUIWindows
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            MouseHandler.UpdateMouseInput(gameTime);
+            //MasterLog.DebugWriteLine(this.IsActive.ToString());
+            if (this.IsActive)
+            {
+                MouseHandler.UpdateMouseInput(gameTime);
+            }
 
             base.Update(gameTime);
         }

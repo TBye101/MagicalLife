@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Universal;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using MonoGame.Extended.Input.InputListeners;
 using System;
 
 namespace MagicalLifeRenderEngine.Main.GUI.Click
@@ -37,15 +38,33 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         /// <summary>
         /// This event is raised whenever this clickbounds is clicked on, and given priority.
         /// </summary>
-        public event EventHandler<MouseState> Clicked;
+        public event EventHandler<MouseEventArgs> Clicked;
 
         /// <summary>
-        /// Raises the Clicked event.
+        /// This event is raised whenever this clickbounds is double clicked on, and given priority.
+        /// </summary>
+        public event EventHandler<MouseEventArgs> DoubleClicked;
+
+        /// <summary>
+        /// Raises the <see cref="Clicked"/> event.
         /// </summary>
         /// <param name="e"></param>
-        public virtual void ClickMe(MouseState e)
+        public virtual void ClickMe(MouseEventArgs e)
         {
-            EventHandler<MouseState> handler = Clicked;
+            EventHandler<MouseEventArgs> handler = Clicked;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        /// <summary>
+        /// Raises the <see cref="DoubleClicked"/> event.
+        /// </summary>
+        /// <param name="e"></param>
+        public virtual void DoubleClickMe(MouseEventArgs e)
+        {
+            EventHandler<MouseEventArgs> handler = Clicked;
             if (handler != null)
             {
                 handler(this, e);

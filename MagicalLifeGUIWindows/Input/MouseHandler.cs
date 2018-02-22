@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MagicalLifeAPI.Filing.Logging;
+using System.Runtime.CompilerServices;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Input.InputListeners;
 using System;
@@ -34,10 +36,14 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
 
         private static void MouseListener_MouseDoubleClicked(object sender, MouseEventArgs e)
         {
+            MasterLog.DebugWriteLine("Double click detected: " + e.Position.ToString());
+            MouseHandler.DoubleClick(e);
         }
 
         private static void MouseListener_MouseClicked(object sender, MouseEventArgs e)
         {
+            MasterLog.DebugWriteLine("Single click detected: " + e.Position.ToString());
+            MouseHandler.Click(e);
         }
 
         /// <summary>
@@ -50,13 +56,35 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
             MouseListner.Update(time);
         }
 
-        private static void Process(MouseState clickData)
+        /// <summary>
+        /// Handles who gets the single click event.
+        /// </summary>
+        /// <param name="clickData"></param>
+        private static void Click(MouseEventArgs clickData)
         {
             foreach (ClickBounds item in Bounds)
             {
                 if (item.Bounds.Contains(clickData.Position.X, clickData.Position.Y))
                 {
+                    MasterLog.DebugWriteLine("Single Click Accepted: " + item.Bounds.ToString());
                     item.ClickMe(clickData);
+                    break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Handles who gets the double click event.
+        /// </summary>
+        /// <param name="clickData"></param>
+        private static void DoubleClick(MouseEventArgs clickData)
+        {
+            foreach (ClickBounds item in Bounds)
+            {
+                if (item.Bounds.Contains(clickData.Position.X, clickData.Position.Y))
+                {
+                    MasterLog.DebugWriteLine("Double Click Accepted: " + item.Bounds.ToString());
+                    item.DoubleClickMe(clickData);
                     break;
                 }
             }
@@ -68,6 +96,7 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         /// <param name="bounds"></param>
         public static void AddClickBounds(ClickBounds bounds)
         {
+            MasterLog.DebugWriteLine(bounds.Bounds.ToString());
             Bounds.Add(bounds);
         }
 
