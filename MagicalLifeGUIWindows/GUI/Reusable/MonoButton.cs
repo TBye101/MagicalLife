@@ -10,7 +10,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
     /// </summary>
     public abstract class MonoButton : GUIElement
     {
-        public MonoButton(string imageName, Rectangle displayArea, string text = "") : base(Game1.AssetManager.Load<Texture2D>(imageName), displayArea, int.MaxValue)
+        protected MonoButton(string imageName, Rectangle displayArea, string text = "") : base(Game1.AssetManager.Load<Texture2D>(imageName), displayArea, int.MaxValue)
         {
             this.Text = text;
         }
@@ -18,6 +18,6 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// <summary>
         /// The text to display on the monolith.
         /// </summary>
-        public string Text { get; set; } = "";
+        public string Text { get; set; }
     }
 }

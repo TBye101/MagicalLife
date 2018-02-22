@@ -11,7 +11,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
 {
     public class NewGameButton : MonoButton
     {
-        public NewGameButton() : base("MenuButton", GetLocation())
+        public NewGameButton() : base("MenuButton", GetLocation(), "New Game")
         {
 
         }

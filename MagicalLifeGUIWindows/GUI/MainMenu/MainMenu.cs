@@ -1,4 +1,6 @@
-﻿using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using System.Runtime.CompilerServices;
+using MagicalLifeGUIWindows.GUI.MainMenu.Buttons;
+using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 
 namespace MagicalLifeGUIWindows.GUI.MainMenu
@@ -15,8 +17,9 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
         public static void Initialize()
         {
             //NewGameButton = new MonoButton("MenuButton", GetNewGameButtonLocation(), "New Game");
+            NewGameButton = new NewGameButton();
         }
 
-        public static MonoButton NewGameButton { get; private set; }
+        public static NewGameButton NewGameButton { get; private set; }
     }
 }
