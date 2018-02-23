@@ -27,6 +27,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             this.Image = image;
             this.DrawingBounds = drawingBounds;
             this.MouseBounds = new ClickBounds(drawingBounds, priority);
+            MouseHandler.AddClickBounds(this.MouseBounds);
         }
 
         /// <summary>

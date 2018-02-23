@@ -37,13 +37,13 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         private static void MouseListener_MouseDoubleClicked(object sender, MouseEventArgs e)
         {
             MasterLog.DebugWriteLine("Double click detected: " + e.Position.ToString());
-            MouseHandler.DoubleClick(e);
+            DoubleClick(e);
         }
 
         private static void MouseListener_MouseClicked(object sender, MouseEventArgs e)
         {
             MasterLog.DebugWriteLine("Single click detected: " + e.Position.ToString());
-            MouseHandler.Click(e);
+            Click(e);
         }
 
         /// <summary>
@@ -64,6 +64,7 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         {
             foreach (ClickBounds item in Bounds)
             {
+                MasterLog.DebugWriteLine("Bounds: " + item.Bounds.ToString());
                 if (item.Bounds.Contains(clickData.Position.X, clickData.Position.Y))
                 {
                     MasterLog.DebugWriteLine("Single Click Accepted: " + item.Bounds.ToString());
