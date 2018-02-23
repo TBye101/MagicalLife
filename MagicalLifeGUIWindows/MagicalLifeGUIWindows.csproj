@@ -70,7 +70,6 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Asset\AssetManager.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GUI\MainMenu\Buttons\NewGameButton.cs" />
     <Compile Include="GUI\MainMenu\MainMenuLayout.cs" />

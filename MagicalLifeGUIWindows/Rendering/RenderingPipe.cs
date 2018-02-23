@@ -1,5 +1,5 @@
-﻿using MagicalLifeAPI.World;
-using MagicalLifeGUIWindows.Asset;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.World;
 using MagicalLifeGUIWindows.GUI.MainMenu;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

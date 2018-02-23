@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.DataTypes;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Base;
@@ -22,6 +23,7 @@ namespace MagicalLifeAPI.World
             this.Location = location;
             this.MovementCost = movementCost;
             Tile.TileCreatedHandler(new TileEventArg(this));
+            this.TextureIndex = AssetManager.GetTextureIndex(this.GetTextureName());
         }
 
         /// <summary>

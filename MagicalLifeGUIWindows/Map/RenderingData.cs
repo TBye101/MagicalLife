@@ -1,6 +1,6 @@
-﻿using MagicalLifeAPI.DataTypes;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.World;
-using MagicalLifeGUIWindows.Asset;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;

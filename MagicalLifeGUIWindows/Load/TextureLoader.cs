@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Universal;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
 using Microsoft.Xna.Framework.Graphics;
@@ -37,6 +38,7 @@ namespace MagicalLifeGUIWindows.Load
             foreach (Tile item in tiles)
             {
                 Texture2D texture = Game1.AssetManager.Load<Texture2D>(item.GetTextureName());
+                AssetManager.RegisterTexture(texture);
                 progress++;
             }
 
