@@ -1,15 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using MagicalLifeGUIWindows.GUI.Reusable;
+using System.Collections.Generic;
 
 namespace MagicalLifeRenderEngine.Main.GUI.Click
 {
     /// <summary>
     /// This class knows how to compare two <see cref="ClickBounds"/> objects.
     /// </summary>
-    public class BoundsSorter : IComparer<ClickBounds>
+    public class BoundsSorter : IComparer<GUIElement>
     {
-        public int Compare(ClickBounds x, ClickBounds y)
+        public int Compare(GUIElement x, GUIElement y)
         {
-            return x.Priority.CompareTo(y.Priority);
+            return x.MouseBounds.Priority.CompareTo(y.MouseBounds.Priority);
         }
     }
 }

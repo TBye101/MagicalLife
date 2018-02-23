@@ -1,4 +1,6 @@
-﻿using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeAPI.World;
+using MagicalLifeAPI.World.World_Generation.Generators;
+using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 using System;
@@ -16,14 +18,14 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
 
         }
 
-        public override void Click(object sender, MouseEventArgs e)
+        public override void Click(MouseEventArgs e)
         {
-            throw new NotImplementedException();
+            World.Initialize(5, 5, 1, new Dirtland());
         }
 
-        public override void DoubleClick(object sender, MouseEventArgs e)
+        public override void DoubleClick(MouseEventArgs e)
         {
-            throw new NotImplementedException();
+            World.Initialize(5, 5, 1, new Dirtland());
         }
 
         private static Rectangle GetLocation()

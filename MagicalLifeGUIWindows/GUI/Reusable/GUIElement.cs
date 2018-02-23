@@ -27,7 +27,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             this.Image = image;
             this.DrawingBounds = drawingBounds;
             this.MouseBounds = new ClickBounds(drawingBounds, priority);
-            MouseHandler.AddClickBounds(this.MouseBounds);
+            MouseHandler.AddClickBounds(this);
         }
 
         /// <summary>
@@ -55,13 +55,13 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public abstract void Click(object sender, MouseEventArgs e);
+        public abstract void Click(MouseEventArgs e);
 
         /// <summary>
         /// Called whenever this GUI element is clicked on.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public abstract void DoubleClick(object sender, MouseEventArgs e);
+        public abstract void DoubleClick(MouseEventArgs e);
     }
 }

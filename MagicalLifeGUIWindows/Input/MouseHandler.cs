@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Input.InputListeners;
 using System;
 using System.Collections.Generic;
+using MagicalLifeGUIWindows.GUI.Reusable;
 
 namespace MagicalLifeRenderEngine.Main.GUI.Click
 {
@@ -16,7 +17,7 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         /// <summary>
         /// Contains all of the ClickBounds this class handles.
         /// </summary>
-        private static SortedSet<ClickBounds> Bounds = new SortedSet<ClickBounds>(new BoundsSorter());
+        private static SortedSet<GUIElement> Bounds = new SortedSet<GUIElement>(new BoundsSorter());
 
         public static MouseListener MouseListner = new MouseListener();
 
@@ -62,13 +63,13 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         /// <param name="clickData"></param>
         private static void Click(MouseEventArgs clickData)
         {
-            foreach (ClickBounds item in Bounds)
+            foreach (GUIElement item in Bounds)
             {
-                MasterLog.DebugWriteLine("Bounds: " + item.Bounds.ToString());
-                if (item.Bounds.Contains(clickData.Position.X, clickData.Position.Y))
+                MasterLog.DebugWriteLine("Bounds: " + item.MouseBounds.Bounds.ToString());
+                if (item.MouseBounds.Bounds.Contains(clickData.Position.X, clickData.Position.Y))
                 {
-                    MasterLog.DebugWriteLine("Single Click Accepted: " + item.Bounds.ToString());
-                    item.ClickMe(clickData);
+                    MasterLog.DebugWriteLine("Single Click Accepted: " + item.MouseBounds.Bounds.ToString());
+                    item.Click(clickData);
                     break;
                 }
             }
@@ -80,12 +81,12 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         /// <param name="clickData"></param>
         private static void DoubleClick(MouseEventArgs clickData)
         {
-            foreach (ClickBounds item in Bounds)
+            foreach (GUIElement item in Bounds)
             {
-                if (item.Bounds.Contains(clickData.Position.X, clickData.Position.Y))
+                if (item.MouseBounds.Bounds.Contains(clickData.Position.X, clickData.Position.Y))
                 {
-                    MasterLog.DebugWriteLine("Double Click Accepted: " + item.Bounds.ToString());
-                    item.DoubleClickMe(clickData);
+                    MasterLog.DebugWriteLine("Double Click Accepted: " + item.MouseBounds.Bounds.ToString());
+                    item.DoubleClick(clickData);
                     break;
                 }
             }
@@ -95,9 +96,9 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         /// Adds a <see cref="ClickBounds"/> object to the system to be handled.
         /// </summary>
         /// <param name="bounds"></param>
-        public static void AddClickBounds(ClickBounds bounds)
+        public static void AddClickBounds(GUIElement bounds)
         {
-            MasterLog.DebugWriteLine(bounds.Bounds.ToString());
+            MasterLog.DebugWriteLine(bounds.MouseBounds.Bounds.ToString());
             Bounds.Add(bounds);
         }
 
@@ -107,7 +108,7 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         /// <param name="boundsID"></param>
         public static void RemoveClickBounds(Guid boundsID)
         {
-            foreach (ClickBounds item in Bounds)
+            foreach (GUIElement item in Bounds)
             {
                 if (item.ID == boundsID)
                 {
