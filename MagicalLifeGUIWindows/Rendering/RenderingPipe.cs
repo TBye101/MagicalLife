@@ -5,6 +5,7 @@ using MagicalLifeGUIWindows.GUI.MainMenu;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 
 namespace MagicalLifeGUIWindows.Rendering
@@ -36,6 +37,17 @@ namespace MagicalLifeGUIWindows.Rendering
             }
 
             DrawGUI(ref spBatch);
+
+
+            DrawMouseLocation(ref spBatch);
+        }
+
+        public static void DrawMouseLocation(ref SpriteBatch spBatch)
+        {
+            int x = Mouse.GetState().X;
+            int y = Mouse.GetState().Y;
+            string mouseLocation = "{ " + x + ", " + y + " }";
+            DrawString(MainMenuLayout.MainMenuFont, mouseLocation, new Rectangle(500, 500, 200, 50), Alignment.Center, Color.AliceBlue, ref spBatch);
         }
 
         /// <summary>
@@ -49,12 +61,6 @@ namespace MagicalLifeGUIWindows.Rendering
 
         private static void DrawMainMenu(ref SpriteBatch spBatch)
         {
-            //if (MainMenu.NewGameButton.Visible)
-            //{
-            //    spBatch.Draw(MainMenu.NewGameButton.Image, MainMenu.NewGameButton.DrawingBounds, colorMask);
-            //    //spBatch.DrawString(MainMenuLayout.MainMenuFont, MainMenu.NewGameButton.Text, new Vector2(MainMenu.NewGameButton.DrawingBounds.X + MainMenuLayout.NewGameButtonTextXOffset, MainMenu.NewGameButton.DrawingBounds.Y + MainMenuLayout.NewGameButtonTextYOffset), colorMask);
-            //    RenderingPipe.DrawString(MainMenuLayout.MainMenuFont, MainMenu.NewGameButton.Text, MainMenu.NewGameButton.DrawingBounds, Alignment.Center, colorMask, ref spBatch);
-            //}
             DrawButton(MainMenu.NewGameButton, ref spBatch);
             DrawButton(MainMenu.QuitButton, ref spBatch);
         }
