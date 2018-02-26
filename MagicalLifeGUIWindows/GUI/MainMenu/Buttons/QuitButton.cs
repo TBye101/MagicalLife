@@ -1,4 +1,5 @@
-﻿using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeAPI.Universal;
+using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 using System;
@@ -18,12 +19,12 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
 
         public override void Click(MouseEventArgs e)
         {
-            Environment.Exit(0);
+            UniversalEvents.GameExitHandler();
         }
 
         public override void DoubleClick(MouseEventArgs e)
         {
-            Environment.Exit(0);
+            UniversalEvents.GameExitHandler();
         }
 
         private static Rectangle GetLocation()

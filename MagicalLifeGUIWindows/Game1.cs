@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using MagicalLifeGUIWindows.Input;
+using MagicalLifeAPI.Universal;
 
 namespace MagicalLifeGUIWindows
 {
@@ -26,6 +27,12 @@ namespace MagicalLifeGUIWindows
             this.Graphics = new GraphicsDeviceManager(this);
             this.Content.RootDirectory = "Content";
             Game1.AssetManager = this.Content;
+            UniversalEvents.GameExit += this.UniversalEvents_GameExit;
+        }
+
+        private void UniversalEvents_GameExit(object sender, System.EventArgs e)
+        {
+            this.Exit();
         }
 
         /// <summary>
