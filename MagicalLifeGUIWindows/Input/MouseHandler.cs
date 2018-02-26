@@ -17,9 +17,11 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         /// <summary>
         /// Contains all of the ClickBounds this class handles.
         /// </summary>
-        private static SortedSet<GUIElement> Bounds = new SortedSet<GUIElement>(new BoundsSorter());
+        private static List<GUIElement> Bounds = new List<GUIElement>();
 
         public static MouseListener MouseListner = new MouseListener();
+
+        private static BoundsSorter BoundSorter = new BoundsSorter();
 
         /// <summary>
         /// Constructs the <see cref="MouseHandler"/> class.
@@ -99,7 +101,14 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         public static void AddClickBounds(GUIElement bounds)
         {
             MasterLog.DebugWriteLine(bounds.MouseBounds.Bounds.ToString());
-            Bounds.Add(bounds);
+
+            int index = Bounds.BinarySearch(bounds, BoundSorter);
+            if (index < 0)
+            {
+                index = ~index;
+            }
+
+            Bounds.Insert(index, bounds);
         }
 
         /// <summary>

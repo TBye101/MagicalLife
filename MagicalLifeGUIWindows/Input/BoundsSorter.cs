@@ -10,7 +10,8 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
     {
         public int Compare(GUIElement x, GUIElement y)
         {
-            return x.MouseBounds.Priority.CompareTo(y.MouseBounds.Priority);
+            int ret = x.MouseBounds.Priority.CompareTo(y.MouseBounds.Priority);
+            return ret;
         }
     }
 }
