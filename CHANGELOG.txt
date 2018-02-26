@@ -5,6 +5,7 @@
 			*Now displays new game button
 			*Now recieves mouse input as events
 			*Mouse now displays
+			*Escape now toggles the main menu
 
 		#### API
 			* Now using Monogame 

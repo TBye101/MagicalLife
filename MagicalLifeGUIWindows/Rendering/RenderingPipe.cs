@@ -31,7 +31,6 @@ namespace MagicalLifeGUIWindows.Rendering
         {
             if (World.mainWorld != null)
             {
-                spBatch.GraphicsDevice.Clear(Color.Black);
                 DrawMap(ref spBatch);
             }
 
