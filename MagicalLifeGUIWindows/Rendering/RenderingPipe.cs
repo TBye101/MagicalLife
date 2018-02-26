@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World;
 using MagicalLifeGUIWindows.GUI.MainMenu;
 using Microsoft.Xna.Framework;
@@ -30,6 +31,7 @@ namespace MagicalLifeGUIWindows.Rendering
         {
             if (World.mainWorld != null)
             {
+                spBatch.GraphicsDevice.Clear(Color.Black);
                 DrawMap(ref spBatch);
             }
 
@@ -52,6 +54,10 @@ namespace MagicalLifeGUIWindows.Rendering
                 spBatch.Draw(MainMenu.NewGameButton.Image, MainMenu.NewGameButton.DrawingBounds, colorMask);
                 //spBatch.DrawString(MainMenuLayout.MainMenuFont, MainMenu.NewGameButton.Text, new Vector2(MainMenu.NewGameButton.DrawingBounds.X + MainMenuLayout.NewGameButtonTextXOffset, MainMenu.NewGameButton.DrawingBounds.Y + MainMenuLayout.NewGameButtonTextYOffset), colorMask);
                 RenderingPipe.DrawString(MainMenuLayout.MainMenuFont, MainMenu.NewGameButton.Text, MainMenu.NewGameButton.DrawingBounds, Alignment.Center, colorMask, ref spBatch);
+            }
+            else
+            {
+                MasterLog.DebugWriteLine("New Game Button hidden");
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Universal;
+using MagicalLifeGUIWindows.Input;
 using MagicalLifeRenderEngine.Main.GUI.Click;
 
 namespace MagicalLifeGUIWindows.Load
@@ -10,12 +11,14 @@ namespace MagicalLifeGUIWindows.Load
     {
         public int GetTotalOperations()
         {
-            return 1;
+            return 2;
         }
 
         public void InitialStartup(ref int progress)
         {
             MouseHandler.Initialize();
+            progress++;
+            KeyboardHandler.Initialize();
             progress++;
         }
     }

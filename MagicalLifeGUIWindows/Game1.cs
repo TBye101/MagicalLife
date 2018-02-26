@@ -7,6 +7,7 @@ using MagicalLifeSettings.Storage;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using MagicalLifeGUIWindows.Input;
 
 namespace MagicalLifeGUIWindows
 {
@@ -76,10 +77,10 @@ namespace MagicalLifeGUIWindows
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            //MasterLog.DebugWriteLine(this.IsActive.ToString());
             if (this.IsActive)
             {
                 MouseHandler.UpdateMouseInput(gameTime);
+                KeyboardHandler.UpdateKeyboardInput(gameTime);
             }
 
             base.Update(gameTime);
@@ -91,8 +92,9 @@ namespace MagicalLifeGUIWindows
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            GraphicsDevice.SetRenderTarget(null);
+            GraphicsDevice.Clear(Color.Black);
             this.SpriteBatch.Begin();
-
             RenderingPipe.DrawScreen(ref this.SpriteBatch);
 
             this.SpriteBatch.End();

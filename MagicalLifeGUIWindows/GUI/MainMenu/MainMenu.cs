@@ -20,6 +20,21 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
             NewGameButton = new NewGameButton();
         }
 
+        /// <summary>
+        /// Toggles the main menu.
+        /// </summary>
+        public static void ToggleMainMenu()
+        {
+            if (NewGameButton.Visible)
+            {
+                NewGameButton.Visible = false;
+            }
+            else
+            {
+                NewGameButton.Visible = true;
+            }
+        }
+
         public static NewGameButton NewGameButton { get; private set; }
     }
 }

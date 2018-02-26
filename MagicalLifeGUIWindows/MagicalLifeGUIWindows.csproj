@@ -79,6 +79,8 @@
     <Compile Include="GUI\Reusable\MonoButton.cs" />
     <Compile Include="Input\BoundsSorter.cs" />
     <Compile Include="Input\ClickBounds.cs" />
+    <Compile Include="Input\EscapeHandler.cs" />
+    <Compile Include="Input\KeyboardHandler.cs" />
     <Compile Include="Input\MouseHandler.cs" />
     <Compile Include="Load\InputLoader.cs" />
     <Compile Include="Load\Loader.cs" />
