@@ -72,6 +72,7 @@
   <ItemGroup>
     <Compile Include="Game1.cs" />
     <Compile Include="GUI\MainMenu\Buttons\NewGameButton.cs" />
+    <Compile Include="GUI\MainMenu\Buttons\QuitButton.cs" />
     <Compile Include="GUI\MainMenu\MainMenuLayout.cs" />
     <Compile Include="GUI\MainMenu\MainMenuLayout1920x1080.cs" />
     <Compile Include="GUI\Resolution.cs" />

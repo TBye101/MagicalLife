@@ -18,7 +18,12 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
         {
             //NewGameButton = new MonoButton("MenuButton", GetNewGameButtonLocation(), "New Game");
             NewGameButton = new NewGameButton();
+            QuitButton = new QuitButton();
         }
+
+        public static NewGameButton NewGameButton { get; private set; }
+
+        public static QuitButton QuitButton { get; private set; }
 
         /// <summary>
         /// Toggles the main menu.
@@ -33,8 +38,15 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
             {
                 NewGameButton.Visible = true;
             }
-        }
 
-        public static NewGameButton NewGameButton { get; private set; }
+            if (QuitButton.Visible)
+            {
+                QuitButton.Visible = false;
+            }
+            else
+            {
+                QuitButton.Visible = true;
+            }
+        }
     }
 }

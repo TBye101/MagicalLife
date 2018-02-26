@@ -97,37 +97,19 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
         }
 
         /// <summary>
-        /// How much to offset the text by in the X direction.
+        /// The y position of the top of the new game button.
         /// </summary>
-        public static int NewGameButtonTextXOffset
+        public static int QuitButtonY
         {
             get
             {
                 switch ((Resolution)MainWindow.Default.Resolution)
                 {
                     case Resolution._1920x1080:
-                        return MainMenuLayout1920x1080.NewGameButtonTextXOffset;
+                        return MainMenuLayout1920x1080.QuitButtonY;
 
                     default:
-                        return MainMenuLayout1920x1080.NewGameButtonTextXOffset;
-                }
-            }
-        }
-
-        /// <summary>
-        /// How much to offset the text by in the Y direction.
-        /// </summary>
-        public static int NewGameButtonTextYOffset
-        {
-            get
-            {
-                switch ((Resolution)MainWindow.Default.Resolution)
-                {
-                    case Resolution._1920x1080:
-                        return MainMenuLayout1920x1080.NewGameButtonTextYOffset;
-
-                    default:
-                        return MainMenuLayout1920x1080.NewGameButtonTextYOffset;
+                        return MainMenuLayout1920x1080.QuitButtonY;
                 }
             }
         }

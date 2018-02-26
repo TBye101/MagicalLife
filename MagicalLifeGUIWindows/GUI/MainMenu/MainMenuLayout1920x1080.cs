@@ -20,19 +20,16 @@
         /// </summary>
         public static readonly int ButtonHeight = 50;
 
+
+
         /// <summary>
         /// The y position of the top of the new game button.
         /// </summary>
         public static readonly int NewGameButtonY = 100;
 
         /// <summary>
-        /// How much to offset the text by in the X direction.
+        /// The y position of the top of the new game button.
         /// </summary>
-        public static readonly int NewGameButtonTextXOffset = 10;
-
-        /// <summary>
-        /// How much to offset the text by in the Y direction.
-        /// </summary>
-        public static readonly int NewGameButtonTextYOffset = 3;
+        public static readonly int QuitButtonY = 200;
     }
 }

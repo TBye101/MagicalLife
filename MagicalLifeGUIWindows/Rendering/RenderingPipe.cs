@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World;
 using MagicalLifeGUIWindows.GUI.MainMenu;
+using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -48,15 +49,22 @@ namespace MagicalLifeGUIWindows.Rendering
 
         private static void DrawMainMenu(ref SpriteBatch spBatch)
         {
-            if (MainMenu.NewGameButton.Visible)
+            //if (MainMenu.NewGameButton.Visible)
+            //{
+            //    spBatch.Draw(MainMenu.NewGameButton.Image, MainMenu.NewGameButton.DrawingBounds, colorMask);
+            //    //spBatch.DrawString(MainMenuLayout.MainMenuFont, MainMenu.NewGameButton.Text, new Vector2(MainMenu.NewGameButton.DrawingBounds.X + MainMenuLayout.NewGameButtonTextXOffset, MainMenu.NewGameButton.DrawingBounds.Y + MainMenuLayout.NewGameButtonTextYOffset), colorMask);
+            //    RenderingPipe.DrawString(MainMenuLayout.MainMenuFont, MainMenu.NewGameButton.Text, MainMenu.NewGameButton.DrawingBounds, Alignment.Center, colorMask, ref spBatch);
+            //}
+            DrawButton(MainMenu.NewGameButton, ref spBatch);
+            DrawButton(MainMenu.QuitButton, ref spBatch);
+        }
+
+        private static void DrawButton(MonoButton button, ref SpriteBatch spBatch)
+        {
+            if (button.Visible)
             {
-                spBatch.Draw(MainMenu.NewGameButton.Image, MainMenu.NewGameButton.DrawingBounds, colorMask);
-                //spBatch.DrawString(MainMenuLayout.MainMenuFont, MainMenu.NewGameButton.Text, new Vector2(MainMenu.NewGameButton.DrawingBounds.X + MainMenuLayout.NewGameButtonTextXOffset, MainMenu.NewGameButton.DrawingBounds.Y + MainMenuLayout.NewGameButtonTextYOffset), colorMask);
-                RenderingPipe.DrawString(MainMenuLayout.MainMenuFont, MainMenu.NewGameButton.Text, MainMenu.NewGameButton.DrawingBounds, Alignment.Center, colorMask, ref spBatch);
-            }
-            else
-            {
-                MasterLog.DebugWriteLine("New Game Button hidden");
+                spBatch.Draw(button.Image, button.DrawingBounds, colorMask);
+                RenderingPipe.DrawString(MainMenuLayout.MainMenuFont, button.Text, button.DrawingBounds, Alignment.Center, colorMask, ref spBatch);
             }
         }
 

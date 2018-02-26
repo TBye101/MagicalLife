@@ -1,6 +1,4 @@
-﻿using MagicalLifeAPI.World;
-using MagicalLifeAPI.World.World_Generation.Generators;
-using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 using System;
@@ -11,23 +9,21 @@ using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
 {
-    public class NewGameButton : MonoButton
+    public class QuitButton : MonoButton
     {
-        public NewGameButton() : base("MenuButton", GetLocation(), "New Game")
+        public QuitButton() : base("MenuButton", GetLocation(), "Quit")
         {
 
         }
 
         public override void Click(MouseEventArgs e)
         {
-            World.Initialize(5, 5, 1, new Dirtland());
-            MainMenu.ToggleMainMenu();
+            Environment.Exit(0);
         }
 
         public override void DoubleClick(MouseEventArgs e)
         {
-            World.Initialize(5, 5, 1, new Dirtland());
-            MainMenu.ToggleMainMenu();
+            Environment.Exit(0);
         }
 
         private static Rectangle GetLocation()
@@ -35,7 +31,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
             int width = MainMenuLayout.ButtonWidth;
             int height = MainMenuLayout.ButtonHeight;
             int x = MainMenuLayout.ButtonX;
-            int y = MainMenuLayout.NewGameButtonY;
+            int y = MainMenuLayout.QuitButtonY;
 
             return new Rectangle(x, y, width, height);
         }
