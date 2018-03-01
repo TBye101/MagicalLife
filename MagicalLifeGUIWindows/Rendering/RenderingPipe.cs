@@ -3,6 +3,7 @@ using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World;
 using MagicalLifeGUIWindows.GUI.MainMenu;
 using MagicalLifeGUIWindows.GUI.Reusable;
+using MagicalLifeRenderEngine.Main.GUI.Click;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -48,6 +49,7 @@ namespace MagicalLifeGUIWindows.Rendering
             int y = Mouse.GetState().Y;
             string mouseLocation = "{ " + x + ", " + y + " }";
             DrawString(MainMenuLayout.MainMenuFont, mouseLocation, new Rectangle(500, 500, 200, 50), Alignment.Center, Color.AliceBlue, ref spBatch);
+            DrawString(MainMenuLayout.MainMenuFont, MouseHandler.ApplyOffset(new Point(x, y)).ToString(), new Rectangle(800, 800, 200, 50), Alignment.Center, Color.Blue, ref spBatch);
         }
 
         /// <summary>

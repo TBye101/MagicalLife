@@ -22,6 +22,16 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         public static MouseListener MouseListner = new MouseListener();
 
         private static BoundsSorter BoundSorter = new BoundsSorter();
+        
+        /// <summary>
+        /// The x offset used to correctly handle mouse input.
+        /// </summary>
+        private static int XOffset = 3;
+
+        /// <summary>
+        /// The y offset used to correctly handle mouse input.
+        /// </summary>
+        private static int YOffset = -18;
 
         /// <summary>
         /// Constructs the <see cref="MouseHandler"/> class.
@@ -49,6 +59,11 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
             Click(e);
         }
 
+        public static Point ApplyOffset(Point MouseInput)
+        {
+            return new Point(MouseInput.X + XOffset, MouseInput.Y + YOffset);
+        }
+
         /// <summary>
         /// Handles a click.
         /// </summary>
@@ -65,10 +80,11 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         /// <param name="clickData"></param>
         private static void Click(MouseEventArgs clickData)
         {
+            Point loc = ApplyOffset(clickData.Position);
             foreach (GUIElement item in Bounds)
             {
                 MasterLog.DebugWriteLine("Bounds: " + item.MouseBounds.Bounds.ToString());
-                if (item.MouseBounds.Bounds.Contains(clickData.Position.X, clickData.Position.Y))
+                if (item.MouseBounds.Bounds.Contains(loc.X, loc.Y))
                 {
                     MasterLog.DebugWriteLine("Single Click Accepted: " + item.MouseBounds.Bounds.ToString());
                     item.Click(clickData);
@@ -83,9 +99,10 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         /// <param name="clickData"></param>
         private static void DoubleClick(MouseEventArgs clickData)
         {
+            Point loc = ApplyOffset(clickData.Position);
             foreach (GUIElement item in Bounds)
             {
-                if (item.MouseBounds.Bounds.Contains(clickData.Position.X, clickData.Position.Y))
+                if (item.MouseBounds.Bounds.Contains(loc.X, loc.Y))
                 {
                     MasterLog.DebugWriteLine("Double Click Accepted: " + item.MouseBounds.Bounds.ToString());
                     item.DoubleClick(clickData);
