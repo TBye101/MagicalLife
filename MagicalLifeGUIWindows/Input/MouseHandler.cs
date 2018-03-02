@@ -26,12 +26,12 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         /// <summary>
         /// The x offset used to correctly handle mouse input.
         /// </summary>
-        private static int XOffset = 3;
+        private static int XOffset = 4;
 
         /// <summary>
         /// The y offset used to correctly handle mouse input.
         /// </summary>
-        private static int YOffset = -18;
+        private static int YOffset = -10;
 
         /// <summary>
         /// Constructs the <see cref="MouseHandler"/> class.
@@ -81,6 +81,7 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         private static void Click(MouseEventArgs clickData)
         {
             Point loc = ApplyOffset(clickData.Position);
+            MasterLog.DebugWriteLine("Offset: " + loc.ToString());
             foreach (GUIElement item in Bounds)
             {
                 MasterLog.DebugWriteLine("Bounds: " + item.MouseBounds.Bounds.ToString());
