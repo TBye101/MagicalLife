@@ -1,5 +1,5 @@
-﻿using MagicalLifeAPI.Filing.Logging;
-using MonoGame.Extended.Input.InputListeners;
+﻿using MagicalLifeAPI.Universal;
+using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Load;
 using MagicalLifeGUIWindows.Rendering;
 using MagicalLifeRenderEngine.Main.GUI.Click;
@@ -7,8 +7,6 @@ using MagicalLifeSettings.Storage;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using MagicalLifeGUIWindows.Input;
-using MagicalLifeAPI.Universal;
 
 namespace MagicalLifeGUIWindows
 {

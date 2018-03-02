@@ -1,11 +1,9 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
-using System.Runtime.CompilerServices;
+using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Input.InputListeners;
 using System;
 using System.Collections.Generic;
-using MagicalLifeGUIWindows.GUI.Reusable;
 
 namespace MagicalLifeRenderEngine.Main.GUI.Click
 {

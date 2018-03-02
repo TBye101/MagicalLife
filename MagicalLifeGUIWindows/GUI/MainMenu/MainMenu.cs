@@ -1,7 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using MagicalLifeGUIWindows.GUI.MainMenu.Buttons;
-using MagicalLifeGUIWindows.GUI.Reusable;
-using Microsoft.Xna.Framework;
+﻿using MagicalLifeGUIWindows.GUI.MainMenu.Buttons;
 
 namespace MagicalLifeGUIWindows.GUI.MainMenu
 {

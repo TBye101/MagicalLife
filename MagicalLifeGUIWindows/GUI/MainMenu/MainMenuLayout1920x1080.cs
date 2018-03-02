@@ -20,8 +20,6 @@
         /// </summary>
         public static readonly int ButtonHeight = 50;
 
-
-
         /// <summary>
         /// The y position of the top of the new game button.
         /// </summary>

@@ -1,9 +1,7 @@
 ﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World;
 using MagicalLifeGUIWindows.GUI.MainMenu;
 using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeRenderEngine.Main.GUI.Click;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -38,7 +36,6 @@ namespace MagicalLifeGUIWindows.Rendering
             }
 
             DrawGUI(ref spBatch);
-
 
             DrawMouseLocation(ref spBatch);
         }

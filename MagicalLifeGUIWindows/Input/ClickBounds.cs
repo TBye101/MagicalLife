@@ -1,6 +1,5 @@
 ﻿using MagicalLifeAPI.Universal;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Input.InputListeners;
 using System;
 
