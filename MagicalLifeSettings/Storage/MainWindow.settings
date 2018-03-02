@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="ScreenSize" Type="System.Drawing.Size" Scope="User">
-      <Value Profile="(Default)">1536, 864</Value>
+      <Value Profile="(Default)">1920, 1080</Value>
     </Setting>
     <Setting Name="WindowState" Type="System.Windows.Forms.FormWindowState" Scope="User">
       <Value Profile="(Default)">Maximized</Value>

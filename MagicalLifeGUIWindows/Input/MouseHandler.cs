@@ -22,16 +22,16 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         public static MouseListener MouseListner = new MouseListener();
 
         private static BoundsSorter BoundSorter = new BoundsSorter();
-        
+
         /// <summary>
         /// The x offset used to correctly handle mouse input.
         /// </summary>
-        private static int XOffset = 4;
+        private static int XOffset = 0;// 4;
 
         /// <summary>
         /// The y offset used to correctly handle mouse input.
         /// </summary>
-        private static int YOffset = -10;
+        private static int YOffset = 0;//-10;
 
         /// <summary>
         /// Constructs the <see cref="MouseHandler"/> class.
