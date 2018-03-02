@@ -48,8 +48,7 @@ namespace MagicalLifeGUIWindows.Rendering
             int x = Mouse.GetState().X;
             int y = Mouse.GetState().Y;
             string mouseLocation = "{ " + x + ", " + y + " }";
-            DrawString(MainMenuLayout.MainMenuFont, mouseLocation, new Rectangle(500, 500, 200, 50), Alignment.Center, Color.AliceBlue, ref spBatch);
-            DrawString(MainMenuLayout.MainMenuFont, MouseHandler.ApplyOffset(new Point(x, y)).ToString(), new Rectangle(800, 800, 200, 50), Alignment.Center, Color.Blue, ref spBatch);
+            //DrawString(MainMenuLayout.MainMenuFont, mouseLocation, new Rectangle(500, 500, 200, 50), Alignment.Center, Color.AliceBlue, ref spBatch);
         }
 
         /// <summary>

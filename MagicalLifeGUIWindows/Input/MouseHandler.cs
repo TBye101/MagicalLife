@@ -49,20 +49,20 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
 
         private static void MouseListener_MouseDoubleClicked(object sender, MouseEventArgs e)
         {
-            MasterLog.DebugWriteLine("Double click detected: " + e.Position.ToString());
+            //MasterLog.DebugWriteLine("Double click detected: " + e.Position.ToString());
             DoubleClick(e);
         }
 
         private static void MouseListener_MouseClicked(object sender, MouseEventArgs e)
         {
-            MasterLog.DebugWriteLine("Single click detected: " + e.Position.ToString());
+            //MasterLog.DebugWriteLine("Single click detected: " + e.Position.ToString());
             Click(e);
         }
 
-        public static Point ApplyOffset(Point MouseInput)
-        {
-            return new Point(MouseInput.X + XOffset, MouseInput.Y + YOffset);
-        }
+        //public static Point ApplyOffset(Point MouseInput)
+        //{
+        //    return new Point(MouseInput.X + XOffset, MouseInput.Y + YOffset);
+        //}
 
         /// <summary>
         /// Handles a click.
@@ -80,14 +80,14 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         /// <param name="clickData"></param>
         private static void Click(MouseEventArgs clickData)
         {
-            Point loc = ApplyOffset(clickData.Position);
-            MasterLog.DebugWriteLine("Offset: " + loc.ToString());
+            //Point loc = ApplyOffset(clickData.Position);
+            //MasterLog.DebugWriteLine("Offset: " + loc.ToString());
             foreach (GUIElement item in Bounds)
             {
-                MasterLog.DebugWriteLine("Bounds: " + item.MouseBounds.Bounds.ToString());
-                if (item.MouseBounds.Bounds.Contains(loc.X, loc.Y))
+                //MasterLog.DebugWriteLine("Bounds: " + item.MouseBounds.Bounds.ToString());
+                if (item.MouseBounds.Bounds.Contains(clickData.Position.X, clickData.Position.Y))
                 {
-                    MasterLog.DebugWriteLine("Single Click Accepted: " + item.MouseBounds.Bounds.ToString());
+                    //MasterLog.DebugWriteLine("Single Click Accepted: " + item.MouseBounds.Bounds.ToString());
                     item.Click(clickData);
                     break;
                 }
@@ -100,12 +100,11 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         /// <param name="clickData"></param>
         private static void DoubleClick(MouseEventArgs clickData)
         {
-            Point loc = ApplyOffset(clickData.Position);
             foreach (GUIElement item in Bounds)
             {
-                if (item.MouseBounds.Bounds.Contains(loc.X, loc.Y))
+                if (item.MouseBounds.Bounds.Contains(clickData.Position.X, clickData.Position.Y))
                 {
-                    MasterLog.DebugWriteLine("Double Click Accepted: " + item.MouseBounds.Bounds.ToString());
+                    //MasterLog.DebugWriteLine("Double Click Accepted: " + item.MouseBounds.Bounds.ToString());
                     item.DoubleClick(clickData);
                     break;
                 }
