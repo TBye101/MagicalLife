@@ -12,6 +12,21 @@ namespace MagicalLifeGUIWindows.Map
     /// </summary>
     public static class RenderingData
     {
+        /// <summary>
+        /// The value of the last assigned priority to a GUI popup.
+        /// </summary>
+        private static int CurrentPriority = int.MinValue;
+
+        /// <summary>
+        /// Returns an ever increasing number for popup window priorities.
+        /// </summary>
+        /// <returns></returns>
+        public static int GetGUIContainerPriority()
+        {
+            CurrentPriority += 1;
+            return CurrentPriority;
+        }
+
         static RenderingData()
         {
             Tile.TileCreated += Tile_TileCreated;

@@ -76,10 +76,12 @@
     <Compile Include="GUI\MainMenu\MainMenuLayout.cs" />
     <Compile Include="GUI\MainMenu\MainMenuLayout1920x1080.cs" />
     <Compile Include="GUI\Resolution.cs" />
+    <Compile Include="GUI\Reusable\GUIContainer.cs" />
     <Compile Include="GUI\Reusable\GUIElement.cs" />
     <Compile Include="GUI\Reusable\MonoButton.cs" />
     <Compile Include="Input\BoundsSorter.cs" />
     <Compile Include="Input\ClickBounds.cs" />
+    <Compile Include="Input\ContainerSorter.cs" />
     <Compile Include="Input\EscapeHandler.cs" />
     <Compile Include="Input\KeyboardHandler.cs" />
     <Compile Include="Input\MouseHandler.cs" />

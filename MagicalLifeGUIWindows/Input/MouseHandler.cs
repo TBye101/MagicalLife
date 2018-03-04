@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeGUIWindows.GUI.Reusable;
+using MagicalLifeGUIWindows.Input;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 using System;
@@ -17,19 +18,16 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         /// </summary>
         private static List<GUIElement> Bounds = new List<GUIElement>();
 
+        /// <summary>
+        /// All of the GUI windows.
+        /// </summary>
+        private static List<GUIContainer> GUIWindows = new List<GUIContainer>();
+
         public static MouseListener MouseListner = new MouseListener();
 
         private static BoundsSorter BoundSorter = new BoundsSorter();
 
-        /// <summary>
-        /// The x offset used to correctly handle mouse input.
-        /// </summary>
-        private static int XOffset = 0;// 4;
-
-        /// <summary>
-        /// The y offset used to correctly handle mouse input.
-        /// </summary>
-        private static int YOffset = 0;//-10;
+        private static ContainerSorter containerSorter = new ContainerSorter();
 
         /// <summary>
         /// Constructs the <see cref="MouseHandler"/> class.
@@ -39,6 +37,14 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
             MouseListner.MouseClicked += MouseListener_MouseClicked;
             MouseListner.MouseDoubleClicked += MouseListener_MouseDoubleClicked;
             MouseListner.MouseWheelMoved += MouseListener_MouseWheelMoved;
+            MouseListner.MouseDrag += MouseListner_MouseDrag;
+        }
+
+
+
+        private static void MouseListner_MouseDrag(object sender, MouseEventArgs e)
+        {
+            
         }
 
         private static void MouseListener_MouseWheelMoved(object sender, MouseEventArgs e)
@@ -56,11 +62,6 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
             //MasterLog.DebugWriteLine("Single click detected: " + e.Position.ToString());
             Click(e);
         }
-
-        //public static Point ApplyOffset(Point MouseInput)
-        //{
-        //    return new Point(MouseInput.X + XOffset, MouseInput.Y + YOffset);
-        //}
 
         /// <summary>
         /// Handles a click.
@@ -109,6 +110,17 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
             }
         }
 
+        public static void AddContainer(GUIContainer container)
+        {
+            int index = GUIWindows.BinarySearch(container, containerSorter);
+            if (index < 0)
+            {
+                index = ~index;
+            }
+
+            GUIWindows.Insert(index, container);
+        }
+
         /// <summary>
         /// Adds a <see cref="ClickBounds"/> object to the system to be handled.
         /// </summary>
@@ -124,22 +136,6 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
             }
 
             Bounds.Insert(index, bounds);
-        }
-
-        /// <summary>
-        /// Removes a <see cref="ClickBounds"/> object by ID.
-        /// </summary>
-        /// <param name="boundsID"></param>
-        public static void RemoveClickBounds(Guid boundsID)
-        {
-            foreach (GUIElement item in Bounds)
-            {
-                if (item.ID == boundsID)
-                {
-                    Bounds.Remove(item);
-                    break;
-                }
-            }
         }
     }
 }
