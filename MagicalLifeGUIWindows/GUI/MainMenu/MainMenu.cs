@@ -1,49 +1,25 @@
-﻿using MagicalLifeGUIWindows.GUI.MainMenu.Buttons;
+﻿using MagicalLifeRenderEngine.Main.GUI.Click;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.GUI.MainMenu
 {
-    /// <summary>
-    /// Holds the controls for the main menu.
-    /// </summary>
     public static class MainMenu
     {
-        static MainMenu()
+        private static MainMenuContainer MainMenuID;
+
+        internal static void Initialize()
         {
+            MainMenuContainer mainMenu = new MainMenuContainer();
+            MainMenuID = mainMenu;
+            MouseHandler.AddContainer(mainMenu);
         }
 
-        public static void Initialize()
+        internal static void ToggleMainMenu()
         {
-            //NewGameButton = new MonoButton("MenuButton", GetNewGameButtonLocation(), "New Game");
-            NewGameButton = new NewGameButton();
-            QuitButton = new QuitButton();
-        }
-
-        public static NewGameButton NewGameButton { get; private set; }
-
-        public static QuitButton QuitButton { get; private set; }
-
-        /// <summary>
-        /// Toggles the main menu.
-        /// </summary>
-        public static void ToggleMainMenu()
-        {
-            if (NewGameButton.Visible)
-            {
-                NewGameButton.Visible = false;
-            }
-            else
-            {
-                NewGameButton.Visible = true;
-            }
-
-            if (QuitButton.Visible)
-            {
-                QuitButton.Visible = false;
-            }
-            else
-            {
-                QuitButton.Visible = true;
-            }
         }
     }
 }

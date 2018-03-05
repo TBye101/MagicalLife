@@ -55,7 +55,7 @@ namespace MagicalLifeGUIWindows.Rendering
         /// <param name="spBatch"></param>
         private static void DrawGUI(ref SpriteBatch spBatch)
         {
-            DrawMainMenu(ref spBatch);
+            //DrawMainMenu(ref spBatch);
             DrawContainers(ref spBatch);
         }
 
@@ -83,11 +83,11 @@ namespace MagicalLifeGUIWindows.Rendering
             
         }
 
-        private static void DrawMainMenu(ref SpriteBatch spBatch)
-        {
-            DrawButton(MainMenu.NewGameButton, ref spBatch);
-            DrawButton(MainMenu.QuitButton, ref spBatch);
-        }
+        //private static void DrawMainMenu(ref SpriteBatch spBatch)
+        //{
+        //    DrawButton(MainMenu.NewGameButton, ref spBatch);
+        //    DrawButton(MainMenu.QuitButton, ref spBatch);
+        //}
 
         private static void DrawButton(MonoButton button, ref SpriteBatch spBatch)
         {

@@ -110,6 +110,10 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
             }
         }
 
+        /// <summary>
+        /// Adds a container.
+        /// </summary>
+        /// <param name="container"></param>
         public static void AddContainer(GUIContainer container)
         {
             int index = GUIWindows.BinarySearch(container, containerSorter);
@@ -119,6 +123,15 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
             }
 
             GUIWindows.Insert(index, container);
+        }
+
+        /// <summary>
+        /// Removes a container.
+        /// </summary>
+        /// <param name="container"></param>
+        public static void RemoveContainer(GUIContainer container)
+        {
+            GUIWindows.Remove(container);
         }
 
         /// <summary>

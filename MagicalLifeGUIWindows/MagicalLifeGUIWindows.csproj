@@ -73,6 +73,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="GUI\MainMenu\Buttons\NewGameButton.cs" />
     <Compile Include="GUI\MainMenu\Buttons\QuitButton.cs" />
+    <Compile Include="GUI\MainMenu\MainMenu.cs" />
     <Compile Include="GUI\MainMenu\MainMenuContainer.cs" />
     <Compile Include="GUI\MainMenu\MainMenuLayout.cs" />
     <Compile Include="GUI\MainMenu\MainMenuLayout1920x1080.cs" />
@@ -94,7 +95,6 @@
     <Compile Include="Map\RenderingData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="GUI\MainMenu\MainMenu.cs" />
     <Compile Include="Rendering\RenderingPipe.cs" />
   </ItemGroup>
   <ItemGroup>
