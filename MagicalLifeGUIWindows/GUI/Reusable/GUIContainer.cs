@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Universal;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Universal;
 using MagicalLifeGUIWindows.Map;
 using MagicalLifeRenderEngine.Main.GUI.Click;
 using Microsoft.Xna.Framework;
@@ -15,7 +16,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
     /// Contains other <see cref="GUIElement"/>s.
     /// All coordinates of <see cref="GUIElement"/> objects are relative to the position of this container.
     /// </summary>
-    public class GUIContainer : Unique
+    public abstract class GUIContainer : Unique, IRequireTexture
     {
         /// <summary>
         /// Constructs a new instance of the <see cref="GUIContainer"/> class.
@@ -23,12 +24,17 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// <param name="image">The texture of this GUI container.</param>
         /// <param name="drawingBounds">The bounds for which to draw the texture on the screen at.</param>
         /// <param name="priority">Determines if this GUI container should have priority over other GUI elements when sorting through input.</param>
-        public GUIContainer(Texture2D image, Rectangle drawingBounds)
+        public GUIContainer(string image, Rectangle drawingBounds)
         {
-            this.Image = image;
+            this.Image = AssetManager.Textures[AssetManager.GetTextureIndex(image)];
             this.DrawingBounds = drawingBounds;
             this.Controls = new List<GUIElement>();
             this.Priority = RenderingData.GetGUIContainerPriority();
+        }
+
+        public GUIContainer()
+        {
+
         }
 
         /// <summary>
@@ -56,5 +62,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// The controls that are within this <see cref="GUIContainer"/>
         /// </summary>
         public List<GUIElement> Controls { get; set; }
+
+        public abstract string GetTextureName();
     }
 }

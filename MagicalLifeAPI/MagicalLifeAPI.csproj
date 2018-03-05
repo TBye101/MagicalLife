@@ -68,6 +68,7 @@
     <Compile Include="Filing\Logging\MasterLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Universal\IGameLoader.cs" />
+    <Compile Include="Universal\IRequireTexture.cs" />
     <Compile Include="Universal\Unique.cs" />
     <Compile Include="Universal\UniversalEvents.cs" />
     <Compile Include="Util\Extensions.cs" />

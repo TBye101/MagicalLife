@@ -7,31 +7,19 @@ namespace MagicalLifeAPI.Asset
     /// <summary>
     /// Used to handle assets.
     /// </summary>
-    public class AssetManager : IGameLoader
+    public class AssetManager
     {
         /// <summary>
         /// Holds all of the textures for the game.
         /// </summary>
-        public static List<Texture2D> Textures { get; private set; }
+        public static List<Texture2D> Textures { get; private set; } = new List<Texture2D>();
 
         /// <summary>
         /// Holds information allowing tiles among other things to look up the texture ID for themselves.
         /// The string value is the name of the texture,
         /// while the int value is the index in the <see cref="Textures"/> list that the texture is stored at.
         /// </summary>
-        public static Dictionary<string, int> NameToIndex { get; private set; }
-
-        public int GetTotalOperations()
-        {
-            return 1;
-        }
-
-        public void InitialStartup(ref int progress)
-        {
-            Textures = new List<Texture2D>();
-            NameToIndex = new Dictionary<string, int>();
-            progress++;
-        }
+        public static Dictionary<string, int> NameToIndex { get; private set; } = new Dictionary<string, int>();
 
         /// <summary>
         /// The name of the texture to find the index of.

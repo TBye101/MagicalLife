@@ -11,7 +11,7 @@ namespace MagicalLifeAPI.World
     /// <summary>
     /// Every tile that implements this class must provide a parameterless version of itself for reflection purposes. That constructor will not be used during gameplay.
     /// </summary>
-    public abstract class Tile : Unique
+    public abstract class Tile : Unique, IRequireTexture
     {
         /// <summary>
         /// Initializes a new tile object.
@@ -65,12 +65,6 @@ namespace MagicalLifeAPI.World
         public abstract string GetName();
 
         /// <summary>
-        /// Returns the name of the texture used by this tile, including the file extension.
-        /// </summary>
-        /// <returns></returns>
-        public abstract string GetTextureName();
-
-        /// <summary>
         /// The resources that can be found in this tile.
         /// </summary>
         public List<Resource> Resources { get; set; } = new List<Resource>();
@@ -104,5 +98,7 @@ namespace MagicalLifeAPI.World
                 handler(World.mainWorld, e);
             }
         }
+
+        public abstract string GetTextureName();
     }
 }

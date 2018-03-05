@@ -21,7 +21,7 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         /// <summary>
         /// All of the GUI windows.
         /// </summary>
-        private static List<GUIContainer> GUIWindows = new List<GUIContainer>();
+        public static List<GUIContainer> GUIWindows { get; private set; } = new List<GUIContainer>();
 
         public static MouseListener MouseListner = new MouseListener();
 

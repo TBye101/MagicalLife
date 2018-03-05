@@ -2,6 +2,8 @@
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
+using MagicalLifeGUIWindows.GUI.MainMenu;
+using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System.Reflection;
@@ -27,15 +29,25 @@ namespace MagicalLifeGUIWindows.Load
 
         private int CalculateTotalJobs()
         {
-            List<Tile> tiles = ReflectionUtil.LoadAllAbstractClass<Tile>(Assembly.GetAssembly(typeof(Tile)));
-            return tiles.Count;
+            List<IRequireTexture> gui = ReflectionUtil.LoadAllInterface<IRequireTexture>(Assembly.GetAssembly(typeof(MainMenuContainer)));
+            List<IRequireTexture> api = ReflectionUtil.LoadAllInterface<IRequireTexture>(Assembly.GetAssembly(typeof(Tile)));
+
+            return gui.Count + api.Count;
         }
 
         public void InitialStartup(ref int progress)
         {
-            List<Tile> tiles = ReflectionUtil.LoadAllAbstractClass<Tile>(Assembly.GetAssembly(typeof(Tile)));
+            List<IRequireTexture> gui = ReflectionUtil.LoadAllInterface<IRequireTexture>(Assembly.GetAssembly(typeof(MainMenuContainer)));
+            List<IRequireTexture> api = ReflectionUtil.LoadAllInterface<IRequireTexture>(Assembly.GetAssembly(typeof(Tile)));
 
-            foreach (Tile item in tiles)
+            foreach (IRequireTexture item in gui)
+            {
+                Texture2D texture = Game1.AssetManager.Load<Texture2D>(item.GetTextureName());
+                AssetManager.RegisterTexture(texture);
+                progress++;
+            }
+
+            foreach (IRequireTexture item in api)
             {
                 Texture2D texture = Game1.AssetManager.Load<Texture2D>(item.GetTextureName());
                 AssetManager.RegisterTexture(texture);

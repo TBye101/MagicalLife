@@ -2,7 +2,7 @@
 using MagicalLifeGUIWindows.Input;
 using MagicalLifeRenderEngine.Main.GUI.Click;
 
-namespace MagicalLifeGUIWindows.Load
+namespace MagicalLifeAPI.Universal
 {
     /// <summary>
     /// Initializes some input related things.

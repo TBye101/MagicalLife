@@ -2,6 +2,7 @@
 using MagicalLifeAPI.World;
 using MagicalLifeGUIWindows.GUI.MainMenu;
 using MagicalLifeGUIWindows.GUI.Reusable;
+using MagicalLifeRenderEngine.Main.GUI.Click;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -37,7 +38,7 @@ namespace MagicalLifeGUIWindows.Rendering
 
             DrawGUI(ref spBatch);
 
-            DrawMouseLocation(ref spBatch);
+            //DrawMouseLocation(ref spBatch);
         }
 
         public static void DrawMouseLocation(ref SpriteBatch spBatch)
@@ -45,7 +46,7 @@ namespace MagicalLifeGUIWindows.Rendering
             int x = Mouse.GetState().X;
             int y = Mouse.GetState().Y;
             string mouseLocation = "{ " + x + ", " + y + " }";
-            //DrawString(MainMenuLayout.MainMenuFont, mouseLocation, new Rectangle(500, 500, 200, 50), Alignment.Center, Color.AliceBlue, ref spBatch);
+            DrawString(MainMenuLayout.MainMenuFont, mouseLocation, new Rectangle(500, 500, 200, 50), Alignment.Center, Color.AliceBlue, ref spBatch);
         }
 
         /// <summary>
@@ -55,6 +56,31 @@ namespace MagicalLifeGUIWindows.Rendering
         private static void DrawGUI(ref SpriteBatch spBatch)
         {
             DrawMainMenu(ref spBatch);
+            DrawContainers(ref spBatch);
+        }
+
+        private static void DrawContainers(ref SpriteBatch spBatch)
+        {
+            foreach (GUIContainer item in MouseHandler.GUIWindows)
+            {
+                if (item.Visible)
+                {
+                    spBatch.Draw(item.Image, item.DrawingBounds, colorMask);
+
+                    foreach (GUIElement control in item.Controls)
+                    {
+                        if (control.Visible)
+                        {
+                            Rectangle location;
+                            int x = control.DrawingBounds.X + item.DrawingBounds.X;
+                            int y = control.DrawingBounds.Y + item.DrawingBounds.Y;
+                            location = new Rectangle(x, y, control.DrawingBounds.Width, control.DrawingBounds.Height);
+                            spBatch.Draw(control.Image, location, colorMask);
+                        }
+                    }
+                }
+            }
+            
         }
 
         private static void DrawMainMenu(ref SpriteBatch spBatch)
