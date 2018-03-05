@@ -1,4 +1,5 @@
-﻿using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeGUIWindows.GUI.MainMenu.Buttons;
+using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -14,6 +15,8 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
         public MainMenuContainer(bool visible) : base("MenuBackground", GetDrawingBounds())
         {
             this.Visible = visible;
+            this.Controls.Add(new NewGameButton());
+            this.Controls.Add(new QuitButton());
         }
 
         public MainMenuContainer() : base()

@@ -20,6 +20,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
     {
         /// <summary>
         /// Constructs a new instance of the <see cref="GUIContainer"/> class.
+        /// Anything that implements this must have an empty constructor, which refererences the empty base constructor.
         /// </summary>
         /// <param name="image">The texture of this GUI container.</param>
         /// <param name="drawingBounds">The bounds for which to draw the texture on the screen at.</param>
