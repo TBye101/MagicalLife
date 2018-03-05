@@ -71,11 +71,21 @@ namespace MagicalLifeGUIWindows.Rendering
                     {
                         if (control.Visible)
                         {
-                            Rectangle location;
-                            int x = control.DrawingBounds.X + item.DrawingBounds.X;
-                            int y = control.DrawingBounds.Y + item.DrawingBounds.Y;
-                            location = new Rectangle(x, y, control.DrawingBounds.Width, control.DrawingBounds.Height);
-                            spBatch.Draw(control.Image, location, colorMask);
+                            //Rectangle location;
+                            //int x = control.DrawingBounds.X + item.DrawingBounds.X;
+                            //int y = control.DrawingBounds.Y + item.DrawingBounds.Y;
+                            //location = new Rectangle(x, y, control.DrawingBounds.Width, control.DrawingBounds.Height);
+                            //spBatch.Draw(control.Image, location, colorMask);
+                            //DrawString(control.Font, )
+
+                            switch (control)
+                            {
+                                case MonoButton button:
+                                    DrawButtonInContainer((MonoButton)control, ref spBatch, item);
+                                    break;
+                                default:
+                                    break;
+                            }
                         }
                     }
                 }
@@ -88,6 +98,17 @@ namespace MagicalLifeGUIWindows.Rendering
         //    DrawButton(MainMenu.NewGameButton, ref spBatch);
         //    DrawButton(MainMenu.QuitButton, ref spBatch);
         //}
+
+        private static void DrawButtonInContainer(MonoButton button, ref SpriteBatch spBatch, GUIContainer container)
+        {
+            Rectangle location;
+            int x = button.DrawingBounds.X + container.DrawingBounds.X;
+            int y = button.DrawingBounds.Y + container.DrawingBounds.Y;
+            location = new Rectangle(x, y, button.DrawingBounds.Width, button.DrawingBounds.Height);
+            spBatch.Draw(button.Image, location, colorMask);
+            DrawString(button.Font, button.Text, location, Alignment.Center, colorMask, ref spBatch);
+
+        }
 
         private static void DrawButton(MonoButton button, ref SpriteBatch spBatch)
         {

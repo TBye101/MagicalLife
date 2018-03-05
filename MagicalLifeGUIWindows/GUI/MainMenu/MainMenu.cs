@@ -13,13 +13,21 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
 
         internal static void Initialize()
         {
-            MainMenuContainer mainMenu = new MainMenuContainer();
+            MainMenuContainer mainMenu = new MainMenuContainer(true);
             MainMenuID = mainMenu;
             MouseHandler.AddContainer(mainMenu);
         }
 
         internal static void ToggleMainMenu()
         {
+            if (MainMenuID.Visible)
+            {
+                MainMenuID.Visible = false;
+            }
+            else
+            {
+                MainMenuID.Visible = true;
+            }
         }
     }
 }

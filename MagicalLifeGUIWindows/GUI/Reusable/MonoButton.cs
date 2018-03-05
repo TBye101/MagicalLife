@@ -8,7 +8,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
     /// </summary>
     public abstract class MonoButton : GUIElement
     {
-        protected MonoButton(string imageName, Rectangle displayArea, string text = "") : base(Game1.AssetManager.Load<Texture2D>(imageName), displayArea, int.MaxValue)
+        protected MonoButton(string imageName, Rectangle displayArea, string text = "", string font = "MainMenuFont24x") : base(Game1.AssetManager.Load<Texture2D>(imageName), displayArea, int.MaxValue, font)
         {
             this.Text = text;
         }
