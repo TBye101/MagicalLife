@@ -48,7 +48,8 @@ namespace MagicalLifeGUIWindows.Map
             {
                 if (textures[i].Name == textureName)
                 {
-                    World.mainWorld.Tiles[location.X, location.Y, location.Z].TextureIndex = i;
+                    //World.mainWorld.Tiles[location.X, location.Y, location.Z].TextureIndex = i;
+                    tile.TextureIndex = i;
                     return;
                 }
             }

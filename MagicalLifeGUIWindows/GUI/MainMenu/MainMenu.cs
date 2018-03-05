@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.GUI.MainMenu
 {
+    /// <summary>
+    /// Handles some main menu stuff.
+    /// </summary>
     public static class MainMenu
     {
         private static MainMenuContainer MainMenuID;
