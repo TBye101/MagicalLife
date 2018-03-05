@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.World;
+﻿using MagicalLifeAPI.Universal;
+using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.World_Generation.Generators;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
@@ -6,7 +7,7 @@ using MonoGame.Extended.Input.InputListeners;
 
 namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
 {
-    public class NewGameButton : MonoButton
+    public class NewGameButton : MonoButton, IRequireTexture
     {
         public NewGameButton() : base("MenuButton", GetLocation(), "New Game")
         {
@@ -14,12 +15,17 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
 
         public override void Click(MouseEventArgs e)
         {
-            World.Initialize(5, 5, 1, new Dirtland());
-            MainMenu.ToggleMainMenu();
+            this.AnyClick();
         }
 
         public override void DoubleClick(MouseEventArgs e)
         {
+            this.AnyClick();
+        }
+
+        private void AnyClick()
+        {
+            New_World_Menu.NewWorldMenu.Initialize();
             World.Initialize(5, 5, 1, new Dirtland());
             MainMenu.ToggleMainMenu();
         }
@@ -32,6 +38,11 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
             int y = MainMenuLayout.NewGameButtonY;
 
             return new Rectangle(x, y, width, height);
+        }
+
+        public string GetTextureName()
+        {
+            return "MenuButton";
         }
     }
 }

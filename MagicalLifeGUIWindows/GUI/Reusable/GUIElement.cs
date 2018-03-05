@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Universal;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Universal;
 using MagicalLifeRenderEngine.Main.GUI.Click;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -17,13 +18,18 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// <param name="image">The texture of this GUI element.</param>
         /// <param name="drawingBounds">The bounds for which to draw the texture on the screen at.</param>
         /// <param name="priority">Determines if this GUI element should have priority over other GUI elements when sorting through input.</param>
-        public GUIElement(Texture2D image, Rectangle drawingBounds, int priority, string font)
+        public GUIElement(string image, Rectangle drawingBounds, int priority, string font)
         {
-            this.Image = image;
             this.DrawingBounds = drawingBounds;
             this.MouseBounds = new ClickBounds(drawingBounds, priority);
             MouseHandler.AddClickBounds(this);
             this.Font = Game1.AssetManager.Load<SpriteFont>(font);
+            this.Image = AssetManager.Textures[AssetManager.GetTextureIndex(image)];
+        }
+
+        public GUIElement()
+        {
+
         }
 
         /// <summary>

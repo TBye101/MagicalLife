@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MagicalLifeAPI.Asset;
 using MagicalLifeGUIWindows.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -34,13 +35,19 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// </summary>
         public bool IsLocked { get; }
 
-        public InputBox(Texture2D image, Texture2D CarrotTexture, Rectangle drawingBounds, int priority, string font, bool isLocked) : base(image, drawingBounds, priority, font)
+        public InputBox(string image, string CarrotTexture, Rectangle drawingBounds, int priority, string font, bool isLocked) : base(image, drawingBounds, priority, font)
         {
             KeyboardHandler.keyboardListener.KeyPressed += this.KeyboardListener_KeyPressed;
             KeyboardHandler.keyboardListener.KeyTyped += this.KeyboardListener_KeyTyped;
             this.CarrotPosition = this.Text.Count();
-            this.CarrotTexture = CarrotTexture;
+            this.CarrotTexture = AssetManager.Textures[AssetManager.GetTextureIndex(CarrotTexture)];
+            this.Image = AssetManager.Textures[AssetManager.GetTextureIndex(image)];
             this.IsLocked = isLocked;
+        }
+
+        public InputBox() : base()
+        {
+
         }
 
         private void KeyboardListener_KeyTyped(object sender, KeyboardEventArgs e)

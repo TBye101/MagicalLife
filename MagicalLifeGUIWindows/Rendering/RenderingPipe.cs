@@ -118,6 +118,9 @@ namespace MagicalLifeGUIWindows.Rendering
 
             Rectangle carrotLocation = location;
             carrotLocation.X += (InputBox.CarrotSize * textbox.CarrotPosition);
+            carrotLocation.Width = 2;
+            carrotLocation.Height = 4;
+            carrotLocation.Y = location.Y + 2;
 
             spBatch.Draw(textbox.CarrotTexture, carrotLocation, colorMask);
         }

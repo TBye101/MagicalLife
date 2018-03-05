@@ -45,11 +45,28 @@ namespace MagicalLifeAPI.Asset
         /// <returns>Returns the index at which the texture can be retrieved from.</returns>
         public static int RegisterTexture(Texture2D texture)
         {
-            Textures.Add(texture);
+            bool Exists = false;
 
-            int count = Textures.Count - 1;
-            NameToIndex.Add(texture.Name, count);
-            return count;
+            foreach (Texture2D item in Textures)
+            {
+                if (item.Name == texture.Name)
+                {
+                    Exists = true;
+                    break;
+                }
+            }
+
+            if (!Exists)
+            {
+                Textures.Add(texture);
+                int count = Textures.Count - 1;
+                NameToIndex.Add(texture.Name, count);
+                return count;
+            }
+            else
+            {
+                return AssetManager.GetTextureIndex(texture.Name);
+            }
         }
     }
 }

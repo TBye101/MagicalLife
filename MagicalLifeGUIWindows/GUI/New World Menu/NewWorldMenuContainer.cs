@@ -16,6 +16,7 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu
         public NewWorldMenuContainer(bool visible) : base("MenuBackground", GetDrawingBounds())
         {
             this.Visible = visible;
+            this.Controls.Add(new WorldWidthInputBox(false));
         }
 
         public NewWorldMenuContainer() : base()
