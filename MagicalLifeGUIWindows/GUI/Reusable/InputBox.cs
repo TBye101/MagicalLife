@@ -29,52 +29,64 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// </summary>
         public Texture2D CarrotTexture { get; private set; }
 
-        public InputBox(Texture2D image, Texture2D CarrotTexture, Rectangle drawingBounds, int priority, string font) : base(image, drawingBounds, priority, font)
+        /// <summary>
+        /// If this is true, this <see cref="InputBox"/> doesn't allow editing.
+        /// </summary>
+        public bool IsLocked { get; }
+
+        public InputBox(Texture2D image, Texture2D CarrotTexture, Rectangle drawingBounds, int priority, string font, bool isLocked) : base(image, drawingBounds, priority, font)
         {
             KeyboardHandler.keyboardListener.KeyPressed += this.KeyboardListener_KeyPressed;
             KeyboardHandler.keyboardListener.KeyTyped += this.KeyboardListener_KeyTyped;
             this.CarrotPosition = this.Text.Count();
             this.CarrotTexture = CarrotTexture;
+            this.IsLocked = isLocked;
         }
 
         private void KeyboardListener_KeyTyped(object sender, KeyboardEventArgs e)
         {
-            this.Text.Insert(this.CarrotPosition, e.Character.ToString());
-            this.CarrotPosition += 1;
+            if (!this.IsLocked)
+            {
+                this.Text.Insert(this.CarrotPosition, e.Character.ToString());
+                this.CarrotPosition += 1;
+            }
         }
 
         private void KeyboardListener_KeyPressed(object sender, KeyboardEventArgs e)
         {
-            switch (e.Key)
+            if (!this.IsLocked)
             {
-                case Microsoft.Xna.Framework.Input.Keys.Enter:
-                    this.Text += "\n";
-                    this.CarrotPosition += 1;
-                    break;
-
-                case Microsoft.Xna.Framework.Input.Keys.Left:
-                    if (this.CarrotPosition > 0)
-                    {
-                        this.CarrotPosition -= 1;
-                    }
-                    break;
-
-                case Microsoft.Xna.Framework.Input.Keys.Right:
-                    if (this.Text.Count() != this.CarrotPosition)
-                    {
+                switch (e.Key)
+                {
+                    case Microsoft.Xna.Framework.Input.Keys.Enter:
+                        this.Text += "\n";
                         this.CarrotPosition += 1;
-                    }
-                    break;
+                        break;
 
-                case Microsoft.Xna.Framework.Input.Keys.Delete:
-                    string p1 = this.Text.Substring(0, this.CarrotPosition);
-                    string p2 = this.Text.Substring(this.CarrotPosition + 1, this.Text.Count());
-                    this.Text = p1 + p2;
-                    break;
-                case Microsoft.Xna.Framework.Input.Keys.Back:
-                    string p3 = this.Text.Substring(0, this.CarrotPosition - 1);
-                    string p4 = this.Text.Substring(this.CarrotPosition, this.Text.Count());
-                    break;
+                    case Microsoft.Xna.Framework.Input.Keys.Left:
+                        if (this.CarrotPosition > 0)
+                        {
+                            this.CarrotPosition -= 1;
+                        }
+                        break;
+
+                    case Microsoft.Xna.Framework.Input.Keys.Right:
+                        if (this.Text.Count() != this.CarrotPosition)
+                        {
+                            this.CarrotPosition += 1;
+                        }
+                        break;
+
+                    case Microsoft.Xna.Framework.Input.Keys.Delete:
+                        string p1 = this.Text.Substring(0, this.CarrotPosition);
+                        string p2 = this.Text.Substring(this.CarrotPosition + 1, this.Text.Count());
+                        this.Text = p1 + p2;
+                        break;
+                    case Microsoft.Xna.Framework.Input.Keys.Back:
+                        string p3 = this.Text.Substring(0, this.CarrotPosition - 1);
+                        string p4 = this.Text.Substring(this.CarrotPosition, this.Text.Count());
+                        break;
+                }
             }
         }
 
