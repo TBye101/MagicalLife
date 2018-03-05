@@ -79,17 +79,28 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         /// <param name="clickData"></param>
         private static void Click(MouseEventArgs clickData)
         {
-            //Point loc = ApplyOffset(clickData.Position);
-            //MasterLog.DebugWriteLine("Offset: " + loc.ToString());
-            foreach (GUIElement item in Bounds)
+            int focus = -1;
+            int length = Bounds.Count;
+            GUIElement item = null;
+
+            for (int i = 0; i < length; i++)
             {
-                //MasterLog.DebugWriteLine("Bounds: " + item.MouseBounds.Bounds.ToString());
-                if (item.MouseBounds.Bounds.Contains(clickData.Position.X, clickData.Position.Y))
+                item = Bounds[i];
+                if (focus != -1 && item.MouseBounds.Bounds.Contains(clickData.Position.X, clickData.Position.Y))
                 {
                     //MasterLog.DebugWriteLine("Single Click Accepted: " + item.MouseBounds.Bounds.ToString());
-                    item.Click(clickData);
-                    break;
+                    item.HasFocus = true;
+                    focus = i;
                 }
+                else
+                {
+                    item.HasFocus = false;
+                }
+            }
+
+            if (item != null)
+            {
+                item.Click(clickData);
             }
         }
 
@@ -99,14 +110,28 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         /// <param name="clickData"></param>
         private static void DoubleClick(MouseEventArgs clickData)
         {
-            foreach (GUIElement item in Bounds)
+            int focus = -1;
+            int length = Bounds.Count;
+            GUIElement item = null;
+
+            for (int i = 0; i < length; i++)
             {
-                if (item.MouseBounds.Bounds.Contains(clickData.Position.X, clickData.Position.Y))
+                item = Bounds[i];
+                if (focus != -1 && item.MouseBounds.Bounds.Contains(clickData.Position.X, clickData.Position.Y))
                 {
-                    //MasterLog.DebugWriteLine("Double Click Accepted: " + item.MouseBounds.Bounds.ToString());
-                    item.DoubleClick(clickData);
-                    break;
+                    //MasterLog.DebugWriteLine("Single Click Accepted: " + item.MouseBounds.Bounds.ToString());
+                    item.HasFocus = true;
+                    focus = i;
                 }
+                else
+                {
+                    item.HasFocus = false;
+                }
+            }
+
+            if (item != null)
+            {
+                item.DoubleClick(clickData);
             }
         }
 

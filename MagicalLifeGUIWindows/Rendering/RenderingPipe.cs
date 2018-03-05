@@ -55,7 +55,6 @@ namespace MagicalLifeGUIWindows.Rendering
         /// <param name="spBatch"></param>
         private static void DrawGUI(ref SpriteBatch spBatch)
         {
-            //DrawMainMenu(ref spBatch);
             DrawContainers(ref spBatch);
         }
 
@@ -83,6 +82,9 @@ namespace MagicalLifeGUIWindows.Rendering
                                 case MonoButton button:
                                     DrawButtonInContainer((MonoButton)control, ref spBatch, item);
                                     break;
+                                case InputBox textBox:
+                                    DrawInputBoxInContainer((InputBox)control, ref spBatch, item);
+                                    break;
                                 default:
                                     break;
                             }
@@ -93,11 +95,32 @@ namespace MagicalLifeGUIWindows.Rendering
             
         }
 
-        //private static void DrawMainMenu(ref SpriteBatch spBatch)
-        //{
-        //    DrawButton(MainMenu.NewGameButton, ref spBatch);
-        //    DrawButton(MainMenu.QuitButton, ref spBatch);
-        //}
+        private static void DrawInputBox(InputBox textbox, ref SpriteBatch spBatch)
+        {
+            spBatch.Draw(textbox.Image, textbox.DrawingBounds, colorMask);
+            DrawString(textbox.Font, textbox.Text, textbox.DrawingBounds, Alignment.Right, colorMask, ref spBatch);
+
+            Rectangle carrotLocation = textbox.DrawingBounds;
+            carrotLocation.X += (InputBox.CarrotSize * textbox.CarrotPosition);
+
+            spBatch.Draw(textbox.CarrotTexture, carrotLocation, colorMask);
+
+        }
+
+        private static void DrawInputBoxInContainer(InputBox textbox, ref SpriteBatch spBatch, GUIContainer container)
+        {
+            Rectangle location;
+            int x = textbox.DrawingBounds.X + container.DrawingBounds.X;
+            int y = textbox.DrawingBounds.Y + container.DrawingBounds.Y;
+            location = new Rectangle(x, y, textbox.DrawingBounds.Width, textbox.DrawingBounds.Height);
+            spBatch.Draw(textbox.Image, location, colorMask);
+            DrawString(textbox.Font, textbox.Text, location, Alignment.Right, colorMask, ref spBatch);
+
+            Rectangle carrotLocation = location;
+            carrotLocation.X += (InputBox.CarrotSize * textbox.CarrotPosition);
+
+            spBatch.Draw(textbox.CarrotTexture, carrotLocation, colorMask);
+        }
 
         private static void DrawButtonInContainer(MonoButton button, ref SpriteBatch spBatch, GUIContainer container)
         {

@@ -77,9 +77,11 @@
     <Compile Include="GUI\MainMenu\MainMenuContainer.cs" />
     <Compile Include="GUI\MainMenu\MainMenuLayout.cs" />
     <Compile Include="GUI\MainMenu\MainMenuLayout1920x1080.cs" />
+    <Compile Include="GUI\New World Menu\NewWorldMenuContainer.cs" />
     <Compile Include="GUI\Resolution.cs" />
     <Compile Include="GUI\Reusable\GUIContainer.cs" />
     <Compile Include="GUI\Reusable\GUIElement.cs" />
+    <Compile Include="GUI\Reusable\InputBox.cs" />
     <Compile Include="GUI\Reusable\MonoButton.cs" />
     <Compile Include="Input\BoundsSorter.cs" />
     <Compile Include="Input\ClickBounds.cs" />

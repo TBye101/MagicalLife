@@ -48,6 +48,8 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
         public SpriteFont Font { get; set; }
 
+        public bool HasFocus { get; set; } = false;
+
         /// <summary>
         /// Called whenever this GUI element is clicked on.
         /// </summary>
