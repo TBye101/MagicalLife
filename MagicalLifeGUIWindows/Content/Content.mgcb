@@ -153,7 +153,14 @@
 /processorParam:TextureFormat=Color
 /build:CursorCarrot.png
 
-#begin WorldSizeInputBox.png
+#begin MainMenuFont12x.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:MainMenuFont12x.spritefont
+
+#begin InputBox100x50.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -163,12 +170,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:WorldSizeInputBox.png
-
-#begin MainMenuFont12x.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:MainMenuFont12x.spritefont
+/build:InputBox100x50.png
 

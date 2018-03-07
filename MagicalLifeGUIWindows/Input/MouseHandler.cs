@@ -54,13 +54,13 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         private static void MouseListener_MouseDoubleClicked(object sender, MouseEventArgs e)
         {
             //MasterLog.DebugWriteLine("Double click detected: " + e.Position.ToString());
-            DoubleClick(e);
+            ContainerDoubleClick(e);
         }
 
         private static void MouseListener_MouseClicked(object sender, MouseEventArgs e)
         {
             //MasterLog.DebugWriteLine("Single click detected: " + e.Position.ToString());
-            Click(e);
+            ContainerClick(e);
         }
 
         /// <summary>
@@ -74,27 +74,47 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         }
 
         /// <summary>
-        /// Handles who gets the single click event.
+        /// Handles container clicks before handling normal UI elements.
         /// </summary>
         /// <param name="clickData"></param>
-        private static void Click(MouseEventArgs clickData)
+        /// <returns></returns>
+        private static void ContainerClick(MouseEventArgs clickData)
+        {
+            foreach (GUIContainer item in GUIWindows)
+            {
+                if (item.Visible && item.DrawingBounds.Contains(clickData.Position))
+                {
+                    Click(clickData, item.Controls);
+                    return;
+                }
+            }
+
+            Click(clickData, Bounds);
+        }
+
+        /// <summary>
+        /// Handles who gets the single click event from the options provided.
+        /// </summary>
+        /// <param name="clickData"></param>
+        private static void Click(MouseEventArgs clickData, List<GUIElement> Options)
         {
             int focus = -1;
-            int length = Bounds.Count;
+            //Focus is wrong somehow.
+            int length = Options.Count;
             GUIElement item = null;
 
             for (int i = 0; i < length; i++)
             {
-                item = Bounds[i];
+                item = Options[i];
                 if (focus != -1 && item.MouseBounds.Bounds.Contains(clickData.Position.X, clickData.Position.Y))
                 {
-                    //MasterLog.DebugWriteLine("Single Click Accepted: " + item.MouseBounds.Bounds.ToString());
                     item.HasFocus = true;
                     focus = i;
                 }
                 else
                 {
                     item.HasFocus = false;
+                    item = null;
                 }
             }
 
@@ -104,22 +124,35 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
             }
         }
 
+        private static void ContainerDoubleClick(MouseEventArgs clickData)
+        {
+            foreach (GUIContainer item in GUIWindows)
+            {
+                if (item.Visible && item.DrawingBounds.Contains(clickData.Position))
+                {
+                    DoubleClick(clickData, item.Controls);
+                    return;
+                }
+            }
+
+            DoubleClick(clickData, Bounds);
+        }
+
         /// <summary>
         /// Handles who gets the double click event.
         /// </summary>
         /// <param name="clickData"></param>
-        private static void DoubleClick(MouseEventArgs clickData)
+        private static void DoubleClick(MouseEventArgs clickData, List<GUIElement> Options)
         {
             int focus = -1;
-            int length = Bounds.Count;
+            int length = Options.Count;
             GUIElement item = null;
 
             for (int i = 0; i < length; i++)
             {
-                item = Bounds[i];
+                item = Options[i];
                 if (focus != -1 && item.MouseBounds.Bounds.Contains(clickData.Position.X, clickData.Position.Y))
                 {
-                    //MasterLog.DebugWriteLine("Single Click Accepted: " + item.MouseBounds.Bounds.ToString());
                     item.HasFocus = true;
                     focus = i;
                 }

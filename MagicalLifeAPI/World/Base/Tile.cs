@@ -11,7 +11,7 @@ namespace MagicalLifeAPI.World
     /// <summary>
     /// Every tile that implements this class must provide a parameterless version of itself for reflection purposes. That constructor will not be used during gameplay.
     /// </summary>
-    public abstract class Tile : Unique, IRequireTexture
+    public abstract class Tile : Unique
     {
         /// <summary>
         /// Initializes a new tile object.

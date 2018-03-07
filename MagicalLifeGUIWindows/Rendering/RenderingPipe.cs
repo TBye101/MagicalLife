@@ -70,13 +70,6 @@ namespace MagicalLifeGUIWindows.Rendering
                     {
                         if (control.Visible)
                         {
-                            //Rectangle location;
-                            //int x = control.DrawingBounds.X + item.DrawingBounds.X;
-                            //int y = control.DrawingBounds.Y + item.DrawingBounds.Y;
-                            //location = new Rectangle(x, y, control.DrawingBounds.Width, control.DrawingBounds.Height);
-                            //spBatch.Draw(control.Image, location, colorMask);
-                            //DrawString(control.Font, )
-
                             switch (control)
                             {
                                 case MonoButton button:

@@ -17,6 +17,8 @@ namespace MagicalLifeGUIWindows.Load
     {
         private int TotalJobs = -1;
 
+        private List<string> TexturesToLoad = new List<string>();
+
         public int GetTotalOperations()
         {
             if (this.TotalJobs == -1)
@@ -29,32 +31,27 @@ namespace MagicalLifeGUIWindows.Load
 
         private int CalculateTotalJobs()
         {
-            List<IRequireTexture> gui = ReflectionUtil.LoadAllInterface<IRequireTexture>(Assembly.GetAssembly(typeof(MainMenuContainer)));
-            List<IRequireTexture> api = ReflectionUtil.LoadAllInterface<IRequireTexture>(Assembly.GetAssembly(typeof(Tile)));
+            this.TexturesToLoad.Add("Basic Human");
+            this.TexturesToLoad.Add("CursorCarrot");
+            this.TexturesToLoad.Add("DirtTile");
+            this.TexturesToLoad.Add("EndTurnButtonState1");
+            this.TexturesToLoad.Add("EndTurnButtonState2");
+            this.TexturesToLoad.Add("MenuBackground");
+            this.TexturesToLoad.Add("MenuButton");
+            this.TexturesToLoad.Add("TestTile");
+            this.TexturesToLoad.Add("InputBox100x50");
 
-            return gui.Count + api.Count;
+            return this.TexturesToLoad.Count;
         }
 
         public void InitialStartup(ref int progress)
         {
-            List<IRequireTexture> gui = ReflectionUtil.LoadAllInterface<IRequireTexture>(Assembly.GetAssembly(typeof(MainMenuContainer)));
-            List<IRequireTexture> api = ReflectionUtil.LoadAllInterface<IRequireTexture>(Assembly.GetAssembly(typeof(Tile)));
-
-            foreach (IRequireTexture item in gui)
+            foreach (string item in this.TexturesToLoad)
             {
-                Texture2D texture = Game1.AssetManager.Load<Texture2D>(item.GetTextureName());
+                Texture2D texture = Game1.AssetManager.Load<Texture2D>(item);
                 AssetManager.RegisterTexture(texture);
                 progress++;
             }
-
-            foreach (IRequireTexture item in api)
-            {
-                Texture2D texture = Game1.AssetManager.Load<Texture2D>(item.GetTextureName());
-                AssetManager.RegisterTexture(texture);
-                progress++;
-            }
-
-            progress = this.TotalJobs;
         }
     }
 }

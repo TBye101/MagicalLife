@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Universal;
+﻿using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.Universal;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
@@ -27,15 +28,17 @@ namespace MagicalLifeAPI.Asset
         /// <param name="name"></param>
         public static int GetTextureIndex(string name)
         {
+            //MasterLog.DebugWriteLine("Textures in texture index: ");
             foreach (KeyValuePair<string, int> item in NameToIndex)
             {
+                //MasterLog.DebugWriteLine(item.Key);
                 if (item.Key == name)
                 {
                     return item.Value;
                 }
             }
 
-            throw new System.Exception("Texture index not found!");
+            throw new System.Exception("Texture index not found! Texture: " + name);
         }
 
         /// <summary>
