@@ -31,6 +31,11 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         public Texture2D CarrotTexture { get; private set; }
 
         /// <summary>
+        /// If true, then the last key was already handled as a special key.
+        /// </summary>
+        private bool LastKeySpecial = false;
+
+        /// <summary>
         /// If this is true, this <see cref="InputBox"/> doesn't allow editing.
         /// </summary>
         public bool IsLocked { get; }
@@ -38,7 +43,6 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         public InputBox(string image, string CarrotTexture, Rectangle drawingBounds, int priority, string font, bool isLocked) : base(image, drawingBounds, priority, font)
         {
             KeyboardHandler.keyboardListener.KeyPressed += this.KeyboardListener_KeyPressed;
-            KeyboardHandler.keyboardListener.KeyTyped += this.KeyboardListener_KeyTyped;
             this.CarrotPosition = this.Text.Count();
             this.CarrotTexture = AssetManager.Textures[AssetManager.GetTextureIndex(CarrotTexture)];
             this.Image = AssetManager.Textures[AssetManager.GetTextureIndex(image)];
@@ -50,15 +54,6 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
         }
 
-        private void KeyboardListener_KeyTyped(object sender, KeyboardEventArgs e)
-        {
-            if (!this.IsLocked)
-            {
-                this.Text.Insert(this.CarrotPosition, e.Character.ToString());
-                this.CarrotPosition += 1;
-            }
-        }
-
         private void KeyboardListener_KeyPressed(object sender, KeyboardEventArgs e)
         {
             if (!this.IsLocked)
@@ -66,35 +61,91 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
                 switch (e.Key)
                 {
                     case Microsoft.Xna.Framework.Input.Keys.Enter:
-                        this.Text += "\n";
-                        this.CarrotPosition += 1;
+                        this.Enter();
                         break;
 
                     case Microsoft.Xna.Framework.Input.Keys.Left:
-                        if (this.CarrotPosition > 0)
-                        {
-                            this.CarrotPosition -= 1;
-                        }
+                        this.Left();
                         break;
 
                     case Microsoft.Xna.Framework.Input.Keys.Right:
-                        if (this.Text.Count() != this.CarrotPosition)
-                        {
-                            this.CarrotPosition += 1;
-                        }
+                        this.Right();
                         break;
 
                     case Microsoft.Xna.Framework.Input.Keys.Delete:
-                        string p1 = this.Text.Substring(0, this.CarrotPosition);
-                        string p2 = this.Text.Substring(this.CarrotPosition + 1, this.Text.Count());
-                        this.Text = p1 + p2;
+                        this.Delete();
                         break;
+
                     case Microsoft.Xna.Framework.Input.Keys.Back:
-                        string p3 = this.Text.Substring(0, this.CarrotPosition - 1);
-                        string p4 = this.Text.Substring(this.CarrotPosition, this.Text.Count());
+                        this.Back();
+                        break;
+                    default:
+                        this.AcceptKeystroke(e);
                         break;
                 }
             }
+        }
+
+        private void AcceptKeystroke(KeyboardEventArgs e)
+        {
+            if (!this.IsLocked && !this.LastKeySpecial)
+            {
+                string p1 = this.Text.Substring(0, this.CarrotPosition);
+                p1 += e.Character.ToString();
+
+                string p2 = this.Text.Substring(this.CarrotPosition, this.Text.Count() - this.CarrotPosition);
+                this.Text = p1 + p2;
+                this.CarrotPosition += 1;
+            }
+        }
+
+        private void Enter()
+        {
+            this.Text += "\n";
+            this.CarrotPosition += 1;
+        }
+
+        private void Right()
+        {
+            if (this.Text.Count() != this.CarrotPosition)
+            {
+                this.CarrotPosition += 1;
+            }
+        }
+
+        private void Left()
+        {
+            if (this.CarrotPosition > 0)
+            {
+                this.CarrotPosition -= 1;
+            }
+        }
+
+        private void Back()
+        {
+            string p3 = this.Text.Substring(0, this.CarrotPosition - 1);
+
+            if (this.CarrotPosition != this.Text.Count())
+            {
+                string p4 = this.Text.Substring(this.CarrotPosition, this.Text.Count() - this.CarrotPosition);
+                this.Text = p3 + p4;
+            }
+            else
+            {
+                this.Text = p3;
+            }
+
+            if (this.CarrotPosition > 0)
+            {
+                this.CarrotPosition -= 1;
+            }
+        }
+
+        private void Delete()
+        {
+            string p1 = this.Text.Substring(0, this.CarrotPosition);
+            string p2 = this.Text.Substring(this.CarrotPosition + 1, this.Text.Count());
+            this.Text = p1 + p2;
         }
 
         public override void Click(MouseEventArgs e)
