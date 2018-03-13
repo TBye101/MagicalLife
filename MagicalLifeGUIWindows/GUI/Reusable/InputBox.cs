@@ -123,26 +123,29 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
         private void Back()
         {
-            string p3 = this.Text.Substring(0, this.CarrotPosition - 1);
-
-            if (this.CarrotPosition != this.Text.Count())
-            {
-                string p4 = this.Text.Substring(this.CarrotPosition, this.Text.Count() - this.CarrotPosition);
-                this.Text = p3 + p4;
-            }
-            else
-            {
-                this.Text = p3;
-            }
-
             if (this.CarrotPosition > 0)
             {
-                this.CarrotPosition -= 1;
+                string p3 = this.Text.Substring(0, this.CarrotPosition - 1);
+
+                if (this.CarrotPosition != this.Text.Count())
+                {
+                    string p4 = this.Text.Substring(this.CarrotPosition, this.Text.Count() - this.CarrotPosition);
+                    this.Text = p3 + p4;
+                }
+                else
+                {
+                    this.Text = p3;
+                }
+
+                if (this.CarrotPosition > 0)
+                {
+                    this.CarrotPosition -= 1;
+                }
             }
         }
 
         private void Delete()
-     {
+        {
             string p1 = this.Text.Substring(0, this.CarrotPosition);
             string p2 = this.Text.Substring(this.CarrotPosition + 1, this.Text.Count());
             this.Text = p1 + p2;

@@ -159,12 +159,7 @@ namespace MagicalLifeGUIWindows.Rendering
                 Vector2 result = font.MeasureString(text.Substring(0, i + 1));
                 MasterLog.DebugWriteLine("Text measuring: " + text.Substring(0, i + 1));
                 MasterLog.DebugWriteLine("String measurement: " + result.ToString());
-                result.X += bounds.X;
-
-                //if (bounds.Contains(result))
-                //{
-                //    lastPassing = i;
-                //}
+                //result.X/* += bounds.X;*/
 
                 if (result.X > 0 && result.X < bounds.Width)
                 {
