@@ -99,14 +99,13 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         private static void Click(MouseEventArgs clickData, List<GUIElement> Options)
         {
             int focus = -1;
-            //Focus is wrong somehow.
             int length = Options.Count;
             GUIElement item = null;
 
             for (int i = 0; i < length; i++)
             {
                 item = Options[i];
-                if (focus != -1 && item.MouseBounds.Bounds.Contains(clickData.Position.X, clickData.Position.Y))
+                if (focus == -1 && item.MouseBounds.Bounds.Contains(clickData.Position.X, clickData.Position.Y))
                 {
                     item.HasFocus = true;
                     focus = i;
@@ -114,13 +113,12 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
                 else
                 {
                     item.HasFocus = false;
-                    item = null;
                 }
             }
 
-            if (item != null)
+            if (focus != -1)
             {
-                item.Click(clickData);
+                Options[focus].Click(clickData);
             }
         }
 
@@ -145,13 +143,14 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         private static void DoubleClick(MouseEventArgs clickData, List<GUIElement> Options)
         {
             int focus = -1;
+            //Focus is wrong somehow.
             int length = Options.Count;
             GUIElement item = null;
 
             for (int i = 0; i < length; i++)
             {
                 item = Options[i];
-                if (focus != -1 && item.MouseBounds.Bounds.Contains(clickData.Position.X, clickData.Position.Y))
+                if (focus == -1 && item.MouseBounds.Bounds.Contains(clickData.Position.X, clickData.Position.Y))
                 {
                     item.HasFocus = true;
                     focus = i;
@@ -162,9 +161,9 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
                 }
             }
 
-            if (item != null)
+            if (focus != -1)
             {
-                item.DoubleClick(clickData);
+                Options[focus].DoubleClick(clickData);
             }
         }
 
