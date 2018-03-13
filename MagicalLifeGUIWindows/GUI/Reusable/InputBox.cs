@@ -142,7 +142,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         }
 
         private void Delete()
-        {
+     {
             string p1 = this.Text.Substring(0, this.CarrotPosition);
             string p2 = this.Text.Substring(this.CarrotPosition + 1, this.Text.Count());
             this.Text = p1 + p2;
