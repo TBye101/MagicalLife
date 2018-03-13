@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World;
 using MagicalLifeGUIWindows.GUI.MainMenu;
 using MagicalLifeGUIWindows.GUI.Reusable;
@@ -142,6 +143,50 @@ namespace MagicalLifeGUIWindows.Rendering
         public enum Alignment { Center = 0, Left = 1, Right = 2, Top = 4, Bottom = 8 }
 
         /// <summary>
+        /// Determines how much of the "text" can be rendered before it goes out of "bounds".
+        /// </summary>
+        /// <param name="font">The font the text will be rendered with.</param>
+        /// <param name="text">The full text that is attempting to be rendered.</param>
+        /// <param name="bounds">The bounds that the text may be drawed in.</param>
+        /// <returns></returns>
+        private static string GetDrawableText(SpriteFont font, string text, Rectangle bounds)
+        {
+            int lastPassing = -1;
+            int length = text.Length;
+            for (int i = 0; i < length; i++)
+            {
+                MasterLog.DebugWriteLine("Index: " + i.ToString());
+                Vector2 result = font.MeasureString(text.Substring(0, i + 1));
+                MasterLog.DebugWriteLine("Text measuring: " + text.Substring(0, i + 1));
+                MasterLog.DebugWriteLine("String measurement: " + result.ToString());
+                result.X += bounds.X;
+
+                //if (bounds.Contains(result))
+                //{
+                //    lastPassing = i;
+                //}
+
+                if (result.X > 0 && result.X < bounds.Width)
+                {
+                    lastPassing = i;
+                }
+            }
+
+            if (lastPassing == -1 && text != string.Empty)
+            {
+                if (lastPassing == -1)
+                {
+                    MasterLog.DebugWriteLine("lastPassing = -1");
+                }
+                throw new Exception("Cannot possibly draw string in allotted space.");
+            }
+            else
+            {
+                return text.Substring(0, lastPassing + 1);
+            }
+        }
+
+        /// <summary>
         /// Slightly modified version of: https://stackoverflow.com/a/10263903/5294414
         /// </summary>
         /// <param name="font"></param>
@@ -178,7 +223,7 @@ namespace MagicalLifeGUIWindows.Rendering
             }
 #pragma warning restore RCS1096 // Use bitwise operation instead of calling 'HasFlag'.
 
-            spBatch.DrawString(font, text, pos, color, 0, origin, 1, SpriteEffects.None, 0);
+            spBatch.DrawString(font, GetDrawableText(font, text, bounds), pos, color, 0, origin, 1, SpriteEffects.None, 0);
         }
 
         /// <summary>
