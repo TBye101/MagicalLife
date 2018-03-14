@@ -3,7 +3,6 @@ using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
-using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeRenderEngine.Main.GUI.Click
@@ -40,11 +39,8 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
             MouseListner.MouseDrag += MouseListner_MouseDrag;
         }
 
-
-
         private static void MouseListner_MouseDrag(object sender, MouseEventArgs e)
         {
-            
         }
 
         private static void MouseListener_MouseWheelMoved(object sender, MouseEventArgs e)

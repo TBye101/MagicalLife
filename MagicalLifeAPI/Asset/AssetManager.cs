@@ -1,6 +1,4 @@
-﻿using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Universal;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Asset

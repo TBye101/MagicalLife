@@ -29,7 +29,6 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
         public GUIElement()
         {
-
         }
 
         /// <summary>

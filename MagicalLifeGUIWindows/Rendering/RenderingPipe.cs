@@ -76,9 +76,11 @@ namespace MagicalLifeGUIWindows.Rendering
                                 case MonoButton button:
                                     DrawButtonInContainer((MonoButton)control, ref spBatch, item);
                                     break;
+
                                 case InputBox textBox:
                                     DrawInputBoxInContainer((InputBox)control, ref spBatch, item);
                                     break;
+
                                 default:
                                     break;
                             }
@@ -86,7 +88,6 @@ namespace MagicalLifeGUIWindows.Rendering
                     }
                 }
             }
-            
         }
 
         private static void DrawInputBox(InputBox textbox, ref SpriteBatch spBatch)
@@ -98,7 +99,6 @@ namespace MagicalLifeGUIWindows.Rendering
             carrotLocation.X += (InputBox.CarrotSize * textbox.CarrotPosition);
 
             spBatch.Draw(textbox.CarrotTexture, carrotLocation, colorMask);
-
         }
 
         private static void DrawInputBoxInContainer(InputBox textbox, ref SpriteBatch spBatch, GUIContainer container)
@@ -127,7 +127,6 @@ namespace MagicalLifeGUIWindows.Rendering
             location = new Rectangle(x, y, button.DrawingBounds.Width, button.DrawingBounds.Height);
             spBatch.Draw(button.Image, location, colorMask);
             DrawString(button.Font, button.Text, location, Alignment.Center, colorMask, ref spBatch);
-
         }
 
         private static void DrawButton(MonoButton button, ref SpriteBatch spBatch)

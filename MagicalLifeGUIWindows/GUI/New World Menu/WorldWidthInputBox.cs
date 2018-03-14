@@ -1,12 +1,5 @@
-﻿using MagicalLifeAPI.Universal;
-using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.GUI.New_World_Menu
 {
@@ -21,7 +14,6 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu
 
         public WorldWidthInputBox() : base()
         {
-
         }
 
         public string GetTextureName()
