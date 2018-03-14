@@ -30,11 +30,7 @@ namespace MagicalLifeGUIWindows.Rendering.Text
             int length = text.Length;
             for (int i = 0; i < length; i++)
             {
-                MasterLog.DebugWriteLine("Index: " + i.ToString());
                 Vector2 result = font.MeasureString(text.Substring(0, i + 1));
-                MasterLog.DebugWriteLine("Text measuring: " + text.Substring(0, i + 1));
-                MasterLog.DebugWriteLine("String measurement: " + result.ToString());
-                //result.X/* += bounds.X;*/
 
                 if (result.X > 0 && result.X < bounds.Width)
                 {

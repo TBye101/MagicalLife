@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
 
 namespace MagicalLifeGUIWindows.GUI.Reusable
 {

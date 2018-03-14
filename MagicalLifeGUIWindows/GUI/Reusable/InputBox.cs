@@ -8,6 +8,7 @@ using MagicalLifeGUIWindows.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Input.InputListeners;
+using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
 
 namespace MagicalLifeGUIWindows.GUI.Reusable
 {
@@ -23,7 +24,15 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// </summary>
         public int CarrotPosition { get; private set; } = 0;
 
-        public static int CarrotSize { get; private set; } = 2;
+        /// <summary>
+        /// The width of the blinking carrot.
+        /// </summary>
+        public int CarrotWidth { get; private set; } = 0;
+
+        /// <summary>
+        /// The height of the blinking carrot.
+        /// </summary>
+        public int CarrotHeight { get; private set; } = 0;
 
         /// <summary>
         /// The texture of the blinking carrot.
@@ -40,13 +49,28 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// </summary>
         public bool IsLocked { get; }
 
-        public InputBox(string image, string CarrotTexture, Rectangle drawingBounds, int priority, string font, bool isLocked) : base(image, drawingBounds, priority, font)
+        /// <summary>
+        /// The text alignment of this <see cref="InputBox"/>.
+        /// </summary>
+        public Alignment TextAlignment { get; private set; }
+
+        public InputBox(string image, string CarrotTexture, Rectangle drawingBounds, int priority, string font, bool isLocked, Alignment textAlignment) : base(image, drawingBounds, priority, font)
         {
             KeyboardHandler.keyboardListener.KeyPressed += this.KeyboardListener_KeyPressed;
             this.CarrotPosition = this.Text.Count();
             this.CarrotTexture = AssetManager.Textures[AssetManager.GetTextureIndex(CarrotTexture)];
             this.Image = AssetManager.Textures[AssetManager.GetTextureIndex(image)];
             this.IsLocked = isLocked;
+            this.LoadCarrotInformation(font);
+            this.TextAlignment = textAlignment;
+        }
+
+        private void LoadCarrotInformation(string font)
+        {
+            this.Font = Game1.AssetManager.Load<SpriteFont>(font);
+            Vector2 size = this.Font.MeasureString("|");
+            this.CarrotWidth = (int)Math.Round(size.X);
+            this.CarrotHeight = (int)Math.Round(size.Y);
         }
 
         public InputBox() : base()
