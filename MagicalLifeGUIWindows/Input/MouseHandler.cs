@@ -193,8 +193,6 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         /// <param name="bounds"></param>
         public static void AddClickBounds(GUIElement bounds)
         {
-            MasterLog.DebugWriteLine(bounds.MouseBounds.Bounds.ToString());
-
             int index = Bounds.BinarySearch(bounds, BoundSorter);
             if (index < 0)
             {

@@ -79,7 +79,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
         private void KeyboardListener_KeyPressed(object sender, KeyboardEventArgs e)
         {
-            if (!this.IsLocked)
+            if (!this.IsLocked && this.HasFocus)
             {
                 switch (e.Key)
                 {
