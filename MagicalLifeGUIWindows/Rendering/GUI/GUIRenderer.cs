@@ -78,8 +78,14 @@ namespace MagicalLifeGUIWindows.Rendering.GUI
             string TextBeforeCarrot = textbox.Text.Substring(0, textbox.CarrotPosition);
             int XPos = (int)Math.Round(origin.X + textbox.DrawingBounds.X + textbox.Font.MeasureString(TextBeforeCarrot).X) + container.DrawingBounds.X;
             int YPos = (int)Math.Round(origin.Y + textbox.DrawingBounds.Y) + container.DrawingBounds.Y;
-            //int XPos = (int)Math.Round(pos.X + textbox.Font.MeasureString(TextBeforeCarrot).X);
-            //int YPos = (int)Math.Round(pos.Y + textbox.Font.MeasureString(TextBeforeCarrot).Y);
+
+            switch (textbox.TextAlignment)
+            {
+                case Alignment.Left:
+                    XPos -= (int)Math.Round(origin.X);
+                    YPos += (int)Math.Round(origin.Y);
+                    break;
+            }
 
             return new Rectangle(XPos, YPos, textbox.CarrotWidth, textbox.CarrotHeight);
         }
