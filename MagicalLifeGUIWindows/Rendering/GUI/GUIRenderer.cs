@@ -19,17 +19,6 @@ namespace MagicalLifeGUIWindows.Rendering.GUI
     /// </summary>
     public static class GUIRenderer
     {
-        //public static void DrawInputBox(InputBox textbox, ref SpriteBatch spBatch)
-        //{
-        //    spBatch.Draw(textbox.Image, textbox.DrawingBounds, RenderingPipe.colorMask);
-        //    DrawString(textbox.Font, textbox.Text, textbox.DrawingBounds, Alignment.Right, RenderingPipe.colorMask, ref spBatch);
-
-        //    Rectangle carrotLocation = textbox.DrawingBounds;
-        //    carrotLocation.X += (InputBox.CarrotSize * textbox.CarrotPosition);
-
-        //    spBatch.Draw(textbox.CarrotTexture, carrotLocation, RenderingPipe.colorMask);
-        //}
-
         public static void DrawInputBoxInContainer(InputBox textbox, ref SpriteBatch spBatch, GUIContainer container)
         {
             Rectangle location;
@@ -46,10 +35,6 @@ namespace MagicalLifeGUIWindows.Rendering.GUI
 
         private static Rectangle CalculateCarrotBounds(InputBox textbox, GUIContainer container)
         {
-            //if (textbox.Text != string.Empty)
-            //{
-            //    Debugger.Break();
-            //}
             Vector2 size = textbox.Font.MeasureString(textbox.Text);
             Vector2 pos = new Vector2(textbox.DrawingBounds.Center.X, textbox.DrawingBounds.Center.Y);
             Vector2 origin = size * 0.5f;
@@ -99,14 +84,5 @@ namespace MagicalLifeGUIWindows.Rendering.GUI
             spBatch.Draw(button.Image, location, RenderingPipe.colorMask);
             SimpleTextRenderer.DrawString(button.Font, button.Text, location, Alignment.Center, RenderingPipe.colorMask, ref spBatch);
         }
-
-        //public static void DrawButton(MonoButton button, ref SpriteBatch spBatch)
-        //{
-        //    if (button.Visible)
-        //    {
-        //        spBatch.Draw(button.Image, button.DrawingBounds, RenderingPipe.colorMask);
-        //        SimpleTextRenderer.DrawString(MainMenuLayout.MainMenuFont, button.Text, button.DrawingBounds, Alignment.Center, RenderingPipe.colorMask, ref spBatch);
-        //    }
-        //}
     }
 }
