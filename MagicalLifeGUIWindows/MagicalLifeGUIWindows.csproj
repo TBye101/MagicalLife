@@ -88,6 +88,7 @@
     <Compile Include="GUI\Reusable\GUIContainer.cs" />
     <Compile Include="GUI\Reusable\GUIElement.cs" />
     <Compile Include="GUI\Reusable\InputBox.cs" />
+    <Compile Include="GUI\Reusable\Label.cs" />
     <Compile Include="GUI\Reusable\MonoButton.cs" />
     <Compile Include="Input\BoundsSorter.cs" />
     <Compile Include="Input\ClickBounds.cs" />
@@ -149,6 +150,7 @@
   <ItemGroup>
     <Folder Include="Event\" />
     <Folder Include="GUI\History\" />
+    <Folder Include="GUI\New World Menu\Labels\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.1">

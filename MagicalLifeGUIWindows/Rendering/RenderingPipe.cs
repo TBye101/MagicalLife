@@ -84,6 +84,9 @@ namespace MagicalLifeGUIWindows.Rendering
                                 case InputBox textBox:
                                     GUIRenderer.DrawInputBoxInContainer((InputBox)control, ref spBatch, item);
                                     break;
+                                case Label label:
+                                    GUIRenderer.DrawLabelInContainer((Label)control, ref spBatch, item);
+                                    break;
                                 default:
                                     //Should probably send out a event or something, to allow someone else to render it.
                                     //TODO:

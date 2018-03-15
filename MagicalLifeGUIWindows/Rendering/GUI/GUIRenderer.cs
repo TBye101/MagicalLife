@@ -19,6 +19,17 @@ namespace MagicalLifeGUIWindows.Rendering.GUI
     /// </summary>
     public static class GUIRenderer
     {
+        public static void DrawLabelInContainer(Label label, ref SpriteBatch spBatch, GUIContainer container)
+        {
+            int x = container.DrawingBounds.X + label.DrawingBounds.X;
+            int y = container.DrawingBounds.Y + label.DrawingBounds.Y;
+            int width = label.DrawingBounds.Width;
+            int height = label.DrawingBounds.Height;
+
+            Rectangle Bounds = new Rectangle(x, y, width, height);
+            SimpleTextRenderer.DrawString(label.Font, label.Text, Bounds, label.TextAlignment, RenderingPipe.colorMask, ref spBatch);
+        }
+
         public static void DrawInputBoxInContainer(InputBox textbox, ref SpriteBatch spBatch, GUIContainer container)
         {
             Rectangle location;
