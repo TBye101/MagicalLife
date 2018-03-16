@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MagicalLifeGUIWindows.GUI.New_World_Menu.Input_Boxes;
+using MagicalLifeGUIWindows.GUI.New_World_Menu.Buttons;
 
 namespace MagicalLifeGUIWindows.GUI.New_World_Menu
 {
@@ -39,5 +40,10 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu
         /// Returns the x position of which the <see cref="WorldDepthInputBox"/> is to be displayed at.
         /// </summary>
         public static readonly int WorldDepthInputBoxX = 360;
+
+        /// <summary>
+        /// The x position at which the <see cref="NewWorldNextButton"/> is to be displayed at.
+        /// </summary>
+        public static readonly int NextButtonX = 530;
     }
 }

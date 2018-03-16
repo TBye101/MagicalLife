@@ -78,6 +78,7 @@
     <Compile Include="GUI\MainMenu\MainMenuLayout.cs" />
     <Compile Include="GUI\MainMenu\MainMenuLayout1920x1080.cs" />
     <Compile Include="GUI\MenuHandler.cs" />
+    <Compile Include="GUI\New World Menu\Buttons\NewWorldNextButton.cs" />
     <Compile Include="GUI\New World Menu\Input Boxes\WorldDepthInputBox.cs" />
     <Compile Include="GUI\New World Menu\Input Boxes\WorldLengthInputBox.cs" />
     <Compile Include="GUI\New World Menu\NewWorldMenu.cs" />

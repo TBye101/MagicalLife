@@ -115,5 +115,22 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu
                 }
             }
         }
+
+        /// <summary>
+        /// The x position at which the <see cref="NewWorldNextButton"/> is to be displayed at.
+        /// </summary>
+        public static int NextButtonX
+        {
+            get
+            {
+                switch ((Resolution)MainWindow.Default.Resolution)
+                {
+                    case Resolution._1920x1080:
+                        return NewWorldMenuLayout1920x1080.NextButtonX;
+                    default:
+                        return NewWorldMenuLayout1920x1080.NextButtonX;
+                }
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using MagicalLifeGUIWindows.GUI.New_World_Menu.Input_Boxes;
+﻿using MagicalLifeGUIWindows.GUI.New_World_Menu.Buttons;
+using MagicalLifeGUIWindows.GUI.New_World_Menu.Input_Boxes;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 
@@ -15,6 +16,7 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu
             this.Controls.Add(new WorldWidthInputBox(false));
             this.Controls.Add(new WorldLengthInputBox(false));
             this.Controls.Add(new WorldDepthInputBox(false));
+            this.Controls.Add(new NewWorldNextButton());
         }
 
         public NewWorldMenuContainer() : base()
