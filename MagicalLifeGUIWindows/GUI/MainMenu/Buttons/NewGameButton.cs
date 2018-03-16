@@ -25,8 +25,6 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
         private void AnyClick()
         {
             New_World_Menu.NewWorldMenu.Initialize();
-            World.Initialize(5, 5, 1, new Dirtland());
-            MainMenu.ToggleMainMenu();
         }
 
         private static Rectangle GetLocation()

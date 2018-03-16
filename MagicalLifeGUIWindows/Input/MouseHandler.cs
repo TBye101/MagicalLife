@@ -211,32 +211,28 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         {
             if (GUIWindows.Contains(container))
             {
-                foreach (GUIContainer item in GUIWindows)
-                {
-                    if (item != container)
-                    {
-                        item.Visible = false;
-                    }
-                    else
-                    {
-                        item.Visible = true;
-                        item.Priority = RenderingData.GetGUIContainerPriority();
-                        GUIWindows.Remove(item);
-                        GUIWindows.Add(item);
-                        break;
-                    }
-                }
+                HideAll();
+                container.Visible = true;
+                container.Priority = RenderingData.GetGUIContainerPriority();
+
+                GUIWindows.Remove(container);
+                GUIWindows.Add(container);
             }
             else
             {
-                foreach (GUIContainer item in GUIWindows)
-                {
-                    item.Visible = false;
-                }
-
-                container.Priority = RenderingData.GetGUIContainerPriority();
+                HideAll();
                 container.Visible = true;
+                container.Priority = RenderingData.GetGUIContainerPriority();
+
                 GUIWindows.Add(container);
+            }
+        }
+
+        private static void HideAll()
+        {
+            foreach (GUIContainer item in GUIWindows)
+            {
+                item.Visible = false;
             }
         }
     }

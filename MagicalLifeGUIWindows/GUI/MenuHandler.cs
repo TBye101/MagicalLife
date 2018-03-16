@@ -30,7 +30,7 @@ namespace MagicalLifeGUIWindows.GUI
         {
             MouseHandler.Popup(container);
             Containers.Add(container);
-            DisplayIndex = Containers.Count;
+            DisplayIndex = Containers.Count - 1;
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace MagicalLifeGUIWindows.GUI
         /// </summary>
         public static void Back()
         {
-            if (DisplayIndex > 1)
+            if (DisplayIndex > 0)
             {
                 DisplayIndex--;
                 MouseHandler.Popup(Containers[DisplayIndex]);
