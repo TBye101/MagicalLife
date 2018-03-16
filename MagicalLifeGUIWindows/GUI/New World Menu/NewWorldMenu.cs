@@ -7,7 +7,7 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu
     /// </summary>
     public static class NewWorldMenu
     {
-        private static NewWorldMenuContainer NewWorldMenuM;
+        public static NewWorldMenuContainer NewWorldMenuM;
 
         internal static void Initialize()
         {

@@ -10,13 +10,18 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu
     /// </summary>
     public class NewWorldMenuContainer : GUIContainer
     {
+        public WorldWidthInputBox worldWidth = new WorldWidthInputBox(false);
+        public WorldLengthInputBox worldLength = new WorldLengthInputBox(false);
+        public WorldDepthInputBox worldDepth = new WorldDepthInputBox(false);
+        public NewWorldNextButton nextButton = new NewWorldNextButton();
+
         public NewWorldMenuContainer(bool visible) : base("MenuBackground", GetDrawingBounds())
         {
             this.Visible = visible;
-            this.Controls.Add(new WorldWidthInputBox(false));
-            this.Controls.Add(new WorldLengthInputBox(false));
-            this.Controls.Add(new WorldDepthInputBox(false));
-            this.Controls.Add(new NewWorldNextButton());
+            this.Controls.Add(this.worldWidth);
+            this.Controls.Add(this.worldLength);
+            this.Controls.Add(this.worldDepth);
+            this.Controls.Add(this.nextButton);
         }
 
         public NewWorldMenuContainer() : base()

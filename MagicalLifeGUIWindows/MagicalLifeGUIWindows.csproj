@@ -81,6 +81,7 @@
     <Compile Include="GUI\New World Menu\Buttons\NewWorldNextButton.cs" />
     <Compile Include="GUI\New World Menu\Input Boxes\WorldDepthInputBox.cs" />
     <Compile Include="GUI\New World Menu\Input Boxes\WorldLengthInputBox.cs" />
+    <Compile Include="GUI\New World Menu\NewGameInputHandler.cs" />
     <Compile Include="GUI\New World Menu\NewWorldMenu.cs" />
     <Compile Include="GUI\New World Menu\NewWorldMenuContainer.cs" />
     <Compile Include="GUI\New World Menu\NewWorldMenuLayout.cs" />

@@ -21,7 +21,8 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu.Buttons
 
         public override void Click(MouseEventArgs e)
         {
-
+            NewGameInputHandler a = new NewGameInputHandler();
+            a.StartNewGame();
         }
 
         public override void DoubleClick(MouseEventArgs e)
