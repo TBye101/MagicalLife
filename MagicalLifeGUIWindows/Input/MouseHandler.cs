@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;
+using MagicalLifeGUIWindows.Map;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 using System.Collections.Generic;
@@ -200,6 +201,29 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
             }
 
             Bounds.Insert(index, bounds);
+        }
+
+        /// <summary>
+        /// Sets that container as the visible container, and gives it priority.
+        /// </summary>
+        /// <param name="container"></param>
+        public static void Popup(GUIContainer container)
+        {
+            foreach (GUIContainer item in GUIWindows)
+            {
+                if (item != container)
+                {
+                    item.Visible = false;
+                }
+                else
+                {
+                    item.Visible = true;
+                    item.Priority = RenderingData.GetGUIContainerPriority();
+                    GUIWindows.Remove(item);
+                    GUIWindows.Add(item);
+                    break;
+                }
+            }
         }
     }
 }

@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Linq;
 using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
 
 namespace MagicalLifeGUIWindows.Rendering
@@ -65,7 +66,7 @@ namespace MagicalLifeGUIWindows.Rendering
 
         private static void DrawContainers(ref SpriteBatch spBatch)
         {
-            foreach (GUIContainer item in MouseHandler.GUIWindows)
+            foreach (GUIContainer item in Enumerable.Reverse(MouseHandler.GUIWindows))
             {
                 if (item.Visible)
                 {

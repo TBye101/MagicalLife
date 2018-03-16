@@ -1,4 +1,5 @@
-﻿using MagicalLifeRenderEngine.Main.GUI.Click;
+﻿using MagicalLifeGUIWindows.Map;
+using MagicalLifeRenderEngine.Main.GUI.Click;
 
 namespace MagicalLifeGUIWindows.GUI.MainMenu
 {
@@ -18,14 +19,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
 
         internal static void ToggleMainMenu()
         {
-            if (MainMenuID.Visible)
-            {
-                MainMenuID.Visible = false;
-            }
-            else
-            {
-                MainMenuID.Visible = true;
-            }
+            MouseHandler.Popup(MainMenuID);
         }
     }
 }
