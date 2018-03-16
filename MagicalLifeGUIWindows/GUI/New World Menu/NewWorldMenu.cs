@@ -13,7 +13,7 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu
         {
             NewWorldMenuContainer mainMenu = new NewWorldMenuContainer(true);
             NewWorldMenuM = mainMenu;
-            MouseHandler.AddContainer(mainMenu);
+            MenuHandler.DisplayMenu(NewWorldMenuM);
         }
     }
 }

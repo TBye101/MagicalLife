@@ -19,7 +19,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
 
         internal static void ToggleMainMenu()
         {
-            MouseHandler.Popup(MainMenuID);
+            MenuHandler.DisplayMenu(MainMenuID);
         }
     }
 }

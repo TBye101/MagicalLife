@@ -209,20 +209,34 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         /// <param name="container"></param>
         public static void Popup(GUIContainer container)
         {
-            foreach (GUIContainer item in GUIWindows)
+            if (GUIWindows.Contains(container))
             {
-                if (item != container)
+                foreach (GUIContainer item in GUIWindows)
+                {
+                    if (item != container)
+                    {
+                        item.Visible = false;
+                    }
+                    else
+                    {
+                        item.Visible = true;
+                        item.Priority = RenderingData.GetGUIContainerPriority();
+                        GUIWindows.Remove(item);
+                        GUIWindows.Add(item);
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                foreach (GUIContainer item in GUIWindows)
                 {
                     item.Visible = false;
                 }
-                else
-                {
-                    item.Visible = true;
-                    item.Priority = RenderingData.GetGUIContainerPriority();
-                    GUIWindows.Remove(item);
-                    GUIWindows.Add(item);
-                    break;
-                }
+
+                container.Priority = RenderingData.GetGUIContainerPriority();
+                container.Visible = true;
+                GUIWindows.Add(container);
             }
         }
     }
