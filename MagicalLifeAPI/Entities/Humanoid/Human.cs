@@ -11,7 +11,7 @@
 
         public override string GetTextureName()
         {
-            return "Basic Human.png";
+            return "Basic Human";
         }
     }
 }

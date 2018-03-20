@@ -1,5 +1,15 @@
 		SneakyTactician  <SneakyTactician@outlook.com>
 
+	[Version 0.0.0.5]
+		### GUI
+			*Living creatures are now being rendered
+
+		#### API
+			* 
+
+		### Bugs
+			*
+
 	[Version 0.0.0.4]
 		### GUI
 			*Now displays new game button

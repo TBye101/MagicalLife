@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.World;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -37,8 +38,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
                     {
                         Tile tile = tiles[x, y, z];
                         Microsoft.Xna.Framework.Point start = new Microsoft.Xna.Framework.Point(RenderingPipe.tileSize.X * x, RenderingPipe.tileSize.Y * y);
-                        Microsoft.Xna.Framework.Rectangle target = new Microsoft.Xna.Framework.Rectangle(start, RenderingPipe.tileSize);
-                        spBatch.Draw(AssetManager.Textures[tile.TextureIndex], target, RenderingPipe.colorMask);
+                        DrawTile(tile, ref spBatch, start);
                         z++;
                     }
                     z = 0;
@@ -46,6 +46,21 @@ namespace MagicalLifeGUIWindows.Rendering.Map
                 }
                 y = 0;
                 x++;
+            }
+        }
+
+        /// <summary>
+        /// Draws a tile.
+        /// </summary>
+        private static void DrawTile(Tile tile, ref SpriteBatch spBatch, Point start)
+        {
+            Microsoft.Xna.Framework.Rectangle target = new Microsoft.Xna.Framework.Rectangle(start, RenderingPipe.tileSize);
+            spBatch.Draw(AssetManager.Textures[tile.TextureIndex], target, RenderingPipe.colorMask);
+
+            if (tile.Living.Count > 0)
+            {
+                Texture2D livingTexture = AssetManager.Textures[AssetManager.GetTextureIndex(tile.Living[tile.Living.Count - 1].GetTextureName())];
+                spBatch.Draw(livingTexture, target, RenderingPipe.colorMask);
             }
         }
     }
