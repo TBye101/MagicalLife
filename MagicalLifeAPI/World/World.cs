@@ -2,6 +2,7 @@
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Entities.Movement;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.Util;
 using System;
@@ -71,7 +72,7 @@ namespace MagicalLifeAPI.World
             Point3D des = new Point3D(10, 2, 1);
             if (start.Location != des && found.QueuedMovement.Count == 0)
             {
-                Path pth = StandardPathFinder.GetFastestPath(start, mainWorld.Tiles[10, 2, 1]);
+                Path pth = StandardPathFinder.GetFastestPath(start, mainWorld.Tiles[10, 2, 0]);
 
                 Extensions.EnqueueCollection(found.QueuedMovement, pth.Segments);
                 EntityWorldMovement.MoveEntity(ref found);
@@ -136,6 +137,7 @@ namespace MagicalLifeAPI.World
 
         public static void EndTurn()
         {
+            MasterLog.DebugWriteLine("Turn ended!");
             TestMove();
             TurnEndHandler(new WorldEventArgs(mainWorld));
             TurnStartHandler(new WorldEventArgs(mainWorld));
