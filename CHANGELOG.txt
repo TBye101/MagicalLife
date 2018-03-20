@@ -8,6 +8,7 @@
 			*Escape now toggles the main menu
 			*Clicking a main menu button now hides the main menu
 			*Exit button now exits the game
+			*User can now choose the size of the world
 
 		#### API
 			* Now using Monogame 
