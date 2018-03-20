@@ -1,4 +1,22 @@
 		SneakyTactician  <SneakyTactician@outlook.com>
+
+	[Version 0.0.0.4]
+		### GUI
+			*Now displays new game button
+			*Now recieves mouse input as events
+			*Mouse now displays
+			*Escape now toggles the main menu
+			*Clicking a main menu button now hides the main menu
+			*Exit button now exits the game
+			*User can now choose the size of the world
+
+		#### API
+			* Now using Monogame 
+			* Now supports a load game progress bar
+
+		### Bugs
+			*Solved a bug that didn't allow for more than one GUI object recieving mouse input (b88e0815)
+
 	[Version 0.0.0.3]
 		### Features
 			*End turn button is now rendered
@@ -6,8 +24,6 @@
 			*Support for creature movement
 		### Tweaks
 			*Changed many data structures under the hood
-		### Bugs
-			*
 
 	[Version 0.0.0.2]
 		### Features

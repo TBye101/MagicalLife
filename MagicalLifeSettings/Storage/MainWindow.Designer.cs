@@ -58,5 +58,17 @@ namespace MagicalLifeSettings.Storage {
                 this["Boarder"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Resolution {
+            get {
+                return ((int)(this["Resolution"]));
+            }
+            set {
+                this["Resolution"] = value;
+            }
+        }
     }
 }

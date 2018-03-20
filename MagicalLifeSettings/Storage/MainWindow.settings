@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MagicalLifeGUI.Storage" GeneratedClassName="MainWindow">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MagicalLifeSettings.Storage" GeneratedClassName="MainWindow">
   <Profiles />
   <Settings>
     <Setting Name="ScreenSize" Type="System.Drawing.Size" Scope="User">
@@ -10,6 +10,9 @@
     </Setting>
     <Setting Name="Boarder" Type="System.Windows.Forms.FormBorderStyle" Scope="User">
       <Value Profile="(Default)">None</Value>
+    </Setting>
+    <Setting Name="Resolution" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

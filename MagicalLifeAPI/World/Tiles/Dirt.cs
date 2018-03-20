@@ -12,6 +12,10 @@ namespace MagicalLifeAPI.World.Tiles
             //this.AdditionalMovementCost = 0;
         }
 
+        public Dirt()
+        {
+        }
+
         public override string GetName()
         {
             return "dirt";
@@ -19,7 +23,7 @@ namespace MagicalLifeAPI.World.Tiles
 
         public override string GetTextureName()
         {
-            return "DirtTile.png";
+            return "DirtTile";
             //return "TestTile.png";
         }
     }

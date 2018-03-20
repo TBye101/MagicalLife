@@ -10,6 +10,9 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// Populates the passed in array with the name of a biome for each tile.
         /// </summary>
+        /// <param name="xSize"></param>
+        /// <param name="ySize"></param>
+        /// <param name="zSize"></param>
         /// <returns></returns>
         public abstract string[,,] AssignBiomes(int xSize, int ySize, int zSize);
 

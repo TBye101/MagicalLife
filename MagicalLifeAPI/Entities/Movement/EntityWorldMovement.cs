@@ -1,12 +1,8 @@
-﻿using System.Security.Cryptography;
-using DijkstraAlgorithm.Pathing;
+﻿using DijkstraAlgorithm.Pathing;
+using MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions;
 using MagicalLifeAPI.World;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions;
 
 namespace MagicalLifeAPI.Entities.Movement
 {

@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using DijkstraAlgorithm.Pathing;
-using System.Collections.Concurrent;
-using System.Collections;
+﻿using DijkstraAlgorithm.Pathing;
 using MagicalLifeAPI.Entities.Util;
 using MagicalLifeAPI.Universal;
+using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Entities
 {
@@ -32,7 +30,7 @@ namespace MagicalLifeAPI.Entities
         /// </summary>
         /// <param name="health"></param>
         /// <param name="movementSpeed"></param>
-        public Living(int health, int movementSpeed)
+        protected Living(int health, int movementSpeed)
         {
             this.Health = new Attribute(health);
             this.MovementSpeed = new Attribute(movementSpeed);

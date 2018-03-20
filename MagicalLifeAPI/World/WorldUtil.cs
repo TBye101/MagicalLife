@@ -1,10 +1,5 @@
-﻿using System.Diagnostics;
-using MagicalLifeAPI.DataTypes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MagicalLifeAPI.DataTypes;
+using System.Diagnostics;
 
 namespace MagicalLifeAPI.World
 {
@@ -17,6 +12,8 @@ namespace MagicalLifeAPI.World
         /// Returns a tile based on it's location in string format.
         /// </summary>
         /// <param name="world"></param>
+        /// <param name="tiles"></param>
+        /// <param name="str"></param>
         /// <returns></returns>
         public static Tile GetTileByID(Tile[,,] tiles, string str)
         {

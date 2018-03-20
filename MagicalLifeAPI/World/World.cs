@@ -1,13 +1,9 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Util;
-using System.Collections.Generic;
-using System.Collections;
-using System.Runtime.CompilerServices;
-using DijkstraAlgorithm.Pathing;
+﻿using DijkstraAlgorithm.Pathing;
+using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Entities.Movement;
-using MagicalLifeAPI.Entities.Util;
 using MagicalLifeAPI.Universal;
+using MagicalLifeAPI.Util;
 using System;
 
 namespace MagicalLifeAPI.World
@@ -51,6 +47,10 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// Generates a new world with the specified height, width, depth, and world generator.
         /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="depth"></param>
+        /// <param name="generator"></param>
         public static void Initialize(int width, int height, int depth, WorldGenerator generator)
         {
             mainWorld = new World();

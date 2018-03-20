@@ -99,6 +99,8 @@ namespace MagicalLifeAPI.Entities.Movement
         /// <param name="xChange"></param>
         /// <param name="yChange"></param>
         /// <param name="zChange"></param>
+        /// <param name="tiles"></param>
+        /// <param name="source"></param>
         private static void AddNeighborLink(int xChange, int yChange, int zChange, Tile[,,] tiles, Tile source)
         {
             int x = (int)source.Location.X;
