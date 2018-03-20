@@ -45,6 +45,9 @@ namespace MagicalLifeGUIWindows.GUI
             }
         }
 
+        /// <summary>
+        /// Displays the menu displayed 1 step ahead of the currently displayed menu.
+        /// </summary>
         public static void Forward()
         {
             if (DisplayIndex <= Containers.Count)
@@ -52,6 +55,14 @@ namespace MagicalLifeGUIWindows.GUI
                 DisplayIndex++;
                 MouseHandler.Popup(Containers[DisplayIndex]);
             }
+        }
+
+        /// <summary>
+        /// Clears all menu steps previously stored.
+        /// </summary>
+        public static void Clear()
+        {
+            Containers.Clear();
         }
     }
 }

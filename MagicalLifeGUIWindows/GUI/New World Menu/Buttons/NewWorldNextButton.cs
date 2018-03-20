@@ -1,5 +1,6 @@
 ﻿using MagicalLifeGUIWindows.GUI.MainMenu;
 using MagicalLifeGUIWindows.GUI.Reusable;
+using MagicalLifeRenderEngine.Main.GUI.Click;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 using System;
@@ -23,6 +24,8 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu.Buttons
         {
             NewGameInputHandler a = new NewGameInputHandler();
             a.StartNewGame();
+            MouseHandler.RemoveContainer(NewWorldMenu.NewWorldMenuM);
+            MenuHandler.Clear();
         }
 
         public override void DoubleClick(MouseEventArgs e)
