@@ -22,9 +22,13 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         {
             this.DrawingBounds = drawingBounds;
             this.MouseBounds = new ClickBounds(drawingBounds, priority);
-            MouseHandler.AddClickBounds(this);
-            this.Font = Game1.AssetManager.Load<SpriteFont>(font);
+            BoundHandler.AddClickBounds(this);
             this.Image = AssetManager.Textures[AssetManager.GetTextureIndex(image)];
+
+            if (font != null && font != string.Empty)
+            {
+                this.Font = Game1.AssetManager.Load<SpriteFont>(font);
+            }
         }
 
         public GUIElement()

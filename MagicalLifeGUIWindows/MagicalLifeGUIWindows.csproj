@@ -71,6 +71,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
+    <Compile Include="GUI\In Game GUI\Buttons\TurnButton.cs" />
+    <Compile Include="GUI\In Game GUI\InGameGUI.cs" />
+    <Compile Include="GUI\In Game GUI\InGameGUIContainer.cs" />
+    <Compile Include="GUI\In Game GUI\InGameGUILayout.cs" />
+    <Compile Include="GUI\In Game GUI\InGameGUILayout1920x1080.cs" />
     <Compile Include="GUI\MainMenu\Buttons\NewGameButton.cs" />
     <Compile Include="GUI\MainMenu\Buttons\QuitButton.cs" />
     <Compile Include="GUI\MainMenu\MainMenu.cs" />
@@ -98,7 +103,7 @@
     <Compile Include="Input\ContainerSorter.cs" />
     <Compile Include="Input\EscapeHandler.cs" />
     <Compile Include="Input\KeyboardHandler.cs" />
-    <Compile Include="Input\MouseHandler.cs" />
+    <Compile Include="Input\BoundHandler.cs" />
     <Compile Include="Load\InputLoader.cs" />
     <Compile Include="Load\Loader.cs" />
     <Compile Include="Load\LoadMoniter.cs" />

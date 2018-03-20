@@ -66,7 +66,7 @@ namespace MagicalLifeGUIWindows.Rendering
 
         private static void DrawContainers(ref SpriteBatch spBatch)
         {
-            foreach (GUIContainer item in Enumerable.Reverse(MouseHandler.GUIWindows))
+            foreach (GUIContainer item in Enumerable.Reverse(BoundHandler.GUIWindows))
             {
                 if (item.Visible)
                 {

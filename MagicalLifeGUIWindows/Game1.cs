@@ -85,7 +85,7 @@ namespace MagicalLifeGUIWindows
         {
             if (this.IsActive)
             {
-                MouseHandler.UpdateMouseInput(gameTime);
+                BoundHandler.UpdateMouseInput(gameTime);
                 KeyboardHandler.UpdateKeyboardInput(gameTime);
             }
 

@@ -11,7 +11,7 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
     /// <summary>
     /// Determines who is being clicked on when the user clicks.
     /// </summary>
-    public static class MouseHandler
+    public static class BoundHandler
     {
         /// <summary>
         /// Contains all of the ClickBounds this class handles.
@@ -30,7 +30,7 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         private static ContainerSorter containerSorter = new ContainerSorter();
 
         /// <summary>
-        /// Constructs the <see cref="MouseHandler"/> class.
+        /// Constructs the <see cref="BoundHandler"/> class.
         /// </summary>
         public static void Initialize()
         {

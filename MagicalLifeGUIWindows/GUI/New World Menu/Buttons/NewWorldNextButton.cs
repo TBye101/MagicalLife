@@ -24,8 +24,10 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu.Buttons
         {
             NewGameInputHandler a = new NewGameInputHandler();
             a.StartNewGame();
-            MouseHandler.RemoveContainer(NewWorldMenu.NewWorldMenuM);
+            BoundHandler.RemoveContainer(NewWorldMenu.NewWorldMenuM);
             MenuHandler.Clear();
+            In_Game_GUI.InGameGUI.Initialize();
+            BoundHandler.Popup(In_Game_GUI.InGameGUI.InGame);
         }
 
         public override void DoubleClick(MouseEventArgs e)
