@@ -86,11 +86,42 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
                 }
             }
 
-            //Click(clickData, Bounds);
+            Click(clickData, Bounds);
         }
 
         /// <summary>
         /// Handles who gets the single click event from the options provided.
+        /// </summary>
+        /// <param name="clickData"></param>
+        private static void Click(MouseEventArgs clickData, List<GUIElement> Options)
+        {
+            int focus = -1;
+            int length = Options.Count;
+            GUIElement item = null;
+
+            for (int i = 0; i < length; i++)
+            {
+                item = Options[i];
+                if (focus == -1 && item.MouseBounds.Bounds.Contains(clickData.Position.X, clickData.Position.Y))
+                {
+                    item.HasFocus = true;
+                    focus = i;
+                }
+                else
+                {
+                    item.HasFocus = false;
+                }
+            }
+
+            if (focus != -1)
+            {
+                Options[focus].Click(clickData);
+            }
+        }
+
+        /// <summary>
+        /// Handles who gets the single click event from the options provided.
+        /// For use if a container is being used.
         /// </summary>
         /// <param name="clickData"></param>
         private static void Click(MouseEventArgs clickData, List<GUIElement> Options, GUIContainer container)

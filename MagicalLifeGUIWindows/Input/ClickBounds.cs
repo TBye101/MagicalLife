@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 using System;
 
-namespace MagicalLifeRenderEngine.Main.GUI.Click
+namespace MagicalLifeGUIWindows.Input
 {
     /// <summary>
     /// Holds information about where a click is clicking within bounds, as well as priority and a event to subscribe to.

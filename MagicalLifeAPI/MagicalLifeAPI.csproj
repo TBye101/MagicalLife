@@ -56,6 +56,7 @@
     <Compile Include="Asset\AssetManager.cs" />
     <Compile Include="DataTypes\Point3D.cs" />
     <Compile Include="Entities\Entity Factory\HumanFactory.cs" />
+    <Compile Include="Entities\Eventing\LivingEventArg.cs" />
     <Compile Include="Entities\Humanoid\Human.cs" />
     <Compile Include="Entities\Living.cs" />
     <Compile Include="Entities\Movement\EntityWorldMovement.cs" />

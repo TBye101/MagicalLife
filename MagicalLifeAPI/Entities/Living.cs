@@ -1,6 +1,8 @@
 ﻿using DijkstraAlgorithm.Pathing;
+using MagicalLifeAPI.Entities.Eventing;
 using MagicalLifeAPI.Entities.Util;
 using MagicalLifeAPI.Universal;
+using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Entities
@@ -18,12 +20,22 @@ namespace MagicalLifeAPI.Entities
         /// <summary>
         /// How many hit points this creature has.
         /// </summary>
-        public Attribute Health { get; set; }
+        public Util.Attribute Health { get; set; }
 
         /// <summary>
         /// How fast this creature can move.
         /// </summary>
-        public Attribute MovementSpeed { get; set; }
+        public Util.Attribute MovementSpeed { get; set; }
+
+        /// <summary>
+        /// Raised when a <see cref="Living"/> is created.
+        /// </summary>
+        public static event EventHandler<LivingEventArg> LivingCreated;
+
+        /// <summary>
+        /// Raised when this <see cref="Living"/> is modified.
+        /// </summary>
+        public event EventHandler<LivingEventArg> LivingModified;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Living"/> base class.
@@ -32,8 +44,9 @@ namespace MagicalLifeAPI.Entities
         /// <param name="movementSpeed"></param>
         protected Living(int health, int movementSpeed)
         {
-            this.Health = new Attribute(health);
-            this.MovementSpeed = new Attribute(movementSpeed);
+            this.Health = new Util.Attribute(health);
+            this.MovementSpeed = new Util.Attribute(movementSpeed);
+            Living.LivingCreated(this, new LivingEventArg(this));
         }
 
         /// <summary>
@@ -41,5 +54,31 @@ namespace MagicalLifeAPI.Entities
         /// </summary>
         /// <returns></returns>
         public abstract string GetTextureName();
+
+        /// <summary>
+        /// Raises the <see cref="LivingModified"/> event.
+        /// </summary>
+        /// <param name="e"></param>
+        public void LivingModifiedHandler(LivingEventArg e)
+        {
+            EventHandler<LivingEventArg> handler = LivingModified;
+            if (handler != null)
+            {
+                handler(e.Living, e);
+            }
+        }
+
+        /// <summary>
+        /// Raises the <see cref="LivingCreated"/> event.
+        /// </summary>
+        /// <param name="e"></param>
+        public static void LivingCreatedHandler(LivingEventArg e)
+        {
+            EventHandler<LivingEventArg> handler = LivingCreated;
+            if (handler != null)
+            {
+                handler(e.Living, e);
+            }
+        }
     }
 }
