@@ -1,7 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Universal;
 using MagicalLifeGUIWindows.Input;
-using MagicalLifeRenderEngine.Main.GUI.Click;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Input.InputListeners;
@@ -23,7 +22,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         {
             this.DrawingBounds = drawingBounds;
             this.MouseBounds = new ClickBounds(drawingBounds, priority);
-            BoundHandler.AddClickBounds(this);
+            BoundHandler.AddGUIElement(this);
             this.Image = AssetManager.Textures[AssetManager.GetTextureIndex(image)];
 
             if (font != null && font != string.Empty)

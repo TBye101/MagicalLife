@@ -3,10 +3,9 @@ using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World;
 using MagicalLifeGUIWindows.GUI.MainMenu;
 using MagicalLifeGUIWindows.GUI.Reusable;
+using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Rendering.GUI;
 using MagicalLifeGUIWindows.Rendering.Map;
-using MagicalLifeGUIWindows.Rendering.Text;
-using MagicalLifeRenderEngine.Main.GUI.Click;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -30,6 +29,16 @@ namespace MagicalLifeGUIWindows.Rendering
         /// The standard color mask to apply to all tiles.
         /// </summary>
         public static readonly Microsoft.Xna.Framework.Color colorMask = Microsoft.Xna.Framework.Color.White;
+
+        /// <summary>
+        /// The x offset of the view due to the player moving the camera around the map.
+        /// </summary>
+        public static int XViewOffset = 0;
+
+        /// <summary>
+        /// The y offset of the view due to the player moving the camera around the map.
+        /// </summary>
+        public static int YViewOffset = 0;
 
         /// <summary>
         /// Draws the screen.

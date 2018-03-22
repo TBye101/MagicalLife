@@ -98,9 +98,10 @@
     <Compile Include="GUI\Reusable\InputBox.cs" />
     <Compile Include="GUI\Reusable\Label.cs" />
     <Compile Include="GUI\Reusable\MonoButton.cs" />
-    <Compile Include="Input\BoundsSorter.cs" />
+    <Compile Include="Input\Comparators\BoundsSorter.cs" />
     <Compile Include="Input\ClickBounds.cs" />
-    <Compile Include="Input\ContainerSorter.cs" />
+    <Compile Include="Input\Comparators\ClickBoundsSorter.cs" />
+    <Compile Include="Input\Comparators\ContainerSorter.cs" />
     <Compile Include="Input\EscapeHandler.cs" />
     <Compile Include="Input\KeyboardHandler.cs" />
     <Compile Include="Input\BoundHandler.cs" />

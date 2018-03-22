@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MagicalLifeAPI.DataTypes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,13 +14,16 @@ namespace MagicalLifeAPI.Entities.Eventing
     {
         public Living Living { get; private set; }
 
+        public Point3D Location { get; private set; }
+
         /// <summary>
         /// Constructs a <see cref="LivingEventArg"/>.
         /// </summary>
         /// <param name="living"></param>
-        public LivingEventArg(Living living)
+        public LivingEventArg(Living living, Point3D location)
         {
             this.Living = living;
+            this.Location = location;
         }
     }
 }

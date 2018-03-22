@@ -1,12 +1,14 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;
+using MagicalLifeGUIWindows.Input.Comparators;
+using MagicalLifeGUIWindows.Input.Specialized_Handlers;
 using MagicalLifeGUIWindows.Map;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 using System.Collections.Generic;
 
-namespace MagicalLifeRenderEngine.Main.GUI.Click
+namespace MagicalLifeGUIWindows.Input
 {
     /// <summary>
     /// Determines who is being clicked on when the user clicks.
@@ -29,6 +31,14 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
 
         private static ContainerSorter containerSorter = new ContainerSorter();
 
+        private static ClickBoundsSorter ClickBoundsSorter = new ClickBoundsSorter();
+
+        /// <summary>
+        /// Anything in game that can be clicked on, that is not considered a menu or popup.
+        /// Ex: a human, a sword.
+        /// </summary>
+        private static List<ClickBounds> GameObjectBounds = new List<ClickBounds>();
+
         /// <summary>
         /// Constructs the <see cref="BoundHandler"/> class.
         /// </summary>
@@ -38,6 +48,7 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
             MouseListner.MouseDoubleClicked += MouseListener_MouseDoubleClicked;
             MouseListner.MouseWheelMoved += MouseListener_MouseWheelMoved;
             MouseListner.MouseDrag += MouseListner_MouseDrag;
+            LivingBoundHandler.Initialize();
         }
 
         private static void MouseListner_MouseDrag(object sender, MouseEventArgs e)
@@ -223,7 +234,7 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         /// Adds a <see cref="ClickBounds"/> object to the system to be handled.
         /// </summary>
         /// <param name="bounds"></param>
-        public static void AddClickBounds(GUIElement bounds)
+        public static void AddGUIElement(GUIElement bounds)
         {
             int index = Bounds.BinarySearch(bounds, BoundSorter);
             if (index < 0)
@@ -232,6 +243,27 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
             }
 
             Bounds.Insert(index, bounds);
+        }
+
+        /// <summary>
+        /// Removes a <see cref="ClickBounds"/> object from the system.
+        /// </summary>
+        /// <param name="bounds"></param>
+        public static void AddClickBounds(ClickBounds bounds)
+        {
+            int index = GameObjectBounds.BinarySearch(bounds, ClickBoundsSorter);
+
+            if (index < 0)
+            {
+                index = ~index;
+            }
+
+            GameObjectBounds.Insert(index, bounds);
+        }
+
+        public static void RemoveClickBounds(ClickBounds bounds)
+        {
+            GameObjectBounds.Remove(bounds);
         }
 
         /// <summary>

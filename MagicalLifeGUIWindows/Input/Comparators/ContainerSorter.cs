@@ -1,7 +1,7 @@
 ﻿using MagicalLifeGUIWindows.GUI.Reusable;
 using System.Collections.Generic;
 
-namespace MagicalLifeGUIWindows.Input
+namespace MagicalLifeGUIWindows.Input.Comparators
 {
     /// <summary>
     /// This class knows how to compare two <see cref="GUIContainer"/> objects.
