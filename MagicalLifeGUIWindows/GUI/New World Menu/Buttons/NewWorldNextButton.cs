@@ -1,6 +1,6 @@
 ﻿using MagicalLifeGUIWindows.GUI.MainMenu;
 using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeRenderEngine.Main.GUI.Click;
+using MagicalLifeGUIWindows.Input;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 using System;

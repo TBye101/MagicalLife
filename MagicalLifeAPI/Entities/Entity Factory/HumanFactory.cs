@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Entities.Humanoid;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Entities.Humanoid;
 using MagicalLifeAPI.Util;
 
 namespace MagicalLifeAPI.Entities.Entity_Factory
@@ -32,12 +33,12 @@ namespace MagicalLifeAPI.Entities.Entity_Factory
         /// Returns a fully generated human character.
         /// </summary>
         /// <returns></returns>
-        public Human GenerateHuman()
+        public Human GenerateHuman(Point3D location)
         {
             int health = StaticRandom.Rand(this.MinHumanHealthPerLevel, this.MaxHumanHealthPerLevel + 1);
             int movement = StaticRandom.Rand(this.MinHumanMovement, this.MaxHumanMovement + 1);
 
-            return new Human(health, movement);
+            return new Human(health, movement, location);
         }
     }
 }

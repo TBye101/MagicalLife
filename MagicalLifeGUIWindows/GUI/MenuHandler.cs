@@ -1,5 +1,5 @@
 ﻿using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeRenderEngine.Main.GUI.Click;
+using MagicalLifeGUIWindows.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;

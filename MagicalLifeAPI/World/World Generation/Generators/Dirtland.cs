@@ -54,7 +54,7 @@ namespace MagicalLifeAPI.World.World_Generation.Generators
             int z = zSize - 1;
 
             HumanFactory hFactory = new HumanFactory();
-            map[x, y, z].Living.Add(hFactory.GenerateHuman());
+            map[x, y, z].Living.Add(hFactory.GenerateHuman(new Point3D(x, y, z)));
 
             return map;
         }

@@ -1,4 +1,6 @@
-﻿using MagicalLifeAPI.Filing.Logging;
+﻿using MagicalLifeAPI.Entities.Eventing;
+using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.GUI;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Input.Comparators;
@@ -37,7 +39,7 @@ namespace MagicalLifeGUIWindows.Input
         /// Anything in game that can be clicked on, that is not considered a menu or popup.
         /// Ex: a human, a sword.
         /// </summary>
-        private static List<ClickBounds> GameObjectBounds = new List<ClickBounds>();
+        public static List<ClickBounds> GameObjectBounds = new List<ClickBounds>();
 
         /// <summary>
         /// Constructs the <see cref="BoundHandler"/> class.

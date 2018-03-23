@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Universal;
+﻿using MagicalLifeAPI.GUI;
+using MagicalLifeAPI.Universal;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 using System;
@@ -20,6 +21,11 @@ namespace MagicalLifeGUIWindows.Input
         /// The higher the value, the higher the priority.
         /// </summary>
         public int Priority { get; set; }
+
+        /// <summary>
+        /// The object that when this is clicked on you are interacting with.
+        /// </summary>
+        public IClickable GameObject { get; set; }
 
         /// <summary>
         /// Constructs a new instance of the <see cref="ClickBounds"/> class.

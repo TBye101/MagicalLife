@@ -12,7 +12,7 @@ namespace MagicalLifeAPI.Entities.Eventing
     /// </summary>
     public class LivingEventArg
     {
-        public Living Living { get; private set; }
+        public Living Living { get; set; }
 
         public Point3D Location { get; private set; }
 

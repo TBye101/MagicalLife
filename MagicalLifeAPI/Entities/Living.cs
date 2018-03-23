@@ -1,6 +1,8 @@
 ﻿using DijkstraAlgorithm.Pathing;
+using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities.Eventing;
 using MagicalLifeAPI.Entities.Util;
+using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Universal;
 using System;
 using System.Collections.Generic;
@@ -10,7 +12,7 @@ namespace MagicalLifeAPI.Entities
     /// <summary>
     /// All living things inherit from this, and utilize it.
     /// </summary>
-    public abstract class Living : Unique
+    public abstract class Living : Unique, IClickable
     {
         /// <summary>
         /// A queue that holds the queued movement steps up for this living creature.
@@ -42,11 +44,11 @@ namespace MagicalLifeAPI.Entities
         /// </summary>
         /// <param name="health"></param>
         /// <param name="movementSpeed"></param>
-        protected Living(int health, int movementSpeed)
+        protected Living(int health, int movementSpeed, Point3D location)
         {
             this.Health = new Util.Attribute(health);
             this.MovementSpeed = new Util.Attribute(movementSpeed);
-            Living.LivingCreated(this, new LivingEventArg(this));
+            Living.LivingCreated(this, new LivingEventArg(this, location));
         }
 
         /// <summary>

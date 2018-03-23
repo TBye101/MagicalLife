@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Entities.Eventing;
+using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.World;
 using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Rendering;
@@ -18,6 +19,8 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
     /// </summary>
     public static class LivingBoundHandler
     {
+        public static readonly int LivingPriority = 2147483646;
+
         public static void Initialize()
         {
             Living.LivingCreated += Living_LivingCreated;
@@ -26,6 +29,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
         private static void Living_LivingCreated(object sender, LivingEventArg e)
         {
             e.Living.LivingModified += Living_LivingModified;
+            AdjustBounds(e, false);
         }
 
         /// <summary>
@@ -37,12 +41,28 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
         {
             if (!hasExistingBounds)
             {
-                BoundHandler.AddClickBounds(GetBoundsForTile(e.Location));//Somehow tie the clickbounds and the creature together.
+                ClickBounds bounds = new ClickBounds(GetBoundsForTile(e.Location), LivingBoundHandler.LivingPriority);
+                bounds.GameObject = e.Living;
+                BoundHandler.AddClickBounds(bounds);
+            }
+            else
+            {
+                foreach (ClickBounds item in BoundHandler.GameObjectBounds)
+                {
+                    if (item.GameObject == e.Living)
+                    {
+                        ClickBounds bounds = new ClickBounds(GetBoundsForTile(e.Location), LivingBoundHandler.LivingPriority);
+                        bounds.GameObject = item.GameObject;
+                        BoundHandler.RemoveClickBounds(item);
+                        BoundHandler.AddClickBounds(bounds);
+                    }
+                }
             }
         }
 
         private static void Living_LivingModified(object sender, MagicalLifeAPI.Entities.Eventing.LivingEventArg e)
         {
+            AdjustBounds(e, true);
         }
 
         /// <summary>
@@ -50,7 +70,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
         /// </summary>
         /// <param name="location"></param>
         /// <returns></returns>
-        private static Rectangle GetBoundsForTile(Point3D location)
+        public static Rectangle GetBoundsForTile(Point3D location)
         {
             Point size = Tile.GetTileSize();
 

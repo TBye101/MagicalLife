@@ -71,6 +71,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
+    <Compile Include="Input\ClickBounds.cs" />
     <Compile Include="GUI\In Game GUI\Buttons\TurnButton.cs" />
     <Compile Include="GUI\In Game GUI\InGameGUI.cs" />
     <Compile Include="GUI\In Game GUI\InGameGUIContainer.cs" />
@@ -99,7 +100,6 @@
     <Compile Include="GUI\Reusable\Label.cs" />
     <Compile Include="GUI\Reusable\MonoButton.cs" />
     <Compile Include="Input\Comparators\BoundsSorter.cs" />
-    <Compile Include="Input\ClickBounds.cs" />
     <Compile Include="Input\Comparators\ClickBoundsSorter.cs" />
     <Compile Include="Input\Comparators\ContainerSorter.cs" />
     <Compile Include="Input\EscapeHandler.cs" />
