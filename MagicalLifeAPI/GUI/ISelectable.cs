@@ -9,7 +9,7 @@ namespace MagicalLifeAPI.GUI
     /// <summary>
     /// All objects in the game that can be clicked on inherit from this.
     /// </summary>
-    public interface IClickable
+    public interface ISelectable
     {
     }
 }

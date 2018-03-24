@@ -25,7 +25,7 @@ namespace MagicalLifeGUIWindows.Input
         /// <summary>
         /// The object that when this is clicked on you are interacting with.
         /// </summary>
-        public IClickable GameObject { get; set; }
+        public ISelectable GameObject { get; set; }
 
         /// <summary>
         /// Constructs a new instance of the <see cref="ClickBounds"/> class.

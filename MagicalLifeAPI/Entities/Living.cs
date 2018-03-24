@@ -12,7 +12,7 @@ namespace MagicalLifeAPI.Entities
     /// <summary>
     /// All living things inherit from this, and utilize it.
     /// </summary>
-    public abstract class Living : Unique, IClickable
+    public abstract class Living : Unique, ISelectable
     {
         /// <summary>
         /// A queue that holds the queued movement steps up for this living creature.
