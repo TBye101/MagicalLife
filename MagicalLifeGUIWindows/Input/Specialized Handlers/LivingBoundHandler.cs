@@ -23,46 +23,46 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
         public static void Initialize()
         {
-            Living.LivingCreated += Living_LivingCreated;
+            //Living.LivingCreated += Living_LivingCreated;
         }
 
-        private static void Living_LivingCreated(object sender, LivingEventArg e)
-        {
-            e.Living.LivingModified += Living_LivingModified;
-            AdjustBounds(e, false);
-        }
+        //private static void Living_LivingCreated(object sender, LivingEventArg e)
+        //{
+        //    e.Living.LivingModified += Living_LivingModified;
+        //    AdjustBounds(e, false);
+        //}
 
         /// <summary>
         /// Corrects the <see cref="ClickBounds"/> of the <see cref="Living"/>.
         /// </summary>
         /// <param name="living"></param>
         /// <param name="hasExistingBounds">This is true if the <see cref="Living"/> already has registered <see cref="ClickBounds"/> with the <see cref="BoundHandler"/>.</param>
-        private static void AdjustBounds(LivingEventArg e, bool hasExistingBounds)
-        {
-            if (!hasExistingBounds)
-            {
-                ClickBounds bounds = new ClickBounds(GetBoundsForTile(e.Location), LivingBoundHandler.LivingPriority);
-                bounds.GameObject = e.Living;
-                BoundHandler.AddClickBounds(bounds);
-            }
-            else
-            {
-                foreach (ClickBounds item in BoundHandler.GameObjectBounds)
-                {
-                    if (item.GameObject == e.Living)
-                    {
-                        ClickBounds bounds = new ClickBounds(GetBoundsForTile(e.Location), LivingBoundHandler.LivingPriority);
-                        bounds.GameObject = item.GameObject;
-                        BoundHandler.RemoveClickBounds(item);
-                        BoundHandler.AddClickBounds(bounds);
-                    }
-                }
-            }
-        }
+        //private static void AdjustBounds(LivingEventArg e, bool hasExistingBounds)
+        //{
+        //    if (!hasExistingBounds)
+        //    {
+        //        ClickBounds bounds = new ClickBounds(GetBoundsForTile(e.Location), LivingBoundHandler.LivingPriority);
+        //        bounds.GameObject = e.Living;
+        //        BoundHandler.AddClickBounds(bounds);
+        //    }
+        //    else
+        //    {
+        //        foreach (ClickBounds item in BoundHandler.GameObjectBounds)
+        //        {
+        //            if (item.GameObject == e.Living)
+        //            {
+        //                ClickBounds bounds = new ClickBounds(GetBoundsForTile(e.Location), LivingBoundHandler.LivingPriority);
+        //                bounds.GameObject = item.GameObject;
+        //                BoundHandler.RemoveClickBounds(item);
+        //                BoundHandler.AddClickBounds(bounds);
+        //            }
+        //        }
+        //    }
+        //}
 
         private static void Living_LivingModified(object sender, MagicalLifeAPI.Entities.Eventing.LivingEventArg e)
         {
-            AdjustBounds(e, true);
+            //AdjustBounds(e, true);
         }
 
         /// <summary>

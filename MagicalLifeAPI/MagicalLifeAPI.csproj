@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Asset\AssetManager.cs" />
+    <Compile Include="DataTypes\FixedSizeQueue.cs" />
     <Compile Include="DataTypes\Point3D.cs" />
     <Compile Include="Entities\Entity Factory\HumanFactory.cs" />
     <Compile Include="Entities\Eventing\LivingEventArg.cs" />

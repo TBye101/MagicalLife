@@ -39,7 +39,12 @@ namespace MagicalLifeGUIWindows.Input
         /// Anything in game that can be clicked on, that is not considered a menu or popup.
         /// Ex: a human, a sword.
         /// </summary>
-        public static List<ClickBounds> GameObjectBounds = new List<ClickBounds>();
+        //public static List<ClickBounds> GameObjectBounds = new List<ClickBounds>();
+
+        /// <summary>
+        /// This is fired whenever it is a right click, aka an action is being ordered of a already selected object.
+        /// </summary>
+        public static event System.EventHandler<MouseEventArgs> MapClick;
 
         /// <summary>
         /// Constructs the <see cref="BoundHandler"/> class.
@@ -106,7 +111,7 @@ namespace MagicalLifeGUIWindows.Input
         /// Handles who gets the single click event from the options provided.
         /// </summary>
         /// <param name="clickData"></param>
-        private static void Click(MouseEventArgs clickData, List<GUIElement> Options)
+        private static bool Click(MouseEventArgs clickData, List<GUIElement> Options)
         {
             int focus = -1;
             int length = Options.Count;
@@ -129,6 +134,11 @@ namespace MagicalLifeGUIWindows.Input
             if (focus != -1)
             {
                 Options[focus].Click(clickData);
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
@@ -251,22 +261,22 @@ namespace MagicalLifeGUIWindows.Input
         /// Removes a <see cref="ClickBounds"/> object from the system.
         /// </summary>
         /// <param name="bounds"></param>
-        public static void AddClickBounds(ClickBounds bounds)
-        {
-            int index = GameObjectBounds.BinarySearch(bounds, ClickBoundsSorter);
+        //public static void AddClickBounds(ClickBounds bounds)
+        //{
+        //    int index = GameObjectBounds.BinarySearch(bounds, ClickBoundsSorter);
 
-            if (index < 0)
-            {
-                index = ~index;
-            }
+        //    if (index < 0)
+        //    {
+        //        index = ~index;
+        //    }
 
-            GameObjectBounds.Insert(index, bounds);
-        }
+        //    GameObjectBounds.Insert(index, bounds);
+        //}
 
-        public static void RemoveClickBounds(ClickBounds bounds)
-        {
-            GameObjectBounds.Remove(bounds);
-        }
+        //public static void RemoveClickBounds(ClickBounds bounds)
+        //{
+        //    GameObjectBounds.Remove(bounds);
+        //}
 
         /// <summary>
         /// Sets that container as the visible container, and gives it priority.
