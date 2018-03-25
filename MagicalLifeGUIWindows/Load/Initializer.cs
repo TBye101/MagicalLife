@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Universal;
 using MagicalLifeGUIWindows.Input;
+using MagicalLifeGUIWindows.Input.History;
 using System;
 using System.Collections.Generic;
 using System.Linq;

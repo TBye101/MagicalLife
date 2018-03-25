@@ -27,11 +27,11 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
         {
             if (e.Button == MouseButton.Left)
             {
-                List<Living> livings = GetLivingAtClick(e);
+                Living livings = GetLivingAtClick(e);
 
-                if (livings.Count > 0)
+                if (livings != null)
                 {
-                    this.Selected = livings.Last();//have a history of input, then do a strategy pattern to decide what happens based on that.
+                    this.Selected = livings;//have a history of input, then do a strategy pattern to decide what happens based on that.
                 }
             }
         }
@@ -41,7 +41,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
         /// </summary>
         /// <param name="e"></param>
         /// <returns></returns>
-        private List<Living> GetLivingAtClick(MouseEventArgs e)
+        private Living GetLivingAtClick(MouseEventArgs e)
         {
             Point3D tileLocation = Util.GetMapLocation(e.Position.X, e.Position.Y);
             return World.mainWorld.Tiles[tileLocation.X, tileLocation.Y, tileLocation.Z].Living;

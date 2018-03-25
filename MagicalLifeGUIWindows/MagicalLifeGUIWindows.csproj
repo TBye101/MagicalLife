@@ -104,6 +104,8 @@
     <Compile Include="Input\Comparators\ContainerSorter.cs" />
     <Compile Include="Input\EscapeHandler.cs" />
     <Compile Include="Input\History\HistoricalInput.cs" />
+    <Compile Include="Input\History\HistoricalInputFactory.cs" />
+    <Compile Include="Input\History\InputEventArgs.cs" />
     <Compile Include="Input\History\InputHistory.cs" />
     <Compile Include="Input\KeyboardHandler.cs" />
     <Compile Include="Input\BoundHandler.cs" />

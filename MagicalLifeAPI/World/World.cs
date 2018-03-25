@@ -66,7 +66,7 @@ namespace MagicalLifeAPI.World
 
         private static void TestMove()
         {
-            Living found = TestFindEntity(mainWorld.Tiles).Living[0];
+            Living found = TestFindEntity(mainWorld.Tiles).Living;
             Tile start = TestFindEntity(mainWorld.Tiles);
 
             Point3D des = new Point3D(10, 2, 1);
@@ -99,7 +99,7 @@ namespace MagicalLifeAPI.World
                     for (int iii = 0; iii < zSize; iii++)
                     {
                         //Each tile can be accessed by the xyz coordinates from this inner loop properly.
-                        if (tiles[x, y, z].Living.Count > 0)
+                        if (tiles[x, y, z].Living != null)
                         {
                             return tiles[x, y, z];
                         }

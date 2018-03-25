@@ -79,7 +79,7 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// A list containing all living entities on this tile.
         /// </summary>
-        public List<Living> Living { get; set; } = new List<Entities.Living>();
+        public Living Living { get; set; }
 
         /// <summary>
         /// Raised when the world is finished generating for the first time.

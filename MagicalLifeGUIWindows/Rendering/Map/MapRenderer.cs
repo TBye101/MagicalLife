@@ -57,9 +57,9 @@ namespace MagicalLifeGUIWindows.Rendering.Map
             Microsoft.Xna.Framework.Rectangle target = new Microsoft.Xna.Framework.Rectangle(start, RenderingPipe.tileSize);
             spBatch.Draw(AssetManager.Textures[tile.TextureIndex], target, RenderingPipe.colorMask);
 
-            if (tile.Living.Count > 0)
+            if (tile.Living != null)
             {
-                Texture2D livingTexture = AssetManager.Textures[AssetManager.GetTextureIndex(tile.Living[tile.Living.Count - 1].GetTextureName())];
+                Texture2D livingTexture = AssetManager.Textures[AssetManager.GetTextureIndex(tile.Living.GetTextureName())];
                 spBatch.Draw(livingTexture, target, RenderingPipe.colorMask);
             }
         }
