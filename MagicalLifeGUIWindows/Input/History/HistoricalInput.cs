@@ -59,5 +59,12 @@ namespace MagicalLifeGUIWindows.Input.History
                 this.DeselectSome = deselectSome;
             }
         }
+
+        public HistoricalInput(List<ISelectable> selectSome, bool deselectAll)
+        {
+            this.OrderedToTile = false;
+            this.DeselectingAll = deselectAll;
+            this.Selected = selectSome;
+        }
     }
 }

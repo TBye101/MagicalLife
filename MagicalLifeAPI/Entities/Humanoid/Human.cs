@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.GUI;
 
 namespace MagicalLifeAPI.Entities.Humanoid
 {
@@ -14,6 +15,17 @@ namespace MagicalLifeAPI.Entities.Humanoid
         public override string GetTextureName()
         {
             return "Basic Human";
+        }
+
+        public override bool InGameObjectType(ISelectable selectable)
+        {
+            switch (selectable)
+            {
+                case Human human:
+                    return true;
+            }
+
+            return false;
         }
     }
 }

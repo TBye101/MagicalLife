@@ -82,5 +82,7 @@ namespace MagicalLifeAPI.Entities
                 handler(e.Living, e);
             }
         }
+
+        public abstract bool InGameObjectType(ISelectable selectable);
     }
 }

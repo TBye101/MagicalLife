@@ -77,9 +77,9 @@ namespace MagicalLifeAPI.World
         public Point3D Location { get; protected set; }
 
         /// <summary>
-        /// A list containing all living entities on this tile.
+        /// The entity that is in this tile. Is null if there is not an entity in this tile.
         /// </summary>
-        public Living Living { get; set; }
+        public Living Living { get; set; } = null;
 
         /// <summary>
         /// Raised when the world is finished generating for the first time.

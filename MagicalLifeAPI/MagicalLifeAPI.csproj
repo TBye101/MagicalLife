@@ -78,6 +78,7 @@
     <Compile Include="Filing\FileSystemManager.cs" />
     <Compile Include="Filing\Logging\MasterLog.cs" />
     <Compile Include="GUI\ISelectable.cs" />
+    <Compile Include="GUI\SelectionType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Universal\IGameLoader.cs" />
     <Compile Include="Universal\Unique.cs" />

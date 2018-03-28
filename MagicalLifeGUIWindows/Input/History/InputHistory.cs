@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.GUI;
 using MonoGame.Extended.Input.InputListeners;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,8 @@ namespace MagicalLifeGUIWindows.Input.History
         public static event Action InputAdded;
 
         private static HistoricalInputFactory Factory = new HistoricalInputFactory();
+
+        public static List<ISelectable> Selected = new List<ISelectable>();
 
         /// <summary>
         /// Raises the world generated event.
@@ -112,6 +115,7 @@ namespace MagicalLifeGUIWindows.Input.History
         private static void MouseListner_MouseClicked(object sender, MouseEventArgs e)
         {
             History.Enqueue(Factory.Generate(new InputEventArgs(ShiftDown, CtrlDown, e)));
+            InputAddedHandler();
         }
     }
 }
