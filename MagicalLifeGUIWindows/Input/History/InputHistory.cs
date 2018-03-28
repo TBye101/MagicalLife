@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.GUI;
+using MagicalLifeAPI.World;
 using MonoGame.Extended.Input.InputListeners;
 using System;
 using System.Collections.Generic;
@@ -53,7 +54,6 @@ namespace MagicalLifeGUIWindows.Input.History
 
         public static void Initialize()
         {
-            BoundHandler.MouseListner.MouseClicked += MouseListner_MouseClicked;
             BoundHandler.MouseListner.MouseDoubleClicked += MouseListner_MouseDoubleClicked;
             BoundHandler.MouseListner.MouseDragStart += MouseListner_MouseDragStart;
             BoundHandler.MouseListner.MouseDragEnd += MouseListner_MouseDragEnd;
@@ -112,9 +112,38 @@ namespace MagicalLifeGUIWindows.Input.History
             //History.Enqueue(Factory.Generate(new InputEventArgs(ShiftDown, CtrlDown, e)));
         }
 
-        private static void MouseListner_MouseClicked(object sender, MouseEventArgs e)
+        /// <summary>
+        /// Used to handle the new selection state as dictated by the last <see cref="HistoricalInput"/> added to <see cref="History"/>.
+        /// </summary>
+        private static void HandleNewSelectionHistory()
+        {
+            HistoricalInput lastHistory = History.Last();
+
+            if (!lastHistory.OrderedToTile)
+            {
+
+                if (lastHistory.DeselectingAll)
+                {
+                    Selected.Clear();
+                }
+
+                foreach (ISelectable item in lastHistory.DeselectSome)
+                {
+                    Selected.Remove(item);
+                }
+
+                Selected.AddRange(lastHistory.Selected);
+            }
+        }
+
+        /// <summary>
+        /// Handles a mouse click that is somewhere in the game.
+        /// </summary>
+        /// <param name="e"></param>
+        public static void MapMouseClick(MouseEventArgs e)
         {
             History.Enqueue(Factory.Generate(new InputEventArgs(ShiftDown, CtrlDown, e)));
+            HandleNewSelectionHistory();
             InputAddedHandler();
         }
     }

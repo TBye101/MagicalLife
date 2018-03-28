@@ -34,23 +34,31 @@ namespace MagicalLifeGUIWindows.Input.History
             Point3D mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y);
             ISelectable select = World.mainWorld.Tiles[mapSpot.X, mapSpot.Y, mapSpot.Z].Living;
 
-            List<ISelectable> selected = new List<ISelectable>();
-            selected.Add(select);
-
-            if (e.ShiftDown)
+            if (select != null)
             {
-                if (this.IsSelectableSelected(select))
+                //Null check select, as it is null when an entity is not found
+                List<ISelectable> selected = new List<ISelectable>();
+                selected.Add(select);
+
+                if (e.ShiftDown)
                 {
-                    return new HistoricalInput(false, selected);
+                    if (this.IsSelectableSelected(select))
+                    {
+                        return new HistoricalInput(false, selected);
+                    }
+                    else
+                    {
+                        return new HistoricalInput(selected);
+                    }
                 }
                 else
                 {
-                    return new HistoricalInput(selected);
+                    return new HistoricalInput(selected, true);
                 }
             }
             else
             {
-                return new HistoricalInput(selected, true);
+                return new HistoricalInput(true, null);
             }
         }
 

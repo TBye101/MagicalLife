@@ -23,14 +23,14 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
         public static void Initialize()
         {
-            //Living.LivingCreated += Living_LivingCreated;
+            Living.LivingCreated += Living_LivingCreated;
         }
 
-        //private static void Living_LivingCreated(object sender, LivingEventArg e)
-        //{
-        //    e.Living.LivingModified += Living_LivingModified;
-        //    AdjustBounds(e, false);
-        //}
+        private static void Living_LivingCreated(object sender, LivingEventArg e)
+        {
+            //e.Living.LivingModified += Living_LivingModified;
+            //AdjustBounds(e, false);
+        }
 
         /// <summary>
         /// Corrects the <see cref="ClickBounds"/> of the <see cref="Living"/>.

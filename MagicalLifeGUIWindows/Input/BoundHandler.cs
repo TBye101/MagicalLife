@@ -4,6 +4,7 @@ using MagicalLifeAPI.GUI;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Input.Comparators;
+using MagicalLifeGUIWindows.Input.History;
 using MagicalLifeGUIWindows.Input.Specialized_Handlers;
 using MagicalLifeGUIWindows.Map;
 using Microsoft.Xna.Framework;
@@ -104,7 +105,10 @@ namespace MagicalLifeGUIWindows.Input
                 }
             }
 
-            Click(clickData, Bounds);
+            if (!Click(clickData, Bounds))
+            {
+                InputHistory.MapMouseClick(clickData);
+            }
         }
 
         /// <summary>
