@@ -3,12 +3,13 @@
 	[Version 0.0.0.5]
 		### GUI
 			*Living creatures are now being rendered
+			*Living creatures can now be individually selected and order to a location
 
 		#### API
-			* 
+			*
 
 		### Bugs
-			*
+			*Main menu fails to show when pressing escape (Issue #11)
 
 	[Version 0.0.0.4]
 		### GUI

@@ -64,20 +64,20 @@ namespace MagicalLifeAPI.World
             World.TurnStartHandler(new WorldEventArgs(mainWorld));
         }
 
-        private static void TestMove()
-        {
-            Living found = TestFindEntity(mainWorld.Tiles).Living;
-            Tile start = TestFindEntity(mainWorld.Tiles);
+        //private static void TestMove()
+        //{
+        //    Living found = TestFindEntity(mainWorld.Tiles).Living;
+        //    Tile start = TestFindEntity(mainWorld.Tiles);
 
-            Point3D des = new Point3D(10, 2, 1);
-            if (start.Location != des && found.QueuedMovement.Count == 0)
-            {
-                Path pth = StandardPathFinder.GetFastestPath(start, mainWorld.Tiles[10, 2, 0]);
+        //    Point3D des = new Point3D(10, 2, 1);
+        //    if (start.Location != des && found.QueuedMovement.Count == 0)
+        //    {
+        //        Path pth = StandardPathFinder.GetFastestPath(start, mainWorld.Tiles[10, 2, 0]);
 
-                Extensions.EnqueueCollection(found.QueuedMovement, pth.Segments);
-                EntityWorldMovement.MoveEntity(ref found);
-            }
-        }
+        //        Extensions.EnqueueCollection(found.QueuedMovement, pth.Segments);
+        //        EntityWorldMovement.MoveEntity(ref found);
+        //    }
+        //}
 
         private static Tile TestFindEntity(Tile[,,] tiles)
         {
@@ -138,7 +138,7 @@ namespace MagicalLifeAPI.World
         public static void EndTurn()
         {
             MasterLog.DebugWriteLine("Turn ended!");
-            TestMove();
+            //TestMove();
             TurnEndHandler(new WorldEventArgs(mainWorld));
             TurnStartHandler(new WorldEventArgs(mainWorld));
         }
