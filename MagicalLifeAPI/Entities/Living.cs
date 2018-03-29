@@ -1,6 +1,7 @@
 ﻿using DijkstraAlgorithm.Pathing;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities.Eventing;
+using MagicalLifeAPI.Entities.Movement;
 using MagicalLifeAPI.Entities.Util;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Universal;
@@ -50,6 +51,13 @@ namespace MagicalLifeAPI.Entities
             this.MovementSpeed = new Util.Attribute(movementSpeed);
             Living.LivingCreated(this, new LivingEventArg(this, location));
             this.MapLocation = location;
+            World.World.TurnEnd += this.World_TurnEnd;
+        }
+
+        private void World_TurnEnd(object sender, World.WorldEventArgs e)
+        {
+            Living l = this;
+            EntityWorldMovement.MoveEntity(ref l);
         }
 
         /// <summary>
@@ -82,11 +90,6 @@ namespace MagicalLifeAPI.Entities
             {
                 handler(e.Living, e);
             }
-        }
-
-        public Point3D GetLocation()
-        {
-            throw new NotImplementedException();
         }
     }
 }

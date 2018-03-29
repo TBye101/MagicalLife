@@ -29,7 +29,6 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
         private void InputHistory_InputAdded()
         {
-            //event not firing.
             HistoricalInput historical = InputHistory.History.Last();
 
             if (historical.OrderPoint != null)
@@ -53,7 +52,6 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                         Path pth = StandardPathFinder.GetFastestPath(World.mainWorld.Tiles[start.X, start.Y, start.Z], World.mainWorld.Tiles[target.X, target.Y, target.Z]);
 
                         Extensions.EnqueueCollection(living.QueuedMovement, pth.Segments);
-                        EntityWorldMovement.MoveEntity(ref living);
                     }
                     break;
             }
