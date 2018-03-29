@@ -12,7 +12,7 @@ namespace MagicalLifeAPI.Entities
     /// <summary>
     /// All living things inherit from this, and utilize it.
     /// </summary>
-    public abstract class Living : Unique, ISelectable
+    public abstract class Living : Selectable
     {
         /// <summary>
         /// A queue that holds the queued movement steps up for this living creature.
@@ -49,6 +49,7 @@ namespace MagicalLifeAPI.Entities
             this.Health = new Util.Attribute(health);
             this.MovementSpeed = new Util.Attribute(movementSpeed);
             Living.LivingCreated(this, new LivingEventArg(this, location));
+            this.MapLocation = location;
         }
 
         /// <summary>
@@ -83,6 +84,9 @@ namespace MagicalLifeAPI.Entities
             }
         }
 
-        public abstract SelectionType InGameObjectType(ISelectable selectable);
+        public Point3D GetLocation()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

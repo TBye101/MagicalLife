@@ -26,6 +26,7 @@ namespace MagicalLifeAPI.Entities.Movement
                 string modifierReason = "Moved onto a " + destinationTile.GetName() + " tile";
                 entity.MovementSpeed.AddModifier(new Tuple<long, IModifierRemoveCondition, string>(-1 * destinationTile.MovementCost, new TimeRemoveCondition(1), modifierReason));
                 World.World.mainWorld.Tiles[sourceTile.Location.X, sourceTile.Location.Y, sourceTile.Location.Z].Living = null;
+                entity.MapLocation = destinationTile.Location;
                 World.World.mainWorld.Tiles[destinationTile.Location.X, destinationTile.Location.Y, destinationTile.Location.Z].Living = entity;
             }
         }

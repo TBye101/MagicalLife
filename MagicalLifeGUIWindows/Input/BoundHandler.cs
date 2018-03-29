@@ -43,11 +43,6 @@ namespace MagicalLifeGUIWindows.Input
         //public static List<ClickBounds> GameObjectBounds = new List<ClickBounds>();
 
         /// <summary>
-        /// This is fired whenever it is a right click, aka an action is being ordered of a already selected object.
-        /// </summary>
-        public static event System.EventHandler<MouseEventArgs> MapClick;
-
-        /// <summary>
         /// Constructs the <see cref="BoundHandler"/> class.
         /// </summary>
         public static void Initialize()

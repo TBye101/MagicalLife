@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Universal;
 using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Input.History;
+using MagicalLifeGUIWindows.Input.Specialized_Handlers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +14,14 @@ namespace MagicalLifeGUIWindows.Load
     {
         public int GetTotalOperations()
         {
-            return 1;
+            return 2;
         }
 
         public void InitialStartup(ref int progress)
         {
             InputHistory.Initialize();
+            progress++;
+            InputHandlers.Initialize();
             progress++;
         }
     }

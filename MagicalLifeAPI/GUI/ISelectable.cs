@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Universal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +11,7 @@ namespace MagicalLifeAPI.GUI
     /// <summary>
     /// All objects in the game that can be clicked on inherit from this.
     /// </summary>
-    public interface ISelectable
+    public abstract class Selectable : Unique
     {
         /// <summary>
         /// This returns a <see cref="SelectionType"/> so we can differentiate between the catagories of various in game objects.
@@ -17,6 +19,11 @@ namespace MagicalLifeAPI.GUI
         /// </summary>
         /// <param name="selectable"></param>
         /// <returns></returns>
-        SelectionType InGameObjectType(ISelectable selectable);
+        public abstract SelectionType InGameObjectType(Selectable selectable);
+
+        /// <summary>
+        /// The location of this selectable in game object.
+        /// </summary>
+        public Point3D MapLocation { get; set; }
     }
 }

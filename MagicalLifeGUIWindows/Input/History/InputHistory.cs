@@ -36,7 +36,7 @@ namespace MagicalLifeGUIWindows.Input.History
 
         private static HistoricalInputFactory Factory = new HistoricalInputFactory();
 
-        public static List<ISelectable> Selected = new List<ISelectable>();
+        public static List<Selectable> Selected = new List<Selectable>();
 
         /// <summary>
         /// Raises the world generated event.
@@ -127,7 +127,7 @@ namespace MagicalLifeGUIWindows.Input.History
                     Selected.Clear();
                 }
 
-                foreach (ISelectable item in lastHistory.DeselectSome)
+                foreach (Selectable item in lastHistory.DeselectSome)
                 {
                     Selected.Remove(item);
                 }

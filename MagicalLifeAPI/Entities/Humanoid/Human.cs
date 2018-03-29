@@ -17,7 +17,7 @@ namespace MagicalLifeAPI.Entities.Humanoid
             return "Basic Human";
         }
 
-        public override SelectionType InGameObjectType(ISelectable selectable)
+        public override SelectionType InGameObjectType(Selectable selectable)
         {
             return SelectionType.Creature;
         }

@@ -11,6 +11,11 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
     /// </summary>
     public static class InputHandlers
     {
-        public static LivingMoveOrderInputHandler LivingMove = new LivingMoveOrderInputHandler();
+        public static LivingMoveOrderInputHandler LivingMove;
+
+        public static void Initialize()
+        {
+            LivingMove = new LivingMoveOrderInputHandler();
+        }
     }
 }

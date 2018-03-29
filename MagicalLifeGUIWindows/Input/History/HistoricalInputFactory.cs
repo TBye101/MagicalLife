@@ -32,12 +32,12 @@ namespace MagicalLifeGUIWindows.Input.History
         private HistoricalInput SingleSelect(InputEventArgs e)
         {
             Point3D mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y);
-            ISelectable select = World.mainWorld.Tiles[mapSpot.X, mapSpot.Y, mapSpot.Z].Living;
+            Selectable select = World.mainWorld.Tiles[mapSpot.X, mapSpot.Y, mapSpot.Z].Living;
 
             if (select != null)
             {
                 //Null check select, as it is null when an entity is not found
-                List<ISelectable> selected = new List<ISelectable>();
+                List<Selectable> selected = new List<Selectable>();
                 selected.Add(select);
 
                 if (e.ShiftDown)
@@ -63,13 +63,13 @@ namespace MagicalLifeGUIWindows.Input.History
         }
 
         /// <summary>
-        /// Returns true if the <see cref="ISelectable"/> is already selected.
+        /// Returns true if the <see cref="Selectable"/> is already selected.
         /// </summary>
         /// <param name="selectable"></param>
         /// <returns></returns>
-        private bool IsSelectableSelected(ISelectable selectable)
+        private bool IsSelectableSelected(Selectable selectable)
         {
-            foreach (ISelectable item in InputHistory.Selected)
+            foreach (Selectable item in InputHistory.Selected)
             {
                 if (selectable == item)
                 {

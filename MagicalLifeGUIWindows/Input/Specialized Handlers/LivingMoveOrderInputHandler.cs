@@ -1,6 +1,11 @@
-﻿using MagicalLifeAPI.DataTypes;
+﻿using DijkstraAlgorithm.Pathing;
+using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
+using MagicalLifeAPI.Entities.Movement;
+using MagicalLifeAPI.GUI;
+using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
+using MagicalLifeGUIWindows.Input.History;
 using MonoGame.Extended.Input.InputListeners;
 using System;
 using System.Collections.Generic;
@@ -16,23 +21,41 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
     /// </summary>
     public class LivingMoveOrderInputHandler
     {
-        private Living Selected = null;
 
         public LivingMoveOrderInputHandler()
         {
-            BoundHandler.MouseListner.MouseClicked += this.MouseListner_MouseClicked;
+            InputHistory.InputAdded += this.InputHistory_InputAdded;
         }
 
-        private void MouseListner_MouseClicked(object sender, MonoGame.Extended.Input.InputListeners.MouseEventArgs e)
+        private void InputHistory_InputAdded()
         {
-            if (e.Button == MouseButton.Left)
-            {
-                Living livings = GetLivingAtClick(e);
+            //event not firing.
+            HistoricalInput historical = InputHistory.History.Last();
 
-                if (livings != null)
+            if (historical.OrderPoint != null)
+            {
+                foreach (Selectable item in InputHistory.Selected)
                 {
-                    this.Selected = livings;//have a history of input, then do a strategy pattern to decide what happens based on that.
+                    this.Move(item, historical.OrderPoint);
                 }
+            }
+        }
+
+        private void Move(Selectable selectable, Point3D target)
+        {
+            switch (selectable)
+            {
+                case Living living:
+
+                    Point3D start = selectable.MapLocation;
+                    if (start != target)
+                    {
+                        Path pth = StandardPathFinder.GetFastestPath(World.mainWorld.Tiles[start.X, start.Y, start.Z], World.mainWorld.Tiles[target.X, target.Y, target.Z]);
+
+                        Extensions.EnqueueCollection(living.QueuedMovement, pth.Segments);
+                        EntityWorldMovement.MoveEntity(ref living);
+                    }
+                    break;
             }
         }
 
