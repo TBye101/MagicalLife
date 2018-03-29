@@ -1,5 +1,4 @@
 ﻿using MagicalLifeGUIWindows.Input;
-using MagicalLifeRenderEngine.Main.GUI.Click;
 
 namespace MagicalLifeAPI.Universal
 {
@@ -15,7 +14,7 @@ namespace MagicalLifeAPI.Universal
 
         public void InitialStartup(ref int progress)
         {
-            MouseHandler.Initialize();
+            BoundHandler.Initialize();
             progress++;
             KeyboardHandler.Initialize();
             progress++;

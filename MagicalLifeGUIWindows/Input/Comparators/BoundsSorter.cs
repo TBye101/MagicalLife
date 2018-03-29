@@ -1,7 +1,7 @@
 ﻿using MagicalLifeGUIWindows.GUI.Reusable;
 using System.Collections.Generic;
 
-namespace MagicalLifeRenderEngine.Main.GUI.Click
+namespace MagicalLifeGUIWindows.Input.Comparators
 {
     /// <summary>
     /// This class knows how to compare two <see cref="ClickBounds"/> objects.

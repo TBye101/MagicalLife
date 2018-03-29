@@ -2,7 +2,6 @@
 using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Load;
 using MagicalLifeGUIWindows.Rendering;
-using MagicalLifeRenderEngine.Main.GUI.Click;
 using MagicalLifeSettings.Storage;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -85,7 +84,7 @@ namespace MagicalLifeGUIWindows
         {
             if (this.IsActive)
             {
-                MouseHandler.UpdateMouseInput(gameTime);
+                BoundHandler.UpdateMouseInput(gameTime);
                 KeyboardHandler.UpdateKeyboardInput(gameTime);
             }
 

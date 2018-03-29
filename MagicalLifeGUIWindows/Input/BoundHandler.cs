@@ -1,17 +1,22 @@
-﻿using MagicalLifeAPI.Filing.Logging;
+﻿using MagicalLifeAPI.Entities.Eventing;
+using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.GUI;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;
+using MagicalLifeGUIWindows.Input.Comparators;
+using MagicalLifeGUIWindows.Input.History;
+using MagicalLifeGUIWindows.Input.Specialized_Handlers;
 using MagicalLifeGUIWindows.Map;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 using System.Collections.Generic;
 
-namespace MagicalLifeRenderEngine.Main.GUI.Click
+namespace MagicalLifeGUIWindows.Input
 {
     /// <summary>
     /// Determines who is being clicked on when the user clicks.
     /// </summary>
-    public static class MouseHandler
+    public static class BoundHandler
     {
         /// <summary>
         /// Contains all of the ClickBounds this class handles.
@@ -29,8 +34,16 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
 
         private static ContainerSorter containerSorter = new ContainerSorter();
 
+        private static ClickBoundsSorter ClickBoundsSorter = new ClickBoundsSorter();
+
         /// <summary>
-        /// Constructs the <see cref="MouseHandler"/> class.
+        /// Anything in game that can be clicked on, that is not considered a menu or popup.
+        /// Ex: a human, a sword.
+        /// </summary>
+        //public static List<ClickBounds> GameObjectBounds = new List<ClickBounds>();
+
+        /// <summary>
+        /// Constructs the <see cref="BoundHandler"/> class.
         /// </summary>
         public static void Initialize()
         {
@@ -38,6 +51,7 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
             MouseListner.MouseDoubleClicked += MouseListener_MouseDoubleClicked;
             MouseListner.MouseWheelMoved += MouseListener_MouseWheelMoved;
             MouseListner.MouseDrag += MouseListner_MouseDrag;
+            LivingBoundHandler.Initialize();
         }
 
         private static void MouseListner_MouseDrag(object sender, MouseEventArgs e)
@@ -81,19 +95,22 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
             {
                 if (item.Visible && item.DrawingBounds.Contains(clickData.Position))
                 {
-                    Click(clickData, item.Controls);
+                    Click(clickData, item.Controls, item);
                     return;
                 }
             }
 
-            Click(clickData, Bounds);
+            if (!Click(clickData, Bounds))
+            {
+                InputHistory.MapMouseClick(clickData);
+            }
         }
 
         /// <summary>
         /// Handles who gets the single click event from the options provided.
         /// </summary>
         /// <param name="clickData"></param>
-        private static void Click(MouseEventArgs clickData, List<GUIElement> Options)
+        private static bool Click(MouseEventArgs clickData, List<GUIElement> Options)
         {
             int focus = -1;
             int length = Options.Count;
@@ -103,6 +120,42 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
             {
                 item = Options[i];
                 if (focus == -1 && item.MouseBounds.Bounds.Contains(clickData.Position.X, clickData.Position.Y))
+                {
+                    item.HasFocus = true;
+                    focus = i;
+                }
+                else
+                {
+                    item.HasFocus = false;
+                }
+            }
+
+            if (focus != -1)
+            {
+                Options[focus].Click(clickData);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Handles who gets the single click event from the options provided.
+        /// For use if a container is being used.
+        /// </summary>
+        /// <param name="clickData"></param>
+        private static void Click(MouseEventArgs clickData, List<GUIElement> Options, GUIContainer container)
+        {
+            int focus = -1;
+            int length = Options.Count;
+            GUIElement item = null;
+
+            for (int i = 0; i < length; i++)
+            {
+                item = Options[i];
+                if (focus == -1 && item.MouseBounds.Bounds.Contains(clickData.Position.X + container.DrawingBounds.X, clickData.Position.Y - container.DrawingBounds.Y))
                 {
                     item.HasFocus = true;
                     focus = i;
@@ -192,7 +245,7 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         /// Adds a <see cref="ClickBounds"/> object to the system to be handled.
         /// </summary>
         /// <param name="bounds"></param>
-        public static void AddClickBounds(GUIElement bounds)
+        public static void AddGUIElement(GUIElement bounds)
         {
             int index = Bounds.BinarySearch(bounds, BoundSorter);
             if (index < 0)
@@ -202,6 +255,27 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
 
             Bounds.Insert(index, bounds);
         }
+
+        /// <summary>
+        /// Removes a <see cref="ClickBounds"/> object from the system.
+        /// </summary>
+        /// <param name="bounds"></param>
+        //public static void AddClickBounds(ClickBounds bounds)
+        //{
+        //    int index = GameObjectBounds.BinarySearch(bounds, ClickBoundsSorter);
+
+        //    if (index < 0)
+        //    {
+        //        index = ~index;
+        //    }
+
+        //    GameObjectBounds.Insert(index, bounds);
+        //}
+
+        //public static void RemoveClickBounds(ClickBounds bounds)
+        //{
+        //    GameObjectBounds.Remove(bounds);
+        //}
 
         /// <summary>
         /// Sets that container as the visible container, and gives it priority.

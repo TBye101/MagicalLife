@@ -1,9 +1,10 @@
-﻿using MagicalLifeAPI.Universal;
+﻿using MagicalLifeAPI.GUI;
+using MagicalLifeAPI.Universal;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 using System;
 
-namespace MagicalLifeRenderEngine.Main.GUI.Click
+namespace MagicalLifeGUIWindows.Input
 {
     /// <summary>
     /// Holds information about where a click is clicking within bounds, as well as priority and a event to subscribe to.
@@ -20,6 +21,11 @@ namespace MagicalLifeRenderEngine.Main.GUI.Click
         /// The higher the value, the higher the priority.
         /// </summary>
         public int Priority { get; set; }
+
+        /// <summary>
+        /// The object that when this is clicked on you are interacting with.
+        /// </summary>
+        public Selectable GameObject { get; set; }
 
         /// <summary>
         /// Constructs a new instance of the <see cref="ClickBounds"/> class.

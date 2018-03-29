@@ -1,5 +1,5 @@
 ﻿using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeRenderEngine.Main.GUI.Click;
+using MagicalLifeGUIWindows.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +28,7 @@ namespace MagicalLifeGUIWindows.GUI
         /// <param name="container"></param>
         public static void DisplayMenu(GUIContainer container)
         {
-            MouseHandler.Popup(container);
+            BoundHandler.Popup(container);
             Containers.Add(container);
             DisplayIndex = Containers.Count - 1;
         }
@@ -41,7 +41,7 @@ namespace MagicalLifeGUIWindows.GUI
             if (DisplayIndex > 0)
             {
                 DisplayIndex--;
-                MouseHandler.Popup(Containers[DisplayIndex]);
+                BoundHandler.Popup(Containers[DisplayIndex]);
             }
         }
 
@@ -53,7 +53,7 @@ namespace MagicalLifeGUIWindows.GUI
             if (DisplayIndex <= Containers.Count)
             {
                 DisplayIndex++;
-                MouseHandler.Popup(Containers[DisplayIndex]);
+                BoundHandler.Popup(Containers[DisplayIndex]);
             }
         }
 

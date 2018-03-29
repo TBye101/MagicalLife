@@ -1,5 +1,4 @@
 ﻿using MagicalLifeGUIWindows.Map;
-using MagicalLifeRenderEngine.Main.GUI.Click;
 
 namespace MagicalLifeGUIWindows.GUI.MainMenu
 {
