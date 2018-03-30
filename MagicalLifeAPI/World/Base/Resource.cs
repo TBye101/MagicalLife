@@ -8,6 +8,12 @@ namespace MagicalLifeAPI.World
     /// </summary>
     public abstract class Resource : Unique
     {
+        public Resource(string name, int count)
+        {
+            this.Name = name;
+            this.Count = count;
+        }
+
         /// <summary>
         /// The display name of the resource.
         /// </summary>
@@ -16,6 +22,6 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// How much of the resources is left.
         /// </summary>
-        public double Count { get; }
+        public int Count { get; }
     }
 }
