@@ -18,9 +18,6 @@ namespace MagicalLifeAPI.World
         public static Tile GetTileByID(Tile[,,] tiles, string str)
         {
             Point3D point = new Point3D(str);
-            Debug.WriteLine("Get tile by ID: ");
-            Debug.WriteLine(str);
-            Debug.WriteLine(point.X + " " + point.Y + " " + point.Z);
             return tiles[point.X, point.Y, point.Z];
         }
     }
