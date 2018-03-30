@@ -24,8 +24,7 @@ namespace MagicalLifeAPI.World.Tiles
 
         public override string GetTextureName()
         {
-            return "DirtTile";
-            //return "TestTile.png";
+            return "DirtFloor";
         }
     }
 }

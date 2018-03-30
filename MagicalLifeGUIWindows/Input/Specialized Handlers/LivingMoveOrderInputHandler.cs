@@ -51,6 +51,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                     {
                         Path pth = StandardPathFinder.GetFastestPath(World.mainWorld.Tiles[start.X, start.Y], World.mainWorld.Tiles[target.X, target.Y]);
 
+                        living.QueuedMovement.Clear();
                         Extensions.EnqueueCollection(living.QueuedMovement, pth.Segments);
                     }
                     break;

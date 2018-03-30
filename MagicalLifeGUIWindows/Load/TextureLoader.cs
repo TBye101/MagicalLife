@@ -28,7 +28,7 @@ namespace MagicalLifeGUIWindows.Load
         {
             this.TexturesToLoad.Add("Basic Human");
             this.TexturesToLoad.Add("CursorCarrot");
-            this.TexturesToLoad.Add("DirtTile");
+            this.TexturesToLoad.Add("DirtFloor");
             this.TexturesToLoad.Add("EndTurnButtonState1");
             this.TexturesToLoad.Add("EndTurnButtonState2");
             this.TexturesToLoad.Add("MenuBackground");

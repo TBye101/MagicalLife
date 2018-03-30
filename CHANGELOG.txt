@@ -1,4 +1,13 @@
 		SneakyTactician  <SneakyTactician@outlook.com>
+	[Version 0.0.0.6]
+		### GUI
+			*
+		### API
+			*
+		### Tweaks
+			*Ordering a unit now clears previous orders
+		### Bugs
+			*
 
 	[Version 0.0.0.5]
 		### GUI
