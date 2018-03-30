@@ -15,10 +15,28 @@ namespace MagicalLifeAPI.World
         /// <param name="tiles"></param>
         /// <param name="str"></param>
         /// <returns></returns>
-        public static Tile GetTileByID(Tile[,,] tiles, string str)
+        public static Tile GetTileByID(Tile[,] tiles, string str)
         {
-            Point3D point = new Point3D(str);
-            return tiles[point.X, point.Y, point.Z];
+            // {X:10 Y:4}
+            //10   4
+            int x = 0;
+            int y = 0;
+
+            string xstr = str;
+            xstr = xstr.Substring(1);
+            xstr.Replace('Y', ' ');
+            xstr.Replace(':', ' ');
+            xstr.Remove(xstr.IndexOf(' '), 2);
+            string[] splits = xstr.Split(' ');
+            x = int.Parse(splits[0]);
+            y = int.Parse(splits[1]);
+
+            //string xstr = str.Substring(str.IndexOf(':') + 1, str.IndexOf(' ') - 3);
+            //string ystr = str.Substring(str.LastIndexOf(':') + 1, str.Length - str.LastIndexOf(':') - 1);
+            //x = int.Parse(xstr);
+            //y = int.Parse(ystr);
+
+            return tiles[x, y];
         }
     }
 }

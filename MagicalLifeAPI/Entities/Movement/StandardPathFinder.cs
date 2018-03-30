@@ -56,14 +56,12 @@ namespace MagicalLifeAPI.Entities.Movement
         /// <param name="world"></param>
         private static void AddLinkes(World.World world)
         {
-            Tile[,,] tiles = world.Tiles;
+            Tile[,] tiles = world.Tiles;
             int xSize = tiles.GetLength(0);
             int ySize = tiles.GetLength(1);
-            int zSize = tiles.GetLength(2);
 
             int x = 0;
             int y = 0;
-            int z = 0;
 
             //Iterate over each row.
             for (int i = 0; i < xSize; i++)
@@ -71,22 +69,15 @@ namespace MagicalLifeAPI.Entities.Movement
                 //Iterate over each column
                 for (int ii = 0; ii < ySize; ii++)
                 {
-                    //Iterate over the depth of each tile in the z axis.
-                    for (int iii = 0; iii < zSize; iii++)
-                    {
-                        //Each tile can be accessed by the xyz coordinates from this inner loop properly.
-                        StandardPathFinder.AddNeighborLink(1, 0, 0, tiles, tiles[x, y, z]);
-                        StandardPathFinder.AddNeighborLink(-1, 0, 0, tiles, tiles[x, y, z]);
-                        StandardPathFinder.AddNeighborLink(0, 1, 0, tiles, tiles[x, y, z]);
-                        StandardPathFinder.AddNeighborLink(0, -1, 0, tiles, tiles[x, y, z]);
-                        StandardPathFinder.AddNeighborLink(1, 1, 0, tiles, tiles[x, y, z]);
-                        StandardPathFinder.AddNeighborLink(1, -1, 0, tiles, tiles[x, y, z]);
-                        StandardPathFinder.AddNeighborLink(-1, 1, 0, tiles, tiles[x, y, z]);
-                        StandardPathFinder.AddNeighborLink(-1, -1, 0, tiles, tiles[x, y, z]);
-                        z++;
-                    }
+                        StandardPathFinder.AddNeighborLink(1, 0, tiles, tiles[x, y]);
+                        StandardPathFinder.AddNeighborLink(-1, 0, tiles, tiles[x, y]);
+                        StandardPathFinder.AddNeighborLink(0, 1, tiles, tiles[x, y]);
+                        StandardPathFinder.AddNeighborLink(0, -1, tiles, tiles[x, y]);
+                        StandardPathFinder.AddNeighborLink(1, 1, tiles, tiles[x, y]);
+                        StandardPathFinder.AddNeighborLink(1, -1, tiles, tiles[x, y]);
+                        StandardPathFinder.AddNeighborLink(-1, 1, tiles, tiles[x, y]);
+                        StandardPathFinder.AddNeighborLink(-1, -1, tiles, tiles[x, y]);
                     y++;
-                    z = 0;
                 }
                 y = 0;
                 x++;
@@ -101,11 +92,10 @@ namespace MagicalLifeAPI.Entities.Movement
         /// <param name="zChange"></param>
         /// <param name="tiles"></param>
         /// <param name="source"></param>
-        private static void AddNeighborLink(int xChange, int yChange, int zChange, Tile[,,] tiles, Tile source)
+        private static void AddNeighborLink(int xChange, int yChange, Tile[,] tiles, Tile source)
         {
             int x = (int)source.Location.X;
             int y = (int)source.Location.Y;
-            int z = (int)source.Location.Z;
 
             if (x + xChange > -1 && x + xChange < tiles.GetLength(0))
             {
@@ -127,17 +117,7 @@ namespace MagicalLifeAPI.Entities.Movement
                 return;
             }
 
-            if (z + zChange > -1 && z + zChange < tiles.GetLength(2))
-            {
-                z += zChange;
-            }
-            else
-            {
-                //The neighboring tile didn't exist.
-                return;
-            }
-
-            StandardPathFinder.tileConnectionGraph.AddLink(source.Location.ToString(), tiles[x, y, z].Location.ToString(), 101 - tiles[x, y, z].MovementCost);
+            StandardPathFinder.tileConnectionGraph.AddLink(source.Location.ToString(), tiles[x, y].Location.ToString(), 101 - tiles[x, y].MovementCost);
         }
 
         /// <summary>
@@ -146,14 +126,12 @@ namespace MagicalLifeAPI.Entities.Movement
         /// <param name="world"></param>
         private static void AddNodes(World.World world)
         {
-            Tile[,,] tiles = world.Tiles;
+            Tile[,] tiles = world.Tiles;
             int xSize = tiles.GetLength(0);
             int ySize = tiles.GetLength(1);
-            int zSize = tiles.GetLength(2);
 
             int x = 0;
             int y = 0;
-            int z = 0;
 
             //Iterate over each row.
             for (int i = 0; i < xSize; i++)
@@ -161,15 +139,8 @@ namespace MagicalLifeAPI.Entities.Movement
                 //Iterate over each column
                 for (int ii = 0; ii < ySize; ii++)
                 {
-                    //Iterate over the depth of each tile in the z axis.
-                    for (int iii = 0; iii < zSize; iii++)
-                    {
-                        //Each tile can be accessed by the xyz coordinates from this inner loop properly.
-                        StandardPathFinder.tileConnectionGraph.AddNode(tiles[x, y, z].Location.ToString());
-                        z++;
-                    }
+                    StandardPathFinder.tileConnectionGraph.AddNode(tiles[x, y].Location.ToString());
                     y++;
-                    z = 0;
                 }
                 y = 0;
                 x++;

@@ -39,7 +39,7 @@ namespace MagicalLifeGUIWindows.Map
 
         private static void AssignTextureIndex(Tile tile)
         {
-            Point3D location = tile.Location;
+            Microsoft.Xna.Framework.Point location = tile.Location;
             string textureName = tile.GetTextureName();
 
             List<Texture2D> textures = AssetManager.Textures;

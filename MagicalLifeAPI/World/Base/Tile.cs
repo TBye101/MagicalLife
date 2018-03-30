@@ -3,6 +3,7 @@ using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Base;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 
@@ -18,7 +19,7 @@ namespace MagicalLifeAPI.World
         /// </summary>
         /// <param name="location">The 3D location of this tile in the map.</param>
         /// <param name="movementCost">This value is the movement cost of walking on this tile. It should be between 1 and 100</param>
-        protected Tile(Point3D location, int movementCost)
+        protected Tile(Point location, int movementCost)
         {
             this.Location = location;
             this.MovementCost = movementCost;
@@ -74,7 +75,7 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// The location of this tile in the tilemap.
         /// </summary>
-        public Point3D Location { get; protected set; }
+        public Point Location { get; protected set; }
 
         /// <summary>
         /// The entity that is in this tile. Is null if there is not an entity in this tile.

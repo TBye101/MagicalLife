@@ -14,41 +14,41 @@ namespace MagicalLifeAPI.World
         /// <param name="ySize"></param>
         /// <param name="zSize"></param>
         /// <returns></returns>
-        public abstract string[,,] AssignBiomes(int xSize, int ySize, int zSize);
+        public abstract string[,] AssignBiomes(int xSize, int ySize);
 
         /// <summary>
         /// Generates things such as rock, dirt, grassland, and sand for each and every tile.
         /// </summary>
         /// <param name="biomeMap"></param>
         /// <returns></returns>
-        public abstract Tile[,,] GenerateLandType(string[,,] biomeMap);
+        public abstract Tile[,] GenerateLandType(string[,] biomeMap);
 
         /// <summary>
         /// Generates things such as rivers and caves.
         /// </summary>
         /// <param name="map"></param>
         /// <returns></returns>
-        public abstract Tile[,,] GenerateNaturalFeatures(Tile[,,] map);
+        public abstract Tile[,] GenerateNaturalFeatures(Tile[,] map);
 
         /// <summary>
         /// Generates minerals in the world.
         /// </summary>
         /// <param name="map"></param>
         /// <returns></returns>
-        public abstract Tile[,,] GenerateMinerals(Tile[,,] map);
+        public abstract Tile[,] GenerateMinerals(Tile[,] map);
 
         /// <summary>
         /// Generates vegetation in the world.
         /// </summary>
         /// <param name="map"></param>
         /// <returns></returns>
-        public abstract Tile[,,] GenerateVegetation(Tile[,,] map);
+        public abstract Tile[,] GenerateVegetation(Tile[,] map);
 
         /// <summary>
         /// Generates any other details not done in previous phases.
         /// </summary>
         /// <param name="map"></param>
         /// <returns></returns>
-        public abstract Tile[,,] GenerateDetails(Tile[,,] map);
+        public abstract Tile[,] GenerateDetails(Tile[,] map);
     }
 }

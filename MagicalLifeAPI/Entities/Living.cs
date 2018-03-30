@@ -5,6 +5,7 @@ using MagicalLifeAPI.Entities.Movement;
 using MagicalLifeAPI.Entities.Util;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Universal;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 
@@ -45,7 +46,7 @@ namespace MagicalLifeAPI.Entities
         /// </summary>
         /// <param name="health"></param>
         /// <param name="movementSpeed"></param>
-        protected Living(int health, int movementSpeed, Point3D location)
+        protected Living(int health, int movementSpeed, Point location)
         {
             this.Health = new Util.Attribute(health);
             this.MovementSpeed = new Util.Attribute(movementSpeed);

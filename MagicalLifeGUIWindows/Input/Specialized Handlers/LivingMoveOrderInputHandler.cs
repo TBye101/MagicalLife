@@ -40,16 +40,16 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
             }
         }
 
-        private void Move(Selectable selectable, Point3D target)
+        private void Move(Selectable selectable, Microsoft.Xna.Framework.Point target)
         {
             switch (selectable)
             {
                 case Living living:
 
-                    Point3D start = selectable.MapLocation;
+                    Microsoft.Xna.Framework.Point start = selectable.MapLocation;
                     if (start != target)
                     {
-                        Path pth = StandardPathFinder.GetFastestPath(World.mainWorld.Tiles[start.X, start.Y, start.Z], World.mainWorld.Tiles[target.X, target.Y, target.Z]);
+                        Path pth = StandardPathFinder.GetFastestPath(World.mainWorld.Tiles[start.X, start.Y], World.mainWorld.Tiles[target.X, target.Y]);
 
                         Extensions.EnqueueCollection(living.QueuedMovement, pth.Segments);
                     }
@@ -64,8 +64,8 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
         /// <returns></returns>
         private Living GetLivingAtClick(MouseEventArgs e)
         {
-            Point3D tileLocation = Util.GetMapLocation(e.Position.X, e.Position.Y);
-            return World.mainWorld.Tiles[tileLocation.X, tileLocation.Y, tileLocation.Z].Living;
+            Microsoft.Xna.Framework.Point tileLocation = Util.GetMapLocation(e.Position.X, e.Position.Y);
+            return World.mainWorld.Tiles[tileLocation.X, tileLocation.Y].Living;
         }
     }
 }

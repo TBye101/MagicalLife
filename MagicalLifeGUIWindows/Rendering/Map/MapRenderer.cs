@@ -21,27 +21,20 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// <param name="spBatch"></param>
         public static void DrawMap(ref SpriteBatch spBatch)
         {
-            Tile[,,] tiles = World.mainWorld.Tiles;
+            Tile[,] tiles = World.mainWorld.Tiles;
 
             int xSize = tiles.GetLength(0);
             int ySize = tiles.GetLength(1);
-            int zSize = tiles.GetLength(2);
             int x = 0;
             int y = 0;
-            int z = 0;
 
             while (x < xSize)
             {
                 while (y < ySize)
                 {
-                    while (z < zSize)
-                    {
-                        Tile tile = tiles[x, y, z];
-                        Microsoft.Xna.Framework.Point start = new Microsoft.Xna.Framework.Point(RenderingPipe.tileSize.X * x, RenderingPipe.tileSize.Y * y);
-                        DrawTile(tile, ref spBatch, start);
-                        z++;
-                    }
-                    z = 0;
+                    Tile tile = tiles[x, y];
+                    Microsoft.Xna.Framework.Point start = new Microsoft.Xna.Framework.Point(RenderingPipe.tileSize.X * x, RenderingPipe.tileSize.Y * y);
+                    DrawTile(tile, ref spBatch, start);
                     y++;
                 }
                 y = 0;

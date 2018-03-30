@@ -20,7 +20,7 @@ namespace MagicalLifeGUIWindows
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public static Point3D GetMapLocation(int x, int y)
+        public static Point GetMapLocation(int x, int y)
         {
             int x2 = x + Rendering.RenderingPipe.XViewOffset;
             int y2 = y + Rendering.RenderingPipe.YViewOffset;
@@ -29,7 +29,7 @@ namespace MagicalLifeGUIWindows
             x2 /= size.X;
             y2 /= size.Y;
 
-            return new Point3D(x2, y2, Rendering.RenderingPipe.ZLevel);
+            return new Point(x2, y2);
         }
     }
 }

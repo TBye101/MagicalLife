@@ -8,7 +8,7 @@ namespace MagicalLifeAPI.Entities.Humanoid.Tests
         [TestMethod()]
         public void HumanTest()
         {
-            Human human = new Human(10, 10, new DataTypes.Point3D(0, 0, 0));
+            Human human = new Human(10, 10, new Point(0, 0));
             Assert.IsNotNull(human);
         }
     }

@@ -17,7 +17,7 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// A 3D array that holds every tile in the current world.
         /// </summary>
-        public Tile[,,] Tiles { get; private set; }
+        public Tile[,] Tiles { get; private set; }
 
         /// <summary>
         /// Raised when the world is finished generating for the first time.
@@ -52,10 +52,10 @@ namespace MagicalLifeAPI.World
         /// <param name="height"></param>
         /// <param name="depth"></param>
         /// <param name="generator"></param>
-        public static void Initialize(int width, int height, int depth, WorldGenerator generator)
+        public static void Initialize(int width, int height, WorldGenerator generator)
         {
             mainWorld = new World();
-            mainWorld.Tiles = mainWorld.GenerateWorld(height, width, depth, generator);
+            mainWorld.Tiles = mainWorld.GenerateWorld(height, width, generator);
 
             WorldEventArgs worldEventArgs = new WorldEventArgs(mainWorld);
             mainWorld.WorldGeneratedHandler(worldEventArgs);
@@ -122,10 +122,10 @@ namespace MagicalLifeAPI.World
         /// <param name="depth"></param>
         /// <param name="generator"></param>
         /// <returns></returns>
-        private Tile[,,] GenerateWorld(int height, int width, int depth, WorldGenerator generator)
+        private Tile[,] GenerateWorld(int height, int width, WorldGenerator generator)
         {
-            string[,,] stage1 = generator.AssignBiomes(height, width, depth);
-            Tile[,,] stage2 = generator.GenerateLandType(stage1);
+            string[,] stage1 = generator.AssignBiomes(height, width);
+            Tile[,] stage2 = generator.GenerateLandType(stage1);
 
             stage2 = generator.GenerateNaturalFeatures(stage2);
             stage2 = generator.GenerateMinerals(stage2);
