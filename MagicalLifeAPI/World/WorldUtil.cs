@@ -17,24 +17,17 @@ namespace MagicalLifeAPI.World
         /// <returns></returns>
         public static Tile GetTileByID(Tile[,] tiles, string str)
         {
-            // {X:10 Y:4}
-            //10   4
             int x = 0;
             int y = 0;
 
             string xstr = str;
-            xstr = xstr.Substring(1);
-            xstr.Replace('Y', ' ');
-            xstr.Replace(':', ' ');
-            xstr.Remove(xstr.IndexOf(' '), 2);
-            string[] splits = xstr.Split(' ');
+            xstr = xstr.Replace("{X:", "");
+            xstr = xstr.Replace(" Y:", ", ");
+            xstr = xstr.Replace("}", "");
+
+            string[] splits = xstr.Split(new string[] { "," }, System.StringSplitOptions.RemoveEmptyEntries);
             x = int.Parse(splits[0]);
             y = int.Parse(splits[1]);
-
-            //string xstr = str.Substring(str.IndexOf(':') + 1, str.IndexOf(' ') - 3);
-            //string ystr = str.Substring(str.LastIndexOf(':') + 1, str.Length - str.LastIndexOf(':') - 1);
-            //x = int.Parse(xstr);
-            //y = int.Parse(ystr);
 
             return tiles[x, y];
         }
