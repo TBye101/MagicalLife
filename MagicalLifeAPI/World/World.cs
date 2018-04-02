@@ -124,13 +124,14 @@ namespace MagicalLifeAPI.World
         /// <returns></returns>
         private Tile[,] GenerateWorld(int height, int width, WorldGenerator generator)
         {
-            string[,] stage1 = generator.AssignBiomes(height, width);
-            Tile[,] stage2 = generator.GenerateLandType(stage1);
+            Random r = new Random();
+            string[,] stage1 = generator.AssignBiomes(height, width, r);
+            Tile[,] stage2 = generator.GenerateLandType(stage1, r);
 
-            stage2 = generator.GenerateNaturalFeatures(stage2);
-            stage2 = generator.GenerateMinerals(stage2);
-            stage2 = generator.GenerateVegetation(stage2);
-            stage2 = generator.GenerateDetails(stage2);
+            stage2 = generator.GenerateNaturalFeatures(stage2, r);
+            stage2 = generator.GenerateMinerals(stage2, r);
+            stage2 = generator.GenerateVegetation(stage2, r);
+            stage2 = generator.GenerateDetails(stage2, r);
 
             return stage2;
         }

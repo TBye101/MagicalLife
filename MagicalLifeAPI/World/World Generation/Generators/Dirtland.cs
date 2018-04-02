@@ -3,6 +3,7 @@ using MagicalLifeAPI.Entities.Entity_Factory;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Tiles;
 using Microsoft.Xna.Framework;
+using System;
 
 namespace MagicalLifeAPI.World.World_Generation.Generators
 {
@@ -11,7 +12,7 @@ namespace MagicalLifeAPI.World.World_Generation.Generators
     /// </summary>
     public class Dirtland : WorldGenerator
     {
-        public override string[,] AssignBiomes(int xSize, int ySize)
+        public override string[,] AssignBiomes(int xSize, int ySize, Random r)
         {
             string[,] ret = new string[xSize, ySize];
 
@@ -35,7 +36,7 @@ namespace MagicalLifeAPI.World.World_Generation.Generators
             return ret;
         }
 
-        public override Tile[,] GenerateDetails(Tile[,] map)
+        public override Tile[,] GenerateDetails(Tile[,] map, Random r)
         {
             int xSize = map.GetLength(0);
             int ySize = map.GetLength(1);
@@ -49,7 +50,7 @@ namespace MagicalLifeAPI.World.World_Generation.Generators
             return map;
         }
 
-        public override Tile[,] GenerateLandType(string[,] biomeMap)
+        public override Tile[,] GenerateLandType(string[,] biomeMap, Random r)
         {
             int xSize = biomeMap.GetLength(0);
             int ySize = biomeMap.GetLength(1);
@@ -75,17 +76,17 @@ namespace MagicalLifeAPI.World.World_Generation.Generators
             return ret;
         }
 
-        public override Tile[,] GenerateMinerals(Tile[,] map)
+        public override Tile[,] GenerateMinerals(Tile[,] map, Random r)
         {
             return map;
         }
 
-        public override Tile[,] GenerateNaturalFeatures(Tile[,] map)
+        public override Tile[,] GenerateNaturalFeatures(Tile[,] map, Random r)
         {
             return map;
         }
 
-        public override Tile[,] GenerateVegetation(Tile[,] map)
+        public override Tile[,] GenerateVegetation(Tile[,] map, Random r)
         {
             return map;
         }
