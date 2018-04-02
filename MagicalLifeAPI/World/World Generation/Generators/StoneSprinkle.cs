@@ -42,7 +42,7 @@ namespace MagicalLifeAPI.World.World_Generation.Generators
 
                     if (random.Next(4) == 2)
                     {
-                        dirt.Resources.Add(new MarbleResource(random.Next(25)));
+                        dirt.Resources = new MarbleResource(random.Next(25));
                     }
                     tiles[x, y] = dirt;
                     y++;

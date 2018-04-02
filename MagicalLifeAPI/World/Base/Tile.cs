@@ -68,7 +68,7 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// The resources that can be found in this tile.
         /// </summary>
-        public List<Resource> Resources { get; set; } = new List<Resource>();
+        public Resource Resources { get; set; }
 
         public List<Vegetation> Plants { get; set; } = new List<Vegetation>();
 

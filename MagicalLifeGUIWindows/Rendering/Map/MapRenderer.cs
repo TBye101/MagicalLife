@@ -68,9 +68,9 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// <param name="target"></param>
         private static void DrawStone(Tile tile, ref SpriteBatch spBatch, Rectangle target)
         {
-            if (tile.Resources.Count > 0)
+            if (tile.Resources != null)
             {
-                switch (tile.Resources[0])
+                switch (tile.Resources)
                 {
                     case StoneBase stone:
                         Texture2D stoneTexture = AssetManager.Textures[AssetManager.GetTextureIndex(stone.GetUnconnectedTexture())];
