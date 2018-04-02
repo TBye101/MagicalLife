@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.World;
+using MagicalLifeAPI.World.Resources;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -50,10 +51,32 @@ namespace MagicalLifeGUIWindows.Rendering.Map
             Microsoft.Xna.Framework.Rectangle target = new Microsoft.Xna.Framework.Rectangle(start, RenderingPipe.tileSize);
             spBatch.Draw(AssetManager.Textures[tile.TextureIndex], target, RenderingPipe.colorMask);
 
+            DrawStone(tile, ref spBatch, target);
+
             if (tile.Living != null)
             {
                 Texture2D livingTexture = AssetManager.Textures[AssetManager.GetTextureIndex(tile.Living.GetTextureName())];
                 spBatch.Draw(livingTexture, target, RenderingPipe.colorMask);
+            }
+        }
+
+        /// <summary>
+        /// Draws stone if it is present in the tile.
+        /// </summary>
+        /// <param name="tile"></param>
+        /// <param name="spBatch"></param>
+        /// <param name="target"></param>
+        private static void DrawStone(Tile tile, ref SpriteBatch spBatch, Rectangle target)
+        {
+            if (tile.Resources.Count > 0)
+            {
+                switch (tile.Resources[0])
+                {
+                    case StoneBase stone:
+                        Texture2D stoneTexture = AssetManager.Textures[AssetManager.GetTextureIndex(stone.GetUnconnectedTexture())];
+                        spBatch.Draw(stoneTexture, target, RenderingPipe.colorMask);
+                        break;
+                }
             }
         }
     }
