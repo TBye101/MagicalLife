@@ -92,7 +92,7 @@
     <Compile Include="World\Resources\StoneBase.cs" />
     <Compile Include="World\TileEventArg.cs" />
     <Compile Include="World\Tiles\Dirt.cs" />
-    <Compile Include="World\World Generation\Veggies\OakTree.cs" />
+    <Compile Include="World\Veggies\OakTree.cs" />
     <Compile Include="World\World Generation\Generators\Dirtland.cs" />
     <Compile Include="World\World Generation\Generators\StoneSprinkle.cs" />
     <Compile Include="World\WorldEventArgs.cs" />

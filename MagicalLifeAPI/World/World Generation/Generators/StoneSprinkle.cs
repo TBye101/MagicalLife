@@ -1,4 +1,6 @@
-﻿using MagicalLifeAPI.World.Resources;
+﻿using MagicalLifeAPI.Entities.Entity_Factory;
+using MagicalLifeAPI.Util;
+using MagicalLifeAPI.World.Resources;
 using MagicalLifeAPI.World.Tiles;
 using Microsoft.Xna.Framework;
 using System;
@@ -22,6 +24,15 @@ namespace MagicalLifeAPI.World.World_Generation.Generators
 
         public override Tile[,] GenerateDetails(Tile[,] map, Random random)
         {
+            int xSize = map.GetLength(0);
+            int ySize = map.GetLength(1);
+
+            int x = StaticRandom.Rand(0, xSize);
+            int y = StaticRandom.Rand(0, ySize);
+
+            HumanFactory hFactory = new HumanFactory();
+            map[x, y].Living = (hFactory.GenerateHuman(new Point(x, y)));
+
             return map;
         }
 
