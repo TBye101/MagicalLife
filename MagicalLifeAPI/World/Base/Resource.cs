@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Universal;
+﻿using MagicalLifeAPI.GUI;
+using MagicalLifeAPI.Universal;
 
 namespace MagicalLifeAPI.World
 {
@@ -6,7 +7,7 @@ namespace MagicalLifeAPI.World
     /// A base class for all resources.
     /// Resources in tiles are things such as minerals.
     /// </summary>
-    public abstract class Resource : Unique
+    public abstract class Resource : HasTexture
     {
         public Resource(string name, int count)
         {

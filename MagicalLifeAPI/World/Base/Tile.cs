@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
+using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Base;
 using Microsoft.Xna.Framework;
@@ -12,7 +13,7 @@ namespace MagicalLifeAPI.World
     /// <summary>
     /// Every tile that implements this class must provide a parameterless version of itself for reflection purposes. That constructor will not be used during gameplay.
     /// </summary>
-    public abstract class Tile : Unique
+    public abstract class Tile : HasTexture
     {
         /// <summary>
         /// Initializes a new tile object.
@@ -33,11 +34,6 @@ namespace MagicalLifeAPI.World
         protected Tile()
         {
         }
-
-        /// <summary>
-        /// The index of the texture in our asset manager.
-        /// </summary>
-        public int TextureIndex { get; set; }
 
         /// <summary>
         /// Returns the name of the biome that this tile belongs to.
@@ -88,12 +84,26 @@ namespace MagicalLifeAPI.World
         public static event EventHandler<TileEventArg> TileCreated;
 
         /// <summary>
+        /// Raised whenever this specific tile is modified.
+        /// </summary>
+        public event EventHandler<TileEventArg> TileModified; //have this be used by the stone stuff so it can determine when to change what texture it is using.
+
+        /// <summary>
         /// Raises the world generated event.
         /// </summary>
         /// <param name="e"></param>
         public static void TileCreatedHandler(TileEventArg e)
         {
             EventHandler<TileEventArg> handler = TileCreated;
+            if (handler != null)
+            {
+                handler(World.mainWorld, e);
+            }
+        }
+
+        public void TileModifiedHandler(TileEventArg e)
+        {
+            EventHandler<TileEventArg> handler = TileModified;
             if (handler != null)
             {
                 handler(World.mainWorld, e);

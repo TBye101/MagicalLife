@@ -76,6 +76,7 @@
     <Compile Include="Entities\Util\Modifier Remove Conditions\TimeRemoveCondition.cs" />
     <Compile Include="Filing\FileSystemManager.cs" />
     <Compile Include="Filing\Logging\MasterLog.cs" />
+    <Compile Include="GUI\HasTexture.cs" />
     <Compile Include="GUI\ISelectable.cs" />
     <Compile Include="GUI\SelectionType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -91,7 +92,7 @@
     <Compile Include="World\Resources\StoneBase.cs" />
     <Compile Include="World\TileEventArg.cs" />
     <Compile Include="World\Tiles\Dirt.cs" />
-    <Compile Include="World\Veggies\OakTree.cs" />
+    <Compile Include="World\World Generation\Veggies\OakTree.cs" />
     <Compile Include="World\World Generation\Generators\Dirtland.cs" />
     <Compile Include="World\World Generation\Generators\StoneSprinkle.cs" />
     <Compile Include="World\WorldEventArgs.cs" />
