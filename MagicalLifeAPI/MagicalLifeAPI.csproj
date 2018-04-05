@@ -79,6 +79,8 @@
     <Compile Include="GUI\HasTexture.cs" />
     <Compile Include="GUI\ISelectable.cs" />
     <Compile Include="GUI\SelectionType.cs" />
+    <Compile Include="Pathfinding\IPathFinder.cs" />
+    <Compile Include="Pathfinding\PathLink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Universal\IGameLoader.cs" />
     <Compile Include="Universal\Unique.cs" />
@@ -106,6 +108,7 @@
   <ItemGroup>
     <Folder Include="Entities\Animal\" />
     <Folder Include="Entities\Entity Components\" />
+    <Folder Include="Pathfinding\A Star\" />
     <Folder Include="World\Items\" />
   </ItemGroup>
   <ItemGroup>

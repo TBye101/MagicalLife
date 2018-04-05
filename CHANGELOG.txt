@@ -1,9 +1,9 @@
 		SneakyTactician  <SneakyTactician@outlook.com>
 	[Version 0.0.0.6]
 		### GUI
-			*
+			*Stone is now rendered
 		### API
-			*
+			*Stone is now generated in world
 		### Tweaks
 			*Ordering a unit now clears previous orders
 		### Bugs
@@ -15,7 +15,7 @@
 			*Living creatures can now be individually selected and order to a location
 
 		### Bugs
-			*Main menu fails to show when pressing escape (Issue #11)
+			*Discovered that main menu fails to show when pressing escape (Issue #11)
 
 	[Version 0.0.0.4]
 		### GUI
