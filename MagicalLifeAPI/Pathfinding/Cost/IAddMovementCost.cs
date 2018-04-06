@@ -19,8 +19,8 @@ namespace MagicalLifeAPI.Pathfinding.Cost
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
-        /// <param name="living"></param>
+        /// <param name="mover"></param>
         /// <returns></returns>
-        Int32 GetMovementCost(Tile start, Tile end, Living living);
+        Int32 GetMovementCost(Tile start, Tile end, Living mover);
     }
 }

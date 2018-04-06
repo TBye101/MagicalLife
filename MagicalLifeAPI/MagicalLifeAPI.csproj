@@ -79,6 +79,7 @@
     <Compile Include="GUI\HasTexture.cs" />
     <Compile Include="GUI\ISelectable.cs" />
     <Compile Include="GUI\SelectionType.cs" />
+    <Compile Include="Pathfinding\Cost\CostRetriever.cs" />
     <Compile Include="Pathfinding\Cost\IAddMovementCost.cs" />
     <Compile Include="Pathfinding\Cost\StandardTileCost.cs" />
     <Compile Include="Pathfinding\IPathFinder.cs" />

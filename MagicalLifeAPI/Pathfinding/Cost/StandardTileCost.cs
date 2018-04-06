@@ -13,7 +13,7 @@ namespace MagicalLifeAPI.Pathfinding.Cost
     /// </summary>
     public class StandardTileCost : IAddMovementCost
     {
-        public int GetMovementCost(Tile start, Tile end, Living living)
+        public int GetMovementCost(Tile start, Tile end, Living mover)
         {
             return end.MovementCost;
         }
