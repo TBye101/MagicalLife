@@ -3,6 +3,7 @@ using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Entities.Movement;
 using MagicalLifeAPI.GUI;
+using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
 using MagicalLifeGUIWindows.Input.History;
@@ -49,10 +50,10 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                     Microsoft.Xna.Framework.Point start = selectable.MapLocation;
                     if (start != target)
                     {
-                        Path pth = StandardPathFinder.GetFastestPath(World.mainWorld.Tiles[start.X, start.Y], World.mainWorld.Tiles[target.X, target.Y]);
+                        List<PathLink> pth = MainPathFinder.PFinder.GetRoute(World.mainWorld, living, World.mainWorld.Tiles[start.X, start.Y].Location, World.mainWorld.Tiles[target.X, target.Y].Location);
 
                         living.QueuedMovement.Clear();
-                        Extensions.EnqueueCollection(living.QueuedMovement, pth.Segments);
+                        Extensions.EnqueueCollection(living.QueuedMovement, pth);
                     }
                     break;
             }

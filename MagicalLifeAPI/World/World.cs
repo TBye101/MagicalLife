@@ -59,44 +59,9 @@ namespace MagicalLifeAPI.World
 
             WorldEventArgs worldEventArgs = new WorldEventArgs(mainWorld);
             mainWorld.WorldGeneratedHandler(worldEventArgs);
-            StandardPathFinder.BuildPathGraph(mainWorld);
+            Pathfinding.MainPathFinder.PFinder.Initialize();
 
             World.TurnStartHandler(new WorldEventArgs(mainWorld));
-        }
-
-        private static Tile TestFindEntity(Tile[,,] tiles)
-        {
-            int xSize = tiles.GetLength(0);
-            int ySize = tiles.GetLength(1);
-            int zSize = tiles.GetLength(2);
-
-            int x = 0;
-            int y = 0;
-            int z = 0;
-
-            //Iterate over each row.
-            for (int i = 0; i < xSize; i++)
-            {
-                //Iterate over each column
-                for (int ii = 0; ii < ySize; ii++)
-                {
-                    //Iterate over the depth of each tile in the z axis.
-                    for (int iii = 0; iii < zSize; iii++)
-                    {
-                        //Each tile can be accessed by the xyz coordinates from this inner loop properly.
-                        if (tiles[x, y, z].Living != null)
-                        {
-                            return tiles[x, y, z];
-                        }
-                        z++;
-                    }
-                    y++;
-                    z = 0;
-                }
-                y = 0;
-                x++;
-            }
-            return null;
         }
 
         /// <summary>

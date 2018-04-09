@@ -4,6 +4,7 @@ using MagicalLifeAPI.Entities.Eventing;
 using MagicalLifeAPI.Entities.Movement;
 using MagicalLifeAPI.Entities.Util;
 using MagicalLifeAPI.GUI;
+using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Universal;
 using Microsoft.Xna.Framework;
 using System;
@@ -19,7 +20,7 @@ namespace MagicalLifeAPI.Entities
         /// <summary>
         /// A queue that holds the queued movement steps up for this living creature.
         /// </summary>
-        public Queue<PathSegment> QueuedMovement { get; set; } = new Queue<PathSegment>();
+        public Queue<PathLink> QueuedMovement { get; set; } = new Queue<PathLink>();
 
         /// <summary>
         /// How many hit points this creature has.

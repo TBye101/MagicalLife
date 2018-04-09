@@ -12,8 +12,8 @@ namespace MagicalLifeAPI.Pathfinding
     /// </summary>
     public class PathLink
     {
-        Point Origin;
-        Point Destination;
+        public Point Origin;
+        public Point Destination;
 
         public PathLink(Point origin, Point destination)
         {

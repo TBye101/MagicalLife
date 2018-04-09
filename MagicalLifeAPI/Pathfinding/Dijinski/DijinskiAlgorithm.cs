@@ -9,7 +9,7 @@ using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.World;
 using Microsoft.Xna.Framework;
 
-namespace MagicalLifeAPI.Pathfinding.A_Star
+namespace MagicalLifeAPI.Pathfinding.Dijinski
 {
     /// <summary>
     /// Use the dijinski algorithm we were, but modified it to use points in string form, and accept dynamically calculated movement costs.

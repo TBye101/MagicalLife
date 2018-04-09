@@ -72,7 +72,6 @@
     <Compile Include="Entities\Util\Attribute.cs" />
     <Compile Include="Entities\Util\Modifier Remove Conditions\IModifierRemoveCondition.cs" />
     <Compile Include="Entities\Util\Modifier Remove Conditions\NeverRemoveCondition.cs" />
-    <Compile Include="Entities\Movement\StandardPathFinder.cs" />
     <Compile Include="Entities\Util\Modifier Remove Conditions\TimeRemoveCondition.cs" />
     <Compile Include="Filing\FileSystemManager.cs" />
     <Compile Include="Filing\Logging\MasterLog.cs" />
@@ -84,6 +83,7 @@
     <Compile Include="Pathfinding\Cost\IAddMovementCost.cs" />
     <Compile Include="Pathfinding\Cost\StandardTileCost.cs" />
     <Compile Include="Pathfinding\IPathFinder.cs" />
+    <Compile Include="Pathfinding\MainPathFinder.cs" />
     <Compile Include="Pathfinding\PathLink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Universal\IGameLoader.cs" />
