@@ -27,5 +27,18 @@ namespace MagicalLifeAPI.Pathfinding
         /// Run whatever startup code you need to before being capable of world generating here.
         /// </summary>
         void Initialize();
+
+        /// <summary>
+        /// Removes all pathfindable links to the specified location.
+        /// </summary>
+        /// <param name="location"></param>
+        void RemoveConnections(Point location);
+
+        /// <summary>
+        /// Adds pathfindable links to the specified location.
+        /// </summary>
+        /// <param name="location"></param>
+
+        void AddConnections(Point location);
     }
 }
