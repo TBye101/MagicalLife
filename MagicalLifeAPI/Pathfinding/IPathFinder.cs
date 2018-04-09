@@ -22,5 +22,10 @@ namespace MagicalLifeAPI.Pathfinding
         /// <param name="origin">The starting point of the living.</param>
         /// <returns></returns>
         List<PathLink> GetRoute(World.World world, Living living, Point origin, Point destination);
+
+        /// <summary>
+        /// Run whatever startup code you need to before being capable of world generating here.
+        /// </summary>
+        void Initialize();
     }
 }

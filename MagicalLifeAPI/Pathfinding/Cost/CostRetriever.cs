@@ -34,7 +34,7 @@ namespace MagicalLifeAPI.Pathfinding.Cost
         /// <param name="start"></param>
         /// <param name="end"></param>
         /// <param name="mover">The creature that would move between the two tiles.</param>
-        /// <returns></returns>
+        /// <returns>If the return value is -1, then the end tile cannot be moved into.</returns>
         public static int CalculateMovementCost(Tile start, Tile end, Living mover)
         {
             int total = 0;

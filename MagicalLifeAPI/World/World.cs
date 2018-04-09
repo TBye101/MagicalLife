@@ -64,21 +64,6 @@ namespace MagicalLifeAPI.World
             World.TurnStartHandler(new WorldEventArgs(mainWorld));
         }
 
-        //private static void TestMove()
-        //{
-        //    Living found = TestFindEntity(mainWorld.Tiles).Living;
-        //    Tile start = TestFindEntity(mainWorld.Tiles);
-
-        //    Point3D des = new Point3D(10, 2, 1);
-        //    if (start.Location != des && found.QueuedMovement.Count == 0)
-        //    {
-        //        Path pth = StandardPathFinder.GetFastestPath(start, mainWorld.Tiles[10, 2, 0]);
-
-        //        Extensions.EnqueueCollection(found.QueuedMovement, pth.Segments);
-        //        EntityWorldMovement.MoveEntity(ref found);
-        //    }
-        //}
-
         private static Tile TestFindEntity(Tile[,,] tiles)
         {
             int xSize = tiles.GetLength(0);

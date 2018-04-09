@@ -4,6 +4,7 @@
 			*Stone is now rendered
 		### API
 			*Stone is now generated in world
+			*
 		### Tweaks
 			*Ordering a unit now clears previous orders
 		### Bugs
