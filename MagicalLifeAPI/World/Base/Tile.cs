@@ -36,6 +36,11 @@ namespace MagicalLifeAPI.World
         }
 
         /// <summary>
+        /// If true, then the tile can be walked on by living.
+        /// </summary>
+        public bool IsWalkable { get; set; } = true;
+
+        /// <summary>
         /// Returns the name of the biome that this tile belongs to.
         /// </summary>
         public string BiomeName { get; }

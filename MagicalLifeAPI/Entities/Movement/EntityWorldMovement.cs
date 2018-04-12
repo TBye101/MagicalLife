@@ -1,5 +1,4 @@
-﻿using DijkstraAlgorithm.Pathing;
-using MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions;
+﻿using MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.World;
 using System;

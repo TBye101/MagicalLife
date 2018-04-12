@@ -14,6 +14,6 @@ namespace MagicalLifeAPI.Pathfinding
         /// <summary>
         /// The pathfinder.
         /// </summary>
-        public static IPathFinder PFinder = new Dijinski.DijinskiAlgorithm();
+        public static IPathFinder PFinder = new AStar.AStar();
     }
 }

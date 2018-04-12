@@ -1,5 +1,4 @@
-﻿using DijkstraAlgorithm.Pathing;
-using MagicalLifeAPI.DataTypes;
+﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities.Eventing;
 using MagicalLifeAPI.Entities.Movement;
 using MagicalLifeAPI.Entities.Util;
