@@ -1,4 +1,7 @@
 		SneakyTactician  <SneakyTactician@outlook.com>
+	[Version 0.0.0.7]
+		### GUI
+			*
 	[Version 0.0.0.6]
 		### GUI
 			*Stone is now rendered
@@ -8,8 +11,6 @@
 			*Pathfinding now forbides living creatures from moving on tiles with marble.
 		### Tweaks
 			*Ordering a unit now clears previous orders
-		### Bugs
-			*
 
 	[Version 0.0.0.5]
 		### GUI
