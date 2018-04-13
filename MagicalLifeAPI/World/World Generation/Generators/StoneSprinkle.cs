@@ -54,6 +54,7 @@ namespace MagicalLifeAPI.World.World_Generation.Generators
                     if (random.Next(4) == 2)
                     {
                         dirt.Resources = new MarbleResource(random.Next(25));
+                        dirt.IsWalkable = false;
                     }
                     tiles[x, y] = dirt;
                     y++;

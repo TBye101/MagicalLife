@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MagicalLifeAPI.Entities;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World;
 using Microsoft.Xna.Framework;
 using RoyT.AStar;
@@ -15,7 +16,7 @@ namespace MagicalLifeAPI.Pathfinding.AStar
     /// </summary>
     public class AStar : IPathFinder
     {
-        Grid Grid;
+        private Grid Grid;
 
         public void AddConnections(Point location)
         {
@@ -24,6 +25,8 @@ namespace MagicalLifeAPI.Pathfinding.AStar
 
         public List<PathLink> GetRoute(World.World world, Living living, Point origin, Point destination)
         {
+            MasterLog.DebugWriteLine("Finding route from: " + origin.ToString());
+            MasterLog.DebugWriteLine("Finding route to: " + destination.ToString());
             Position[] path = this.Grid.GetPath(new Position(origin.X, origin.Y), new Position(destination.X, destination.Y));
             List<PathLink> ret = new List<PathLink>();
 
@@ -31,6 +34,11 @@ namespace MagicalLifeAPI.Pathfinding.AStar
             int length = path.Length - 1;
             while (i != length)
             {
+                if (!world.Tiles[path[i].X, path[i].Y].IsWalkable)
+                {
+                    MasterLog.DebugWriteLine("Walking on unwalkable tile!");
+                }
+
                 ret.Add(new PathLink(new Point(path[i].X, path[i].Y), new Point(path[i + 1].X, path[i + 1].Y)));
                 i++;
             }
@@ -46,12 +54,13 @@ namespace MagicalLifeAPI.Pathfinding.AStar
             foreach (Tile item in tiles)
             {
                 Position pos = new Position(item.Location.X, item.Location.Y);
+
+                this.Grid.SetCellCost(pos, item.MovementCost);
                 if (!item.IsWalkable)
                 {
                     this.Grid.BlockCell(pos);
+                    MasterLog.DebugWriteLine("Blocking tile: " + pos.ToString());
                 }
-
-                this.Grid.SetCellCost(pos, item.MovementCost);
             }
         }
 

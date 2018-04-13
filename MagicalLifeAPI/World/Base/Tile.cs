@@ -35,10 +35,32 @@ namespace MagicalLifeAPI.World
         {
         }
 
+        private bool isWalkable = true;
+
         /// <summary>
         /// If true, then the tile can be walked on by living.
         /// </summary>
-        public bool IsWalkable { get; set; } = true;
+        public bool IsWalkable
+        {
+            get
+            {
+                return this.isWalkable;
+            }
+
+            set
+            {
+                if (value)
+                {
+                    //Pathfinding.MainPathFinder.PFinder.AddConnections(this.Location);
+                }
+                else
+                {
+                    //Pathfinding.MainPathFinder.PFinder.RemoveConnections(this.Location);
+                }
+
+                this.isWalkable = value;
+            }
+        }
 
         /// <summary>
         /// Returns the name of the biome that this tile belongs to.
