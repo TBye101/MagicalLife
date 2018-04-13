@@ -43,19 +43,22 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
         private void Move(Selectable selectable, Microsoft.Xna.Framework.Point target)
         {
-            switch (selectable)
+            if (World.mainWorld.Tiles[target.X, target.Y].IsWalkable)
             {
-                case Living living:
+                switch (selectable)
+                {
+                    case Living living:
 
-                    Microsoft.Xna.Framework.Point start = selectable.MapLocation;
-                    if (start != target)
-                    {
-                        List<PathLink> pth = MainPathFinder.PFinder.GetRoute(World.mainWorld, living, World.mainWorld.Tiles[start.X, start.Y].Location, World.mainWorld.Tiles[target.X, target.Y].Location);
+                        Microsoft.Xna.Framework.Point start = selectable.MapLocation;
+                        if (start != target)
+                        {
+                            List<PathLink> pth = MainPathFinder.PFinder.GetRoute(World.mainWorld, living, World.mainWorld.Tiles[start.X, start.Y].Location, World.mainWorld.Tiles[target.X, target.Y].Location);
 
-                        living.QueuedMovement.Clear();
-                        Extensions.EnqueueCollection(living.QueuedMovement, pth);
-                    }
-                    break;
+                            living.QueuedMovement.Clear();
+                            Extensions.EnqueueCollection(living.QueuedMovement, pth);
+                        }
+                        break;
+                }
             }
         }
 

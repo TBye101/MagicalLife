@@ -5,6 +5,7 @@
 		### API
 			*Stone is now generated in world
 			*Abstracted pathfinding so that we can support any algorithm with a little tweaking/a bridge between how each algorithm stores the path found
+			*Pathfinding now forbides living creatures from moving on tiles with marble.
 		### Tweaks
 			*Ordering a unit now clears previous orders
 		### Bugs

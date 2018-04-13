@@ -30,6 +30,16 @@ namespace MagicalLifeAPI.Pathfinding.AStar
             Position[] path = this.Grid.GetPath(new Position(origin.X, origin.Y), new Position(destination.X, destination.Y));
             List<PathLink> ret = new List<PathLink>();
 
+            if (!world.Tiles[destination.X, destination.Y].IsWalkable)
+            {
+                throw new Exception("Destination not possible!");
+            }
+
+            if (path.Length < 1)
+            {
+                throw new Exception("Path not possible!");
+            }
+
             int i = 0;
             int length = path.Length - 1;
             while (i != length)
