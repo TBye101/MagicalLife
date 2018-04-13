@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Universal;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,6 @@ namespace MagicalLifeAPI.GUI
         /// <summary>
         /// The location of this selectable in game object.
         /// </summary>
-        public Point3D MapLocation { get; set; }
+        public Point MapLocation { get; set; }
     }
 }

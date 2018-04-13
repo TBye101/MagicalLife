@@ -1,10 +1,11 @@
-﻿using DijkstraAlgorithm.Pathing;
-using MagicalLifeAPI.DataTypes;
+﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities.Eventing;
 using MagicalLifeAPI.Entities.Movement;
 using MagicalLifeAPI.Entities.Util;
 using MagicalLifeAPI.GUI;
+using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Universal;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 
@@ -18,7 +19,7 @@ namespace MagicalLifeAPI.Entities
         /// <summary>
         /// A queue that holds the queued movement steps up for this living creature.
         /// </summary>
-        public Queue<PathSegment> QueuedMovement { get; set; } = new Queue<PathSegment>();
+        public Queue<PathLink> QueuedMovement { get; set; } = new Queue<PathLink>();
 
         /// <summary>
         /// How many hit points this creature has.
@@ -45,7 +46,7 @@ namespace MagicalLifeAPI.Entities
         /// </summary>
         /// <param name="health"></param>
         /// <param name="movementSpeed"></param>
-        protected Living(int health, int movementSpeed, Point3D location)
+        protected Living(int health, int movementSpeed, Point location)
         {
             this.Health = new Util.Attribute(health);
             this.MovementSpeed = new Util.Attribute(movementSpeed);

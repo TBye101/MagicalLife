@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.GUI;
+using Microsoft.Xna.Framework;
 
 namespace MagicalLifeAPI.Entities.Humanoid
 {
@@ -8,7 +9,7 @@ namespace MagicalLifeAPI.Entities.Humanoid
     /// </summary>
     public class Human : Living
     {
-        public Human(int health, int movementSpeed, Point3D location) : base(health, movementSpeed, location)
+        public Human(int health, int movementSpeed, Point location) : base(health, movementSpeed, location)
         {
         }
 

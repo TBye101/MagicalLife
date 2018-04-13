@@ -24,12 +24,10 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu
             int length = -1;
             bool lengthSuccess = int.TryParse(NewWorldMenu.NewWorldMenuM.worldLength.Text, out length);
 
-            int depth = -1;
-            bool depthSuccess = int.TryParse(NewWorldMenu.NewWorldMenuM.worldDepth.Text, out depth);
-
-            if (widthSuccess && lengthSuccess && depthSuccess && width > 0 && length > 0 && depth > 0)
+            if (widthSuccess && lengthSuccess && width > 0 && length > 0)
             {
-                World.Initialize(width, length, depth, new Dirtland());
+                //World.Initialize(width, length, new Dirtland());
+                World.Initialize(width, length, new StoneSprinkle());
             }
             else
             {

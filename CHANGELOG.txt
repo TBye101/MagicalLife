@@ -1,15 +1,23 @@
 		SneakyTactician  <SneakyTactician@outlook.com>
+	[Version 0.0.0.6]
+		### GUI
+			*Stone is now rendered
+		### API
+			*Stone is now generated in world
+			*Abstracted pathfinding so that we can support any algorithm with a little tweaking/a bridge between how each algorithm stores the path found
+			*Pathfinding now forbides living creatures from moving on tiles with marble.
+		### Tweaks
+			*Ordering a unit now clears previous orders
+		### Bugs
+			*
 
 	[Version 0.0.0.5]
 		### GUI
 			*Living creatures are now being rendered
 			*Living creatures can now be individually selected and order to a location
 
-		#### API
-			*
-
 		### Bugs
-			*Main menu fails to show when pressing escape (Issue #11)
+			*Discovered that main menu fails to show when pressing escape (Issue #11)
 
 	[Version 0.0.0.4]
 		### GUI

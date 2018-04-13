@@ -1,8 +1,10 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
+using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Base;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 
@@ -11,14 +13,14 @@ namespace MagicalLifeAPI.World
     /// <summary>
     /// Every tile that implements this class must provide a parameterless version of itself for reflection purposes. That constructor will not be used during gameplay.
     /// </summary>
-    public abstract class Tile : Unique
+    public abstract class Tile : HasTexture
     {
         /// <summary>
         /// Initializes a new tile object.
         /// </summary>
         /// <param name="location">The 3D location of this tile in the map.</param>
         /// <param name="movementCost">This value is the movement cost of walking on this tile. It should be between 1 and 100</param>
-        protected Tile(Point3D location, int movementCost)
+        protected Tile(Point location, int movementCost)
         {
             this.Location = location;
             this.MovementCost = movementCost;
@@ -33,10 +35,32 @@ namespace MagicalLifeAPI.World
         {
         }
 
+        private bool isWalkable = true;
+
         /// <summary>
-        /// The index of the texture in our asset manager.
+        /// If true, then the tile can be walked on by living.
         /// </summary>
-        public int TextureIndex { get; set; }
+        public bool IsWalkable
+        {
+            get
+            {
+                return this.isWalkable;
+            }
+
+            set
+            {
+                if (value)
+                {
+                    //Pathfinding.MainPathFinder.PFinder.AddConnections(this.Location);
+                }
+                else
+                {
+                    //Pathfinding.MainPathFinder.PFinder.RemoveConnections(this.Location);
+                }
+
+                this.isWalkable = value;
+            }
+        }
 
         /// <summary>
         /// Returns the name of the biome that this tile belongs to.
@@ -67,14 +91,14 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// The resources that can be found in this tile.
         /// </summary>
-        public List<Resource> Resources { get; set; } = new List<Resource>();
+        public Resource Resources { get; set; }
 
         public List<Vegetation> Plants { get; set; } = new List<Vegetation>();
 
         /// <summary>
         /// The location of this tile in the tilemap.
         /// </summary>
-        public Point3D Location { get; protected set; }
+        public Point Location { get; protected set; }
 
         /// <summary>
         /// The entity that is in this tile. Is null if there is not an entity in this tile.
@@ -87,12 +111,26 @@ namespace MagicalLifeAPI.World
         public static event EventHandler<TileEventArg> TileCreated;
 
         /// <summary>
+        /// Raised whenever this specific tile is modified.
+        /// </summary>
+        public event EventHandler<TileEventArg> TileModified; //have this be used by the stone stuff so it can determine when to change what texture it is using.
+
+        /// <summary>
         /// Raises the world generated event.
         /// </summary>
         /// <param name="e"></param>
         public static void TileCreatedHandler(TileEventArg e)
         {
             EventHandler<TileEventArg> handler = TileCreated;
+            if (handler != null)
+            {
+                handler(World.mainWorld, e);
+            }
+        }
+
+        public void TileModifiedHandler(TileEventArg e)
+        {
+            EventHandler<TileEventArg> handler = TileModified;
             if (handler != null)
             {
                 handler(World.mainWorld, e);

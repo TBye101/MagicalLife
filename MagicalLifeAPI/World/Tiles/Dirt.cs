@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using Microsoft.Xna.Framework;
 
 namespace MagicalLifeAPI.World.Tiles
 {
@@ -7,7 +8,7 @@ namespace MagicalLifeAPI.World.Tiles
     /// </summary>
     public class Dirt : Tile
     {
-        public Dirt(Point3D location) : base(location, 10)
+        public Dirt(Point location) : base(location, 10)
         {
             //this.AdditionalMovementCost = 0;
         }
@@ -23,8 +24,7 @@ namespace MagicalLifeAPI.World.Tiles
 
         public override string GetTextureName()
         {
-            return "DirtTile";
-            //return "TestTile.png";
+            return "DirtFloor";
         }
     }
 }

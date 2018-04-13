@@ -13,8 +13,8 @@ namespace MagicalLifeAPI.Entities.Util
 
         private void World_TurnEnd(object sender, World.WorldEventArgs e)
         {
-            List<Tuple<Int64, IModifierRemoveCondition, string>> remove = new List<Tuple<Int64, IModifierRemoveCondition, string>>();
-            foreach (Tuple<Int64, IModifierRemoveCondition, string> item in this.Modifiers)
+            List<Tuple<Int32, IModifierRemoveCondition, string>> remove = new List<Tuple<Int32, IModifierRemoveCondition, string>>();
+            foreach (Tuple<Int32, IModifierRemoveCondition, string> item in this.Modifiers)
             {
                 if (item.Item2.WearOff())
                 {
@@ -22,7 +22,7 @@ namespace MagicalLifeAPI.Entities.Util
                 }
             }
 
-            foreach (Tuple<Int64, IModifierRemoveCondition, string> item in remove)
+            foreach (Tuple<Int32, IModifierRemoveCondition, string> item in remove)
             {
                 this.Modifiers.Remove(item);
             }
@@ -30,13 +30,13 @@ namespace MagicalLifeAPI.Entities.Util
 
         public Attribute(int value) : this()
         {
-            this.AddModifier(new Tuple<long, IModifierRemoveCondition, string>(value, new NeverRemoveCondition(), "Base value"));
+            this.AddModifier(new Tuple<Int32, IModifierRemoveCondition, string>(value, new NeverRemoveCondition(), "Base value"));
         }
 
-        public Int64 GetValue()
+        public Int32 GetValue()
         {
-            Int64 ret = 0;
-            foreach (Tuple<Int64, IModifierRemoveCondition, string> item in this.Modifiers)
+            Int32 ret = 0;
+            foreach (Tuple<Int32, IModifierRemoveCondition, string> item in this.Modifiers)
             {
                 ret += item.Item1;
             }
@@ -47,13 +47,13 @@ namespace MagicalLifeAPI.Entities.Util
         /// The int value is applied to the value of this attribute, while the <see cref="IModifierRemoveCondition"/> is used to determine if the modifier will wear off.
         /// The string value is a display message/reason as to why the modifier was applied.
         /// </summary>
-        public List<Tuple<Int64, IModifierRemoveCondition, string>> Modifiers { get; private set; } = new List<Tuple<Int64, IModifierRemoveCondition, string>>();
+        public List<Tuple<Int32, IModifierRemoveCondition, string>> Modifiers { get; private set; } = new List<Tuple<Int32, IModifierRemoveCondition, string>>();
 
         /// <summary>
         /// Adds a modifier to the modifiers list.
         /// </summary>
         /// <param name="modifier"></param>
-        public void AddModifier(Tuple<Int64, IModifierRemoveCondition, string> modifier)
+        public void AddModifier(Tuple<Int32, IModifierRemoveCondition, string> modifier)
         {
             this.Modifiers.Add(modifier);
         }

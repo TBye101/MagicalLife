@@ -14,13 +14,13 @@ namespace MagicalLifeAPI.Entities.Eventing
     {
         public Living Living { get; set; }
 
-        public Point3D Location { get; private set; }
+        public Microsoft.Xna.Framework.Point Location { get; private set; }
 
         /// <summary>
         /// Constructs a <see cref="LivingEventArg"/>.
         /// </summary>
         /// <param name="living"></param>
-        public LivingEventArg(Living living, Point3D location)
+        public LivingEventArg(Living living, Microsoft.Xna.Framework.Point location)
         {
             this.Living = living;
             this.Location = location;

@@ -70,7 +70,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
         /// </summary>
         /// <param name="location"></param>
         /// <returns></returns>
-        public static Rectangle GetBoundsForTile(Point3D location)
+        public static Rectangle GetBoundsForTile(Point location)
         {
             Point size = Tile.GetTileSize();
 

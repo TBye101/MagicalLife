@@ -1,5 +1,5 @@
-﻿using DijkstraAlgorithm.Pathing;
-using MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions;
+﻿using MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions;
+using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.World;
 using System;
 using System.Collections.Generic;
@@ -17,17 +17,17 @@ namespace MagicalLifeAPI.Entities.Movement
         /// <param name="entity"></param>
         public static void MoveEntity(ref Living entity)
         {
-            Queue<PathSegment> path = entity.QueuedMovement;
+            Queue<PathLink> path = entity.QueuedMovement;
             while (entity.MovementSpeed.GetValue() > 0 && path.Count > 0)
             {
-                PathSegment destination = path.Dequeue();
-                Tile sourceTile = WorldUtil.GetTileByID(World.World.mainWorld.Tiles, destination.Origin.Id);
-                Tile destinationTile = WorldUtil.GetTileByID(World.World.mainWorld.Tiles, destination.Destination.Id);
+                PathLink section = path.Dequeue();
+                Tile sourceTile = World.World.mainWorld.Tiles[section.Origin.X, section.Origin.Y];
+                Tile destinationTile = World.World.mainWorld.Tiles[section.Destination.X, section.Destination.Y];
                 string modifierReason = "Moved onto a " + destinationTile.GetName() + " tile";
-                entity.MovementSpeed.AddModifier(new Tuple<long, IModifierRemoveCondition, string>(-1 * destinationTile.MovementCost, new TimeRemoveCondition(1), modifierReason));
-                World.World.mainWorld.Tiles[sourceTile.Location.X, sourceTile.Location.Y, sourceTile.Location.Z].Living = null;
+                entity.MovementSpeed.AddModifier(new Tuple<Int32, IModifierRemoveCondition, string>(-1 * destinationTile.MovementCost, new TimeRemoveCondition(1), modifierReason));
+                World.World.mainWorld.Tiles[sourceTile.Location.X, sourceTile.Location.Y].Living = null;
                 entity.MapLocation = destinationTile.Location;
-                World.World.mainWorld.Tiles[destinationTile.Location.X, destinationTile.Location.Y, destinationTile.Location.Z].Living = entity;
+                World.World.mainWorld.Tiles[destinationTile.Location.X, destinationTile.Location.Y].Living = entity;
             }
         }
 

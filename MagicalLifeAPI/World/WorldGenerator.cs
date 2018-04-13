@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Universal;
+using System;
 
 namespace MagicalLifeAPI.World
 {
@@ -14,41 +15,41 @@ namespace MagicalLifeAPI.World
         /// <param name="ySize"></param>
         /// <param name="zSize"></param>
         /// <returns></returns>
-        public abstract string[,,] AssignBiomes(int xSize, int ySize, int zSize);
+        public abstract string[,] AssignBiomes(int xSize, int ySize, Random random);
 
         /// <summary>
         /// Generates things such as rock, dirt, grassland, and sand for each and every tile.
         /// </summary>
         /// <param name="biomeMap"></param>
         /// <returns></returns>
-        public abstract Tile[,,] GenerateLandType(string[,,] biomeMap);
+        public abstract Tile[,] GenerateLandType(string[,] biomeMap, Random random);
 
         /// <summary>
         /// Generates things such as rivers and caves.
         /// </summary>
         /// <param name="map"></param>
         /// <returns></returns>
-        public abstract Tile[,,] GenerateNaturalFeatures(Tile[,,] map);
+        public abstract Tile[,] GenerateNaturalFeatures(Tile[,] map, Random random);
 
         /// <summary>
         /// Generates minerals in the world.
         /// </summary>
         /// <param name="map"></param>
         /// <returns></returns>
-        public abstract Tile[,,] GenerateMinerals(Tile[,,] map);
+        public abstract Tile[,] GenerateMinerals(Tile[,] map, Random random);
 
         /// <summary>
         /// Generates vegetation in the world.
         /// </summary>
         /// <param name="map"></param>
         /// <returns></returns>
-        public abstract Tile[,,] GenerateVegetation(Tile[,,] map);
+        public abstract Tile[,] GenerateVegetation(Tile[,] map, Random random);
 
         /// <summary>
         /// Generates any other details not done in previous phases.
         /// </summary>
         /// <param name="map"></param>
         /// <returns></returns>
-        public abstract Tile[,,] GenerateDetails(Tile[,,] map);
+        public abstract Tile[,] GenerateDetails(Tile[,] map, Random random);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.World;
+using MagicalLifeAPI.World.Resources;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -21,27 +22,20 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// <param name="spBatch"></param>
         public static void DrawMap(ref SpriteBatch spBatch)
         {
-            Tile[,,] tiles = World.mainWorld.Tiles;
+            Tile[,] tiles = World.mainWorld.Tiles;
 
             int xSize = tiles.GetLength(0);
             int ySize = tiles.GetLength(1);
-            int zSize = tiles.GetLength(2);
             int x = 0;
             int y = 0;
-            int z = 0;
 
             while (x < xSize)
             {
                 while (y < ySize)
                 {
-                    while (z < zSize)
-                    {
-                        Tile tile = tiles[x, y, z];
-                        Microsoft.Xna.Framework.Point start = new Microsoft.Xna.Framework.Point(RenderingPipe.tileSize.X * x, RenderingPipe.tileSize.Y * y);
-                        DrawTile(tile, ref spBatch, start);
-                        z++;
-                    }
-                    z = 0;
+                    Tile tile = tiles[x, y];
+                    Microsoft.Xna.Framework.Point start = new Microsoft.Xna.Framework.Point(RenderingPipe.tileSize.X * x, RenderingPipe.tileSize.Y * y);
+                    DrawTile(tile, ref spBatch, start);
                     y++;
                 }
                 y = 0;
@@ -57,10 +51,32 @@ namespace MagicalLifeGUIWindows.Rendering.Map
             Microsoft.Xna.Framework.Rectangle target = new Microsoft.Xna.Framework.Rectangle(start, RenderingPipe.tileSize);
             spBatch.Draw(AssetManager.Textures[tile.TextureIndex], target, RenderingPipe.colorMask);
 
+            DrawStone(tile, ref spBatch, target);
+
             if (tile.Living != null)
             {
                 Texture2D livingTexture = AssetManager.Textures[AssetManager.GetTextureIndex(tile.Living.GetTextureName())];
                 spBatch.Draw(livingTexture, target, RenderingPipe.colorMask);
+            }
+        }
+
+        /// <summary>
+        /// Draws stone if it is present in the tile.
+        /// </summary>
+        /// <param name="tile"></param>
+        /// <param name="spBatch"></param>
+        /// <param name="target"></param>
+        private static void DrawStone(Tile tile, ref SpriteBatch spBatch, Rectangle target)
+        {
+            if (tile.Resources != null)
+            {
+                switch (tile.Resources)
+                {
+                    case StoneBase stone:
+                        Texture2D stoneTexture = AssetManager.Textures[AssetManager.GetTextureIndex(stone.GetUnconnectedTexture())];
+                        spBatch.Draw(stoneTexture, target, RenderingPipe.colorMask);
+                        break;
+                }
             }
         }
     }

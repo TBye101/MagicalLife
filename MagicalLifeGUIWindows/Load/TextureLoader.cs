@@ -28,13 +28,20 @@ namespace MagicalLifeGUIWindows.Load
         {
             this.TexturesToLoad.Add("Basic Human");
             this.TexturesToLoad.Add("CursorCarrot");
-            this.TexturesToLoad.Add("DirtTile");
+            this.TexturesToLoad.Add("DirtFloor");
             this.TexturesToLoad.Add("EndTurnButtonState1");
             this.TexturesToLoad.Add("EndTurnButtonState2");
             this.TexturesToLoad.Add("MenuBackground");
             this.TexturesToLoad.Add("MenuButton");
             this.TexturesToLoad.Add("TestTile");
             this.TexturesToLoad.Add("InputBox100x50");
+
+            this.TexturesToLoad.Add("MarbleFloor");
+            this.TexturesToLoad.Add("MarbleResourceUnconnected");
+            this.TexturesToLoad.Add("MarbleResourceConnected1");
+            this.TexturesToLoad.Add("MarbleResourceConnected2");
+            this.TexturesToLoad.Add("MarbleResourceConnected3");
+            this.TexturesToLoad.Add("MarbleResourceConnected4");
 
             return this.TexturesToLoad.Count;
         }

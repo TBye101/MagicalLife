@@ -3,6 +3,7 @@ using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Entities.Movement;
 using MagicalLifeAPI.GUI;
+using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
 using MagicalLifeGUIWindows.Input.History;
@@ -40,20 +41,24 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
             }
         }
 
-        private void Move(Selectable selectable, Point3D target)
+        private void Move(Selectable selectable, Microsoft.Xna.Framework.Point target)
         {
-            switch (selectable)
+            if (World.mainWorld.Tiles[target.X, target.Y].IsWalkable)
             {
-                case Living living:
+                switch (selectable)
+                {
+                    case Living living:
 
-                    Point3D start = selectable.MapLocation;
-                    if (start != target)
-                    {
-                        Path pth = StandardPathFinder.GetFastestPath(World.mainWorld.Tiles[start.X, start.Y, start.Z], World.mainWorld.Tiles[target.X, target.Y, target.Z]);
+                        Microsoft.Xna.Framework.Point start = selectable.MapLocation;
+                        if (start != target)
+                        {
+                            List<PathLink> pth = MainPathFinder.PFinder.GetRoute(World.mainWorld, living, World.mainWorld.Tiles[start.X, start.Y].Location, World.mainWorld.Tiles[target.X, target.Y].Location);
 
-                        Extensions.EnqueueCollection(living.QueuedMovement, pth.Segments);
-                    }
-                    break;
+                            living.QueuedMovement.Clear();
+                            Extensions.EnqueueCollection(living.QueuedMovement, pth);
+                        }
+                        break;
+                }
             }
         }
 
@@ -64,8 +69,8 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
         /// <returns></returns>
         private Living GetLivingAtClick(MouseEventArgs e)
         {
-            Point3D tileLocation = Util.GetMapLocation(e.Position.X, e.Position.Y);
-            return World.mainWorld.Tiles[tileLocation.X, tileLocation.Y, tileLocation.Z].Living;
+            Microsoft.Xna.Framework.Point tileLocation = Util.GetMapLocation(e.Position.X, e.Position.Y);
+            return World.mainWorld.Tiles[tileLocation.X, tileLocation.Y].Living;
         }
     }
 }

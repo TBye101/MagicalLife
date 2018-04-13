@@ -29,9 +29,9 @@ namespace MagicalLifeGUIWindows.Input.History
         /// <summary>
         /// The location of the tile that the order was to.
         /// </summary>
-        public Point3D OrderPoint { get; set; }
+        public Microsoft.Xna.Framework.Point OrderPoint { get; set; }
 
-        public HistoricalInput(Point3D point)
+        public HistoricalInput(Microsoft.Xna.Framework.Point point)
         {
             this.OrderedToTile = true;
             this.OrderPoint = point;

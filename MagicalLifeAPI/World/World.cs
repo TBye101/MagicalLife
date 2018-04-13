@@ -1,5 +1,4 @@
-﻿using DijkstraAlgorithm.Pathing;
-using MagicalLifeAPI.DataTypes;
+﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Entities.Movement;
 using MagicalLifeAPI.Filing.Logging;
@@ -17,7 +16,7 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// A 3D array that holds every tile in the current world.
         /// </summary>
-        public Tile[,,] Tiles { get; private set; }
+        public Tile[,] Tiles { get; private set; }
 
         /// <summary>
         /// Raised when the world is finished generating for the first time.
@@ -52,66 +51,16 @@ namespace MagicalLifeAPI.World
         /// <param name="height"></param>
         /// <param name="depth"></param>
         /// <param name="generator"></param>
-        public static void Initialize(int width, int height, int depth, WorldGenerator generator)
+        public static void Initialize(int width, int height, WorldGenerator generator)
         {
             mainWorld = new World();
-            mainWorld.Tiles = mainWorld.GenerateWorld(height, width, depth, generator);
+            mainWorld.Tiles = mainWorld.GenerateWorld(height, width, generator);
 
             WorldEventArgs worldEventArgs = new WorldEventArgs(mainWorld);
             mainWorld.WorldGeneratedHandler(worldEventArgs);
-            StandardPathFinder.BuildPathGraph(mainWorld);
+            Pathfinding.MainPathFinder.PFinder.Initialize();
 
             World.TurnStartHandler(new WorldEventArgs(mainWorld));
-        }
-
-        //private static void TestMove()
-        //{
-        //    Living found = TestFindEntity(mainWorld.Tiles).Living;
-        //    Tile start = TestFindEntity(mainWorld.Tiles);
-
-        //    Point3D des = new Point3D(10, 2, 1);
-        //    if (start.Location != des && found.QueuedMovement.Count == 0)
-        //    {
-        //        Path pth = StandardPathFinder.GetFastestPath(start, mainWorld.Tiles[10, 2, 0]);
-
-        //        Extensions.EnqueueCollection(found.QueuedMovement, pth.Segments);
-        //        EntityWorldMovement.MoveEntity(ref found);
-        //    }
-        //}
-
-        private static Tile TestFindEntity(Tile[,,] tiles)
-        {
-            int xSize = tiles.GetLength(0);
-            int ySize = tiles.GetLength(1);
-            int zSize = tiles.GetLength(2);
-
-            int x = 0;
-            int y = 0;
-            int z = 0;
-
-            //Iterate over each row.
-            for (int i = 0; i < xSize; i++)
-            {
-                //Iterate over each column
-                for (int ii = 0; ii < ySize; ii++)
-                {
-                    //Iterate over the depth of each tile in the z axis.
-                    for (int iii = 0; iii < zSize; iii++)
-                    {
-                        //Each tile can be accessed by the xyz coordinates from this inner loop properly.
-                        if (tiles[x, y, z].Living != null)
-                        {
-                            return tiles[x, y, z];
-                        }
-                        z++;
-                    }
-                    y++;
-                    z = 0;
-                }
-                y = 0;
-                x++;
-            }
-            return null;
         }
 
         /// <summary>
@@ -122,15 +71,16 @@ namespace MagicalLifeAPI.World
         /// <param name="depth"></param>
         /// <param name="generator"></param>
         /// <returns></returns>
-        private Tile[,,] GenerateWorld(int height, int width, int depth, WorldGenerator generator)
+        private Tile[,] GenerateWorld(int height, int width, WorldGenerator generator)
         {
-            string[,,] stage1 = generator.AssignBiomes(height, width, depth);
-            Tile[,,] stage2 = generator.GenerateLandType(stage1);
+            Random r = new Random();
+            string[,] stage1 = generator.AssignBiomes(height, width, r);
+            Tile[,] stage2 = generator.GenerateLandType(stage1, r);
 
-            stage2 = generator.GenerateNaturalFeatures(stage2);
-            stage2 = generator.GenerateMinerals(stage2);
-            stage2 = generator.GenerateVegetation(stage2);
-            stage2 = generator.GenerateDetails(stage2);
+            stage2 = generator.GenerateNaturalFeatures(stage2, r);
+            stage2 = generator.GenerateMinerals(stage2, r);
+            stage2 = generator.GenerateVegetation(stage2, r);
+            stage2 = generator.GenerateDetails(stage2, r);
 
             return stage2;
         }

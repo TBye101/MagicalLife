@@ -31,8 +31,8 @@ namespace MagicalLifeGUIWindows.Input.History
 
         private HistoricalInput SingleSelect(InputEventArgs e)
         {
-            Point3D mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y);
-            Selectable select = World.mainWorld.Tiles[mapSpot.X, mapSpot.Y, mapSpot.Z].Living;
+            Point mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y);
+            Selectable select = World.mainWorld.Tiles[mapSpot.X, mapSpot.Y].Living;
 
             if (select != null)
             {
@@ -83,7 +83,7 @@ namespace MagicalLifeGUIWindows.Input.History
         private HistoricalInput Order(InputEventArgs e)
         {
             Point screenLocation = e.MouseEventArgs.Position;
-            Point3D mapLocation = Util.GetMapLocation(screenLocation.X, screenLocation.Y);
+            Point mapLocation = Util.GetMapLocation(screenLocation.X, screenLocation.Y);
             return new HistoricalInput(mapLocation);
         }
     }
