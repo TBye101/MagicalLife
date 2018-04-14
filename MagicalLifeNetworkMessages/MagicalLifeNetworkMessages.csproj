@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{297BEA4D-42A0-4790-8020-C8114AB4DF7E}</ProjectGuid>
+    <ProjectGuid>{BF096E54-E0E7-4928-A671-25D86BCE3A8F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MagicalLifeServer</RootNamespace>
-    <AssemblyName>MagicalLifeServer</AssemblyName>
+    <RootNamespace>MagicalLifeNetworkMessages</RootNamespace>
+    <AssemblyName>MagicalLifeNetworkMessages</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,21 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Networking\TCPServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MagicalLifeAPI\MagicalLifeAPI.csproj">
-      <Project>{fe8400a7-9dc8-4ab4-8c54-ac5f36bf7639}</Project>
-      <Name>MagicalLifeAPI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MagicalLifeSettings\MagicalLifeSettings.csproj">
-      <Project>{76b12b63-df5d-40fd-8e90-03395095dd71}</Project>
-      <Name>MagicalLifeSettings</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Processing\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
