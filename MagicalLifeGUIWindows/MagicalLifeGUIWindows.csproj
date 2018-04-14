@@ -165,6 +165,14 @@
       <Project>{FE8400A7-9DC8-4AB4-8C54-AC5F36BF7639}</Project>
       <Name>MagicalLifeAPI</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MagicalLifeClient\MagicalLifeClient.csproj">
+      <Project>{fc0297b3-bace-4edc-b951-6f89a779dbe4}</Project>
+      <Name>MagicalLifeClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MagicalLifeServer\MagicalLifeServer.csproj">
+      <Project>{297bea4d-42a0-4790-8020-c8114ab4df7e}</Project>
+      <Name>MagicalLifeServer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MagicalLifeSettings\MagicalLifeSettings.csproj">
       <Project>{76b12b63-df5d-40fd-8e90-03395095dd71}</Project>
       <Name>MagicalLifeSettings</Name>
