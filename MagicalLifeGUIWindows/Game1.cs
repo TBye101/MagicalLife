@@ -48,6 +48,7 @@ namespace MagicalLifeGUIWindows
             winConfig.ConfigureMainWindow(this);
 
             Universal.Default.GameHasRunBefore = true;
+
             MagicalLifeServer.Networking.TCPServer tCPServer = new MagicalLifeServer.Networking.TCPServer();
             tCPServer.Start(5849);
             MagicalLifeClient.Networking.TCPClient tCPClient = new MagicalLifeClient.Networking.TCPClient();
