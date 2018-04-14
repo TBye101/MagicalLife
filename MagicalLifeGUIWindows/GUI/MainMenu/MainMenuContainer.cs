@@ -10,6 +10,8 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
         {
             this.Visible = visible;
             this.Controls.Add(new NewGameButton());
+            this.Controls.Add(new HostGameButton());
+            this.Controls.Add(new JoinGameButton());
             this.Controls.Add(new QuitButton());
         }
 

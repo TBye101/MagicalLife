@@ -1,7 +1,8 @@
 		SneakyTactician  <SneakyTactician@outlook.com>
 	[Version 0.0.0.7]
 		### GUI
-			*
+			*//TODO: Begin work on buttons/menus for connection of a client to a server, and the hosting of a server
+			https://msdn.microsoft.com/en-us/library/system.net.sockets.tcpclient(v=vs.110).aspx?cs-save-lang=1&cs-lang=csharp#code-snippet-2
 	[Version 0.0.0.6]
 		### GUI
 			*Stone is now rendered
