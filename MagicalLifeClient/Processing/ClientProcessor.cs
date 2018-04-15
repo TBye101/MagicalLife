@@ -19,5 +19,10 @@ namespace MagicalLifeClient.Processing
         {
             Processor.AddRule(new ClientWorldDataTransferRule());
         }
+
+        public static void Process(NetworkMessage msg)
+        {
+            Processor.ProcessMessage(msg);
+        }
     }
 }

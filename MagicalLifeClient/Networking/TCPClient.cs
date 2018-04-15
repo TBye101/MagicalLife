@@ -1,4 +1,6 @@
 ﻿using MagicalLifeClient.Processing;
+using MagicalLifeNetworkMessages;
+using MagicalLifeNetworkMessages.Messages;
 using SimpleTCP;
 using System;
 using System.Collections.Generic;
@@ -15,11 +17,19 @@ namespace MagicalLifeClient.Networking
     {
         public SimpleTcpClient Client;
 
-        public void Start(int port, string ip = "192.168.0.10")
+        public void Start(int port, string ip = "192.168.0.15")
         {
             ClientProcessor.Initialize();
             this.Client = new SimpleTcpClient();
+            this.Client.DataReceived += this.Client_DataReceived;
+
             this.Client.Connect(ip, port);
+        }
+
+        private void Client_DataReceived(object sender, Message e)
+        {
+            NetworkMessage msg = (NetworkMessage)JsonUtil.Deserialize(e.MessageString);
+            ClientProcessor.Process(msg);
         }
     }
 }

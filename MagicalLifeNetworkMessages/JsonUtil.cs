@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using MagicalLifeNetworkMessages.Messages;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,9 @@ namespace MagicalLifeNetworkMessages
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        public static dynamic Deserialize(string str)
+        public static NetworkMessage Deserialize(string str)
         {
-            dynamic results = JsonConvert.DeserializeObject<dynamic>(str);
+            NetworkMessage results = JsonConvert.DeserializeObject<NetworkMessage>(str);
 
             return results;
         }

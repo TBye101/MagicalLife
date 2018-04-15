@@ -13,12 +13,21 @@ namespace MagicalLifeClient.Processing.Rules
     {
         public bool CanIHandle(NetworkMessage message)
         {
-            if (message.GetType() == typeof(ServerToClientWorldDataTransfer))
+            //if (message.GetType().IsInstanceOfType(new ServerToClientWorldDataTransfer(World.mainWorld)))
+            //{
+            //    return true;
+            //}
+
+            //return false;
+
+            if (message is ServerToClientWorldDataTransfer)
             {
                 return true;
             }
-
-            return false;
+            else
+            {
+                return false;
+            }
         }
 
         public void HandleMessage(NetworkMessage message)
