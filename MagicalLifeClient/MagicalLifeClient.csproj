@@ -44,12 +44,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Networking\TCPClient.cs" />
+    <Compile Include="Processing\ClientProcessor.cs" />
+    <Compile Include="Processing\Rules\ClientWorldDataTransferRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MagicalLifeAPI\MagicalLifeAPI.csproj">
       <Project>{fe8400a7-9dc8-4ab4-8c54-ac5f36bf7639}</Project>
       <Name>MagicalLifeAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MagicalLifeNetworkMessages\MagicalLifeNetworkMessages.csproj">
+      <Project>{BF096E54-E0E7-4928-A671-25D86BCE3A8F}</Project>
+      <Name>MagicalLifeNetworkMessages</Name>
     </ProjectReference>
     <ProjectReference Include="..\MagicalLifeSettings\MagicalLifeSettings.csproj">
       <Project>{76b12b63-df5d-40fd-8e90-03395095dd71}</Project>
@@ -60,8 +66,6 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Processing\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

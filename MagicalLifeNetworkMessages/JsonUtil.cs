@@ -10,14 +10,14 @@ namespace MagicalLifeNetworkMessages
     /// <summary>
     /// Used to convert an object between json and an actual object.
     /// </summary>
-    public class JsonUtil
+    public static class JsonUtil
     {
         /// <summary>
         /// Deserializes an object.
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        public dynamic Deserialize(string str)
+        public static dynamic Deserialize(string str)
         {
             dynamic results = JsonConvert.DeserializeObject<dynamic>(str);
 
@@ -29,9 +29,19 @@ namespace MagicalLifeNetworkMessages
         /// </summary>
         /// <param name="t"></param>
         /// <returns></returns>
-        public string Serialize(object t)
+        public static string Serialize(object t)
         {
             return JsonConvert.SerializeObject(t);
+        }
+
+        /// <summary>
+        /// Serializes an object to bytes.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        public static byte[] SerializeToBytes(object t)
+        {
+            return Encoding.ASCII.GetBytes(JsonUtil.Serialize(t));
         }
     }
 }

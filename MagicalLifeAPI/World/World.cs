@@ -33,7 +33,7 @@ namespace MagicalLifeAPI.World
         /// </summary>
         public static event EventHandler<WorldEventArgs> TurnEnd;
 
-        public static World mainWorld { get; protected set; }
+        public static World mainWorld { get; set; }
 
         /// <summary>
         /// If true, it is the player's turn. If not, AI logic and other logic should be running.

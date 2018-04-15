@@ -1,4 +1,7 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.World;
+using MagicalLifeNetworkMessages;
+using MagicalLifeNetworkMessages.Messages.ServerToClient;
 using SimpleTCP;
 using System;
 using System.Collections.Generic;
@@ -10,6 +13,7 @@ namespace MagicalLifeServer.Networking
 {
     /// <summary>
     /// The TCP server for communicating with clients.
+    /// This should be initialized and ONLY utilized after the world has been generated.
     /// </summary>
     public class TCPServer
     {
@@ -38,6 +42,7 @@ namespace MagicalLifeServer.Networking
 
         private void Server_DataReceived(object sender, Message e)
         {
+            
         }
 
         private void Server_ClientDisconnected(object sender, System.Net.Sockets.TcpClient e)
@@ -48,6 +53,7 @@ namespace MagicalLifeServer.Networking
         private void Server_ClientConnected(object sender, System.Net.Sockets.TcpClient e)
         {
             MasterLog.DebugWriteLine("Client connection recieved");
+            e.Client.Send(JsonUtil.SerializeToBytes(new ServerToClientWorldDataTransfer(World.mainWorld)));
         }
     }
 }

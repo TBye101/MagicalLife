@@ -1,4 +1,5 @@
-﻿using SimpleTCP;
+﻿using MagicalLifeClient.Processing;
+using SimpleTCP;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace MagicalLifeClient.Networking
 
         public void Start(int port, string ip = "192.168.0.10")
         {
+            ClientProcessor.Initialize();
             this.Client = new SimpleTcpClient();
             this.Client.Connect(ip, port);
         }
