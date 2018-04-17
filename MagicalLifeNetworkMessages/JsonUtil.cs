@@ -1,5 +1,7 @@
 ﻿using MagicalLifeNetworkMessages.Messages;
+using MagicalLifeNetworkMessages.Messages.ServerToClient;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +22,10 @@ namespace MagicalLifeNetworkMessages
         /// <returns></returns>
         public static NetworkMessage Deserialize(string str)
         {
-            NetworkMessage results = JsonConvert.DeserializeObject<NetworkMessage>(str);
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.TypeNameHandling = TypeNameHandling.All;
 
-            return results;
+            return JsonConvert.DeserializeObject<NetworkMessage>(str, settings);
         }
 
         /// <summary>
@@ -32,7 +35,10 @@ namespace MagicalLifeNetworkMessages
         /// <returns></returns>
         public static string Serialize(object t)
         {
-            return JsonConvert.SerializeObject(t);
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.TypeNameHandling = TypeNameHandling.All;
+
+            return JsonConvert.SerializeObject(t, settings);
         }
 
         /// <summary>
