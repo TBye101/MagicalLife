@@ -13,11 +13,14 @@ namespace MagicalLifeNetworkMessages.Messages.ServerToClient
     /// </summary>
     public class ServerToClientWorldDataTransfer
     {
-        public World World;
+        public Payload ID;
+
+        public Payload[,] Tiles;
 
         public ServerToClientWorldDataTransfer(World world)
         {
-            this.World = world;
+            this.ID = new Payload(world.ID, world.ID.GetType());
+            this.Tiles = JsonUtil.ToPayloads<Tile>(world.Tiles);
         }
     }
 }

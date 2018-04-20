@@ -16,7 +16,7 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// A 3D array that holds every tile in the current world.
         /// </summary>
-        public Tile[,] Tiles { get; private set; }
+        public Tile[,] Tiles { get; set; }
 
         /// <summary>
         /// Raised when the world is finished generating for the first time.

@@ -25,29 +25,17 @@ namespace MagicalLifeNetworkMessages.Messages
         public DateTime Created;
 
         /// <summary>
-        /// The type of the payload.
+        /// The payload this message is carrying.
         /// </summary>
-        public Type PayloadType;
+        public Payload Payload;
 
-        /// <summary>
-        /// The payload in its serialized form.
-        /// </summary>
-        public string SerializedPayload { get; set; }
-
-        /// <summary>
-        /// The deserialized version of the object. 
-        /// If null, no one has gotten the payload yet, so this has not been calculated yet.
-        /// </summary>
-        private object Deserialized = null;
-
-        /// <param name="Payload">The data that will be sent via this message.</param>
+        /// <param name="payload">The data that will be sent via this message.</param>
         /// <param name="type">The class type of the payload.</param>
-        public NetworkMessage(object Payload, Type type)
+        public NetworkMessage(object payload, Type type)
         {
-            this.PayloadType = type;
             this.ID = Guid.NewGuid();
+            this.Payload = new Payload(payload, type);
             this.Created = DateTime.Now;
-            this.SerializedPayload = JsonUtil.Serialize(Payload);
         }
 
         /// <summary>
@@ -56,23 +44,6 @@ namespace MagicalLifeNetworkMessages.Messages
         public NetworkMessage()
         {
 
-        }
-
-        /// <summary>
-        /// Returns the payload.
-        /// </summary>
-        /// <returns></returns>
-        public object GetPayload()
-        {
-            if (this.Deserialized == null)
-            {
-                JsonSerializerSettings settings = new JsonSerializerSettings();
-                settings.TypeNameHandling = TypeNameHandling.All;
-
-                this.Deserialized = JsonConvert.DeserializeObject(this.SerializedPayload, this.PayloadType, settings);
-            }
-
-            return this.Deserialized;
         }
     }
 }

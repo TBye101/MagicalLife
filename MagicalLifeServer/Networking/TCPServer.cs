@@ -61,9 +61,9 @@ namespace MagicalLifeServer.Networking
 
             NetworkMessage msg = JsonUtil.Deserialize(test);
 
-            ServerToClientWorldDataTransfer payload = (ServerToClientWorldDataTransfer)msg.GetPayload();
+            ServerToClientWorldDataTransfer payload = (ServerToClientWorldDataTransfer)msg.Payload.GetPayload();
 
-            World w = payload.World;
+            Tile[,] tiles = JsonUtil.ConvertPayloads<Tile>(payload.Tiles);
             MasterLog.DebugWriteLine("Serialized: " + test);
         }
     }

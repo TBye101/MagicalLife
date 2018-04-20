@@ -14,7 +14,7 @@ namespace MagicalLifeAPI.World.Tiles
             //this.AdditionalMovementCost = 0;
         }
 
-        public Dirt()
+        public Dirt() : base()
         {
         }
 

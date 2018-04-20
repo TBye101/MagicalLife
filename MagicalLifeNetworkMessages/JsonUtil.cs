@@ -44,5 +44,79 @@ namespace MagicalLifeNetworkMessages
 
             return JsonConvert.SerializeObject(t, settings);
         }
+
+        /// <summary>
+        /// Converts a list of payloads to their actual data type.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="payloads"></param>
+        /// <returns></returns>
+        public static List<T> ConvertPayloads<T>(List<Payload> payloads)
+        {
+            List<T> ret = new List<T>();
+
+            foreach (Payload item in payloads)
+            {
+                ret.Add((T)item.GetPayload());
+            }
+
+            return ret;
+        }
+
+        /// <summary>
+        /// Converts an array of payloads to their actual data types.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="payloads"></param>
+        /// <returns></returns>
+        public static T[,] ConvertPayloads<T>(Payload[,] payloads)
+        {
+            int x = 0;
+            int y = 0;
+            int xLength = payloads.GetLength(0);
+            int yLength = payloads.GetLength(1);
+
+            T[,] ret = new T[xLength, yLength];
+
+            while (x != xLength)
+            {
+                while (y != yLength)
+                {
+                    ret[x, y] = (T)payloads[x, y].GetPayload();
+
+                    y++;
+                }
+
+                y = 0;
+                x++;
+            }
+
+            return ret;
+        }
+
+        public static Payload[,] ToPayloads<T>(T[,] objects)
+        {
+            int x = 0;
+            int y = 0;
+            int xLength = objects.GetLength(0);
+            int yLength = objects.GetLength(1);
+
+            Payload[,] ret = new Payload[xLength, yLength];
+
+            while (x != xLength)
+            {
+                while (y != yLength)
+                {
+                    ret[x, y] = new Payload(objects[x, y], objects[x, y].GetType());
+
+                    y++;
+                }
+
+                y = 0;
+                x++;
+            }
+
+            return ret;
+        }
     }
 }

@@ -51,6 +51,7 @@
     <Compile Include="Messages\IMessageHandler.cs" />
     <Compile Include="Messages\MessageProcessor.cs" />
     <Compile Include="Messages\NetworkMessage.cs" />
+    <Compile Include="Messages\Payload.cs" />
     <Compile Include="Messages\ServerToClient\ServerToClientWorldDataTransfer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

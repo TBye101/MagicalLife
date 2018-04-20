@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.World;
+using MagicalLifeNetworkMessages;
 using MagicalLifeNetworkMessages.Messages;
 using MagicalLifeNetworkMessages.Messages.ServerToClient;
 using System;
@@ -19,8 +20,8 @@ namespace MagicalLifeClient.Processing.Rules
 
         public void HandleMessage(NetworkMessage message)
         {
-            ServerToClientWorldDataTransfer msg = (ServerToClientWorldDataTransfer)message.GetPayload();
-            World.mainWorld = msg.World;
+            ServerToClientWorldDataTransfer msg = (ServerToClientWorldDataTransfer)message.Payload.GetPayload();
+            World.mainWorld.Tiles = JsonUtil.ConvertPayloads<Tile>(msg.Tiles);
         }
     }
 }
