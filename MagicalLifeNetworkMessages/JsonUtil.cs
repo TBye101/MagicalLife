@@ -24,7 +24,10 @@ namespace MagicalLifeNetworkMessages
         {
             JsonSerializerSettings settings = new JsonSerializerSettings();
             settings.TypeNameHandling = TypeNameHandling.All;
-            //settings.
+
+            Type type = str.GetType();
+
+            NetworkMessage netMsg = JsonConvert.DeserializeObject<NetworkMessage>(str);
 
             return JsonConvert.DeserializeObject<NetworkMessage>(str, settings);
         }

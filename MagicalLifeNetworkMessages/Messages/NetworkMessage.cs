@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,13 +24,57 @@ namespace MagicalLifeNetworkMessages.Messages
         /// </summary>
         public DateTime Created;
 
-        public Type MessageType;
+        /// <summary>
+        /// The type of the payload.
+        /// </summary>
+        public Type PayloadType;
 
-        public NetworkMessage()
+        /// <summary>
+        /// The payload in its serialized form.
+        /// </summary>
+        private string SerializedPayload;
+
+        /// <summary>
+        /// The deserialized version of the object. 
+        /// If null, no one has gotten the payload yet, so this has not been calculated yet.
+        /// </summary>
+        //[JsonIgnore]
+        //[JsonProperty(Required = Required.Default)]
+        private object Deserialized = null;
+
+        /// <param name="Payload">The data that will be sent via this message.</param>
+        /// <param name="type">The class type of the payload.</param>
+        public NetworkMessage(object Payload, Type type)
         {
-            this.MessageType = this.GetType();
+            this.PayloadType = type;
             this.ID = Guid.NewGuid();
             this.Created = DateTime.Now;
+            this.SerializedPayload = JsonUtil.Serialize(Payload);
+        }
+
+        /// <summary>
+        /// For use by deserializers.
+        /// </summary>
+        public NetworkMessage()
+        {
+
+        }
+
+        /// <summary>
+        /// Returns the payload.
+        /// </summary>
+        /// <returns></returns>
+        public object GetPayload()
+        {
+            if (this.Deserialized == null)
+            {
+                JsonSerializerSettings settings = new JsonSerializerSettings();
+                settings.TypeNameHandling = TypeNameHandling.All;
+
+                this.Deserialized = JsonConvert.DeserializeObject(this.SerializedPayload, this.PayloadType, settings);
+            }
+
+            return this.Deserialized;
         }
     }
 }

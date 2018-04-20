@@ -11,7 +11,7 @@ namespace MagicalLifeNetworkMessages.Messages.ServerToClient
     /// Contains information regarding the world that the players will be playing in.
     /// Normally sent after the client has connected to the server, but has not recieved information about the world yet.
     /// </summary>
-    public class ServerToClientWorldDataTransfer : NetworkMessage
+    public class ServerToClientWorldDataTransfer
     {
         public World World;
 

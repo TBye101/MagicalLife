@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World;
 using MagicalLifeNetworkMessages;
+using MagicalLifeNetworkMessages.Messages;
 using MagicalLifeNetworkMessages.Messages.ServerToClient;
 using SimpleTCP;
 using System;
@@ -54,10 +55,15 @@ namespace MagicalLifeServer.Networking
         {
             MasterLog.DebugWriteLine("Client connection recieved");
             //e.Client.Send(JsonUtil.SerializeToBytes(new ServerToClientWorldDataTransfer(World.mainWorld)));
+            
+            //string test = JsonUtil.Serialize(new ServerToClientWorldDataTransfer(World.mainWorld));
+            string test = JsonUtil.Serialize(new NetworkMessage(World.mainWorld, World.mainWorld.GetType()));
 
-            string test = JsonUtil.Serialize(new ServerToClientWorldDataTransfer(World.mainWorld));
-            ServerToClientWorldDataTransfer world = (ServerToClientWorldDataTransfer)JsonUtil.Deserialize(test);
-            World w = world.World;
+            NetworkMessage msg = JsonUtil.Deserialize(test);
+
+            ServerToClientWorldDataTransfer payload = (ServerToClientWorldDataTransfer)msg.GetPayload();
+
+            World w = payload.World;
             MasterLog.DebugWriteLine("Serialized: " + test);
         }
     }

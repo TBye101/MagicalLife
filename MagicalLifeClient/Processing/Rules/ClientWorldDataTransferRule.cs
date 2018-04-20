@@ -19,7 +19,7 @@ namespace MagicalLifeClient.Processing.Rules
 
         public void HandleMessage(NetworkMessage message)
         {
-            ServerToClientWorldDataTransfer msg = (ServerToClientWorldDataTransfer)message;//Debugger stops debugging after this
+            ServerToClientWorldDataTransfer msg = (ServerToClientWorldDataTransfer)message.GetPayload();
             World.mainWorld = msg.World;
         }
     }
