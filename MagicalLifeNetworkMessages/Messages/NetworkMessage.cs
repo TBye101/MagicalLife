@@ -32,14 +32,12 @@ namespace MagicalLifeNetworkMessages.Messages
         /// <summary>
         /// The payload in its serialized form.
         /// </summary>
-        private string SerializedPayload;
+        public string SerializedPayload { get; set; }
 
         /// <summary>
         /// The deserialized version of the object. 
         /// If null, no one has gotten the payload yet, so this has not been calculated yet.
         /// </summary>
-        //[JsonIgnore]
-        //[JsonProperty(Required = Required.Default)]
         private object Deserialized = null;
 
         /// <param name="Payload">The data that will be sent via this message.</param>
