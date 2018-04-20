@@ -95,7 +95,7 @@ namespace MagicalLifeAPI.World
         /// </summary>
         public Resource Resources { get; set; }
 
-        public List<Vegetation> Plants { get; set; } = new List<Vegetation>();
+        //public List<Vegetation> Plants { get; set; } = new List<Vegetation>();
 
         /// <summary>
         /// The location of this tile in the tilemap.

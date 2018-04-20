@@ -55,9 +55,9 @@ namespace MagicalLifeServer.Networking
         {
             MasterLog.DebugWriteLine("Client connection recieved");
             //e.Client.Send(JsonUtil.SerializeToBytes(new ServerToClientWorldDataTransfer(World.mainWorld)));
-            
-            //string test = JsonUtil.Serialize(new ServerToClientWorldDataTransfer(World.mainWorld));
-            string test = JsonUtil.Serialize(new NetworkMessage(World.mainWorld, World.mainWorld.GetType()));
+
+            string test = JsonUtil.Serialize(new ServerToClientWorldDataTransfer(World.mainWorld));
+            //string test = JsonUtil.Serialize(new NetworkMessage(new Server));
 
             NetworkMessage msg = JsonUtil.Deserialize(test);
 
