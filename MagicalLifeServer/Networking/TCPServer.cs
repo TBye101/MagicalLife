@@ -53,7 +53,12 @@ namespace MagicalLifeServer.Networking
         private void Server_ClientConnected(object sender, System.Net.Sockets.TcpClient e)
         {
             MasterLog.DebugWriteLine("Client connection recieved");
-            e.Client.Send(JsonUtil.SerializeToBytes(new ServerToClientWorldDataTransfer(World.mainWorld)));
+            //e.Client.Send(JsonUtil.SerializeToBytes(new ServerToClientWorldDataTransfer(World.mainWorld)));
+
+            string test = JsonUtil.Serialize(new ServerToClientWorldDataTransfer(World.mainWorld));
+            ServerToClientWorldDataTransfer world = (ServerToClientWorldDataTransfer)JsonUtil.Deserialize(test);
+            World w = world.World;
+            MasterLog.DebugWriteLine("Serialized: " + test);
         }
     }
 }

@@ -24,6 +24,7 @@ namespace MagicalLifeNetworkMessages
         {
             JsonSerializerSettings settings = new JsonSerializerSettings();
             settings.TypeNameHandling = TypeNameHandling.All;
+            //settings.
 
             return JsonConvert.DeserializeObject<NetworkMessage>(str, settings);
         }
@@ -39,16 +40,6 @@ namespace MagicalLifeNetworkMessages
             settings.TypeNameHandling = TypeNameHandling.All;
 
             return JsonConvert.SerializeObject(t, settings);
-        }
-
-        /// <summary>
-        /// Serializes an object to bytes.
-        /// </summary>
-        /// <param name="t"></param>
-        /// <returns></returns>
-        public static byte[] SerializeToBytes(object t)
-        {
-            return Encoding.ASCII.GetBytes(JsonUtil.Serialize(t));
         }
     }
 }

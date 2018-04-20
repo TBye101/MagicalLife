@@ -5,6 +5,7 @@ using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Base;
 using Microsoft.Xna.Framework;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -13,6 +14,7 @@ namespace MagicalLifeAPI.World
     /// <summary>
     /// Every tile that implements this class must provide a parameterless version of itself for reflection purposes. That constructor will not be used during gameplay.
     /// </summary>
+    //[JsonConverter(typeof(JsonTileConverter))]
     public abstract class Tile : HasTexture
     {
         /// <summary>
@@ -20,7 +22,7 @@ namespace MagicalLifeAPI.World
         /// </summary>
         /// <param name="location">The 3D location of this tile in the map.</param>
         /// <param name="movementCost">This value is the movement cost of walking on this tile. It should be between 1 and 100</param>
-        protected Tile(Point location, int movementCost)
+        public Tile(Point location, int movementCost)
         {
             this.Location = location;
             this.MovementCost = movementCost;
@@ -31,7 +33,7 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// This constructor is used during loading/reflection only.
         /// </summary>
-        protected Tile()
+        public Tile()
         {
         }
 
