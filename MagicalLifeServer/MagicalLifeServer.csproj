@@ -42,6 +42,12 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="ZeroFormatter, Version=1.6.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZeroFormatter.1.6.4\lib\net45\ZeroFormatter.dll</HintPath>
+    </Reference>
+    <Reference Include="ZeroFormatter.Interfaces, Version=1.6.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZeroFormatter.Interfaces.1.6.4\lib\net45\ZeroFormatter.Interfaces.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Networking\TCPServer.cs" />
@@ -51,10 +57,6 @@
     <ProjectReference Include="..\MagicalLifeAPI\MagicalLifeAPI.csproj">
       <Project>{fe8400a7-9dc8-4ab4-8c54-ac5f36bf7639}</Project>
       <Name>MagicalLifeAPI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MagicalLifeNetworkMessages\MagicalLifeNetworkMessages.csproj">
-      <Project>{BF096E54-E0E7-4928-A671-25D86BCE3A8F}</Project>
-      <Name>MagicalLifeNetworkMessages</Name>
     </ProjectReference>
     <ProjectReference Include="..\MagicalLifeSettings\MagicalLifeSettings.csproj">
       <Project>{76b12b63-df5d-40fd-8e90-03395095dd71}</Project>

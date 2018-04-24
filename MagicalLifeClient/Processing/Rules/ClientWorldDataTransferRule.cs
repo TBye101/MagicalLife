@@ -21,7 +21,7 @@ namespace MagicalLifeClient.Processing.Rules
         public void HandleMessage(NetworkMessage message)
         {
             ServerToClientWorldDataTransfer msg = (ServerToClientWorldDataTransfer)message.Payload.GetPayload();
-            World.mainWorld.Tiles = JsonUtil.ConvertPayloads<Tile>(msg.Tiles);
+            World.mainWorld.Tiles = DataUtil.ConvertPayloads<Tile>(msg.Tiles);
         }
     }
 }

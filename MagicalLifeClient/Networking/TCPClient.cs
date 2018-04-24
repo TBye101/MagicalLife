@@ -28,7 +28,7 @@ namespace MagicalLifeClient.Networking
 
         private void Client_DataReceived(object sender, Message e)
         {
-            NetworkMessage msg = (NetworkMessage)JsonUtil.Deserialize(e.MessageString);
+            NetworkMessage msg = (NetworkMessage)DataUtil.Deserialize(e.MessageString);
             ClientProcessor.Process(msg);
         }
     }

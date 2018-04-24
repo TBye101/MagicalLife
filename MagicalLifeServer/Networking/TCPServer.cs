@@ -56,14 +56,14 @@ namespace MagicalLifeServer.Networking
             MasterLog.DebugWriteLine("Client connection recieved");
             //e.Client.Send(JsonUtil.SerializeToBytes(new ServerToClientWorldDataTransfer(World.mainWorld)));
 
-            string test = JsonUtil.Serialize(new ServerToClientWorldDataTransfer(World.mainWorld));
+            string test = DataUtil.Serialize(new ServerToClientWorldDataTransfer(World.mainWorld));
             //string test = JsonUtil.Serialize(new NetworkMessage(new Server));
 
-            NetworkMessage msg = JsonUtil.Deserialize(test);
+            NetworkMessage msg = DataUtil.Deserialize(test);
 
             ServerToClientWorldDataTransfer payload = (ServerToClientWorldDataTransfer)msg.Payload.GetPayload();
 
-            Tile[,] tiles = JsonUtil.ConvertPayloads<Tile>(payload.Tiles);
+            Tile[,] tiles = DataUtil.ConvertPayloads<Tile>(payload.Tiles);
             MasterLog.DebugWriteLine("Serialized: " + test);
         }
     }

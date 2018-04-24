@@ -1,0 +1,9 @@
+﻿syntax = "proto3";
+package MagicalLifeMessages;
+
+message MessageBase
+{
+	extensions 100 to max;
+
+	int Type = 0;
+}

@@ -47,12 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="JsonUtil.cs" />
-    <Compile Include="Messages\IMessageHandler.cs" />
-    <Compile Include="Messages\MessageProcessor.cs" />
-    <Compile Include="Messages\NetworkMessage.cs" />
-    <Compile Include="Messages\Payload.cs" />
-    <Compile Include="Messages\ServerToClient\ServerToClientWorldDataTransfer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,12 +55,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Messages\ClientToServer\" />
+    <Folder Include="Messages\ServerToClient\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MagicalLifeAPI\MagicalLifeAPI.csproj">
       <Project>{FE8400A7-9DC8-4AB4-8C54-AC5F36BF7639}</Project>
       <Name>MagicalLifeAPI</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Messages\GenericMessages.proto" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
