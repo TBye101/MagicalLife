@@ -62,6 +62,9 @@
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="protobuf-net, Version=2.3.7.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <HintPath>..\packages\protobuf-net.2.3.7\lib\net40\protobuf-net.dll</HintPath>
+    </Reference>
     <Reference Include="RoyT.AStar, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RoyT.AStar.2.1.0\lib\netstandard1.0\RoyT.AStar.dll</HintPath>
     </Reference>
@@ -73,6 +76,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.2.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
@@ -88,6 +92,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -118,6 +124,7 @@
     <Compile Include="GUI\HasTexture.cs" />
     <Compile Include="GUI\ISelectable.cs" />
     <Compile Include="GUI\SelectionType.cs" />
+    <Compile Include="Networking\BaseMessage.cs" />
     <Compile Include="Pathfinding\AStar\AStar.cs" />
     <Compile Include="Pathfinding\Cost\CostRetriever.cs" />
     <Compile Include="Pathfinding\Cost\IAddMovementCost.cs" />
@@ -126,6 +133,7 @@
     <Compile Include="Pathfinding\MainPathFinder.cs" />
     <Compile Include="Pathfinding\PathLink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Networking\ProtoUtil.cs" />
     <Compile Include="Universal\IGameLoader.cs" />
     <Compile Include="Universal\Unique.cs" />
     <Compile Include="Universal\UniversalEvents.cs" />
@@ -152,6 +160,8 @@
   <ItemGroup>
     <Folder Include="Entities\Animal\" />
     <Folder Include="Entities\Entity Components\" />
+    <Folder Include="Networking\Message Handlers\" />
+    <Folder Include="Networking\Messages\" />
     <Folder Include="World\Items\" />
   </ItemGroup>
   <ItemGroup>

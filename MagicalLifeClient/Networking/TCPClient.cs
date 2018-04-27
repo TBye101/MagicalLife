@@ -1,6 +1,4 @@
 ﻿using MagicalLifeClient.Processing;
-using MagicalLifeNetworkMessages;
-using MagicalLifeNetworkMessages.Messages;
 using SimpleTCP;
 using System;
 using System.Collections.Generic;
@@ -17,7 +15,7 @@ namespace MagicalLifeClient.Networking
     {
         public SimpleTcpClient Client;
 
-        public void Start(int port, string ip = "192.168.0.14")
+        public void Start(int port, string ip = "192.168.0.15")
         {
             ClientProcessor.Initialize();
             this.Client = new SimpleTcpClient();
@@ -28,8 +26,11 @@ namespace MagicalLifeClient.Networking
 
         private void Client_DataReceived(object sender, Message e)
         {
-            NetworkMessage msg = (NetworkMessage)DataUtil.Deserialize(e.MessageString);
-            ClientProcessor.Process(msg);
+            //NetworkMessage msg = (NetworkMessage)DataUtil.Deserialize(e.MessageString);
+            //ClientProcessor.Process(msg);
+            string encoded = Encoding.ASCII.GetString(e.Data);
+            object ob = MagicalLifeAPI.Protobuf.ProtoUtil.Deserialize(new System.IO.MemoryStream(e.Data));
+            MagicalLifeAPI.World.Tiles.Dirt dirt = (MagicalLifeAPI.World.Tiles.Dirt)ob;
         }
     }
 }

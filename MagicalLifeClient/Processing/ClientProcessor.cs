@@ -1,5 +1,4 @@
 ﻿using MagicalLifeClient.Processing.Rules;
-using MagicalLifeNetworkMessages.Messages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,16 +12,16 @@ namespace MagicalLifeClient.Processing
     /// </summary>
     public static class ClientProcessor
     {
-        private static MessageProcessor Processor = new MessageProcessor();
+        //private static MessageProcessor Processor = new MessageProcessor();
 
         public static void Initialize()
         {
-            Processor.AddRule(new ClientWorldDataTransferRule());
+            //Processor.AddRule(new ClientWorldDataTransferRule());
         }
 
-        public static void Process(NetworkMessage msg)
-        {
-            Processor.ProcessMessage(msg);
-        }
+        //public static void Process(NetworkMessage msg)
+        //{
+        //    Processor.ProcessMessage(msg);
+        //}
     }
 }

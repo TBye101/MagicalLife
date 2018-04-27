@@ -6,6 +6,7 @@ using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Base;
 using Microsoft.Xna.Framework;
 using Newtonsoft.Json;
+using ProtoBuf;
 using System;
 using System.Collections.Generic;
 
@@ -14,7 +15,8 @@ namespace MagicalLifeAPI.World
     /// <summary>
     /// Every tile that implements this class must provide a parameterless version of itself for reflection purposes. That constructor will not be used during gameplay.
     /// </summary>
-    //[JsonConverter(typeof(JsonTileConverter))]
+    [ProtoContract]
+    [ProtoInclude(500, typeof(Tiles.Dirt))]
     public abstract class Tile : HasTexture
     {
         /// <summary>
@@ -30,6 +32,11 @@ namespace MagicalLifeAPI.World
             this.TextureIndex = AssetManager.GetTextureIndex(this.GetTextureName());
         }
 
+        public Tile(int x, int y, int movementCost) : this(new Point(x, y), movementCost)
+        {
+            
+        }
+
         /// <summary>
         /// This constructor is used during loading/reflection only.
         /// </summary>
@@ -37,6 +44,7 @@ namespace MagicalLifeAPI.World
         {
         }
 
+        [ProtoMember(1)]
         private bool isWalkable = true;
 
         /// <summary>
@@ -73,6 +81,7 @@ namespace MagicalLifeAPI.World
         /// Returns the movement cost of this tile.
         /// Should be between 1-100.
         /// </summary>
+        [ProtoMember(2)]
         public int MovementCost { get; protected set; }
 
         /// <summary>
@@ -93,6 +102,7 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// The resources that can be found in this tile.
         /// </summary>
+        //[ProtoMember(3)]
         public Resource Resources { get; set; }
 
         //public List<Vegetation> Plants { get; set; } = new List<Vegetation>();
@@ -100,11 +110,13 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// The location of this tile in the tilemap.
         /// </summary>
+        [ProtoMember(4)]
         public Point Location { get; protected set; }
 
         /// <summary>
         /// The entity that is in this tile. Is null if there is not an entity in this tile.
         /// </summary>
+        //[ProtoMember(5)]
         public Living Living { get; set; } = null;
 
         /// <summary>
