@@ -12,7 +12,7 @@ namespace MagicalLifeAPI.Networking
     /// The base of every message.
     /// </summary>
     [ProtoContract]
-    [ProtoInclude(3, typeof(ConcreteTest))]
+    [ProtoInclude(2, typeof(ConcreteTest))]
     public class BaseMessage
     {
         /// <summary>

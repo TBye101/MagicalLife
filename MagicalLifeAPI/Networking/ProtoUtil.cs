@@ -17,8 +17,6 @@ namespace MagicalLifeAPI.Protobuf
     /// </summary>
     public static class ProtoUtil
     {
-        //Need a container to reference quickly for both serialization and deserialization of types
-
         /// <summary>
         /// Serializes the object to string.
         /// </summary>
@@ -34,6 +32,7 @@ namespace MagicalLifeAPI.Protobuf
                 return Convert.ToBase64String(outputStream.GetBuffer(),
                     0, (int)outputStream.Length);
             }
+            
         }
 
         public static object Deserialize(byte[] data)
