@@ -29,23 +29,25 @@ namespace MagicalLifeAPI.Protobuf
         {
             using (MemoryStream outputStream = new MemoryStream())
             {
-                Serializer.Serialize<T>(outputStream, data);
+                //Serializer.Serialize<T>(outputStream, data);
+                TypeModel.Serialize(outputStream, data);
 
                 return Convert.ToBase64String(outputStream.GetBuffer(),
                     0, (int)outputStream.Length);
             }
-            
         }
 
         public static object Deserialize(byte[] data)
         {
             using (MemoryStream ms = new System.IO.MemoryStream(data))
             {
-                BaseMessage Base = Serializer.Deserialize<BaseMessage>(ms);
-                if (Base.ID == 3)
+                //BaseMessage Base = Serializer.Deserialize<BaseMessage>(ms);
+                BaseMessage Base = (BaseMessage)TypeModel.Deserialize(ms, null, typeof(BaseMessage));
+                if (Base.ID == 1)
                 {
                     ms.Position = 0;
-                    ConcreteTest test = Serializer.Deserialize<ConcreteTest>(ms);
+                    //ConcreteTest test = Serializer.Deserialize<ConcreteTest>(ms);
+                    ConcreteTest test = (ConcreteTest)TypeModel.Deserialize(ms, null, typeof(ConcreteTest));
                     return test;
                 }
             }

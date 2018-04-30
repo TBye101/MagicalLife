@@ -13,7 +13,7 @@ namespace MagicalLifeAPI.Networking.Test
         [ProtoBuf.ProtoMember(2)]
         public int ID2 = 4;
 
-        public ConcreteTest() : base(3)
+        public ConcreteTest() : base(1)
         {
         }
         public void Test()

@@ -33,7 +33,7 @@ namespace MagicalLifeAPI.Networking
 
             MetaType baseMessageType = model.Add(typeof(BaseMessage), true);
 
-            //Must start at 2 because protobuf-net can't have members and inheritance attributes with the same ID.
+            //Must start at 2 because Protobuf-net can't have members and inheritance attributes with the same ID. I think. :D
             int i = 2;
             int length = this.Messages.Count + 2;
             while (i < length)
@@ -43,6 +43,8 @@ namespace MagicalLifeAPI.Networking
                 i++;
                 progress++;
             }
+
+            ProtoUtil.TypeModel = model;
         }
     }
 }
