@@ -1,5 +1,5 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Networking.Messages;
+using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Test;
 using MagicalLifeAPI.Protobuf;
 using MagicalLifeAPI.World;
@@ -8,6 +8,7 @@ using SimpleTCP;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -55,15 +56,33 @@ namespace MagicalLifeServer.Networking
         private void Server_ClientConnected(object sender, System.Net.Sockets.TcpClient e)
         {
             MasterLog.DebugWriteLine("Client connection recieved");
-            //e.Client.Send(JsonUtil.SerializeToBytes(new ServerToClientWorldDataTransfer(World.mainWorld)));
 
-            ////string test = ProtoUtil.Serialize<MagicalLifeAPI.Networking.BaseMessage>(new MagicalLifeAPI.Networking.BaseMessage());
-            ////string test = ProtoUtil.Serialize<TileMessage>(new TileMessage(new Dirt(3, 9)));
-            string test = ProtoUtil.Serialize<ConcreteTest>(new ConcreteTest());
-            e.Client.Send(Convert.FromBase64String(test));
+            //string test = ProtoUtil.Serialize<ConcreteTest>(new ConcreteTest());
+            //e.Client.Send(Convert.FromBase64String(test));
+            this.Send<ConcreteTest>(new ConcreteTest(), e.Client);
+        }
 
-            //TestRunner a = new TestRunner();
-            //a.Go();
+        /// <summary>
+        /// Broadcasts the message to a specific client.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="data"></param>
+        /// <param name="client"></param>
+        public void Send<T>(T data, Socket client)
+            where T : BaseMessage
+        {
+            client.Send(Convert.FromBase64String(ProtoUtil.Serialize<T>(data)));
+        }
+
+        /// <summary>
+        /// Broadcasts the message to all connected clients.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="data"></param>
+        public void Broadcast<T>(T data)
+            where T : BaseMessage
+        {
+            this.Server.Broadcast(Convert.FromBase64String(ProtoUtil.Serialize<T>(data)));
         }
     }
 }

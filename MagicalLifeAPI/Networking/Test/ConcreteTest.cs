@@ -8,11 +8,15 @@ using System.Threading.Tasks;
 namespace MagicalLifeAPI.Networking.Test
 {
     [ProtoBuf.ProtoContract]
-    public class ConcreteTest : AbstractTest
+    public class ConcreteTest : BaseMessage
     {
         [ProtoBuf.ProtoMember(2)]
         public int ID2 = 4;
-        public override void Test()
+
+        public ConcreteTest() : base(3)
+        {
+        }
+        public void Test()
         {
             MasterLog.DebugWriteLine("It worked!");
         }

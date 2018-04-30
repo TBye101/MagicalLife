@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.Networking;
-using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Test;
 using MagicalLifeAPI.World.Tiles;
 using ProtoBuf;
@@ -34,22 +33,14 @@ namespace MagicalLifeAPI.Protobuf
 
                 return Convert.ToBase64String(outputStream.GetBuffer(),
                     0, (int)outputStream.Length);
-                //return outputStream.GetBuffer();
             }
-
-            //MemoryStream outputStream = new MemoryStream();
-            //Serializer.Serialize<T>(outputStream, data);
-            //outputStream.Position = 0;
-
-            //StreamReader outputReader = new StreamReader(outputStream);
-            //return outputReader.ReadToEnd();
         }
 
         public static object Deserialize(byte[] data)
         {
             using (MemoryStream ms = new System.IO.MemoryStream(data))
             {
-                AbstractTest Base = Serializer.Deserialize<AbstractTest>(ms);
+                BaseMessage Base = Serializer.Deserialize<BaseMessage>(ms);
                 if (Base.ID == 3)
                 {
                     ms.Position = 0;
@@ -58,15 +49,7 @@ namespace MagicalLifeAPI.Protobuf
                 }
             }
 
-            return null;
-
-            ////if (Base. == 0)
-            ////{
-            ////Dirt dirt = Serializer.Deserialize<Dirt>(data);
-            ////}
-
-            //return null;
-            //maybe preregister each type with something that just looks up at the reference table for what the type's id says it is, then deserializes to that.
+            throw new Exception("Unknown message type!");
         }
-        }
+    }
 }
