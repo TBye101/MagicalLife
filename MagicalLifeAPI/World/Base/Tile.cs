@@ -45,7 +45,7 @@ namespace MagicalLifeAPI.World
         }
 
         [ProtoMember(1)]
-        private bool isWalkable = true;
+        public bool isWalkable = true;
 
         /// <summary>
         /// If true, then the tile can be walked on by living.
@@ -82,7 +82,7 @@ namespace MagicalLifeAPI.World
         /// Should be between 1-100.
         /// </summary>
         [ProtoMember(2)]
-        public int MovementCost { get; protected set; }
+        public int MovementCost { get; set; }
 
         /// <summary>
         /// The size, in pixels of how big each tile is.
@@ -110,7 +110,7 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// The location of this tile in the tilemap.
         /// </summary>
-        [ProtoMember(4)]
+        //[ProtoMember(4)]
         public Point Location { get; protected set; }
 
         /// <summary>

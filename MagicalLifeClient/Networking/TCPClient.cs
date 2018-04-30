@@ -28,9 +28,8 @@ namespace MagicalLifeClient.Networking
         {
             //NetworkMessage msg = (NetworkMessage)DataUtil.Deserialize(e.MessageString);
             //ClientProcessor.Process(msg);
-            string encoded = Encoding.ASCII.GetString(e.Data);
-            object ob = MagicalLifeAPI.Protobuf.ProtoUtil.Deserialize(new System.IO.MemoryStream(e.Data));
-            MagicalLifeAPI.World.Tiles.Dirt dirt = (MagicalLifeAPI.World.Tiles.Dirt)ob;
+            object ob = MagicalLifeAPI.Protobuf.ProtoUtil.Deserialize(e.Data);
+            //MagicalLifeAPI.World.Tiles.Dirt dirt = (MagicalLifeAPI.World.Tiles.Dirt)ob;
         }
     }
 }

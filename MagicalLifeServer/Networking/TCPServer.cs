@@ -1,4 +1,6 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.Networking.Messages;
+using MagicalLifeAPI.Networking.Test;
 using MagicalLifeAPI.Protobuf;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Tiles;
@@ -55,9 +57,13 @@ namespace MagicalLifeServer.Networking
             MasterLog.DebugWriteLine("Client connection recieved");
             //e.Client.Send(JsonUtil.SerializeToBytes(new ServerToClientWorldDataTransfer(World.mainWorld)));
 
-            //string test = ProtoUtil.Serialize<Dirt>(new Dirt(0, 2));
-            string test = ProtoUtil.Serialize<string>("Test");
-            e.Client.Send(Encoding.ASCII.GetBytes(test));
+            ////string test = ProtoUtil.Serialize<MagicalLifeAPI.Networking.BaseMessage>(new MagicalLifeAPI.Networking.BaseMessage());
+            ////string test = ProtoUtil.Serialize<TileMessage>(new TileMessage(new Dirt(3, 9)));
+            string test = ProtoUtil.Serialize<ConcreteTest>(new ConcreteTest());
+            e.Client.Send(Convert.FromBase64String(test));
+
+            //TestRunner a = new TestRunner();
+            //a.Go();
         }
     }
 }
