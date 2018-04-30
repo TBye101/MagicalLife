@@ -17,6 +17,8 @@ namespace MagicalLifeAPI.Protobuf
     /// </summary>
     public static class ProtoUtil
     {
+        public static TypeModel TypeModel;
+
         /// <summary>
         /// Serializes the object to string.
         /// </summary>

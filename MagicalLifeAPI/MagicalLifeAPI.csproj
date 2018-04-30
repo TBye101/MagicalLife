@@ -125,6 +125,7 @@
     <Compile Include="GUI\ISelectable.cs" />
     <Compile Include="GUI\SelectionType.cs" />
     <Compile Include="Networking\BaseMessage.cs" />
+    <Compile Include="Networking\ProtoTypeLoader.cs" />
     <Compile Include="Networking\Test\ConcreteTest.cs" />
     <Compile Include="Pathfinding\AStar\AStar.cs" />
     <Compile Include="Pathfinding\Cost\CostRetriever.cs" />
@@ -135,7 +136,6 @@
     <Compile Include="Pathfinding\PathLink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Networking\ProtoUtil.cs" />
-    <Compile Include="Test\ProtoTestType.cs" />
     <Compile Include="Universal\IGameLoader.cs" />
     <Compile Include="Universal\Unique.cs" />
     <Compile Include="Universal\UniversalEvents.cs" />

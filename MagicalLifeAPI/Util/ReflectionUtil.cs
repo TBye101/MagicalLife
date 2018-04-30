@@ -37,7 +37,7 @@ namespace MagicalLifeAPI.Util
         }
 
         /// <summary>
-        /// Loads all objects that inherit implement the abstract class "T".
+        /// Loads all objects that inherit from the abstract class "T".
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="containing"></param>
@@ -56,6 +56,21 @@ namespace MagicalLifeAPI.Util
                     {
                         objects.Add((T)tileObject);
                     }
+                }
+            }
+
+            return objects;
+        }
+
+        public static List<Type> LoadTypeOfAllSubclasses<T>(Assembly containing)
+        {
+            List<Type> objects = new List<Type>();
+
+            foreach (Type item in containing.ExportedTypes)
+            {
+                if (item.IsSubclassOf(typeof(T)))
+                {
+                    objects.Add(item);
                 }
             }
 
