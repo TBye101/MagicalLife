@@ -1,4 +1,6 @@
-﻿using MagicalLifeClient.Processing;
+﻿using MagicalLifeAPI.Networking;
+using MagicalLifeAPI.Protobuf;
+using MagicalLifeClient.Processing;
 using SimpleTCP;
 using System;
 using System.Collections.Generic;
@@ -26,10 +28,8 @@ namespace MagicalLifeClient.Networking
 
         private void Client_DataReceived(object sender, Message e)
         {
-            //NetworkMessage msg = (NetworkMessage)DataUtil.Deserialize(e.MessageString);
-            //ClientProcessor.Process(msg);
-            object ob = MagicalLifeAPI.Protobuf.ProtoUtil.Deserialize(e.Data);
-            //MagicalLifeAPI.World.Tiles.Dirt dirt = (MagicalLifeAPI.World.Tiles.Dirt)ob;
+            BaseMessage msg = (BaseMessage)ProtoUtil.Deserialize(Convert.FromBase64String(e.MessageString));
+            ClientProcessor.Process(msg);
         }
     }
 }

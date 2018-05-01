@@ -125,6 +125,8 @@
     <Compile Include="GUI\ISelectable.cs" />
     <Compile Include="GUI\SelectionType.cs" />
     <Compile Include="Networking\BaseMessage.cs" />
+    <Compile Include="Networking\Message Handlers\ConcreteTestHandler.cs" />
+    <Compile Include="Networking\MessageHandler.cs" />
     <Compile Include="Networking\ProtoTypeLoader.cs" />
     <Compile Include="Networking\Test\ConcreteTest.cs" />
     <Compile Include="Pathfinding\AStar\AStar.cs" />
@@ -162,7 +164,6 @@
   <ItemGroup>
     <Folder Include="Entities\Animal\" />
     <Folder Include="Entities\Entity Components\" />
-    <Folder Include="Networking\Message Handlers\" />
     <Folder Include="Networking\Messages\" />
     <Folder Include="World\Items\" />
   </ItemGroup>
