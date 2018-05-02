@@ -2,7 +2,11 @@
 	[Version 0.0.0.7]
 		### GUI
 			*Added buttons to the main menu to allow the user to join and host a multiplayer game
-	[Version 0.0.0.6]
+		### API
+			*API is now capable of sending and recieving objects in a very dynamic and elegant way
+		### Bugs
+			*Discovered issue [#14](https://github.com/SneakyTactician/EarthWithMagic/issues/14)
+    [Version 0.0.0.6]
 		### GUI
 			*Stone is now rendered
 		### API

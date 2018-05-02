@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{09293283-6E6D-4652-A633-5B70452244DA}"
 	ProjectSection(SolutionItems) = preProject
-		CHANGELOG.txt = CHANGELOG.txt
+		CHANGELOG.md = CHANGELOG.md
 		Credit.txt = Credit.txt
 	EndProjectSection
 EndProject
