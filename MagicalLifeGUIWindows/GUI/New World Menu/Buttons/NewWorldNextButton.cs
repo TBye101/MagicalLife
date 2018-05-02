@@ -32,7 +32,7 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu.Buttons
             MagicalLifeServer.Networking.TCPServer tCPServer = new MagicalLifeServer.Networking.TCPServer();
             tCPServer.Start(5849);
             MagicalLifeClient.Networking.TCPClient tCPClient = new MagicalLifeClient.Networking.TCPClient();
-            tCPClient.Start(5849);
+            tCPClient.Start(5849, "localhost");
         }
 
         public override void DoubleClick(MouseEventArgs e)

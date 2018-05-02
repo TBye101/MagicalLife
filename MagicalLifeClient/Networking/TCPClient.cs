@@ -28,7 +28,8 @@ namespace MagicalLifeClient.Networking
 
         private void Client_DataReceived(object sender, Message e)
         {
-            BaseMessage msg = (BaseMessage)ProtoUtil.Deserialize(Convert.FromBase64String(e.MessageString));
+            //BaseMessage msg = (BaseMessage)ProtoUtil.Deserialize(Convert.FromBase64String(e.MessageString));
+            BaseMessage msg = (BaseMessage)ProtoUtil.Deserialize(e.Data);
             ClientProcessor.Process(msg);
         }
     }

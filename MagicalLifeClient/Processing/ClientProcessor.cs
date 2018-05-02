@@ -21,8 +21,7 @@ namespace MagicalLifeClient.Processing
         {
             ConcreteTestHandler test = new ConcreteTestHandler();
 
-            Handlers.Insert(test.MessageID, test);
-
+            Handlers.Add(test);
         }
 
         public static void Process(BaseMessage msg)
