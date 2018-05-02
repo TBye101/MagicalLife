@@ -91,6 +91,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
+    <Compile Include="GUI\MainMenu\Buttons\HostGameButton.cs" />
+    <Compile Include="GUI\MainMenu\Buttons\JoinGameButton.cs" />
     <Compile Include="Input\ClickBounds.cs" />
     <Compile Include="GUI\In Game GUI\Buttons\TurnButton.cs" />
     <Compile Include="GUI\In Game GUI\InGameGUI.cs" />
