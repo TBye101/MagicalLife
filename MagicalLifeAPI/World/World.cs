@@ -1,9 +1,5 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities;
-using MagicalLifeAPI.Entities.Movement;
-using MagicalLifeAPI.Filing.Logging;
+﻿using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Universal;
-using MagicalLifeAPI.Util;
 using System;
 
 namespace MagicalLifeAPI.World
@@ -16,7 +12,7 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// A 3D array that holds every tile in the current world.
         /// </summary>
-        public Tile[,] Tiles { get; private set; }
+        public Tile[,] Tiles { get; set; }
 
         /// <summary>
         /// Raised when the world is finished generating for the first time.
@@ -33,7 +29,7 @@ namespace MagicalLifeAPI.World
         /// </summary>
         public static event EventHandler<WorldEventArgs> TurnEnd;
 
-        public static World mainWorld { get; protected set; }
+        public static World mainWorld { get; set; }
 
         /// <summary>
         /// If true, it is the player's turn. If not, AI logic and other logic should be running.

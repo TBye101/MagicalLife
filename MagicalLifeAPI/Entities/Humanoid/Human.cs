@@ -1,5 +1,4 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.GUI;
+﻿using MagicalLifeAPI.GUI;
 using Microsoft.Xna.Framework;
 
 namespace MagicalLifeAPI.Entities.Humanoid

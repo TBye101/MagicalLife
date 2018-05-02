@@ -3,11 +3,6 @@ using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.GUI.New_World_Menu.Buttons
 {
@@ -28,6 +23,11 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu.Buttons
             MenuHandler.Clear();
             In_Game_GUI.InGameGUI.Initialize();
             BoundHandler.Popup(In_Game_GUI.InGameGUI.InGame);
+
+            MagicalLifeServer.Networking.TCPServer tCPServer = new MagicalLifeServer.Networking.TCPServer();
+            tCPServer.Start(5849);
+            MagicalLifeClient.Networking.TCPClient tCPClient = new MagicalLifeClient.Networking.TCPClient();
+            tCPClient.Start(5849, "localhost");
         }
 
         public override void DoubleClick(MouseEventArgs e)

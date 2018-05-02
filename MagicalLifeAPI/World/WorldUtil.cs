@@ -1,7 +1,5 @@
-﻿using MagicalLifeAPI.DataTypes;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace MagicalLifeAPI.World
 {

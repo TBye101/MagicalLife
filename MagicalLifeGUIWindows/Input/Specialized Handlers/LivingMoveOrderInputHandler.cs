@@ -1,18 +1,12 @@
-﻿using DijkstraAlgorithm.Pathing;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities;
-using MagicalLifeAPI.Entities.Movement;
+﻿using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
 using MagicalLifeGUIWindows.Input.History;
 using MonoGame.Extended.Input.InputListeners;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 {
@@ -22,7 +16,6 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
     /// </summary>
     public class LivingMoveOrderInputHandler
     {
-
         public LivingMoveOrderInputHandler()
         {
             InputHistory.InputAdded += this.InputHistory_InputAdded;

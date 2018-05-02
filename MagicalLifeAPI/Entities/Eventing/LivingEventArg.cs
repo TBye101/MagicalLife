@@ -1,11 +1,4 @@
-﻿using MagicalLifeAPI.DataTypes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MagicalLifeAPI.Entities.Eventing
+﻿namespace MagicalLifeAPI.Entities.Eventing
 {
     /// <summary>
     /// Used to hold information about a event involving a living entity.

@@ -1,6 +1,5 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeGUIWindows.GUI;
-using MagicalLifeGUIWindows.GUI.MainMenu;
 using MonoGame.Extended.Input.InputListeners;
 
 namespace MagicalLifeGUIWindows.Input

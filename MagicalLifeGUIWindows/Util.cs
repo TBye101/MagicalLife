@@ -1,11 +1,5 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.World;
+﻿using MagicalLifeAPI.World;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows
 {

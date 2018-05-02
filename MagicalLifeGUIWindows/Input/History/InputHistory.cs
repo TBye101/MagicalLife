@@ -1,17 +1,14 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.World;
 using MonoGame.Extended.Input.InputListeners;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.Input.History
 {
     /// <summary>
-    /// Used to keep a history of input. 
+    /// Used to keep a history of input.
     /// </summary>
     public static class InputHistory
     {
@@ -51,7 +48,6 @@ namespace MagicalLifeGUIWindows.Input.History
             }
         }
 
-
         public static void Initialize()
         {
             BoundHandler.MouseListner.MouseDoubleClicked += MouseListner_MouseDoubleClicked;
@@ -70,6 +66,7 @@ namespace MagicalLifeGUIWindows.Input.History
                 case Microsoft.Xna.Framework.Input.Keys.RightShift:
                     ShiftDown = false;
                     break;
+
                 case Microsoft.Xna.Framework.Input.Keys.LeftControl:
                 case Microsoft.Xna.Framework.Input.Keys.RightControl:
                     CtrlDown = false;
@@ -85,6 +82,7 @@ namespace MagicalLifeGUIWindows.Input.History
                 case Microsoft.Xna.Framework.Input.Keys.RightShift:
                     ShiftDown = true;
                     break;
+
                 case Microsoft.Xna.Framework.Input.Keys.LeftControl:
                 case Microsoft.Xna.Framework.Input.Keys.RightControl:
                     CtrlDown = true;
@@ -121,7 +119,6 @@ namespace MagicalLifeGUIWindows.Input.History
 
             if (!lastHistory.OrderedToTile)
             {
-
                 if (lastHistory.DeselectingAll)
                 {
                     Selected.Clear();

@@ -1,9 +1,4 @@
 ﻿using MagicalLifeSettings.Storage;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.GUI.In_Game_GUI
 {
@@ -23,12 +18,12 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_GUI
                 {
                     case Resolution._1920x1080:
                         return InGameGUILayout1920x1080.TurnButtonX;
+
                     default:
                         return InGameGUILayout1920x1080.TurnButtonX;
                 }
             }
         }
-
 
         /// <summary>
         /// The y position of the turn button.
@@ -41,6 +36,7 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_GUI
                 {
                     case Resolution._1920x1080:
                         return InGameGUILayout1920x1080.TurnButtonY;
+
                     default:
                         return InGameGUILayout1920x1080.TurnButtonY;
                 }
@@ -58,6 +54,7 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_GUI
                 {
                     case Resolution._1920x1080:
                         return InGameGUILayout1920x1080.TurnButtonWidth;
+
                     default:
                         return InGameGUILayout1920x1080.TurnButtonWidth;
                 }
@@ -75,6 +72,7 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_GUI
                 {
                     case Resolution._1920x1080:
                         return InGameGUILayout1920x1080.TurnButtonHeight;
+
                     default:
                         return InGameGUILayout1920x1080.TurnButtonHeight;
                 }
@@ -92,6 +90,7 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_GUI
                 {
                     case Resolution._1920x1080:
                         return InGameGUILayout1920x1080.ContainerX;
+
                     default:
                         return InGameGUILayout1920x1080.ContainerX;
                 }
@@ -109,6 +108,7 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_GUI
                 {
                     case Resolution._1920x1080:
                         return InGameGUILayout1920x1080.ContainerY;
+
                     default:
                         return InGameGUILayout1920x1080.ContainerY;
                 }
@@ -126,6 +126,7 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_GUI
                 {
                     case Resolution._1920x1080:
                         return InGameGUILayout1920x1080.ContainerWidth;
+
                     default:
                         return InGameGUILayout1920x1080.ContainerWidth;
                 }
@@ -143,6 +144,7 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_GUI
                 {
                     case Resolution._1920x1080:
                         return InGameGUILayout1920x1080.ContainerHeight;
+
                     default:
                         return InGameGUILayout1920x1080.ContainerHeight;
                 }

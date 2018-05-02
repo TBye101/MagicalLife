@@ -1,12 +1,6 @@
 ﻿using MagicalLifeAPI.Universal;
-using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Input.History;
 using MagicalLifeGUIWindows.Input.Specialized_Handlers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.Load
 {

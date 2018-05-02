@@ -1,9 +1,5 @@
-﻿using MagicalLifeAPI.GUI;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.Input.Comparators
 {
@@ -18,7 +14,7 @@ namespace MagicalLifeGUIWindows.Input.Comparators
             {
                 return x.Bounds.X.CompareTo(y.Bounds.Y);
             }
-            
+
             if (x.Bounds.Y != y.Bounds.Y)
             {
                 return x.Bounds.Y.CompareTo(y.Bounds.Y);

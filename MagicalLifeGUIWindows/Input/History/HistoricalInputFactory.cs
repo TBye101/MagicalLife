@@ -1,12 +1,7 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.GUI;
+﻿using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.World;
 using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.Input.History
 {
@@ -22,8 +17,10 @@ namespace MagicalLifeGUIWindows.Input.History
             {
                 case MonoGame.Extended.Input.InputListeners.MouseButton.Left:
                     return this.SingleSelect(e);
+
                 case MonoGame.Extended.Input.InputListeners.MouseButton.Right:
                     return this.Order(e);
+
                 default:
                     return null;
             }

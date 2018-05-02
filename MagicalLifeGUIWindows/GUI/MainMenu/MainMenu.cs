@@ -1,6 +1,4 @@
-﻿using MagicalLifeGUIWindows.Map;
-
-namespace MagicalLifeGUIWindows.GUI.MainMenu
+﻿namespace MagicalLifeGUIWindows.GUI.MainMenu
 {
     /// <summary>
     /// Handles some main menu stuff.

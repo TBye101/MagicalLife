@@ -1,10 +1,7 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities.Eventing;
+﻿using MagicalLifeAPI.Entities.Eventing;
 using MagicalLifeAPI.Entities.Movement;
-using MagicalLifeAPI.Entities.Util;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Pathfinding;
-using MagicalLifeAPI.Universal;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;

@@ -1,10 +1,5 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.GUI;
-using System;
+﻿using MagicalLifeAPI.GUI;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.Input.History
 {

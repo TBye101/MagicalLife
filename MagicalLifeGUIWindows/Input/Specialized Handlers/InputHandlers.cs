@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
+﻿namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 {
     /// <summary>
     /// Holds all of the specialized input handlers.

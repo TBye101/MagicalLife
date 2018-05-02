@@ -1,6 +1,4 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.World;
+﻿using MagicalLifeAPI.World;
 using MagicalLifeGUIWindows.GUI.MainMenu;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;
@@ -9,7 +7,6 @@ using MagicalLifeGUIWindows.Rendering.Map;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
 using System.Linq;
 using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
 
@@ -100,9 +97,11 @@ namespace MagicalLifeGUIWindows.Rendering
                                 case InputBox textBox:
                                     GUIRenderer.DrawInputBoxInContainer((InputBox)control, ref spBatch, item);
                                     break;
+
                                 case Label label:
                                     GUIRenderer.DrawLabelInContainer((Label)control, ref spBatch, item);
                                     break;
+
                                 default:
                                     //Should probably send out a event or something, to allow someone else to render it.
                                     //TODO:
