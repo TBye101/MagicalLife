@@ -2,15 +2,9 @@
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Test;
 using MagicalLifeAPI.Protobuf;
-using MagicalLifeAPI.World;
-using MagicalLifeAPI.World.Tiles;
 using SimpleTCP;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeServer.Networking
 {
@@ -45,7 +39,6 @@ namespace MagicalLifeServer.Networking
 
         private void Server_DataReceived(object sender, Message e)
         {
-            
         }
 
         private void Server_ClientDisconnected(object sender, System.Net.Sockets.TcpClient e)

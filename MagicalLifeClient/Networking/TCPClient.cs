@@ -2,11 +2,6 @@
 using MagicalLifeAPI.Protobuf;
 using MagicalLifeClient.Processing;
 using SimpleTCP;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeClient.Networking
 {

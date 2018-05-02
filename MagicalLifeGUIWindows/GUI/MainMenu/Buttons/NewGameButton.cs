@@ -1,6 +1,4 @@
-﻿using MagicalLifeAPI.World;
-using MagicalLifeAPI.World.World_Generation.Generators;
-using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 

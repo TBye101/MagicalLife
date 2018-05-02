@@ -1,9 +1,4 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Networking.Test
 {
@@ -16,6 +11,7 @@ namespace MagicalLifeAPI.Networking.Test
         public ConcreteTest() : base(1)
         {
         }
+
         public void Test()
         {
             MasterLog.DebugWriteLine("It worked!");

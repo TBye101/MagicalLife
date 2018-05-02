@@ -1,12 +1,6 @@
 ﻿using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Message_Handlers;
-using MagicalLifeAPI.Networking.Test;
-using MagicalLifeClient.Processing.Rules;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeClient.Processing
 {

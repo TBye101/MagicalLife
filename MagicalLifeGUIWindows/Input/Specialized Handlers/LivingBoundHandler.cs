@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities;
+﻿using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Entities.Eventing;
-using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.World;
-using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Rendering;
 using Microsoft.Xna.Framework;
 

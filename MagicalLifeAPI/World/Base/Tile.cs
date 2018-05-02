@@ -1,14 +1,9 @@
 ﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Universal;
-using MagicalLifeAPI.World.Base;
 using Microsoft.Xna.Framework;
-using Newtonsoft.Json;
 using ProtoBuf;
 using System;
-using System.Collections.Generic;
 
 namespace MagicalLifeAPI.World
 {
@@ -34,7 +29,6 @@ namespace MagicalLifeAPI.World
 
         public Tile(int x, int y, int movementCost) : this(new Point(x, y), movementCost)
         {
-            
         }
 
         /// <summary>

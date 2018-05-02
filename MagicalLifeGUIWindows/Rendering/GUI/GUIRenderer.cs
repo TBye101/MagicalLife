@@ -1,15 +1,8 @@
-﻿using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeGUIWindows.GUI.MainMenu;
-using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Rendering.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
 
 namespace MagicalLifeGUIWindows.Rendering.GUI

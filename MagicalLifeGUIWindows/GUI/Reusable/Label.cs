@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
 
@@ -30,7 +25,6 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
         public Label() : base()
         {
-
         }
 
         public override void Click(MouseEventArgs e)

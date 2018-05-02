@@ -1,11 +1,6 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities;
-using MagicalLifeAPI.Entities.Movement;
-using MagicalLifeAPI.Filing.Logging;
+﻿using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Universal;
-using MagicalLifeAPI.Util;
 using System;
-using ZeroFormatter;
 
 namespace MagicalLifeAPI.World
 {

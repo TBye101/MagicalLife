@@ -3,11 +3,6 @@ using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.GUI.New_World_Menu.Buttons
 {

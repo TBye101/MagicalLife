@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MagicalLifeGUIWindows.GUI.In_Game_GUI
+﻿namespace MagicalLifeGUIWindows.GUI.In_Game_GUI
 {
     /// <summary>
     /// The layout of the in game GUI for 1920x1080 resolution.
@@ -30,8 +24,6 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_GUI
         /// The height of the turn button.
         /// </summary>
         public static readonly int TurnButtonHeight = 100;
-
-
 
         /// <summary>
         /// The x position at which the in game GUI container is drawn.

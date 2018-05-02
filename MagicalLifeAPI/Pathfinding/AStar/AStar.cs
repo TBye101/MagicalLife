@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MagicalLifeAPI.Entities;
+﻿using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World;
 using Microsoft.Xna.Framework;
 using RoyT.AStar;
+using System;
+using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Pathfinding.AStar
 {
@@ -53,7 +50,7 @@ namespace MagicalLifeAPI.Pathfinding.AStar
                 i++;
             }
 
-            return ret; 
+            return ret;
         }
 
         public void Initialize()

@@ -1,6 +1,4 @@
-﻿using MagicalLifeAPI.DataTypes;
-using Microsoft.Xna.Framework;
-using Newtonsoft.Json;
+﻿using Microsoft.Xna.Framework;
 
 namespace MagicalLifeAPI.World.Tiles
 {
@@ -11,7 +9,8 @@ namespace MagicalLifeAPI.World.Tiles
     public class Dirt : Tile
     {
         [ProtoBuf.ProtoMember(10)]
-        bool test = false;
+        private bool test = false;
+
         public Dirt(Point location) : base(location, 10)
         {
             //this.AdditionalMovementCost = 0;
@@ -19,7 +18,6 @@ namespace MagicalLifeAPI.World.Tiles
 
         public Dirt(int x, int y) : this(new Point(x, y))
         {
-
         }
 
         public Dirt() : base()

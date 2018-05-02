@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Universal;
 
 namespace MagicalLifeAPI.World
 {

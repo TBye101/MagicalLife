@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MagicalLifeGUIWindows.GUI.In_Game_GUI
+﻿namespace MagicalLifeGUIWindows.GUI.In_Game_GUI
 {
     /// <summary>
     /// Holds the container which is the in game GUI.

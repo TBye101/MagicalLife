@@ -1,5 +1,4 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities.Entity_Factory;
+﻿using MagicalLifeAPI.Entities.Entity_Factory;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Tiles;
 using Microsoft.Xna.Framework;
@@ -25,8 +24,8 @@ namespace MagicalLifeAPI.World.World_Generation.Generators
                 //Iterate over each column
                 for (int ii = 0; ii < ySize; ii++)
                 {
-                        Dirt dirt = new Dirt(new Point(x, y));
-                        ret[x, y] = dirt.GetName();
+                    Dirt dirt = new Dirt(new Point(x, y));
+                    ret[x, y] = dirt.GetName();
                     y++;
                 }
                 y = 0;
