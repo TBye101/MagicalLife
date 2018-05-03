@@ -19,5 +19,10 @@ namespace MagicalLifeAPI.Networking.Messages
         {
             this.World = world;
         }
+
+        public WorldTransferMessage() : base(2)
+        {
+
+        }
     }
 }
