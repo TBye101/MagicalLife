@@ -8,8 +8,6 @@ namespace MagicalLifeAPI.World.Tiles
     [ProtoBuf.ProtoContract]
     public class Dirt : Tile
     {
-        [ProtoBuf.ProtoMember(10)]
-        private bool test = false;
 
         public Dirt(Point location) : base(location, 10)
         {

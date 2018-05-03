@@ -11,7 +11,6 @@ namespace MagicalLifeAPI.World
     /// Every tile that implements this class must provide a parameterless version of itself for reflection purposes. That constructor will not be used during gameplay.
     /// </summary>
     [ProtoContract]
-    [ProtoInclude(500, typeof(Tiles.Dirt))]
     public abstract class Tile : HasTexture
     {
         /// <summary>
@@ -102,7 +101,7 @@ namespace MagicalLifeAPI.World
         //public List<Vegetation> Plants { get; set; } = new List<Vegetation>();
 
         /// <summary>
-        /// The location of this tile in the tilemap.
+        /// The location of this tile in the tile map.
         /// </summary>
         //[ProtoMember(4)]
         public Point Location { get; protected set; }

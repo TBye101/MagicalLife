@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Universal;
+using ProtoBuf;
 using System;
 
 namespace MagicalLifeAPI.World
@@ -7,11 +8,13 @@ namespace MagicalLifeAPI.World
     /// <summary>
     /// The world, which contains all of the tiles.
     /// </summary>
+    [ProtoContract]
     public class World : Unique
     {
         /// <summary>
         /// A 3D array that holds every tile in the current world.
         /// </summary>
+        [ProtoMember(1)]
         public Tile[,] Tiles { get; set; }
 
         /// <summary>
@@ -34,6 +37,7 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// If true, it is the player's turn. If not, AI logic and other logic should be running.
         /// </summary>
+        [ProtoMember(2)]
         public static bool IsPlayersTurn { get; private set; } = false;
 
         public World()

@@ -2,9 +2,11 @@
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Test;
 using MagicalLifeAPI.Protobuf;
-using SimpleTCP;
 using System;
 using System.Net.Sockets;
+using SimpleTCP;
+using MagicalLifeAPI.Networking.Messages;
+using MagicalLifeAPI.World;
 
 namespace MagicalLifeServer.Networking
 {
@@ -14,7 +16,7 @@ namespace MagicalLifeServer.Networking
     /// </summary>
     public class TCPServer
     {
-        public SimpleTcpServer Server = new SimpleTCP.SimpleTcpServer();
+        public SimpleTcpServer Server = new SimpleTcpServer();
 
         public TCPServer()
         {
@@ -50,9 +52,8 @@ namespace MagicalLifeServer.Networking
         {
             MasterLog.DebugWriteLine("Client connection recieved");
 
-            //string test = ProtoUtil.Serialize<ConcreteTest>(new ConcreteTest());
-            //e.Client.Send(Convert.FromBase64String(test));
-            this.Send<ConcreteTest>(new ConcreteTest(), e.Client);
+            //this.Send<ConcreteTest>(new ConcreteTest(), e.Client);
+            this.Send<WorldTransferMessage>(new WorldTransferMessage(World.mainWorld), e.Client);
         }
 
         /// <summary>

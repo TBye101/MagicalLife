@@ -37,6 +37,10 @@ namespace MagicalLifeAPI.Networking
             {
                 model.Add(this.Messages[i - 2], true);
                 baseMessageType.AddSubType(i, this.Messages[i - 2]);
+
+                BaseMessage sample = (BaseMessage)Activator.CreateInstance(this.Messages[i - 2]);
+                ProtoUtil.IDToMessage.Add(sample.ID, this.Messages[i - 2]);
+
                 i++;
                 progress++;
             }

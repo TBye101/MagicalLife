@@ -1,7 +1,10 @@
-﻿using MagicalLifeAPI.Networking;
+﻿using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Test;
 using ProtoBuf.Meta;
+using Serilog;
 using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace MagicalLifeAPI.Protobuf
@@ -12,6 +15,12 @@ namespace MagicalLifeAPI.Protobuf
     public static class ProtoUtil
     {
         public static TypeModel TypeModel;
+
+        /// <summary>
+        /// Value: The ID of a base message.
+        /// Key: The type of the base message that the ID is connected with.
+        /// </summary>
+        public static Dictionary<int, Type> IDToMessage = new Dictionary<int, Type>();
 
         /// <summary>
         /// Serializes the object to string.
@@ -30,20 +39,29 @@ namespace MagicalLifeAPI.Protobuf
             }
         }
 
-        public static object Deserialize(byte[] data)
+        /// <summary>
+        /// Deserializes the message from bytes.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static BaseMessage Deserialize(byte[] data)
         {
-            using (MemoryStream ms = new System.IO.MemoryStream(data))
+            try
             {
-                BaseMessage Base = (BaseMessage)TypeModel.Deserialize(ms, null, typeof(BaseMessage));
-                if (Base.ID == 1)
+                using (MemoryStream ms = new System.IO.MemoryStream(data))
                 {
+                    BaseMessage Base = (BaseMessage)TypeModel.Deserialize(ms, null, typeof(BaseMessage));
+
                     ms.Position = 0;
-                    ConcreteTest test = (ConcreteTest)TypeModel.Deserialize(ms, null, typeof(ConcreteTest));
-                    return test;
+                    BaseMessage message = (BaseMessage)TypeModel.Deserialize(ms, null, IDToMessage[Base.ID]);
+                    return message;
                 }
             }
-
-            throw new Exception("Unknown message type!");
+            catch (IndexOutOfRangeException e)
+            {
+                Log.Debug(e, "Unknown message type!");
+                return null;
+            }
         }
     }
 }
