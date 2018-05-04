@@ -1,9 +1,12 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.GUI;
+using MagicalLifeAPI.Networking;
+using MagicalLifeAPI.World.Tiles;
 using Microsoft.Xna.Framework;
 using ProtoBuf;
 using System;
+using System.Collections.Generic;
 
 namespace MagicalLifeAPI.World
 {
@@ -11,7 +14,7 @@ namespace MagicalLifeAPI.World
     /// Every tile that implements this class must provide a parameterless version of itself for reflection purposes. That constructor will not be used during gameplay.
     /// </summary>
     [ProtoContract]
-    public abstract class Tile : HasTexture
+    public abstract class Tile : HasTexture, IHasSubclasses
     {
         /// <summary>
         /// Initializes a new tile object.
@@ -37,7 +40,7 @@ namespace MagicalLifeAPI.World
         {
         }
 
-        [ProtoMember(1)]
+        [ProtoMember(2)]
         public bool isWalkable = true;
 
         /// <summary>
@@ -74,7 +77,7 @@ namespace MagicalLifeAPI.World
         /// Returns the movement cost of this tile.
         /// Should be between 1-100.
         /// </summary>
-        [ProtoMember(2)]
+        [ProtoMember(3)]
         public int MovementCost { get; set; }
 
         /// <summary>
@@ -145,5 +148,18 @@ namespace MagicalLifeAPI.World
         }
 
         public abstract string GetTextureName();
+
+        public Dictionary<Type, int> GetSubclassInformation()
+        {
+            Dictionary<Type, int> ret = new Dictionary<Type, int>();
+            ret.Add(typeof(Dirt), 1);
+
+            return ret;
+        }
+
+        public Type GetBaseType()
+        {
+            return typeof(Tile);
+        }
     }
 }

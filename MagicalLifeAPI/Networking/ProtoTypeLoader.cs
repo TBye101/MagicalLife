@@ -1,6 +1,8 @@
 ﻿using MagicalLifeAPI.Protobuf;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.Util;
+using MagicalLifeAPI.World;
+using MagicalLifeAPI.World.Tiles;
 using ProtoBuf.Meta;
 using System;
 using System.Collections.Generic;
@@ -29,6 +31,19 @@ namespace MagicalLifeAPI.Networking
             RuntimeTypeModel model = TypeModel.Create();
 
             MetaType baseMessageType = model.Add(typeof(BaseMessage), true);
+            //MetaType tileType = model.Add(typeof(Tile), true);
+            //tileType.AddSubType(1, typeof(Dirt));
+            List<IHasSubclasses> ToProcess = ReflectionUtil.LoadAllInterface<IHasSubclasses>(Assembly.GetAssembly(typeof(BaseMessage)));
+
+            foreach (IHasSubclasses item in ToProcess)
+            {
+                MetaType meta = model.Add(item.GetBaseType(), true);
+
+                foreach (KeyValuePair<Type, int> subs in item.GetSubclassInformation())
+                {
+                    meta.AddSubType(subs.Value, subs.Key);
+                }
+            }
 
             //Must start at 2 because Protobuf-net can't have members and inheritance attributes with the same ID. I think. :D
             int i = 2;
