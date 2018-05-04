@@ -17,9 +17,10 @@ namespace MagicalLifeClient.Processing
 
         public static void Initialize()
         {
-            ConcreteTestHandler test = new ConcreteTestHandler();
+            AddHandler(new ConcreteTestHandler());
 
-            AddHandler(test);
+            //Least important messages
+            AddHandler(new WorldTransferMessageHandler());
         }
 
         public static void Process(BaseMessage msg)

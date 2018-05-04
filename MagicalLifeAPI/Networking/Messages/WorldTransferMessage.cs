@@ -13,7 +13,7 @@ namespace MagicalLifeAPI.Networking.Messages
     public class WorldTransferMessage : BaseMessage
     {
         [ProtoBuf.ProtoMember(1)]
-        private World.World World;
+        public World.World World;
 
         public WorldTransferMessage(World.World world) : base(2)
         {
