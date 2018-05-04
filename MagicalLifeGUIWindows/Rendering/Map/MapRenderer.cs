@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Resources;
 using Microsoft.Xna.Framework;
@@ -17,10 +18,10 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// <param name="spBatch"></param>
         public static void DrawMap(ref SpriteBatch spBatch)
         {
-            Tile[,] tiles = World.mainWorld.Tiles;
+            ProtoArray<Tile> tiles = World.mainWorld.Tiles;
 
-            int xSize = tiles.GetLength(0);
-            int ySize = tiles.GetLength(1);
+            int xSize = tiles.Width;
+            int ySize = tiles.Height;
             int x = 0;
             int y = 0;
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MagicalLifeAPI.DataTypes;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.World
@@ -15,7 +16,7 @@ namespace MagicalLifeAPI.World
         /// <param name="tiles"></param>
         /// <param name="str"></param>
         /// <returns></returns>
-        public static Tile GetTileByID(Tile[,] tiles, string str)
+        public static Tile GetTileByID(ProtoArray<Tile> tiles, string str)
         {
             int x = 0;
             int y = 0;
@@ -70,9 +71,9 @@ namespace MagicalLifeAPI.World
         {
             int x = tileLocation.X;
             int y = tileLocation.Y;
-            Tile[,] tiles = World.mainWorld.Tiles;
+            ProtoArray<Tile> tiles = World.mainWorld.Tiles;
 
-            return x > -1 && x < tiles.GetLength(0) && y > -1 && y < tiles.GetLength(1);
+            return x > -1 && x < tiles.Width && y > -1 && y < tiles.Height;
         }
     }
 }

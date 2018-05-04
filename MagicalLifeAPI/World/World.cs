@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Filing.Logging;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Universal;
 using ProtoBuf;
 using System;
@@ -15,7 +16,7 @@ namespace MagicalLifeAPI.World
         /// A 3D array that holds every tile in the current world.
         /// </summary>
         [ProtoMember(1)]
-        public Tile[,] Tiles { get; set; }
+        public ProtoArray<Tile> Tiles { get; set; }
 
         /// <summary>
         /// Raised when the world is finished generating for the first time.
@@ -71,11 +72,11 @@ namespace MagicalLifeAPI.World
         /// <param name="depth"></param>
         /// <param name="generator"></param>
         /// <returns></returns>
-        private Tile[,] GenerateWorld(int height, int width, WorldGenerator generator)
+        private ProtoArray<Tile> GenerateWorld(int height, int width, WorldGenerator generator)
         {
             Random r = new Random();
             string[,] stage1 = generator.AssignBiomes(height, width, r);
-            Tile[,] stage2 = generator.GenerateLandType(stage1, r);
+            ProtoArray<Tile> stage2 = generator.GenerateLandType(stage1, r);
 
             stage2 = generator.GenerateNaturalFeatures(stage2, r);
             stage2 = generator.GenerateMinerals(stage2, r);

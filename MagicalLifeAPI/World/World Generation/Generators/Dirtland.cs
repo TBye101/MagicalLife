@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Entities.Entity_Factory;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Entities.Entity_Factory;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Tiles;
 using Microsoft.Xna.Framework;
@@ -35,10 +36,10 @@ namespace MagicalLifeAPI.World.World_Generation.Generators
             return ret;
         }
 
-        public override Tile[,] GenerateDetails(Tile[,] map, Random r)
+        public override ProtoArray<Tile> GenerateDetails(ProtoArray<Tile> map, Random r)
         {
-            int xSize = map.GetLength(0);
-            int ySize = map.GetLength(1);
+            int xSize = map.Width;
+            int ySize = map.Height;
 
             int x = StaticRandom.Rand(0, xSize);
             int y = StaticRandom.Rand(0, ySize);
@@ -49,7 +50,7 @@ namespace MagicalLifeAPI.World.World_Generation.Generators
             return map;
         }
 
-        public override Tile[,] GenerateLandType(string[,] biomeMap, Random r)
+        public override ProtoArray<Tile> GenerateLandType(string[,] biomeMap, Random r)
         {
             int xSize = biomeMap.GetLength(0);
             int ySize = biomeMap.GetLength(1);
@@ -57,7 +58,7 @@ namespace MagicalLifeAPI.World.World_Generation.Generators
             int x = 0;
             int y = 0;
 
-            Tile[,] ret = new Tile[xSize, ySize];
+            ProtoArray<Tile> ret = new ProtoArray<Tile>(xSize, ySize);
 
             //Iterate over each row.
             for (int i = 0; i < xSize; i++)
@@ -75,17 +76,17 @@ namespace MagicalLifeAPI.World.World_Generation.Generators
             return ret;
         }
 
-        public override Tile[,] GenerateMinerals(Tile[,] map, Random r)
+        public override ProtoArray<Tile> GenerateMinerals(ProtoArray<Tile> map, Random r)
         {
             return map;
         }
 
-        public override Tile[,] GenerateNaturalFeatures(Tile[,] map, Random r)
+        public override ProtoArray<Tile> GenerateNaturalFeatures(ProtoArray<Tile> map, Random r)
         {
             return map;
         }
 
-        public override Tile[,] GenerateVegetation(Tile[,] map, Random r)
+        public override ProtoArray<Tile> GenerateVegetation(ProtoArray<Tile> map, Random r)
         {
             return map;
         }
