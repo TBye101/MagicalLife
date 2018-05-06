@@ -14,7 +14,7 @@ namespace MagicalLifeAPI.Protobuf
     /// </summary>
     public static class ProtoUtil
     {
-        public static TypeModel TypeModel;
+        public static RuntimeTypeModel TypeModel;
 
         /// <summary>
         /// Value: The ID of a base message.

@@ -107,7 +107,7 @@ namespace MagicalLifeAPI.World
         /// The location of this tile in the tile map.
         /// </summary>
         [ProtoMember(4)]
-        public Point Location { get; protected set; }
+        public Point Location { get; set; }
 
         /// <summary>
         /// The entity that is in this tile. Is null if there is not an entity in this tile.

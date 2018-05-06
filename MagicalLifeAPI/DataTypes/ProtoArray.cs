@@ -29,7 +29,7 @@ namespace MagicalLifeAPI.DataTypes
         /// The actual data this array holds.
         /// </summary>
         [ProtoBuf.ProtoMember(3)]
-        private T[] Data { get; set; }
+        public T[] Data { get; set; }
 
 
         public ProtoArray(int width, int height)

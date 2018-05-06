@@ -19,25 +19,33 @@ namespace MagicalLifeAPI.Networking
         /// The messages that need to be registered.
         /// </summary>
         private List<Type> Messages = new List<Type>();
+        private List<ITeachSerialization> Teachers = new List<ITeachSerialization>();
 
         public int GetTotalOperations()
         {
             this.Messages.AddRange(ReflectionUtil.LoadTypeOfAllSubclasses<BaseMessage>(Assembly.GetAssembly(typeof(BaseMessage))));
-            return this.Messages.Count;
+            this.Teachers.AddRange(ReflectionUtil.LoadAllInterface<ITeachSerialization>(Assembly.GetAssembly(typeof(ITeachSerialization))));
+            return this.Messages.Count + this.Teachers.Count;
         }
 
         public void InitialStartup(ref int progress)
         {
-            RuntimeTypeModel model = TypeModel.Create();
+            RuntimeTypeModel current = RuntimeTypeModel.Create();
 
-            MetaType baseMessageType = model.Add(typeof(BaseMessage), true);
+            foreach (ITeachSerialization item in this.Teachers)
+            {
+                item.Teach(current);
+                progress++;
+            }
+
+            MetaType baseMessageType = current.Add(typeof(BaseMessage), true);
             //MetaType tileType = model.Add(typeof(Tile), true);
             //tileType.AddSubType(1, typeof(Dirt));
             List<IHasSubclasses> ToProcess = ReflectionUtil.LoadAllInterface<IHasSubclasses>(Assembly.GetAssembly(typeof(BaseMessage)));
 
             foreach (IHasSubclasses item in ToProcess)
             {
-                MetaType meta = model.Add(item.GetBaseType(), true);
+                MetaType meta = current.Add(item.GetBaseType(), true);
 
                 foreach (KeyValuePair<Type, int> subs in item.GetSubclassInformation())
                 {
@@ -50,7 +58,7 @@ namespace MagicalLifeAPI.Networking
             int length = this.Messages.Count + 2;
             while (i < length)
             {
-                model.Add(this.Messages[i - 2], true);
+                current.Add(this.Messages[i - 2], true);
                 baseMessageType.AddSubType(i, this.Messages[i - 2]);
 
                 BaseMessage sample = (BaseMessage)Activator.CreateInstance(this.Messages[i - 2]);
@@ -60,7 +68,10 @@ namespace MagicalLifeAPI.Networking
                 progress++;
             }
 
-            ProtoUtil.TypeModel = model;
+            //ProtoUtil.TypeModel = RuntimeTypeModel.Default.
+            //ProtoUtil.TypeModel = current.Compile();
+            //ProtoUtil.TypeModel 
+            ProtoUtil.TypeModel = current;
         }
     }
 }

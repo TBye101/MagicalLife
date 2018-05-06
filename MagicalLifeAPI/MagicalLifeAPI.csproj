@@ -127,7 +127,6 @@
     <Compile Include="GUI\SelectionType.cs" />
     <Compile Include="Networking\BaseMessage.cs" />
     <Compile Include="Networking\External Type Serialization\PointTeacher.cs" />
-    <Compile Include="Networking\ExternalTypeSerializer.cs" />
     <Compile Include="Networking\IHasSubclasses.cs" />
     <Compile Include="Networking\ITeachSerialization.cs" />
     <Compile Include="Networking\Message Handlers\WorldTransferMessageHandler.cs" />

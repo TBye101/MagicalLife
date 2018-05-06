@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProtoBuf.Meta;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,6 @@ namespace MagicalLifeAPI.Networking
     /// </summary>
     public interface ITeachSerialization
     {
-        void Teach();
+        void Teach(RuntimeTypeModel model);
     }
 }

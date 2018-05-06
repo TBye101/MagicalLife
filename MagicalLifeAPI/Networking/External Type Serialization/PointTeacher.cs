@@ -10,11 +10,11 @@ namespace MagicalLifeAPI.Networking.External_Type_Serialization
 {
     public class PointTeacher : ITeachSerialization
     {
-        public void Teach()
+        public void Teach(RuntimeTypeModel model)
         {
-            MetaType meta = RuntimeTypeModel.Default.Add(typeof(Microsoft.Xna.Framework.Point), false);
+            MetaType meta = model.Add(typeof(Microsoft.Xna.Framework.Point), false);
             meta.Add(1, "X");
-            meta.Add(2, "Y"); 
+            meta.Add(2, "Y");
         }
     }
 }
