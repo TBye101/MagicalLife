@@ -29,7 +29,7 @@ namespace MagicalLifeGUIWindows.Input.History
         private HistoricalInput SingleSelect(InputEventArgs e)
         {
             Point mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y);
-            Selectable select = World.mainWorld.Tiles[mapSpot.X, mapSpot.Y].Living;
+            Selectable select = World.MainWorld.Tiles[mapSpot.X, mapSpot.Y].Living;
 
             if (select != null)
             {

@@ -56,7 +56,7 @@ namespace MagicalLifeAPI.Pathfinding.AStar
 
         public void Initialize()
         {
-            ProtoArray<Tile> tiles = World.World.mainWorld.Tiles;
+            ProtoArray<Tile> tiles = World.World.MainWorld.Tiles;
             this.Grid = new Grid(tiles.Width, tiles.Height, 1);
 
             foreach (Tile item in tiles)

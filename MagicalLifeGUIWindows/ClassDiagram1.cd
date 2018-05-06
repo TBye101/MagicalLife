@@ -1,0 +1,415 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MagicalLifeGUIWindows.Game1" Collapsed="true">
+    <Position X="24" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAQAAAAAwQAAAAAAAAACAAAAAAAQAAAAAAAAAQ=</HashCode>
+      <FileName>Game1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.Program" Collapsed="true">
+    <Position X="32.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.Util" Collapsed="true">
+    <Position X="29.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Util.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.GUI.In_Game_GUI.Buttons.TurnButton" Collapsed="true">
+    <Position X="19.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAABAEAAAAAAAAAAAAAAgIQAAAAAAgA=</HashCode>
+      <FileName>GUI\In Game GUI\Buttons\TurnButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.GUI.In_Game_GUI.InGameGUI" Collapsed="true">
+    <Position X="31" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GUI\In Game GUI\InGameGUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.GUI.In_Game_GUI.InGameGUIContainer" Collapsed="true">
+    <Position X="2.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAgAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GUI\In Game GUI\InGameGUIContainer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.GUI.In_Game_GUI.InGameGUILayout" Collapsed="true">
+    <Position X="32.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAABAAAAAAAAQEAAAAAgAGAAAAAAAAAEAAA=</HashCode>
+      <FileName>GUI\In Game GUI\InGameGUILayout.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.GUI.In_Game_GUI.InGameGUILayout1920x1080" Collapsed="true">
+    <Position X="34.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAABAAAAAAAAQEAAAAAgAGAAAAAAAAAEAAA=</HashCode>
+      <FileName>GUI\In Game GUI\InGameGUILayout1920x1080.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.GUI.MainMenu.Buttons.HostGameButton" Collapsed="true">
+    <Position X="10.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>GUI\MainMenu\Buttons\HostGameButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.GUI.MainMenu.Buttons.JoinGameButton" Collapsed="true">
+    <Position X="12.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>GUI\MainMenu\Buttons\JoinGameButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.GUI.MainMenu.Buttons.NewGameButton" Collapsed="true">
+    <Position X="14.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAABAYAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>GUI\MainMenu\Buttons\NewGameButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.GUI.MainMenu.Buttons.QuitButton" Collapsed="true">
+    <Position X="21.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>GUI\MainMenu\Buttons\QuitButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.GUI.MainMenu.MainMenu" Collapsed="true">
+    <Position X="29.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAABAAQAAAAAAAA=</HashCode>
+      <FileName>GUI\MainMenu\MainMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.GUI.MainMenu.MainMenuContainer" Collapsed="true">
+    <Position X="5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GUI\MainMenu\MainMenuContainer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.GUI.MainMenu.MainMenuLayout" Collapsed="true">
+    <Position X="31" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQQAAAAAEAAAAgAAIAAIAAAAEAAAAAAABAAA=</HashCode>
+      <FileName>GUI\MainMenu\MainMenuLayout.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.GUI.MainMenu.MainMenuLayout1920x1080" Collapsed="true">
+    <Position X="32.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQQAAAAAEAAAAAAAIAAIAAAAEAAAAAAABAAA=</HashCode>
+      <FileName>GUI\MainMenu\MainMenuLayout1920x1080.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.GUI.MenuHandler" Collapsed="true">
+    <Position X="24" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAgAQABAAAI=</HashCode>
+      <FileName>GUI\MenuHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.GUI.New_World_Menu.Buttons.NewWorldNextButton" Collapsed="true">
+    <Position X="17" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>GUI\New World Menu\Buttons\NewWorldNextButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.GUI.New_World_Menu.Input_Boxes.WorldDepthInputBox" Collapsed="true">
+    <Position X="1.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GUI\New World Menu\Input Boxes\WorldDepthInputBox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.GUI.New_World_Menu.Input_Boxes.WorldLengthInputBox" Collapsed="true">
+    <Position X="3.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GUI\New World Menu\Input Boxes\WorldLengthInputBox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.GUI.New_World_Menu.WorldWidthInputBox" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GUI\New World Menu\Input Boxes\WorldWidthInputBox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.GUI.New_World_Menu.NewGameInputHandler" Collapsed="true">
+    <Position X="25.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GUI\New World Menu\NewGameInputHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.GUI.New_World_Menu.NewWorldMenu" Collapsed="true">
+    <Position X="27.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GUI\New World Menu\NewWorldMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.GUI.New_World_Menu.NewWorldMenuContainer" Collapsed="true">
+    <Position X="0.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAKAAAAAAggAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GUI\New World Menu\NewWorldMenuContainer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.GUI.New_World_Menu.NewWorldMenuLayout" Collapsed="true">
+    <Position X="29.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAAAAAQAAAoAgAEAAAA=</HashCode>
+      <FileName>GUI\New World Menu\NewWorldMenuLayout.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.GUI.New_World_Menu.NewWorldMenuLayout1920x1080" Collapsed="true">
+    <Position X="31" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAAAAAQAAAoAgAEAAAA=</HashCode>
+      <FileName>GUI\New World Menu\NewWorldMenuLayout1920x1080.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.GUI.Reusable.GUIContainer" Collapsed="true">
+    <Position X="2.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAEAIAAAAAAAAAAABAIAAAgAAAAAAA=</HashCode>
+      <FileName>GUI\Reusable\GUIContainer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.GUI.Reusable.GUIElement" Collapsed="true">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAgAABAAAAAAAAAAAAABAIAAQAAAACAgA=</HashCode>
+      <FileName>GUI\Reusable\GUIElement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.GUI.Reusable.InputBox" Collapsed="true">
+    <Position X="3.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAACgAAEAAAAAABEAEAAAIABAEEAYAACACACAAAAgE=</HashCode>
+      <FileName>GUI\Reusable\InputBox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.GUI.Reusable.Label" Collapsed="true">
+    <Position X="8" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAAACAAAAgA=</HashCode>
+      <FileName>GUI\Reusable\Label.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.GUI.Reusable.MonoButton" Collapsed="true">
+    <Position X="15.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>GUI\Reusable\MonoButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.Input.BoundHandler" Collapsed="true">
+    <Position X="24" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAACAAAKAAAAAQEJEAAEAACBAECAAgEAABAAAAAAAgI=</HashCode>
+      <FileName>Input\BoundHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.Input.ClickBounds" Collapsed="true">
+    <Position X="27.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAGAAAAAAAAIYAgA=</HashCode>
+      <FileName>Input\ClickBounds.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.Input.EscapeHandler" Collapsed="true">
+    <Position X="34.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Input\EscapeHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.Input.KeyboardHandler" Collapsed="true">
+    <Position X="32.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAQAAAAAAAAAAAAAAAAAAAAgEAAAAAAA=</HashCode>
+      <FileName>Input\KeyboardHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.Input.Comparators.BoundsSorter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="25.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Input\Comparators\BoundsSorter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.Input.Comparators.ClickBoundsSorter" Collapsed="true">
+    <Position X="29.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Input\Comparators\ClickBoundsSorter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.Input.Comparators.ContainerSorter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="32.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Input\Comparators\ContainerSorter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.Input.History.HistoricalInput" Collapsed="true">
+    <Position X="27.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAEAAAAAwI=</HashCode>
+      <FileName>Input\History\HistoricalInput.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.Input.History.HistoricalInputFactory" Collapsed="true">
+    <Position X="29.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAEAAAAg=</HashCode>
+      <FileName>Input\History\HistoricalInputFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.Input.History.InputEventArgs" Collapsed="true">
+    <Position X="25.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAABAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Input\History\InputEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.Input.History.InputHistory" Collapsed="true">
+    <Position X="29.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAERACAQAAIAAACAEAAAAACQABAAACAAAAACI=</HashCode>
+      <FileName>Input\History\InputHistory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.Input.Specialized_Handlers.InputHandlers" Collapsed="true">
+    <Position X="27.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Input\Specialized Handlers\InputHandlers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.Input.Specialized_Handlers.LivingBoundHandler" Collapsed="true">
+    <Position X="34.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAIAAQQAAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Input\Specialized Handlers\LivingBoundHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.Input.Specialized_Handlers.LivingMoveOrderInputHandler" Collapsed="true">
+    <Position X="24" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Input\Specialized Handlers\LivingMoveOrderInputHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.Load.Initializer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Load\Initializer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.Load.Loader" Collapsed="true">
+    <Position X="25.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Load\Loader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.Load.LoadMoniter" Collapsed="true">
+    <Position X="27.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAgAEAAAAAAAAAAgAAAgBAAAAAAAAA=</HashCode>
+      <FileName>Load\LoadMoniter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.Load.TextureLoader" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="27.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AGAAAAAAAAAAAAAAABAAAAAAIAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Load\TextureLoader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.Load.WindowConfig" Collapsed="true">
+    <Position X="31" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Load\WindowConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeAPI.Universal.InputLoader" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="31" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Load\InputLoader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.Map.ConnectedTextureManager" Collapsed="true">
+    <Position X="31" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Map\ConnectedTextureManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.Map.RenderingData" Collapsed="true">
+    <Position X="34.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAgAAAAAAQAAAAAAAAAIQAAAAAAAAAA=</HashCode>
+      <FileName>Map\RenderingData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.Rendering.GUI.GUIRenderer" Collapsed="true">
+    <Position X="25.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAICAAAA=</HashCode>
+      <FileName>Rendering\GUI\GUIRenderer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.Rendering.Map.MapRenderer" Collapsed="true">
+    <Position X="34.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAQAAAAAAAAABAAA=</HashCode>
+      <FileName>Rendering\Map\MapRenderer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.Rendering.RenderingPipe" Collapsed="true">
+    <Position X="24" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAQAAgQAAAAAAAAAIAAAAAAAAAACIAAASAAAAAAA=</HashCode>
+      <FileName>Rendering\RenderingPipe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer" Collapsed="true">
+    <Position X="25.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Rendering\Text\SimpleTextRenderer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="MagicalLifeGUIWindows.GUI.Resolution" Collapsed="true">
+    <Position X="24" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>GUI\Resolution.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

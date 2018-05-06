@@ -52,7 +52,7 @@ namespace MagicalLifeServer.Networking
             MasterLog.DebugWriteLine("Client connection recieved");
 
             //this.Send<ConcreteTest>(new ConcreteTest(), e.Client);
-            this.Send<WorldTransferMessage>(new WorldTransferMessage(World.mainWorld), e.Client);
+            this.Send<WorldTransferMessage>(new WorldTransferMessage(World.MainWorld), e.Client);
         }
 
         /// <summary>

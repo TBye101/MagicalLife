@@ -33,7 +33,7 @@ namespace MagicalLifeAPI.World
         /// </summary>
         public static event EventHandler<WorldEventArgs> TurnEnd;
 
-        public static World mainWorld { get; set; }
+        public static World MainWorld { get; set; }
 
         /// <summary>
         /// If true, it is the player's turn. If not, AI logic and other logic should be running.
@@ -54,14 +54,14 @@ namespace MagicalLifeAPI.World
         /// <param name="generator"></param>
         public static void Initialize(int width, int height, WorldGenerator generator)
         {
-            mainWorld = new World();
-            mainWorld.Tiles = mainWorld.GenerateWorld(height, width, generator);
+            MainWorld = new World();
+            MainWorld.Tiles = MainWorld.GenerateWorld(height, width, generator);
 
-            WorldEventArgs worldEventArgs = new WorldEventArgs(mainWorld);
-            mainWorld.WorldGeneratedHandler(worldEventArgs);
+            WorldEventArgs worldEventArgs = new WorldEventArgs(MainWorld);
+            MainWorld.WorldGeneratedHandler(worldEventArgs);
             Pathfinding.MainPathFinder.PFinder.Initialize();
 
-            World.TurnStartHandler(new WorldEventArgs(mainWorld));
+            World.TurnStartHandler(new WorldEventArgs(MainWorld));
         }
 
         /// <summary>
@@ -90,8 +90,8 @@ namespace MagicalLifeAPI.World
         {
             MasterLog.DebugWriteLine("Turn ended!");
             //TestMove();
-            TurnEndHandler(new WorldEventArgs(mainWorld));
-            TurnStartHandler(new WorldEventArgs(mainWorld));
+            TurnEndHandler(new WorldEventArgs(MainWorld));
+            TurnStartHandler(new WorldEventArgs(MainWorld));
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace MagicalLifeAPI.World
             if (handler != null)
             {
                 World.IsPlayersTurn = true;
-                handler(World.mainWorld, e);
+                handler(World.MainWorld, e);
             }
         }
 
@@ -131,7 +131,7 @@ namespace MagicalLifeAPI.World
             if (handler != null)
             {
                 World.IsPlayersTurn = false;
-                handler(World.mainWorld, e);
+                handler(World.MainWorld, e);
             }
         }
     }

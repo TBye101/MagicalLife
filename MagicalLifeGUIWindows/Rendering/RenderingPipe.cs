@@ -49,7 +49,7 @@ namespace MagicalLifeGUIWindows.Rendering
         public static void DrawScreen(ref SpriteBatch spBatch)
         {
             //MasterLog.DebugWriteLine("Rendering frame");
-            if (World.mainWorld != null)
+            if (World.MainWorld != null)
             {
                 MapRenderer.DrawMap(ref spBatch);
             }

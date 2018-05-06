@@ -71,7 +71,7 @@ namespace MagicalLifeAPI.World
         {
             int x = tileLocation.X;
             int y = tileLocation.Y;
-            ProtoArray<Tile> tiles = World.mainWorld.Tiles;
+            ProtoArray<Tile> tiles = World.MainWorld.Tiles;
 
             return x > -1 && x < tiles.Width && y > -1 && y < tiles.Height;
         }

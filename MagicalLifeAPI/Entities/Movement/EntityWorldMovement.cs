@@ -21,13 +21,13 @@ namespace MagicalLifeAPI.Entities.Movement
             while (entity.MovementSpeed.GetValue() > 0 && path.Count > 0)
             {
                 PathLink section = path.Dequeue();
-                Tile sourceTile = World.World.mainWorld.Tiles[section.Origin.X, section.Origin.Y];
-                Tile destinationTile = World.World.mainWorld.Tiles[section.Destination.X, section.Destination.Y];
+                Tile sourceTile = World.World.MainWorld.Tiles[section.Origin.X, section.Origin.Y];
+                Tile destinationTile = World.World.MainWorld.Tiles[section.Destination.X, section.Destination.Y];
                 string modifierReason = "Moved onto a " + destinationTile.GetName() + " tile";
                 entity.MovementSpeed.AddModifier(new Tuple<Int32, IModifierRemoveCondition, string>(-1 * destinationTile.MovementCost, new TimeRemoveCondition(1), modifierReason));
-                World.World.mainWorld.Tiles[sourceTile.Location.X, sourceTile.Location.Y].Living = null;
+                World.World.MainWorld.Tiles[sourceTile.Location.X, sourceTile.Location.Y].Living = null;
                 entity.MapLocation = destinationTile.Location;
-                World.World.mainWorld.Tiles[destinationTile.Location.X, destinationTile.Location.Y].Living = entity;
+                World.World.MainWorld.Tiles[destinationTile.Location.X, destinationTile.Location.Y].Living = entity;
             }
         }
 
