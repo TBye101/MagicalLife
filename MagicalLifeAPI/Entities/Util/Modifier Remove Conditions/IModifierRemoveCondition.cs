@@ -1,8 +1,13 @@
-﻿namespace MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions
+﻿using ProtoBuf;
+
+namespace MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions
 {
     /// <summary>
     /// Utilized to allow for custom events/circumstances to be used to determine when a modifier wears off.
     /// </summary>
+    [ProtoContract]
+    [ProtoInclude(1, typeof(NeverRemoveCondition))]
+    [ProtoInclude(2, typeof(TimeRemoveCondition))]
     public interface IModifierRemoveCondition
     {
         /// <summary>

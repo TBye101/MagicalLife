@@ -1,9 +1,11 @@
 ﻿using MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions;
+using ProtoBuf;
 using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Entities.Util
 {
+    [ProtoContract]
     public class Attribute
     {
         public Attribute()
@@ -47,6 +49,7 @@ namespace MagicalLifeAPI.Entities.Util
         /// The int value is applied to the value of this attribute, while the <see cref="IModifierRemoveCondition"/> is used to determine if the modifier will wear off.
         /// The string value is a display message/reason as to why the modifier was applied.
         /// </summary>
+        [ProtoMember(1)]
         public List<Tuple<Int32, IModifierRemoveCondition, string>> Modifiers { get; private set; } = new List<Tuple<Int32, IModifierRemoveCondition, string>>();
 
         /// <summary>

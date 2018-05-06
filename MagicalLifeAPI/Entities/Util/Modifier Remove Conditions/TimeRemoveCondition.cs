@@ -1,10 +1,14 @@
-﻿namespace MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions
+﻿using ProtoBuf;
+
+namespace MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions
 {
     /// <summary>
     /// This modifier condition allows remove of the modifier after a certain number of turns.
     /// </summary>
+    [ProtoContract]
     public class TimeRemoveCondition : IModifierRemoveCondition
     {
+        [ProtoMember(1)]
         private int Turns;
 
         /// <summary>

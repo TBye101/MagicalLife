@@ -1,8 +1,10 @@
 ﻿using MagicalLifeAPI.Entities.Eventing;
 using MagicalLifeAPI.Entities.Movement;
 using MagicalLifeAPI.GUI;
+using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Pathfinding;
 using Microsoft.Xna.Framework;
+using ProtoBuf;
 using System;
 using System.Collections.Generic;
 
@@ -11,21 +13,25 @@ namespace MagicalLifeAPI.Entities
     /// <summary>
     /// All living things inherit from this, and utilize it.
     /// </summary>
-    public abstract class Living : Selectable
+    [ProtoContract]
+    public abstract class Living : Selectable, IHasSubclasses
     {
         /// <summary>
         /// A queue that holds the queued movement steps up for this living creature.
         /// </summary>
+        //[ProtoMember(1)]
         public Queue<PathLink> QueuedMovement { get; set; } = new Queue<PathLink>();
 
         /// <summary>
         /// How many hit points this creature has.
         /// </summary>
+        [ProtoMember(2)]
         public Util.Attribute Health { get; set; }
 
         /// <summary>
         /// How fast this creature can move.
         /// </summary>
+        [ProtoMember(3)]
         public Util.Attribute MovementSpeed { get; set; }
 
         /// <summary>
@@ -50,6 +56,11 @@ namespace MagicalLifeAPI.Entities
             Living.LivingCreated(this, new LivingEventArg(this, location));
             this.MapLocation = location;
             World.World.TurnEnd += this.World_TurnEnd;
+        }
+
+        public Living()
+        {
+
         }
 
         private void World_TurnEnd(object sender, World.WorldEventArgs e)
@@ -88,6 +99,19 @@ namespace MagicalLifeAPI.Entities
             {
                 handler(e.Living, e);
             }
+        }
+
+        public Dictionary<Type, int> GetSubclassInformation()
+        {
+            return new Dictionary<Type, int>()
+            {
+                { typeof(Humanoid.Human), 4}
+            };
+        }
+
+        public Type GetBaseType()
+        {
+            return typeof(Living);
         }
     }
 }

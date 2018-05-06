@@ -112,7 +112,7 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// The entity that is in this tile. Is null if there is not an entity in this tile.
         /// </summary>
-        //[ProtoMember(5)]
+        [ProtoMember(5)]
         public Living Living { get; set; } = null;
 
         /// <summary>
