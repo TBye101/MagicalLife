@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MagicalLifeAPI.Networking.Messages
+﻿namespace MagicalLifeAPI.Networking.Messages
 {
     /// <summary>
     /// Generally used to transfer the world over to the client.
@@ -22,7 +16,6 @@ namespace MagicalLifeAPI.Networking.Messages
 
         public WorldTransferMessage() : base(2)
         {
-
         }
     }
 }

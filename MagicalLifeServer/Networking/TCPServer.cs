@@ -1,12 +1,11 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Networking;
-using MagicalLifeAPI.Networking.Test;
+using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Protobuf;
+using MagicalLifeAPI.World;
+using SimpleTCP;
 using System;
 using System.Net.Sockets;
-using SimpleTCP;
-using MagicalLifeAPI.Networking.Messages;
-using MagicalLifeAPI.World;
 
 namespace MagicalLifeServer.Networking
 {

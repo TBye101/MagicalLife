@@ -8,7 +8,6 @@ namespace MagicalLifeAPI.World.Tiles
     [ProtoBuf.ProtoContract]
     public class Dirt : Tile
     {
-
         public Dirt(Point location) : base(location, 10)
         {
             //this.AdditionalMovementCost = 0;

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections;
 
 namespace MagicalLifeAPI.DataTypes
 {
@@ -31,7 +26,6 @@ namespace MagicalLifeAPI.DataTypes
         [ProtoBuf.ProtoMember(3)]
         public T[] Data { get; set; }
 
-
         public ProtoArray(int width, int height)
         {
             this.Width = width;
@@ -41,7 +35,6 @@ namespace MagicalLifeAPI.DataTypes
 
         public ProtoArray()
         {
-
         }
 
         public T this[int x, int y]

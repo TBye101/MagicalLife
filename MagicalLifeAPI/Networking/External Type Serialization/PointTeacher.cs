@@ -1,10 +1,4 @@
-﻿using MagicalLifeAPI.Protobuf;
-using ProtoBuf.Meta;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ProtoBuf.Meta;
 
 namespace MagicalLifeAPI.Networking.External_Type_Serialization
 {

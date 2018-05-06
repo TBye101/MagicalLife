@@ -1,9 +1,4 @@
 ﻿using MagicalLifeAPI.Networking.Messages;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Networking.Message_Handlers
 {
@@ -11,7 +6,6 @@ namespace MagicalLifeAPI.Networking.Message_Handlers
     {
         public WorldTransferMessageHandler() : base(2)
         {
-
         }
 
         public override void HandleMessage(BaseMessage message)

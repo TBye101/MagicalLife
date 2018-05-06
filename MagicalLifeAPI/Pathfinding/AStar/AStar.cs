@@ -1,11 +1,11 @@
-﻿using MagicalLifeAPI.Entities;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World;
 using Microsoft.Xna.Framework;
 using RoyT.AStar;
 using System;
 using System.Collections.Generic;
-using MagicalLifeAPI.DataTypes;
 
 namespace MagicalLifeAPI.Pathfinding.AStar
 {

@@ -1,6 +1,4 @@
-﻿using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Networking;
-using MagicalLifeAPI.Networking.Test;
+﻿using MagicalLifeAPI.Networking;
 using ProtoBuf.Meta;
 using Serilog;
 using System;

@@ -1,9 +1,5 @@
-﻿using ProtoBuf.Meta;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Networking
 {
@@ -13,7 +9,7 @@ namespace MagicalLifeAPI.Networking
     public interface IHasSubclasses
     {
         /// <summary>
-        /// Returns information used by the TypeModel to serialize and deserialize an abstract class and its subclasses. 
+        /// Returns information used by the TypeModel to serialize and deserialize an abstract class and its subclasses.
         /// Key: The type of the subclass(es) of the implementing type.
         /// Value: The inheritance ID that is normally used by the <see cref="ProtoBuf.ProtoIncludeAttribute"/>
         /// </summary>

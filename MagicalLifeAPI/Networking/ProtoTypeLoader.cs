@@ -1,8 +1,6 @@
 ﻿using MagicalLifeAPI.Protobuf;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.Util;
-using MagicalLifeAPI.World;
-using MagicalLifeAPI.World.Tiles;
 using ProtoBuf.Meta;
 using System;
 using System.Collections.Generic;
@@ -19,6 +17,7 @@ namespace MagicalLifeAPI.Networking
         /// The messages that need to be registered.
         /// </summary>
         private List<Type> Messages = new List<Type>();
+
         private List<ITeachSerialization> Teachers = new List<ITeachSerialization>();
 
         public int GetTotalOperations()
@@ -39,8 +38,7 @@ namespace MagicalLifeAPI.Networking
             }
 
             MetaType baseMessageType = current.Add(typeof(BaseMessage), true);
-            //MetaType tileType = model.Add(typeof(Tile), true);
-            //tileType.AddSubType(1, typeof(Dirt));
+
             List<IHasSubclasses> ToProcess = ReflectionUtil.LoadAllInterface<IHasSubclasses>(Assembly.GetAssembly(typeof(BaseMessage)));
 
             foreach (IHasSubclasses item in ToProcess)
@@ -70,7 +68,7 @@ namespace MagicalLifeAPI.Networking
 
             //ProtoUtil.TypeModel = RuntimeTypeModel.Default.
             //ProtoUtil.TypeModel = current.Compile();
-            //ProtoUtil.TypeModel 
+            //ProtoUtil.TypeModel
             ProtoUtil.TypeModel = current;
         }
     }
