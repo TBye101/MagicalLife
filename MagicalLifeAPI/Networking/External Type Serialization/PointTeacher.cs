@@ -14,7 +14,7 @@ namespace MagicalLifeAPI.Networking.External_Type_Serialization
         {
             MetaType meta = RuntimeTypeModel.Default.Add(typeof(Microsoft.Xna.Framework.Point), false);
             meta.Add(1, "X");
-            meta.Add(2, "Y");
+            meta.Add(2, "Y"); 
         }
     }
 }
