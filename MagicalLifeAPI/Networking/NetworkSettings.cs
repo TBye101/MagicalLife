@@ -25,5 +25,17 @@ namespace MagicalLifeAPI.Networking
         /// The port the server is listening on.
         /// </summary>
         public int Port { get; set; }
+
+        public NetworkSettings(bool local)
+        {
+            this.Local = local;
+        }
+
+        public NetworkSettings(string serverIP, int port)
+        {
+            this.Local = false;
+            this.ServerIP = serverIP;
+            this.Port = port;
+        }
     }
 }

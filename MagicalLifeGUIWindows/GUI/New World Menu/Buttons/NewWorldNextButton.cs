@@ -1,6 +1,7 @@
 ﻿using MagicalLifeGUIWindows.GUI.MainMenu;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;
+using MagicalLifeServer.Networking;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 
@@ -23,11 +24,7 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu.Buttons
             MenuHandler.Clear();
             In_Game_GUI.InGameGUI.Initialize();
             BoundHandler.Popup(In_Game_GUI.InGameGUI.InGame);
-
-            //MagicalLifeServer.Networking.TCPServer tCPServer = new MagicalLifeServer.Networking.TCPServer();
-            //tCPServer.Start(5849);
-            //MagicalLifeClient.Networking.TCPClient tCPClient = new MagicalLifeClient.Networking.TCPClient();
-            //tCPClient.Start(5849, "localhost");
+            ServerSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(true));
         }
 
         public override void DoubleClick(MouseEventArgs e)
