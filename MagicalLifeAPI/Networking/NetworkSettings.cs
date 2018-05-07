@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace MagicalLifeAPI.Networking
 {
     /// <summary>
-    /// Contains network settings to be used by the server when setting up the game.
+    /// Contains network settings to be used when setting up the game.
     /// </summary>
-    public class ServerNetworkSettings
+    public class NetworkSettings
     {
         /// <summary>
         /// If true, then the game is local and not over the network.

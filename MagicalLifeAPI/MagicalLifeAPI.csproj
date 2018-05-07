@@ -131,7 +131,7 @@
     <Compile Include="Networking\Serialization\ITeachSerialization.cs" />
     <Compile Include="Networking\Message Handlers\WorldTransferMessageHandler.cs" />
     <Compile Include="Networking\Messages\WorldTransferMessage.cs" />
-    <Compile Include="Networking\ServerNetworkSettings.cs" />
+    <Compile Include="Networking\NetworkSettings.cs" />
     <Compile Include="Networking\Test\ConcreteTestHandler.cs" />
     <Compile Include="Networking\Serialization\MessageHandler.cs" />
     <Compile Include="Networking\Serialization\ProtoTypeLoader.cs" />

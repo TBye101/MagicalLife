@@ -50,7 +50,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Networking\TCPClient.cs" />
     <Compile Include="Processing\ClientProcessor.cs" />
     <Compile Include="Processing\Rules\ClientWorldDataTransferRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,6 +68,8 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Networking\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

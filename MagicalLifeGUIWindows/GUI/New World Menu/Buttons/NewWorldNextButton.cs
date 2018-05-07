@@ -24,10 +24,10 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu.Buttons
             In_Game_GUI.InGameGUI.Initialize();
             BoundHandler.Popup(In_Game_GUI.InGameGUI.InGame);
 
-            MagicalLifeServer.Networking.TCPServer tCPServer = new MagicalLifeServer.Networking.TCPServer();
-            tCPServer.Start(5849);
-            MagicalLifeClient.Networking.TCPClient tCPClient = new MagicalLifeClient.Networking.TCPClient();
-            tCPClient.Start(5849, "localhost");
+            //MagicalLifeServer.Networking.TCPServer tCPServer = new MagicalLifeServer.Networking.TCPServer();
+            //tCPServer.Start(5849);
+            //MagicalLifeClient.Networking.TCPClient tCPClient = new MagicalLifeClient.Networking.TCPClient();
+            //tCPClient.Start(5849, "localhost");
         }
 
         public override void DoubleClick(MouseEventArgs e)

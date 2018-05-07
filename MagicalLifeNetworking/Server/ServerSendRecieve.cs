@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Networking;
+using MagicalLifeNetworking.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,9 @@ namespace MagicalLifeServer.Networking
     /// </summary>
     public static class ServerSendRecieve
     {
+        /// <summary>
+        /// If true, then the game is not over the network.
+        /// </summary>
         private static bool Local;
 
         public static TCPServer TCPServer;
@@ -22,7 +26,7 @@ namespace MagicalLifeServer.Networking
         /// </summary>
         public static Queue<BaseMessage> RecievedMessages = new Queue<BaseMessage>();
 
-        public static void Initialize(ServerNetworkSettings networkSettings)
+        public static void Initialize(NetworkSettings networkSettings)
         {
             Local = networkSettings.Local;
 
@@ -42,7 +46,7 @@ namespace MagicalLifeServer.Networking
         {
             if (Local)
             {
-
+                ClientSendRecieve.Recieve(message);
             }
             else
             {
@@ -59,7 +63,7 @@ namespace MagicalLifeServer.Networking
         {
             if (Local)
             {
-
+                ClientSendRecieve.Recieve(message);
             }
             else
             {
