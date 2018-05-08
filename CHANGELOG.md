@@ -10,8 +10,8 @@ SneakyTactician  <SneakyTactician@outlook.com>
 * API is now capable of sending and recieving objects in a very dynamic and elegant way
 
 #### Bugs
-* Discovered issue https://github.com/SneakyTactician/EarthWithMagic/issues/14
-* Discovered issue https://github.com/SneakyTactician/MagicalLife/issues/15
+* Discovered issue #14
+* Discovered issue #15
 ---        
 ## [Version 0.0.0.6]
 #### GUI
