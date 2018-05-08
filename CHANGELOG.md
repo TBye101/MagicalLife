@@ -7,11 +7,11 @@ SneakyTactician  <SneakyTactician@outlook.com>
 * Added labels above the width and length input boxes
 
 #### API
-* API is now capable of sending and recieving objects in a very dynamic and elegant way
+* API is now capable of sending and receiving objects in a very dynamic and elegant way
 
 #### Bugs
-* Discovered issue #14
-* Discovered issue #15
+* Discovered issue [#14](https://github.com/SneakyTactician/EarthWithMagic/issues/14)
+* Discovered issue [#15](https://github.com/SneakyTactician/MagicalLife/issues/15)
 ---        
 ## [Version 0.0.0.6]
 #### GUI
@@ -31,7 +31,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 * Living creatures can now be individually selected and order to a location
 
 #### Bugs
-* Discovered that main menu fails to show when pressing escape (Issue #11)
+* Discovered issue [#11](https://github.com/SneakyTactician/MagicalLife/issues/11)
 ---
 ## [Version 0.0.0.4]
 #### GUI
