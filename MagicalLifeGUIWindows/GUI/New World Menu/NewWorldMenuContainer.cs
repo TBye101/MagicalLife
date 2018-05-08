@@ -1,5 +1,6 @@
 ﻿using MagicalLifeGUIWindows.GUI.New_World_Menu.Buttons;
 using MagicalLifeGUIWindows.GUI.New_World_Menu.Input_Boxes;
+using MagicalLifeGUIWindows.GUI.New_World_Menu.Labels;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 
@@ -13,6 +14,8 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu
         public WorldWidthInputBox worldWidth = new WorldWidthInputBox(false);
         public WorldLengthInputBox worldLength = new WorldLengthInputBox(false);
         public NewWorldNextButton nextButton = new NewWorldNextButton();
+        public LengthLabel lengthLabel = new LengthLabel();
+        public WidthLabel widthLabel = new WidthLabel();
 
         public NewWorldMenuContainer(bool visible) : base("MenuBackground", GetDrawingBounds())
         {
@@ -20,6 +23,8 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu
             this.Controls.Add(this.worldWidth);
             this.Controls.Add(this.worldLength);
             this.Controls.Add(this.nextButton);
+            this.Controls.Add(this.lengthLabel);
+            this.Controls.Add(this.widthLabel);
         }
 
         public NewWorldMenuContainer() : base()

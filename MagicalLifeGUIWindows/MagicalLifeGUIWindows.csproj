@@ -93,6 +93,8 @@
     <Compile Include="Game1.cs" />
     <Compile Include="GUI\MainMenu\Buttons\HostGameButton.cs" />
     <Compile Include="GUI\MainMenu\Buttons\JoinGameButton.cs" />
+    <Compile Include="GUI\New World Menu\Labels\LengthLabel.cs" />
+    <Compile Include="GUI\New World Menu\Labels\WidthLabel.cs" />
     <Compile Include="Input\ClickBounds.cs" />
     <Compile Include="GUI\In Game GUI\Buttons\TurnButton.cs" />
     <Compile Include="GUI\In Game GUI\InGameGUI.cs" />
@@ -117,8 +119,8 @@
     <Compile Include="GUI\Resolution.cs" />
     <Compile Include="GUI\Reusable\GUIContainer.cs" />
     <Compile Include="GUI\Reusable\GUIElement.cs" />
-    <Compile Include="GUI\Reusable\InputBox.cs" />
-    <Compile Include="GUI\Reusable\Label.cs" />
+    <Compile Include="GUI\Reusable\MonoInputBox.cs" />
+    <Compile Include="GUI\Reusable\MonoLabel.cs" />
     <Compile Include="GUI\Reusable\MonoButton.cs" />
     <Compile Include="Input\Comparators\BoundsSorter.cs" />
     <Compile Include="Input\Comparators\ClickBoundsSorter.cs" />
@@ -205,7 +207,6 @@
     <Folder Include="GUI\Join Game Menu\Buttons\" />
     <Folder Include="GUI\Join Game Menu\Input Boxes\" />
     <Folder Include="GUI\Join Game Menu\Labels\" />
-    <Folder Include="GUI\New World Menu\Labels\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.1">

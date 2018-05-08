@@ -9,7 +9,7 @@ using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
 
 namespace MagicalLifeGUIWindows.GUI.Reusable
 {
-    public class InputBox : GUIElement
+    public class MonoInputBox : GUIElement
     {
         /// <summary>
         /// The text contained in this input box.
@@ -42,16 +42,16 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         private bool LastKeySpecial = false;
 
         /// <summary>
-        /// If this is true, this <see cref="InputBox"/> doesn't allow editing.
+        /// If this is true, this <see cref="MonoInputBox"/> doesn't allow editing.
         /// </summary>
         public bool IsLocked { get; }
 
         /// <summary>
-        /// The text alignment of this <see cref="InputBox"/>.
+        /// The text alignment of this <see cref="MonoInputBox"/>.
         /// </summary>
         public Alignment TextAlignment { get; private set; }
 
-        public InputBox(string image, string CarrotTexture, Rectangle drawingBounds, int priority, string font, bool isLocked, Alignment textAlignment) : base(image, drawingBounds, priority, font)
+        public MonoInputBox(string image, string CarrotTexture, Rectangle drawingBounds, int priority, string font, bool isLocked, Alignment textAlignment) : base(image, drawingBounds, priority, font)
         {
             KeyboardHandler.keyboardListener.KeyPressed += this.KeyboardListener_KeyPressed;
             this.CarrotPosition = this.Text.Count();
@@ -70,7 +70,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             this.CarrotHeight = (int)Math.Round(size.Y);
         }
 
-        public InputBox() : base()
+        public MonoInputBox() : base()
         {
         }
 

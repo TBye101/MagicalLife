@@ -3,7 +3,7 @@
 namespace MagicalLifeGUIWindows.GUI.New_World_Menu
 {
     /// <summary>
-    /// Returns the correct hardcoded values for the current screen resolution for the new world menu.
+    /// Returns the correct hard coded values for the current screen resolution for the new world menu.
     /// </summary>
     public static class NewWorldMenuLayout
     {
@@ -111,6 +111,25 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu
 
                     default:
                         return NewWorldMenuLayout1920x1080.NextButtonX;
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// The y position at which the <see cref="LengthLabel"/> is to be displayed at.
+        /// </summary>
+        public static int LabelY
+        {
+            get
+            {
+                switch ((Resolution)MainWindow.Default.Resolution)
+                {
+                    case Resolution._1920x1080:
+                        return NewWorldMenuLayout1920x1080.LabelY;
+
+                    default:
+                        return NewWorldMenuLayout1920x1080.LabelY;
                 }
             }
         }

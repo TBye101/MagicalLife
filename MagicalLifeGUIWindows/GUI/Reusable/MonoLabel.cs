@@ -7,7 +7,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
     /// <summary>
     /// A generic label class.
     /// </summary>
-    public class Label : GUIElement
+    public class MonoLabel : GUIElement
     {
         /// <summary>
         /// The text contained in this label box.
@@ -15,15 +15,15 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         public string Text { get; set; } = "";
 
         /// <summary>
-        /// The text alignment of this <see cref="Label"/>.
+        /// The text alignment of this <see cref="MonoLabel"/>.
         /// </summary>
         public Alignment TextAlignment { get; private set; }
 
-        public Label(Rectangle bounds, string font) : base("", bounds, int.MinValue, font)
+        public MonoLabel(Rectangle bounds, string image, string font = "MainMenuFont12x") : base(image, bounds, int.MinValue, font)
         {
         }
 
-        public Label() : base()
+        public MonoLabel() : base()
         {
         }
 

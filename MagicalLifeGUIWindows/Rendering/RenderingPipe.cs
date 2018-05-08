@@ -94,12 +94,12 @@ namespace MagicalLifeGUIWindows.Rendering
                                     GUIRenderer.DrawButtonInContainer((MonoButton)control, ref spBatch, item);
                                     break;
 
-                                case InputBox textBox:
-                                    GUIRenderer.DrawInputBoxInContainer((InputBox)control, ref spBatch, item);
+                                case MonoInputBox textBox:
+                                    GUIRenderer.DrawInputBoxInContainer((MonoInputBox)control, ref spBatch, item);
                                     break;
 
-                                case Label label:
-                                    GUIRenderer.DrawLabelInContainer((Label)control, ref spBatch, item);
+                                case MonoLabel label:
+                                    GUIRenderer.DrawLabelInContainer((MonoLabel)control, ref spBatch, item);
                                     break;
 
                                 default:

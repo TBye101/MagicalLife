@@ -31,5 +31,10 @@
         /// The x position at which the <see cref="NewWorldNextButton"/> is to be displayed at.
         /// </summary>
         public static readonly int NextButtonX = 360;
+
+        /// <summary>
+        /// The y position at which the <see cref="LengthLabel"/> is to be displayed at.
+        /// </summary>
+        public static readonly int LabelY = 50;
     }
 }
