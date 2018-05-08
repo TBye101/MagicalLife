@@ -203,6 +203,9 @@
   <ItemGroup>
     <Folder Include="Event\" />
     <Folder Include="GUI\History\" />
+    <Folder Include="GUI\Join Game Menu\Buttons\" />
+    <Folder Include="GUI\Join Game Menu\Input Boxes\" />
+    <Folder Include="GUI\Join Game Menu\Labels\" />
     <Folder Include="GUI\New World Menu\Labels\" />
   </ItemGroup>
   <ItemGroup>
