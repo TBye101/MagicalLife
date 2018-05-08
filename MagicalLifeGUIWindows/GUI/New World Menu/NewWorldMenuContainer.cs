@@ -12,7 +12,6 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu
     {
         public WorldWidthInputBox worldWidth = new WorldWidthInputBox(false);
         public WorldLengthInputBox worldLength = new WorldLengthInputBox(false);
-        public WorldDepthInputBox worldDepth = new WorldDepthInputBox(false);
         public NewWorldNextButton nextButton = new NewWorldNextButton();
 
         public NewWorldMenuContainer(bool visible) : base("MenuBackground", GetDrawingBounds())
@@ -20,7 +19,6 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu
             this.Visible = visible;
             this.Controls.Add(this.worldWidth);
             this.Controls.Add(this.worldLength);
-            this.Controls.Add(this.worldDepth);
             this.Controls.Add(this.nextButton);
         }
 
