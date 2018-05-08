@@ -4,6 +4,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 ## [Version 0.0.0.7]
 #### GUI
 * Added buttons to the main menu to allow the user to join and host a multiplayer game
+* Added labels above the width and length input boxes
 
 #### API
 * API is now capable of sending and recieving objects in a very dynamic and elegant way
