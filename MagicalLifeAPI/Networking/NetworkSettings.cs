@@ -31,6 +31,12 @@ namespace MagicalLifeAPI.Networking
             this.Local = local;
         }
 
+        public NetworkSettings(int port)
+        {
+            this.Port = port;
+            this.Local = false;
+        }
+
         public NetworkSettings(string serverIP, int port)
         {
             this.Local = false;
