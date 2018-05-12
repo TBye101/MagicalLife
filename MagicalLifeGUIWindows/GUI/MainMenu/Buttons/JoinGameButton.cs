@@ -12,6 +12,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
 
         public override void Click(MouseEventArgs e)
         {
+            Join_Game_Menu.JoinGameMenu.Initialize();
         }
 
         public override void DoubleClick(MouseEventArgs e)

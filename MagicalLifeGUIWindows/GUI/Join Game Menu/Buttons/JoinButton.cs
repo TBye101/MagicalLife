@@ -1,4 +1,5 @@
 ﻿using MagicalLifeGUIWindows.GUI.Reusable;
+using MagicalLifeNetworking.Client;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 using System;
@@ -11,7 +12,7 @@ namespace MagicalLifeGUIWindows.GUI.Join_Game_Menu.Buttons
 {
     public class JoinButton : MonoButton
     {
-        public JoinButton() : base("MenuButton", GetDisplayArea(), "Host Game")
+        public JoinButton() : base("MenuButton", GetDisplayArea(), "Join Game")
         {
         }
 
@@ -26,6 +27,7 @@ namespace MagicalLifeGUIWindows.GUI.Join_Game_Menu.Buttons
 
         public override void Click(MouseEventArgs e)
         {
+            ClientSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(JoinGameMenu.menu.IpInputBox.Text, int.Parse(JoinGameMenu.menu.PortInputBox.Text)));
         }
 
         public override void DoubleClick(MouseEventArgs e)
