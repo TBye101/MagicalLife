@@ -1,6 +1,7 @@
 ﻿using MagicalLifeGUIWindows.GUI.Host_Game_Menu.Buttons;
 using MagicalLifeGUIWindows.GUI.Host_Game_Menu.Input_Boxes;
 using MagicalLifeGUIWindows.GUI.Reusable;
+using MagicalLifeGUIWindows.Rendering;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -15,15 +16,10 @@ namespace MagicalLifeGUIWindows.GUI.Host_Game_Menu
         public HostButton HostButton = new HostButton();
         public HostPortInputBox HostPortInputBox = new HostPortInputBox(false);
 
-        public HostGameMenuContainer() : base("MenuBackground", GetDrawingBounds())
+        public HostGameMenuContainer() : base("MenuBackground", RenderingPipe.FullScreenWindow)
         {
             this.Controls.Add(this.HostPortInputBox);
             this.Controls.Add(this.HostButton);
-        }
-
-        private static Rectangle GetDrawingBounds()
-        {
-            return new Rectangle(new Point(0, 0), new Point(MagicalLifeSettings.Storage.MainWindow.Default.ScreenSize.Width, MagicalLifeSettings.Storage.MainWindow.Default.ScreenSize.Height));
         }
 
         public override string GetTextureName()

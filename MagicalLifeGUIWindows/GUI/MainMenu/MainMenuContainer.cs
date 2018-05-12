@@ -1,12 +1,13 @@
 ﻿using MagicalLifeGUIWindows.GUI.MainMenu.Buttons;
 using MagicalLifeGUIWindows.GUI.Reusable;
+using MagicalLifeGUIWindows.Rendering;
 using Microsoft.Xna.Framework;
 
 namespace MagicalLifeGUIWindows.GUI.MainMenu
 {
     public class MainMenuContainer : GUIContainer
     {
-        public MainMenuContainer(bool visible) : base("MenuBackground", GetDrawingBounds())
+        public MainMenuContainer(bool visible) : base("MenuBackground", RenderingPipe.FullScreenWindow)
         {
             this.Visible = visible;
             this.Controls.Add(new NewGameButton());
@@ -17,11 +18,6 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
 
         public MainMenuContainer() : base()
         {
-        }
-
-        private static Rectangle GetDrawingBounds()
-        {
-            return new Rectangle(new Point(0, 0), new Point(MagicalLifeSettings.Storage.MainWindow.Default.ScreenSize.Width, MagicalLifeSettings.Storage.MainWindow.Default.ScreenSize.Height));
         }
 
         public override string GetTextureName()

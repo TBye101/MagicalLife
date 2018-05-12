@@ -17,7 +17,7 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu
         public LengthLabel lengthLabel = new LengthLabel();
         public WidthLabel widthLabel = new WidthLabel();
 
-        public NewWorldMenuContainer(bool visible) : base("MenuBackground", GetDrawingBounds())
+        public NewWorldMenuContainer(bool visible) : base("MenuBackground", RenderingPipe.FullScreenWindow)
         {
             this.Visible = visible;
             this.Controls.Add(this.worldWidth);
@@ -29,11 +29,6 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu
 
         public NewWorldMenuContainer() : base()
         {
-        }
-
-        private static Rectangle GetDrawingBounds()
-        {
-            return new Rectangle(new Point(0, 0), new Point(MagicalLifeSettings.Storage.MainWindow.Default.ScreenSize.Width, MagicalLifeSettings.Storage.MainWindow.Default.ScreenSize.Height));
         }
 
         public override string GetTextureName()
