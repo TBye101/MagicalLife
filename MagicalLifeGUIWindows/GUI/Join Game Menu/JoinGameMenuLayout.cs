@@ -80,5 +80,41 @@ namespace MagicalLifeGUIWindows.GUI.Join_Game_Menu
                 }
             }
         }
+
+        /// <summary>
+        /// The x position of the port input box.
+        /// </summary>
+        public static int PortInputBoxX
+        {
+            get
+            {
+                switch ((Resolution)MainWindow.Default.Resolution)
+                {
+                    case Resolution._1920x1080:
+                        return JoinGameMenuLayout1920x1080.PortInputBoxX;
+
+                    default:
+                        return JoinGameMenuLayout1920x1080.PortInputBoxX;
+                }
+            }
+        }
+
+        /// <summary>
+        /// The x position of the join button.
+        /// </summary>
+        public static int JoinButtonX
+        {
+            get
+            {
+                switch ((Resolution)MainWindow.Default.Resolution)
+                {
+                    case Resolution._1920x1080:
+                        return JoinGameMenuLayout1920x1080.JoinButtonX;
+
+                    default:
+                        return JoinGameMenuLayout1920x1080.JoinButtonX;
+                }
+            }
+        }
     }
 }
