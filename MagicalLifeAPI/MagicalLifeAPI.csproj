@@ -100,12 +100,6 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="ZeroFormatter, Version=1.6.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ZeroFormatter.1.6.4\lib\net45\ZeroFormatter.dll</HintPath>
-    </Reference>
-    <Reference Include="ZeroFormatter.Interfaces, Version=1.6.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ZeroFormatter.Interfaces.1.6.4\lib\net45\ZeroFormatter.Interfaces.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Asset\AssetManager.cs" />
@@ -125,17 +119,18 @@
     <Compile Include="GUI\HasTexture.cs" />
     <Compile Include="GUI\ISelectable.cs" />
     <Compile Include="GUI\SelectionType.cs" />
-    <Compile Include="Networking\Serialization\BaseMessage.cs" />
     <Compile Include="Networking\External Type Serialization\PointTeacher.cs" />
-    <Compile Include="Networking\Serialization\IHasSubclasses.cs" />
-    <Compile Include="Networking\Serialization\ITeachSerialization.cs" />
     <Compile Include="Networking\Message Handlers\WorldTransferMessageHandler.cs" />
     <Compile Include="Networking\Messages\WorldTransferMessage.cs" />
     <Compile Include="Networking\NetworkSettings.cs" />
-    <Compile Include="Networking\Test\ConcreteTestHandler.cs" />
+    <Compile Include="Networking\Serialization\BaseMessage.cs" />
+    <Compile Include="Networking\Serialization\IHasSubclasses.cs" />
+    <Compile Include="Networking\Serialization\ITeachSerialization.cs" />
     <Compile Include="Networking\Serialization\MessageHandler.cs" />
     <Compile Include="Networking\Serialization\ProtoTypeLoader.cs" />
+    <Compile Include="Networking\Serialization\ProtoUtil.cs" />
     <Compile Include="Networking\Test\ConcreteTest.cs" />
+    <Compile Include="Networking\Test\ConcreteTestHandler.cs" />
     <Compile Include="Pathfinding\AStar\AStar.cs" />
     <Compile Include="Pathfinding\Cost\CostRetriever.cs" />
     <Compile Include="Pathfinding\Cost\IAddMovementCost.cs" />
@@ -144,7 +139,6 @@
     <Compile Include="Pathfinding\MainPathFinder.cs" />
     <Compile Include="Pathfinding\PathLink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Networking\Serialization\ProtoUtil.cs" />
     <Compile Include="Universal\IGameLoader.cs" />
     <Compile Include="Universal\Unique.cs" />
     <Compile Include="Universal\UniversalEvents.cs" />
@@ -176,6 +170,12 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MagicalLifeNetworking\MagicalLifeNetworking.csproj">
+      <Project>{bfa54511-668d-4086-8b72-5b71a7d07c28}</Project>
+      <Name>MagicalLifeNetworking</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.2\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.2\build\netstandard2.0\NETStandard.Library.targets')" />

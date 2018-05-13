@@ -1,10 +1,12 @@
 SneakyTactician  <SneakyTactician@outlook.com>
 
 ---
-## [Version 0.0.0.7]
+## [Version 0.0.1.6]
 #### GUI
 * Added buttons to the main menu to allow the user to join and host a multiplayer game
 * Added labels above the width and length input boxes
+* Added a menu to allow the user to host a game over the network
+* Added a menu to allow the user to join a game over the network
 
 #### API
 * API is now capable of sending and receiving objects in a very dynamic and elegant way

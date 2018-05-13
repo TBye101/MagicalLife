@@ -1,4 +1,5 @@
 ﻿using MagicalLifeGUIWindows.GUI.Reusable;
+using MagicalLifeNetworking;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 
@@ -12,17 +13,11 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
 
         public override void Click(MouseEventArgs e)
         {
-            this.AnyClick();
+            New_World_Menu.NewWorldMenu.Initialize();
         }
 
         public override void DoubleClick(MouseEventArgs e)
         {
-            this.AnyClick();
-        }
-
-        private void AnyClick()
-        {
-            New_World_Menu.NewWorldMenu.Initialize();
         }
 
         private static Rectangle GetLocation()

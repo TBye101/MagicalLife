@@ -1,4 +1,5 @@
-﻿using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeGUIWindows.GUI.New_World_Menu;
+using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeServer.Networking;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
@@ -31,6 +32,7 @@ namespace MagicalLifeGUIWindows.GUI.Host_Game_Menu.Buttons
         public override void Click(MouseEventArgs e)
         {
             ServerSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(int.Parse(HostGameMenu.menu.HostPortInputBox.Text)));
+            NewWorldMenu.Initialize();
             MenuHandler.Clear();
         }
 
