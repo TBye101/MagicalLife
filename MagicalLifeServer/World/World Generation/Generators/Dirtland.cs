@@ -1,11 +1,12 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities.Entity_Factory;
 using MagicalLifeAPI.Util;
+using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Tiles;
 using Microsoft.Xna.Framework;
 using System;
 
-namespace MagicalLifeAPI.World.World_Generation.Generators
+namespace MagicalLifeServer.World.World_Generation.Generators
 {
     /// <summary>
     /// Generates the whole map to be made out of dirt.

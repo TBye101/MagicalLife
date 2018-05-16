@@ -1,12 +1,13 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities.Entity_Factory;
 using MagicalLifeAPI.Util;
+using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Resources;
 using MagicalLifeAPI.World.Tiles;
 using Microsoft.Xna.Framework;
 using System;
 
-namespace MagicalLifeAPI.World.World_Generation.Generators
+namespace MagicalLifeServer.World.World_Generation.Generators
 {
     /// <summary>
     /// A world generator that throws in a sprinkle of stone.

@@ -49,7 +49,12 @@
     <Compile Include="Server\ServerSendRecieve.cs" />
     <Compile Include="Server\TCPServer.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\MagicalLifeAPI\MagicalLifeAPI.csproj">
+      <Project>{FE8400A7-9DC8-4AB4-8C54-AC5F36BF7639}</Project>
+      <Name>MagicalLifeAPI</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

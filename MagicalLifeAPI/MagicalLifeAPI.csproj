@@ -152,14 +152,12 @@
     <Compile Include="World\TileEventArg.cs" />
     <Compile Include="World\Tiles\Dirt.cs" />
     <Compile Include="World\Veggies\OakTree.cs" />
-    <Compile Include="World\World Generation\Generators\Dirtland.cs" />
-    <Compile Include="World\World Generation\Generators\StoneSprinkle.cs" />
     <Compile Include="World\WorldEventArgs.cs" />
-    <Compile Include="World\WorldGenerator.cs" />
     <Compile Include="World\Base\Resource.cs" />
     <Compile Include="World\Base\Tile.cs" />
     <Compile Include="World\Base\Vegetation.cs" />
     <Compile Include="World\World.cs" />
+    <Compile Include="World\WorldGenerator.cs" />
     <Compile Include="World\WorldUtil.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -170,12 +168,6 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MagicalLifeNetworking\MagicalLifeNetworking.csproj">
-      <Project>{bfa54511-668d-4086-8b72-5b71a7d07c28}</Project>
-      <Name>MagicalLifeNetworking</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.2\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.2\build\netstandard2.0\NETStandard.Library.targets')" />

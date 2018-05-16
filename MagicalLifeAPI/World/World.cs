@@ -2,7 +2,6 @@
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Universal;
-using MagicalLifeServer.Networking;
 using ProtoBuf;
 using System;
 
@@ -62,7 +61,7 @@ namespace MagicalLifeAPI.World
             WorldEventArgs worldEventArgs = new WorldEventArgs(MainWorld);
             MainWorld.WorldGeneratedHandler(worldEventArgs);
             Pathfinding.MainPathFinder.PFinder.Initialize();
-            ServerSendRecieve.SendAll<WorldTransferMessage>(new WorldTransferMessage(World.MainWorld));
+            //ServerSendRecieve.SendAll<WorldTransferMessage>(new WorldTransferMessage(World.MainWorld));
 
             World.TurnStartHandler(new WorldEventArgs(MainWorld));
         }
