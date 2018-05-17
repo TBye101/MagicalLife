@@ -1,6 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Universal;
 using ProtoBuf;
 using System;
