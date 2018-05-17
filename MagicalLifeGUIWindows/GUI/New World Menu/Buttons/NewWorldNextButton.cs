@@ -1,4 +1,5 @@
-﻿using MagicalLifeGUIWindows.GUI.MainMenu;
+﻿using MagicalLifeClient;
+using MagicalLifeGUIWindows.GUI.MainMenu;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;
 using MagicalLifeServer;
@@ -21,6 +22,7 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu.Buttons
         {
             ServerSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(true));
             Server.Start();
+            Client.Start();
             NewGameInputHandler a = new NewGameInputHandler();
             a.StartNewGame();
             BoundHandler.RemoveContainer(NewWorldMenu.NewWorldMenuM);

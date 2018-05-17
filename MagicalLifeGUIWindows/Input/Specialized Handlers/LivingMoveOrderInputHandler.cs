@@ -11,7 +11,7 @@ using System.Linq;
 namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 {
     /// <summary>
-    /// Used to check if the correct sequence of events has occured to order a <see cref="Living"/> to move.
+    /// Used to check if the correct sequence of events has occurred to order a <see cref="Living"/> to move.
     /// If the sequence occurs, this class orders the move.
     /// </summary>
     public class LivingMoveOrderInputHandler

@@ -161,6 +161,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Client.cs" />
     <Compile Include="Pathfinding\AStar\AStar.cs" />
     <Compile Include="Pathfinding\Cost\CostRetriever.cs" />
     <Compile Include="Pathfinding\Cost\IAddMovementCost.cs" />
