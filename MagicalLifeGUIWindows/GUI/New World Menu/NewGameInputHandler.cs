@@ -1,6 +1,4 @@
-﻿using MagicalLifeAPI.World;
-using MagicalLifeAPI.World.World_Generation.Generators;
-using System;
+﻿using System;
 
 namespace MagicalLifeGUIWindows.GUI.New_World_Menu
 {
@@ -22,7 +20,7 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu
 
             if (widthSuccess && lengthSuccess && width > 0 && length > 0)
             {
-                World.Initialize(width, length, new Dirtland());
+                //World.Initialize(width, length, new Dirtland());
                 //World.Initialize(width, length, new StoneSprinkle());
             }
             else

@@ -1,6 +1,6 @@
 ﻿using MagicalLifeAPI.Entities;
-using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 
 namespace MagicalLifeAPI.Pathfinding
 {

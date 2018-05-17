@@ -60,7 +60,7 @@ namespace MagicalLifeAPI.World
 
             WorldEventArgs worldEventArgs = new WorldEventArgs(MainWorld);
             MainWorld.WorldGeneratedHandler(worldEventArgs);
-            Pathfinding.MainPathFinder.PFinder.Initialize();
+            //Pathfinding.MainPathFinder.PFinder.Initialize();
             //ServerSendRecieve.SendAll<WorldTransferMessage>(new WorldTransferMessage(World.MainWorld));
 
             World.TurnStartHandler(new WorldEventArgs(MainWorld));

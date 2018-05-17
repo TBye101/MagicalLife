@@ -1,7 +1,7 @@
 ﻿namespace MagicalLifeAPI.Pathfinding
 {
     /// <summary>
-    /// Handles who pathfinds.
+    /// Handles who finds the path to destinations.
     /// </summary>
     public static class MainPathFinder
     {
