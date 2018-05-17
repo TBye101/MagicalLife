@@ -10,6 +10,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 #### API
 * API is now capable of sending and receiving objects in a very dynamic and elegant way
+* Now split into three parts: server, client, and the shared API
 
 #### Bugs
 * Discovered issue [#14](https://github.com/SneakyTactician/EarthWithMagic/issues/14)

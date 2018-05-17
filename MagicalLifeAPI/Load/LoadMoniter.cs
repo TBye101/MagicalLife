@@ -3,7 +3,7 @@ using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.Util;
 using System.Collections.Generic;
 
-namespace MagicalLifeGUIWindows.Load
+namespace MagicalLifeAPI.Load
 {
     /// <summary>
     /// Used to handle calculating how many jobs to do, and how many completed.

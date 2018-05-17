@@ -1,4 +1,6 @@
-﻿using MagicalLifeAPI.Universal;
+﻿using MagicalLifeAPI.Load;
+using MagicalLifeAPI.Universal;
+using MagicalLifeAPI.World;
 using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Load;
 using MagicalLifeGUIWindows.Rendering;
@@ -6,6 +8,8 @@ using MagicalLifeSettings.Storage;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace MagicalLifeGUIWindows
 {
@@ -61,7 +65,12 @@ namespace MagicalLifeGUIWindows
 
             Loader load = new Loader();
             string msg = string.Empty;
-            load.LoadAll(ref msg);
+
+            load.LoadAll(ref msg, new List<Assembly>
+            {
+                Assembly.GetAssembly(typeof(World)),
+                Assembly.GetAssembly(typeof(Game1))
+            });
 
             // TODO: use this.Content to load your game content here
         }

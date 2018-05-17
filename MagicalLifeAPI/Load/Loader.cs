@@ -1,10 +1,9 @@
 ﻿using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.Util;
-using MagicalLifeAPI.World;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace MagicalLifeGUIWindows.Load
+namespace MagicalLifeAPI.Load
 {
     /// <summary>
     /// Handles loading everything at startup.
@@ -15,14 +14,17 @@ namespace MagicalLifeGUIWindows.Load
         /// Loads all content.
         /// </summary>
         /// <param name="message">The message to display while loading.</param>
-        public void LoadAll(ref string message)
+        public void LoadAll(ref string message, List<Assembly> targetAssembly)
         {
             LoadMoniter loadMoniter = new LoadMoniter();
 
             List<IGameLoader> AllJobs = new List<IGameLoader>();
 
-            AllJobs.AddRange(ReflectionUtil.LoadAllInterface<IGameLoader>(Assembly.GetAssembly(typeof(World))));
-            AllJobs.AddRange(ReflectionUtil.LoadAllInterface<IGameLoader>(Assembly.GetAssembly(typeof(TextureLoader))));
+            foreach (Assembly item in targetAssembly)
+            {
+                AllJobs.AddRange(ReflectionUtil.LoadAllInterface<IGameLoader>(item));
+            }
+
             loadMoniter.AddJobs(AllJobs);
             loadMoniter.ExecuteJobs(ref message);
         }
