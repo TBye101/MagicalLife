@@ -1,6 +1,7 @@
 ﻿using MagicalLifeGUIWindows.GUI.MainMenu;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;
+using MagicalLifeServer;
 using MagicalLifeServer.Networking;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
@@ -18,13 +19,14 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu.Buttons
 
         public override void Click(MouseEventArgs e)
         {
+            ServerSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(true));
+            Server.Start();
             NewGameInputHandler a = new NewGameInputHandler();
             a.StartNewGame();
             BoundHandler.RemoveContainer(NewWorldMenu.NewWorldMenuM);
             MenuHandler.Clear();
             In_Game_GUI.InGameGUI.Initialize();
             BoundHandler.Popup(In_Game_GUI.InGameGUI.InGame);
-            ServerSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(true));
         }
 
         public override void DoubleClick(MouseEventArgs e)

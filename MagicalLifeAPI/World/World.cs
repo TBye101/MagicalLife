@@ -22,7 +22,7 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// Raised when the world is finished generating for the first time.
         /// </summary>
-        public event EventHandler<WorldEventArgs> WorldGenerated;
+        public static event EventHandler<WorldEventArgs> WorldGenerated;
 
         /// <summary>
         /// Raised at the start of each turn.
@@ -59,7 +59,7 @@ namespace MagicalLifeAPI.World
             MainWorld.Tiles = MainWorld.GenerateWorld(height, width, generator);
 
             WorldEventArgs worldEventArgs = new WorldEventArgs(MainWorld);
-            MainWorld.WorldGeneratedHandler(worldEventArgs);
+            World.WorldGeneratedHandler(worldEventArgs);
             //Pathfinding.MainPathFinder.PFinder.Initialize();
             //ServerSendRecieve.SendAll<WorldTransferMessage>(new WorldTransferMessage(World.MainWorld));
 
@@ -100,12 +100,12 @@ namespace MagicalLifeAPI.World
         /// Raises the world generated event.
         /// </summary>
         /// <param name="e"></param>
-        protected virtual void WorldGeneratedHandler(WorldEventArgs e)
+        public static void WorldGeneratedHandler(WorldEventArgs e)
         {
             EventHandler<WorldEventArgs> handler = WorldGenerated;
             if (handler != null)
             {
-                handler(this, e);
+                handler(World.MainWorld, e);
             }
         }
 

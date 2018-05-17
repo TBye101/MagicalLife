@@ -130,10 +130,6 @@
     <Compile Include="Networking\Serialization\ProtoUtil.cs" />
     <Compile Include="Networking\Test\ConcreteTest.cs" />
     <Compile Include="Networking\Test\ConcreteTestHandler.cs" />
-    <Compile Include="Pathfinding\Cost\CostRetriever.cs" />
-    <Compile Include="Pathfinding\Cost\IAddMovementCost.cs" />
-    <Compile Include="Pathfinding\Cost\StandardTileCost.cs" />
-    <Compile Include="Pathfinding\IPathFinder.cs" />
     <Compile Include="Pathfinding\PathLink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Universal\IGameLoader.cs" />

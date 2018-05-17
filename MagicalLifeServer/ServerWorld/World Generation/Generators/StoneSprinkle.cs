@@ -7,7 +7,7 @@ using MagicalLifeAPI.World.Tiles;
 using Microsoft.Xna.Framework;
 using System;
 
-namespace MagicalLifeServer.World.World_Generation.Generators
+namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
 {
     /// <summary>
     /// A world generator that throws in a sprinkle of stone.
