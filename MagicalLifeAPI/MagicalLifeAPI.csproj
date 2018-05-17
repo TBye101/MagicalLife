@@ -109,7 +109,6 @@
     <Compile Include="Entities\Eventing\LivingEventArg.cs" />
     <Compile Include="Entities\Humanoid\Human.cs" />
     <Compile Include="Entities\Living.cs" />
-    <Compile Include="Entities\Movement\EntityWorldMovement.cs" />
     <Compile Include="Entities\Util\Attribute.cs" />
     <Compile Include="Entities\Util\Modifier Remove Conditions\IModifierRemoveCondition.cs" />
     <Compile Include="Entities\Util\Modifier Remove Conditions\NeverRemoveCondition.cs" />

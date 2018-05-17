@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.Entities.Eventing;
-using MagicalLifeAPI.Entities.Movement;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Pathfinding;
@@ -66,7 +65,7 @@ namespace MagicalLifeAPI.Entities
         private void World_TurnEnd(object sender, World.WorldEventArgs e)
         {
             Living l = this;
-            EntityWorldMovement.MoveEntity(ref l);
+            //EntityWorldMovement.MoveEntity(ref l);
         }
 
         /// <summary>
