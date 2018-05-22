@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World;
 using MagicalLifeServer.Networking;
+using MagicalLifeServer.Processing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,12 +18,14 @@ namespace MagicalLifeServer.Load
     {
         public int GetTotalOperations()
         {
-            return 1;
+            return 2;
         }
 
         public void InitialStartup(ref int progress)
         {
             World.WorldGenerated += this.MainWorld_WorldGenerated;
+            progress++;
+            ServerProcessor.Initialize();
             progress++;
         }
 

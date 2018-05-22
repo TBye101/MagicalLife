@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Networking;
+using MagicalLifeAPI.World;
 using MagicalLifeNetworking.Client;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,11 @@ namespace MagicalLifeServer.Networking
         /// The messages that have been received and are yet unprocessed. 
         /// </summary>
         public static Queue<BaseMessage> RecievedMessages = new Queue<BaseMessage>();
+
+        /// <summary>
+        /// Raised whenever the server receives a message.
+        /// </summary>
+        public static event EventHandler<BaseMessage> MessageRecieved;
 
         public static void Initialize(NetworkSettings networkSettings)
         {
@@ -78,6 +84,20 @@ namespace MagicalLifeServer.Networking
         public static void Recieve(BaseMessage message)
         {
             RecievedMessages.Enqueue(message);
+            RaiseMessageRecieved(null, message);
+        }
+
+        /// <summary>
+        /// Raises the world generated event.
+        /// </summary>
+        /// <param name="e"></param>
+        private static void RaiseMessageRecieved(object sender, BaseMessage msg)
+        {
+            EventHandler<BaseMessage> handler = MessageRecieved;
+            if (handler != null)
+            {
+                handler(sender, msg);
+            }
         }
     }
 }

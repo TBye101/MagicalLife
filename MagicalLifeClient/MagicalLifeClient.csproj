@@ -170,7 +170,6 @@
     <Compile Include="Pathfinding\IPathFinder.cs" />
     <Compile Include="Pathfinding\MainPathFinder.cs" />
     <Compile Include="Processing\ClientProcessor.cs" />
-    <Compile Include="Processing\Rules\ClientWorldDataTransferRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
