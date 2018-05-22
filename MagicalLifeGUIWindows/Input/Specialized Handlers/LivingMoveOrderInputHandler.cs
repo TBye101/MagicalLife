@@ -4,6 +4,8 @@ using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
 using MagicalLifeGUIWindows.Input.History;
+using MagicalLifeNetworking.Client;
+using MagicalLifeNetworking.Messages;
 using MonoGame.Extended.Input.InputListeners;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,6 +51,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
                             living.QueuedMovement.Clear();
                             Extensions.EnqueueCollection(living.QueuedMovement, pth);
+                            ClientSendRecieve.Send<RouteCreatedMessage>(new RouteCreatedMessage(pth));
                         }
                         break;
                 }
