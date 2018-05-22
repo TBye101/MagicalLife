@@ -162,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
+    <Compile Include="Message Handlers\WorldTransferMessageHandler.cs" />
     <Compile Include="Pathfinding\AStar\AStar.cs" />
     <Compile Include="Pathfinding\Cost\CostRetriever.cs" />
     <Compile Include="Pathfinding\Cost\IAddMovementCost.cs" />

@@ -58,7 +58,6 @@
     <Compile Include="Client\ClientSendRecieve.cs" />
     <Compile Include="Client\TCPClient.cs" />
     <Compile Include="External Type Serialization\PointTeacher.cs" />
-    <Compile Include="Message Handlers\WorldTransferMessageHandler.cs" />
     <Compile Include="Messages\RouteCreatedMessage.cs" />
     <Compile Include="Messages\WorldTransferMessage.cs" />
     <Compile Include="NetworkSettings.cs" />

@@ -15,9 +15,13 @@ namespace MagicalLifeNetworking.Messages
         [ProtoMember(1)]
         public List<PathLink> Path;
 
-        public RouteCreatedMessage(List<PathLink> path) : base(3)
+        [ProtoMember(2)]
+        public Guid LivingID;
+
+        public RouteCreatedMessage(List<PathLink> path, Guid livingID) : base(3)
         {
             this.Path = path;
+            this.LivingID = livingID;
         }
 
         public RouteCreatedMessage() : base(3)
