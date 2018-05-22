@@ -21,8 +21,9 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu.Buttons
         public override void Click(MouseEventArgs e)
         {
             ServerSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(true));
-            Server.Start();
+            Server.Load();
             Client.Start();
+            Server.StartGame();
             NewGameInputHandler a = new NewGameInputHandler();
             a.StartNewGame();
             BoundHandler.RemoveContainer(NewWorldMenu.NewWorldMenuM);

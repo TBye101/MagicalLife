@@ -23,16 +23,6 @@ namespace MagicalLifeAPI.World
         /// </summary>
         public static event EventHandler<WorldEventArgs> WorldGenerated;
 
-        /// <summary>
-        /// Raised at the start of each turn.
-        /// </summary>
-        public static event EventHandler<WorldEventArgs> TurnStart;
-
-        /// <summary>
-        /// Raised at the end of each turn.
-        /// </summary>
-        public static event EventHandler<WorldEventArgs> TurnEnd;
-
         public static World MainWorld { get; set; }
 
         /// <summary>
@@ -59,10 +49,6 @@ namespace MagicalLifeAPI.World
 
             WorldEventArgs worldEventArgs = new WorldEventArgs(MainWorld);
             World.WorldGeneratedHandler(worldEventArgs);
-            //Pathfinding.MainPathFinder.PFinder.Initialize();
-            //ServerSendRecieve.SendAll<WorldTransferMessage>(new WorldTransferMessage(World.MainWorld));
-
-            World.TurnStartHandler(new WorldEventArgs(MainWorld));
         }
 
         /// <summary>
@@ -87,14 +73,6 @@ namespace MagicalLifeAPI.World
             return stage2;
         }
 
-        public static void EndTurn()
-        {
-            MasterLog.DebugWriteLine("Turn ended!");
-            //TestMove();
-            TurnEndHandler(new WorldEventArgs(MainWorld));
-            TurnStartHandler(new WorldEventArgs(MainWorld));
-        }
-
         /// <summary>
         /// Raises the world generated event.
         /// </summary>
@@ -104,34 +82,6 @@ namespace MagicalLifeAPI.World
             EventHandler<WorldEventArgs> handler = WorldGenerated;
             if (handler != null)
             {
-                handler(World.MainWorld, e);
-            }
-        }
-
-        /// <summary>
-        /// Raises the world generated event.
-        /// </summary>
-        /// <param name="e"></param>
-        public static void TurnStartHandler(WorldEventArgs e)
-        {
-            EventHandler<WorldEventArgs> handler = TurnStart;
-            if (handler != null)
-            {
-                World.IsPlayersTurn = true;
-                handler(World.MainWorld, e);
-            }
-        }
-
-        /// <summary>
-        /// Raises the world generated event.
-        /// </summary>
-        /// <param name="e"></param>
-        public static void TurnEndHandler(WorldEventArgs e)
-        {
-            EventHandler<WorldEventArgs> handler = TurnEnd;
-            if (handler != null)
-            {
-                World.IsPlayersTurn = false;
                 handler(World.MainWorld, e);
             }
         }

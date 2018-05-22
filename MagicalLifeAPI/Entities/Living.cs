@@ -54,18 +54,11 @@ namespace MagicalLifeAPI.Entities
             this.MovementSpeed = new Util.Attribute(movementSpeed);
             Living.LivingCreated(this, new LivingEventArg(this, location));
             this.MapLocation = location;
-            World.World.TurnEnd += this.World_TurnEnd;
         }
 
         public Living()
         {
 
-        }
-
-        private void World_TurnEnd(object sender, World.WorldEventArgs e)
-        {
-            Living l = this;
-            //EntityWorldMovement.MoveEntity(ref l);
         }
 
         /// <summary>

@@ -10,7 +10,6 @@ namespace MagicalLifeAPI.Entities.Util
     {
         public Attribute()
         {
-            World.World.TurnEnd += this.World_TurnEnd;
         }
 
         private void World_TurnEnd(object sender, World.WorldEventArgs e)
