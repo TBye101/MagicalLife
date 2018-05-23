@@ -1,13 +1,15 @@
 ﻿using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Message_Handlers;
+using MagicalLifeAPI.Util;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace MagicalLifeClient.Processing
 {
     /// <summary>
     /// Handles client side message processing.
     /// </summary>
-    public static class ClientProcessor
+    public class ClientProcessor
     {
         /// <summary>
         /// Key: The ID of the message to be handled.
@@ -15,12 +17,12 @@ namespace MagicalLifeClient.Processing
         /// </summary>
         private static Dictionary<int, MessageHandler> MessageHandlers = new Dictionary<int, MessageHandler>();
 
-        public static void Initialize()
+        public static void Initialize(List<MessageHandler> handlers)
         {
-            AddHandler(new ConcreteTestHandler());
-
-            //Least important messages
-            AddHandler(new WorldTransferMessageHandler());
+            foreach (MessageHandler item in handlers)
+            {
+                AddHandler(item);
+            }
         }
 
         public static void Process(BaseMessage msg)

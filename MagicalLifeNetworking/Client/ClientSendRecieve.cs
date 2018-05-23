@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Networking;
 using MagicalLifeClient.Networking;
+using MagicalLifeClient.Processing;
 using MagicalLifeServer.Networking;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,9 @@ namespace MagicalLifeNetworking.Client
 
         private static TCPClient TCPClient;
 
+        /// <summary>
+        /// Raised whenever a message is received
+        /// </summary>
         public static Queue<BaseMessage> RecievedMessages = new Queue<BaseMessage>();
 
         public static void Initialize(NetworkSettings networkSettings)
@@ -57,7 +61,8 @@ namespace MagicalLifeNetworking.Client
         /// <param name="message"></param>
         public static void Recieve(BaseMessage message)
         {
-            RecievedMessages.Enqueue(message);
+            //RecievedMessages.Enqueue(message);
+            Task.Run(() => ClientProcessor.Process(message));
         }
     }
 }
