@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Protobuf;
+﻿using MagicalLifeAPI.Networking.External_Type_Serialization;
+using MagicalLifeAPI.Protobuf;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.Util;
 using ProtoBuf.Meta;
@@ -23,7 +24,7 @@ namespace MagicalLifeAPI.Networking
         public int GetTotalOperations()
         {
             this.Messages.AddRange(ReflectionUtil.LoadTypeOfAllSubclasses<BaseMessage>(Assembly.GetAssembly(typeof(BaseMessage))));
-            this.Teachers.AddRange(ReflectionUtil.LoadAllInterface<ITeachSerialization>(Assembly.GetAssembly(typeof(ITeachSerialization))));
+            this.Teachers.AddRange(ReflectionUtil.LoadAllInterface<ITeachSerialization>(Assembly.GetAssembly(typeof(PointTeacher))));
             return this.Messages.Count + this.Teachers.Count;
         }
 
@@ -33,7 +34,7 @@ namespace MagicalLifeAPI.Networking
 
             foreach (ITeachSerialization item in this.Teachers)
             {
-                item.Teach(current);
+                item.Teach(current);//Point teacher ain't loading
                 progress++;
             }
 

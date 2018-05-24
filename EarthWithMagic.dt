@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-16"?>
-<DevTrackerData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SolutionTotalEditTime="PT51M35.0420064S" SolutionTotalViewTime="PT2H45M17.4916423S" SolutionTotalDebugTime="PT16M39.7545436S">
+<DevTrackerData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SolutionTotalEditTime="PT51M35.0265383S" SolutionTotalViewTime="PT2H55M13.0590647S" SolutionTotalDebugTime="PT16M39.7545436S">
   <FileVersion>
     <Major>1</Major>
     <Minor>0</Minor>
@@ -7,211 +7,34 @@
   <SolutionFolder>D:\Git Repositories\EarthWithMagic</SolutionFolder>
   <SessionTimeList />
   <LastSessionTimeList>
-    <DevTrackerDataItem ViewActiveTime="PT9.4670097S" EditActiveTime="PT0S">
+    <DevTrackerDataItem ViewActiveTime="PT2M30.4281083S" EditActiveTime="PT0S">
       <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
       <EditedCount>0</EditedCount>
       <ViewedCount>1</ViewedCount>
-      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeClient\app.config</Item>
-      <ItemType>ProjectItem</ItemType>
-      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeClient\MagicalLifeClient.csproj</ProjectName>
-      <CreatedDate>2018-05-23T15:35:42.0280133-05:00</CreatedDate>
-      <ViewedBy>sneak</ViewedBy>
-    </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT1.2128028S" EditActiveTime="PT0S">
-      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
-      <EditedCount>0</EditedCount>
-      <ViewedCount>1</ViewedCount>
-      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeNetworking\Serialization\BaseMessage.cs</Item>
+      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeNetworking\Test\ConcreteTestHandler.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeNetworking\MagicalLifeNetworking.csproj</ProjectName>
-      <CreatedDate>2018-05-23T15:38:28.1168514-05:00</CreatedDate>
+      <CreatedDate>2018-05-24T15:52:39.7706561-05:00</CreatedDate>
       <ViewedBy>sneak</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT5M30.7062043S" EditActiveTime="PT5M22.9683448S">
-      <ModifiedDate>2018-05-23T17:12:40.5784066-05:00</ModifiedDate>
-      <ModifiedBy>sneak</ModifiedBy>
-      <EditedCount>1</EditedCount>
-      <ViewedCount>1</ViewedCount>
-      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeClient\Client.cs</Item>
-      <ItemType>ProjectItem</ItemType>
-      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeClient\MagicalLifeClient.csproj</ProjectName>
-      <CreatedDate>2018-05-23T15:05:54.377308-05:00</CreatedDate>
-      <ViewedBy>sneak</ViewedBy>
-    </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT46.1698306S" EditActiveTime="PT22.3543819S">
-      <ModifiedDate>2018-05-23T15:44:34.3129233-05:00</ModifiedDate>
-      <ModifiedBy>sneak</ModifiedBy>
-      <EditedCount>1</EditedCount>
-      <ViewedCount>1</ViewedCount>
-      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeClient\Processing\ClientProcessor.cs</Item>
-      <ItemType>ProjectItem</ItemType>
-      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeClient\MagicalLifeClient.csproj</ProjectName>
-      <CreatedDate>2018-05-23T15:35:42.9100814-05:00</CreatedDate>
-      <ViewedBy>sneak</ViewedBy>
-    </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT2M6.938231S" EditActiveTime="PT1M31.5603783S">
-      <ModifiedDate>2018-05-23T17:07:33.9453608-05:00</ModifiedDate>
-      <ModifiedBy>sneak</ModifiedBy>
-      <EditedCount>1</EditedCount>
-      <ViewedCount>1</ViewedCount>
-      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeNetworking\Client\ClientProcessor.cs</Item>
-      <ItemType>ProjectItem</ItemType>
-      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeNetworking\MagicalLifeNetworking.csproj</ProjectName>
-      <CreatedDate>2018-05-23T15:45:18.6451291-05:00</CreatedDate>
-      <ViewedBy>sneak</ViewedBy>
-    </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT4M24.8013323S" EditActiveTime="PT5M36.305508S">
-      <ModifiedDate>2018-05-23T17:07:22.9122523-05:00</ModifiedDate>
-      <ModifiedBy>sneak</ModifiedBy>
-      <EditedCount>1</EditedCount>
-      <ViewedCount>1</ViewedCount>
-      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeNetworking\Client\ClientSendRecieve.cs</Item>
-      <ItemType>ProjectItem</ItemType>
-      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeNetworking\MagicalLifeNetworking.csproj</ProjectName>
-      <CreatedDate>2018-05-23T15:38:36.4300406-05:00</CreatedDate>
-      <ViewedBy>sneak</ViewedBy>
-    </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT2M35.7085311S" EditActiveTime="PT0S">
+    <DevTrackerDataItem ViewActiveTime="PT0.0220586S" EditActiveTime="PT0S">
       <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
       <EditedCount>0</EditedCount>
       <ViewedCount>1</ViewedCount>
-      <Item>Debug Mode</Item>
-      <ItemType>DebugModeItem</ItemType>
-      <ProjectName />
-      <CreatedDate>2018-05-23T15:30:40.6235292-05:00</CreatedDate>
-      <ViewedBy>sneak</ViewedBy>
-    </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT9M13.3264009S" EditActiveTime="PT0S">
-      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
-      <EditedCount>0</EditedCount>
-      <ViewedCount>1</ViewedCount>
-      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeServer\Movement\EntityWorldMovement.cs</Item>
+      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeAPI\Filing\Logging\MasterLog.cs</Item>
       <ItemType>ProjectItem</ItemType>
-      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeServer\MagicalLifeServer.csproj</ProjectName>
-      <CreatedDate>2018-05-23T14:47:51.1803531-05:00</CreatedDate>
+      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeAPI\MagicalLifeAPI.csproj</ProjectName>
+      <CreatedDate>2018-05-24T15:52:39.8533764-05:00</CreatedDate>
       <ViewedBy>sneak</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT1.4643087S" EditActiveTime="PT0S">
-      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
-      <EditedCount>0</EditedCount>
-      <ViewedCount>1</ViewedCount>
-      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeServer\Load\MainLoad.cs</Item>
-      <ItemType>ProjectItem</ItemType>
-      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeServer\MagicalLifeServer.csproj</ProjectName>
-      <CreatedDate>2018-05-23T17:08:35.2372645-05:00</CreatedDate>
-      <ViewedBy>sneak</ViewedBy>
-    </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT1.0525853S" EditActiveTime="PT0S">
-      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
-      <EditedCount>0</EditedCount>
-      <ViewedCount>1</ViewedCount>
-      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeClient\Pathfinding\MainPathFinder.cs</Item>
-      <ItemType>ProjectItem</ItemType>
-      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeClient\MagicalLifeClient.csproj</ProjectName>
-      <CreatedDate>2018-05-23T17:08:46.3021415-05:00</CreatedDate>
-      <ViewedBy>sneak</ViewedBy>
-    </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT1.5043925S" EditActiveTime="PT0S">
-      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
-      <EditedCount>0</EditedCount>
-      <ViewedCount>1</ViewedCount>
-      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeNetworking\Serialization\MessageHandler.cs</Item>
-      <ItemType>ProjectItem</ItemType>
-      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeNetworking\MagicalLifeNetworking.csproj</ProjectName>
-      <CreatedDate>2018-05-23T17:11:10.3784538-05:00</CreatedDate>
-      <ViewedBy>sneak</ViewedBy>
-    </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT8.9547161S" EditActiveTime="PT0S">
-      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
-      <EditedCount>0</EditedCount>
-      <ViewedCount>1</ViewedCount>
-      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeGUIWindows\GUI\New World Menu\Buttons\NewWorldNextButton.cs</Item>
-      <ItemType>ProjectItem</ItemType>
-      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeGUIWindows\MagicalLifeGUIWindows.csproj</ProjectName>
-      <CreatedDate>2018-05-23T15:31:12.105532-05:00</CreatedDate>
-      <ViewedBy>sneak</ViewedBy>
-    </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT1.8477803S" EditActiveTime="PT0S">
-      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
-      <EditedCount>0</EditedCount>
-      <ViewedCount>1</ViewedCount>
-      <Item>Queue.cs</Item>
-      <ItemType>ProjectItem</ItemType>
-      <ProjectName />
-      <CreatedDate>2018-05-23T15:39:28.1325436-05:00</CreatedDate>
-      <ViewedBy>sneak</ViewedBy>
-    </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT7M54.9524896S" EditActiveTime="PT2M19.4479396S">
-      <ModifiedDate>2018-05-23T17:10:11.4642734-05:00</ModifiedDate>
-      <ModifiedBy>sneak</ModifiedBy>
-      <EditedCount>1</EditedCount>
-      <ViewedCount>1</ViewedCount>
-      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeServer\Server.cs</Item>
-      <ItemType>ProjectItem</ItemType>
-      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeServer\MagicalLifeServer.csproj</ProjectName>
-      <CreatedDate>2018-05-23T15:06:01.4591494-05:00</CreatedDate>
-      <ViewedBy>sneak</ViewedBy>
-    </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT22.2856299S" EditActiveTime="PT0S">
-      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
-      <EditedCount>0</EditedCount>
-      <ViewedCount>1</ViewedCount>
-      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeNetworking\Server\ServerSendRecieve.cs</Item>
-      <ItemType>ProjectItem</ItemType>
-      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeNetworking\MagicalLifeNetworking.csproj</ProjectName>
-      <CreatedDate>2018-05-23T15:14:20.3202624-05:00</CreatedDate>
-      <ViewedBy>sneak</ViewedBy>
-    </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT1M54.874063S" EditActiveTime="PT1M9.465979S">
-      <ModifiedDate>2018-05-23T15:03:39.35201-05:00</ModifiedDate>
-      <ModifiedBy>sneak</ModifiedBy>
-      <EditedCount>1</EditedCount>
-      <ViewedCount>1</ViewedCount>
-      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeNetworking\Messages\ServerTickMessage.cs</Item>
-      <ItemType>ProjectItem</ItemType>
-      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeNetworking\MagicalLifeNetworking.csproj</ProjectName>
-      <CreatedDate>2018-05-23T15:01:28.6916032-05:00</CreatedDate>
-      <ViewedBy>sneak</ViewedBy>
-    </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT2M9.2776369S" EditActiveTime="PT1M14.3852623S">
-      <ModifiedDate>2018-05-23T15:27:49.9059533-05:00</ModifiedDate>
-      <ModifiedBy>sneak</ModifiedBy>
-      <EditedCount>1</EditedCount>
-      <ViewedCount>1</ViewedCount>
-      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeClient\Message Handlers\ServerTickMessageHandler.cs</Item>
-      <ItemType>ProjectItem</ItemType>
-      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeClient\MagicalLifeClient.csproj</ProjectName>
-      <CreatedDate>2018-05-23T15:04:24.0763214-05:00</CreatedDate>
-      <ViewedBy>sneak</ViewedBy>
-    </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT5.5902428S" EditActiveTime="PT0S">
+    <DevTrackerDataItem ViewActiveTime="PT0.0130334S" EditActiveTime="PT0S">
       <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
       <EditedCount>0</EditedCount>
       <ViewedCount>1</ViewedCount>
       <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeNetworking\Server\TCPServer.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeNetworking\MagicalLifeNetworking.csproj</ProjectName>
-      <CreatedDate>2018-05-23T15:30:05.3272655-05:00</CreatedDate>
-      <ViewedBy>sneak</ViewedBy>
-    </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT14.8433501S" EditActiveTime="PT0S">
-      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
-      <EditedCount>0</EditedCount>
-      <ViewedCount>1</ViewedCount>
-      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeAPI\World\World.cs</Item>
-      <ItemType>ProjectItem</ItemType>
-      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeAPI\MagicalLifeAPI.csproj</ProjectName>
-      <CreatedDate>2018-05-23T15:34:18.12713-05:00</CreatedDate>
-      <ViewedBy>sneak</ViewedBy>
-    </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT6.5183387S" EditActiveTime="PT0S">
-      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
-      <EditedCount>0</EditedCount>
-      <ViewedCount>1</ViewedCount>
-      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeClient\Message Handlers\WorldTransferMessageHandler.cs</Item>
-      <ItemType>ProjectItem</ItemType>
-      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeClient\MagicalLifeClient.csproj</ProjectName>
-      <CreatedDate>2018-05-23T15:04:34.9597792-05:00</CreatedDate>
+      <CreatedDate>2018-05-24T15:52:39.898498-05:00</CreatedDate>
       <ViewedBy>sneak</ViewedBy>
     </DevTrackerDataItem>
   </LastSessionTimeList>
@@ -342,6 +165,16 @@
       <CreatedDate>2018-05-22T16:59:26.2830181-05:00</CreatedDate>
       <ViewedBy>sneak</ViewedBy>
     </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT4M1.9094155S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>2</ViewedCount>
+      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeNetworking\Test\ConcreteTestHandler.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeNetworking\MagicalLifeNetworking.csproj</ProjectName>
+      <CreatedDate>2018-05-24T15:49:30.5120039-05:00</CreatedDate>
+      <ViewedBy>sneak</ViewedBy>
+    </DevTrackerDataItem>
     <DevTrackerDataItem ViewActiveTime="PT2M8.3814487S" EditActiveTime="PT0S">
       <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
       <EditedCount>0</EditedCount>
@@ -372,11 +205,11 @@
       <CreatedDate>2018-05-17T15:02:41.109848-05:00</CreatedDate>
       <ViewedBy>sneak</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT5.4400513S" EditActiveTime="PT1.5195657S">
+    <DevTrackerDataItem ViewActiveTime="PT9.9284839S" EditActiveTime="PT1.5195657S">
       <ModifiedDate>2018-05-17T15:28:23.8702847-05:00</ModifiedDate>
       <ModifiedBy>sneak</ModifiedBy>
       <EditedCount>1</EditedCount>
-      <ViewedCount>1</ViewedCount>
+      <ViewedCount>2</ViewedCount>
       <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeServer\ServerWorld\World Generation\Generators\Dirtland.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeServer\MagicalLifeServer.csproj</ProjectName>
@@ -434,11 +267,11 @@
       <CreatedDate>2018-05-20T15:18:59.198022-05:00</CreatedDate>
       <ViewedBy>sneak</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT25.1538749S" EditActiveTime="PT10.6860553S">
+    <DevTrackerDataItem ViewActiveTime="PT3M49.4322313S" EditActiveTime="PT10.6860553S">
       <ModifiedDate>2018-05-17T15:51:31.8100216-05:00</ModifiedDate>
       <ModifiedBy>sneak</ModifiedBy>
       <EditedCount>1</EditedCount>
-      <ViewedCount>2</ViewedCount>
+      <ViewedCount>3</ViewedCount>
       <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeGUIWindows\GUI\Host Game Menu\Buttons\HostButton.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeGUIWindows\MagicalLifeGUIWindows.csproj</ProjectName>
@@ -663,6 +496,16 @@
       <CreatedDate>2018-05-17T16:35:56.2835586-05:00</CreatedDate>
       <ViewedBy>sneak</ViewedBy>
     </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT1M43.3257022S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>2</ViewedCount>
+      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeAPI\Filing\Logging\MasterLog.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeAPI\MagicalLifeAPI.csproj</ProjectName>
+      <CreatedDate>2018-05-24T15:47:39.0038786-05:00</CreatedDate>
+      <ViewedBy>sneak</ViewedBy>
+    </DevTrackerDataItem>
     <DevTrackerDataItem ViewActiveTime="PT1.5043925S" EditActiveTime="PT0S">
       <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
       <EditedCount>0</EditedCount>
@@ -705,11 +548,11 @@
       <CreatedDate>2018-05-17T15:41:20.2505037-05:00</CreatedDate>
       <ViewedBy>sneak</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT3M49.9158219S" EditActiveTime="PT34.8612737S">
+    <DevTrackerDataItem ViewActiveTime="PT3M50.2728415S" EditActiveTime="PT34.8612737S">
       <ModifiedDate>2018-05-22T15:54:58.0487676-05:00</ModifiedDate>
       <ModifiedBy>sneak</ModifiedBy>
       <EditedCount>2</EditedCount>
-      <ViewedCount>3</ViewedCount>
+      <ViewedCount>4</ViewedCount>
       <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeGUIWindows\GUI\New World Menu\Buttons\NewWorldNextButton.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeGUIWindows\MagicalLifeGUIWindows.csproj</ProjectName>
@@ -820,32 +663,32 @@
       <CreatedDate>2018-05-22T16:29:53.2201352-05:00</CreatedDate>
       <ViewedBy>sneak</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT23.9040847S" EditActiveTime="PT0S">
+    <DevTrackerDataItem ViewActiveTime="PT24.2136644S" EditActiveTime="PT0S">
       <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
       <EditedCount>0</EditedCount>
-      <ViewedCount>1</ViewedCount>
+      <ViewedCount>2</ViewedCount>
       <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeServer\Processing\Message Handlers\RouteCreatedMessageHandler.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeServer\MagicalLifeServer.csproj</ProjectName>
       <CreatedDate>2018-05-22T17:02:44.2040127-05:00</CreatedDate>
       <ViewedBy>sneak</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT30M54.2872035S" EditActiveTime="PT13M32.7030683S">
+    <DevTrackerDataItem ViewActiveTime="PT31M6.2635815S" EditActiveTime="PT13M32.7030683S">
       <ModifiedDate>2018-05-23T17:10:11.4642734-05:00</ModifiedDate>
       <ModifiedBy>sneak</ModifiedBy>
       <EditedCount>4</EditedCount>
-      <ViewedCount>4</ViewedCount>
+      <ViewedCount>5</ViewedCount>
       <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeServer\Server.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeServer\MagicalLifeServer.csproj</ProjectName>
       <CreatedDate>2018-05-17T15:32:48.3148956-05:00</CreatedDate>
       <ViewedBy>sneak</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT1M56.6833754S" EditActiveTime="PT56.9151998S">
+    <DevTrackerDataItem ViewActiveTime="PT2M9.5730443S" EditActiveTime="PT56.9151998S">
       <ModifiedDate>2018-05-22T17:09:34.4881022-05:00</ModifiedDate>
       <ModifiedBy>sneak</ModifiedBy>
       <EditedCount>1</EditedCount>
-      <ViewedCount>1</ViewedCount>
+      <ViewedCount>2</ViewedCount>
       <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeServer\Processing\ServerProcessor.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeServer\MagicalLifeServer.csproj</ProjectName>
@@ -926,10 +769,10 @@
       <CreatedDate>2018-05-17T15:28:28.2334754-05:00</CreatedDate>
       <ViewedBy>sneak</ViewedBy>
     </DevTrackerDataItem>
-    <DevTrackerDataItem ViewActiveTime="PT9.0677954S" EditActiveTime="PT0S">
+    <DevTrackerDataItem ViewActiveTime="PT22.5443675S" EditActiveTime="PT0S">
       <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
       <EditedCount>0</EditedCount>
-      <ViewedCount>2</ViewedCount>
+      <ViewedCount>4</ViewedCount>
       <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeNetworking\Server\TCPServer.cs</Item>
       <ItemType>ProjectItem</ItemType>
       <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeNetworking\MagicalLifeNetworking.csproj</ProjectName>
@@ -1060,6 +903,126 @@
     </DevTrackerDataItem>
   </TotalTimeList>
   <HistoryTimeList>
+    <DevTrackerDataItem ViewActiveTime="PT0.0130334S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeNetworking\Server\TCPServer.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeNetworking\MagicalLifeNetworking.csproj</ProjectName>
+      <CreatedDate>2018-05-24T15:52:39.898498-05:00</CreatedDate>
+      <ViewedBy>sneak</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT0.0220586S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeAPI\Filing\Logging\MasterLog.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeAPI\MagicalLifeAPI.csproj</ProjectName>
+      <CreatedDate>2018-05-24T15:52:39.8533764-05:00</CreatedDate>
+      <ViewedBy>sneak</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT2M30.427616S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeNetworking\Test\ConcreteTestHandler.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeNetworking\MagicalLifeNetworking.csproj</ProjectName>
+      <CreatedDate>2018-05-24T15:52:39.7706561-05:00</CreatedDate>
+      <ViewedBy>sneak</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT1M31.4862981S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeNetworking\Test\ConcreteTestHandler.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeNetworking\MagicalLifeNetworking.csproj</ProjectName>
+      <CreatedDate>2018-05-24T15:49:30.5120039-05:00</CreatedDate>
+      <ViewedBy>sneak</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT13.4635387S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeNetworking\Server\TCPServer.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeNetworking\MagicalLifeNetworking.csproj</ProjectName>
+      <CreatedDate>2018-05-24T15:49:17.047966-05:00</CreatedDate>
+      <ViewedBy>sneak</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT1M43.3036436S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeAPI\Filing\Logging\MasterLog.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeAPI\MagicalLifeAPI.csproj</ProjectName>
+      <CreatedDate>2018-05-24T15:47:39.0038786-05:00</CreatedDate>
+      <ViewedBy>sneak</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT12.8896689S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeServer\Processing\ServerProcessor.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeServer\MagicalLifeServer.csproj</ProjectName>
+      <CreatedDate>2018-05-24T15:47:26.1132047-05:00</CreatedDate>
+      <ViewedBy>sneak</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT4.4884326S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeServer\ServerWorld\World Generation\Generators\Dirtland.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeServer\MagicalLifeServer.csproj</ProjectName>
+      <CreatedDate>2018-05-24T15:47:21.6242896-05:00</CreatedDate>
+      <ViewedBy>sneak</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT3M24.2783564S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeGUIWindows\GUI\Host Game Menu\Buttons\HostButton.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeGUIWindows\MagicalLifeGUIWindows.csproj</ProjectName>
+      <CreatedDate>2018-05-24T15:42:10.6386453-05:00</CreatedDate>
+      <ViewedBy>sneak</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT11.976378S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeServer\Server.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeServer\MagicalLifeServer.csproj</ProjectName>
+      <CreatedDate>2018-05-24T15:42:10.2484768-05:00</CreatedDate>
+      <ViewedBy>sneak</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT0.3095797S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeServer\Processing\Message Handlers\RouteCreatedMessageHandler.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeServer\MagicalLifeServer.csproj</ProjectName>
+      <CreatedDate>2018-05-24T15:42:10.2038581-05:00</CreatedDate>
+      <ViewedBy>sneak</ViewedBy>
+    </DevTrackerDataItem>
+    <DevTrackerDataItem ViewActiveTime="PT0.3570196S" EditActiveTime="PT0S">
+      <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
+      <EditedCount>0</EditedCount>
+      <ViewedCount>1</ViewedCount>
+      <Item>D:\Git Repositories\EarthWithMagic\MagicalLifeGUIWindows\GUI\New World Menu\Buttons\NewWorldNextButton.cs</Item>
+      <ItemType>ProjectItem</ItemType>
+      <ProjectName>D:\Git Repositories\EarthWithMagic\MagicalLifeGUIWindows\MagicalLifeGUIWindows.csproj</ProjectName>
+      <CreatedDate>2018-05-24T15:42:10.1281577-05:00</CreatedDate>
+      <ViewedBy>sneak</ViewedBy>
+    </DevTrackerDataItem>
     <DevTrackerDataItem ViewActiveTime="PT1.5043925S" EditActiveTime="PT0S">
       <ModifiedDate>0001-01-01T00:00:00</ModifiedDate>
       <EditedCount>0</EditedCount>

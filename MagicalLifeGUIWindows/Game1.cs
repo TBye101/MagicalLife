@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Load;
+using MagicalLifeAPI.Networking.External_Type_Serialization;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World;
 using MagicalLifeGUIWindows.Input;
@@ -69,7 +70,8 @@ namespace MagicalLifeGUIWindows
             load.LoadAll(ref msg, new List<Assembly>
             {
                 Assembly.GetAssembly(typeof(World)),
-                Assembly.GetAssembly(typeof(Game1))
+                Assembly.GetAssembly(typeof(Game1)),
+                Assembly.GetAssembly(typeof(PointTeacher))
             });
 
             // TODO: use this.Content to load your game content here
