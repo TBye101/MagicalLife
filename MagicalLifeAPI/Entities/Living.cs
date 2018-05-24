@@ -58,7 +58,6 @@ namespace MagicalLifeAPI.Entities
 
         public Living()
         {
-
         }
 
         /// <summary>

@@ -4,11 +4,7 @@ using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.World;
 using MagicalLifeNetworking.Messages;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeServer.Message_Handlers
 {
@@ -28,7 +24,7 @@ namespace MagicalLifeServer.Message_Handlers
             if (Validated(msg.Path))
             {
                 Living l = World.MainWorld.Tiles[msg.Path[0].Origin.X, msg.Path[0].Origin.Y].Living;
-                
+
                 if (l != null && l.ID == msg.LivingID)
                 {
                     l.QueuedMovement.Clear();

@@ -2,10 +2,7 @@
 using MagicalLifeClient.Networking;
 using MagicalLifeClient.Processing;
 using MagicalLifeServer.Networking;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MagicalLifeNetworking.Client

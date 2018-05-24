@@ -115,7 +115,6 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu
             }
         }
 
-
         /// <summary>
         /// The y position at which the <see cref="LengthLabel"/> is to be displayed at.
         /// </summary>

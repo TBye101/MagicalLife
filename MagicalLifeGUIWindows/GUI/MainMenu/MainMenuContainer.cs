@@ -1,7 +1,6 @@
 ﻿using MagicalLifeGUIWindows.GUI.MainMenu.Buttons;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Rendering;
-using Microsoft.Xna.Framework;
 
 namespace MagicalLifeGUIWindows.GUI.MainMenu
 {

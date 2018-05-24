@@ -1,12 +1,8 @@
 ﻿using MagicalLifeAPI.Networking;
-using MagicalLifeAPI.World;
 using MagicalLifeNetworking.Client;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeServer.Networking
 {
@@ -23,7 +19,7 @@ namespace MagicalLifeServer.Networking
         public static TCPServer TCPServer;
 
         /// <summary>
-        /// The messages that have been received and are yet unprocessed. 
+        /// The messages that have been received and are yet unprocessed.
         /// </summary>
         public static Queue<BaseMessage> RecievedMessages = new Queue<BaseMessage>();
 

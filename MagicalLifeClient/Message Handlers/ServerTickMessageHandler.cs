@@ -1,10 +1,5 @@
 ﻿using MagicalLifeAPI.Networking;
 using MagicalLifeNetworking.Messages;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeClient.Message_Handlers
 {

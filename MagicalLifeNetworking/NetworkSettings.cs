@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MagicalLifeAPI.Networking
+﻿namespace MagicalLifeAPI.Networking
 {
     /// <summary>
     /// Contains network settings to be used when setting up the game.

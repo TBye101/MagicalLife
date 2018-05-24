@@ -2,11 +2,6 @@
 using MagicalLifeNetworking.Client;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.GUI.Join_Game_Menu.Buttons
 {

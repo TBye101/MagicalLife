@@ -23,7 +23,6 @@ namespace MagicalLifeAPI.Pathfinding
 
         public PathLink()
         {
-
         }
     }
 }

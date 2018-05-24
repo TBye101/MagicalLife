@@ -1,5 +1,4 @@
 ﻿using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeNetworking;
 using MagicalLifeNetworking.Client;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
@@ -16,7 +15,6 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
         {
             New_World_Menu.NewWorldMenu.Initialize();
             ClientSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(true));
-
         }
 
         public override void DoubleClick(MouseEventArgs e)

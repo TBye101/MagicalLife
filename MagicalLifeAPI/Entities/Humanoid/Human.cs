@@ -17,7 +17,6 @@ namespace MagicalLifeAPI.Entities.Humanoid
 
         public Human() : base()
         {
-
         }
 
         public override string GetTextureName()
