@@ -25,7 +25,7 @@ namespace MagicalLifeClient
         /// </summary>
         public static event EventHandler<UInt64> ClientTick;
 
-        public static void Start()
+        public static void Load()
         {
             MainPathFinder.Initialize();
             ClientProcessor.Initialize(GetMessageHandlers());

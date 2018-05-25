@@ -108,8 +108,8 @@ namespace MagicalLifeGUIWindows
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.SetRenderTarget(null);
-            GraphicsDevice.Clear(Color.Black);
+            this.GraphicsDevice.SetRenderTarget(null);
+            this.GraphicsDevice.Clear(Color.Black);
             this.SpriteBatch.Begin();
             RenderingPipe.DrawScreen(ref this.SpriteBatch);
 

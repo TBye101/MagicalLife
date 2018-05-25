@@ -49,7 +49,7 @@ namespace MagicalLifeServer.Networking
 
         private void Server_ClientConnected(object sender, System.Net.Sockets.TcpClient e)
         {
-            MasterLog.DebugWriteLine("Client connection recieved");
+            MasterLog.DebugWriteLine("Client connection received");
 
             //this.Send<ConcreteTest>(new ConcreteTest(), e.Client);
             this.Send<WorldTransferMessage>(new WorldTransferMessage(World.MainWorld), e.Client);

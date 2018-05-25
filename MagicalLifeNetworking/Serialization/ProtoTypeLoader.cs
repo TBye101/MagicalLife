@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Protobuf;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.Util;
+using MagicalLifeAPI.World;
 using ProtoBuf.Meta;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,7 @@ namespace MagicalLifeAPI.Networking
             MetaType baseMessageType = current.Add(typeof(BaseMessage), true);
 
             List<IHasSubclasses> ToProcess = ReflectionUtil.LoadAllInterface<IHasSubclasses>(Assembly.GetAssembly(typeof(BaseMessage)));
+            ToProcess.AddRange(ReflectionUtil.LoadAllInterface<IHasSubclasses>(Assembly.GetAssembly(typeof(Tile))));
 
             foreach (IHasSubclasses item in ToProcess)
             {

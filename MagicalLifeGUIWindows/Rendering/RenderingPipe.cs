@@ -40,17 +40,11 @@ namespace MagicalLifeGUIWindows.Rendering
         public static int YViewOffset = 0;
 
         /// <summary>
-        /// The z level that the player is currently viewing.
-        /// </summary>
-        public static int ZLevel = 0;
-
-        /// <summary>
         /// Draws the screen.
         /// </summary>
         /// <param name="spBatch"></param>
         public static void DrawScreen(ref SpriteBatch spBatch)
         {
-            //MasterLog.DebugWriteLine("Rendering frame");
             if (World.MainWorld != null)
             {
                 MapRenderer.DrawMap(ref spBatch);
