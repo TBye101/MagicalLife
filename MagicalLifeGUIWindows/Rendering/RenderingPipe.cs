@@ -27,7 +27,7 @@ namespace MagicalLifeGUIWindows.Rendering
         /// <summary>
         /// The standard color mask to apply to all tiles.
         /// </summary>
-        public static readonly Microsoft.Xna.Framework.Color colorMask = Microsoft.Xna.Framework.Color.White;
+        public static readonly Color colorMask = Color.White;
 
         /// <summary>
         /// The x offset of the view due to the player moving the camera around the map.

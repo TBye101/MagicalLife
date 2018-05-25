@@ -27,8 +27,6 @@ namespace MagicalLifeGUIWindows.GUI.Join_Game_Menu.Buttons
         {
             ClientSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(JoinGameMenu.menu.IpInputBox.Text, int.Parse(JoinGameMenu.menu.PortInputBox.Text)));
             Client.Load();
-            NewGameInputHandler a = new NewGameInputHandler();
-            a.StartNewGame();
             MenuHandler.Clear();
             In_Game_GUI.InGameGUI.Initialize();
             BoundHandler.Popup(In_Game_GUI.InGameGUI.InGame);
