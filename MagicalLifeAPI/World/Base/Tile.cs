@@ -98,7 +98,7 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// The resources that can be found in this tile.
         /// </summary>
-        //[ProtoMember(3)]
+        [ProtoMember(4)]
         public Resource Resources { get; set; }
 
         //public List<Vegetation> Plants { get; set; } = new List<Vegetation>();
@@ -106,13 +106,13 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// The location of this tile in the tile map.
         /// </summary>
-        [ProtoMember(4)]
+        [ProtoMember(5)]
         public Point Location { get; set; }
 
         /// <summary>
         /// The entity that is in this tile. Is null if there is not an entity in this tile.
         /// </summary>
-        [ProtoMember(5)]
+        [ProtoMember(6)]
         public Living Living { get; set; } = null;
 
         /// <summary>

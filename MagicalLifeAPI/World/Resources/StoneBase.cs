@@ -9,6 +9,11 @@
         {
         }
 
+        public StoneBase() : base()
+        {
+
+        }
+
         /// <summary>
         /// Gets the name of the texture to use when this stone is not adjacent to any other tile with a stone resource.
         /// </summary>
