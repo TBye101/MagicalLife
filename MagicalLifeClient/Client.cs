@@ -70,6 +70,7 @@ namespace MagicalLifeClient
                 if (ClientTick != null)
                 {
                     ClientTick(null, GameTick);
+                    MasterLog.DebugWriteLine("Client tick!");
                 }
                 i++;
             }

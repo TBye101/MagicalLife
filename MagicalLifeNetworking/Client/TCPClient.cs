@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Protobuf;
+using MagicalLifeClient.Processing;
 using SimpleTCP;
 using System;
 
@@ -14,7 +15,6 @@ namespace MagicalLifeClient.Networking
 
         public void Start(int port, string ip = "192.168.0.15")
         {
-            //ClientProcessor.Initialize();
             this.Client = new SimpleTcpClient();
             this.Client.DataReceived += this.Client_DataReceived;
 
@@ -23,9 +23,8 @@ namespace MagicalLifeClient.Networking
 
         private void Client_DataReceived(object sender, Message e)
         {
-            //BaseMessage msg = (BaseMessage)ProtoUtil.Deserialize(Convert.FromBase64String(e.MessageString));
-            //BaseMessage msg = (BaseMessage)ProtoUtil.Deserialize(e.Data);
-            //ClientProcessor.Process(msg);
+            BaseMessage msg = (BaseMessage)ProtoUtil.Deserialize(e.Data);
+            ClientProcessor.Process(msg);
         }
 
         public void Send<T>(T message)
