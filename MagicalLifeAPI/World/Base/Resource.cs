@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using MagicalLifeAPI.GUI;
+﻿using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.World.Resources;
 using ProtoBuf;
+using System;
+using System.Collections.Generic;
 
 namespace MagicalLifeAPI.World
 {
@@ -22,7 +22,6 @@ namespace MagicalLifeAPI.World
 
         public Resource()
         {
-
         }
 
         /// <summary>

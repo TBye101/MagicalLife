@@ -11,7 +11,6 @@
 
         public StoneBase() : base()
         {
-
         }
 
         /// <summary>

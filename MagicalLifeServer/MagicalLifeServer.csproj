@@ -55,7 +55,6 @@
   <ItemGroup>
     <Compile Include="Load\MainLoad.cs" />
     <Compile Include="Processing\Message Handlers\RouteCreatedMessageHandler.cs" />
-    <Compile Include="Movement\EntityWorldMovement.cs" />
     <Compile Include="Processing\ServerProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server.cs" />

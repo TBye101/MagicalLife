@@ -1,4 +1,6 @@
-﻿using MagicalLifeAPI.Entities.Eventing;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Entities.Eventing;
+using MagicalLifeAPI.Entities.Util;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Pathfinding;
@@ -25,13 +27,19 @@ namespace MagicalLifeAPI.Entities
         /// How many hit points this creature has.
         /// </summary>
         [ProtoMember(2)]
-        public Util.Attribute Health { get; set; }
+        public Util.Attribute32 Health { get; set; }
 
         /// <summary>
-        /// How fast this creature can move.
+        /// How fast this creature can during a single tick.
         /// </summary>
         [ProtoMember(3)]
-        public Util.Attribute MovementSpeed { get; set; }
+        public AttributeDouble Movement { get; set; }
+
+        /// <summary>
+        /// The location of the creature on the screen. This represents the progress through a tile for a moving creature.
+        /// </summary>
+        [ProtoMember(4)]
+        public PointDouble ScreenLocation { get; set; }
 
         /// <summary>
         /// Raised when a <see cref="Living"/> is created.
@@ -48,12 +56,13 @@ namespace MagicalLifeAPI.Entities
         /// </summary>
         /// <param name="health"></param>
         /// <param name="movementSpeed"></param>
-        protected Living(int health, int movementSpeed, Point location)
+        protected Living(int health, double movementSpeed, Point location)
         {
-            this.Health = new Util.Attribute(health);
-            this.MovementSpeed = new Util.Attribute(movementSpeed);
+            this.Health = new Util.Attribute32(health);
+            this.Movement = new AttributeDouble(movementSpeed);
             Living.LivingCreated(this, new LivingEventArg(this, location));
             this.MapLocation = location;
+            this.ScreenLocation = new PointDouble(location.X, location.Y);
         }
 
         public Living()

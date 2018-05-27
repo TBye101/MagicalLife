@@ -31,7 +31,7 @@ namespace MagicalLifeServer
             string msg = "";
             load.LoadAll(ref msg, new List<System.Reflection.Assembly>()
             {
-                Assembly.GetAssembly(typeof(Server))//App is not allowed through the firewall, need to reprompt or something. 
+                Assembly.GetAssembly(typeof(Server))//App is not allowed through the firewall, need to reprompt or something.
             });
         }
 

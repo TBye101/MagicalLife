@@ -1,7 +1,4 @@
-﻿using MagicalLifeAPI.Networking.Messages;
-using MagicalLifeAPI.Protobuf;
-using MagicalLifeAPI.World;
-using MagicalLifeClient;
+﻿using MagicalLifeClient;
 using MagicalLifeGUIWindows.GUI.MainMenu;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;

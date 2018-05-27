@@ -10,24 +10,24 @@ namespace MagicalLifeAPI.Entities.Entity_Factory
     public class HumanFactory
     {
         /// <summary>
-        /// The maximum number of hitpoints that a human could get per level.
+        /// The maximum number of hit points that a human could get per level.
         /// </summary>
         private readonly int MaxHumanHealthPerLevel = 10;
 
         /// <summary>
-        /// The minimum number of hitpoints that a human could get per level.
+        /// The minimum number of hit points that a human could get per level.
         /// </summary>
         private readonly int MinHumanHealthPerLevel = 2;
 
         /// <summary>
         /// The fastest a human could possibly be without starting down a class path.
         /// </summary>
-        private readonly int MaxHumanMovement = 2;
+        private readonly double MaxHumanMovement = .1;
 
         /// <summary>
         /// The slowest a human could possibly be without some significant injuries.
         /// </summary>
-        private readonly int MinHumanMovement = 1;
+        private readonly double MinHumanMovement = .05;
 
         /// <summary>
         /// Returns a fully generated human character.
@@ -36,7 +36,7 @@ namespace MagicalLifeAPI.Entities.Entity_Factory
         public Human GenerateHuman(Point location)
         {
             int health = StaticRandom.Rand(this.MinHumanHealthPerLevel, this.MaxHumanHealthPerLevel + 1);
-            int movement = StaticRandom.Rand(this.MinHumanMovement, this.MaxHumanMovement + 1);
+            double movement = StaticRandom.Rand(this.MinHumanMovement, this.MaxHumanMovement + 1);
 
             return new Human(health, movement, location);
         }
