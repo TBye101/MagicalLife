@@ -1,0 +1,663 @@
+
+
+5/27/2018 11:04:28 AM :
+System.IO.FileNotFoundException: Could not load file or assembly 'DesigniteVS, Version=2.4.9.0, Culture=neutral, PublicKeyToken=124cb359817c1372' or one of its dependencies. The system cannot find the file specified.
+File name: 'DesigniteVS, Version=2.4.9.0, Culture=neutral, PublicKeyToken=124cb359817c1372'
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.Assembly.Load(AssemblyName assemblyRef)
+   at Microsoft.VisualStudio.ExtensibilityHosting.FaultCatchingAssemblyLoader.<>c__DisplayClass19_0.<LoadAssembly>b__0(AssemblyName assemblyNameParam)
+   at Microsoft.VisualStudio.ExtensibilityHosting.Utilities.SafeGetOrAdd[TKey,TValue](IDictionary`2 dictionary, TKey key, Object lockObj, Func`2 valueFactory)
+   at Microsoft.VisualStudio.ExtensibilityHosting.FaultCatchingAssemblyLoader.LoadAssembly(AssemblyName assemblyName)
+   at Microsoft.VisualStudio.Composition.Reflection.ResolverExtensions.GetManifest(Resolver resolver, AssemblyName assemblyName)
+   at Microsoft.VisualStudio.Composition.Reflection.TypeRef.get_ResolvedType()
+   at Microsoft.VisualStudio.Composition.Reflection.ResolverExtensions.Resolve(TypeRef typeRef)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.TypeArraySubstitution.get_ActualValue()
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.SubstituteValueIfRequired(Object value)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.SubstituteValueIfRequired(String key, Object value)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.TryGetValue(String key, Object& value)
+   at _proxy_Microsoft.VisualStudio.Text.Tagging.INamedTaggerMetadata_6db64ffb-042e-42ea-8766-f372b49a1209.get_TagTypes()
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.Match(IContentType bufferContentType, Type taggerType, INamedTaggerMetadata tagMetadata)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.<>c__DisplayClass30_0.<GetBufferTaggersForType>b__0(Lazy`2 f)
+   at System.Linq.Enumerable.WhereListIterator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.GetBufferTaggersForType(IContentType type, Type taggerType)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.GatherTaggers(ITextBuffer textBuffer)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.<Initialize>b__13_0(ITextBuffer buffer)
+   at Microsoft.VisualStudio.Text.Projection.Implementation.BufferGraph.GetTextBuffers(Predicate`1 match)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.Initialize()
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1..ctor(TagAggregatorFactoryService factory, ITextView textView, IBufferGraph bufferGraph, TagAggregatorOptions options)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.CreateTagAggregator[T](ITextView textView, TagAggregatorOptions options)
+   at Microsoft.VisualStudio.Text.Classification.Implementation.ClassifierAggregator..ctor(ITextView textView, IViewTagAggregatorFactoryService viewTagAggregatorFactory, IClassificationTypeRegistryService classificationTypeRegistry)
+   at Microsoft.VisualStudio.Text.Classification.Implementation.ClassifierAggregatorService.GetClassifier(ITextView textView)
+   at Microsoft.VisualStudio.Text.Editor.Implementation.WpfTextView.Initialize()
+   at Microsoft.VisualStudio.Text.Editor.Implementation.WpfTextEditorFactoryService.InitializeTextView(IWpfTextView view)
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.Init_InitializeWpfTextView()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.Init_OnActivation()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.get_WpfTextViewHost()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.GetData(Guid& riidKey, Object& pvtData)
+   at DevTracker.DevTrackerToolWinControl.GetWpfTextView(IVsTextView textView) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinHelper.cs:line 116
+   at DevTracker.DevTrackerToolWinControl.GetWpfTextView(String documentName) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinHelper.cs:line 106
+   at DevTracker.DevTrackerToolWinControl.SwitchActiveItem(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinControl.xaml.cs:line 647
+   at DevTracker.DevTrackerToolWinControl.DocumentEvents_DocumentOpened(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinDteEvents.cs:line 473
+
+WRN: Assembly binding logging is turned OFF.
+To enable assembly bind failure logging, set the registry value [HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD) to 1.
+Note: There is some performance penalty associated with assembly bind failure logging.
+To turn this feature off, remove the registry value [HKLM\Software\Microsoft\Fusion!EnableLog].
+
+
+5/27/2018 11:05:27 AM :
+System.IO.FileNotFoundException: Could not load file or assembly 'DesigniteVS, Version=2.4.9.0, Culture=neutral, PublicKeyToken=124cb359817c1372' or one of its dependencies. The system cannot find the file specified.
+File name: 'DesigniteVS, Version=2.4.9.0, Culture=neutral, PublicKeyToken=124cb359817c1372'
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.Assembly.Load(AssemblyName assemblyRef)
+   at Microsoft.VisualStudio.ExtensibilityHosting.FaultCatchingAssemblyLoader.<>c__DisplayClass19_0.<LoadAssembly>b__0(AssemblyName assemblyNameParam)
+   at Microsoft.VisualStudio.ExtensibilityHosting.Utilities.SafeGetOrAdd[TKey,TValue](IDictionary`2 dictionary, TKey key, Object lockObj, Func`2 valueFactory)
+   at Microsoft.VisualStudio.ExtensibilityHosting.FaultCatchingAssemblyLoader.LoadAssembly(AssemblyName assemblyName)
+   at Microsoft.VisualStudio.Composition.Reflection.ResolverExtensions.GetManifest(Resolver resolver, AssemblyName assemblyName)
+   at Microsoft.VisualStudio.Composition.Reflection.TypeRef.get_ResolvedType()
+   at Microsoft.VisualStudio.Composition.Reflection.ResolverExtensions.Resolve(TypeRef typeRef)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.TypeArraySubstitution.get_ActualValue()
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.SubstituteValueIfRequired(Object value)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.SubstituteValueIfRequired(String key, Object value)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.TryGetValue(String key, Object& value)
+   at _proxy_Microsoft.VisualStudio.Text.Tagging.INamedTaggerMetadata_6db64ffb-042e-42ea-8766-f372b49a1209.get_TagTypes()
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.Match(IContentType bufferContentType, Type taggerType, INamedTaggerMetadata tagMetadata)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.<>c__DisplayClass30_0.<GetBufferTaggersForType>b__0(Lazy`2 f)
+   at System.Linq.Enumerable.WhereListIterator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.GetBufferTaggersForType(IContentType type, Type taggerType)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.GatherTaggers(ITextBuffer textBuffer)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.<Initialize>b__13_0(ITextBuffer buffer)
+   at Microsoft.VisualStudio.Text.Projection.Implementation.BufferGraph.GetTextBuffers(Predicate`1 match)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.Initialize()
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1..ctor(TagAggregatorFactoryService factory, ITextView textView, IBufferGraph bufferGraph, TagAggregatorOptions options)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.CreateTagAggregator[T](ITextView textView, TagAggregatorOptions options)
+   at Microsoft.VisualStudio.Text.Classification.Implementation.ClassifierAggregator..ctor(ITextView textView, IViewTagAggregatorFactoryService viewTagAggregatorFactory, IClassificationTypeRegistryService classificationTypeRegistry)
+   at Microsoft.VisualStudio.Text.Classification.Implementation.ClassifierAggregatorService.GetClassifier(ITextView textView)
+   at Microsoft.VisualStudio.Text.Editor.Implementation.WpfTextView.Initialize()
+   at Microsoft.VisualStudio.Text.Editor.Implementation.WpfTextEditorFactoryService.InitializeTextView(IWpfTextView view)
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.Init_InitializeWpfTextView()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.Init_OnActivation()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.get_WpfTextViewHost()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.GetData(Guid& riidKey, Object& pvtData)
+   at DevTracker.DevTrackerToolWinControl.GetWpfTextView(IVsTextView textView) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinHelper.cs:line 116
+   at DevTracker.DevTrackerToolWinControl.GetWpfTextView(String documentName) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinHelper.cs:line 106
+   at DevTracker.DevTrackerToolWinControl.SwitchActiveItem(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinControl.xaml.cs:line 647
+   at DevTracker.DevTrackerToolWinControl.DocumentEvents_DocumentOpened(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinDteEvents.cs:line 473
+
+WRN: Assembly binding logging is turned OFF.
+To enable assembly bind failure logging, set the registry value [HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD) to 1.
+Note: There is some performance penalty associated with assembly bind failure logging.
+To turn this feature off, remove the registry value [HKLM\Software\Microsoft\Fusion!EnableLog].
+
+
+5/27/2018 11:05:31 AM :
+System.IO.FileNotFoundException: Could not load file or assembly 'DesigniteVS, Version=2.4.9.0, Culture=neutral, PublicKeyToken=124cb359817c1372' or one of its dependencies. The system cannot find the file specified.
+File name: 'DesigniteVS, Version=2.4.9.0, Culture=neutral, PublicKeyToken=124cb359817c1372'
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.Assembly.Load(AssemblyName assemblyRef)
+   at Microsoft.VisualStudio.ExtensibilityHosting.FaultCatchingAssemblyLoader.<>c__DisplayClass19_0.<LoadAssembly>b__0(AssemblyName assemblyNameParam)
+   at Microsoft.VisualStudio.ExtensibilityHosting.Utilities.SafeGetOrAdd[TKey,TValue](IDictionary`2 dictionary, TKey key, Object lockObj, Func`2 valueFactory)
+   at Microsoft.VisualStudio.ExtensibilityHosting.FaultCatchingAssemblyLoader.LoadAssembly(AssemblyName assemblyName)
+   at Microsoft.VisualStudio.Composition.Reflection.ResolverExtensions.GetManifest(Resolver resolver, AssemblyName assemblyName)
+   at Microsoft.VisualStudio.Composition.Reflection.TypeRef.get_ResolvedType()
+   at Microsoft.VisualStudio.Composition.Reflection.ResolverExtensions.Resolve(TypeRef typeRef)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.TypeArraySubstitution.get_ActualValue()
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.SubstituteValueIfRequired(Object value)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.SubstituteValueIfRequired(String key, Object value)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.TryGetValue(String key, Object& value)
+   at _proxy_Microsoft.VisualStudio.Text.Tagging.INamedTaggerMetadata_6db64ffb-042e-42ea-8766-f372b49a1209.get_TagTypes()
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.Match(IContentType bufferContentType, Type taggerType, INamedTaggerMetadata tagMetadata)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.<>c__DisplayClass30_0.<GetBufferTaggersForType>b__0(Lazy`2 f)
+   at System.Linq.Enumerable.WhereListIterator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.GetBufferTaggersForType(IContentType type, Type taggerType)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.GatherTaggers(ITextBuffer textBuffer)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.<Initialize>b__13_0(ITextBuffer buffer)
+   at Microsoft.VisualStudio.Text.Projection.Implementation.BufferGraph.GetTextBuffers(Predicate`1 match)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.Initialize()
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1..ctor(TagAggregatorFactoryService factory, ITextView textView, IBufferGraph bufferGraph, TagAggregatorOptions options)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.CreateTagAggregator[T](ITextView textView, TagAggregatorOptions options)
+   at Microsoft.VisualStudio.Text.Classification.Implementation.ClassifierAggregator..ctor(ITextView textView, IViewTagAggregatorFactoryService viewTagAggregatorFactory, IClassificationTypeRegistryService classificationTypeRegistry)
+   at Microsoft.VisualStudio.Text.Classification.Implementation.ClassifierAggregatorService.GetClassifier(ITextView textView)
+   at Microsoft.VisualStudio.Text.Editor.Implementation.WpfTextView.Initialize()
+   at Microsoft.VisualStudio.Text.Editor.Implementation.WpfTextEditorFactoryService.InitializeTextView(IWpfTextView view)
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.Init_InitializeWpfTextView()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.Init_OnActivation()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.get_WpfTextViewHost()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.GetData(Guid& riidKey, Object& pvtData)
+   at DevTracker.DevTrackerToolWinControl.GetWpfTextView(IVsTextView textView) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinHelper.cs:line 116
+   at DevTracker.DevTrackerToolWinControl.GetWpfTextView(String documentName) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinHelper.cs:line 106
+   at DevTracker.DevTrackerToolWinControl.SwitchActiveItem(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinControl.xaml.cs:line 647
+   at DevTracker.DevTrackerToolWinControl.DocumentEvents_DocumentOpened(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinDteEvents.cs:line 473
+
+WRN: Assembly binding logging is turned OFF.
+To enable assembly bind failure logging, set the registry value [HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD) to 1.
+Note: There is some performance penalty associated with assembly bind failure logging.
+To turn this feature off, remove the registry value [HKLM\Software\Microsoft\Fusion!EnableLog].
+
+
+5/27/2018 11:05:33 AM :
+System.IO.FileNotFoundException: Could not load file or assembly 'DesigniteVS, Version=2.4.9.0, Culture=neutral, PublicKeyToken=124cb359817c1372' or one of its dependencies. The system cannot find the file specified.
+File name: 'DesigniteVS, Version=2.4.9.0, Culture=neutral, PublicKeyToken=124cb359817c1372'
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.Assembly.Load(AssemblyName assemblyRef)
+   at Microsoft.VisualStudio.ExtensibilityHosting.FaultCatchingAssemblyLoader.<>c__DisplayClass19_0.<LoadAssembly>b__0(AssemblyName assemblyNameParam)
+   at Microsoft.VisualStudio.ExtensibilityHosting.Utilities.SafeGetOrAdd[TKey,TValue](IDictionary`2 dictionary, TKey key, Object lockObj, Func`2 valueFactory)
+   at Microsoft.VisualStudio.ExtensibilityHosting.FaultCatchingAssemblyLoader.LoadAssembly(AssemblyName assemblyName)
+   at Microsoft.VisualStudio.Composition.Reflection.ResolverExtensions.GetManifest(Resolver resolver, AssemblyName assemblyName)
+   at Microsoft.VisualStudio.Composition.Reflection.TypeRef.get_ResolvedType()
+   at Microsoft.VisualStudio.Composition.Reflection.ResolverExtensions.Resolve(TypeRef typeRef)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.TypeArraySubstitution.get_ActualValue()
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.SubstituteValueIfRequired(Object value)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.SubstituteValueIfRequired(String key, Object value)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.TryGetValue(String key, Object& value)
+   at _proxy_Microsoft.VisualStudio.Text.Tagging.INamedTaggerMetadata_6db64ffb-042e-42ea-8766-f372b49a1209.get_TagTypes()
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.Match(IContentType bufferContentType, Type taggerType, INamedTaggerMetadata tagMetadata)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.<>c__DisplayClass30_0.<GetBufferTaggersForType>b__0(Lazy`2 f)
+   at System.Linq.Enumerable.WhereListIterator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.GetBufferTaggersForType(IContentType type, Type taggerType)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.GatherTaggers(ITextBuffer textBuffer)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.<Initialize>b__13_0(ITextBuffer buffer)
+   at Microsoft.VisualStudio.Text.Projection.Implementation.BufferGraph.GetTextBuffers(Predicate`1 match)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.Initialize()
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1..ctor(TagAggregatorFactoryService factory, ITextView textView, IBufferGraph bufferGraph, TagAggregatorOptions options)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.CreateTagAggregator[T](ITextView textView, TagAggregatorOptions options)
+   at Microsoft.VisualStudio.Text.Classification.Implementation.ClassifierAggregator..ctor(ITextView textView, IViewTagAggregatorFactoryService viewTagAggregatorFactory, IClassificationTypeRegistryService classificationTypeRegistry)
+   at Microsoft.VisualStudio.Text.Classification.Implementation.ClassifierAggregatorService.GetClassifier(ITextView textView)
+   at Microsoft.VisualStudio.Text.Editor.Implementation.WpfTextView.Initialize()
+   at Microsoft.VisualStudio.Text.Editor.Implementation.WpfTextEditorFactoryService.InitializeTextView(IWpfTextView view)
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.Init_InitializeWpfTextView()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.Init_OnActivation()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.get_WpfTextViewHost()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.GetData(Guid& riidKey, Object& pvtData)
+   at DevTracker.DevTrackerToolWinControl.GetWpfTextView(IVsTextView textView) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinHelper.cs:line 116
+   at DevTracker.DevTrackerToolWinControl.GetWpfTextView(String documentName) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinHelper.cs:line 106
+   at DevTracker.DevTrackerToolWinControl.SwitchActiveItem(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinControl.xaml.cs:line 647
+   at DevTracker.DevTrackerToolWinControl.DocumentEvents_DocumentOpened(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinDteEvents.cs:line 473
+
+WRN: Assembly binding logging is turned OFF.
+To enable assembly bind failure logging, set the registry value [HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD) to 1.
+Note: There is some performance penalty associated with assembly bind failure logging.
+To turn this feature off, remove the registry value [HKLM\Software\Microsoft\Fusion!EnableLog].
+
+
+5/27/2018 11:05:35 AM :
+System.IO.FileNotFoundException: Could not load file or assembly 'DesigniteVS, Version=2.4.9.0, Culture=neutral, PublicKeyToken=124cb359817c1372' or one of its dependencies. The system cannot find the file specified.
+File name: 'DesigniteVS, Version=2.4.9.0, Culture=neutral, PublicKeyToken=124cb359817c1372'
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.Assembly.Load(AssemblyName assemblyRef)
+   at Microsoft.VisualStudio.ExtensibilityHosting.FaultCatchingAssemblyLoader.<>c__DisplayClass19_0.<LoadAssembly>b__0(AssemblyName assemblyNameParam)
+   at Microsoft.VisualStudio.ExtensibilityHosting.Utilities.SafeGetOrAdd[TKey,TValue](IDictionary`2 dictionary, TKey key, Object lockObj, Func`2 valueFactory)
+   at Microsoft.VisualStudio.ExtensibilityHosting.FaultCatchingAssemblyLoader.LoadAssembly(AssemblyName assemblyName)
+   at Microsoft.VisualStudio.Composition.Reflection.ResolverExtensions.GetManifest(Resolver resolver, AssemblyName assemblyName)
+   at Microsoft.VisualStudio.Composition.Reflection.TypeRef.get_ResolvedType()
+   at Microsoft.VisualStudio.Composition.Reflection.ResolverExtensions.Resolve(TypeRef typeRef)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.TypeArraySubstitution.get_ActualValue()
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.SubstituteValueIfRequired(Object value)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.SubstituteValueIfRequired(String key, Object value)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.TryGetValue(String key, Object& value)
+   at _proxy_Microsoft.VisualStudio.Text.Tagging.INamedTaggerMetadata_6db64ffb-042e-42ea-8766-f372b49a1209.get_TagTypes()
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.Match(IContentType bufferContentType, Type taggerType, INamedTaggerMetadata tagMetadata)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.<>c__DisplayClass30_0.<GetBufferTaggersForType>b__0(Lazy`2 f)
+   at System.Linq.Enumerable.WhereListIterator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.GetBufferTaggersForType(IContentType type, Type taggerType)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.GatherTaggers(ITextBuffer textBuffer)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.<Initialize>b__13_0(ITextBuffer buffer)
+   at Microsoft.VisualStudio.Text.Projection.Implementation.BufferGraph.GetTextBuffers(Predicate`1 match)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.Initialize()
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1..ctor(TagAggregatorFactoryService factory, ITextView textView, IBufferGraph bufferGraph, TagAggregatorOptions options)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.CreateTagAggregator[T](ITextView textView, TagAggregatorOptions options)
+   at Microsoft.VisualStudio.Text.Classification.Implementation.ClassifierAggregator..ctor(ITextView textView, IViewTagAggregatorFactoryService viewTagAggregatorFactory, IClassificationTypeRegistryService classificationTypeRegistry)
+   at Microsoft.VisualStudio.Text.Classification.Implementation.ClassifierAggregatorService.GetClassifier(ITextView textView)
+   at Microsoft.VisualStudio.Text.Editor.Implementation.WpfTextView.Initialize()
+   at Microsoft.VisualStudio.Text.Editor.Implementation.WpfTextEditorFactoryService.InitializeTextView(IWpfTextView view)
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.Init_InitializeWpfTextView()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.Init_OnActivation()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.get_WpfTextViewHost()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.GetData(Guid& riidKey, Object& pvtData)
+   at DevTracker.DevTrackerToolWinControl.GetWpfTextView(IVsTextView textView) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinHelper.cs:line 116
+   at DevTracker.DevTrackerToolWinControl.GetWpfTextView(String documentName) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinHelper.cs:line 106
+   at DevTracker.DevTrackerToolWinControl.SwitchActiveItem(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinControl.xaml.cs:line 647
+   at DevTracker.DevTrackerToolWinControl.DocumentEvents_DocumentOpened(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinDteEvents.cs:line 473
+
+WRN: Assembly binding logging is turned OFF.
+To enable assembly bind failure logging, set the registry value [HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD) to 1.
+Note: There is some performance penalty associated with assembly bind failure logging.
+To turn this feature off, remove the registry value [HKLM\Software\Microsoft\Fusion!EnableLog].
+
+
+5/27/2018 11:05:40 AM :
+System.IO.FileNotFoundException: Could not load file or assembly 'DesigniteVS, Version=2.4.9.0, Culture=neutral, PublicKeyToken=124cb359817c1372' or one of its dependencies. The system cannot find the file specified.
+File name: 'DesigniteVS, Version=2.4.9.0, Culture=neutral, PublicKeyToken=124cb359817c1372'
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.Assembly.Load(AssemblyName assemblyRef)
+   at Microsoft.VisualStudio.ExtensibilityHosting.FaultCatchingAssemblyLoader.<>c__DisplayClass19_0.<LoadAssembly>b__0(AssemblyName assemblyNameParam)
+   at Microsoft.VisualStudio.ExtensibilityHosting.Utilities.SafeGetOrAdd[TKey,TValue](IDictionary`2 dictionary, TKey key, Object lockObj, Func`2 valueFactory)
+   at Microsoft.VisualStudio.ExtensibilityHosting.FaultCatchingAssemblyLoader.LoadAssembly(AssemblyName assemblyName)
+   at Microsoft.VisualStudio.Composition.Reflection.ResolverExtensions.GetManifest(Resolver resolver, AssemblyName assemblyName)
+   at Microsoft.VisualStudio.Composition.Reflection.TypeRef.get_ResolvedType()
+   at Microsoft.VisualStudio.Composition.Reflection.ResolverExtensions.Resolve(TypeRef typeRef)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.TypeArraySubstitution.get_ActualValue()
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.SubstituteValueIfRequired(Object value)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.SubstituteValueIfRequired(String key, Object value)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.TryGetValue(String key, Object& value)
+   at _proxy_Microsoft.VisualStudio.Text.Tagging.INamedTaggerMetadata_6db64ffb-042e-42ea-8766-f372b49a1209.get_TagTypes()
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.Match(IContentType bufferContentType, Type taggerType, INamedTaggerMetadata tagMetadata)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.<>c__DisplayClass30_0.<GetBufferTaggersForType>b__0(Lazy`2 f)
+   at System.Linq.Enumerable.WhereListIterator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.GetBufferTaggersForType(IContentType type, Type taggerType)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.GatherTaggers(ITextBuffer textBuffer)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.<Initialize>b__13_0(ITextBuffer buffer)
+   at Microsoft.VisualStudio.Text.Projection.Implementation.BufferGraph.GetTextBuffers(Predicate`1 match)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.Initialize()
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1..ctor(TagAggregatorFactoryService factory, ITextView textView, IBufferGraph bufferGraph, TagAggregatorOptions options)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.CreateTagAggregator[T](ITextView textView, TagAggregatorOptions options)
+   at Microsoft.VisualStudio.Text.Classification.Implementation.ClassifierAggregator..ctor(ITextView textView, IViewTagAggregatorFactoryService viewTagAggregatorFactory, IClassificationTypeRegistryService classificationTypeRegistry)
+   at Microsoft.VisualStudio.Text.Classification.Implementation.ClassifierAggregatorService.GetClassifier(ITextView textView)
+   at Microsoft.VisualStudio.Text.Editor.Implementation.WpfTextView.Initialize()
+   at Microsoft.VisualStudio.Text.Editor.Implementation.WpfTextEditorFactoryService.InitializeTextView(IWpfTextView view)
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.Init_InitializeWpfTextView()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.Init_OnActivation()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.get_WpfTextViewHost()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.GetData(Guid& riidKey, Object& pvtData)
+   at DevTracker.DevTrackerToolWinControl.GetWpfTextView(IVsTextView textView) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinHelper.cs:line 116
+   at DevTracker.DevTrackerToolWinControl.GetWpfTextView(String documentName) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinHelper.cs:line 106
+   at DevTracker.DevTrackerToolWinControl.SwitchActiveItem(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinControl.xaml.cs:line 647
+   at DevTracker.DevTrackerToolWinControl.DocumentEvents_DocumentOpened(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinDteEvents.cs:line 473
+
+WRN: Assembly binding logging is turned OFF.
+To enable assembly bind failure logging, set the registry value [HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD) to 1.
+Note: There is some performance penalty associated with assembly bind failure logging.
+To turn this feature off, remove the registry value [HKLM\Software\Microsoft\Fusion!EnableLog].
+
+
+5/27/2018 11:05:42 AM :
+System.IO.FileNotFoundException: Could not load file or assembly 'DesigniteVS, Version=2.4.9.0, Culture=neutral, PublicKeyToken=124cb359817c1372' or one of its dependencies. The system cannot find the file specified.
+File name: 'DesigniteVS, Version=2.4.9.0, Culture=neutral, PublicKeyToken=124cb359817c1372'
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.Assembly.Load(AssemblyName assemblyRef)
+   at Microsoft.VisualStudio.ExtensibilityHosting.FaultCatchingAssemblyLoader.<>c__DisplayClass19_0.<LoadAssembly>b__0(AssemblyName assemblyNameParam)
+   at Microsoft.VisualStudio.ExtensibilityHosting.Utilities.SafeGetOrAdd[TKey,TValue](IDictionary`2 dictionary, TKey key, Object lockObj, Func`2 valueFactory)
+   at Microsoft.VisualStudio.ExtensibilityHosting.FaultCatchingAssemblyLoader.LoadAssembly(AssemblyName assemblyName)
+   at Microsoft.VisualStudio.Composition.Reflection.ResolverExtensions.GetManifest(Resolver resolver, AssemblyName assemblyName)
+   at Microsoft.VisualStudio.Composition.Reflection.TypeRef.get_ResolvedType()
+   at Microsoft.VisualStudio.Composition.Reflection.ResolverExtensions.Resolve(TypeRef typeRef)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.TypeArraySubstitution.get_ActualValue()
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.SubstituteValueIfRequired(Object value)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.SubstituteValueIfRequired(String key, Object value)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.TryGetValue(String key, Object& value)
+   at _proxy_Microsoft.VisualStudio.Text.Tagging.INamedTaggerMetadata_6db64ffb-042e-42ea-8766-f372b49a1209.get_TagTypes()
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.Match(IContentType bufferContentType, Type taggerType, INamedTaggerMetadata tagMetadata)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.<>c__DisplayClass30_0.<GetBufferTaggersForType>b__0(Lazy`2 f)
+   at System.Linq.Enumerable.WhereListIterator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.GetBufferTaggersForType(IContentType type, Type taggerType)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.GatherTaggers(ITextBuffer textBuffer)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.<Initialize>b__13_0(ITextBuffer buffer)
+   at Microsoft.VisualStudio.Text.Projection.Implementation.BufferGraph.GetTextBuffers(Predicate`1 match)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.Initialize()
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1..ctor(TagAggregatorFactoryService factory, ITextView textView, IBufferGraph bufferGraph, TagAggregatorOptions options)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.CreateTagAggregator[T](ITextView textView, TagAggregatorOptions options)
+   at Microsoft.VisualStudio.Text.Classification.Implementation.ClassifierAggregator..ctor(ITextView textView, IViewTagAggregatorFactoryService viewTagAggregatorFactory, IClassificationTypeRegistryService classificationTypeRegistry)
+   at Microsoft.VisualStudio.Text.Classification.Implementation.ClassifierAggregatorService.GetClassifier(ITextView textView)
+   at Microsoft.VisualStudio.Text.Editor.Implementation.WpfTextView.Initialize()
+   at Microsoft.VisualStudio.Text.Editor.Implementation.WpfTextEditorFactoryService.InitializeTextView(IWpfTextView view)
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.Init_InitializeWpfTextView()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.Init_OnActivation()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.get_WpfTextViewHost()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.GetData(Guid& riidKey, Object& pvtData)
+   at DevTracker.DevTrackerToolWinControl.GetWpfTextView(IVsTextView textView) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinHelper.cs:line 116
+   at DevTracker.DevTrackerToolWinControl.GetWpfTextView(String documentName) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinHelper.cs:line 106
+   at DevTracker.DevTrackerToolWinControl.SwitchActiveItem(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinControl.xaml.cs:line 647
+   at DevTracker.DevTrackerToolWinControl.DocumentEvents_DocumentOpened(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinDteEvents.cs:line 473
+
+WRN: Assembly binding logging is turned OFF.
+To enable assembly bind failure logging, set the registry value [HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD) to 1.
+Note: There is some performance penalty associated with assembly bind failure logging.
+To turn this feature off, remove the registry value [HKLM\Software\Microsoft\Fusion!EnableLog].
+
+
+5/27/2018 11:05:55 AM :
+System.IO.FileNotFoundException: Could not load file or assembly 'DesigniteVS, Version=2.4.9.0, Culture=neutral, PublicKeyToken=124cb359817c1372' or one of its dependencies. The system cannot find the file specified.
+File name: 'DesigniteVS, Version=2.4.9.0, Culture=neutral, PublicKeyToken=124cb359817c1372'
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.Assembly.Load(AssemblyName assemblyRef)
+   at Microsoft.VisualStudio.ExtensibilityHosting.FaultCatchingAssemblyLoader.<>c__DisplayClass19_0.<LoadAssembly>b__0(AssemblyName assemblyNameParam)
+   at Microsoft.VisualStudio.ExtensibilityHosting.Utilities.SafeGetOrAdd[TKey,TValue](IDictionary`2 dictionary, TKey key, Object lockObj, Func`2 valueFactory)
+   at Microsoft.VisualStudio.ExtensibilityHosting.FaultCatchingAssemblyLoader.LoadAssembly(AssemblyName assemblyName)
+   at Microsoft.VisualStudio.Composition.Reflection.ResolverExtensions.GetManifest(Resolver resolver, AssemblyName assemblyName)
+   at Microsoft.VisualStudio.Composition.Reflection.TypeRef.get_ResolvedType()
+   at Microsoft.VisualStudio.Composition.Reflection.ResolverExtensions.Resolve(TypeRef typeRef)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.TypeArraySubstitution.get_ActualValue()
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.SubstituteValueIfRequired(Object value)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.SubstituteValueIfRequired(String key, Object value)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.TryGetValue(String key, Object& value)
+   at _proxy_Microsoft.VisualStudio.Text.Tagging.INamedTaggerMetadata_6db64ffb-042e-42ea-8766-f372b49a1209.get_TagTypes()
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.Match(IContentType bufferContentType, Type taggerType, INamedTaggerMetadata tagMetadata)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.<>c__DisplayClass30_0.<GetBufferTaggersForType>b__0(Lazy`2 f)
+   at System.Linq.Enumerable.WhereListIterator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.GetBufferTaggersForType(IContentType type, Type taggerType)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.GatherTaggers(ITextBuffer textBuffer)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.<Initialize>b__13_0(ITextBuffer buffer)
+   at Microsoft.VisualStudio.Text.Projection.Implementation.BufferGraph.GetTextBuffers(Predicate`1 match)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.Initialize()
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1..ctor(TagAggregatorFactoryService factory, ITextView textView, IBufferGraph bufferGraph, TagAggregatorOptions options)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.CreateTagAggregator[T](ITextView textView, TagAggregatorOptions options)
+   at Microsoft.VisualStudio.Text.Classification.Implementation.ClassifierAggregator..ctor(ITextView textView, IViewTagAggregatorFactoryService viewTagAggregatorFactory, IClassificationTypeRegistryService classificationTypeRegistry)
+   at Microsoft.VisualStudio.Text.Classification.Implementation.ClassifierAggregatorService.GetClassifier(ITextView textView)
+   at Microsoft.VisualStudio.Text.Editor.Implementation.WpfTextView.Initialize()
+   at Microsoft.VisualStudio.Text.Editor.Implementation.WpfTextEditorFactoryService.InitializeTextView(IWpfTextView view)
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.Init_InitializeWpfTextView()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.Init_OnActivation()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.get_WpfTextViewHost()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.GetData(Guid& riidKey, Object& pvtData)
+   at DevTracker.DevTrackerToolWinControl.GetWpfTextView(IVsTextView textView) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinHelper.cs:line 116
+   at DevTracker.DevTrackerToolWinControl.GetWpfTextView(String documentName) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinHelper.cs:line 106
+   at DevTracker.DevTrackerToolWinControl.SwitchActiveItem(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinControl.xaml.cs:line 647
+   at DevTracker.DevTrackerToolWinControl.DocumentEvents_DocumentOpened(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinDteEvents.cs:line 473
+
+WRN: Assembly binding logging is turned OFF.
+To enable assembly bind failure logging, set the registry value [HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD) to 1.
+Note: There is some performance penalty associated with assembly bind failure logging.
+To turn this feature off, remove the registry value [HKLM\Software\Microsoft\Fusion!EnableLog].
+
+
+5/27/2018 11:05:55 AM :
+System.IO.FileNotFoundException: Could not load file or assembly 'DesigniteVS, Version=2.4.9.0, Culture=neutral, PublicKeyToken=124cb359817c1372' or one of its dependencies. The system cannot find the file specified.
+File name: 'DesigniteVS, Version=2.4.9.0, Culture=neutral, PublicKeyToken=124cb359817c1372'
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.Assembly.Load(AssemblyName assemblyRef)
+   at Microsoft.VisualStudio.ExtensibilityHosting.FaultCatchingAssemblyLoader.<>c__DisplayClass19_0.<LoadAssembly>b__0(AssemblyName assemblyNameParam)
+   at Microsoft.VisualStudio.ExtensibilityHosting.Utilities.SafeGetOrAdd[TKey,TValue](IDictionary`2 dictionary, TKey key, Object lockObj, Func`2 valueFactory)
+   at Microsoft.VisualStudio.ExtensibilityHosting.FaultCatchingAssemblyLoader.LoadAssembly(AssemblyName assemblyName)
+   at Microsoft.VisualStudio.Composition.Reflection.ResolverExtensions.GetManifest(Resolver resolver, AssemblyName assemblyName)
+   at Microsoft.VisualStudio.Composition.Reflection.TypeRef.get_ResolvedType()
+   at Microsoft.VisualStudio.Composition.Reflection.ResolverExtensions.Resolve(TypeRef typeRef)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.TypeArraySubstitution.get_ActualValue()
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.SubstituteValueIfRequired(Object value)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.SubstituteValueIfRequired(String key, Object value)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.TryGetValue(String key, Object& value)
+   at _proxy_Microsoft.VisualStudio.Text.Tagging.INamedTaggerMetadata_6db64ffb-042e-42ea-8766-f372b49a1209.get_TagTypes()
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.Match(IContentType bufferContentType, Type taggerType, INamedTaggerMetadata tagMetadata)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.<>c__DisplayClass30_0.<GetBufferTaggersForType>b__0(Lazy`2 f)
+   at System.Linq.Enumerable.WhereListIterator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.GetBufferTaggersForType(IContentType type, Type taggerType)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.GatherTaggers(ITextBuffer textBuffer)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.<Initialize>b__13_0(ITextBuffer buffer)
+   at Microsoft.VisualStudio.Text.Projection.Implementation.BufferGraph.GetTextBuffers(Predicate`1 match)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.Initialize()
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1..ctor(TagAggregatorFactoryService factory, ITextView textView, IBufferGraph bufferGraph, TagAggregatorOptions options)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.CreateTagAggregator[T](ITextView textView, TagAggregatorOptions options)
+   at Microsoft.VisualStudio.Text.Classification.Implementation.ClassifierAggregator..ctor(ITextView textView, IViewTagAggregatorFactoryService viewTagAggregatorFactory, IClassificationTypeRegistryService classificationTypeRegistry)
+   at Microsoft.VisualStudio.Text.Classification.Implementation.ClassifierAggregatorService.GetClassifier(ITextView textView)
+   at Microsoft.VisualStudio.Text.Editor.Implementation.WpfTextView.Initialize()
+   at Microsoft.VisualStudio.Text.Editor.Implementation.WpfTextEditorFactoryService.InitializeTextView(IWpfTextView view)
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.Init_InitializeWpfTextView()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.Init_OnActivation()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.get_WpfTextViewHost()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.GetData(Guid& riidKey, Object& pvtData)
+   at DevTracker.DevTrackerToolWinControl.GetWpfTextView(IVsTextView textView) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinHelper.cs:line 116
+   at DevTracker.DevTrackerToolWinControl.GetWpfTextView(String documentName) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinHelper.cs:line 106
+   at DevTracker.DevTrackerToolWinControl.SwitchActiveItem(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinControl.xaml.cs:line 647
+   at DevTracker.DevTrackerToolWinControl.DocumentEvents_DocumentOpened(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinDteEvents.cs:line 473
+
+WRN: Assembly binding logging is turned OFF.
+To enable assembly bind failure logging, set the registry value [HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD) to 1.
+Note: There is some performance penalty associated with assembly bind failure logging.
+To turn this feature off, remove the registry value [HKLM\Software\Microsoft\Fusion!EnableLog].
+
+
+5/27/2018 11:05:55 AM :
+System.IO.FileNotFoundException: Could not load file or assembly 'DesigniteVS, Version=2.4.9.0, Culture=neutral, PublicKeyToken=124cb359817c1372' or one of its dependencies. The system cannot find the file specified.
+File name: 'DesigniteVS, Version=2.4.9.0, Culture=neutral, PublicKeyToken=124cb359817c1372'
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.Assembly.Load(AssemblyName assemblyRef)
+   at Microsoft.VisualStudio.ExtensibilityHosting.FaultCatchingAssemblyLoader.<>c__DisplayClass19_0.<LoadAssembly>b__0(AssemblyName assemblyNameParam)
+   at Microsoft.VisualStudio.ExtensibilityHosting.Utilities.SafeGetOrAdd[TKey,TValue](IDictionary`2 dictionary, TKey key, Object lockObj, Func`2 valueFactory)
+   at Microsoft.VisualStudio.ExtensibilityHosting.FaultCatchingAssemblyLoader.LoadAssembly(AssemblyName assemblyName)
+   at Microsoft.VisualStudio.Composition.Reflection.ResolverExtensions.GetManifest(Resolver resolver, AssemblyName assemblyName)
+   at Microsoft.VisualStudio.Composition.Reflection.TypeRef.get_ResolvedType()
+   at Microsoft.VisualStudio.Composition.Reflection.ResolverExtensions.Resolve(TypeRef typeRef)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.TypeArraySubstitution.get_ActualValue()
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.SubstituteValueIfRequired(Object value)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.SubstituteValueIfRequired(String key, Object value)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.TryGetValue(String key, Object& value)
+   at _proxy_Microsoft.VisualStudio.Text.Tagging.INamedTaggerMetadata_6db64ffb-042e-42ea-8766-f372b49a1209.get_TagTypes()
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.Match(IContentType bufferContentType, Type taggerType, INamedTaggerMetadata tagMetadata)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.<>c__DisplayClass30_0.<GetBufferTaggersForType>b__0(Lazy`2 f)
+   at System.Linq.Enumerable.WhereListIterator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.GetBufferTaggersForType(IContentType type, Type taggerType)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.GatherTaggers(ITextBuffer textBuffer)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.<Initialize>b__13_0(ITextBuffer buffer)
+   at Microsoft.VisualStudio.Text.Projection.Implementation.BufferGraph.GetTextBuffers(Predicate`1 match)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.Initialize()
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1..ctor(TagAggregatorFactoryService factory, ITextView textView, IBufferGraph bufferGraph, TagAggregatorOptions options)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.CreateTagAggregator[T](ITextView textView, TagAggregatorOptions options)
+   at Microsoft.VisualStudio.Text.Classification.Implementation.ClassifierAggregator..ctor(ITextView textView, IViewTagAggregatorFactoryService viewTagAggregatorFactory, IClassificationTypeRegistryService classificationTypeRegistry)
+   at Microsoft.VisualStudio.Text.Classification.Implementation.ClassifierAggregatorService.GetClassifier(ITextView textView)
+   at Microsoft.VisualStudio.Text.Editor.Implementation.WpfTextView.Initialize()
+   at Microsoft.VisualStudio.Text.Editor.Implementation.WpfTextEditorFactoryService.InitializeTextView(IWpfTextView view)
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.Init_InitializeWpfTextView()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.Init_OnActivation()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.get_WpfTextViewHost()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.GetData(Guid& riidKey, Object& pvtData)
+   at DevTracker.DevTrackerToolWinControl.GetWpfTextView(IVsTextView textView) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinHelper.cs:line 116
+   at DevTracker.DevTrackerToolWinControl.GetWpfTextView(String documentName) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinHelper.cs:line 106
+   at DevTracker.DevTrackerToolWinControl.SwitchActiveItem(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinControl.xaml.cs:line 647
+   at DevTracker.DevTrackerToolWinControl.DocumentEvents_DocumentOpened(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinDteEvents.cs:line 473
+
+WRN: Assembly binding logging is turned OFF.
+To enable assembly bind failure logging, set the registry value [HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD) to 1.
+Note: There is some performance penalty associated with assembly bind failure logging.
+To turn this feature off, remove the registry value [HKLM\Software\Microsoft\Fusion!EnableLog].
+
+
+5/27/2018 11:05:55 AM :
+System.IO.FileNotFoundException: Could not load file or assembly 'DesigniteVS, Version=2.4.9.0, Culture=neutral, PublicKeyToken=124cb359817c1372' or one of its dependencies. The system cannot find the file specified.
+File name: 'DesigniteVS, Version=2.4.9.0, Culture=neutral, PublicKeyToken=124cb359817c1372'
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.Assembly.Load(AssemblyName assemblyRef)
+   at Microsoft.VisualStudio.ExtensibilityHosting.FaultCatchingAssemblyLoader.<>c__DisplayClass19_0.<LoadAssembly>b__0(AssemblyName assemblyNameParam)
+   at Microsoft.VisualStudio.ExtensibilityHosting.Utilities.SafeGetOrAdd[TKey,TValue](IDictionary`2 dictionary, TKey key, Object lockObj, Func`2 valueFactory)
+   at Microsoft.VisualStudio.ExtensibilityHosting.FaultCatchingAssemblyLoader.LoadAssembly(AssemblyName assemblyName)
+   at Microsoft.VisualStudio.Composition.Reflection.ResolverExtensions.GetManifest(Resolver resolver, AssemblyName assemblyName)
+   at Microsoft.VisualStudio.Composition.Reflection.TypeRef.get_ResolvedType()
+   at Microsoft.VisualStudio.Composition.Reflection.ResolverExtensions.Resolve(TypeRef typeRef)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.TypeArraySubstitution.get_ActualValue()
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.SubstituteValueIfRequired(Object value)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.SubstituteValueIfRequired(String key, Object value)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.TryGetValue(String key, Object& value)
+   at _proxy_Microsoft.VisualStudio.Text.Tagging.INamedTaggerMetadata_6db64ffb-042e-42ea-8766-f372b49a1209.get_TagTypes()
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.Match(IContentType bufferContentType, Type taggerType, INamedTaggerMetadata tagMetadata)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.<>c__DisplayClass30_0.<GetBufferTaggersForType>b__0(Lazy`2 f)
+   at System.Linq.Enumerable.WhereListIterator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.GetBufferTaggersForType(IContentType type, Type taggerType)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.GatherTaggers(ITextBuffer textBuffer)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.<Initialize>b__13_0(ITextBuffer buffer)
+   at Microsoft.VisualStudio.Text.Projection.Implementation.BufferGraph.GetTextBuffers(Predicate`1 match)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.Initialize()
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1..ctor(TagAggregatorFactoryService factory, ITextView textView, IBufferGraph bufferGraph, TagAggregatorOptions options)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.CreateTagAggregator[T](ITextView textView, TagAggregatorOptions options)
+   at Microsoft.VisualStudio.Text.Classification.Implementation.ClassifierAggregator..ctor(ITextView textView, IViewTagAggregatorFactoryService viewTagAggregatorFactory, IClassificationTypeRegistryService classificationTypeRegistry)
+   at Microsoft.VisualStudio.Text.Classification.Implementation.ClassifierAggregatorService.GetClassifier(ITextView textView)
+   at Microsoft.VisualStudio.Text.Editor.Implementation.WpfTextView.Initialize()
+   at Microsoft.VisualStudio.Text.Editor.Implementation.WpfTextEditorFactoryService.InitializeTextView(IWpfTextView view)
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.Init_InitializeWpfTextView()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.Init_OnActivation()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.get_WpfTextViewHost()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.GetData(Guid& riidKey, Object& pvtData)
+   at DevTracker.DevTrackerToolWinControl.GetWpfTextView(IVsTextView textView) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinHelper.cs:line 116
+   at DevTracker.DevTrackerToolWinControl.GetWpfTextView(String documentName) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinHelper.cs:line 106
+   at DevTracker.DevTrackerToolWinControl.SwitchActiveItem(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinControl.xaml.cs:line 647
+   at DevTracker.DevTrackerToolWinControl.DocumentEvents_DocumentOpened(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinDteEvents.cs:line 473
+
+WRN: Assembly binding logging is turned OFF.
+To enable assembly bind failure logging, set the registry value [HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD) to 1.
+Note: There is some performance penalty associated with assembly bind failure logging.
+To turn this feature off, remove the registry value [HKLM\Software\Microsoft\Fusion!EnableLog].
+
+
+5/27/2018 11:06:54 AM :
+System.IO.FileNotFoundException: Could not load file or assembly 'DesigniteVS, Version=2.4.9.0, Culture=neutral, PublicKeyToken=124cb359817c1372' or one of its dependencies. The system cannot find the file specified.
+File name: 'DesigniteVS, Version=2.4.9.0, Culture=neutral, PublicKeyToken=124cb359817c1372'
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.Assembly.Load(AssemblyName assemblyRef)
+   at Microsoft.VisualStudio.ExtensibilityHosting.FaultCatchingAssemblyLoader.<>c__DisplayClass19_0.<LoadAssembly>b__0(AssemblyName assemblyNameParam)
+   at Microsoft.VisualStudio.ExtensibilityHosting.Utilities.SafeGetOrAdd[TKey,TValue](IDictionary`2 dictionary, TKey key, Object lockObj, Func`2 valueFactory)
+   at Microsoft.VisualStudio.ExtensibilityHosting.FaultCatchingAssemblyLoader.LoadAssembly(AssemblyName assemblyName)
+   at Microsoft.VisualStudio.Composition.Reflection.ResolverExtensions.GetManifest(Resolver resolver, AssemblyName assemblyName)
+   at Microsoft.VisualStudio.Composition.Reflection.TypeRef.get_ResolvedType()
+   at Microsoft.VisualStudio.Composition.Reflection.ResolverExtensions.Resolve(TypeRef typeRef)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.TypeArraySubstitution.get_ActualValue()
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.SubstituteValueIfRequired(Object value)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.SubstituteValueIfRequired(String key, Object value)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.TryGetValue(String key, Object& value)
+   at _proxy_Microsoft.VisualStudio.Text.Tagging.INamedTaggerMetadata_6db64ffb-042e-42ea-8766-f372b49a1209.get_TagTypes()
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.Match(IContentType bufferContentType, Type taggerType, INamedTaggerMetadata tagMetadata)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.<>c__DisplayClass30_0.<GetBufferTaggersForType>b__0(Lazy`2 f)
+   at System.Linq.Enumerable.WhereListIterator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.GetBufferTaggersForType(IContentType type, Type taggerType)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.GatherTaggers(ITextBuffer textBuffer)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.<Initialize>b__13_0(ITextBuffer buffer)
+   at Microsoft.VisualStudio.Text.Projection.Implementation.BufferGraph.GetTextBuffers(Predicate`1 match)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.Initialize()
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1..ctor(TagAggregatorFactoryService factory, ITextView textView, IBufferGraph bufferGraph, TagAggregatorOptions options)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.CreateTagAggregator[T](ITextView textView, TagAggregatorOptions options)
+   at Microsoft.VisualStudio.Text.Classification.Implementation.ClassifierAggregator..ctor(ITextView textView, IViewTagAggregatorFactoryService viewTagAggregatorFactory, IClassificationTypeRegistryService classificationTypeRegistry)
+   at Microsoft.VisualStudio.Text.Classification.Implementation.ClassifierAggregatorService.GetClassifier(ITextView textView)
+   at Microsoft.VisualStudio.Text.Editor.Implementation.WpfTextView.Initialize()
+   at Microsoft.VisualStudio.Text.Editor.Implementation.WpfTextEditorFactoryService.InitializeTextView(IWpfTextView view)
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.Init_InitializeWpfTextView()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.Init_OnActivation()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.get_WpfTextViewHost()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.GetData(Guid& riidKey, Object& pvtData)
+   at DevTracker.DevTrackerToolWinControl.GetWpfTextView(IVsTextView textView) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinHelper.cs:line 116
+   at DevTracker.DevTrackerToolWinControl.GetWpfTextView(String documentName) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinHelper.cs:line 106
+   at DevTracker.DevTrackerToolWinControl.SwitchActiveItem(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinControl.xaml.cs:line 647
+   at DevTracker.DevTrackerToolWinControl.DocumentEvents_DocumentOpened(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinDteEvents.cs:line 473
+
+WRN: Assembly binding logging is turned OFF.
+To enable assembly bind failure logging, set the registry value [HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD) to 1.
+Note: There is some performance penalty associated with assembly bind failure logging.
+To turn this feature off, remove the registry value [HKLM\Software\Microsoft\Fusion!EnableLog].
+
+
+5/27/2018 11:06:55 AM :
+System.IO.FileNotFoundException: Could not load file or assembly 'DesigniteVS, Version=2.4.9.0, Culture=neutral, PublicKeyToken=124cb359817c1372' or one of its dependencies. The system cannot find the file specified.
+File name: 'DesigniteVS, Version=2.4.9.0, Culture=neutral, PublicKeyToken=124cb359817c1372'
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, RuntimeAssembly reqAssembly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.Assembly.Load(AssemblyName assemblyRef)
+   at Microsoft.VisualStudio.ExtensibilityHosting.FaultCatchingAssemblyLoader.<>c__DisplayClass19_0.<LoadAssembly>b__0(AssemblyName assemblyNameParam)
+   at Microsoft.VisualStudio.ExtensibilityHosting.Utilities.SafeGetOrAdd[TKey,TValue](IDictionary`2 dictionary, TKey key, Object lockObj, Func`2 valueFactory)
+   at Microsoft.VisualStudio.ExtensibilityHosting.FaultCatchingAssemblyLoader.LoadAssembly(AssemblyName assemblyName)
+   at Microsoft.VisualStudio.Composition.Reflection.ResolverExtensions.GetManifest(Resolver resolver, AssemblyName assemblyName)
+   at Microsoft.VisualStudio.Composition.Reflection.TypeRef.get_ResolvedType()
+   at Microsoft.VisualStudio.Composition.Reflection.ResolverExtensions.Resolve(TypeRef typeRef)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.TypeArraySubstitution.get_ActualValue()
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.SubstituteValueIfRequired(Object value)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.SubstituteValueIfRequired(String key, Object value)
+   at Microsoft.VisualStudio.Composition.LazyMetadataWrapper.TryGetValue(String key, Object& value)
+   at _proxy_Microsoft.VisualStudio.Text.Tagging.INamedTaggerMetadata_6db64ffb-042e-42ea-8766-f372b49a1209.get_TagTypes()
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.Match(IContentType bufferContentType, Type taggerType, INamedTaggerMetadata tagMetadata)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.<>c__DisplayClass30_0.<GetBufferTaggersForType>b__0(Lazy`2 f)
+   at System.Linq.Enumerable.WhereListIterator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.GetBufferTaggersForType(IContentType type, Type taggerType)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.GatherTaggers(ITextBuffer textBuffer)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.<Initialize>b__13_0(ITextBuffer buffer)
+   at Microsoft.VisualStudio.Text.Projection.Implementation.BufferGraph.GetTextBuffers(Predicate`1 match)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1.Initialize()
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregator`1..ctor(TagAggregatorFactoryService factory, ITextView textView, IBufferGraph bufferGraph, TagAggregatorOptions options)
+   at Microsoft.VisualStudio.Text.Tagging.Implementation.TagAggregatorFactoryService.CreateTagAggregator[T](ITextView textView, TagAggregatorOptions options)
+   at Microsoft.VisualStudio.Text.Classification.Implementation.ClassifierAggregator..ctor(ITextView textView, IViewTagAggregatorFactoryService viewTagAggregatorFactory, IClassificationTypeRegistryService classificationTypeRegistry)
+   at Microsoft.VisualStudio.Text.Classification.Implementation.ClassifierAggregatorService.GetClassifier(ITextView textView)
+   at Microsoft.VisualStudio.Text.Editor.Implementation.WpfTextView.Initialize()
+   at Microsoft.VisualStudio.Text.Editor.Implementation.WpfTextEditorFactoryService.InitializeTextView(IWpfTextView view)
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.Init_InitializeWpfTextView()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.Init_OnActivation()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.get_WpfTextViewHost()
+   at Microsoft.VisualStudio.Editor.Implementation.SimpleTextViewWindow.GetData(Guid& riidKey, Object& pvtData)
+   at DevTracker.DevTrackerToolWinControl.GetWpfTextView(IVsTextView textView) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinHelper.cs:line 116
+   at DevTracker.DevTrackerToolWinControl.GetWpfTextView(String documentName) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinHelper.cs:line 106
+   at DevTracker.DevTrackerToolWinControl.SwitchActiveItem(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinControl.xaml.cs:line 647
+   at DevTracker.DevTrackerToolWinControl.DocumentEvents_DocumentOpened(Document document) in C:\Users\KurtG\Documents\Visual Studio 2017\Projects\DevTracker\DevTracker\DevTrackerToolWinDteEvents.cs:line 473
+
+WRN: Assembly binding logging is turned OFF.
+To enable assembly bind failure logging, set the registry value [HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD) to 1.
+Note: There is some performance penalty associated with assembly bind failure logging.
+To turn this feature off, remove the registry value [HKLM\Software\Microsoft\Fusion!EnableLog].

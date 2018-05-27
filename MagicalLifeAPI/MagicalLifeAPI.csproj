@@ -124,6 +124,12 @@
     <Compile Include="GUI\SelectionType.cs" />
     <Compile Include="Networking\IHasSubclasses.cs" />
     <Compile Include="Networking\ITeachSerialization.cs" />
+    <Compile Include="Pathfinding\AStar\AStar.cs" />
+    <Compile Include="Pathfinding\Cost\CostRetriever.cs" />
+    <Compile Include="Pathfinding\Cost\IAddMovementCost.cs" />
+    <Compile Include="Pathfinding\Cost\StandardTileCost.cs" />
+    <Compile Include="Pathfinding\IPathFinder.cs" />
+    <Compile Include="Pathfinding\MainPathFinder.cs" />
     <Compile Include="Pathfinding\PathLink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Universal\IGameLoader.cs" />

@@ -164,12 +164,6 @@
     <Compile Include="Client.cs" />
     <Compile Include="Message Handlers\ServerTickMessageHandler.cs" />
     <Compile Include="Message Handlers\WorldTransferMessageHandler.cs" />
-    <Compile Include="Pathfinding\AStar\AStar.cs" />
-    <Compile Include="Pathfinding\Cost\CostRetriever.cs" />
-    <Compile Include="Pathfinding\Cost\IAddMovementCost.cs" />
-    <Compile Include="Pathfinding\Cost\StandardTileCost.cs" />
-    <Compile Include="Pathfinding\IPathFinder.cs" />
-    <Compile Include="Pathfinding\MainPathFinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
