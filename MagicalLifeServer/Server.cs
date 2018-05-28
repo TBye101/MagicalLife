@@ -57,6 +57,7 @@ namespace MagicalLifeServer
             {
                 eventHandler(sender, tick);
             }
+            TickTimer.Stop();
         }
 
         /// <summary>

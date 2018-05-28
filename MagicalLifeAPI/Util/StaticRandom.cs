@@ -23,7 +23,8 @@ namespace MagicalLifeAPI.Util
 
         public static double Rand(double min, double max)
         {
-            return random.Value.NextDouble() * (min - max) + min;
+            double ret = random.Value.NextDouble() * (min - max) + min;
+            return ret;
         }
     }
 }

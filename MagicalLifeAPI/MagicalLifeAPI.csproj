@@ -110,22 +110,22 @@
     <Compile Include="DataTypes\FixedSizeQueue.cs" />
     <Compile Include="DataTypes\PointDouble.cs" />
     <Compile Include="DataTypes\ProtoArray.cs" />
-    <Compile Include="Entities\Entity Factory\HumanFactory.cs" />
-    <Compile Include="Entities\Eventing\LivingEventArg.cs" />
-    <Compile Include="Entities\Humanoid\Human.cs" />
-    <Compile Include="Entities\Living.cs" />
-    <Compile Include="Entities\Movement\Direction.cs" />
-    <Compile Include="Entities\Util\Attribute32.cs" />
-    <Compile Include="Entities\Util\AttributeDouble.cs" />
-    <Compile Include="Entities\Util\Modifier Remove Conditions\IModifierRemoveCondition.cs" />
-    <Compile Include="Entities\Util\Modifier Remove Conditions\NeverRemoveCondition.cs" />
-    <Compile Include="Entities\Util\Modifier Remove Conditions\TimeRemoveCondition.cs" />
+    <Compile Include="Entity\Entity Factory\HumanFactory.cs" />
+    <Compile Include="Entity\Eventing\LivingEventArg.cs" />
+    <Compile Include="Entity\Humanoid\Human.cs" />
+    <Compile Include="Entity\Living.cs" />
+    <Compile Include="Entity\Movement\Direction.cs" />
+    <Compile Include="Entity\Util\Attribute32.cs" />
+    <Compile Include="Entity\Util\AttributeDouble.cs" />
+    <Compile Include="Entity\Util\Modifier Remove Conditions\IModifierRemoveCondition.cs" />
+    <Compile Include="Entity\Util\Modifier Remove Conditions\NeverRemoveCondition.cs" />
+    <Compile Include="Entity\Util\Modifier Remove Conditions\TimeRemoveCondition.cs" />
     <Compile Include="Filing\FileSystemManager.cs" />
     <Compile Include="Filing\Logging\MasterLog.cs" />
     <Compile Include="GUI\HasTexture.cs" />
     <Compile Include="GUI\ISelectable.cs" />
     <Compile Include="GUI\SelectionType.cs" />
-    <Compile Include="Entities\Movement\EntityWorldMovement.cs" />
+    <Compile Include="Entity\Movement\EntityWorldMovement.cs" />
     <Compile Include="Networking\IHasSubclasses.cs" />
     <Compile Include="Networking\ITeachSerialization.cs" />
     <Compile Include="Pathfinding\AStar\AStar.cs" />
@@ -160,8 +160,8 @@
     <Compile Include="World\WorldUtil.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Entities\Animal\" />
-    <Folder Include="Entities\Entity Components\" />
+    <Folder Include="Entity\Animal\" />
+    <Folder Include="Entity\Entity Components\" />
     <Folder Include="World\Items\" />
   </ItemGroup>
   <ItemGroup>

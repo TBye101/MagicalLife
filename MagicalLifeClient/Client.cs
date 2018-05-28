@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Message_Handlers;
 using MagicalLifeAPI.Pathfinding;
+using MagicalLifeClient.Entity;
 using MagicalLifeClient.Message_Handlers;
 using MagicalLifeClient.Processing;
 using MagicalLifeNetworking.Messages;
@@ -29,6 +30,7 @@ namespace MagicalLifeClient
         {
             MainPathFinder.Initialize();
             ClientProcessor.Initialize(GetMessageHandlers());
+            EntityTicking.Initialize();
         }
 
         private static List<MessageHandler> GetMessageHandlers()

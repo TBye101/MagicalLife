@@ -162,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
+    <Compile Include="Entity\EntityTicking.cs" />
     <Compile Include="Message Handlers\ServerTickMessageHandler.cs" />
     <Compile Include="Message Handlers\WorldTransferMessageHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
