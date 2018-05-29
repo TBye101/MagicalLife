@@ -120,7 +120,6 @@ namespace MagicalLifeAPI.Entities.Movement
                 entity.ScreenLocation = new DataTypes.PointFloat(destination.Location.X, destination.Location.Y);
                 entity.QueuedMovement.Dequeue();
                 movementPenalty = MathUtil.GetDistance(entity.ScreenLocation, destination.Location);
-                entity.QueuedMovement.Dequeue();
             }
 
             entity.Movement.AddModifier(new Tuple<float, IModifierRemoveCondition, string>(movementPenalty, new TimeRemoveCondition(1), "Normal Movement"));
