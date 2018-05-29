@@ -4,6 +4,7 @@ using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Resources;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace MagicalLifeGUIWindows.Rendering.Map
 {
@@ -51,8 +52,10 @@ namespace MagicalLifeGUIWindows.Rendering.Map
 
             if (tile.Living != null)
             {
+                //tile.Living.ScreenLocation
                 Texture2D livingTexture = AssetManager.Textures[AssetManager.GetTextureIndex(tile.Living.GetTextureName())];
-                spBatch.Draw(livingTexture, target, RenderingPipe.colorMask);
+                Vector2 livingScreenLocation = new Vector2(tile.Living.ScreenLocation.X * Tile.GetTileSize().X, tile.Living.ScreenLocation.Y * Tile.GetTileSize().Y);
+                spBatch.Draw(livingTexture, livingScreenLocation, RenderingPipe.colorMask);
             }
         }
 

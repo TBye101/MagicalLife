@@ -17,6 +17,8 @@ namespace MagicalLifeClient.Entity
     /// </summary>
     public static class EntityTicking
     {
+        private static bool test = false;
+
         public static void Initialize()
         {
             Client.ClientTick += Client_ClientTick;
@@ -24,14 +26,21 @@ namespace MagicalLifeClient.Entity
 
         private static void Client_ClientTick(object sender, ulong e)
         {
-            //This needs to be changed, as the performance time will be awful.
+            //This needs to be changed, as the performance time WILL be awful.
             //This WILL be changed after the rewrite of how the world is stored in memory
+
             foreach (Tile item in World.MainWorld.Tiles)
             {
                 if (item.Living != null)
                 {
                     Living l = item.Living;
-                    Test(ref l);
+                    l.Movement.WearOff();
+                    if (!test)
+                    {
+                        Test(ref l);
+                        test = true;
+                    }
+
                     if (item.Living.QueuedMovement.Count > 0)
                     {
                         EntityWorldMovement.MoveEntity(ref l);

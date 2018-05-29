@@ -33,13 +33,13 @@ namespace MagicalLifeAPI.Entities
         /// How fast this creature can during a single tick.
         /// </summary>
         [ProtoMember(3)]
-        public AttributeDouble Movement { get; set; }
+        public AttributeFloat Movement { get; set; }
 
         /// <summary>
         /// The location of the creature on the screen. This represents the progress through a tile for a moving creature.
         /// </summary>
         [ProtoMember(4)]
-        public PointDouble ScreenLocation { get; set; }
+        public PointFloat ScreenLocation { get; set; }
 
         /// <summary>
         /// Raised when a <see cref="Living"/> is created.
@@ -56,13 +56,13 @@ namespace MagicalLifeAPI.Entities
         /// </summary>
         /// <param name="health"></param>
         /// <param name="movementSpeed"></param>
-        protected Living(int health, double movementSpeed, Point location)
+        protected Living(int health, float movementSpeed, Point location)
         {
             this.Health = new Util.Attribute32(health);
-            this.Movement = new AttributeDouble(movementSpeed);
+            this.Movement = new AttributeFloat(movementSpeed);
             Living.LivingCreated(this, new LivingEventArg(this, location));
             this.MapLocation = location;
-            this.ScreenLocation = new PointDouble(location.X, location.Y);
+            this.ScreenLocation = new PointFloat(location.X, location.Y);
         }
 
         public Living()

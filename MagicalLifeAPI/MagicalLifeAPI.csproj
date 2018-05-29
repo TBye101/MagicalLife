@@ -108,7 +108,7 @@
   <ItemGroup>
     <Compile Include="Asset\AssetManager.cs" />
     <Compile Include="DataTypes\FixedSizeQueue.cs" />
-    <Compile Include="DataTypes\PointDouble.cs" />
+    <Compile Include="DataTypes\PointFloat.cs" />
     <Compile Include="DataTypes\ProtoArray.cs" />
     <Compile Include="Entity\Entity Factory\HumanFactory.cs" />
     <Compile Include="Entity\Eventing\LivingEventArg.cs" />
@@ -116,7 +116,7 @@
     <Compile Include="Entity\Living.cs" />
     <Compile Include="Entity\Movement\Direction.cs" />
     <Compile Include="Entity\Util\Attribute32.cs" />
-    <Compile Include="Entity\Util\AttributeDouble.cs" />
+    <Compile Include="Entity\Util\AttributeFloat.cs" />
     <Compile Include="Entity\Util\Modifier Remove Conditions\IModifierRemoveCondition.cs" />
     <Compile Include="Entity\Util\Modifier Remove Conditions\NeverRemoveCondition.cs" />
     <Compile Include="Entity\Util\Modifier Remove Conditions\TimeRemoveCondition.cs" />

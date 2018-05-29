@@ -22,7 +22,7 @@ namespace MagicalLifeAPI.Entities.Entity_Factory
         /// <summary>
         /// The fastest a human could possibly be without starting down a class path.
         /// </summary>
-        private readonly double MaxHumanMovement = .1;
+        private readonly double MaxHumanMovement = .01;
 
         /// <summary>
         /// The slowest a human could possibly be without some significant injuries.
@@ -35,8 +35,8 @@ namespace MagicalLifeAPI.Entities.Entity_Factory
         /// <returns></returns>
         public Human GenerateHuman(Point location)
         {
-            int health = StaticRandom.Rand(this.MinHumanHealthPerLevel, this.MaxHumanHealthPerLevel + 1);
-            double movement = StaticRandom.Rand(this.MinHumanMovement, this.MaxHumanMovement + 1);
+            int health = StaticRandom.Rand(this.MinHumanHealthPerLevel, this.MaxHumanHealthPerLevel);
+            float movement = (float)StaticRandom.Rand(this.MinHumanMovement, this.MaxHumanMovement);
 
             return new Human(health, movement, location);
         }

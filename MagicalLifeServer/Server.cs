@@ -18,6 +18,7 @@ namespace MagicalLifeServer
         /// </summary>
         public static UInt64 GameTick { get; private set; } = 0;
 
+        //private static Timer TickTimer = new Timer(50);
         private static Timer TickTimer = new Timer(50);
 
         /// <summary>
@@ -39,7 +40,13 @@ namespace MagicalLifeServer
         {
             TickTimer.AutoReset = true;
             TickTimer.Elapsed += Tick;
+            ServerTick += Server_ServerTick;
             TickTimer.Start();
+        }
+
+        private static void Server_ServerTick(object sender, ulong e)
+        {
+            MagicalLifeAPI.Filing.Logging.MasterLog.DebugWriteLine("Server tick!");
         }
 
         private static void Tick(object sender, ElapsedEventArgs e)
@@ -57,7 +64,7 @@ namespace MagicalLifeServer
             {
                 eventHandler(sender, tick);
             }
-            TickTimer.Stop();
+            //TickTimer.Stop();
         }
 
         /// <summary>

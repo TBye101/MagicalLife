@@ -4,15 +4,15 @@ using System;
 namespace MagicalLifeAPI.DataTypes
 {
     [ProtoBuf.ProtoContract]
-    public struct PointDouble
+    public struct PointFloat
     {
         [ProtoMember(1)]
-        public Double X { get; set; }
+        public float X { get; set; }
 
         [ProtoMember(2)]
-        public Double Y { get; set; }
+        public float Y { get; set; }
 
-        public PointDouble(Double x, Double y)
+        public PointFloat(float x, float y)
         {
             this.X = x;
             this.Y = y;

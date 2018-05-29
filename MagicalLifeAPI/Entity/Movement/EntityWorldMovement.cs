@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
@@ -21,6 +22,7 @@ namespace MagicalLifeAPI.Entities.Movement
         {
             Queue<PathLink> path = entity.QueuedMovement;
 
+            MasterLog.DebugWriteLine("Creature movement speed: " + entity.Movement.GetValue().ToString());
             while (entity.Movement.GetValue() > 0 && path.Count > 0)
             {
                 PathLink section = path.Peek();
@@ -55,12 +57,14 @@ namespace MagicalLifeAPI.Entities.Movement
         /// <param name="entity"></param>
         /// <param name="source"></param>
         /// <param name="destination"></param>
-        private static void Move(ref Living entity, Tile source, Tile destination)
+        public static void Move(ref Living entity, Tile source, Tile destination)
         {
+            MasterLog.DebugWriteLine("Moving creature!");
+            MasterLog.DebugWriteLine("Pre move location: " + entity.ScreenLocation.X.ToString() + ", " + entity.ScreenLocation.Y.ToString());
             Direction direction = DetermineMovementDirection(source.Location, destination.Location);
 
-            Double xMove = 0;
-            Double yMove = 0;
+            float xMove = 0;
+            float yMove = 0;
 
             switch (direction)
             {
@@ -104,20 +108,21 @@ namespace MagicalLifeAPI.Entities.Movement
             xMove *= entity.Movement.GetValue();
             yMove *= entity.Movement.GetValue();
 
-            Double movementPenalty = CalculateMovementReduction(xMove, yMove) * -1;
+            float movementPenalty = (float)Math.Abs(CalculateMovementReduction(xMove, yMove)) * -1;
 
             if (MathUtil.GetDistance(entity.ScreenLocation, destination.Location) > entity.Movement.GetValue())
             {
-                entity.ScreenLocation = new DataTypes.PointDouble(entity.ScreenLocation.X + xMove, entity.ScreenLocation.Y + yMove);
+                entity.ScreenLocation = new DataTypes.PointFloat(entity.ScreenLocation.X + xMove, entity.ScreenLocation.Y + yMove);
             }
             else
             {
                 entity.MapLocation = destination.Location;
-                entity.ScreenLocation = new DataTypes.PointDouble(destination.Location.X, destination.Location.Y);
+                entity.ScreenLocation = new DataTypes.PointFloat(destination.Location.X, destination.Location.Y);
                 movementPenalty = MathUtil.GetDistance(entity.ScreenLocation, destination.Location);
             }
 
-            entity.Movement.AddModifier(new Tuple<Double, IModifierRemoveCondition, string>(movementPenalty, new TimeRemoveCondition(1), "Normal Movement"));
+            entity.Movement.AddModifier(new Tuple<float, IModifierRemoveCondition, string>(movementPenalty, new TimeRemoveCondition(1), "Normal Movement"));
+            MasterLog.DebugWriteLine("Post move location: " + entity.ScreenLocation.X.ToString() + ", " + entity.ScreenLocation.Y.ToString());
         }
 
         /// <summary>

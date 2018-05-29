@@ -10,7 +10,7 @@ namespace MagicalLifeAPI.Entities.Humanoid
     [ProtoContract]
     public class Human : Living
     {
-        public Human(int health, double movementSpeed, Point location) : base(health, movementSpeed, location)
+        public Human(int health, float movementSpeed, Point location) : base(health, movementSpeed, location)
         {
             Filing.Logging.MasterLog.DebugWriteLine("Living spawned at: " + location.ToString());
         }

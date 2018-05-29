@@ -31,6 +31,12 @@ namespace MagicalLifeClient
             MainPathFinder.Initialize();
             ClientProcessor.Initialize(GetMessageHandlers());
             EntityTicking.Initialize();
+            ClientTick += Client_ClientTick;
+        }
+
+        private static void Client_ClientTick(object sender, ulong e)
+        {
+            MasterLog.DebugWriteLine("Client tick!");
         }
 
         private static List<MessageHandler> GetMessageHandlers()
@@ -72,7 +78,6 @@ namespace MagicalLifeClient
                 if (ClientTick != null)
                 {
                     ClientTick(null, GameTick);
-                    MasterLog.DebugWriteLine("Client tick!");
                 }
                 i++;
             }

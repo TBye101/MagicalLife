@@ -30,9 +30,9 @@ namespace MagicalLifeAPI.Util
             return Math.Sqrt(Math.Pow(b.X - a.X, 2) + Math.Pow(b.Y - a.Y, 2));
         }
 
-        public static double GetDistance(PointDouble a, Point b)
+        public static float GetDistance(PointFloat a, Point b)
         {
-            return Math.Sqrt(Math.Pow(b.X - a.X, 2) + Math.Pow(b.Y - a.Y, 2));
+            return (float)Math.Sqrt(Math.Pow(b.X - a.X, 2) + Math.Pow(b.Y - a.Y, 2));
         }
     }
 }

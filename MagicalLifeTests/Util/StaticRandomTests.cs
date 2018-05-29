@@ -15,42 +15,19 @@ namespace MagicalLifeAPI.Util.Tests
         [TestMethod()]
         public void RandTest()
         {
-            this.TestNegative();
             this.TestPositive();
-        }
-
-        private void TestNegative()
-        {
-            double min = -.1;
-            double max = .2;
-
-            while (min > -15)
-            {
-                double result = StaticRandom.Rand(min, max);
-
-                if (result < min || result > max)
-                {
-                    Console.WriteLine("Min: " + min.ToString());
-                    Console.WriteLine("Max: " + max.ToString());
-                    Console.WriteLine("Result: " + result.ToString());
-                    Assert.Fail("Invalid Result");
-                }
-
-                min -= .05;
-                max -= .05;
-            }
         }
 
         private void TestPositive()
         {
             double min = 15;
-            double max = 16;
+            double max = 18;
 
-            while (min > -15)
+            while (min > 0)
             {
                 double result = StaticRandom.Rand(min, max);
 
-                if (result < min || result > max)
+                if (result < min || result > max || result < 0)
                 {
                     Console.WriteLine("Min: " + min.ToString());
                     Console.WriteLine("Max: " + max.ToString());
