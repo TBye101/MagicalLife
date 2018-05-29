@@ -22,7 +22,7 @@ namespace MagicalLifeAPI.Entities.Movement
         {
             Queue<PathLink> path = entity.QueuedMovement;
 
-            MasterLog.DebugWriteLine("Creature movement speed: " + entity.Movement.GetValue().ToString());
+            //MasterLog.DebugWriteLine("Creature movement speed: " + entity.Movement.GetValue().ToString());
             while (entity.Movement.GetValue() > 0 && path.Count > 0)
             {
                 PathLink section = path.Peek();
@@ -59,8 +59,8 @@ namespace MagicalLifeAPI.Entities.Movement
         /// <param name="destination"></param>
         public static void Move(ref Living entity, Tile source, Tile destination)
         {
-            MasterLog.DebugWriteLine("Moving creature!");
-            MasterLog.DebugWriteLine("Pre move location: " + entity.ScreenLocation.X.ToString() + ", " + entity.ScreenLocation.Y.ToString());
+            //MasterLog.DebugWriteLine("Moving creature!");
+            //MasterLog.DebugWriteLine("Pre move location: " + entity.ScreenLocation.X.ToString() + ", " + entity.ScreenLocation.Y.ToString());
             Direction direction = DetermineMovementDirection(source.Location, destination.Location);
 
             float xMove = 0;
@@ -119,10 +119,11 @@ namespace MagicalLifeAPI.Entities.Movement
                 entity.MapLocation = destination.Location;
                 entity.ScreenLocation = new DataTypes.PointFloat(destination.Location.X, destination.Location.Y);
                 movementPenalty = MathUtil.GetDistance(entity.ScreenLocation, destination.Location);
+                entity.QueuedMovement.Dequeue();
             }
 
             entity.Movement.AddModifier(new Tuple<float, IModifierRemoveCondition, string>(movementPenalty, new TimeRemoveCondition(1), "Normal Movement"));
-            MasterLog.DebugWriteLine("Post move location: " + entity.ScreenLocation.X.ToString() + ", " + entity.ScreenLocation.Y.ToString());
+            //MasterLog.DebugWriteLine("Post move location: " + entity.ScreenLocation.X.ToString() + ", " + entity.ScreenLocation.Y.ToString());
         }
 
         /// <summary>
