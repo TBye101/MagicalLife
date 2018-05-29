@@ -1,7 +1,10 @@
 ﻿using MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions;
+using MagicalLifeAPI.Filing.Logging;
 using ProtoBuf;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Entities.Util
 {
@@ -13,7 +16,7 @@ namespace MagicalLifeAPI.Entities.Util
         /// The string value is a display message/reason as to why the modifier was applied.
         /// </summary>
         [ProtoMember(1)]
-        public List<Tuple<float, IModifierRemoveCondition, string>> Modifiers { get; private set; } = new List<Tuple<float, IModifierRemoveCondition, string>>();
+        public ConcurrentStack<Tuple<float, IModifierRemoveCondition, string>> Modifiers { get; private set; } = new ConcurrentStack<Tuple<float, IModifierRemoveCondition, string>>();
 
         public AttributeFloat(float value) : this()
         {
@@ -40,24 +43,43 @@ namespace MagicalLifeAPI.Entities.Util
         /// <param name="modifier"></param>
         public void AddModifier(Tuple<float, IModifierRemoveCondition, string> modifier)
         {
-            this.Modifiers.Add(modifier);
+            this.Modifiers.Push(modifier);
         }
 
         public void WearOff()
         {
-            List<Tuple<float, IModifierRemoveCondition, string>> remove = new List<Tuple<float, IModifierRemoveCondition, string>>();
             foreach (Tuple<float, IModifierRemoveCondition, string> item in this.Modifiers)
             {
-                if (item.Item2.WearOff())
+                Tuple<float, IModifierRemoveCondition, string> o;
+                if (this.Modifiers.TryPop(out o))
                 {
-                    remove.Add(item);
+                    if (!o.Item2.WearOff())
+                    {
+                        this.Modifiers.Push(o);
+                    }
+                    else
+                    {
+                        MasterLog.DebugWriteLine("Removed a modifier");
+                    }
                 }
             }
 
-            foreach (Tuple<float, IModifierRemoveCondition, string> item in remove)
-            {
-                this.Modifiers.Remove(item);
-            }
+            //foreach (Tuple<float, IModifierRemoveCondition, string> item in this.Modifiers)
+            //{
+            //    if (item.Item2.WearOff())
+            //    {
+            //        continue;
+            //    }
+            //    else
+            //    {
+            //        this.Modifiers.try
+            //    }
+            //}
+
+            //foreach (Tuple<float, IModifierRemoveCondition, string> item in remove)
+            //{
+            //    this.Modifiers.Remove(item);
+            //}
         }
     }
 }
