@@ -118,6 +118,7 @@ namespace MagicalLifeAPI.Entities.Movement
             {
                 entity.MapLocation = destination.Location;
                 entity.ScreenLocation = new DataTypes.PointFloat(destination.Location.X, destination.Location.Y);
+                entity.QueuedMovement.Dequeue();
                 movementPenalty = MathUtil.GetDistance(entity.ScreenLocation, destination.Location);
             }
 
