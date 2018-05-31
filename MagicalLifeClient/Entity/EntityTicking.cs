@@ -17,8 +17,6 @@ namespace MagicalLifeClient.Entity
     /// </summary>
     public static class EntityTicking
     {
-        private static bool test = false;
-
         public static void Initialize()
         {
             Client.ClientTick += Client_ClientTick;
@@ -35,32 +33,11 @@ namespace MagicalLifeClient.Entity
                 {
                     Living l = item.Living;
                     l.Movement.WearOff();
-                    if (!test)
-                    {
-                        Test(ref l);
-                        test = true;
-                    }
 
                     if (item.Living.QueuedMovement.Count > 0)
                     {
                         EntityWorldMovement.MoveEntity(ref l);
                     }
-                }
-            }
-        }
-
-        private static void Test(ref Living living)
-        {
-            if (World.MainWorld.Tiles[0, 0].IsWalkable)
-            {
-                Microsoft.Xna.Framework.Point start = living.MapLocation;
-                if (start != new Microsoft.Xna.Framework.Point(0, 0))
-                {
-                    List<PathLink> pth = MainPathFinder.PFinder.GetRoute(World.MainWorld, living, World.MainWorld.Tiles[start.X, start.Y].Location, World.MainWorld.Tiles[0, 0].Location);
-
-                    living.QueuedMovement.Clear();
-                    MagicalLifeAPI.Util.Extensions.EnqueueCollection(living.QueuedMovement, pth);
-                    ClientSendRecieve.Send<RouteCreatedMessage>(new RouteCreatedMessage(pth, living.ID));
                 }
             }
         }

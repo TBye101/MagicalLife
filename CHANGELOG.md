@@ -13,7 +13,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 * Now split into three parts: server, client, and the shared API
 
 #### Bugs
-* Discovered issue [#14](https://github.com/SneakyTactician/EarthWithMagic/issues/14)
+* Discovered and fixed issue [#14](https://github.com/SneakyTactician/EarthWithMagic/issues/14)
 * Discovered issue [#15](https://github.com/SneakyTactician/MagicalLife/issues/15)
 ---        
 ## [Version 0.0.0.6]

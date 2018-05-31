@@ -139,9 +139,14 @@ namespace MagicalLifeGUIWindows.Input.History
         /// <param name="e"></param>
         public static void MapMouseClick(MouseEventArgs e)
         {
-            History.Enqueue(Factory.Generate(new InputEventArgs(ShiftDown, CtrlDown, e)));
-            HandleNewSelectionHistory();
-            InputAddedHandler();
+            HistoricalInput historicalInput = Factory.Generate(new InputEventArgs(ShiftDown, CtrlDown, e));
+
+            if (historicalInput != null)
+            {
+                History.Enqueue(historicalInput);
+                HandleNewSelectionHistory();
+                InputAddedHandler();
+            }
         }
     }
 }

@@ -14,7 +14,7 @@ namespace MagicalLifeGUIWindows
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public static Point GetMapLocation(int x, int y)
+        public static Point GetMapLocation(int x, int y, out bool success)
         {
             int x2 = x + Rendering.RenderingPipe.XViewOffset;
             int y2 = y + Rendering.RenderingPipe.YViewOffset;
@@ -22,6 +22,8 @@ namespace MagicalLifeGUIWindows
 
             x2 /= size.X;
             y2 /= size.Y;
+
+            success = !(x2 > World.MainWorld.Tiles.Width || y2 > World.MainWorld.Tiles.Height);
 
             return new Point(x2, y2);
         }

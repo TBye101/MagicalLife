@@ -28,35 +28,38 @@ namespace MagicalLifeGUIWindows.Input.History
 
         private HistoricalInput SingleSelect(InputEventArgs e)
         {
-            Point mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y);
-            Selectable select = World.MainWorld.Tiles[mapSpot.X, mapSpot.Y].Living;
+            bool success;
+            Point mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y, out success);
 
-            if (select != null)
+            if (success)
             {
-                //Null check select, as it is null when an entity is not found
-                List<Selectable> selected = new List<Selectable>();
-                selected.Add(select);
+                Selectable select = World.MainWorld.Tiles[mapSpot.X, mapSpot.Y].Living;
 
-                if (e.ShiftDown)
+                if (select != null)
                 {
-                    if (this.IsSelectableSelected(select))
+                    //Null check select, as it is null when an entity is not found
+                    List<Selectable> selected = new List<Selectable>();
+                    selected.Add(select);
+
+                    if (e.ShiftDown)
                     {
-                        return new HistoricalInput(false, selected);
+                        if (this.IsSelectableSelected(select))
+                        {
+                            return new HistoricalInput(false, selected);
+                        }
+                        else
+                        {
+                            return new HistoricalInput(selected);
+                        }
                     }
                     else
                     {
-                        return new HistoricalInput(selected);
+                        return new HistoricalInput(selected, true);
                     }
                 }
-                else
-                {
-                    return new HistoricalInput(selected, true);
-                }
             }
-            else
-            {
-                return new HistoricalInput(true, null);
-            }
+
+            return null;
         }
 
         /// <summary>
@@ -80,8 +83,18 @@ namespace MagicalLifeGUIWindows.Input.History
         private HistoricalInput Order(InputEventArgs e)
         {
             Point screenLocation = e.MouseEventArgs.Position;
-            Point mapLocation = Util.GetMapLocation(screenLocation.X, screenLocation.Y);
-            return new HistoricalInput(mapLocation);
+
+            bool success;
+            Point mapLocation = Util.GetMapLocation(screenLocation.X, screenLocation.Y, out success);
+
+            if (success)
+            {
+                return new HistoricalInput(mapLocation);
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

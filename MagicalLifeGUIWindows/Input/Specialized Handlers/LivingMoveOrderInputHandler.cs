@@ -65,8 +65,17 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
         /// <returns></returns>
         private Living GetLivingAtClick(MouseEventArgs e)
         {
-            Microsoft.Xna.Framework.Point tileLocation = Util.GetMapLocation(e.Position.X, e.Position.Y);
-            return World.MainWorld.Tiles[tileLocation.X, tileLocation.Y].Living;
+            bool success;
+            Microsoft.Xna.Framework.Point tileLocation = Util.GetMapLocation(e.Position.X, e.Position.Y, out success);
+
+            if (success)
+            {
+                return World.MainWorld.Tiles[tileLocation.X, tileLocation.Y].Living;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
