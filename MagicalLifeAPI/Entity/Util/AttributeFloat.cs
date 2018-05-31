@@ -57,29 +57,8 @@ namespace MagicalLifeAPI.Entities.Util
                     {
                         this.Modifiers.Push(o);
                     }
-                    else
-                    {
-                        MasterLog.DebugWriteLine("Removed a modifier");
-                    }
                 }
             }
-
-            //foreach (Tuple<float, IModifierRemoveCondition, string> item in this.Modifiers)
-            //{
-            //    if (item.Item2.WearOff())
-            //    {
-            //        continue;
-            //    }
-            //    else
-            //    {
-            //        this.Modifiers.try
-            //    }
-            //}
-
-            //foreach (Tuple<float, IModifierRemoveCondition, string> item in remove)
-            //{
-            //    this.Modifiers.Remove(item);
-            //}
         }
     }
 }

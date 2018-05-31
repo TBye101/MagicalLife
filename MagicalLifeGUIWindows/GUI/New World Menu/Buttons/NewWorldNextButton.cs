@@ -28,6 +28,7 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu.Buttons
             a.StartNewGame();
             BoundHandler.RemoveContainer(NewWorldMenu.NewWorldMenuM);
             MenuHandler.Clear();
+            BoundHandler.HideAll();
             In_Game_GUI.InGameGUI.Initialize();
             BoundHandler.Popup(In_Game_GUI.InGameGUI.InGame);
         }

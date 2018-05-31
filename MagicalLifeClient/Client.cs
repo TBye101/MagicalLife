@@ -36,7 +36,7 @@ namespace MagicalLifeClient
 
         private static void Client_ClientTick(object sender, ulong e)
         {
-            MasterLog.DebugWriteLine("Client tick!");
+            //MasterLog.DebugWriteLine("Client tick!");
         }
 
         private static List<MessageHandler> GetMessageHandlers()

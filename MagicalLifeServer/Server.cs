@@ -46,7 +46,7 @@ namespace MagicalLifeServer
 
         private static void Server_ServerTick(object sender, ulong e)
         {
-            MagicalLifeAPI.Filing.Logging.MasterLog.DebugWriteLine("Server tick!");
+            //MagicalLifeAPI.Filing.Logging.MasterLog.DebugWriteLine("Server tick!");
         }
 
         private static void Tick(object sender, ElapsedEventArgs e)
