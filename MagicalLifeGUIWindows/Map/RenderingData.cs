@@ -12,12 +12,12 @@ namespace MagicalLifeGUIWindows.Map
     public static class RenderingData
     {
         /// <summary>
-        /// The value of the last assigned priority to a GUI popup.
+        /// The value of the last assigned priority to a GUI pop-up.
         /// </summary>
         private static int CurrentPriority = int.MinValue;
 
         /// <summary>
-        /// Returns an ever increasing number for popup window priorities.
+        /// Returns an ever increasing number for pop-up window priorities.
         /// </summary>
         /// <returns></returns>
         public static int GetGUIContainerPriority()
@@ -47,7 +47,6 @@ namespace MagicalLifeGUIWindows.Map
             {
                 if (textures[i].Name == textureName)
                 {
-                    //World.mainWorld.Tiles[location.X, location.Y, location.Z].TextureIndex = i;
                     tile.TextureIndex = i;
                     return;
                 }
