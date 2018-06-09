@@ -1,6 +1,20 @@
 # Magical Life
 A fantasy world that imagines what a Rimworld style game could truly do if it had more elements in common with Dungeons and Dragons.
 
+## Roadmap
+AKA TODO:
+
+1. Not buggy graphics
+2. Character Actions (such as mining or building)
+3. Natural objects such as trees
+4. Character Classes and XP system
+5. Creatures (Enemies and Animals)
+6. AI
+7. Spells/Abilities
+8. Fantasy Loot
+9. Dungeons
+10. Randomized Quests
+11. Mod support
 
 ## Libraries Utilized
 [MonoGame](http://www.monogame.net/)
