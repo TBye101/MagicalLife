@@ -26,8 +26,18 @@
         public static readonly int NewGameButtonY = 100;
 
         /// <summary>
-        /// The y position of the top of the new game button.
+        /// The y position of the top of the host game button.
         /// </summary>
-        public static readonly int QuitButtonY = 200;
+        public static readonly int HostGameButtonY = 200;
+
+        /// <summary>
+        /// The y position of the top of the join game button.
+        /// </summary>
+        public static readonly int JoinGameButtonY = 300;
+
+        /// <summary>
+        /// The y position of the top of the quit button.
+        /// </summary>
+        public static readonly int QuitButtonY = 400;
     }
 }

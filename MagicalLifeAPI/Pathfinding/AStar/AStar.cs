@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World;
 using Microsoft.Xna.Framework;
 using RoyT.AStar;
+using System;
+using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Pathfinding.AStar
 {
@@ -53,13 +51,13 @@ namespace MagicalLifeAPI.Pathfinding.AStar
                 i++;
             }
 
-            return ret; 
+            return ret;
         }
 
         public void Initialize()
         {
-            Tile[,] tiles = World.World.mainWorld.Tiles;
-            this.Grid = new Grid(tiles.GetLength(0), tiles.GetLength(1), 1);
+            ProtoArray<Tile> tiles = World.World.MainWorld.Tiles;
+            this.Grid = new Grid(tiles.Width, tiles.Height, 1);
 
             foreach (Tile item in tiles)
             {

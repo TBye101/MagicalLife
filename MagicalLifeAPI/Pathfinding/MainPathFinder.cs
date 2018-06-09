@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MagicalLifeAPI.Pathfinding
+﻿namespace MagicalLifeAPI.Pathfinding
 {
     /// <summary>
-    /// Handles who pathfinds.
+    /// Handles who finds the path to destinations.
     /// </summary>
     public static class MainPathFinder
     {
@@ -15,5 +9,15 @@ namespace MagicalLifeAPI.Pathfinding
         /// The pathfinder.
         /// </summary>
         public static IPathFinder PFinder = new AStar.AStar();
+
+        public static void Initialize()
+        {
+            World.World.WorldGenerated += World_WorldGenerated;
+        }
+
+        private static void World_WorldGenerated(object sender, World.WorldEventArgs e)
+        {
+            PFinder.Initialize();
+        }
     }
 }

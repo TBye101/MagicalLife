@@ -1,5 +1,4 @@
-﻿
-namespace MagicalLifeGUIWindows.GUI.New_World_Menu
+﻿namespace MagicalLifeGUIWindows.GUI.New_World_Menu
 {
     /// <summary>
     /// Holds a reference to the new world menu.

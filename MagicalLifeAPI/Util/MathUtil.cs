@@ -1,5 +1,6 @@
-﻿using System;
-using System.Drawing;
+﻿using MagicalLifeAPI.DataTypes;
+using Microsoft.Xna.Framework;
+using System;
 
 namespace MagicalLifeAPI.Util
 {
@@ -24,9 +25,14 @@ namespace MagicalLifeAPI.Util
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static int GetDistance(Point a, Point b)
+        public static double GetDistance(Point a, Point b)
         {
-            return (int)Math.Sqrt(Math.Pow(b.X - a.X, 2) + Math.Pow(b.Y - a.Y, 2));
+            return Math.Sqrt(Math.Pow(b.X - a.X, 2) + Math.Pow(b.Y - a.Y, 2));
+        }
+
+        public static float GetDistance(PointFloat a, Point b)
+        {
+            return (float)Math.Sqrt(Math.Pow(b.X - a.X, 2) + Math.Pow(b.Y - a.Y, 2));
         }
     }
 }

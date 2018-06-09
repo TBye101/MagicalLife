@@ -1,6 +1,4 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.World;
+﻿using MagicalLifeAPI.World;
 using MagicalLifeGUIWindows.GUI.MainMenu;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;
@@ -9,7 +7,6 @@ using MagicalLifeGUIWindows.Rendering.Map;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
 using System.Linq;
 using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
 
@@ -25,10 +22,12 @@ namespace MagicalLifeGUIWindows.Rendering
         /// </summary>
         public static readonly Microsoft.Xna.Framework.Point tileSize = Tile.GetTileSize();
 
+        public static readonly Rectangle FullScreenWindow = new Rectangle(new Point(0, 0), new Point(MagicalLifeSettings.Storage.MainWindow.Default.ScreenSize.Width, MagicalLifeSettings.Storage.MainWindow.Default.ScreenSize.Height));
+
         /// <summary>
         /// The standard color mask to apply to all tiles.
         /// </summary>
-        public static readonly Microsoft.Xna.Framework.Color colorMask = Microsoft.Xna.Framework.Color.White;
+        public static readonly Color colorMask = Color.White;
 
         /// <summary>
         /// The x offset of the view due to the player moving the camera around the map.
@@ -41,18 +40,12 @@ namespace MagicalLifeGUIWindows.Rendering
         public static int YViewOffset = 0;
 
         /// <summary>
-        /// The z level that the player is currently viewing.
-        /// </summary>
-        public static int ZLevel = 0;
-
-        /// <summary>
         /// Draws the screen.
         /// </summary>
         /// <param name="spBatch"></param>
         public static void DrawScreen(ref SpriteBatch spBatch)
         {
-            //MasterLog.DebugWriteLine("Rendering frame");
-            if (World.mainWorld != null)
+            if (World.MainWorld != null)
             {
                 MapRenderer.DrawMap(ref spBatch);
             }
@@ -97,12 +90,14 @@ namespace MagicalLifeGUIWindows.Rendering
                                     GUIRenderer.DrawButtonInContainer((MonoButton)control, ref spBatch, item);
                                     break;
 
-                                case InputBox textBox:
-                                    GUIRenderer.DrawInputBoxInContainer((InputBox)control, ref spBatch, item);
+                                case MonoInputBox textBox:
+                                    GUIRenderer.DrawInputBoxInContainer((MonoInputBox)control, ref spBatch, item);
                                     break;
-                                case Label label:
-                                    GUIRenderer.DrawLabelInContainer((Label)control, ref spBatch, item);
+
+                                case MonoLabel label:
+                                    GUIRenderer.DrawLabelInContainer((MonoLabel)control, ref spBatch, item);
                                     break;
+
                                 default:
                                     //Should probably send out a event or something, to allow someone else to render it.
                                     //TODO:

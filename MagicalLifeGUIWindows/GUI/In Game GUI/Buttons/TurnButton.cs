@@ -4,11 +4,6 @@ using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Input.InputListeners;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.GUI.In_Game_GUI.Buttons
 {
@@ -28,9 +23,6 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_GUI.Buttons
         {
             this.WaitTexture = AssetManager.Textures[AssetManager.GetTextureIndex("EndTurnButtonState1")];
             this.EndedTexture = AssetManager.Textures[AssetManager.GetTextureIndex("EndTurnButtonState2")];
-
-            World.TurnStart += this.World_TurnStart;
-            World.TurnEnd += this.World_TurnEnd;
         }
 
         private void World_TurnEnd(object sender, WorldEventArgs e)
@@ -55,7 +47,6 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_GUI.Buttons
 
         public override void Click(MouseEventArgs e)
         {
-            World.EndTurn();
         }
 
         public override void DoubleClick(MouseEventArgs e)

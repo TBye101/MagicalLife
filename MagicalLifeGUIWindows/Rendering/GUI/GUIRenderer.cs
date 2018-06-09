@@ -1,15 +1,8 @@
-﻿using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeGUIWindows.GUI.MainMenu;
-using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Rendering.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
 
 namespace MagicalLifeGUIWindows.Rendering.GUI
@@ -19,7 +12,7 @@ namespace MagicalLifeGUIWindows.Rendering.GUI
     /// </summary>
     public static class GUIRenderer
     {
-        public static void DrawLabelInContainer(Label label, ref SpriteBatch spBatch, GUIContainer container)
+        public static void DrawLabelInContainer(MonoLabel label, ref SpriteBatch spBatch, GUIContainer container)
         {
             int x = container.DrawingBounds.X + label.DrawingBounds.X;
             int y = container.DrawingBounds.Y + label.DrawingBounds.Y;
@@ -30,7 +23,7 @@ namespace MagicalLifeGUIWindows.Rendering.GUI
             SimpleTextRenderer.DrawString(label.Font, label.Text, Bounds, label.TextAlignment, RenderingPipe.colorMask, ref spBatch);
         }
 
-        public static void DrawInputBoxInContainer(InputBox textbox, ref SpriteBatch spBatch, GUIContainer container)
+        public static void DrawInputBoxInContainer(MonoInputBox textbox, ref SpriteBatch spBatch, GUIContainer container)
         {
             Rectangle location;
             int x = textbox.DrawingBounds.X + container.DrawingBounds.X;
@@ -44,7 +37,7 @@ namespace MagicalLifeGUIWindows.Rendering.GUI
             spBatch.Draw(textbox.CarrotTexture, carrotLocation, RenderingPipe.colorMask);
         }
 
-        private static Rectangle CalculateCarrotBounds(InputBox textbox, GUIContainer container)
+        private static Rectangle CalculateCarrotBounds(MonoInputBox textbox, GUIContainer container)
         {
             Vector2 size = textbox.Font.MeasureString(textbox.Text);
             Vector2 pos = new Vector2(textbox.DrawingBounds.Center.X, textbox.DrawingBounds.Center.Y);

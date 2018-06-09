@@ -1,13 +1,10 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Resources;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.Rendering.Map
 {
@@ -22,10 +19,10 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// <param name="spBatch"></param>
         public static void DrawMap(ref SpriteBatch spBatch)
         {
-            Tile[,] tiles = World.mainWorld.Tiles;
+            ProtoArray<Tile> tiles = World.MainWorld.Tiles;
 
-            int xSize = tiles.GetLength(0);
-            int ySize = tiles.GetLength(1);
+            int xSize = tiles.Width;
+            int ySize = tiles.Height;
             int x = 0;
             int y = 0;
 
@@ -55,8 +52,10 @@ namespace MagicalLifeGUIWindows.Rendering.Map
 
             if (tile.Living != null)
             {
+                //tile.Living.ScreenLocation
                 Texture2D livingTexture = AssetManager.Textures[AssetManager.GetTextureIndex(tile.Living.GetTextureName())];
-                spBatch.Draw(livingTexture, target, RenderingPipe.colorMask);
+                Vector2 livingScreenLocation = new Vector2(tile.Living.ScreenLocation.X * Tile.GetTileSize().X, tile.Living.ScreenLocation.Y * Tile.GetTileSize().Y);
+                spBatch.Draw(livingTexture, livingScreenLocation, RenderingPipe.colorMask);
             }
         }
 

@@ -1,17 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ProtoBuf;
 
 namespace MagicalLifeAPI.World.Resources
 {
     /// <summary>
     /// Stone as a resource.
     /// </summary>
+    [ProtoContract]
     public class MarbleResource : StoneBase
     {
         public MarbleResource(int count) : base("Marble", count)
+        {
+        }
+
+        public MarbleResource() : base()
         {
         }
 

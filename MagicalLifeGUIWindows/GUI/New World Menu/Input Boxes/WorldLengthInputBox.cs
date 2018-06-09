@@ -1,17 +1,12 @@
 ﻿using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.GUI.New_World_Menu.Input_Boxes
 {
     /// <summary>
     /// Allows the user to input how long they want the world to be.
     /// </summary>
-    public class WorldLengthInputBox : InputBox
+    public class WorldLengthInputBox : MonoInputBox
     {
         public WorldLengthInputBox(bool isLocked) : base("InputBox100x50", "CursorCarrot", GetInitialLocation(), int.MaxValue, "MainMenuFont12x", isLocked, Rendering.Text.SimpleTextRenderer.Alignment.Left)
         {

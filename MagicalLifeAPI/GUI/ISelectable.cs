@@ -1,17 +1,15 @@
-﻿using MagicalLifeAPI.DataTypes;
+﻿using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Universal;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ProtoBuf;
 
 namespace MagicalLifeAPI.GUI
 {
     /// <summary>
     /// All objects in the game that can be clicked on inherit from this.
     /// </summary>
+    [ProtoBuf.ProtoContract]
+    [ProtoBuf.ProtoInclude(2, typeof(Living))]
     public abstract class Selectable : Unique
     {
         /// <summary>
@@ -25,6 +23,7 @@ namespace MagicalLifeAPI.GUI
         /// <summary>
         /// The location of this selectable in game object.
         /// </summary>
+        [ProtoMember(1)]
         public Point MapLocation { get; set; }
     }
 }

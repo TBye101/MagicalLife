@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Universal;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Universal;
 using System;
 
 namespace MagicalLifeAPI.World
@@ -22,34 +23,34 @@ namespace MagicalLifeAPI.World
         /// </summary>
         /// <param name="biomeMap"></param>
         /// <returns></returns>
-        public abstract Tile[,] GenerateLandType(string[,] biomeMap, Random random);
+        public abstract ProtoArray<Tile> GenerateLandType(string[,] biomeMap, Random random);
 
         /// <summary>
         /// Generates things such as rivers and caves.
         /// </summary>
         /// <param name="map"></param>
         /// <returns></returns>
-        public abstract Tile[,] GenerateNaturalFeatures(Tile[,] map, Random random);
+        public abstract ProtoArray<Tile> GenerateNaturalFeatures(ProtoArray<Tile> map, Random random);
 
         /// <summary>
         /// Generates minerals in the world.
         /// </summary>
         /// <param name="map"></param>
         /// <returns></returns>
-        public abstract Tile[,] GenerateMinerals(Tile[,] map, Random random);
+        public abstract ProtoArray<Tile> GenerateMinerals(ProtoArray<Tile> map, Random random);
 
         /// <summary>
         /// Generates vegetation in the world.
         /// </summary>
         /// <param name="map"></param>
         /// <returns></returns>
-        public abstract Tile[,] GenerateVegetation(Tile[,] map, Random random);
+        public abstract ProtoArray<Tile> GenerateVegetation(ProtoArray<Tile> map, Random random);
 
         /// <summary>
         /// Generates any other details not done in previous phases.
         /// </summary>
         /// <param name="map"></param>
         /// <returns></returns>
-        public abstract Tile[,] GenerateDetails(Tile[,] map, Random random);
+        public abstract ProtoArray<Tile> GenerateDetails(ProtoArray<Tile> map, Random random);
     }
 }

@@ -1,10 +1,6 @@
 ﻿using MagicalLifeAPI.Entities;
 using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Pathfinding
 {
@@ -29,13 +25,13 @@ namespace MagicalLifeAPI.Pathfinding
         void Initialize();
 
         /// <summary>
-        /// Removes all pathfindable links to the specified location.
+        /// Removes all links to the specified location.
         /// </summary>
         /// <param name="location"></param>
         void RemoveConnections(Point location);
 
         /// <summary>
-        /// Adds pathfindable links to the specified location.
+        /// Adds links to the specified location.
         /// </summary>
         /// <param name="location"></param>
 

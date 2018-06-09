@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MagicalLifeAPI.World.Resources
+﻿namespace MagicalLifeAPI.World.Resources
 {
     /// <summary>
     /// The base class for all stone-like resources.
@@ -12,6 +6,10 @@ namespace MagicalLifeAPI.World.Resources
     public abstract class StoneBase : Resource
     {
         public StoneBase(string name, int count) : base(name, count)
+        {
+        }
+
+        public StoneBase() : base()
         {
         }
 

@@ -1,8 +1,5 @@
-﻿using MagicalLifeAPI.Entities.Eventing;
-using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.GUI;
+﻿using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Input.Comparators;
 using MagicalLifeGUIWindows.Input.History;
 using MagicalLifeGUIWindows.Input.Specialized_Handlers;
@@ -27,7 +24,6 @@ namespace MagicalLifeGUIWindows.Input
         /// All of the GUI windows.
         /// </summary>
         public static List<GUIContainer> GUIWindows { get; private set; } = new List<GUIContainer>();
-
         public static MouseListener MouseListner = new MouseListener();
 
         private static BoundsSorter BoundSorter = new BoundsSorter();
@@ -96,6 +92,7 @@ namespace MagicalLifeGUIWindows.Input
                 if (item.Visible && item.DrawingBounds.Contains(clickData.Position))
                 {
                     Click(clickData, item.Controls, item);
+                    MasterLog.DebugWriteLine("Clicking in menu: " + item.GetType().FullName);
                     return;
                 }
             }
@@ -168,6 +165,7 @@ namespace MagicalLifeGUIWindows.Input
 
             if (focus != -1)
             {
+                MasterLog.DebugWriteLine("Clicking on item: " + Options[focus].GetType().FullName);
                 Options[focus].Click(clickData);
             }
         }
@@ -302,7 +300,7 @@ namespace MagicalLifeGUIWindows.Input
             }
         }
 
-        private static void HideAll()
+        public static void HideAll()
         {
             foreach (GUIContainer item in GUIWindows)
             {

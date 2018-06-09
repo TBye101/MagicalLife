@@ -1,10 +1,10 @@
 ﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Universal;
-using MagicalLifeAPI.World.Base;
+using MagicalLifeAPI.Networking;
+using MagicalLifeAPI.World.Tiles;
 using Microsoft.Xna.Framework;
+using ProtoBuf;
 using System;
 using System.Collections.Generic;
 
@@ -13,14 +13,15 @@ namespace MagicalLifeAPI.World
     /// <summary>
     /// Every tile that implements this class must provide a parameterless version of itself for reflection purposes. That constructor will not be used during gameplay.
     /// </summary>
-    public abstract class Tile : HasTexture
+    [ProtoContract]
+    public abstract class Tile : HasTexture, IHasSubclasses
     {
         /// <summary>
         /// Initializes a new tile object.
         /// </summary>
         /// <param name="location">The 3D location of this tile in the map.</param>
         /// <param name="movementCost">This value is the movement cost of walking on this tile. It should be between 1 and 100</param>
-        protected Tile(Point location, int movementCost)
+        public Tile(Point location, int movementCost)
         {
             this.Location = location;
             this.MovementCost = movementCost;
@@ -28,14 +29,19 @@ namespace MagicalLifeAPI.World
             this.TextureIndex = AssetManager.GetTextureIndex(this.GetTextureName());
         }
 
-        /// <summary>
-        /// This constructor is used during loading/reflection only.
-        /// </summary>
-        protected Tile()
+        public Tile(int x, int y, int movementCost) : this(new Point(x, y), movementCost)
         {
         }
 
-        private bool isWalkable = true;
+        /// <summary>
+        /// This constructor is used during loading/reflection only.
+        /// </summary>
+        public Tile()
+        {
+        }
+
+        [ProtoMember(2)]
+        public bool isWalkable = true;
 
         /// <summary>
         /// If true, then the tile can be walked on by living.
@@ -71,7 +77,8 @@ namespace MagicalLifeAPI.World
         /// Returns the movement cost of this tile.
         /// Should be between 1-100.
         /// </summary>
-        public int MovementCost { get; protected set; }
+        [ProtoMember(3)]
+        public int MovementCost { get; set; }
 
         /// <summary>
         /// The size, in pixels of how big each tile is.
@@ -91,18 +98,21 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// The resources that can be found in this tile.
         /// </summary>
+        [ProtoMember(4)]
         public Resource Resources { get; set; }
 
-        public List<Vegetation> Plants { get; set; } = new List<Vegetation>();
+        //public List<Vegetation> Plants { get; set; } = new List<Vegetation>();
 
         /// <summary>
-        /// The location of this tile in the tilemap.
+        /// The location of this tile in the tile map.
         /// </summary>
-        public Point Location { get; protected set; }
+        [ProtoMember(5)]
+        public Point Location { get; set; }
 
         /// <summary>
         /// The entity that is in this tile. Is null if there is not an entity in this tile.
         /// </summary>
+        [ProtoMember(6)]
         public Living Living { get; set; } = null;
 
         /// <summary>
@@ -124,7 +134,7 @@ namespace MagicalLifeAPI.World
             EventHandler<TileEventArg> handler = TileCreated;
             if (handler != null)
             {
-                handler(World.mainWorld, e);
+                handler(World.MainWorld, e);
             }
         }
 
@@ -133,10 +143,23 @@ namespace MagicalLifeAPI.World
             EventHandler<TileEventArg> handler = TileModified;
             if (handler != null)
             {
-                handler(World.mainWorld, e);
+                handler(World.MainWorld, e);
             }
         }
 
         public abstract string GetTextureName();
+
+        public Dictionary<Type, int> GetSubclassInformation()
+        {
+            Dictionary<Type, int> ret = new Dictionary<Type, int>();
+            ret.Add(typeof(Dirt), 1);
+
+            return ret;
+        }
+
+        public Type GetBaseType()
+        {
+            return typeof(Tile);
+        }
     }
 }

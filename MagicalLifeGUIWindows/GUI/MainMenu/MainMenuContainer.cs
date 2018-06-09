@@ -1,25 +1,22 @@
 ﻿using MagicalLifeGUIWindows.GUI.MainMenu.Buttons;
 using MagicalLifeGUIWindows.GUI.Reusable;
-using Microsoft.Xna.Framework;
+using MagicalLifeGUIWindows.Rendering;
 
 namespace MagicalLifeGUIWindows.GUI.MainMenu
 {
     public class MainMenuContainer : GUIContainer
     {
-        public MainMenuContainer(bool visible) : base("MenuBackground", GetDrawingBounds())
+        public MainMenuContainer(bool visible) : base("MenuBackground", RenderingPipe.FullScreenWindow)
         {
             this.Visible = visible;
             this.Controls.Add(new NewGameButton());
+            this.Controls.Add(new HostGameButton());
+            this.Controls.Add(new JoinGameButton());
             this.Controls.Add(new QuitButton());
         }
 
         public MainMenuContainer() : base()
         {
-        }
-
-        private static Rectangle GetDrawingBounds()
-        {
-            return new Rectangle(new Point(0, 0), new Point(MagicalLifeSettings.Storage.MainWindow.Default.ScreenSize.Width, MagicalLifeSettings.Storage.MainWindow.Default.ScreenSize.Height));
         }
 
         public override string GetTextureName()

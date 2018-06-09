@@ -26,14 +26,14 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -58,7 +58,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>FFA05084842A13FDA09740C9DC6F51B6A38AE446</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>9800B6AAC48C0DFCFF06E73E02FD7AB34C0F64A2</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>MagicalLifeGUIWindows_TemporaryKey.pfx</ManifestKeyFile>
@@ -67,10 +67,50 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;WINDOWS</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
+    <Compile Include="GUI\Host Game Menu\Buttons\HostButton.cs" />
+    <Compile Include="GUI\Host Game Menu\HostGameMenu.cs" />
+    <Compile Include="GUI\Host Game Menu\HostGameMenuContainer.cs" />
+    <Compile Include="GUI\Host Game Menu\HostGameMenuLayout.cs" />
+    <Compile Include="GUI\Host Game Menu\HostGameMenuLayout1920x1080.cs" />
+    <Compile Include="GUI\Host Game Menu\Input Boxes\HostPortInputBox.cs" />
+    <Compile Include="GUI\Join Game Menu\Buttons\JoinButton.cs" />
+    <Compile Include="GUI\Join Game Menu\Input Boxes\IPInputBox.cs" />
+    <Compile Include="GUI\Join Game Menu\Input Boxes\PortInputBox.cs" />
+    <Compile Include="GUI\Join Game Menu\JoinGameMenu.cs" />
+    <Compile Include="GUI\Join Game Menu\JoinGameMenuContainer.cs" />
+    <Compile Include="GUI\Join Game Menu\JoinGameMenuLayout.cs" />
+    <Compile Include="GUI\Join Game Menu\JoinGameMenuLayout1920x1080.cs" />
+    <Compile Include="GUI\MainMenu\Buttons\HostGameButton.cs" />
+    <Compile Include="GUI\MainMenu\Buttons\JoinGameButton.cs" />
+    <Compile Include="GUI\New World Menu\Labels\LengthLabel.cs" />
+    <Compile Include="GUI\New World Menu\Labels\WidthLabel.cs" />
     <Compile Include="Input\ClickBounds.cs" />
     <Compile Include="GUI\In Game GUI\Buttons\TurnButton.cs" />
     <Compile Include="GUI\In Game GUI\InGameGUI.cs" />
@@ -85,7 +125,6 @@
     <Compile Include="GUI\MainMenu\MainMenuLayout1920x1080.cs" />
     <Compile Include="GUI\MenuHandler.cs" />
     <Compile Include="GUI\New World Menu\Buttons\NewWorldNextButton.cs" />
-    <Compile Include="GUI\New World Menu\Input Boxes\WorldDepthInputBox.cs" />
     <Compile Include="GUI\New World Menu\Input Boxes\WorldLengthInputBox.cs" />
     <Compile Include="GUI\New World Menu\NewGameInputHandler.cs" />
     <Compile Include="GUI\New World Menu\NewWorldMenu.cs" />
@@ -96,8 +135,8 @@
     <Compile Include="GUI\Resolution.cs" />
     <Compile Include="GUI\Reusable\GUIContainer.cs" />
     <Compile Include="GUI\Reusable\GUIElement.cs" />
-    <Compile Include="GUI\Reusable\InputBox.cs" />
-    <Compile Include="GUI\Reusable\Label.cs" />
+    <Compile Include="GUI\Reusable\MonoInputBox.cs" />
+    <Compile Include="GUI\Reusable\MonoLabel.cs" />
     <Compile Include="GUI\Reusable\MonoButton.cs" />
     <Compile Include="Input\Comparators\BoundsSorter.cs" />
     <Compile Include="Input\Comparators\ClickBoundsSorter.cs" />
@@ -114,8 +153,6 @@
     <Compile Include="Input\Specialized Handlers\LivingMoveOrderInputHandler.cs" />
     <Compile Include="Load\Initializer.cs" />
     <Compile Include="Load\InputLoader.cs" />
-    <Compile Include="Load\Loader.cs" />
-    <Compile Include="Load\LoadMoniter.cs" />
     <Compile Include="Load\TextureLoader.cs" />
     <Compile Include="Load\WindowConfig.cs" />
     <Compile Include="Map\ConnectedTextureManager.cs" />
@@ -129,21 +166,17 @@
     <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="DijkstraAlgorithm, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Libs\DijkstraAlgorithm.dll</HintPath>
+    <Reference Include="MonoGame.Extended, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Extended.1.1.0\lib\portable-net45+win8+wpa81\MonoGame.Extended.dll</HintPath>
     </Reference>
-    <Reference Include="MonoGame.Extended, Version=1.0.617.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoGame.Extended.1.0.617\lib\portable-net45+win8+wpa81\MonoGame.Extended.dll</HintPath>
-    </Reference>
-    <Reference Include="MonoGame.Extended.Input, Version=1.0.617.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoGame.Extended.Input.1.0.617\lib\portable-net45+win8+wpa81\MonoGame.Extended.Input.dll</HintPath>
+    <Reference Include="MonoGame.Extended.Input, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Extended.Input.1.1.0\lib\portable-net45+win8+wpa81\MonoGame.Extended.Input.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Framework">
       <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
@@ -157,13 +190,24 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.config" />
     <None Include="app.manifest" />
-    <None Include="MagicalLifeGUIWindows_TemporaryKey.pfx" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MagicalLifeAPI\MagicalLifeAPI.csproj">
       <Project>{FE8400A7-9DC8-4AB4-8C54-AC5F36BF7639}</Project>
       <Name>MagicalLifeAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MagicalLifeClient\MagicalLifeClient.csproj">
+      <Project>{fc0297b3-bace-4edc-b951-6f89a779dbe4}</Project>
+      <Name>MagicalLifeClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MagicalLifeNetworking\MagicalLifeNetworking.csproj">
+      <Project>{BFA54511-668D-4086-8B72-5B71A7D07C28}</Project>
+      <Name>MagicalLifeNetworking</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MagicalLifeServer\MagicalLifeServer.csproj">
+      <Project>{297BEA4D-42A0-4790-8020-C8114AB4DF7E}</Project>
+      <Name>MagicalLifeServer</Name>
     </ProjectReference>
     <ProjectReference Include="..\MagicalLifeSettings\MagicalLifeSettings.csproj">
       <Project>{76b12b63-df5d-40fd-8e90-03395095dd71}</Project>
@@ -173,7 +217,8 @@
   <ItemGroup>
     <Folder Include="Event\" />
     <Folder Include="GUI\History\" />
-    <Folder Include="GUI\New World Menu\Labels\" />
+    <Folder Include="GUI\Host Game Menu\Labels\" />
+    <Folder Include="GUI\Join Game Menu\Labels\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.1">
