@@ -17,8 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeGUIWindows", "Ma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeClient", "MagicalLifeClient\MagicalLifeClient.csproj", "{FC0297B3-BACE-4EDC-B951-6F89A779DBE4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Design", "Design", "{5F7EBBB4-D3EA-471F-ADDD-CBF1BDBC64BB}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeNetworking", "MagicalLifeNetworking\MagicalLifeNetworking.csproj", "{BFA54511-668D-4086-8B72-5B71A7D07C28}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeServer", "MagicalLifeServer\MagicalLifeServer.csproj", "{297BEA4D-42A0-4790-8020-C8114AB4DF7E}"
@@ -118,9 +116,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{5F7EBBB4-D3EA-471F-ADDD-CBF1BDBC64BB} = {09293283-6E6D-4652-A633-5B70452244DA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FF8B4622-BBFB-41B1-9FEC-01091A7B38BB}
