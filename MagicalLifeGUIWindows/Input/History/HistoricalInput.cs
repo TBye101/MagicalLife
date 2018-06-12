@@ -16,7 +16,7 @@ namespace MagicalLifeGUIWindows.Input.History
         /// <summary>
         /// If this is true, then instead of selecting and deselecting this input actually contains information about a order to a tile.
         /// </summary>
-        public bool OrderedToTile { get; set; }
+        public bool OrderedToTile { get; set; } = false;
 
         public List<Selectable> Selected { get; set; } = new List<Selectable>();
         public List<Selectable> DeselectSome { get; set; } = new List<Selectable>();

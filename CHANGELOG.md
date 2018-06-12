@@ -1,6 +1,13 @@
 SneakyTactician  <SneakyTactician@outlook.com>
 
 ---
+
+## [Version 0.0.8]
+
+#### Bugs
+* Discovered and fixed issue [#21](https://github.com/SneakyTactician/MagicalLife/issues/21)
+
+---
 ## [Version 0.0.7]
 #### GUI
 * Added buttons to the main menu to allow the user to join and host a multiplayer game
