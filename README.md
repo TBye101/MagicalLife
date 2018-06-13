@@ -3,7 +3,7 @@ A fantasy world that imagines what a Rimworld style game could truly do if it ha
 
 ## Features
 * Multiplayer support
-* Hardware accelerated graphics
+* Hardware accelerated graphics via Monogame
 
 ## Roadmap (In no particular order)
 AKA TODO:
