@@ -27,7 +27,7 @@ namespace MagicalLifeClient.Entity
             //This needs to be changed, as the performance time WILL be awful.
             //This WILL be changed after the rewrite of how the world is stored in memory
 
-            foreach (Tile item in World.MainWorld.Tiles)
+            foreach (Tile item in World.MainWorld.Chunks)
             {
                 if (item.Living != null)
                 {

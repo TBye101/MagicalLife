@@ -19,7 +19,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// <param name="spBatch"></param>
         public static void DrawMap(ref SpriteBatch spBatch)
         {
-            ProtoArray<Tile> tiles = World.MainWorld.Tiles;
+            ProtoArray<Tile> tiles = World.MainWorld.Chunks;
 
             int xSize = tiles.Width;
             int ySize = tiles.Height;

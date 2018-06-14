@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Universal;
 using ProtoBuf;
 using System;
+using System.Collections.Generic;
 
 namespace MagicalLifeAPI.World
 {
@@ -12,10 +13,10 @@ namespace MagicalLifeAPI.World
     public class World : Unique
     {
         /// <summary>
-        /// A 3D array that holds every tile in the current world.
+        /// The dimensions of a single world.
         /// </summary>
         [ProtoMember(1)]
-        public ProtoArray<Tile> Tiles { get; set; }
+        public static List<Dimension> Dimensions { get; set; }
 
         /// <summary>
         /// Raised when the world is finished generating for the first time.
@@ -23,12 +24,6 @@ namespace MagicalLifeAPI.World
         public static event EventHandler<WorldEventArgs> WorldGenerated;
 
         public static World MainWorld { get; set; }
-
-        /// <summary>
-        /// If true, it is the player's turn. If not, AI logic and other logic should be running.
-        /// </summary>
-        [ProtoMember(2)]
-        public static bool IsPlayersTurn { get; private set; } = false;
 
         public World()
         {
@@ -44,7 +39,7 @@ namespace MagicalLifeAPI.World
         public static void Initialize(int width, int height, WorldGenerator generator)
         {
             MainWorld = new World();
-            MainWorld.Tiles = MainWorld.GenerateWorld(height, width, generator);
+            MainWorld.Chunks = MainWorld.GenerateWorld(height, width, generator);
 
             WorldEventArgs worldEventArgs = new WorldEventArgs(MainWorld);
             World.WorldGeneratedHandler(worldEventArgs);

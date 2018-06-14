@@ -23,7 +23,7 @@ namespace MagicalLifeGUIWindows
             x2 /= size.X;
             y2 /= size.Y;
 
-            success = !(x2 > World.MainWorld.Tiles.Width || y2 > World.MainWorld.Tiles.Height);
+            success = !(x2 > World.MainWorld.Chunks.Width || y2 > World.MainWorld.Chunks.Height);
 
             return new Point(x2, y2);
         }

@@ -38,7 +38,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
         private void Move(Selectable selectable, Microsoft.Xna.Framework.Point target)
         {
-            if (World.MainWorld.Tiles[target.X, target.Y].IsWalkable)
+            if (World.MainWorld.Chunks[target.X, target.Y].IsWalkable)
             {
                 switch (selectable)
                 {
@@ -47,7 +47,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                         Microsoft.Xna.Framework.Point start = selectable.MapLocation;
                         if (start != target)
                         {
-                            List<PathLink> pth = MainPathFinder.PFinder.GetRoute(World.MainWorld, living, World.MainWorld.Tiles[start.X, start.Y].Location, World.MainWorld.Tiles[target.X, target.Y].Location);
+                            List<PathLink> pth = MainPathFinder.PFinder.GetRoute(World.MainWorld, living, World.MainWorld.Chunks[start.X, start.Y].Location, World.MainWorld.Chunks[target.X, target.Y].Location);
 
                             living.QueuedMovement.Clear();
                             Extensions.EnqueueCollection(living.QueuedMovement, pth);
@@ -70,7 +70,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
             if (success)
             {
-                return World.MainWorld.Tiles[tileLocation.X, tileLocation.Y].Living;
+                return World.MainWorld.Chunks[tileLocation.X, tileLocation.Y].Living;
             }
             else
             {

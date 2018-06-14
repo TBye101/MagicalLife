@@ -23,7 +23,7 @@ namespace MagicalLifeServer.Message_Handlers
 
             if (Validated(msg.Path))
             {
-                Living l = World.MainWorld.Tiles[msg.Path[0].Origin.X, msg.Path[0].Origin.Y].Living;
+                Living l = World.MainWorld.Chunks[msg.Path[0].Origin.X, msg.Path[0].Origin.Y].Living;
 
                 if (l != null && l.ID == msg.LivingID)
                 {
@@ -42,8 +42,8 @@ namespace MagicalLifeServer.Message_Handlers
         {
             foreach (PathLink item in msg)
             {
-                bool a = World.MainWorld.Tiles[item.Origin.X, item.Origin.Y].IsWalkable;
-                bool b = World.MainWorld.Tiles[item.Destination.X, item.Destination.Y].IsWalkable;
+                bool a = World.MainWorld.Chunks[item.Origin.X, item.Origin.Y].IsWalkable;
+                bool b = World.MainWorld.Chunks[item.Destination.X, item.Destination.Y].IsWalkable;
 
                 if (a == false || b == false)
                 {

@@ -33,7 +33,7 @@ namespace MagicalLifeGUIWindows.Input.History
 
             if (success)
             {
-                Selectable select = World.MainWorld.Tiles[mapSpot.X, mapSpot.Y].Living;
+                Selectable select = World.MainWorld.Chunks[mapSpot.X, mapSpot.Y].Living;
 
                 if (select != null)
                 {
