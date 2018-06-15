@@ -146,8 +146,10 @@
     <Compile Include="Util\ReflectionUtil.cs" />
     <Compile Include="Util\StaticRandom.cs" />
     <Compile Include="World\Base\Item.cs" />
-    <Compile Include="World\Chunk.cs" />
-    <Compile Include="World\Dimension.cs" />
+    <Compile Include="World\Data\AccessRecorder.cs" />
+    <Compile Include="World\Data\Chunk.cs" />
+    <Compile Include="World\Data\ChunkManager.cs" />
+    <Compile Include="World\Data\Dimension.cs" />
     <Compile Include="World\Resources\MarbleResource.cs" />
     <Compile Include="World\Resources\StoneBase.cs" />
     <Compile Include="World\TileEventArg.cs" />
@@ -157,7 +159,7 @@
     <Compile Include="World\Base\Resource.cs" />
     <Compile Include="World\Base\Tile.cs" />
     <Compile Include="World\Base\Vegetation.cs" />
-    <Compile Include="World\World.cs" />
+    <Compile Include="World\Data\World.cs" />
     <Compile Include="World\WorldGenerator.cs" />
     <Compile Include="World\WorldUtil.cs" />
   </ItemGroup>

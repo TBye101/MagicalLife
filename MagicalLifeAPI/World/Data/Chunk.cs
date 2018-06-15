@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MagicalLifeAPI.World
+namespace MagicalLifeAPI.World.Data
 {
     /// <summary>
     /// Holds a section of the world.
@@ -41,5 +41,14 @@ namespace MagicalLifeAPI.World
         /// The height of this chunk in tiles.
         /// </summary>
         public static int Height = 20;
+
+
+        public Chunk(List<Living> creatures, ProtoArray<Tile> tiles, Point location, string biomeID) : base()
+        {
+            this.Creatures = creatures;
+            this.Tiles = tiles;
+            this.ChunkLocation = location;
+            this.BiomeID = biomeID;
+        }
     }
 }

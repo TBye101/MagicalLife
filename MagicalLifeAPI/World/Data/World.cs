@@ -4,7 +4,7 @@ using ProtoBuf;
 using System;
 using System.Collections.Generic;
 
-namespace MagicalLifeAPI.World
+namespace MagicalLifeAPI.World.Data
 {
     /// <summary>
     /// The world, which contains all of the tiles.

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MagicalLifeAPI.World
+namespace MagicalLifeAPI.World.Data
 {
     /// <summary>
     /// Holds some information about the level of the world.
@@ -16,11 +16,12 @@ namespace MagicalLifeAPI.World
     [ProtoContract]
     public class Dimension : Unique
     {
+
         /// <summary>
-        /// A 2D array that holds every chunk in the current world.
+        /// Handles access to the chunks stored in this dimension.
         /// </summary>
         [ProtoMember(1)]
-        private ProtoArray<Chunk> Chunks { get; set; }
+        private ChunkManager Manager;
 
         /// <summary>
         /// The display name of the dimension.
@@ -28,6 +29,21 @@ namespace MagicalLifeAPI.World
         [ProtoMember(2)]
         public string DimensionName { get; set; }
 
+        public Tile this[int x, int y]
+        {
+            get
+            {
+                return null;
+            }
+            set
+            {
 
+            }
+        }
+
+        public Dimension()
+        {
+            this.Manager = new ChunkManager(this.ID);
+        }
     }
 }
