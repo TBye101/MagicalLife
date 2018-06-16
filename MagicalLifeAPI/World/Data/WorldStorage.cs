@@ -61,8 +61,7 @@ namespace MagicalLifeAPI.World.Data
         /// <param name="dimensionID">The ID of the dimension the chunk belongs to.</param>
         public void SaveChunk(Chunk chunk, Guid dimensionID)
         {
-            string path;
-            bool dimensionExists = this.DimensionPaths.TryGetValue(dimensionID, out path);
+            bool dimensionExists = this.DimensionPaths.TryGetValue(dimensionID, out string path);
 
             if (!dimensionExists)
             {
@@ -89,7 +88,30 @@ namespace MagicalLifeAPI.World.Data
         /// <returns></returns>
         public Chunk LoadChunk(int chunkX, int chunkY, Guid dimensionID)
         {
+            return this.LoadChunk(new Point(chunkX, chunkY), dimensionID);
+        }
 
+        /// <summary>
+        /// Loads a chunk from disk.
+        /// </summary>
+        /// <param name="chunkX">The x position of the chunk within the dimension.</param>
+        /// <param name="chunkY">The y position of the chunk within the dimension.</param>
+        /// <param name="dimensionID">The ID of the dimension that the chunk belongs to.</param>
+        /// <returns></returns>
+        public Chunk LoadChunk(Point chunkLocation, Guid dimensionID)
+        {
+            bool dimensionExists = this.DimensionPaths.TryGetValue(dimensionID, out string path);
+
+            if (!dimensionExists)
+            {
+                throw new Exception("Dimension save folder does not exist!");
+            }
+
+            using (StreamReader sr = new StreamReader(path + chunkLocation.ToString() + ".chunk"))
+            {
+                Task<string> serialized = sr.ReadToEndAsync();
+                return ProtoUtil.Deserialize<Chunk>(serialized.Result);
+            }
         }
     }
 }

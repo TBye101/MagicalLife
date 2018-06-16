@@ -4,6 +4,9 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 ## [Version 0.0.8]
 
+#### API
+* 
+
 #### Bugs
 * Discovered and fixed issue [#21](https://github.com/SneakyTactician/MagicalLife/issues/21)
 * Discovered issue [#22](https://github.com/SneakyTactician/MagicalLife/issues/22)

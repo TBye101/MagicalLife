@@ -82,29 +82,12 @@ namespace MagicalLifeAPI.World.Data
 
             if (storage.Item1 == null)
             {
-                return this.LoadChunk(chunkX, chunkY);
+                return World.Storage.LoadChunk(chunkX, chunkY, this.DimensionID);
             }
             else
             {
                 return storage.Item1;
             }
-        }
-
-        /// <summary>
-        /// Loads a chunk from disk.
-        /// </summary>
-        /// <returns></returns>
-        private Chunk LoadChunk(int chunkX, int chunkY)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Saves a chunk to disk.
-        /// </summary>
-        private void SaveChunk()
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Networking;
+using MagicalLifeAPI.Networking.Serialization;
 using ProtoBuf.Meta;
 using Serilog;
 using System;
@@ -59,6 +60,18 @@ namespace MagicalLifeAPI.Protobuf.Serialization
             {
                 Log.Debug(e, "Unknown message type!");
                 return null;
+            }
+        }
+
+        public static T Deserialize<T>(string data)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                using (StreamWriter sw = new StreamWriter(ms))
+                {
+                    sw.Write(data);
+                    return (T)TypeModel.Deserialize(ms, null, typeof(T));
+                }
             }
         }
     }

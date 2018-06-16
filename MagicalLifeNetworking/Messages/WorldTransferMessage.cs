@@ -1,4 +1,6 @@
-﻿namespace MagicalLifeAPI.Networking.Messages
+﻿using MagicalLifeAPI.Networking.Serialization;
+
+namespace MagicalLifeAPI.Networking.Messages
 {
     /// <summary>
     /// Generally used to transfer the world over to the client.
