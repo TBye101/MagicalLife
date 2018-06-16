@@ -120,6 +120,7 @@
     <Compile Include="Entity\Util\Modifier Remove Conditions\IModifierRemoveCondition.cs" />
     <Compile Include="Entity\Util\Modifier Remove Conditions\NeverRemoveCondition.cs" />
     <Compile Include="Entity\Util\Modifier Remove Conditions\TimeRemoveCondition.cs" />
+    <Compile Include="Networking\External Type Serialization\PointTeacher.cs" />
     <Compile Include="Filing\FileSystemManager.cs" />
     <Compile Include="Filing\Logging\MasterLog.cs" />
     <Compile Include="GUI\HasTexture.cs" />
@@ -136,6 +137,10 @@
     <Compile Include="Pathfinding\MainPathFinder.cs" />
     <Compile Include="Pathfinding\PathLink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Networking\Serialization\BaseMessage.cs" />
+    <Compile Include="Networking\Serialization\MessageHandler.cs" />
+    <Compile Include="Networking\Serialization\ProtoTypeLoader.cs" />
+    <Compile Include="Networking\Serialization\ProtoUtil.cs" />
     <Compile Include="Universal\IGameLoader.cs" />
     <Compile Include="Load\Loader.cs" />
     <Compile Include="Load\LoadMoniter.cs" />

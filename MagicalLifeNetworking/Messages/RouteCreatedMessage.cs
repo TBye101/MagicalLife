@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Networking;
+using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Pathfinding;
 using ProtoBuf;
 using System;

@@ -1,4 +1,6 @@
 ﻿using MagicalLifeAPI.Filing;
+using MagicalLifeAPI.Protobuf.Serialization;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,14 +21,28 @@ namespace MagicalLifeAPI.World.Data
         private readonly string SaveDirectory;
 
         /// <summary>
-        /// Contains the path to the root of each dimension directory, where the chunk files go.
+        /// The name of the save game.
         /// </summary>
-        private List<string> DimensionPaths = new List<string>();
+        private string SaveName;
 
-        public WorldStorage()
+        private string GameSaveRoot;
+
+        /// <summary>
+        /// Contains the path to the root of each dimension directory, where the chunk files go.
+        /// Key: The ID of the dimension.
+        /// Value: The path to the root of where all of the chunks are stored for the dimension.
+        /// </summary>
+        private Dictionary<Guid, string> DimensionPaths = new Dictionary<Guid, string>();
+
+        public WorldStorage(string saveName)
         {
-            DirectoryInfo info = Directory.CreateDirectory(FileSystemManager.RootDirectory + Path.DirectorySeparatorChar + "Save");
-            this.SaveDirectory = info.FullName;
+            this.SaveName = saveName;
+
+            DirectoryInfo savePath = Directory.CreateDirectory(FileSystemManager.RootDirectory + Path.DirectorySeparatorChar + "Save");
+            this.SaveDirectory = savePath.FullName;
+
+            DirectoryInfo gameSavePath = Directory.CreateDirectory(SaveDirectory + Path.DirectorySeparatorChar + this.SaveName);
+            this.GameSaveRoot = gameSavePath.FullName;
         }
 
         /// <summary>
@@ -34,8 +50,46 @@ namespace MagicalLifeAPI.World.Data
         /// </summary>
         public void PrepareForDimension(Guid dimensionID)
         {
-            DirectoryInfo info = Directory.CreateDirectory(this.SaveDirectory + Path.DirectorySeparatorChar + dimensionID);
-            this.DimensionPaths.Add(info.FullName);
+            DirectoryInfo info = Directory.CreateDirectory(this.GameSaveRoot + Path.DirectorySeparatorChar + dimensionID);
+            this.DimensionPaths.Add(dimensionID, info.FullName);
+        }
+
+        /// <summary>
+        /// Saves a chunk to disk.
+        /// </summary>
+        /// <param name="chunk">The chunk to save.</param>
+        /// <param name="dimensionID">The ID of the dimension the chunk belongs to.</param>
+        public void SaveChunk(Chunk chunk, Guid dimensionID)
+        {
+            string path;
+            bool dimensionExists = this.DimensionPaths.TryGetValue(dimensionID, out path);
+
+            if (!dimensionExists)
+            {
+                throw new Exception("Dimension save folder does not exist!");
+            }
+
+            using (FileStream fs = File.Create(path + chunk.ChunkLocation.ToString() + ".chunk"))
+            {
+                string serialized = ProtoUtil.Serialize<Chunk>(chunk);
+
+                using (StreamWriter sw = new StreamWriter(fs))
+                {
+                    sw.WriteAsync(serialized);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Loads a chunk from disk.
+        /// </summary>
+        /// <param name="chunkX">The x position of the chunk within the dimension.</param>
+        /// <param name="chunkY">The y position of the chunk within the dimension.</param>
+        /// <param name="dimensionID">The ID of the dimension that the chunk belongs to.</param>
+        /// <returns></returns>
+        public Chunk LoadChunk(int chunkX, int chunkY, Guid dimensionID)
+        {
+
         }
     }
 }

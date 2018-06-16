@@ -1,7 +1,7 @@
 ﻿using ProtoBuf;
 using System;
 
-namespace MagicalLifeAPI.Networking
+namespace MagicalLifeAPI.Networking.Serialization
 {
     /// <summary>
     /// The base of every message.

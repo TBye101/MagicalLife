@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace MagicalLifeAPI.Networking
+namespace MagicalLifeAPI.Networking.Serialization
 {
     /// <summary>
     /// Used to create the <see cref="RuntimeTypeModel"/> for our use of Protobuf-net.

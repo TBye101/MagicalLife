@@ -58,15 +58,10 @@
     <Compile Include="Client\ClientProcessor.cs" />
     <Compile Include="Client\ClientSendRecieve.cs" />
     <Compile Include="Client\TCPClient.cs" />
-    <Compile Include="External Type Serialization\PointTeacher.cs" />
     <Compile Include="Messages\RouteCreatedMessage.cs" />
     <Compile Include="Messages\ServerTickMessage.cs" />
     <Compile Include="Messages\WorldTransferMessage.cs" />
     <Compile Include="NetworkSettings.cs" />
-    <Compile Include="Serialization\BaseMessage.cs" />
-    <Compile Include="Serialization\MessageHandler.cs" />
-    <Compile Include="Serialization\ProtoTypeLoader.cs" />
-    <Compile Include="Serialization\ProtoUtil.cs" />
     <Compile Include="Test\ConcreteTest.cs" />
     <Compile Include="Test\ConcreteTestHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

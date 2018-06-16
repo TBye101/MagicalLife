@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace MagicalLifeAPI.Protobuf
+namespace MagicalLifeAPI.Protobuf.Serialization
 {
     /// <summary>
     /// Used to serialize and deserialize using https://github.com/mgravell/protobuf-net.
