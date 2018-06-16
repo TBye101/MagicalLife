@@ -9,9 +9,9 @@ namespace MagicalLifeAPI.Networking.Messages
     public class WorldTransferMessage : BaseMessage
     {
         [ProtoBuf.ProtoMember(1)]
-        public World.World World;
+        public World.Data.World World;
 
-        public WorldTransferMessage(World.World world) : base(2)
+        public WorldTransferMessage(World.Data.World world) : base(2)
         {
             this.World = world;
         }

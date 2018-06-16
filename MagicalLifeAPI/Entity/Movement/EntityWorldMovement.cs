@@ -27,8 +27,8 @@ namespace MagicalLifeAPI.Entities.Movement
             {
                 PathLink section = path.Peek();
 
-                Tile sourceTile = World.World.MainWorld.Chunks[section.Origin.X, section.Origin.Y];
-                Tile destinationTile = World.World.MainWorld.Chunks[section.Destination.X, section.Destination.Y];
+                Tile sourceTile = World.Data.World.MainWorld.Chunks[section.Origin.X, section.Origin.Y];
+                Tile destinationTile = World.Data.World.MainWorld.Chunks[section.Destination.X, section.Destination.Y];
                 Move(ref entity, sourceTile, destinationTile);
             }
         }

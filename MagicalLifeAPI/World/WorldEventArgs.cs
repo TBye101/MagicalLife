@@ -10,9 +10,9 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// The current state of the world.
         /// </summary>
-        public World World { get; protected set; }
+        public World.Data.World World { get; protected set; }
 
-        public WorldEventArgs(World world)
+        public WorldEventArgs(World.Data.World world)
         {
             this.World = world;
         }

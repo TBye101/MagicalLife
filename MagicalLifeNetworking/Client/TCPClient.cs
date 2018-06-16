@@ -1,5 +1,7 @@
 ﻿using MagicalLifeAPI.Networking;
+using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Protobuf;
+using MagicalLifeAPI.Protobuf.Serialization;
 using MagicalLifeClient.Processing;
 using SimpleTCP;
 using System;

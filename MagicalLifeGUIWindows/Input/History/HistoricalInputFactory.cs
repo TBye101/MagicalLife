@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.World;
+using MagicalLifeAPI.World.Data;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 

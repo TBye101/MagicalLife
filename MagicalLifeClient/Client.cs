@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Message_Handlers;
+using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeClient.Entity;
 using MagicalLifeClient.Message_Handlers;

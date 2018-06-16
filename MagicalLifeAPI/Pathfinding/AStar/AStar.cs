@@ -21,7 +21,7 @@ namespace MagicalLifeAPI.Pathfinding.AStar
             this.Grid.UnblockCell(new Position(location.X, location.Y));
         }
 
-        public List<PathLink> GetRoute(World.World world, Living living, Point origin, Point destination)
+        public List<PathLink> GetRoute(World.Data.World world, Living living, Point origin, Point destination)
         {
             MasterLog.DebugWriteLine("Finding route from: " + origin.ToString());
             MasterLog.DebugWriteLine("Finding route to: " + destination.ToString());
@@ -56,7 +56,7 @@ namespace MagicalLifeAPI.Pathfinding.AStar
 
         public void Initialize()
         {
-            ProtoArray<Tile> tiles = World.World.MainWorld.Chunks;
+            ProtoArray<Tile> tiles = World.Data.World.MainWorld.Chunks;
             this.Grid = new Grid(tiles.Width, tiles.Height, 1);
 
             foreach (Tile item in tiles)

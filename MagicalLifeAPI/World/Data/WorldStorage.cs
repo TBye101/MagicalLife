@@ -13,7 +13,7 @@ namespace MagicalLifeAPI.World.Data
     /// <summary>
     /// Knows how to load and save data from every dimension in the world.
     /// </summary>
-    internal class WorldStorage
+    public class WorldStorage
     {
         /// <summary>
         /// The path to the save directory.

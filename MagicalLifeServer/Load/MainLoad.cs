@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World;
+using MagicalLifeAPI.World.Data;
 using MagicalLifeServer.Networking;
 using MagicalLifeServer.Processing;
 

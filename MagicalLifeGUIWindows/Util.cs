@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.World;
+using MagicalLifeAPI.World.Data;
 using Microsoft.Xna.Framework;
 
 namespace MagicalLifeGUIWindows

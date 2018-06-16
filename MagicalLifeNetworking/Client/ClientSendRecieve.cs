@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Networking;
+using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeClient.Networking;
 using MagicalLifeClient.Processing;
 using MagicalLifeServer.Networking;

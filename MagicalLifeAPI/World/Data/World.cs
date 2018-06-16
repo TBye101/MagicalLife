@@ -18,7 +18,7 @@ namespace MagicalLifeAPI.World.Data
         [ProtoMember(1)]
         public static List<Dimension> Dimensions { get; set; }
 
-        public static WorldStorage Storage { get; set; } = new WorldStorage();
+        public static WorldStorage Storage { get; set; } = new WorldStorage(Filing.FileSystemManager.GetIOSafeTime());
 
         /// <summary>
         /// Raised when the world is finished generating for the first time.

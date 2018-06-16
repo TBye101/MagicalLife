@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Entities.Movement;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.World;
+using MagicalLifeAPI.World.Data;
 using MagicalLifeNetworking.Client;
 using MagicalLifeNetworking.Messages;
 using System;
