@@ -9,7 +9,7 @@ namespace MagicalLifeAPI.Filing.Logging
     /// </summary>
     public static class MasterLog
     {
-        private static readonly string LogPath = FileSystemManager.rootFolder + Path.DirectorySeparatorChar + "MasterLog.txt";
+        private static readonly string LogPath = FileSystemManager.instanceRootFolder + Path.DirectorySeparatorChar + "MasterLog.txt";
 
         public static void Initialize()
         {

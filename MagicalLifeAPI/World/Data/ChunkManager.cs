@@ -18,7 +18,7 @@ namespace MagicalLifeAPI.World.Data
         /// A 2D array that holds every chunk in the dimension that this chunk manager services.
         /// </summary>
         [ProtoMember(1)]
-        private ProtoArray<Chunk> Chunks { get; set; }
+        private ProtoArray<Tuple<Chunk, ChunkAccessRecorder>> Chunks { get; set; }
 
         /// <summary>
         /// The ID of the dimension that this chunk manager services.
@@ -44,17 +44,17 @@ namespace MagicalLifeAPI.World.Data
         /// <returns></returns>
         public Chunk GetChunkForLocation(int x, int y)
         {
+            int chunkX = x / Chunk.Width;
+            int chunkY = y / Chunk.Height;
 
+            return this.FetchChunk(x, y);
         }
 
         public Tile this[int x, int y]
         {
             get
             {
-                int chunkX = x / Chunk.Width;
-                int chunkY = y / Chunk.Height;
-
-                Chunk chunk = this.FetchChunk(x, y);
+                Chunk chunk = this.GetChunkForLocation(x, y);
 
                 int xInChunk = x % Chunk.Width;
                 int yInChunk = y % Chunk.Height;
@@ -63,10 +63,7 @@ namespace MagicalLifeAPI.World.Data
             }
             set
             {
-                int chunkX = x / Chunk.Width;
-                int chunkY = y / Chunk.Height;
-
-                Chunk chunk = this.FetchChunk(x, y);
+                Chunk chunk = this.GetChunkForLocation(x, y);
 
                 int xInChunk = x % Chunk.Width;
                 int yInChunk = y % Chunk.Height;
@@ -78,18 +75,28 @@ namespace MagicalLifeAPI.World.Data
         /// Returns a chunk
         /// </summary>
         /// <returns></returns>
-        private Chunk FetchChunk(int x, int y)
+        private Chunk FetchChunk(int chunkX, int chunkY)
         {
+            Tuple<Chunk, ChunkAccessRecorder> storage = this.Chunks[chunkX, chunkY];
+            storage.Item2.Access();
 
+            if (storage.Item1 == null)
+            {
+                return this.LoadChunk(chunkX, chunkY);
+            }
+            else
+            {
+                return storage.Item1;
+            }
         }
 
         /// <summary>
         /// Loads a chunk from disk.
         /// </summary>
         /// <returns></returns>
-        private Chunk LoadChunk()
+        private Chunk LoadChunk(int chunkX, int chunkY)
         {
-
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -97,7 +104,7 @@ namespace MagicalLifeAPI.World.Data
         /// </summary>
         private void SaveChunk()
         {
-
+            throw new NotImplementedException();
         }
     }
 }

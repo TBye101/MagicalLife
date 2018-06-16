@@ -33,17 +33,24 @@ namespace MagicalLifeAPI.World.Data
         {
             get
             {
-                return null;
+                throw new NotImplementedException();
             }
             set
             {
-
+                throw new NotImplementedException();
             }
+        }
+
+        public Dimension(string dimensionName)
+        {
+            this.Manager = new ChunkManager(this.ID);
+            this.DimensionName = dimensionName;
+            World.Storage.PrepareForDimension(this.ID);
         }
 
         public Dimension()
         {
-            this.Manager = new ChunkManager(this.ID);
+
         }
     }
 }

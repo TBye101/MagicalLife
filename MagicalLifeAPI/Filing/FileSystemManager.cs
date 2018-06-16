@@ -12,7 +12,12 @@ namespace MagicalLifeAPI.Filing
         /// <summary>
         /// The path to the current instance folder.
         /// </summary>
-        public static string rootFolder;
+        public static string instanceRootFolder;
+
+        /// <summary>
+        /// The directory the main executable is in.
+        /// </summary>
+        public static string RootDirectory;
 
         public static void Initialize()
         {
@@ -24,24 +29,25 @@ namespace MagicalLifeAPI.Filing
         /// </summary>
         private static void SetupRootFolder()
         {
-            rootFolder = Assembly.GetExecutingAssembly().Location;
-            rootFolder = Path.GetDirectoryName(rootFolder);
-            rootFolder += Path.DirectorySeparatorChar;
-            rootFolder += "EarthWithMagic";
-            Directory.CreateDirectory(rootFolder);
-            rootFolder += Path.DirectorySeparatorChar;
-            rootFolder += "Instances";
-            Directory.CreateDirectory(rootFolder);
-            rootFolder += Path.DirectorySeparatorChar;
-            rootFolder += GetIOSafeTime();
-            Directory.CreateDirectory(rootFolder);
+            instanceRootFolder = Assembly.GetExecutingAssembly().Location;
+            instanceRootFolder = Path.GetDirectoryName(instanceRootFolder);
+            RootDirectory = instanceRootFolder;
+            instanceRootFolder += Path.DirectorySeparatorChar;
+            instanceRootFolder += "Logging";
+            Directory.CreateDirectory(instanceRootFolder);
+            instanceRootFolder += Path.DirectorySeparatorChar;
+            instanceRootFolder += "Instances";
+            Directory.CreateDirectory(instanceRootFolder);
+            instanceRootFolder += Path.DirectorySeparatorChar;
+            instanceRootFolder += GetIOSafeTime();
+            Directory.CreateDirectory(instanceRootFolder);
         }
 
         /// <summary>
         /// Returns a IO (file and directory) safe time.
         /// </summary>
         /// <returns></returns>
-        private static string GetIOSafeTime()
+        public static string GetIOSafeTime()
         {
             return string.Format("{0:[yyyy-MM-dd][hh-mm-ss-tt}]",
             DateTime.Now);
