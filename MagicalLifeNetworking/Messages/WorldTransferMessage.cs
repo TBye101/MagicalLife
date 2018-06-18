@@ -1,4 +1,6 @@
 ﻿using MagicalLifeAPI.Networking.Serialization;
+using MagicalLifeAPI.World.Data;
+using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Networking.Messages
 {
@@ -9,9 +11,9 @@ namespace MagicalLifeAPI.Networking.Messages
     public class WorldTransferMessage : BaseMessage
     {
         [ProtoBuf.ProtoMember(1)]
-        public World.Data.World World;
+        public List<Dimension> World;
 
-        public WorldTransferMessage(World.Data.World world) : base(2)
+        public WorldTransferMessage(List<Dimension> world) : base(2)
         {
             this.World = world;
         }

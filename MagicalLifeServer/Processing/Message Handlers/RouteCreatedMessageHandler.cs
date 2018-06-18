@@ -40,12 +40,12 @@ namespace MagicalLifeServer.Message_Handlers
             //attach path to creature
         }
 
-        private bool Validated(List<PathLink> msg)
+        private bool Validated(List<PathLink> msg, int dimension)
         {
             foreach (PathLink item in msg)
             {
-                bool a = World.MainWorld.Chunks[item.Origin.X, item.Origin.Y].IsWalkable;
-                bool b = World.MainWorld.Chunks[item.Destination.X, item.Destination.Y].IsWalkable;
+                bool a = World.Dimensions[dimension][item.Origin.X, item.Origin.Y].isWalkable;
+                bool b = World.Dimensions[dimension][item.Destination.X, item.Destination.Y].isWalkable;
 
                 if (a == false || b == false)
                 {

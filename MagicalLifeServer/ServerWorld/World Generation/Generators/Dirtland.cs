@@ -63,9 +63,6 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
             int chunkHeight = Chunk.Height;
             int chunkWidth = Chunk.Width;
 
-            //int x = 0;
-            //int y = 0;
-
             ProtoArray<Chunk> ret = new ProtoArray<Chunk>(xSize, ySize);
 
             for (int x = 0; x < xSize; x++)

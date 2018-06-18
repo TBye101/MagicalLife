@@ -37,7 +37,7 @@ namespace MagicalLifeAPI.World
         /// Returns all the tiles that neighbor the specified tile.
         /// </summary>
         /// <returns></returns>
-        public static List<Point> GetNeighboringTiles(Point tileLocation)
+        public static List<Point> GetNeighboringTiles(Point tileLocation, int dimension)
         {
             List<Point> neighborCandidates = new List<Point>();
             List<Point> neighbors = new List<Point>();
@@ -53,7 +53,7 @@ namespace MagicalLifeAPI.World
 
             foreach (Point item in neighborCandidates)
             {
-                if (DoesTileExist(item))
+                if (DoesTileExist(item, dimension))
                 {
                     neighbors.Add(item);
                 }
@@ -67,13 +67,9 @@ namespace MagicalLifeAPI.World
         /// </summary>
         /// <param name="tileLocation"></param>
         /// <returns></returns>
-        public static bool DoesTileExist(Point tileLocation)
+        public static bool DoesTileExist(Point tileLocation, int dimension)
         {
-            int x = tileLocation.X;
-            int y = tileLocation.Y;
-            ProtoArray<Tile> tiles = World.Data.World.MainWorld.Chunks;
-
-            return x > -1 && x < tiles.Width && y > -1 && y < tiles.Height;
+            return World.Data.World.Dimensions[dimension].DoesTileExist(tileLocation.X, tileLocation.Y);
         }
     }
 }

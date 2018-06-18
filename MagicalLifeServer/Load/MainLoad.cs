@@ -19,15 +19,15 @@ namespace MagicalLifeServer.Load
 
         public void InitialStartup(ref int progress)
         {
-            World.DimensionGenerated += this.MainWorld_WorldGenerated;
+            World.DimensionGenerated += this.World_DimensionGenerated;
             progress++;
             ServerProcessor.Initialize();
             progress++;
         }
 
-        private void MainWorld_WorldGenerated(object sender, MagicalLifeAPI.World.WorldEventArgs e)
+        private void World_DimensionGenerated(object sender, int e)
         {
-            ServerSendRecieve.SendAll<WorldTransferMessage>(new WorldTransferMessage(e.World));
+            //ServerSendRecieve.SendAll<WorldTransferMessage>(new WorldTransferMessage());
         }
     }
 }

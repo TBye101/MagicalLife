@@ -12,7 +12,7 @@ namespace MagicalLifeAPI.Networking.Message_Handlers
         public override void HandleMessage(BaseMessage message)
         {
             WorldTransferMessage msg = (WorldTransferMessage)message;
-            World.Data.World.MainWorld = msg.World;
+            World.Data.World.Dimensions = msg.World;
         }
     }
 }

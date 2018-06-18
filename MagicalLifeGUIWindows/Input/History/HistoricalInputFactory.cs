@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.GUI;
+﻿using MagicalLifeAPI.Entities;
+using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.Rendering;
@@ -35,7 +36,16 @@ namespace MagicalLifeGUIWindows.Input.History
 
             if (success)
             {
-                Selectable select = World.MainWorld.Chunks[mapSpot.X, mapSpot.Y].Living;
+                Selectable select = null;
+
+                foreach (Living item in World.Dimensions[RenderingPipe.Dimension].GetChunkForLocation(mapSpot.X, mapSpot.Y).Creatures)
+                {
+                    if (item.MapLocation == mapSpot)
+                    {
+                        select = item;
+                        break;
+                    }
+                } 
 
                 if (select != null)
                 {

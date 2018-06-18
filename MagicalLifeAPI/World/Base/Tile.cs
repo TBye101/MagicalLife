@@ -134,7 +134,7 @@ namespace MagicalLifeAPI.World
             EventHandler<TileEventArg> handler = TileCreated;
             if (handler != null)
             {
-                handler(World.Data.World.MainWorld, e);
+                handler(e, e);
             }
         }
 
@@ -143,7 +143,7 @@ namespace MagicalLifeAPI.World
             EventHandler<TileEventArg> handler = TileModified;
             if (handler != null)
             {
-                handler(World.Data.World.MainWorld, e);
+                handler(this, e);
             }
         }
 

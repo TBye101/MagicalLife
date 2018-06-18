@@ -55,7 +55,7 @@ namespace MagicalLifeServer.Networking
             MasterLog.DebugWriteLine("Client connection received");
 
             //this.Send<ConcreteTest>(new ConcreteTest(), e.Client);
-            this.Send<WorldTransferMessage>(new WorldTransferMessage(World.MainWorld), e.Client);
+            //this.Send<WorldTransferMessage>(new WorldTransferMessage(World.MainWorld), e.Client);
         }
 
         /// <summary>
