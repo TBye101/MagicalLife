@@ -41,6 +41,11 @@ namespace MagicalLifeGUIWindows.Rendering
         public static int YViewOffset = 0;
 
         /// <summary>
+        /// The currently viewed dimension.
+        /// </summary>
+        public static int Dimension = 0;
+
+        /// <summary>
         /// Draws the screen.
         /// </summary>
         /// <param name="spBatch"></param>

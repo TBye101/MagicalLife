@@ -5,6 +5,7 @@ using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.Input.History;
+using MagicalLifeGUIWindows.Rendering;
 using MagicalLifeNetworking.Client;
 using MagicalLifeNetworking.Messages;
 using MonoGame.Extended.Input.InputListeners;
@@ -39,7 +40,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
         private void Move(Selectable selectable, Microsoft.Xna.Framework.Point target)
         {
-            if (World.MainWorld.Chunks[target.X, target.Y].IsWalkable)
+            if (World.Dimensions[RenderingPipe.Dimension][target.X, target.Y].IsWalkable)
             {
                 switch (selectable)
                 {
@@ -67,16 +68,22 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
         private Living GetLivingAtClick(MouseEventArgs e)
         {
             bool success;
-            Microsoft.Xna.Framework.Point tileLocation = Util.GetMapLocation(e.Position.X, e.Position.Y, out success);
+            Microsoft.Xna.Framework.Point tileLocation = Util.GetMapLocation(e.Position.X, e.Position.Y, RenderingPipe.Dimension, out success);
 
             if (success)
             {
-                return World.MainWorld.Chunks[tileLocation.X, tileLocation.Y].Living;
+                Chunk chunk = World.Dimensions[RenderingPipe.Dimension].GetChunkForLocation(tileLocation.X, tileLocation.Y);
+
+                foreach (Living item in chunk.Creatures)
+                {
+                    if (item.MapLocation == tileLocation)
+                    {
+                        return item;
+                    }
+                }
             }
-            else
-            {
-                return null;
-            }
+
+            return null;
         }
     }
 }

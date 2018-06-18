@@ -15,7 +15,7 @@ namespace MagicalLifeGUIWindows
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public static Point GetMapLocation(int x, int y, out bool success)
+        public static Point GetMapLocation(int x, int y, int dimension, out bool success)
         {
             int x2 = x + Rendering.RenderingPipe.XViewOffset;
             int y2 = y + Rendering.RenderingPipe.YViewOffset;
@@ -24,9 +24,16 @@ namespace MagicalLifeGUIWindows
             x2 /= size.X;
             y2 /= size.Y;
 
-            success = !(x2 > World.MainWorld.Chunks.Width || y2 > World.MainWorld.Chunks.Height);
-
-            return new Point(x2, y2);
+            if (World.Dimensions[dimension].DoesTileExist(x2, y2))
+            {
+                success = true;
+                return new Point(x2, y2);
+            }
+            else
+            {
+                success = false;
+                throw new System.Exception("Map location doesn't exist!");
+            }
         }
     }
 }

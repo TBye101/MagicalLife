@@ -75,9 +75,25 @@ namespace MagicalLifeAPI.World.Data
             return this.Manager.GetEnumerator();
         }
 
+        public IEnumerator<Tile> GetTileEnumerator()
+        {
+            return this.Manager.GetTileEnumerator();
+        }
+
         IEnumerator IEnumerable.GetEnumerator()
         {
             return this.GetEnumerator();
+        }
+        
+        /// <summary>
+        /// Determines if the specified tile exists, without loading the tile.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public bool DoesTileExist(int x, int y)
+        {
+            return this.Manager.DoesTileExist(x, y);
         }
     }
 }

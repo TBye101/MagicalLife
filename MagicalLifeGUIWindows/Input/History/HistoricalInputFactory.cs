@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
+using MagicalLifeGUIWindows.Rendering;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
@@ -30,7 +31,7 @@ namespace MagicalLifeGUIWindows.Input.History
         private HistoricalInput SingleSelect(InputEventArgs e)
         {
             bool success;
-            Point mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y, out success);
+            Point mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y, RenderingPipe.Dimension, out success);
 
             if (success)
             {
@@ -86,7 +87,7 @@ namespace MagicalLifeGUIWindows.Input.History
             Point screenLocation = e.MouseEventArgs.Position;
 
             bool success;
-            Point mapLocation = Util.GetMapLocation(screenLocation.X, screenLocation.Y, out success);
+            Point mapLocation = Util.GetMapLocation(screenLocation.X, screenLocation.Y, RenderingPipe.Dimension, out success);
 
             if (success)
             {

@@ -58,7 +58,6 @@ namespace MagicalLifeAPI.Pathfinding.AStar
         {
             ProtoArray<Tile> tiles = World.Data.World.MainWorld.Chunks;
             this.Grid = new Grid(tiles.Width, tiles.Height, 1);
-
             foreach (Tile item in tiles)
             {
                 Position pos = new Position(item.Location.X, item.Location.Y);

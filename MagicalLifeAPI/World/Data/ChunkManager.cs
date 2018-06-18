@@ -102,6 +102,20 @@ namespace MagicalLifeAPI.World.Data
             }
         }
 
+        /// <summary>
+        /// Determines if the specified tile exists, without loading the tile or chunk.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public bool DoesTileExist(int x, int y)
+        {
+            int chunkX = x / Chunk.Width;
+            int chunkY = y / Chunk.Height;
+
+            return chunkX < this.Chunks.Width && chunkY < this.Chunks.Height;
+        }
+
         public IEnumerator<Chunk> GetEnumerator()
         {
             int width = this.Chunks.Width;
@@ -112,6 +126,17 @@ namespace MagicalLifeAPI.World.Data
                 for (int chunkY = 0; chunkY < height; chunkY++)
                 {
                     yield return this.GetChunk(chunkX, chunkY);
+                }
+            }
+        }
+
+        public IEnumerator<Tile> GetTileEnumerator()
+        {
+            foreach (Chunk item in this)
+            {
+                foreach (Tile item2 in item)
+                {
+                    yield return item2;
                 }
             }
         }

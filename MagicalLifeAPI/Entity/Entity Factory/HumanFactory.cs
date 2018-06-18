@@ -33,12 +33,12 @@ namespace MagicalLifeAPI.Entities.Entity_Factory
         /// Returns a fully generated human character.
         /// </summary>
         /// <returns></returns>
-        public Human GenerateHuman(Point location)
+        public Human GenerateHuman(Point location, int dimension)
         {
             int health = StaticRandom.Rand(this.MinHumanHealthPerLevel, this.MaxHumanHealthPerLevel);
             float movement = (float)StaticRandom.Rand(this.MinHumanMovement, this.MaxHumanMovement);
 
-            return new Human(health, movement, location);
+            return new Human(health, movement, location, dimension);
         }
     }
 }
