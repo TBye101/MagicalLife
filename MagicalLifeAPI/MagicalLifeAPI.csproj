@@ -155,6 +155,9 @@
     <Compile Include="World\Data\Chunk.cs" />
     <Compile Include="World\Data\ChunkManager.cs" />
     <Compile Include="World\Data\Dimension.cs" />
+    <Compile Include="World\Data\Enumerators\ChunkTileEnumerator.cs" />
+    <Compile Include="World\Data\Enumerators\DimensionChunkEnumerator.cs" />
+    <Compile Include="World\Data\Enumerators\DimensionTileEnumerator.cs" />
     <Compile Include="World\Data\WorldStorage.cs" />
     <Compile Include="World\Resources\MarbleResource.cs" />
     <Compile Include="World\Resources\StoneBase.cs" />

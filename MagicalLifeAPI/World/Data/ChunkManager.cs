@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using ProtoBuf;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,7 +38,7 @@ namespace MagicalLifeAPI.World.Data
         }
 
         /// <summary>
-        /// Returns the chunk for which the specified point belongs to.
+        /// Returns the chunk for which the specified tile point belongs to.
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -48,6 +49,17 @@ namespace MagicalLifeAPI.World.Data
             int chunkY = y / Chunk.Height;
 
             return this.FetchChunk(x, y);
+        }
+
+        /// <summary>
+        /// Returns a chunk that correspondences with the specified chunk coordinate.
+        /// </summary>
+        /// <param name="chunkX"></param>
+        /// <param name="chunkY"></param>
+        /// <returns></returns>
+        public Chunk GetChunk(int chunkX, int chunkY)
+        {
+            return this.FetchChunk(chunkX, chunkY);
         }
 
         public Tile this[int x, int y]

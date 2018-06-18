@@ -33,11 +33,11 @@ namespace MagicalLifeAPI.World.Data
         {
             get
             {
-                throw new NotImplementedException();
+                return this.Manager[x, y];
             }
             set
             {
-                throw new NotImplementedException();
+                this.Manager[x, y] = value;
             }
         }
 
@@ -51,6 +51,22 @@ namespace MagicalLifeAPI.World.Data
         public Dimension()
         {
 
+        }
+
+        public Chunk GetChunkForLocation(int x, int y)
+        {
+            return this.Manager.GetChunkForLocation(x, y);
+        }
+
+        /// <summary>
+        /// Returns a chunk that correspondences with the specified chunk coordinate.
+        /// </summary>
+        /// <param name="chunkX"></param>
+        /// <param name="chunkY"></param>
+        /// <returns></returns>
+        public Chunk GetChunk(int chunkX, int chunkY)
+        {
+            return this.Manager.GetChunk(chunkX, chunkY);
         }
     }
 }

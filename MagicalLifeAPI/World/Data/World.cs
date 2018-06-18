@@ -14,6 +14,8 @@ namespace MagicalLifeAPI.World.Data
     {
         /// <summary>
         /// The dimensions of a single world.
+        /// Dimension 0 is the main world, where the players start.
+        /// After that, anything goes.
         /// </summary>
         [ProtoMember(1)]
         public static List<Dimension> Dimensions { get; set; }
@@ -29,6 +31,42 @@ namespace MagicalLifeAPI.World.Data
 
         public World()
         {
+        }
+        
+        /// <summary>
+        /// Returns the chunk at the specified chunk location.
+        /// </summary>
+        /// <param name="dimension"></param>
+        /// <param name="chunkX"></param>
+        /// <param name="chunkY"></param>
+        /// <returns></returns>
+        public static Chunk GetChunk(int dimension, int chunkX, int chunkY)
+        {
+            return World.Dimensions[dimension].GetChunk(chunkX, chunkY);
+        }
+
+        /// <summary>
+        /// Returns the chunk at the specified tile location.
+        /// </summary>
+        /// <param name="dimension"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public static Chunk GetChunkByTile(int dimension, int x, int y)
+        {
+            return World.Dimensions[dimension].GetChunkForLocation(x, y);
+        }
+
+        /// <summary>
+        /// Returns a tile in the specified dimension, at the specified location.
+        /// </summary>
+        /// <param name="dimension"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public static Tile GetTile(int dimension, int x, int y)
+        {
+            return World.Dimensions[dimension][x, y];
         }
 
         /// <summary>

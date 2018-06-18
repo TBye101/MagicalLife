@@ -42,6 +42,12 @@ namespace MagicalLifeAPI.Entities
         public PointFloat ScreenLocation { get; set; }
 
         /// <summary>
+        /// The dimension that this creature is in.
+        /// </summary>
+        [ProtoMember(5)]
+        public int Dimension { get; set; }
+
+        /// <summary>
         /// Raised when a <see cref="Living"/> is created.
         /// </summary>
         public static event EventHandler<LivingEventArg> LivingCreated;
@@ -56,13 +62,14 @@ namespace MagicalLifeAPI.Entities
         /// </summary>
         /// <param name="health"></param>
         /// <param name="movementSpeed"></param>
-        protected Living(int health, float movementSpeed, Point location)
+        protected Living(int health, float movementSpeed, Point location, int dimension)
         {
             this.Health = new Util.Attribute32(health);
             this.Movement = new AttributeFloat(movementSpeed);
             Living.LivingCreated(this, new LivingEventArg(this, location));
             this.MapLocation = location;
             this.ScreenLocation = new PointFloat(location.X, location.Y);
+            this.Dimension = dimension;
         }
 
         public Living()
