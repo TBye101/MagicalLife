@@ -21,14 +21,14 @@ namespace MagicalLifeAPI.Pathfinding.AStar
             this.Grid.UnblockCell(new Position(location.X, location.Y));
         }
 
-        public List<PathLink> GetRoute(World.Data.World world, Living living, Point origin, Point destination)
+        public List<PathLink> GetRoute(int dimension, Point origin, Point destination)
         {
             MasterLog.DebugWriteLine("Finding route from: " + origin.ToString());
             MasterLog.DebugWriteLine("Finding route to: " + destination.ToString());
             Position[] path = this.Grid.GetPath(new Position(origin.X, origin.Y), new Position(destination.X, destination.Y));
             List<PathLink> ret = new List<PathLink>();
 
-            if (!World.Data.World.Dimensions[living.Dimension][destination.X, destination.Y].IsWalkable)
+            if (!World.Data.World.Dimensions[dimension][destination.X, destination.Y].IsWalkable)
             {
                 throw new Exception("Destination not possible!");
             }
@@ -42,7 +42,7 @@ namespace MagicalLifeAPI.Pathfinding.AStar
             int length = path.Length - 1;
             while (i != length)
             {
-                if (!World.Data.World.Dimensions[living.Dimension][path[i].X, path[i].Y].IsWalkable)
+                if (!World.Data.World.Dimensions[dimension][path[i].X, path[i].Y].IsWalkable)
                 {
                     MasterLog.DebugWriteLine("Walking on unwalkable tile!");
                 }

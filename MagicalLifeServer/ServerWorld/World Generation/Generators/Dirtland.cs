@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Entities.Entity_Factory;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
+using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Tiles;
 using Microsoft.Xna.Framework;
 using System;
@@ -11,9 +12,9 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
     /// <summary>
     /// Generates the whole map to be made out of dirt.
     /// </summary>
-    public class Dirtland : WorldGenerator
+    public class Dirtland : DimensionGenerator
     {
-        public override string[,] AssignBiomes(int xSize, int ySize, Random r)
+        protected override string[,] AssignBiomes(int xSize, int ySize, Random r)
         {
             string[,] ret = new string[xSize, ySize];
 
@@ -37,57 +38,71 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
             return ret;
         }
 
-        public override ProtoArray<Tile> GenerateDetails(ProtoArray<Tile> map, Random r)
+        protected override ProtoArray<Chunk> GenerateDetails(ProtoArray<Chunk> map, Random r)
         {
-            int xSize = map.Width;
-            int ySize = map.Height;
+            int chunkWidth = map.Width;
+            int chunkHeight = map.Height;
 
-            int x = StaticRandom.Rand(0, xSize);
-            int y = StaticRandom.Rand(0, ySize);
+            int chunkX = StaticRandom.Rand(0, chunkWidth);
+            int chunkY = StaticRandom.Rand(0, chunkHeight);
+
+            int x = StaticRandom.Rand(0, Chunk.Width);
+            int y = StaticRandom.Rand(0, Chunk.Height);
 
             HumanFactory hFactory = new HumanFactory();
-            map[x, y].Living = (hFactory.GenerateHuman(new Point(x, y)));
+            map[chunkX, chunkY].Creatures.Add(hFactory.GenerateHuman(new Point((chunkX * Chunk.Width) + x), (chunkY * Chunk.Height) + y));
 
             return map;
         }
 
-        public override ProtoArray<Tile> GenerateLandType(string[,] biomeMap, Random r)
+        protected override ProtoArray<Chunk> GenerateLandType(string[,] biomeMap, Random r)
         {
             int xSize = biomeMap.GetLength(0);
             int ySize = biomeMap.GetLength(1);
 
-            int x = 0;
-            int y = 0;
+            int chunkHeight = Chunk.Height;
+            int chunkWidth = Chunk.Width;
 
-            ProtoArray<Tile> ret = new ProtoArray<Tile>(xSize, ySize);
+            //int x = 0;
+            //int y = 0;
 
-            //Iterate over each row.
-            for (int i = 0; i < xSize; i++)
+            ProtoArray<Chunk> ret = new ProtoArray<Chunk>(xSize, ySize);
+
+            for (int x = 0; x < xSize; x++)
             {
-                //Iterate over each column
-                for (int ii = 0; ii < ySize; ii++)
+                for (int y = 0; y < ySize; y++)
                 {
-                    ret[x, y] = new Dirt(new Point(x, y));
-                    y++;
+                    for (int cx = 0; cx < chunkWidth; cx++)
+                    {
+                        Chunk chunk = ret[x, y];
+
+                        for (int cy = 0; cy < chunkHeight; cy++)
+                        {
+                            chunk.Tiles[cx, cy] = new Dirt(new Point((chunkWidth * x) + cx, (chunkHeight * y) + cy));
+                        }
+                    }
                 }
-                y = 0;
-                x++;
             }
 
             return ret;
         }
 
-        public override ProtoArray<Tile> GenerateMinerals(ProtoArray<Tile> map, Random r)
+        protected override ProtoArray<Chunk> GenerateMinerals(ProtoArray<Chunk> map, Random r)
         {
             return map;
         }
 
-        public override ProtoArray<Tile> GenerateNaturalFeatures(ProtoArray<Tile> map, Random r)
+        protected override ProtoArray<Chunk> GenerateNaturalFeatures(ProtoArray<Chunk> map, Random r)
         {
             return map;
         }
 
-        public override ProtoArray<Tile> GenerateVegetation(ProtoArray<Tile> map, Random r)
+        protected override ProtoArray<Chunk> GenerateStructures(ProtoArray<Chunk> map, Random random)
+        {
+            return map;
+        }
+
+        protected override ProtoArray<Chunk> GenerateVegetation(ProtoArray<Chunk> map, Random r)
         {
             return map;
         }

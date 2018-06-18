@@ -12,7 +12,7 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
     /// <summary>
     /// A world generator that throws in a sprinkle of stone.
     /// </summary>
-    public class StoneSprinkle : WorldGenerator
+    public class StoneSprinkle : DimensionGenerator
     {
         public override string[,] AssignBiomes(int xSize, int ySize, Random random)
         {

@@ -24,10 +24,9 @@ namespace MagicalLifeAPI.World.Data
 
         /// <summary>
         /// Raised when the world is finished generating for the first time.
+        /// The int is the dimension ID aka where it can be found within <see cref="Dimensions"/>.
         /// </summary>
-        public static event EventHandler<WorldEventArgs> WorldGenerated;
-
-        public static World MainWorld { get; set; }
+        public static event EventHandler<int> DimensionGenerated;
 
         public World()
         {
@@ -72,51 +71,28 @@ namespace MagicalLifeAPI.World.Data
         /// <summary>
         /// Generates a new world with the specified height, width, depth, and world generator.
         /// </summary>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
+        /// <param name="chunkWidth"></param>
+        /// <param name="chunkHeight"></param>
         /// <param name="depth"></param>
         /// <param name="generator"></param>
-        public static void Initialize(int width, int height, WorldGenerator generator)
-        {
-            MainWorld = new World();
-            MainWorld.Chunks = MainWorld.GenerateWorld(height, width, generator);
-
-            WorldEventArgs worldEventArgs = new WorldEventArgs(MainWorld);
-            World.WorldGeneratedHandler(worldEventArgs);
-        }
-
-        /// <summary>
-        /// Actually handles generating the world.
-        /// </summary>
-        /// <param name="height"></param>
-        /// <param name="width"></param>
-        /// <param name="depth"></param>
-        /// <param name="generator"></param>
-        /// <returns></returns>
-        private ProtoArray<Tile> GenerateWorld(int height, int width, WorldGenerator generator)
+        public static void Initialize(int chunkWidth, int chunkHeight, DimensionGenerator generator)
         {
             Random r = new Random();
-            string[,] stage1 = generator.AssignBiomes(height, width, r);
-            ProtoArray<Tile> stage2 = generator.GenerateLandType(stage1, r);
-
-            stage2 = generator.GenerateNaturalFeatures(stage2, r);
-            stage2 = generator.GenerateMinerals(stage2, r);
-            stage2 = generator.GenerateVegetation(stage2, r);
-            stage2 = generator.GenerateDetails(stage2, r);
-
-            return stage2;
+            Dimension zero = new Dimension("First Reality", generator.GenerateWorld(chunkWidth, chunkHeight, r));
+            World.Dimensions.Add(zero);
+            World.DimensionGeneratedHandler(World.Dimensions.Count - 1);
         }
 
         /// <summary>
         /// Raises the world generated event.
         /// </summary>
         /// <param name="e"></param>
-        public static void WorldGeneratedHandler(WorldEventArgs e)
+        public static void DimensionGeneratedHandler(int e)
         {
-            EventHandler<WorldEventArgs> handler = WorldGenerated;
+            EventHandler<int> handler = DimensionGenerated;
             if (handler != null)
             {
-                handler(World.MainWorld, e);
+                handler(null, e);
             }
         }
     }

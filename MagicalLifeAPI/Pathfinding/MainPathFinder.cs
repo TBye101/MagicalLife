@@ -13,21 +13,19 @@ namespace MagicalLifeAPI.Pathfinding
         /// </summary>
         private static IPathFinder PFinder = new AStar.AStar();
 
+        /// <summary>
+        /// Pathfinders for all dimensions.
+        /// </summary>
         private static List<IPathFinder> PathFinders = new List<IPathFinder>();
 
         public static void Initialize()
         {
-            World.Data.World.WorldGenerated += World_WorldGenerated;
-        }
 
-        private static void World_WorldGenerated(object sender, World.WorldEventArgs e)
-        {
-            PFinder.Initialize();
         }
 
         public static List<PathLink> GetRoute(int dimension, Point start, Point end)
         {
-
+            return PathFinders[dimension].GetRoute(dimension, start, end);
         }
     }
 }

@@ -49,7 +49,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                         Microsoft.Xna.Framework.Point start = selectable.MapLocation;
                         if (start != target)
                         {
-                            List<PathLink> pth = MainPathFinder.PFinder.GetRoute(World.MainWorld, living, World.MainWorld.Chunks[start.X, start.Y].Location, World.MainWorld.Chunks[target.X, target.Y].Location);
+                            List<PathLink> pth = MainPathFinder.GetRoute(RenderingPipe.Dimension, living.MapLocation, target);
 
                             living.QueuedMovement.Clear();
                             Extensions.EnqueueCollection(living.QueuedMovement, pth);

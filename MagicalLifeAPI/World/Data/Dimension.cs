@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Universal;
 using ProtoBuf;
 using System;
