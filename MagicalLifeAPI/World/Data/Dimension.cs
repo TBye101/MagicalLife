@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Universal;
 using ProtoBuf;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace MagicalLifeAPI.World.Data
     /// Could be a dungeon, the starting point, or some other thing.
     /// </summary>
     [ProtoContract]
-    public class Dimension : Unique
+    public class Dimension : Unique, IEnumerable<Chunk>
     {
 
         /// <summary>
@@ -67,6 +68,16 @@ namespace MagicalLifeAPI.World.Data
         public Chunk GetChunk(int chunkX, int chunkY)
         {
             return this.Manager.GetChunk(chunkX, chunkY);
+        }
+
+        public IEnumerator<Chunk> GetEnumerator()
+        {
+            return this.Manager.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
         }
     }
 }

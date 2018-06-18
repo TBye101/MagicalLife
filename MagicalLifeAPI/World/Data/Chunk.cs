@@ -4,6 +4,7 @@ using MagicalLifeAPI.Universal;
 using Microsoft.Xna.Framework;
 using ProtoBuf;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,7 @@ namespace MagicalLifeAPI.World.Data
     /// Holds a section of the world.
     /// </summary>
     [ProtoContract]
-    public class Chunk : Unique
+    public class Chunk : Unique, IEnumerable
     {
         [ProtoMember(1)]
         public List<Living> Creatures;
@@ -49,6 +50,11 @@ namespace MagicalLifeAPI.World.Data
             this.Tiles = tiles;
             this.ChunkLocation = location;
             this.BiomeID = biomeID;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return this.Tiles.GetEnumerator();
         }
     }
 }

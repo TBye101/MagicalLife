@@ -13,7 +13,7 @@ namespace MagicalLifeAPI.World.Data
     /// Manages what chunks are loaded and cached from a given list of chunks.
     /// </summary>
     [ProtoContract]
-    public sealed class ChunkManager
+    public sealed class ChunkManager : IEnumerable<Chunk>
     {
         /// <summary>
         /// A 2D array that holds every chunk in the dimension that this chunk manager services.
@@ -100,6 +100,25 @@ namespace MagicalLifeAPI.World.Data
             {
                 return storage.Item1;
             }
+        }
+
+        public IEnumerator<Chunk> GetEnumerator()
+        {
+            int width = this.Chunks.Width;
+            int height = this.Chunks.Height;
+
+            for (int chunkX = 0; chunkX < width; chunkX++)
+            {
+                for (int chunkY = 0; chunkY < height; chunkY++)
+                {
+                    yield return this.GetChunk(chunkX, chunkY);
+                }
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
         }
     }
 }
