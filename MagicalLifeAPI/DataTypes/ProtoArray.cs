@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 
 namespace MagicalLifeAPI.DataTypes
 {
@@ -6,7 +7,7 @@ namespace MagicalLifeAPI.DataTypes
     /// An 2D array that should have the basic functions of a normal array, but must be compatible with Protobuf-net.
     /// </summary>
     [ProtoBuf.ProtoContract]
-    public class ProtoArray<T> : IEnumerable
+    public class ProtoArray<T> : IEnumerable<T>
     {
         /// <summary>
         /// The width of this array.
@@ -33,6 +34,11 @@ namespace MagicalLifeAPI.DataTypes
             this.Data = new T[width * height];
         }
 
+        public ProtoArray(int width, int height, T[] data) : this(width, height)
+        {
+            this.Data = data;
+        }
+
         public ProtoArray()
         {
         }
@@ -54,7 +60,15 @@ namespace MagicalLifeAPI.DataTypes
 
         public IEnumerator GetEnumerator()
         {
-            return this.Data.GetEnumerator();
+            return this.GetEnumerator();
+        }
+
+        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+        {
+            foreach (T item in this.Data)
+            {
+                yield return item;
+            }
         }
     }
 }

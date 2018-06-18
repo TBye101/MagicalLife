@@ -15,7 +15,7 @@ namespace MagicalLifeAPI.World.Data
     /// Could be a dungeon, the starting point, or some other thing.
     /// </summary>
     [ProtoContract]
-    public class Dimension : Unique, IEnumerable<Chunk>
+    public class Dimension : Unique, IEnumerable<Tile>
     {
 
         /// <summary>
@@ -30,6 +30,28 @@ namespace MagicalLifeAPI.World.Data
         [ProtoMember(2)]
         public string DimensionName { get; set; }
 
+        /// <summary>
+        /// The width of this dimension in chunks.
+        /// </summary>
+        public int Width
+        {
+            get
+            {
+                return this.Manager.Width;
+            }
+        }
+
+        /// <summary>
+        /// The height of this dimension in chunks.
+        /// </summary>
+        public int Height
+        {
+            get
+            {
+                return this.Manager.Height;
+            }
+        }
+
         public Tile this[int x, int y]
         {
             get
@@ -42,9 +64,9 @@ namespace MagicalLifeAPI.World.Data
             }
         }
 
-        public Dimension(string dimensionName)
+        public Dimension(string dimensionName, ProtoArray<Chunk> chunks)
         {
-            this.Manager = new ChunkManager(this.ID);
+            this.Manager = new ChunkManager(this.ID, chunks);
             this.DimensionName = dimensionName;
             World.Storage.PrepareForDimension(this.ID);
         }
@@ -69,21 +91,6 @@ namespace MagicalLifeAPI.World.Data
         {
             return this.Manager.GetChunk(chunkX, chunkY);
         }
-
-        public IEnumerator<Chunk> GetEnumerator()
-        {
-            return this.Manager.GetEnumerator();
-        }
-
-        public IEnumerator<Tile> GetTileEnumerator()
-        {
-            return this.Manager.GetTileEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return this.GetEnumerator();
-        }
         
         /// <summary>
         /// Determines if the specified tile exists, without loading the tile.
@@ -94,6 +101,19 @@ namespace MagicalLifeAPI.World.Data
         public bool DoesTileExist(int x, int y)
         {
             return this.Manager.DoesTileExist(x, y);
+        }
+
+        public IEnumerator<Tile> GetEnumerator()
+        {
+            foreach (Tile item in this.Manager)
+            {
+                yield return item;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
         }
     }
 }

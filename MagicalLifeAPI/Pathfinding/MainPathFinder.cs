@@ -1,4 +1,7 @@
-﻿namespace MagicalLifeAPI.Pathfinding
+﻿using Microsoft.Xna.Framework;
+using System.Collections.Generic;
+
+namespace MagicalLifeAPI.Pathfinding
 {
     /// <summary>
     /// Handles who finds the path to destinations.
@@ -8,7 +11,9 @@
         /// <summary>
         /// The pathfinder.
         /// </summary>
-        public static IPathFinder PFinder = new AStar.AStar();
+        private static IPathFinder PFinder = new AStar.AStar();
+
+        private static List<IPathFinder> PathFinders = new List<IPathFinder>();
 
         public static void Initialize()
         {
@@ -18,6 +23,11 @@
         private static void World_WorldGenerated(object sender, World.WorldEventArgs e)
         {
             PFinder.Initialize();
+        }
+
+        public static List<PathLink> GetRoute(int dimension, Point start, Point end)
+        {
+
         }
     }
 }

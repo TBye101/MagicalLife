@@ -21,8 +21,9 @@ namespace MagicalLifeAPI.Pathfinding
 
         /// <summary>
         /// Run whatever startup code you need to before being capable of world generating here.
+        /// <paramref name="dimension"/>The dimension this pathfinder must handle.</param>
         /// </summary>
-        void Initialize();
+        void Initialize(int dimension);
 
         /// <summary>
         /// Removes all links to the specified location.

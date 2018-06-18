@@ -13,7 +13,7 @@ namespace MagicalLifeAPI.World.Data
     /// Manages what chunks are loaded and cached from a given list of chunks.
     /// </summary>
     [ProtoContract]
-    public sealed class ChunkManager : IEnumerable<Chunk>
+    public sealed class ChunkManager : IEnumerable<Tile>
     {
         /// <summary>
         /// A 2D array that holds every chunk in the dimension that this chunk manager services.
@@ -27,9 +27,32 @@ namespace MagicalLifeAPI.World.Data
         [ProtoMember(2)]
         private Guid DimensionID;
 
-        public ChunkManager(Guid dimensionID)
+        /// <summary>
+        /// The width of this dimension in chunks.
+        /// </summary>
+        [ProtoMember(3)]
+        public int Width { get; set; }
+
+        /// <summary>
+        /// The height of the dimension in chunks.
+        /// </summary>
+        [ProtoMember(4)]
+        public int Height { get; set; }
+
+        public ChunkManager(Guid dimensionID, ProtoArray<Chunk> chunks)
         {
             this.DimensionID = dimensionID;
+            this.Width = chunks.Width;
+            this.Height = chunks.Height;
+
+            List<Tuple<Chunk, ChunkAccessRecorder>> temp = new List<Tuple<Chunk, ChunkAccessRecorder>>();
+
+            foreach (Chunk item in chunks)
+            {
+                temp.Add(new Tuple<Chunk, ChunkAccessRecorder>(item, new ChunkAccessRecorder(item.ChunkLocation.X, item.ChunkLocation.Y)));
+            }
+
+            this.Chunks = new ProtoArray<Tuple<Chunk, ChunkAccessRecorder>>(chunks.Width, chunks.Height, temp.ToArray());
         }
 
         public ChunkManager()
@@ -116,23 +139,9 @@ namespace MagicalLifeAPI.World.Data
             return chunkX < this.Chunks.Width && chunkY < this.Chunks.Height;
         }
 
-        public IEnumerator<Chunk> GetEnumerator()
+        public IEnumerator<Tile> GetEnumerator()
         {
-            int width = this.Chunks.Width;
-            int height = this.Chunks.Height;
-
-            for (int chunkX = 0; chunkX < width; chunkX++)
-            {
-                for (int chunkY = 0; chunkY < height; chunkY++)
-                {
-                    yield return this.GetChunk(chunkX, chunkY);
-                }
-            }
-        }
-
-        public IEnumerator<Tile> GetTileEnumerator()
-        {
-            foreach (Chunk item in this)
+            foreach (Chunk item in this.Chunks)
             {
                 foreach (Tile item2 in item)
                 {

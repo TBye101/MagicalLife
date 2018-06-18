@@ -54,11 +54,10 @@ namespace MagicalLifeAPI.Pathfinding.AStar
             return ret;
         }
 
-        public void Initialize()
+        public void Initialize(int dimension)
         {
-            ProtoArray<Tile> tiles = World.Data.World.MainWorld.Chunks;
-            this.Grid = new Grid(tiles.Width, tiles.Height, 1);
-            foreach (Tile item in tiles)
+            this.Grid = new Grid(World.Data.World.Dimensions[dimension].Width, World.Data.World.Dimensions[dimension].Height, 1);
+            foreach (Tile item in World.Data.World.Dimensions[dimension])
             {
                 Position pos = new Position(item.Location.X, item.Location.Y);
 
