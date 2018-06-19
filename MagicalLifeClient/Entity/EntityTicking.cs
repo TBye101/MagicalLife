@@ -26,18 +26,31 @@ namespace MagicalLifeClient.Entity
         private static void Client_ClientTick(object sender, ulong e)
         {
             //This needs to be changed, as the performance time WILL be awful.
-            //This WILL be changed after the rewrite of how the world is stored in memory
 
-            foreach (Tile item in World.MainWorld.Chunks)
+            foreach (Dimension ii in World.Dimensions)
             {
-                if (item.Living != null)
-                {
-                    Living l = item.Living;
-                    l.Movement.WearOff();
+                int chunkWidth = ii.Width;
+                int chunkHeight = ii.Height;
 
-                    if (item.Living.QueuedMovement.Count > 0)
+                for (int chunkX = 0; chunkX < chunkWidth; chunkX++)
+                {
+                    for (int chunkY = 0; chunkY < chunkHeight; chunkY++)
                     {
-                        EntityWorldMovement.MoveEntity(ref l);
+                        Chunk chunk = ii.GetChunk(chunkX, chunkY);
+
+                        foreach (Living item in chunk.Creatures)
+                        {
+                            if (item != null)
+                            {
+                                Living l = item;
+                                l.Movement.WearOff();
+
+                                if (item.QueuedMovement.Count > 0)
+                                {
+                                    EntityWorldMovement.MoveEntity(ref l);
+                                }
+                            }
+                        }
                     }
                 }
             }

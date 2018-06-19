@@ -52,6 +52,28 @@ namespace MagicalLifeAPI.World.Data
             this.BiomeID = biomeID;
         }
 
+        /// <summary>
+        /// Returns the creature in the specified location.
+        /// </summary>
+        /// <param name="point">The location to search.</param>
+        /// <param name="living"></param>
+        /// <returns>Returns whether or not a creature was found in the specified location.</returns>
+        public bool GetCreature(Point point, out Living living)
+        {
+            living = null;
+
+            foreach (Living item in this.Creatures)
+            {
+                if (item.MapLocation == point)
+                {
+                    living = item;
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public IEnumerator<Tile> GetEnumerator()
         {
             foreach (Tile item in this.Tiles)

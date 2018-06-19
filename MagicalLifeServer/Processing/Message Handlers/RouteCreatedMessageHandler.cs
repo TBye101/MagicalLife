@@ -23,9 +23,10 @@ namespace MagicalLifeServer.Message_Handlers
         {
             RouteCreatedMessage msg = (RouteCreatedMessage)message;
 
-            if (Validated(msg.Path))
+            if (Validated(msg.Path, msg.Dimension))
             {
-                Living l = World.MainWorld.Chunks[msg.Path[0].Origin.X, msg.Path[0].Origin.Y].Living;
+                //Living l = World.MainWorld.Chunks[msg.Path[0].Origin.X, msg.Path[0].Origin.Y].Living;
+                Living l = World.Dimensions[msg.Dimension][msg.Path[0].Origin.X, msg.Path[0].Origin.Y].Living;
 
                 if (l != null && l.ID == msg.LivingID)
                 {
