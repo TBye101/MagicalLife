@@ -71,7 +71,7 @@ namespace MagicalLifeAPI.World.Data
             int chunkX = x / Chunk.Width;
             int chunkY = y / Chunk.Height;
 
-            return this.FetchChunk(x, y);
+            return this.FetchChunk(chunkX, chunkY);
         }
 
         /// <summary>

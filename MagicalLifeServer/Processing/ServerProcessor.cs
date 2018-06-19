@@ -21,7 +21,7 @@ namespace MagicalLifeServer.Processing
             //More important messages
 
             //Least important messages
-            MessageHandlers.Add(3, new RouteCreatedMessageHandler());
+            MessageHandlers.Add(3, new RouteCreatedMessageHandler());//This being called multiple times is a result of the menu bug, where the menu accepts clicks when not visible.
         }
 
         private static void ServerSendRecieve_MessageRecieved(object sender, BaseMessage e)

@@ -70,6 +70,13 @@ namespace MagicalLifeAPI.World.Data
             this.Manager = new ChunkManager(this.ID, chunks);
             this.DimensionName = dimensionName;
             World.Storage.PrepareForDimension(this.ID);
+
+            World.Dimensions.Add(this);
+            int dimensionID = World.Dimensions.Count - 1;
+
+            //Anything that needs a dimensionID
+
+            MainPathFinder.PrepForDimension(dimensionID);
         }
 
         public Dimension()

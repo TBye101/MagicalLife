@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World;
+using MagicalLifeAPI.World.Data;
 using Microsoft.Xna.Framework;
 using RoyT.AStar;
 using System;
@@ -55,8 +56,8 @@ namespace MagicalLifeAPI.Pathfinding.AStar
         }
 
         public void Initialize(int dimension)
-        {
-            this.Grid = new Grid(World.Data.World.Dimensions[dimension].Width, World.Data.World.Dimensions[dimension].Height, 1);
+        {//Refactor for tiles, not chunks
+            this.Grid = new Grid(World.Data.World.Dimensions[dimension].Width * Chunk.Width, World.Data.World.Dimensions[dimension].Height * Chunk.Height, 1);
             foreach (Tile item in World.Data.World.Dimensions[dimension])
             {
                 Position pos = new Position(item.Location.X, item.Location.Y);
