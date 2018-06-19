@@ -60,7 +60,7 @@ namespace MagicalLifeAPI.DataTypes
 
         public IEnumerator GetEnumerator()
         {
-            return this.GetEnumerator();
+            return this.Data.GetEnumerator();
         }
 
         IEnumerator<T> IEnumerable<T>.GetEnumerator()

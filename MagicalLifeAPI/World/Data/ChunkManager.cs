@@ -141,9 +141,9 @@ namespace MagicalLifeAPI.World.Data
 
         public IEnumerator<Tile> GetEnumerator()
         {
-            foreach (Chunk item in this.Chunks)
+            foreach (Tuple<Chunk, ChunkAccessRecorder> item in this.Chunks)
             {
-                foreach (Tile item2 in item)
+                foreach (Tile item2 in item.Item1)
                 {
                     yield return item2;
                 }
