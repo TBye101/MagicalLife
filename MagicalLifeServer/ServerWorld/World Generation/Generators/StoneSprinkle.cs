@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities.Entity_Factory;
+using MagicalLifeAPI.Entities.Humanoid;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
@@ -15,6 +16,11 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
     /// </summary>
     public class StoneSprinkle : DimensionGenerator
     {
+        public StoneSprinkle(int dimension) : base(dimension)
+        {
+
+        }
+
         protected override string[,] AssignBiomes(int xSize, int ySize, Random random)
         {
             string[,] ret = new string[xSize, ySize];
@@ -33,7 +39,10 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
             int y = StaticRandom.Rand(0, Chunk.Height);
 
             HumanFactory hFactory = new HumanFactory();
-            map[chunkX, chunkY].Creatures.Add(hFactory.GenerateHuman(new Point((chunkX * Chunk.Width) + x), (chunkY * Chunk.Height) + y));
+            Point entityLocation = new Point(((chunkX * Chunk.Width) + x), (chunkY * Chunk.Height) + y);
+            Human human = hFactory.GenerateHuman(entityLocation, this.Dimension);
+
+            map[chunkX, chunkY].Creatures.Add(human);
 
             return map;
         }

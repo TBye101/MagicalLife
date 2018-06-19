@@ -13,6 +13,13 @@ namespace MagicalLifeAPI.World
     /// </summary>
     public abstract class DimensionGenerator : Unique
     {
+        public readonly int Dimension;
+
+        public DimensionGenerator(int dimension)
+        {
+            this.Dimension = dimension;
+        }
+
         /// <summary>
         /// Generates the world.
         /// </summary>

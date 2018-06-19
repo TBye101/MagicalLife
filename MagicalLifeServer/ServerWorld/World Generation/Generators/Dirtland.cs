@@ -14,6 +14,11 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
     /// </summary>
     public class Dirtland : DimensionGenerator
     {
+        public Dirtland(int dimension) : base(dimension)
+        {
+
+        }
+
         protected override string[,] AssignBiomes(int xSize, int ySize, Random r)
         {
             string[,] ret = new string[xSize, ySize];

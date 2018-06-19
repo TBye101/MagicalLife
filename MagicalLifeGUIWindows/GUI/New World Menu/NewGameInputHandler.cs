@@ -23,8 +23,8 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu
 
             if (widthSuccess && lengthSuccess && width > 0 && length > 0)
             {
-                //World.Initialize(width, length, new Dirtland());
-                World.Initialize(width, length, new StoneSprinkle());
+                //World.Initialize(width, length, new Dirtland(0));
+                World.Initialize(width, length, new StoneSprinkle(0));
             }
             else
             {
