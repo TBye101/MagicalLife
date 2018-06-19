@@ -66,10 +66,10 @@ namespace MagicalLifeAPI.Entities
         {
             this.Health = new Util.Attribute32(health);
             this.Movement = new AttributeFloat(movementSpeed);
-            Living.LivingCreated(this, new LivingEventArg(this, location));
             this.MapLocation = location;
             this.ScreenLocation = new PointFloat(location.X, location.Y);
             this.Dimension = dimension;
+            Living.LivingCreatedHandler(new LivingEventArg(this, location));
         }
 
         public Living()

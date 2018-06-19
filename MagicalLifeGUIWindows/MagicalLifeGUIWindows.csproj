@@ -149,7 +149,6 @@
     <Compile Include="Input\KeyboardHandler.cs" />
     <Compile Include="Input\BoundHandler.cs" />
     <Compile Include="Input\Specialized Handlers\InputHandlers.cs" />
-    <Compile Include="Input\Specialized Handlers\LivingBoundHandler.cs" />
     <Compile Include="Input\Specialized Handlers\LivingMoveOrderInputHandler.cs" />
     <Compile Include="Load\Initializer.cs" />
     <Compile Include="Load\InputLoader.cs" />

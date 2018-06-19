@@ -1,5 +1,7 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.GUI;
+using MagicalLifeGUIWindows.GUI.MainMenu;
 using MonoGame.Extended.Input.InputListeners;
 
 namespace MagicalLifeGUIWindows.Input
@@ -26,7 +28,17 @@ namespace MagicalLifeGUIWindows.Input
         {
             //Show main menu.
             MasterLog.DebugWriteLine("Escape key pressed");
-            //MainMenu.ToggleMainMenu();
+
+            if (World.Dimensions.Count > 0)
+            {
+                //Ingame: Open up in game menu   
+            }
+            else
+            {
+                //Pregame:
+                MenuHandler.Back();
+            }
+
             MenuHandler.Back();
         }
     }

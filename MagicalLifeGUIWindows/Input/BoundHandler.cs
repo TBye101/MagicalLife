@@ -47,7 +47,6 @@ namespace MagicalLifeGUIWindows.Input
             MouseListner.MouseDoubleClicked += MouseListener_MouseDoubleClicked;
             MouseListner.MouseWheelMoved += MouseListener_MouseWheelMoved;
             MouseListner.MouseDrag += MouseListner_MouseDrag;
-            LivingBoundHandler.Initialize();
         }
 
         private static void MouseListner_MouseDrag(object sender, MouseEventArgs e)
