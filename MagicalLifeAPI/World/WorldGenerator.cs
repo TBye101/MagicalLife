@@ -1,7 +1,10 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Data;
+using Microsoft.Xna.Framework;
 using System;
+using System.Collections.Generic;
 
 namespace MagicalLifeAPI.World
 {
@@ -20,15 +23,33 @@ namespace MagicalLifeAPI.World
         {
             string[,] biomes = this.AssignBiomes(chunkWidth, chunkHeight, random);
 
-            ProtoArray<Chunk> ret = this.GenerateLandType(biomes, random);
+            ProtoArray<Chunk> map = this.GenerateBlank(chunkWidth, chunkHeight, biomes);
 
-            this.GenerateNaturalFeatures(ret, random);
-            this.GenerateMinerals(ret, random);
-            this.GenerateVegetation(ret, random);
-            this.GenerateStructures(ret, random);
-            this.GenerateDetails(ret, random);
+            this.GenerateLandType(biomes, map, random);
 
-            return ret;
+            this.GenerateNaturalFeatures(map, random);
+            this.GenerateMinerals(map, random);
+            this.GenerateVegetation(map, random);
+            this.GenerateStructures(map, random);
+            this.GenerateDetails(map, random);
+
+            return map;
+        }
+
+        internal ProtoArray<Chunk> GenerateBlank(int chunkWidth, int chunkHeight, string[,] biomes)
+        {
+            ProtoArray<Chunk> blank = new ProtoArray<Chunk>(chunkWidth, chunkHeight);
+
+            for (int x = 0; x < chunkWidth; x++)
+            {
+                for (int y = 0; y < chunkHeight; y++)
+                {
+                    blank[x, y] = new Chunk(
+                        new List<Living>(), new ProtoArray<Tile>(Chunk.Width, Chunk.Height), new Point(x, y), biomes[x, y]);
+                }
+            }
+
+            return blank;
         }
 
         /// <summary>
@@ -45,7 +66,7 @@ namespace MagicalLifeAPI.World
         /// </summary>
         /// <param name="biomeMap"></param>
         /// <returns></returns>
-        protected abstract ProtoArray<Chunk> GenerateLandType(string[,] biomeMap, Random random);
+        protected abstract ProtoArray<Chunk> GenerateLandType(string[,] biomeMap, ProtoArray<Chunk> map, Random random);
 
         /// <summary>
         /// Generates things such as rivers and caves.

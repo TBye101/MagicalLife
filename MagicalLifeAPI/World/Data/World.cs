@@ -18,7 +18,7 @@ namespace MagicalLifeAPI.World.Data
         /// After that, anything goes.
         /// </summary>
         [ProtoMember(1)]
-        public static List<Dimension> Dimensions { get; set; }
+        public static List<Dimension> Dimensions { get; set; } = new List<Dimension>();
 
         public static WorldStorage Storage { get; set; } = new WorldStorage(Filing.FileSystemManager.GetIOSafeTime());
 

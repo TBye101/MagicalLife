@@ -38,7 +38,7 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
             return map;
         }
 
-        protected override ProtoArray<Chunk> GenerateLandType(string[,] biomeMap, Random random)
+        protected override ProtoArray<Chunk> GenerateLandType(string[,] biomeMap, ProtoArray<Chunk> map, Random random)
         {
             int xSize = biomeMap.GetLength(0);
             int ySize = biomeMap.GetLength(1);
@@ -46,7 +46,7 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
             int chunkHeight = Chunk.Height;
             int chunkWidth = Chunk.Width;
 
-            ProtoArray<Chunk> ret = new ProtoArray<Chunk>(xSize, ySize);
+            ProtoArray<Chunk> ret = map;
 
             for (int x = 0; x < xSize; x++)
             {
