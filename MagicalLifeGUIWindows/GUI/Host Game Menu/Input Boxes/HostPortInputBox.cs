@@ -8,7 +8,7 @@ namespace MagicalLifeGUIWindows.GUI.Host_Game_Menu.Input_Boxes
     /// </summary>
     public class HostPortInputBox : MonoInputBox
     {
-        public HostPortInputBox(bool isLocked) : base("InputBox100x50", "CursorCarrot", GetInitialLocation(), int.MaxValue, "MainMenuFont12x", isLocked, Rendering.Text.SimpleTextRenderer.Alignment.Left)
+        public HostPortInputBox(bool isLocked) : base("InputBox100x50", "CursorCarrot", GetInitialLocation(), int.MaxValue, "MainMenuFont12x", isLocked, Rendering.Text.SimpleTextRenderer.Alignment.Left, true)
         {
         }
 

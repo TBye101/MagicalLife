@@ -31,7 +31,7 @@ namespace MagicalLifeGUIWindows.Input
 
             if (World.Dimensions.Count > 0)
             {
-                //Ingame: Open up in game menu   
+                //Ingame: Open up in game menu 
             }
             else
             {

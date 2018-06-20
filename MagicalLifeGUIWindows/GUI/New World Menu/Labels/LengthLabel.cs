@@ -8,7 +8,7 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu.Labels
     /// </summary>
     public class LengthLabel : MonoLabel
     {
-        public LengthLabel() : base(GetLocation(), "InputBox100x50")
+        public LengthLabel() : base(GetLocation(), "InputBox100x50", true)
         {
             this.Text = "World Length";
         }

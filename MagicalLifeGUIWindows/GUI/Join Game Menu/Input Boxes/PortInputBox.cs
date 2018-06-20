@@ -5,7 +5,7 @@ namespace MagicalLifeGUIWindows.GUI.Join_Game_Menu.Input_Boxes
 {
     public class PortInputBox : MonoInputBox
     {
-        public PortInputBox(bool isLocked) : base("InputBox100x50", "CursorCarrot", GetInitialLocation(), int.MaxValue, "MainMenuFont12x", isLocked, Rendering.Text.SimpleTextRenderer.Alignment.Left)
+        public PortInputBox(bool isLocked) : base("InputBox100x50", "CursorCarrot", GetInitialLocation(), int.MaxValue, "MainMenuFont12x", isLocked, Rendering.Text.SimpleTextRenderer.Alignment.Left, true)
         {
         }
 

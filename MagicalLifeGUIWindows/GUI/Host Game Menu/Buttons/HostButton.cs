@@ -12,7 +12,7 @@ namespace MagicalLifeGUIWindows.GUI.Host_Game_Menu.Buttons
     /// </summary>
     public class HostButton : MonoButton
     {
-        public HostButton() : base("MenuButton", GetDisplayArea(), "Host Game")
+        public HostButton() : base("MenuButton", GetDisplayArea(), true, "Host Game")
         {
         }
 

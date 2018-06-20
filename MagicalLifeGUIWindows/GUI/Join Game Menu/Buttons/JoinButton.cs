@@ -9,7 +9,7 @@ namespace MagicalLifeGUIWindows.GUI.Join_Game_Menu.Buttons
 {
     public class JoinButton : MonoButton
     {
-        public JoinButton() : base("MenuButton", GetDisplayArea(), "Join Game")
+        public JoinButton() : base("MenuButton", GetDisplayArea(), true, "Join Game")
         {
         }
 

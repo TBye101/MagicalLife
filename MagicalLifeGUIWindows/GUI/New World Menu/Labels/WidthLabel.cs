@@ -8,7 +8,7 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu.Labels
     /// </summary>
     public class WidthLabel : MonoLabel
     {
-        public WidthLabel() : base(GetLocation(), "InputBox100x50")
+        public WidthLabel() : base(GetLocation(), "InputBox100x50", true)
         {
             this.Text = "World Width";
         }

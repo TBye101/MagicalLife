@@ -7,7 +7,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
 {
     public class QuitButton : MonoButton
     {
-        public QuitButton() : base("MenuButton", GetLocation(), "Quit")
+        public QuitButton() : base("MenuButton", GetLocation(), true, "Quit")
         {
         }
 

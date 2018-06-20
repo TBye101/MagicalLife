@@ -8,7 +8,7 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu
     /// </summary>
     public class WorldWidthInputBox : MonoInputBox
     {
-        public WorldWidthInputBox(bool isLocked) : base("InputBox100x50", "CursorCarrot", GetInitialLocation(), int.MaxValue, "MainMenuFont12x", isLocked, Rendering.Text.SimpleTextRenderer.Alignment.Left)
+        public WorldWidthInputBox(bool isLocked) : base("InputBox100x50", "CursorCarrot", GetInitialLocation(), int.MaxValue, "MainMenuFont12x", isLocked, Rendering.Text.SimpleTextRenderer.Alignment.Left, true)
         {
         }
 

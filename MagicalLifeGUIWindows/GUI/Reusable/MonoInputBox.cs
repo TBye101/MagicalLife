@@ -51,7 +51,18 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// </summary>
         public Alignment TextAlignment { get; private set; }
 
-        public MonoInputBox(string image, string CarrotTexture, Rectangle drawingBounds, int priority, string font, bool isLocked, Alignment textAlignment) : base(image, drawingBounds, priority, font)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="CarrotTexture"></param>
+        /// <param name="drawingBounds"></param>
+        /// <param name="priority"></param>
+        /// <param name="font"></param>
+        /// <param name="isLocked"></param>
+        /// <param name="textAlignment"></param>
+        /// <param name="isContained">If true, this GUI element is within a container.</param>
+        public MonoInputBox(string image, string CarrotTexture, Rectangle drawingBounds, int priority, string font, bool isLocked, Alignment textAlignment, bool isContained) : base(image, drawingBounds, priority, isContained, font)
         {
             KeyboardHandler.keyboardListener.KeyPressed += this.KeyboardListener_KeyPressed;
             this.CarrotPosition = this.Text.Count();

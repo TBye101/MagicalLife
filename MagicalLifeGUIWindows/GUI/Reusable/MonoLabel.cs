@@ -19,7 +19,14 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// </summary>
         public Alignment TextAlignment { get; private set; }
 
-        public MonoLabel(Rectangle bounds, string image, string font = "MainMenuFont12x") : base(image, bounds, int.MinValue, font)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bounds"></param>
+        /// <param name="image"></param>
+        /// <param name="font"></param>
+        /// <param name="isContained">If true, this GUI element is within a container.</param>
+        public MonoLabel(Rectangle bounds, string image, bool isContained, string font = "MainMenuFont12x") : base(image, bounds, int.MinValue, isContained, font)
         {
         }
 

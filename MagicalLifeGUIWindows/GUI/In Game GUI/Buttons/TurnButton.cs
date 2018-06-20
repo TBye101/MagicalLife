@@ -19,7 +19,7 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_GUI.Buttons
         /// </summary>
         private Texture2D WaitTexture;
 
-        public TurnButton(string font = "") : base("EndTurnButtonState1", GetLocation(), "", font)
+        public TurnButton(string font = "") : base("EndTurnButtonState1", GetLocation(), true, "", font)
         {
             this.WaitTexture = AssetManager.Textures[AssetManager.GetTextureIndex("EndTurnButtonState1")];
             this.EndedTexture = AssetManager.Textures[AssetManager.GetTextureIndex("EndTurnButtonState2")];

@@ -14,7 +14,7 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu.Buttons
     /// </summary>
     public class NewWorldNextButton : MonoButton
     {
-        public NewWorldNextButton() : base("MenuButton", GetLocation(), "Next")
+        public NewWorldNextButton() : base("MenuButton", GetLocation(), true, "Next")
         {
         }
 
