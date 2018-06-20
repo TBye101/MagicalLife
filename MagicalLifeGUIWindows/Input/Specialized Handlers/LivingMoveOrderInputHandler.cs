@@ -49,9 +49,23 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                         Microsoft.Xna.Framework.Point start = selectable.MapLocation;
                         if (start != target)
                         {
-                            List<PathLink> pth = MainPathFinder.GetRoute(RenderingPipe.Dimension, living.MapLocation, target);
+                            List<PathLink> pth;
 
-                            living.QueuedMovement.Clear();
+                            //Handle reroute
+                            if (living.QueuedMovement.Count > 0)
+                            {
+                                //Get a path to the nearest/next tile so that path finding and the screen location sync up.
+                                PathLink previous = living.QueuedMovement.Peek();
+                                living.QueuedMovement.Clear();
+                                living.QueuedMovement.Enqueue(previous);
+                                pth = MainPathFinder.GetRoute(RenderingPipe.Dimension, previous.Destination, target);
+                            }
+                            //No reroute
+                            else
+                            {
+                                pth = MainPathFinder.GetRoute(RenderingPipe.Dimension, living.MapLocation, target);
+                            }
+
                             Extensions.EnqueueCollection(living.QueuedMovement, pth);
                             ClientSendRecieve.Send<RouteCreatedMessage>(new RouteCreatedMessage(pth, living.ID, living.Dimension));
                         }

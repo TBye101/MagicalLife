@@ -56,7 +56,7 @@ namespace MagicalLifeAPI.Pathfinding.AStar
         }
 
         public void Initialize(int dimension)
-        {//Refactor for tiles, not chunks
+        {
             this.Grid = new Grid(World.Data.World.Dimensions[dimension].Width * Chunk.Width, World.Data.World.Dimensions[dimension].Height * Chunk.Height, 1);
             foreach (Tile item in World.Data.World.Dimensions[dimension])
             {
@@ -66,7 +66,7 @@ namespace MagicalLifeAPI.Pathfinding.AStar
                 if (!item.IsWalkable)
                 {
                     this.Grid.BlockCell(pos);
-                    MasterLog.DebugWriteLine("Blocking tile: " + pos.ToString());
+                    //MasterLog.DebugWriteLine("Blocking tile: " + pos.ToString());
                 }
             }
         }

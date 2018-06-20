@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.GUI;
 using MonoGame.Extended.Input.InputListeners;
 using System;
@@ -122,11 +123,13 @@ namespace MagicalLifeGUIWindows.Input.History
                 if (lastHistory.DeselectingAll)
                 {
                     Selected.Clear();
+                    MasterLog.DebugWriteLine("Deselected all");
                 }
 
                 foreach (Selectable item in lastHistory.DeselectSome)
                 {
                     Selected.Remove(item);
+                    MasterLog.DebugWriteLine("Deselected: " + item.MapLocation.ToString());
                 }
 
                 Selected.AddRange(lastHistory.Selected);

@@ -19,7 +19,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 * Fixed issue [#11](https://github.com/SneakyTactician/MagicalLife/issues/11)
 * Fixed issue [#18](https://github.com/SneakyTactician/MagicalLife/issues/18)
 
-* Discovered issue [#26](https://github.com/SneakyTactician/MagicalLife/issues/26)
+* Discovered and fixed issue [#26](https://github.com/SneakyTactician/MagicalLife/issues/26)
 ---
 ## [Version 0.0.7]
 #### GUI

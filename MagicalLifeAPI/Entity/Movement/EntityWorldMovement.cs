@@ -31,6 +31,7 @@ namespace MagicalLifeAPI.Entities.Movement
                 Tile destinationTile = World.Data.World.Dimensions[entity.Dimension][section.Destination.X, section.Destination.Y];
                 Move(ref entity, sourceTile, destinationTile);
             }
+            //MasterLog.DebugWriteLine("Tile location: " + entity.MapLocation.ToString());
         }
 
         /// <summary>
@@ -59,8 +60,8 @@ namespace MagicalLifeAPI.Entities.Movement
         /// <param name="destination"></param>
         public static void Move(ref Living entity, Tile source, Tile destination)
         {
-                MasterLog.DebugWriteLine("Moving creature!");
-                MasterLog.DebugWriteLine("Pre move location: " + entity.ScreenLocation.X.ToString() + ", " + entity.ScreenLocation.Y.ToString());
+                //MasterLog.DebugWriteLine("Moving creature!");
+                //MasterLog.DebugWriteLine("Pre move location: " + entity.ScreenLocation.X.ToString() + ", " + entity.ScreenLocation.Y.ToString());
                 Direction direction = DetermineMovementDirection(source.Location, destination.Location);
 
                 float xMove = 0;
@@ -123,7 +124,7 @@ namespace MagicalLifeAPI.Entities.Movement
                 }
 
                 entity.Movement.AddModifier(new Tuple<float, IModifierRemoveCondition, string>(movementPenalty, new TimeRemoveCondition(1), "Normal Movement"));
-                MasterLog.DebugWriteLine("Post move location: " + entity.ScreenLocation.X.ToString() + ", " + entity.ScreenLocation.Y.ToString());
+                //MasterLog.DebugWriteLine("Post move location: " + entity.ScreenLocation.X.ToString() + ", " + entity.ScreenLocation.Y.ToString());
         }
 
         /// <summary>
