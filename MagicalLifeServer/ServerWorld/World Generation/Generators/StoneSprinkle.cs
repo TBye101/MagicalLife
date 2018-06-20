@@ -38,6 +38,15 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
             int x = StaticRandom.Rand(0, Chunk.Width);
             int y = StaticRandom.Rand(0, Chunk.Height);
 
+            while (map[chunkX, chunkY].Tiles[x, y].Resources != null)
+            {
+                chunkX = StaticRandom.Rand(0, chunkWidth);
+                chunkY = StaticRandom.Rand(0, chunkHeight);
+
+                x = StaticRandom.Rand(0, Chunk.Width);
+                y = StaticRandom.Rand(0, Chunk.Height);
+            }
+
             HumanFactory hFactory = new HumanFactory();
             Point entityLocation = new Point(((chunkX * Chunk.Width) + x), (chunkY * Chunk.Height) + y);
             Human human = hFactory.GenerateHuman(entityLocation, this.Dimension);

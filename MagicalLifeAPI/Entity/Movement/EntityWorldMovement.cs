@@ -59,8 +59,6 @@ namespace MagicalLifeAPI.Entities.Movement
         /// <param name="destination"></param>
         public static void Move(ref Living entity, Tile source, Tile destination)
         {
-            lock (entity)
-            {
                 MasterLog.DebugWriteLine("Moving creature!");
                 MasterLog.DebugWriteLine("Pre move location: " + entity.ScreenLocation.X.ToString() + ", " + entity.ScreenLocation.Y.ToString());
                 Direction direction = DetermineMovementDirection(source.Location, destination.Location);
@@ -126,7 +124,6 @@ namespace MagicalLifeAPI.Entities.Movement
 
                 entity.Movement.AddModifier(new Tuple<float, IModifierRemoveCondition, string>(movementPenalty, new TimeRemoveCondition(1), "Normal Movement"));
                 MasterLog.DebugWriteLine("Post move location: " + entity.ScreenLocation.X.ToString() + ", " + entity.ScreenLocation.Y.ToString());
-            }
         }
 
         /// <summary>
