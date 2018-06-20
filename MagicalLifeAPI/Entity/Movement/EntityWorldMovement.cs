@@ -41,7 +41,7 @@ namespace MagicalLifeAPI.Entities.Movement
         /// <returns></returns>
         private static double CalculateMovementReduction(double xMove, double yMove)
         {
-            if (xMove == yMove)
+            if (Math.Abs(xMove) == Math.Abs(yMove))
             {
                 return xMove;
             }
@@ -59,71 +59,74 @@ namespace MagicalLifeAPI.Entities.Movement
         /// <param name="destination"></param>
         public static void Move(ref Living entity, Tile source, Tile destination)
         {
-            //MasterLog.DebugWriteLine("Moving creature!");
-            //MasterLog.DebugWriteLine("Pre move location: " + entity.ScreenLocation.X.ToString() + ", " + entity.ScreenLocation.Y.ToString());
-            Direction direction = DetermineMovementDirection(source.Location, destination.Location);
-
-            float xMove = 0;
-            float yMove = 0;
-
-            switch (direction)
+            lock (entity)
             {
-                case Direction.North:
-                    yMove = 1;
-                    break;
+                MasterLog.DebugWriteLine("Moving creature!");
+                MasterLog.DebugWriteLine("Pre move location: " + entity.ScreenLocation.X.ToString() + ", " + entity.ScreenLocation.Y.ToString());
+                Direction direction = DetermineMovementDirection(source.Location, destination.Location);
 
-                case Direction.South:
-                    yMove = -1;
-                    break;
+                float xMove = 0;
+                float yMove = 0;
 
-                case Direction.East:
-                    xMove = 1;
-                    break;
+                switch (direction)
+                {
+                    case Direction.North:
+                        yMove = -1;
+                        break;
 
-                case Direction.West:
-                    xMove = -1;
-                    break;
+                    case Direction.South:
+                        yMove = 1;
+                        break;
 
-                case Direction.NorthWest:
-                    xMove = -1;
-                    yMove = 1;
-                    break;
+                    case Direction.East:
+                        xMove = 1;
+                        break;
 
-                case Direction.NorthEast:
-                    xMove = 1;
-                    yMove = 1;
-                    break;
+                    case Direction.West:
+                        xMove = -1;
+                        break;
 
-                case Direction.SouthWest:
-                    xMove = -1;
-                    yMove = -1;
-                    break;
+                    case Direction.NorthWest:
+                        xMove = -1;
+                        yMove = -1;
+                        break;
 
-                case Direction.SouthEast:
-                    xMove = 1;
-                    yMove = -1;
-                    break;
+                    case Direction.NorthEast:
+                        xMove = 1;
+                        yMove = -1;
+                        break;
+
+                    case Direction.SouthWest:
+                        xMove = -1;
+                        yMove = 1;
+                        break;
+
+                    case Direction.SouthEast:
+                        xMove = 1;
+                        yMove = 1;
+                        break;
+                }
+
+                xMove *= entity.Movement.GetValue();
+                yMove *= entity.Movement.GetValue();
+
+                float movementPenalty = (float)Math.Abs(CalculateMovementReduction(xMove, yMove)) * -1;
+
+                if (MathUtil.GetDistance(entity.ScreenLocation, destination.Location) > entity.Movement.GetValue())
+                {
+                    entity.ScreenLocation = new DataTypes.PointFloat(entity.ScreenLocation.X + xMove, entity.ScreenLocation.Y + yMove);
+                }
+                else
+                {
+                    entity.MapLocation = destination.Location;
+                    entity.ScreenLocation = new DataTypes.PointFloat(destination.Location.X, destination.Location.Y);
+                    entity.QueuedMovement.Dequeue();
+                    movementPenalty = MathUtil.GetDistance(entity.ScreenLocation, destination.Location);
+                }
+
+                entity.Movement.AddModifier(new Tuple<float, IModifierRemoveCondition, string>(movementPenalty, new TimeRemoveCondition(1), "Normal Movement"));
+                MasterLog.DebugWriteLine("Post move location: " + entity.ScreenLocation.X.ToString() + ", " + entity.ScreenLocation.Y.ToString());
             }
-
-            xMove *= entity.Movement.GetValue();
-            yMove *= entity.Movement.GetValue();
-
-            float movementPenalty = (float)Math.Abs(CalculateMovementReduction(xMove, yMove)) * -1;
-
-            if (MathUtil.GetDistance(entity.ScreenLocation, destination.Location) > entity.Movement.GetValue())
-            {
-                entity.ScreenLocation = new DataTypes.PointFloat(entity.ScreenLocation.X + xMove, entity.ScreenLocation.Y + yMove);
-            }
-            else
-            {
-                entity.MapLocation = destination.Location;
-                entity.ScreenLocation = new DataTypes.PointFloat(destination.Location.X, destination.Location.Y);
-                entity.QueuedMovement.Dequeue();
-                movementPenalty = MathUtil.GetDistance(entity.ScreenLocation, destination.Location);
-            }
-
-            entity.Movement.AddModifier(new Tuple<float, IModifierRemoveCondition, string>(movementPenalty, new TimeRemoveCondition(1), "Normal Movement"));
-            //MasterLog.DebugWriteLine("Post move location: " + entity.ScreenLocation.X.ToString() + ", " + entity.ScreenLocation.Y.ToString());
         }
 
         /// <summary>
@@ -134,7 +137,7 @@ namespace MagicalLifeAPI.Entities.Movement
         /// <returns></returns>
         public static Direction DetermineMovementDirection(Point source, Point destination)
         {
-            if (destination.Y > source.Y)
+            if (destination.Y < source.Y)
             {
                 if (destination.X > source.X)
                 {
@@ -149,7 +152,7 @@ namespace MagicalLifeAPI.Entities.Movement
                 return Direction.North;
             }
 
-            if (destination.Y < source.Y)
+            if (destination.Y > source.Y)
             {
                 if (destination.X > source.X)
                 {

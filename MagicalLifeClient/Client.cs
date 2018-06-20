@@ -58,6 +58,7 @@ namespace MagicalLifeClient
         /// <param name="msg"></param>
         public static void Tick(ServerTickMessage msg)
         {
+            MasterLog.DebugWriteLine("Client tick: " + msg.Tick.ToString());
             UInt64 ticksBehind = msg.Tick - GameTick - 1;
 
             if (ticksBehind != 0)

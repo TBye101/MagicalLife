@@ -10,9 +10,10 @@ SneakyTactician  <SneakyTactician@outlook.com>
 #### Bugs
 * Discovered and fixed issue [#21](https://github.com/SneakyTactician/MagicalLife/issues/21)
 * Discovered and fixed issue [#22](https://github.com/SneakyTactician/MagicalLife/issues/22)
+* Discovered and fixed issue [#24](https://github.com/SneakyTactician/MagicalLife/issues/24)
 * Fixed issue [#11](https://github.com/SneakyTactician/MagicalLife/issues/11)
-* Discovered issue [#24](https://github.com/SneakyTactician/MagicalLife/issues/24)
-* Discovered issue [#25](https://github.com/SneakyTactician/MagicalLife/issues/25)
+* Fixed issue [#18](https://github.com/SneakyTactician/MagicalLife/issues/18)
+* Discovered and fixed issue [#25](https://github.com/SneakyTactician/MagicalLife/issues/25)
 
 ---
 ## [Version 0.0.7]
