@@ -71,7 +71,7 @@ namespace MagicalLifeGUIWindows.Input.History
                 }
             }
 
-            return null;
+            return new HistoricalInput(true, InputHistory.Selected);
         }
 
         /// <summary>
