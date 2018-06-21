@@ -1,9 +1,25 @@
 # Magical Life
 A fantasy world that imagines what a Rimworld style game could truly do if it had more elements in common with Dungeons and Dragons.
 
+## Project Needs
+* Textures
+* Sound Effects
+* Songs/Soundtrack
+* Quests/Written story/Lore
+
+* Graphical Programmer
+* Testers
+
+If you can provide one of the above things or have skills involving programming graphics or testing, let me know!
+
+You can email me at SneakyTactician@outlook.com or create an issue in this repository.
+
+I would appreciate the help.
+Thanks!
+
 ## Features
 * Multiplayer support
-* Hardware accelerated graphics
+* Hardware accelerated graphics via Monogame
 
 ## Roadmap (In no particular order)
 AKA TODO:
