@@ -11,6 +11,7 @@ namespace MagicalLifeServerShell
     {
         static void Main(string[] args)
         {
+            Startup.Go();
 
             string input;
 

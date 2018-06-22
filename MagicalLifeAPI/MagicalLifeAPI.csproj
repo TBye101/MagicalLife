@@ -141,6 +141,8 @@
     <Compile Include="Networking\Serialization\MessageHandler.cs" />
     <Compile Include="Networking\Serialization\ProtoTypeLoader.cs" />
     <Compile Include="Networking\Serialization\ProtoUtil.cs" />
+    <Compile Include="Server\ICommand.cs" />
+    <Compile Include="Server\ICommandModule.cs" />
     <Compile Include="Universal\IGameLoader.cs" />
     <Compile Include="Load\Loader.cs" />
     <Compile Include="Load\LoadMoniter.cs" />
