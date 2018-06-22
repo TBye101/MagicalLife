@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace MagicalLifeServerShell.API.Settings
 {
-    public class NetworkSettings
+    public class ServerNetworkSettings
     {
         /// <summary>
         /// The port to host the server on.
         /// </summary>
         public int Port { get; set; }
 
-        public NetworkSettings(bool setDefault)
+        public ServerNetworkSettings(bool setDefault)
         {
             this.Port = 58902;
         }
 
-        public NetworkSettings()
+        public ServerNetworkSettings()
         {
 
         }

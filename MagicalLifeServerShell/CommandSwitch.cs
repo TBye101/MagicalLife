@@ -39,8 +39,7 @@ namespace MagicalLifeServerShell
 
             if (!commandFound)
             {
-                Console.WriteLine("Command not found!");
-                MasterLog.DebugWriteLine("Command not found!");
+                Util.WriteLine("Command not found!");
             }
         }
 
@@ -106,8 +105,7 @@ namespace MagicalLifeServerShell
                         if (iitem.getName().ToLower() == inp[1])
                         {
                             cf = true;
-                            Console.WriteLine(iitem.getHelp());
-                            MasterLog.DebugWriteLine(iitem.getHelp());
+                            Util.WriteLine(iitem.getHelp());
                         }
                     }
                 }
@@ -115,8 +113,7 @@ namespace MagicalLifeServerShell
 
             if (!cf)
             {
-                Console.WriteLine("Command not found!");
-                MasterLog.DebugWriteLine("Command not found!");
+                Util.WriteLine("Command not found!");
             }
         }
 
@@ -126,9 +123,8 @@ namespace MagicalLifeServerShell
         /// <param name="inp"></param>
         private static void DisplayModuleHelp(string[] inp)
         {
-            Console.WriteLine("Listing names of commands within the specified module. For detailed command information, do \"(modulename) (commandname) help\"");
-            MasterLog.DebugWriteLine("Listing names of commands within the specified module. For detailed command information, do \"(modulename) (commandname) help\"");
-
+            
+            Util.WriteLine("Listing names of commands within the specified module. For detailed command information, do \"(modulename) (commandname) help\"");
 
             foreach (ICommandModule item in modules)
             {
@@ -136,8 +132,7 @@ namespace MagicalLifeServerShell
                 {
                     foreach (ICommand iitem in item.getCommands())
                     {
-                        Console.WriteLine(iitem.getName());
-                        MasterLog.DebugWriteLine(iitem.getName());
+                        Util.WriteLine(iitem.getName());
                     }
                 }
             }
@@ -148,15 +143,11 @@ namespace MagicalLifeServerShell
         /// </summary>
         private static void DisplayModulesHelp()
         {
-            Console.WriteLine("Displaying module names. For help on individual commands in a module, do \"(modulename) help\"");
-            MasterLog.DebugWriteLine("Displaying module names. For help on individual commands in a module, do \"(modulename) help\"");
-
-            Console.WriteLine("");
-            MasterLog.DebugWriteLine("");
+            Util.WriteLine("Displaying module names. For help on individual commands in a module, do \"(modulename) help\"");
+            Util.WriteLine("");
             foreach (ICommandModule item in modules)
             {
-                Console.WriteLine(item.getCommandUsageName());
-                MasterLog.DebugWriteLine(item.getCommandUsageName());
+                Util.WriteLine(item.getCommandUsageName());
             }
         }
     }

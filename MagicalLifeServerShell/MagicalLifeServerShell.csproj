@@ -38,6 +38,9 @@
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="SimpleTCP, Version=1.0.24.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleTCP.1.0.24\lib\net45\SimpleTCP.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,9 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\Commands\NewGame.cs" />
+    <Compile Include="API\InternalCommandModule.cs" />
     <Compile Include="API\ServerSetting.cs" />
     <Compile Include="API\SettingsHandler.cs" />
-    <Compile Include="API\Settings\NetworkSettings.cs" />
+    <Compile Include="API\Settings\ServerNetworkSettings.cs" />
+    <Compile Include="API\Settings\WorldGenerationSettings.cs" />
     <Compile Include="CommandSwitch.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -61,13 +67,19 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="API\Commands\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\MagicalLifeAPI\MagicalLifeAPI.csproj">
       <Project>{FE8400A7-9DC8-4AB4-8C54-AC5F36BF7639}</Project>
       <Name>MagicalLifeAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MagicalLifeNetworking\MagicalLifeNetworking.csproj">
+      <Project>{BFA54511-668D-4086-8B72-5B71A7D07C28}</Project>
+      <Name>MagicalLifeNetworking</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MagicalLifeServer\MagicalLifeServer.csproj">
+      <Project>{297BEA4D-42A0-4790-8020-C8114AB4DF7E}</Project>
+      <Name>MagicalLifeServer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -15,6 +15,16 @@ namespace MagicalLifeServerShell
     public static class Util
     {
         /// <summary>
+        /// Writes a line to the log and to the console all at once.
+        /// </summary>
+        /// <param name=""></param>
+        public static void WriteLine(string msg)
+        {
+            Console.WriteLine(msg);
+            MasterLog.DebugWriteLine(msg);
+        }
+
+        /// <summary>
         /// Loads all findable ICommandModules.
         /// </summary>
         /// <returns></returns>

@@ -17,7 +17,12 @@ namespace MagicalLifeServerShell.API.Settings
         /// <summary>
         /// Network settings.
         /// </summary>
-        private static ServerSetting<NetworkSettings> NetworkSettings;
+        public static ServerSetting<ServerNetworkSettings> NetworkSettings;
+
+        /// <summary>
+        /// World generation settings.
+        /// </summary>
+        public static ServerSetting<WorldGenerationSettings> WorldGenerationSettings;
 
         private static string ServerSettingsDirectory;
 
@@ -25,7 +30,8 @@ namespace MagicalLifeServerShell.API.Settings
         {
             ServerSettingsDirectory = Directory.CreateDirectory(FileSystemManager.RootDirectory + Path.DirectorySeparatorChar + "Dedicated_Settings").FullName;
 
-            NetworkSettings = new ServerSetting<NetworkSettings>(ServerSettingsDirectory + Path.DirectorySeparatorChar + "NetworkSettings.json", new Settings.NetworkSettings(true));
+            NetworkSettings = new ServerSetting<ServerNetworkSettings>(ServerSettingsDirectory + Path.DirectorySeparatorChar + "Network.json", new Settings.ServerNetworkSettings(true));
+            WorldGenerationSettings = new ServerSetting<WorldGenerationSettings>(ServerSettingsDirectory + Path.DirectorySeparatorChar + "WorldGeneration.json", new Settings.WorldGenerationSettings(true));
         }
     }
 }
