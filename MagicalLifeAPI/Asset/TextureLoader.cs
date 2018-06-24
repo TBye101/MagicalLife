@@ -1,9 +1,10 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Universal;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
-namespace MagicalLifeGUIWindows.Load
+namespace MagicalLifeAPI.Asset
 {
     /// <summary>
     /// Loads all internal textures.
@@ -52,9 +53,10 @@ namespace MagicalLifeGUIWindows.Load
         {
             if (!AssetManager.isServerOnly)
             {
+                Game a = new Game();
                 foreach (string item in this.TexturesToLoad)
                 {
-                    Texture2D texture = Game1.AssetManager.Load<Texture2D>(item);
+                    Texture2D texture = a.Content.Load<Texture2D>(item);
                     AssetManager.RegisterTexture(texture);
                     progress++;
                 }

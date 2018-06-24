@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Load;
+using MagicalLifeAPI.World.Data;
 using MagicalLifeNetworking.Messages;
 using MagicalLifeServer.Networking;
 using System;
@@ -30,9 +31,10 @@ namespace MagicalLifeServer
         {
             Loader load = new Loader();
             string msg = "";
-            load.LoadAll(ref msg, new List<System.Reflection.Assembly>()
+            load.LoadAll(ref msg, new List<Assembly>()
             {
-                Assembly.GetAssembly(typeof(Server))//App is not allowed through the firewall, need to reprompt or something.
+                Assembly.GetAssembly(typeof(Server)),
+                Assembly.GetAssembly(typeof(World))
             });
         }
 

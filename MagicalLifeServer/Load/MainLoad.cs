@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Networking.Messages;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
@@ -14,7 +15,7 @@ namespace MagicalLifeServer.Load
     {
         public int GetTotalOperations()
         {
-            return 2;
+            return 3;
         }
 
         public void InitialStartup(ref int progress)

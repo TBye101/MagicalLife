@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Filing;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Filing;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeServerShell.API.Settings;
 using System;
@@ -16,6 +17,7 @@ namespace MagicalLifeServerShell
     {
         public static void Go()
         {
+            AssetManager.isServerOnly = true;
             FileSystemManager.Initialize();
             MasterLog.Initialize();
             SettingsHandler.Initialize();

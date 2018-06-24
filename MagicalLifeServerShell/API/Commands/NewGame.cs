@@ -1,4 +1,6 @@
-﻿using MagicalLifeAPI.Networking;
+﻿using MagicalLifeAPI.Load;
+using MagicalLifeAPI.Networking;
+using MagicalLifeAPI.Networking.External_Type_Serialization;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeNetworking.Client;
 using MagicalLifeServer;
@@ -8,6 +10,7 @@ using MagicalLifeServerShell.API.Settings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,6 +33,8 @@ namespace MagicalLifeServerShell.API.Commands
 
         public void run(List<string> input)
         {
+            Server.Load();
+
             WorldGenerationSettings wset = SettingsHandler.WorldGenerationSettings.GetSettings();
             Util.WriteLine("Generating world!");
             World.Initialize(wset.DimensionWidth, wset.DimensionHeight, new StoneSprinkle(0));
@@ -39,7 +44,6 @@ namespace MagicalLifeServerShell.API.Commands
             int port = SettingsHandler.NetworkSettings.GetSettings().Port;
             ServerSendRecieve.Initialize(new NetworkSettings(port));
             ClientSendRecieve.Initialize(new NetworkSettings(ServerSendRecieve.TCPServer.Server.GetListeningIPs()[0].ToString(), port));
-            Server.Load();
 
             Util.WriteLine("Done!");
             Server.StartGame();
