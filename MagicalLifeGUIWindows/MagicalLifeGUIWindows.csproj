@@ -152,7 +152,6 @@
     <Compile Include="Input\Specialized Handlers\LivingMoveOrderInputHandler.cs" />
     <Compile Include="Load\Initializer.cs" />
     <Compile Include="Load\InputLoader.cs" />
-    <Compile Include="Load\TextureLoader.cs" />
     <Compile Include="Load\WindowConfig.cs" />
     <Compile Include="Map\ConnectedTextureManager.cs" />
     <Compile Include="Map\RenderingData.cs" />

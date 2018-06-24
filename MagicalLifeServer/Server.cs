@@ -1,6 +1,9 @@
-﻿using MagicalLifeAPI.Load;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Load;
+using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeNetworking.Messages;
+using MagicalLifeServer.Load;
 using MagicalLifeServer.Networking;
 using System;
 using System.Collections.Generic;
@@ -31,10 +34,12 @@ namespace MagicalLifeServer
         {
             Loader load = new Loader();
             string msg = "";
-            load.LoadAll(ref msg, new List<Assembly>()
+
+            load.LoadAll(ref msg, new List<MagicalLifeAPI.Universal.IGameLoader>()
             {
-                Assembly.GetAssembly(typeof(Server)),
-                Assembly.GetAssembly(typeof(World))
+                new TextureLoader(),
+                new ProtoTypeLoader(),
+                new MainLoad()
             });
         }
 

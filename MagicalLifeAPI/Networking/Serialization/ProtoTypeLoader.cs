@@ -23,6 +23,11 @@ namespace MagicalLifeAPI.Networking.Serialization
 
         private List<ITeachSerialization> Teachers = new List<ITeachSerialization>();
 
+        public ProtoTypeLoader()
+        {
+
+        }
+
         public int GetTotalOperations()
         {
             this.Messages.AddRange(ReflectionUtil.LoadTypeOfAllSubclasses<BaseMessage>(Assembly.GetAssembly(typeof(BaseMessage))));

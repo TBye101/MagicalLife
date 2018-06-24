@@ -46,30 +46,30 @@ namespace MagicalLifeAPI.Asset
         /// </summary>
         /// <param name="texture">The texture to add to the registry.</param>
         /// <returns>Returns the index at which the texture can be retrieved from.</returns>
-        public static int RegisterTexture(Texture2D texture)
-        {
-            bool Exists = false;
+        //public static int RegisterTexture(Texture2D texture)
+        //{
+        //    bool Exists = false;
 
-            foreach (Texture2D item in Textures)
-            {
-                if (item.Name == texture.Name)
-                {
-                    Exists = true;
-                    break;
-                }
-            }
+        //    foreach (Texture2D item in Textures)
+        //    {
+        //        if (item.Name == texture.Name)
+        //        {
+        //            Exists = true;
+        //            break;
+        //        }
+        //    }
 
-            if (!Exists)
-            {
-                Textures.Add(texture);
-                int count = Textures.Count - 1;
-                NameToIndex.Add(texture.Name, count);
-                return count;
-            }
-            else
-            {
-                return AssetManager.GetTextureIndex(texture.Name);
-            }
-        }
+        //    if (!Exists)
+        //    {
+        //        Textures.Add(texture);
+        //        int count = Textures.Count - 1;
+        //        NameToIndex.Add(texture.Name, count);
+        //        return count;
+        //    }
+        //    else
+        //    {
+        //        return AssetManager.GetTextureIndex(texture.Name);
+        //    }
+        //}
     }
 }

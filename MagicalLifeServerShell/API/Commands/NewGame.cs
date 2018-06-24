@@ -43,7 +43,7 @@ namespace MagicalLifeServerShell.API.Commands
             Util.WriteLine("Initializing networking!");
             int port = SettingsHandler.NetworkSettings.GetSettings().Port;
             ServerSendRecieve.Initialize(new NetworkSettings(port));
-            ClientSendRecieve.Initialize(new NetworkSettings(ServerSendRecieve.TCPServer.Server.GetListeningIPs()[0].ToString(), port));
+            //ClientSendRecieve.Initialize(new NetworkSettings(ServerSendRecieve.TCPServer.Server.GetListeningIPs()[0].ToString(), port));
 
             Util.WriteLine("Done!");
             Server.StartGame();
