@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Networking;
+﻿using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Serialization;
 using ProtoBuf.Meta;
 using Serilog;
@@ -29,12 +30,20 @@ namespace MagicalLifeAPI.Protobuf.Serialization
         /// <returns></returns>
         public static string Serialize<T>(T data)
         {
-            using (MemoryStream outputStream = new MemoryStream())
+            try
             {
-                TypeModel.Serialize(outputStream, data);
+                using (MemoryStream outputStream = new MemoryStream())
+                {
+                    TypeModel.Serialize(outputStream, data);
 
-                return Convert.ToBase64String(outputStream.GetBuffer(),
-                    0, (int)outputStream.Length);
+                    return Convert.ToBase64String(outputStream.GetBuffer(),
+                        0, (int)outputStream.Length);
+                }
+            }
+            catch (Exception e)
+            {
+                MasterLog.DebugWriteLine(e.Message);
+                return null;
             }
         }
 

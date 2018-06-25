@@ -154,6 +154,7 @@
     <Compile Include="Util\StaticRandom.cs" />
     <Compile Include="Asset\TextureLoader.cs" />
     <Compile Include="World\Base\Item.cs" />
+    <Compile Include="World\Data\ChunkAccess.cs" />
     <Compile Include="World\Data\ChunkAccessRecorder.cs" />
     <Compile Include="World\Data\Chunk.cs" />
     <Compile Include="World\Data\ChunkManager.cs" />
