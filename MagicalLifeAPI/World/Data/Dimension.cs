@@ -15,7 +15,7 @@ namespace MagicalLifeAPI.World.Data
     /// Holds some information about the level of the world.
     /// Could be a dungeon, the starting point, or some other thing.
     /// </summary>
-    [ProtoContract]
+    [ProtoContract(IgnoreListHandling = true)]
     public class Dimension : Unique, IEnumerable<Tile>
     {
 

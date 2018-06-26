@@ -6,7 +6,7 @@ namespace MagicalLifeAPI.DataTypes
     /// <summary>
     /// An 2D array that should have the basic functions of a normal array, but must be compatible with Protobuf-net.
     /// </summary>
-    [ProtoBuf.ProtoContract]
+    [ProtoBuf.ProtoContract(IgnoreListHandling = true)]
     public class ProtoArray<T> : IEnumerable<T>
     {
         /// <summary>
