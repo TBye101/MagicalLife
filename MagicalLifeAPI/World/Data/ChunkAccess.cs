@@ -13,7 +13,7 @@ namespace MagicalLifeAPI.World.Data
     [ProtoContract]
     public class ChunkAccess
     {
-        [ProtoMember(1)]
+        //[ProtoMember(1)]
         public Chunk Chunk { get; set; }
 
         [ProtoMember(2)]

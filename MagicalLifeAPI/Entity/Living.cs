@@ -112,7 +112,7 @@ namespace MagicalLifeAPI.Entities
         {
             return new Dictionary<Type, int>()
             {
-                { typeof(Humanoid.Human), 4}
+                { typeof(Humanoid.Human), 999}
             };
         }
 

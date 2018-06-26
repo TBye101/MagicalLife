@@ -48,6 +48,7 @@ namespace MagicalLifeServerShell.API.Commands
             Util.WriteLine("Done!");
             Server.StartGame();
             Util.WriteLine("Game started!");
+            string world = MagicalLifeAPI.Protobuf.Serialization.ProtoUtil.Serialize(World.Dimensions);
         }
     }
 }

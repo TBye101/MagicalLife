@@ -16,7 +16,7 @@ namespace MagicalLifeAPI.World.Data
     /// Could be a dungeon, the starting point, or some other thing.
     /// </summary>
     [ProtoContract(IgnoreListHandling = true)]
-    public class Dimension : Unique, IEnumerable<Tile>
+    public class Dimension : Unique/*, IEnumerable<Tile>*/
     {
 
         /// <summary>
@@ -119,9 +119,9 @@ namespace MagicalLifeAPI.World.Data
             }
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return this.GetEnumerator();
-        }
+        //IEnumerator IEnumerable.GetEnumerator()
+        //{
+        //    return this.GetEnumerator();
+        //}
     }
 }
