@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Load;
+﻿using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.Load;
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.External_Type_Serialization;
 using MagicalLifeAPI.World.Data;
@@ -43,12 +44,12 @@ namespace MagicalLifeServerShell.API.Commands
             Util.WriteLine("Initializing networking!");
             int port = SettingsHandler.NetworkSettings.GetSettings().Port;
             ServerSendRecieve.Initialize(new NetworkSettings(port));
-            //ClientSendRecieve.Initialize(new NetworkSettings(ServerSendRecieve.TCPServer.Server.GetListeningIPs()[0].ToString(), port));
 
             Util.WriteLine("Done!");
             Server.StartGame();
             Util.WriteLine("Game started!");
             string world = MagicalLifeAPI.Protobuf.Serialization.ProtoUtil.Serialize(World.Dimensions);
+            MasterLog.DebugWriteLine(world);
         }
     }
 }

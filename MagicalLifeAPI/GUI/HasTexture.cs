@@ -7,13 +7,13 @@ namespace MagicalLifeAPI.GUI
     /// Any class that inherits from this has a texture.
     /// </summary>
     [ProtoBuf.ProtoContract]
-    [ProtoBuf.ProtoInclude(1, typeof(Tile))]
-    public class HasTexture : Unique
+    //[ProtoBuf.ProtoInclude(1, typeof(Tile))]
+    public class HasTexture/* : Unique*/
     {
         /// <summary>
         /// The index of the texture in our asset manager.
         /// </summary>
-        [ProtoBuf.ProtoMember(2)]
+        //[ProtoBuf.ProtoMember(2)]
         public int TextureIndex { get; set; }
 
         public HasTexture(int textureIndex)

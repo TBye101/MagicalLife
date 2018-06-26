@@ -14,7 +14,8 @@ namespace MagicalLifeAPI.World.Data
     public class ChunkAccessRecorder
     {
         [ProtoMember(1)]
-        private Queue<DateTime> Accesses = new Queue<DateTime>();
+        private List<DateTime> Accesses = new List<DateTime>();//Gotta make my own protobuf-net compatible queue
+                                                                 //Or something specifically well suited for how this queue is used
 
         [ProtoMember(2)]
         private int ChunkX;
@@ -60,7 +61,7 @@ namespace MagicalLifeAPI.World.Data
         /// </summary>
         public void Access()
         {
-            this.Accesses.Enqueue(DateTime.Now);
+            this.Accesses.Add(DateTime.Now);
         }
 
         /// <summary>
@@ -78,9 +79,12 @@ namespace MagicalLifeAPI.World.Data
         /// </summary>
         private void RemoveStale()
         {
-            while (DateTime.Now.Subtract(this.Accesses.Peek()).Milliseconds > this.MilliSecondTimeout)
+            if (this.Accesses.Count > 0)
             {
-                this.Accesses.Dequeue();
+                while (DateTime.Now.Subtract(this.Accesses[0]).Milliseconds > this.MilliSecondTimeout)
+                {
+                    this.Accesses.RemoveAt(0);
+                }
             }
         }
     }

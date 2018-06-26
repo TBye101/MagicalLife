@@ -18,7 +18,7 @@ namespace MagicalLifeAPI.World.Data
     [ProtoContract(IgnoreListHandling = true)]
     public class Chunk : Unique/*, IEnumerable<Tile>*/
     {
-        [ProtoMember(1)]
+        //[ProtoMember(1)]
         public List<Living> Creatures;
 
         [ProtoMember(2)]
