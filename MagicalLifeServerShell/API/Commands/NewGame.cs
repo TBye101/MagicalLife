@@ -1,13 +1,18 @@
-﻿using MagicalLifeAPI.Filing.Logging;
+﻿using MagicalLifeAPI.Entities;
+using MagicalLifeAPI.Entities.Humanoid;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Load;
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.External_Type_Serialization;
+using MagicalLifeAPI.Protobuf.Serialization;
+using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeNetworking.Client;
 using MagicalLifeServer;
 using MagicalLifeServer.Networking;
 using MagicalLifeServer.ServerWorld.World_Generation.Generators;
 using MagicalLifeServerShell.API.Settings;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,7 +53,15 @@ namespace MagicalLifeServerShell.API.Commands
             Util.WriteLine("Done!");
             Server.StartGame();
             Util.WriteLine("Game started!");
-            string world = MagicalLifeAPI.Protobuf.Serialization.ProtoUtil.Serialize(World.Dimensions);
+            //string world = MagicalLifeAPI.Protobuf.Serialization.ProtoUtil.Serialize(World.Dimensions);
+            Point point = new Point(3, 1);
+            MagicalLifeAPI.World.Tiles.Dirt test = new MagicalLifeAPI.World.Tiles.Dirt(3, 1);
+            string te = test.Location.ToString();
+            MasterLog.DebugWriteLine("Test" + te);
+            string world = MagicalLifeAPI.Protobuf.Serialization.ProtoUtil.Serialize<MagicalLifeAPI.World.Tiles.Dirt>(test);
+            MagicalLifeAPI.World.Tiles.Dirt dirt = ProtoUtil.Deserialize<MagicalLifeAPI.World.Tiles.Dirt>(world);
+            //string world = ProtoUtil.Serialize<Test>(new MagicalLifeAPI.GUI.Test3());
+            //MagicalLifeAPI.GUI.Test3 test = ProtoUtil.Deserialize<MagicalLifeAPI.GUI.Test3>(world);
             MasterLog.DebugWriteLine(world);
         }
     }

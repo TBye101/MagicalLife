@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,18 +12,22 @@ namespace MagicalLifeServerShell
     {
         static void Main(string[] args)
         {
-            Startup.Go();
+            PT pt = new PT(3, 1);
+            Point point = new Point(3, 1);
+            StackTest.Derived derived = new StackTest.Derived(point);
 
-            string input;
+            //Startup.Go();
 
-            while (true)
-            {
-                input = Console.ReadLine();
-                MasterLog.DebugWriteLine(input);
+            //string input;
 
-                CommandSwitch.RecieveInput(input);
+            //while (true)
+            //{
+            //    input = Console.ReadLine();
+            //    MasterLog.DebugWriteLine(input);
 
-            }
+            //    CommandSwitch.RecieveInput(input);
+
+            //}
         }
     }
 }
