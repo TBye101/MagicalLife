@@ -14,7 +14,7 @@ namespace MagicalLifeAPI.World
     /// Every tile that implements this class must provide a parameterless version of itself for reflection purposes. That constructor will not be used during gameplay.
     /// </summary>
     [ProtoContract]
-    public abstract class Tile/* : HasTexture,*/ : IHasSubclasses
+    public abstract class Tile : /*HasTexture,*/ IHasSubclasses
     {
         /// <summary>
         /// Initializes a new tile object.
@@ -77,7 +77,7 @@ namespace MagicalLifeAPI.World
         /// Returns the movement cost of this tile.
         /// Should be between 1-100.
         /// </summary>
-        //[ProtoMember(3)]
+        [ProtoMember(3)]
         public int MovementCost { get; set; }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// The resources that can be found in this tile.
         /// </summary>
-        //[ProtoMember(4)]
+        [ProtoMember(4)]
         public Resource Resources { get; set; }
 
         //public List<Vegetation> Plants { get; set; } = new List<Vegetation>();
@@ -106,13 +106,13 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// The location of this tile in the tile map.
         /// </summary>
-        //[ProtoMember(5)]
+        [ProtoMember(5)]
         public Point Location { get; set; }
 
         /// <summary>
         /// The entity that is in this tile. Is null if there is not an entity in this tile.
         /// </summary>
-        //[ProtoMember(6)]
+        [ProtoMember(6)]
         public Living Living { get; set; } = null;
 
         /// <summary>
