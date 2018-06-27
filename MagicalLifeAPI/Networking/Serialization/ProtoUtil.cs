@@ -78,16 +78,6 @@ namespace MagicalLifeAPI.Protobuf.Serialization
             {
                 return (T)TypeModel.Deserialize(ms, null, typeof(T));
             }
-
-            //using (MemoryStream ms = new MemoryStream())
-            //{
-            //    using (StreamWriter sw = new StreamWriter(ms))
-            //    {
-            //        sw.Write(data);
-            //        //ms.Position = 0;
-            //        return (T)TypeModel.Deserialize(ms, null, typeof(T));
-            //    }
-            //}
         }
     }
 }

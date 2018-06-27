@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeTests", "Magical
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeServerShell", "MagicalLifeServerShell\MagicalLifeServerShell.csproj", "{38385939-AFA9-44AA-9291-20F48EBFE8E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeAPITests1", "MagicalLifeAPITests1\MagicalLifeAPITests1.csproj", "{803FCAA7-22C3-44D1-9CC8-3516F2847E55}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -127,6 +129,18 @@ Global
 		{38385939-AFA9-44AA-9291-20F48EBFE8E9}.Release|x64.Build.0 = Release|Any CPU
 		{38385939-AFA9-44AA-9291-20F48EBFE8E9}.Release|x86.ActiveCfg = Release|Any CPU
 		{38385939-AFA9-44AA-9291-20F48EBFE8E9}.Release|x86.Build.0 = Release|Any CPU
+		{803FCAA7-22C3-44D1-9CC8-3516F2847E55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{803FCAA7-22C3-44D1-9CC8-3516F2847E55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{803FCAA7-22C3-44D1-9CC8-3516F2847E55}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{803FCAA7-22C3-44D1-9CC8-3516F2847E55}.Debug|x64.Build.0 = Debug|Any CPU
+		{803FCAA7-22C3-44D1-9CC8-3516F2847E55}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{803FCAA7-22C3-44D1-9CC8-3516F2847E55}.Debug|x86.Build.0 = Debug|Any CPU
+		{803FCAA7-22C3-44D1-9CC8-3516F2847E55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{803FCAA7-22C3-44D1-9CC8-3516F2847E55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{803FCAA7-22C3-44D1-9CC8-3516F2847E55}.Release|x64.ActiveCfg = Release|Any CPU
+		{803FCAA7-22C3-44D1-9CC8-3516F2847E55}.Release|x64.Build.0 = Release|Any CPU
+		{803FCAA7-22C3-44D1-9CC8-3516F2847E55}.Release|x86.ActiveCfg = Release|Any CPU
+		{803FCAA7-22C3-44D1-9CC8-3516F2847E55}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

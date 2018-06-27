@@ -20,6 +20,7 @@ namespace MagicalLifeAPI.Networking.Messages
 
         public WorldTransferMessage() : base(2)
         {
+
         }
     }
 }

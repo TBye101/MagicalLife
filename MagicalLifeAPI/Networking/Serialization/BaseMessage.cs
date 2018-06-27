@@ -19,5 +19,10 @@ namespace MagicalLifeAPI.Networking.Serialization
         {
             this.ID = id;
         }
+
+        public BaseMessage()
+        {
+
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Load;
 using MagicalLifeAPI.Networking.External_Type_Serialization;
+using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
@@ -80,6 +81,7 @@ namespace MagicalLifeGUIWindows
                 new InputLoader(),
                 new TextureLoader(),
                 new TextureLoader(this.Content),
+                new ProtoTypeLoader(),
                 new Initializer()
             });
 

@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Entities;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Entities.Humanoid;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Load;
@@ -54,14 +55,6 @@ namespace MagicalLifeServerShell.API.Commands
             Util.WriteLine("Done!");
             Server.StartGame();
             Util.WriteLine("Game started!");
-            //string world = MagicalLifeAPI.Protobuf.Serialization.ProtoUtil.Serialize(World.Dimensions);
-            Point point = new Point(3, 1);
-            Chunk test = World.GetChunk(0, 0, 0);
-            string world = MagicalLifeAPI.Protobuf.Serialization.ProtoUtil.Serialize<Chunk>(test);
-            Chunk chunk = ProtoUtil.Deserialize<Chunk>(world);
-            //string world = ProtoUtil.Serialize<Test>(new MagicalLifeAPI.GUI.Test3());
-            //MagicalLifeAPI.GUI.Test3 test = ProtoUtil.Deserialize<MagicalLifeAPI.GUI.Test3>(world);
-            MasterLog.DebugWriteLine(world);
         }
     }
 }
