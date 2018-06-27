@@ -14,7 +14,7 @@ namespace MagicalLifeAPI.World
     /// Every tile that implements this class must provide a parameterless version of itself for reflection purposes. That constructor will not be used during gameplay.
     /// </summary>
     [ProtoContract]
-    public abstract class Tile : /*HasTexture,*/ IHasSubclasses
+    public abstract class Tile : HasTexture, IHasSubclasses
     {
         /// <summary>
         /// Initializes a new tile object.
@@ -26,7 +26,7 @@ namespace MagicalLifeAPI.World
             this.Location = location;
             this.MovementCost = movementCost;
             Tile.TileCreatedHandler(new TileEventArg(this));
-            //this.TextureIndex = AssetManager.GetTextureIndex(this.GetTextureName());
+            this.TextureIndex = AssetManager.GetTextureIndex(this.GetTextureName());
         }
 
         public Tile(int x, int y, int movementCost) : this(new Point(x, y), movementCost)

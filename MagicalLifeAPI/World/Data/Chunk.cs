@@ -52,6 +52,11 @@ namespace MagicalLifeAPI.World.Data
             this.BiomeID = biomeID;
         }
 
+        public Chunk() : base()
+        {
+
+        }
+
         /// <summary>
         /// Returns the creature in the specified location.
         /// </summary>

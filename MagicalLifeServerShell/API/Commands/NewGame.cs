@@ -56,11 +56,9 @@ namespace MagicalLifeServerShell.API.Commands
             Util.WriteLine("Game started!");
             //string world = MagicalLifeAPI.Protobuf.Serialization.ProtoUtil.Serialize(World.Dimensions);
             Point point = new Point(3, 1);
-            MagicalLifeAPI.World.Tiles.Dirt test = new MagicalLifeAPI.World.Tiles.Dirt(3, 1);
-            string te = test.Location.ToString();
-            MasterLog.DebugWriteLine("Test" + te);
-            string world = MagicalLifeAPI.Protobuf.Serialization.ProtoUtil.Serialize<Tile>(test);
-            MagicalLifeAPI.World.Tiles.Dirt dirt = ProtoUtil.Deserialize<MagicalLifeAPI.World.Tiles.Dirt>(world);
+            Chunk test = World.GetChunk(0, 0, 0);
+            string world = MagicalLifeAPI.Protobuf.Serialization.ProtoUtil.Serialize<Chunk>(test);
+            Chunk chunk = ProtoUtil.Deserialize<Chunk>(world);
             //string world = ProtoUtil.Serialize<Test>(new MagicalLifeAPI.GUI.Test3());
             //MagicalLifeAPI.GUI.Test3 test = ProtoUtil.Deserialize<MagicalLifeAPI.GUI.Test3>(world);
             MasterLog.DebugWriteLine(world);
