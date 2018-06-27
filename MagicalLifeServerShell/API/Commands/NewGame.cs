@@ -38,10 +38,6 @@ namespace MagicalLifeServerShell.API.Commands
             int port = SettingsHandler.NetworkSettings.GetSettings().Port;
             ServerSendRecieve.Initialize(new NetworkSettings(port));
 
-            Util.WriteLine("Done!");
-            Server.StartGame();
-            Util.WriteLine("Game started!");
-
             WorldTransferMessage msg = new WorldTransferMessage(World.Dimensions);
             string data = ProtoUtil.Serialize<WorldTransferMessage>(msg);
             BaseMessage test = ProtoUtil.Deserialize<BaseMessage>(data);
@@ -51,9 +47,9 @@ namespace MagicalLifeServerShell.API.Commands
                 WorldTransferMessage transfer = (WorldTransferMessage)test;
             }
 
-            //Dimension msg = World.Dimensions[0];
-            //string data = ProtoUtil.Serialize<Dimension>(msg);
-            //Dimension test = ProtoUtil.Deserialize<Dimension>(data);
+            Util.WriteLine("Done!");
+            Server.StartGame();
+            Util.WriteLine("Game started!");
         }
     }
 }

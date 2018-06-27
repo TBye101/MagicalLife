@@ -78,7 +78,7 @@ namespace MagicalLifeAPI.World.Data
         {
             Random r = new Random();
             Dimension zero = new Dimension("First Reality", generator.GenerateWorld(chunkWidth, chunkHeight, r));
-            World.Dimensions.Add(zero);
+            //World.Dimensions.Add(zero);
             World.DimensionGeneratedHandler(World.Dimensions.Count - 1);
         }
 

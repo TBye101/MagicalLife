@@ -10,7 +10,7 @@ namespace MagicalLifeAPI.Networking.Messages
     [ProtoBuf.ProtoContract]
     public class WorldTransferMessage : BaseMessage
     {
-        [ProtoBuf.ProtoMember(2)]
+        [ProtoBuf.ProtoMember(5)]
         public List<Dimension> World;
 
         public WorldTransferMessage(List<Dimension> world) : base(2)

@@ -10,7 +10,7 @@ namespace MagicalLifeAPI.Networking.Messages
         /// <summary>
         /// The tick that the server is on.
         /// </summary>
-        [ProtoMember(1)]
+        [ProtoMember(5)]
         public UInt64 Tick;
 
         public ServerTickMessage() : base(4)

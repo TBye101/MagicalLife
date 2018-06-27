@@ -9,13 +9,13 @@ namespace MagicalLifeAPI.Networking.Messages
     [ProtoContract]
     public class RouteCreatedMessage : BaseMessage
     {
-        [ProtoMember(1)]
+        [ProtoMember(5)]
         public List<PathLink> Path;
 
-        [ProtoMember(2)]
+        [ProtoMember(6)]
         public Guid LivingID;
 
-        [ProtoMember(3)]
+        [ProtoMember(7)]
         public int Dimension;
 
         public RouteCreatedMessage(List<PathLink> path, Guid livingID, int dimension) : base(3)
