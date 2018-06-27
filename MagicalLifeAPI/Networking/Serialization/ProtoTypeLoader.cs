@@ -47,7 +47,8 @@ namespace MagicalLifeAPI.Networking.Serialization
 
             MetaType baseMessageType = current.Add(typeof(BaseMessage), true);
 
-            List<IHasSubclasses> ToProcess = ReflectionUtil.LoadAllInterface<IHasSubclasses>(Assembly.GetAssembly(typeof(BaseMessage)));
+            // = ReflectionUtil.LoadAllInterface<IHasSubclasses>(Assembly.GetAssembly(typeof(BaseMessage)));
+            List<IHasSubclasses> ToProcess = new List<IHasSubclasses>();
             ToProcess.AddRange(ReflectionUtil.LoadAllInterface<IHasSubclasses>(Assembly.GetAssembly(typeof(Tile))));
 
             foreach (IHasSubclasses item in ToProcess)

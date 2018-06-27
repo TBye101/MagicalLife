@@ -12,22 +12,17 @@ namespace MagicalLifeServerShell
     {
         static void Main(string[] args)
         {
-            PT pt = new PT(3, 1);
-            Point point = new Point(3, 1);
-            StackTest.Derived derived = new StackTest.Derived(point);
+            Startup.Go();
 
-            //Startup.Go();
+            string input;
 
-            //string input;
+            while (true)
+            {
+                input = Console.ReadLine();
+                MasterLog.DebugWriteLine(input);
 
-            //while (true)
-            //{
-            //    input = Console.ReadLine();
-            //    MasterLog.DebugWriteLine(input);
-
-            //    CommandSwitch.RecieveInput(input);
-
-            //}
+                CommandSwitch.RecieveInput(input);
+            }
         }
     }
 }
