@@ -1,6 +1,4 @@
-﻿using MagicalLifeAPI.Filing.Logging;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace MagicalLifeServerShell
@@ -123,7 +121,6 @@ namespace MagicalLifeServerShell
         /// <param name="inp"></param>
         private static void DisplayModuleHelp(string[] inp)
         {
-            
             Util.WriteLine("Listing names of commands within the specified module. For detailed command information, do \"(modulename) (commandname) help\"");
 
             foreach (ICommandModule item in modules)

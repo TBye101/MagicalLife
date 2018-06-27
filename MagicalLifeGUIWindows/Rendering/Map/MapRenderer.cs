@@ -1,12 +1,10 @@
 ﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Resources;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 
 namespace MagicalLifeGUIWindows.Rendering.Map
 {

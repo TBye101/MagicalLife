@@ -1,6 +1,4 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Universal;
-using Microsoft.Xna.Framework;
+﻿using MagicalLifeAPI.Universal;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -19,7 +17,6 @@ namespace MagicalLifeAPI.Asset
 
         private List<string> TexturesToLoad = new List<string>();
 
-
         private ContentManager Manager;
 
         public TextureLoader(ContentManager manager)
@@ -29,7 +26,6 @@ namespace MagicalLifeAPI.Asset
 
         public TextureLoader()
         {
-
         }
 
         public int GetTotalOperations()

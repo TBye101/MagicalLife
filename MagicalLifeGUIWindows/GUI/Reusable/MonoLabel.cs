@@ -20,7 +20,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         public Alignment TextAlignment { get; private set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="bounds"></param>
         /// <param name="image"></param>

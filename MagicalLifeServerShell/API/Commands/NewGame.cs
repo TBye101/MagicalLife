@@ -1,26 +1,12 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities;
-using MagicalLifeAPI.Entities.Humanoid;
-using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Load;
-using MagicalLifeAPI.Networking;
-using MagicalLifeAPI.Networking.External_Type_Serialization;
-using MagicalLifeAPI.Protobuf.Serialization;
-using MagicalLifeAPI.Universal;
-using MagicalLifeAPI.World;
+﻿using MagicalLifeAPI.Networking;
+using MagicalLifeAPI.Networking.Messages;
+using MagicalLifeAPI.Networking.Serialization;
+using MagicalLifeAPI.Networking.Server;
 using MagicalLifeAPI.World.Data;
-using MagicalLifeNetworking.Client;
 using MagicalLifeServer;
-using MagicalLifeServer.Networking;
 using MagicalLifeServer.ServerWorld.World_Generation.Generators;
 using MagicalLifeServerShell.API.Settings;
-using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeServerShell.API.Commands
 {
@@ -55,6 +41,19 @@ namespace MagicalLifeServerShell.API.Commands
             Util.WriteLine("Done!");
             Server.StartGame();
             Util.WriteLine("Game started!");
+
+            WorldTransferMessage msg = new WorldTransferMessage(World.Dimensions);
+            string data = ProtoUtil.Serialize<WorldTransferMessage>(msg);
+            BaseMessage test = ProtoUtil.Deserialize<BaseMessage>(data);
+
+            if (test.ID == 2)
+            {
+                WorldTransferMessage transfer = (WorldTransferMessage)test;
+            }
+
+            //Dimension msg = World.Dimensions[0];
+            //string data = ProtoUtil.Serialize<Dimension>(msg);
+            //Dimension test = ProtoUtil.Deserialize<Dimension>(data);
         }
     }
 }

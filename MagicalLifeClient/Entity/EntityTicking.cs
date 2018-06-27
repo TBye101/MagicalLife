@@ -1,15 +1,6 @@
 ﻿using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Entities.Movement;
-using MagicalLifeAPI.Pathfinding;
-using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
-using MagicalLifeNetworking.Client;
-using MagicalLifeNetworking.Messages;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeClient.Entity
 {

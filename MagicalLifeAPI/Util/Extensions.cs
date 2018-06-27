@@ -17,7 +17,7 @@ namespace MagicalLifeAPI.Util
         {
             //{ X:[Microsoft.Xna.Framework.Point.X] Y:[Microsoft.Xna.Framework.Point.Y]}
             string[] split = point.Split('Y');
-            //{ X:[Microsoft.Xna.Framework.Point.X] 
+            //{ X:[Microsoft.Xna.Framework.Point.X]
             //:[Microsoft.Xna.Framework.Point.Y]}
             string xString = split[0];
             string yString = split[1];

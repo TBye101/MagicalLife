@@ -200,10 +200,6 @@
       <Project>{fc0297b3-bace-4edc-b951-6f89a779dbe4}</Project>
       <Name>MagicalLifeClient</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MagicalLifeNetworking\MagicalLifeNetworking.csproj">
-      <Project>{BFA54511-668D-4086-8B72-5B71A7D07C28}</Project>
-      <Name>MagicalLifeNetworking</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MagicalLifeServer\MagicalLifeServer.csproj">
       <Project>{297BEA4D-42A0-4790-8020-C8114AB4DF7E}</Project>
       <Name>MagicalLifeServer</Name>

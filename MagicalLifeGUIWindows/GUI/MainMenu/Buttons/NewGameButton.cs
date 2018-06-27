@@ -1,5 +1,5 @@
-﻿using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeNetworking.Client;
+﻿using MagicalLifeAPI.Networking.Client;
+using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MagicalLifeServerShell.API.Settings
+﻿namespace MagicalLifeServerShell.API.Settings
 {
     /// <summary>
     /// Holds some settings that determines how the next generated world will turn out.
@@ -23,7 +17,6 @@ namespace MagicalLifeServerShell.API.Settings
 
         public WorldGenerationSettings()
         {
-
         }
     }
 }

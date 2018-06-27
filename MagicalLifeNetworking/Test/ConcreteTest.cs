@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Networking.Serialization;
+using MagicalLifeNetworking.Serialization;
 
 namespace MagicalLifeAPI.Networking.Test
 {

@@ -82,10 +82,6 @@
       <Project>{FE8400A7-9DC8-4AB4-8C54-AC5F36BF7639}</Project>
       <Name>MagicalLifeAPI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MagicalLifeNetworking\MagicalLifeNetworking.csproj">
-      <Project>{BFA54511-668D-4086-8B72-5B71A7D07C28}</Project>
-      <Name>MagicalLifeNetworking</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MagicalLifeServer\MagicalLifeServer.csproj">
       <Project>{297BEA4D-42A0-4790-8020-C8114AB4DF7E}</Project>
       <Name>MagicalLifeServer</Name>

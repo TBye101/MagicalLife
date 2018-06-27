@@ -2,12 +2,7 @@
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Universal;
 using ProtoBuf;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.World.Data
 {
@@ -18,7 +13,6 @@ namespace MagicalLifeAPI.World.Data
     [ProtoContract(IgnoreListHandling = true)]
     public class Dimension : Unique/*, IEnumerable<Tile>*/
     {
-
         /// <summary>
         /// Handles access to the chunks stored in this dimension.
         /// </summary>
@@ -81,7 +75,6 @@ namespace MagicalLifeAPI.World.Data
 
         public Dimension()
         {
-
         }
 
         public Chunk GetChunkForLocation(int x, int y)
@@ -99,7 +92,7 @@ namespace MagicalLifeAPI.World.Data
         {
             return this.Manager.GetChunk(chunkX, chunkY);
         }
-        
+
         /// <summary>
         /// Determines if the specified tile exists, without loading the tile.
         /// </summary>

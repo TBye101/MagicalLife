@@ -55,24 +55,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Serialization\BaseMessage.cs" />
     <Compile Include="Client\ClientProcessor.cs" />
     <Compile Include="Client\ClientSendRecieve.cs" />
     <Compile Include="Client\TCPClient.cs" />
+    <Compile Include="Serialization\MessageHandler.cs" />
     <Compile Include="Messages\RouteCreatedMessage.cs" />
     <Compile Include="Messages\ServerTickMessage.cs" />
     <Compile Include="Messages\WorldTransferMessage.cs" />
     <Compile Include="NetworkSettings.cs" />
+    <Compile Include="Serialization\ProtoTypeLoader.cs" />
+    <Compile Include="Serialization\ProtoUtil.cs" />
     <Compile Include="Test\ConcreteTest.cs" />
     <Compile Include="Test\ConcreteTestHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server\ServerSendRecieve.cs" />
     <Compile Include="Server\TCPServer.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MagicalLifeAPI\MagicalLifeAPI.csproj">
-      <Project>{FE8400A7-9DC8-4AB4-8C54-AC5F36BF7639}</Project>
-      <Name>MagicalLifeAPI</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

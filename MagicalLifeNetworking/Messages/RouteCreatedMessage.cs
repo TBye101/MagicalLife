@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Pathfinding;
+using MagicalLifeNetworking.Serialization;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;

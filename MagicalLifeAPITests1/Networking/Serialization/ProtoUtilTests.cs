@@ -1,13 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MagicalLifeAPI.Protobuf.Serialization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MagicalLifeAPI.Networking.Serialization;
+﻿using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.World.Tiles;
-using MagicalLifeAPI.World.Data;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace MagicalLifeAPI.Protobuf.Serialization.Tests
 {

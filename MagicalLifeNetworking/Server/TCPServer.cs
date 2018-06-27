@@ -1,11 +1,5 @@
-﻿using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Networking;
-using MagicalLifeAPI.Networking.Messages;
-using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeAPI.Protobuf;
-using MagicalLifeAPI.Protobuf.Serialization;
-using MagicalLifeAPI.World;
-using MagicalLifeAPI.World.Data;
+﻿using MagicalLifeAPI.Networking.Messages;
+using MagicalLifeNetworking.Serialization;
 using SimpleTCP;
 using System;
 using System.Net.Sockets;
@@ -33,7 +27,7 @@ namespace MagicalLifeServer.Networking
 
             foreach (System.Net.IPAddress item in this.Server.GetListeningIPs())
             {
-                MasterLog.DebugWriteLine("Server listening on: " + item.ToString());
+                //MasterLog.DebugWriteLine("Server listening on: " + item.ToString());
             }
 
             this.Server.ClientConnected += this.Server_ClientConnected;
@@ -47,12 +41,12 @@ namespace MagicalLifeServer.Networking
 
         private void Server_ClientDisconnected(object sender, System.Net.Sockets.TcpClient e)
         {
-            MasterLog.DebugWriteLine("Client disconnected");
+            //MasterLog.DebugWriteLine("Client disconnected");
         }
 
         private void Server_ClientConnected(object sender, System.Net.Sockets.TcpClient e)
         {
-            MasterLog.DebugWriteLine("Client connection received");
+            //MasterLog.DebugWriteLine("Client connection received");
 
             //this.Send<ConcreteTest>(new ConcreteTest(), e.Client);
             this.Send<WorldTransferMessage>(new WorldTransferMessage(World.Dimensions), e.Client);
@@ -67,7 +61,8 @@ namespace MagicalLifeServer.Networking
         public void Send<T>(T data, Socket client)
             where T : BaseMessage
         {
-            client.Send(Convert.FromBase64String(ProtoUtil.Serialize<T>(data)));
+            //client.Send(Convert.FromBase64String(ProtoUtil.Serialize<T>(data)));
+            client.Send(ProtoUtil.SerializeToByte<T>(data));
         }
 
         /// <summary>

@@ -3,12 +3,7 @@ using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Universal;
 using Microsoft.Xna.Framework;
 using ProtoBuf;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.World.Data
 {
@@ -43,7 +38,6 @@ namespace MagicalLifeAPI.World.Data
         /// </summary>
         public static int Height = 15;
 
-
         public Chunk(List<Living> creatures, ProtoArray<Tile> tiles, Point location, string biomeID) : base()
         {
             this.Creatures = creatures;
@@ -54,7 +48,6 @@ namespace MagicalLifeAPI.World.Data
 
         public Chunk() : base()
         {
-
         }
 
         /// <summary>

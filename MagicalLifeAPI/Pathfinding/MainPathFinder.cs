@@ -15,9 +15,8 @@ namespace MagicalLifeAPI.Pathfinding
 
         public static void Initialize()
         {
-
         }
-        
+
         /// <summary>
         /// Creates a pathfinder for a dimension.
         /// </summary>

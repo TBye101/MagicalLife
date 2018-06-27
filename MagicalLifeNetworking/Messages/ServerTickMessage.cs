@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Serialization;
+using MagicalLifeNetworking.Serialization;
 using ProtoBuf;
 using System;
 

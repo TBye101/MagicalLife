@@ -1,6 +1,4 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities;
-using MagicalLifeAPI.Filing.Logging;
+﻿using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
 using Microsoft.Xna.Framework;

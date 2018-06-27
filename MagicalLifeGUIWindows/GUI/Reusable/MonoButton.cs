@@ -8,7 +8,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
     public abstract class MonoButton : GUIElement
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="imageName"></param>
         /// <param name="displayArea"></param>

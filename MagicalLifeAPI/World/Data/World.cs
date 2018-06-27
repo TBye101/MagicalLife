@@ -1,5 +1,4 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Universal;
+﻿using MagicalLifeAPI.Universal;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
@@ -31,7 +30,7 @@ namespace MagicalLifeAPI.World.Data
         public World()
         {
         }
-        
+
         /// <summary>
         /// Returns the chunk at the specified chunk location.
         /// </summary>

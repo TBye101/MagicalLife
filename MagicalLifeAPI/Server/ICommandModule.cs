@@ -1,5 +1,4 @@
-﻿using MagicalLifeServerShell;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace MagicalLifeServerShell
 {

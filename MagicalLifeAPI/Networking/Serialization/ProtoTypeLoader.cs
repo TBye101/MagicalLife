@@ -1,6 +1,4 @@
 ﻿using MagicalLifeAPI.Networking.External_Type_Serialization;
-using MagicalLifeAPI.Protobuf;
-using MagicalLifeAPI.Protobuf.Serialization;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
@@ -25,7 +23,6 @@ namespace MagicalLifeAPI.Networking.Serialization
 
         public ProtoTypeLoader()
         {
-
         }
 
         public int GetTotalOperations()

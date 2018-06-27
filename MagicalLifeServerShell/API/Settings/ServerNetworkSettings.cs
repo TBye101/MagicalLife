@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MagicalLifeServerShell.API.Settings
+﻿namespace MagicalLifeServerShell.API.Settings
 {
     public class ServerNetworkSettings
     {
@@ -20,7 +14,6 @@ namespace MagicalLifeServerShell.API.Settings
 
         public ServerNetworkSettings()
         {
-
         }
     }
 }

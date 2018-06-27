@@ -1,11 +1,8 @@
-﻿using System.Linq;
+﻿using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.Util;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Reflection;
-using System.Threading;
-using MagicalLifeAPI.Util;
-using MagicalLifeAPI.Filing.Logging;
 
 namespace MagicalLifeServerShell
 {

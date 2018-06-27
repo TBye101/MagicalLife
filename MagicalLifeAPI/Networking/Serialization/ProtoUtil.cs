@@ -1,13 +1,11 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Networking;
-using MagicalLifeAPI.Networking.Serialization;
 using ProtoBuf.Meta;
 using Serilog;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace MagicalLifeAPI.Protobuf.Serialization
+namespace MagicalLifeAPI.Networking.Serialization
 {
     /// <summary>
     /// Used to serialize and deserialize using https://github.com/mgravell/protobuf-net.
@@ -38,6 +36,24 @@ namespace MagicalLifeAPI.Protobuf.Serialization
 
                     return Convert.ToBase64String(outputStream.GetBuffer(),
                         0, (int)outputStream.Length);
+                }
+            }
+            catch (Exception e)
+            {
+                MasterLog.DebugWriteLine(e.Message);
+                return null;
+            }
+        }
+
+        public static byte[] SerializeToByte<T>(T data)
+        {
+            try
+            {
+                using (MemoryStream outputStream = new MemoryStream())
+                {
+                    TypeModel.Serialize(outputStream, data);
+
+                    return outputStream.GetBuffer();
                 }
             }
             catch (Exception e)

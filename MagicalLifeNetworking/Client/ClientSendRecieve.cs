@@ -2,6 +2,8 @@
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeClient.Networking;
 using MagicalLifeClient.Processing;
+using MagicalLifeNetworking.Messages;
+using MagicalLifeNetworking.Serialization;
 using MagicalLifeServer.Networking;
 using System.Collections.Generic;
 using System.Threading.Tasks;

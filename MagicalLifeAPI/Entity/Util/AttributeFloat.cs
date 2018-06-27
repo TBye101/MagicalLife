@@ -1,10 +1,7 @@
 ﻿using MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions;
-using MagicalLifeAPI.Filing.Logging;
 using ProtoBuf;
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Entities.Util
 {

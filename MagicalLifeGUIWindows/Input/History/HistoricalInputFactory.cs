@@ -1,6 +1,5 @@
 ﻿using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.Rendering;
 using Microsoft.Xna.Framework;
@@ -45,7 +44,7 @@ namespace MagicalLifeGUIWindows.Input.History
                         select = item;
                         break;
                     }
-                } 
+                }
 
                 if (select != null)
                 {
