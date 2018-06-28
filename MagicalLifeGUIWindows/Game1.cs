@@ -74,11 +74,11 @@ namespace MagicalLifeGUIWindows
             //});
             load.LoadAll(ref msg, new List<IGameLoader>()
             {
+                new Initializer(),
                 new InputLoader(),
-                new TextureLoader(),
                 new TextureLoader(this.Content),
-                new ProtoTypeLoader(),
-                new Initializer()
+                new TextureLoader(),
+                new ProtoTypeLoader()
             });
 
             // TODO: use this.Content to load your game content here

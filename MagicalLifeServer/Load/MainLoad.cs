@@ -16,7 +16,7 @@ namespace MagicalLifeServer.Load
 
         public void InitialStartup(ref int progress)
         {
-            World.DimensionGenerated += this.World_DimensionGenerated;
+            World.DimensionAdded += this.World_DimensionGenerated;
             progress++;
             ServerProcessor.Initialize();
             progress++;

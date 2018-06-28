@@ -77,7 +77,7 @@ namespace MagicalLifeServer
         /// </summary>
         public static void StartGame()
         {
-            //SetupTick();
+            SetupTick();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MagicalLifeAPI.World.Data;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Pathfinding
@@ -15,13 +16,19 @@ namespace MagicalLifeAPI.Pathfinding
 
         public static void Initialize()
         {
+            World.Data.World.DimensionAdded += World_DimensionAdded;
+        }
+
+        private static void World_DimensionAdded(object sender, int e)
+        {
+            PrepForDimension(World.Data.World.Dimensions[e]);
         }
 
         /// <summary>
         /// Creates a pathfinder for a dimension.
         /// </summary>
         /// <param name="dimension"></param>
-        public static void PrepForDimension(int dimension)
+        public static void PrepForDimension(Dimension dimension)
         {
             AStar.AStar star = new AStar.AStar();
             star.Initialize(dimension);

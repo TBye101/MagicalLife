@@ -22,13 +22,25 @@ namespace MagicalLifeAPI.World.Data
         public static WorldStorage Storage { get; set; } = new WorldStorage(Filing.FileSystemManager.GetIOSafeTime());
 
         /// <summary>
-        /// Raised when the world is finished generating for the first time.
+        /// Raised when a dimension is added for the first time.
         /// The int is the dimension ID aka where it can be found within <see cref="Dimensions"/>.
         /// </summary>
-        public static event EventHandler<int> DimensionGenerated;
+        public static event EventHandler<int> DimensionAdded;
 
         public World()
         {
+        }
+
+        /// <summary>
+        /// Adds a dimension to the dimension list properly.
+        /// </summary>
+        /// <param name="dimension">The dimension to add.</param>
+        /// <returns>The dimension ID.</returns>
+        public static int AddDimension(Dimension dimension)
+        {
+            World.Dimensions.Add(dimension);
+            World.DimensionAddedHandler(World.Dimensions.Count - 1);
+            return World.Dimensions.Count - 1;
         }
 
         /// <summary>
@@ -78,17 +90,15 @@ namespace MagicalLifeAPI.World.Data
         {
             Random r = new Random();
             Dimension zero = new Dimension("First Reality", generator.GenerateWorld(chunkWidth, chunkHeight, r));
-            //World.Dimensions.Add(zero);
-            World.DimensionGeneratedHandler(World.Dimensions.Count - 1);
         }
 
         /// <summary>
-        /// Raises the world generated event.
+        /// Raises the dimension added event.
         /// </summary>
         /// <param name="e"></param>
-        public static void DimensionGeneratedHandler(int e)
+        public static void DimensionAddedHandler(int e)
         {
-            EventHandler<int> handler = DimensionGenerated;
+            EventHandler<int> handler = DimensionAdded;
             if (handler != null)
             {
                 handler(null, e);

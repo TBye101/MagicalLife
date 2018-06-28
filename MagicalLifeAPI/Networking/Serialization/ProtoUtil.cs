@@ -90,9 +90,17 @@ namespace MagicalLifeAPI.Networking.Serialization
 
         public static T Deserialize<T>(string data)
         {
-            using (MemoryStream ms = new MemoryStream(Convert.FromBase64String(data)))
+            try
             {
-                return (T)TypeModel.Deserialize(ms, null, typeof(T));
+                using (MemoryStream ms = new MemoryStream(Convert.FromBase64String(data)))
+                {
+                    return (T)TypeModel.Deserialize(ms, null, typeof(T));
+                }
+            }
+            catch (Exception e)
+            {
+                MasterLog.DebugWriteLine(e.Message);
+                return default(T);
             }
         }
     }

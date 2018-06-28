@@ -10,7 +10,7 @@ namespace MagicalLifeAPI.World.Data
     /// <summary>
     /// Holds a section of the world.
     /// </summary>
-    [ProtoContract(IgnoreListHandling = true)]
+    [ProtoContract]
     public class Chunk : Unique
     {
         [ProtoMember(1)]

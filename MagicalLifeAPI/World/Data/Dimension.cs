@@ -10,8 +10,8 @@ namespace MagicalLifeAPI.World.Data
     /// Holds some information about the level of the world.
     /// Could be a dungeon, the starting point, or some other thing.
     /// </summary>
-    [ProtoContract(IgnoreListHandling = true)]
-    public class Dimension : Unique/*, IEnumerable<Tile>*/
+    [ProtoContract]
+    public class Dimension : Unique
     {
         /// <summary>
         /// Handles access to the chunks stored in this dimension.
@@ -65,12 +65,10 @@ namespace MagicalLifeAPI.World.Data
             this.DimensionName = dimensionName;
             World.Storage.PrepareForDimension(this.ID);
 
-            World.Dimensions.Add(this);
-            int dimensionID = World.Dimensions.Count - 1;
+            
+            int dimensionID = World.AddDimension(this);
 
             //Anything that needs a dimensionID
-
-            MainPathFinder.PrepForDimension(dimensionID);
         }
 
         public Dimension()
@@ -111,10 +109,5 @@ namespace MagicalLifeAPI.World.Data
                 yield return item;
             }
         }
-
-        //IEnumerator IEnumerable.GetEnumerator()
-        //{
-        //    return this.GetEnumerator();
-        //}
     }
 }

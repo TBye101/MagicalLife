@@ -13,10 +13,17 @@ namespace MagicalLifeServerShell
 
             while (true)
             {
-                input = Console.ReadLine();
-                MasterLog.DebugWriteLine(input);
+                try
+                {
+                    input = Console.ReadLine();
+                    MasterLog.DebugWriteLine(input);
 
-                CommandSwitch.RecieveInput(input);
+                    CommandSwitch.RecieveInput(input);
+                }
+                catch (Exception e)
+                {
+                    MasterLog.DebugWriteLine(e.Message);
+                }
             }
         }
     }

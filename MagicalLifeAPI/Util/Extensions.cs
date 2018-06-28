@@ -1,11 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MagicalLifeAPI.DataTypes;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Util
 {
     public static class Extensions
     {
-        public static void EnqueueCollection<T>(Queue<T> queue, IReadOnlyList<T> segments)
+        public static void EnqueueCollection<T>(ProtoQueue<T> queue, IReadOnlyList<T> segments)
         {
             foreach (T item in segments)
             {

@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Universal;
+using MagicalLifeAPI.World;
 
 namespace MagicalLifeAPI.GUI
 {
@@ -6,7 +7,7 @@ namespace MagicalLifeAPI.GUI
     /// Any class that inherits from this has a texture.
     /// </summary>
     [ProtoBuf.ProtoContract]
-    //[ProtoBuf.ProtoInclude(1, typeof(Tile))]
+    [ProtoBuf.ProtoInclude(1, typeof(Tile))]
     public class HasTexture : Unique
     {
         /// <summary>

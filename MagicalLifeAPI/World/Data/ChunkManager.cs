@@ -8,8 +8,8 @@ namespace MagicalLifeAPI.World.Data
     /// <summary>
     /// Manages what chunks are loaded and cached from a given list of chunks.
     /// </summary>
-    [ProtoContract(IgnoreListHandling = true)]
-    public sealed class ChunkManager/* : IEnumerable<Tile>*/
+    [ProtoContract]
+    public sealed class ChunkManager
     {
         /// <summary>
         /// A 2D array that holds every chunk in the dimension that this chunk manager services.
@@ -144,10 +144,5 @@ namespace MagicalLifeAPI.World.Data
                 }
             }
         }
-
-        //IEnumerator IEnumerable.GetEnumerator()
-        //{
-        //    return this.GetEnumerator();
-        //}
     }
 }

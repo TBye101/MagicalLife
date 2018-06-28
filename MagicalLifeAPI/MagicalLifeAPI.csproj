@@ -114,6 +114,7 @@
     <Compile Include="DataTypes\FixedSizeQueue.cs" />
     <Compile Include="DataTypes\PointFloat.cs" />
     <Compile Include="DataTypes\ProtoArray.cs" />
+    <Compile Include="DataTypes\ProtoQueue.cs" />
     <Compile Include="Entity\Entity Factory\HumanFactory.cs" />
     <Compile Include="Entity\Eventing\LivingEventArg.cs" />
     <Compile Include="Entity\Humanoid\Human.cs" />

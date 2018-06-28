@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
@@ -19,7 +20,7 @@ namespace MagicalLifeAPI.Entities.Movement
         /// <param name="entity"></param>
         public static void MoveEntity(ref Living entity)
         {
-            Queue<PathLink> path = entity.QueuedMovement;
+            ProtoQueue<PathLink> path = entity.QueuedMovement;
 
             //MasterLog.DebugWriteLine("Creature movement speed: " + entity.Movement.GetValue().ToString());
             while (entity.Movement.GetValue() > 0 && path.Count > 0)

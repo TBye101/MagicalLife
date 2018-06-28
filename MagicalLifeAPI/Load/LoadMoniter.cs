@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Filing.Logging;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.Util;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace MagicalLifeAPI.Load
         /// <summary>
         /// The jobs that are still queued up.
         /// </summary>
-        private Queue<IGameLoader> Jobs { get; set; } = new Queue<IGameLoader>();
+        private ProtoQueue<IGameLoader> Jobs { get; set; } = new ProtoQueue<IGameLoader>();
 
         /// <summary>
         /// Adds a job to the queue.

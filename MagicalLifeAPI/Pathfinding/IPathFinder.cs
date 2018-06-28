@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MagicalLifeAPI.World.Data;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Pathfinding
@@ -19,10 +20,10 @@ namespace MagicalLifeAPI.Pathfinding
         List<PathLink> GetRoute(int dimension, Point origin, Point destination);
 
         /// <summary>
-        /// Run whatever startup code you need to before being capable of world generating here.
+        /// Run whatever startup code you need to before being capable of graph building  for the dimension.
         /// <paramref name="dimension"/>The dimension this pathfinder must handle.</param>
         /// </summary>
-        void Initialize(int dimension);
+        void Initialize(Dimension dimension);
 
         /// <summary>
         /// Removes all links to the specified location.
