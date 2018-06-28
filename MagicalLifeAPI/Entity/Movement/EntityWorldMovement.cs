@@ -122,7 +122,7 @@ namespace MagicalLifeAPI.Entities.Movement
                 movementPenalty = MathUtil.GetDistance(entity.ScreenLocation, destination.Location);
             }
 
-            entity.Movement.AddModifier(new Tuple<float, IModifierRemoveCondition, string>(movementPenalty, new TimeRemoveCondition(1), "Normal Movement"));
+            entity.Movement.AddModifier(new Entity.Util.ModifierFloat(movementPenalty, new TimeRemoveCondition(1), "Normal Movement"));
             //MasterLog.DebugWriteLine("Post move location: " + entity.ScreenLocation.X.ToString() + ", " + entity.ScreenLocation.Y.ToString());
         }
 

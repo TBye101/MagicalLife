@@ -110,6 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Asset\AssetManager.cs" />
+    <Compile Include="DataTypes\Attribute\ModifierFloat.cs" />
     <Compile Include="DataTypes\FixedSizeQueue.cs" />
     <Compile Include="DataTypes\PointFloat.cs" />
     <Compile Include="DataTypes\ProtoArray.cs" />
@@ -118,11 +119,12 @@
     <Compile Include="Entity\Humanoid\Human.cs" />
     <Compile Include="Entity\Living.cs" />
     <Compile Include="Entity\Movement\Direction.cs" />
-    <Compile Include="Entity\Util\Attribute32.cs" />
-    <Compile Include="Entity\Util\AttributeFloat.cs" />
+    <Compile Include="DataTypes\Attribute\Attribute32.cs" />
+    <Compile Include="DataTypes\Attribute\AttributeFloat.cs" />
     <Compile Include="Entity\Util\Modifier Remove Conditions\IModifierRemoveCondition.cs" />
     <Compile Include="Entity\Util\Modifier Remove Conditions\NeverRemoveCondition.cs" />
     <Compile Include="Entity\Util\Modifier Remove Conditions\TimeRemoveCondition.cs" />
+    <Compile Include="DataTypes\Attribute\Modifier32.cs" />
     <Compile Include="GUI\Test.cs" />
     <Compile Include="GUI\Test2.cs" />
     <Compile Include="GUI\Test3.cs" />

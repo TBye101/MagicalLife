@@ -1,35 +1,37 @@
 ﻿using MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions;
+using MagicalLifeAPI.Entity.Util;
 using ProtoBuf;
 using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Entities.Util
 {
     [ProtoContract]
-    public class AttributeFloat
+    public class Attribute32
     {
         /// <summary>
         /// The int value is applied to the value of this attribute, while the <see cref="IModifierRemoveCondition"/> is used to determine if the modifier will wear off.
         /// The string value is a display message/reason as to why the modifier was applied.
         /// </summary>
         [ProtoMember(1)]//This doesn't serialize. 
-        public ConcurrentStack<Tuple<float, IModifierRemoveCondition, string>> Modifiers { get; private set; } = new ConcurrentStack<Tuple<float, IModifierRemoveCondition, string>>();
+        public List<Modifier32> Modifiers { get; private set; } = new List<Modifier32>();
 
-        public AttributeFloat(float value) : this()
+        public Attribute32(Int32 value) : this()
         {
-            this.AddModifier(new Tuple<float, IModifierRemoveCondition, string>(value, new NeverRemoveCondition(), "Base value"));
+            this.AddModifier(new Modifier32(value, new NeverRemoveCondition(), "Base value"));
         }
 
-        public AttributeFloat()
+        public Attribute32()
         {
         }
 
         public float GetValue()
         {
             float ret = 0;
-            foreach (Tuple<float, IModifierRemoveCondition, string> item in this.Modifiers)
+            foreach (Modifier32 item in this.Modifiers)
             {
-                ret += item.Item1;
+                ret += item.Value;
             }
             return ret;
         }
@@ -38,21 +40,21 @@ namespace MagicalLifeAPI.Entities.Util
         /// Adds a modifier to the modifiers list.
         /// </summary>
         /// <param name="modifier"></param>
-        public void AddModifier(Tuple<float, IModifierRemoveCondition, string> modifier)
+        public void AddModifier(Modifier32 modifier)
         {
-            this.Modifiers.Push(modifier);
+            this.Modifiers.Add(modifier);
         }
 
         public void WearOff()
         {
-            foreach (Tuple<float, IModifierRemoveCondition, string> item in this.Modifiers)
+            lock (this.Modifiers)
             {
-                Tuple<float, IModifierRemoveCondition, string> o;
-                if (this.Modifiers.TryPop(out o))
+                int length = this.Modifiers.Count;
+                for (int i = length; i > 0; i--)
                 {
-                    if (!o.Item2.WearOff())
+                    if (this.Modifiers[i].RemoveCondition.WearOff())
                     {
-                        this.Modifiers.Push(o);
+                        this.Modifiers.RemoveAt(i);
                     }
                 }
             }

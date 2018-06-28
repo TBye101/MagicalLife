@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.DataTypes.Attribute;
 using MagicalLifeAPI.Entities.Eventing;
 using MagicalLifeAPI.Entities.Util;
 using MagicalLifeAPI.GUI;
@@ -26,8 +27,8 @@ namespace MagicalLifeAPI.Entities
         /// <summary>
         /// How many hit points this creature has.
         /// </summary>
-        //[ProtoMember(2)]
-        public Util.Attribute32 Health { get; set; }
+        [ProtoMember(2)]
+        public Attribute32 Health { get; set; }
 
         /// <summary>
         /// How fast this creature can during a single tick.
