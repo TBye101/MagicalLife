@@ -24,7 +24,7 @@ namespace MagicalLifeGUIWindows
             x2 /= size.X;
             y2 /= size.Y;
 
-            if (World.Dimensions[dimension].DoesTileExist(x2, y2))
+            if (World.Dimensions.Count > 0 && World.Dimensions[dimension].DoesTileExist(x2, y2))
             {
                 success = true;
                 return new Point(x2, y2);

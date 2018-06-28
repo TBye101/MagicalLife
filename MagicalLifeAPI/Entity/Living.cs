@@ -26,7 +26,7 @@ namespace MagicalLifeAPI.Entities
         /// <summary>
         /// How many hit points this creature has.
         /// </summary>
-        [ProtoMember(2)]
+        //[ProtoMember(2)]
         public Util.Attribute32 Health { get; set; }
 
         /// <summary>

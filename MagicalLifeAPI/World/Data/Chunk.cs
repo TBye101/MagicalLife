@@ -11,9 +11,9 @@ namespace MagicalLifeAPI.World.Data
     /// Holds a section of the world.
     /// </summary>
     [ProtoContract(IgnoreListHandling = true)]
-    public class Chunk : Unique/*, IEnumerable<Tile>*/
+    public class Chunk : Unique
     {
-        //[ProtoMember(1)]
+        [ProtoMember(1)]
         public List<Living> Creatures;
 
         [ProtoMember(2)]
@@ -48,6 +48,10 @@ namespace MagicalLifeAPI.World.Data
 
         public Chunk() : base()
         {
+            if (this.Creatures == null)
+            {
+                this.Creatures = new List<Living>();
+            }
         }
 
         /// <summary>
@@ -79,10 +83,5 @@ namespace MagicalLifeAPI.World.Data
                 yield return item;
             }
         }
-
-        //IEnumerator IEnumerable.GetEnumerator()
-        //{
-        //    return this.GetEnumerator();
-        //}
     }
 }

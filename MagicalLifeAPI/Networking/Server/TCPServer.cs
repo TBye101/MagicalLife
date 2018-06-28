@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Networking.Serialization;
+﻿using MagicalLifeAPI.Networking.Messages;
+using MagicalLifeAPI.Networking.Serialization;
 using SimpleTCP;
 using System;
 using System.Net.Sockets;
@@ -48,7 +49,7 @@ namespace MagicalLifeAPI.Networking.Server
             //MasterLog.DebugWriteLine("Client connection received");
 
             //this.Send<ConcreteTest>(new ConcreteTest(), e.Client);
-            //this.Send<WorldTransferMessage>(new WorldTransferMessage(World.Dimensions), e.Client);
+            this.Send<WorldTransferMessage>(new WorldTransferMessage(World.Data.World.Dimensions), e.Client);
         }
 
         /// <summary>
@@ -60,8 +61,8 @@ namespace MagicalLifeAPI.Networking.Server
         public void Send<T>(T data, Socket client)
             where T : BaseMessage
         {
-            //client.Send(Convert.FromBase64String(ProtoUtil.Serialize<T>(data)));
-            client.Send(ProtoUtil.SerializeToByte<T>(data));
+            client.Send(Convert.FromBase64String(ProtoUtil.Serialize<T>(data)));
+            //client.Send(ProtoUtil.SerializeToByte<T>(data));
         }
 
         /// <summary>

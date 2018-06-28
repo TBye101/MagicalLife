@@ -12,7 +12,7 @@ namespace MagicalLifeAPI.Entities.Util
         /// The int value is applied to the value of this attribute, while the <see cref="IModifierRemoveCondition"/> is used to determine if the modifier will wear off.
         /// The string value is a display message/reason as to why the modifier was applied.
         /// </summary>
-        [ProtoMember(1)]
+        [ProtoMember(1)]//This doesn't serialize. 
         public ConcurrentStack<Tuple<float, IModifierRemoveCondition, string>> Modifiers { get; private set; } = new ConcurrentStack<Tuple<float, IModifierRemoveCondition, string>>();
 
         public AttributeFloat(float value) : this()
