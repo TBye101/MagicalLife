@@ -78,6 +78,7 @@ namespace MagicalLifeAPI.Networking.Serialization
 
                     ms.Position = 0;
                     BaseMessage message = (BaseMessage)TypeModel.Deserialize(ms, null, IDToMessage[Base.ID]);
+                    MasterLog.DebugWriteLine("Deserialized Message ID: " + message.ID.ToString());
                     return message;
                 }
             }

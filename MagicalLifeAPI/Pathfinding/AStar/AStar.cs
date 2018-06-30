@@ -64,7 +64,7 @@ namespace MagicalLifeAPI.Pathfinding.AStar
                 if (!item.IsWalkable)
                 {
                     this.Grid.BlockCell(pos);
-                    //MasterLog.DebugWriteLine("Blocking tile: " + pos.ToString());
+                    MasterLog.DebugWriteLine("Blocking tile: " + pos.ToString());
                 }
             }
         }

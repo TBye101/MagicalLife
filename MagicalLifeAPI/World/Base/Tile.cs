@@ -27,6 +27,7 @@ namespace MagicalLifeAPI.World
             this.MovementCost = movementCost;
             Tile.TileCreatedHandler(new TileEventArg(this));
             this.TextureIndex = AssetManager.GetTextureIndex(this.GetTextureName());
+            this.IsWalkable = true;
         }
 
         public Tile(int x, int y, int movementCost) : this(new Point(x, y), movementCost)
@@ -41,32 +42,7 @@ namespace MagicalLifeAPI.World
         }
 
         [ProtoMember(2)]
-        public bool isWalkable = true;
-
-        /// <summary>
-        /// If true, then the tile can be walked on by living.
-        /// </summary>
-        public bool IsWalkable
-        {
-            get
-            {
-                return this.isWalkable;
-            }
-
-            set
-            {
-                if (value)
-                {
-                    //Pathfinding.MainPathFinder.PFinder.AddConnections(this.Location);
-                }
-                else
-                {
-                    //Pathfinding.MainPathFinder.PFinder.RemoveConnections(this.Location);
-                }
-
-                this.isWalkable = value;
-            }
-        }
+        public bool IsWalkable;
 
         /// <summary>
         /// Returns the name of the biome that this tile belongs to.
@@ -108,12 +84,6 @@ namespace MagicalLifeAPI.World
         /// </summary>
         [ProtoMember(5)]
         public Point Location { get; set; }
-
-        /// <summary>
-        /// The entity that is in this tile. Is null if there is not an entity in this tile.
-        /// </summary>
-        [ProtoMember(6)]
-        public Living Living { get; set; } = null;
 
         /// <summary>
         /// Raised when the world is finished generating for the first time.

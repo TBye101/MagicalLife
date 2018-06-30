@@ -50,7 +50,7 @@ namespace MagicalLifeAPI.Entities.Util
             lock (this.Modifiers)
             {
                 int length = this.Modifiers.Count;
-                for (int i = length; i > 0; i--)
+                for (int i = length - 1; i >= 0; i--)
                 {
                     if (this.Modifiers[i].RemoveCondition.WearOff())
                     {

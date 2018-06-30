@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Universal;
+﻿using MagicalLifeAPI.GUI;
+using MagicalLifeAPI.Universal;
 using ProtoBuf;
 
 namespace MagicalLifeAPI.World.Base
@@ -7,7 +8,7 @@ namespace MagicalLifeAPI.World.Base
     /// Represents almost everything in a movable/harvested form.
     /// </summary>
     [ProtoContract]
-    public abstract class Item : Unique
+    public abstract class Item : HasTexture
     {
         /// <summary>
         /// The name of this <see cref="Item"/>;

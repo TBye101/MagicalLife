@@ -24,7 +24,7 @@ namespace MagicalLifeServer.Message_Handlers
             if (Validated(msg.Path, msg.Dimension))
             {
                 //Living l = World.MainWorld.Chunks[msg.Path[0].Origin.X, msg.Path[0].Origin.Y].Living;
-                Living l = World.Dimensions[msg.Dimension][msg.Path[0].Origin.X, msg.Path[0].Origin.Y].Living;
+                World.Dimensions[msg.Dimension].GetChunkForLocation(msg.Path[0].Origin.X, msg.Path[0].Origin.Y).GetCreature(msg.Path[0].Origin, out Living l);
 
                 if (l != null && l.ID == msg.LivingID)
                 {
@@ -43,8 +43,8 @@ namespace MagicalLifeServer.Message_Handlers
         {
             foreach (PathLink item in msg)
             {
-                bool a = World.Dimensions[dimension][item.Origin.X, item.Origin.Y].isWalkable;
-                bool b = World.Dimensions[dimension][item.Destination.X, item.Destination.Y].isWalkable;
+                bool a = World.Dimensions[dimension][item.Origin.X, item.Origin.Y].IsWalkable;
+                bool b = World.Dimensions[dimension][item.Destination.X, item.Destination.Y].IsWalkable;
 
                 if (a == false || b == false)
                 {

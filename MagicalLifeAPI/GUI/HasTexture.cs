@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World;
+using MagicalLifeAPI.World.Base;
 
 namespace MagicalLifeAPI.GUI
 {
@@ -8,6 +9,7 @@ namespace MagicalLifeAPI.GUI
     /// </summary>
     [ProtoBuf.ProtoContract]
     [ProtoBuf.ProtoInclude(1, typeof(Tile))]
+    [ProtoBuf.ProtoInclude(3, typeof(Item))]
     public class HasTexture : Unique
     {
         /// <summary>

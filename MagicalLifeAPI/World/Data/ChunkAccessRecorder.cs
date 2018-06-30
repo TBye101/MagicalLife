@@ -11,9 +11,7 @@ namespace MagicalLifeAPI.World.Data
     public class ChunkAccessRecorder
     {
         [ProtoMember(1)]
-        private List<DateTime> Accesses = new List<DateTime>();//Gotta make my own protobuf-net compatible queue
-
-                                                               //Or something specifically well suited for how this queue is used
+        private List<DateTime> Accesses = new List<DateTime>();
 
         [ProtoMember(2)]
         private int ChunkX;

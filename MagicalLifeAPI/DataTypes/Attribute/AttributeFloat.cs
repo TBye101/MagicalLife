@@ -14,7 +14,7 @@ namespace MagicalLifeAPI.DataTypes.Attribute
         /// The int value is applied to the value of this attribute, while the <see cref="IModifierRemoveCondition"/> is used to determine if the modifier will wear off.
         /// The string value is a display message/reason as to why the modifier was applied.
         /// </summary>
-        [ProtoMember(1)]//This doesn't serialize. 
+        [ProtoMember(1)]
         public List<ModifierFloat> Modifiers { get; private set; } = new List<ModifierFloat>();
 
         public AttributeFloat(float value) : this()
@@ -50,7 +50,7 @@ namespace MagicalLifeAPI.DataTypes.Attribute
             lock (this.Modifiers)
             {
                 int length = this.Modifiers.Count;
-                for (int i = length; i > 0; i--)
+                for (int i = length - 1; i >= 0; i--)
                 {
                     if (this.Modifiers[i].RemoveCondition.WearOff())
                     {
