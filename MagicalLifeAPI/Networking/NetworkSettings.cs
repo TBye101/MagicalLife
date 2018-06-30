@@ -8,7 +8,7 @@
         /// <summary>
         /// If true, then the game is local and not over the network.
         /// </summary>
-        public bool Local { get; set; }
+        public EngineMode Mode { get; set; }
 
         /// <summary>
         /// The IP of the server.
@@ -20,20 +20,20 @@
         /// </summary>
         public int Port { get; set; }
 
-        public NetworkSettings(bool local)
+        public NetworkSettings(EngineMode mode = EngineMode.ServerAndClient)
         {
-            this.Local = local;
+            this.Mode = mode;
         }
 
         public NetworkSettings(int port)
         {
             this.Port = port;
-            this.Local = false;
+            this.Mode = EngineMode.ServerOnly;
         }
 
         public NetworkSettings(string serverIP, int port)
         {
-            this.Local = false;
+            this.Mode = EngineMode.ClientOnly;
             this.ServerIP = serverIP;
             this.Port = port;
         }

@@ -20,8 +20,8 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu.Buttons
 
         public override void Click(MouseEventArgs e)
         {
-            ServerSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(true));
-            Server.Load();
+            ServerSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(MagicalLifeAPI.Networking.EngineMode.ServerAndClient));
+            Server.Load(MagicalLifeAPI.Networking.EngineMode.ServerAndClient);
             Client.Load();
             Server.StartGame();
             NewGameInputHandler a = new NewGameInputHandler();

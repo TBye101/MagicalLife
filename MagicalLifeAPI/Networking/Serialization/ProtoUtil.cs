@@ -87,6 +87,11 @@ namespace MagicalLifeAPI.Networking.Serialization
                 Log.Debug(e, "Unknown message type!");
                 return null;
             }
+            catch (StackOverflowException e)
+            {
+                Log.Debug(e, "Possible message structure recursion!");
+                return null;
+            }
         }
 
         public static T Deserialize<T>(string data)

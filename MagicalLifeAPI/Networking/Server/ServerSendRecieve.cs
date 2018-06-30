@@ -14,7 +14,7 @@ namespace MagicalLifeAPI.Networking.Server
         /// <summary>
         /// If true, then the game is not over the network.
         /// </summary>
-        private static bool Local;
+        private static EngineMode Local;
 
         public static TCPServer TCPServer;
 
@@ -30,9 +30,9 @@ namespace MagicalLifeAPI.Networking.Server
 
         public static void Initialize(NetworkSettings networkSettings)
         {
-            Local = networkSettings.Local;
+            Local = networkSettings.Mode;
 
-            if (!Local)
+            if (Local == EngineMode.ServerAndClient || Local == EngineMode.ServerOnly)
             {
                 TCPServer = new TCPServer();
                 TCPServer.Start(networkSettings.Port);
@@ -46,7 +46,7 @@ namespace MagicalLifeAPI.Networking.Server
         public static void Send<T>(T message, Socket client)
             where T : BaseMessage
         {
-            if (Local)
+            if (Local == EngineMode.ServerAndClient)
             {
                 ClientSendRecieve.Recieve(message);
             }
@@ -63,7 +63,7 @@ namespace MagicalLifeAPI.Networking.Server
         public static void SendAll<T>(T message)
             where T : BaseMessage
         {
-            if (Local)
+            if (Local == EngineMode.ServerAndClient)
             {
                 ClientSendRecieve.Recieve(message);
             }

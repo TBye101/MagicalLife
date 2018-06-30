@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Load;
+using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Networking.Server;
@@ -28,17 +29,31 @@ namespace MagicalLifeServer
         /// </summary>
         public static event EventHandler<UInt64> ServerTick;
 
-        public static void Load()
+        public static void Load(EngineMode mode)
         {
             Loader load = new Loader();
             string msg = "";
 
-            load.LoadAll(ref msg, new List<MagicalLifeAPI.Universal.IGameLoader>()
+            switch (mode)
             {
-                new TextureLoader(),
-                new ProtoTypeLoader(),
-                new MainLoad()
-            });
+                case EngineMode.ServerAndClient:
+                    load.LoadAll(ref msg, new List<MagicalLifeAPI.Universal.IGameLoader>()
+                    {
+                        new TextureLoader(),
+                        new MainLoad()
+                    });
+                    break;
+                case EngineMode.ServerOnly:
+                    load.LoadAll(ref msg, new List<MagicalLifeAPI.Universal.IGameLoader>()
+                    {
+                        new TextureLoader(),
+                        new ProtoTypeLoader(),
+                        new MainLoad()
+                    });
+                    break;
+                default:
+                    throw new Exception("Unexpected networking mode initiated!");
+            }
         }
 
         private static void SetupTick()

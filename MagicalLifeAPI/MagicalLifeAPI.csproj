@@ -132,6 +132,7 @@
     <Compile Include="Networking\Client\ClientProcessor.cs" />
     <Compile Include="Networking\Client\ClientSendRecieve.cs" />
     <Compile Include="Networking\Client\TCPClient.cs" />
+    <Compile Include="Networking\EngineMode.cs" />
     <Compile Include="Networking\External Type Serialization\PointTeacher.cs" />
     <Compile Include="Filing\FileSystemManager.cs" />
     <Compile Include="Filing\Logging\MasterLog.cs" />

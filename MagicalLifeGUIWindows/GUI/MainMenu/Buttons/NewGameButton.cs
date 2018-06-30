@@ -14,7 +14,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
         public override void Click(MouseEventArgs e)
         {
             New_World_Menu.NewWorldMenu.Initialize();
-            ClientSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(true));
+            ClientSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(MagicalLifeAPI.Networking.EngineMode.ServerAndClient));
         }
 
         public override void DoubleClick(MouseEventArgs e)

@@ -27,7 +27,7 @@ namespace MagicalLifeServerShell.API.Commands
 
         public void run(List<string> input)
         {
-            Server.Load();
+            Server.Load(EngineMode.ServerOnly);
 
             WorldGenerationSettings wset = SettingsHandler.WorldGenerationSettings.GetSettings();
             Util.WriteLine("Generating world!");

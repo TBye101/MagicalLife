@@ -26,7 +26,7 @@ namespace MagicalLifeAPI.Networking.Client
         {
             NetworkSettings = networkSettings;
 
-            if (!NetworkSettings.Local)
+            if (networkSettings.Mode == EngineMode.ClientOnly)
             {
                 TCPClient = new TCPClient();
                 TCPClient.Start(NetworkSettings.Port, NetworkSettings.ServerIP);
@@ -40,7 +40,7 @@ namespace MagicalLifeAPI.Networking.Client
         public static void Send<T>(T message)
             where T : BaseMessage
         {
-            if (NetworkSettings.Local)
+            if (NetworkSettings.Mode == EngineMode.ServerAndClient)
             {
                 ServerSendRecieve.Recieve(message);
             }
