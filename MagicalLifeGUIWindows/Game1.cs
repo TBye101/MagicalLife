@@ -66,22 +66,14 @@ namespace MagicalLifeGUIWindows
             Loader load = new Loader();
             string msg = string.Empty;
 
-            //load.LoadAll(ref msg, new List<Assembly>
-            //{
-            //    Assembly.GetAssembly(typeof(World)),
-            //    Assembly.GetAssembly(typeof(Game1)),
-            //    Assembly.GetAssembly(typeof(PointTeacher))
-            //});
             load.LoadAll(ref msg, new List<IGameLoader>()
             {
-                new Initializer(),
                 new InputLoader(),
-                new TextureLoader(this.Content),
+                new Initializer(),
                 new TextureLoader(),
+                new TextureLoader(this.Content),
                 new ProtoTypeLoader()
             });
-
-            // TODO: use this.Content to load your game content here
         }
 
         /// <summary>

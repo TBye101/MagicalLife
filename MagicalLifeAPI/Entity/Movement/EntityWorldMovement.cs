@@ -25,7 +25,7 @@ namespace MagicalLifeAPI.Entities.Movement
             //MasterLog.DebugWriteLine("Creature movement speed: " + entity.Movement.GetValue().ToString());
             while (entity.Movement.GetValue() > 0 && path.Count > 0)
             {
-                PathLink section = path.Peek();
+                PathLink section = path.Peek();//Should use a normal list, and pull from [0], queue pulls in the wrong order
 
                 Tile sourceTile = World.Data.World.Dimensions[entity.Dimension][section.Origin.X, section.Origin.Y];
                 Tile destinationTile = World.Data.World.Dimensions[entity.Dimension][section.Destination.X, section.Destination.Y];

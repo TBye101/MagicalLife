@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace MagicalLifeAPI.DataTypes
 {
     /// <summary>
-    /// A protobuf-net compatible Queue class.
+    /// A protobuf-net compatible FIFO (first in first out) Queue class
     /// </summary>
     [ProtoContract]
     public class ProtoQueue<T> : IEnumerable<T>
@@ -29,7 +29,7 @@ namespace MagicalLifeAPI.DataTypes
         {
             int length = this.Data.Count;
 
-            for (int i = length; i > 0; i--)
+            for (int i = 0; i < length; i++)
             {
                 yield return this.Data[i];
             }
@@ -44,7 +44,7 @@ namespace MagicalLifeAPI.DataTypes
         {
             if (this.Data.Count > 0)
             {
-                T item = this.Data[this.Data.Count - 1];
+                T item = this.Data[0];
                 this.Data.Remove(item);
                 return item;
             }
@@ -78,7 +78,7 @@ namespace MagicalLifeAPI.DataTypes
         {
             if (this.Data.Count > 0)
             {
-                return this.Data[this.Data.Count - 1];
+                return this.Data[0];
             }
             else
             {
