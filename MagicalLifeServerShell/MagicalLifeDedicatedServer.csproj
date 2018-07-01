@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{38385939-AFA9-44AA-9291-20F48EBFE8E9}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>MagicalLifeServerShell</RootNamespace>
-    <AssemblyName>MagicalLifeServerShell</AssemblyName>
+    <RootNamespace>MagicalLifeDedicatedServer</RootNamespace>
+    <AssemblyName>MagicalLifeDedicatedServer</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

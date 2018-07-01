@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeServer", "Magica
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeTests", "MagicalLifeTests\MagicalLifeTests.csproj", "{360CE991-7729-4D7E-B2E2-C64B15316B38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeServerShell", "MagicalLifeServerShell\MagicalLifeServerShell.csproj", "{38385939-AFA9-44AA-9291-20F48EBFE8E9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeDedicatedServer", "MagicalLifeServerShell\MagicalLifeDedicatedServer.csproj", "{38385939-AFA9-44AA-9291-20F48EBFE8E9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeAPITests1", "MagicalLifeAPITests1\MagicalLifeAPITests1.csproj", "{803FCAA7-22C3-44D1-9CC8-3516F2847E55}"
 EndProject
