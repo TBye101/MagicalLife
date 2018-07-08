@@ -20,6 +20,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 * Fixed issue [#11](https://github.com/SneakyTactician/MagicalLife/issues/11)
 * Fixed issue [#18](https://github.com/SneakyTactician/MagicalLife/issues/18)
+* Fixed issue [#27](https://github.com/SneakyTactician/MagicalLife/issues/27)
 
 *Fixed an issue where ordering the character while "hosting" a game would cause the game to crash
 

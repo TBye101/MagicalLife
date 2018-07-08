@@ -32,7 +32,8 @@ namespace MagicalLifeAPI.Networking.Serialization
             {
                 using (MemoryStream outputStream = new MemoryStream())
                 {
-                    TypeModel.Serialize(outputStream, data);
+                    //TypeModel.Serialize(outputStream, data);
+                    TypeModel.SerializeWithLengthPrefix(outputStream, data, typeof(T), ProtoBuf.PrefixStyle.Base128, 0);
 
                     return Convert.ToBase64String(outputStream.GetBuffer(),
                         0, (int)outputStream.Length);
@@ -45,23 +46,23 @@ namespace MagicalLifeAPI.Networking.Serialization
             }
         }
 
-        public static byte[] SerializeToByte<T>(T data)
-        {
-            try
-            {
-                using (MemoryStream outputStream = new MemoryStream())
-                {
-                    TypeModel.Serialize(outputStream, data);
+        //public static byte[] SerializeToByte<T>(T data)
+        //{
+        //    try
+        //    {
+        //        using (MemoryStream outputStream = new MemoryStream())
+        //        {
+        //            TypeModel.Serialize(outputStream, data);
 
-                    return outputStream.GetBuffer();
-                }
-            }
-            catch (Exception e)
-            {
-                MasterLog.DebugWriteLine(e.Message);
-                return null;
-            }
-        }
+        //            return outputStream.GetBuffer();
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        MasterLog.DebugWriteLine(e.Message);
+        //        return null;
+        //    }
+        //}
 
         /// <summary>
         /// Deserializes the message from bytes.
@@ -74,12 +75,12 @@ namespace MagicalLifeAPI.Networking.Serialization
             {
                 using (MemoryStream ms = new System.IO.MemoryStream(data))
                 {
-                    BaseMessage Base = (BaseMessage)TypeModel.Deserialize(ms, null, typeof(BaseMessage));
-
-                    ms.Position = 0;
-                    BaseMessage message = (BaseMessage)TypeModel.Deserialize(ms, null, IDToMessage[Base.ID]);
-                    MasterLog.DebugWriteLine("Deserialized Message ID: " + message.ID.ToString());
-                    return message;
+                    //BaseMessage Base = (BaseMessage)TypeModel.Deserialize(ms, null, typeof(BaseMessage));
+                    BaseMessage Base = (BaseMessage)TypeModel.DeserializeWithLengthPrefix(ms, null, typeof(BaseMessage), ProtoBuf.PrefixStyle.Base128, 0);
+                    //ms.Position = 0;
+                    //BaseMessage message = (BaseMessage)TypeModel.Deserialize(ms, null, IDToMessage[Base.ID]);
+                    MasterLog.DebugWriteLine("Deserialized Message ID: " + Base.ID.ToString());
+                    return Base;
                 }
             }
             catch (IndexOutOfRangeException e)
