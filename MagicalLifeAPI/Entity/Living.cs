@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.DataTypes.Attribute;
 using MagicalLifeAPI.Entities.Eventing;
 using MagicalLifeAPI.Entities.Util;
 using MagicalLifeAPI.GUI;
@@ -20,14 +21,14 @@ namespace MagicalLifeAPI.Entities
         /// <summary>
         /// A queue that holds the queued movement steps up for this living creature.
         /// </summary>
-        //[ProtoMember(1)]
-        public Queue<PathLink> QueuedMovement { get; set; } = new Queue<PathLink>();
+        [ProtoMember(1)]
+        public ProtoQueue<PathLink> QueuedMovement { get; set; } = new ProtoQueue<PathLink>();
 
         /// <summary>
         /// How many hit points this creature has.
         /// </summary>
         [ProtoMember(2)]
-        public Util.Attribute32 Health { get; set; }
+        public Attribute32 Health { get; set; }
 
         /// <summary>
         /// How fast this creature can during a single tick.
@@ -112,7 +113,7 @@ namespace MagicalLifeAPI.Entities
         {
             return new Dictionary<Type, int>()
             {
-                { typeof(Humanoid.Human), 4}
+                { typeof(Humanoid.Human), 999}
             };
         }
 

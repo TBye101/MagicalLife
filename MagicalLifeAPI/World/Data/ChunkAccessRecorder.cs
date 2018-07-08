@@ -1,20 +1,17 @@
 ﻿using ProtoBuf;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.World.Data
 {
     /// <summary>
-    /// Used to remember when and how many times chunk has been accessed. 
+    /// Used to remember when and how many times chunk has been accessed.
     /// </summary>
     [ProtoContract]
     public class ChunkAccessRecorder
     {
         [ProtoMember(1)]
-        private Queue<DateTime> Accesses = new Queue<DateTime>();
+        private List<DateTime> Accesses = new List<DateTime>();
 
         [ProtoMember(2)]
         private int ChunkX;
@@ -23,13 +20,13 @@ namespace MagicalLifeAPI.World.Data
         private int ChunkY;
 
         /// <summary>
-        /// The time until a access is no longer counted in calculating how many times a chunk has been accessed. 
+        /// The time until a access is no longer counted in calculating how many times a chunk has been accessed.
         /// </summary>
         [ProtoMember(4)]
         private int MilliSecondTimeout;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="chunkX">The x position of the chunk within a dimension.</param>
         /// <param name="chunkY">The y position of the chunk within a dimension.</param>
@@ -42,7 +39,6 @@ namespace MagicalLifeAPI.World.Data
 
         public ChunkAccessRecorder()
         {
-
         }
 
         /// <summary>
@@ -60,7 +56,7 @@ namespace MagicalLifeAPI.World.Data
         /// </summary>
         public void Access()
         {
-            this.Accesses.Enqueue(DateTime.Now);
+            this.Accesses.Add(DateTime.Now);
         }
 
         /// <summary>
@@ -78,9 +74,12 @@ namespace MagicalLifeAPI.World.Data
         /// </summary>
         private void RemoveStale()
         {
-            while (DateTime.Now.Subtract(this.Accesses.Peek()).Milliseconds > this.MilliSecondTimeout)
+            if (this.Accesses.Count > 0)
             {
-                this.Accesses.Dequeue();
+                while (DateTime.Now.Subtract(this.Accesses[0]).Milliseconds > this.MilliSecondTimeout)
+                {
+                    this.Accesses.RemoveAt(0);
+                }
             }
         }
     }

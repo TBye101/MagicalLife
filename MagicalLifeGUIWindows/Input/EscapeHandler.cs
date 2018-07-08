@@ -1,7 +1,6 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.GUI;
-using MagicalLifeGUIWindows.GUI.MainMenu;
 using MonoGame.Extended.Input.InputListeners;
 
 namespace MagicalLifeGUIWindows.Input
@@ -31,7 +30,7 @@ namespace MagicalLifeGUIWindows.Input
 
             if (World.Dimensions.Count > 0)
             {
-                //Ingame: Open up in game menu 
+                //Ingame: Open up in game menu
             }
             else
             {

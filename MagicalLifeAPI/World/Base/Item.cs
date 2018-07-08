@@ -1,28 +1,48 @@
-﻿using MagicalLifeAPI.Universal;
+﻿using MagicalLifeAPI.DataTypes.Attribute;
+using MagicalLifeAPI.Entities.Util;
+using MagicalLifeAPI.GUI;
+using MagicalLifeAPI.Universal;
+using ProtoBuf;
 
 namespace MagicalLifeAPI.World.Base
 {
     /// <summary>
     /// Represents almost everything in a movable/harvested form.
     /// </summary>
-    public abstract class Item : Unique, IGameLoader
+    [ProtoContract]
+    public abstract class Item : HasTexture
     {
         /// <summary>
         /// The name of this <see cref="Item"/>;
         /// </summary>
+        [ProtoMember(1)]
         public string Name { get; }
 
-        /// <summary>
-        /// See <see cref="IGameLoader.GetTotalOperations"/> for information.
-        /// </summary>
-        /// <returns></returns>
-        public abstract int GetTotalOperations();
+        [ProtoMember(2)]
+        public int Durability { get; set; }
 
         /// <summary>
-        /// See <see cref="IGameLoader.InitialStartup(ref int)"/> for information.
+        /// The item's resistance to fire. 0 is no resistance, 1 is completely immune to fire damage.
         /// </summary>
-        /// <param name="progress"></param>
-        /// <returns></returns>
-        public abstract void InitialStartup(ref int progress);
+        [ProtoMember(3)]
+        public AttributeFloat FireResistance { get; set; }
+
+        /// <summary>
+        /// If true, then the item is probably magical and needs to be identified. 
+        /// </summary>
+        [ProtoMember(4)]
+        public bool NeedsIdentifying { get; set; }
+
+        /// <summary>
+        /// Determines how hard it is to identify this object. 
+        /// </summary>
+        [ProtoMember(5)]
+        public int IdentificationDifficulty { get; set; }
+
+        /// <summary>
+        /// The description and lore of this item. Is not revealed until the item has been identified, unless it never needed identification.
+        /// </summary>
+        [ProtoMember(6)]
+        public string[] Lore { get; set; }
     }
 }

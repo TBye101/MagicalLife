@@ -1,8 +1,5 @@
-﻿using MagicalLifeAPI.Networking.Messages;
-using MagicalLifeAPI.Universal;
-using MagicalLifeAPI.World;
+﻿using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Data;
-using MagicalLifeServer.Networking;
 using MagicalLifeServer.Processing;
 
 namespace MagicalLifeServer.Load
@@ -14,12 +11,12 @@ namespace MagicalLifeServer.Load
     {
         public int GetTotalOperations()
         {
-            return 2;
+            return 3;
         }
 
         public void InitialStartup(ref int progress)
         {
-            World.DimensionGenerated += this.World_DimensionGenerated;
+            World.DimensionAdded += this.World_DimensionGenerated;
             progress++;
             ServerProcessor.Initialize();
             progress++;

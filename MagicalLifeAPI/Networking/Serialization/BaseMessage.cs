@@ -1,4 +1,5 @@
-﻿using ProtoBuf;
+﻿using MagicalLifeAPI.Networking.Messages;
+using ProtoBuf;
 using System;
 
 namespace MagicalLifeAPI.Networking.Serialization
@@ -7,6 +8,9 @@ namespace MagicalLifeAPI.Networking.Serialization
     /// The base of every message.
     /// </summary>
     [ProtoContract]
+    [ProtoInclude(9, typeof(WorldTransferMessage))]
+    [ProtoInclude(10, typeof(ServerTickMessage))]
+    [ProtoInclude(11, typeof(RouteCreatedMessage))]
     public class BaseMessage
     {
         /// <summary>
@@ -18,6 +22,10 @@ namespace MagicalLifeAPI.Networking.Serialization
         public BaseMessage(UInt16 id)
         {
             this.ID = id;
+        }
+
+        public BaseMessage()
+        {
         }
     }
 }

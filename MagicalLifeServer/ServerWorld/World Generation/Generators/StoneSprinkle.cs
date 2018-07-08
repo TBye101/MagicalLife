@@ -18,7 +18,6 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
     {
         public StoneSprinkle(int dimension) : base(dimension)
         {
-
         }
 
         protected override string[,] AssignBiomes(int xSize, int ySize, Random random)

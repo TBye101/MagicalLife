@@ -62,8 +62,8 @@
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="protobuf-net, Version=2.3.7.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
-      <HintPath>..\packages\protobuf-net.2.3.7\lib\net40\protobuf-net.dll</HintPath>
+    <Reference Include="protobuf-net, Version=2.3.13.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <HintPath>..\packages\protobuf-net.2.3.13\lib\net40\protobuf-net.dll</HintPath>
     </Reference>
     <Reference Include="RoyT.AStar, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RoyT.AStar.2.1.0\lib\netstandard1.0\RoyT.AStar.dll</HintPath>
@@ -73,6 +73,9 @@
     </Reference>
     <Reference Include="Serilog.Sinks.File, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
       <HintPath>..\packages\Serilog.Sinks.File.4.0.0\lib\net45\Serilog.Sinks.File.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleTCP, Version=1.0.24.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleTCP.1.0.24\lib\net45\SimpleTCP.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -107,28 +110,50 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Asset\AssetManager.cs" />
+    <Compile Include="DataTypes\Attribute\ModifierFloat.cs" />
     <Compile Include="DataTypes\FixedSizeQueue.cs" />
     <Compile Include="DataTypes\PointFloat.cs" />
     <Compile Include="DataTypes\ProtoArray.cs" />
+    <Compile Include="DataTypes\ProtoQueue.cs" />
     <Compile Include="Entity\Entity Factory\HumanFactory.cs" />
     <Compile Include="Entity\Eventing\LivingEventArg.cs" />
     <Compile Include="Entity\Humanoid\Human.cs" />
     <Compile Include="Entity\Living.cs" />
     <Compile Include="Entity\Movement\Direction.cs" />
-    <Compile Include="Entity\Util\Attribute32.cs" />
-    <Compile Include="Entity\Util\AttributeFloat.cs" />
+    <Compile Include="DataTypes\Attribute\Attribute32.cs" />
+    <Compile Include="DataTypes\Attribute\AttributeFloat.cs" />
     <Compile Include="Entity\Util\Modifier Remove Conditions\IModifierRemoveCondition.cs" />
     <Compile Include="Entity\Util\Modifier Remove Conditions\NeverRemoveCondition.cs" />
     <Compile Include="Entity\Util\Modifier Remove Conditions\TimeRemoveCondition.cs" />
+    <Compile Include="DataTypes\Attribute\Modifier32.cs" />
+    <Compile Include="GUI\Test.cs" />
+    <Compile Include="GUI\Test2.cs" />
+    <Compile Include="GUI\Test3.cs" />
+    <Compile Include="Networking\Client\ClientProcessor.cs" />
+    <Compile Include="Networking\Client\ClientSendRecieve.cs" />
+    <Compile Include="Networking\Client\TCPClient.cs" />
+    <Compile Include="Networking\EngineMode.cs" />
     <Compile Include="Networking\External Type Serialization\PointTeacher.cs" />
     <Compile Include="Filing\FileSystemManager.cs" />
     <Compile Include="Filing\Logging\MasterLog.cs" />
     <Compile Include="GUI\HasTexture.cs" />
-    <Compile Include="GUI\ISelectable.cs" />
+    <Compile Include="GUI\Selectable.cs" />
     <Compile Include="GUI\SelectionType.cs" />
     <Compile Include="Entity\Movement\EntityWorldMovement.cs" />
     <Compile Include="Networking\IHasSubclasses.cs" />
     <Compile Include="Networking\ITeachSerialization.cs" />
+    <Compile Include="Networking\Messages\RouteCreatedMessage.cs" />
+    <Compile Include="Networking\Messages\ServerTickMessage.cs" />
+    <Compile Include="Networking\Messages\WorldTransferMessage.cs" />
+    <Compile Include="Networking\NetworkSettings.cs" />
+    <Compile Include="Networking\Serialization\BaseMessage.cs" />
+    <Compile Include="Networking\Serialization\MessageHandler.cs" />
+    <Compile Include="Networking\Serialization\ProtoTypeLoader.cs" />
+    <Compile Include="Networking\Serialization\ProtoUtil.cs" />
+    <Compile Include="Networking\Server\ServerSendRecieve.cs" />
+    <Compile Include="Networking\Server\TCPServer.cs" />
+    <Compile Include="Networking\Test\ConcreteTest.cs" />
+    <Compile Include="Networking\Test\ConcreteTestHandler.cs" />
     <Compile Include="Pathfinding\AStar\AStar.cs" />
     <Compile Include="Pathfinding\Cost\CostRetriever.cs" />
     <Compile Include="Pathfinding\Cost\IAddMovementCost.cs" />
@@ -137,10 +162,8 @@
     <Compile Include="Pathfinding\MainPathFinder.cs" />
     <Compile Include="Pathfinding\PathLink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Networking\Serialization\BaseMessage.cs" />
-    <Compile Include="Networking\Serialization\MessageHandler.cs" />
-    <Compile Include="Networking\Serialization\ProtoTypeLoader.cs" />
-    <Compile Include="Networking\Serialization\ProtoUtil.cs" />
+    <Compile Include="Server\ICommand.cs" />
+    <Compile Include="Server\ICommandModule.cs" />
     <Compile Include="Universal\IGameLoader.cs" />
     <Compile Include="Load\Loader.cs" />
     <Compile Include="Load\LoadMoniter.cs" />
@@ -150,7 +173,9 @@
     <Compile Include="Util\MathUtil.cs" />
     <Compile Include="Util\ReflectionUtil.cs" />
     <Compile Include="Util\StaticRandom.cs" />
+    <Compile Include="Asset\TextureLoader.cs" />
     <Compile Include="World\Base\Item.cs" />
+    <Compile Include="World\Data\ChunkAccess.cs" />
     <Compile Include="World\Data\ChunkAccessRecorder.cs" />
     <Compile Include="World\Data\Chunk.cs" />
     <Compile Include="World\Data\ChunkManager.cs" />

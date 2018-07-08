@@ -52,7 +52,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         public Alignment TextAlignment { get; private set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="image"></param>
         /// <param name="CarrotTexture"></param>

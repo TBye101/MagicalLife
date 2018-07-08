@@ -1,11 +1,9 @@
 ﻿using MagicalLifeAPI.Filing;
-using MagicalLifeAPI.Protobuf.Serialization;
+using MagicalLifeAPI.Networking.Serialization;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.World.Data
@@ -70,7 +68,7 @@ namespace MagicalLifeAPI.World.Data
 
             using (FileStream fs = File.Create(path + chunk.ChunkLocation.ToString() + ".chunk"))
             {
-                string serialized = ProtoUtil.Serialize<Chunk>(chunk);
+                string serialized = Convert.ToBase64String(ProtoUtil.Serialize<Chunk>(chunk));
 
                 using (StreamWriter sw = new StreamWriter(fs))
                 {
