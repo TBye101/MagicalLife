@@ -6,6 +6,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 #### API
 * World data is now structured differently, and hopefully more efficiently
+* Improved serialization and deserialization performance
 
 #### Server
 * World generation now no longer spawns the character on a resource
