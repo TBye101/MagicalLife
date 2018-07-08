@@ -28,7 +28,7 @@ namespace MagicalLifeAPI.Networking.Client
         public void Send<T>(T message)
             where T : BaseMessage
         {
-            this.Client.Write(Convert.FromBase64String(ProtoUtil.Serialize<T>(message)));
+            this.Client.Write(ProtoUtil.Serialize<T>(message));
         }
     }
 }

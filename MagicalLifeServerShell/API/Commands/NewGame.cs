@@ -38,9 +38,6 @@ namespace MagicalLifeServerShell.API.Commands
             int port = SettingsHandler.NetworkSettings.GetSettings().Port;
             ServerSendRecieve.Initialize(new NetworkSettings(port));
 
-            string test = ProtoUtil.Serialize<List<Dimension>>(World.Dimensions);
-            List<Dimension> t = ProtoUtil.Deserialize<List<Dimension>>(test);
-
             Util.WriteLine("Done!");
             Server.StartGame();
             Util.WriteLine("Game started!");

@@ -61,8 +61,7 @@ namespace MagicalLifeAPI.Networking.Server
         public void Send<T>(T data, Socket client)
             where T : BaseMessage
         {
-            client.Send(Convert.FromBase64String(ProtoUtil.Serialize<T>(data)));
-            //client.Send(ProtoUtil.SerializeToByte<T>(data));
+            client.Send(ProtoUtil.Serialize<T>(data));
         }
 
         /// <summary>
@@ -73,7 +72,7 @@ namespace MagicalLifeAPI.Networking.Server
         public void Broadcast<T>(T data)
             where T : BaseMessage
         {
-            this.Server.Broadcast(Convert.FromBase64String(ProtoUtil.Serialize<T>(data)));
+            this.Server.Broadcast(ProtoUtil.Serialize<T>(data));
         }
     }
 }
