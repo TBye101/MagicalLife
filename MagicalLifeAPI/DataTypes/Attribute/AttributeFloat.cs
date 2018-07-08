@@ -1,8 +1,6 @@
 ﻿using MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions;
 using MagicalLifeAPI.Entity.Util;
 using ProtoBuf;
-using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.DataTypes.Attribute

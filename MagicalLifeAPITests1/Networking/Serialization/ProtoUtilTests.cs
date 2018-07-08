@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.World.Tiles;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace MagicalLifeAPI.Protobuf.Serialization.Tests
 {
@@ -16,7 +17,7 @@ namespace MagicalLifeAPI.Protobuf.Serialization.Tests
 
         private void TileTest()
         {
-            string data = ProtoUtil.Serialize<Dirt>(new Dirt(3, 2));
+            string data = Convert.ToBase64String(ProtoUtil.Serialize<Dirt>(new Dirt(3, 2)));
             Dirt dirt = ProtoUtil.Deserialize<Dirt>(data);
 
             Assert.AreEqual(dirt.Location, new Microsoft.Xna.Framework.Point(3, 2));

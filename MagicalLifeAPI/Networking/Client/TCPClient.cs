@@ -1,6 +1,5 @@
 ﻿using MagicalLifeAPI.Networking.Serialization;
 using SimpleTCP;
-using System;
 
 namespace MagicalLifeAPI.Networking.Client
 {

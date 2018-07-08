@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Universal;
 using ProtoBuf;
 using System.Collections.Generic;
@@ -65,7 +64,6 @@ namespace MagicalLifeAPI.World.Data
             this.DimensionName = dimensionName;
             World.Storage.PrepareForDimension(this.ID);
 
-            
             int dimensionID = World.AddDimension(this);
 
             //Anything that needs a dimensionID

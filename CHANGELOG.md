@@ -2,6 +2,18 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 ---
 
+## [Version 0.0.9]
+
+#### API
+
+#### Server
+
+#### GUI
+
+#### Bugs
+
+---
+
 ## [Version 0.0.8]
 
 #### API

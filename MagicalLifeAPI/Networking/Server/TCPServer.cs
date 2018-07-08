@@ -1,7 +1,6 @@
 ﻿using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using SimpleTCP;
-using System;
 using System.Net.Sockets;
 
 namespace MagicalLifeAPI.Networking.Server

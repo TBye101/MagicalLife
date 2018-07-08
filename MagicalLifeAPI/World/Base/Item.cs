@@ -1,7 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes.Attribute;
-using MagicalLifeAPI.Entities.Util;
 using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Universal;
 using ProtoBuf;
 
 namespace MagicalLifeAPI.World.Base
@@ -28,13 +26,13 @@ namespace MagicalLifeAPI.World.Base
         public AttributeFloat FireResistance { get; set; }
 
         /// <summary>
-        /// If true, then the item is probably magical and needs to be identified. 
+        /// If true, then the item is probably magical and needs to be identified.
         /// </summary>
         [ProtoMember(4)]
         public bool NeedsIdentifying { get; set; }
 
         /// <summary>
-        /// Determines how hard it is to identify this object. 
+        /// Determines how hard it is to identify this object.
         /// </summary>
         [ProtoMember(5)]
         public int IdentificationDifficulty { get; set; }

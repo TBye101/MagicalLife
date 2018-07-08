@@ -5,7 +5,6 @@ using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Entities.Movement
 {

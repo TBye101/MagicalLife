@@ -43,6 +43,7 @@ namespace MagicalLifeServer
                         new MainLoad()
                     });
                     break;
+
                 case EngineMode.ServerOnly:
                     load.LoadAll(ref msg, new List<MagicalLifeAPI.Universal.IGameLoader>()
                     {
@@ -51,6 +52,7 @@ namespace MagicalLifeServer
                         new MainLoad()
                     });
                     break;
+
                 default:
                     throw new Exception("Unexpected networking mode initiated!");
             }

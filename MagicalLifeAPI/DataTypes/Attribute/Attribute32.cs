@@ -2,7 +2,6 @@
 using MagicalLifeAPI.Entity.Util;
 using ProtoBuf;
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Entities.Util
@@ -14,7 +13,7 @@ namespace MagicalLifeAPI.Entities.Util
         /// The int value is applied to the value of this attribute, while the <see cref="IModifierRemoveCondition"/> is used to determine if the modifier will wear off.
         /// The string value is a display message/reason as to why the modifier was applied.
         /// </summary>
-        [ProtoMember(1)]//This doesn't serialize. 
+        [ProtoMember(1)]//This doesn't serialize.
         public List<Modifier32> Modifiers { get; private set; } = new List<Modifier32>();
 
         public Attribute32(Int32 value) : this()
