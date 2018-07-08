@@ -9,7 +9,7 @@ namespace MagicalLifeGUIWindows.Input.History
     public class HistoricalInput
     {
         /// <summary>
-        /// If this is true, the input detected deselects everything previously selected.
+        /// If this is true, the input detected unselects everything previously selected.
         /// </summary>
         public bool DeselectingAll { get; set; }
 

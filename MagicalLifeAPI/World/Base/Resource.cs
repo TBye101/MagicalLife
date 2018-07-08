@@ -43,8 +43,10 @@ namespace MagicalLifeAPI.World
 
         public Dictionary<Type, int> GetSubclassInformation()
         {
-            Dictionary<Type, int> ret = new Dictionary<Type, int>();
-            ret.Add(typeof(MarbleResource), 1);
+            Dictionary<Type, int> ret = new Dictionary<Type, int>
+            {
+                { typeof(MarbleResource), 1 }
+            };
             return ret;
         }
     }

@@ -1,8 +1,7 @@
-﻿using MagicalLifeAPI.Load;
-using MagicalLifeAPI.Networking.External_Type_Serialization;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Load;
+using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Universal;
-using MagicalLifeAPI.World;
-using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Load;
 using MagicalLifeGUIWindows.Rendering;
@@ -11,7 +10,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
-using System.Reflection;
 
 namespace MagicalLifeGUIWindows
 {
@@ -68,14 +66,14 @@ namespace MagicalLifeGUIWindows
             Loader load = new Loader();
             string msg = string.Empty;
 
-            load.LoadAll(ref msg, new List<Assembly>
+            load.LoadAll(ref msg, new List<IGameLoader>()
             {
-                Assembly.GetAssembly(typeof(World)),
-                Assembly.GetAssembly(typeof(Game1)),
-                Assembly.GetAssembly(typeof(PointTeacher))
+                new InputLoader(),
+                new Initializer(),
+                new TextureLoader(),
+                new TextureLoader(this.Content),
+                new ProtoTypeLoader()
             });
-
-            // TODO: use this.Content to load your game content here
         }
 
         /// <summary>

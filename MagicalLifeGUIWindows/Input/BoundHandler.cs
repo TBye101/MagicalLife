@@ -2,7 +2,6 @@
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input.Comparators;
 using MagicalLifeGUIWindows.Input.History;
-using MagicalLifeGUIWindows.Input.Specialized_Handlers;
 using MagicalLifeGUIWindows.Map;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
@@ -24,13 +23,14 @@ namespace MagicalLifeGUIWindows.Input
         /// All of the GUI windows.
         /// </summary>
         public static List<GUIContainer> GUIWindows { get; private set; } = new List<GUIContainer>();
+
         public static MouseListener MouseListner = new MouseListener();
 
-        private static BoundsSorter BoundSorter = new BoundsSorter();
+        private static readonly BoundsSorter BoundSorter = new BoundsSorter();
 
-        private static ContainerSorter containerSorter = new ContainerSorter();
+        private static readonly ContainerSorter containerSorter = new ContainerSorter();
 
-        private static ClickBoundsSorter ClickBoundsSorter = new ClickBoundsSorter();
+        private static readonly ClickBoundsSorter ClickBoundsSorter = new ClickBoundsSorter();
 
         /// <summary>
         /// Anything in game that can be clicked on, that is not considered a menu or popup.

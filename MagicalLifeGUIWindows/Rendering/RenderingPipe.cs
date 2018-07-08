@@ -51,7 +51,7 @@ namespace MagicalLifeGUIWindows.Rendering
         /// <param name="spBatch"></param>
         public static void DrawScreen(ref SpriteBatch spBatch)
         {
-            if (World.Dimensions.Count > RenderingPipe.Dimension)
+            if (World.Dimensions.Count > 0)
             {
                 MapRenderer.DrawMap(ref spBatch, RenderingPipe.Dimension);
             }

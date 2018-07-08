@@ -1,13 +1,7 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Universal;
 using ProtoBuf;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.World.Data
 {
@@ -16,14 +10,13 @@ namespace MagicalLifeAPI.World.Data
     /// Could be a dungeon, the starting point, or some other thing.
     /// </summary>
     [ProtoContract]
-    public class Dimension : Unique, IEnumerable<Tile>
+    public class Dimension : Unique
     {
-
         /// <summary>
         /// Handles access to the chunks stored in this dimension.
         /// </summary>
         [ProtoMember(1)]
-        private ChunkManager Manager;
+        private readonly ChunkManager Manager;
 
         /// <summary>
         /// The display name of the dimension.
@@ -71,17 +64,13 @@ namespace MagicalLifeAPI.World.Data
             this.DimensionName = dimensionName;
             World.Storage.PrepareForDimension(this.ID);
 
-            World.Dimensions.Add(this);
-            int dimensionID = World.Dimensions.Count - 1;
+            int dimensionID = World.AddDimension(this);
 
             //Anything that needs a dimensionID
-
-            MainPathFinder.PrepForDimension(dimensionID);
         }
 
         public Dimension()
         {
-
         }
 
         public Chunk GetChunkForLocation(int x, int y)
@@ -99,7 +88,7 @@ namespace MagicalLifeAPI.World.Data
         {
             return this.Manager.GetChunk(chunkX, chunkY);
         }
-        
+
         /// <summary>
         /// Determines if the specified tile exists, without loading the tile.
         /// </summary>
@@ -117,11 +106,6 @@ namespace MagicalLifeAPI.World.Data
             {
                 yield return item;
             }
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return this.GetEnumerator();
         }
     }
 }

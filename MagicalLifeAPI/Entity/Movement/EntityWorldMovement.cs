@@ -1,11 +1,10 @@
-﻿using MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions;
-using MagicalLifeAPI.Filing.Logging;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Entities.Movement
 {
@@ -20,12 +19,12 @@ namespace MagicalLifeAPI.Entities.Movement
         /// <param name="entity"></param>
         public static void MoveEntity(ref Living entity)
         {
-            Queue<PathLink> path = entity.QueuedMovement;
+            ProtoQueue<PathLink> path = entity.QueuedMovement;
 
             //MasterLog.DebugWriteLine("Creature movement speed: " + entity.Movement.GetValue().ToString());
             while (entity.Movement.GetValue() > 0 && path.Count > 0)
             {
-                PathLink section = path.Peek();
+                PathLink section = path.Peek();//Should use a normal list, and pull from [0], queue pulls in the wrong order
 
                 Tile sourceTile = World.Data.World.Dimensions[entity.Dimension][section.Origin.X, section.Origin.Y];
                 Tile destinationTile = World.Data.World.Dimensions[entity.Dimension][section.Destination.X, section.Destination.Y];
@@ -60,71 +59,71 @@ namespace MagicalLifeAPI.Entities.Movement
         /// <param name="destination"></param>
         public static void Move(ref Living entity, Tile source, Tile destination)
         {
-                //MasterLog.DebugWriteLine("Moving creature!");
-                //MasterLog.DebugWriteLine("Pre move location: " + entity.ScreenLocation.X.ToString() + ", " + entity.ScreenLocation.Y.ToString());
-                Direction direction = DetermineMovementDirection(source.Location, destination.Location);
+            //MasterLog.DebugWriteLine("Moving creature!");
+            //MasterLog.DebugWriteLine("Pre move location: " + entity.ScreenLocation.X.ToString() + ", " + entity.ScreenLocation.Y.ToString());
+            Direction direction = DetermineMovementDirection(source.Location, destination.Location);
 
-                float xMove = 0;
-                float yMove = 0;
+            float xMove = 0;
+            float yMove = 0;
 
-                switch (direction)
-                {
-                    case Direction.North:
-                        yMove = -1;
-                        break;
+            switch (direction)
+            {
+                case Direction.North:
+                    yMove = -1;
+                    break;
 
-                    case Direction.South:
-                        yMove = 1;
-                        break;
+                case Direction.South:
+                    yMove = 1;
+                    break;
 
-                    case Direction.East:
-                        xMove = 1;
-                        break;
+                case Direction.East:
+                    xMove = 1;
+                    break;
 
-                    case Direction.West:
-                        xMove = -1;
-                        break;
+                case Direction.West:
+                    xMove = -1;
+                    break;
 
-                    case Direction.NorthWest:
-                        xMove = -1;
-                        yMove = -1;
-                        break;
+                case Direction.NorthWest:
+                    xMove = -1;
+                    yMove = -1;
+                    break;
 
-                    case Direction.NorthEast:
-                        xMove = 1;
-                        yMove = -1;
-                        break;
+                case Direction.NorthEast:
+                    xMove = 1;
+                    yMove = -1;
+                    break;
 
-                    case Direction.SouthWest:
-                        xMove = -1;
-                        yMove = 1;
-                        break;
+                case Direction.SouthWest:
+                    xMove = -1;
+                    yMove = 1;
+                    break;
 
-                    case Direction.SouthEast:
-                        xMove = 1;
-                        yMove = 1;
-                        break;
-                }
+                case Direction.SouthEast:
+                    xMove = 1;
+                    yMove = 1;
+                    break;
+            }
 
-                xMove *= entity.Movement.GetValue();
-                yMove *= entity.Movement.GetValue();
+            xMove *= entity.Movement.GetValue();
+            yMove *= entity.Movement.GetValue();
 
-                float movementPenalty = (float)Math.Abs(CalculateMovementReduction(xMove, yMove)) * -1;
+            float movementPenalty = (float)Math.Abs(CalculateMovementReduction(xMove, yMove)) * -1;
 
-                if (MathUtil.GetDistance(entity.ScreenLocation, destination.Location) > entity.Movement.GetValue())
-                {
-                    entity.ScreenLocation = new DataTypes.PointFloat(entity.ScreenLocation.X + xMove, entity.ScreenLocation.Y + yMove);
-                }
-                else
-                {
-                    entity.MapLocation = destination.Location;
-                    entity.ScreenLocation = new DataTypes.PointFloat(destination.Location.X, destination.Location.Y);
-                    entity.QueuedMovement.Dequeue();
-                    movementPenalty = MathUtil.GetDistance(entity.ScreenLocation, destination.Location);
-                }
+            if (MathUtil.GetDistance(entity.ScreenLocation, destination.Location) > entity.Movement.GetValue())
+            {
+                entity.ScreenLocation = new DataTypes.PointFloat(entity.ScreenLocation.X + xMove, entity.ScreenLocation.Y + yMove);
+            }
+            else
+            {
+                entity.MapLocation = destination.Location;
+                entity.ScreenLocation = new DataTypes.PointFloat(destination.Location.X, destination.Location.Y);
+                entity.QueuedMovement.Dequeue();
+                movementPenalty = MathUtil.GetDistance(entity.ScreenLocation, destination.Location);
+            }
 
-                entity.Movement.AddModifier(new Tuple<float, IModifierRemoveCondition, string>(movementPenalty, new TimeRemoveCondition(1), "Normal Movement"));
-                //MasterLog.DebugWriteLine("Post move location: " + entity.ScreenLocation.X.ToString() + ", " + entity.ScreenLocation.Y.ToString());
+            entity.Movement.AddModifier(new Entity.Util.ModifierFloat(movementPenalty, new TimeRemoveCondition(1), "Normal Movement"));
+            //MasterLog.DebugWriteLine("Post move location: " + entity.ScreenLocation.X.ToString() + ", " + entity.ScreenLocation.Y.ToString());
         }
 
         /// <summary>

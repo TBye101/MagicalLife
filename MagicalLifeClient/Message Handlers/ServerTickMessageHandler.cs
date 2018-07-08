@@ -1,6 +1,5 @@
-﻿using MagicalLifeAPI.Networking;
+﻿using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeNetworking.Messages;
 
 namespace MagicalLifeClient.Message_Handlers
 {

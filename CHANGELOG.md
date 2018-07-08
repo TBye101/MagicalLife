@@ -2,10 +2,23 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 ---
 
+## [Version 0.0.9]
+
+#### API
+
+#### Server
+
+#### GUI
+
+#### Bugs
+
+---
+
 ## [Version 0.0.8]
 
 #### API
 * World data is now structured differently, and hopefully more efficiently
+* Improved serialization and deserialization performance
 
 #### Server
 * World generation now no longer spawns the character on a resource
@@ -20,6 +33,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 * Fixed issue [#11](https://github.com/SneakyTactician/MagicalLife/issues/11)
 * Fixed issue [#18](https://github.com/SneakyTactician/MagicalLife/issues/18)
+* Fixed issue [#27](https://github.com/SneakyTactician/MagicalLife/issues/27)
 
 *Fixed an issue where ordering the character while "hosting" a game would cause the game to crash
 

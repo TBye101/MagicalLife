@@ -1,11 +1,7 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using ProtoBuf;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.World.Data
 {
@@ -13,13 +9,13 @@ namespace MagicalLifeAPI.World.Data
     /// Manages what chunks are loaded and cached from a given list of chunks.
     /// </summary>
     [ProtoContract]
-    public sealed class ChunkManager : IEnumerable<Tile>
+    public sealed class ChunkManager
     {
         /// <summary>
         /// A 2D array that holds every chunk in the dimension that this chunk manager services.
         /// </summary>
         [ProtoMember(1)]
-        private ProtoArray<Tuple<Chunk, ChunkAccessRecorder>> Chunks { get; set; }
+        private ProtoArray<ChunkAccess> Chunks { get; set; }
 
         /// <summary>
         /// The ID of the dimension that this chunk manager services.
@@ -45,19 +41,18 @@ namespace MagicalLifeAPI.World.Data
             this.Width = chunks.Width;
             this.Height = chunks.Height;
 
-            List<Tuple<Chunk, ChunkAccessRecorder>> temp = new List<Tuple<Chunk, ChunkAccessRecorder>>();
+            List<ChunkAccess> temp = new List<ChunkAccess>();
 
             foreach (Chunk item in chunks)
             {
-                temp.Add(new Tuple<Chunk, ChunkAccessRecorder>(item, new ChunkAccessRecorder(item.ChunkLocation.X, item.ChunkLocation.Y)));
+                temp.Add(new ChunkAccess(item, new ChunkAccessRecorder(item.ChunkLocation.X, item.ChunkLocation.Y)));
             }
 
-            this.Chunks = new ProtoArray<Tuple<Chunk, ChunkAccessRecorder>>(chunks.Width, chunks.Height, temp.ToArray());
+            this.Chunks = new ProtoArray<ChunkAccess>(chunks.Width, chunks.Height, temp.ToArray());
         }
 
         public ChunkManager()
         {
-
         }
 
         /// <summary>
@@ -112,16 +107,16 @@ namespace MagicalLifeAPI.World.Data
         /// <returns></returns>
         private Chunk FetchChunk(int chunkX, int chunkY)
         {
-            Tuple<Chunk, ChunkAccessRecorder> storage = this.Chunks[chunkX, chunkY];
-            storage.Item2.Access();
+            ChunkAccess storage = this.Chunks[chunkX, chunkY];
+            storage.Recorder.Access();
 
-            if (storage.Item1 == null)
+            if (storage.Chunk == null)
             {
                 return World.Storage.LoadChunk(chunkX, chunkY, this.DimensionID);
             }
             else
             {
-                return storage.Item1;
+                return storage.Chunk;
             }
         }
 
@@ -141,18 +136,13 @@ namespace MagicalLifeAPI.World.Data
 
         public IEnumerator<Tile> GetEnumerator()
         {
-            foreach (Tuple<Chunk, ChunkAccessRecorder> item in this.Chunks)
+            foreach (ChunkAccess item in this.Chunks)
             {
-                foreach (Tile item2 in item.Item1)
+                foreach (Tile item2 in item.Chunk)
                 {
                     yield return item2;
                 }
             }
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return this.GetEnumerator();
         }
     }
 }

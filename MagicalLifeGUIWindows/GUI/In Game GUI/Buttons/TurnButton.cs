@@ -12,12 +12,12 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_GUI.Buttons
         /// <summary>
         /// The texture displayed by this button in-between turns.
         /// </summary>
-        private Texture2D EndedTexture;
+        private readonly Texture2D EndedTexture;
 
         /// <summary>
         /// The texture displayed by this button when it is the players turn.
         /// </summary>
-        private Texture2D WaitTexture;
+        private readonly Texture2D WaitTexture;
 
         public TurnButton(string font = "") : base("EndTurnButtonState1", GetLocation(), true, "", font)
         {

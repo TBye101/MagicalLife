@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
+using MagicalLifeAPI.World.Data;
 
 namespace MagicalLifeAPI.Networking.Message_Handlers
 {
@@ -12,7 +13,11 @@ namespace MagicalLifeAPI.Networking.Message_Handlers
         public override void HandleMessage(BaseMessage message)
         {
             WorldTransferMessage msg = (WorldTransferMessage)message;
-            World.Data.World.Dimensions = msg.World;
+
+            foreach (Dimension item in msg.World)
+            {
+                World.Data.World.AddDimension(item);
+            }
         }
     }
 }

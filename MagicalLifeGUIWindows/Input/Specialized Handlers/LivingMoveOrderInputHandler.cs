@@ -1,13 +1,12 @@
 ﻿using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.GUI;
+using MagicalLifeAPI.Networking.Client;
+using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util;
-using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.Input.History;
 using MagicalLifeGUIWindows.Rendering;
-using MagicalLifeNetworking.Client;
-using MagicalLifeNetworking.Messages;
 using MonoGame.Extended.Input.InputListeners;
 using System.Collections.Generic;
 using System.Linq;
@@ -81,8 +80,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
         /// <returns></returns>
         private Living GetLivingAtClick(MouseEventArgs e)
         {
-            bool success;
-            Microsoft.Xna.Framework.Point tileLocation = Util.GetMapLocation(e.Position.X, e.Position.Y, RenderingPipe.Dimension, out success);
+            Microsoft.Xna.Framework.Point tileLocation = Util.GetMapLocation(e.Position.X, e.Position.Y, RenderingPipe.Dimension, out bool success);
 
             if (success)
             {

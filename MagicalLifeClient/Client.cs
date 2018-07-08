@@ -1,12 +1,12 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Networking;
+using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Message_Handlers;
+using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
+using MagicalLifeAPI.Networking.Test;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeClient.Entity;
 using MagicalLifeClient.Message_Handlers;
-using MagicalLifeClient.Processing;
-using MagicalLifeNetworking.Messages;
 using System;
 using System.Collections.Generic;
 
@@ -76,10 +76,7 @@ namespace MagicalLifeClient
             {
                 GameTick++;
 
-                if (ClientTick != null)
-                {
-                    ClientTick(null, GameTick);
-                }
+                ClientTick?.Invoke(null, GameTick);
                 i++;
             }
         }

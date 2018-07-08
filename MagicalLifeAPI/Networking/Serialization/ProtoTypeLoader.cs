@@ -1,6 +1,4 @@
 ﻿using MagicalLifeAPI.Networking.External_Type_Serialization;
-using MagicalLifeAPI.Protobuf;
-using MagicalLifeAPI.Protobuf.Serialization;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
@@ -19,9 +17,13 @@ namespace MagicalLifeAPI.Networking.Serialization
         /// <summary>
         /// The messages that need to be registered.
         /// </summary>
-        private List<Type> Messages = new List<Type>();
+        private readonly List<Type> Messages = new List<Type>();
 
-        private List<ITeachSerialization> Teachers = new List<ITeachSerialization>();
+        private readonly List<ITeachSerialization> Teachers = new List<ITeachSerialization>();
+
+        public ProtoTypeLoader()
+        {
+        }
 
         public int GetTotalOperations()
         {
@@ -42,7 +44,8 @@ namespace MagicalLifeAPI.Networking.Serialization
 
             MetaType baseMessageType = current.Add(typeof(BaseMessage), true);
 
-            List<IHasSubclasses> ToProcess = ReflectionUtil.LoadAllInterface<IHasSubclasses>(Assembly.GetAssembly(typeof(BaseMessage)));
+            // = ReflectionUtil.LoadAllInterface<IHasSubclasses>(Assembly.GetAssembly(typeof(BaseMessage)));
+            List<IHasSubclasses> ToProcess = new List<IHasSubclasses>();
             ToProcess.AddRange(ReflectionUtil.LoadAllInterface<IHasSubclasses>(Assembly.GetAssembly(typeof(Tile))));
 
             foreach (IHasSubclasses item in ToProcess)

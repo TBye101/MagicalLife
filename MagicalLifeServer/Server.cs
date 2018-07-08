@@ -1,9 +1,12 @@
-﻿using MagicalLifeAPI.Load;
-using MagicalLifeNetworking.Messages;
-using MagicalLifeServer.Networking;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Load;
+using MagicalLifeAPI.Networking;
+using MagicalLifeAPI.Networking.Messages;
+using MagicalLifeAPI.Networking.Serialization;
+using MagicalLifeAPI.Networking.Server;
+using MagicalLifeServer.Load;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Timers;
 
 namespace MagicalLifeServer
@@ -26,14 +29,33 @@ namespace MagicalLifeServer
         /// </summary>
         public static event EventHandler<UInt64> ServerTick;
 
-        public static void Load()
+        public static void Load(EngineMode mode)
         {
             Loader load = new Loader();
             string msg = "";
-            load.LoadAll(ref msg, new List<System.Reflection.Assembly>()
+
+            switch (mode)
             {
-                Assembly.GetAssembly(typeof(Server))//App is not allowed through the firewall, need to reprompt or something.
-            });
+                case EngineMode.ServerAndClient:
+                    load.LoadAll(ref msg, new List<MagicalLifeAPI.Universal.IGameLoader>()
+                    {
+                        new TextureLoader(),
+                        new MainLoad()
+                    });
+                    break;
+
+                case EngineMode.ServerOnly:
+                    load.LoadAll(ref msg, new List<MagicalLifeAPI.Universal.IGameLoader>()
+                    {
+                        new TextureLoader(),
+                        new ProtoTypeLoader(),
+                        new MainLoad()
+                    });
+                    break;
+
+                default:
+                    throw new Exception("Unexpected networking mode initiated!");
+            }
         }
 
         private static void SetupTick()
@@ -58,12 +80,7 @@ namespace MagicalLifeServer
 
         private static void RaiseServerTick(object sender, UInt64 tick)
         {
-            EventHandler<UInt64> eventHandler = ServerTick;
-
-            if (eventHandler != null)
-            {
-                eventHandler(sender, tick);
-            }
+            ServerTick?.Invoke(sender, tick);
             //TickTimer.Stop();
         }
 

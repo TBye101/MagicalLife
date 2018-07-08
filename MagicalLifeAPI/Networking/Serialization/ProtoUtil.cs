@@ -1,12 +1,11 @@
-﻿using MagicalLifeAPI.Networking;
-using MagicalLifeAPI.Networking.Serialization;
+﻿using MagicalLifeAPI.Filing.Logging;
 using ProtoBuf.Meta;
 using Serilog;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace MagicalLifeAPI.Protobuf.Serialization
+namespace MagicalLifeAPI.Networking.Serialization
 {
     /// <summary>
     /// Used to serialize and deserialize using https://github.com/mgravell/protobuf-net.
@@ -27,14 +26,20 @@ namespace MagicalLifeAPI.Protobuf.Serialization
         /// <typeparam name="T"></typeparam>
         /// <param name="data"></param>
         /// <returns></returns>
-        public static string Serialize<T>(T data)
+        public static byte[] Serialize<T>(T data)
         {
-            using (MemoryStream outputStream = new MemoryStream())
+            try
             {
-                TypeModel.Serialize(outputStream, data);
-
-                return Convert.ToBase64String(outputStream.GetBuffer(),
-                    0, (int)outputStream.Length);
+                using (MemoryStream outputStream = new MemoryStream())
+                {
+                    TypeModel.SerializeWithLengthPrefix(outputStream, data, typeof(T), ProtoBuf.PrefixStyle.Base128, 0);
+                    return outputStream.GetBuffer();
+                }
+            }
+            catch (Exception e)
+            {
+                MasterLog.DebugWriteLine(e.Message);
+                return null;
             }
         }
 
@@ -49,11 +54,9 @@ namespace MagicalLifeAPI.Protobuf.Serialization
             {
                 using (MemoryStream ms = new System.IO.MemoryStream(data))
                 {
-                    BaseMessage Base = (BaseMessage)TypeModel.Deserialize(ms, null, typeof(BaseMessage));
-
-                    ms.Position = 0;
-                    BaseMessage message = (BaseMessage)TypeModel.Deserialize(ms, null, IDToMessage[Base.ID]);
-                    return message;
+                    BaseMessage Base = (BaseMessage)TypeModel.DeserializeWithLengthPrefix(ms, null, typeof(BaseMessage), ProtoBuf.PrefixStyle.Base128, 0);
+                    //MasterLog.DebugWriteLine("Deserialized Message ID: " + Base.ID.ToString());
+                    return Base;
                 }
             }
             catch (IndexOutOfRangeException e)
@@ -65,13 +68,17 @@ namespace MagicalLifeAPI.Protobuf.Serialization
 
         public static T Deserialize<T>(string data)
         {
-            using (MemoryStream ms = new MemoryStream())
+            try
             {
-                using (StreamWriter sw = new StreamWriter(ms))
+                using (MemoryStream ms = new MemoryStream(Convert.FromBase64String(data)))
                 {
-                    sw.Write(data);
                     return (T)TypeModel.Deserialize(ms, null, typeof(T));
                 }
+            }
+            catch (Exception e)
+            {
+                MasterLog.DebugWriteLine(e.Message);
+                return default(T);
             }
         }
     }
