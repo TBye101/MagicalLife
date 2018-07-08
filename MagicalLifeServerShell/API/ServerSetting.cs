@@ -16,7 +16,7 @@ namespace MagicalLifeServerShell.API.Settings
         /// <summary>
         /// The path to the settings file.
         /// </summary>
-        private string FilePath;
+        private readonly string FilePath;
 
         /// <summary>
         /// If the settings file is found at the specified path, then that shall be loaded and used.
@@ -51,7 +51,7 @@ namespace MagicalLifeServerShell.API.Settings
 
         public T GetSettings()
         {
-            return Settings;
+            return this.Settings;
         }
 
         /// <summary>

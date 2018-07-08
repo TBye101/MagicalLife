@@ -21,16 +21,16 @@ namespace MagicalLifeAPI.World.Data
         /// <summary>
         /// The name of the save game.
         /// </summary>
-        private string SaveName;
+        private readonly string SaveName;
 
-        private string GameSaveRoot;
+        private readonly string GameSaveRoot;
 
         /// <summary>
         /// Contains the path to the root of each dimension directory, where the chunk files go.
         /// Key: The ID of the dimension.
         /// Value: The path to the root of where all of the chunks are stored for the dimension.
         /// </summary>
-        private Dictionary<Guid, string> DimensionPaths = new Dictionary<Guid, string>();
+        private readonly Dictionary<Guid, string> DimensionPaths = new Dictionary<Guid, string>();
 
         public WorldStorage(string saveName)
         {
@@ -39,7 +39,7 @@ namespace MagicalLifeAPI.World.Data
             DirectoryInfo savePath = Directory.CreateDirectory(FileSystemManager.RootDirectory + Path.DirectorySeparatorChar + "Save");
             this.SaveDirectory = savePath.FullName;
 
-            DirectoryInfo gameSavePath = Directory.CreateDirectory(SaveDirectory + Path.DirectorySeparatorChar + this.SaveName);
+            DirectoryInfo gameSavePath = Directory.CreateDirectory(this.SaveDirectory + Path.DirectorySeparatorChar + this.SaveName);
             this.GameSaveRoot = gameSavePath.FullName;
         }
 

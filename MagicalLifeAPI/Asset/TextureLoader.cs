@@ -15,9 +15,9 @@ namespace MagicalLifeAPI.Asset
     {
         private int TotalJobs = -1;
 
-        private List<string> TexturesToLoad = new List<string>();
+        private readonly List<string> TexturesToLoad = new List<string>();
 
-        private ContentManager Manager;
+        private readonly ContentManager Manager;
 
         public TextureLoader(ContentManager manager)
         {

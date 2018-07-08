@@ -42,11 +42,7 @@ namespace MagicalLifeGUIWindows.Input.History
         /// <param name="e"></param>
         public static void InputAddedHandler()
         {
-            Action handler = InputAdded;
-            if (handler != null)
-            {
-                handler();
-            }
+            InputAdded?.Invoke();
         }
 
         public static void Initialize()

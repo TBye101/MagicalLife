@@ -89,11 +89,7 @@ namespace MagicalLifeAPI.Entities
         /// <param name="e"></param>
         public void LivingModifiedHandler(LivingEventArg e)
         {
-            EventHandler<LivingEventArg> handler = LivingModified;
-            if (handler != null)
-            {
-                handler(e.Living, e);
-            }
+            LivingModified?.Invoke(e.Living, e);
         }
 
         /// <summary>
@@ -102,11 +98,7 @@ namespace MagicalLifeAPI.Entities
         /// <param name="e"></param>
         public static void LivingCreatedHandler(LivingEventArg e)
         {
-            EventHandler<LivingEventArg> handler = LivingCreated;
-            if (handler != null)
-            {
-                handler(e.Living, e);
-            }
+            LivingCreated?.Invoke(e.Living, e);
         }
 
         public Dictionary<Type, int> GetSubclassInformation()

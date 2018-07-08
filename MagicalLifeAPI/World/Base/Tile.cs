@@ -100,20 +100,12 @@ namespace MagicalLifeAPI.World
         /// <param name="e"></param>
         public static void TileCreatedHandler(TileEventArg e)
         {
-            EventHandler<TileEventArg> handler = TileCreated;
-            if (handler != null)
-            {
-                handler(e, e);
-            }
+            TileCreated?.Invoke(e, e);
         }
 
         public void TileModifiedHandler(TileEventArg e)
         {
-            EventHandler<TileEventArg> handler = TileModified;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            TileModified?.Invoke(this, e);
         }
 
         public abstract string GetTextureName();

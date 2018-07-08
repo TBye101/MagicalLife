@@ -17,9 +17,9 @@ namespace MagicalLifeAPI.Networking.Serialization
         /// <summary>
         /// The messages that need to be registered.
         /// </summary>
-        private List<Type> Messages = new List<Type>();
+        private readonly List<Type> Messages = new List<Type>();
 
-        private List<ITeachSerialization> Teachers = new List<ITeachSerialization>();
+        private readonly List<ITeachSerialization> Teachers = new List<ITeachSerialization>();
 
         public ProtoTypeLoader()
         {

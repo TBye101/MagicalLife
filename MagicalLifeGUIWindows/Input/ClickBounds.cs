@@ -56,11 +56,7 @@ namespace MagicalLifeGUIWindows.Input
         /// <param name="e"></param>
         public virtual void ClickMe(MouseEventArgs e)
         {
-            EventHandler<MouseEventArgs> handler = Clicked;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            Clicked?.Invoke(this, e);
         }
 
         /// <summary>
@@ -69,11 +65,7 @@ namespace MagicalLifeGUIWindows.Input
         /// <param name="e"></param>
         public virtual void DoubleClickMe(MouseEventArgs e)
         {
-            EventHandler<MouseEventArgs> handler = Clicked;
-            if (handler != null)
-            {
-                handler(this, e);
-            }
+            Clicked?.Invoke(this, e);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace MagicalLifeAPI.World.Data
         /// Handles access to the chunks stored in this dimension.
         /// </summary>
         [ProtoMember(1)]
-        private ChunkManager Manager;
+        private readonly ChunkManager Manager;
 
         /// <summary>
         /// The display name of the dimension.

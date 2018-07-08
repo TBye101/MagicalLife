@@ -11,19 +11,19 @@ namespace MagicalLifeAPI.World.Data
     public class ChunkAccessRecorder
     {
         [ProtoMember(1)]
-        private List<DateTime> Accesses = new List<DateTime>();
+        private readonly List<DateTime> Accesses = new List<DateTime>();
 
         [ProtoMember(2)]
-        private int ChunkX;
+        private readonly int ChunkX;
 
         [ProtoMember(3)]
-        private int ChunkY;
+        private readonly int ChunkY;
 
         /// <summary>
         /// The time until a access is no longer counted in calculating how many times a chunk has been accessed.
         /// </summary>
         [ProtoMember(4)]
-        private int MilliSecondTimeout;
+        private readonly int MilliSecondTimeout;
 
         /// <summary>
         ///

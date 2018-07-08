@@ -30,8 +30,7 @@ namespace MagicalLifeGUIWindows.Input.History
 
         private HistoricalInput SingleSelect(InputEventArgs e)
         {
-            bool success;
-            Point mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y, RenderingPipe.Dimension, out success);
+            Point mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y, RenderingPipe.Dimension, out bool success);
 
             if (success)
             {
@@ -49,8 +48,10 @@ namespace MagicalLifeGUIWindows.Input.History
                 if (select != null)
                 {
                     //Null check select, as it is null when an entity is not found
-                    List<Selectable> selected = new List<Selectable>();
-                    selected.Add(select);
+                    List<Selectable> selected = new List<Selectable>
+                    {
+                        select
+                    };
 
                     if (e.ShiftDown)
                     {
@@ -95,8 +96,7 @@ namespace MagicalLifeGUIWindows.Input.History
         {
             Point screenLocation = e.MouseEventArgs.Position;
 
-            bool success;
-            Point mapLocation = Util.GetMapLocation(screenLocation.X, screenLocation.Y, RenderingPipe.Dimension, out success);
+            Point mapLocation = Util.GetMapLocation(screenLocation.X, screenLocation.Y, RenderingPipe.Dimension, out bool success);
 
             if (success)
             {

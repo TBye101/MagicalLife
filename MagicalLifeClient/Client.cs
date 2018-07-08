@@ -76,10 +76,7 @@ namespace MagicalLifeClient
             {
                 GameTick++;
 
-                if (ClientTick != null)
-                {
-                    ClientTick(null, GameTick);
-                }
+                ClientTick?.Invoke(null, GameTick);
                 i++;
             }
         }

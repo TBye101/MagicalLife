@@ -39,7 +39,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// <summary>
         /// If true, then the last key was already handled as a special key.
         /// </summary>
-        private bool LastKeySpecial = false;
+        private readonly bool LastKeySpecial = false;
 
         /// <summary>
         /// If this is true, this <see cref="MonoInputBox"/> doesn't allow editing.

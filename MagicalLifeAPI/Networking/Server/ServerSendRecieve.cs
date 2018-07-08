@@ -89,11 +89,7 @@ namespace MagicalLifeAPI.Networking.Server
         /// <param name="e"></param>
         private static void RaiseMessageRecieved(object sender, BaseMessage msg)
         {
-            EventHandler<BaseMessage> handler = MessageRecieved;
-            if (handler != null)
-            {
-                handler(sender, msg);
-            }
+            MessageRecieved?.Invoke(sender, msg);
         }
     }
 }

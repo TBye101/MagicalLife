@@ -98,11 +98,7 @@ namespace MagicalLifeAPI.World.Data
         /// <param name="e"></param>
         public static void DimensionAddedHandler(int e)
         {
-            EventHandler<int> handler = DimensionAdded;
-            if (handler != null)
-            {
-                handler(null, e);
-            }
+            DimensionAdded?.Invoke(null, e);
         }
     }
 }

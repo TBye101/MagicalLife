@@ -26,11 +26,11 @@ namespace MagicalLifeGUIWindows.Input
 
         public static MouseListener MouseListner = new MouseListener();
 
-        private static BoundsSorter BoundSorter = new BoundsSorter();
+        private static readonly BoundsSorter BoundSorter = new BoundsSorter();
 
-        private static ContainerSorter containerSorter = new ContainerSorter();
+        private static readonly ContainerSorter containerSorter = new ContainerSorter();
 
-        private static ClickBoundsSorter ClickBoundsSorter = new ClickBoundsSorter();
+        private static readonly ClickBoundsSorter ClickBoundsSorter = new ClickBoundsSorter();
 
         /// <summary>
         /// Anything in game that can be clicked on, that is not considered a menu or popup.

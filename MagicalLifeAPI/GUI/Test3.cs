@@ -6,7 +6,7 @@ namespace MagicalLifeAPI.GUI
     public class Test3 : Test2
     {
         [ProtoBuf.ProtoMember(1)]
-        public int ID = 32;
+        public int ID2 = 32;
 
         public override void ABSTRE()
         {

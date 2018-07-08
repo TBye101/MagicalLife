@@ -80,12 +80,7 @@ namespace MagicalLifeServer
 
         private static void RaiseServerTick(object sender, UInt64 tick)
         {
-            EventHandler<UInt64> eventHandler = ServerTick;
-
-            if (eventHandler != null)
-            {
-                eventHandler(sender, tick);
-            }
+            ServerTick?.Invoke(sender, tick);
             //TickTimer.Stop();
         }
 
