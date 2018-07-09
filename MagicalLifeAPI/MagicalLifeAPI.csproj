@@ -110,6 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Asset\AssetManager.cs" />
+    <Compile Include="Comparators\ItemComparator.cs" />
     <Compile Include="DataTypes\Attribute\ModifierFloat.cs" />
     <Compile Include="DataTypes\FixedSizeQueue.cs" />
     <Compile Include="DataTypes\PointFloat.cs" />
@@ -167,6 +168,7 @@
     <Compile Include="Load\LoadMoniter.cs" />
     <Compile Include="Universal\Unique.cs" />
     <Compile Include="Universal\UniversalEvents.cs" />
+    <Compile Include="Util\Algorithms.cs" />
     <Compile Include="Util\Extensions.cs" />
     <Compile Include="Util\MathUtil.cs" />
     <Compile Include="Util\ReflectionUtil.cs" />
@@ -180,6 +182,7 @@
     <Compile Include="World\Data\Dimension.cs" />
     <Compile Include="World\Data\ComplexItemStack.cs" />
     <Compile Include="World\Data\WorldStorage.cs" />
+    <Compile Include="World\Items\TestItem.cs" />
     <Compile Include="World\Resources\MarbleResource.cs" />
     <Compile Include="World\Resources\StoneBase.cs" />
     <Compile Include="World\TileEventArg.cs" />
@@ -196,7 +199,6 @@
   <ItemGroup>
     <Folder Include="Entity\Animal\" />
     <Folder Include="Entity\Entity Components\" />
-    <Folder Include="World\Items\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

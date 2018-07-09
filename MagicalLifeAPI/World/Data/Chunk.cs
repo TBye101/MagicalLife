@@ -1,6 +1,8 @@
-﻿using MagicalLifeAPI.DataTypes;
+﻿using MagicalLifeAPI.Comparators;
+using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Universal;
+using MagicalLifeAPI.World.Base;
 using Microsoft.Xna.Framework;
 using ProtoBuf;
 using System.Collections.Generic;
@@ -29,6 +31,12 @@ namespace MagicalLifeAPI.World.Data
         public string BiomeID;
 
         /// <summary>
+        /// The items within this chunk.
+        /// </summary>
+        [ProtoMember(5)]
+        public SortedSet<Item> Items { get; set; }
+
+        /// <summary>
         /// The width of this chunk in tiles.
         /// </summary>
         public static int Width = 15;
@@ -44,6 +52,7 @@ namespace MagicalLifeAPI.World.Data
             this.Tiles = tiles;
             this.ChunkLocation = location;
             this.BiomeID = biomeID;
+            this.Items = new SortedSet<Item>(new ItemComparator());
         }
 
         public Chunk() : base()
@@ -51,6 +60,11 @@ namespace MagicalLifeAPI.World.Data
             if (this.Creatures == null)
             {
                 this.Creatures = new List<Living>();
+            }
+
+            if (this.Items == null)
+            {
+                this.Items = new SortedSet<Item>();
             }
         }
 

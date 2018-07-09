@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes.Attribute;
 using MagicalLifeAPI.GUI;
+using Microsoft.Xna.Framework;
 using ProtoBuf;
 using System.Collections.Generic;
 
@@ -31,5 +32,16 @@ namespace MagicalLifeAPI.World.Base
         /// </summary>
         [ProtoMember(4)]
         public List<string> Lore { get; set; }
+
+        /// <summary>
+        /// The location of this item within the world. 
+        /// </summary>
+        [ProtoMember(5)]
+        public Point Location { get; set; }
+
+        /// <summary>
+        /// The ID that describes this item to the <see cref="ItemRegistry"/>.
+        /// </summary>
+        public int ItemID { get; private set; }
     }
 }

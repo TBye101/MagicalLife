@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Server;
+using MagicalLifeAPI.Registry;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeServer;
 using MagicalLifeServer.ServerWorld.World_Generation.Generators;
@@ -25,6 +26,8 @@ namespace MagicalLifeServerShell.API.Commands
 
         public void run(List<string> input)
         {
+            ItemRegistry reg = new ItemRegistry();
+
             Server.Load(EngineMode.ServerOnly);
 
             WorldGenerationSettings wset = SettingsHandler.WorldGenerationSettings.GetSettings();
