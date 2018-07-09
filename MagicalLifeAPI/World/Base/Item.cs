@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.DataTypes.Attribute;
 using MagicalLifeAPI.GUI;
 using ProtoBuf;
+using System.Collections.Generic;
 
 namespace MagicalLifeAPI.World.Base
 {
@@ -11,7 +12,7 @@ namespace MagicalLifeAPI.World.Base
     public abstract class Item : HasTexture
     {
         /// <summary>
-        /// The name of this <see cref="Item"/>;
+        /// The name of this <see cref="Item"/>.
         /// </summary>
         [ProtoMember(1)]
         public string Name { get; }
@@ -26,21 +27,9 @@ namespace MagicalLifeAPI.World.Base
         public AttributeFloat FireResistance { get; set; }
 
         /// <summary>
-        /// If true, then the item is probably magical and needs to be identified.
-        /// </summary>
-        [ProtoMember(4)]
-        public bool NeedsIdentifying { get; set; }
-
-        /// <summary>
-        /// Determines how hard it is to identify this object.
-        /// </summary>
-        [ProtoMember(5)]
-        public int IdentificationDifficulty { get; set; }
-
-        /// <summary>
         /// The description and lore of this item. Is not revealed until the item has been identified, unless it never needed identification.
         /// </summary>
-        [ProtoMember(6)]
-        public string[] Lore { get; set; }
+        [ProtoMember(4)]
+        public List<string> Lore { get; set; }
     }
 }
