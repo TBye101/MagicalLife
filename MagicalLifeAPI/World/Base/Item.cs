@@ -40,6 +40,19 @@ namespace MagicalLifeAPI.World.Base
         public Point Location { get; set; }
 
         /// <summary>
+        /// The maximum number of this item that may be contained in the same stack.
+        /// Must be greater than or equal to one.
+        /// </summary>
+        [ProtoMember(6)]
+        public int StackableLimit { get; set; }
+
+        /// <summary>
+        /// How many identical items are currently being clumped and held be this class.
+        /// </summary>
+        [ProtoMember(7)]
+        public int CurrentlyStacked { get; set; }
+
+        /// <summary>
         /// The ID that describes this item to the <see cref="ItemRegistry"/>.
         /// </summary>
         public int ItemID { get; private set; }
