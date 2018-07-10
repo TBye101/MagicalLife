@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking;
+using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Tiles;
 using Microsoft.Xna.Framework;
 using ProtoBuf;
@@ -83,6 +84,12 @@ namespace MagicalLifeAPI.World
         /// </summary>
         [ProtoMember(5)]
         public Point Location { get; set; }
+
+        /// <summary>
+        /// The item(s) that is stored in this tile.
+        /// </summary>
+        [ProtoMember(6)]
+        public Item Item { get; set; }
 
         /// <summary>
         /// Raised when the world is finished generating for the first time.

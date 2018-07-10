@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.World.Data;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
@@ -70,6 +71,33 @@ namespace MagicalLifeAPI.World
         public static bool DoesTileExist(Point tileLocation, int dimension)
         {
             return World.Data.World.Dimensions[dimension].DoesTileExist(tileLocation.X, tileLocation.Y);
+        }
+
+        /// <summary>
+        /// Determines what chunk a map location is part of, and returns the chunk coordinates of that chunk.
+        /// </summary>
+        /// <param name="mapLocation"></param>
+        /// <returns></returns>
+        public static Point2D CalculateChunkLocation(Point2D mapLocation)
+        {
+            int x = mapLocation.X / Chunk.Width;
+            int y = mapLocation.Y / Chunk.Height;
+
+            return new Point2D(x, y);
+        }
+
+        /// <summary>
+        /// Gets a tile from a chunk via its map location.
+        /// </summary>
+        /// <param name="mapLocation">The location of the tile.</param>
+        /// <param name="chunk">The chunk the tile is within.</param>
+        /// <returns></returns>
+        public static Tile GetTile(Point2D mapLocation, Chunk chunk)
+        {
+            int x = mapLocation.X % Chunk.Width;
+            int y = mapLocation.Y % Chunk.Height;
+
+            return chunk.Tiles[x, y];
         }
     }
 }
