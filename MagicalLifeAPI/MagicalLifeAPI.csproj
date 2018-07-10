@@ -126,7 +126,8 @@
     <Compile Include="DataTypes\PointFloat.cs" />
     <Compile Include="DataTypes\ProtoArray.cs" />
     <Compile Include="DataTypes\ProtoQueue.cs" />
-    <Compile Include="Registry\ItemRegistry.cs" />
+    <Compile Include="Registry\ItemRegistry\ItemAdder.cs" />
+    <Compile Include="Registry\ItemRegistry\ItemRegistry.cs" />
     <Compile Include="Entity\Entity Factory\HumanFactory.cs" />
     <Compile Include="Entity\Eventing\LivingEventArg.cs" />
     <Compile Include="Entity\Humanoid\Human.cs" />
@@ -171,6 +172,7 @@
     <Compile Include="Pathfinding\MainPathFinder.cs" />
     <Compile Include="Pathfinding\PathLink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registry\ItemRegistry\ItemRemover.cs" />
     <Compile Include="Server\ICommand.cs" />
     <Compile Include="Server\ICommandModule.cs" />
     <Compile Include="Universal\IGameLoader.cs" />

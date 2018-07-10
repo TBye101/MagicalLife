@@ -2,6 +2,7 @@
 using MagicalLifeAPI.GUI;
 using Microsoft.Xna.Framework;
 using ProtoBuf;
+using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.World.Base
@@ -56,5 +57,40 @@ namespace MagicalLifeAPI.World.Base
         /// The ID that describes this item to the <see cref="ItemRegistry"/>.
         /// </summary>
         public int ItemID { get; private set; }
+
+        /// <summary>
+        /// Combines two items and returns the result.
+        /// Do not continue to use "one" or "two" afterwards, as this function reuses them for performance reasons.
+        /// Doing so would cause unknown behavior.
+        /// </summary>
+        /// <param name="one"></param>
+        /// <param name="two"></param>
+        /// <param name="overflow">If the amount of the two items is too much, then this parameter is used to store the overflow. Otherwise, it is null.</param>
+        /// <returns></returns>
+        public static Item Combine(Item one, Item two, out Item overflow)
+        {
+            //Check to make sure the items are compatible, otherwise modders/hackers/bugs could be exploited to transmute cheap items into rarer things.
+            if (one.GetType() == two.GetType())
+            {
+                one.CurrentlyStacked += two.CurrentlyStacked;
+
+                int extra = one.CurrentlyStacked - one.StackableLimit;
+                if (extra > 0)
+                {
+                    two.CurrentlyStacked = extra;
+                    overflow = two;
+                }
+                else
+                {
+                    overflow = null;
+                }
+
+                return one;
+            }
+            else
+            {
+                throw new Exception("Error: Combining two items of different types is impossible to store.");
+            }
+        }
     }
 }
