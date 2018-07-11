@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.DataTypes.R_Tree;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
@@ -14,7 +15,7 @@ using System.Threading.Tasks;
 namespace MagicalLifeAPI.Registry.ItemRegistry
 {
 
-    /* Design
+    /* Item Registry Design
      * 
      * Dictionary stores access to a R-tree that stores the location of the chunk that stores at least one of the specified item
      * 
@@ -44,7 +45,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// For each item in the game, this dictionary holds a R-Tree that contains chunk coordinates for every chunk that has at least one of that item.
         /// </summary>
         [ProtoMember(2)]
-        public Dictionary<int, RBush<Point2D>> ItemIDToChunk { get; set; }
+        public Dictionary<int, IRTree<Point2D>> ItemIDToChunk { get; set; }
 
         /// <summary>
         /// The singleton access point for the item registry.
@@ -88,11 +89,11 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// </summary>
         internal void Bake()
         {
-            this.ItemIDToChunk = new Dictionary<int, RBush<Point2D>>(this.ItemTypeID.Count);
+            this.ItemIDToChunk = new Dictionary<int, IRTree<Point2D>>(this.ItemTypeID.Count);
 
             foreach (KeyValuePair<int, Type> item in this.ItemTypeID)
             {
-                this.ItemIDToChunk.Add(item.Key, new RBush<Point2D>());
+                this.ItemIDToChunk.Add(item.Key, new RBushWrapper<Point2D>());
             }
         }
     }
