@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.DataTypes.Attribute;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.DataTypes.Attribute;
 using MagicalLifeAPI.GUI;
 using Microsoft.Xna.Framework;
 using ProtoBuf;
@@ -57,6 +58,13 @@ namespace MagicalLifeAPI.World.Base
         /// The ID that describes this item to the <see cref="ItemRegistry"/>.
         /// </summary>
         public int ItemID { get; private set; }
+
+        public Item()
+        {
+            this.TextureIndex = AssetManager.GetTextureIndex(this.GetTextureName());
+        }
+
+        public abstract string GetTextureName();
 
         /// <summary>
         /// Combines two items and returns the result.

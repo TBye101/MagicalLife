@@ -9,7 +9,6 @@ https://github.com/serilog/serilog
 https://github.com/BrandonPotter/SimpleTCP
 
 *Still need to be credited
-https://github.com/viceroypenguin/RBush
 
 Code Snippets:
 

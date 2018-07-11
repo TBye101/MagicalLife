@@ -63,6 +63,16 @@ namespace MagicalLifeGUIWindows.Rendering.Map
             spBatch.Draw(AssetManager.Textures[tile.TextureIndex], target, RenderingPipe.colorMask);
 
             DrawStone(tile, ref spBatch, target);
+            DrawItems(ref spBatch, tile, target);
+        }
+
+        private static void DrawItems(ref SpriteBatch spBatch, Tile tile, Rectangle target)
+        {
+            if (tile.Item != null)
+            {
+                Texture2D texture = AssetManager.Textures[tile.TextureIndex];
+                spBatch.Draw(texture, target, RenderingPipe.colorMask);
+            }
         }
 
         /// <summary>

@@ -202,7 +202,7 @@
     <Compile Include="World\Data\Dimension.cs" />
     <Compile Include="World\Data\ComplexItemStack.cs" />
     <Compile Include="World\Data\WorldStorage.cs" />
-    <Compile Include="World\Items\TestItem.cs" />
+    <Compile Include="World\Items\StoneChunk.cs" />
     <Compile Include="World\Resources\MarbleResource.cs" />
     <Compile Include="World\Resources\StoneBase.cs" />
     <Compile Include="World\TileEventArg.cs" />
