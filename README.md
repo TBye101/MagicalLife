@@ -40,20 +40,36 @@ Mod support: Always a priority
 ## Libraries Utilized
 [MonoGame](http://www.monogame.net/)
 
+Released under the [Microsoft Public License and the MIT License](https://github.com/MonoGame/MonoGame/blob/develop/LICENSE.txt)
+
 #### Does the heavy lifting for graphics, asset loading, and more!
 ---
 [MonoGame.Extended](https://github.com/craftworkgames/MonoGame.Extended)
+
+Released under the [MIT License](https://github.com/craftworkgames/MonoGame.Extended/blob/develop/LICENSE)
+
 #### Used to capture keyboard and mouse input
+
 ---
 [A* Algorithm](https://github.com/roy-t/AStar) by Roy-T
+
+Released under the [MIT License](https://github.com/roy-t/AStar/blob/master/LICENSE)
 
 #### Provides the pathfinding for Magical Life
 ---
 [Serilog](https://github.com/serilog/serilog)
+
+Released under the [Apache License 2.0](https://github.com/serilog/serilog/blob/dev/LICENSE)
 #### Used to log things
 ---
 [ProtoBuf-net](https://github.com/mgravell/protobuf-net)
+
+Released under the [Apache License 2.0](https://github.com/mgravell/protobuf-net/blob/master/Licence.txt)
+
 #### Used for quickly serializing objects into a small payload to be sent over the network
 ---
 [Simple TCP](https://github.com/BrandonPotter/SimpleTCP)
+
+Released under the [Apache License 2.0](https://github.com/BrandonPotter/SimpleTCP/blob/master/LICENSE)
+
 #### Utilized to send data over the network
