@@ -1,17 +1,17 @@
 //   Rectangle.java
 //   Java Spatial Index Library
 //   Copyright (C) 2002 Infomatiq Limited
-//  
+//
 //  This library is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU Lesser General Public
 //  License as published by the Free Software Foundation; either
 //  version 2.1 of the License, or (at your option) any later version.
-//  
+//
 //  This library is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 //  Lesser General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU Lesser General Public
 //  License along with this library; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
@@ -23,20 +23,20 @@ using System.Text;
 
 namespace RTree
 {
-
     /**
      * Currently hardcoded to 2 dimensions, but could be extended.
-     * 
+     *
      * @author  aled@sourceforge.net
      * @version 1.0b2p1
      */
+
     public class Rectangle
     {
         /**
          * Number of dimensions in a rectangle. In theory this
          * could be exended to three or more dimensions.
          */
-        internal const int DIMENSIONS = 3;
+        internal const int DIMENSIONS = 2;
 
         /**
          * array containing the minimum value for each dimension; ie { min(x), min(y) }
@@ -50,25 +50,27 @@ namespace RTree
 
         /**
          * Constructor.
-         * 
+         *
          * @param x1 coordinate of any corner of the rectangle
          * @param y1 (see x1)
          * @param x2 coordinate of the opposite corner
          * @param y2 (see x2)
          */
-        public Rectangle(float x1, float y1, float x2, float y2, float z1, float z2)
+
+        public Rectangle(float x1, float y1, float x2, float y2)
         {
             min = new float[DIMENSIONS];
             max = new float[DIMENSIONS];
-            set(x1, y1, x2, y2, z1, z2);
+            set(x1, y1, x2, y2);
         }
 
         /**
          * Constructor.
-         * 
+         *
          * @param min array containing the minimum value for each dimension; ie { min(x), min(y) }
          * @param max array containing the maximum value for each dimension; ie { max(x), max(y) }
          */
+
         public Rectangle(float[] min, float[] max)
         {
             if (min.Length != DIMENSIONS || max.Length != DIMENSIONS)
@@ -85,28 +87,28 @@ namespace RTree
 
         /**
           * Sets the size of the rectangle.
-          * 
+          *
           * @param x1 coordinate of any corner of the rectangle
           * @param y1 (see x1)
           * @param x2 coordinate of the opposite corner
           * @param y2 (see x2)
           */
-        internal void set(float x1, float y1, float x2, float y2, float z1, float z2)
+
+        internal void set(float x1, float y1, float x2, float y2)
         {
             min[0] = Math.Min(x1, x2);
             min[1] = Math.Min(y1, y2);
-            min[2] = Math.Min(z1, z2);
             max[0] = Math.Max(x1, x2);
             max[1] = Math.Max(y1, y2);
-            max[2] = Math.Max(z1, z2);
         }
 
         /**
          * Sets the size of the rectangle.
-         * 
+         *
          * @param min array containing the minimum value for each dimension; ie { min(x), min(y) }
          * @param max array containing the maximum value for each dimension; ie { max(x), max(y) }
          */
+
         internal void set(float[] min, float[] max)
         {
             System.Array.Copy(min, 0, this.min, 0, DIMENSIONS);
@@ -115,18 +117,20 @@ namespace RTree
 
         /**
          * Make a copy of this rectangle
-         * 
+         *
          * @return copy of this rectangle
          */
+
         internal Rectangle copy()
         {
             return new Rectangle(min, max);
         }
 
         /**
-         * Determine whether an edge of this rectangle overlies the equivalent 
+         * Determine whether an edge of this rectangle overlies the equivalent
          * edge of the passed rectangle
          */
+
         internal bool edgeOverlaps(Rectangle r)
         {
             for (int i = 0; i < DIMENSIONS; i++)
@@ -141,11 +145,12 @@ namespace RTree
 
         /**
          * Determine whether this rectangle intersects the passed rectangle
-         * 
+         *
          * @param r The rectangle that might intersect this rectangle
-         * 
+         *
          * @return true if the rectangles intersect, false if they do not intersect
          */
+
         internal bool intersects(Rectangle r)
         {
             // Every dimension must intersect. If any dimension
@@ -162,12 +167,13 @@ namespace RTree
 
         /**
          * Determine whether this rectangle contains the passed rectangle
-         * 
+         *
          * @param r The rectangle that might be contained by this rectangle
-         * 
+         *
          * @return true if this rectangle contains the passed rectangle, false if
          *         it does not
          */
+
         internal bool contains(Rectangle r)
         {
             for (int i = 0; i < DIMENSIONS; i++)
@@ -182,12 +188,13 @@ namespace RTree
 
         /**
          * Determine whether this rectangle is contained by the passed rectangle
-         * 
+         *
          * @param r The rectangle that might contain this rectangle
-         * 
+         *
          * @return true if the passed rectangle contains this rectangle, false if
          *         it does not
          */
+
         internal bool containedBy(Rectangle r)
         {
             for (int i = 0; i < DIMENSIONS; i++)
@@ -203,12 +210,13 @@ namespace RTree
         /**
          * Return the distance between this rectangle and the passed point.
          * If the rectangle contains the point, the distance is zero.
-         * 
+         *
          * @param p Point to find the distance to
-         * 
+         *
          * @return distance beween this rectangle and the passed point.
          */
-        internal float distance(Point p)
+
+        internal float distance(RPoint p)
         {
             float distanceSquared = 0;
             for (int i = 0; i < DIMENSIONS; i++)
@@ -226,9 +234,9 @@ namespace RTree
         /**
          * Return the distance between this rectangle and the passed rectangle.
          * If the rectangles overlap, the distance is zero.
-         * 
+         *
          * @param r Rectangle to find the distance to
-         * 
+         *
          * @return distance between this rectangle and the passed rectangle
          */
 
@@ -250,6 +258,7 @@ namespace RTree
         /**
          * Return the squared distance from this rectangle to the passed point
          */
+
         internal float distanceSquared(int dimension, float point)
         {
             float distanceSquared = 0;
@@ -268,12 +277,13 @@ namespace RTree
 
         /**
          * Return the furthst possible distance between this rectangle and
-         * the passed rectangle. 
-         * 
+         * the passed rectangle.
+         *
          * Find the distance between this rectangle and each corner of the
          * passed rectangle, and use the maximum.
          *
          */
+
         internal float furthestDistance(Rectangle r)
         {
             float distanceSquared = 0;
@@ -291,11 +301,12 @@ namespace RTree
         /**
          * Calculate the area by which this rectangle would be enlarged if
          * added to the passed rectangle. Neither rectangle is altered.
-         * 
-         * @param r Rectangle to union with this rectangle, in order to 
+         *
+         * @param r Rectangle to union with this rectangle, in order to
          *          compute the difference in area of the union and the
          *          original rectangle
          */
+
         internal float enlargement(Rectangle r)
         {
             float enlargedArea = (Math.Max(max[0], r.max[0]) - Math.Min(min[0], r.min[0])) *
@@ -306,9 +317,10 @@ namespace RTree
 
         /**
          * Compute the area of this rectangle.
-         * 
+         *
          * @return The area of this rectangle
          */
+
         internal float area()
         {
             return (max[0] - min[0]) * (max[1] - min[1]);
@@ -317,9 +329,10 @@ namespace RTree
         /**
          * Computes the union of this rectangle and the passed rectangle, storing
          * the result in this rectangle.
-         * 
+         *
          * @param r Rectangle to add to this rectangle
          */
+
         internal void add(Rectangle r)
         {
             for (int i = 0; i < DIMENSIONS; i++)
@@ -338,9 +351,10 @@ namespace RTree
         /**
          * Find the the union of this rectangle and the passed rectangle.
          * Neither rectangle is altered
-         * 
+         *
          * @param r The rectangle to union with this rectangle
          */
+
         internal Rectangle union(Rectangle r)
         {
             Rectangle union = this.copy();
@@ -364,9 +378,10 @@ namespace RTree
         /**
          * Determine whether this rectangle is equal to a given object.
          * Equality is determined by the bounds of the rectangle.
-         * 
+         *
          * @param o The object to compare with this rectangle
          */
+
         public override bool Equals(object obj)
         {
             bool equals = false;
@@ -382,23 +397,24 @@ namespace RTree
             return equals;
         }
 
-        /** 
+        /**
          * Determine whether this rectangle is the same as another object
-         * 
-         * Note that two rectangles can be equal but not the same object, 
+         *
+         * Note that two rectangles can be equal but not the same object,
          * if they both have the same bounds.
-         * 
+         *
          * @param o The object to compare with this rectangle.
          */
+
         internal bool sameObject(object o)
         {
             return base.Equals(o);
         }
 
         /**
-         * Return a string representation of this rectangle, in the form: 
+         * Return a string representation of this rectangle, in the form:
          * (1.2, 3.4), (5.6, 7.8)
-         * 
+         *
          * @return String String representation of this rectangle.
          */
 

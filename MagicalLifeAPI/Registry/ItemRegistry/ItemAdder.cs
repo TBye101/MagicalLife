@@ -2,12 +2,8 @@
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
-using RBush;
-using System;
+using RTree;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Registry.ItemRegistry
 {
@@ -16,7 +12,6 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
     /// </summary>
     public static class ItemAdder
     {
-
         /// <summary>
         /// Lets a chunk know that there is an item of the specified type in the specified tile position.
         /// </summary>
@@ -25,12 +20,11 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
             if (!chunk.Items.ContainsKey(item.ItemID))
             {
                 //chunk.Items doesn't store one key and value for every item in the game upfront.
-                chunk.Items.Add(item.ItemID, new RBush<Point2D>());
+                chunk.Items.Add(item.ItemID, new RTree<Point2D>());
             }
 
-            RBush<Point2D> itemLocations = chunk.Items[item.ItemID];
-            IReadOnlyList<Point2D> result = itemLocations.Search(mapLocation.Envelope);
-
+            RTree<Point2D> itemLocations = chunk.Items[item.ItemID];
+            List<Point2D> result = itemLocations.Contains(new Rectangle(mapLocation.X, mapLocation.Y, mapLocation.X, mapLocation.Y));
             if (result.Count > 0)
             {
                 //The chunk already knows that there is an item of the specified type in the specified position.
@@ -38,7 +32,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
             }
             else
             {
-                itemLocations.Insert(mapLocation);
+                itemLocations.Add(new Rectangle(mapLocation.X, mapLocation.Y, mapLocation.X, mapLocation.Y), mapLocation);
             }
         }
 
@@ -49,8 +43,8 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// <param name="itemID"></param>
         internal static void RememberWhichChunk(Point2D chunkLocation, int itemID)
         {
-            RBush<Point2D> chunkLocations = ItemRegistry.Registry.ItemIDToChunk[itemID];
-            IReadOnlyList<Point2D> result = chunkLocations.Search(chunkLocation.Envelope);
+            RTree.RTree<Point2D> chunkLocations = ItemRegistry.Registry.ItemIDToChunk[itemID];
+            List<Point2D> result = chunkLocations.Contains(new RTree.Rectangle(chunkLocation.X, chunkLocation.Y, chunkLocation.X, chunkLocation.Y));
 
             if (result.Count > 0)
             {
@@ -59,10 +53,9 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
             }
             else
             {
-                chunkLocations.Insert(chunkLocation);
+                chunkLocations.Add(new RTree.Rectangle(chunkLocation.X, chunkLocation.Y, chunkLocation.X, chunkLocation.Y), chunkLocation);
             }
         }
-
 
         /// <summary>
         /// Adds an item to the specified map location.

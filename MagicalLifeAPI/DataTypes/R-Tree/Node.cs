@@ -1,17 +1,17 @@
 //   Node.java
 //   Java Spatial Index Library
 //   Copyright (C) 2002 Infomatiq Limited
-//  
+//
 //  This library is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU Lesser General Public
 //  License as published by the Free Software Foundation; either
 //  version 2.1 of the License, or (at your option) any later version.
-//  
+//
 //  This library is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 //  Lesser General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU Lesser General Public
 //  License along with this library; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
@@ -19,15 +19,15 @@
 // Ported to C# By Dror Gluska, April 9th, 2009
 namespace RTree
 {
-
     //import com.infomatiq.jsi.Rectangle;
 
     /**
      * <p>Used by RTree. There are no public methods in this class.</p>
-     * 
+     *
      * @author aled@sourceforge.net
      * @version 1.0b2p1
      */
+
     public class Node<T>
     {
         internal int nodeId = 0;
@@ -103,7 +103,7 @@ namespace RTree
             entryCount--;
 
             // if there are at least minNodeEntries, adjust the MBR.
-            // otherwise, don't bother, as the Node<T> will be 
+            // otherwise, don't bother, as the Node<T> will be
             // eliminated anyway.
             if (entryCount >= minNodeEntries)
             {
@@ -152,6 +152,7 @@ namespace RTree
         /**
          * eliminate null entries, move all entries to the start of the source node
          */
+
         internal void reorganize(RTree<T> rtree)
         {
             int countdownIndex = rtree.maxNodeEntries - 1;
@@ -185,5 +186,4 @@ namespace RTree
             return mbr;
         }
     }
-
 }

@@ -2,46 +2,41 @@
 //   Java Spatial Index Library
 //   Copyright (C) 2002 Infomatiq Limited
 //   Copyright (C) 2008 Aled Morris aled@sourceforge.net
-//  
+//
 //  This library is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU Lesser General Public
 //  License as published by the Free Software Foundation; either
 //  version 2.1 of the License, or (at your option) any later version.
-//  
+//
 //  This library is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 //  Lesser General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU Lesser General Public
 //  License along with this library; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 //  Ported to C# By Dror Gluska, April 9th, 2009
 
-
-using log4net.Repository.Hierarchy;
 using log4net;
-using System.Collections.Generic;
 using System;
-using System.Collections;
-
+using System.Collections.Generic;
 
 namespace RTree
 {
-
     /// <summary>
-    /// This is a lightweight RTree implementation, specifically designed 
-    /// for the following features (in order of importance): 
+    /// This is a lightweight RTree implementation, specifically designed
+    /// for the following features (in order of importance):
     ///
-    /// Fast intersection query performance. To achieve this, the RTree 
+    /// Fast intersection query performance. To achieve this, the RTree
     /// uses only main memory to store entries. Obviously this will only improve
     /// performance if there is enough physical memory to avoid paging.
     /// Low memory requirements.
     /// Fast add performance.
     ///
     ///
-    /// The main reason for the high speed of this RTree implementation is the 
+    /// The main reason for the high speed of this RTree implementation is the
     /// avoidance of the creation of unnecessary objects, mainly achieved by using
     /// primitive collections from the trove4j library.
     /// author aled@sourceforge.net
@@ -58,8 +53,9 @@ namespace RTree
 
         // parameters of the tree
         private const int DEFAULT_MAX_NODE_ENTRIES = 10;
+
         internal int maxNodeEntries;
-        int minNodeEntries;
+        private int minNodeEntries;
 
         // map of nodeId -&gt; Node&lt;T&gt; object
         // [x] TODO eliminate this map - it should not be needed. Nodes
@@ -72,6 +68,7 @@ namespace RTree
 
         // used to mark the status of entries during a Node&lt;T&gt; split
         private const int ENTRY_STATUS_ASSIGNED = 0;
+
         private const int ENTRY_STATUS_UNASSIGNED = 1;
         private byte[] entryStatus = null;
         private byte[] initialEntryStatus = null;
@@ -81,19 +78,21 @@ namespace RTree
         // of nodes when a split is propagated up the tree.
         //private TIntStack parents = new TIntStack();
         private Stack<int> parents = new Stack<int>();
+
         //private TIntStack parentsEntry = new TIntStack();
         private Stack<int> parentsEntry = new Stack<int>();
 
         // initialisation
         private int treeHeight = 1; // leaves are always level 1
+
         private int rootNodeId = 0;
         private int msize = 0;
 
         // Enables creation of new nodes
-        //private int highestUsedNodeId = rootNodeId; 
+        //private int highestUsedNodeId = rootNodeId;
         private int highestUsedNodeId = 0;
 
-        // Deleted Node&lt;T&gt; objects are retained in the nodeMap, 
+        // Deleted Node&lt;T&gt; objects are retained in the nodeMap,
         // so that they can be reused. Store the IDs of nodes
         // which can be reused.
         //private TIntStack deletedNodeIds = new TIntStack();
@@ -102,12 +101,13 @@ namespace RTree
         // List of nearest rectangles. Use a member variable to
         // avoid recreating the object each time nearest() is called.
         //private TIntArrayList nearestIds = new TIntArrayList();
-        List<int> nearestIds = new List<int>();
+        private List<int> nearestIds = new List<int>();
 
         //Added dictionaries to support generic objects..
         //possibility to change the code to support objects without dictionaries.
-        private Dictionary<int, T> IdsToItems = new Dictionary<int,T>();
-        private Dictionary<T,int> ItemsToIds = new Dictionary<T,int>();
+        private Dictionary<int, T> IdsToItems = new Dictionary<int, T>();
+
+        private Dictionary<T, int> ItemsToIds = new Dictionary<T, int>();
         private volatile int idcounter = int.MinValue;
 
         //the recursion methods require a delegate to retrieve data
@@ -178,7 +178,6 @@ namespace RTree
         /// Adds an item to the spatial index
         /// </summary>
         /// <param name="r"></param>
-        /// <param name="item"></param>
         public void Add(Rectangle r, T item)
         {
             idcounter++;
@@ -210,12 +209,12 @@ namespace RTree
         /// <param name="level"></param>
         private void add(Rectangle r, int id, int level)
         {
-            // I1 [Find position for new record] Invoke ChooseLeaf to select a 
+            // I1 [Find position for new record] Invoke ChooseLeaf to select a
             // leaf Node&lt;T&gt; L in which to place r
             Node<T> n = chooseNode(r, level);
             Node<T> newLeaf = null;
 
-            // I2 [Add record to leaf node] If L has room for another entry, 
+            // I2 [Add record to leaf node] If L has room for another entry,
             // install E. Otherwise invoke SplitNode to obtain L and LL containing
             // E and all the old entries of L
             if (n.entryCount < maxNodeEntries)
@@ -231,7 +230,7 @@ namespace RTree
             // if a split was performed
             Node<T> newNode = adjustTree(n, newLeaf);
 
-            // I4 [Grow tree taller] If Node&lt;T&gt; split propagation caused the root to 
+            // I4 [Grow tree taller] If Node&lt;T&gt; split propagation caused the root to
             // split, create a new root whose children are the two resulting nodes.
             if (newNode != null)
             {
@@ -273,14 +272,14 @@ namespace RTree
 
         private bool delete(Rectangle r, int id)
         {
-            // FindLeaf algorithm inlined here. Note the "official" algorithm 
-            // searches all overlapping entries. This seems inefficient to me, 
+            // FindLeaf algorithm inlined here. Note the "official" algorithm
+            // searches all overlapping entries. This seems inefficient to me,
             // as an entry is only worth searching if it contains (NOT overlaps)
             // the rectangle we are searching for.
             //
             // Also the algorithm has been changed so that it is not recursive.
 
-            // FL1 [Search subtrees] If root is not a leaf, check each entry 
+            // FL1 [Search subtrees] If root is not a leaf, check each entry
             // to determine if it contains r. For each entry found, invoke
             // findLeaf on the Node&lt;T&gt; pointed to by the entry, until r is found or
             // all entries have been checked.
@@ -334,7 +333,7 @@ namespace RTree
                 msize--;
             }
 
-            // shrink the tree if possible (i.e. if root Node&lt;T%gt; has exactly one entry,and that 
+            // shrink the tree if possible (i.e. if root Node&lt;T%gt; has exactly one entry,and that
             // entry is not a leaf node, delete the root (it's entry becomes the new root)
             Node<T> root = getNode(rootNodeId);
             while (root.entryCount == 1 && treeHeight > 1)
@@ -354,18 +353,17 @@ namespace RTree
         /// <param name="p">Point of origin</param>
         /// <param name="furthestDistance">maximum distance</param>
         /// <returns>List of items</returns>
-        public List<T> Nearest(Point p, float furthestDistance)
+        public List<T> Nearest(RPoint p, float furthestDistance)
         {
             List<T> retval = new List<T>();
-            nearest(p, delegate(int id)
+            nearest(p, delegate (int id)
             {
                 retval.Add(IdsToItems[id]);
             }, furthestDistance);
             return retval;
         }
 
-
-        private void nearest(Point p, intproc v, float furthestDistance)
+        private void nearest(RPoint p, intproc v, float furthestDistance)
         {
             Node<T> rootNode = getNode(rootNodeId);
 
@@ -384,13 +382,12 @@ namespace RTree
         public List<T> Intersects(Rectangle r)
         {
             List<T> retval = new List<T>();
-            intersects(r, delegate(int id)
+            intersects(r, delegate (int id)
             {
                 retval.Add(IdsToItems[id]);
             });
             return retval;
         }
-
 
         private void intersects(Rectangle r, intproc v)
         {
@@ -406,7 +403,7 @@ namespace RTree
         public List<T> Contains(Rectangle r)
         {
             List<T> retval = new List<T>();
-            contains(r, delegate(int id)
+            contains(r, delegate (int id)
             {
                 retval.Add(IdsToItems[id]);
             });
@@ -425,7 +422,7 @@ namespace RTree
             parentsEntry.Clear();
             parentsEntry.Push(-1);
 
-            // TODO: possible shortcut here - could test for intersection with the 
+            // TODO: possible shortcut here - could test for intersection with the
             // MBR of the root node. If no intersection, return immediately.
 
             while (parents.Count > 0)
@@ -436,7 +433,7 @@ namespace RTree
                 if (!n.isLeaf())
                 {
                     // go through every entry in the index Node<T> to check
-                    // if it intersects the passed rectangle. If so, it 
+                    // if it intersects the passed rectangle. If so, it
                     // could contain entries that are contained.
                     bool intersects = false;
                     for (int i = startIndex; i < n.entryCount; i++)
@@ -458,7 +455,7 @@ namespace RTree
                 }
                 else
                 {
-                    // go through every entry in the leaf to check if 
+                    // go through every entry in the leaf to check if
                     // it is contained by the passed rectangle
                     for (int i = 0; i < n.entryCount; i++)
                     {
@@ -476,6 +473,7 @@ namespace RTree
         /**
         * @see com.infomatiq.jsi.SpatialIndex#getBounds()
         */
+
         public Rectangle getBounds()
         {
             Rectangle bounds = null;
@@ -491,10 +489,12 @@ namespace RTree
         /**
          * @see com.infomatiq.jsi.SpatialIndex#getVersion()
          */
+
         public string getVersion()
         {
             return "RTree-" + version;
         }
+
         //-------------------------------------------------------------------------
         // end of SpatialIndex methods
         //-------------------------------------------------------------------------
@@ -503,6 +503,7 @@ namespace RTree
          * Get the next available Node&lt;T&gt; ID. Reuse deleted Node&lt;T&gt; IDs if
          * possible
          */
+
         private int getNextNodeId()
         {
             int nextNodeId = 0;
@@ -516,10 +517,6 @@ namespace RTree
             }
             return nextNodeId;
         }
-
-       
-       
-       
 
         /// <summary>
         /// Get a Node&lt;T&gt; object, given the ID of the node.
@@ -559,7 +556,7 @@ namespace RTree
         /// <returns>return new Node&lt;T&gt; object.</returns>
         private Node<T> splitNode(Node<T> n, Rectangle newRect, int newId)
         {
-            // [Pick first entry for each group] Apply algorithm pickSeeds to 
+            // [Pick first entry for each group] Apply algorithm pickSeeds to
             // choose two entries to be the first elements of the groups. Assign
             // each to a group.
 
@@ -580,8 +577,8 @@ namespace RTree
             pickSeeds(n, newRect, newId, newNode); // this also sets the entryCount to 1
 
             // [Check if done] If all entries have been assigned, stop. If one
-            // group has so few entries that all the rest must be assigned to it in 
-            // order for it to have the minimum number m, assign them and stop. 
+            // group has so few entries that all the rest must be assigned to it in
+            // order for it to have the minimum number m, assign them and stop.
             while (n.entryCount + newNode.entryCount < maxNodeEntries + 1)
             {
                 if (maxNodeEntries + 1 - newNode.entryCount == minNodeEntries)
@@ -614,9 +611,9 @@ namespace RTree
                 }
 
                 // [Select entry to assign] Invoke algorithm pickNext to choose the
-                // next entry to assign. Add it to the group whose covering rectangle 
+                // next entry to assign. Add it to the group whose covering rectangle
                 // will have to be enlarged least to accommodate it. Resolve ties
-                // by adding the entry to the group with smaller area, then to the 
+                // by adding the entry to the group with smaller area, then to the
                 // the one with fewer entries, then to either. Repeat from S2
                 pickNext(n, newNode);
             }
@@ -659,7 +656,7 @@ namespace RTree
         private void pickSeeds(Node<T> n, Rectangle newRect, int newId, Node<T> newNode)
         {
             // Find extreme rectangles along all dimension. Along each dimension,
-            // find the entry whose rectangle has the highest low side, and the one 
+            // find the entry whose rectangle has the highest low side, and the one
             // with the lowest high side. Record the separation.
             float maxNormalizedSeparation = 0;
             int highestLowIndex = 0;
@@ -743,7 +740,7 @@ namespace RTree
                 n.ids[highestLowIndex] = newId;
             }
 
-            // lowestHighIndex is the seed for the original node. 
+            // lowestHighIndex is the seed for the original node.
             if (lowestHighIndex == -1)
             {
                 lowestHighIndex = highestLowIndex;
@@ -754,14 +751,11 @@ namespace RTree
             n.mbr.set(n.entries[lowestHighIndex].min, n.entries[lowestHighIndex].max);
         }
 
-
-
-        
         /// <summary>
         /// Pick the next entry to be assigned to a group during a Node&lt;T&gt; split.
-        /// [Determine cost of putting each entry in each group] For each 
+        /// [Determine cost of putting each entry in each group] For each
         /// entry not yet in a group, calculate the area increase required
-        /// in the covering rectangles of each group  
+        /// in the covering rectangles of each group
         /// </summary>
         /// <param name="n"></param>
         /// <param name="newNode"></param>
@@ -783,7 +777,6 @@ namespace RTree
             {
                 if (entryStatus[i] == ENTRY_STATUS_UNASSIGNED)
                 {
-
                     if (n.entries[i] == null)
                     {
                         log.Error("Error: Node<T> " + n.nodeId + ", entry " + i + " is null");
@@ -848,10 +841,9 @@ namespace RTree
             return next;
         }
 
-        
         /// <summary>
         /// Recursively searches the tree for the nearest entry. Other queries
-        /// call execute() on an IntProcedure when a matching entry is found; 
+        /// call execute() on an IntProcedure when a matching entry is found;
         /// however nearest() must store the entry Ids as it searches the tree,
         /// in case a nearer entry is found.
         /// Uses the member variable nearestIds to store the nearest
@@ -862,13 +854,13 @@ namespace RTree
         /// <param name="n"></param>
         /// <param name="nearestDistance"></param>
         /// <returns></returns>
-        private float nearest(Point p, Node<T> n, float nearestDistance)
+        private float nearest(RPoint p, Node<T> n, float nearestDistance)
         {
             for (int i = 0; i < n.entryCount; i++)
             {
                 float tempDistance = n.entries[i].distance(p);
                 if (n.isLeaf())
-                { // for leaves, the distance is an actual nearest distance 
+                { // for leaves, the distance is an actual nearest distance
                     if (tempDistance < nearestDistance)
                     {
                         nearestDistance = tempDistance;
@@ -892,10 +884,9 @@ namespace RTree
             return nearestDistance;
         }
 
-    
         /// <summary>
         /// Recursively searches the tree for all intersecting entries.
-        /// Immediately calls execute() on the passed IntProcedure when 
+        /// Immediately calls execute() on the passed IntProcedure when
         /// a matching entry is found.
         /// [x] TODO rewrite this to be non-recursive? Make sure it
         /// doesn't slow it down.
@@ -925,12 +916,13 @@ namespace RTree
         /**
          * Used by delete(). Ensures that all nodes from the passed node
          * up to the root have the minimum number of entries.
-         * 
+         *
          * Note that the parent and parentEntry stacks are expected to
          * contain the nodeIds of all parents up to the root.
          */
 
-        private Rectangle oldRectangle = new Rectangle(0, 0, 0, 0,0,0);
+        private Rectangle oldRectangle = new Rectangle(0, 0, 0, 0);
+
         private void condenseTree(Node<T> l)
         {
             // CT1 [Initialize] Set n=l. Set the list of eliminated
@@ -942,8 +934,8 @@ namespace RTree
             //TIntStack eliminatedNodeIds = new TIntStack();
             Stack<int> eliminatedNodeIds = new Stack<int>();
 
-            // CT2 [Find parent entry] If N is the root, go to CT6. Otherwise 
-            // let P be the parent of N, and let En be N's entry in P  
+            // CT2 [Find parent entry] If N is the root, go to CT6. Otherwise
+            // let P be the parent of N, and let En be N's entry in P
             while (n.level != treeHeight)
             {
                 parent = getNode(parents.Pop());
@@ -972,8 +964,8 @@ namespace RTree
             }
 
             // CT6 [Reinsert orphaned entries] Reinsert all entries of nodes in set Q.
-            // Entries from eliminated leaf nodes are reinserted in tree leaves as in 
-            // Insert(), but entries from higher level nodes must be placed higher in 
+            // Entries from eliminated leaf nodes are reinserted in tree leaves as in
+            // Insert(), but entries from higher level nodes must be placed higher in
             // the tree, so that leaves of their dependent subtrees will be on the same
             // level as leaves of the main tree
             while (eliminatedNodeIds.Count > 0)
@@ -992,6 +984,7 @@ namespace RTree
         /**
          *  Used by add(). Chooses a leaf to add the rectangle to.
          */
+
         private Node<T> chooseNode(Rectangle r, int level)
         {
             // CL1 [Initialize] Set N to be the root node
@@ -1012,7 +1005,7 @@ namespace RTree
                     return n;
                 }
 
-                // CL3 [Choose subtree] If N is not at the desired level, let F be the entry in N 
+                // CL3 [Choose subtree] If N is not at the desired level, let F be the entry in N
                 // whose rectangle FI needs least enlargement to include EI. Resolve
                 // ties by choosing the entry with the rectangle of smaller area.
                 float leastEnlargement = n.getEntry(0).enlargement(r);
@@ -1033,7 +1026,7 @@ namespace RTree
                 parents.Push(n.nodeId);
                 parentsEntry.Push(index);
 
-                // CL4 [Descend until a leaf is reached] Set N to be the child Node&lt;T&gt; 
+                // CL4 [Descend until a leaf is reached] Set N to be the child Node&lt;T&gt;
                 // pointed to by Fp and repeat from CL2
                 n = getNode(n.ids[index]);
             }
@@ -1043,16 +1036,16 @@ namespace RTree
          * Ascend from a leaf Node&lt;T&gt; L to the root, adjusting covering rectangles and
          * propagating Node&lt;T&gt; splits as necessary.
          */
+
         private Node<T> adjustTree(Node<T> n, Node<T> nn)
         {
-            // AT1 [Initialize] Set N=L. If L was split previously, set NN to be 
+            // AT1 [Initialize] Set N=L. If L was split previously, set NN to be
             // the resulting second node.
 
             // AT2 [Check if done] If N is the root, stop
             while (n.level != treeHeight)
             {
-
-                // AT3 [Adjust covering rectangle in parent entry] Let P be the parent 
+                // AT3 [Adjust covering rectangle in parent entry] Let P be the parent
                 // Node<T> of N, and let En be N's entry in P. Adjust EnI so that it tightly
                 // encloses all entry rectangles in N.
                 Node<T> parent = getNode(parents.Pop());
@@ -1075,9 +1068,9 @@ namespace RTree
                     }
                 }
 
-                // AT4 [Propagate Node<T> split upward] If N has a partner NN resulting from 
-                // an earlier split, create a new entry Enn with Ennp pointing to NN and 
-                // Enni enclosing all rectangles in NN. Add Enn to P if there is room. 
+                // AT4 [Propagate Node<T> split upward] If N has a partner NN resulting from
+                // an earlier split, create a new entry Enn with Ennp pointing to NN and
+                // Enni enclosing all rectangles in NN. Add Enn to P if there is room.
                 // Otherwise, invoke splitNode to produce P and PP containing Enn and
                 // all P's old entries.
                 Node<T> newNode = null;
@@ -1093,7 +1086,7 @@ namespace RTree
                     }
                 }
 
-                // AT5 [Move up to next level] Set N = P and set NN = PP if a split 
+                // AT5 [Move up to next level] Set N = P and set NN = PP if a split
                 // occurred. Repeat from AT2
                 n = parent;
                 nn = newNode;
@@ -1108,10 +1101,11 @@ namespace RTree
         /**
          * Check the consistency of the tree.
          */
+
         private void checkConsistency(int nodeId, int expectedLevel, Rectangle expectedMBR)
         {
-            // go through the tree, and check that the internal data structures of 
-            // the tree are not corrupted.    
+            // go through the tree, and check that the internal data structures of
+            // the tree are not corrupted.
             Node<T> n = getNode(nodeId);
 
             if (n == null)
@@ -1160,6 +1154,7 @@ namespace RTree
          * Given a Node<T> object, calculate the Node<T> MBR from it's entries.
          * Used in consistency checking
          */
+
         private Rectangle calculateMBR(Node<T> n)
         {
             Rectangle mbr = new Rectangle(n.entries[0].min, n.entries[0].max);
@@ -1178,6 +1173,5 @@ namespace RTree
                 return this.msize;
             }
         }
-
     }
 }

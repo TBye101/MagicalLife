@@ -110,6 +110,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
                     case Microsoft.Xna.Framework.Input.Keys.Delete:
                         this.Delete();
                         break;
+
                     default:
                         this.AcceptKeystroke(e);
                         break;

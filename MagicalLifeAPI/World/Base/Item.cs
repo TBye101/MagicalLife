@@ -35,7 +35,7 @@ namespace MagicalLifeAPI.World.Base
         public List<string> Lore { get; set; }
 
         /// <summary>
-        /// The location of this item within the world. 
+        /// The location of this item within the world.
         /// </summary>
         [ProtoMember(5)]
         public Point Location { get; set; }

@@ -1,10 +1,9 @@
-﻿using MagicalLifeAPI.Comparators;
-using MagicalLifeAPI.DataTypes;
+﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Universal;
-using MagicalLifeAPI.World.Base;
 using Microsoft.Xna.Framework;
 using ProtoBuf;
+using RTree;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.World.Data
@@ -34,7 +33,7 @@ namespace MagicalLifeAPI.World.Data
         /// The items within this chunk.
         /// </summary>
         [ProtoMember(5)]
-        public Dictionary<int, RBush.RBush<Point2D>> Items = new Dictionary<int, RBush.RBush<Point2D>>();
+        public Dictionary<int, RTree<Point2D>> Items = new Dictionary<int, RTree<Point2D>>();
 
         /// <summary>
         /// The width of this chunk in tiles.
@@ -52,7 +51,7 @@ namespace MagicalLifeAPI.World.Data
             this.Tiles = tiles;
             this.ChunkLocation = location;
             this.BiomeID = biomeID;
-            this.Items = new Dictionary<int, RBush.RBush<Point2D>>();
+            this.Items = new Dictionary<int, RTree<Point2D>>();
         }
 
         public Chunk() : base()
@@ -64,7 +63,7 @@ namespace MagicalLifeAPI.World.Data
 
             if (this.Items == null)
             {
-                this.Items = new Dictionary<int, RBush.RBush<Point2D>>();
+                this.Items = new Dictionary<int, RTree<Point2D>>();
             }
         }
 

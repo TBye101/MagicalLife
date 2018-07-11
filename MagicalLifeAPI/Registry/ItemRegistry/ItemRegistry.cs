@@ -1,29 +1,21 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.DataTypes.R_Tree;
-using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Data;
-using Microsoft.Xna.Framework;
 using ProtoBuf;
-using RBush;
+using RTree;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Registry.ItemRegistry
 {
-
     /* Item Registry Design
-     * 
+     *
      * Dictionary stores access to a R-tree that stores the location of the chunk that stores at least one of the specified item
-     * 
+     *
      * In this file:
      * Dictionary<ItemID, R-tree<ChunkLocation>>
      * -Has information on which chunks have at least one tile with an item of a certain id.
      * -Has one entry for every item
-     * 
+     *
      * in Chunk.cs:
      * Dictionary<ItemID, R-tree<ItemLocation>>
      * -Has information on which tiles have what items.
@@ -45,7 +37,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// For each item in the game, this dictionary holds a R-Tree that contains chunk coordinates for every chunk that has at least one of that item.
         /// </summary>
         [ProtoMember(2)]
-        public Dictionary<int, IRTree<Point2D>> ItemIDToChunk { get; set; }
+        public Dictionary<int, RTree.RTree<Point2D>> ItemIDToChunk { get; set; }
 
         /// <summary>
         /// The singleton access point for the item registry.
@@ -71,7 +63,6 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
 
         public ItemRegistry()
         {
-
         }
 
         /// <summary>
@@ -89,11 +80,11 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// </summary>
         internal void Bake()
         {
-            this.ItemIDToChunk = new Dictionary<int, IRTree<Point2D>>(this.ItemTypeID.Count);
+            this.ItemIDToChunk = new Dictionary<int, RTree<Point2D>>(this.ItemTypeID.Count);
 
             foreach (KeyValuePair<int, Type> item in this.ItemTypeID)
             {
-                this.ItemIDToChunk.Add(item.Key, new RBushWrapper<Point2D>());
+                this.ItemIDToChunk.Add(item.Key, new RTree<Point2D>());
             }
         }
     }
