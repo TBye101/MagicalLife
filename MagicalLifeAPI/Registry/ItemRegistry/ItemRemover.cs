@@ -18,7 +18,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// <param name="itemID"></param>
         /// <param name="mapLocation"></param>
         /// <param name="dimension"></param>
-        public static Item RemoveAllItems(Point2D mapLocation, int dimension)
+        public static Item RemoveAllItems(Point2D mapLocation, int dimension)//Gotta update the indexes
         {
             Tile tile = World.Data.World.GetTile(dimension, mapLocation.X, mapLocation.Y);
             Item item = tile.Item;
@@ -53,7 +53,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
             if (tile.Item.CurrentlyStacked < count || tile.Item.CurrentlyStacked == count)
             {
                 removed.CurrentlyStacked = tile.Item.CurrentlyStacked;
-                tile.Item = null;
+                tile.Item = null;//Gotta update all indexes
             }
 
             return removed;

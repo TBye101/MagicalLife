@@ -87,7 +87,7 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
 
                             if (random.Next(4) == 2 && dirt.Resources == null)
                             {
-                                ItemAdder.AddItemWorldGen(new StoneChunk(), new Point2D((chunkWidth * x) + cx, (chunkHeight * y) + cy), map, this.Dimension);
+                                ItemAdder.AddItemWorldGen(new StoneChunk(0), new Point2D((chunkWidth * x) + cx, (chunkHeight * y) + cy), map, this.Dimension);
                                 MasterLog.DebugWriteLine("Created stone chunk: " + dirt.Location.ToString());
                             }
                         }

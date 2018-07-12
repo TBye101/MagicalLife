@@ -26,20 +26,14 @@ namespace MagicalLifeAPI.World.Base
         /// <summary>
         /// The item's resistance to fire. 0 is no resistance, 1 is completely immune to fire damage.
         /// </summary>
-        [ProtoMember(3)]
-        public AttributeFloat FireResistance { get; set; }
+        //[ProtoMember(3)]
+        //public AttributeFloat FireResistance { get; set; }
 
         /// <summary>
         /// The description and lore of this item. Is not revealed until the item has been identified, unless it never needed identification.
         /// </summary>
         [ProtoMember(4)]
         public List<string> Lore { get; set; }
-
-        /// <summary>
-        /// The location of this item within the world.
-        /// </summary>
-        [ProtoMember(5)]
-        public Point Location { get; set; }
 
         /// <summary>
         /// The maximum number of this item that may be contained in the same stack.
@@ -59,9 +53,43 @@ namespace MagicalLifeAPI.World.Base
         /// </summary>
         public int ItemID { get; private set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name">The display name of the item.</param>
+        /// <param name="durability">The durability of the item.</param>
+        /// <param name="lore">Any text accompanying the item.</param>
+        /// <param name="location">The location of this item.</param>
+        /// <param name="stackableLimit">How many items of this kind can be in one stack.</param>
+        /// <param name="count">How many of this item to create into a stack.</param>
+        /// <param name="itemID">The ID of this item.</param>
+        public Item(string name, int durability, List<string> lore, int stackableLimit, int count, int itemID)
+        {
+            this.Name = name;
+            this.Durability = durability;
+            this.Lore = lore;
+            this.StackableLimit = stackableLimit;
+            this.CurrentlyStacked = count;
+            this.ItemID = itemID;
+            this.TextureIndex = AssetManager.GetTextureIndex(this.GetTextureName());
+            this.Validate();
+        }
+
         public Item()
         {
             this.TextureIndex = AssetManager.GetTextureIndex(this.GetTextureName());
+        }
+
+        protected void Validate()
+        {
+            if (this.CurrentlyStacked < 1)
+            {
+                throw new Exception("Error: Cannot have an item with 0 items");
+            }
+            if (this.StackableLimit < 1)
+            {
+                throw new Exception("Error: Must be able to stack at least one item");
+            }
         }
 
         public abstract string GetTextureName();

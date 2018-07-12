@@ -16,15 +16,6 @@ namespace MagicalLifeAPI.Comparators
             }
             else
             {
-                if (x.Location.X != y.Location.X)
-                {
-                    return x.Location.X.CompareTo(y.Location.X);
-                }
-                if (x.Location.Y != y.Location.Y)
-                {
-                    return x.Location.Y.CompareTo(y.Location.Y);
-                }
-
                 return 0;
             }
         }
