@@ -1,9 +1,12 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities.Entity_Factory;
 using MagicalLifeAPI.Entities.Humanoid;
+using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
+using MagicalLifeAPI.World.Items;
 using MagicalLifeAPI.World.Resources;
 using MagicalLifeAPI.World.Tiles;
 using Microsoft.Xna.Framework;
@@ -26,7 +29,7 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
             return ret;
         }
 
-        protected override ProtoArray<Chunk> GenerateDetails(ProtoArray<Chunk> map, Random random)
+        protected override void GenerateDetails(ProtoArray<Chunk> map, Random random)
         {
             int chunkWidth = map.Width;
             int chunkHeight = map.Height;
@@ -51,11 +54,9 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
             Human human = hFactory.GenerateHuman(entityLocation, this.Dimension);
 
             map[chunkX, chunkY].Creatures.Add(human);
-
-            return map;
         }
 
-        protected override ProtoArray<Chunk> GenerateLandType(string[,] biomeMap, ProtoArray<Chunk> map, Random random)
+        protected override void GenerateLandType(string[,] biomeMap, ProtoArray<Chunk> map, Random random)
         {
             int xSize = biomeMap.GetLength(0);
             int ySize = biomeMap.GetLength(1);
@@ -83,32 +84,32 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
                             }
 
                             chunk.Tiles[cx, cy] = dirt;
+
+                            if (random.Next(4) == 2 && dirt.Resources == null)
+                            {
+                                ItemAdder.AddItemWorldGen(new StoneChunk(), new Point2D((chunkWidth * x) + cx, (chunkHeight * y) + cy), map, this.Dimension);
+                                MasterLog.DebugWriteLine("Created stone chunk: " + dirt.Location.ToString());
+                            }
                         }
                     }
                 }
             }
-
-            return ret;
         }
 
-        protected override ProtoArray<Chunk> GenerateMinerals(ProtoArray<Chunk> map, Random random)
+        protected override void GenerateMinerals(ProtoArray<Chunk> map, Random random)
         {
-            return map;
         }
 
-        protected override ProtoArray<Chunk> GenerateNaturalFeatures(ProtoArray<Chunk> map, Random random)
+        protected override void GenerateNaturalFeatures(ProtoArray<Chunk> map, Random random)
         {
-            return map;
         }
 
-        protected override ProtoArray<Chunk> GenerateStructures(ProtoArray<Chunk> map, Random random)
+        protected override void GenerateStructures(ProtoArray<Chunk> map, Random random)
         {
-            return map;
         }
 
-        protected override ProtoArray<Chunk> GenerateVegetation(ProtoArray<Chunk> map, Random random)
+        protected override void GenerateVegetation(ProtoArray<Chunk> map, Random random)
         {
-            return map;
         }
     }
 }

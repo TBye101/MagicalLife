@@ -133,6 +133,7 @@
     <Compile Include="DataTypes\R-Tree\RPoint.cs" />
     <Compile Include="DataTypes\R-Tree\Rectangle.cs" />
     <Compile Include="DataTypes\R-Tree\RTree.cs" />
+    <Compile Include="Load\ItemLoader.cs" />
     <Compile Include="Registry\ItemRegistry\ItemAdder.cs" />
     <Compile Include="Registry\ItemRegistry\ItemFinder.cs" />
     <Compile Include="Registry\ItemRegistry\ItemRegistry.cs" />

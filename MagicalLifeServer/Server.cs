@@ -47,6 +47,7 @@ namespace MagicalLifeServer
                 case EngineMode.ServerOnly:
                     load.LoadAll(ref msg, new List<MagicalLifeAPI.Universal.IGameLoader>()
                     {
+                        new ItemLoader(),
                         new TextureLoader(),
                         new ProtoTypeLoader(),
                         new MainLoad()

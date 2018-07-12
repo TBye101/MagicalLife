@@ -44,16 +44,20 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// </summary>
         public static ItemRegistry Registry;
 
-        public static void Initialize(List<Item> toRegister)
+        /// <summary>
+        /// Registers the items.
+        /// </summary>
+        /// <param name="toRegister"></param>
+        public static void Initialize(List<Type> toRegister)
         {
             Registry = new ItemRegistry(toRegister);
         }
 
-        public ItemRegistry(List<Item> toRegister)
+        public ItemRegistry(List<Type> toRegister)
         {
             this.ItemTypeID = new Dictionary<int, Type>();
 
-            foreach (Item item in toRegister)
+            foreach (Type item in toRegister)
             {
                 this.RegisterItemType(item);
             }
@@ -70,9 +74,9 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// All items that will be supported by this class must be added through here before Bake() is called.
         /// </summary>
         /// <param name="item"></param>
-        internal void RegisterItemType(Item item)
+        internal void RegisterItemType(Type item)
         {
-            this.ItemTypeID.Add(this.ItemTypeID.Count, item.GetType());
+            this.ItemTypeID.Add(this.ItemTypeID.Count, item);
         }
 
         /// <summary>

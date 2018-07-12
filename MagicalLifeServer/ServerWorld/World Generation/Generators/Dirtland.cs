@@ -42,7 +42,7 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
             return ret;
         }
 
-        protected override ProtoArray<Chunk> GenerateDetails(ProtoArray<Chunk> map, Random r)
+        protected override void GenerateDetails(ProtoArray<Chunk> map, Random r)
         {
             int chunkWidth = map.Width;
             int chunkHeight = map.Height;
@@ -55,11 +55,9 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
 
             HumanFactory hFactory = new HumanFactory();
             map[chunkX, chunkY].Creatures.Add(hFactory.GenerateHuman(new Point((chunkX * Chunk.Width) + x), (chunkY * Chunk.Height) + y));
-
-            return map;
         }
 
-        protected override ProtoArray<Chunk> GenerateLandType(string[,] biomeMap, ProtoArray<Chunk> map, Random r)
+        protected override void GenerateLandType(string[,] biomeMap, ProtoArray<Chunk> map, Random r)
         {
             int xSize = biomeMap.GetLength(0);
             int ySize = biomeMap.GetLength(1);
@@ -84,28 +82,22 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
                     }
                 }
             }
-
-            return ret;
         }
 
-        protected override ProtoArray<Chunk> GenerateMinerals(ProtoArray<Chunk> map, Random r)
+        protected override void GenerateMinerals(ProtoArray<Chunk> map, Random r)
         {
-            return map;
         }
 
-        protected override ProtoArray<Chunk> GenerateNaturalFeatures(ProtoArray<Chunk> map, Random r)
+        protected override void GenerateNaturalFeatures(ProtoArray<Chunk> map, Random r)
         {
-            return map;
         }
 
-        protected override ProtoArray<Chunk> GenerateStructures(ProtoArray<Chunk> map, Random random)
+        protected override void GenerateStructures(ProtoArray<Chunk> map, Random random)
         {
-            return map;
         }
 
-        protected override ProtoArray<Chunk> GenerateVegetation(ProtoArray<Chunk> map, Random r)
+        protected override void GenerateVegetation(ProtoArray<Chunk> map, Random r)
         {
-            return map;
         }
     }
 }

@@ -70,7 +70,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         {
             if (tile.Item != null)
             {
-                Texture2D texture = AssetManager.Textures[tile.TextureIndex];
+                Texture2D texture = AssetManager.Textures[tile.Item.TextureIndex];
                 spBatch.Draw(texture, target, RenderingPipe.colorMask);
             }
         }

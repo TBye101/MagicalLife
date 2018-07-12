@@ -70,6 +70,16 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
             ItemAdder.StoreItem(chunk, mapLocation, item);
         }
 
+        public static void AddItemWorldGen(Item item, Point2D mapLocation, ProtoArray<Chunk> map, int dimension)
+        {
+            Point2D chunkLocation = WorldUtil.CalculateChunkLocation(mapLocation);
+            Chunk chunk = map[chunkLocation.X, chunkLocation.Y];
+
+            ItemAdder.RememberWhichChunk(chunkLocation, item.ItemID);
+            ItemAdder.RememberWhichTile(item, mapLocation, chunk, dimension);
+            ItemAdder.StoreItem(chunk, mapLocation, item);
+        }
+
         /// <summary>
         /// Stores an item in the specified tile.
         /// If the tile is already full or cannot accept all of the item(s) being added,
