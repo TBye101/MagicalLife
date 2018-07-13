@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Resources;
@@ -71,6 +72,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         {
             if (tile.Item != null)
             {
+                MasterLog.DebugWriteLine("Drawing an item for: " + tile.Location.ToXNA().ToString());
                 Texture2D texture = AssetManager.Textures[tile.Item.TextureIndex];
                 spBatch.Draw(texture, target, RenderingPipe.colorMask);
             }

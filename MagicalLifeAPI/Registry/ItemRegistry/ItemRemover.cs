@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
@@ -85,15 +86,16 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
                     RTree.RTree<Point2D> chunksContaining = ItemRegistry.Registries[dimension].ItemIDToChunk[itemID];
                     bool succeed = chunksContaining.Delete(new RTree.Rectangle(chunk.ChunkLocation.X, chunk.ChunkLocation.Y, chunk.ChunkLocation.X, chunk.ChunkLocation.Y), new Point2D(chunk.ChunkLocation.X, chunk.ChunkLocation.Y));
 
-                    if (succeed)
-                    {
-                        tile.Item = null;
-                    }
-                    else
+                    if (!succeed)
                     {
                         throw new Exception("Failed to delete a chunk containing an item!");
                     }
                 }
+                tile.Item = null;
+            }
+            else
+            {
+                throw new Exception("What!");
             }
         }
     }
