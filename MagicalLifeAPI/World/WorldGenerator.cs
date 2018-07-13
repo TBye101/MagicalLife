@@ -54,7 +54,7 @@ namespace MagicalLifeAPI.World
                 for (int y = 0; y < chunkHeight; y++)
                 {
                     blank[x, y] = new Chunk(
-                        new List<Living>(), new ProtoArray<Tile>(Chunk.Width, Chunk.Height), new Point(x, y), biomes[x, y]);
+                        new List<Living>(), new ProtoArray<Tile>(Chunk.Width, Chunk.Height), new Point2D(x, y), biomes[x, y]);
                 }
             }
 

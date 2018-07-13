@@ -38,7 +38,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
                 }
             }
 
-            List<Point2D> closest = allNear.Nearest(new RPoint(mapLocation.X, mapLocation.Y), SearchDistance);
+            List<Point2D> closest = allNear.Nearest(new RPoint2D(mapLocation.X, mapLocation.Y), SearchDistance);
 
             if (closest != null && closest.Count > 0)
             {
@@ -60,7 +60,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         {
             RTree<Point2D> containingChunks = ItemRegistry.Registries[dimension].ItemIDToChunk[itemID];
 
-            List<Point2D> result = containingChunks.Nearest(new RPoint(mapLocation.X / Chunk.Width, mapLocation.Y / Chunk.Height), SearchDistance);
+            List<Point2D> result = containingChunks.Nearest(new RPoint2D(mapLocation.X / Chunk.Width, mapLocation.Y / Chunk.Height), SearchDistance);
 
             if (result.Count == 0)
             {

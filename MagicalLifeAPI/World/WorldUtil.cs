@@ -38,21 +38,21 @@ namespace MagicalLifeAPI.World
         /// Returns all the tiles that neighbor the specified tile.
         /// </summary>
         /// <returns></returns>
-        public static List<Point> GetNeighboringTiles(Point tileLocation, int dimension)
+        public static List<Point2D> GetNeighboringTiles(Point2D tileLocation, int dimension)
         {
-            List<Point> neighborCandidates = new List<Point>();
-            List<Point> neighbors = new List<Point>();
+            List<Point2D> neighborCandidates = new List<Point2D>();
+            List<Point2D> neighbors = new List<Point2D>();
 
-            neighborCandidates.Add(new Point(tileLocation.X + 1, tileLocation.Y));
-            neighborCandidates.Add(new Point(tileLocation.X - 1, tileLocation.Y));
-            neighborCandidates.Add(new Point(tileLocation.X, tileLocation.Y + 1));
-            neighborCandidates.Add(new Point(tileLocation.X, tileLocation.Y - 1));
-            neighborCandidates.Add(new Point(tileLocation.X + 1, tileLocation.Y + 1));
-            neighborCandidates.Add(new Point(tileLocation.X + 1, tileLocation.Y - 1));
-            neighborCandidates.Add(new Point(tileLocation.X - 1, tileLocation.Y + 1));
-            neighborCandidates.Add(new Point(tileLocation.X - 1, tileLocation.Y - 1));
+            neighborCandidates.Add(new Point2D(tileLocation.X + 1, tileLocation.Y));
+            neighborCandidates.Add(new Point2D(tileLocation.X - 1, tileLocation.Y));
+            neighborCandidates.Add(new Point2D(tileLocation.X, tileLocation.Y + 1));
+            neighborCandidates.Add(new Point2D(tileLocation.X, tileLocation.Y - 1));
+            neighborCandidates.Add(new Point2D(tileLocation.X + 1, tileLocation.Y + 1));
+            neighborCandidates.Add(new Point2D(tileLocation.X + 1, tileLocation.Y - 1));
+            neighborCandidates.Add(new Point2D(tileLocation.X - 1, tileLocation.Y + 1));
+            neighborCandidates.Add(new Point2D(tileLocation.X - 1, tileLocation.Y - 1));
 
-            foreach (Point item in neighborCandidates)
+            foreach (Point2D item in neighborCandidates)
             {
                 if (DoesTileExist(item, dimension))
                 {
@@ -68,7 +68,7 @@ namespace MagicalLifeAPI.World
         /// </summary>
         /// <param name="tileLocation"></param>
         /// <returns></returns>
-        public static bool DoesTileExist(Point tileLocation, int dimension)
+        public static bool DoesTileExist(Point2D tileLocation, int dimension)
         {
             return World.Data.World.Dimensions[dimension].DoesTileExist(tileLocation.X, tileLocation.Y);
         }

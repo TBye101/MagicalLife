@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.World;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -38,7 +39,7 @@ namespace MagicalLifeGUIWindows.Map
 
         private static void AssignTextureIndex(Tile tile)
         {
-            Microsoft.Xna.Framework.Point location = tile.Location;
+            Point2D location = tile.Location;
             string textureName = tile.GetTextureName();
 
             List<Texture2D> textures = AssetManager.Textures;

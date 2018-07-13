@@ -50,7 +50,7 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
             }
 
             HumanFactory hFactory = new HumanFactory();
-            Point entityLocation = new Point(((chunkX * Chunk.Width) + x), (chunkY * Chunk.Height) + y);
+            Point2D entityLocation = new Point2D(((chunkX * Chunk.Width) + x), (chunkY * Chunk.Height) + y);
             Human human = hFactory.GenerateHuman(entityLocation, this.Dimension);
 
             map[chunkX, chunkY].Creatures.Add(human);
@@ -76,7 +76,7 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
 
                         for (int cy = 0; cy < chunkHeight; cy++)
                         {
-                            Dirt dirt = new Dirt(new Point((chunkWidth * x) + cx, (chunkHeight * y) + cy));
+                            Dirt dirt = new Dirt(new Point2D((chunkWidth * x) + cx, (chunkHeight * y) + cy));
                             if (random.Next(4) == 2)
                             {
                                 dirt.Resources = new MarbleResource(random.Next(25));

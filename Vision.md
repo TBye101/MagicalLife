@@ -59,7 +59,7 @@ but with magic and aspects of RPG.
 	* They aren't allowed to research technology or construct tech items
 * When a character levels up, they can choose to gain various abilities
 	* At low levels, they are allowed to instantly choose which abilities they get when leveling up
-	* At high levels, they may level up, but to actually get a new ability and spend ability points they need to be trained by a trainer in that specific skill
+	* At high levels, they may level up, but to actually get a new ability and spend ability Point2Ds they need to be trained by a trainer in that specific skill
 
 #### Skills
 * Everything is a skill

@@ -1,4 +1,5 @@
-﻿using ProtoBuf;
+﻿using Microsoft.Xna.Framework;
+using ProtoBuf;
 using RBush;
 using System;
 
@@ -38,6 +39,20 @@ namespace MagicalLifeAPI.DataTypes
         public bool Equals(Point2D other)
         {
             return (this.X == other.X && this.Y == other.Y);
+        }
+
+        public static implicit operator Point2D(Point value)
+        {
+            return new Point2D(value.X, value.Y);
+        }
+
+        /// <summary>
+        /// Converts this point to a monogame/xna point.
+        /// </summary>
+        /// <returns></returns>
+        public Point ToXNA()
+        {
+            return new Point(this.X, this.Y);
         }
     }
 }

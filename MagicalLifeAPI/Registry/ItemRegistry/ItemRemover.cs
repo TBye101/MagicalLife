@@ -67,13 +67,13 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         private static void RemoveItem(Tile tile, int dimension)
         {
             int itemID = tile.Item.ItemID;
-            Point l     = tile.Location;
+            Point2D l     = tile.Location;
             Chunk chunk = World.Data.World.GetChunkByTile(dimension, l.X, l.Y);
             
             if (chunk.Items.ContainsKey(itemID))
             {
                 RTree.RTree<Point2D> result = chunk.Items[itemID];
-                bool success = result.Delete(new RTree.Rectangle(l.X, l.Y, l.X, l.Y), new Point2D(l.X, l.Y));
+                bool success = result.Delete(new RTree.Rectangle(l.X, l.Y, l.X, l.Y), tile.Location);
 
                 if (!success)
                 {

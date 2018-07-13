@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MagicalLifeAPI.DataTypes;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Util
@@ -9,29 +10,29 @@ namespace MagicalLifeAPI.Util
     public static class Algorithms
     {
         /// <summary>
-        /// Returns the index of the closest point to the target.
+        /// Returns the index of the closest Point2D to the target.
         /// Returns -1 if the list was empty.
         /// </summary>
-        /// <param name="points"></param>
+        /// <param name="Point2Ds"></param>
         /// <param name="target"></param>
         /// <returns></returns>
-        public static int GetClosestPoint(List<Point> points, Point target)//TODO: Improve performance
+        public static int GetClosestPoint2D(List<Point2D> Point2Ds, Point2D target)//TODO: Improve performance
         {
             int index = -1;
             int closestDistance = -1;
 
-            int length = points.Count;
+            int length = Point2Ds.Count;
 
             for (int i = 0; i < length; i++)
             {
                 if (index == -1)
                 {
                     index = i;
-                    closestDistance = MathUtil.GetDistanceFast(points[i], target);
+                    closestDistance = MathUtil.GetDistanceFast(Point2Ds[i], target);
                 }
                 else
                 {
-                    int newDistance = MathUtil.GetDistanceFast(points[i], target);
+                    int newDistance = MathUtil.GetDistanceFast(Point2Ds[i], target);
 
                     if (newDistance < closestDistance)
                     {

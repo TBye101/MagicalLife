@@ -281,7 +281,7 @@ namespace RTree
 
             // FL1 [Search subtrees] If root is not a leaf, check each entry
             // to determine if it contains r. For each entry found, invoke
-            // findLeaf on the Node&lt;T&gt; pointed to by the entry, until r is found or
+            // findLeaf on the Node&lt;T&gt; Point2Ded to by the entry, until r is found or
             // all entries have been checked.
             parents.Clear();
             parents.Push(rootNodeId);
@@ -348,12 +348,12 @@ namespace RTree
         }
 
         /// <summary>
-        /// Retrieve nearest items to a point in radius furthestDistance
+        /// Retrieve nearest items to a Point2D in radius furthestDistance
         /// </summary>
-        /// <param name="p">Point of origin</param>
+        /// <param name="p">Point2D of origin</param>
         /// <param name="furthestDistance">maximum distance</param>
         /// <returns>List of items</returns>
-        public List<T> Nearest(RPoint p, float furthestDistance)
+        public List<T> Nearest(RPoint2D p, float furthestDistance)
         {
             List<T> retval = new List<T>();
             nearest(p, delegate (int id)
@@ -363,7 +363,7 @@ namespace RTree
             return retval;
         }
 
-        private void nearest(RPoint p, intproc v, float furthestDistance)
+        private void nearest(RPoint2D p, intproc v, float furthestDistance)
         {
             Node<T> rootNode = getNode(rootNodeId);
 
@@ -854,7 +854,7 @@ namespace RTree
         /// <param name="n"></param>
         /// <param name="nearestDistance"></param>
         /// <returns></returns>
-        private float nearest(RPoint p, Node<T> n, float nearestDistance)
+        private float nearest(RPoint2D p, Node<T> n, float nearestDistance)
         {
             for (int i = 0; i < n.entryCount; i++)
             {
@@ -1027,7 +1027,7 @@ namespace RTree
                 parentsEntry.Push(index);
 
                 // CL4 [Descend until a leaf is reached] Set N to be the child Node&lt;T&gt;
-                // pointed to by Fp and repeat from CL2
+                // Point2Ded to by Fp and repeat from CL2
                 n = getNode(n.ids[index]);
             }
         }
@@ -1054,8 +1054,8 @@ namespace RTree
                 if (parent.ids[entry] != n.nodeId)
                 {
                     log.Error("Error: entry " + entry + " in Node<T> " +
-                         parent.nodeId + " should point to Node<T> " +
-                         n.nodeId + "; actually points to Node<T> " + parent.ids[entry]);
+                         parent.nodeId + " should Point2D to Node<T> " +
+                         n.nodeId + "; actually Point2Ds to Node<T> " + parent.ids[entry]);
                 }
 
                 if (!parent.entries[entry].Equals(n.mbr))
@@ -1069,7 +1069,7 @@ namespace RTree
                 }
 
                 // AT4 [Propagate Node<T> split upward] If N has a partner NN resulting from
-                // an earlier split, create a new entry Enn with Ennp pointing to NN and
+                // an earlier split, create a new entry Enn with Ennp Point2Ding to NN and
                 // Enni enclosing all rectangles in NN. Add Enn to P if there is room.
                 // Otherwise, invoke splitNode to produce P and PP containing Enn and
                 // all P's old entries.

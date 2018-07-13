@@ -1,4 +1,4 @@
-//   Point.java
+//   Point2D.java
 //   Java Spatial Index Library
 //   Copyright (C) 2002 Infomatiq Limited
 //
@@ -24,26 +24,26 @@ namespace RTree
     /// author  aled@sourceforge.net
     /// version 1.0b2p1
     /// </summary>
-    public class RPoint
+    public class RPoint2D
     {
         /// <summary>
-        /// Number of dimensions in a point. In theory this
+        /// Number of dimensions in a Point2D. In theory this
         /// could be exended to three or more dimensions.
         /// </summary>
         private const int DIMENSIONS = 2;
 
         /// <summary>
-        /// The (x, y) coordinates of the point.
+        /// The (x, y) coordinates of the Point2D.
         /// </summary>
         internal float[] coordinates;
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        /// <param name="x">The x coordinate of the point</param>
-        /// <param name="y">The y coordinate of the point</param>
-        /// <param name="z">The z coordinate of the point</param>
-        public RPoint(float x, float y)
+        /// <param name="x">The x coordinate of the Point2D</param>
+        /// <param name="y">The y coordinate of the Point2D</param>
+        /// <param name="z">The z coordinate of the Point2D</param>
+        public RPoint2D(float x, float y)
         {
             coordinates = new float[DIMENSIONS];
             coordinates[0] = x;

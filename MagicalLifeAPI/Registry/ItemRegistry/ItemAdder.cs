@@ -32,7 +32,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
             }
             else
             {
-                itemLocations.Add(new Rectangle(mapLocation.X, mapLocation.Y, mapLocation.X, mapLocation.Y), mapLocation);
+                itemLocations.Add(new Rectangle(mapLocation.X, mapLocation.Y, mapLocation.X, mapLocation.Y), WorldUtil.GetTile(mapLocation, chunk).Location);
             }
         }
 

@@ -20,30 +20,30 @@ namespace MagicalLifeAPI.Util
         }
 
         /// <summary>
-        /// A faster way of calculating the distance between two points.
-        /// Returns a value that can be used to compare the distance between two points.
+        /// A faster way of calculating the distance between two Point2Ds.
+        /// Returns a value that can be used to compare the distance between two Point2Ds.
         /// While the value returned is not actually the correct distance, it is still valid for comparing distances.
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static int GetDistanceFast(Point a, Point b)
+        public static int GetDistanceFast(Point2D a, Point2D b)
         {
             return Convert.ToInt32(Math.Pow(b.X - a.X, 2) + Math.Pow(b.Y - a.Y, 2));
         }
 
         /// <summary>
-        /// Returns the distance between point a and point b.
+        /// Returns the distance between Point2D a and Point2D b.
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static double GetDistance(Point a, Point b)
+        public static double GetDistance(Point2D a, Point2D b)
         {
             return Math.Sqrt(Math.Pow(b.X - a.X, 2) + Math.Pow(b.Y - a.Y, 2));
         }
 
-        public static float GetDistance(PointFloat a, Point b)
+        public static float GetDistance(Point2DFloat a, Point2D b)
         {
             return (float)Math.Sqrt(Math.Pow(b.X - a.X, 2) + Math.Pow(b.Y - a.Y, 2));
         }

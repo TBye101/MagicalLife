@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.World.Base;
@@ -21,7 +22,7 @@ namespace MagicalLifeAPI.World
         /// </summary>
         /// <param name="location">The 3D location of this tile in the map.</param>
         /// <param name="movementCost">This value is the movement cost of walking on this tile. It should be between 1 and 100</param>
-        public Tile(Point location, int movementCost)
+        public Tile(Point2D location, int movementCost)
         {
             this.Location = location;
             this.MovementCost = movementCost;
@@ -30,7 +31,7 @@ namespace MagicalLifeAPI.World
             this.IsWalkable = true;
         }
 
-        public Tile(int x, int y, int movementCost) : this(new Point(x, y), movementCost)
+        public Tile(int x, int y, int movementCost) : this(new Point2D(x, y), movementCost)
         {
         }
 
@@ -60,9 +61,9 @@ namespace MagicalLifeAPI.World
         /// The size, in pixels of how big each tile is.
         /// </summary>
         /// <returns></returns>
-        public static Microsoft.Xna.Framework.Point GetTileSize()
+        public static Point2D GetTileSize()
         {
-            return new Microsoft.Xna.Framework.Point(64, 64);
+            return new Point2D(64, 64);
         }
 
         /// <summary>
@@ -83,7 +84,7 @@ namespace MagicalLifeAPI.World
         /// The location of this tile in the tile map.
         /// </summary>
         [ProtoMember(5)]
-        public Point Location { get; set; }
+        public Point2D Location { get; set; }
 
         /// <summary>
         /// The item(s) that is stored in this tile.

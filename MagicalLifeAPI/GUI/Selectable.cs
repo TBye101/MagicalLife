@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Entities;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Universal;
 using Microsoft.Xna.Framework;
 using ProtoBuf;
@@ -24,6 +25,6 @@ namespace MagicalLifeAPI.GUI
         /// The location of this selectable in game object.
         /// </summary>
         [ProtoMember(1)]
-        public Point MapLocation { get; set; }
+        public Point2D MapLocation { get; set; }
     }
 }

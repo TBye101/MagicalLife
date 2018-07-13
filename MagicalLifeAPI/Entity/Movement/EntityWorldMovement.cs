@@ -34,7 +34,7 @@ namespace MagicalLifeAPI.Entities.Movement
         }
 
         /// <summary>
-        /// Determines how many movement points are deducted from the entity in motion for a given movement action.
+        /// Determines how many movement Point2Ds are deducted from the entity in motion for a given movement action.
         /// </summary>
         /// <param name="xMove"></param>
         /// <param name="yMove"></param>
@@ -112,12 +112,12 @@ namespace MagicalLifeAPI.Entities.Movement
 
             if (MathUtil.GetDistance(entity.ScreenLocation, destination.Location) > entity.Movement.GetValue())
             {
-                entity.ScreenLocation = new DataTypes.PointFloat(entity.ScreenLocation.X + xMove, entity.ScreenLocation.Y + yMove);
+                entity.ScreenLocation = new DataTypes.Point2DFloat(entity.ScreenLocation.X + xMove, entity.ScreenLocation.Y + yMove);
             }
             else
             {
                 entity.MapLocation = destination.Location;
-                entity.ScreenLocation = new DataTypes.PointFloat(destination.Location.X, destination.Location.Y);
+                entity.ScreenLocation = new DataTypes.Point2DFloat(destination.Location.X, destination.Location.Y);
                 entity.QueuedMovement.Dequeue();
                 movementPenalty = MathUtil.GetDistance(entity.ScreenLocation, destination.Location);
             }
@@ -132,7 +132,7 @@ namespace MagicalLifeAPI.Entities.Movement
         /// <param name="source"></param>
         /// <param name="destination"></param>
         /// <returns></returns>
-        public static Direction DetermineMovementDirection(Point source, Point destination)
+        public static Direction DetermineMovementDirection(Point2D source, Point2D destination)
         {
             if (destination.Y < source.Y)
             {

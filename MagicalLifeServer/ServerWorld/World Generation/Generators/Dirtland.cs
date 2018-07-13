@@ -31,7 +31,7 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
                 //Iterate over each column
                 for (int ii = 0; ii < ySize; ii++)
                 {
-                    Dirt dirt = new Dirt(new Point(x, y));
+                    Dirt dirt = new Dirt(new Point2D(x, y));
                     ret[x, y] = dirt.GetName();
                     y++;
                 }
@@ -54,7 +54,8 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
             int y = StaticRandom.Rand(0, Chunk.Height);
 
             HumanFactory hFactory = new HumanFactory();
-            map[chunkX, chunkY].Creatures.Add(hFactory.GenerateHuman(new Point((chunkX * Chunk.Width) + x), (chunkY * Chunk.Height) + y));
+            Point2D location = new Point2D(((chunkX * Chunk.Width) + x), (chunkY * Chunk.Height) + y);
+            map[chunkX, chunkY].Creatures.Add(hFactory.GenerateHuman(location, this.Dimension));
         }
 
         protected override void GenerateLandType(string[,] biomeMap, ProtoArray<Chunk> map, Random r)
@@ -77,7 +78,7 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
 
                         for (int cy = 0; cy < chunkHeight; cy++)
                         {
-                            chunk.Tiles[cx, cy] = new Dirt(new Point((chunkWidth * x) + cx, (chunkHeight * y) + cy));
+                            chunk.Tiles[cx, cy] = new Dirt(new Point2D((chunkWidth * x) + cx, (chunkHeight * y) + cy));
                         }
                     }
                 }

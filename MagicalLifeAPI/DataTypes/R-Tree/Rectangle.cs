@@ -208,15 +208,15 @@ namespace RTree
         }
 
         /**
-         * Return the distance between this rectangle and the passed point.
-         * If the rectangle contains the point, the distance is zero.
+         * Return the distance between this rectangle and the passed Point2D.
+         * If the rectangle contains the Point2D, the distance is zero.
          *
-         * @param p Point to find the distance to
+         * @param p Point2D to find the distance to
          *
-         * @return distance beween this rectangle and the passed point.
+         * @return distance beween this rectangle and the passed Point2D.
          */
 
-        internal float distance(RPoint p)
+        internal float distance(RPoint2D p)
         {
             float distanceSquared = 0;
             for (int i = 0; i < DIMENSIONS; i++)
@@ -256,13 +256,13 @@ namespace RTree
         }
 
         /**
-         * Return the squared distance from this rectangle to the passed point
+         * Return the squared distance from this rectangle to the passed Point2D
          */
 
-        internal float distanceSquared(int dimension, float point)
+        internal float distanceSquared(int dimension, float Point2D)
         {
             float distanceSquared = 0;
-            float tempDistance = point - max[dimension];
+            float tempDistance = Point2D - max[dimension];
             for (int i = 0; i < 2; i++)
             {
                 if (tempDistance > 0)
@@ -270,7 +270,7 @@ namespace RTree
                     distanceSquared = (tempDistance * tempDistance);
                     break;
                 }
-                tempDistance = min[dimension] - point;
+                tempDistance = min[dimension] - Point2D;
             }
             return distanceSquared;
         }

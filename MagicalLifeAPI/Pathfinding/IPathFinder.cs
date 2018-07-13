@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.World.Data;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.World.Data;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
@@ -13,11 +14,11 @@ namespace MagicalLifeAPI.Pathfinding
         /// Must get a valid path between the origin and the destination.
         /// </summary>
         /// <param name="world">The world with which the <see cref="Living"/> exists within.</param>
-        /// <param name="living">The creature which will move between the two points.</param>
+        /// <param name="living">The creature which will move between the two Point2Ds.</param>
         /// <param name="destination">The target location for the living to reach.</param>
-        /// <param name="origin">The starting point of the living.</param>
+        /// <param name="origin">The starting Point2D of the living.</param>
         /// <returns></returns>
-        List<PathLink> GetRoute(int dimension, Point origin, Point destination);
+        List<PathLink> GetRoute(int dimension, Point2D origin, Point2D destination);
 
         /// <summary>
         /// Run whatever startup code you need to before being capable of graph building  for the dimension.
@@ -29,13 +30,13 @@ namespace MagicalLifeAPI.Pathfinding
         /// Removes all links to the specified location.
         /// </summary>
         /// <param name="location"></param>
-        void RemoveConnections(Point location);
+        void RemoveConnections(Point2D location);
 
         /// <summary>
         /// Adds links to the specified location.
         /// </summary>
         /// <param name="location"></param>
 
-        void AddConnections(Point location);
+        void AddConnections(Point2D location);
     }
 }
