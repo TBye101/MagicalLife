@@ -6,7 +6,7 @@ using System;
 namespace MagicalLifeAPI.DataTypes
 {
     [ProtoContract]
-    public class Point2D : ISpatialData, IEquatable<Point2D>
+    public class Point2D : ISpatialData
     {
         [ProtoMember(1)]
         public int X { get; set; }
@@ -36,9 +36,19 @@ namespace MagicalLifeAPI.DataTypes
             }
         }
 
-        public bool Equals(Point2D other)
+        public override bool Equals(object obj)
         {
-            return (this.X == other.X && this.Y == other.Y);
+            if (obj is Point2D)
+            {
+                Point2D c = obj as Point2D;
+                return (this.X == c.X && this.Y == c.Y);
+            }
+
+            return false;
+        }
+        public override int GetHashCode()
+        {
+            return 0;
         }
 
         public static implicit operator Point2D(Point value)
