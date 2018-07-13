@@ -1,17 +1,18 @@
-//   Node.java
+//   Node.java version 1.0b2p1
 //   Java Spatial Index Library
 //   Copyright (C) 2002 Infomatiq Limited
-//
+//   Copyright (C) 2008 Aled Morris aled@sourceforge.net
+//  
 //  This library is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU Lesser General Public
 //  License as published by the Free Software Foundation; either
 //  version 2.1 of the License, or (at your option) any later version.
-//
+//  
 //  This library is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 //  Lesser General Public License for more details.
-//
+//  
 //  You should have received a copy of the GNU Lesser General Public
 //  License along with this library; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
@@ -19,16 +20,10 @@
 // Ported to C# By Dror Gluska, April 9th, 2009
 namespace RTree
 {
-    //import com.infomatiq.jsi.Rectangle;
-
-    /**
-     * <p>Used by RTree. There are no public methods in this class.</p>
-     *
-     * @author aled@sourceforge.net
-     * @version 1.0b2p1
-     */
-
-    public class Node<T>
+    /// <summary>
+    /// Used by RTree. There are no public methods in this class.
+    /// </summary>
+    internal class Node<T>
     {
         internal int nodeId = 0;
         internal Rectangle mbr = null;
@@ -75,7 +70,9 @@ namespace RTree
             }
         }
 
-        // Return the index of the found entry, or -1 if not found
+        /// <summary>
+        /// Return the index of the found entry, or -1 if not found
+        /// </summary>
         internal int findEntry(Rectangle r, int id)
         {
             for (int i = 0; i < entryCount; i++)
@@ -89,6 +86,10 @@ namespace RTree
         }
 
         // delete entry. This is done by setting it to null and copying the last entry into its space.
+
+        /// <summary>
+        /// delete entry. This is done by setting it to null and copying the last entry into its space.
+        /// </summary>
         internal void deleteEntry(int i, int minNodeEntries)
         {
             int lastIndex = entryCount - 1;
@@ -103,7 +104,7 @@ namespace RTree
             entryCount--;
 
             // if there are at least minNodeEntries, adjust the MBR.
-            // otherwise, don't bother, as the Node<T> will be
+            // otherwise, don't bother, as the Node<T> will be 
             // eliminated anyway.
             if (entryCount >= minNodeEntries)
             {
@@ -111,8 +112,10 @@ namespace RTree
             }
         }
 
-        // oldRectangle is a rectangle that has just been deleted or made smaller.
-        // Thus, the MBR is only recalculated if the OldRectangle influenced the old MBR
+        /// <summary>
+        /// oldRectangle is a rectangle that has just been deleted or made smaller.
+        /// Thus, the MBR is only recalculated if the OldRectangle influenced the old MBR
+        /// </summary>
         internal void recalculateMBR(Rectangle deletedRectangle)
         {
             if (mbr.edgeOverlaps(deletedRectangle))
@@ -149,10 +152,9 @@ namespace RTree
             return -1;
         }
 
-        /**
-         * eliminate null entries, move all entries to the start of the source node
-         */
-
+        /// <summary>
+        /// eliminate null entries, move all entries to the start of the source node
+        /// </summary>
         internal void reorganize(RTree<T> rtree)
         {
             int countdownIndex = rtree.maxNodeEntries - 1;
@@ -186,4 +188,5 @@ namespace RTree
             return mbr;
         }
     }
+
 }
