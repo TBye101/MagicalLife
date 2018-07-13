@@ -1,6 +1,4 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.World.Base;
-using Microsoft.Xna.Framework;
+﻿using MagicalLifeAPI.World.Base;
 
 namespace MagicalLifeAPI.World.Items
 {
@@ -12,19 +10,16 @@ namespace MagicalLifeAPI.World.Items
             {
                 "Stone Chunk",
                 "Is dropped when stone is mined"
-            },  
-            9999, 
-            1, 
+            },
+            9999,
+            1,
             itemID)
         {
-
         }
 
         public StoneChunk() : base()
         {
-
         }
-
 
         public override string GetTextureName()
         {

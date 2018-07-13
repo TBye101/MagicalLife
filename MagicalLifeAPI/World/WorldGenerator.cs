@@ -3,7 +3,6 @@ using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Data;
-using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 

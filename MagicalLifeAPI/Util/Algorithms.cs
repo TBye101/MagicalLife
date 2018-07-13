@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Util

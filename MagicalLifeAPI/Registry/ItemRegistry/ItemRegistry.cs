@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 using RTree;
 using System;

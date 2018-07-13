@@ -1,7 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities.Humanoid;
 using MagicalLifeAPI.Util;
-using Microsoft.Xna.Framework;
 
 namespace MagicalLifeAPI.Entities.Entity_Factory
 {

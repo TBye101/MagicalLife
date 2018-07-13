@@ -1,6 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.GUI;
-using Microsoft.Xna.Framework;
 using ProtoBuf;
 
 namespace MagicalLifeAPI.Entities.Humanoid

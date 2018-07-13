@@ -1,7 +1,5 @@
 ﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.DataTypes.Attribute;
 using MagicalLifeAPI.GUI;
-using Microsoft.Xna.Framework;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
@@ -54,7 +52,7 @@ namespace MagicalLifeAPI.World.Base
         public int ItemID { get; private set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="name">The display name of the item.</param>
         /// <param name="durability">The durability of the item.</param>

@@ -1,7 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
-using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Resources;
@@ -72,7 +71,6 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         {
             if (tile.Item != null)
             {
-                MasterLog.DebugWriteLine("Drawing an item for: " + tile.Location.ToXNA().ToString());
                 Texture2D texture = AssetManager.Textures[tile.Item.TextureIndex];
                 spBatch.Draw(texture, target, RenderingPipe.colorMask);
             }
@@ -94,6 +92,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
                         Texture2D stoneTexture = AssetManager.Textures[AssetManager.GetTextureIndex(stone.GetUnconnectedTexture())];
                         spBatch.Draw(stoneTexture, target, RenderingPipe.colorMask);
                         break;
+
                     default:
                         break;
                 }

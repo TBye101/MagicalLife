@@ -4,7 +4,6 @@ using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Tiles;
-using Microsoft.Xna.Framework;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;

@@ -1,9 +1,7 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
-using Microsoft.Xna.Framework;
 using System;
 
 namespace MagicalLifeAPI.Registry.ItemRegistry
@@ -63,14 +61,14 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         }
 
         /// <summary>
-        /// Removes the item in the specified tile from the game, and updates the indexes. 
+        /// Removes the item in the specified tile from the game, and updates the indexes.
         /// </summary>
         private static void RemoveItem(Tile tile, int dimension)
         {
             int itemID = tile.Item.ItemID;
-            Point2D l     = tile.Location;
+            Point2D l = tile.Location;
             Chunk chunk = World.Data.World.GetChunkByTile(dimension, l.X, l.Y);
-            
+
             if (chunk.Items.ContainsKey(itemID))
             {
                 RTree.RTree<Point2D> result = chunk.Items[itemID];

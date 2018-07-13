@@ -66,6 +66,7 @@ namespace MagicalLifeGUIWindows.Input.History
                 case Microsoft.Xna.Framework.Input.Keys.RightControl:
                     CtrlDown = false;
                     break;
+
                 default:
                     break;
             }
@@ -84,6 +85,7 @@ namespace MagicalLifeGUIWindows.Input.History
                 case Microsoft.Xna.Framework.Input.Keys.RightControl:
                     CtrlDown = true;
                     break;
+
                 default:
                     break;
             }

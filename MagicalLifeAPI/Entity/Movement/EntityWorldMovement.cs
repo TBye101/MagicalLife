@@ -3,7 +3,6 @@ using MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
-using Microsoft.Xna.Framework;
 using System;
 
 namespace MagicalLifeAPI.Entities.Movement
@@ -99,6 +98,7 @@ namespace MagicalLifeAPI.Entities.Movement
                     xMove = 1;
                     yMove = 1;
                     break;
+
                 default:
                     throw new Exception();
             }

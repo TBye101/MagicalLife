@@ -4,7 +4,6 @@ using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Tiles;
-using Microsoft.Xna.Framework;
 using System;
 
 namespace MagicalLifeServer.ServerWorld.World_Generation.Generators

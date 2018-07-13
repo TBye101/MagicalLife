@@ -1,6 +1,5 @@
 ﻿using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Server;
-using MagicalLifeAPI.Registry;
 using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeServer;

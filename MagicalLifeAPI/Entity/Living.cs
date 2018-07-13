@@ -5,7 +5,6 @@ using MagicalLifeAPI.Entities.Util;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Pathfinding;
-using Microsoft.Xna.Framework;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;

@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using Microsoft.Xna.Framework;
 
 namespace MagicalLifeAPI.World.Tiles
 {

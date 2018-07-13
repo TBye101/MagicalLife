@@ -1,7 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Universal;
-using Microsoft.Xna.Framework;
 using ProtoBuf;
 
 namespace MagicalLifeAPI.GUI

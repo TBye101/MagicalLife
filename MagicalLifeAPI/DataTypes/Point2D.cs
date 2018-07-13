@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using ProtoBuf;
 using RBush;
-using System;
 
 namespace MagicalLifeAPI.DataTypes
 {
@@ -46,6 +45,7 @@ namespace MagicalLifeAPI.DataTypes
 
             return false;
         }
+
         public override int GetHashCode()
         {
             return 0;

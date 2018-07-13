@@ -3,7 +3,6 @@ using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.Rendering;
-using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace MagicalLifeGUIWindows.Input.History

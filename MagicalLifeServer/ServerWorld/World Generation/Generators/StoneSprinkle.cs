@@ -1,15 +1,11 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities.Entity_Factory;
 using MagicalLifeAPI.Entities.Humanoid;
-using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
-using MagicalLifeAPI.World.Items;
 using MagicalLifeAPI.World.Resources;
 using MagicalLifeAPI.World.Tiles;
-using Microsoft.Xna.Framework;
 using System;
 
 namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
@@ -84,12 +80,6 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
                             }
 
                             chunk.Tiles[cx, cy] = dirt;
-
-                            if (random.Next(4) == 2 && dirt.Resources == null)
-                            {
-                                ItemAdder.AddItemWorldGen(new StoneChunk(0), new Point2D((chunkWidth * x) + cx, (chunkHeight * y) + cy), map, this.Dimension);
-                                MasterLog.DebugWriteLine("Created stone chunk: " + dirt.Location.ToString());
-                            }
                         }
                     }
                 }

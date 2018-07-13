@@ -2,17 +2,17 @@
 //   Java Spatial Index Library
 //   Copyright (C) 2002 Infomatiq Limited
 //   Copyright (C) 2008 Aled Morris aled@sourceforge.net
-//  
+//
 //  This library is free software; you can redistribute it and/or
 //  modify it under the terms of the GNU Lesser General Public
 //  License as published by the Free Software Foundation; either
 //  version 2.1 of the License, or (at your option) any later version.
-//  
+//
 //  This library is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY; without even the implied warranty of
 //  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 //  Lesser General Public License for more details.
-//  
+//
 //  You should have received a copy of the GNU Lesser General Public
 //  License along with this library; if not, write to the Free Software
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
@@ -29,7 +29,6 @@ namespace RTree
         public float max;
         public float min;
     }
-
 
     /// <summary>
     /// Currently hardcoded to 3 dimensions, but could be extended.
@@ -132,7 +131,6 @@ namespace RTree
             System.Array.Copy(max, 0, this.max, 0, DIMENSIONS);
         }
 
-
         /// <summary>
         /// Make a copy of this rectangle
         /// </summary>
@@ -143,7 +141,7 @@ namespace RTree
         }
 
         /// <summary>
-        /// Determine whether an edge of this rectangle overlies the equivalent 
+        /// Determine whether an edge of this rectangle overlies the equivalent
         /// edge of the passed rectangle
         /// </summary>
         internal bool edgeOverlaps(Rectangle r)
@@ -211,7 +209,6 @@ namespace RTree
             return true;
         }
 
-
         /// <summary>
         /// Return the distance between this rectangle and the passed point.
         /// If the rectangle contains the point, the distance is zero.
@@ -275,7 +272,7 @@ namespace RTree
 
         /// <summary>
         /// Return the furthst possible distance between this rectangle and
-        /// the passed rectangle. 
+        /// the passed rectangle.
         /// </summary>
         internal float furthestDistance(Rectangle r)
         {
@@ -319,7 +316,6 @@ namespace RTree
         {
             return (max[0] - min[0]) * (max[1] - min[1]);
         }
-
 
         /// <summary>
         /// Computes the union of this rectangle and the passed rectangle, storing
@@ -387,12 +383,10 @@ namespace RTree
             return equals;
         }
 
-
         public override int GetHashCode()
         {
             return this.ToString().GetHashCode();
         }
-
 
         /// <summary>
         /// Determine whether this rectangle is the same as another object

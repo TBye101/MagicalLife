@@ -3,9 +3,7 @@ using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.InternalExceptions;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
-using Microsoft.Xna.Framework;
 using RoyT.AStar;
-using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Pathfinding.AStar
