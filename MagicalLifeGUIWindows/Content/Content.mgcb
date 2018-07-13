@@ -26,30 +26,6 @@
 /processorParam:TextureFormat=Color
 /build:Basic Human.png
 
-#begin EndTurnButtonState1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:EndTurnButtonState1.png
-
-#begin EndTurnButtonState2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:EndTurnButtonState2.png
-
 #begin TestTile.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -135,18 +111,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:DirtFloor.png
-
-#begin GraniteFloor.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:GraniteFloor.png
 
 #begin GrassFloor.png
 /importer:TextureImporter
