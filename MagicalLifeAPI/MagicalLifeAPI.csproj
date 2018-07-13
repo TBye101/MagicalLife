@@ -139,6 +139,8 @@
     <Compile Include="DataTypes\R-Tree\Point.cs" />
     <Compile Include="DataTypes\R-Tree\Rectangle.cs" />
     <Compile Include="DataTypes\R-Tree\RTree.cs" />
+    <Compile Include="InternalExceptions\CollectionEmptyException.cs" />
+    <Compile Include="InternalExceptions\InvalidPathException.cs" />
     <Compile Include="Load\ItemLoader.cs" />
     <Compile Include="Registry\ItemRegistry\ItemAdder.cs" />
     <Compile Include="Registry\ItemRegistry\ItemFinder.cs" />
@@ -226,7 +228,6 @@
   <ItemGroup>
     <Folder Include="Entity\Animal\" />
     <Folder Include="Entity\Entity Components\" />
-    <Folder Include="Exception\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

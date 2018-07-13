@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.InternalExceptions;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
 using Microsoft.Xna.Framework;
@@ -23,19 +24,17 @@ namespace MagicalLifeAPI.Pathfinding.AStar
 
         public List<PathLink> GetRoute(int dimension, Point2D origin, Point2D destination)
         {
-            MasterLog.DebugWriteLine("Finding route from: " + origin.ToString());
-            MasterLog.DebugWriteLine("Finding route to: " + destination.ToString());
             Position[] path = this.Grid.GetPath(new Position(origin.X, origin.Y), new Position(destination.X, destination.Y));
             List<PathLink> ret = new List<PathLink>();
 
             if (!World.Data.World.Dimensions[dimension][destination.X, destination.Y].IsWalkable)
             {
-                throw new Exception("Destination not possible!");
+                throw new InvalidPathException();
             }
 
             if (path.Length < 1)
             {
-                throw new Exception("Path not possible!");
+                throw new InvalidPathException();
             }
 
             int i = 0;
@@ -44,7 +43,7 @@ namespace MagicalLifeAPI.Pathfinding.AStar
             {
                 if (!World.Data.World.Dimensions[dimension][path[i].X, path[i].Y].IsWalkable)
                 {
-                    MasterLog.DebugWriteLine("Walking on unwalkable tile!");
+                    throw new InvalidPathException();
                 }
 
                 ret.Add(new PathLink(new Point2D(path[i].X, path[i].Y), new Point2D(path[i + 1].X, path[i + 1].Y)));
