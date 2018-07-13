@@ -23,26 +23,33 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         {
             List<Point2D> nearestChunks = FindNearestChunks(itemID, mapLocation, dimension);
 
-            RTree<Point2D> allNear = new RTree<Point2D>();
-
-            Chunk chunk;
-            foreach (Point2D item in nearestChunks)
+            if (nearestChunks.Count > 0)
             {
-                chunk = World.Data.World.GetChunk(dimension, item.X, item.Y);
-                RTree<Point2D> items = chunk.Items[itemID];
-                List<Point2D> result = items.Intersects(new Rectangle(0, 0, Chunk.Width, Chunk.Height));
+                RTree<Point2D> allNear = new RTree<Point2D>();
 
-                foreach (Point2D it in result)
+                Chunk chunk;
+                foreach (Point2D item in nearestChunks)
                 {
-                    allNear.Add(new Rectangle(it.X, it.Y, it.X, it.Y), it);
+                    chunk = World.Data.World.GetChunk(dimension, item.X, item.Y);
+                    RTree<Point2D> items = chunk.Items[itemID];
+                    List<Point2D> result = items.Intersects(new Rectangle(0, 0, Chunk.Width, Chunk.Height));
+
+                    foreach (Point2D it in result)
+                    {
+                        allNear.Add(new Rectangle(it.X, it.Y, it.X, it.Y), it);
+                    }
                 }
-            }
 
-            List<Point2D> closest = allNear.Nearest(new RPoint2D(mapLocation.X, mapLocation.Y), SearchDistance);
+                List<Point2D> closest = allNear.Nearest(new RPoint2D(mapLocation.X, mapLocation.Y), SearchDistance);
 
-            if (closest != null && closest.Count > 0)
-            {
-                return closest[0];
+                if (closest != null && closest.Count > 0)
+                {
+                    return closest[0];
+                }
+                else
+                {
+                    return null;
+                }
             }
             else
             {
