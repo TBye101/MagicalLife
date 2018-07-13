@@ -1,6 +1,8 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Base;
+using MagicalLifeAPI.World.Data;
+using Microsoft.Xna.Framework;
 using System;
 
 namespace MagicalLifeAPI.Registry.ItemRegistry
@@ -23,7 +25,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
             Tile tile = World.Data.World.GetTile(dimension, mapLocation.X, mapLocation.Y);
             Item item = tile.Item;
 
-            tile.Item = null;
+            RemoveItem(tile, dimension);
             return item;
         }
 
@@ -44,7 +46,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
                 return null;
             }
 
-            Item removed = (Item)Activator.CreateInstance(ItemRegistry.Registry.ItemTypeID[tile.Item.ItemID]);
+            Item removed = (Item)Activator.CreateInstance(ItemRegistry.ItemTypeID[tile.Item.ItemID]);
 
             if (tile.Item.CurrentlyStacked > count)
             {
@@ -53,10 +55,42 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
             if (tile.Item.CurrentlyStacked < count || tile.Item.CurrentlyStacked == count)
             {
                 removed.CurrentlyStacked = tile.Item.CurrentlyStacked;
-                tile.Item = null;//Gotta update all indexes
+                RemoveItem(tile, dimension);
             }
 
             return removed;
+        }
+
+        /// <summary>
+        /// Removes the item in the specified tile from the game, and updates the indexes. 
+        /// </summary>
+        private static void RemoveItem(Tile tile, int dimension)
+        {
+            int itemID = tile.Item.ItemID;
+            Point l     = tile.Location;
+            Chunk chunk = World.Data.World.GetChunkByTile(dimension, l.X, l.Y);
+            
+            if (chunk.Items.ContainsKey(itemID))
+            {
+                RTree.RTree<Point2D> result = chunk.Items[itemID];
+                bool success = result.Delete(new RTree.Rectangle(l.X, l.Y, l.X, l.Y), new Point2D(l.X, l.Y));
+
+                if (!success)
+                {
+                    throw new Exception("Failed to delete an item!");
+                }
+
+                if (result.Count == 0)
+                {
+                    RTree.RTree<Point2D> chunksContaining = ItemRegistry.Registries[dimension].ItemIDToChunk[itemID];
+                    bool succeed = chunksContaining.Delete(new RTree.Rectangle(chunk.ChunkLocation.X, chunk.ChunkLocation.Y, chunk.ChunkLocation.X, chunk.ChunkLocation.Y), new Point2D(chunk.ChunkLocation.X, chunk.ChunkLocation.Y));
+
+                    if (!succeed)
+                    {
+                        throw new Exception("Failed to delete a chunk containing an item!");
+                    }
+                }
+            }
         }
     }
 }

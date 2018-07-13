@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.Universal;
 using ProtoBuf;
 using System.Collections.Generic;

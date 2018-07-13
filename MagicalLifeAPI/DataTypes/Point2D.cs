@@ -1,10 +1,11 @@
 ﻿using ProtoBuf;
 using RBush;
+using System;
 
 namespace MagicalLifeAPI.DataTypes
 {
     [ProtoContract]
-    public class Point2D : ISpatialData
+    public class Point2D : ISpatialData, IEquatable<Point2D>
     {
         [ProtoMember(1)]
         public int X { get; set; }
@@ -32,6 +33,11 @@ namespace MagicalLifeAPI.DataTypes
             {
                 return ref this._Envelope;
             }
+        }
+
+        public bool Equals(Point2D other)
+        {
+            return (this.X == other.X && this.Y == other.Y);
         }
     }
 }

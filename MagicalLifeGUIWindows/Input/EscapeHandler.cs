@@ -26,7 +26,7 @@ namespace MagicalLifeGUIWindows.Input
             }
             if (e.Key == Microsoft.Xna.Framework.Input.Keys.R)
             {
-                Point2D result = ItemFinder.FindNearestLocation(0, new MagicalLifeAPI.DataTypes.Point2D(0, 0));
+                Point2D result = ItemFinder.FindNearestLocation(0, new MagicalLifeAPI.DataTypes.Point2D(0, 0), 0);
                 ItemAdder.AddItem(new StoneChunk(0), result, 0);
                 ItemAdder.AddItem(new StoneChunk(0), result, 0);
                 ItemRemover.RemoveSome(result, 0, 1);

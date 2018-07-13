@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
+using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Data;
 using Microsoft.Xna.Framework;
@@ -31,6 +32,7 @@ namespace MagicalLifeAPI.World
             string[,] biomes = this.AssignBiomes(chunkWidth, chunkHeight, random);
 
             ProtoArray<Chunk> map = this.GenerateBlank(chunkWidth, chunkHeight, biomes);
+            ItemRegistry.Registries.Add(new ItemRegistry());
 
             this.GenerateLandType(biomes, map, random);
 

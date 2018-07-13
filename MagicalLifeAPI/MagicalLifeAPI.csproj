@@ -220,6 +220,7 @@
   <ItemGroup>
     <Folder Include="Entity\Animal\" />
     <Folder Include="Entity\Entity Components\" />
+    <Folder Include="Exception\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

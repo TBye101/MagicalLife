@@ -22,7 +22,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
      */
 
     /// <summary>
-    /// The data structure that holds all of the items laying around in the world.
+    /// The data structure that holds all of the items in a single dimension, as well as item IDs for every item in the game.
     /// </summary>
     [ProtoContract]
     public class ItemRegistry
@@ -31,7 +31,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// Holds which item id is associated with which item type.
         /// </summary>
         [ProtoMember(1)]
-        public Dictionary<int, Type> ItemTypeID { get; set; }
+        public static Dictionary<int, Type> ItemTypeID { get; set; }
 
         /// <summary>
         /// For each item in the game, this dictionary holds a R-Tree that contains chunk coordinates for every chunk that has at least one of that item.
@@ -40,9 +40,9 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         public Dictionary<int, RTree.RTree<Point2D>> ItemIDToChunk { get; set; }
 
         /// <summary>
-        /// The singleton access point for the item registry.
+        /// An item registry for each dimension.
         /// </summary>
-        public static ItemRegistry Registry;
+        public static List<ItemRegistry> Registries = new List<ItemRegistry>();
 
         /// <summary>
         /// Registers the items.
@@ -50,23 +50,17 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// <param name="toRegister"></param>
         public static void Initialize(List<Type> toRegister)
         {
-            Registry = new ItemRegistry(toRegister);
-        }
-
-        public ItemRegistry(List<Type> toRegister)
-        {
-            this.ItemTypeID = new Dictionary<int, Type>();
+            ItemTypeID = new Dictionary<int, Type>();
 
             foreach (Type item in toRegister)
             {
-                this.RegisterItemType(item);
+                RegisterItemType(item);
             }
-
-            this.Bake();
         }
 
         public ItemRegistry()
         {
+            this.Bake();
         }
 
         /// <summary>
@@ -74,9 +68,9 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// All items that will be supported by this class must be added through here before Bake() is called.
         /// </summary>
         /// <param name="item"></param>
-        internal void RegisterItemType(Type item)
+        internal static void RegisterItemType(Type item)
         {
-            this.ItemTypeID.Add(this.ItemTypeID.Count, item);
+            ItemTypeID.Add(ItemTypeID.Count, item);
         }
 
         /// <summary>
@@ -84,9 +78,9 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// </summary>
         internal void Bake()
         {
-            this.ItemIDToChunk = new Dictionary<int, RTree<Point2D>>(this.ItemTypeID.Count);
+            this.ItemIDToChunk = new Dictionary<int, RTree<Point2D>>(ItemTypeID.Count);
 
-            foreach (KeyValuePair<int, Type> item in this.ItemTypeID)
+            foreach (KeyValuePair<int, Type> item in ItemTypeID)
             {
                 this.ItemIDToChunk.Add(item.Key, new RTree<Point2D>());
             }

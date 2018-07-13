@@ -41,9 +41,9 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// </summary>
         /// <param name="chunkLocation"></param>
         /// <param name="itemID"></param>
-        internal static void RememberWhichChunk(Point2D chunkLocation, int itemID)
+        internal static void RememberWhichChunk(Point2D chunkLocation, int itemID, int dimension)
         {
-            RTree.RTree<Point2D> chunkLocations = ItemRegistry.Registry.ItemIDToChunk[itemID];
+            RTree.RTree<Point2D> chunkLocations = ItemRegistry.Registries[dimension].ItemIDToChunk[itemID];
             List<Point2D> result = chunkLocations.Contains(new RTree.Rectangle(chunkLocation.X, chunkLocation.Y, chunkLocation.X, chunkLocation.Y));
 
             if (result.Count > 0)
@@ -65,7 +65,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
             Point2D chunkLocation = WorldUtil.CalculateChunkLocation(mapLocation);
             Chunk chunk = World.Data.World.Dimensions[dimension].GetChunk(chunkLocation.X, chunkLocation.Y);
 
-            ItemAdder.RememberWhichChunk(chunkLocation, item.ItemID);
+            ItemAdder.RememberWhichChunk(chunkLocation, item.ItemID, dimension);
             ItemAdder.RememberWhichTile(item, mapLocation, chunk, dimension);
             ItemAdder.StoreItem(chunk, mapLocation, item);
         }
@@ -75,7 +75,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
             Point2D chunkLocation = WorldUtil.CalculateChunkLocation(mapLocation);
             Chunk chunk = map[chunkLocation.X, chunkLocation.Y];
 
-            ItemAdder.RememberWhichChunk(chunkLocation, item.ItemID);
+            ItemAdder.RememberWhichChunk(chunkLocation, item.ItemID, dimension);
             ItemAdder.RememberWhichTile(item, mapLocation, chunk, dimension);
             ItemAdder.StoreItem(chunk, mapLocation, item);
         }

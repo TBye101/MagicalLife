@@ -19,16 +19,16 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// <param name="itemID"></param>
         /// <param name="mapLocation"></param>
         /// <returns>Returns the map location of the closest item of a specified spot.</returns>
-        public static Point2D FindNearestLocation(int itemID, Point2D mapLocation)
+        public static Point2D FindNearestLocation(int itemID, Point2D mapLocation, int dimension)
         {
-            List<Point2D> nearestChunks = FindNearestChunks(itemID, mapLocation);
+            List<Point2D> nearestChunks = FindNearestChunks(itemID, mapLocation, dimension);
 
             RTree<Point2D> allNear = new RTree<Point2D>();
 
             Chunk chunk;
             foreach (Point2D item in nearestChunks)
             {
-                chunk = World.Data.World.GetChunk(0, item.X, item.Y);
+                chunk = World.Data.World.GetChunk(dimension, item.X, item.Y);
                 RTree<Point2D> items = chunk.Items[itemID];
                 List<Point2D> result = items.Intersects(new Rectangle(0, 0, Chunk.Width, Chunk.Height));
 
@@ -56,9 +56,9 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// <param name="itemID">The ID of the item in question.</param>
         /// <param name="mapLocation">The origin of the search in map locations.</param>
         /// <returns></returns>
-        public static List<Point2D> FindNearestChunks(int itemID, Point2D mapLocation)
+        public static List<Point2D> FindNearestChunks(int itemID, Point2D mapLocation, int dimension)
         {
-            RTree<Point2D> containingChunks = ItemRegistry.Registry.ItemIDToChunk[itemID];
+            RTree<Point2D> containingChunks = ItemRegistry.Registries[dimension].ItemIDToChunk[itemID];
 
             List<Point2D> result = containingChunks.Nearest(new RPoint(mapLocation.X / Chunk.Width, mapLocation.Y / Chunk.Height), SearchDistance);
 
