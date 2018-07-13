@@ -23,7 +23,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         {
             List<Point2D> nearestChunks = FindNearestChunks(itemID, mapLocation, dimension);
 
-            if (nearestChunks.Count > 0)
+            if (nearestChunks != null)
             {
                 RTree<Point2D> allNear = new RTree<Point2D>();
 
@@ -46,15 +46,9 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
                 {
                     return closest[0];
                 }
-                else
-                {
-                    return null;
-                }
             }
-            else
-            {
-                return null;
-            }
+
+            return null;
         }
 
         /// <summary>

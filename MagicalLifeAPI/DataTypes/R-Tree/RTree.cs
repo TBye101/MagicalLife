@@ -507,14 +507,14 @@ namespace RTree
         private int getNextNodeId()
         {
             int nextNodeId = 0;
-            if (deletedNodeIds.Count > 0)
-            {
-                nextNodeId = deletedNodeIds.Pop();
-            }
-            else
-            {
+            //if (deletedNodeIds.Count > 0)
+            //{
+            //    nextNodeId = deletedNodeIds.Pop();
+            //}
+            //else
+            //{
                 nextNodeId = 1 + highestUsedNodeId++;
-            }
+            //}
             return nextNodeId;
         }
 

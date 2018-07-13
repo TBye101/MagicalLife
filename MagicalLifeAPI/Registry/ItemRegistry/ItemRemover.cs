@@ -93,10 +93,6 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
                 }
                 tile.Item = null;
             }
-            else
-            {
-                throw new Exception("What!");
-            }
         }
     }
 }
