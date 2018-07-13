@@ -7,7 +7,7 @@ namespace MagicalLifeAPI.World.Data
 {
     /// <summary>
     /// Holds some information about the level of the world.
-    /// Could be a dungeon, the starting point, or some other thing.
+    /// Could be a dungeon, the starting Point2D, or some other thing.
     /// </summary>
     [ProtoContract]
     public class Dimension : Unique

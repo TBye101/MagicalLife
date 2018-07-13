@@ -21,7 +21,7 @@ namespace MagicalLifeGUIWindows.Rendering
         /// <summary>
         /// The standard size of the tiles.
         /// </summary>
-        public static readonly Microsoft.Xna.Framework.Point tileSize = Tile.GetTileSize();
+        public static readonly Point tileSize = Tile.GetTileSize().ToXNA();
 
         public static readonly Rectangle FullScreenWindow = new Rectangle(new Point(0, 0), new Point(MagicalLifeSettings.Storage.MainWindow.Default.ScreenSize.Width, MagicalLifeSettings.Storage.MainWindow.Default.ScreenSize.Height));
 

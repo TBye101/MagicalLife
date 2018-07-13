@@ -28,7 +28,7 @@ namespace MagicalLifeAPI.Networking.Serialization
         public int GetTotalOperations()
         {
             this.Messages.AddRange(ReflectionUtil.LoadTypeOfAllSubclasses<BaseMessage>(Assembly.GetAssembly(typeof(BaseMessage))));
-            this.Teachers.AddRange(ReflectionUtil.LoadAllInterface<ITeachSerialization>(Assembly.GetAssembly(typeof(PointTeacher))));
+            this.Teachers.AddRange(ReflectionUtil.LoadAllInterface<ITeachSerialization>(Assembly.GetAssembly(typeof(Point2DTeacher))));
             return this.Messages.Count + this.Teachers.Count;
         }
 
@@ -38,7 +38,7 @@ namespace MagicalLifeAPI.Networking.Serialization
 
             foreach (ITeachSerialization item in this.Teachers)
             {
-                item.Teach(current);//Point teacher ain't loading
+                item.Teach(current);//Point2D teacher ain't loading
                 progress++;
             }
 

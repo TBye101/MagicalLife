@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Entities;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Messages;
@@ -28,16 +29,16 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
         {
             HistoricalInput historical = InputHistory.History.Last();
 
-            if (historical.OrderedToTile && historical.OrderPoint != null)
+            if (historical.OrderedToTile && historical.OrderPoint2D != null)
             {
                 foreach (Selectable item in InputHistory.Selected)
                 {
-                    this.Move(item, historical.OrderPoint);
+                    this.Move(item, historical.OrderPoint2D);
                 }
             }
         }
 
-        private void Move(Selectable selectable, Microsoft.Xna.Framework.Point target)
+        private void Move(Selectable selectable, Point2D target)
         {
             if (World.Dimensions[RenderingPipe.Dimension][target.X, target.Y].IsWalkable)
             {
@@ -45,7 +46,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                 {
                     case Living living:
 
-                        Microsoft.Xna.Framework.Point start = selectable.MapLocation;
+                        Point2D start = selectable.MapLocation;
                         if (start != target)
                         {
                             List<PathLink> pth;
@@ -69,6 +70,9 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                             ClientSendRecieve.Send<RouteCreatedMessage>(new RouteCreatedMessage(pth, living.ID, living.Dimension));
                         }
                         break;
+
+                    default:
+                        break;
                 }
             }
         }
@@ -80,7 +84,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
         /// <returns></returns>
         private Living GetLivingAtClick(MouseEventArgs e)
         {
-            Microsoft.Xna.Framework.Point tileLocation = Util.GetMapLocation(e.Position.X, e.Position.Y, RenderingPipe.Dimension, out bool success);
+            Point2D tileLocation = Util.GetMapLocation(e.Position.X, e.Position.Y, RenderingPipe.Dimension, out bool success);
 
             if (success)
             {

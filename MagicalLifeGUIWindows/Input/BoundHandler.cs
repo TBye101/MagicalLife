@@ -254,27 +254,6 @@ namespace MagicalLifeGUIWindows.Input
         }
 
         /// <summary>
-        /// Removes a <see cref="ClickBounds"/> object from the system.
-        /// </summary>
-        /// <param name="bounds"></param>
-        //public static void AddClickBounds(ClickBounds bounds)
-        //{
-        //    int index = GameObjectBounds.BinarySearch(bounds, ClickBoundsSorter);
-
-        //    if (index < 0)
-        //    {
-        //        index = ~index;
-        //    }
-
-        //    GameObjectBounds.Insert(index, bounds);
-        //}
-
-        //public static void RemoveClickBounds(ClickBounds bounds)
-        //{
-        //    GameObjectBounds.Remove(bounds);
-        //}
-
-        /// <summary>
         /// Sets that container as the visible container, and gives it priority.
         /// </summary>
         /// <param name="container"></param>

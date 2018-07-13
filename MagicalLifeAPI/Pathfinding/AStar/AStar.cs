@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.Filing.Logging;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.InternalExceptions;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
-using Microsoft.Xna.Framework;
 using RoyT.AStar;
-using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Pathfinding.AStar
@@ -15,26 +15,24 @@ namespace MagicalLifeAPI.Pathfinding.AStar
     {
         private Grid Grid;
 
-        public void AddConnections(Point location)
+        public void AddConnections(Point2D location)
         {
             this.Grid.UnblockCell(new Position(location.X, location.Y));
         }
 
-        public List<PathLink> GetRoute(int dimension, Point origin, Point destination)
+        public List<PathLink> GetRoute(int dimension, Point2D origin, Point2D destination)
         {
-            MasterLog.DebugWriteLine("Finding route from: " + origin.ToString());
-            MasterLog.DebugWriteLine("Finding route to: " + destination.ToString());
             Position[] path = this.Grid.GetPath(new Position(origin.X, origin.Y), new Position(destination.X, destination.Y));
             List<PathLink> ret = new List<PathLink>();
 
             if (!World.Data.World.Dimensions[dimension][destination.X, destination.Y].IsWalkable)
             {
-                throw new Exception("Destination not possible!");
+                throw new InvalidPathException();
             }
 
             if (path.Length < 1)
             {
-                throw new Exception("Path not possible!");
+                throw new InvalidPathException();
             }
 
             int i = 0;
@@ -43,10 +41,10 @@ namespace MagicalLifeAPI.Pathfinding.AStar
             {
                 if (!World.Data.World.Dimensions[dimension][path[i].X, path[i].Y].IsWalkable)
                 {
-                    MasterLog.DebugWriteLine("Walking on unwalkable tile!");
+                    throw new InvalidPathException();
                 }
 
-                ret.Add(new PathLink(new Point(path[i].X, path[i].Y), new Point(path[i + 1].X, path[i + 1].Y)));
+                ret.Add(new PathLink(new Point2D(path[i].X, path[i].Y), new Point2D(path[i + 1].X, path[i + 1].Y)));
                 i++;
             }
 
@@ -69,7 +67,7 @@ namespace MagicalLifeAPI.Pathfinding.AStar
             }
         }
 
-        public void RemoveConnections(Point location)
+        public void RemoveConnections(Point2D location)
         {
             this.Grid.BlockCell(new Position(location.X, location.Y));
         }

@@ -1,6 +1,6 @@
-﻿using MagicalLifeAPI.Entities.Humanoid;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Entities.Humanoid;
 using MagicalLifeAPI.Util;
-using Microsoft.Xna.Framework;
 
 namespace MagicalLifeAPI.Entities.Entity_Factory
 {
@@ -10,12 +10,12 @@ namespace MagicalLifeAPI.Entities.Entity_Factory
     public class HumanFactory
     {
         /// <summary>
-        /// The maximum number of hit points that a human could get per level.
+        /// The maximum number of hit Point2Ds that a human could get per level.
         /// </summary>
         private readonly int MaxHumanHealthPerLevel = 10;
 
         /// <summary>
-        /// The minimum number of hit points that a human could get per level.
+        /// The minimum number of hit Point2Ds that a human could get per level.
         /// </summary>
         private readonly int MinHumanHealthPerLevel = 2;
 
@@ -33,7 +33,7 @@ namespace MagicalLifeAPI.Entities.Entity_Factory
         /// Returns a fully generated human character.
         /// </summary>
         /// <returns></returns>
-        public Human GenerateHuman(Point location, int dimension)
+        public Human GenerateHuman(Point2D location, int dimension)
         {
             int health = StaticRandom.Rand(this.MinHumanHealthPerLevel, this.MaxHumanHealthPerLevel);
             float movement = (float)StaticRandom.Rand(this.MinHumanMovement, this.MaxHumanMovement);

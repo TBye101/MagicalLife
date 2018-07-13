@@ -11,7 +11,7 @@ namespace MagicalLifeAPI.Pathfinding.Cost
     public interface IAddMovementCost
     {
         /// <summary>
-        /// Returns the additional cost of the living creature moving between points 'a' and 'b' due to some rule this knows about.
+        /// Returns the additional cost of the living creature moving between Point2Ds 'a' and 'b' due to some rule this knows about.
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>

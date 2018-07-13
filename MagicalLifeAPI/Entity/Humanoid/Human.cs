@@ -1,5 +1,5 @@
-﻿using MagicalLifeAPI.GUI;
-using Microsoft.Xna.Framework;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.GUI;
 using ProtoBuf;
 
 namespace MagicalLifeAPI.Entities.Humanoid
@@ -10,7 +10,7 @@ namespace MagicalLifeAPI.Entities.Humanoid
     [ProtoContract]
     public class Human : Living
     {
-        public Human(int health, float movementSpeed, Point location, int dimension) : base(health, movementSpeed, location, dimension)
+        public Human(int health, float movementSpeed, Point2D location, int dimension) : base(health, movementSpeed, location, dimension)
         {
             Filing.Logging.MasterLog.DebugWriteLine("Living spawned at: " + location.ToString());
         }

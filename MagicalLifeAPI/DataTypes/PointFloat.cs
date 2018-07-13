@@ -3,7 +3,7 @@
 namespace MagicalLifeAPI.DataTypes
 {
     [ProtoBuf.ProtoContract]
-    public struct PointFloat
+    public struct Point2DFloat
     {
         [ProtoMember(1)]
         public float X { get; set; }
@@ -11,7 +11,7 @@ namespace MagicalLifeAPI.DataTypes
         [ProtoMember(2)]
         public float Y { get; set; }
 
-        public PointFloat(float x, float y)
+        public Point2DFloat(float x, float y)
         {
             this.X = x;
             this.Y = y;

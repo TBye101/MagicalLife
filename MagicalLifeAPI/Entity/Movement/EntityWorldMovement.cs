@@ -3,7 +3,6 @@ using MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
-using Microsoft.Xna.Framework;
 using System;
 
 namespace MagicalLifeAPI.Entities.Movement
@@ -21,20 +20,18 @@ namespace MagicalLifeAPI.Entities.Movement
         {
             ProtoQueue<PathLink> path = entity.QueuedMovement;
 
-            //MasterLog.DebugWriteLine("Creature movement speed: " + entity.Movement.GetValue().ToString());
             while (entity.Movement.GetValue() > 0 && path.Count > 0)
             {
-                PathLink section = path.Peek();//Should use a normal list, and pull from [0], queue pulls in the wrong order
+                PathLink section = path.Peek();
 
                 Tile sourceTile = World.Data.World.Dimensions[entity.Dimension][section.Origin.X, section.Origin.Y];
                 Tile destinationTile = World.Data.World.Dimensions[entity.Dimension][section.Destination.X, section.Destination.Y];
                 Move(ref entity, sourceTile, destinationTile);
             }
-            //MasterLog.DebugWriteLine("Tile location: " + entity.MapLocation.ToString());
         }
 
         /// <summary>
-        /// Determines how many movement points are deducted from the entity in motion for a given movement action.
+        /// Determines how many movement Point2Ds are deducted from the entity in motion for a given movement action.
         /// </summary>
         /// <param name="xMove"></param>
         /// <param name="yMove"></param>
@@ -59,8 +56,6 @@ namespace MagicalLifeAPI.Entities.Movement
         /// <param name="destination"></param>
         public static void Move(ref Living entity, Tile source, Tile destination)
         {
-            //MasterLog.DebugWriteLine("Moving creature!");
-            //MasterLog.DebugWriteLine("Pre move location: " + entity.ScreenLocation.X.ToString() + ", " + entity.ScreenLocation.Y.ToString());
             Direction direction = DetermineMovementDirection(source.Location, destination.Location);
 
             float xMove = 0;
@@ -103,6 +98,9 @@ namespace MagicalLifeAPI.Entities.Movement
                     xMove = 1;
                     yMove = 1;
                     break;
+
+                default:
+                    throw new Exception();
             }
 
             xMove *= entity.Movement.GetValue();
@@ -112,18 +110,17 @@ namespace MagicalLifeAPI.Entities.Movement
 
             if (MathUtil.GetDistance(entity.ScreenLocation, destination.Location) > entity.Movement.GetValue())
             {
-                entity.ScreenLocation = new DataTypes.PointFloat(entity.ScreenLocation.X + xMove, entity.ScreenLocation.Y + yMove);
+                entity.ScreenLocation = new DataTypes.Point2DFloat(entity.ScreenLocation.X + xMove, entity.ScreenLocation.Y + yMove);
             }
             else
             {
                 entity.MapLocation = destination.Location;
-                entity.ScreenLocation = new DataTypes.PointFloat(destination.Location.X, destination.Location.Y);
+                entity.ScreenLocation = new DataTypes.Point2DFloat(destination.Location.X, destination.Location.Y);
                 entity.QueuedMovement.Dequeue();
                 movementPenalty = MathUtil.GetDistance(entity.ScreenLocation, destination.Location);
             }
 
             entity.Movement.AddModifier(new Entity.Util.ModifierFloat(movementPenalty, new TimeRemoveCondition(1), "Normal Movement"));
-            //MasterLog.DebugWriteLine("Post move location: " + entity.ScreenLocation.X.ToString() + ", " + entity.ScreenLocation.Y.ToString());
         }
 
         /// <summary>
@@ -132,7 +129,7 @@ namespace MagicalLifeAPI.Entities.Movement
         /// <param name="source"></param>
         /// <param name="destination"></param>
         /// <returns></returns>
-        public static Direction DetermineMovementDirection(Point source, Point destination)
+        public static Direction DetermineMovementDirection(Point2D source, Point2D destination)
         {
             if (destination.Y < source.Y)
             {

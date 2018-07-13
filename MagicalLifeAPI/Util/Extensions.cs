@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Util
@@ -14,19 +13,19 @@ namespace MagicalLifeAPI.Util
             }
         }
 
-        public static Microsoft.Xna.Framework.Point ParseString(this Point pt, string point)
+        public static Point2D ParseString(this Point2D pt, string Point2D)
         {
-            //{ X:[Microsoft.Xna.Framework.Point.X] Y:[Microsoft.Xna.Framework.Point.Y]}
-            string[] split = point.Split('Y');
-            //{ X:[Microsoft.Xna.Framework.Point.X]
-            //:[Microsoft.Xna.Framework.Point.Y]}
+            //{ X:[Point2D.X] Y:[Point2D.Y]}
+            string[] split = Point2D.Split('Y');
+            //{ X:[Point2D.X]
+            //:[Point2D.Y]}
             string xString = split[0];
             string yString = split[1];
 
             string x = xString.Substring(xString.IndexOf('['), xString.LastIndexOf(']') - xString.IndexOf('['));
             string y = yString.Substring(yString.IndexOf('['), yString.LastIndexOf(']') - yString.IndexOf('['));
 
-            return new Microsoft.Xna.Framework.Point(int.Parse(x), int.Parse(y));
+            return new Point2D(int.Parse(x), int.Parse(y));
         }
     }
 }

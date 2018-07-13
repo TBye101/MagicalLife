@@ -10,13 +10,13 @@ namespace MagicalLifeAPI.Entity.Util
     public struct ModifierFloat
     {
         [ProtoMember(1)]
-        public float Value;
+        public float Value { get; set; }
 
         [ProtoMember(2)]
-        public IModifierRemoveCondition RemoveCondition;
+        public IModifierRemoveCondition RemoveCondition { get; set; }
 
         [ProtoMember(3)]
-        public string Explanation;
+        public string Explanation { get; set; }
 
         public ModifierFloat(float value, IModifierRemoveCondition removeCondition, string explanation)
         {

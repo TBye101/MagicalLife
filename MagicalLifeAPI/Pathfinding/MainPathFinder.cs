@@ -1,5 +1,5 @@
-﻿using MagicalLifeAPI.World.Data;
-using Microsoft.Xna.Framework;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.World.Data;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Pathfinding
@@ -35,7 +35,7 @@ namespace MagicalLifeAPI.Pathfinding
             PathFinders.Add(star);
         }
 
-        public static List<PathLink> GetRoute(int dimension, Point start, Point end)
+        public static List<PathLink> GetRoute(int dimension, Point2D start, Point2D end)
         {
             return PathFinders[dimension].GetRoute(dimension, start, end);
         }

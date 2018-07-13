@@ -74,6 +74,9 @@ namespace MagicalLifeGUIWindows.Rendering.GUI
                     XPos -= (int)Math.Round(origin.X);
                     YPos += (int)Math.Round(origin.Y);
                     break;
+
+                default:
+                    break;
             }
 
             return new Rectangle(XPos, YPos, textbox.CarrotWidth, textbox.CarrotHeight);

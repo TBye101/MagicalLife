@@ -11,13 +11,13 @@ namespace MagicalLifeAPI.Entity.Util
     public struct Modifier32
     {
         [ProtoMember(1)]
-        public Int32 Value;
+        public Int32 Value { get; set; }
 
         [ProtoMember(2)]
-        public IModifierRemoveCondition RemoveCondition;
+        public IModifierRemoveCondition RemoveCondition { get; set; }
 
         [ProtoMember(3)]
-        public string Explanation;
+        public string Explanation { get; set; }
 
         public Modifier32(Int32 value, IModifierRemoveCondition removeCondition, string explanation)
         {

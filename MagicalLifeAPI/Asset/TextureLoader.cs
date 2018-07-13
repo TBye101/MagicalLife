@@ -57,6 +57,8 @@ namespace MagicalLifeAPI.Asset
             this.TexturesToLoad.Add("MarbleResourceConnected3");
             this.TexturesToLoad.Add("MarbleResourceConnected4");
 
+            this.TexturesToLoad.Add("MarbleChunk");
+
             return this.TexturesToLoad.Count;
         }
 

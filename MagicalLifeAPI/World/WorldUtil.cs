@@ -1,5 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using Microsoft.Xna.Framework;
+using MagicalLifeAPI.World.Data;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.World
@@ -37,21 +37,21 @@ namespace MagicalLifeAPI.World
         /// Returns all the tiles that neighbor the specified tile.
         /// </summary>
         /// <returns></returns>
-        public static List<Point> GetNeighboringTiles(Point tileLocation, int dimension)
+        public static List<Point2D> GetNeighboringTiles(Point2D tileLocation, int dimension)
         {
-            List<Point> neighborCandidates = new List<Point>();
-            List<Point> neighbors = new List<Point>();
+            List<Point2D> neighborCandidates = new List<Point2D>();
+            List<Point2D> neighbors = new List<Point2D>();
 
-            neighborCandidates.Add(new Point(tileLocation.X + 1, tileLocation.Y));
-            neighborCandidates.Add(new Point(tileLocation.X - 1, tileLocation.Y));
-            neighborCandidates.Add(new Point(tileLocation.X, tileLocation.Y + 1));
-            neighborCandidates.Add(new Point(tileLocation.X, tileLocation.Y - 1));
-            neighborCandidates.Add(new Point(tileLocation.X + 1, tileLocation.Y + 1));
-            neighborCandidates.Add(new Point(tileLocation.X + 1, tileLocation.Y - 1));
-            neighborCandidates.Add(new Point(tileLocation.X - 1, tileLocation.Y + 1));
-            neighborCandidates.Add(new Point(tileLocation.X - 1, tileLocation.Y - 1));
+            neighborCandidates.Add(new Point2D(tileLocation.X + 1, tileLocation.Y));
+            neighborCandidates.Add(new Point2D(tileLocation.X - 1, tileLocation.Y));
+            neighborCandidates.Add(new Point2D(tileLocation.X, tileLocation.Y + 1));
+            neighborCandidates.Add(new Point2D(tileLocation.X, tileLocation.Y - 1));
+            neighborCandidates.Add(new Point2D(tileLocation.X + 1, tileLocation.Y + 1));
+            neighborCandidates.Add(new Point2D(tileLocation.X + 1, tileLocation.Y - 1));
+            neighborCandidates.Add(new Point2D(tileLocation.X - 1, tileLocation.Y + 1));
+            neighborCandidates.Add(new Point2D(tileLocation.X - 1, tileLocation.Y - 1));
 
-            foreach (Point item in neighborCandidates)
+            foreach (Point2D item in neighborCandidates)
             {
                 if (DoesTileExist(item, dimension))
                 {
@@ -67,9 +67,36 @@ namespace MagicalLifeAPI.World
         /// </summary>
         /// <param name="tileLocation"></param>
         /// <returns></returns>
-        public static bool DoesTileExist(Point tileLocation, int dimension)
+        public static bool DoesTileExist(Point2D tileLocation, int dimension)
         {
             return World.Data.World.Dimensions[dimension].DoesTileExist(tileLocation.X, tileLocation.Y);
+        }
+
+        /// <summary>
+        /// Determines what chunk a map location is part of, and returns the chunk coordinates of that chunk.
+        /// </summary>
+        /// <param name="mapLocation"></param>
+        /// <returns></returns>
+        public static Point2D CalculateChunkLocation(Point2D mapLocation)
+        {
+            int x = mapLocation.X / Chunk.Width;
+            int y = mapLocation.Y / Chunk.Height;
+
+            return new Point2D(x, y);
+        }
+
+        /// <summary>
+        /// Gets a tile from a chunk via its map location.
+        /// </summary>
+        /// <param name="mapLocation">The location of the tile.</param>
+        /// <param name="chunk">The chunk the tile is within.</param>
+        /// <returns></returns>
+        public static Tile GetTile(Point2D mapLocation, Chunk chunk)
+        {
+            int x = mapLocation.X % Chunk.Width;
+            int y = mapLocation.Y % Chunk.Height;
+
+            return chunk.Tiles[x, y];
         }
     }
 }

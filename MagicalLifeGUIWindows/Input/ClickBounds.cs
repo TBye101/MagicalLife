@@ -30,7 +30,7 @@ namespace MagicalLifeGUIWindows.Input
         /// <summary>
         /// Constructs a new instance of the <see cref="ClickBounds"/> class.
         /// </summary>
-        /// <param name="startingLocation">The point where this click bounds begins.</param>
+        /// <param name="startingLocation">The Point2D where this click bounds begins.</param>
         /// <param name="size">The size of this click bounds.</param>
         /// <param name="bounds"></param>
         /// <param name="priority">The priority of this click bounds. Must be equal to or greater than 0, unless this clickbounds ALWAYS has priority over other click bounds.</param>

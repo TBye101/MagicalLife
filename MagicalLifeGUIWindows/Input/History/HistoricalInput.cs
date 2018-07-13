@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.GUI;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.GUI;
 using System.Collections.Generic;
 
 namespace MagicalLifeGUIWindows.Input.History
@@ -24,12 +25,12 @@ namespace MagicalLifeGUIWindows.Input.History
         /// <summary>
         /// The location of the tile that the order was to.
         /// </summary>
-        public Microsoft.Xna.Framework.Point OrderPoint { get; set; }
+        public Point2D OrderPoint2D { get; set; }
 
-        public HistoricalInput(Microsoft.Xna.Framework.Point point)
+        public HistoricalInput(Point2D Point2D)
         {
             this.OrderedToTile = true;
-            this.OrderPoint = point;
+            this.OrderPoint2D = Point2D;
             this.DeselectingAll = false;
         }
 

@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
@@ -21,7 +22,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         {
             foreach (Tile tile in World.Dimensions[dimension])
             {
-                Microsoft.Xna.Framework.Point start = new Microsoft.Xna.Framework.Point(RenderingPipe.tileSize.X * tile.Location.X, RenderingPipe.tileSize.Y * tile.Location.Y);
+                Point2D start = new Point2D(RenderingPipe.tileSize.X * tile.Location.X, RenderingPipe.tileSize.Y * tile.Location.Y);
                 DrawTile(tile, ref spBatch, start);
             }
 
@@ -57,12 +58,22 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// <summary>
         /// Draws a tile.
         /// </summary>
-        private static void DrawTile(Tile tile, ref SpriteBatch spBatch, Point start)
+        private static void DrawTile(Tile tile, ref SpriteBatch spBatch, Point2D start)
         {
-            Microsoft.Xna.Framework.Rectangle target = new Microsoft.Xna.Framework.Rectangle(start, RenderingPipe.tileSize);
+            Microsoft.Xna.Framework.Rectangle target = new Microsoft.Xna.Framework.Rectangle(start.ToXNA(), RenderingPipe.tileSize);
             spBatch.Draw(AssetManager.Textures[tile.TextureIndex], target, RenderingPipe.colorMask);
 
             DrawStone(tile, ref spBatch, target);
+            DrawItems(ref spBatch, tile, target);
+        }
+
+        private static void DrawItems(ref SpriteBatch spBatch, Tile tile, Rectangle target)
+        {
+            if (tile.Item != null)
+            {
+                Texture2D texture = AssetManager.Textures[tile.Item.TextureIndex];
+                spBatch.Draw(texture, target, RenderingPipe.colorMask);
+            }
         }
 
         /// <summary>
@@ -80,6 +91,9 @@ namespace MagicalLifeGUIWindows.Rendering.Map
                     case StoneBase stone:
                         Texture2D stoneTexture = AssetManager.Textures[AssetManager.GetTextureIndex(stone.GetUnconnectedTexture())];
                         spBatch.Draw(stoneTexture, target, RenderingPipe.colorMask);
+                        break;
+
+                    default:
                         break;
                 }
             }

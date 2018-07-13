@@ -5,7 +5,6 @@ using MagicalLifeAPI.Entities.Util;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Pathfinding;
-using Microsoft.Xna.Framework;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
@@ -25,7 +24,7 @@ namespace MagicalLifeAPI.Entities
         public ProtoQueue<PathLink> QueuedMovement { get; set; } = new ProtoQueue<PathLink>();
 
         /// <summary>
-        /// How many hit points this creature has.
+        /// How many hit Point2Ds this creature has.
         /// </summary>
         [ProtoMember(2)]
         public Attribute32 Health { get; set; }
@@ -40,7 +39,7 @@ namespace MagicalLifeAPI.Entities
         /// The location of the creature on the screen. This represents the progress through a tile for a moving creature.
         /// </summary>
         [ProtoMember(4)]
-        public PointFloat ScreenLocation { get; set; }
+        public Point2DFloat ScreenLocation { get; set; }
 
         /// <summary>
         /// The dimension that this creature is in.
@@ -63,12 +62,12 @@ namespace MagicalLifeAPI.Entities
         /// </summary>
         /// <param name="health"></param>
         /// <param name="movementSpeed"></param>
-        protected Living(int health, float movementSpeed, Point location, int dimension)
+        protected Living(int health, float movementSpeed, Point2D location, int dimension)
         {
             this.Health = new Util.Attribute32(health);
             this.Movement = new AttributeFloat(movementSpeed);
             this.MapLocation = location;
-            this.ScreenLocation = new PointFloat(location.X, location.Y);
+            this.ScreenLocation = new Point2DFloat(location.X, location.Y);
             this.Dimension = dimension;
             Living.LivingCreatedHandler(new LivingEventArg(this, location));
         }

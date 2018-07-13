@@ -2,9 +2,11 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 ---
 
-## [Version 0.0.9]
+## [Version 0.*.*]
 
 #### API
+* Added internal support for having items in tiles
+* Added item addition, removal, and search functionality
 
 #### Server
 

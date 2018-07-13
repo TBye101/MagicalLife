@@ -68,6 +68,7 @@ namespace MagicalLifeGUIWindows
 
             load.LoadAll(ref msg, new List<IGameLoader>()
             {
+                new ItemLoader(),
                 new InputLoader(),
                 new Initializer(),
                 new TextureLoader(),

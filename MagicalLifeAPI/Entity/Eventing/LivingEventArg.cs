@@ -1,4 +1,6 @@
-﻿namespace MagicalLifeAPI.Entities.Eventing
+﻿using MagicalLifeAPI.DataTypes;
+
+namespace MagicalLifeAPI.Entities.Eventing
 {
     /// <summary>
     /// Used to hold information about a event involving a living entity.
@@ -7,13 +9,13 @@
     {
         public Living Living { get; set; }
 
-        public Microsoft.Xna.Framework.Point Location { get; private set; }
+        public Point2D Location { get; private set; }
 
         /// <summary>
         /// Constructs a <see cref="LivingEventArg"/>.
         /// </summary>
         /// <param name="living"></param>
-        public LivingEventArg(Living living, Microsoft.Xna.Framework.Point location)
+        public LivingEventArg(Living living, Point2D location)
         {
             this.Living = living;
             this.Location = location;

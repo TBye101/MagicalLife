@@ -1,4 +1,5 @@
-﻿using ProtoBuf;
+﻿using MagicalLifeAPI.InternalExceptions;
+using ProtoBuf;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -47,7 +48,7 @@ namespace MagicalLifeAPI.DataTypes
             }
             else
             {
-                throw new Exception("Queue empty!");
+                throw new CollectionEmptyException();
             }
         }
 

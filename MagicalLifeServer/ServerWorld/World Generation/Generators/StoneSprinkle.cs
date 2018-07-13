@@ -6,7 +6,6 @@ using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Resources;
 using MagicalLifeAPI.World.Tiles;
-using Microsoft.Xna.Framework;
 using System;
 
 namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
@@ -26,7 +25,7 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
             return ret;
         }
 
-        protected override ProtoArray<Chunk> GenerateDetails(ProtoArray<Chunk> map, Random random)
+        protected override void GenerateDetails(ProtoArray<Chunk> map, Random random)
         {
             int chunkWidth = map.Width;
             int chunkHeight = map.Height;
@@ -47,15 +46,13 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
             }
 
             HumanFactory hFactory = new HumanFactory();
-            Point entityLocation = new Point(((chunkX * Chunk.Width) + x), (chunkY * Chunk.Height) + y);
+            Point2D entityLocation = new Point2D(((chunkX * Chunk.Width) + x), (chunkY * Chunk.Height) + y);
             Human human = hFactory.GenerateHuman(entityLocation, this.Dimension);
 
             map[chunkX, chunkY].Creatures.Add(human);
-
-            return map;
         }
 
-        protected override ProtoArray<Chunk> GenerateLandType(string[,] biomeMap, ProtoArray<Chunk> map, Random random)
+        protected override void GenerateLandType(string[,] biomeMap, ProtoArray<Chunk> map, Random random)
         {
             int xSize = biomeMap.GetLength(0);
             int ySize = biomeMap.GetLength(1);
@@ -75,7 +72,7 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
 
                         for (int cy = 0; cy < chunkHeight; cy++)
                         {
-                            Dirt dirt = new Dirt(new Point((chunkWidth * x) + cx, (chunkHeight * y) + cy));
+                            Dirt dirt = new Dirt(new Point2D((chunkWidth * x) + cx, (chunkHeight * y) + cy));
                             if (random.Next(4) == 2)
                             {
                                 dirt.Resources = new MarbleResource(random.Next(25));
@@ -87,28 +84,22 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
                     }
                 }
             }
-
-            return ret;
         }
 
-        protected override ProtoArray<Chunk> GenerateMinerals(ProtoArray<Chunk> map, Random random)
+        protected override void GenerateMinerals(ProtoArray<Chunk> map, Random random)
         {
-            return map;
         }
 
-        protected override ProtoArray<Chunk> GenerateNaturalFeatures(ProtoArray<Chunk> map, Random random)
+        protected override void GenerateNaturalFeatures(ProtoArray<Chunk> map, Random random)
         {
-            return map;
         }
 
-        protected override ProtoArray<Chunk> GenerateStructures(ProtoArray<Chunk> map, Random random)
+        protected override void GenerateStructures(ProtoArray<Chunk> map, Random random)
         {
-            return map;
         }
 
-        protected override ProtoArray<Chunk> GenerateVegetation(ProtoArray<Chunk> map, Random random)
+        protected override void GenerateVegetation(ProtoArray<Chunk> map, Random random)
         {
-            return map;
         }
     }
 }

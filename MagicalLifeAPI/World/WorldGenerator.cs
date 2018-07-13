@@ -1,8 +1,8 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
+using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Data;
-using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 
@@ -31,6 +31,7 @@ namespace MagicalLifeAPI.World
             string[,] biomes = this.AssignBiomes(chunkWidth, chunkHeight, random);
 
             ProtoArray<Chunk> map = this.GenerateBlank(chunkWidth, chunkHeight, biomes);
+            ItemRegistry.Registries.Add(new ItemRegistry());
 
             this.GenerateLandType(biomes, map, random);
 
@@ -52,7 +53,7 @@ namespace MagicalLifeAPI.World
                 for (int y = 0; y < chunkHeight; y++)
                 {
                     blank[x, y] = new Chunk(
-                        new List<Living>(), new ProtoArray<Tile>(Chunk.Width, Chunk.Height), new Point(x, y), biomes[x, y]);
+                        new List<Living>(), new ProtoArray<Tile>(Chunk.Width, Chunk.Height), new Point2D(x, y), biomes[x, y]);
                 }
             }
 
@@ -73,28 +74,28 @@ namespace MagicalLifeAPI.World
         /// </summary>
         /// <param name="biomeMap"></param>
         /// <returns></returns>
-        protected abstract ProtoArray<Chunk> GenerateLandType(string[,] biomeMap, ProtoArray<Chunk> map, Random random);
+        protected abstract void GenerateLandType(string[,] biomeMap, ProtoArray<Chunk> map, Random random);
 
         /// <summary>
         /// Generates things such as rivers and caves.
         /// </summary>
         /// <param name="map"></param>
         /// <returns></returns>
-        protected abstract ProtoArray<Chunk> GenerateNaturalFeatures(ProtoArray<Chunk> map, Random random);
+        protected abstract void GenerateNaturalFeatures(ProtoArray<Chunk> map, Random random);
 
         /// <summary>
         /// Generates minerals in the world.
         /// </summary>
         /// <param name="map"></param>
         /// <returns></returns>
-        protected abstract ProtoArray<Chunk> GenerateMinerals(ProtoArray<Chunk> map, Random random);
+        protected abstract void GenerateMinerals(ProtoArray<Chunk> map, Random random);
 
         /// <summary>
         /// Generates vegetation in the world.
         /// </summary>
         /// <param name="map"></param>
         /// <returns></returns>
-        protected abstract ProtoArray<Chunk> GenerateVegetation(ProtoArray<Chunk> map, Random random);
+        protected abstract void GenerateVegetation(ProtoArray<Chunk> map, Random random);
 
         /// <summary>
         /// Generates structures in the world.
@@ -102,13 +103,13 @@ namespace MagicalLifeAPI.World
         /// <param name="map"></param>
         /// <param name="random"></param>
         /// <returns></returns>
-        protected abstract ProtoArray<Chunk> GenerateStructures(ProtoArray<Chunk> map, Random random);
+        protected abstract void GenerateStructures(ProtoArray<Chunk> map, Random random);
 
         /// <summary>
         /// Generates any other details not done in previous phases.
         /// </summary>
         /// <param name="map"></param>
         /// <returns></returns>
-        protected abstract ProtoArray<Chunk> GenerateDetails(ProtoArray<Chunk> map, Random random);
+        protected abstract void GenerateDetails(ProtoArray<Chunk> map, Random random);
     }
 }

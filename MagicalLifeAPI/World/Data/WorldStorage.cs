@@ -1,6 +1,6 @@
-﻿using MagicalLifeAPI.Filing;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Filing;
 using MagicalLifeAPI.Networking.Serialization;
-using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -86,7 +86,7 @@ namespace MagicalLifeAPI.World.Data
         /// <returns></returns>
         public Chunk LoadChunk(int chunkX, int chunkY, Guid dimensionID)
         {
-            return this.LoadChunk(new Point(chunkX, chunkY), dimensionID);
+            return this.LoadChunk(new Point2D(chunkX, chunkY), dimensionID);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace MagicalLifeAPI.World.Data
         /// <param name="chunkY">The y position of the chunk within the dimension.</param>
         /// <param name="dimensionID">The ID of the dimension that the chunk belongs to.</param>
         /// <returns></returns>
-        public Chunk LoadChunk(Point chunkLocation, Guid dimensionID)
+        public Chunk LoadChunk(Point2D chunkLocation, Guid dimensionID)
         {
             bool dimensionExists = this.DimensionPaths.TryGetValue(dimensionID, out string path);
 

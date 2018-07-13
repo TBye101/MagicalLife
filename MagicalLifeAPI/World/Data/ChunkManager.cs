@@ -56,7 +56,7 @@ namespace MagicalLifeAPI.World.Data
         }
 
         /// <summary>
-        /// Returns the chunk for which the specified tile point belongs to.
+        /// Returns the chunk for which the specified tile Point2D belongs to.
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
