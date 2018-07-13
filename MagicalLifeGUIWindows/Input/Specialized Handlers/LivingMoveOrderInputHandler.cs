@@ -70,6 +70,8 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                             ClientSendRecieve.Send<RouteCreatedMessage>(new RouteCreatedMessage(pth, living.ID, living.Dimension));
                         }
                         break;
+                    default:
+                        break;
                 }
             }
         }

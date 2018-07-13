@@ -21,16 +21,14 @@ namespace MagicalLifeAPI.Entities.Movement
         {
             ProtoQueue<PathLink> path = entity.QueuedMovement;
 
-            //MasterLog.DebugWriteLine("Creature movement speed: " + entity.Movement.GetValue().ToString());
             while (entity.Movement.GetValue() > 0 && path.Count > 0)
             {
-                PathLink section = path.Peek();//Should use a normal list, and pull from [0], queue pulls in the wrong order
+                PathLink section = path.Peek();
 
                 Tile sourceTile = World.Data.World.Dimensions[entity.Dimension][section.Origin.X, section.Origin.Y];
                 Tile destinationTile = World.Data.World.Dimensions[entity.Dimension][section.Destination.X, section.Destination.Y];
                 Move(ref entity, sourceTile, destinationTile);
             }
-            //MasterLog.DebugWriteLine("Tile location: " + entity.MapLocation.ToString());
         }
 
         /// <summary>
@@ -59,8 +57,6 @@ namespace MagicalLifeAPI.Entities.Movement
         /// <param name="destination"></param>
         public static void Move(ref Living entity, Tile source, Tile destination)
         {
-            //MasterLog.DebugWriteLine("Moving creature!");
-            //MasterLog.DebugWriteLine("Pre move location: " + entity.ScreenLocation.X.ToString() + ", " + entity.ScreenLocation.Y.ToString());
             Direction direction = DetermineMovementDirection(source.Location, destination.Location);
 
             float xMove = 0;
@@ -103,6 +99,8 @@ namespace MagicalLifeAPI.Entities.Movement
                     xMove = 1;
                     yMove = 1;
                     break;
+                default:
+                    throw new Exception();
             }
 
             xMove *= entity.Movement.GetValue();
@@ -123,7 +121,6 @@ namespace MagicalLifeAPI.Entities.Movement
             }
 
             entity.Movement.AddModifier(new Entity.Util.ModifierFloat(movementPenalty, new TimeRemoveCondition(1), "Normal Movement"));
-            //MasterLog.DebugWriteLine("Post move location: " + entity.ScreenLocation.X.ToString() + ", " + entity.ScreenLocation.Y.ToString());
         }
 
         /// <summary>

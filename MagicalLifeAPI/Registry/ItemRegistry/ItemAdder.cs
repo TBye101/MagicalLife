@@ -24,7 +24,8 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
             }
 
             RTree<Point2D> itemLocations = chunk.Items[item.ItemID];
-            List<Point2D> result = itemLocations.Contains(new Rectangle(mapLocation.X, mapLocation.Y, mapLocation.X, mapLocation.Y));
+            List<Point2D>  result        = itemLocations.Contains(new Rectangle(mapLocation.X, mapLocation.Y, mapLocation.X, mapLocation.Y));
+
             if (result.Count > 0)
             {
                 //The chunk already knows that there is an item of the specified type in the specified position.
@@ -43,8 +44,8 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// <param name="itemID"></param>
         internal static void RememberWhichChunk(Point2D chunkLocation, int itemID, int dimension)
         {
-            RTree.RTree<Point2D> chunkLocations = ItemRegistry.Registries[dimension].ItemIDToChunk[itemID];
-            List<Point2D> result = chunkLocations.Contains(new RTree.Rectangle(chunkLocation.X, chunkLocation.Y, chunkLocation.X, chunkLocation.Y));
+            RTree<Point2D> chunkLocations = ItemRegistry.Registries[dimension].ItemIDToChunk[itemID];
+            List<Point2D>  result         = chunkLocations.Contains(new RTree.Rectangle(chunkLocation.X, chunkLocation.Y, chunkLocation.X, chunkLocation.Y));
 
             if (result.Count > 0)
             {
@@ -63,11 +64,11 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         public static void AddItem(Item item, Point2D mapLocation, int dimension)
         {
             Point2D chunkLocation = WorldUtil.CalculateChunkLocation(mapLocation);
-            Chunk chunk = World.Data.World.Dimensions[dimension].GetChunk(chunkLocation.X, chunkLocation.Y);
+            Chunk   chunk         = World.Data.World.Dimensions[dimension].GetChunk(chunkLocation.X, chunkLocation.Y);
 
             ItemAdder.RememberWhichChunk(chunkLocation, item.ItemID, dimension);
-            ItemAdder.RememberWhichTile(item, mapLocation, chunk, dimension);
-            ItemAdder.StoreItem(chunk, mapLocation, item);
+            ItemAdder.RememberWhichTile (item, mapLocation, chunk, dimension);
+            ItemAdder.StoreItem         (chunk, mapLocation, item);
         }
 
         public static void AddItemWorldGen(Item item, Point2D mapLocation, ProtoArray<Chunk> map, int dimension)

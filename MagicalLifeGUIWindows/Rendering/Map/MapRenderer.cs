@@ -94,6 +94,8 @@ namespace MagicalLifeGUIWindows.Rendering.Map
                         Texture2D stoneTexture = AssetManager.Textures[AssetManager.GetTextureIndex(stone.GetUnconnectedTexture())];
                         spBatch.Draw(stoneTexture, target, RenderingPipe.colorMask);
                         break;
+                    default:
+                        break;
                 }
             }
         }
