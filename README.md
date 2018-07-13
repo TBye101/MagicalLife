@@ -172,7 +172,7 @@ Released under the [Apache License 2.0](https://github.com/BrandonPotter/SimpleT
 ---
 [C# Spatial Index (RTree) Library](https://github.com/drorgl/cspatialindexrt)
 
-Released under the [GNU Lesser General Public License](https://github.com/SneakyTactician/MagicalLife/blob/Item/Licenses/GNU%20Lesser%20General%20Public%20License)
+Released under the [GNU Lesser General Public License](https://github.com/SneakyTactician/MagicalLife/blob/Master/Licenses/GNU%20Lesser%20General%20Public%20License)
 
 #### Used for quickly finding objects nearest to a location, or getting all objects within a certain area.
 ---
