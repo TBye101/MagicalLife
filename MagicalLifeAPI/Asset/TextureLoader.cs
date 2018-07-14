@@ -47,7 +47,8 @@ namespace MagicalLifeAPI.Asset
             this.TexturesToLoad.Add("EndTurnButtonState2");
             this.TexturesToLoad.Add("MenuBackground");
             this.TexturesToLoad.Add("MenuButton");
-            this.TexturesToLoad.Add("TestTile");
+            this.TexturesToLoad.Add("TestTile1");
+            this.TexturesToLoad.Add("TestTile2");
             this.TexturesToLoad.Add("InputBox100x50");
 
             this.TexturesToLoad.Add("MarbleFloor");
