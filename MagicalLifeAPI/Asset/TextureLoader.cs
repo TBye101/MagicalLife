@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Universal;
+﻿using MagicalLifeAPI.Load;
+using MagicalLifeAPI.Universal;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -26,19 +27,10 @@ namespace MagicalLifeAPI.Asset
 
         public TextureLoader()
         {
+            this.Prepare();
         }
 
-        public int GetTotalOperations()
-        {
-            if (this.TotalJobs == -1)
-            {
-                this.TotalJobs = this.CalculateTotalJobs();
-            }
-
-            return this.TotalJobs;
-        }
-
-        private int CalculateTotalJobs()
+        private void Prepare()
         {
             this.TexturesToLoad.Add("Basic Human");
             this.TexturesToLoad.Add("CursorCarrot");
@@ -47,7 +39,7 @@ namespace MagicalLifeAPI.Asset
             this.TexturesToLoad.Add("EndTurnButtonState2");
             this.TexturesToLoad.Add("MenuBackground");
             this.TexturesToLoad.Add("MenuButton");
-            this.TexturesToLoad.Add("TestTile1");
+            this.TexturesToLoad.Add("TestTile");
             this.TexturesToLoad.Add("InputBox100x50");
 
             this.TexturesToLoad.Add("MarbleFloor");
@@ -58,21 +50,12 @@ namespace MagicalLifeAPI.Asset
             this.TexturesToLoad.Add("MarbleResourceConnected4");
 
             this.TexturesToLoad.Add("MarbleChunk");
-
-            return this.TexturesToLoad.Count;
         }
 
-        public void InitialStartup(ref int progress)
+        public void InitialStartup()
         {
             if (this.Manager != null)
             {
-                //foreach (string item in this.TexturesToLoad)
-                //{
-                //    Texture2D texture = this.Manager.Load<Texture2D>(item);
-                //    AssetManager.RegisterTexture(texture);
-                //    progress++;
-                //}
-
                 foreach (KeyValuePair<string, int> item in AssetManager.NameToIndex)
                 {
                     Texture2D texture = this.Manager.Load<Texture2D>(item.Key);
@@ -86,7 +69,6 @@ namespace MagicalLifeAPI.Asset
                     foreach (string item in this.TexturesToLoad)
                     {
                         AssetManager.NameToIndex.Add(item, AssetManager.NameToIndex.Count);
-                        progress++;
                     }
                 }
             }

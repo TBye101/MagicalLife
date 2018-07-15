@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Networking.External_Type_Serialization;
+﻿using MagicalLifeAPI.Load;
+using MagicalLifeAPI.Networking.External_Type_Serialization;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
@@ -23,23 +24,22 @@ namespace MagicalLifeAPI.Networking.Serialization
 
         public ProtoTypeLoader()
         {
+            this.Prepare();
         }
 
-        public int GetTotalOperations()
+        public void Prepare()
         {
             this.Messages.AddRange(ReflectionUtil.LoadTypeOfAllSubclasses<BaseMessage>(Assembly.GetAssembly(typeof(BaseMessage))));
             this.Teachers.AddRange(ReflectionUtil.LoadAllInterface<ITeachSerialization>(Assembly.GetAssembly(typeof(Point2DTeacher))));
-            return this.Messages.Count + this.Teachers.Count;
         }
 
-        public void InitialStartup(ref int progress)
+        public void InitialStartup()
         {
             RuntimeTypeModel current = RuntimeTypeModel.Create();
 
             foreach (ITeachSerialization item in this.Teachers)
             {
                 item.Teach(current);//Point2D teacher ain't loading
-                progress++;
             }
 
             MetaType baseMessageType = current.Add(typeof(BaseMessage), true);
@@ -70,7 +70,6 @@ namespace MagicalLifeAPI.Networking.Serialization
                 ProtoUtil.IDToMessage.Add(sample.ID, this.Messages[i - 2]);
 
                 i++;
-                progress++;
             }
 
             //ProtoUtil.TypeModel = RuntimeTypeModel.Default.

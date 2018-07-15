@@ -8,18 +8,12 @@ namespace MagicalLifeAPI.Load
 {
     public class ItemLoader : IGameLoader
     {
-        public int GetTotalOperations()
-        {
-            return 1;
-        }
-
-        public void InitialStartup(ref int progress)
+        public void InitialStartup()
         {
             ItemRegistry.Initialize(new List<Type>()
             {
                 typeof(StoneChunk)
             });
-            progress++;
         }
     }
 }
