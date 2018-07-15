@@ -137,8 +137,9 @@ but with magic and aspects of RPG.
 
 ## Contributors
 ockenyberg - Created the dirt and grass stepping sound effects
+Batarian711 - Created the logo for this project
 
-## Libraries
+## Libraries Utilized
 [MonoGame](http://www.monogame.net/)
 
 Released under the [Microsoft Public License and the MIT License](https://github.com/MonoGame/MonoGame/blob/develop/LICENSE.txt)
