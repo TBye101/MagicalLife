@@ -137,6 +137,7 @@ but with magic and aspects of RPG.
 
 ## Contributors
 ockenyberg - Created the dirt and grass stepping sound effects
+
 Batarian711 - Created the logo for this project
 
 ## Libraries Utilized
