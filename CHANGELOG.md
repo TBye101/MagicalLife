@@ -13,6 +13,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 #### GUI
 
 #### Bugs
+* Fixed issue [#17](https://github.com/SneakyTactician/MagicalLife/issues/17)
 
 ---
 

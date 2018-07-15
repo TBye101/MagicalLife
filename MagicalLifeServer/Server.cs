@@ -37,7 +37,7 @@ namespace MagicalLifeServer
             switch (mode)
             {
                 case EngineMode.ServerAndClient:
-                    load.LoadAll(ref msg, new List<MagicalLifeAPI.Universal.IGameLoader>()
+                    load.LoadAll(ref msg, new List<IGameLoader>()
                     {
                         new TextureLoader(),
                         new MainLoad()
@@ -45,7 +45,7 @@ namespace MagicalLifeServer
                     break;
 
                 case EngineMode.ServerOnly:
-                    load.LoadAll(ref msg, new List<MagicalLifeAPI.Universal.IGameLoader>()
+                    load.LoadAll(ref msg, new List<IGameLoader>()
                     {
                         new ItemLoader(),
                         new TextureLoader(),

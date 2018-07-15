@@ -18,37 +18,29 @@ namespace MagicalLifeAPI.World.Base
         [ProtoMember(1)]
         public string Name { get; }
 
-        [ProtoMember(2)]
-        public int Durability { get; set; }
-
-        /// <summary>
-        /// The item's resistance to fire. 0 is no resistance, 1 is completely immune to fire damage.
-        /// </summary>
-        //[ProtoMember(3)]
-        //public AttributeFloat FireResistance { get; set; }
-
         /// <summary>
         /// The description and lore of this item. Is not revealed until the item has been identified, unless it never needed identification.
         /// </summary>
-        [ProtoMember(4)]
+        [ProtoMember(2)]
         public List<string> Lore { get; set; }
 
         /// <summary>
         /// The maximum number of this item that may be contained in the same stack.
         /// Must be greater than or equal to one.
         /// </summary>
-        [ProtoMember(6)]
+        [ProtoMember(3)]
         public int StackableLimit { get; set; }
 
         /// <summary>
         /// How many identical items are currently being clumped and held be this class.
         /// </summary>
-        [ProtoMember(7)]
+        [ProtoMember(4)]
         public int CurrentlyStacked { get; set; }
 
         /// <summary>
         /// The ID that describes this item to the <see cref="ItemRegistry"/>.
         /// </summary>
+        [ProtoMember(5)]
         public int ItemID { get; private set; }
 
         /// <summary>
@@ -64,7 +56,6 @@ namespace MagicalLifeAPI.World.Base
         public Item(string name, int durability, List<string> lore, int stackableLimit, int count, int itemID)
         {
             this.Name = name;
-            this.Durability = durability;
             this.Lore = lore;
             this.StackableLimit = stackableLimit;
             this.CurrentlyStacked = count;

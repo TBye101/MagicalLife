@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Universal;
+﻿using MagicalLifeAPI.Load;
+using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeServer.Processing;
 
@@ -9,17 +10,10 @@ namespace MagicalLifeServer.Load
     /// </summary>
     public class MainLoad : IGameLoader
     {
-        public int GetTotalOperations()
-        {
-            return 3;
-        }
-
-        public void InitialStartup(ref int progress)
+        public void InitialStartup()
         {
             World.DimensionAdded += this.World_DimensionGenerated;
-            progress++;
             ServerProcessor.Initialize();
-            progress++;
         }
 
         private void World_DimensionGenerated(object sender, int e)
