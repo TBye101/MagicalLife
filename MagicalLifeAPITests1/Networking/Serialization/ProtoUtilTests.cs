@@ -28,7 +28,6 @@ namespace MagicalLifeAPI.Protobuf.Serialization.Tests
         private void Setup()
         {
             ProtoTypeLoader prep = new ProtoTypeLoader();
-            int prog = 0;
             prep.InitialStartup();
         }
     }

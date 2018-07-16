@@ -7,6 +7,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 #### API
 * Added internal support for having items in tiles
 * Added item addition, removal, and search functionality
+* Added a grass tile
 
 #### Server
 

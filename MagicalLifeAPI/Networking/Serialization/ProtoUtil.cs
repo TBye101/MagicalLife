@@ -78,7 +78,7 @@ namespace MagicalLifeAPI.Networking.Serialization
             catch (Exception e)
             {
                 MasterLog.DebugWriteLine(e.Message);
-                return default(T);
+                return default;
             }
         }
     }

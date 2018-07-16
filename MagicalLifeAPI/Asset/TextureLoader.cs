@@ -14,8 +14,6 @@ namespace MagicalLifeAPI.Asset
     /// </summary>
     public class TextureLoader : IGameLoader
     {
-        private int TotalJobs = -1;
-
         private readonly List<string> TexturesToLoad = new List<string>();
 
         private readonly ContentManager Manager;
@@ -35,6 +33,7 @@ namespace MagicalLifeAPI.Asset
             this.TexturesToLoad.Add("Basic Human");
             this.TexturesToLoad.Add("CursorCarrot");
             this.TexturesToLoad.Add("Dirt");
+            this.TexturesToLoad.Add("Grass");
             this.TexturesToLoad.Add("EndTurnButtonState1");
             this.TexturesToLoad.Add("EndTurnButtonState2");
             this.TexturesToLoad.Add("MenuBackground");

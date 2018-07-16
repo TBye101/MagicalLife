@@ -10,7 +10,6 @@ namespace MagicalLifeAPI.World.Tiles
     {
         public Dirt(Point2D location) : base(location, 10)
         {
-            //this.AdditionalMovementCost = 0;
         }
 
         public Dirt(int x, int y) : this(new Point2D(x, y))

@@ -60,6 +60,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="ServerWorld\World Generation\Generators\Dirtland.cs" />
+    <Compile Include="ServerWorld\World Generation\Generators\GrassAndDirt.cs" />
     <Compile Include="ServerWorld\World Generation\Generators\StoneSprinkle.cs" />
   </ItemGroup>
   <ItemGroup>
