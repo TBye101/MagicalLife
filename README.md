@@ -136,6 +136,8 @@ but with magic and aspects of RPG.
 # Credits
 
 ## Contributors
+Lynngr - Created the dirt and grass textures
+
 ockenyberg - Created the dirt and grass stepping sound effects
 
 Batarian711 - Created the logo for this project
