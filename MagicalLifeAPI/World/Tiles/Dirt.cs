@@ -23,12 +23,12 @@ namespace MagicalLifeAPI.World.Tiles
 
         public override string GetName()
         {
-            return "dirt";
+            return "Dirt";
         }
 
         public override string GetTextureName()
         {
-            return "DirtFloor";
+            return "Dirt";
         }
     }
 }

@@ -184,7 +184,7 @@
 /processorParam:TextureFormat=Color
 /build:MarbleChunk.png
 
-#begin ../../Assets/Graphics/Dirt.png
+#begin Dirt.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -194,9 +194,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../Assets/Graphics/Dirt.png
+/build:Dirt.png
 
-#begin ../../Assets/Graphics/DirtGrassTrans_01.png
+#begin DirtGrassTrans_01.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -206,9 +206,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../Assets/Graphics/DirtGrassTrans_01.png
+/build:DirtGrassTrans_01.png
 
-#begin ../../Assets/Graphics/DirtGrassTrans_02.png
+#begin DirtGrassTrans_02.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -218,9 +218,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../Assets/Graphics/DirtGrassTrans_02.png
+/build:DirtGrassTrans_02.png
 
-#begin ../../Assets/Graphics/DirtGrassTrans_03.png
+#begin DirtGrassTrans_03.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -230,9 +230,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../Assets/Graphics/DirtGrassTrans_03.png
+/build:DirtGrassTrans_03.png
 
-#begin ../../Assets/Graphics/DirtGrassTrans_04.png
+#begin DirtGrassTrans_04.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -242,9 +242,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../Assets/Graphics/DirtGrassTrans_04.png
+/build:DirtGrassTrans_04.png
 
-#begin ../../Assets/Graphics/DirtGrassTrans_05.png
+#begin DirtGrassTrans_05.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -254,9 +254,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../Assets/Graphics/DirtGrassTrans_05.png
+/build:DirtGrassTrans_05.png
 
-#begin ../../Assets/Graphics/DirtGrassTrans_06.png
+#begin DirtGrassTrans_06.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -266,9 +266,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../Assets/Graphics/DirtGrassTrans_06.png
+/build:DirtGrassTrans_06.png
 
-#begin ../../Assets/Graphics/DirtGrassTrans_07.png
+#begin DirtGrassTrans_07.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -278,9 +278,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../Assets/Graphics/DirtGrassTrans_07.png
+/build:DirtGrassTrans_07.png
 
-#begin ../../Assets/Graphics/DirtGrassTrans_08.png
+#begin DirtGrassTrans_08.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -290,9 +290,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../Assets/Graphics/DirtGrassTrans_08.png
+/build:DirtGrassTrans_08.png
 
-#begin ../../Assets/Graphics/DirtGrassTrans_09.png
+#begin DirtGrassTrans_09.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -302,9 +302,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../Assets/Graphics/DirtGrassTrans_09.png
+/build:DirtGrassTrans_09.png
 
-#begin ../../Assets/Graphics/DirtGrassTrans_10.png
+#begin DirtGrassTrans_10.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -314,9 +314,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../Assets/Graphics/DirtGrassTrans_10.png
+/build:DirtGrassTrans_10.png
 
-#begin ../../Assets/Graphics/DirtGrassTrans_11.png
+#begin DirtGrassTrans_11.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -326,9 +326,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../Assets/Graphics/DirtGrassTrans_11.png
+/build:DirtGrassTrans_11.png
 
-#begin ../../Assets/Graphics/DirtGrassTrans_12.png
+#begin DirtGrassTrans_12.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -338,9 +338,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../Assets/Graphics/DirtGrassTrans_12.png
+/build:DirtGrassTrans_12.png
 
-#begin ../../Assets/Graphics/Grass.png
+#begin Grass.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -350,5 +350,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../Assets/Graphics/Grass.png
+/build:Grass.png
 
