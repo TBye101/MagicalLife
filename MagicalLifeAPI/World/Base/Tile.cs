@@ -92,14 +92,14 @@ namespace MagicalLifeAPI.World
         public Item Item { get; set; }
 
         /// <summary>
-        /// Raised when the world is finished generating for the first time.
+        /// Raised whenever a tile is created after the world is finished generating for the first time.
         /// </summary>
         public static event EventHandler<TileEventArg> TileCreated;
 
         /// <summary>
         /// Raised whenever this specific tile is modified.
         /// </summary>
-        public event EventHandler<TileEventArg> TileModified; //have this be used by the stone stuff so it can determine when to change what texture it is using.
+        public event EventHandler<TileEventArg> TileModified;
 
         /// <summary>
         /// Raises the world generated event.
@@ -121,7 +121,8 @@ namespace MagicalLifeAPI.World
         {
             Dictionary<Type, int> ret = new Dictionary<Type, int>
             {
-                { typeof(Dirt), 1 }
+                { typeof(Dirt), 1 },
+                { typeof(Grass), 2 }
             };
 
             return ret;

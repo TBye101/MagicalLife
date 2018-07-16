@@ -129,6 +129,12 @@
   <ItemGroup>
     <Compile Include="Asset\AssetManager.cs" />
     <Compile Include="Comparators\ItemComparator.cs" />
+    <Compile Include="Components\Generic\Renderable\AbstractRenderable.cs" />
+    <Compile Include="Components\Tile\Renderable\TextureCondition.cs" />
+    <Compile Include="Components\Tile\Renderable\TileState.cs" />
+    <Compile Include="Components\Tile\Renderable\TransitionTextures.cs" />
+    <Compile Include="Components\Generic\Renderable\IRenderable.cs" />
+    <Compile Include="Components\Generic\Renderable\StaticTexture.cs" />
     <Compile Include="DataTypes\Attribute\ModifierFloat.cs" />
     <Compile Include="DataTypes\FixedSizeQueue.cs" />
     <Compile Include="DataTypes\Point2D.cs" />
@@ -227,7 +233,6 @@
     <Compile Include="World\WorldUtil.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Components\Generic\" />
     <Folder Include="Components\Item\" />
     <Folder Include="Entity\Animal\" />
     <Folder Include="Entity\Entity Components\" />

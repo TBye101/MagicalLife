@@ -82,11 +82,11 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
                                 tile = new Grass(new Point2D((chunkWidth * x) + cx, (chunkHeight * y) + cy));
                             }
 
-                            if (random.Next(4) == 2)
-                            {
-                                tile.Resources = new MarbleResource(random.Next(25));
-                                tile.IsWalkable = false;
-                            }
+                            //if (random.Next(4) == 2)
+                            //{
+                            //    tile.Resources = new MarbleResource(random.Next(25));
+                            //    tile.IsWalkable = false;
+                            //}
 
                             chunk.Tiles[cx, cy] = tile;
                         }

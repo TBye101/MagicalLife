@@ -9,7 +9,7 @@ https://github.com/serilog/serilog
 https://github.com/BrandonPotter/SimpleTCP
 
 *Still need to be credited
-
+Lynnberg's art
 Code Snippets:
 
 	Text Centering: https://stackoverflow.com/a/10263903/5294414
