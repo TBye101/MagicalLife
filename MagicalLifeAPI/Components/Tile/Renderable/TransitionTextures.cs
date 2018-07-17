@@ -95,9 +95,13 @@ namespace MagicalLifeAPI.Components.Tile.Renderable
                 {
                     return TileState.Identical;
                 }
-            }
 
-            return TileState.Incompatible;
+                return TileState.Incompatible;
+            }
+            else
+            {
+                return TileState.Compatible;
+            }
         }
 
         private void Tile_TileCreated(object sender, World.TileEventArg e)

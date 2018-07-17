@@ -14,19 +14,16 @@ namespace MagicalLifeAPI.World.Tiles
         protected static readonly string[] Textures =
             {
             "Dirt",
-            "Grass",
-            "DirtGrassTrans1",
             "DirtGrassTrans2",
-            "DirtGrassTrans3",
             "DirtGrassTrans4",
             "DirtGrassTrans5",
-            "DirtGrassTrans6",
             "DirtGrassTrans7",
-            "DirtGrassTrans8",
             "DirtGrassTrans9",
             "DirtGrassTrans10",
             "DirtGrassTrans11",
-            "DirtGrassTrans12" };
+            "DirtGrassTrans12",
+            "DirtGrassTrans1"
+        };
 
         // |0|1 |2|
         // |3|Me|4|
@@ -39,46 +36,50 @@ namespace MagicalLifeAPI.World.Tiles
         {
         }
 
-        protected override int GetTexture(TileState[] tileStates)
+        protected override int GetTexture(TileState[] states)
         {
-            if (this.UseDirt(tileStates))
+            if (this.UseTrans1(states))
             {
-                return 0;
+                return 9;
             }
-            if (this.UseTrans2(tileStates))
+            if (this.UseTrans2(states))
+            {
+                return 1;
+            }
+            if (this.UseTrans4(states))
+            {
+                return 2;
+            }
+            if (this.UseTrans5(states))
             {
                 return 3;
             }
-            if (this.UseTrans4(tileStates))
+            if (this.UseTrans7(states))
+            {
+                return 4;
+            }
+            if (this.UseTrans9(states))
             {
                 return 5;
             }
-            if (this.UseTrans5(tileStates))
+            if (this.UseTrans10(states))
             {
                 return 6;
             }
-            if (this.UseTrans7(tileStates))
+            if (this.UseTrans11(states))
+            {
+                return 7;
+            }
+            if (this.UseTrans12(states))
             {
                 return 8;
             }
-            if (this.UseTrans9(tileStates))
-            {
-                return 10;
-            }
-            if (this.UseTrans10(tileStates))
-            {
-                return 11;
-            }
-            if (this.UseTrans11(tileStates))
-            {
-                return 12;
-            }
-            if (this.UseTrans12(tileStates))
-            {
-                return 13;
-            }
-
             return 0;
+        }
+
+        private bool UseTrans1(TileState[] states)
+        {
+            return states[3] == TileState.Compatible && states[1] == TileState.Compatible && states[4] == TileState.Compatible && states[6] == TileState.Identical;
         }
 
         private bool UseTrans12(TileState[] states)
@@ -89,15 +90,6 @@ namespace MagicalLifeAPI.World.Tiles
         // |0|1 |2|
         // |3|Me|4|
         // |5|6 |7|
-        /// <summary>
-        /// If true, we should use the "Dirt" texture.
-        /// </summary>
-        /// <param name="states"></param>
-        /// <returns></returns>
-        private bool UseDirt(TileState[] states)
-        {
-            return this.AllSidesCompatible(states) || this.AllSidesSame(states);
-        }
 
         /// <summary>
         /// If true, we should use the "DirtGrassTrans2" texture.
@@ -166,105 +158,6 @@ namespace MagicalLifeAPI.World.Tiles
         private bool UseTrans7(TileState[] states)
         {
             return this.SouthCompatible(states) && this.NorthNotCompatible(states) && states[3] != TileState.Compatible && states[4] != TileState.Compatible;
-        }
-
-        private bool AllSidesSame(TileState[] states)
-        {
-            bool column1 = states[0] == TileState.Identical && states[3] == TileState.Identical && states[5] == TileState.Identical;
-            bool column2 = states[1] == TileState.Identical && states[6] == TileState.Identical;
-            bool column3 = states[2] == TileState.Identical && states[4] == TileState.Identical && states[7] == TileState.Identical;
-
-            return column1 && column2 && column3;
-        }
-
-        /// <summary>
-        /// Returns true if all neighboring sides are compatible.
-        /// </summary>
-        /// <param name="states"></param>
-        /// <returns></returns>
-        private bool AllSidesCompatible(TileState[] states)
-        {
-            return this.NorthCompatible(states) && this.SouthCompatible(states) && states[3] == TileState.Compatible && states[4] == TileState.Compatible;
-        }
-
-        /// <summary>
-        /// Returns true if all neighboring states East of the tile are not compatible.
-        /// </summary>
-        /// <param name="states"></param>
-        /// <returns></returns>
-        private bool EastNotCompatible(TileState[] states)
-        {
-            return states[2] != TileState.Compatible && states[4] != TileState.Compatible && states[7] != TileState.Compatible;
-        }
-
-        /// <summary>
-        /// Returns true if all neighboring states to the East of the tile are compatible.
-        /// </summary>
-        /// <param name="states"></param>
-        /// <returns></returns>
-        private bool EastCompatible(TileState[] states)
-        {
-            return states[2] == TileState.Compatible && states[4] == TileState.Compatible && states[7] == TileState.Compatible;
-        }
-
-        /// <summary>
-        /// Returns true if all neighboring states to the West of the tile are not compatible.
-        /// </summary>
-        /// <param name="states"></param>
-        /// <returns></returns>
-        private bool WestNotCompatible(TileState[] states)
-        {
-            return states[0] != TileState.Compatible && states[3] != TileState.Compatible && states[5] != TileState.Compatible;
-        }
-
-        /// <summary>
-        /// Returns true if all neighboring states to the West of the tile are compatible.
-        /// </summary>
-        /// <param name="states"></param>
-        /// <returns></returns>
-        private bool WestCompatible(TileState[] states)
-        {
-            return states[0] == TileState.Compatible && states[3] == TileState.Compatible && states[5] == TileState.Compatible;
-        }
-
-        /// <summary>
-        /// Returns true if all neighboring tiles North of the tile are compatible.
-        /// </summary>
-        /// <param name="states"></param>
-        /// <returns></returns>
-        private bool NorthNotCompatible(TileState[] states)
-        {
-            return states[0] != TileState.Compatible && states[1] != TileState.Compatible && states[2] != TileState.Compatible;
-        }
-
-        /// <summary>
-        /// Returns true if all neighboring states North of the tile are compatible.
-        /// </summary>
-        /// <param name="states"></param>
-        /// <returns></returns>
-        private bool NorthCompatible(TileState[] states)
-        {
-            return states[0] == TileState.Compatible && states[1] == TileState.Compatible && states[2] == TileState.Compatible;
-        }
-
-        /// <summary>
-        /// Returns true if all neighboring states South of the tile are not compatible.
-        /// </summary>
-        /// <param name="states"></param>
-        /// <returns></returns>
-        private bool SouthNotCompatible(TileState[] states)
-        {
-            return states[7] != TileState.Compatible && states[6] != TileState.Compatible && states[5] != TileState.Compatible;
-        }
-
-        /// <summary>
-        /// Returns true if all neighboring states South of the tile are compatible.
-        /// </summary>
-        /// <param name="states"></param>
-        /// <returns></returns>
-        private bool SouthCompatible(TileState[] states)
-        {
-            return states[5] == TileState.Compatible && states[6] == TileState.Compatible && states[7] == TileState.Compatible;
         }
     }
 }
