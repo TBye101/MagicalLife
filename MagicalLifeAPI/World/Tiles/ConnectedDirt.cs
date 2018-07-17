@@ -61,8 +61,29 @@ namespace MagicalLifeAPI.World.Tiles
             {
                 return 8;
             }
+            if (this.UseTrans9(tileStates))
+            {
+                return 10;
+            }
+            if (this.UseTrans10(tileStates))
+            {
+                return 11;
+            }
+            if (this.UseTrans11(tileStates))
+            {
+                return 12;
+            }
+            if (this.UseTrans12(tileStates))
+            {
+                return 13;
+            }
 
             return 0;
+        }
+
+        private bool UseTrans12(TileState[] states)
+        {
+            return states[3] == TileState.Compatible && states[5] == TileState.Compatible && states[6] == TileState.Compatible && this.NorthNotCompatible(states) && this.EastNotCompatible(states);
         }
 
         // |0|1 |2|
@@ -85,6 +106,36 @@ namespace MagicalLifeAPI.World.Tiles
         private bool UseTrans2(TileState[] states)
         {
             return this.NorthCompatible(states) && this.SouthNotCompatible(states) && states[3] != TileState.Compatible && states[4] != TileState.Compatible;
+        }
+
+        /// <summary>
+        /// If true, we should use the "DirtGrassTrans9" texture.
+        /// </summary>
+        /// <param name="states"></param>
+        /// <returns></returns>
+        private bool UseTrans9(TileState[] states)
+        {
+            return states[3] == TileState.Compatible && states[0] == TileState.Compatible && states[1] == TileState.Compatible && this.EastNotCompatible(states) && this.SouthNotCompatible(states);
+        }
+
+        /// <summary>
+        /// If true, we should use the "DirtGrassTrans11" texture.
+        /// </summary>
+        /// <param name="tileStates"></param>
+        /// <returns></returns>
+        private bool UseTrans11(TileState[] states)
+        {
+            return states[6] == TileState.Compatible && states[7] == TileState.Compatible && states[4] == TileState.Compatible && this.EastNotCompatible(states) && this.NorthNotCompatible(states);
+        }
+
+        /// <summary>
+        /// If true, we should use the "DirtGrassTrans10" texture.
+        /// </summary>
+        /// <param name="states"></param>
+        /// <returns></returns>
+        private bool UseTrans10(TileState[] states)
+        {
+            return states[1] == TileState.Compatible && states[2] == TileState.Compatible && states[4] == TileState.Compatible && states[3] != TileState.Compatible && states[5] != TileState.Compatible && states[6] != TileState.Compatible;
         }
 
         /// <summary>
