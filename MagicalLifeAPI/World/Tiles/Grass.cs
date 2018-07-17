@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.DataTypes;
+﻿using MagicalLifeAPI.Components.Tile.Renderable;
+using MagicalLifeAPI.DataTypes;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace MagicalLifeAPI.World.Tiles
     [ProtoContract]
     public class Grass : Tile
     {
-        public Grass(Point2D location) : base(location, 11)
+        public Grass(Point2D location) : base(location, 11, new TransitionTextures(typeof(Dirt), typeof(Grass), new ConnectedGrass()))
         {
         }
 

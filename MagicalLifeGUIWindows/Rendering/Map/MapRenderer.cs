@@ -61,7 +61,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         private static void DrawTile(Tile tile, ref SpriteBatch spBatch, Point2D start)
         {
             Microsoft.Xna.Framework.Rectangle target = new Microsoft.Xna.Framework.Rectangle(start.ToXNA(), RenderingPipe.tileSize);
-            spBatch.Draw(AssetManager.Textures[tile.TextureIndex], target, RenderingPipe.colorMask);
+            spBatch.Draw(AssetManager.Textures[tile.GetRenderable().TextureID], target, RenderingPipe.colorMask);
 
             DrawStone(tile, ref spBatch, target);
             DrawItems(ref spBatch, tile, target);
