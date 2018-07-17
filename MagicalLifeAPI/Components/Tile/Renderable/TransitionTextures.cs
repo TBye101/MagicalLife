@@ -30,15 +30,15 @@ namespace MagicalLifeAPI.Components.Tile.Renderable
         protected TileState[] TileStates = new TileState[8];//Changing the size of this would break things
 
         [ProtoMember(4)]
-        protected List<TextureCondition> Conditions;
+        protected AbstractConnectedTexture Condition;
 
         /// <param name="compatibleTile">A second type of tile that should be blended with.</param>
         /// <param name="representedTile">The type of the tile that this transition texture is controlling.</param>
-        public TransitionTextures(Type compatibleTile, Type representedTile, List<TextureCondition> conditions)
+        public TransitionTextures(Type compatibleTile, Type representedTile, AbstractConnectedTexture conditions)
         {
             this.RepresentedTile = representedTile;
             this.CompatibleTile = compatibleTile;
-            this.Conditions = conditions;
+            this.Condition = conditions;
 
             World.Tile.TileCreated += this.Tile_TileCreated;
         }
@@ -53,15 +53,7 @@ namespace MagicalLifeAPI.Components.Tile.Renderable
         public override void CalculateTexture(ProtoArray<World.Tile> tiles, Point2D myLocation)
         {
             this.SetStates(myLocation, tiles);
-
-            foreach (TextureCondition item in this.Conditions)
-            {
-                if (item.IsCorrectTexture(this.TileStates))
-                {
-                    this.TextureID = item.TextureID;
-                    return;
-                }
-            }
+            this.TextureID = this.Condition.GetTextureID(this.TileStates);
         }
 
         /// <summary>

@@ -11,8 +11,8 @@ namespace MagicalLifeAPI.Components.Tile.Renderable
     /// </summary>
     public enum TileState
     {
-        Compatible,//The type of tile that we know how to blend with
-        Identical,//Same type of tile as me
-        Incompatible//Something else that I don't support
+        Compatible = 0,//The type of tile that we know how to blend with
+        Identical = 1,//Same type of tile as me
+        Incompatible = 2,//Something else that I don't support
     }
 }

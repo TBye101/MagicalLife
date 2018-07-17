@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace MagicalLifeAPI.Components.Generic.Renderable
 {
     /// <summary>
-    /// Those who implement this interface are renderable onto the screen.
+    /// Those who implement this interface have a component that is renderable onto the screen.
     /// </summary>
     public interface IRenderable
     {

@@ -27,10 +27,5 @@ namespace MagicalLifeAPI.World.Tiles
         {
             return "Grass";
         }
-
-        public override string GetTextureName()
-        {
-            return "Grass";
-        }
     }
 }

@@ -1,7 +1,10 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Components.Generic;
+using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking;
+using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Tiles;
 using ProtoBuf;
@@ -14,32 +17,10 @@ namespace MagicalLifeAPI.World
     /// Every tile that implements this class must provide a parameterless version of itself for reflection purposes. That constructor will not be used during gameplay.
     /// </summary>
     [ProtoContract]
-    public abstract class Tile : HasTexture, IHasSubclasses
+    public abstract class Tile : Unique, IHasSubclasses, IRenderable
     {
-        /// <summary>
-        /// Initializes a new tile object.
-        /// </summary>
-        /// <param name="location">The 3D location of this tile in the map.</param>
-        /// <param name="movementCost">This value is the movement cost of walking on this tile. It should be between 1 and 100</param>
-        public Tile(Point2D location, int movementCost)
-        {
-            this.Location = location;
-            this.MovementCost = movementCost;
-            Tile.TileCreatedHandler(new TileEventArg(this));
-            this.TextureIndex = AssetManager.GetTextureIndex(this.GetTextureName());
-            this.IsWalkable = true;
-        }
-
-        public Tile(int x, int y, int movementCost) : this(new Point2D(x, y), movementCost)
-        {
-        }
-
-        /// <summary>
-        /// This constructor is used during loading/reflection only.
-        /// </summary>
-        public Tile()
-        {
-        }
+        [ProtoMember(1)]
+        private AbstractRenderable Renderable;
 
         [ProtoMember(2)]
         public bool IsWalkable;
@@ -66,12 +47,6 @@ namespace MagicalLifeAPI.World
         }
 
         /// <summary>
-        /// Returns the name of this tile.
-        /// </summary>
-        /// <returns></returns>
-        public abstract string GetName();
-
-        /// <summary>
         /// The resources that can be found in this tile.
         /// </summary>
         [ProtoMember(4)]
@@ -90,6 +65,32 @@ namespace MagicalLifeAPI.World
         /// </summary>
         [ProtoMember(6)]
         public Item Item { get; set; }
+
+        /// <summary>
+        /// Initializes a new tile object.
+        /// </summary>
+        /// <param name="location">The 3D location of this tile in the map.</param>
+        /// <param name="movementCost">This value is the movement cost of walking on this tile. It should be between 1 and 100</param>
+        public Tile(Point2D location, int movementCost, AbstractRenderable renderable)
+        {
+            this.Location = location;
+            this.MovementCost = movementCost;
+            Tile.TileCreatedHandler(new TileEventArg(this));
+            this.IsWalkable = true;
+            this.Renderable = renderable;
+        }
+
+        public Tile(int x, int y, int movementCost, AbstractRenderable renderable)
+            : this(new Point2D(x, y), movementCost, renderable)
+        {
+        }
+
+        /// <summary>
+        /// This constructor is used during loading/reflection only.
+        /// </summary>
+        public Tile()
+        {
+        }
 
         /// <summary>
         /// Raised whenever a tile is created after the world is finished generating for the first time.
@@ -115,8 +116,6 @@ namespace MagicalLifeAPI.World
             TileModified?.Invoke(this, e);
         }
 
-        public abstract string GetTextureName();
-
         public Dictionary<Type, int> GetSubclassInformation()
         {
             Dictionary<Type, int> ret = new Dictionary<Type, int>
@@ -131,6 +130,17 @@ namespace MagicalLifeAPI.World
         public Type GetBaseType()
         {
             return typeof(Tile);
+        }
+
+        /// <summary>
+        /// Returns the name of this tile.
+        /// </summary>
+        /// <returns></returns>
+        public abstract string GetName();
+
+        public AbstractRenderable GetRenderable()
+        {
+            return this.Renderable;
         }
     }
 }

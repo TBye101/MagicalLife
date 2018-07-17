@@ -1,4 +1,6 @@
-﻿using MagicalLifeAPI.DataTypes;
+﻿using MagicalLifeAPI.Components.Generic;
+using MagicalLifeAPI.Components.Tile.Renderable;
+using MagicalLifeAPI.DataTypes;
 
 namespace MagicalLifeAPI.World.Tiles
 {
@@ -8,7 +10,7 @@ namespace MagicalLifeAPI.World.Tiles
     [ProtoBuf.ProtoContract]
     public class Dirt : Tile
     {
-        public Dirt(Point2D location) : base(location, 10)
+        public Dirt(Point2D location) : base(location, 10, new TransitionTextures(typeof(Grass), typeof(Dirt), new ConnectedDirt()))
         {
         }
 
@@ -21,11 +23,6 @@ namespace MagicalLifeAPI.World.Tiles
         }
 
         public override string GetName()
-        {
-            return "Dirt";
-        }
-
-        public override string GetTextureName()
         {
             return "Dirt";
         }
