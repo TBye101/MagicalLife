@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Components.Tile.Renderable;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Util;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,6 @@ namespace MagicalLifeAPI.World.Tiles
 {
     public class ConnectedDirt : AbstractConnectedTexture
     {
-        protected static readonly Dictionary<int, int> HashToTexture = ConnectedDirt.Populate();
-
         protected static readonly string[] Textures =
             {
             "Dirt",
@@ -259,6 +258,8 @@ namespace MagicalLifeAPI.World.Tiles
 
         #endregion DirtGrassTrans7
 
+        protected static readonly Dictionary<int, int> HashToTexture = ConnectedDirt.Populate();
+
         // |0|1 |2|
         // |3|Me|4|
         // |5|6 |7|
@@ -274,6 +275,7 @@ namespace MagicalLifeAPI.World.Tiles
         {
             int currentState = HashUtil.HashNumericArray(tileStates.Cast<int>().ToArray<int>());
 
+            MasterLog.DebugWriteLine("Search key: " + currentState.ToString());
             bool success = ConnectedDirt.HashToTexture.TryGetValue(currentState, out int value);
 
             if (success)
@@ -321,6 +323,12 @@ namespace MagicalLifeAPI.World.Tiles
                 { Trans7_7, 8 },
                 { Trans7_8, 8 }
             };
+
+            MasterLog.DebugWriteLine("Texture possibilities for dirt: ");
+            foreach (KeyValuePair<int, int> item in ret)
+            {
+                MasterLog.DebugWriteLine("Key: " + item.Key.ToString() + ", Value: " + item.Value.ToString());
+            }
 
             return ret;
         }

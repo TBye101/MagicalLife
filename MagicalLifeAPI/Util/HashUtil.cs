@@ -23,7 +23,7 @@ namespace MagicalLifeAPI.Util
 
             for (int i = 0; i < length; i++)
             {
-                ret *= (int)((enumValues[i] + 1) * (Math.Pow(10, i)));
+                ret += (int)((enumValues[i] + 1) * (Math.Pow(10, i)));
             }
 
             return ret;

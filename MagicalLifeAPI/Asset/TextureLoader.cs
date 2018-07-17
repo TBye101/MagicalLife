@@ -32,8 +32,6 @@ namespace MagicalLifeAPI.Asset
         {
             this.TexturesToLoad.Add("Basic Human");
             this.TexturesToLoad.Add("CursorCarrot");
-            this.TexturesToLoad.Add("Dirt");
-            this.TexturesToLoad.Add("Grass");
             this.TexturesToLoad.Add("EndTurnButtonState1");
             this.TexturesToLoad.Add("EndTurnButtonState2");
             this.TexturesToLoad.Add("MenuBackground");
@@ -49,6 +47,23 @@ namespace MagicalLifeAPI.Asset
             this.TexturesToLoad.Add("MarbleResourceConnected4");
 
             this.TexturesToLoad.Add("MarbleChunk");
+
+            this.TexturesToLoad.Add("Dirt");
+
+            this.TexturesToLoad.Add("DirtGrassTrans1");
+            this.TexturesToLoad.Add("DirtGrassTrans2");
+            this.TexturesToLoad.Add("DirtGrassTrans3");
+            this.TexturesToLoad.Add("DirtGrassTrans4");
+            this.TexturesToLoad.Add("DirtGrassTrans5");
+            this.TexturesToLoad.Add("DirtGrassTrans6");
+            this.TexturesToLoad.Add("DirtGrassTrans7");
+            this.TexturesToLoad.Add("DirtGrassTrans8");
+            this.TexturesToLoad.Add("DirtGrassTrans9");
+            this.TexturesToLoad.Add("DirtGrassTrans10");
+            this.TexturesToLoad.Add("DirtGrassTrans11");
+            this.TexturesToLoad.Add("DirtGrassTrans12");
+
+            this.TexturesToLoad.Add("Grass");
         }
 
         public void InitialStartup()

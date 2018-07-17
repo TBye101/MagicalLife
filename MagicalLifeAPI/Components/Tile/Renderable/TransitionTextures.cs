@@ -82,7 +82,7 @@ namespace MagicalLifeAPI.Components.Tile.Renderable
         /// <param name="tileStateIndex">The index in <see cref="TileStates"/> to modify.</param>
         private TileState SafeGetState(int x, int y, ProtoArray<World.Tile> tiles)
         {
-            if (x < tiles.Width && y < tiles.Height)
+            if (x < tiles.Width && x >= 0 && y < tiles.Height && y >= 0)
             {
                 World.Tile neighbor = tiles[x, y];
                 Type neighborType = neighbor.GetType();

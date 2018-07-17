@@ -101,6 +101,13 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
 
         protected override void GenerateNaturalFeatures(ProtoArray<Chunk> map, Random random)
         {
+            foreach (Chunk item in map)
+            {
+                foreach (Tile tile in item)
+                {
+                    tile.GetRenderable().CalculateTexture(item.Tiles, tile.Location);
+                }
+            }
         }
 
         protected override void GenerateStructures(ProtoArray<Chunk> map, Random random)
