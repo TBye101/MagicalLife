@@ -73,7 +73,7 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
                         for (int cy = 0; cy < chunkHeight; cy++)
                         {
                             Tile tile;
-                            if (random.Next(2) == 1)
+                            if (random.Next(5) == 2)
                             {
                                 tile = new Dirt(new Point2D((chunkWidth * x) + cx, (chunkHeight * y) + cy));
                             }
