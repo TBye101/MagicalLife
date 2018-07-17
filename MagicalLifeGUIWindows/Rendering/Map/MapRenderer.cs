@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Resources;
@@ -61,6 +62,12 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         private static void DrawTile(Tile tile, ref SpriteBatch spBatch, Point2D start)
         {
             Microsoft.Xna.Framework.Rectangle target = new Microsoft.Xna.Framework.Rectangle(start.ToXNA(), RenderingPipe.tileSize);
+
+            if (tile.GetRenderable().TextureID != 15 || tile.GetRenderable().TextureID != 28)
+            {
+                MasterLog.DebugWriteLine("Drawing transition texture!" + tile.Location.ToString());
+            }
+
             spBatch.Draw(AssetManager.Textures[tile.GetRenderable().TextureID], target, RenderingPipe.colorMask);
 
             DrawStone(tile, ref spBatch, target);

@@ -28,238 +28,6 @@ namespace MagicalLifeAPI.World.Tiles
             "DirtGrassTrans11",
             "DirtGrassTrans12" };
 
-        #region Dirt
-
-        private static readonly int Dirt_1 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                1, 1, 1, 1, 1, 1, 1, 1
-            });
-
-        private static readonly int Dirt_2 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                2, 2, 2, 2, 2, 2, 2, 2
-            });
-
-        private static readonly int Dirt_3 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                3, 3, 3, 3, 3, 3, 3, 3
-            });
-
-        #endregion Dirt
-
-        #region DirtGrassTrans2
-
-        private static readonly int Trans2_1 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                1, 1, 1, 2, 2, 2, 2, 2
-            });
-
-        private static readonly int Trans2_2 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                1, 1, 1, 2, 2, 3, 3, 3
-            });
-
-        private static readonly int Trans2_3 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                1, 1, 1, 2, 2, 2, 2, 3
-            });
-
-        private static readonly int Trans2_4 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                1, 1, 1, 2, 2, 2, 3, 2
-            });
-
-        private static readonly int Trans2_5 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                1, 1, 1, 2, 2, 3, 2, 2
-            });
-
-        private static readonly int Trans2_6 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                1, 1, 1, 2, 2, 3, 2, 3
-            });
-
-        private static readonly int Trans2_7 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                1, 1, 1, 2, 2, 3, 3, 2
-            });
-
-        private static readonly int Trans2_8 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                1, 1, 1, 2, 2, 2, 3, 3
-            });
-
-        #endregion DirtGrassTrans2
-
-        #region DirtGrassTrans4
-
-        private static readonly int Trans4_1 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                1, 2, 2, 1, 2, 1, 2, 2
-            });
-
-        private static readonly int Trans4_2 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                1, 2, 3, 1, 3, 1, 2, 3
-            });
-
-        private static readonly int Trans4_3 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                1, 2, 3, 1, 2, 1, 2, 2
-            });
-
-        private static readonly int Trans4_4 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                1, 2, 2, 1, 3, 1, 2, 2
-            });
-
-        private static readonly int Trans4_5 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                1, 2, 2, 1, 2, 1, 2, 3
-            });
-
-        private static readonly int Trans4_6 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                1, 2, 3, 1, 3, 1, 2, 2
-            });
-
-        private static readonly int Trans4_7 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                1, 2, 2, 1, 3, 1, 2, 3
-            });
-
-        private static readonly int Trans4_8 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                1, 2, 3, 1, 2, 1, 2, 3
-            });
-
-        #endregion DirtGrassTrans4
-
-        #region DirtGrassTrans5
-
-        private static readonly int Trans5_1 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                2, 2, 1, 2, 1, 2, 2, 1
-            });
-
-        private static readonly int Trans5_2 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                3, 2, 1, 3, 1, 3, 2, 1
-            });
-
-        private static readonly int Trans5_3 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                3, 2, 1, 2, 1, 2, 2, 1
-            });
-
-        private static readonly int Trans5_4 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                2, 2, 1, 3, 1, 2, 2, 1
-            });
-
-        private static readonly int Trans5_5 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                2, 2, 1, 2, 1, 3, 2, 1
-            });
-
-        private static readonly int Trans5_6 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                3, 2, 1, 3, 1, 2, 2, 1
-            });
-
-        private static readonly int Trans5_7 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                3, 2, 1, 2, 1, 3, 2, 1
-            });
-
-        private static readonly int Trans5_8 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                2, 2, 1, 3, 1, 3, 2, 1
-            });
-
-        #endregion DirtGrassTrans5
-
-        #region DirtGrassTrans7
-
-        private static readonly int Trans7_1 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                2, 2, 2, 2, 2, 1, 1, 1
-            });
-
-        private static readonly int Trans7_2 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                3, 2, 2, 2, 2, 1, 1, 1
-            });
-
-        private static readonly int Trans7_3 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                2, 3, 2, 2, 2, 1, 1, 1
-            });
-
-        private static readonly int Trans7_4 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                2, 2, 3, 2, 2, 1, 1, 1
-            });
-
-        private static readonly int Trans7_5 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                3, 3, 2, 2, 2, 1, 1, 1
-            });
-
-        private static readonly int Trans7_6 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                2, 3, 3, 2, 2, 1, 1, 1
-            });
-
-        private static readonly int Trans7_7 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                3, 2, 3, 2, 2, 1, 1, 1
-            });
-
-        private static readonly int Trans7_8 = HashUtil.HashNumericArray(
-            new int[8]
-            {
-                3, 3, 3, 2, 2, 1, 1, 1
-            });
-
-        #endregion DirtGrassTrans7
-
-        protected static readonly Dictionary<int, int> HashToTexture = ConnectedDirt.Populate();
-
         // |0|1 |2|
         // |3|Me|4|
         // |5|6 |7|
@@ -273,64 +41,179 @@ namespace MagicalLifeAPI.World.Tiles
 
         protected override int GetTexture(TileState[] tileStates)
         {
-            int currentState = HashUtil.HashNumericArray(tileStates.Cast<int>().ToArray<int>());
-
-            MasterLog.DebugWriteLine("Search key: " + currentState.ToString());
-            bool success = ConnectedDirt.HashToTexture.TryGetValue(currentState, out int value);
-
-            if (success)
-            {
-                return value;
-            }
-            else
+            if (this.UseDirt(tileStates))
             {
                 return 0;
             }
-        }
-
-        private static Dictionary<int, int> Populate()
-        {
-            Dictionary<int, int> ret = new Dictionary<int, int>
+            if (this.UseTrans2(tileStates))
             {
-                { Dirt_1, 0 },
-                { Dirt_2, 0 },
-                { Dirt_3, 0 },
-
-                { Trans2_1, 3 },
-                { Trans2_2, 3 },
-                { Trans2_3, 3 },
-                { Trans2_4, 3 },
-                { Trans2_5, 3 },
-                { Trans2_6, 3 },
-                { Trans2_7, 3 },
-                { Trans2_8, 3 },
-
-                { Trans5_1, 6 },
-                { Trans5_2, 6 },
-                { Trans5_3, 6 },
-                { Trans5_4, 6 },
-                { Trans5_5, 6 },
-                { Trans5_6, 6 },
-                { Trans5_7, 6 },
-                { Trans5_8, 6 },
-
-                { Trans7_1, 8 },
-                { Trans7_2, 8 },
-                { Trans7_3, 8 },
-                { Trans7_4, 8 },
-                { Trans7_5, 8 },
-                { Trans7_6, 8 },
-                { Trans7_7, 8 },
-                { Trans7_8, 8 }
-            };
-
-            MasterLog.DebugWriteLine("Texture possibilities for dirt: ");
-            foreach (KeyValuePair<int, int> item in ret)
+                return 3;
+            }
+            if (this.UseTrans4(tileStates))
             {
-                MasterLog.DebugWriteLine("Key: " + item.Key.ToString() + ", Value: " + item.Value.ToString());
+                return 5;
+            }
+            if (this.UseTrans5(tileStates))
+            {
+                return 6;
+            }
+            if (this.UseTrans7(tileStates))
+            {
+                return 8;
             }
 
-            return ret;
+            return 0;
+        }
+
+        // |0|1 |2|
+        // |3|Me|4|
+        // |5|6 |7|
+        /// <summary>
+        /// If true, we should use the "Dirt" texture.
+        /// </summary>
+        /// <param name="states"></param>
+        /// <returns></returns>
+        private bool UseDirt(TileState[] states)
+        {
+            return this.AllSidesCompatible(states) || this.AllSidesSame(states);
+        }
+
+        /// <summary>
+        /// If true, we should use the "DirtGrassTrans2" texture.
+        /// </summary>
+        /// <returns></returns>
+        private bool UseTrans2(TileState[] states)
+        {
+            return this.NorthCompatible(states) && this.SouthNotCompatible(states) && states[3] != TileState.Compatible && states[4] != TileState.Compatible;
+        }
+
+        /// <summary>
+        /// If true, we should use the "DirtGrassTrans4" texture.
+        /// </summary>
+        /// <param name="states"></param>
+        /// <returns></returns>
+        private bool UseTrans4(TileState[] states)
+        {
+            return this.WestCompatible(states) && this.EastNotCompatible(states) && states[1] != TileState.Compatible && states[6] != TileState.Compatible;
+        }
+
+        /// <summary>
+        /// If true, we should use the "DirtGrassTrans4" texture.
+        /// </summary>
+        /// <param name="states"></param>
+        /// <returns></returns>
+        private bool UseTrans5(TileState[] states)
+        {
+            return this.EastCompatible(states) && this.WestNotCompatible(states) && states[1] != TileState.Compatible && states[6] != TileState.Compatible;
+        }
+
+        /// <summary>
+        /// If true, we should use the "DirtGrassTrans7" texture.
+        /// </summary>
+        /// <param name="states"></param>
+        /// <returns></returns>
+        private bool UseTrans7(TileState[] states)
+        {
+            return this.SouthCompatible(states) && this.NorthNotCompatible(states) && states[3] != TileState.Compatible && states[4] != TileState.Compatible;
+        }
+
+        private bool AllSidesSame(TileState[] states)
+        {
+            bool column1 = states[0] == TileState.Identical && states[3] == TileState.Identical && states[5] == TileState.Identical;
+            bool column2 = states[1] == TileState.Identical && states[6] == TileState.Identical;
+            bool column3 = states[2] == TileState.Identical && states[4] == TileState.Identical && states[7] == TileState.Identical;
+
+            return column1 && column2 && column3;
+        }
+
+        /// <summary>
+        /// Returns true if all neighboring sides are compatible.
+        /// </summary>
+        /// <param name="states"></param>
+        /// <returns></returns>
+        private bool AllSidesCompatible(TileState[] states)
+        {
+            return this.NorthCompatible(states) && this.SouthCompatible(states) && states[3] == TileState.Compatible && states[4] == TileState.Compatible;
+        }
+
+        /// <summary>
+        /// Returns true if all neighboring states East of the tile are not compatible.
+        /// </summary>
+        /// <param name="states"></param>
+        /// <returns></returns>
+        private bool EastNotCompatible(TileState[] states)
+        {
+            return states[2] != TileState.Compatible && states[4] != TileState.Compatible && states[7] != TileState.Compatible;
+        }
+
+        /// <summary>
+        /// Returns true if all neighboring states to the East of the tile are compatible.
+        /// </summary>
+        /// <param name="states"></param>
+        /// <returns></returns>
+        private bool EastCompatible(TileState[] states)
+        {
+            return states[2] == TileState.Compatible && states[4] == TileState.Compatible && states[7] == TileState.Compatible;
+        }
+
+        /// <summary>
+        /// Returns true if all neighboring states to the West of the tile are not compatible.
+        /// </summary>
+        /// <param name="states"></param>
+        /// <returns></returns>
+        private bool WestNotCompatible(TileState[] states)
+        {
+            return states[0] != TileState.Compatible && states[3] != TileState.Compatible && states[5] != TileState.Compatible;
+        }
+
+        /// <summary>
+        /// Returns true if all neighboring states to the West of the tile are compatible.
+        /// </summary>
+        /// <param name="states"></param>
+        /// <returns></returns>
+        private bool WestCompatible(TileState[] states)
+        {
+            return states[0] == TileState.Compatible && states[3] == TileState.Compatible && states[5] == TileState.Compatible;
+        }
+
+        /// <summary>
+        /// Returns true if all neighboring tiles North of the tile are compatible.
+        /// </summary>
+        /// <param name="states"></param>
+        /// <returns></returns>
+        private bool NorthNotCompatible(TileState[] states)
+        {
+            return states[0] != TileState.Compatible && states[1] != TileState.Compatible && states[2] != TileState.Compatible;
+        }
+
+        /// <summary>
+        /// Returns true if all neighboring states North of the tile are compatible.
+        /// </summary>
+        /// <param name="states"></param>
+        /// <returns></returns>
+        private bool NorthCompatible(TileState[] states)
+        {
+            return states[0] == TileState.Compatible && states[1] == TileState.Compatible && states[2] == TileState.Compatible;
+        }
+
+        /// <summary>
+        /// Returns true if all neighboring states South of the tile are not compatible.
+        /// </summary>
+        /// <param name="states"></param>
+        /// <returns></returns>
+        private bool SouthNotCompatible(TileState[] states)
+        {
+            return states[7] != TileState.Compatible && states[6] != TileState.Compatible && states[5] != TileState.Compatible;
+        }
+
+        /// <summary>
+        /// Returns true if all neighboring states South of the tile are compatible.
+        /// </summary>
+        /// <param name="states"></param>
+        /// <returns></returns>
+        private bool SouthCompatible(TileState[] states)
+        {
+            return states[5] == TileState.Compatible && states[6] == TileState.Compatible && states[7] == TileState.Compatible;
         }
     }
 }
