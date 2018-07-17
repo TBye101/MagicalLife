@@ -32,34 +32,7 @@ namespace MagicalLifeAPI.World.Tiles
 
         protected override int GetTexture(TileState[] states)
         {
-            if (this.UseTrans2(states))
-            {
-                return 5;
-            }
-            if (this.UseTrans3(states))
-            {
-                return 2;
-            }
-            if (this.UseTrans4(states))
-            {
-                return 6;
-            }
-            if (this.UseTrans5(states))
-            {
-                return 7;
-            }
-            if (this.UseTrans6(states))
-            {
-                return 3;
-            }
-            if (this.UseTrans7(states))
-            {
-                return 8;
-            }
-            if (this.UseTrans8(states))
-            {
-                return 4;
-            }
+            //mostly dirt corners
             if (this.UseTrans10(states))
             {
                 return 9;
@@ -71,6 +44,42 @@ namespace MagicalLifeAPI.World.Tiles
             if (this.UseTrans12(states))
             {
                 return 11;
+            }
+            if (this.UseTrans11(states))
+            {
+                return 12;
+            }
+
+            //Half-dirt
+            if (this.UseTrans2(states))
+            {
+                return 5;
+            }
+            if (this.UseTrans4(states))
+            {
+                return 6;
+            }
+            if (this.UseTrans5(states))
+            {
+                return 7;
+            }
+            if (this.UseTrans7(states))
+            {
+                return 8;
+            }
+
+            //Mostly grass corners
+            if (this.UseTrans3(states))
+            {
+                return 2;
+            }
+            if (this.UseTrans6(states))
+            {
+                return 3;
+            }
+            if (this.UseTrans8(states))
+            {
+                return 4;
             }
 
             return 0;
