@@ -38,7 +38,7 @@ namespace MagicalLifeGUIWindows.Input.History
 
                 foreach (Living item in World.Dimensions[RenderingPipe.Dimension].GetChunkForLocation(mapSpot.X, mapSpot.Y).Creatures)
                 {
-                    if (item.MapLocation == mapSpot)
+                    if (item.MapLocation.Equals(mapSpot))
                     {
                         select = item;
                         break;

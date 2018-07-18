@@ -50,11 +50,14 @@ namespace MagicalLifeAPI.Networking.Serialization
 
             foreach (IHasSubclasses item in ToProcess)
             {
-                MetaType meta = current.Add(item.GetBaseType(), true);
-
-                foreach (KeyValuePair<Type, int> subs in item.GetSubclassInformation())
+                if (item.GetType().IsAbstract)
                 {
-                    meta.AddSubType(subs.Value, subs.Key);
+                    MetaType meta = current.Add(item.GetBaseType(), true);
+
+                    foreach (KeyValuePair<Type, int> subs in item.GetSubclassInformation())
+                    {
+                        meta.AddSubType(subs.Value, subs.Key);
+                    }
                 }
             }
 

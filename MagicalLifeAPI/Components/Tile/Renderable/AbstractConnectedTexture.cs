@@ -1,4 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.World.Tiles;
+using ProtoBuf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +12,11 @@ namespace MagicalLifeAPI.Components.Tile.Renderable
     /// <summary>
     /// All implementers hold rules to determine if a transition texture should be used, and if so, which one.
     /// </summary>
+    [ProtoContract]
+    [ProtoInclude(2, typeof(ConnectedGrass))]
     public abstract class AbstractConnectedTexture
     {
+        [ProtoMember(1)]
         protected int[] TextureIDs;
 
         /// <summary>

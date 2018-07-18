@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\Commands\NewGame.cs" />
+    <Compile Include="API\Commands\StartGame.cs" />
     <Compile Include="API\InternalCommandModule.cs" />
     <Compile Include="API\ServerSetting.cs" />
     <Compile Include="API\SettingsHandler.cs" />

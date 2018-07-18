@@ -17,6 +17,8 @@ namespace MagicalLifeAPI.World
     /// Every tile that implements this class must provide a parameterless version of itself for reflection purposes. That constructor will not be used during gameplay.
     /// </summary>
     [ProtoContract]
+    [ProtoInclude(7, typeof(Dirt))]
+    [ProtoInclude(8, typeof(Grass))]
     public abstract class Tile : Unique, IHasSubclasses, IRenderable
     {
         [ProtoMember(1)]
@@ -120,8 +122,8 @@ namespace MagicalLifeAPI.World
         {
             Dictionary<Type, int> ret = new Dictionary<Type, int>
             {
-                { typeof(Dirt), 1 },
-                { typeof(Grass), 2 }
+                { typeof(Dirt), 7 },
+                { typeof(Grass), 8 }
             };
 
             return ret;

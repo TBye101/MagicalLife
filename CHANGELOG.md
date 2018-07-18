@@ -10,11 +10,14 @@ SneakyTactician  <SneakyTactician@outlook.com>
 * Added a grass tile
 
 #### Server
+* Seperated server loading and server starting into two seperate commands
 
 #### GUI
 
 #### Bugs
 * Fixed issue [#17](https://github.com/SneakyTactician/MagicalLife/issues/17)
+
+* Fixed an issue sometimes causing the character to be unselectable
 
 ---
 

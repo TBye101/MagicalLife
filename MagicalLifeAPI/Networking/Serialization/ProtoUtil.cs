@@ -55,7 +55,6 @@ namespace MagicalLifeAPI.Networking.Serialization
                 using (MemoryStream ms = new System.IO.MemoryStream(data))
                 {
                     BaseMessage Base = (BaseMessage)TypeModel.DeserializeWithLengthPrefix(ms, null, typeof(BaseMessage), ProtoBuf.PrefixStyle.Base128, 0);
-                    //MasterLog.DebugWriteLine("Deserialized Message ID: " + Base.ID.ToString());
                     return Base;
                 }
             }

@@ -15,7 +15,8 @@ namespace MagicalLifeAPI.Entities
     /// All living things inherit from this, and utilize it.
     /// </summary>
     [ProtoContract]
-    public abstract class Living : Selectable, IHasSubclasses
+    [ProtoInclude(6, typeof(Humanoid.Human))]
+    public abstract class Living : Selectable
     {
         /// <summary>
         /// A queue that holds the queued movement steps up for this living creature.
@@ -98,19 +99,6 @@ namespace MagicalLifeAPI.Entities
         public static void LivingCreatedHandler(LivingEventArg e)
         {
             LivingCreated?.Invoke(e.Living, e);
-        }
-
-        public Dictionary<Type, int> GetSubclassInformation()
-        {
-            return new Dictionary<Type, int>()
-            {
-                { typeof(Humanoid.Human), 999}
-            };
-        }
-
-        public Type GetBaseType()
-        {
-            return typeof(Living);
         }
     }
 }

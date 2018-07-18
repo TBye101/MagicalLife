@@ -26,11 +26,11 @@ namespace MagicalLifeServer.Message_Handlers
                 //Living l = World.MainWorld.Chunks[msg.Path[0].Origin.X, msg.Path[0].Origin.Y].Living;
                 World.Dimensions[msg.Dimension].GetChunkForLocation(msg.Path[0].Origin.X, msg.Path[0].Origin.Y).GetCreature(msg.Path[0].Origin, out Living l);
 
-                if (l != null && l.ID == msg.LivingID)
-                {
-                    l.QueuedMovement.Clear();
-                    MagicalLifeAPI.Util.Extensions.EnqueueCollection<PathLink>(l.QueuedMovement, msg.Path);
-                }
+                //if (l != null && l.ID == msg.LivingID)
+                //{
+                //    l.QueuedMovement.Clear();
+                //    MagicalLifeAPI.Util.Extensions.EnqueueCollection<PathLink>(l.QueuedMovement, msg.Path);
+                //}
             }
             else
             {

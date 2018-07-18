@@ -29,7 +29,7 @@ namespace MagicalLifeGUIWindows
             this.Content.RootDirectory = "Content";
             Game1.AssetManager = this.Content;
             UniversalEvents.GameExit += this.UniversalEvents_GameExit;
-            Graphics.HardwareModeSwitch = false;
+            this.Graphics.HardwareModeSwitch = false;
         }
 
         private void UniversalEvents_GameExit(object sender, System.EventArgs e)

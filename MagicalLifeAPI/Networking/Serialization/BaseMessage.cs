@@ -8,9 +8,10 @@ namespace MagicalLifeAPI.Networking.Serialization
     /// The base of every message.
     /// </summary>
     [ProtoContract]
-    [ProtoInclude(9, typeof(WorldTransferMessage))]
-    [ProtoInclude(10, typeof(ServerTickMessage))]
-    [ProtoInclude(11, typeof(RouteCreatedMessage))]
+    //[ProtoInclude(2, typeof(WorldTransferMessage))]
+    //[ProtoInclude(3, typeof(RouteCreatedMessage))]
+    //[ProtoInclude(4, typeof(ServerTickMessage))]
+    //[ProtoInclude(5, typeof(ClientWorldConfirmation))]
     public class BaseMessage
     {
         /// <summary>
