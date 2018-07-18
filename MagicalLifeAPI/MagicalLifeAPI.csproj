@@ -148,7 +148,6 @@
     <Compile Include="InternalExceptions\CollectionEmptyException.cs" />
     <Compile Include="InternalExceptions\InvalidPathException.cs" />
     <Compile Include="Load\ItemLoader.cs" />
-    <Compile Include="Networking\Messages\ClientWorldConfirmation.cs" />
     <Compile Include="Registry\ItemRegistry\ItemAdder.cs" />
     <Compile Include="Registry\ItemRegistry\ItemFinder.cs" />
     <Compile Include="Registry\ItemRegistry\ItemRegistry.cs" />
