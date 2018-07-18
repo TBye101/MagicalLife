@@ -20,6 +20,10 @@ namespace MagicalLifeAPI.Components.Generic
             this.TextureID = textureID;
         }
 
+        public StaticTexture()
+        {
+        }
+
         [ProtoMember(1)]
         public override int TextureID { get; set; }
 

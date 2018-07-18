@@ -12,6 +12,7 @@ namespace MagicalLifeAPI.World
     /// Resources in tiles are things such as minerals.
     /// </summary>
     [ProtoContract]
+    [ProtoInclude(1, typeof(StoneBase))]
     public abstract class Resource : HasTexture, IHasSubclasses
     {
         public Resource(string name, int count)

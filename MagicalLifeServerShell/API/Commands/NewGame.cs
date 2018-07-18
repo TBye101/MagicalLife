@@ -32,15 +32,12 @@ namespace MagicalLifeServerShell.API.Commands
 
             WorldGenerationSettings wset = SettingsHandler.WorldGenerationSettings.GetSettings();
             Util.WriteLine("Generating world!");
-            World.Initialize(wset.DimensionWidth, wset.DimensionHeight, new StoneSprinkle(0));
+            World.Initialize(wset.DimensionWidth, wset.DimensionHeight, new GrassAndDirt(0));
             Util.WriteLine("World generated!");
 
             Util.WriteLine("Initializing networking!");
             int port = SettingsHandler.NetworkSettings.GetSettings().Port;
             ServerSendRecieve.Initialize(new NetworkSettings(port));
-
-            byte[] result = ProtoUtil.Serialize<WorldTransferMessage>(new WorldTransferMessage(World.Dimensions));
-            BaseMessage r = ProtoUtil.Deserialize(result);
 
             Util.WriteLine("Done!");
             Server.StartGame();
