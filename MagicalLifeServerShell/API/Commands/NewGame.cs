@@ -7,7 +7,9 @@ using MagicalLifeAPI.World.Data;
 using MagicalLifeServer;
 using MagicalLifeServer.ServerWorld.World_Generation.Generators;
 using MagicalLifeServerShell.API.Settings;
+using System;
 using System.Collections.Generic;
+using System.Net.Sockets;
 
 namespace MagicalLifeServerShell.API.Commands
 {
@@ -38,10 +40,20 @@ namespace MagicalLifeServerShell.API.Commands
             Util.WriteLine("Initializing networking!");
             int port = SettingsHandler.NetworkSettings.GetSettings().Port;
             ServerSendRecieve.Initialize(new NetworkSettings(port));
+            ServerSendRecieve.TCPServer.Server.ClientConnected += Server_ClientConnected;
+            ServerSendRecieve.TCPServer.Server.ClientDisconnected += Server_ClientDisconnected;
 
             Util.WriteLine("Done!");
-            Server.StartGame();
-            Util.WriteLine("Game started!");
+        }
+
+        private static void Server_ClientDisconnected(object sender, TcpClient e)
+        {
+            Util.WriteLine("Client disconnected: " + e.Client.RemoteEndPoint.ToString());
+        }
+
+        private static void Server_ClientConnected(object sender, System.Net.Sockets.TcpClient e)
+        {
+            Util.WriteLine("Client connected: " + e.Client.RemoteEndPoint.ToString());
         }
     }
 }

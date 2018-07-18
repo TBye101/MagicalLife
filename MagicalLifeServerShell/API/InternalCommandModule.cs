@@ -1,4 +1,5 @@
-﻿using MagicalLifeServerShell.API.Commands;
+﻿using MagicalLifeDedicatedServer.API.Commands;
+using MagicalLifeServerShell.API.Commands;
 using System.Collections.Generic;
 
 namespace MagicalLifeServerShell.API
@@ -9,7 +10,8 @@ namespace MagicalLifeServerShell.API
         {
             return new List<ICommand>()
             {
-                new NewGame()
+                new NewGame(),
+                new StartGame()
             };
         }
 

@@ -16,5 +16,7 @@ namespace MagicalLifeAPI.World.Resources
         public StoneBase() : base()
         {
         }
+
+        public abstract string GetUnconnectedTexture();
     }
 }

@@ -15,5 +15,10 @@ namespace MagicalLifeAPI.World.Resources
         public MarbleResource() : base()
         {
         }
+
+        public override string GetUnconnectedTexture()
+        {
+            return "MarbleResourceUnconnected";
+        }
     }
 }

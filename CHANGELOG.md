@@ -10,6 +10,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 * Added a grass tile
 
 #### Server
+* Seperated server loading and server starting into two seperate commands
 
 #### GUI
 

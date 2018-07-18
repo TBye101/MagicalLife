@@ -148,6 +148,7 @@
     <Compile Include="InternalExceptions\CollectionEmptyException.cs" />
     <Compile Include="InternalExceptions\InvalidPathException.cs" />
     <Compile Include="Load\ItemLoader.cs" />
+    <Compile Include="Networking\Messages\ClientWorldConfirmation.cs" />
     <Compile Include="Registry\ItemRegistry\ItemAdder.cs" />
     <Compile Include="Registry\ItemRegistry\ItemFinder.cs" />
     <Compile Include="Registry\ItemRegistry\ItemRegistry.cs" />
@@ -185,8 +186,6 @@
     <Compile Include="Networking\Serialization\ProtoUtil.cs" />
     <Compile Include="Networking\Server\ServerSendRecieve.cs" />
     <Compile Include="Networking\Server\TCPServer.cs" />
-    <Compile Include="Networking\Test\ConcreteTest.cs" />
-    <Compile Include="Networking\Test\ConcreteTestHandler.cs" />
     <Compile Include="Pathfinding\AStar\AStar.cs" />
     <Compile Include="Pathfinding\Cost\CostRetriever.cs" />
     <Compile Include="Pathfinding\Cost\IAddMovementCost.cs" />

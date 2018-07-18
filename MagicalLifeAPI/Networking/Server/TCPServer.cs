@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Networking.Messages;
+﻿using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using SimpleTCP;
 using System.Net.Sockets;
@@ -26,7 +27,7 @@ namespace MagicalLifeAPI.Networking.Server
 
             foreach (System.Net.IPAddress item in this.Server.GetListeningIPs())
             {
-                //MasterLog.DebugWriteLine("Server listening on: " + item.ToString());
+                MasterLog.DebugWriteLine("Server listening on: " + item.ToString());
             }
 
             this.Server.ClientConnected += this.Server_ClientConnected;
@@ -45,9 +46,8 @@ namespace MagicalLifeAPI.Networking.Server
 
         private void Server_ClientConnected(object sender, System.Net.Sockets.TcpClient e)
         {
-            //MasterLog.DebugWriteLine("Client connection received");
+            MasterLog.DebugWriteLine("Client connected: " + e.Client.RemoteEndPoint.ToString());
 
-            //this.Send<ConcreteTest>(new ConcreteTest(), e.Client);
             this.Send<WorldTransferMessage>(new WorldTransferMessage(World.Data.World.Dimensions), e.Client);
         }
 

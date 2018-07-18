@@ -3,7 +3,6 @@ using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Message_Handlers;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeAPI.Networking.Test;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeClient.Entity;
 using MagicalLifeClient.Message_Handlers;
@@ -45,7 +44,6 @@ namespace MagicalLifeClient
             return new List<MessageHandler>()
             {
                 new ServerTickMessageHandler(),
-                new ConcreteTestHandler(),
 
                 //Least important messages
                 new WorldTransferMessageHandler()
