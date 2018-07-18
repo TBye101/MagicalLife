@@ -1,4 +1,4 @@
-<p align="center"><img src="MagicalLifelogo/logo.png" alt="MagicalLife" height="300px"></p>
+<p align="center"><img src="Assets/Logo/logo.png" alt="MagicalLife" height="300px"></p>
 
 Thanks for the logo Batarian711!
 
