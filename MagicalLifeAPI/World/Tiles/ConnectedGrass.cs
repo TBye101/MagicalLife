@@ -96,12 +96,12 @@ namespace MagicalLifeAPI.World.Tiles
 
         private bool UseTrans11(TileState[] states)
         {
-            return states[6] == TileState.Identical && states[4] != TileState.Incompatible && states[5] == TileState.Incompatible && states[2] == TileState.Compatible;
+            return states[6] == TileState.Identical && states[4] != TileState.Incompatible && states[5] == TileState.Identical && states[3] == TileState.Compatible && states[1] == TileState.Compatible;/*states[2] == TileState.Compatible;*/
         }
 
         private bool UseTrans12(TileState[] states)
         {
-            return states[3] == TileState.Identical && states[6] == TileState.Identical && states[1] == TileState.Compatible && states[4] == TileState.Compatible && states[7] == TileState.Compatible && states[5] != TileState.Compatible;
+            return states[3] == TileState.Identical && states[6] == TileState.Identical && states[1] == TileState.Compatible && states[4] == TileState.Compatible && states[5] != TileState.Compatible;
         }
 
         private bool UseTrans9(TileState[] states)
@@ -131,7 +131,7 @@ namespace MagicalLifeAPI.World.Tiles
 
         private bool UseTrans5(TileState[] states)
         {
-            return states[1] == TileState.Identical && states[6] == TileState.Identical && states[3] == TileState.Compatible;
+            return states[1] == TileState.Identical && states[6] == TileState.Identical && states[3] == TileState.Compatible && states[5] != TileState.Compatible;
         }
 
         private bool UseTrans6(TileState[] states)
