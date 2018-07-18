@@ -26,6 +26,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeDedicatedServer"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeAPITests1", "MagicalLifeAPITests1\MagicalLifeAPITests1.csproj", "{803FCAA7-22C3-44D1-9CC8-3516F2847E55}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Included DLL", "Included DLL", "{010D1A58-0BFA-4DE4-818D-CE960B66C4CE}"
+	ProjectSection(SolutionItems) = preProject
+		Included DLL\fmod64.dll = Included DLL\fmod64.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
