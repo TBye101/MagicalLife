@@ -15,6 +15,7 @@ namespace MagicalLifeAPI.Entities
     /// All living things inherit from this, and utilize it.
     /// </summary>
     [ProtoContract]
+    [ProtoInclude(1, typeof(Humanoid.Human))]
     public abstract class Living : Selectable, IHasSubclasses
     {
         /// <summary>

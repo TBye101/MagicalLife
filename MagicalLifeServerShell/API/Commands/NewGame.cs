@@ -1,4 +1,6 @@
 ﻿using MagicalLifeAPI.Networking;
+using MagicalLifeAPI.Networking.Messages;
+using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Networking.Server;
 using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.World.Data;
@@ -26,8 +28,6 @@ namespace MagicalLifeServerShell.API.Commands
 
         public void run(List<string> input)
         {
-            ItemRegistry reg = new ItemRegistry();
-
             Server.Load(EngineMode.ServerOnly);
 
             WorldGenerationSettings wset = SettingsHandler.WorldGenerationSettings.GetSettings();
@@ -38,6 +38,9 @@ namespace MagicalLifeServerShell.API.Commands
             Util.WriteLine("Initializing networking!");
             int port = SettingsHandler.NetworkSettings.GetSettings().Port;
             ServerSendRecieve.Initialize(new NetworkSettings(port));
+
+            byte[] result = ProtoUtil.Serialize<WorldTransferMessage>(new WorldTransferMessage(World.Dimensions));
+            BaseMessage r = ProtoUtil.Deserialize(result);
 
             Util.WriteLine("Done!");
             Server.StartGame();

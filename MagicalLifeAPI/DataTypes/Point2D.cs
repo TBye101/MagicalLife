@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using ProtoBuf;
-using RBush;
 
 namespace MagicalLifeAPI.DataTypes
 {

@@ -222,7 +222,6 @@
     <Compile Include="World\Resources\MarbleResource.cs" />
     <Compile Include="World\Resources\StoneBase.cs" />
     <Compile Include="World\TileEventArg.cs" />
-    <Compile Include="World\Tiles\ConnectedDirt.cs" />
     <Compile Include="World\Tiles\ConnectedGrass.cs" />
     <Compile Include="World\Tiles\Dirt.cs" />
     <Compile Include="World\Tiles\Grass.cs" />

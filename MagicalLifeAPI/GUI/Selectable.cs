@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
+using MagicalLifeAPI.Entities.Humanoid;
 using MagicalLifeAPI.Universal;
 using ProtoBuf;
 
@@ -8,8 +9,8 @@ namespace MagicalLifeAPI.GUI
     /// <summary>
     /// All objects in the game that can be clicked on inherit from this.
     /// </summary>
-    [ProtoBuf.ProtoContract]
-    [ProtoBuf.ProtoInclude(2, typeof(Living))]
+    [ProtoContract]
+    [ProtoInclude(2, typeof(Living))]
     public abstract class Selectable : Unique
     {
         /// <summary>

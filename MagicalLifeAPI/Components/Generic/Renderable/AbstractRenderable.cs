@@ -1,4 +1,6 @@
-﻿using MagicalLifeAPI.DataTypes;
+﻿using MagicalLifeAPI.Components.Tile.Renderable;
+using MagicalLifeAPI.DataTypes;
+using ProtoBuf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +12,15 @@ namespace MagicalLifeAPI.Components.Generic
     /// <summary>
     /// Anything that implements this has a texture that can be rendered.
     /// </summary>
+    [ProtoContract]
+    [ProtoInclude(2, typeof(StaticTexture))]
+    [ProtoInclude(3, typeof(TransitionTextures))]
     public abstract class AbstractRenderable
     {
         /// <summary>
         /// Gets the current texture ID to render the object with.
         /// </summary>
+        [ProtoMember(1)]
         public abstract int TextureID { get; set; }
 
         /// <summary>
