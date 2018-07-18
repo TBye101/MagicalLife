@@ -51,6 +51,10 @@ namespace MagicalLifeAPI.World.Tiles
             }
 
             //Half-dirt
+            if (this.UseTrans5(states))
+            {
+                return 7;
+            }
             if (this.UseTrans2(states))
             {
                 return 5;
@@ -58,10 +62,6 @@ namespace MagicalLifeAPI.World.Tiles
             if (this.UseTrans4(states))
             {
                 return 6;
-            }
-            if (this.UseTrans5(states))
-            {
-                return 7;
             }
             if (this.UseTrans7(states))
             {
@@ -111,7 +111,7 @@ namespace MagicalLifeAPI.World.Tiles
 
         private bool UseTrans10(TileState[] states)
         {
-            return states[1] == TileState.Identical && states[4] == TileState.Identical && states[0] == TileState.Compatible && states[7] == TileState.Compatible;
+            return states[1] == TileState.Identical && states[4] == TileState.Identical && states[0] == TileState.Identical && states[7] == TileState.Compatible && states[3] == TileState.Compatible;
         }
 
         private bool UseTrans3(TileState[] states)
