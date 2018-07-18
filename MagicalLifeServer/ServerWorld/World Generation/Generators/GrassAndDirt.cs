@@ -7,10 +7,6 @@ using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Resources;
 using MagicalLifeAPI.World.Tiles;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
 {
@@ -76,17 +72,16 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
                             if (random.Next(25) == 2)
                             {
                                 tile = new Dirt(new Point2D((chunkWidth * x) + cx, (chunkHeight * y) + cy));
+                                if (random.Next(4) == 2)
+                                {
+                                    tile.Resources = new MarbleResource(random.Next(25));
+                                    tile.IsWalkable = false;
+                                }
                             }
                             else
                             {
                                 tile = new Grass(new Point2D((chunkWidth * x) + cx, (chunkHeight * y) + cy));
                             }
-
-                            //if (random.Next(4) == 2)
-                            //{
-                            //    tile.Resources = new MarbleResource(random.Next(25));
-                            //    tile.IsWalkable = false;
-                            //}
 
                             chunk.Tiles[cx, cy] = tile;
                         }
