@@ -10,19 +10,14 @@ namespace MagicalLifeAPI.Sound
 {
     public class MusicPlayer
     {
-        public const int NUM_SONGS = 1;
+        public static int SONG_MAIN_MENU { get; private set; }
 
-        public const int SONG_MAIN_MENU = 0;
-
-        private FMOD.System FMODSystem;
+        private readonly FMOD.System FMODSystem;
         private FMOD.Channel Channel;
-        private FMOD.Sound[] Songs;
-
-        private static MusicPlayer _instance;
-
+        private readonly List<FMOD.Sound> Songs = new List<FMOD.Sound>();
         private int _current_song_id = -1;
 
-        public static MusicPlayer Instance { get { return _instance; } }
+        public static MusicPlayer Instance { get; private set; }
 
         [DllImport("kernel32.dll")]
         public static extern IntPtr LoadLibrary(string dllToLoad);
@@ -31,8 +26,10 @@ namespace MagicalLifeAPI.Sound
         {
             string fullPath = System.IO.Path.GetFullPath("fmod64.dll");
             LoadLibrary(fullPath);
-            _instance = new MusicPlayer();
-            _instance.Play(0);
+            Instance = new MusicPlayer();
+
+            MusicPlayer.SONG_MAIN_MENU = Instance.LoadSong("MainMenu1");
+            //Instance.Play(SONG_MAIN_MENU);
         }
 
         public void Unload()
@@ -46,16 +43,16 @@ namespace MagicalLifeAPI.Sound
 
             this.FMODSystem.setDSPBufferSize(1024, 10);
             this.FMODSystem.init(32, FMOD.INITFLAGS.NORMAL, (IntPtr)0);
-
-            this.Songs = new FMOD.Sound[NUM_SONGS];
-
-            LoadSong(SONG_MAIN_MENU, "MainMenu1");
         }
 
-        private void LoadSong(int songId, string name)
+        private int LoadSong(string name)
         {
-            FMOD.RESULT r = this.FMODSystem.createStream("Content/Music/" + name + ".flac", FMOD.MODE.DEFAULT, out this.Songs[songId]);
-            //Console.WriteLine("loading " + songId + ", got result " + r);
+            FMOD.RESULT r = this.FMODSystem.createStream("Content/Music/" + name + ".flac", FMOD.MODE.DEFAULT, out FMOD.Sound s);
+
+            int c = this.Songs.Count;
+            this.Songs.Add(s);
+
+            return c;
         }
 
         public bool IsPlaying()
@@ -78,7 +75,7 @@ namespace MagicalLifeAPI.Sound
             {
                 Stop();
 
-                if (songId >= 0 && songId < NUM_SONGS && this.Songs[songId] != null)
+                if (songId >= 0 && songId < this.Songs.Count && this.Songs[songId] != null)
                 {
                     this.FMODSystem.playSound(this.Songs[songId], null, false, out this.Channel);
                     UpdateVolume();

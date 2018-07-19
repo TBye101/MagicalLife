@@ -15,6 +15,7 @@ namespace MagicalLifeGUIWindows.Load
             InputHandlers.Initialize();
             SettingsManager.Initialize();
             MusicPlayer.Init();
+            EffectPlayer.Init();
         }
     }
 }

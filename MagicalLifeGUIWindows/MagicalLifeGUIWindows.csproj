@@ -113,7 +113,6 @@
     <Compile Include="GUI\New World Menu\Labels\LengthLabel.cs" />
     <Compile Include="GUI\New World Menu\Labels\WidthLabel.cs" />
     <Compile Include="Input\ClickBounds.cs" />
-    <Compile Include="GUI\In Game GUI\Buttons\TurnButton.cs" />
     <Compile Include="GUI\In Game GUI\InGameGUI.cs" />
     <Compile Include="GUI\In Game GUI\InGameGUIContainer.cs" />
     <Compile Include="GUI\In Game GUI\InGameGUILayout.cs" />
@@ -214,6 +213,7 @@
     <Folder Include="Event\" />
     <Folder Include="GUI\History\" />
     <Folder Include="GUI\Host Game Menu\Labels\" />
+    <Folder Include="GUI\In Game GUI\Buttons\" />
     <Folder Include="GUI\Join Game Menu\Labels\" />
   </ItemGroup>
   <ItemGroup>

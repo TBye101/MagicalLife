@@ -202,6 +202,7 @@
     <Compile Include="Load\Loader.cs" />
     <Compile Include="Load\LoadMoniter.cs" />
     <Compile Include="Settings\AudioSettings.cs" />
+    <Compile Include="Sound\EffectPlayer.cs" />
     <Compile Include="Sound\FMOD\fmod.cs" />
     <Compile Include="Sound\FMOD\fmod_dsp.cs" />
     <Compile Include="Sound\FMOD\fmod_errors.cs" />
