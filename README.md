@@ -1,4 +1,4 @@
-<p align="center"><img src="MagicalLifelogo/logo.png" alt="MagicalLife" height="300px"></p>
+<p align="center"><img src="Assets/Logo/logo.png" alt="MagicalLife" height="300px"></p>
 
 Thanks for the logo Batarian711!
 
@@ -148,6 +148,14 @@ Batarian711 - Created the logo for this project
 Released under the [Microsoft Public License and the MIT License](https://github.com/MonoGame/MonoGame/blob/develop/LICENSE.txt)
 
 #### Does the heavy lifting for graphics, asset loading, and more!
+---
+
+[FMOD](https://www.fmod.com/)
+
+Released under the [FMOD END USER LICENCE AGREEMENT](https://www.fmod.com/resources/eula)
+
+#### Audio
+
 ---
 [MonoGame.Extended](https://github.com/craftworkgames/MonoGame.Extended)
 
