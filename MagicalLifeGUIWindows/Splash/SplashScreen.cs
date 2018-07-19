@@ -1,4 +1,5 @@
 ﻿using MagicalLifeGUIWindows.Rendering;
+using MagicalLifeGUIWindows.Rendering.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -18,6 +19,12 @@ namespace MagicalLifeGUIWindows.Splash
 
         protected Rectangle DisplayZone { get; set; }
 
+        protected Rectangle TextZone { get; set; }
+
+        protected string Text { get; set; }
+
+        protected SpriteFont Font = Game1.AssetManager.Load<SpriteFont>("MainMenuFont12x");
+
         /// <summary>
         /// How many frames to show the splash screen.
         /// </summary>
@@ -30,11 +37,13 @@ namespace MagicalLifeGUIWindows.Splash
         /// </summary>
         /// <param name="logoFileName">The resource path to the logo file that is to be displayed.</param>
         /// <param name="duration">How many seconds to show the logo.</param>
-        public SplashScreen(string logo, float duration)
+        public SplashScreen(string logo, float duration, string text = "")
         {
             this.Frames = (int)duration * SplashScreen.FPS; 
             this.Logo = Game1.AssetManager.Load<Texture2D>(logo);
             this.DisplayZone = this.CalculateDisplayLocation();
+            this.Text = text;
+            this.CalculateTextZone();
         }
 
         /// <summary>
@@ -49,7 +58,22 @@ namespace MagicalLifeGUIWindows.Splash
         public void Draw(ref SpriteBatch spBatch)
         {
             spBatch.Draw(this.Logo, this.DisplayZone, RenderingPipe.colorMask);
+            SimpleTextRenderer.DrawString(this.Font, this.Text, this.TextZone, SimpleTextRenderer.Alignment.Left, RenderingPipe.colorMask, ref spBatch);
             this.Frames--;
+        }
+
+        private void CalculateTextZone()
+        {
+            int x = 0;
+            int y = 0;
+            int width;
+            int height;
+
+            Vector2 result = this.Font.MeasureString(this.Text);
+            width = (int)Math.Round(result.X);
+            height = (int)Math.Round(result.Y);
+
+            this.TextZone = new Rectangle(x, y, width, height);
         }
 
         private Rectangle CalculateDisplayLocation()
