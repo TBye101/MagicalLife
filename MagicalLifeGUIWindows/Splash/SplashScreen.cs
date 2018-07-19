@@ -108,7 +108,7 @@ namespace MagicalLifeGUIWindows.Splash
             }
             else
             {
-                x = RenderingPipe.FullScreenWindow.Width;
+                x = 0;
             }
 
             if (this.Logo.Bounds.Height < RenderingPipe.FullScreenWindow.Height)
@@ -117,7 +117,7 @@ namespace MagicalLifeGUIWindows.Splash
             }
             else
             {
-                y = RenderingPipe.FullScreenWindow.Height;
+                y = 0;
             }
 
             return new Rectangle(x, y, width, height);

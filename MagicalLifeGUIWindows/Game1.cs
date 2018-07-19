@@ -45,6 +45,7 @@ namespace MagicalLifeGUIWindows
         {
             SplashScreens = new List<SplashScreen>()
             {
+                new SplashScreen("Logo/MonoGameLogo", 3.5F),
                 new SplashScreen("Logo/FMODLogo", 3.5F, "\"FMOD\" and \"FMOD Studio\" are licensed by \"Firelight Technologies Pty Ltd\"")
             };
         }
