@@ -352,3 +352,6 @@
 /processorParam:TextureFormat=Color
 /build:DirtGrassTrans12.png
 
+#begin Music/MainMenu1.flac
+/copy:Music/MainMenu1.flac
+

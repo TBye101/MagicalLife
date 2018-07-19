@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Filing;
 using MagicalLifeAPI.Load;
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Messages;
@@ -45,6 +46,8 @@ namespace MagicalLifeServer
                     break;
 
                 case EngineMode.ServerOnly:
+                    SettingsManager.Initialize();
+
                     load.LoadAll(ref msg, new List<IGameLoader>()
                     {
                         new ItemLoader(),

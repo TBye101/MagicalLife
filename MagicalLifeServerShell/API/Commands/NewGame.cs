@@ -32,13 +32,13 @@ namespace MagicalLifeServerShell.API.Commands
         {
             Server.Load(EngineMode.ServerOnly);
 
-            WorldGenerationSettings wset = SettingsHandler.WorldGenerationSettings.GetSettings();
+            WorldGenerationSettings wset = SettingsHandler.WorldGenerationSettings.Settings;
             Util.WriteLine("Generating world!");
             World.Initialize(wset.DimensionWidth, wset.DimensionHeight, new GrassAndDirt(0));
             Util.WriteLine("World generated!");
 
             Util.WriteLine("Initializing networking!");
-            int port = SettingsHandler.NetworkSettings.GetSettings().Port;
+            int port = SettingsHandler.NetworkSettings.Settings.Port;
             ServerSendRecieve.Initialize(new NetworkSettings(port));
             ServerSendRecieve.TCPServer.Server.ClientConnected += Server_ClientConnected;
             ServerSendRecieve.TCPServer.Server.ClientDisconnected += Server_ClientDisconnected;

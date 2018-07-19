@@ -13,6 +13,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 * Seperated server loading and server starting into two seperate commands
 
 #### GUI
+* Grass textures now connect to form smoother patterns
 
 #### Bugs
 * Fixed issue [#17](https://github.com/SneakyTactician/MagicalLife/issues/17)
