@@ -5,10 +5,12 @@ using MagicalLifeAPI.Universal;
 using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Load;
 using MagicalLifeGUIWindows.Rendering;
+using MagicalLifeGUIWindows.Splash;
 using MagicalLifeSettings.Storage;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Extended.Screens;
 using System.Collections.Generic;
 
 namespace MagicalLifeGUIWindows
@@ -23,6 +25,13 @@ namespace MagicalLifeGUIWindows
 
         public static ContentManager AssetManager { get; set; }
 
+        internal static List<SplashScreen> SplashScreens { get; set; }
+
+        /// <summary>
+        /// If true, then we are done displaying splash screens.
+        /// </summary>
+        internal static bool SplashDone = false;
+
         public Game1()
         {
             this.Graphics = new GraphicsDeviceManager(this);
@@ -30,6 +39,14 @@ namespace MagicalLifeGUIWindows
             Game1.AssetManager = this.Content;
             UniversalEvents.GameExit += this.UniversalEvents_GameExit;
             this.Graphics.HardwareModeSwitch = false;
+        }
+
+        private void InitializeSplashScreens()
+        {
+            SplashScreens = new List<SplashScreen>()
+            {
+                new SplashScreen("Logo/FMODLogo", 3.5F)
+            };
         }
 
         private void UniversalEvents_GameExit(object sender, System.EventArgs e)
@@ -75,6 +92,7 @@ namespace MagicalLifeGUIWindows
                 new TextureLoader(this.Content),
                 new ProtoTypeLoader()
             });
+            this.InitializeSplashScreens();
         }
 
         /// <summary>
@@ -111,7 +129,29 @@ namespace MagicalLifeGUIWindows
             this.GraphicsDevice.SetRenderTarget(null);
             this.GraphicsDevice.Clear(Color.Black);
             this.SpriteBatch.Begin();
-            RenderingPipe.DrawScreen(ref this.SpriteBatch);
+
+            if (Game1.SplashDone)
+            {
+                RenderingPipe.DrawScreen(ref this.SpriteBatch);
+            }
+            else
+            {
+                int length = Game1.SplashScreens.Count;
+                for (int i = 0; i < length; i++)
+                {
+                    SplashScreen item = Game1.SplashScreens[i];
+                    if (!item.Done())
+                    {
+                        item.Draw(ref this.SpriteBatch);
+                        break;
+                    }
+
+                    if (i == length - 1)
+                    {
+                        Game1.SplashDone = true;
+                    }
+                }
+            }
 
             this.SpriteBatch.End();
 
