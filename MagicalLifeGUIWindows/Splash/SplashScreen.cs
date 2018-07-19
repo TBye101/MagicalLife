@@ -1,4 +1,5 @@
 ﻿using MagicalLifeGUIWindows.Rendering;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,8 @@ namespace MagicalLifeGUIWindows.Splash
     public class SplashScreen
     {
         protected const int FPS = 60;
+
+        protected Rectangle DisplayZone { get; set; }
 
         /// <summary>
         /// How many frames to show the splash screen.
@@ -31,6 +34,7 @@ namespace MagicalLifeGUIWindows.Splash
         {
             this.Frames = (int)duration * SplashScreen.FPS; 
             this.Logo = Game1.AssetManager.Load<Texture2D>(logo);
+            this.DisplayZone = this.CalculateDisplayLocation();
         }
 
         /// <summary>
@@ -44,8 +48,55 @@ namespace MagicalLifeGUIWindows.Splash
 
         public void Draw(ref SpriteBatch spBatch)
         {
-            spBatch.Draw(this.Logo, RenderingPipe.FullScreenWindow, RenderingPipe.colorMask);
+            spBatch.Draw(this.Logo, this.DisplayZone, RenderingPipe.colorMask);
             this.Frames--;
+        }
+
+        private Rectangle CalculateDisplayLocation()
+        {
+            int x;
+            int y;
+
+            int width;
+            int height;
+
+            if (this.Logo.Bounds.Width < RenderingPipe.FullScreenWindow.Width)
+            {
+                width = this.Logo.Bounds.Width;
+            }
+            else
+            {
+                width = RenderingPipe.FullScreenWindow.Width;
+            }
+
+            if (this.Logo.Bounds.Height < RenderingPipe.FullScreenWindow.Height)
+            {
+                height = this.Logo.Bounds.Height;
+            }
+            else
+            {
+                height = RenderingPipe.FullScreenWindow.Height;
+            }
+
+            if (this.Logo.Bounds.Width < RenderingPipe.FullScreenWindow.Width)
+            {
+                x = (RenderingPipe.FullScreenWindow.Size.X - this.Logo.Bounds.Size.X) / 2;
+            }
+            else
+            {
+                x = RenderingPipe.FullScreenWindow.Width;
+            }
+
+            if (this.Logo.Bounds.Height < RenderingPipe.FullScreenWindow.Height)
+            {
+                y = (RenderingPipe.FullScreenWindow.Size.Y - this.Logo.Bounds.Size.Y) / 2;
+            }
+            else
+            {
+                y = RenderingPipe.FullScreenWindow.Height;
+            }
+
+            return new Rectangle(x, y, width, height);
         }
     }
 }
