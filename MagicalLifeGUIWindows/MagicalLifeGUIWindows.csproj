@@ -161,7 +161,7 @@
     <Compile Include="Rendering\Map\MapRenderer.cs" />
     <Compile Include="Rendering\RenderingPipe.cs" />
     <Compile Include="Rendering\Text\SimpleTextRenderer.cs" />
-    <Compile Include="Splash\SplashScreen.cs" />
+    <Compile Include="Screens\LogoScreen.cs" />
     <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>

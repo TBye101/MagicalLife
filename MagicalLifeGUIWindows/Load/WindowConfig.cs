@@ -16,10 +16,6 @@ namespace MagicalLifeGUIWindows.Load
             game.Graphics.PreferredBackBufferHeight = MainWindow.Default.ScreenSize.Height;
             game.Graphics.PreferredBackBufferWidth = MainWindow.Default.ScreenSize.Width;
 
-            //Initialize main menu
-            GUI.MainMenu.MainMenu.Initialize();
-            game.IsMouseVisible = true;
-
             game.Graphics.ToggleFullScreen();
         }
     }

@@ -13,7 +13,7 @@ namespace MagicalLifeGUIWindows.Splash
     /// <summary>
     /// A splash screen that displays an logo, then goes away.
     /// </summary>
-    public class SplashScreen
+    public class LogoScreen
     {
         protected const int FPS = 60;
 
@@ -30,20 +30,29 @@ namespace MagicalLifeGUIWindows.Splash
         /// </summary>
         protected int Frames { get; set; }
 
+        /// <summary>
+        /// Half of frames, so that the fade out can occur.
+        /// </summary>
+        protected int Half { get; set; }
+
         protected Texture2D Logo { get; set; }
+
+        protected Color Mask { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="logoFileName">The resource path to the logo file that is to be displayed.</param>
         /// <param name="duration">How many seconds to show the logo.</param>
-        public SplashScreen(string logo, float duration, string text = "")
+        public LogoScreen(string logo, float duration, string text = "")
         {
-            this.Frames = (int)duration * SplashScreen.FPS; 
+            this.Frames = (int)duration * LogoScreen.FPS;
+            this.Half = this.Frames / 2;
             this.Logo = Game1.AssetManager.Load<Texture2D>(logo);
             this.DisplayZone = this.CalculateDisplayLocation();
             this.Text = text;
             this.CalculateTextZone();
+            this.Mask = Color.Black;
         }
 
         /// <summary>
@@ -57,9 +66,35 @@ namespace MagicalLifeGUIWindows.Splash
 
         public void Draw(ref SpriteBatch spBatch)
         {
-            spBatch.Draw(this.Logo, this.DisplayZone, RenderingPipe.colorMask);
+            spBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
+            spBatch.Draw(this.Logo, this.DisplayZone.Center.ToVector2(), null, this.CalculateMask(), 0,
+                new Vector2(this.Logo.Width / 2, this.Logo.Height / 2), 1.0f, SpriteEffects.None, 1.0f);
+            //spBatch.Draw(this.Logo, this.DisplayZone, RenderingPipe.colorMask);
             SimpleTextRenderer.DrawString(this.Font, this.Text, this.TextZone, SimpleTextRenderer.Alignment.Left, RenderingPipe.colorMask, ref spBatch);
             this.Frames--;
+            spBatch.End();
+        }
+
+        /// <summary>
+        /// Calculates the color mask to apply, in order to apply fade in fade out effects.
+        /// </summary>
+        /// <returns></returns>
+        private Color CalculateMask()
+        {
+            int modifier = 255 / this.Half;
+
+            if (this.Half < this.Frames)
+            {
+                //Fade in
+                this.Mask = new Color(this.Mask.R + modifier, this.Mask.G + modifier, this.Mask.B + modifier);
+            }
+            else
+            {
+                //Fade out
+                this.Mask = new Color(this.Mask.R - modifier, this.Mask.G - modifier, this.Mask.B - modifier);
+            }
+
+            return this.Mask;
         }
 
         private void CalculateTextZone()

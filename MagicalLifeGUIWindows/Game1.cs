@@ -25,7 +25,7 @@ namespace MagicalLifeGUIWindows
 
         public static ContentManager AssetManager { get; set; }
 
-        internal static List<SplashScreen> SplashScreens { get; set; }
+        internal static List<LogoScreen> SplashScreens { get; set; }
 
         /// <summary>
         /// If true, then we are done displaying splash screens.
@@ -43,10 +43,10 @@ namespace MagicalLifeGUIWindows
 
         private void InitializeSplashScreens()
         {
-            SplashScreens = new List<SplashScreen>()
+            SplashScreens = new List<LogoScreen>()
             {
-                new SplashScreen("Logo/MonoGameLogo", 3.5F),
-                new SplashScreen("Logo/FMODLogo", 3.5F, "\"FMOD\" and \"FMOD Studio\" are licensed by \"Firelight Technologies Pty Ltd\"")
+                new LogoScreen("Logo/MonoGameLogo", 5F),
+                new LogoScreen("Logo/FMODLogo", 5F, "\"FMOD\" and \"FMOD Studio\" are licensed by \"Firelight Technologies Pty Ltd\"")
             };
         }
 
@@ -129,18 +129,19 @@ namespace MagicalLifeGUIWindows
         {
             this.GraphicsDevice.SetRenderTarget(null);
             this.GraphicsDevice.Clear(Color.Black);
-            this.SpriteBatch.Begin();
 
             if (Game1.SplashDone)
             {
+                this.SpriteBatch.Begin();
                 RenderingPipe.DrawScreen(ref this.SpriteBatch);
+                this.SpriteBatch.End();
             }
             else
             {
                 int length = Game1.SplashScreens.Count;
                 for (int i = 0; i < length; i++)
                 {
-                    SplashScreen item = Game1.SplashScreens[i];
+                    LogoScreen item = Game1.SplashScreens[i];
                     if (!item.Done())
                     {
                         item.Draw(ref this.SpriteBatch);
@@ -150,11 +151,13 @@ namespace MagicalLifeGUIWindows
                     if (i == length - 1)
                     {
                         Game1.SplashDone = true;
+
+                        //Initialize main menu
+                        GUI.MainMenu.MainMenu.Initialize();
+                        this.IsMouseVisible = true;
                     }
                 }
             }
-
-            this.SpriteBatch.End();
 
             base.Draw(gameTime);
         }
