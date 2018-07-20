@@ -113,7 +113,6 @@
     <Compile Include="GUI\New World Menu\Labels\LengthLabel.cs" />
     <Compile Include="GUI\New World Menu\Labels\WidthLabel.cs" />
     <Compile Include="Input\ClickBounds.cs" />
-    <Compile Include="GUI\In Game GUI\Buttons\TurnButton.cs" />
     <Compile Include="GUI\In Game GUI\InGameGUI.cs" />
     <Compile Include="GUI\In Game GUI\InGameGUIContainer.cs" />
     <Compile Include="GUI\In Game GUI\InGameGUILayout.cs" />
@@ -151,6 +150,7 @@
     <Compile Include="Input\BoundHandler.cs" />
     <Compile Include="Input\Specialized Handlers\InputHandlers.cs" />
     <Compile Include="Input\Specialized Handlers\LivingMoveOrderInputHandler.cs" />
+    <Compile Include="Input\Specialized Handlers\LogoSkip.cs" />
     <Compile Include="Load\Initializer.cs" />
     <Compile Include="Load\InputLoader.cs" />
     <Compile Include="Load\WindowConfig.cs" />
@@ -162,6 +162,7 @@
     <Compile Include="Rendering\Map\MapRenderer.cs" />
     <Compile Include="Rendering\RenderingPipe.cs" />
     <Compile Include="Rendering\Text\SimpleTextRenderer.cs" />
+    <Compile Include="Screens\LogoScreen.cs" />
     <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -214,6 +215,7 @@
     <Folder Include="Event\" />
     <Folder Include="GUI\History\" />
     <Folder Include="GUI\Host Game Menu\Labels\" />
+    <Folder Include="GUI\In Game GUI\Buttons\" />
     <Folder Include="GUI\Join Game Menu\Labels\" />
   </ItemGroup>
   <ItemGroup>

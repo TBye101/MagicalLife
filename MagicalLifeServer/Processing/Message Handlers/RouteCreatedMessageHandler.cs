@@ -1,10 +1,13 @@
-﻿using MagicalLifeAPI.Entities;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Pathfinding;
+using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MagicalLifeServer.Message_Handlers
 {
@@ -23,20 +26,22 @@ namespace MagicalLifeServer.Message_Handlers
 
             if (Validated(msg.Path, msg.Dimension))
             {
-                //Living l = World.MainWorld.Chunks[msg.Path[0].Origin.X, msg.Path[0].Origin.Y].Living;
-                World.Dimensions[msg.Dimension].GetChunkForLocation(msg.Path[0].Origin.X, msg.Path[0].Origin.Y).GetCreature(msg.Path[0].Origin, out Living l);
+                Point2D location = msg.Path[0].Origin;
+                Point2D chunkLocation = WorldUtil.CalculateChunkLocation(location);
+                Chunk chunk = World.GetChunk(msg.Dimension, chunkLocation.X, chunkLocation.Y);
 
-                //if (l != null && l.ID == msg.LivingID)
-                //{
-                //    l.QueuedMovement.Clear();
-                //    MagicalLifeAPI.Util.Extensions.EnqueueCollection<PathLink>(l.QueuedMovement, msg.Path);
-                //}
+                Living l = chunk.Creatures.Where(t => t.MapLocation == location).ElementAt(0);
+
+                if (l != null && l.ID == msg.LivingID)
+                {
+                    l.QueuedMovement.Clear();
+                    MagicalLifeAPI.Util.Extensions.EnqueueCollection<PathLink>(l.QueuedMovement, msg.Path);
+                }
             }
             else
             {
                 MasterLog.DebugWriteLine("Server received invalid path");
             }
-            //attach path to creature
         }
 
         private bool Validated(List<PathLink> msg, int dimension)

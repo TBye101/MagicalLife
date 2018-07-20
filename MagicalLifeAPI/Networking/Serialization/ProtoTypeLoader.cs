@@ -39,12 +39,10 @@ namespace MagicalLifeAPI.Networking.Serialization
 
             foreach (ITeachSerialization item in this.Teachers)
             {
-                item.Teach(current);//Point2D teacher ain't loading
+                item.Teach(current);
             }
 
             MetaType baseMessageType = current.Add(typeof(BaseMessage), true);
-
-            // = ReflectionUtil.LoadAllInterface<IHasSubclasses>(Assembly.GetAssembly(typeof(BaseMessage)));
             List<IHasSubclasses> ToProcess = new List<IHasSubclasses>();
             ToProcess.AddRange(ReflectionUtil.LoadAllInterface<IHasSubclasses>(Assembly.GetAssembly(typeof(Tile))));
 
@@ -75,9 +73,6 @@ namespace MagicalLifeAPI.Networking.Serialization
                 i++;
             }
 
-            //ProtoUtil.TypeModel = RuntimeTypeModel.Default.
-            //ProtoUtil.TypeModel = current.Compile();
-            //ProtoUtil.TypeModel
             ProtoUtil.TypeModel = current;
         }
     }

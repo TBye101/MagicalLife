@@ -5,10 +5,12 @@ using MagicalLifeAPI.Universal;
 using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Load;
 using MagicalLifeGUIWindows.Rendering;
+using MagicalLifeGUIWindows.Splash;
 using MagicalLifeSettings.Storage;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Extended.Screens;
 using System.Collections.Generic;
 
 namespace MagicalLifeGUIWindows
@@ -23,6 +25,13 @@ namespace MagicalLifeGUIWindows
 
         public static ContentManager AssetManager { get; set; }
 
+        internal static List<LogoScreen> SplashScreens { get; set; }
+
+        /// <summary>
+        /// If true, then we are done displaying splash screens.
+        /// </summary>
+        internal static bool SplashDone = false;
+
         public Game1()
         {
             this.Graphics = new GraphicsDeviceManager(this);
@@ -30,6 +39,15 @@ namespace MagicalLifeGUIWindows
             Game1.AssetManager = this.Content;
             UniversalEvents.GameExit += this.UniversalEvents_GameExit;
             this.Graphics.HardwareModeSwitch = false;
+        }
+
+        private void InitializeSplashScreens()
+        {
+            SplashScreens = new List<LogoScreen>()
+            {
+                new LogoScreen("Logo/MonoGameLogo", 5F),
+                new LogoScreen("Logo/FMODLogo", 5F, "\"FMOD\" and \"FMOD Studio\" are licensed by \"Firelight Technologies Pty Ltd\"")
+            };
         }
 
         private void UniversalEvents_GameExit(object sender, System.EventArgs e)
@@ -75,6 +93,7 @@ namespace MagicalLifeGUIWindows
                 new TextureLoader(this.Content),
                 new ProtoTypeLoader()
             });
+            this.InitializeSplashScreens();
         }
 
         /// <summary>
@@ -110,10 +129,35 @@ namespace MagicalLifeGUIWindows
         {
             this.GraphicsDevice.SetRenderTarget(null);
             this.GraphicsDevice.Clear(Color.Black);
-            this.SpriteBatch.Begin();
-            RenderingPipe.DrawScreen(ref this.SpriteBatch);
 
-            this.SpriteBatch.End();
+            if (Game1.SplashDone)
+            {
+                this.SpriteBatch.Begin();
+                RenderingPipe.DrawScreen(ref this.SpriteBatch);
+                this.SpriteBatch.End();
+            }
+            else
+            {
+                int length = Game1.SplashScreens.Count;
+                for (int i = 0; i < length; i++)
+                {
+                    LogoScreen item = Game1.SplashScreens[i];
+                    if (!item.Done())
+                    {
+                        item.Draw(ref this.SpriteBatch);
+                        break;
+                    }
+
+                    if (i == length - 1)
+                    {
+                        Game1.SplashDone = true;
+
+                        //Initialize main menu
+                        GUI.MainMenu.MainMenu.Initialize();
+                        this.IsMouseVisible = true;
+                    }
+                }
+            }
 
             base.Draw(gameTime);
         }

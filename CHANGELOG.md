@@ -8,11 +8,14 @@ SneakyTactician  <SneakyTactician@outlook.com>
 * Added internal support for having items in tiles
 * Added item addition, removal, and search functionality
 * Added a grass tile
+* Added the stone chunk item
 
 #### Server
 * Seperated server loading and server starting into two seperate commands
 
 #### GUI
+* Grass textures now connect to form smoother patterns
+* Now showing logos for MonoGame and FMOD
 
 #### Bugs
 * Fixed issue [#17](https://github.com/SneakyTactician/MagicalLife/issues/17)

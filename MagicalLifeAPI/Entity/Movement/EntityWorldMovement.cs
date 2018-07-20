@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions;
+using MagicalLifeAPI.InternalExceptions;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
@@ -100,7 +101,7 @@ namespace MagicalLifeAPI.Entities.Movement
                     break;
 
                 default:
-                    throw new Exception();
+                    throw new UnexpectedEnumMemberException();
             }
 
             xMove *= entity.Movement.GetValue();
@@ -174,7 +175,7 @@ namespace MagicalLifeAPI.Entities.Movement
                 }
             }
 
-            throw new ArgumentException();
+            throw new UnexpectedEnumMemberException();
         }
     }
 }

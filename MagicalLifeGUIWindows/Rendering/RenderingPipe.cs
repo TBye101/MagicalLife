@@ -57,8 +57,6 @@ namespace MagicalLifeGUIWindows.Rendering
             }
 
             DrawGUI(ref spBatch);
-
-            //DrawMouseLocation(ref spBatch);
         }
 
         public static void DrawMouseLocation(ref SpriteBatch spBatch)

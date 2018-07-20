@@ -1,17 +1,17 @@
 ﻿using Newtonsoft.Json;
 using System.IO;
 
-namespace MagicalLifeServerShell.API.Settings
+namespace MagicalLifeAPI.Filing
 {
     /// <summary>
     /// Handles various things for a settings file.
     /// </summary>
-    public class ServerSetting<T>
+    public class Setting<T>
     {
         /// <summary>
         /// The settings this class is wrapped around.
         /// </summary>
-        private T Settings;
+        public T Settings { get; set; }
 
         /// <summary>
         /// The path to the settings file.
@@ -24,7 +24,7 @@ namespace MagicalLifeServerShell.API.Settings
         /// </summary>
         /// <param name="filePath">The file path where the settings should be stored.</param>
         /// <param name="settings">An instance of a brand new settings class.</param>
-        public ServerSetting(string filePath, T settings)
+        public Setting(string filePath, T settings)
         {
             this.FilePath = filePath;
 
@@ -49,11 +49,6 @@ namespace MagicalLifeServerShell.API.Settings
             }
         }
 
-        public T GetSettings()
-        {
-            return this.Settings;
-        }
-
         /// <summary>
         /// Refreshes the settings to the state in file.
         /// Doesn't refresh if the data is inaccessible for some reason.
@@ -66,6 +61,18 @@ namespace MagicalLifeServerShell.API.Settings
                 {
                     this.Settings = JsonConvert.DeserializeObject<T>(file.ReadToEnd());
                 }
+            }
+        }
+
+        /// <summary>
+        /// Saves the in memory version of settings to disk, completely writing over the disk version.
+        /// </summary>
+        public void Save()
+        {
+            File.Delete(this.FilePath);
+            using (StreamWriter wr = File.CreateText(this.FilePath))
+            {
+                wr.Write(JsonConvert.SerializeObject(this.Settings, Formatting.Indented));
             }
         }
     }

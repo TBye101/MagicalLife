@@ -352,3 +352,36 @@
 /processorParam:TextureFormat=Color
 /build:DirtGrassTrans12.png
 
+#begin Music/MainMenu1.flac
+/copy:Music/MainMenu1.flac
+
+#begin SFX/Test1.flac
+/copy:SFX/Test1.flac
+
+#begin SFX/Test2.flac
+/copy:SFX/Test2.flac
+
+#begin Logo/FMODLogo.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Logo/FMODLogo.png
+
+#begin Logo/MonoGameLogo.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Logo/MonoGameLogo.png
+

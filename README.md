@@ -149,6 +149,14 @@ Released under the [Microsoft Public License and the MIT License](https://github
 
 #### Does the heavy lifting for graphics, asset loading, and more!
 ---
+
+[FMOD](https://www.fmod.com/)
+
+Released under the [FMOD END USER LICENCE AGREEMENT](https://www.fmod.com/resources/eula)
+
+#### Audio
+
+---
 [MonoGame.Extended](https://github.com/craftworkgames/MonoGame.Extended)
 
 Released under the [MIT License](https://github.com/craftworkgames/MonoGame.Extended/blob/develop/LICENSE)

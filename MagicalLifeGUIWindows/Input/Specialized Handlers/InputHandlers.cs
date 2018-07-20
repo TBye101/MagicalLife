@@ -7,9 +7,12 @@
     {
         public static LivingMoveOrderInputHandler LivingMove;
 
+        public static LogoSkip LogoSkipper;
+
         public static void Initialize()
         {
             LivingMove = new LivingMoveOrderInputHandler();
+            LogoSkipper = new LogoSkip();
         }
     }
 }

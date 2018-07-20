@@ -28,7 +28,7 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu
             }
             else
             {
-                throw new Exception("Invalid input!");
+                throw new ArgumentException("Invalid input!");
             }
         }
     }

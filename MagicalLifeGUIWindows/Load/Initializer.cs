@@ -1,4 +1,6 @@
-﻿using MagicalLifeAPI.Load;
+﻿using MagicalLifeAPI.Filing;
+using MagicalLifeAPI.Load;
+using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Universal;
 using MagicalLifeGUIWindows.Input.History;
 using MagicalLifeGUIWindows.Input.Specialized_Handlers;
@@ -11,6 +13,9 @@ namespace MagicalLifeGUIWindows.Load
         {
             InputHistory.Initialize();
             InputHandlers.Initialize();
+            SettingsManager.Initialize();
+            MusicPlayer.Init();
+            EffectPlayer.Init();
         }
     }
 }

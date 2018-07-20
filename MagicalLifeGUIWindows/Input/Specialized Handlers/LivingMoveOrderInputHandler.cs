@@ -76,30 +76,5 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                 }
             }
         }
-
-        /// <summary>
-        /// Returns all living creatures at the specified screen position.
-        /// </summary>
-        /// <param name="e"></param>
-        /// <returns></returns>
-        private Living GetLivingAtClick(MouseEventArgs e)
-        {
-            Point2D tileLocation = Util.GetMapLocation(e.Position.X, e.Position.Y, RenderingPipe.Dimension, out bool success);
-
-            if (success)
-            {
-                Chunk chunk = World.Dimensions[RenderingPipe.Dimension].GetChunkForLocation(tileLocation.X, tileLocation.Y);
-
-                foreach (Living item in chunk.Creatures)
-                {
-                    if (item.MapLocation == tileLocation)
-                    {
-                        return item;
-                    }
-                }
-            }
-
-            return null;
-        }
     }
 }

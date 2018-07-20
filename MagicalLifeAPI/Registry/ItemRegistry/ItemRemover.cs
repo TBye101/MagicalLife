@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.InternalExceptions;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
@@ -76,7 +77,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
 
                 if (!success)
                 {
-                    throw new Exception("Failed to delete an item!");
+                    throw new RegistryDeletionException("Failed to delete an item!");
                 }
 
                 if (result.Count == 0)
@@ -86,7 +87,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
 
                     if (!succeed)
                     {
-                        throw new Exception("Failed to delete a chunk containing an item!");
+                        throw new RegistryDeletionException("Failed to delete a chunk containing an item!");
                     }
                 }
                 tile.Item = null;

@@ -80,7 +80,7 @@ namespace MagicalLifeAPI.DataTypes
             }
             else
             {
-                throw new Exception("Queue empty!");
+                throw new CollectionEmptyException();
             }
         }
 

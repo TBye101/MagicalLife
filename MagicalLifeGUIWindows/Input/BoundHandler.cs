@@ -33,12 +33,6 @@ namespace MagicalLifeGUIWindows.Input
         private static readonly ClickBoundsSorter ClickBoundsSorter = new ClickBoundsSorter();
 
         /// <summary>
-        /// Anything in game that can be clicked on, that is not considered a menu or popup.
-        /// Ex: a human, a sword.
-        /// </summary>
-        //public static List<ClickBounds> GameObjectBounds = new List<ClickBounds>();
-
-        /// <summary>
         /// Constructs the <see cref="BoundHandler"/> class.
         /// </summary>
         public static void Initialize()
@@ -59,13 +53,11 @@ namespace MagicalLifeGUIWindows.Input
 
         private static void MouseListener_MouseDoubleClicked(object sender, MouseEventArgs e)
         {
-            //MasterLog.DebugWriteLine("Double click detected: " + e.Position.ToString());
             ContainerDoubleClick(e);
         }
 
         private static void MouseListener_MouseClicked(object sender, MouseEventArgs e)
         {
-            //MasterLog.DebugWriteLine("Single click detected: " + e.Position.ToString());
             ContainerClick(e);
         }
 
@@ -190,7 +182,6 @@ namespace MagicalLifeGUIWindows.Input
         private static void DoubleClick(MouseEventArgs clickData, List<GUIElement> Options)
         {
             int focus = -1;
-            //Focus is wrong somehow.
             int length = Options.Count;
             GUIElement item = null;
 

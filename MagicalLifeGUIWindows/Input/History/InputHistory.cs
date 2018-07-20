@@ -93,22 +93,18 @@ namespace MagicalLifeGUIWindows.Input.History
 
         private static void MouseListner_MouseWheelMoved(object sender, MouseEventArgs e)
         {
-            //History.Enqueue(Factory.Generate(new InputEventArgs(ShiftDown, CtrlDown, e)));
         }
 
         private static void MouseListner_MouseDragEnd(object sender, MouseEventArgs e)
         {
-            //History.Enqueue(Factory.Generate(new InputEventArgs(ShiftDown, CtrlDown, e)));
         }
 
         private static void MouseListner_MouseDragStart(object sender, MouseEventArgs e)
         {
-            //History.Enqueue(Factory.Generate(new InputEventArgs(ShiftDown, CtrlDown, e)));
         }
 
         private static void MouseListner_MouseDoubleClicked(object sender, MouseEventArgs e)
         {
-            //History.Enqueue(Factory.Generate(new InputEventArgs(ShiftDown, CtrlDown, e)));
         }
 
         /// <summary>

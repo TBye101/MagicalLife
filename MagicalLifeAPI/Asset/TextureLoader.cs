@@ -32,8 +32,6 @@ namespace MagicalLifeAPI.Asset
         {
             this.TexturesToLoad.Add("Basic Human");
             this.TexturesToLoad.Add("CursorCarrot");
-            this.TexturesToLoad.Add("EndTurnButtonState1");
-            this.TexturesToLoad.Add("EndTurnButtonState2");
             this.TexturesToLoad.Add("MenuBackground");
             this.TexturesToLoad.Add("MenuButton");
             this.TexturesToLoad.Add("TestTile");

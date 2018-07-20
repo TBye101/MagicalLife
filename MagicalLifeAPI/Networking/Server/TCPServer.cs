@@ -41,7 +41,7 @@ namespace MagicalLifeAPI.Networking.Server
 
         private void Server_ClientDisconnected(object sender, System.Net.Sockets.TcpClient e)
         {
-            //MasterLog.DebugWriteLine("Client disconnected");
+            MasterLog.DebugWriteLine("Client disconnected: " + e.Client.RemoteEndPoint.ToString());
         }
 
         private void Server_ClientConnected(object sender, System.Net.Sockets.TcpClient e)
