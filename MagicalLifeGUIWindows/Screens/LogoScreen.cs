@@ -55,6 +55,11 @@ namespace MagicalLifeGUIWindows.Splash
             this.Mask = Color.Black;
         }
 
+        public void Skip()
+        {
+            this.Frames = 0;
+        }
+
         /// <summary>
         /// If true, this splash screen is done showing.
         /// </summary>

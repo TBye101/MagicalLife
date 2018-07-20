@@ -14,6 +14,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 #### GUI
 * Grass textures now connect to form smoother patterns
+* Now showing logos for MonoGame and FMOD
 
 #### Bugs
 * Fixed issue [#17](https://github.com/SneakyTactician/MagicalLife/issues/17)

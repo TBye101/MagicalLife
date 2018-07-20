@@ -150,6 +150,7 @@
     <Compile Include="Input\BoundHandler.cs" />
     <Compile Include="Input\Specialized Handlers\InputHandlers.cs" />
     <Compile Include="Input\Specialized Handlers\LivingMoveOrderInputHandler.cs" />
+    <Compile Include="Input\Specialized Handlers\LogoSkip.cs" />
     <Compile Include="Load\Initializer.cs" />
     <Compile Include="Load\InputLoader.cs" />
     <Compile Include="Load\WindowConfig.cs" />
