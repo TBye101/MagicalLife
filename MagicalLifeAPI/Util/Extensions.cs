@@ -15,10 +15,7 @@ namespace MagicalLifeAPI.Util
 
         public static Point2D ParseString(this Point2D pt, string Point2D)
         {
-            //{ X:[Point2D.X] Y:[Point2D.Y]}
             string[] split = Point2D.Split('Y');
-            //{ X:[Point2D.X]
-            //:[Point2D.Y]}
             string xString = split[0];
             string yString = split[1];
 

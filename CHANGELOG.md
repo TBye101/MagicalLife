@@ -8,6 +8,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 * Added internal support for having items in tiles
 * Added item addition, removal, and search functionality
 * Added a grass tile
+* Added the stone chunk item
 
 #### Server
 * Seperated server loading and server starting into two seperate commands

@@ -59,13 +59,11 @@ namespace MagicalLifeGUIWindows.Input
 
         private static void MouseListener_MouseDoubleClicked(object sender, MouseEventArgs e)
         {
-            //MasterLog.DebugWriteLine("Double click detected: " + e.Position.ToString());
             ContainerDoubleClick(e);
         }
 
         private static void MouseListener_MouseClicked(object sender, MouseEventArgs e)
         {
-            //MasterLog.DebugWriteLine("Single click detected: " + e.Position.ToString());
             ContainerClick(e);
         }
 

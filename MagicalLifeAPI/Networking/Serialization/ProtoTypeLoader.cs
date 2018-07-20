@@ -75,9 +75,6 @@ namespace MagicalLifeAPI.Networking.Serialization
                 i++;
             }
 
-            //ProtoUtil.TypeModel = RuntimeTypeModel.Default.
-            //ProtoUtil.TypeModel = current.Compile();
-            //ProtoUtil.TypeModel
             ProtoUtil.TypeModel = current;
         }
     }

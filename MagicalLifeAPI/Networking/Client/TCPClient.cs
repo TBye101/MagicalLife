@@ -10,7 +10,7 @@ namespace MagicalLifeAPI.Networking.Client
     {
         public SimpleTcpClient Client;
 
-        public void Start(int port, string ip = "192.168.0.15")
+        public void Start(int port, string ip)
         {
             this.Client = new SimpleTcpClient();
             this.Client.DataReceived += this.Client_DataReceived;
