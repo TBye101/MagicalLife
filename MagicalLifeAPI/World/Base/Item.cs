@@ -73,11 +73,11 @@ namespace MagicalLifeAPI.World.Base
         {
             if (this.CurrentlyStacked < 1)
             {
-                throw new Exception("Error: Cannot have an item with 0 items");
+                throw new ArgumentOutOfRangeException("Error: Cannot have an item with 0 items");
             }
             if (this.StackableLimit < 1)
             {
-                throw new Exception("Error: Must be able to stack at least one item");
+                throw new ArgumentOutOfRangeException("Error: Must be able to stack at least one item");
             }
         }
 
@@ -114,7 +114,7 @@ namespace MagicalLifeAPI.World.Base
             }
             else
             {
-                throw new Exception("Error: Combining two items of different types is impossible to store.");
+                throw new InvalidOperationException("Error: Combining two items of different types is impossible to store.");
             }
         }
     }

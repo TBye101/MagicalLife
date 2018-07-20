@@ -40,7 +40,7 @@ namespace MagicalLifeGUIWindows.Rendering.Text
                 {
                     MasterLog.DebugWriteLine("lastPassing = -1");
                 }
-                throw new Exception("Cannot possibly draw string in allotted space.");
+                throw new ArgumentException("Cannot possibly draw string in allotted space.");
             }
             else
             {

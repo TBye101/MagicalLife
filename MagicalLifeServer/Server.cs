@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Filing;
+using MagicalLifeAPI.InternalExceptions;
 using MagicalLifeAPI.Load;
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Messages;
@@ -57,7 +58,7 @@ namespace MagicalLifeServer
                     break;
 
                 default:
-                    throw new Exception("Unexpected networking mode initiated!");
+                    throw new UnexpectedEnumMemberException();
             }
         }
 

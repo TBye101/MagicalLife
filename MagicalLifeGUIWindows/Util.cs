@@ -32,7 +32,7 @@ namespace MagicalLifeGUIWindows
             else
             {
                 success = false;
-                throw new System.Exception("Map location doesn't exist!");
+                throw new System.ArgumentException("Map location doesn't exist!");
             }
         }
     }

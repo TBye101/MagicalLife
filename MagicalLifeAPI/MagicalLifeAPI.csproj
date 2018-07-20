@@ -148,7 +148,9 @@
     <Compile Include="Filing\Setting.cs" />
     <Compile Include="Filing\SettingsManager.cs" />
     <Compile Include="InternalExceptions\CollectionEmptyException.cs" />
+    <Compile Include="InternalExceptions\DuplicateEntryException.cs" />
     <Compile Include="InternalExceptions\InvalidPathException.cs" />
+    <Compile Include="InternalExceptions\RegistryDeletionException.cs" />
     <Compile Include="InternalExceptions\ResourceMissingException.cs" />
     <Compile Include="InternalExceptions\UnexpectedEnumMemberException.cs" />
     <Compile Include="Load\ItemLoader.cs" />

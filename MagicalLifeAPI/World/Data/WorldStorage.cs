@@ -63,7 +63,7 @@ namespace MagicalLifeAPI.World.Data
 
             if (!dimensionExists)
             {
-                throw new Exception("Dimension save folder does not exist!");
+                throw new DirectoryNotFoundException("Dimension save folder does not exist!");
             }
 
             using (FileStream fs = File.Create(path + chunk.ChunkLocation.ToString() + ".chunk"))
@@ -102,7 +102,7 @@ namespace MagicalLifeAPI.World.Data
 
             if (!dimensionExists)
             {
-                throw new Exception("Dimension save folder does not exist!");
+                throw new DirectoryNotFoundException("Dimension save folder does not exist!");
             }
 
             using (StreamReader sr = new StreamReader(path + chunkLocation.ToString() + ".chunk"))
