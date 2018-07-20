@@ -72,10 +72,10 @@ namespace MagicalLifeGUIWindows.Splash
         public void Draw(ref SpriteBatch spBatch)
         {
             spBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
-            spBatch.Draw(this.Logo, this.DisplayZone.Center.ToVector2(), null, this.CalculateMask(), 0,
-                new Vector2(this.Logo.Width / 2, this.Logo.Height / 2), 1.0f, SpriteEffects.None, 1.0f);
-            //spBatch.Draw(this.Logo, this.DisplayZone, RenderingPipe.colorMask);
+
+            spBatch.Draw(this.Logo, this.DisplayZone.Center.ToVector2(), null, this.CalculateMask(), 0, new Vector2(this.Logo.Width / 2, this.Logo.Height / 2), 1.0f, SpriteEffects.None, 1.0f);
             SimpleTextRenderer.DrawString(this.Font, this.Text, this.TextZone, SimpleTextRenderer.Alignment.Left, RenderingPipe.colorMask, ref spBatch);
+
             this.Frames--;
             spBatch.End();
         }
