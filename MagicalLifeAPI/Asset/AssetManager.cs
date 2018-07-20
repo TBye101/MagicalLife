@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using MagicalLifeAPI.InternalExceptions;
+using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Asset
@@ -38,7 +39,7 @@ namespace MagicalLifeAPI.Asset
                 }
             }
 
-            throw new System.Exception("Texture index not found! Texture: " + name);
+            throw new ResourceMissingException("Texture index not found! Texture: " + name);
         }
     }
 }

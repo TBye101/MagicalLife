@@ -149,6 +149,8 @@
     <Compile Include="Filing\SettingsManager.cs" />
     <Compile Include="InternalExceptions\CollectionEmptyException.cs" />
     <Compile Include="InternalExceptions\InvalidPathException.cs" />
+    <Compile Include="InternalExceptions\ResourceMissingException.cs" />
+    <Compile Include="InternalExceptions\UnexpectedEnumMemberException.cs" />
     <Compile Include="Load\ItemLoader.cs" />
     <Compile Include="Registry\ItemRegistry\ItemAdder.cs" />
     <Compile Include="Registry\ItemRegistry\ItemFinder.cs" />
