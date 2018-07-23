@@ -40,6 +40,11 @@ namespace MagicalLifeClient.Entity
                                 {
                                     EntityWorldMovement.MoveEntity(ref l);
                                 }
+
+                                if (l.Task != null)
+                                {
+                                    l.Task.DoJob(l);
+                                }
                             }
                         }
                     }

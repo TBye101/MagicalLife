@@ -2,6 +2,7 @@
 using MagicalLifeAPI.DataTypes.Attribute;
 using MagicalLifeAPI.Entities.Eventing;
 using MagicalLifeAPI.Entities.Util;
+using MagicalLifeAPI.Entity.AI.Job;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Pathfinding;
@@ -47,6 +48,9 @@ namespace MagicalLifeAPI.Entities
         /// </summary>
         [ProtoMember(5)]
         public int Dimension { get; set; }
+
+        [ProtoMember(6)]
+        public Job Task { get; set; }
 
         /// <summary>
         /// Raised when a <see cref="Living"/> is created.

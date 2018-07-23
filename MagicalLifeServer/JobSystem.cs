@@ -75,7 +75,6 @@ namespace MagicalLifeAPI.Entity.AI.Job
         private void StartJob(Job job, Living living)
         {
             ServerSendRecieve.Send(new JobAssignedMessage(living, job), this.PlayerID);
-            job.BeginJob(living);
         }
 
         public void AddJob(Job job)
