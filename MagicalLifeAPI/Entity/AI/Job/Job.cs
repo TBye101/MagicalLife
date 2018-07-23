@@ -1,5 +1,7 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
+using MagicalLifeAPI.Networking.Client;
+using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Universal;
 using ProtoBuf;
 using System;
@@ -19,18 +21,18 @@ namespace MagicalLifeAPI.Entity.AI.Job
         /// <summary>
         /// Raised by a job when all of its dependencies have been completed, and the job is ready to be done by a worker.
         /// </summary>
-        public event EventHandler<Job> DependenciesResolved;
+        public event EventHandler<Guid> DependenciesResolved;
 
         /// <summary>
         /// Raised by a job when it is done.
         /// </summary>
-        public event EventHandler<Job> JobComplete;
+        public event EventHandler<Guid> JobComplete;
 
         /// <summary>
         /// The dependencies that must be resolved before this job can begin.
         /// </summary>
         [ProtoMember(1)]
-        public List<Job> Dependencies { get; private set; }
+        public Dictionary<Guid, Job> Dependencies { get; private set; }
 
         /// <summary>
         /// The ID of the creature that is assigned to do this job.
@@ -44,37 +46,42 @@ namespace MagicalLifeAPI.Entity.AI.Job
         [ProtoMember(4)]
         public Point2D Location { get; private set; }
 
-        public Job(List<Job> dependencies)
+        public Job(Dictionary<Guid, Job> dependencies)
         {
             this.Dependencies = dependencies;
 
-            foreach (Job item in this.Dependencies)
+            foreach (KeyValuePair<Guid, Job> item in this.Dependencies)
             {
-                item.JobComplete += this.Item_JobComplete;
+                item.Value.JobComplete += this.Item_JobComplete;
             }
         }
 
-        private void Item_JobComplete(object sender, Job e)
+        public void RaiseJobCompleted(Guid ID)
+        {
+            this.JobComplete?.Invoke(this, ID);
+        }
+
+        private void Item_JobComplete(object sender, Guid e)
         {
             this.Dependencies.Remove(e);
 
             if (this.Dependencies.Count == 0)
             {
-                this.DependenciesResolvedHandler(this);
+                this.DependenciesResolvedHandler(this.ID);
             }
         }
 
-        private void DependenciesResolvedHandler(Job job)
+        private void DependenciesResolvedHandler(Guid id)
         {
-            this.DependenciesResolved?.Invoke(this, job);
+            this.DependenciesResolved?.Invoke(this, id);
         }
 
         /// <summary>
-        /// This method should be called whenever this job is done.
+        /// This method should be called by the client whenever this job is done.
         /// </summary>
         protected void CompleteJob()
         {
-            this.JobComplete?.Invoke(this, this);
+            ClientSendRecieve.Send<JobCompletedMessage>(new JobCompletedMessage(this.ID));
         }
 
         public Job()

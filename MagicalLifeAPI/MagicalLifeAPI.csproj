@@ -156,6 +156,7 @@
     <Compile Include="InternalExceptions\UnexpectedEnumMemberException.cs" />
     <Compile Include="Load\ItemLoader.cs" />
     <Compile Include="Networking\Messages\JobAssignedMessage.cs" />
+    <Compile Include="Networking\Messages\JobCompletedMessage.cs" />
     <Compile Include="Networking\Messages\LoginMessage.cs" />
     <Compile Include="Registry\ItemRegistry\ItemAdder.cs" />
     <Compile Include="Registry\ItemRegistry\ItemFinder.cs" />
@@ -255,6 +256,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Networking\Messages\ID Chart.md" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

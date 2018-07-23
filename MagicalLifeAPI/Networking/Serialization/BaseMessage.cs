@@ -16,9 +16,16 @@ namespace MagicalLifeAPI.Networking.Serialization
         [ProtoMember(1)]
         public UInt16 ID { get; }
 
+        /// <summary>
+        /// The ID of the player that sent this message.
+        /// </summary>
+        [ProtoMember(2)]
+        public Guid PlayerID { get; }
+
         public BaseMessage(UInt16 id)
         {
             this.ID = id;
+            this.PlayerID = MagicalLifeSettings.Storage.Player.Default.PlayerID;
         }
 
         public BaseMessage()

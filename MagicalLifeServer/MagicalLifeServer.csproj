@@ -60,8 +60,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="JobSystem.cs" />
+    <Compile Include="JobSystem\JobSystem.cs" />
+    <Compile Include="JobSystem\JobSystemManager.cs" />
     <Compile Include="Load\MainLoad.cs" />
+    <Compile Include="Processing\Message Handlers\JobCompletedMessageHandler.cs" />
     <Compile Include="Processing\Message Handlers\RouteCreatedMessageHandler.cs" />
     <Compile Include="Processing\ServerProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
