@@ -27,6 +27,7 @@ namespace MagicalLifeAPI.Sound
             string fullPath = System.IO.Path.GetFullPath("fmod64.dll");
             LoadLibrary(fullPath);
             Instance = new EffectPlayer();
+            
 
             //Effect_Test1 = RegisterEffect("Content/SFX/Test1.flac");
             //Effect_Test2 = RegisterEffect("Content/SFX/Test2.flac");
