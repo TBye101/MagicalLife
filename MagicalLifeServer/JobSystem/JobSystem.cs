@@ -73,11 +73,51 @@ namespace MagicalLifeServer.JobSystem
 
         protected void CommonSetup()
         {
-            MagicalLifeServer.Server.ServerTick += this.Server_ServerTick;
         }
 
-        private void Server_ServerTick(object sender, ulong e)
+        /// <summary>
+        /// Every tick this method assigns jobs to workers who do not have jobs, if possible.
+        /// </summary>
+        public void ManageJobs()
         {
+            int i = 0;
+
+            while (i != this.Idle.Count)
+            {
+                Living worker = this.Idle[i];
+
+                bool result = AssignJob(worker);
+
+                if (result)
+                {
+                    this.Idle.RemoveAt(i);
+                    this.Busy.Add(worker);
+                }
+                else
+                {
+                    i++;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Assigns a job that the creature is capable of doing. Returns whether or not this operation succeeded. 
+        /// </summary>
+        /// <param name="living"></param>
+        /// <returns></returns>
+        private bool AssignJob(Living living)
+        {
+            if (this.NoDependencies.Count > 0)
+            {
+                IEnumerable<KeyValuePair<Guid, Job>> result = this.NoDependencies.Take(1);
+                KeyValuePair<Guid, Job> one = result.First();
+                this.InProgress.Add(one.Key, one.Value);
+                this.StartJob(one.Value, living);
+
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>

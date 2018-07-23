@@ -20,7 +20,15 @@ namespace MagicalLifeServer.JobSystem
 
         public JobSystemManager()
         {
+            Server.ServerTick += this.Server_ServerTick;
+        }
 
+        private void Server_ServerTick(object sender, ulong e)
+        {
+            foreach (KeyValuePair<Guid, JobSystem> item in this.PlayerToJobSystem)
+            {
+                item.Value.ManageJobs();
+            }
         }
     }
 }
