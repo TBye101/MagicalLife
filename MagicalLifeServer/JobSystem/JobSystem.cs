@@ -45,23 +45,22 @@ namespace MagicalLifeServer.JobSystem
         /// All of the workers in this list have a job and are working on it.
         /// </summary>
         [ProtoMember(5)]
-        public List<Living> Busy { get; private set; }
+        public Dictionary<Guid, Living> Busy { get; private set; }
 
         /// <summary>
         /// All of the workers in this list need a job.
         /// </summary>
-        public List<Living> Idle { get; private set; }
+        public Dictionary<Guid, Living> Idle { get; private set; }
 
-        public JobSystem(List<Living> workers, Guid playerID)
+        public JobSystem(Dictionary<Guid, Living> workers, Guid playerID)
         {
             this.NoDependencies = new Dictionary<Guid, Job>();
             this.WithDependencies = new Dictionary<Guid, Job>();
             this.InProgress = new Dictionary<Guid, Job>();
+            this.Busy = new Dictionary<Guid, Living>();
+            this.Idle = new Dictionary<Guid, Living>();
 
-            this.Busy = new List<Living>();
-            this.Idle = new List<Living>();
-
-            this.Idle.AddRange(workers);
+            this.Idle = workers;
             this.PlayerID = playerID;
             this.CommonSetup();
         }
@@ -84,14 +83,14 @@ namespace MagicalLifeServer.JobSystem
 
             while (i != this.Idle.Count)
             {
-                Living worker = this.Idle[i];
+                Living worker = this.Idle.ElementAt(i).Value;
 
                 bool result = AssignJob(worker);
 
                 if (result)
                 {
-                    this.Idle.RemoveAt(i);
-                    this.Busy.Add(worker);
+                    this.Idle.Remove(worker.ID);
+                    this.Busy.Add(worker.ID, worker);
                 }
                 else
                 {
@@ -111,6 +110,7 @@ namespace MagicalLifeServer.JobSystem
             {
                 IEnumerable<KeyValuePair<Guid, Job>> result = this.NoDependencies.Take(1);
                 KeyValuePair<Guid, Job> one = result.First();
+                one.Value.AssignJob(living);
                 this.InProgress.Add(one.Key, one.Value);
                 this.StartJob(one.Value, living);
 
@@ -127,7 +127,13 @@ namespace MagicalLifeServer.JobSystem
         public void MarkJobAsComplete(Guid ID)
         {
             this.InProgress[ID].RaiseJobCompleted(ID);
+            Guid workerID = this.InProgress[ID].AssignedWorker;
+
             this.InProgress.Remove(ID);
+            Living worker = this.Busy[workerID];
+
+            this.Busy.Remove(workerID);
+            this.Idle.Add(workerID, worker);
         }
 
         private void StartJob(Job job, Living living)
