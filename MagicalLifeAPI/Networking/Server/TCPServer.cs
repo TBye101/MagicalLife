@@ -1,7 +1,10 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
+using ProtoBuf;
 using SimpleTCP;
+using System;
+using System.Collections.Generic;
 using System.Net.Sockets;
 
 namespace MagicalLifeAPI.Networking.Server
@@ -13,6 +16,8 @@ namespace MagicalLifeAPI.Networking.Server
     public class TCPServer
     {
         public SimpleTcpServer Server = new SimpleTcpServer();
+
+        private readonly Dictionary<Guid, Socket> PlayerToSocket = new Dictionary<Guid, Socket>();
 
         public TCPServer()
         {
@@ -37,6 +42,16 @@ namespace MagicalLifeAPI.Networking.Server
 
         private void Server_DataReceived(object sender, Message e)
         {
+            BaseMessage msg = ProtoUtil.Deserialize(e.Data);
+
+            if (msg is LoginMessage login)
+            {
+                this.PlayerToSocket.Add(login.PlayerID, e.TcpClient.Client);
+            }
+            else
+            {
+                ServerSendRecieve.Recieve(msg);
+            }
         }
 
         private void Server_ClientDisconnected(object sender, System.Net.Sockets.TcpClient e)
@@ -61,6 +76,12 @@ namespace MagicalLifeAPI.Networking.Server
             where T : BaseMessage
         {
             client.Send(ProtoUtil.Serialize<T>(data));
+        }
+
+        public void Send<T>(T data, Guid player)
+            where T : BaseMessage
+        {
+            this.PlayerToSocket[player].Send(ProtoUtil.Serialize<T>(data));
         }
 
         /// <summary>

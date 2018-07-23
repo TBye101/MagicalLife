@@ -145,6 +145,7 @@
     <Compile Include="DataTypes\R-Tree\Point.cs" />
     <Compile Include="DataTypes\R-Tree\Rectangle.cs" />
     <Compile Include="DataTypes\R-Tree\RTree.cs" />
+    <Compile Include="Entity\AI\Job\Job.cs" />
     <Compile Include="Filing\Setting.cs" />
     <Compile Include="Filing\SettingsManager.cs" />
     <Compile Include="InternalExceptions\CollectionEmptyException.cs" />
@@ -154,6 +155,8 @@
     <Compile Include="InternalExceptions\ResourceMissingException.cs" />
     <Compile Include="InternalExceptions\UnexpectedEnumMemberException.cs" />
     <Compile Include="Load\ItemLoader.cs" />
+    <Compile Include="Networking\Messages\JobAssignedMessage.cs" />
+    <Compile Include="Networking\Messages\LoginMessage.cs" />
     <Compile Include="Registry\ItemRegistry\ItemAdder.cs" />
     <Compile Include="Registry\ItemRegistry\ItemFinder.cs" />
     <Compile Include="Registry\ItemRegistry\ItemRegistry.cs" />
@@ -246,6 +249,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Components\Item\" />
+    <Folder Include="Entity\AI\Job\Jobs\" />
     <Folder Include="Entity\Animal\" />
     <Folder Include="Entity\Entity Components\" />
   </ItemGroup>
@@ -264,6 +268,12 @@
     <Content Include="..\Included DLL\fmod64.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MagicalLifeSettings\MagicalLifeSettings.csproj">
+      <Project>{76b12b63-df5d-40fd-8e90-03395095dd71}</Project>
+      <Name>MagicalLifeSettings</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />

@@ -4,6 +4,7 @@ using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Universal;
 using MagicalLifeGUIWindows.Input.History;
 using MagicalLifeGUIWindows.Input.Specialized_Handlers;
+using System;
 
 namespace MagicalLifeGUIWindows.Load
 {
@@ -11,6 +12,11 @@ namespace MagicalLifeGUIWindows.Load
     {
         public void InitialStartup()
         {
+            if (MagicalLifeSettings.Storage.Player.Default.PlayerID == Guid.Empty)
+            {
+                MagicalLifeSettings.Storage.Player.Default.PlayerID = Guid.NewGuid();
+            }
+
             InputHistory.Initialize();
             InputHandlers.Initialize();
             SettingsManager.Initialize();

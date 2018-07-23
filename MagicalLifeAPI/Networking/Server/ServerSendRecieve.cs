@@ -56,6 +56,19 @@ namespace MagicalLifeAPI.Networking.Server
             }
         }
 
+        public static void Send<T>(T message, Guid player)
+            where T : BaseMessage
+        {
+            if (Local == EngineMode.ServerAndClient)
+            {
+                ClientSendRecieve.Recieve(message);
+            }
+            else
+            {
+                TCPServer.Send(message, player);
+            }
+        }
+
         /// <summary>
         /// Sends a message to all connected clients.
         /// </summary>
