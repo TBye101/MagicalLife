@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -207,6 +207,7 @@
     <Compile Include="Load\LoadMoniter.cs" />
     <Compile Include="Settings\AudioSettings.cs" />
     <Compile Include="Sound\EffectPlayer.cs" />
+    <Compile Include="Sound\FMODUtil.cs" />
     <Compile Include="Sound\FMOD\fmod.cs" />
     <Compile Include="Sound\FMOD\fmod_dsp.cs" />
     <Compile Include="Sound\FMOD\fmod_errors.cs" />
@@ -256,8 +257,6 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-
-
   <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
     <Content Include="..\Included DLL\fmodstudio64.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -268,7 +267,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
   <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
     <Content Include="..\Included DLL\fmod64.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

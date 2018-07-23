@@ -30,6 +30,7 @@ namespace MagicalLifeAPI.Sound
 
             MusicPlayer.SONG_MAIN_MENU = Instance.LoadSong("MainMenu1");
             //Instance.Play(SONG_MAIN_MENU);
+            FMODUtil.Test();
         }
 
         public void Unload()
