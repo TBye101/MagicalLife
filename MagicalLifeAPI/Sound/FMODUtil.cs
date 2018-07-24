@@ -30,9 +30,9 @@ namespace MagicalLifeAPI.Sound
             }
         }
 
-        private static Bank MainBank;
+        //private static Bank MainBank;
 
-        private static Bank MainBankStrings;
+        //private static Bank MainBankStrings;
 
         private static EventDescription[] MainEvents;
 
@@ -42,8 +42,8 @@ namespace MagicalLifeAPI.Sound
             _System.getLowLevelSystem(out FMOD.System low);
             low.setSoftwareFormat(0, FMOD.SPEAKERMODE._7POINT1, 0);
             _System.initialize(1, FMOD.Studio.INITFLAGS.NORMAL, FMOD.INITFLAGS.NORMAL, IntPtr.Zero);
-            _System.loadBankFile(FileSystemManager.RootDirectory + "/Content/Banks/Master_Bank.bank", FMOD.Studio.LOAD_BANK_FLAGS.NORMAL, out MainBank);
-            _System.loadBankFile(FileSystemManager.RootDirectory + "/Content/Banks/Master_Bank.strings.bank", LOAD_BANK_FLAGS.NORMAL, out MainBankStrings);
+            _System.loadBankFile(FileSystemManager.RootDirectory + "/Content/Banks/Master_Bank.bank", FMOD.Studio.LOAD_BANK_FLAGS.NORMAL, out Bank MainBank);
+            _System.loadBankFile(FileSystemManager.RootDirectory + "/Content/Banks/Master_Bank.strings.bank", LOAD_BANK_FLAGS.NORMAL, out Bank MainBankStrings);
             MainBank.getEventList(out MainEvents);
             DumpEventInformation();
         }
