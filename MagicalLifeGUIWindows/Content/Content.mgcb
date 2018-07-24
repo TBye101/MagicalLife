@@ -385,9 +385,9 @@
 /processorParam:TextureFormat=Color
 /build:Logo/MonoGameLogo.png
 
-#begin Banks/Master Bank.bank
-/copy:Banks/Master Bank.bank
+#begin Banks/Master_Bank.bank
+/copy:Banks/Master_Bank.bank
 
-#begin Banks/Master Bank.strings.bank
-/copy:Banks/Master Bank.strings.bank
+#begin Banks/Master_Bank.strings.bank
+/copy:Banks/Master_Bank.strings.bank
 
