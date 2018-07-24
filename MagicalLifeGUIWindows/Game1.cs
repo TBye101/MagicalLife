@@ -122,7 +122,6 @@ namespace MagicalLifeGUIWindows
             base.Update(gameTime);
         }
 
-        int test = 0;
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>

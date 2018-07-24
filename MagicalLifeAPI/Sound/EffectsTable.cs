@@ -11,8 +11,8 @@ namespace MagicalLifeAPI.Sound
     /// </summary>
     public static class EffectsTable
     {
-        public const string PickaxeHit = "event:/Pickaxe_Hit";
-        public const string UIClick = "event:/UI/Click";
-        public const string FootSteps = "event:/Footsteps";
+        public static readonly string PickaxeHit = "event:/Pickaxe_Hit";
+        public static readonly string UIClick = "event:/UI/Click";
+        public static readonly string FootSteps = "event:/Footsteps";
     }
 }
