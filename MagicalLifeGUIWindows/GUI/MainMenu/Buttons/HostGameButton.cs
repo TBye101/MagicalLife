@@ -1,4 +1,5 @@
-﻿using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeAPI.Sound;
+using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 
@@ -12,6 +13,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
 
         public override void Click(MouseEventArgs e)
         {
+            FMODUtil.RaiseEvent(EffectsTable.UIClick);
             Host_Game_Menu.HostGameMenu.Initialize();
         }
 
