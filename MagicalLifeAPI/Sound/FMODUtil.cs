@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Sound
@@ -23,15 +24,25 @@ namespace MagicalLifeAPI.Sound
             FMOD.RESULT result = a.loadBankFile(FileSystemManager.RootDirectory + "/Content/Banks/Master_Bank.bank", FMOD.Studio.LOAD_BANK_FLAGS.NORMAL, out Bank testBank);
             FMOD.RESULT result10 = a.loadBankFile(FileSystemManager.RootDirectory + "/Content/Banks/Master_Bank.strings.bank", LOAD_BANK_FLAGS.NORMAL, out Bank bank);
 
-
             FMOD.RESULT result9 = testBank.loadSampleData();
             FMOD.RESULT result5 = testBank.getEventList(out EventDescription[] someArray);
+            someArray.ElementAt(0).getID(out Guid id);
+            a.getEventByID(id, out EventDescription eventDescription);
+            eventDescription.createInstance(out EventInstance instance);
             //FMOD.RESULT result12 = someArray[0].setCallback(testmethod, EVENT_CALLBACK_TYPE.STARTED);
             //FMOD.RESULT result8 = someArray[0].loadSampleData();
-            FMOD.RESULT result4 = someArray[0].createInstance(out EventInstance instance);
+            //FMOD.RESULT result4 = someArray[0].createInstance(out EventInstance instance);
             FMOD.RESULT result3 = instance.setVolume(1F);
             FMOD.RESULT result2 = instance.start();
             //FMOD.Studio.EVENT_CALLBACK
+
+            while (true)
+            {
+                Thread.Sleep(1);
+
+                // Update the playback system
+                a.update();
+            }
         }
 
         //private static FMOD.RESULT testmethod(FMOD.Studio.EVENT_CALLBACK_TYPE type, IntPtr eventInstance, IntPtr parameters)
