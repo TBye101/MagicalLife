@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Server;
+using MagicalLifeAPI.Sound;
 using MagicalLifeGUIWindows.GUI.New_World_Menu;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
@@ -28,6 +29,7 @@ namespace MagicalLifeGUIWindows.GUI.Host_Game_Menu.Buttons
 
         public override void Click(MouseEventArgs e)
         {
+            FMODUtil.RaiseEvent(EffectsTable.UIClick);
             int port = int.Parse(HostGameMenu.menu.HostPortInputBox.Text);
             ServerSendRecieve.Initialize(new NetworkSettings(port));
             ClientSendRecieve.Initialize(new NetworkSettings(ServerSendRecieve.TCPServer.Server.GetListeningIPs()[0].ToString(), port));

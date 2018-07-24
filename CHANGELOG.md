@@ -9,6 +9,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 * Added item addition, removal, and search functionality
 * Added a grass tile
 * Added the stone chunk item
+* Added internal support for sfx/sound events
 
 #### Server
 * Seperated server loading and server starting into two seperate commands
@@ -16,6 +17,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 #### GUI
 * Grass textures now connect to form smoother patterns
 * Now showing logos for MonoGame and FMOD
+* Buttons now play a clicking sound when clicked upon
 
 #### Bugs
 * Fixed issue [#17](https://github.com/SneakyTactician/MagicalLife/issues/17)

@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Networking.Client;
+using MagicalLifeAPI.Sound;
 using MagicalLifeClient;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;
@@ -24,6 +25,7 @@ namespace MagicalLifeGUIWindows.GUI.Join_Game_Menu.Buttons
 
         public override void Click(MouseEventArgs e)
         {
+            FMODUtil.RaiseEvent(EffectsTable.UIClick);
             ClientSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(JoinGameMenu.menu.IpInputBox.Text, int.Parse(JoinGameMenu.menu.PortInputBox.Text)));
             Client.Load();
             MenuHandler.Clear();
