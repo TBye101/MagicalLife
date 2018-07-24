@@ -30,10 +30,6 @@ namespace MagicalLifeAPI.Sound
             }
         }
 
-        //private static Bank MainBank;
-
-        //private static Bank MainBankStrings;
-
         private static EventDescription[] MainEvents;
 
         public static void Init()
