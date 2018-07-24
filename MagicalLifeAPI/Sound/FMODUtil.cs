@@ -1,5 +1,7 @@
-﻿using FMOD.Studio;
+﻿using FMOD;
+using FMOD.Studio;
 using MagicalLifeAPI.Filing;
+using MagicalLifeAPI.Filing.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,35 +23,44 @@ namespace MagicalLifeAPI.Sound
 
         public static Bank MainBankStrings;
 
+        public static EventDescription[] MainEvents;
+
         public static void Init()
         {
-            FMOD.RESULT result7 = FMOD.Studio.System.create(out System);
+            FMOD.Studio.System.create(out System);
             System.getLowLevelSystem(out FMOD.System low);
-            FMOD.RESULT result11 = low.setSoftwareFormat(0, FMOD.SPEAKERMODE._7POINT1, 0);
-            FMOD.RESULT result6 = System.initialize(1, INITFLAGS.NORMAL, FMOD.INITFLAGS.NORMAL, IntPtr.Zero);
-            FMOD.RESULT result = System.loadBankFile(FileSystemManager.RootDirectory + "/Content/Banks/Master_Bank.bank", FMOD.Studio.LOAD_BANK_FLAGS.NORMAL, out MainBank);
-            FMOD.RESULT result10 = System.loadBankFile(FileSystemManager.RootDirectory + "/Content/Banks/Master_Bank.strings.bank", LOAD_BANK_FLAGS.NORMAL, out MainBankStrings);
+            low.setSoftwareFormat(0, FMOD.SPEAKERMODE._7POINT1, 0);
+            System.initialize(1, FMOD.Studio.INITFLAGS.NORMAL, FMOD.INITFLAGS.NORMAL, IntPtr.Zero);
+            System.loadBankFile(FileSystemManager.RootDirectory + "/Content/Banks/Master_Bank.bank", FMOD.Studio.LOAD_BANK_FLAGS.NORMAL, out MainBank);
+            System.loadBankFile(FileSystemManager.RootDirectory + "/Content/Banks/Master_Bank.strings.bank", LOAD_BANK_FLAGS.NORMAL, out MainBankStrings);
+            MainBank.getEventList(out MainEvents);
+            DumpEventInformation();
+        }
+
+        /// <summary>
+        /// Raises the specified event.
+        /// </summary>
+        /// <param name="eventPath">The path to the event in a bank file. Ex: event:/Footsteps</param>
+        public static void RaiseEvent(string eventPath)
+        {
+            System.getEvent(eventPath, out EventDescription _event);
+            _event.createInstance(out EventInstance instance);
+            instance.start();
         }
 
         public static void Test()
         {
+        }
 
-
-            FMOD.RESULT result9 = MainBank.loadSampleData();
-            FMOD.RESULT result5 = MainBank.getEventList(out EventDescription[] someArray);
-            someArray.ElementAt(0).getID(out Guid id);
-            System.getEventByID(id, out EventDescription eventDescription);
-            eventDescription.createInstance(out EventInstance instance);
-            FMOD.RESULT result3 = instance.setVolume(1F);
-            FMOD.RESULT result2 = instance.start();
-
-            while (true)
+        public static void DumpEventInformation()
+        {
+            MasterLog.DebugWriteLine("Dumping Sound Events");
+            foreach (EventDescription item in MainEvents)
             {
-                Thread.Sleep(1);
-
-                // Update the playback system
-                System.update();
+                item.getPath(out string path);
+                MasterLog.DebugWriteLine(path);
             }
+            MasterLog.DebugWriteLine("End of Sound Events");
         }
     }
 }
