@@ -146,6 +146,8 @@
     <Compile Include="DataTypes\R-Tree\Rectangle.cs" />
     <Compile Include="DataTypes\R-Tree\RTree.cs" />
     <Compile Include="Entity\AI\Job\Job.cs" />
+    <Compile Include="Entity\AI\Job\Jobs\MineJob.cs" />
+    <Compile Include="Entity\AI\Job\Jobs\MoveJob.cs" />
     <Compile Include="Filing\Setting.cs" />
     <Compile Include="Filing\SettingsManager.cs" />
     <Compile Include="InternalExceptions\CollectionEmptyException.cs" />
@@ -233,7 +235,7 @@
     <Compile Include="World\Data\ComplexItemStack.cs" />
     <Compile Include="World\Data\WorldStorage.cs" />
     <Compile Include="World\Items\StoneChunk.cs" />
-    <Compile Include="World\Resources\MarbleResource.cs" />
+    <Compile Include="World\Resources\Stone.cs" />
     <Compile Include="World\Resources\StoneBase.cs" />
     <Compile Include="World\TileEventArg.cs" />
     <Compile Include="World\Tiles\ConnectedGrass.cs" />
@@ -250,7 +252,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Components\Item\" />
-    <Folder Include="Entity\AI\Job\Jobs\" />
     <Folder Include="Entity\Animal\" />
     <Folder Include="Entity\Entity Components\" />
   </ItemGroup>

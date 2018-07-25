@@ -17,7 +17,7 @@ namespace MagicalLifeAPI.Networking.Client
             this.Client.DataReceived += this.Client_DataReceived;
 
             this.Client.Connect(ip, port);
-            this.Send<LoginMessage>(new LoginMessage(MagicalLifeSettings.Storage.Player.Default.PlayerID));
+            this.Send<LoginMessage>(new LoginMessage());
         }
 
         private void Client_DataReceived(object sender, Message e)

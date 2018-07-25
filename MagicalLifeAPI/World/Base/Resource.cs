@@ -15,10 +15,10 @@ namespace MagicalLifeAPI.World
     [ProtoInclude(1, typeof(StoneBase))]
     public abstract class Resource : HasTexture, IHasSubclasses
     {
-        public Resource(string name, int count)
+        public Resource(string name, int durability)
         {
-            this.Name = name;
-            this.Count = count;
+            this.DisplayName = name;
+            this.Durability = durability;
         }
 
         public Resource()
@@ -29,13 +29,13 @@ namespace MagicalLifeAPI.World
         /// The display name of the resource.
         /// </summary>
         [ProtoMember(2)]
-        public string Name { get; }
+        public string DisplayName { get; }
 
         /// <summary>
         /// How much of the resources is left.
         /// </summary>
         [ProtoMember(3)]
-        public int Count { get; }
+        public int Durability { get; }
 
         public Type GetBaseType()
         {
@@ -46,7 +46,7 @@ namespace MagicalLifeAPI.World
         {
             Dictionary<Type, int> ret = new Dictionary<Type, int>
             {
-                { typeof(MarbleResource), 1 }
+                { typeof(Stone), 1 }
             };
             return ret;
         }

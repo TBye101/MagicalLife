@@ -10,15 +10,7 @@ namespace MagicalLifeAPI.Networking.Messages
     [ProtoContract]
     public class LoginMessage : BaseMessage
     {
-        [ProtoMember(1)]
-        public Guid PlayerID { get; set; }
-
-        public LoginMessage(Guid id) : base(6)
-        {
-            this.PlayerID = id;
-        }
-
-        public LoginMessage()
+        public LoginMessage() : base(6)
         {
         }
     }

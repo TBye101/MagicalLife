@@ -75,7 +75,7 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
                             Dirt dirt = new Dirt(new Point2D((chunkWidth * x) + cx, (chunkHeight * y) + cy));
                             if (random.Next(4) == 2)
                             {
-                                dirt.Resources = new MarbleResource(random.Next(25));
+                                dirt.Resources = new Stone(random.Next(25));
                                 dirt.IsWalkable = false;
                             }
 

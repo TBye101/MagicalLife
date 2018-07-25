@@ -6,19 +6,19 @@ namespace MagicalLifeAPI.World.Resources
     /// Stone as a resource.
     /// </summary>
     [ProtoContract]
-    public class MarbleResource : StoneBase
+    public class Stone : StoneBase
     {
-        public MarbleResource(int count) : base("Marble", count)
+        public Stone(int durability) : base("Stone", durability)
         {
         }
 
-        public MarbleResource() : base()
+        public Stone() : base()
         {
         }
 
         public override string GetUnconnectedTexture()
         {
-            return "MarbleResourceUnconnected";
+            return "Stone";
         }
     }
 }

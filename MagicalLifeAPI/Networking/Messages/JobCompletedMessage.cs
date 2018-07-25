@@ -24,5 +24,10 @@ namespace MagicalLifeAPI.Networking.Messages
         {
             this.CompletedID = completedID;
         }
+
+        public JobCompletedMessage() : base(7)
+        {
+
+        }
     }
 }

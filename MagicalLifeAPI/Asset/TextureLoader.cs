@@ -37,13 +37,7 @@ namespace MagicalLifeAPI.Asset
             this.TexturesToLoad.Add("TestTile");
             this.TexturesToLoad.Add("InputBox100x50");
 
-            this.TexturesToLoad.Add("MarbleFloor");
-            this.TexturesToLoad.Add("MarbleResourceUnconnected");
-            this.TexturesToLoad.Add("MarbleResourceConnected1");
-            this.TexturesToLoad.Add("MarbleResourceConnected2");
-            this.TexturesToLoad.Add("MarbleResourceConnected3");
-            this.TexturesToLoad.Add("MarbleResourceConnected4");
-
+            this.TexturesToLoad.Add("Stone");
             this.TexturesToLoad.Add("MarbleChunk");
 
             this.TexturesToLoad.Add("Dirt");

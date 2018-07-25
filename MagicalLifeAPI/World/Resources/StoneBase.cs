@@ -6,10 +6,10 @@ namespace MagicalLifeAPI.World.Resources
     /// The base class for all stone-like resources.
     /// </summary>
     [ProtoContract]
-    [ProtoInclude(1, typeof(MarbleResource))]
+    [ProtoInclude(1, typeof(Stone))]
     public abstract class StoneBase : Resource
     {
-        public StoneBase(string name, int count) : base(name, count)
+        public StoneBase(string name, int durability) : base(name, durability)
         {
         }
 
