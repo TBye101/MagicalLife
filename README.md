@@ -138,7 +138,7 @@ but with magic and aspects of RPG.
 # Credits
 
 ## Contributors
-Lynngr - Created the dirt and grass textures
+Lynngr - Created the dirt, grass, and stone textures.
 
 ockenyberg - Created the dirt and grass stepping sound effects
 
