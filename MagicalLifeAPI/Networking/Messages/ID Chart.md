@@ -7,3 +7,4 @@
 5: JobAssignedMessage
 6: LoginMessage
 7: JobCompletedMessage
+8: JobCreatedMessage

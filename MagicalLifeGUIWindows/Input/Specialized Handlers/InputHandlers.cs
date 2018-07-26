@@ -9,10 +9,13 @@
 
         public static LogoSkip LogoSkipper;
 
+        public static MiningActionHandler MiningAction;
+
         public static void Initialize()
         {
             LivingMove = new LivingMoveOrderInputHandler();
             LogoSkipper = new LogoSkip();
+            MiningAction = new MiningActionHandler();
         }
     }
 }

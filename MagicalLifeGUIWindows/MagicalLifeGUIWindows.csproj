@@ -101,7 +101,6 @@
     <Compile Include="GUI\Host Game Menu\HostGameMenuLayout.cs" />
     <Compile Include="GUI\Host Game Menu\HostGameMenuLayout1920x1080.cs" />
     <Compile Include="GUI\Host Game Menu\Input Boxes\HostPortInputBox.cs" />
-    <Compile Include="GUI\In Game GUI\ActionSelected.cs" />
     <Compile Include="GUI\In Game GUI\Buttons\MineActionButton.cs" />
     <Compile Include="GUI\Join Game Menu\Buttons\JoinButton.cs" />
     <Compile Include="GUI\Join Game Menu\Input Boxes\IPInputBox.cs" />
@@ -153,6 +152,7 @@
     <Compile Include="Input\Specialized Handlers\InputHandlers.cs" />
     <Compile Include="Input\Specialized Handlers\LivingMoveOrderInputHandler.cs" />
     <Compile Include="Input\Specialized Handlers\LogoSkip.cs" />
+    <Compile Include="Input\Specialized Handlers\MiningActionHandler.cs" />
     <Compile Include="Load\Initializer.cs" />
     <Compile Include="Load\InputLoader.cs" />
     <Compile Include="Load\WindowConfig.cs" />

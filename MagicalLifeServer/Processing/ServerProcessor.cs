@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Networking.Serialization;
+﻿using MagicalLifeAPI.InternalExceptions;
+using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Networking.Server;
 using MagicalLifeServer.Message_Handlers;
 using MagicalLifeServer.Processing.Message_Handlers;
@@ -32,8 +33,16 @@ namespace MagicalLifeServer.Processing
 
         public static void Process(BaseMessage msg)
         {
-            MessageHandlers.TryGetValue(msg.ID, out MessageHandler handler);
-            handler.HandleMessage(msg);
+            bool success = MessageHandlers.TryGetValue(msg.ID, out MessageHandler handler);
+
+            if (success)
+            {
+                handler.HandleMessage(msg);
+            }
+            else
+            {
+                throw new UnexpectedMessageException();
+            }
         }
 
         /// <summary>

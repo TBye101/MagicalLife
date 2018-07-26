@@ -22,10 +22,9 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
         /// </summary>
         /// <param name="target">The tile that contains the object to mine up.</param>
         /// <param name="workStation">The position at which the creature will be at when it begins mining.</param>
-        public MineJob(Point2D target, Point2D workStation) : base(GetDependencies(workStation))
+        public MineJob(Point2D target) : base(GetDependencies())
         {
             this.Target = target;
-            this.WorkStation = workStation;
         }
 
         protected static Dictionary<Guid, Job> GetDependencies(Point2D workStation)

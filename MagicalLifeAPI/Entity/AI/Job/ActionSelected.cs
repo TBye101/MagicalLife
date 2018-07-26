@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeGUIWindows.GUI.In_Game_GUI
+﻿namespace MagicalLifeAPI.Entity.AI.Job
 {
     /// <summary>
     /// Used to determine which action button is active.

@@ -63,8 +63,8 @@ namespace MagicalLifeAPI.World
         [ProtoMember(6)]
         public Item Item { get; set; }
 
-        [ProtoMember(7, AsReference = true)]
-        public Job Job { get; set; }
+        [ProtoMember(7)]
+        public ActionSelected ImpendingAction { get; set; }
 
         /// <summary>
         /// Initializes a new tile object.

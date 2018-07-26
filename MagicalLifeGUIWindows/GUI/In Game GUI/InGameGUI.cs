@@ -1,4 +1,6 @@
-﻿namespace MagicalLifeGUIWindows.GUI.In_Game_GUI
+﻿using MagicalLifeAPI.Entity.AI.Job;
+
+namespace MagicalLifeGUIWindows.GUI.In_Game_GUI
 {
     /// <summary>
     /// Holds the container which is the in game GUI.

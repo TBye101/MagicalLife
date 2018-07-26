@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
+using MagicalLifeAPI.Entity.AI.Job;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Messages;
@@ -29,7 +30,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
         {
             HistoricalInput historical = InputHistory.History.Last();
 
-            if (historical.ActionSelected == GUI.In_Game_GUI.ActionSelected.None && historical.OrderedToTile && historical.OrderPoint2D != null)
+            if (historical.ActionSelected == ActionSelected.None && historical.OrderedToTile && historical.OrderPoint2D != null)
             {
                 foreach (Selectable item in InputHistory.Selected)
                 {

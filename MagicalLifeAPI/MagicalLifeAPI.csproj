@@ -145,6 +145,7 @@
     <Compile Include="DataTypes\R-Tree\Point.cs" />
     <Compile Include="DataTypes\R-Tree\Rectangle.cs" />
     <Compile Include="DataTypes\R-Tree\RTree.cs" />
+    <Compile Include="Entity\AI\Job\ActionSelected.cs" />
     <Compile Include="Entity\AI\Job\Job.cs" />
     <Compile Include="Entity\AI\Job\Jobs\MineJob.cs" />
     <Compile Include="Entity\AI\Job\Jobs\MoveJob.cs" />
@@ -156,9 +157,11 @@
     <Compile Include="InternalExceptions\RegistryDeletionException.cs" />
     <Compile Include="InternalExceptions\ResourceMissingException.cs" />
     <Compile Include="InternalExceptions\UnexpectedEnumMemberException.cs" />
+    <Compile Include="InternalExceptions\UnexpectedMessageException.cs" />
     <Compile Include="Load\ItemLoader.cs" />
     <Compile Include="Networking\Messages\JobAssignedMessage.cs" />
     <Compile Include="Networking\Messages\JobCompletedMessage.cs" />
+    <Compile Include="Networking\Messages\JobCreatedMessage.cs" />
     <Compile Include="Networking\Messages\LoginMessage.cs" />
     <Compile Include="Registry\ItemRegistry\ItemAdder.cs" />
     <Compile Include="Registry\ItemRegistry\ItemFinder.cs" />
