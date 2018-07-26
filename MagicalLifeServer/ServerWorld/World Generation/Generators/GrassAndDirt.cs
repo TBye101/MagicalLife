@@ -100,7 +100,7 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
             {
                 foreach (Tile tile in item)
                 {
-                    tile.GetRenderable().CalculateTexture(item.Tiles, tile.Location);
+                    tile.GetRenderable().CalculateTexture(item.Tiles, tile.MapLocation);
                 }
             }
         }

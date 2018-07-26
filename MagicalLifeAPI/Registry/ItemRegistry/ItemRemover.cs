@@ -67,7 +67,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         private static void RemoveItem(Tile tile, int dimension)
         {
             int itemID = tile.Item.ItemID;
-            Point2D l = tile.Location;
+            Point2D l = tile.MapLocation;
             Chunk chunk = World.Data.World.GetChunkByTile(dimension, l.X, l.Y);
 
             if (chunk.Items.ContainsKey(itemID))

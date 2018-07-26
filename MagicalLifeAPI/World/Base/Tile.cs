@@ -20,7 +20,7 @@ namespace MagicalLifeAPI.World
     [ProtoContract]
     [ProtoInclude(7, typeof(Dirt))]
     [ProtoInclude(8, typeof(Grass))]
-    public abstract class Tile : Unique, IHasSubclasses, IRenderable
+    public abstract class Tile : Selectable, IHasSubclasses, IRenderable
     {
         [ProtoMember(1)]
         private AbstractRenderable Renderable;
@@ -58,12 +58,6 @@ namespace MagicalLifeAPI.World
         //public List<Vegetation> Plants { get; set; } = new List<Vegetation>();
 
         /// <summary>
-        /// The location of this tile in the tile map.
-        /// </summary>
-        [ProtoMember(5)]
-        public Point2D Location { get; set; }
-
-        /// <summary>
         /// The item(s) that is stored in this tile.
         /// </summary>
         [ProtoMember(6)]
@@ -79,7 +73,7 @@ namespace MagicalLifeAPI.World
         /// <param name="movementCost">This value is the movement cost of walking on this tile. It should be between 1 and 100</param>
         public Tile(Point2D location, int movementCost, AbstractRenderable renderable)
         {
-            this.Location = location;
+            this.MapLocation = location;
             this.MovementCost = movementCost;
             Tile.TileCreatedHandler(new TileEventArg(this));
             this.IsWalkable = true;
@@ -147,6 +141,11 @@ namespace MagicalLifeAPI.World
         public AbstractRenderable GetRenderable()
         {
             return this.Renderable;
+        }
+
+        public override SelectionType InGameObjectType(Selectable selectable)
+        {
+            return SelectionType.Tile;
         }
     }
 }

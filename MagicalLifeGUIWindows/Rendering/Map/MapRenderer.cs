@@ -23,7 +23,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         {
             foreach (Tile tile in World.Dimensions[dimension])
             {
-                Point2D start = new Point2D(RenderingPipe.tileSize.X * tile.Location.X, RenderingPipe.tileSize.Y * tile.Location.Y);
+                Point2D start = new Point2D(RenderingPipe.tileSize.X * tile.MapLocation.X, RenderingPipe.tileSize.Y * tile.MapLocation.Y);
                 DrawTile(tile, ref spBatch, start);
             }
 
@@ -65,7 +65,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
 
             if (tile.GetRenderable().TextureID != 15 || tile.GetRenderable().TextureID != 28)
             {
-                MasterLog.DebugWriteLine("Drawing transition texture!" + tile.Location.ToString());
+                MasterLog.DebugWriteLine("Drawing transition texture!" + tile.MapLocation.ToString());
             }
 
             spBatch.Draw(AssetManager.Textures[tile.GetRenderable().TextureID], target, RenderingPipe.colorMask);

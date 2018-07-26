@@ -56,7 +56,7 @@ namespace MagicalLifeAPI.Pathfinding.AStar
             this.Grid = new Grid(dimension.Width * Chunk.Width, dimension.Height * Chunk.Height, 1);
             foreach (Tile item in dimension)
             {
-                Position pos = new Position(item.Location.X, item.Location.Y);
+                Position pos = new Position(item.MapLocation.X, item.MapLocation.Y);
 
                 this.Grid.SetCellCost(pos, item.MovementCost);
                 if (!item.IsWalkable)

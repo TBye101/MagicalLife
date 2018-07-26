@@ -1,7 +1,9 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.GUI;
+using MagicalLifeAPI.InternalExceptions;
 using MagicalLifeAPI.World.Data;
+using MagicalLifeGUIWindows.GUI.In_Game_GUI;
 using MagicalLifeGUIWindows.Rendering;
 using System.Collections.Generic;
 
@@ -21,7 +23,7 @@ namespace MagicalLifeGUIWindows.Input.History
                     return this.SingleSelect(e);
 
                 case MonoGame.Extended.Input.InputListeners.MouseButton.Right:
-                    return this.Order(e);
+                    return this.Order(e, InGameGUI.Selected);
 
                 default:
                     return null;
@@ -29,6 +31,67 @@ namespace MagicalLifeGUIWindows.Input.History
         }
 
         private HistoricalInput SingleSelect(InputEventArgs e)
+        {
+            switch (InGameGUI.Selected)
+            {
+                case ActionSelected.None:
+                    return this.NoAction(e);
+                case ActionSelected.Mine:
+                    return this.MineAction(e);
+                default:
+                    throw new UnexpectedEnumMemberException();
+            }
+        }
+
+        /// <summary>
+        /// Generates a <see cref="HistoricalInput"/> for when there is a mining action selected by the player.
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
+        private HistoricalInput MineAction(InputEventArgs e)
+        {
+            Point2D mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y, RenderingPipe.Dimension, out bool success);
+
+            if (success)
+            {
+                Selectable select = null;
+
+                select = World.GetTile(RenderingPipe.Dimension, mapSpot.X, mapSpot.Y);
+
+                if (select != null)
+                {
+                    //Null check select, as it is null when an entity is not found
+                    List<Selectable> selected = new List<Selectable>
+                    {
+                        select
+                    };
+
+                    if (e.ShiftDown)
+                    {
+                        if (this.IsSelectableSelected(select))
+                        {
+                            return new HistoricalInput(false, selected, ActionSelected.Mine);
+                        }
+                        else
+                        {
+                            return new HistoricalInput(selected, ActionSelected.Mine);
+                        }
+                    }
+                    else
+                    {
+                        return new HistoricalInput(selected, true, ActionSelected.Mine);
+                    }
+                }
+            }
+
+            return new HistoricalInput(true, InputHistory.Selected, ActionSelected.Mine);
+        }
+
+        /// <summary>
+        /// Generates a <see cref="HistoricalInput"/> for when there is no action selected by the player.
+        /// </summary>
+        /// <returns></returns>
+        private HistoricalInput NoAction(InputEventArgs e)
         {
             Point2D mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y, RenderingPipe.Dimension, out bool success);
 
@@ -57,21 +120,21 @@ namespace MagicalLifeGUIWindows.Input.History
                     {
                         if (this.IsSelectableSelected(select))
                         {
-                            return new HistoricalInput(false, selected);
+                            return new HistoricalInput(false, selected, ActionSelected.None);
                         }
                         else
                         {
-                            return new HistoricalInput(selected);
+                            return new HistoricalInput(selected, ActionSelected.None);
                         }
                     }
                     else
                     {
-                        return new HistoricalInput(selected, true);
+                        return new HistoricalInput(selected, true, ActionSelected.None);
                     }
                 }
             }
 
-            return new HistoricalInput(true, InputHistory.Selected);
+            return new HistoricalInput(true, InputHistory.Selected, ActionSelected.None);
         }
 
         /// <summary>
@@ -92,7 +155,7 @@ namespace MagicalLifeGUIWindows.Input.History
             return false;
         }
 
-        private HistoricalInput Order(InputEventArgs e)
+        private HistoricalInput Order(InputEventArgs e, ActionSelected action)
         {
             Point2D screenLocation = e.MouseEventArgs.Position;
 
@@ -100,7 +163,7 @@ namespace MagicalLifeGUIWindows.Input.History
 
             if (success)
             {
-                return new HistoricalInput(mapLocation);
+                return new HistoricalInput(mapLocation, action);
             }
             else
             {

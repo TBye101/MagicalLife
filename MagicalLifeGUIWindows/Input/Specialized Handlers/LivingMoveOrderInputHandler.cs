@@ -29,7 +29,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
         {
             HistoricalInput historical = InputHistory.History.Last();
 
-            if (historical.OrderedToTile && historical.OrderPoint2D != null)
+            if (historical.ActionSelected == GUI.In_Game_GUI.ActionSelected.None && historical.OrderedToTile && historical.OrderPoint2D != null)
             {
                 foreach (Selectable item in InputHistory.Selected)
                 {

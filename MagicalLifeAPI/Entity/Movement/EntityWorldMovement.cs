@@ -57,7 +57,7 @@ namespace MagicalLifeAPI.Entities.Movement
         /// <param name="destination"></param>
         public static void Move(ref Living entity, Tile source, Tile destination)
         {
-            Direction direction = DetermineMovementDirection(source.Location, destination.Location);
+            Direction direction = DetermineMovementDirection(source.MapLocation, destination.MapLocation);
 
             float xMove = 0;
             float yMove = 0;
@@ -109,16 +109,16 @@ namespace MagicalLifeAPI.Entities.Movement
 
             float movementPenalty = (float)Math.Abs(CalculateMovementReduction(xMove, yMove)) * -1;
 
-            if (MathUtil.GetDistance(entity.ScreenLocation, destination.Location) > entity.Movement.GetValue())
+            if (MathUtil.GetDistance(entity.ScreenLocation, destination.MapLocation) > entity.Movement.GetValue())
             {
                 entity.ScreenLocation = new DataTypes.Point2DFloat(entity.ScreenLocation.X + xMove, entity.ScreenLocation.Y + yMove);
             }
             else
             {
-                entity.MapLocation = destination.Location;
-                entity.ScreenLocation = new DataTypes.Point2DFloat(destination.Location.X, destination.Location.Y);
+                entity.MapLocation = destination.MapLocation;
+                entity.ScreenLocation = new DataTypes.Point2DFloat(destination.MapLocation.X, destination.MapLocation.Y);
                 entity.QueuedMovement.Dequeue();
-                movementPenalty = MathUtil.GetDistance(entity.ScreenLocation, destination.Location);
+                movementPenalty = MathUtil.GetDistance(entity.ScreenLocation, destination.MapLocation);
             }
 
             entity.Movement.AddModifier(new Entity.Util.ModifierFloat(movementPenalty, new TimeRemoveCondition(1), "Normal Movement"));

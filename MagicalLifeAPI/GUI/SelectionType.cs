@@ -5,6 +5,6 @@
     /// </summary>
     public enum SelectionType
     {
-        Creature, Furniture, PlantLife, Item
+        Creature, Furniture, PlantLife, Item, Tile
     }
 }
