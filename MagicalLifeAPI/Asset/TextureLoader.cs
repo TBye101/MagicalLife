@@ -56,6 +56,9 @@ namespace MagicalLifeAPI.Asset
             this.TexturesToLoad.Add("DirtGrassTrans12");
 
             this.TexturesToLoad.Add("Grass");
+
+            this.TexturesToLoad.Add("MineAction");
+            this.TexturesToLoad.Add("MineActionOverlay");
         }
 
         public void InitialStartup()

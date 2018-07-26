@@ -9,7 +9,7 @@ namespace MagicalLifeAPI.World
 {
     /// <summary>
     /// A base class for all resources.
-    /// Resources in tiles are things such as minerals.
+    /// Resources in tiles are things such as stone and minerals.
     /// </summary>
     [ProtoContract]
     [ProtoInclude(1, typeof(StoneBase))]

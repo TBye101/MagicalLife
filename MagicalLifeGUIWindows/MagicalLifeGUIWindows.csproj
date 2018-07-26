@@ -101,6 +101,8 @@
     <Compile Include="GUI\Host Game Menu\HostGameMenuLayout.cs" />
     <Compile Include="GUI\Host Game Menu\HostGameMenuLayout1920x1080.cs" />
     <Compile Include="GUI\Host Game Menu\Input Boxes\HostPortInputBox.cs" />
+    <Compile Include="GUI\In Game GUI\ActionSelected.cs" />
+    <Compile Include="GUI\In Game GUI\Buttons\MineActionButton.cs" />
     <Compile Include="GUI\Join Game Menu\Buttons\JoinButton.cs" />
     <Compile Include="GUI\Join Game Menu\Input Boxes\IPInputBox.cs" />
     <Compile Include="GUI\Join Game Menu\Input Boxes\PortInputBox.cs" />
@@ -215,7 +217,6 @@
     <Folder Include="Event\" />
     <Folder Include="GUI\History\" />
     <Folder Include="GUI\Host Game Menu\Labels\" />
-    <Folder Include="GUI\In Game GUI\Buttons\" />
     <Folder Include="GUI\Join Game Menu\Labels\" />
   </ItemGroup>
   <ItemGroup>

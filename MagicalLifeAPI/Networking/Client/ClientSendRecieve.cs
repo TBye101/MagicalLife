@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Networking.Serialization;
+﻿using MagicalLifeAPI.Networking.Messages;
+using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Networking.Server;
 using System.Collections.Generic;
 using System.Threading.Tasks;

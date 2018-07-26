@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Components.Generic;
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Entity.AI.Job;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Universal;
@@ -67,6 +68,9 @@ namespace MagicalLifeAPI.World
         /// </summary>
         [ProtoMember(6)]
         public Item Item { get; set; }
+
+        [ProtoMember(7, AsReference = true)]
+        public Job Job { get; set; }
 
         /// <summary>
         /// Initializes a new tile object.

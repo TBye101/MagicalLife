@@ -1,4 +1,5 @@
-﻿using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeGUIWindows.GUI.In_Game_GUI.Buttons;
+using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 
 namespace MagicalLifeGUIWindows.GUI.In_Game_GUI
@@ -8,9 +9,12 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_GUI
     /// </summary>
     public class InGameGUIContainer : GUIContainer
     {
+        public MineActionButton MineActionButton { get; set; } = new MineActionButton();
+
         public InGameGUIContainer(bool visible) : base("MenuBackground", GetDrawingBounds())
         {
             this.Visible = visible;
+            this.Controls.Add(this.MineActionButton);
         }
 
         /// <summary>
