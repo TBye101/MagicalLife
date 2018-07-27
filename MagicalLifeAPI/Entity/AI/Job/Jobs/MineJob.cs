@@ -22,15 +22,15 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
         /// </summary>
         /// <param name="target">The tile that contains the object to mine up.</param>
         /// <param name="workStation">The position at which the creature will be at when it begins mining.</param>
-        public MineJob(Point2D target) : base(GetDependencies())
+        public MineJob(Point2D target) : base(GetDependencies(target))
         {
             this.Target = target;
         }
 
-        protected static Dictionary<Guid, Job> GetDependencies(Point2D workStation)
+        protected static Dictionary<Guid, Job> GetDependencies(Point2D target)
         {
             Dictionary<Guid, Job> ret = new Dictionary<Guid, Job>();
-            MoveJob dependency = new MoveJob(workStation);
+            BecomeAdjacentJob dependency = new BecomeAdjacentJob(target);
 
             ret.Add(dependency.ID, dependency);
 
@@ -43,6 +43,11 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
 
         public override void DoJob(Living living)
         {
+        }
+
+        public override void ReevaluateDependencies()
+        {
+            //Evaluate that something needs to be mined first or something.
         }
     }
 }

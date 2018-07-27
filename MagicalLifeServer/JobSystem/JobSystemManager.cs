@@ -1,4 +1,5 @@
-﻿using ProtoBuf;
+﻿using MagicalLifeAPI.Networking.Server;
+using ProtoBuf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +19,10 @@ namespace MagicalLifeServer.JobSystem
         [ProtoMember(1)]
         public Dictionary<Guid, JobSystem> PlayerToJobSystem { get; set; }
 
-        public JobSystemManager()
+        public JobSystemManager(bool NonProtoConstructor)
         {
             Server.ServerTick += this.Server_ServerTick;
+            this.PlayerToJobSystem = new Dictionary<Guid, JobSystem>();
         }
 
         private void Server_ServerTick(object sender, ulong e)

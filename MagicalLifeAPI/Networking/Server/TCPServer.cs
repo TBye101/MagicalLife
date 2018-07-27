@@ -6,6 +6,7 @@ using SimpleTCP;
 using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
+using System.Linq;
 
 namespace MagicalLifeAPI.Networking.Server
 {
@@ -48,14 +49,16 @@ namespace MagicalLifeAPI.Networking.Server
             {
                 this.PlayerToSocket.Add(login.PlayerID, e.TcpClient.Client);
             }
-            else
-            {
-                ServerSendRecieve.Recieve(msg);
-            }
+
+            ServerSendRecieve.Recieve(msg);
         }
 
         private void Server_ClientDisconnected(object sender, System.Net.Sockets.TcpClient e)
         {
+            KeyValuePair<Guid, Socket> result = this.PlayerToSocket.First(x => x.Value == e.Client);
+            this.PlayerToSocket.Remove(result.Key);
+            ServerSendRecieve.Recieve(new DisconnectMessage(result.Key));
+
             MasterLog.DebugWriteLine("Client disconnected: " + e.Client.RemoteEndPoint.ToString());
         }
 

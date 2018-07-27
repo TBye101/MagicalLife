@@ -110,11 +110,21 @@ namespace MagicalLifeServer.JobSystem
             {
                 IEnumerable<KeyValuePair<Guid, Job>> result = this.NoDependencies.Take(1);
                 KeyValuePair<Guid, Job> one = result.First();
-                one.Value.AssignJob(living);
-                this.InProgress.Add(one.Key, one.Value);
-                this.StartJob(one.Value, living);
 
-                return true;
+                one.Value.ReevaluateDependencies();
+                if (one.Value.Dependencies.Count > 0)
+                {
+                    this.AddJob(one);
+                    return this.AssignJob(living);
+                }
+                else
+                {
+                    one.Value.AssignJob(living);
+                    this.InProgress.Add(one.Key, one.Value);
+                    this.StartJob(one.Value, living);
+
+                    return true;
+                }
             }
 
             return false;

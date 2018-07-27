@@ -54,5 +54,9 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
         {
             //We don't need to do anything more
         }
+
+        public override void ReevaluateDependencies()
+        {
+        }
     }
 }

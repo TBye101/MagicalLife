@@ -100,6 +100,11 @@ namespace MagicalLifeAPI.Entity.AI.Job
         public abstract void DoJob(Living living);
 
         /// <summary>
+        /// Allows the job to re-evaluate if it has dependencies before the job starts, and allows adapting to changing conditions.
+        /// </summary>
+        public abstract void ReevaluateDependencies();
+
+        /// <summary>
         /// Locks this job to be completed only by a creature with the specified ID, and begins job execution.
         /// </summary>
         /// <param name="id"></param>

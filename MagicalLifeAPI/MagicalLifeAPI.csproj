@@ -147,6 +147,7 @@
     <Compile Include="DataTypes\R-Tree\RTree.cs" />
     <Compile Include="Entity\AI\Job\ActionSelected.cs" />
     <Compile Include="Entity\AI\Job\Job.cs" />
+    <Compile Include="Entity\AI\Job\Jobs\BecomeAdjacentJob.cs" />
     <Compile Include="Entity\AI\Job\Jobs\MineJob.cs" />
     <Compile Include="Entity\AI\Job\Jobs\MoveJob.cs" />
     <Compile Include="Filing\Setting.cs" />
@@ -159,6 +160,7 @@
     <Compile Include="InternalExceptions\UnexpectedEnumMemberException.cs" />
     <Compile Include="InternalExceptions\UnexpectedMessageException.cs" />
     <Compile Include="Load\ItemLoader.cs" />
+    <Compile Include="Networking\Messages\DisconnectMessage.cs" />
     <Compile Include="Networking\Messages\JobAssignedMessage.cs" />
     <Compile Include="Networking\Messages\JobCompletedMessage.cs" />
     <Compile Include="Networking\Messages\JobCreatedMessage.cs" />
