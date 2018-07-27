@@ -19,5 +19,10 @@ namespace MagicalLifeAPI.Networking.Messages
         {
             this.ClientPlayerID = playerID;
         }
+
+        public DisconnectMessage() : base(9)
+        {
+
+        }
     }
 }

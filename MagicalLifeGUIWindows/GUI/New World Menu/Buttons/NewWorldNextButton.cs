@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Networking.Server;
+﻿using MagicalLifeAPI.Networking.Client;
+using MagicalLifeAPI.Networking.Server;
 using MagicalLifeClient;
 using MagicalLifeGUIWindows.GUI.MainMenu;
 using MagicalLifeGUIWindows.GUI.Reusable;
@@ -20,8 +21,9 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu.Buttons
 
         public override void Click(MouseEventArgs e)
         {
-            ServerSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(MagicalLifeAPI.Networking.EngineMode.ServerAndClient));
             Server.Load(MagicalLifeAPI.Networking.EngineMode.ServerAndClient);
+            ClientSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(MagicalLifeAPI.Networking.EngineMode.ServerAndClient));
+            ServerSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(MagicalLifeAPI.Networking.EngineMode.ServerAndClient));
             Client.Load();
             Server.StartGame();
             NewGameInputHandler a = new NewGameInputHandler();

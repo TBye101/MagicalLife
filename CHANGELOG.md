@@ -12,6 +12,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 #### Server
 * Seperated server loading and server starting into two seperate commands
+* Now handles player connections and disconnections in a safer way
 
 #### GUI
 * Grass textures now connect to form smoother patterns

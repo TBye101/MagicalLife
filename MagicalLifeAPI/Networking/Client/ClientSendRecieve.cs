@@ -32,6 +32,10 @@ namespace MagicalLifeAPI.Networking.Client
                 TCPClient = new TCPClient();
                 TCPClient.Start(NetworkSettings.Port, NetworkSettings.ServerIP);
             }
+            else
+            {
+                ServerSendRecieve.Recieve(new LoginMessage());
+            }
         }
 
         /// <summary>

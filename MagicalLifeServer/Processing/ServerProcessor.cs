@@ -20,10 +20,13 @@ namespace MagicalLifeServer.Processing
             ServerSendRecieve.MessageRecieved += ServerSendRecieve_MessageRecieved;
 
             //More important messages
+            MessageHandlers.Add(9, new DisconnectMessageHandler());
 
             //Least important messages
             MessageHandlers.Add(3, new RouteCreatedMessageHandler());
             MessageHandlers.Add(7, new JobCompletedMessageHandler());
+            MessageHandlers.Add(8, new JobCreatedMessageHandler());
+            MessageHandlers.Add(6, new LoginMessageHandler());
         }
 
         private static void ServerSendRecieve_MessageRecieved(object sender, BaseMessage e)
