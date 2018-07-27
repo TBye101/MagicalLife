@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.GUI;
 using ProtoBuf;
+using System;
 
 namespace MagicalLifeAPI.Entities.Humanoid
 {
@@ -10,7 +11,7 @@ namespace MagicalLifeAPI.Entities.Humanoid
     [ProtoContract]
     public class Human : Living
     {
-        public Human(int health, float movementSpeed, Point2D location, int dimension) : base(health, movementSpeed, location, dimension)
+        public Human(int health, float movementSpeed, Point2D location, int dimension, Guid playerID) : base(health, movementSpeed, location, dimension, playerID)
         {
             Filing.Logging.MasterLog.DebugWriteLine("Living spawned at: " + location.ToString());
         }

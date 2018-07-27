@@ -53,6 +53,12 @@ namespace MagicalLifeAPI.Entities
         public Job Task { get; set; }
 
         /// <summary>
+        /// The ID of the player that this creature belongs to.
+        /// </summary>
+        [ProtoMember(7)]
+        public Guid PlayerID { get; set; }
+
+        /// <summary>
         /// Raised when a <see cref="Living"/> is created.
         /// </summary>
         public static event EventHandler<LivingEventArg> LivingCreated;
@@ -62,12 +68,13 @@ namespace MagicalLifeAPI.Entities
         /// </summary>
         public event EventHandler<LivingEventArg> LivingModified;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Living"/> base class.
-        /// </summary>
-        /// <param name="health"></param>
-        /// <param name="movementSpeed"></param>
-        protected Living(int health, float movementSpeed, Point2D location, int dimension)
+        protected Living(int health, float movementSpeed, Point2D location, int dimension, Guid playerID)
+        {
+            this.PlayerID = playerID;
+            this.Initialize(health, movementSpeed, location, dimension);
+        }
+
+        protected void Initialize(int health, float movementSpeed, Point2D location, int dimension)
         {
             this.Health = new Util.Attribute32(health);
             this.Movement = new AttributeFloat(movementSpeed);

@@ -112,7 +112,7 @@ namespace MagicalLifeServer.JobSystem
                 KeyValuePair<Guid, Job> one = result.First();
 
                 one.Value.ReevaluateDependencies();
-                if (one.Value.Dependencies.Count > 0)
+                if (one.Value.Dependencies != null && one.Value.Dependencies.Count > 0)
                 {
                     this.AddJob(one);
                     return this.AssignJob(living);
@@ -153,7 +153,7 @@ namespace MagicalLifeServer.JobSystem
 
         public void AddJob(KeyValuePair<Guid, Job> job)
         {
-            if (job.Value.Dependencies.Count > 0)
+            if (job.Value.Dependencies != null && job.Value.Dependencies.Count > 0)
             {
                 job.Value.DependenciesResolved += this.Job_DependenciesResolved;
                 this.WithDependencies.Add(job.Key, job.Value);

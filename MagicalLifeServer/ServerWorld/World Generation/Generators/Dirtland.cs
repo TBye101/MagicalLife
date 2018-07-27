@@ -4,6 +4,7 @@ using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Tiles;
+using MagicalLifeSettings.Storage;
 using System;
 
 namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
@@ -54,7 +55,7 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
 
             HumanFactory hFactory = new HumanFactory();
             Point2D location = new Point2D(((chunkX * Chunk.Width) + x), (chunkY * Chunk.Height) + y);
-            map[chunkX, chunkY].Creatures.Add(hFactory.GenerateHuman(location, this.Dimension));
+            map[chunkX, chunkY].Creatures.Add(hFactory.GenerateHuman(location, this.Dimension, Player.Default.PlayerID));
         }
 
         protected override void GenerateLandType(string[,] biomeMap, ProtoArray<Chunk> map, Random r)
