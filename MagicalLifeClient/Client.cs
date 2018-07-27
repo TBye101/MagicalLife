@@ -43,6 +43,7 @@ namespace MagicalLifeClient
             return new List<MessageHandler>()
             {
                 new ServerTickMessageHandler(),
+                new JobAssignedMessageHandler(),
 
                 //Least important messages
                 new WorldTransferMessageHandler()

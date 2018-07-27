@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Entity.AI.Job;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Server;
 using ProtoBuf;
@@ -52,6 +53,11 @@ namespace MagicalLifeServer.JobSystem
         /// </summary>
         public Dictionary<Guid, Living> Idle { get; private set; }
 
+        /// <summary>
+        /// Used to synchronize <see cref="ManageJobs"/>.
+        /// </summary>
+        private object SyncObject { get; set; } = new object();
+
         public JobSystem(Dictionary<Guid, Living> workers, Guid playerID)
         {
             this.NoDependencies = new Dictionary<Guid, Job>();
@@ -81,20 +87,24 @@ namespace MagicalLifeServer.JobSystem
         {
             int i = 0;
 
-            while (i != this.Idle.Count)
+            lock (this.SyncObject)
             {
-                Living worker = this.Idle.ElementAt(i).Value;
-
-                bool result = AssignJob(worker);
-
-                if (result)
+                while (i != this.Idle.Count)
                 {
-                    this.Idle.Remove(worker.ID);
-                    this.Busy.Add(worker.ID, worker);
-                }
-                else
-                {
-                    i++;
+                    Living worker = this.Idle.ElementAt(i).Value;
+
+                    bool result = AssignJob(worker);
+
+                    if (result)
+                    {
+                        MasterLog.DebugWriteLine("Worker received job");
+                        this.Idle.Remove(worker.ID);
+                        this.Busy.Add(worker.ID, worker);
+                    }
+                    else
+                    {
+                        i++;
+                    }
                 }
             }
         }

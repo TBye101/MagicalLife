@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Entities.Movement;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World.Data;
 
 namespace MagicalLifeClient.Entity
@@ -39,6 +40,7 @@ namespace MagicalLifeClient.Entity
                                 if (item.QueuedMovement.Count > 0)
                                 {
                                     EntityWorldMovement.MoveEntity(ref l);
+                                    MasterLog.DebugWriteLine(l.ScreenLocation.X.ToString() + ", " + l.ScreenLocation.Y.ToString());
                                 }
 
                                 if (l.Task != null)

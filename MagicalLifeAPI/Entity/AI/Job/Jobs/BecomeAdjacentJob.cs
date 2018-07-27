@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
@@ -28,9 +29,11 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
 
         public override void BeginJob(Living living)
         {
-            List<Point2D> result = WorldUtil.GetNeighboringTiles(living.MapLocation, living.Dimension);
+            List<Point2D> result = WorldUtil.GetNeighboringTiles(this.Target, living.Dimension);
             int closestIndex = Algorithms.GetClosestPoint2D(result, this.Target);
-            MainPathFinder.GetRoute(living.Dimension, living.MapLocation, result[closestIndex]);
+            List<PathLink> path = MainPathFinder.GetRoute(living.Dimension, living.MapLocation, result[closestIndex]);
+            living.QueuedMovement.Clear();
+            Extensions.EnqueueCollection(living.QueuedMovement, path);
         }
 
         public override void DoJob(Living living)

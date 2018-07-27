@@ -63,11 +63,6 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         {
             Microsoft.Xna.Framework.Rectangle target = new Microsoft.Xna.Framework.Rectangle(start.ToXNA(), RenderingPipe.tileSize);
 
-            if (tile.GetRenderable().TextureID != 15 || tile.GetRenderable().TextureID != 28)
-            {
-                MasterLog.DebugWriteLine("Drawing transition texture!" + tile.MapLocation.ToString());
-            }
-
             spBatch.Draw(AssetManager.Textures[tile.GetRenderable().TextureID], target, RenderingPipe.colorMask);
 
             DrawStone(tile, ref spBatch, target);
