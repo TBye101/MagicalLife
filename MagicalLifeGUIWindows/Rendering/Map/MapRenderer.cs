@@ -67,6 +67,11 @@ namespace MagicalLifeGUIWindows.Rendering.Map
 
             DrawStone(tile, ref spBatch, target);
             DrawItems(ref spBatch, tile, target);
+
+            if (tile.ImpendingAction == MagicalLifeAPI.Entity.AI.Job.ActionSelected.Mine)
+            {
+                spBatch.Draw(AssetManager.Textures[AssetManager.NameToIndex["MineActionOverlay"]], target, RenderingPipe.colorMask);
+            }
         }
 
         private static void DrawItems(ref SpriteBatch spBatch, Tile tile, Rectangle target)
