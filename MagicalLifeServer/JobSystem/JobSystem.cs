@@ -146,14 +146,17 @@ namespace MagicalLifeServer.JobSystem
         /// <param name="ID"></param>
         public void MarkJobAsComplete(Guid ID)
         {
-            this.InProgress[ID].RaiseJobCompleted(ID);
-            Guid workerID = this.InProgress[ID].AssignedWorker;
+            lock (this.InProgress)
+            {
+                this.InProgress[ID].RaiseJobCompleted(ID);
+                Guid workerID = this.InProgress[ID].AssignedWorker;
 
-            this.InProgress.Remove(ID);
-            Living worker = this.Busy[workerID];
+                this.InProgress.Remove(ID);
+                Living worker = this.Busy[workerID];
 
-            this.Busy.Remove(workerID);
-            this.Idle.Add(workerID, worker);
+                this.Busy.Remove(workerID);
+                this.Idle.Add(workerID, worker);
+            }
         }
 
         private void StartJob(Job job, Living living)
@@ -181,9 +184,12 @@ namespace MagicalLifeServer.JobSystem
 
         private void Job_DependenciesResolved(object sender, Guid ID)
         {
-            Job job = this.WithDependencies[ID];
-            this.WithDependencies.Remove(ID);
-            this.NoDependencies.Add(ID, job);
+            lock (this.WithDependencies)
+            {
+                Job job = this.WithDependencies[ID];
+                this.WithDependencies.Remove(ID);
+                this.NoDependencies.Add(ID, job);
+            }
         }
     }
 }

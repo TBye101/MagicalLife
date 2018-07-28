@@ -46,6 +46,9 @@ namespace MagicalLifeAPI.Entity.AI.Job
         [ProtoMember(4)]
         public Point2D Location { get; private set; }
 
+        private bool DependResolved = false;
+        private bool Done = false;
+
         public Job(Dictionary<Guid, Job> dependencies)
         {
             this.Dependencies = dependencies;
@@ -63,11 +66,15 @@ namespace MagicalLifeAPI.Entity.AI.Job
 
         private void Item_JobComplete(object sender, Guid e)
         {
-            this.Dependencies.Remove(e);
-
-            if (this.Dependencies.Count == 0)
+            if (!this.DependResolved)
             {
-                this.DependenciesResolvedHandler(this.ID);
+                this.DependResolved = true;
+                this.Dependencies.Remove(e);
+
+                if (this.Dependencies.Count == 0)
+                {
+                    this.DependenciesResolvedHandler(this.ID);
+                }
             }
         }
 
@@ -81,7 +88,11 @@ namespace MagicalLifeAPI.Entity.AI.Job
         /// </summary>
         protected void CompleteJob()
         {
-            ClientSendRecieve.Send<JobCompletedMessage>(new JobCompletedMessage(this.ID));
+            if (!this.Done)
+            {
+                this.Done = true;
+                ClientSendRecieve.Send<JobCompletedMessage>(new JobCompletedMessage(this.ID));
+            }
         }
 
         public Job()

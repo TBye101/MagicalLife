@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.GUI;
+﻿using MagicalLifeAPI.Components.Resource;
+using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.World.Resources;
 using ProtoBuf;
@@ -13,7 +14,7 @@ namespace MagicalLifeAPI.World
     /// </summary>
     [ProtoContract]
     [ProtoInclude(1, typeof(StoneBase))]
-    public abstract class Resource : HasTexture, IHasSubclasses
+    public abstract class Resource : HasTexture, IHasSubclasses, IMinable
     {
         public Resource(string name, int durability)
         {
@@ -36,6 +37,8 @@ namespace MagicalLifeAPI.World
         /// </summary>
         [ProtoMember(3)]
         public int Durability { get; }
+
+        public abstract AbstractMinable MiningBehavior { get; set; }
 
         public Type GetBaseType()
         {

@@ -1,4 +1,8 @@
-﻿using ProtoBuf;
+﻿using MagicalLifeAPI.Components.Resource;
+using MagicalLifeAPI.Registry.ItemRegistry;
+using MagicalLifeAPI.World.Items;
+using ProtoBuf;
+using System.Collections.Generic;
 
 namespace MagicalLifeAPI.World.Resources
 {
@@ -8,8 +12,13 @@ namespace MagicalLifeAPI.World.Resources
     [ProtoContract]
     public class Stone : StoneBase
     {
+        public override AbstractMinable MiningBehavior { get; set; }
+
         public Stone(int durability) : base("Stone", durability)
         {
+            MiningBehavior = new DropWhenCompletelyMined(new List<Base.Item>()
+            {
+            });
         }
 
         public Stone() : base()

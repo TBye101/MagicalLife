@@ -21,6 +21,8 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
 
         public List<PathLink> Route { get; private set; }
 
+        public Point2D AdjacentLocation { get; private set; }
+
         /// <param name="target">The target to become adjacent to.</param>
         public BecomeAdjacentJob(Point2D target)
         {
@@ -31,6 +33,7 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
         {
             List<Point2D> result = WorldUtil.GetNeighboringTiles(this.Target, living.Dimension);
             int closestIndex = Algorithms.GetClosestPoint2D(result, living.MapLocation);
+            this.AdjacentLocation = result[closestIndex];
             List<PathLink> path = MainPathFinder.GetRoute(living.Dimension, living.MapLocation, result[closestIndex]);
             living.QueuedMovement.Clear();
             Extensions.EnqueueCollection(living.QueuedMovement, path);
@@ -38,6 +41,10 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
 
         public override void DoJob(Living living)
         {
+            if (living.MapLocation.Equals(this.AdjacentLocation))
+            {
+                this.CompleteJob();
+            }
         }
 
         public override void ReevaluateDependencies()
