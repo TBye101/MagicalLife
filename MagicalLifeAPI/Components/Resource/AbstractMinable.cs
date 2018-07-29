@@ -15,6 +15,11 @@ namespace MagicalLifeAPI.Components.Resource
     [ProtoContract]
     public abstract class AbstractMinable : IHasSubclasses
     {
+        protected AbstractMinable()
+        {
+
+        }
+
         public Type GetBaseType()
         {
             return typeof(AbstractMinable);

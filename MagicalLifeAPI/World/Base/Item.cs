@@ -1,8 +1,10 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.GUI;
+using MagicalLifeAPI.Registry.ItemRegistry;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MagicalLifeAPI.World.Base
 {
@@ -53,13 +55,13 @@ namespace MagicalLifeAPI.World.Base
         /// <param name="stackableLimit">How many items of this kind can be in one stack.</param>
         /// <param name="count">How many of this item to create into a stack.</param>
         /// <param name="itemID">The ID of this item.</param>
-        public Item(string name, int durability, List<string> lore, int stackableLimit, int count, int itemID)
+        public Item(string name, int durability, List<string> lore, int stackableLimit, int count, Type itemType)
         {
             this.Name = name;
             this.Lore = lore;
             this.StackableLimit = stackableLimit;
             this.CurrentlyStacked = count;
-            this.ItemID = itemID;
+            this.ItemID = ItemRegistry.ItemTypeID.First(x => x.Value == itemType).Key;//slow
             this.TextureIndex = AssetManager.GetTextureIndex(this.GetTextureName());
             this.Validate();
         }

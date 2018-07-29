@@ -16,8 +16,9 @@ namespace MagicalLifeAPI.World.Resources
 
         public Stone(int durability) : base("Stone", durability)
         {
-            MiningBehavior = new DropWhenCompletelyMined(new List<Base.Item>()
+            this.MiningBehavior = new DropWhenCompletelyMined(new List<Base.Item>()
             {
+                new StoneChunk(this.Durability)
             });
         }
 

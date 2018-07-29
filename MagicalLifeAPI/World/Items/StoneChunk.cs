@@ -4,7 +4,7 @@ namespace MagicalLifeAPI.World.Items
 {
     public class StoneChunk : Item
     {
-        public StoneChunk(int itemID) :
+        public StoneChunk(int count) :
             base("Stone Chunk", 200,
             new System.Collections.Generic.List<string>()
             {
@@ -12,8 +12,8 @@ namespace MagicalLifeAPI.World.Items
                 "Is dropped when stone is mined"
             },
             9999,
-            1,
-            itemID)
+            count,
+            typeof(StoneChunk))
         {
         }
 

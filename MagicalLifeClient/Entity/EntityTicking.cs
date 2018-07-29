@@ -40,7 +40,6 @@ namespace MagicalLifeClient.Entity
                                 if (item.QueuedMovement.Count > 0)
                                 {
                                     EntityWorldMovement.MoveEntity(ref l);
-                                    MasterLog.DebugWriteLine(l.ScreenLocation.X.ToString() + ", " + l.ScreenLocation.Y.ToString());
                                 }
 
                                 if (l.Task != null)

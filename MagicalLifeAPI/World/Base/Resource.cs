@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Components.Resource;
+using MagicalLifeAPI.Entities.Util;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.World.Resources;
@@ -20,6 +21,7 @@ namespace MagicalLifeAPI.World
         {
             this.DisplayName = name;
             this.Durability = durability;
+            this.MaxDurability = new Attribute32(this.Durability);
         }
 
         public Resource()
@@ -36,7 +38,10 @@ namespace MagicalLifeAPI.World
         /// How much of the resources is left.
         /// </summary>
         [ProtoMember(3)]
-        public int Durability { get; }
+        public int Durability { get; set; }
+
+        [ProtoMember(4)]
+        public Attribute32 MaxDurability { get; }
 
         public abstract AbstractMinable MiningBehavior { get; set; }
 

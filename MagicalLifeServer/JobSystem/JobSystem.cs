@@ -97,7 +97,9 @@ namespace MagicalLifeServer.JobSystem
 
                     if (result)
                     {
-                        MasterLog.DebugWriteLine("Worker received job");
+                        Job job = worker.Task;
+                        Type type = job.GetType();
+                        MasterLog.DebugWriteLine("Worker received job: " + type.FullName);
                         this.Idle.Remove(worker.ID);
                         this.Busy.Add(worker.ID, worker);
                     }
@@ -156,11 +158,13 @@ namespace MagicalLifeServer.JobSystem
 
                 this.Busy.Remove(workerID);
                 this.Idle.Add(workerID, worker);
+                worker.Task = null;
             }
         }
 
         private void StartJob(Job job, Living living)
         {
+            living.Task = job;
             ServerSendRecieve.Send(new JobAssignedMessage(living, job), this.PlayerID);
         }
 
