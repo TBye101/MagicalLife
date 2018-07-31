@@ -87,7 +87,7 @@ namespace MagicalLifeServer.JobSystem
         {
             int i = 0;
 
-            lock (this.SyncObject)
+            //lock (this.SyncObject)
             {
                 while (i != this.Idle.Count)
                 {
@@ -189,7 +189,7 @@ namespace MagicalLifeServer.JobSystem
 
         private void Job_DependenciesResolved(object sender, Guid ID)
         {
-            lock (this.WithDependencies)
+            //lock (this.WithDependencies)
             {
                 Job job = this.WithDependencies[ID];
                 this.WithDependencies.Remove(ID);

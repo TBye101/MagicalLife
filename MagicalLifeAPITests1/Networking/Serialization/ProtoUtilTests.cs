@@ -1,6 +1,9 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.World.Tiles;
+using MagicalLifeServer;
+using MagicalLifeServer.ServerWorld.World_Generation.Generators;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
@@ -13,22 +16,22 @@ namespace MagicalLifeAPI.Protobuf.Serialization.Tests
         public void SerAndDeSerTest()
         {
             this.Setup();
-            this.TileTest();
+            this.WorldTest();
         }
 
-        private void TileTest()
+        private void WorldTest()
         {
-            string data = Convert.ToBase64String(ProtoUtil.Serialize<Dirt>(new Dirt(3, 2)));
-            Dirt dirt = ProtoUtil.Deserialize<Dirt>(data);
+            World.Data.World.Initialize(1, 1, new GrassAndDirt(0));
+            WorldTransferMessage input = new WorldTransferMessage(World.Data.World.Dimensions);
+            byte[] data = ProtoUtil.Serialize(input);
+            Assert.IsNotNull(data, "Failed to serialize");
 
-            Assert.AreEqual(dirt.MapLocation, new Point2D(3, 2));
-            Assert.IsNotNull(dirt.ID);
+            WorldTransferMessage result = (WorldTransferMessage)ProtoUtil.Deserialize(data);
         }
 
         private void Setup()
         {
-            ProtoTypeLoader prep = new ProtoTypeLoader();
-            prep.InitialStartup();
+            Server.Load(Networking.EngineMode.ServerOnly);
         }
     }
 }

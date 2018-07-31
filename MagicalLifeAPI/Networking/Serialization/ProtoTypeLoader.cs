@@ -60,15 +60,15 @@ namespace MagicalLifeAPI.Networking.Serialization
             }
 
             //Must start at 2 because Protobuf-net can't have members and inheritance attributes with the same ID. I think. :D
-            int i = 2;
-            int length = this.Messages.Count + 2;
+            int i = 3;
+            int length = this.Messages.Count + 3;
             while (i < length)
             {
-                current.Add(this.Messages[i - 2], true);
-                baseMessageType.AddSubType(i, this.Messages[i - 2]);
+                current.Add(this.Messages[i - 3], true);
+                baseMessageType.AddSubType(i, this.Messages[i - 3]);
 
-                BaseMessage sample = (BaseMessage)Activator.CreateInstance(this.Messages[i - 2]);
-                ProtoUtil.IDToMessage.Add(sample.ID, this.Messages[i - 2]);
+                BaseMessage sample = (BaseMessage)Activator.CreateInstance(this.Messages[i - 3]);
+                ProtoUtil.IDToMessage.Add(sample.ID, this.Messages[i - 3]);
 
                 i++;
             }

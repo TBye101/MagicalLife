@@ -18,8 +18,8 @@ namespace MagicalLifeAPI.World
     /// Every tile that implements this class must provide a parameterless version of itself for reflection purposes. That constructor will not be used during gameplay.
     /// </summary>
     [ProtoContract]
-    [ProtoInclude(7, typeof(Dirt))]
-    [ProtoInclude(8, typeof(Grass))]
+    [ProtoInclude(8, typeof(Dirt))]
+    [ProtoInclude(9, typeof(Grass))]
     public abstract class Tile : Selectable, IHasSubclasses, IRenderable
     {
         [ProtoMember(1)]
