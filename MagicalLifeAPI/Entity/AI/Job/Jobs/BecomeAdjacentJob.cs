@@ -32,6 +32,8 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
         public override void BeginJob(Living living)
         {
             List<Point2D> result = WorldUtil.GetNeighboringTiles(this.Target, living.Dimension);
+            result.RemoveAll(x => !World.Data.World.GetTile(living.Dimension, x.X, x.Y).IsWalkable);
+
             int closestIndex = Algorithms.GetClosestPoint2D(result, living.MapLocation);
             this.AdjacentLocation = result[closestIndex];
             List<PathLink> path = MainPathFinder.GetRoute(living.Dimension, living.MapLocation, result[closestIndex]);

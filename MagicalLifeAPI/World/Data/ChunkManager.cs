@@ -130,8 +130,9 @@ namespace MagicalLifeAPI.World.Data
         {
             int chunkX = x / Chunk.Width;
             int chunkY = y / Chunk.Height;
-
-            return chunkX < this.Chunks.Width && chunkY < this.Chunks.Height;
+            bool chunkExist = chunkX < this.Chunks.Width && chunkY < this.Chunks.Height;
+            bool tileExist = x > -1 && y > -1;
+            return chunkExist && tileExist;
         }
 
         public IEnumerator<Tile> GetEnumerator()

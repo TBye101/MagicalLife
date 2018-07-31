@@ -42,8 +42,6 @@ namespace MagicalLifeServer.JobSystem
         [ProtoMember(4)]
         public Guid PlayerID { get; private set; }
 
-        bool reassign = false;
-
         /// <summary>
         /// All of the workers in this list have a job and are working on it.
         /// </summary>
@@ -153,7 +151,6 @@ namespace MagicalLifeServer.JobSystem
         {
             lock (this.SyncObject)
             {
-                this.reassign = true;
                 this.InProgress[ID].RaiseJobCompleted(ID);
                 Guid workerID = this.InProgress[ID].AssignedWorker;
 

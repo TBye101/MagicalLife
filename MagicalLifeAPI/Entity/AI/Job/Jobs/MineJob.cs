@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MagicalLifeAPI.Components.Resource;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.World;
 
@@ -28,6 +29,7 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
         public MineJob(Point2D target) : base(GetDependencies(target))
         {
             this.Target = target;
+            MasterLog.DebugWriteLine("Target: " + this.Target.ToXNA().ToString());
         }
 
         protected static Dictionary<Guid, Job> GetDependencies(Point2D target)
@@ -58,6 +60,7 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
             if (this.Minable.MiningBehavior.PercentMined > 1)
             {
                 this.RemoveResource(living.Dimension);
+                this.CompleteJob();
             }
         }
 
