@@ -9,6 +9,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 * Added item addition, removal, and search functionality
 * Added a grass tile
 * Added the stone chunk item
+* Mining jobs are now possible
 
 #### Server
 * Seperated server loading and server starting into two seperate commands
@@ -17,6 +18,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 #### GUI
 * Grass textures now connect to form smoother patterns
 * Now showing logos for MonoGame and FMOD
+* Player can now mark stone to be mined
 
 #### Bugs
 * Fixed issue [#17](https://github.com/SneakyTactician/MagicalLife/issues/17)
@@ -25,6 +27,9 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 * Discovered issue [#50](https://github.com/SneakyTactician/MagicalLife/issues/50)
 * Discovered issue [#51](https://github.com/SneakyTactician/MagicalLife/issues/51)
+
+* Created issue [#53](https://github.com/SneakyTactician/MagicalLife/issues/53)
+* Created issue [#54](https://github.com/SneakyTactician/MagicalLife/issues/54)
 
 ---
 
