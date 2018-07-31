@@ -40,12 +40,6 @@ namespace MagicalLifeAPI.Entity.AI.Job
         [ProtoMember(3)]
         public Guid AssignedWorker { get; private set; } = Guid.Empty;
 
-        /// <summary>
-        /// The location of the worker that is doing this job.
-        /// </summary>
-        [ProtoMember(4)]
-        public Point2D Location { get; private set; }
-
         private bool DependResolved = false;
         private bool Done = false;
 

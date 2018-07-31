@@ -30,9 +30,13 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                 foreach (MagicalLifeAPI.GUI.Selectable item in last.Selected)
                 {
                     Tile tile = World.GetTile(RenderingPipe.Dimension, item.MapLocation.X, item.MapLocation.Y);
-                    MineJob job = new MineJob(tile.MapLocation);
-                    tile.ImpendingAction = ActionSelected.Mine;
-                    ClientSendRecieve.Send(new JobCreatedMessage(job));
+
+                    if (tile.Resources != null)
+                    {
+                        MineJob job = new MineJob(tile.MapLocation);
+                        tile.ImpendingAction = ActionSelected.Mine;
+                        ClientSendRecieve.Send(new JobCreatedMessage(job));
+                    }
                 }
             }
         }

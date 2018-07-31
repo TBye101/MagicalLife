@@ -15,9 +15,15 @@ namespace MagicalLifeAPI.Components.Resource
     [ProtoContract]
     public abstract class AbstractMinable : IHasSubclasses
     {
+        /// <summary>
+        /// The total percentage of the IMinable that has been mined so far.
+        /// </summary>
+        [ProtoMember(1)]
+        public float PercentMined { get; private set; }
+
         protected AbstractMinable()
         {
-
+            this.PercentMined = 0;
         }
 
         public Type GetBaseType()
@@ -45,6 +51,22 @@ namespace MagicalLifeAPI.Components.Resource
         /// </summary>
         /// <param name="percentMined"></param>
         /// <returns>Any items that should be dropped due to the progress in mining the object. Return null to drop nothing.</returns>
-        public abstract List<Item> MiningInProgress(float percentMined);
+        public List<Item> MineSomePercent(float percentMined)
+        {
+            this.PercentMined += percentMined;
+
+            if (this.PercentMined < 1)
+            {
+                return this.MinePercent(this.PercentMined);
+            }
+            else
+            {
+                return this.Mined();
+            }
+        }
+
+        /// <param name="percent">The total percent mined so far.</param>
+        /// <returns></returns>
+        protected abstract List<Item> MinePercent(float percent);
     }
 }

@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MagicalLifeAPI.Components.Resource;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
+using MagicalLifeAPI.Registry.ItemRegistry;
+using MagicalLifeAPI.World;
 
 namespace MagicalLifeAPI.Entity.AI.Job.Jobs
 {
@@ -15,7 +18,7 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
     {
         public Point2D Target { get; private set; }
 
-        public Point2D WorkStation { get; private set; }
+        private IMinable Minable { get; set; }
 
         /// <summary>
         /// 
@@ -39,10 +42,33 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
 
         public override void BeginJob(Living living)
         {
+            Tile tile = World.Data.World.GetTile(living.Dimension, this.Target.X, this.Target.Y);
+            this.Minable = tile.Resources;
         }
 
         public override void DoJob(Living living)
         {
+            List<World.Base.Item> drop = this.Minable.MiningBehavior.MineSomePercent(.1F);
+
+            if (drop != null && drop.Count > 0)
+            {
+                ItemAdder.AddItem(drop[0], living.MapLocation, living.Dimension);
+            }
+
+            if (this.Minable.MiningBehavior.PercentMined > 1)
+            {
+                this.RemoveResource(living.Dimension);
+            }
+        }
+
+        /// <summary>
+        /// Removes the resource from the world, as it has been completely mined up.
+        /// </summary>
+        private void RemoveResource(int dimension)
+        {
+            Tile tile = World.Data.World.GetTile(dimension, this.Target.X, this.Target.Y);
+            tile.Resources = null;
+            tile.ImpendingAction = ActionSelected.None;
         }
 
         public override void ReevaluateDependencies()

@@ -29,7 +29,7 @@ namespace MagicalLifeAPI.Components.Resource
             return this.Items;
         }
 
-        public override List<Item> MiningInProgress(float percentMined)
+        protected override List<Item> MinePercent(float percentMined)
         {
             return null;
         }
