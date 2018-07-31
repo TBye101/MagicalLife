@@ -14,6 +14,7 @@ namespace MagicalLifeAPI.Entity.AI.Job
 {
     /// <summary>
     /// Everything a <see cref="Living"/> does is a job. From construction, to hauling, to casting spells.
+    /// At some point, all implementers of <see cref="Job"/> must call <see cref="CompleteJob"/>. 
     /// </summary>
     [ProtoContract]
     public abstract class Job : Unique
