@@ -1,15 +1,5 @@
-Credit for things I used that I didn't make:
+Credit for things I used that I didn't make
 
-Libraries: 
-https://github.com/roy-t/AStar optimal pathfinding algorithm
-https://github.com/craftworkgames/MonoGame.Extended
-https://github.com/mgravell/protobuf-net
-http://www.monogame.net/
-https://github.com/serilog/serilog
-https://github.com/BrandonPotter/SimpleTCP
-
-*Still need to be credited
-Lynnberg's art
 Code Snippets:
 
 	Text Centering: https://stackoverflow.com/a/10263903/5294414

@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Server;
+using MagicalLifeAPI.Sound;
 using MagicalLifeClient;
 using MagicalLifeGUIWindows.GUI.MainMenu;
 using MagicalLifeGUIWindows.GUI.Reusable;
@@ -23,6 +24,7 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu.Buttons
         {
             Server.Load(MagicalLifeAPI.Networking.EngineMode.ServerAndClient);
             ClientSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(MagicalLifeAPI.Networking.EngineMode.ServerAndClient));
+            FMODUtil.RaiseEvent(EffectsTable.UIClick);
             ServerSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(MagicalLifeAPI.Networking.EngineMode.ServerAndClient));
             Client.Load();
             Server.StartGame();

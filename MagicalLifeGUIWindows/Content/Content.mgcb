@@ -349,3 +349,9 @@
 /processorParam:TextureFormat=Color
 /build:MineActionOverlay.png
 
+#begin Banks/Master_Bank.bank
+/copy:Banks/Master_Bank.bank
+
+#begin Banks/Master_Bank.strings.bank
+/copy:Banks/Master_Bank.strings.bank
+

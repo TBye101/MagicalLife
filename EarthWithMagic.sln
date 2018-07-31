@@ -30,6 +30,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Included DLL", "Included DLL", "{010D1A58-0BFA-4DE4-818D-CE960B66C4CE}"
 	ProjectSection(SolutionItems) = preProject
 		Included DLL\fmod64.dll = Included DLL\fmod64.dll
+		Included DLL\fmodstudio64.dll = Included DLL\fmodstudio64.dll
 	EndProjectSection
 EndProject
 Global

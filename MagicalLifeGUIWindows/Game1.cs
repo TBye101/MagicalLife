@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Load;
 using MagicalLifeAPI.Networking.Serialization;
+using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Universal;
 using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Load;
@@ -127,6 +128,7 @@ namespace MagicalLifeGUIWindows
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            FMODUtil.System.update();
             this.GraphicsDevice.SetRenderTarget(null);
             this.GraphicsDevice.Clear(Color.Black);
 

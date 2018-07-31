@@ -5,6 +5,8 @@ Thanks for the logo Batarian711!
 # Magical Life
 A fantasy world that imagines what a Rimworld style game could truly do if it had more elements in common with an RPG.
 
+[![Build Status](https://travis-ci.org/SneakyTactician/MagicalLife.svg?branch=master)](https://travis-ci.org/SneakyTactician/MagicalLife)
+
 ## Project Needs
 * Textures
 * Sound Effects
@@ -24,6 +26,8 @@ Thanks!
 ## Features
 * Multiplayer support
 * Hardware accelerated graphics via Monogame
+
+Check out the [demo](https://youtu.be/dsWu4G6p4aM) to see the latest progress!
 
 ## Roadmap (In no particular order)
 AKA TODO:
@@ -136,7 +140,7 @@ but with magic and aspects of RPG.
 # Credits
 
 ## Contributors
-Lynngr - Created the dirt and grass textures
+Lynngr - Created the dirt, grass, and stone textures.
 
 ockenyberg - Created the dirt and grass stepping sound effects
 

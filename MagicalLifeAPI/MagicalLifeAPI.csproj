@@ -220,10 +220,12 @@
     <Compile Include="Load\Loader.cs" />
     <Compile Include="Load\LoadMoniter.cs" />
     <Compile Include="Settings\AudioSettings.cs" />
-    <Compile Include="Sound\EffectPlayer.cs" />
+    <Compile Include="Sound\EffectsTable.cs" />
+    <Compile Include="Sound\FMODUtil.cs" />
     <Compile Include="Sound\FMOD\fmod.cs" />
     <Compile Include="Sound\FMOD\fmod_dsp.cs" />
     <Compile Include="Sound\FMOD\fmod_errors.cs" />
+    <Compile Include="Sound\FMOD\fmod_studio.cs" />
     <Compile Include="Sound\MusicPlayer.cs" />
     <Compile Include="Universal\Unique.cs" />
     <Compile Include="Universal\UniversalEvents.cs" />
@@ -269,6 +271,16 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <Content Include="..\Included DLL\fmodstudio64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <Content Include="..\Included DLL\fmodstudio64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
     <Content Include="..\Included DLL\fmod64.dll">
