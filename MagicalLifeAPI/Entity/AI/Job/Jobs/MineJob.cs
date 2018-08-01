@@ -39,20 +39,20 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
         protected static Dictionary<Guid, Job> GetDependencies(Point2D target)
         {
             Dictionary<Guid, Job> ret = new Dictionary<Guid, Job>();
-            BecomeAdjacentJob dependency = new BecomeAdjacentJob(target);
+            BecomeAdjacentJob dependency = new BecomeAdjacentJob(target, true);
 
             ret.Add(dependency.ID, dependency);
 
             return ret;
         }
 
-        public override void BeginJob(Living living)
+        protected override void StartJob(Living living)
         {
             Tile tile = World.Data.World.GetTile(living.Dimension, this.Target.X, this.Target.Y);
             this.Minable = tile.Resources;
         }
 
-        public override void DoJob(Living living)
+        protected override void JobTick(Living living)
         {
             List<World.Base.Item> drop = this.Minable.MiningBehavior.MineSomePercent(.1F);
 
@@ -64,7 +64,7 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
             if (this.Minable.MiningBehavior.PercentMined > 1)
             {
                 this.RemoveResource(living.Dimension);
-                this.CompleteJob();
+                this.CompleteJob(living);
             }
         }
 

@@ -27,7 +27,7 @@ namespace MagicalLifeAPI.Entity.AI.Job
         /// <summary>
         /// Raised by a job when it is done.
         /// </summary>
-        public event EventHandler<Guid> JobComplete;
+        public event EventHandler<Tuple<Guid, Living>> JobComplete;
 
         /// <summary>
         /// The dependencies that must be resolved before this job can begin.
@@ -50,6 +50,12 @@ namespace MagicalLifeAPI.Entity.AI.Job
         private bool DependResolved = false;
         private bool Done = false;
 
+        /// <summary>
+        /// Used when all components of the job must be completed by the same character.
+        /// </summary>
+        [ProtoMember(6)]
+        private Job CurrentTask;
+
         /// <param name="dependencies"></param>
         /// <param name="requireSameWorker">If true, the same worker must do all steps of this job in order all at once.</param>
         public Job(Dictionary<Guid, Job> dependencies, bool requireSameWorker)
@@ -61,25 +67,35 @@ namespace MagicalLifeAPI.Entity.AI.Job
             {
                 item.Value.JobComplete += this.Item_JobComplete;
                 item.Value.ParentJob = this.ID;
-                item.Value.RequireSameWorker = this.RequireSameWorker;
             }
         }
 
-        public void RaiseJobCompleted(Guid ID)
+        public Job(bool requireSameWorker)
         {
-            this.JobComplete?.Invoke(this, ID);
+            this.RequireSameWorker = requireSameWorker;
         }
 
-        private void Item_JobComplete(object sender, Guid e)
+        public void RaiseJobCompleted(Tuple<Guid, Living> e)
         {
-            if (!this.DependResolved)
+            this.JobComplete?.Invoke(this, e);
+        }
+
+        private void Item_JobComplete(object sender, Tuple<Guid, Living> e)
+        {
+            this.Dependencies.Remove(e.Item1);
+
+            if (!this.DependResolved && this.Dependencies.Count == 0)
             {
                 this.DependResolved = true;
-                this.Dependencies.Remove(e);
 
-                if (this.Dependencies.Count == 0)
+                if (!this.RequireSameWorker)
                 {
                     this.DependenciesResolvedHandler(this.ID);
+                }
+                else
+                {
+                    this.CurrentTask = null;
+                    this.StartJob(e.Item2);
                 }
             }
         }
@@ -92,29 +108,91 @@ namespace MagicalLifeAPI.Entity.AI.Job
         /// <summary>
         /// This method should be called by the client whenever this job is done.
         /// </summary>
-        protected void CompleteJob()
+        protected void CompleteJob(Living living)
         {
-            if (!this.Done)
+            if (!this.Done && !this.RequireSameWorker)
             {
                 this.Done = true;
                 ClientSendRecieve.Send<JobCompletedMessage>(new JobCompletedMessage(this.ID));
             }
-        }
-
-        public Job()
-        {
-
+            else
+            {
+                this.RaiseJobCompleted(new Tuple<Guid, Living>(this.ID, living));
+            }
         }
 
         /// <summary>
         /// Called one time before an entity begins work on this job.
         /// </summary>
-        public abstract void BeginJob(Living living);
+        protected abstract void StartJob(Living living);
+
+        public void BeginJob(Living living)
+        {
+            if (this.RequireSameWorker)
+            {
+                if (this.Dependencies.Count > 0)
+                {
+                    this.CurrentTask = this.GetNextDependency(this.Dependencies);
+                    this.CurrentTask.StartJob(living);
+                }
+                else
+                {
+                    this.StartJob(living);
+                }
+            }
+            else
+            {
+                this.StartJob(living);
+            }
+        }
+
+        /// <summary>
+        /// Gets the next dependency to work on.
+        /// </summary>
+        /// <returns></returns>
+        private Job GetNextDependency(Dictionary<Guid, Job> dependencies)
+        {
+            Job job = this.Dependencies.ElementAt(0).Value;
+
+            if (job.Dependencies != null && job.Dependencies.Count > 0)
+            {
+                return this.GetNextDependency(job.Dependencies);
+            }
+
+            return job;
+        }
 
         /// <summary>
         /// Called every tick.
         /// </summary>
-        public abstract void DoJob(Living living);
+        protected abstract void JobTick(Living living);
+
+        public void DoJob(Living living)
+        {
+            if (this.RequireSameWorker)
+            {
+                if (this.CurrentTask != null)
+                {
+                    this.CurrentTask.DoJob(living);
+                }
+                else
+                {
+                    if (this.Dependencies != null && this.Dependencies.Count != 0)
+                    {
+                        this.CurrentTask = this.GetNextDependency(this.Dependencies);
+                        this.CurrentTask.StartJob(living);
+                    }
+                    else
+                    {
+                        this.JobTick(living);
+                    }
+                }
+            }
+            else
+            {
+                this.JobTick(living);
+            }
+        }
 
         /// <summary>
         /// Allows the job to re-evaluate if it has dependencies before the job starts, and allows adapting to changing conditions.

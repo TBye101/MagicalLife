@@ -29,12 +29,12 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
         public Point2D AdjacentLocation { get; private set; }
 
         /// <param name="target">The target to become adjacent to.</param>
-        public BecomeAdjacentJob(Point2D target)
+        public BecomeAdjacentJob(Point2D target, bool requireSameWorker) : base(requireSameWorker)
         {
             this.Target = target;
         }
 
-        public override void BeginJob(Living living)
+        protected override void StartJob(Living living)
         {
             List<Point2D> result = WorldUtil.GetNeighboringTiles(this.Target, living.Dimension);
             result.RemoveAll(x => !World.Data.World.GetTile(living.Dimension, x.X, x.Y).IsWalkable);
@@ -46,11 +46,11 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
             Extensions.EnqueueCollection(living.QueuedMovement, path);
         }
 
-        public override void DoJob(Living living)
+        protected override void JobTick(Living living)
         {
             if (living.MapLocation.Equals(this.AdjacentLocation))
             {
-                this.CompleteJob();
+                this.CompleteJob(living);
             }
         }
 
