@@ -1,11 +1,16 @@
-install:
--ps: (New-Object Net.WebClient).DownloadFile('http://www.monogame.net/releases/v3.6/MonoGameSetup.exe', 'C:\MonoGameSetup.exe')
-Invoke-Command -ScriptBlock {C:\MonoGameSetup.exe /S /v/qn}
--cmd: nuget restore
-
 platform:
 -x64
 
 configuration:
 -Debug
 -Release
+
+before_build:
+
+- ps: >-
+
+    nuget restore
+
+install:
+-ps: (New-Object Net.WebClient).DownloadFile('http://www.monogame.net/releases/v3.6/MonoGameSetup.exe', 'C:\MonoGameSetup.exe')
+-ps: Invoke-Command -ScriptBlock {C:\MonoGameSetup.exe /S /v/qn}
