@@ -9,16 +9,20 @@ using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.World;
+using ProtoBuf;
 
 namespace MagicalLifeAPI.Entity.AI.Job.Jobs
 {
     /// <summary>
     /// Has the creature mine something.
     /// </summary>
+    [ProtoContract]
     public class MineJob : Job
     {
+        [ProtoMember(1)]
         public Point2D Target { get; private set; }
 
+        [ProtoMember(2)]
         private IMinable Minable { get; set; }
 
         /// <summary>
@@ -26,7 +30,7 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
         /// </summary>
         /// <param name="target">The tile that contains the object to mine up.</param>
         /// <param name="workStation">The position at which the creature will be at when it begins mining.</param>
-        public MineJob(Point2D target) : base(GetDependencies(target))
+        public MineJob(Point2D target) : base(GetDependencies(target), true)
         {
             this.Target = target;
             MasterLog.DebugWriteLine("Target: " + this.Target.ToXNA().ToString());

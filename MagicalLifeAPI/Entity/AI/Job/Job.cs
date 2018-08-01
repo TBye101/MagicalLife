@@ -41,16 +41,27 @@ namespace MagicalLifeAPI.Entity.AI.Job
         [ProtoMember(3)]
         public Guid AssignedWorker { get; private set; } = Guid.Empty;
 
+        [ProtoMember(4)]
+        public bool RequireSameWorker { get; private set; }
+
+        [ProtoMember(5)]
+        public Guid ParentJob { get; private set; }
+
         private bool DependResolved = false;
         private bool Done = false;
 
-        public Job(Dictionary<Guid, Job> dependencies)
+        /// <param name="dependencies"></param>
+        /// <param name="requireSameWorker">If true, the same worker must do all steps of this job in order all at once.</param>
+        public Job(Dictionary<Guid, Job> dependencies, bool requireSameWorker)
         {
             this.Dependencies = dependencies;
+            this.RequireSameWorker = requireSameWorker;
 
             foreach (KeyValuePair<Guid, Job> item in this.Dependencies)
             {
                 item.Value.JobComplete += this.Item_JobComplete;
+                item.Value.ParentJob = this.ID;
+                item.Value.RequireSameWorker = this.RequireSameWorker;
             }
         }
 

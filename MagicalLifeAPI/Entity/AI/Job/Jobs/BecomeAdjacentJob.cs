@@ -9,18 +9,23 @@ using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
+using ProtoBuf;
 
 namespace MagicalLifeAPI.Entity.AI.Job.Jobs
 {
     /// <summary>
     /// This job gets a living adjacent to a tile.
     /// </summary>
+    [ProtoContract]
     public class BecomeAdjacentJob : Job
     {
+        [ProtoMember(1)]
         public Point2D Target { get; private set; }
 
+        [ProtoMember(2)]
         public List<PathLink> Route { get; private set; }
 
+        [ProtoMember(3)]
         public Point2D AdjacentLocation { get; private set; }
 
         /// <param name="target">The target to become adjacent to.</param>

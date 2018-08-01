@@ -8,14 +8,17 @@ using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Pathfinding;
+using ProtoBuf;
 
 namespace MagicalLifeAPI.Entity.AI.Job.Jobs
 {
     /// <summary>
     /// This job gets the living to move from point 'A' to point 'B'.
     /// </summary>
+    [ProtoContract]
     public class MoveJob : Job
     {
+        [ProtoMember(1)]
         public Point2D Destination { get; private set; }
 
         public MoveJob(Point2D destination) : base()
