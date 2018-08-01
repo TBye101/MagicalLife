@@ -5,6 +5,10 @@ Thanks for the logo Batarian711!
 # Magical Life
 A fantasy world that imagines what a Rimworld style game could truly do if it had more elements in common with an RPG.
 
+Master Branch:
+[![Build status](https://ci.appveyor.com/api/projects/status/utahvkv3dvsp330m/branch/master?svg=true)](https://ci.appveyor.com/project/SneakyTactician/magicallife/branch/master)
+
+Development Branch:
 [![Build status](https://ci.appveyor.com/api/projects/status/utahvkv3dvsp330m?svg=true)](https://ci.appveyor.com/project/SneakyTactician/magicallife)
 
 ## Project Needs
