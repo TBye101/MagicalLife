@@ -16,7 +16,6 @@ platform:
 configuration:
 
 - Debug
-- Release
 
 before_build:
 
