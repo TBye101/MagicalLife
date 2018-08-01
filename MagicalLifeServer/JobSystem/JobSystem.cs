@@ -155,7 +155,7 @@ namespace MagicalLifeServer.JobSystem
                 Guid workerID = this.InProgress[ID].AssignedWorker;
 
                 this.InProgress.Remove(ID);
-                Living worker = this.Busy[workerID];
+                Living worker = this.Busy[workerID];//Need another lock
 
                 this.Busy.Remove(workerID);
                 this.Idle.Add(workerID, worker);
