@@ -1,15 +1,18 @@
 image: Visual Studio 2017
 
 platform:
+
 -x64
 
 configuration:
+
 -Debug
 -Release
 
 install:
 
 # install monogame
+
 - ps: >-
     (New-Object Net.WebClient).DownloadFile('http://www.monogame.net/releases/v3.6/MonoGameSetup.exe', 'C:\MonoGameSetup.exe')
 - ps: >-
