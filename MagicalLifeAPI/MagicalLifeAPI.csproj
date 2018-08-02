@@ -235,6 +235,7 @@
     <Compile Include="Util\HashUtil.cs" />
     <Compile Include="Util\MathUtil.cs" />
     <Compile Include="Util\ReflectionUtil.cs" />
+    <Compile Include="Util\Reusable\TickTimer.cs" />
     <Compile Include="Util\StaticRandom.cs" />
     <Compile Include="Asset\TextureLoader.cs" />
     <Compile Include="World\Base\Item.cs" />

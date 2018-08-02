@@ -8,6 +8,7 @@ using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Registry.ItemRegistry;
+using MagicalLifeAPI.Util.Reusable;
 using MagicalLifeAPI.World;
 using ProtoBuf;
 
@@ -25,6 +26,9 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
         [ProtoMember(2)]
         private IMinable Minable { get; set; }
 
+        [ProtoMember(3)]
+        private TickTimer HitTimer { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
@@ -34,6 +38,7 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
         {
             this.Target = target;
             MasterLog.DebugWriteLine("Target: " + this.Target.ToXNA().ToString());
+            this.HitTimer = new TickTimer(30);
         }
 
         public MineJob() : base()
@@ -59,17 +64,20 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
 
         protected override void JobTick(Living living)
         {
-            List<World.Base.Item> drop = this.Minable.MiningBehavior.MineSomePercent(.1F);
-
-            if (drop != null && drop.Count > 0)
+            if (this.HitTimer.Allow())
             {
-                ItemAdder.AddItem(drop[0], living.MapLocation, living.Dimension);
-            }
+                List<World.Base.Item> drop = this.Minable.MiningBehavior.MineSomePercent(.1F);
 
-            if (this.Minable.MiningBehavior.PercentMined > 1)
-            {
-                this.RemoveResource(living.Dimension);
-                this.CompleteJob(living);
+                if (drop != null && drop.Count > 0)
+                {
+                    ItemAdder.AddItem(drop[0], living.MapLocation, living.Dimension);
+                }
+
+                if (this.Minable.MiningBehavior.PercentMined > 1)
+                {
+                    this.RemoveResource(living.Dimension);
+                    this.CompleteJob(living);
+                }
             }
         }
 
