@@ -110,7 +110,7 @@ namespace MagicalLifeAPI.Entity.AI.Job
         /// </summary>
         protected void CompleteJob(Living living)
         {
-            if (!this.Done && !this.RequireSameWorker)
+            if (!this.Done && !this.RequireSameWorker || this.ParentJob == Guid.Empty)
             {
                 this.Done = true;
                 ClientSendRecieve.Send<JobCompletedMessage>(new JobCompletedMessage(this.ID));
