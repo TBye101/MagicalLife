@@ -30,8 +30,8 @@ SneakyTactician  <SneakyTactician@outlook.com>
 * Discovered issue [#50](https://github.com/SneakyTactician/MagicalLife/issues/50)
 * Discovered issue [#51](https://github.com/SneakyTactician/MagicalLife/issues/51)
 
-* Created issue [#53](https://github.com/SneakyTactician/MagicalLife/issues/53)
-* Created issue [#54](https://github.com/SneakyTactician/MagicalLife/issues/54)
+* Created and fixed issue [#53](https://github.com/SneakyTactician/MagicalLife/issues/53)
+* Created and fixed issue [#54](https://github.com/SneakyTactician/MagicalLife/issues/54)
 
 ---
 
