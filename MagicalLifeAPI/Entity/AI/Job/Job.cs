@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entities;
+using MagicalLifeAPI.Entity.AI.Job.Jobs;
 using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Universal;
@@ -17,6 +18,9 @@ namespace MagicalLifeAPI.Entity.AI.Job
     /// At some point, all implementers of <see cref="Job"/> must call <see cref="CompleteJob"/>. 
     /// </summary>
     [ProtoContract]
+    [ProtoInclude(7, typeof(BecomeAdjacentJob))]
+    [ProtoInclude(8, typeof(MineJob))]
+    [ProtoInclude(9, typeof(MoveJob))]
     public abstract class Job : Unique
     {
         /// <summary>

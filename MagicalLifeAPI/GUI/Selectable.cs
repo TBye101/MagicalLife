@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Entities.Humanoid;
 using MagicalLifeAPI.Universal;
+using MagicalLifeAPI.World;
 using ProtoBuf;
 
 namespace MagicalLifeAPI.GUI
@@ -11,6 +12,7 @@ namespace MagicalLifeAPI.GUI
     /// </summary>
     [ProtoContract]
     [ProtoInclude(2, typeof(Living))]
+    [ProtoInclude(3, typeof(Tile))]
     public abstract class Selectable : Unique
     {
         /// <summary>
