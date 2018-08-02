@@ -55,6 +55,20 @@ namespace MagicalLifeAPI.Sound
             instance.start();
         }
 
+        /// <summary>
+        /// Raises the specified event and passes <paramref name="value"/> to a parameter with a name of <paramref name="parameterName"/>.
+        /// </summary>
+        /// <param name="eventPath">The path to the event in a bank file. Ex: event:/Footsteps</param>
+        /// <param name="parameterName">The name of the parameter to pass <paramref name="value"/> to.</param>
+        /// <param name="value">The value to be passed into the event.</param>
+        public static void RaiseEvent(string eventPath, string parameterName, int value)
+        {
+            _System.getEvent(eventPath, out EventDescription _event);
+            _event.createInstance(out EventInstance instance);
+            instance.setParameterValue(parameterName, value);
+            instance.start();
+        }
+
         public static void Test()
         {
             //Temp method
@@ -67,6 +81,19 @@ namespace MagicalLifeAPI.Sound
             {
                 item.getPath(out string path);
                 MasterLog.DebugWriteLine(path);
+
+                item.getParameterCount(out int length);
+
+                for (int i = 0; i < length; i++)
+                {
+                    item.getParameterByIndex(i, out PARAMETER_DESCRIPTION parameter);
+                    MasterLog.DebugWriteLine("Parameter name: " + parameter.name);
+                    MasterLog.DebugWriteLine("Parameter type: " + parameter.type);
+                    MasterLog.DebugWriteLine("Parameter index: " + parameter.index);
+                    MasterLog.DebugWriteLine("Parameter default value: " + parameter.defaultvalue);
+                    MasterLog.DebugWriteLine("Parameter minimum: " + parameter.minimum);
+                    MasterLog.DebugWriteLine("Parameter maximum: " + parameter.maximum);
+                }
             }
             MasterLog.DebugWriteLine("End of Sound Events");
         }

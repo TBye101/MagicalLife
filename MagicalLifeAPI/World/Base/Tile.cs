@@ -66,22 +66,25 @@ namespace MagicalLifeAPI.World
         [ProtoMember(7)]
         public ActionSelected ImpendingAction { get; set; }
 
+        public readonly int FootStepSound;
+
         /// <summary>
         /// Initializes a new tile object.
         /// </summary>
         /// <param name="location">The 3D location of this tile in the map.</param>
         /// <param name="movementCost">This value is the movement cost of walking on this tile. It should be between 1 and 100</param>
-        public Tile(Point2D location, int movementCost, AbstractRenderable renderable)
+        public Tile(Point2D location, int movementCost, AbstractRenderable renderable, int footStepSound)
         {
             this.MapLocation = location;
             this.MovementCost = movementCost;
             Tile.TileCreatedHandler(new TileEventArg(this));
             this.IsWalkable = true;
             this.Renderable = renderable;
+            this.FootStepSound = footStepSound;
         }
 
-        public Tile(int x, int y, int movementCost, AbstractRenderable renderable)
-            : this(new Point2D(x, y), movementCost, renderable)
+        public Tile(int x, int y, int movementCost, AbstractRenderable renderable, int footStepSound)
+            : this(new Point2D(x, y), movementCost, renderable, footStepSound)
         {
         }
 

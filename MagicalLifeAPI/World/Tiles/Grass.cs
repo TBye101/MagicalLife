@@ -12,7 +12,7 @@ namespace MagicalLifeAPI.World.Tiles
     [ProtoContract]
     public class Grass : Tile
     {
-        public Grass(Point2D location) : base(location, 11, new TransitionTextures(typeof(Dirt), typeof(Grass), new ConnectedGrass()))
+        public Grass(Point2D location) : base(location, 11, new TransitionTextures(typeof(Dirt), typeof(Grass), new ConnectedGrass()), 1)
         {
         }
 

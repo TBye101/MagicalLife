@@ -6,6 +6,7 @@ using MagicalLifeAPI.Entity.AI.Job;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Pathfinding;
+using MagicalLifeAPI.Util.Reusable;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
@@ -58,6 +59,9 @@ namespace MagicalLifeAPI.Entities
         [ProtoMember(7)]
         public Guid PlayerID { get; set; }
 
+        [ProtoMember(9)]
+        public TickTimer FootStepTimer { get; set; }
+
         /// <summary>
         /// Raised when a <see cref="Living"/> is created.
         /// </summary>
@@ -82,6 +86,7 @@ namespace MagicalLifeAPI.Entities
             this.ScreenLocation = new Point2DFloat(location.X, location.Y);
             this.Dimension = dimension;
             Living.LivingCreatedHandler(new LivingEventArg(this, location));
+            this.FootStepTimer = new TickTimer(5);
         }
 
         public Living()

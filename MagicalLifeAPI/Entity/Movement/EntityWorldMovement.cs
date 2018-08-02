@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions;
 using MagicalLifeAPI.InternalExceptions;
 using MagicalLifeAPI.Pathfinding;
+using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
 using System;
@@ -111,17 +112,29 @@ namespace MagicalLifeAPI.Entities.Movement
 
             if (MathUtil.GetDistance(entity.ScreenLocation, destination.MapLocation) > entity.Movement.GetValue())
             {
+                //The character fell short of reaching the next tile
                 entity.ScreenLocation = new DataTypes.Point2DFloat(entity.ScreenLocation.X + xMove, entity.ScreenLocation.Y + yMove);
+                FootStepSound(entity, source);
             }
             else
             {
+                //The character made it to the next tile.
                 entity.MapLocation = destination.MapLocation;
                 entity.ScreenLocation = new DataTypes.Point2DFloat(destination.MapLocation.X, destination.MapLocation.Y);
                 entity.QueuedMovement.Dequeue();
                 movementPenalty = MathUtil.GetDistance(entity.ScreenLocation, destination.MapLocation);
+                FootStepSound(entity, destination);
             }
 
             entity.Movement.AddModifier(new Entity.Util.ModifierFloat(movementPenalty, new TimeRemoveCondition(1), "Normal Movement"));
+        }
+
+        private static void FootStepSound(Living living, Tile footStepsOn)
+        {
+            if (living.FootStepTimer.Allow())
+            {
+                FMODUtil.RaiseEvent(EffectsTable.FootSteps, "Material", footStepsOn.FootStepSound);
+            }
         }
 
         /// <summary>

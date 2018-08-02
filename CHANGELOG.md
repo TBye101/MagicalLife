@@ -19,8 +19,11 @@ SneakyTactician  <SneakyTactician@outlook.com>
 #### GUI
 * Grass textures now connect to form smoother patterns
 * Now showing logos for MonoGame and FMOD
-* Buttons now play a clicking sound when clicked upon
 * Player can now mark stone to be mined
+
+#### Sound
+* Buttons now play a clicking sound when clicked upon
+* Stone now plays a pickaxe hitting noise while it is being mined
 
 #### Bugs
 * Fixed issue [#17](https://github.com/SneakyTactician/MagicalLife/issues/17)
