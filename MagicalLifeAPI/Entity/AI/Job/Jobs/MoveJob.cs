@@ -26,6 +26,11 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
             this.Destination = destination;
         }
 
+        public MoveJob() : base()
+        {
+            //Protobuf-net constructor
+        }
+
         protected override void StartJob(Living living)
         {
             Point2D start = living.MapLocation;

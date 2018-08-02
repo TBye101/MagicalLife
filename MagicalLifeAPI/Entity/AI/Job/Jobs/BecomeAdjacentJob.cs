@@ -34,6 +34,11 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
             this.Target = target;
         }
 
+        public BecomeAdjacentJob() : base()
+        {
+            //Protobuf-net constructor
+        }
+
         protected override void StartJob(Living living)
         {
             List<Point2D> result = WorldUtil.GetNeighboringTiles(this.Target, living.Dimension);

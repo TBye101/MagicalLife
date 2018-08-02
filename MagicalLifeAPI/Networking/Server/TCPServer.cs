@@ -18,7 +18,7 @@ namespace MagicalLifeAPI.Networking.Server
     {
         public SimpleTcpServer Server = new SimpleTcpServer();
 
-        private readonly Dictionary<Guid, Socket> PlayerToSocket = new Dictionary<Guid, Socket>();
+        public readonly Dictionary<Guid, Socket> PlayerToSocket = new Dictionary<Guid, Socket>();
 
         public TCPServer()
         {

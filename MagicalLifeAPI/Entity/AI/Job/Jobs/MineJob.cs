@@ -36,6 +36,11 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
             MasterLog.DebugWriteLine("Target: " + this.Target.ToXNA().ToString());
         }
 
+        public MineJob() : base()
+        {
+            //Protobuf-net constructor
+        }
+
         protected static Dictionary<Guid, Job> GetDependencies(Point2D target)
         {
             Dictionary<Guid, Job> ret = new Dictionary<Guid, Job>();

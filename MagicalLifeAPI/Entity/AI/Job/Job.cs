@@ -79,6 +79,11 @@ namespace MagicalLifeAPI.Entity.AI.Job
             this.RequireSameWorker = requireSameWorker;
         }
 
+        public Job()
+        {
+            //Protobuf-net constructor
+        }
+
         public void RaiseJobCompleted(Tuple<Guid, Living> e)
         {
             this.JobComplete?.Invoke(this, e);
