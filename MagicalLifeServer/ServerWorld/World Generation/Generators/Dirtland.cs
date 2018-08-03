@@ -1,5 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities.Entity_Factory;
+using MagicalLifeAPI.Entity.Entity;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
@@ -7,7 +7,7 @@ using MagicalLifeAPI.World.Tiles;
 using MagicalLifeSettings.Storage;
 using System;
 
-namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
+namespace MagicalLifeServer.ServerWorld.World
 {
     /// <summary>
     /// Generates the whole map to be made out of dirt.

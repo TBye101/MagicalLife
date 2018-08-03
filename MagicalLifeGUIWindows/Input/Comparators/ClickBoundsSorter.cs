@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.InternalExceptions;
-using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeGUIWindows.Input.Comparators

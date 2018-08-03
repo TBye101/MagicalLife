@@ -1,9 +1,7 @@
-﻿using MagicalLifeGUIWindows.GUI.Host_Game_Menu.Buttons;
-using MagicalLifeGUIWindows.GUI.Host_Game_Menu.Input_Boxes;
-using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Rendering;
 
-namespace MagicalLifeGUIWindows.GUI.Host_Game_Menu
+namespace MagicalLifeGUIWindows.GUI.Host
 {
     public class HostGameMenuContainer : GUIContainer
     {

@@ -1,5 +1,5 @@
-﻿using MagicalLifeAPI.Networking.Client;
-using MagicalLifeAPI.Sound;
+﻿using MagicalLifeAPI.Sound;
+using MagicalLifeGUIWindows.GUI.New;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
@@ -15,7 +15,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
         public override void Click(MouseEventArgs e)
         {
             FMODUtil.RaiseEvent(EffectsTable.UIClick);
-            New_World_Menu.NewWorldMenu.Initialize();
+            NewWorldMenu.Initialize();
         }
 
         public override void DoubleClick(MouseEventArgs e)

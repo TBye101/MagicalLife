@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MagicalLifeAPI.Components.Tile.Renderable
+﻿namespace MagicalLifeAPI.Components.Tile.Renderable
 {
     /// <summary>
     /// Used to keep track of the texture states of tiles.

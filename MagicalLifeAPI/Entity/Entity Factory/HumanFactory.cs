@@ -1,9 +1,9 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities.Humanoid;
+using MagicalLifeAPI.Entity.Humanoid;
 using MagicalLifeAPI.Util;
 using System;
 
-namespace MagicalLifeAPI.Entities.Entity_Factory
+namespace MagicalLifeAPI.Entity.Entity
 {
     /// <summary>
     /// Used to initialize a new human properly.

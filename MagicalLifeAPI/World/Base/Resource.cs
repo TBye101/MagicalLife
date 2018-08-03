@@ -1,5 +1,5 @@
 ﻿using MagicalLifeAPI.Components.Resource;
-using MagicalLifeAPI.Entities.Util;
+using MagicalLifeAPI.DataTypes.Attribute;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.World.Resources;
@@ -7,7 +7,7 @@ using ProtoBuf;
 using System;
 using System.Collections.Generic;
 
-namespace MagicalLifeAPI.World
+namespace MagicalLifeAPI.World.Base
 {
     /// <summary>
     /// A base class for all resources.

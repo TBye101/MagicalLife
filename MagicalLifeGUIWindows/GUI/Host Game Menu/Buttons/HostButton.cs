@@ -2,12 +2,12 @@
 using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Server;
 using MagicalLifeAPI.Sound;
-using MagicalLifeGUIWindows.GUI.New_World_Menu;
+using MagicalLifeGUIWindows.GUI.New;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 
-namespace MagicalLifeGUIWindows.GUI.Host_Game_Menu.Buttons
+namespace MagicalLifeGUIWindows.GUI.Host
 {
     /// <summary>
     /// This button starts the process of hosting the game.

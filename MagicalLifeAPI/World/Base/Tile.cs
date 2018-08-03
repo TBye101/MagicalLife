@@ -1,18 +1,14 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Generic;
-using MagicalLifeAPI.Components.Generic.Renderable;
+﻿using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity.AI.Job;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking;
-using MagicalLifeAPI.Universal;
-using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Tiles;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
 
-namespace MagicalLifeAPI.World
+namespace MagicalLifeAPI.World.Base
 {
     /// <summary>
     /// Every tile that implements this class must provide a parameterless version of itself for reflection purposes. That constructor will not be used during gameplay.

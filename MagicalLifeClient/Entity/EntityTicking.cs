@@ -1,6 +1,5 @@
-﻿using MagicalLifeAPI.Entities;
-using MagicalLifeAPI.Entities.Movement;
-using MagicalLifeAPI.Filing.Logging;
+﻿using MagicalLifeAPI.Entity;
+using MagicalLifeAPI.Entity.Movement;
 using MagicalLifeAPI.World.Data;
 
 namespace MagicalLifeClient.Entity

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MagicalLifeServerShell
+namespace MagicalLifeAPI.Server
 {
     /// <summary>
     /// For each package to implement once and have each command within.

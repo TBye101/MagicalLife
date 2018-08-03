@@ -1,11 +1,7 @@
 ﻿using MagicalLifeAPI.Components.Tile.Renderable;
 using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.World.Base;
 using ProtoBuf;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.World.Tiles
 {

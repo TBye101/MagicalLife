@@ -3,7 +3,7 @@ using MagicalLifeAPI.GUI;
 using ProtoBuf;
 using System;
 
-namespace MagicalLifeAPI.Entities.Humanoid
+namespace MagicalLifeAPI.Entity.Humanoid
 {
     /// <summary>
     /// A class that holds logic for control of regular humans.

@@ -1,11 +1,9 @@
-﻿using MagicalLifeAPI.Entities;
-using MagicalLifeAPI.Networking.Server;
+﻿using MagicalLifeAPI.Entity;
+using MagicalLifeAPI.Entity.Eventing;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeServer.JobSystem
 {
@@ -46,7 +44,7 @@ namespace MagicalLifeServer.JobSystem
 
         }
 
-        private void Living_LivingCreated(object sender, MagicalLifeAPI.Entities.Eventing.LivingEventArg e)
+        private void Living_LivingCreated(object sender, LivingEventArg e)
         {
             if (this.PlayerToJobSystem.ContainsKey(e.Living.PlayerID))
             {

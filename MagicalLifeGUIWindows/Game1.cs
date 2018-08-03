@@ -6,12 +6,11 @@ using MagicalLifeAPI.Universal;
 using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Load;
 using MagicalLifeGUIWindows.Rendering;
-using MagicalLifeGUIWindows.Splash;
+using MagicalLifeGUIWindows.Screens;
 using MagicalLifeSettings.Storage;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGame.Extended.Screens;
 using System.Collections.Generic;
 
 namespace MagicalLifeGUIWindows

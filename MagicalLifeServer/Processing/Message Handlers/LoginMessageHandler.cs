@@ -1,12 +1,10 @@
-﻿using MagicalLifeAPI.Networking.Messages;
+﻿using MagicalLifeAPI.Entity;
+using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MagicalLifeServer.Processing.Message_Handlers
+namespace MagicalLifeServer.Processing.Message
 {
     public class LoginMessageHandler : MessageHandler
     {
@@ -17,8 +15,19 @@ namespace MagicalLifeServer.Processing.Message_Handlers
         public override void HandleMessage(BaseMessage message)
         {
             LoginMessage msg = (LoginMessage)message;
-            JobSystem.JobSystemManager.Manager.PlayerToJobSystem.Add(msg.PlayerID, new JobSystem.JobSystem(new Dictionary<Guid, MagicalLifeAPI.Entities.Living>(), msg.PlayerID));//Need to handle game loads, saves, player connect, and player disconnect
+            JobSystem.JobSystemManager.Manager.PlayerToJobSystem.Add(msg.PlayerID, new JobSystem.JobSystem(new Dictionary<Guid, Living>(), msg.PlayerID));//Need to handle game loads, saves, player connect, and player disconnect
             JobSystem.JobSystemManager.Manager.EvaluateUnassigned();
+
+            JobSystem.JobSystem playerSystem = JobSystem.JobSystemManager.Manager.PlayerToJobSystem[msg.PlayerID];
+            if (playerSystem.Idle.Count == 0 && playerSystem.Busy.Count == 0)
+            {
+                this.SpawnPlayerCharacter(msg.PlayerID);
+            }
+        }
+
+        private void SpawnPlayerCharacter(Guid playerID)
+        {
+
         }
     }
 }

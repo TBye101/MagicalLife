@@ -1,17 +1,14 @@
 ﻿using MagicalLifeAPI.Networking;
-using MagicalLifeAPI.Networking.Messages;
-using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Networking.Server;
-using MagicalLifeAPI.Registry.ItemRegistry;
+using MagicalLifeAPI.Server;
 using MagicalLifeAPI.World.Data;
+using MagicalLifeDedicatedServer.API.Settings;
 using MagicalLifeServer;
-using MagicalLifeServer.ServerWorld.World_Generation.Generators;
-using MagicalLifeServerShell.API.Settings;
-using System;
+using MagicalLifeServer.ServerWorld.World;
 using System.Collections.Generic;
 using System.Net.Sockets;
 
-namespace MagicalLifeServerShell.API.Commands
+namespace MagicalLifeDedicatedServer.API.Commands
 {
     /// <summary>
     /// Creates a new world and launches a new game.
@@ -30,7 +27,7 @@ namespace MagicalLifeServerShell.API.Commands
 
         public void run(List<string> input)
         {
-            Server.Load(EngineMode.ServerOnly);
+            Server.Load();
 
             WorldGenerationSettings wset = SettingsHandler.WorldGenerationSettings.Settings;
             Util.WriteLine("Generating world!");

@@ -1,17 +1,14 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.DataTypes.Attribute;
-using MagicalLifeAPI.Entities.Eventing;
-using MagicalLifeAPI.Entities.Util;
 using MagicalLifeAPI.Entity.AI.Job;
+using MagicalLifeAPI.Entity.Eventing;
 using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util.Reusable;
 using ProtoBuf;
 using System;
-using System.Collections.Generic;
 
-namespace MagicalLifeAPI.Entities
+namespace MagicalLifeAPI.Entity
 {
     /// <summary>
     /// All living things inherit from this, and utilize it.
@@ -80,7 +77,7 @@ namespace MagicalLifeAPI.Entities
 
         protected void Initialize(int health, float movementSpeed, Point2D location, int dimension)
         {
-            this.Health = new Util.Attribute32(health);
+            this.Health = new Attribute32(health);
             this.Movement = new AttributeFloat(movementSpeed);
             this.MapLocation = location;
             this.ScreenLocation = new Point2DFloat(location.X, location.Y);

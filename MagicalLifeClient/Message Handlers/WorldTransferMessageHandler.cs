@@ -2,7 +2,7 @@
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.World.Data;
 
-namespace MagicalLifeAPI.Networking.Message_Handlers
+namespace MagicalLifeClient.Message
 {
     public class WorldTransferMessageHandler : MessageHandler
     {
@@ -16,7 +16,7 @@ namespace MagicalLifeAPI.Networking.Message_Handlers
 
             foreach (Dimension item in msg.World)
             {
-                World.Data.World.AddDimension(item);
+               MagicalLifeAPI.World.Data.World.AddDimension(item);
             }
         }
     }

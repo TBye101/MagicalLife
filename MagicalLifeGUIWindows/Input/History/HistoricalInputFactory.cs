@@ -1,10 +1,10 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities;
+using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Entity.AI.Job;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.InternalExceptions;
 using MagicalLifeAPI.World.Data;
-using MagicalLifeGUIWindows.GUI.In_Game_GUI;
+using MagicalLifeGUIWindows.GUI.In;
 using MagicalLifeGUIWindows.Rendering;
 using System.Collections.Generic;
 

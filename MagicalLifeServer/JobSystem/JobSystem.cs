@@ -1,4 +1,4 @@
-﻿using MagicalLifeAPI.Entities;
+﻿using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Entity.AI.Job;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Networking.Messages;
@@ -7,8 +7,6 @@ using ProtoBuf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeServer.JobSystem
 {

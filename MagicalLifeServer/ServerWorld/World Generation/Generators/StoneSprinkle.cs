@@ -1,6 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities.Entity_Factory;
-using MagicalLifeAPI.Entities.Humanoid;
+using MagicalLifeAPI.Entity.Entity;
+using MagicalLifeAPI.Entity.Humanoid;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
@@ -9,7 +9,7 @@ using MagicalLifeAPI.World.Tiles;
 using MagicalLifeSettings.Storage;
 using System;
 
-namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
+namespace MagicalLifeServer.ServerWorld.World
 {
     /// <summary>
     /// A world generator that throws in a sprinkle of stone.

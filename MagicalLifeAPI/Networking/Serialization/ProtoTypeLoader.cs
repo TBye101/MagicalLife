@@ -1,8 +1,7 @@
 ﻿using MagicalLifeAPI.Load;
-using MagicalLifeAPI.Networking.External_Type_Serialization;
-using MagicalLifeAPI.Universal;
+using MagicalLifeAPI.Networking.External;
 using MagicalLifeAPI.Util;
-using MagicalLifeAPI.World;
+using MagicalLifeAPI.World.Base;
 using ProtoBuf.Meta;
 using System;
 using System.Collections.Generic;

@@ -1,11 +1,7 @@
-﻿using MagicalLifeGUIWindows.Input.History;
-using System;
-using System.Collections.Generic;
+﻿using MagicalLifeGUIWindows.Screens;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
+namespace MagicalLifeGUIWindows.Input.Specialized
 {
     public class LogoSkip
     {
@@ -27,7 +23,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
         private void SkipOne()
         {
-            foreach (Splash.LogoScreen item in Game1.SplashScreens)
+            foreach (LogoScreen item in Game1.SplashScreens)
             {
                 if (!item.Done())
                 {

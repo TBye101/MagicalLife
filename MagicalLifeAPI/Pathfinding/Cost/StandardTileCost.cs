@@ -1,5 +1,5 @@
-﻿using MagicalLifeAPI.Entities;
-using MagicalLifeAPI.World;
+﻿using MagicalLifeAPI.Entity;
+using MagicalLifeAPI.World.Base;
 
 namespace MagicalLifeAPI.Pathfinding.Cost
 {

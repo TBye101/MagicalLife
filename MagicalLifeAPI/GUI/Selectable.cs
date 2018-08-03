@@ -1,8 +1,7 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities;
-using MagicalLifeAPI.Entities.Humanoid;
+using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Universal;
-using MagicalLifeAPI.World;
+using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 
 namespace MagicalLifeAPI.GUI

@@ -1,5 +1,4 @@
-﻿using MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions;
-using MagicalLifeAPI.Entity.Util;
+﻿using MagicalLifeAPI.Entity.Util.Modifier;
 using ProtoBuf;
 using System.Collections.Generic;
 

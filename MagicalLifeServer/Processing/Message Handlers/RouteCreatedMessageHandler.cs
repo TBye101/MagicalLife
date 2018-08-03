@@ -1,5 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities;
+using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
@@ -9,7 +9,7 @@ using MagicalLifeAPI.World.Data;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MagicalLifeServer.Message_Handlers
+namespace MagicalLifeServer.Processing.Message
 {
     /// <summary>
     /// How the server handles receiving route data for a creature.

@@ -1,13 +1,8 @@
 ﻿using MagicalLifeAPI.Components.Tile.Renderable;
 using MagicalLifeAPI.DataTypes;
 using ProtoBuf;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MagicalLifeAPI.Components.Generic
+namespace MagicalLifeAPI.Components.Generic.Renderable
 {
     /// <summary>
     /// Anything that implements this has a texture that can be rendered.
@@ -26,6 +21,6 @@ namespace MagicalLifeAPI.Components.Generic
         /// <summary>
         /// Calculates the texture for the first time after world generation.
         /// </summary>
-        public abstract void CalculateTexture(ProtoArray<World.Tile> tiles, Point2D myLocation);
+        public abstract void CalculateTexture(ProtoArray<World.Base.Tile> tiles, Point2D myLocation);
     }
 }

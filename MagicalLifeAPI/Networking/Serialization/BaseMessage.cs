@@ -1,5 +1,4 @@
-﻿using MagicalLifeAPI.Networking.Messages;
-using ProtoBuf;
+﻿using ProtoBuf;
 using System;
 
 namespace MagicalLifeAPI.Networking.Serialization

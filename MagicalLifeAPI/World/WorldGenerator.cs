@@ -1,7 +1,8 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities;
+using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.Universal;
+using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using System;
 using System.Collections.Generic;

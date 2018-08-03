@@ -1,7 +1,6 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
-using ProtoBuf;
 using SimpleTCP;
 using System;
 using System.Collections.Generic;
@@ -66,7 +65,7 @@ namespace MagicalLifeAPI.Networking.Server
         {
             MasterLog.DebugWriteLine("Client connected: " + e.Client.RemoteEndPoint.ToString());
 
-            this.Send<WorldTransferMessage>(new WorldTransferMessage(World.Data.World.Dimensions), e.Client);
+            this.Send<WorldTransferMessage>(new WorldTransferMessage(MagicalLifeAPI.World.Data.World.Dimensions), e.Client);
         }
 
         /// <summary>

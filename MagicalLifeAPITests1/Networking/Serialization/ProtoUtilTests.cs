@@ -1,13 +1,11 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Networking.Messages;
+﻿using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeAPI.World.Tiles;
+using MagicalLifeAPI.World.Data;
 using MagicalLifeServer;
-using MagicalLifeServer.ServerWorld.World_Generation.Generators;
+using MagicalLifeServer.ServerWorld.World;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
-namespace MagicalLifeAPI.Protobuf.Serialization.Tests
+namespace MagicalLifeAPITests1.Networking.Serialization
 {
     [TestClass()]
     public class ProtoUtilTests
@@ -21,8 +19,8 @@ namespace MagicalLifeAPI.Protobuf.Serialization.Tests
 
         private void WorldTest()
         {
-            World.Data.World.Initialize(1, 1, new GrassAndDirt(0));
-            WorldTransferMessage input = new WorldTransferMessage(World.Data.World.Dimensions);
+            World.Initialize(1, 1, new GrassAndDirt(0));
+            WorldTransferMessage input = new WorldTransferMessage(World.Dimensions);
             byte[] data = ProtoUtil.Serialize(input);
             Assert.IsNotNull(data, "Failed to serialize");
 
@@ -31,7 +29,7 @@ namespace MagicalLifeAPI.Protobuf.Serialization.Tests
 
         private void Setup()
         {
-            Server.Load(Networking.EngineMode.ServerOnly);
+            Server.Load();
         }
     }
 }

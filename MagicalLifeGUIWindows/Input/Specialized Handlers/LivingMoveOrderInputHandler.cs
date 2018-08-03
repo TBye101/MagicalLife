@@ -1,19 +1,16 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities;
+using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Entity.AI.Job;
 using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Networking.Client;
-using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.Input.History;
 using MagicalLifeGUIWindows.Rendering;
-using MonoGame.Extended.Input.InputListeners;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
+namespace MagicalLifeGUIWindows.Input.Specialized
 {
     /// <summary>
     /// Used to check if the correct sequence of events has occurred to order a <see cref="Living"/> to move.

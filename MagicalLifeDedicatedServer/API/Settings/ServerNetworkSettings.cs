@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeServerShell.API.Settings
+﻿namespace MagicalLifeDedicatedServer.API.Settings
 {
     public class ServerNetworkSettings
     {

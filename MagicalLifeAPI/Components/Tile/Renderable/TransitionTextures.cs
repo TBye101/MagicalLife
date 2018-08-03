@@ -1,11 +1,7 @@
-﻿using MagicalLifeAPI.Components.Generic;
+﻿using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
 using ProtoBuf;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Components.Tile.Renderable
 {
@@ -40,7 +36,7 @@ namespace MagicalLifeAPI.Components.Tile.Renderable
             this.CompatibleTile = compatibleTile;
             this.Condition = conditions;
 
-            World.Tile.TileCreated += this.Tile_TileCreated;
+            World.Base.Tile.TileCreated += this.Tile_TileCreated;
         }
 
         public TransitionTextures()
@@ -50,7 +46,7 @@ namespace MagicalLifeAPI.Components.Tile.Renderable
         /// <summary>
         /// Calculates the texture of the represented tile for the first time.
         /// </summary>
-        public override void CalculateTexture(ProtoArray<World.Tile> tiles, Point2D myLocation)
+        public override void CalculateTexture(ProtoArray<World.Base.Tile> tiles, Point2D myLocation)
         {
             this.SetStates(myLocation, tiles);
             this.TextureID = this.Condition.GetTextureID(this.TileStates);
@@ -60,7 +56,7 @@ namespace MagicalLifeAPI.Components.Tile.Renderable
         /// Sets the states of each neighboring tile in <see cref="TileStates"/>.
         /// </summary>
         /// <param name="myLocation"></param>
-        private void SetStates(Point2D myLocation, ProtoArray<World.Tile> tiles)
+        private void SetStates(Point2D myLocation, ProtoArray<World.Base.Tile> tiles)
         {
             int x = myLocation.X;
             int y = myLocation.Y;
@@ -80,11 +76,11 @@ namespace MagicalLifeAPI.Components.Tile.Renderable
         /// Safely gets the state of the neighboring tile at the specified location.
         /// </summary>
         /// <param name="tileStateIndex">The index in <see cref="TileStates"/> to modify.</param>
-        private TileState SafeGetState(int x, int y, ProtoArray<World.Tile> tiles)
+        private TileState SafeGetState(int x, int y, ProtoArray<World.Base.Tile> tiles)
         {
             if (x < tiles.Width && x >= 0 && y < tiles.Height && y >= 0)
             {
-                World.Tile neighbor = tiles[x, y];
+                World.Base.Tile neighbor = tiles[x, y];
                 Type neighborType = neighbor.GetType();
 
                 if (neighborType == this.CompatibleTile)

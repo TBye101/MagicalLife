@@ -1,6 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.DataTypes.R;
 using ProtoBuf;
-using RTree;
 using System;
 using System.Collections.Generic;
 
@@ -36,7 +36,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// For each item in the game, this dictionary holds a R-Tree that contains chunk coordinates for every chunk that has at least one of that item.
         /// </summary>
         [ProtoMember(2)]
-        public Dictionary<int, RTree.RTree<Point2D>> ItemIDToChunk { get; set; }
+        public Dictionary<int, RTree<Point2D>> ItemIDToChunk { get; set; }
 
         /// <summary>
         /// An item registry for each dimension.

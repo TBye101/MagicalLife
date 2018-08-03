@@ -1,7 +1,7 @@
 ﻿using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 
-namespace MagicalLifeClient.Message_Handlers
+namespace MagicalLifeClient.Message
 {
     public class ServerTickMessageHandler : MessageHandler
     {

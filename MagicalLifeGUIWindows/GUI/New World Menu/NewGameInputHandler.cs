@@ -1,8 +1,8 @@
 ﻿using MagicalLifeAPI.World.Data;
-using MagicalLifeServer.ServerWorld.World_Generation.Generators;
+using MagicalLifeServer.ServerWorld.World;
 using System;
 
-namespace MagicalLifeGUIWindows.GUI.New_World_Menu
+namespace MagicalLifeGUIWindows.GUI.New
 {
     /// <summary>
     /// Handles all input from the new world menu.

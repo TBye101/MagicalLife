@@ -1,13 +1,14 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions;
+using MagicalLifeAPI.DataTypes.Attribute;
+using MagicalLifeAPI.Entity.Util.Modifier;
 using MagicalLifeAPI.InternalExceptions;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Util;
-using MagicalLifeAPI.World;
+using MagicalLifeAPI.World.Base;
 using System;
 
-namespace MagicalLifeAPI.Entities.Movement
+namespace MagicalLifeAPI.Entity.Movement
 {
     /// <summary>
     /// Used to move entities.
@@ -126,7 +127,7 @@ namespace MagicalLifeAPI.Entities.Movement
                 FootStepSound(entity, destination);
             }
 
-            entity.Movement.AddModifier(new Entity.Util.ModifierFloat(movementPenalty, new TimeRemoveCondition(1), "Normal Movement"));
+            entity.Movement.AddModifier(new ModifierFloat(movementPenalty, new TimeRemoveCondition(1), "Normal Movement"));
         }
 
         private static void FootStepSound(Living living, Tile footStepsOn)

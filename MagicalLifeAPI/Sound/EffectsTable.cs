@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MagicalLifeAPI.Sound
+﻿namespace MagicalLifeAPI.Sound
 {
     /// <summary>
     /// Holds the event names of various sound effects.

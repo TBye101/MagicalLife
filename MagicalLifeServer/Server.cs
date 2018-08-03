@@ -6,6 +6,7 @@ using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Networking.Server;
+using MagicalLifeAPI.World.Data;
 using MagicalLifeServer.Load;
 using System;
 using System.Collections.Generic;
@@ -30,12 +31,12 @@ namespace MagicalLifeServer
         /// </summary>
         public static event EventHandler<UInt64> ServerTick;
 
-        public static void Load(EngineMode mode)
+        public static void Load()
         {
             Loader load = new Loader();
             string msg = "";
 
-            switch (mode)
+            switch (World.Mode)
             {
                 case EngineMode.ServerAndClient:
                     load.LoadAll(ref msg, new List<IGameLoader>()

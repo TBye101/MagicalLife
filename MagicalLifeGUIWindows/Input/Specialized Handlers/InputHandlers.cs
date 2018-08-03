@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
+﻿namespace MagicalLifeGUIWindows.Input.Specialized
 {
     /// <summary>
     /// Holds all of the specialized input handlers.

@@ -1,8 +1,8 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.DataTypes.R;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
-using RTree;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Registry.ItemRegistry
@@ -45,7 +45,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         internal static void RememberWhichChunk(Point2D chunkLocation, int itemID, int dimension)
         {
             RTree<Point2D> chunkLocations = ItemRegistry.Registries[dimension].ItemIDToChunk[itemID];
-            List<Point2D> result = chunkLocations.Contains(new RTree.Rectangle(chunkLocation.X, chunkLocation.Y, chunkLocation.X, chunkLocation.Y));
+            List<Point2D> result = chunkLocations.Contains(new Rectangle(chunkLocation.X, chunkLocation.Y, chunkLocation.X, chunkLocation.Y));
 
             if (result.Count > 0)
             {
@@ -54,7 +54,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
             }
             else
             {
-                chunkLocations.Add(new RTree.Rectangle(chunkLocation.X, chunkLocation.Y, chunkLocation.X, chunkLocation.Y), chunkLocation);
+                chunkLocations.Add(new Rectangle(chunkLocation.X, chunkLocation.Y, chunkLocation.X, chunkLocation.Y), chunkLocation);
             }
         }
 

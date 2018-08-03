@@ -1,9 +1,8 @@
 ﻿using MagicalLifeAPI.Filing;
 using MagicalLifeAPI.Load;
 using MagicalLifeAPI.Sound;
-using MagicalLifeAPI.Universal;
 using MagicalLifeGUIWindows.Input.History;
-using MagicalLifeGUIWindows.Input.Specialized_Handlers;
+using MagicalLifeGUIWindows.Input.Specialized;
 using System;
 
 namespace MagicalLifeGUIWindows.Load

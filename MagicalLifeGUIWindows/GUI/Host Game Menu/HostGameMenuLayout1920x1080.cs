@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeGUIWindows.GUI.Host_Game_Menu
+﻿namespace MagicalLifeGUIWindows.GUI.Host
 {
     public static class HostGameMenuLayout1920x1080
     {

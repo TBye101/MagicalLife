@@ -2,17 +2,13 @@
 using MagicalLifeAPI.Entity.AI.Job.Jobs;
 using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Messages;
-using MagicalLifeAPI.World;
+using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.Input.History;
 using MagicalLifeGUIWindows.Rendering;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
+namespace MagicalLifeGUIWindows.Input.Specialized
 {
     public class MiningActionHandler
     {

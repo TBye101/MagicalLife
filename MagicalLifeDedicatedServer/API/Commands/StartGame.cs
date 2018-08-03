@@ -1,10 +1,6 @@
-﻿using MagicalLifeServer;
-using MagicalLifeServerShell;
-using System;
+﻿using MagicalLifeAPI.Server;
+using MagicalLifeServer;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeDedicatedServer.API.Commands
 {

@@ -1,6 +1,4 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities;
-using MagicalLifeAPI.Entity.AI.Job.Jobs;
+﻿using MagicalLifeAPI.Entity.AI.Job.Jobs;
 using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Universal;
@@ -8,8 +6,6 @@ using ProtoBuf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Entity.AI.Job
 {

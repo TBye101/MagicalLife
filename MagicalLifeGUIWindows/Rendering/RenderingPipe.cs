@@ -1,4 +1,4 @@
-﻿using MagicalLifeAPI.World;
+﻿using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.GUI.MainMenu;
 using MagicalLifeGUIWindows.GUI.Reusable;

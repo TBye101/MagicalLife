@@ -1,8 +1,7 @@
-﻿using MagicalLifeGUIWindows.GUI.In_Game_GUI.Buttons;
-using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 
-namespace MagicalLifeGUIWindows.GUI.In_Game_GUI
+namespace MagicalLifeGUIWindows.GUI.In
 {
     /// <summary>
     /// The in game GUI container.

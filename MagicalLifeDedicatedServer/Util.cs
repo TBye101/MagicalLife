@@ -1,10 +1,11 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.Server;
 using MagicalLifeAPI.Util;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace MagicalLifeServerShell
+namespace MagicalLifeDedicatedServer
 {
     /// <summary>
     /// A utility class.

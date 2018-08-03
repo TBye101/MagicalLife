@@ -1,6 +1,6 @@
 ﻿using ProtoBuf;
 
-namespace MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions
+namespace MagicalLifeAPI.Entity.Util.Modifier
 {
     /// <summary>
     /// This modifier condition allows remove of the modifier after a certain number of turns.

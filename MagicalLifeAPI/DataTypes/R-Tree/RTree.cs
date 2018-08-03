@@ -24,7 +24,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 
-namespace RTree
+namespace MagicalLifeAPI.DataTypes.R
 {
     /// <summary>
     /// This is a lightweight RTree implementation, specifically designed

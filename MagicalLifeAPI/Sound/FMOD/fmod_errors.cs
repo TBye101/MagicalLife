@@ -6,7 +6,7 @@
 /*                                                                                                     */
 /* =================================================================================================== */
 
-namespace FMOD
+namespace MagicalLifeAPI.Sound.FMOD
 {
     public class Error
     {

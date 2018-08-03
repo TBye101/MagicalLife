@@ -1,7 +1,7 @@
 ﻿using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 
-namespace MagicalLifeGUIWindows.GUI.Join_Game_Menu.Input_Boxes
+namespace MagicalLifeGUIWindows.GUI.Join
 {
     public class IPInputBox : MonoInputBox
     {

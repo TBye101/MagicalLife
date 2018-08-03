@@ -1,5 +1,10 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Entity.Entity;
+using MagicalLifeAPI.Entity.Humanoid;
+using MagicalLifeAPI.Util;
+using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
+using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.World
@@ -97,6 +102,37 @@ namespace MagicalLifeAPI.World
             int y = mapLocation.Y % Chunk.Height;
 
             return chunk.Tiles[x, y];
+        }
+
+        /// <summary>
+        /// Spawns a character at a random position in the map without spawning the character in the same space as another character.
+        /// </summary>
+        /// <param name="playerID"></param>
+        public static void SpawnRandomCharacter(Guid playerID, int dimension)
+        {
+            Dimension dim = World.Data.World.Dimensions[dimension];
+
+            //The coordinates of the random chunk
+            int randomChunkX = StaticRandom.Rand(0, dim.Width);
+            int randomChunkY = StaticRandom.Rand(0, dim.Height);
+
+            //The coordinates of the tile within the chunk
+            int randomX = StaticRandom.Rand(0, Chunk.Width);
+            int randomY = StaticRandom.Rand(0, Chunk.Height);
+
+            //The map coordinates of where to spawn the creature.
+            int x = (randomChunkX * Chunk.Width) + randomX;
+            int y = (randomChunkY * Chunk.Height) + randomY;
+
+            HumanFactory humanFactory = new HumanFactory();
+            Human human = humanFactory.GenerateHuman(new Point2D(x, y), dimension, playerID);
+
+            dim.GetChunk(randomChunkX, randomChunkY).Creatures.Add(human);
+
+            if (World.Data.World.Mode == Networking.EngineMode.ServerOnly)
+            {
+                //Send all clients the new creature
+            }
         }
     }
 }

@@ -169,6 +169,7 @@
     <Compile Include="Networking\Messages\JobCompletedMessage.cs" />
     <Compile Include="Networking\Messages\JobCreatedMessage.cs" />
     <Compile Include="Networking\Messages\LoginMessage.cs" />
+    <Compile Include="Networking\World\Modifiers\AbstractWorldModifier.cs" />
     <Compile Include="Registry\ItemRegistry\ItemAdder.cs" />
     <Compile Include="Registry\ItemRegistry\ItemFinder.cs" />
     <Compile Include="Registry\ItemRegistry\ItemRegistry.cs" />

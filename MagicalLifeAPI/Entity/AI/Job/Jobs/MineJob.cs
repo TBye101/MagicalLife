@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MagicalLifeAPI.Components.Resource;
 using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.Util.Reusable;
-using MagicalLifeAPI.World;
+using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 
 namespace MagicalLifeAPI.Entity.AI.Job.Jobs

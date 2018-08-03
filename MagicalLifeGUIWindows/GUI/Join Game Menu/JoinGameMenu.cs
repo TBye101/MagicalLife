@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeGUIWindows.GUI.Join_Game_Menu
+﻿namespace MagicalLifeGUIWindows.GUI.Join
 {
     /// <summary>
     /// Holds a reference to the join game menu.

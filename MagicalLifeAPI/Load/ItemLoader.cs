@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.Registry.ItemRegistry;
-using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Items;
 using System;
 using System.Collections.Generic;

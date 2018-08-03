@@ -1,8 +1,7 @@
 ﻿using MagicalLifeAPI.InternalExceptions;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Networking.Server;
-using MagicalLifeServer.Message_Handlers;
-using MagicalLifeServer.Processing.Message_Handlers;
+using MagicalLifeServer.Processing.Message;
 using System.Collections.Generic;
 
 namespace MagicalLifeServer.Processing

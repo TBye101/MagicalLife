@@ -1,15 +1,16 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities.Entity_Factory;
-using MagicalLifeAPI.Entities.Humanoid;
+using MagicalLifeAPI.Entity.Entity;
+using MagicalLifeAPI.Entity.Humanoid;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
+using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Resources;
 using MagicalLifeAPI.World.Tiles;
 using MagicalLifeSettings.Storage;
 using System;
 
-namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
+namespace MagicalLifeServer.ServerWorld.World
 {
     public class GrassAndDirt : DimensionGenerator
     {
