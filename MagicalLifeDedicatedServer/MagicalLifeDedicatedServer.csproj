@@ -34,7 +34,7 @@
     <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>MagicalLifeServerShell.Program</StartupObject>
+    <StartupObject>MagicalLifeDedicatedServer.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL">
