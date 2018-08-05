@@ -79,7 +79,7 @@ namespace MagicalLifeAPI.World.Data
 
             foreach (Living item in this.Creatures)
             {
-                if (item.MapLocation == Point2D)
+                if (item.MapLocation.Equals(Point2D))
                 {
                     living = item;
                     return true;
