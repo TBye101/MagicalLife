@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Networking.Messages;
+﻿using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Networking.Server;
 using System.Collections.Generic;
@@ -45,6 +46,7 @@ namespace MagicalLifeAPI.Networking.Client
         public static void Send<T>(T message)
             where T : BaseMessage
         {
+            MasterLog.DebugWriteLine("Sending message: " + message.GetType().FullName);
             if (NetworkSettings.Mode == EngineMode.ServerAndClient)
             {
                 ServerSendRecieve.Recieve(message);

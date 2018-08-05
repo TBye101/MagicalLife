@@ -6,6 +6,7 @@ using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Networking.Server;
+using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeServer.Load;
 using System;
@@ -92,6 +93,15 @@ namespace MagicalLifeServer
         /// </summary>
         public static void StartGame()
         {
+            foreach (KeyValuePair<Guid, JobSystem.JobSystem> item in JobSystem.JobSystemManager.Manager.PlayerToJobSystem)
+            {
+                if (item.Value.Idle.Count == 0 && item.Value.Busy.Count == 0)
+                {
+                    //Spawns a creature in the default dimension (0).
+                    WorldUtil.SpawnRandomCharacter(item.Key, 0);
+                }
+            }
+
             SetupTick();
         }
     }

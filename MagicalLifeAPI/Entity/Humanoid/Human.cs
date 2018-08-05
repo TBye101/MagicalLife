@@ -13,7 +13,7 @@ namespace MagicalLifeAPI.Entity.Humanoid
     {
         public Human(int health, float movementSpeed, Point2D location, int dimension, Guid playerID) : base(health, movementSpeed, location, dimension, playerID)
         {
-            Filing.Logging.MasterLog.DebugWriteLine("Living spawned at: " + location.ToString());
+            Filing.Logging.MasterLog.DebugWriteLine("Living spawned at: " + location.ToXNA().ToString());
         }
 
         public Human() : base()

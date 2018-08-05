@@ -214,7 +214,7 @@ namespace MagicalLifeAPI.Entity.AI.Job
             if (this.AssignedWorker == Guid.Empty)
             {
                 this.AssignedWorker = living.ID;
-                this.BeginJob(living);
+                //this.BeginJob(living);
 
                 return true;
             }
