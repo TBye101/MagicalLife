@@ -1,6 +1,9 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity.Entity;
 using MagicalLifeAPI.Entity.Humanoid;
+using MagicalLifeAPI.Networking.Messages;
+using MagicalLifeAPI.Networking.Server;
+using MagicalLifeAPI.Networking.World.Modifiers;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
@@ -131,7 +134,7 @@ namespace MagicalLifeAPI.World
 
             if (World.Data.World.Mode == Networking.EngineMode.ServerOnly)
             {
-                //Send all clients the new creature
+                ServerSendRecieve.SendAll(new WorldModifierMessage(new LivingCreatedModifier(human)));
             }
         }
     }

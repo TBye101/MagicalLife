@@ -25,29 +25,6 @@ namespace MagicalLifeServer.ServerWorld.World
 
         protected override void GenerateDetails(ProtoArray<Chunk> map, Random random)
         {
-            int chunkWidth = map.Width;
-            int chunkHeight = map.Height;
-
-            int chunkX = StaticRandom.Rand(0, chunkWidth);
-            int chunkY = StaticRandom.Rand(0, chunkHeight);
-
-            int x = StaticRandom.Rand(0, Chunk.Width);
-            int y = StaticRandom.Rand(0, Chunk.Height);
-
-            while (map[chunkX, chunkY].Tiles[x, y].Resources != null)
-            {
-                chunkX = StaticRandom.Rand(0, chunkWidth);
-                chunkY = StaticRandom.Rand(0, chunkHeight);
-
-                x = StaticRandom.Rand(0, Chunk.Width);
-                y = StaticRandom.Rand(0, Chunk.Height);
-            }
-
-            HumanFactory hFactory = new HumanFactory();
-            Point2D entityLocation = new Point2D(((chunkX * Chunk.Width) + x), (chunkY * Chunk.Height) + y);
-            Human human = hFactory.GenerateHuman(entityLocation, this.Dimension, Player.Default.PlayerID);
-
-            map[chunkX, chunkY].Creatures.Add(human);
         }
 
         protected override void GenerateLandType(string[,] biomeMap, ProtoArray<Chunk> map, Random random)

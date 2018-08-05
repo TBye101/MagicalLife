@@ -9,3 +9,4 @@
 7: JobCompletedMessage
 8: JobCreatedMessage
 9: DisconnectMessage
+10: WorldModifierMessage

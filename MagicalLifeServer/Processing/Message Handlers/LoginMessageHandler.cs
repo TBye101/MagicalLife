@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
+using MagicalLifeAPI.World;
 using System;
 using System.Collections.Generic;
 
@@ -21,13 +22,9 @@ namespace MagicalLifeServer.Processing.Message
             JobSystem.JobSystem playerSystem = JobSystem.JobSystemManager.Manager.PlayerToJobSystem[msg.PlayerID];
             if (playerSystem.Idle.Count == 0 && playerSystem.Busy.Count == 0)
             {
-                this.SpawnPlayerCharacter(msg.PlayerID);
+                //Spawns a creature in the default dimension (0).
+                WorldUtil.SpawnRandomCharacter(msg.PlayerID, 0);
             }
-        }
-
-        private void SpawnPlayerCharacter(Guid playerID)
-        {
-
         }
     }
 }
