@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Entity.Entity;
 using MagicalLifeAPI.Entity.Humanoid;
 using MagicalLifeAPI.Networking.Messages;
@@ -108,10 +109,11 @@ namespace MagicalLifeAPI.World
         }
 
         /// <summary>
-        /// Spawns a character at a random position in the map without spawning the character in the same space as another character.
+        /// Finds a random location that can be walked upon by a creature.
         /// </summary>
-        /// <param name="playerID"></param>
-        public static void SpawnRandomCharacter(Guid playerID, int dimension)
+        /// <param name="dimension"></param>
+        /// <returns></returns>
+        public static Point2D FindRandomLocation(int dimension)
         {
             Dimension dim = World.Data.World.Dimensions[dimension];
 
@@ -127,10 +129,28 @@ namespace MagicalLifeAPI.World
             int x = (randomChunkX * Chunk.Width) + randomX;
             int y = (randomChunkY * Chunk.Height) + randomY;
 
-            HumanFactory humanFactory = new HumanFactory();
-            Human human = humanFactory.GenerateHuman(new Point2D(x, y), dimension, playerID);
+            if (dim[x, y].IsWalkable)
+            {
+                return new Point2D(x, y);
+            }
+            else
+            {
+                return WorldUtil.FindRandomLocation(dimension);
+            }
+        }
 
-            dim.GetChunk(randomChunkX, randomChunkY).Creatures.Add(human);
+        /// <summary>
+        /// Spawns a character at a random position in the map without spawning the character in the same space as another character.
+        /// </summary>
+        /// <param name="playerID"></param>
+        public static void SpawnRandomCharacter(Guid playerID, int dimension)
+        {
+            Point2D randomLocation = FindRandomLocation(dimension);
+
+            HumanFactory humanFactory = new HumanFactory();
+            Human human = humanFactory.GenerateHuman(randomLocation, dimension, playerID);
+
+            World.Data.World.GetChunkByTile(dimension, randomLocation.X, randomLocation.Y).Creatures.Add(human);
 
             if (World.Data.World.Mode == Networking.EngineMode.ServerOnly)
             {

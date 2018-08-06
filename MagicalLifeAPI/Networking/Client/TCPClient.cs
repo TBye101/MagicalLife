@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Networking.Messages;
+﻿using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using SimpleTCP;
 
@@ -22,6 +23,7 @@ namespace MagicalLifeAPI.Networking.Client
 
         private void Client_DataReceived(object sender, Message e)
         {
+            MasterLog.DebugWriteLine("Receiving " + e.Data.Length + " bytes");
             BaseMessage msg = (BaseMessage)ProtoUtil.Deserialize(e.Data);
             ClientProcessor.Process(msg);
         }
@@ -29,7 +31,9 @@ namespace MagicalLifeAPI.Networking.Client
         public void Send<T>(T message)
             where T : BaseMessage
         {
-            this.Client.Write(ProtoUtil.Serialize<T>(message));
+            byte[] buffer = ProtoUtil.Serialize<T>(message);
+            MasterLog.DebugWriteLine("Sending " + buffer.Length + " bytes");
+            this.Client.Write(buffer);
         }
     }
 }
