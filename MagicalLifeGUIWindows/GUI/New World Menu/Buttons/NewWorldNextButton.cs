@@ -30,9 +30,9 @@ namespace MagicalLifeGUIWindows.GUI.New
             FMODUtil.RaiseEvent(EffectsTable.UIClick);
             ServerSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings());
             Client.Load();
-            Server.StartGame();
             NewGameInputHandler a = new NewGameInputHandler();
             a.StartNewGame();
+            Server.StartGame();
             BoundHandler.RemoveContainer(NewWorldMenu.NewWorldMenuM);
             MenuHandler.Clear();
             BoundHandler.HideAll();

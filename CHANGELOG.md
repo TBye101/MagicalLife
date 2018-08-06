@@ -30,7 +30,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 * Fixed an issue sometimes causing the character to be unselectable
 
-* Discovered issue [#50](https://github.com/SneakyTactician/MagicalLife/issues/50)
+* Discovered and fixed issue [#50](https://github.com/SneakyTactician/MagicalLife/issues/50)
 * Discovered issue [#51](https://github.com/SneakyTactician/MagicalLife/issues/51)
 
 * Created issue [#57](https://github.com/SneakyTactician/MagicalLife/issues/57)
