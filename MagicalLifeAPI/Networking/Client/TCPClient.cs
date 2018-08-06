@@ -12,6 +12,8 @@ namespace MagicalLifeAPI.Networking.Client
     {
         public SimpleTcpClient Client;
 
+        private MessageBuffer MsgBuffer { get; set; } = new MessageBuffer();
+
         public void Start(int port, string ip)
         {
             this.Client = new SimpleTcpClient();
@@ -24,8 +26,12 @@ namespace MagicalLifeAPI.Networking.Client
         private void Client_DataReceived(object sender, Message e)
         {
             MasterLog.DebugWriteLine("Receiving " + e.Data.Length + " bytes");
-            BaseMessage msg = (BaseMessage)ProtoUtil.Deserialize(e.Data);
-            ClientProcessor.Process(msg);
+            this.MsgBuffer.ReceiveData(e.Data);
+
+            while (this.MsgBuffer.GetMessageData(out BaseMessage msg))
+            {
+                ClientProcessor.Process(msg);
+            }
         }
 
         public void Send<T>(T message)

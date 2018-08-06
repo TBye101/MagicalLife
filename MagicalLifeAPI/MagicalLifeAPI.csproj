@@ -158,12 +158,14 @@
     <Compile Include="Filing\SettingsManager.cs" />
     <Compile Include="InternalExceptions\CollectionEmptyException.cs" />
     <Compile Include="InternalExceptions\DuplicateEntryException.cs" />
+    <Compile Include="InternalExceptions\InvalidDataException.cs" />
     <Compile Include="InternalExceptions\InvalidPathException.cs" />
     <Compile Include="InternalExceptions\RegistryDeletionException.cs" />
     <Compile Include="InternalExceptions\ResourceMissingException.cs" />
     <Compile Include="InternalExceptions\UnexpectedEnumMemberException.cs" />
     <Compile Include="InternalExceptions\UnexpectedMessageException.cs" />
     <Compile Include="Load\ItemLoader.cs" />
+    <Compile Include="Networking\MessageBuffer.cs" />
     <Compile Include="Networking\Messages\DisconnectMessage.cs" />
     <Compile Include="Networking\Messages\JobAssignedMessage.cs" />
     <Compile Include="Networking\Messages\JobCompletedMessage.cs" />
