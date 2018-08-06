@@ -19,7 +19,7 @@ namespace MagicalLifeAPI.Entity.Movement
         /// Moves the entity as far along on its path as possible.
         /// </summary>
         /// <param name="entity"></param>
-        public static void MoveEntity(ref Living entity)
+        public static void MoveEntity(Living entity)
         {
             ProtoQueue<PathLink> path = entity.QueuedMovement;
 
@@ -29,7 +29,7 @@ namespace MagicalLifeAPI.Entity.Movement
 
                 Tile sourceTile = World.Data.World.Dimensions[entity.Dimension][section.Origin.X, section.Origin.Y];
                 Tile destinationTile = World.Data.World.Dimensions[entity.Dimension][section.Destination.X, section.Destination.Y];
-                Move(ref entity, sourceTile, destinationTile);
+                Move(entity, sourceTile, destinationTile);
             }
         }
 
@@ -57,7 +57,7 @@ namespace MagicalLifeAPI.Entity.Movement
         /// <param name="entity"></param>
         /// <param name="source"></param>
         /// <param name="destination"></param>
-        public static void Move(ref Living entity, Tile source, Tile destination)
+        public static void Move(Living entity, Tile source, Tile destination)
         {
             Direction direction = DetermineMovementDirection(source.MapLocation, destination.MapLocation);
 

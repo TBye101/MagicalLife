@@ -2,7 +2,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 ---
 
-## [Version 0.*.*]
+## [Version 0.0.*]
 
 #### API
 * Added internal support for having items in tiles

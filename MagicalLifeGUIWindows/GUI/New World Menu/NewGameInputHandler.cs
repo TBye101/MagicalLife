@@ -14,11 +14,9 @@ namespace MagicalLifeGUIWindows.GUI.New
         /// </summary>
         public void StartNewGame()
         {
-            int width = -1;
-            bool widthSuccess = int.TryParse(NewWorldMenu.NewWorldMenuM.worldWidth.Text, out width);
+            bool widthSuccess = int.TryParse(NewWorldMenu.NewWorldMenuM.worldWidth.Text, out int width);
 
-            int length = -1;
-            bool lengthSuccess = int.TryParse(NewWorldMenu.NewWorldMenuM.worldLength.Text, out length);
+            bool lengthSuccess = int.TryParse(NewWorldMenu.NewWorldMenuM.worldLength.Text, out int length);
 
             if (widthSuccess && lengthSuccess && width > 0 && length > 0)
             {

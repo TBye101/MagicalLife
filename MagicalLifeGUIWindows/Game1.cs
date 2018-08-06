@@ -30,7 +30,7 @@ namespace MagicalLifeGUIWindows
         /// <summary>
         /// If true, then we are done displaying splash screens.
         /// </summary>
-        internal static bool SplashDone = false;
+        internal static bool SplashDone { get; set; } = false;
 
         public Game1()
         {

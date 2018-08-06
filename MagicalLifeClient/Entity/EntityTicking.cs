@@ -38,7 +38,7 @@ namespace MagicalLifeClient.Entity
 
                                 if (item.QueuedMovement.Count > 0)
                                 {
-                                    EntityWorldMovement.MoveEntity(ref l);
+                                    EntityWorldMovement.MoveEntity(l);
                                 }
 
                                 if (l.Task != null)
