@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Registry.ItemRegistry;
+using MagicalLifeAPI.World.Items;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace MagicalLifeAPI.World.Base
     /// Represents almost everything in a movable/harvested form.
     /// </summary>
     [ProtoContract]
+    [ProtoInclude(7, typeof(StoneChunk))]
     public abstract class Item : HasTexture
     {
         /// <summary>
@@ -45,6 +47,9 @@ namespace MagicalLifeAPI.World.Base
         [ProtoMember(5)]
         public int ItemID { get; private set; }
 
+        [ProtoMember(6)]
+        private string TextureName { get; set; }
+
         /// <summary>
         ///
         /// </summary>
@@ -55,20 +60,21 @@ namespace MagicalLifeAPI.World.Base
         /// <param name="stackableLimit">How many items of this kind can be in one stack.</param>
         /// <param name="count">How many of this item to create into a stack.</param>
         /// <param name="itemID">The ID of this item.</param>
-        public Item(string name, int durability, List<string> lore, int stackableLimit, int count, Type itemType)
+        protected Item(string name, int durability, List<string> lore, int stackableLimit, int count, Type itemType, string textureName)
         {
             this.Name = name;
             this.Lore = lore;
             this.StackableLimit = stackableLimit;
             this.CurrentlyStacked = count;
             this.ItemID = ItemRegistry.ItemTypeID.First(x => x.Value == itemType).Key;//slow
-            this.TextureIndex = AssetManager.GetTextureIndex(this.GetTextureName());
+            this.TextureIndex = AssetManager.GetTextureIndex(textureName);
+            this.TextureName = textureName;
             this.Validate();
         }
 
-        public Item()
+        protected Item()
         {
-            this.TextureIndex = AssetManager.GetTextureIndex(this.GetTextureName());
+            this.TextureIndex = AssetManager.GetTextureIndex(this.TextureName);
         }
 
         protected void Validate()
@@ -82,8 +88,6 @@ namespace MagicalLifeAPI.World.Base
                 throw new ArgumentOutOfRangeException("Error: Must be able to stack at least one item");
             }
         }
-
-        public abstract string GetTextureName();
 
         /// <summary>
         /// Combines two items and returns the result.

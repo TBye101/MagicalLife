@@ -29,7 +29,6 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
             if (result.Count > 0)
             {
                 //The chunk already knows that there is an item of the specified type in the specified position.
-                return;
             }
             else
             {
