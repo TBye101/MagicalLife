@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using SimpleTCP;
+using System.Linq;
 
 namespace MagicalLifeAPI.Networking.Client
 {
@@ -30,6 +31,12 @@ namespace MagicalLifeAPI.Networking.Client
 
             while (this.MsgBuffer.GetMessageData(out BaseMessage msg))
             {
+                if (msg is JobAssignedMessage)
+                {
+                    JobAssignedMessage m = (JobAssignedMessage)msg;
+                    MasterLog.DebugWriteLine("Job ID After: " + m.Task.Dependencies.ElementAt(0).Key.ToString());
+                }
+
                 ClientProcessor.Process(msg);
             }
         }

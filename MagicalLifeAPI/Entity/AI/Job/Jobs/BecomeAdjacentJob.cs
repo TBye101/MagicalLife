@@ -29,7 +29,7 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
             this.Target = target;
         }
 
-        public BecomeAdjacentJob() : base()
+        public BecomeAdjacentJob()
         {
             //Protobuf-net constructor
         }

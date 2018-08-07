@@ -11,9 +11,14 @@ namespace MagicalLifeAPI.Universal
     public class Unique
     {
         [ProtoMember(1)]
-        public Guid ID { get; } = Guid.NewGuid();
+        public Guid ID { get; }
 
-        public Unique()
+        public Unique(bool doesntMatter)
+        {
+            this.ID = Guid.NewGuid();
+        }
+
+        private Unique()
         {
             //Protobuf-net constructor
         }

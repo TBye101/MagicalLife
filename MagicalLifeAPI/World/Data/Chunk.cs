@@ -45,7 +45,7 @@ namespace MagicalLifeAPI.World.Data
         /// </summary>
         public static int Height = 15;
 
-        public Chunk(List<Living> creatures, ProtoArray<Tile> tiles, Point2D location, string biomeID) : base()
+        public Chunk(List<Living> creatures, ProtoArray<Tile> tiles, Point2D location, string biomeID) : base(false)
         {
             this.Creatures = creatures;
             this.Tiles = tiles;
@@ -54,7 +54,7 @@ namespace MagicalLifeAPI.World.Data
             this.Items = new Dictionary<int, RTree<Point2D>>();
         }
 
-        public Chunk() : base()
+        public Chunk() : base(false)
         {
             if (this.Creatures == null)
             {

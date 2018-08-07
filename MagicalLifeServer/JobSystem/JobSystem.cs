@@ -185,6 +185,7 @@ namespace MagicalLifeServer.JobSystem
         private void StartJob(Job job, Living living)
         {
             living.Task = job;
+            MasterLog.DebugWriteLine("Dependency ID before: " + job.Dependencies.ElementAt(0).Key.ToString());
             ServerSendRecieve.Send(new JobAssignedMessage(living, job), this.PlayerID);
         }
 
