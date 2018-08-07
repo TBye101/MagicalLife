@@ -63,11 +63,11 @@ namespace MagicalLifeAPI.Entity.AI.Job
             this.Dependencies = dependencies;
             this.RequireSameWorker = requireSameWorker;
 
-            foreach (KeyValuePair<Guid, Job> item in this.Dependencies)
-            {
-                item.Value.JobComplete += this.Item_JobComplete;
-                item.Value.ParentJob = this.ID;
-            }
+            //foreach (KeyValuePair<Guid, Job> item in this.Dependencies)
+            //{
+            //    item.Value.JobComplete += this.Item_JobComplete;
+            //    item.Value.ParentJob = this.ID;
+            //}
         }
 
         public Job(bool requireSameWorker)
@@ -133,6 +133,15 @@ namespace MagicalLifeAPI.Entity.AI.Job
 
         public void BeginJob(Living living)
         {
+            if (this.Dependencies != null)
+            {
+                foreach (KeyValuePair<Guid, Job> item in this.Dependencies)
+                {
+                    item.Value.JobComplete += this.Item_JobComplete;
+                    item.Value.ParentJob = this.ID;
+                }
+            }
+
             if (this.RequireSameWorker)
             {
                 if (this.Dependencies.Count > 0)

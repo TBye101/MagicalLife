@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Networking.Serialization;
 using ProtoBuf;
 
@@ -40,7 +40,14 @@ namespace MagicalLifeAPI.Networking
 
         private void CalculateNextMessageLength()
         {
+            if (this.Buffer.Count > 0)
+            {
                 ProtoBuf.Serializer.TryReadLengthPrefix(this.Buffer.ToArray(), 0, this.Buffer.Count, ProtoBuf.PrefixStyle.Base128, out this.NextMessageLength);
+            }
+            else
+            {
+                this.NextMessageLength = -1;
+            }
         }
 
         /// <summary>
@@ -72,7 +79,8 @@ namespace MagicalLifeAPI.Networking
                     }
                 }
 
-                this.NextMessageLength = -1;
+                MasterLog.DebugWriteLine("Message Buffer: " + this.Buffer.Count);
+                this.CalculateNextMessageLength();
                 return true;
             }
 
