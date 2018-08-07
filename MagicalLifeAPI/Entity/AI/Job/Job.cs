@@ -17,7 +17,7 @@ namespace MagicalLifeAPI.Entity.AI.Job
     [ProtoInclude(7, typeof(BecomeAdjacentJob))]
     [ProtoInclude(8, typeof(MineJob))]
     [ProtoInclude(9, typeof(MoveJob))]
-    public abstract class Job : Unique
+    public abstract class Job
     {
         /// <summary>
         /// Raised by a job when all of its dependencies have been completed, and the job is ready to be done by a worker.
@@ -56,10 +56,14 @@ namespace MagicalLifeAPI.Entity.AI.Job
         [ProtoMember(6)]
         private Job CurrentTask;
 
+        [ProtoMember(10)]
+        public Guid ID { get; }
+
         /// <param name="dependencies"></param>
         /// <param name="requireSameWorker">If true, the same worker must do all steps of this job in order all at once.</param>
         public Job(Dictionary<Guid, Job> dependencies, bool requireSameWorker)
         {
+            this.ID = Guid.NewGuid();
             this.Dependencies = dependencies;
             this.RequireSameWorker = requireSameWorker;
 
@@ -72,6 +76,7 @@ namespace MagicalLifeAPI.Entity.AI.Job
 
         public Job(bool requireSameWorker)
         {
+            this.ID = Guid.NewGuid();
             this.RequireSameWorker = requireSameWorker;
         }
 

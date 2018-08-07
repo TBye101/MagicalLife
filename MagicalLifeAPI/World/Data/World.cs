@@ -11,7 +11,7 @@ namespace MagicalLifeAPI.World.Data
     /// The world, which contains all of the tiles.
     /// </summary>
     [ProtoContract]
-    public class World : Unique
+    public class World
     {
         /// <summary>
         /// The dimensions of a single world.

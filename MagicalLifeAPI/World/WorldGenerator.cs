@@ -12,13 +12,16 @@ namespace MagicalLifeAPI.World
     /// <summary>
     /// All classes that implement <see cref="DimensionGenerator"/> control how each biome is allocated space to be generated in, and which biome is to be generated where.
     /// </summary>
-    public abstract class DimensionGenerator : Unique
+    public abstract class DimensionGenerator
     {
+        public Guid ID { get; }
+
         public readonly int Dimension;
 
         public DimensionGenerator(int dimension)
         {
             this.Dimension = dimension;
+            this.ID = Guid.NewGuid();
         }
 
         /// <summary>

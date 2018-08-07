@@ -233,7 +233,6 @@
     <Compile Include="Sound\FMOD\fmod_errors.cs" />
     <Compile Include="Sound\FMOD\fmod_studio.cs" />
     <Compile Include="Sound\MusicPlayer.cs" />
-    <Compile Include="Universal\Unique.cs" />
     <Compile Include="Universal\UniversalEvents.cs" />
     <Compile Include="Util\Algorithms.cs" />
     <Compile Include="Util\Extensions.cs" />

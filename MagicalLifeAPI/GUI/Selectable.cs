@@ -12,7 +12,7 @@ namespace MagicalLifeAPI.GUI
     [ProtoContract]
     [ProtoInclude(2, typeof(Living))]
     [ProtoInclude(3, typeof(Tile))]
-    public abstract class Selectable : Unique
+    public abstract class Selectable
     {
         /// <summary>
         /// This returns a <see cref="SelectionType"/> so we can differentiate between the categories of various in game objects.

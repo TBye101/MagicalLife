@@ -4,6 +4,7 @@ using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Base;
 using ProtoBuf;
+using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.World.Data
@@ -12,7 +13,7 @@ namespace MagicalLifeAPI.World.Data
     /// Holds a section of the world.
     /// </summary>
     [ProtoContract]
-    public class Chunk : Unique
+    public class Chunk
     {
         [ProtoMember(1)]
         public List<Living> Creatures;
@@ -35,6 +36,10 @@ namespace MagicalLifeAPI.World.Data
         [ProtoMember(5)]
         public Dictionary<int, RTree<Point2D>> Items = new Dictionary<int, RTree<Point2D>>();
 
+        [ProtoMember(6)]
+        public Guid ID { get; }
+
+
         /// <summary>
         /// The width of this chunk in tiles.
         /// </summary>
@@ -45,8 +50,9 @@ namespace MagicalLifeAPI.World.Data
         /// </summary>
         public static int Height = 15;
 
-        public Chunk(List<Living> creatures, ProtoArray<Tile> tiles, Point2D location, string biomeID) : base(false)
+        public Chunk(List<Living> creatures, ProtoArray<Tile> tiles, Point2D location, string biomeID)
         {
+            this.ID = Guid.NewGuid();
             this.Creatures = creatures;
             this.Tiles = tiles;
             this.ChunkLocation = location;
@@ -54,8 +60,9 @@ namespace MagicalLifeAPI.World.Data
             this.Items = new Dictionary<int, RTree<Point2D>>();
         }
 
-        public Chunk() : base(false)
+        public Chunk()
         {
+            //Protobuf-net constructor
             if (this.Creatures == null)
             {
                 this.Creatures = new List<Living>();

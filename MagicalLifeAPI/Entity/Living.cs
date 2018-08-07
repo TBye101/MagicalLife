@@ -59,6 +59,9 @@ namespace MagicalLifeAPI.Entity
         [ProtoMember(9)]
         public TickTimer FootStepTimer { get; set; }
 
+        [ProtoMember(10)]
+        public Guid ID { get; }
+
         /// <summary>
         /// Raised when a <see cref="Living"/> is created.
         /// </summary>
@@ -71,6 +74,7 @@ namespace MagicalLifeAPI.Entity
 
         protected Living(int health, float movementSpeed, Point2D location, int dimension, Guid playerID)
         {
+            this.ID = Guid.NewGuid();
             this.PlayerID = playerID;
             this.Initialize(health, movementSpeed, location, dimension);
         }

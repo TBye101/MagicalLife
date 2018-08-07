@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Base;
 using ProtoBuf;
+using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.World.Data
@@ -11,7 +12,7 @@ namespace MagicalLifeAPI.World.Data
     /// Could be a dungeon, the starting Point2D, or some other thing.
     /// </summary>
     [ProtoContract]
-    public class Dimension : Unique
+    public class Dimension
     {
         /// <summary>
         /// Handles access to the chunks stored in this dimension.
@@ -24,6 +25,9 @@ namespace MagicalLifeAPI.World.Data
         /// </summary>
         [ProtoMember(2)]
         public string DimensionName { get; set; }
+
+        [ProtoMember(3)]
+        public Guid ID { get; }
 
         /// <summary>
         /// The width of this dimension in chunks.
@@ -64,6 +68,7 @@ namespace MagicalLifeAPI.World.Data
             this.Manager = new ChunkManager(this.ID, chunks);
             this.DimensionName = dimensionName;
             World.Storage.PrepareForDimension(this.ID);
+            this.ID = Guid.NewGuid();
 
             int dimensionID = World.AddDimension(this);
 

@@ -11,7 +11,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
     /// Contains other <see cref="GUIElement"/>s.
     /// All coordinates of <see cref="GUIElement"/> objects are relative to the position of this container.
     /// </summary>
-    public abstract class GUIContainer : Unique
+    public abstract class GUIContainer
     {
         /// <summary>
         /// Constructs a new instance of the <see cref="GUIContainer"/> class.
