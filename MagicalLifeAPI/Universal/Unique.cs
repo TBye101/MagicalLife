@@ -1,12 +1,13 @@
 ﻿using ProtoBuf;
 using System;
+using System.ComponentModel;
 
 namespace MagicalLifeAPI.Universal
 {
     /// <summary>
     /// Gives whatever inherits from this a unique ID.
     /// </summary>
-    [ProtoContract]
+    [ProtoContract(SkipConstructor = true)]
     public class Unique
     {
         [ProtoMember(1)]
@@ -14,6 +15,7 @@ namespace MagicalLifeAPI.Universal
 
         public Unique()
         {
+            //Protobuf-net constructor
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Serilog;
 using System;
+using System.Diagnostics;
 using System.IO;
 
 namespace MagicalLifeAPI.Filing.Logging
@@ -35,6 +36,7 @@ namespace MagicalLifeAPI.Filing.Logging
         /// Writes a line to the master log.
         /// </summary>
         /// <param name="msg"></param>
+        [Conditional("DEBUG")]
         public static void DebugWriteLine(string msg)
         {
             Log.Debug(msg);
