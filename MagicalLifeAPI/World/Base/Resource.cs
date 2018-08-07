@@ -43,6 +43,7 @@ namespace MagicalLifeAPI.World.Base
         [ProtoMember(4)]
         public Attribute32 MaxDurability { get; }
 
+        [ProtoMember(5)]
         public abstract AbstractMinable MiningBehavior { get; set; }
 
         public Type GetBaseType()

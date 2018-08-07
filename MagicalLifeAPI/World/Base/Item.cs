@@ -70,11 +70,12 @@ namespace MagicalLifeAPI.World.Base
             this.TextureIndex = AssetManager.GetTextureIndex(textureName);
             this.TextureName = textureName;
             this.Validate();
+            this.TextureIndex = AssetManager.GetTextureIndex(this.TextureName);
         }
 
         protected Item()
         {
-            this.TextureIndex = AssetManager.GetTextureIndex(this.TextureName);
+            //Protobuf-net constructor
         }
 
         protected void Validate()

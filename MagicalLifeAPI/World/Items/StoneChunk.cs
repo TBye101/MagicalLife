@@ -19,7 +19,7 @@ namespace MagicalLifeAPI.World.Items
         {
         }
 
-        public StoneChunk() : base()
+        public StoneChunk()
         {
         }
     }

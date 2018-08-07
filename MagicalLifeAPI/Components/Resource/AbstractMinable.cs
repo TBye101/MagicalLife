@@ -10,7 +10,8 @@ namespace MagicalLifeAPI.Components.Resource
     /// Anything that implements this must describe its behavior in terms of mining.
     /// </summary>
     [ProtoContract]
-    public abstract class AbstractMinable : IHasSubclasses
+    [ProtoInclude(2, typeof(DropWhenCompletelyMined))]
+    public abstract class AbstractMinable
     {
         /// <summary>
         /// The total percentage of the IMinable that has been mined so far.
@@ -26,14 +27,6 @@ namespace MagicalLifeAPI.Components.Resource
         public Type GetBaseType()
         {
             return typeof(AbstractMinable);
-        }
-
-        public Dictionary<Type, int> GetSubclassInformation()
-        {
-            return new Dictionary<Type, int>
-            {
-                { typeof(DropWhenCompletelyMined), 0 }
-            };
         }
 
         /// <summary>
