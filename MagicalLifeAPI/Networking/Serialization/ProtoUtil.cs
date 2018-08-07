@@ -57,7 +57,7 @@ namespace MagicalLifeAPI.Networking.Serialization
             {
                 using (MemoryStream ms = new System.IO.MemoryStream(data))
                 {
-                    Serializer.TryReadLengthPrefix(ms, PrefixStyle.Base128, out int length);
+                    //Serializer.TryReadLengthPrefix(ms, PrefixStyle.Base128, out int length);
                     BaseMessage Base = (BaseMessage)TypeModel.DeserializeWithLengthPrefix(ms, null, typeof(BaseMessage), ProtoBuf.PrefixStyle.Base128, 0);
                     return Base;
                 }
