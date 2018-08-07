@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
@@ -49,6 +50,7 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
         {
             if (living.MapLocation.Equals(this.AdjacentLocation))
             {
+                MasterLog.DebugWriteLine(this.ID.ToString());
                 this.CompleteJob(living);
             }
         }
