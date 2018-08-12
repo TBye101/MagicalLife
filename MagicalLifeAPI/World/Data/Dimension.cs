@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Base;
 using ProtoBuf;
@@ -28,6 +29,9 @@ namespace MagicalLifeAPI.World.Data
 
         [ProtoMember(3)]
         public Guid ID { get; }
+
+        [ProtoMember(4)]
+        public ItemRegistry Items { get; set; }
 
         /// <summary>
         /// The width of this dimension in chunks.
@@ -73,6 +77,7 @@ namespace MagicalLifeAPI.World.Data
             int dimensionID = World.AddDimension(this);
 
             //Anything that needs a dimensionID
+            this.Items = new ItemRegistry(dimensionID);
         }
 
         public Dimension()

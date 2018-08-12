@@ -84,7 +84,7 @@ namespace MagicalLifeGUIWindows
             Loader load = new Loader();
             string msg = string.Empty;
 
-            load.LoadAll(ref msg, new List<IGameLoader>()
+           load.LoadAll(ref msg, new List<IGameLoader>()
             {
                 new ItemLoader(),
                 new InputLoader(),

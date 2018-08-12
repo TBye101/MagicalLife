@@ -35,7 +35,6 @@ namespace MagicalLifeAPI.World
             string[,] biomes = this.AssignBiomes(chunkWidth, chunkHeight, random);
 
             ProtoArray<Chunk> map = this.GenerateBlank(chunkWidth, chunkHeight, biomes);
-            ItemRegistry.Registries.Add(new ItemRegistry());
 
             this.GenerateLandType(biomes, map, random);
 

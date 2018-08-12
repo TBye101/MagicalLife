@@ -43,7 +43,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// <param name="itemID"></param>
         internal static void RememberWhichChunk(Point2D chunkLocation, int itemID, int dimension)
         {
-            RTree<Point2D> chunkLocations = ItemRegistry.Registries[dimension].ItemIDToChunk[itemID];
+            RTree<Point2D> chunkLocations = World.Data.World.Dimensions[dimension].Items.ItemIDToChunk[itemID];
             List<Point2D> result = chunkLocations.Contains(new Rectangle(chunkLocation.X, chunkLocation.Y, chunkLocation.X, chunkLocation.Y));
 
             if (result.Count > 0)

@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.DataTypes.R;
+using MagicalLifeAPI.World.Data;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
@@ -33,15 +34,28 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         public static Dictionary<int, Type> ItemTypeID { get; set; }
 
         /// <summary>
-        /// For each item in the game, this dictionary holds a R-Tree that contains chunk coordinates for every chunk that has at least one of that item.
+        /// For each item in the dimension, this dictionary holds a R-Tree that contains chunk coordinates for every chunk that has at least one of that item.
         /// </summary>
         [ProtoMember(2)]
         public Dictionary<int, RTree<Point2D>> ItemIDToChunk { get; set; }
 
-        /// <summary>
-        /// An item registry for each dimension.
-        /// </summary>
-        public static List<ItemRegistry> Registries = new List<ItemRegistry>();
+        [ProtoMember(3)]
+        public Guid ID { get; }
+
+        [ProtoMember(4)]
+        public int Dimension { get; }
+
+        public ItemRegistry(int dimension)
+        {
+            this.ID = Guid.NewGuid();
+            this.Dimension = dimension;
+            this.Bake();
+        }
+
+        public ItemRegistry()
+        {
+            //Protobuf-net Constructor
+        }
 
         /// <summary>
         /// Registers the items.
@@ -57,17 +71,12 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
             }
         }
 
-        public ItemRegistry()
-        {
-            this.Bake();
-        }
-
         /// <summary>
         /// Registers an item type with this item registry.
         /// All items that will be supported by this class must be added through here before Bake() is called.
         /// </summary>
         /// <param name="item"></param>
-        internal static void RegisterItemType(Type item)
+        private static void RegisterItemType(Type item)
         {
             ItemTypeID.Add(ItemTypeID.Count, item);
         }
@@ -75,7 +84,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// <summary>
         /// Initializes <see cref="ItemIDToChunk"/> for the first time.
         /// </summary>
-        internal void Bake()
+        private void Bake()
         {
             this.ItemIDToChunk = new Dictionary<int, RTree<Point2D>>(ItemTypeID.Count);
 

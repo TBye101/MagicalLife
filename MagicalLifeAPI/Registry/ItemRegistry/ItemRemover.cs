@@ -82,7 +82,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
 
                 if (result.Count == 0)
                 {
-                    RTree<Point2D> chunksContaining = ItemRegistry.Registries[dimension].ItemIDToChunk[itemID];
+                    RTree<Point2D> chunksContaining = World.Data.World.Dimensions[dimension].Items.ItemIDToChunk[itemID];
                     bool succeed = chunksContaining.Delete(new Rectangle(chunk.ChunkLocation.X, chunk.ChunkLocation.Y, chunk.ChunkLocation.X, chunk.ChunkLocation.Y), new Point2D(chunk.ChunkLocation.X, chunk.ChunkLocation.Y));
 
                     if (!succeed)

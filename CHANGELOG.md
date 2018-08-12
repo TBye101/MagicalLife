@@ -27,13 +27,11 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 #### Bugs
 * Fixed issue [#17](https://github.com/SneakyTactician/MagicalLife/issues/17)
-
+* Fixed issue [#57](https://github.com/SneakyTactician/MagicalLife/issues/57)
 * Fixed an issue sometimes causing the character to be unselectable
-
 * Discovered and fixed issue [#50](https://github.com/SneakyTactician/MagicalLife/issues/50)
-* Discovered issue [#51](https://github.com/SneakyTactician/MagicalLife/issues/51)
 
-* Created issue [#57](https://github.com/SneakyTactician/MagicalLife/issues/57)
+* Discovered issue [#51](https://github.com/SneakyTactician/MagicalLife/issues/51)
 
 ---
 
