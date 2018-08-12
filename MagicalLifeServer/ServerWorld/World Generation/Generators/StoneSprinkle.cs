@@ -50,7 +50,7 @@ namespace MagicalLifeServer.ServerWorld.World
             Point2D entityLocation = new Point2D(((chunkX * Chunk.Width) + x), (chunkY * Chunk.Height) + y);
             Human human = hFactory.GenerateHuman(entityLocation, this.Dimension, Player.Default.PlayerID);
 
-            map[chunkX, chunkY].Creatures.Add(human);
+            map[chunkX, chunkY].Creatures.Add(human.ID, human);
         }
 
         protected override void GenerateLandType(string[,] biomeMap, ProtoArray<Chunk> map, Random random)

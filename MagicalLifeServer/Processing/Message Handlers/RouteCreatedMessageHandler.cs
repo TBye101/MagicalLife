@@ -30,7 +30,7 @@ namespace MagicalLifeServer.Processing.Message
                 Point2D chunkLocation = WorldUtil.CalculateChunkLocation(location);
                 Chunk chunk = World.GetChunk(msg.Dimension, chunkLocation.X, chunkLocation.Y);
 
-                Living l = chunk.Creatures.Where(t => t.MapLocation == location).ElementAt(0);
+                Living l = chunk.Creatures.Where(t => t.Value.MapLocation == location).ElementAt(0).Value;
 
                 if (l != null && l.ID == msg.LivingID)
                 {

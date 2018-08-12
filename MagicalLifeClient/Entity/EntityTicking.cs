@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Entity.Movement;
 using MagicalLifeAPI.World.Data;
+using System.Collections.Generic;
 
 namespace MagicalLifeClient.Entity
 {
@@ -29,14 +30,14 @@ namespace MagicalLifeClient.Entity
                     {
                         Chunk chunk = ii.GetChunk(chunkX, chunkY);
 
-                        foreach (Living item in chunk.Creatures)
+                        foreach (KeyValuePair<System.Guid, Living> item in chunk.Creatures)
                         {
-                            if (item != null)
+                            if (item.Value != null)
                             {
-                                Living l = item;
+                                Living l = item.Value;
                                 l.Movement.WearOff();
 
-                                if (item.QueuedMovement.Count > 0)
+                                if (item.Value.QueuedMovement.Count > 0)
                                 {
                                     EntityWorldMovement.MoveEntity(l);
                                 }

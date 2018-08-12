@@ -31,7 +31,7 @@ namespace MagicalLifeAPI.Networking.World.Modifiers
         public override void ModifyWorld()
         {
             Chunk chunk = MagicalLifeAPI.World.Data.World.GetChunkByTile(this.Living.Dimension, this.Living.MapLocation.X, this.Living.MapLocation.Y);
-            chunk.Creatures.Add(this.Living);
+            chunk.Creatures.Add(this.Living.ID, this.Living);
         }
     }
 }

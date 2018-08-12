@@ -7,6 +7,7 @@ using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.GUI.In;
 using MagicalLifeGUIWindows.Rendering;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MagicalLifeGUIWindows.Input.History
 {
@@ -100,14 +101,9 @@ namespace MagicalLifeGUIWindows.Input.History
             {
                 Selectable select = null;
 
-                foreach (Living item in World.Dimensions[RenderingPipe.Dimension].GetChunkForLocation(mapSpot.X, mapSpot.Y).Creatures)
-                {
-                    if (item.MapLocation.Equals(mapSpot))
-                    {
-                        select = item;
-                        break;
-                    }
-                }
+                Chunk chunk = World.Dimensions[RenderingPipe.Dimension].GetChunkForLocation(mapSpot.X, mapSpot.Y);
+                KeyValuePair<System.Guid, Living> result = chunk.Creatures.First(x => mapSpot.Equals(x.Value.MapLocation));
+                select = result.Value;
 
                 if (select != null)
                 {

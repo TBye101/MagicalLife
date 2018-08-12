@@ -150,7 +150,7 @@ namespace MagicalLifeAPI.World
             HumanFactory humanFactory = new HumanFactory();
             Human human = humanFactory.GenerateHuman(randomLocation, dimension, playerID);
 
-            World.Data.World.GetChunkByTile(dimension, randomLocation.X, randomLocation.Y).Creatures.Add(human);
+            World.Data.World.GetChunkByTile(dimension, randomLocation.X, randomLocation.Y).Creatures.Add(human.ID, human);
 
             if (World.Data.World.Mode == Networking.EngineMode.ServerOnly)
             {
