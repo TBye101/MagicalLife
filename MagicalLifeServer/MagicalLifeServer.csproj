@@ -69,6 +69,7 @@
     <Compile Include="Processing\Message Handlers\JobCreatedMessageHandler.cs" />
     <Compile Include="Processing\Message Handlers\LoginMessageHandler.cs" />
     <Compile Include="Processing\Message Handlers\RouteCreatedMessageHandler.cs" />
+    <Compile Include="Processing\Message Handlers\WorldModifierMessageHandler.cs" />
     <Compile Include="Processing\ServerProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server.cs" />

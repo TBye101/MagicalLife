@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Networking.Server;
 using MagicalLifeServer.Processing.Message;
+using MagicalLifeServer.Processing.Message_Handlers;
 using System.Collections.Generic;
 
 namespace MagicalLifeServer.Processing
@@ -20,10 +21,11 @@ namespace MagicalLifeServer.Processing
 
             //More important messages
             MessageHandlers.Add(9, new DisconnectMessageHandler());
+            MessageHandlers.Add(7, new JobCompletedMessageHandler());
+            MessageHandlers.Add(10, new WorldModifierMessageHandler());
 
             //Least important messages
             MessageHandlers.Add(3, new RouteCreatedMessageHandler());
-            MessageHandlers.Add(7, new JobCompletedMessageHandler());
             MessageHandlers.Add(8, new JobCreatedMessageHandler());
             MessageHandlers.Add(6, new LoginMessageHandler());
         }

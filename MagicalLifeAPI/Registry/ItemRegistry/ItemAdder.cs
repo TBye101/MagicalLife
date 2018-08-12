@@ -1,5 +1,9 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.DataTypes.R;
+using MagicalLifeAPI.Networking.Client;
+using MagicalLifeAPI.Networking.Messages;
+using MagicalLifeAPI.Networking.Server;
+using MagicalLifeAPI.Networking.World.Modifiers;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
@@ -62,6 +66,8 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// </summary>
         public static void AddItem(Item item, Point2D mapLocation, int dimension)
         {
+            NetworkAdd(item, mapLocation, dimension);
+
             Point2D chunkLocation = WorldUtil.CalculateChunkLocation(mapLocation);
             Chunk chunk = World.Data.World.Dimensions[dimension].GetChunk(chunkLocation.X, chunkLocation.Y);
 
@@ -70,6 +76,32 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
             ItemAdder.StoreItem(chunk, mapLocation, item);
         }
 
+        /// <summary>
+        /// Handles sending out sync messages to keep the other clients and the server appraised of the added item.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="mapLocation"></param>
+        /// <param name="dimension"></param>
+        private static void NetworkAdd(Item item, Point2D mapLocation, int dimension)
+        {
+            switch (World.Data.World.Mode)
+            {
+                case Networking.EngineMode.ServerOnly:
+                    ServerSendRecieve.SendAll(new WorldModifierMessage(new ItemCreatedModifier(item, mapLocation, dimension)));
+                    break;
+                case Networking.EngineMode.ClientOnly:
+                    ClientSendRecieve.Send(new WorldModifierMessage(new ItemCreatedModifier(item, mapLocation, dimension)));
+                    break;
+                case Networking.EngineMode.ServerAndClient:
+                    break;
+                default:
+                    throw new InternalExceptions.UnexpectedEnumMemberException();
+            }
+        }
+
+        /// <summary>
+        /// Adds an item during the ongoing world generation.
+        /// </summary>
         public static void AddItemWorldGen(Item item, Point2D mapLocation, ProtoArray<Chunk> map, int dimension)
         {
             Point2D chunkLocation = WorldUtil.CalculateChunkLocation(mapLocation);
