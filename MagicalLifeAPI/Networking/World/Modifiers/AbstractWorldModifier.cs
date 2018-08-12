@@ -8,6 +8,7 @@ namespace MagicalLifeAPI.Networking.World.Modifiers
     [ProtoContract]
     [ProtoInclude(1, typeof(LivingCreatedModifier))]
     [ProtoInclude(2, typeof(ItemCreatedModifier))]
+    [ProtoInclude(3, typeof(LivingLocationModifier))]
     public abstract class AbstractWorldModifier
     {
         public abstract void ModifyWorld();

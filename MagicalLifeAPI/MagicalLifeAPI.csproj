@@ -175,6 +175,7 @@
     <Compile Include="Networking\World\Modifiers\AbstractWorldModifier.cs" />
     <Compile Include="Networking\World\Modifiers\ItemCreatedModifier.cs" />
     <Compile Include="Networking\World\Modifiers\LivingCreatedModifier.cs" />
+    <Compile Include="Networking\World\Modifiers\LivingLocationModifier.cs" />
     <Compile Include="Registry\ItemRegistry\ItemAdder.cs" />
     <Compile Include="Registry\ItemRegistry\ItemFinder.cs" />
     <Compile Include="Registry\ItemRegistry\ItemRegistry.cs" />

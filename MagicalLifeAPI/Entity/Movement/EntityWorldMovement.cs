@@ -2,6 +2,9 @@
 using MagicalLifeAPI.DataTypes.Attribute;
 using MagicalLifeAPI.Entity.Util.Modifier;
 using MagicalLifeAPI.InternalExceptions;
+using MagicalLifeAPI.Networking.Client;
+using MagicalLifeAPI.Networking.Messages;
+using MagicalLifeAPI.Networking.World.Modifiers;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Util;
@@ -125,6 +128,12 @@ namespace MagicalLifeAPI.Entity.Movement
                 entity.QueuedMovement.Dequeue();
                 movementPenalty = MathUtil.GetDistance(entity.ScreenLocation, destination.MapLocation);
                 FootStepSound(entity, destination);
+                
+                //If this entity is the current client's and therefore that clients responsibility to report about
+                if (entity.PlayerID == MagicalLifeSettings.Storage.Player.Default.PlayerID)
+                {
+                    ClientSendRecieve.Send(new WorldModifierMessage(new LivingLocationModifier(entity.ID, source.MapLocation, destination.MapLocation, entity.Dimension)));
+                }
             }
 
             entity.Movement.AddModifier(new ModifierFloat(movementPenalty, new TimeRemoveCondition(1), "Normal Movement"));
