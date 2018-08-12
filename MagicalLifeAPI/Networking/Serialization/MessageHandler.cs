@@ -10,9 +10,9 @@ namespace MagicalLifeAPI.Networking.Serialization
         /// <summary>
         /// The ID of the <see cref="BaseMessage"/> that this handler knows what to do with.
         /// </summary>
-        public UInt16 MessageID { get; protected set; }
+        public NetMessageID MessageID { get; protected set; }
 
-        public MessageHandler(UInt16 ID)
+        public MessageHandler(NetMessageID ID)
         {
             this.MessageID = ID;
         }

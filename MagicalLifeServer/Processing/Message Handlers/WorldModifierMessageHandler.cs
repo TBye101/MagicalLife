@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Networking.Messages;
+﻿using MagicalLifeAPI.Networking;
+using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Networking.Server;
 using MagicalLifeAPI.Networking.World.Modifiers;
@@ -12,7 +13,7 @@ namespace MagicalLifeServer.Processing.Message_Handlers
 {
     public class WorldModifierMessageHandler : MessageHandler
     {
-        public WorldModifierMessageHandler() : base(10)
+        public WorldModifierMessageHandler() : base(NetMessageID.WorldModifierMessage)
         {
         }
 

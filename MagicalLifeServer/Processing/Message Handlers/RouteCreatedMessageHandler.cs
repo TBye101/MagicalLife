@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Pathfinding;
@@ -16,7 +17,7 @@ namespace MagicalLifeServer.Processing.Message
     /// </summary>
     public class RouteCreatedMessageHandler : MessageHandler
     {
-        public RouteCreatedMessageHandler() : base(3)
+        public RouteCreatedMessageHandler() : base(NetMessageID.RouteCreatedMessage)
         {
         }
 

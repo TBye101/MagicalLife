@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Entity;
+using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.World;
@@ -9,7 +10,7 @@ namespace MagicalLifeServer.Processing.Message
 {
     public class LoginMessageHandler : MessageHandler
     {
-        public LoginMessageHandler() : base(6)
+        public LoginMessageHandler() : base(NetMessageID.LoginMessage)
         {
         }
 

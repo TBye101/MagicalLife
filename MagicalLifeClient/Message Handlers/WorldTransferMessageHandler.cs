@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Networking.Messages;
+﻿using MagicalLifeAPI.Networking;
+using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.World.Data;
 
@@ -6,7 +7,7 @@ namespace MagicalLifeClient.Message
 {
     public class WorldTransferMessageHandler : MessageHandler
     {
-        public WorldTransferMessageHandler() : base(2)
+        public WorldTransferMessageHandler() : base(NetMessageID.WorldTransferMessage)
         {
         }
 

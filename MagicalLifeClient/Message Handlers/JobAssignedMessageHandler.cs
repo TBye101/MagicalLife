@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Entity;
+using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.World.Data;
@@ -7,7 +8,7 @@ namespace MagicalLifeClient.Message
 {
     public class JobAssignedMessageHandler : MessageHandler
     {
-        public JobAssignedMessageHandler() : base(5)
+        public JobAssignedMessageHandler() : base(NetMessageID.JobAssignedMessage)
         {
         }
 

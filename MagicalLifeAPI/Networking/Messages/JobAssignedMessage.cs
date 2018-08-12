@@ -23,7 +23,7 @@ namespace MagicalLifeAPI.Networking.Messages
         [ProtoMember(2)]
         public Job Task { get; set; }
 
-        public JobAssignedMessage(Living worker, Job task) : base(5)
+        public JobAssignedMessage(Living worker, Job task) : base(NetMessageID.JobAssignedMessage)
         {
             this.Worker = worker;
             this.Task = task;

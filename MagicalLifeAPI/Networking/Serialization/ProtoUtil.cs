@@ -19,7 +19,7 @@ namespace MagicalLifeAPI.Networking.Serialization
         /// Value: The ID of a base message.
         /// Key: The type of the base message that the ID is connected with.
         /// </summary>
-        public static Dictionary<int, Type> IDToMessage = new Dictionary<int, Type>();
+        public static Dictionary<NetMessageID, Type> IDToMessage = new Dictionary<NetMessageID, Type>();
 
         /// <summary>
         /// Serializes the object to string.

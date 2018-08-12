@@ -14,12 +14,12 @@ namespace MagicalLifeAPI.Networking.Messages
         public Guid ClientPlayerID { get; set; }
 
         /// <param name="playerID">The ID of the player client that is disconnecting.</param>
-        public DisconnectMessage(Guid playerID) : base(9)
+        public DisconnectMessage(Guid playerID) : base(NetMessageID.DisconnectMessage)
         {
             this.ClientPlayerID = playerID;
         }
 
-        public DisconnectMessage() : base(9)
+        public DisconnectMessage() : base(NetMessageID.DisconnectMessage)
         {
 
         }

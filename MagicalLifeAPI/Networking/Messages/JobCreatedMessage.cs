@@ -14,13 +14,13 @@ namespace MagicalLifeAPI.Networking.Messages
         [ProtoMember(1)]
         public Job Job { get; set; }
 
-        public JobCreatedMessage(Job job) : base(8)
+        public JobCreatedMessage(Job job) : base(NetMessageID.JobCreatedMessage)
         {
             this.Job = job;
             
         }
 
-        public JobCreatedMessage() : base(8)
+        public JobCreatedMessage() : base(NetMessageID.JobCreatedMessage)
         {
         }
     }

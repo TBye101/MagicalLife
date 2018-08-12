@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Networking.Messages;
+﻿using MagicalLifeAPI.Networking;
+using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeServer.JobSystem;
 
@@ -6,7 +7,7 @@ namespace MagicalLifeServer.Processing.Message
 {
     public class JobCompletedMessageHandler : MessageHandler
     {
-        public JobCompletedMessageHandler() : base(7)
+        public JobCompletedMessageHandler() : base(NetMessageID.JobCompletedMessage)
         {
         }
 

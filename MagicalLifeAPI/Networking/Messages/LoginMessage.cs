@@ -9,7 +9,7 @@ namespace MagicalLifeAPI.Networking.Messages
     [ProtoContract]
     public class LoginMessage : BaseMessage
     {
-        public LoginMessage() : base(6)
+        public LoginMessage() : base(NetMessageID.LoginMessage)
         {
         }
     }

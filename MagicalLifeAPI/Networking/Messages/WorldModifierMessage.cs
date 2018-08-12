@@ -18,12 +18,12 @@ namespace MagicalLifeAPI.Networking.Messages
         [ProtoMember(1)]
         public AbstractWorldModifier WorldModifier { get; private set; }
 
-        public WorldModifierMessage(AbstractWorldModifier worldModifier) : base(10)
+        public WorldModifierMessage(AbstractWorldModifier worldModifier) : base(NetMessageID.WorldModifierMessage)
         {
             this.WorldModifier = worldModifier;
         }
 
-        public WorldModifierMessage() : base(10)
+        public WorldModifierMessage() : base(NetMessageID.WorldModifierMessage)
         {
         }
     }
