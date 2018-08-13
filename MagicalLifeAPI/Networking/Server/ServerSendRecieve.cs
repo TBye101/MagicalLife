@@ -91,6 +91,32 @@ namespace MagicalLifeAPI.Networking.Server
         }
 
         /// <summary>
+        /// Sends a message to all connected clients except for one.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="message"></param>
+        /// <param name="playerException"></param>
+        public static void SendAllExcept<T>(T message, Guid playerException)
+            where T : BaseMessage
+        {
+            MasterLog.DebugWriteLine("Sending message: " + message.GetType().FullName);
+            if (Local == EngineMode.ServerAndClient)
+            {
+                ClientSendRecieve.Recieve(message);
+            }
+            else
+            {
+                foreach (KeyValuePair<Guid, Socket> item in TCPServer.PlayerToSocket)
+                {
+                    if (item.Key != playerException)
+                    {
+                        TCPServer.Send(message, item.Key);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// Receives a message.
         /// </summary>
         /// <param name="message"></param>

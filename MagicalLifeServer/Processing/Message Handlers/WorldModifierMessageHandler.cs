@@ -21,7 +21,7 @@ namespace MagicalLifeServer.Processing.Message_Handlers
         {
             WorldModifierMessage msg = (WorldModifierMessage)message;
 
-            ServerSendRecieve.SendAll(msg);
+            ServerSendRecieve.SendAllExcept(msg, msg.PlayerID);
             msg.WorldModifier.ModifyWorld();
         }
     }
