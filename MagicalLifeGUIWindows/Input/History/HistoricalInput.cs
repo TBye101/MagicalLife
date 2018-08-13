@@ -1,7 +1,7 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity.AI.Job;
 using MagicalLifeAPI.GUI;
-using MagicalLifeGUIWindows.GUI.In_Game_GUI;
+using MagicalLifeGUIWindows.GUI.In;
 using System.Collections.Generic;
 
 namespace MagicalLifeGUIWindows.Input.History

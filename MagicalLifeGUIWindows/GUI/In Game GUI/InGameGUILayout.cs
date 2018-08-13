@@ -1,6 +1,6 @@
 ﻿using MagicalLifeSettings.Storage;
 
-namespace MagicalLifeGUIWindows.GUI.In_Game_GUI
+namespace MagicalLifeGUIWindows.GUI.In
 {
     /// <summary>
     /// Returns the correct hardcoded values for the current screen resolution for the new world menu.

@@ -75,8 +75,8 @@
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="protobuf-net, Version=2.3.13.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
-      <HintPath>..\packages\protobuf-net.2.3.13\lib\net40\protobuf-net.dll</HintPath>
+    <Reference Include="protobuf-net, Version=2.3.0.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <HintPath>..\packages\protobuf-net.2.3.17\lib\net40\protobuf-net.dll</HintPath>
     </Reference>
     <Reference Include="RBush, Version=2.0.31.0, Culture=neutral, PublicKeyToken=b1d5b814a0c60675, processorArchitecture=MSIL">
       <HintPath>..\packages\RBush.2.0.31\lib\netstandard1.2\RBush.dll</HintPath>
@@ -158,17 +158,25 @@
     <Compile Include="Filing\SettingsManager.cs" />
     <Compile Include="InternalExceptions\CollectionEmptyException.cs" />
     <Compile Include="InternalExceptions\DuplicateEntryException.cs" />
+    <Compile Include="InternalExceptions\InvalidDataException.cs" />
     <Compile Include="InternalExceptions\InvalidPathException.cs" />
     <Compile Include="InternalExceptions\RegistryDeletionException.cs" />
     <Compile Include="InternalExceptions\ResourceMissingException.cs" />
     <Compile Include="InternalExceptions\UnexpectedEnumMemberException.cs" />
     <Compile Include="InternalExceptions\UnexpectedMessageException.cs" />
     <Compile Include="Load\ItemLoader.cs" />
+    <Compile Include="Networking\MessageBuffer.cs" />
+    <Compile Include="Networking\NetMessageID.cs" />
     <Compile Include="Networking\Messages\DisconnectMessage.cs" />
     <Compile Include="Networking\Messages\JobAssignedMessage.cs" />
     <Compile Include="Networking\Messages\JobCompletedMessage.cs" />
     <Compile Include="Networking\Messages\JobCreatedMessage.cs" />
     <Compile Include="Networking\Messages\LoginMessage.cs" />
+    <Compile Include="Networking\Messages\WorldModifierMessage.cs" />
+    <Compile Include="Networking\World\Modifiers\AbstractWorldModifier.cs" />
+    <Compile Include="Networking\World\Modifiers\ItemCreatedModifier.cs" />
+    <Compile Include="Networking\World\Modifiers\LivingCreatedModifier.cs" />
+    <Compile Include="Networking\World\Modifiers\LivingLocationModifier.cs" />
     <Compile Include="Registry\ItemRegistry\ItemAdder.cs" />
     <Compile Include="Registry\ItemRegistry\ItemFinder.cs" />
     <Compile Include="Registry\ItemRegistry\ItemRegistry.cs" />
@@ -228,13 +236,13 @@
     <Compile Include="Sound\FMOD\fmod_errors.cs" />
     <Compile Include="Sound\FMOD\fmod_studio.cs" />
     <Compile Include="Sound\MusicPlayer.cs" />
-    <Compile Include="Universal\Unique.cs" />
     <Compile Include="Universal\UniversalEvents.cs" />
     <Compile Include="Util\Algorithms.cs" />
     <Compile Include="Util\Extensions.cs" />
     <Compile Include="Util\HashUtil.cs" />
     <Compile Include="Util\MathUtil.cs" />
     <Compile Include="Util\ReflectionUtil.cs" />
+    <Compile Include="Util\Reusable\TickTimer.cs" />
     <Compile Include="Util\StaticRandom.cs" />
     <Compile Include="Asset\TextureLoader.cs" />
     <Compile Include="World\Base\Item.cs" />

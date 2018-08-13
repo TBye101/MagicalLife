@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MagicalLifeAPI.Components.Generic.Renderable
+﻿namespace MagicalLifeAPI.Components.Generic.Renderable
 {
     /// <summary>
     /// Those who implement this interface have a component that is renderable onto the screen.

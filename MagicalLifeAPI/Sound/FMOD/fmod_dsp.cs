@@ -9,12 +9,11 @@
 /* ========================================================================================== */
 
 using System;
-using System.Text;
 using System.Runtime.InteropServices;
 
-namespace FMOD
+namespace MagicalLifeAPI.Sound.FMOD
 {
-/*$ preserve end $*/
+    /*$ preserve end $*/
 
     /*
     [STRUCTURE]

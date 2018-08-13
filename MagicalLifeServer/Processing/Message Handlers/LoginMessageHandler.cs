@@ -1,23 +1,23 @@
-﻿using MagicalLifeAPI.Networking.Messages;
+﻿using MagicalLifeAPI.Entity;
+using MagicalLifeAPI.Networking;
+using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
+using MagicalLifeAPI.World;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MagicalLifeServer.Processing.Message_Handlers
+namespace MagicalLifeServer.Processing.Message
 {
     public class LoginMessageHandler : MessageHandler
     {
-        public LoginMessageHandler() : base(6)
+        public LoginMessageHandler() : base(NetMessageID.LoginMessage)
         {
         }
 
         public override void HandleMessage(BaseMessage message)
         {
             LoginMessage msg = (LoginMessage)message;
-            JobSystem.JobSystemManager.Manager.PlayerToJobSystem.Add(msg.PlayerID, new JobSystem.JobSystem(new Dictionary<Guid, MagicalLifeAPI.Entities.Living>(), msg.PlayerID));//Need to handle game loads, saves, player connect, and player disconnect
+            JobSystem.JobSystemManager.Manager.PlayerToJobSystem.Add(msg.PlayerID, new JobSystem.JobSystem(new Dictionary<Guid, Living>(), msg.PlayerID));//Need to handle game loads, saves, player connect, and player disconnect
             JobSystem.JobSystemManager.Manager.EvaluateUnassigned();
         }
     }

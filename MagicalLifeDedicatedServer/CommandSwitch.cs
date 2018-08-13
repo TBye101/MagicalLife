@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using MagicalLifeAPI.Server;
+using System.Collections.Generic;
 using System.Linq;
 
-namespace MagicalLifeServerShell
+namespace MagicalLifeDedicatedServer
 {
     /// <summary>
     /// Used to determine which command to call, if any.

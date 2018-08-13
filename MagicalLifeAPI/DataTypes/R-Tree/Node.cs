@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 // Ported to C# By Dror Gluska, April 9th, 2009
-namespace RTree
+namespace MagicalLifeAPI.DataTypes.R
 {
     /// <summary>
     /// Used by RTree. There are no public methods in this class.

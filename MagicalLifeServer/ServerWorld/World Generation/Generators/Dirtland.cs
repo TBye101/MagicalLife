@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities.Entity_Factory;
+using MagicalLifeAPI.Entity.Entity;
+using MagicalLifeAPI.Entity.Humanoid;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
@@ -7,7 +8,7 @@ using MagicalLifeAPI.World.Tiles;
 using MagicalLifeSettings.Storage;
 using System;
 
-namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
+namespace MagicalLifeServer.ServerWorld.World
 {
     /// <summary>
     /// Generates the whole map to be made out of dirt.
@@ -55,7 +56,8 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
 
             HumanFactory hFactory = new HumanFactory();
             Point2D location = new Point2D(((chunkX * Chunk.Width) + x), (chunkY * Chunk.Height) + y);
-            map[chunkX, chunkY].Creatures.Add(hFactory.GenerateHuman(location, this.Dimension, Player.Default.PlayerID));
+            Human human = hFactory.GenerateHuman(location, this.Dimension, Player.Default.PlayerID);
+            map[chunkX, chunkY].Creatures.Add(human.ID, human);
         }
 
         protected override void GenerateLandType(string[,] biomeMap, ProtoArray<Chunk> map, Random r)

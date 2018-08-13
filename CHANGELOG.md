@@ -2,7 +2,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 ---
 
-## [Version 0.*.*]
+## [Version 0.0.*]
 
 #### API
 * Added internal support for having items in tiles
@@ -19,19 +19,19 @@ SneakyTactician  <SneakyTactician@outlook.com>
 #### GUI
 * Grass textures now connect to form smoother patterns
 * Now showing logos for MonoGame and FMOD
-* Buttons now play a clicking sound when clicked upon
 * Player can now mark stone to be mined
+
+#### Sound
+* Buttons now play a clicking sound when clicked upon
+* Stone now plays a pickaxe hitting noise while it is being mined
 
 #### Bugs
 * Fixed issue [#17](https://github.com/SneakyTactician/MagicalLife/issues/17)
-
+* Fixed issue [#57](https://github.com/SneakyTactician/MagicalLife/issues/57)
 * Fixed an issue sometimes causing the character to be unselectable
+* Discovered and fixed issue [#50](https://github.com/SneakyTactician/MagicalLife/issues/50)
 
-* Discovered issue [#50](https://github.com/SneakyTactician/MagicalLife/issues/50)
 * Discovered issue [#51](https://github.com/SneakyTactician/MagicalLife/issues/51)
-
-* Created issue [#53](https://github.com/SneakyTactician/MagicalLife/issues/53)
-* Created issue [#54](https://github.com/SneakyTactician/MagicalLife/issues/54)
 
 ---
 

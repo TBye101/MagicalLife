@@ -1,7 +1,6 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
-using ProtoBuf;
 using SimpleTCP;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,9 @@ namespace MagicalLifeAPI.Networking.Server
     {
         public SimpleTcpServer Server = new SimpleTcpServer();
 
-        private readonly Dictionary<Guid, Socket> PlayerToSocket = new Dictionary<Guid, Socket>();
+        public Dictionary<Guid, Socket> PlayerToSocket { get; private set; } = new Dictionary<Guid, Socket>();
+
+        private MessageBuffer MsgBuffer { get; } = new MessageBuffer();
 
         public TCPServer()
         {
@@ -43,14 +44,18 @@ namespace MagicalLifeAPI.Networking.Server
 
         private void Server_DataReceived(object sender, Message e)
         {
-            BaseMessage msg = ProtoUtil.Deserialize(e.Data);
+            this.MsgBuffer.ReceiveData(e.Data);
 
-            if (msg is LoginMessage login)
+            while (this.MsgBuffer.IsMessageAvailible())
             {
-                this.PlayerToSocket.Add(login.PlayerID, e.TcpClient.Client);
-            }
+                BaseMessage msg = this.MsgBuffer.GetMessageData();
+                if (msg is LoginMessage login)
+                {
+                    this.PlayerToSocket.Add(login.PlayerID, e.TcpClient.Client);
+                }
 
-            ServerSendRecieve.Recieve(msg);
+                ServerSendRecieve.Recieve(msg);
+            }
         }
 
         private void Server_ClientDisconnected(object sender, System.Net.Sockets.TcpClient e)
@@ -66,7 +71,7 @@ namespace MagicalLifeAPI.Networking.Server
         {
             MasterLog.DebugWriteLine("Client connected: " + e.Client.RemoteEndPoint.ToString());
 
-            this.Send<WorldTransferMessage>(new WorldTransferMessage(World.Data.World.Dimensions), e.Client);
+            this.Send<WorldTransferMessage>(new WorldTransferMessage(MagicalLifeAPI.World.Data.World.Dimensions), e.Client);
         }
 
         /// <summary>
@@ -78,13 +83,17 @@ namespace MagicalLifeAPI.Networking.Server
         public void Send<T>(T data, Socket client)
             where T : BaseMessage
         {
-            client.Send(ProtoUtil.Serialize<T>(data));
+            byte[] buffer = ProtoUtil.Serialize<T>(data);
+            MasterLog.DebugWriteLine("Sending " + buffer.Length + " bytes");
+            client.Send(buffer);
         }
 
         public void Send<T>(T data, Guid player)
             where T : BaseMessage
         {
-            this.PlayerToSocket[player].Send(ProtoUtil.Serialize<T>(data));
+            byte[] buffer = ProtoUtil.Serialize<T>(data);
+            MasterLog.DebugWriteLine("Sending " + buffer.Length + " bytes");
+            this.PlayerToSocket[player].Send(buffer);
         }
 
         /// <summary>
@@ -95,7 +104,9 @@ namespace MagicalLifeAPI.Networking.Server
         public void Broadcast<T>(T data)
             where T : BaseMessage
         {
-            this.Server.Broadcast(ProtoUtil.Serialize<T>(data));
+            byte[] buffer = ProtoUtil.Serialize<T>(data);
+            MasterLog.DebugWriteLine("Sending " + buffer.Length + " bytes");
+            this.Server.Broadcast(buffer);
         }
     }
 }

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 
@@ -31,6 +28,7 @@ namespace MagicalLifeAPI.Components.Resource
 
         protected override List<Item> MinePercent(float percentMined)
         {
+            FMODUtil.RaiseEvent(EffectsTable.PickaxeHit);
             return null;
         }
     }

@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities;
+using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Pathfinding;
@@ -9,14 +10,14 @@ using MagicalLifeAPI.World.Data;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MagicalLifeServer.Message_Handlers
+namespace MagicalLifeServer.Processing.Message
 {
     /// <summary>
     /// How the server handles receiving route data for a creature.
     /// </summary>
     public class RouteCreatedMessageHandler : MessageHandler
     {
-        public RouteCreatedMessageHandler() : base(3)
+        public RouteCreatedMessageHandler() : base(NetMessageID.RouteCreatedMessage)
         {
         }
 
@@ -30,7 +31,7 @@ namespace MagicalLifeServer.Message_Handlers
                 Point2D chunkLocation = WorldUtil.CalculateChunkLocation(location);
                 Chunk chunk = World.GetChunk(msg.Dimension, chunkLocation.X, chunkLocation.Y);
 
-                Living l = chunk.Creatures.Where(t => t.MapLocation == location).ElementAt(0);
+                Living l = chunk.Creatures.Where(t => t.Value.MapLocation == location).ElementAt(0).Value;
 
                 if (l != null && l.ID == msg.LivingID)
                 {

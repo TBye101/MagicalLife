@@ -2,13 +2,8 @@
 using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MagicalLifeGUIWindows.GUI.In_Game_GUI.Buttons
+namespace MagicalLifeGUIWindows.GUI.In
 {
     public class MineActionButton : MonoButton
     {

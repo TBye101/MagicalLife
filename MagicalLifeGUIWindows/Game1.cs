@@ -6,12 +6,11 @@ using MagicalLifeAPI.Universal;
 using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Load;
 using MagicalLifeGUIWindows.Rendering;
-using MagicalLifeGUIWindows.Splash;
+using MagicalLifeGUIWindows.Screens;
 using MagicalLifeSettings.Storage;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGame.Extended.Screens;
 using System.Collections.Generic;
 
 namespace MagicalLifeGUIWindows
@@ -31,7 +30,7 @@ namespace MagicalLifeGUIWindows
         /// <summary>
         /// If true, then we are done displaying splash screens.
         /// </summary>
-        internal static bool SplashDone = false;
+        internal static bool SplashDone { get; set; } = false;
 
         public Game1()
         {
@@ -85,7 +84,7 @@ namespace MagicalLifeGUIWindows
             Loader load = new Loader();
             string msg = string.Empty;
 
-            load.LoadAll(ref msg, new List<IGameLoader>()
+           load.LoadAll(ref msg, new List<IGameLoader>()
             {
                 new ItemLoader(),
                 new InputLoader(),

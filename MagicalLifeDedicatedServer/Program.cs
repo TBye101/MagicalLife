@@ -1,7 +1,7 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
 using System;
 
-namespace MagicalLifeServerShell
+namespace MagicalLifeDedicatedServer
 {
     internal class Program
     {

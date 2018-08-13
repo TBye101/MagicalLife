@@ -13,12 +13,12 @@ namespace MagicalLifeAPI.Networking.Messages
         [ProtoBuf.ProtoMember(5)]
         public List<Dimension> World;
 
-        public WorldTransferMessage(List<Dimension> world) : base(2)
+        public WorldTransferMessage(List<Dimension> world) : base(NetMessageID.WorldTransferMessage)
         {
             this.World = world;
         }
 
-        public WorldTransferMessage() : base(2)
+        public WorldTransferMessage() : base(NetMessageID.WorldTransferMessage)
         {
         }
     }

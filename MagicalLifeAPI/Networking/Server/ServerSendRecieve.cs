@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Networking.Client;
+﻿using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Serialization;
 using System;
 using System.Collections.Generic;
@@ -46,6 +47,7 @@ namespace MagicalLifeAPI.Networking.Server
         public static void Send<T>(T message, Socket client)
             where T : BaseMessage
         {
+            MasterLog.DebugWriteLine("Sending message: " + message.GetType().FullName);
             if (Local == EngineMode.ServerAndClient)
             {
                 ClientSendRecieve.Recieve(message);
@@ -59,6 +61,7 @@ namespace MagicalLifeAPI.Networking.Server
         public static void Send<T>(T message, Guid player)
             where T : BaseMessage
         {
+            MasterLog.DebugWriteLine("Sending message: " + message.GetType().FullName);
             if (Local == EngineMode.ServerAndClient)
             {
                 ClientSendRecieve.Recieve(message);
@@ -76,6 +79,7 @@ namespace MagicalLifeAPI.Networking.Server
         public static void SendAll<T>(T message)
             where T : BaseMessage
         {
+            MasterLog.DebugWriteLine("Sending message: " + message.GetType().FullName);
             if (Local == EngineMode.ServerAndClient)
             {
                 ClientSendRecieve.Recieve(message);
@@ -87,11 +91,38 @@ namespace MagicalLifeAPI.Networking.Server
         }
 
         /// <summary>
+        /// Sends a message to all connected clients except for one.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="message"></param>
+        /// <param name="playerException"></param>
+        public static void SendAllExcept<T>(T message, Guid playerException)
+            where T : BaseMessage
+        {
+            MasterLog.DebugWriteLine("Sending message: " + message.GetType().FullName);
+            if (Local == EngineMode.ServerAndClient)
+            {
+                ClientSendRecieve.Recieve(message);
+            }
+            else
+            {
+                foreach (KeyValuePair<Guid, Socket> item in TCPServer.PlayerToSocket)
+                {
+                    if (item.Key != playerException)
+                    {
+                        TCPServer.Send(message, item.Key);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// Receives a message.
         /// </summary>
         /// <param name="message"></param>
         public static void Recieve(BaseMessage message)
         {
+            MasterLog.DebugWriteLine("Receiving message: " + message.GetType().FullName);
             RecievedMessages.Enqueue(message);
             RaiseMessageRecieved(null, message);
         }

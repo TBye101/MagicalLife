@@ -1,5 +1,4 @@
-﻿using MagicalLifeAPI.Universal;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Load
 {

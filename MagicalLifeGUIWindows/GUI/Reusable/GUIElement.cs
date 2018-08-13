@@ -10,7 +10,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
     /// <summary>
     /// Implemented by all GUI elements.
     /// </summary>
-    public abstract class GUIElement : Unique
+    public abstract class GUIElement
     {
         /// <summary>
         /// Constructs a new instance of the <see cref="GUIElement"/> class.

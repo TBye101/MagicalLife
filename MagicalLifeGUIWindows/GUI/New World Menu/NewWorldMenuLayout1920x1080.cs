@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeGUIWindows.GUI.New_World_Menu
+﻿namespace MagicalLifeGUIWindows.GUI.New
 {
     public class NewWorldMenuLayout1920x1080
     {

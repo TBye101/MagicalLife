@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeGUIWindows.GUI.In_Game_GUI
+﻿namespace MagicalLifeGUIWindows.GUI.In
 {
     /// <summary>
     /// The layout of the in game GUI for 1920x1080 resolution.

@@ -1,7 +1,8 @@
 ﻿using MagicalLifeAPI.Filing;
+using MagicalLifeDedicatedServer.API.Settings;
 using System.IO;
 
-namespace MagicalLifeServerShell.API.Settings
+namespace MagicalLifeDedicatedServer.API
 {
     /// <summary>
     /// Handles all settings for the dedicated server.

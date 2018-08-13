@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeGUIWindows.GUI.Host_Game_Menu
+﻿namespace MagicalLifeGUIWindows.GUI.Host
 {
     /// <summary>
     /// Holds a reference to the host game menu.

@@ -1,6 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.DataTypes.R;
 using MagicalLifeAPI.World.Data;
-using RTree;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Registry.ItemRegistry
@@ -59,7 +59,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// <returns></returns>
         public static List<Point2D> FindNearestChunks(int itemID, Point2D mapLocation, int dimension)
         {
-            RTree<Point2D> containingChunks = ItemRegistry.Registries[dimension].ItemIDToChunk[itemID];
+            RTree<Point2D> containingChunks = World.Data.World.Dimensions[dimension].Items.ItemIDToChunk[itemID];
 
             List<Point2D> result = containingChunks.Nearest(new Point(mapLocation.X / Chunk.Width, mapLocation.Y / Chunk.Height), SearchDistance);
 

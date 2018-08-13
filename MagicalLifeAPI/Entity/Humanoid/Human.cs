@@ -3,7 +3,7 @@ using MagicalLifeAPI.GUI;
 using ProtoBuf;
 using System;
 
-namespace MagicalLifeAPI.Entities.Humanoid
+namespace MagicalLifeAPI.Entity.Humanoid
 {
     /// <summary>
     /// A class that holds logic for control of regular humans.
@@ -13,7 +13,7 @@ namespace MagicalLifeAPI.Entities.Humanoid
     {
         public Human(int health, float movementSpeed, Point2D location, int dimension, Guid playerID) : base(health, movementSpeed, location, dimension, playerID)
         {
-            Filing.Logging.MasterLog.DebugWriteLine("Living spawned at: " + location.ToString());
+            Filing.Logging.MasterLog.DebugWriteLine("Living spawned at: " + location.ToXNA().ToString());
         }
 
         public Human() : base()

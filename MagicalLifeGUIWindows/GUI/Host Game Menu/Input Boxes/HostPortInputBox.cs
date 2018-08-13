@@ -1,7 +1,7 @@
 ﻿using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 
-namespace MagicalLifeGUIWindows.GUI.Host_Game_Menu.Input_Boxes
+namespace MagicalLifeGUIWindows.GUI.Host
 {
     /// <summary>
     /// The input box where the user inputs what port to host the game on.

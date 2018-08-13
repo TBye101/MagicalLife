@@ -1,4 +1,5 @@
-﻿using ProtoBuf;
+﻿using MagicalLifeAPI.World.Base;
+using ProtoBuf;
 
 namespace MagicalLifeAPI.World.Resources
 {

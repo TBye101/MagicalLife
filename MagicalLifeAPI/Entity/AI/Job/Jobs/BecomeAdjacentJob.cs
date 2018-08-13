@@ -1,35 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
+using ProtoBuf;
 
 namespace MagicalLifeAPI.Entity.AI.Job.Jobs
 {
     /// <summary>
     /// This job gets a living adjacent to a tile.
     /// </summary>
+    [ProtoContract]
     public class BecomeAdjacentJob : Job
     {
+        [ProtoMember(1)]
         public Point2D Target { get; private set; }
 
+        [ProtoMember(2)]
         public List<PathLink> Route { get; private set; }
 
+        [ProtoMember(3)]
         public Point2D AdjacentLocation { get; private set; }
 
         /// <param name="target">The target to become adjacent to.</param>
-        public BecomeAdjacentJob(Point2D target)
+        public BecomeAdjacentJob(Point2D target, bool requireSameWorker) : base(requireSameWorker)
         {
             this.Target = target;
         }
 
-        public override void BeginJob(Living living)
+        public BecomeAdjacentJob()
+        {
+            //Protobuf-net constructor
+        }
+
+        protected override void StartJob(Living living)
         {
             List<Point2D> result = WorldUtil.GetNeighboringTiles(this.Target, living.Dimension);
             result.RemoveAll(x => !World.Data.World.GetTile(living.Dimension, x.X, x.Y).IsWalkable);
@@ -41,11 +46,12 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
             Extensions.EnqueueCollection(living.QueuedMovement, path);
         }
 
-        public override void DoJob(Living living)
+        protected override void JobTick(Living living)
         {
             if (living.MapLocation.Equals(this.AdjacentLocation))
             {
-                this.CompleteJob();
+                MasterLog.DebugWriteLine(this.ID.ToString());
+                this.CompleteJob(living);
             }
         }
 

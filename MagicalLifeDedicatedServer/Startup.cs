@@ -1,11 +1,10 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Filing;
 using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Networking.Server;
-using MagicalLifeServerShell.API.Settings;
-using System;
+using MagicalLifeAPI.World.Data;
+using MagicalLifeDedicatedServer.API;
 
-namespace MagicalLifeServerShell
+namespace MagicalLifeDedicatedServer
 {
     /// <summary>
     /// Does some startup logic.
@@ -14,6 +13,7 @@ namespace MagicalLifeServerShell
     {
         public static void Go()
         {
+            World.Mode = MagicalLifeAPI.Networking.EngineMode.ServerOnly;
             AssetManager.isServerOnly = true;
             FileSystemManager.Initialize();
             MasterLog.Initialize();

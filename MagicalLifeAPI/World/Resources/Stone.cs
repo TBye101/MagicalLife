@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.Components.Resource;
-using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.World.Items;
 using ProtoBuf;
 using System.Collections.Generic;

@@ -1,16 +1,12 @@
 ﻿using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MagicalLifeAPI.Networking;
 
-namespace MagicalLifeServer.Processing.Message_Handlers
+namespace MagicalLifeServer.Processing.Message
 {
     public class DisconnectMessageHandler : MessageHandler
     {
-        public DisconnectMessageHandler() : base(9)
+        public DisconnectMessageHandler() : base(NetMessageID.DisconnectMessage)
         {
         }
 

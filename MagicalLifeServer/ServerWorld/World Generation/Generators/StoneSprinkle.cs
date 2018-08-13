@@ -1,6 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities.Entity_Factory;
-using MagicalLifeAPI.Entities.Humanoid;
+using MagicalLifeAPI.Entity.Entity;
+using MagicalLifeAPI.Entity.Humanoid;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
@@ -9,7 +9,7 @@ using MagicalLifeAPI.World.Tiles;
 using MagicalLifeSettings.Storage;
 using System;
 
-namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
+namespace MagicalLifeServer.ServerWorld.World
 {
     /// <summary>
     /// A world generator that throws in a sprinkle of stone.
@@ -50,7 +50,7 @@ namespace MagicalLifeServer.ServerWorld.World_Generation.Generators
             Point2D entityLocation = new Point2D(((chunkX * Chunk.Width) + x), (chunkY * Chunk.Height) + y);
             Human human = hFactory.GenerateHuman(entityLocation, this.Dimension, Player.Default.PlayerID);
 
-            map[chunkX, chunkY].Creatures.Add(human);
+            map[chunkX, chunkY].Creatures.Add(human.ID, human);
         }
 
         protected override void GenerateLandType(string[,] biomeMap, ProtoArray<Chunk> map, Random random)

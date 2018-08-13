@@ -1,4 +1,6 @@
-﻿using MagicalLifeAPI.Universal;
+﻿using MagicalLifeAPI.Networking;
+using MagicalLifeAPI.Universal;
+using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
@@ -9,7 +11,7 @@ namespace MagicalLifeAPI.World.Data
     /// The world, which contains all of the tiles.
     /// </summary>
     [ProtoContract]
-    public class World : Unique
+    public class World
     {
         /// <summary>
         /// The dimensions of a single world.
@@ -20,6 +22,9 @@ namespace MagicalLifeAPI.World.Data
         public static List<Dimension> Dimensions { get; set; } = new List<Dimension>();
 
         public static WorldStorage Storage { get; set; } = new WorldStorage(Filing.FileSystemManager.GetIOSafeTime());
+
+        public static EngineMode Mode { get; set; }
+        public static object Data { get; set; }
 
         /// <summary>
         /// Raised when a dimension is added for the first time.

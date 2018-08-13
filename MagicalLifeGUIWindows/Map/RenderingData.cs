@@ -1,9 +1,5 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.World;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
+﻿using MagicalLifeAPI.World;
+using MagicalLifeAPI.World.Base;
 
 namespace MagicalLifeGUIWindows.Map
 {

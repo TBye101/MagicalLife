@@ -1,16 +1,14 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.DataTypes.Attribute;
-using MagicalLifeAPI.Entities.Eventing;
-using MagicalLifeAPI.Entities.Util;
 using MagicalLifeAPI.Entity.AI.Job;
+using MagicalLifeAPI.Entity.Eventing;
 using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Pathfinding;
+using MagicalLifeAPI.Util.Reusable;
 using ProtoBuf;
 using System;
-using System.Collections.Generic;
 
-namespace MagicalLifeAPI.Entities
+namespace MagicalLifeAPI.Entity
 {
     /// <summary>
     /// All living things inherit from this, and utilize it.
@@ -58,6 +56,12 @@ namespace MagicalLifeAPI.Entities
         [ProtoMember(7)]
         public Guid PlayerID { get; set; }
 
+        [ProtoMember(9)]
+        public TickTimer FootStepTimer { get; set; }
+
+        [ProtoMember(10)]
+        public Guid ID { get; }
+
         /// <summary>
         /// Raised when a <see cref="Living"/> is created.
         /// </summary>
@@ -70,18 +74,20 @@ namespace MagicalLifeAPI.Entities
 
         protected Living(int health, float movementSpeed, Point2D location, int dimension, Guid playerID)
         {
+            this.ID = Guid.NewGuid();
             this.PlayerID = playerID;
             this.Initialize(health, movementSpeed, location, dimension);
         }
 
         protected void Initialize(int health, float movementSpeed, Point2D location, int dimension)
         {
-            this.Health = new Util.Attribute32(health);
+            this.Health = new Attribute32(health);
             this.Movement = new AttributeFloat(movementSpeed);
             this.MapLocation = location;
             this.ScreenLocation = new Point2DFloat(location.X, location.Y);
             this.Dimension = dimension;
             Living.LivingCreatedHandler(new LivingEventArg(this, location));
+            this.FootStepTimer = new TickTimer(5);
         }
 
         public Living()

@@ -1,7 +1,8 @@
 ﻿using MagicalLifeAPI.InternalExceptions;
+using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Networking.Server;
-using MagicalLifeServer.Message_Handlers;
+using MagicalLifeServer.Processing.Message;
 using MagicalLifeServer.Processing.Message_Handlers;
 using System.Collections.Generic;
 
@@ -13,20 +14,21 @@ namespace MagicalLifeServer.Processing
         /// Key: The ID of the message to be handled.
         /// Value: The handler for that ID.
         /// </summary>
-        private static Dictionary<int, MessageHandler> MessageHandlers = new Dictionary<int, MessageHandler>();
+        private static Dictionary<NetMessageID, MessageHandler> MessageHandlers = new Dictionary<NetMessageID, MessageHandler>();
 
         public static void Initialize()
         {
             ServerSendRecieve.MessageRecieved += ServerSendRecieve_MessageRecieved;
 
             //More important messages
-            MessageHandlers.Add(9, new DisconnectMessageHandler());
+            MessageHandlers.Add(NetMessageID.DisconnectMessage, new DisconnectMessageHandler());
+            MessageHandlers.Add(NetMessageID.JobCompletedMessage, new JobCompletedMessageHandler());
+            MessageHandlers.Add(NetMessageID.WorldModifierMessage, new WorldModifierMessageHandler());
 
             //Least important messages
-            MessageHandlers.Add(3, new RouteCreatedMessageHandler());
-            MessageHandlers.Add(7, new JobCompletedMessageHandler());
-            MessageHandlers.Add(8, new JobCreatedMessageHandler());
-            MessageHandlers.Add(6, new LoginMessageHandler());
+            MessageHandlers.Add(NetMessageID.RouteCreatedMessage, new RouteCreatedMessageHandler());
+            MessageHandlers.Add(NetMessageID.JobCreatedMessage, new JobCreatedMessageHandler());
+            MessageHandlers.Add(NetMessageID.LoginMessage, new LoginMessageHandler());
         }
 
         private static void ServerSendRecieve_MessageRecieved(object sender, BaseMessage e)

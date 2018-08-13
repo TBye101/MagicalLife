@@ -1,7 +1,9 @@
 ﻿using MagicalLifeAPI.World.Base;
+using ProtoBuf;
 
 namespace MagicalLifeAPI.World.Items
 {
+    [ProtoContract]
     public class StoneChunk : Item
     {
         public StoneChunk(int count) :
@@ -13,17 +15,12 @@ namespace MagicalLifeAPI.World.Items
             },
             9999,
             count,
-            typeof(StoneChunk))
+            typeof(StoneChunk), "MarbleChunk")
         {
         }
 
-        public StoneChunk() : base()
+        public StoneChunk()
         {
-        }
-
-        public override string GetTextureName()
-        {
-            return "MarbleChunk";
         }
     }
 }

@@ -1,11 +1,12 @@
-﻿using MagicalLifeAPI.Networking.Messages;
+﻿using MagicalLifeAPI.Networking;
+using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 
-namespace MagicalLifeClient.Message_Handlers
+namespace MagicalLifeClient.Message
 {
     public class ServerTickMessageHandler : MessageHandler
     {
-        public ServerTickMessageHandler() : base(4)
+        public ServerTickMessageHandler() : base(NetMessageID.ServerTickMessage)
         {
         }
 

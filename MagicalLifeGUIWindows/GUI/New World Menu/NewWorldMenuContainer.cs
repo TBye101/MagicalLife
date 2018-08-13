@@ -1,10 +1,7 @@
-﻿using MagicalLifeGUIWindows.GUI.New_World_Menu.Buttons;
-using MagicalLifeGUIWindows.GUI.New_World_Menu.Input_Boxes;
-using MagicalLifeGUIWindows.GUI.New_World_Menu.Labels;
-using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Rendering;
 
-namespace MagicalLifeGUIWindows.GUI.New_World_Menu
+namespace MagicalLifeGUIWindows.GUI.New
 {
     /// <summary>
     /// The menu that pops up when the user creates a new world.

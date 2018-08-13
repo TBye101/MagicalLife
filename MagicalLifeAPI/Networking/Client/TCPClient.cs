@@ -1,6 +1,8 @@
-﻿using MagicalLifeAPI.Networking.Messages;
+﻿using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using SimpleTCP;
+using System.Linq;
 
 namespace MagicalLifeAPI.Networking.Client
 {
@@ -10,6 +12,8 @@ namespace MagicalLifeAPI.Networking.Client
     public class TCPClient
     {
         public SimpleTcpClient Client;
+
+        private MessageBuffer MsgBuffer { get; } = new MessageBuffer();
 
         public void Start(int port, string ip)
         {
@@ -22,14 +26,28 @@ namespace MagicalLifeAPI.Networking.Client
 
         private void Client_DataReceived(object sender, Message e)
         {
-            BaseMessage msg = (BaseMessage)ProtoUtil.Deserialize(e.Data);
-            ClientProcessor.Process(msg);
+            MasterLog.DebugWriteLine("Receiving " + e.Data.Length + " bytes");
+            this.MsgBuffer.ReceiveData(e.Data);
+
+            while (this.MsgBuffer.IsMessageAvailible())
+            {
+                BaseMessage msg = this.MsgBuffer.GetMessageData();
+                if (msg is JobAssignedMessage)
+                {
+                    JobAssignedMessage m = (JobAssignedMessage)msg;
+                    MasterLog.DebugWriteLine("Job ID After: " + m.Task.Dependencies.ElementAt(0).Key.ToString());
+                }
+
+                ClientProcessor.Process(msg);
+            }
         }
 
         public void Send<T>(T message)
             where T : BaseMessage
         {
-            this.Client.Write(ProtoUtil.Serialize<T>(message));
+            byte[] buffer = ProtoUtil.Serialize<T>(message);
+            MasterLog.DebugWriteLine("Sending " + buffer.Length + " bytes");
+            this.Client.Write(buffer);
         }
     }
 }

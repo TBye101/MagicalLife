@@ -1,6 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.DataTypes.R;
 using MagicalLifeAPI.InternalExceptions;
-using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using System;
@@ -72,8 +72,8 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
 
             if (chunk.Items.ContainsKey(itemID))
             {
-                RTree.RTree<Point2D> result = chunk.Items[itemID];
-                bool success = result.Delete(new RTree.Rectangle(l.X, l.Y, l.X, l.Y), new Point2D(l.X, l.Y));
+                RTree<Point2D> result = chunk.Items[itemID];
+                bool success = result.Delete(new Rectangle(l.X, l.Y, l.X, l.Y), new Point2D(l.X, l.Y));
 
                 if (!success)
                 {
@@ -82,8 +82,8 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
 
                 if (result.Count == 0)
                 {
-                    RTree.RTree<Point2D> chunksContaining = ItemRegistry.Registries[dimension].ItemIDToChunk[itemID];
-                    bool succeed = chunksContaining.Delete(new RTree.Rectangle(chunk.ChunkLocation.X, chunk.ChunkLocation.Y, chunk.ChunkLocation.X, chunk.ChunkLocation.Y), new Point2D(chunk.ChunkLocation.X, chunk.ChunkLocation.Y));
+                    RTree<Point2D> chunksContaining = World.Data.World.Dimensions[dimension].Items.ItemIDToChunk[itemID];
+                    bool succeed = chunksContaining.Delete(new Rectangle(chunk.ChunkLocation.X, chunk.ChunkLocation.Y, chunk.ChunkLocation.X, chunk.ChunkLocation.Y), new Point2D(chunk.ChunkLocation.X, chunk.ChunkLocation.Y));
 
                     if (!succeed)
                     {

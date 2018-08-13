@@ -1,12 +1,7 @@
-﻿using MagicalLifeAPI.Entities;
+﻿using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Entity.AI.Job;
 using MagicalLifeAPI.Networking.Serialization;
 using ProtoBuf;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Networking.Messages
 {
@@ -28,7 +23,7 @@ namespace MagicalLifeAPI.Networking.Messages
         [ProtoMember(2)]
         public Job Task { get; set; }
 
-        public JobAssignedMessage(Living worker, Job task) : base(5)
+        public JobAssignedMessage(Living worker, Job task) : base(NetMessageID.JobAssignedMessage)
         {
             this.Worker = worker;
             this.Task = task;

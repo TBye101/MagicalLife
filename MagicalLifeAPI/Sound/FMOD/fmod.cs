@@ -10,7 +10,7 @@ using System;
 using System.Text;
 using System.Runtime.InteropServices;
 
-namespace FMOD
+namespace MagicalLifeAPI.Sound.FMOD
 {
     /*
         FMOD version number.  Check this against FMOD::System::getVersion / System_GetVersion

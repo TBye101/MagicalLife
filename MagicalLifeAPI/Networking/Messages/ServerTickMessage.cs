@@ -13,11 +13,11 @@ namespace MagicalLifeAPI.Networking.Messages
         [ProtoMember(5)]
         public UInt64 Tick;
 
-        public ServerTickMessage() : base(4)
+        public ServerTickMessage() : base(NetMessageID.ServerTickMessage)
         {
         }
 
-        public ServerTickMessage(UInt64 tick) : base(4)
+        public ServerTickMessage(UInt64 tick) : base(NetMessageID.ServerTickMessage)
         {
             this.Tick = tick;
         }

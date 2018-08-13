@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.World;
+﻿using MagicalLifeAPI.DataTypes;
 using ProtoBuf;
 
-namespace MagicalLifeAPI.Components.Generic
+namespace MagicalLifeAPI.Components.Generic.Renderable
 {
     /// <summary>
     /// For when an object has only one texture, that always is the same.
@@ -27,8 +21,9 @@ namespace MagicalLifeAPI.Components.Generic
         [ProtoMember(1)]
         public override int TextureID { get; set; }
 
-        public override void CalculateTexture(ProtoArray<World.Tile> tiles, Point2D myLocation)
+        public override void CalculateTexture(ProtoArray<World.Base.Tile> tiles, Point2D myLocation)
         {
+            //Static textures don't change
         }
     }
 }

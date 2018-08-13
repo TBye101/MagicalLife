@@ -1,5 +1,14 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Entity;
+using MagicalLifeAPI.Entity.Entity;
+using MagicalLifeAPI.Entity.Humanoid;
+using MagicalLifeAPI.Networking.Messages;
+using MagicalLifeAPI.Networking.Server;
+using MagicalLifeAPI.Networking.World.Modifiers;
+using MagicalLifeAPI.Util;
+using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
+using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.World
@@ -97,6 +106,56 @@ namespace MagicalLifeAPI.World
             int y = mapLocation.Y % Chunk.Height;
 
             return chunk.Tiles[x, y];
+        }
+
+        /// <summary>
+        /// Finds a random location that can be walked upon by a creature.
+        /// </summary>
+        /// <param name="dimension"></param>
+        /// <returns></returns>
+        public static Point2D FindRandomLocation(int dimension)
+        {
+            Dimension dim = World.Data.World.Dimensions[dimension];
+
+            //The coordinates of the random chunk
+            int randomChunkX = StaticRandom.Rand(0, dim.Width);
+            int randomChunkY = StaticRandom.Rand(0, dim.Height);
+
+            //The coordinates of the tile within the chunk
+            int randomX = StaticRandom.Rand(0, Chunk.Width);
+            int randomY = StaticRandom.Rand(0, Chunk.Height);
+
+            //The map coordinates of where to spawn the creature.
+            int x = (randomChunkX * Chunk.Width) + randomX;
+            int y = (randomChunkY * Chunk.Height) + randomY;
+
+            if (dim[x, y].IsWalkable)
+            {
+                return new Point2D(x, y);
+            }
+            else
+            {
+                return WorldUtil.FindRandomLocation(dimension);
+            }
+        }
+
+        /// <summary>
+        /// Spawns a character at a random position in the map without spawning the character in the same space as another character.
+        /// </summary>
+        /// <param name="playerID"></param>
+        public static void SpawnRandomCharacter(Guid playerID, int dimension)
+        {
+            Point2D randomLocation = FindRandomLocation(dimension);
+
+            HumanFactory humanFactory = new HumanFactory();
+            Human human = humanFactory.GenerateHuman(randomLocation, dimension, playerID);
+
+            World.Data.World.GetChunkByTile(dimension, randomLocation.X, randomLocation.Y).Creatures.Add(human.ID, human);
+
+            if (World.Data.World.Mode == Networking.EngineMode.ServerOnly)
+            {
+                ServerSendRecieve.SendAll(new WorldModifierMessage(new LivingCreatedModifier(human)));
+            }
         }
     }
 }

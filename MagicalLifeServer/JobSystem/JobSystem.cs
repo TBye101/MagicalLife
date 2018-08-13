@@ -1,4 +1,4 @@
-﻿using MagicalLifeAPI.Entities;
+﻿using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Entity.AI.Job;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Networking.Messages;
@@ -7,8 +7,6 @@ using ProtoBuf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeServer.JobSystem
 {
@@ -37,20 +35,27 @@ namespace MagicalLifeServer.JobSystem
         public Dictionary<Guid, Job> InProgress { get; private set; }
 
         /// <summary>
-        /// The player that this <see cref="JobSystem"/> manages workers for.
+        /// Jobs that must be all completed by the same character.
         /// </summary>
         [ProtoMember(4)]
+        public Dictionary<Guid, Job> SameWorkerJobs { get; private set; }
+
+        /// <summary>
+        /// The player that this <see cref="JobSystem"/> manages workers for.
+        /// </summary>
+        [ProtoMember(5)]
         public Guid PlayerID { get; private set; }
 
         /// <summary>
         /// All of the workers in this list have a job and are working on it.
         /// </summary>
-        [ProtoMember(5)]
+        [ProtoMember(6)]
         public Dictionary<Guid, Living> Busy { get; private set; }
 
         /// <summary>
         /// All of the workers in this list need a job.
         /// </summary>
+        [ProtoMember(7)]
         public Dictionary<Guid, Living> Idle { get; private set; }
 
         /// <summary>
@@ -63,6 +68,7 @@ namespace MagicalLifeServer.JobSystem
             this.NoDependencies = new Dictionary<Guid, Job>();
             this.WithDependencies = new Dictionary<Guid, Job>();
             this.InProgress = new Dictionary<Guid, Job>();
+            this.SameWorkerJobs = new Dictionary<Guid, Job>();
             this.Busy = new Dictionary<Guid, Living>();
             this.Idle = new Dictionary<Guid, Living>();
 
@@ -87,7 +93,7 @@ namespace MagicalLifeServer.JobSystem
         {
             int i = 0;
 
-            //lock (this.SyncObject)
+            lock (this.SyncObject)
             {
                 while (i != this.Idle.Count)
                 {
@@ -118,6 +124,19 @@ namespace MagicalLifeServer.JobSystem
         /// <returns></returns>
         private bool AssignJob(Living living)
         {
+            if (this.SameWorkerJobs.Count > 0)
+            {
+                IEnumerable<KeyValuePair<Guid, Job>> result = this.SameWorkerJobs.Take(1);
+                KeyValuePair<Guid, Job> one = result.First();
+
+                one.Value.ReevaluateDependencies();
+                one.Value.AssignJob(living);
+                this.InProgress.Add(one.Key, one.Value);
+                this.SameWorkerJobs.Remove(one.Key);
+                this.StartJob(one.Value, living);
+                return true;
+            }
+
             if (this.NoDependencies.Count > 0)
             {
                 IEnumerable<KeyValuePair<Guid, Job>> result = this.NoDependencies.Take(1);
@@ -151,11 +170,11 @@ namespace MagicalLifeServer.JobSystem
         {
             lock (this.SyncObject)
             {
-                this.InProgress[ID].RaiseJobCompleted(ID);
                 Guid workerID = this.InProgress[ID].AssignedWorker;
+                Living worker = this.Busy[workerID];//Need another lock
+                this.InProgress[ID].RaiseJobCompleted(new Tuple<Guid, Living>(workerID, worker));
 
                 this.InProgress.Remove(ID);
-                Living worker = this.Busy[workerID];//Need another lock
 
                 this.Busy.Remove(workerID);
                 this.Idle.Add(workerID, worker);
@@ -166,30 +185,38 @@ namespace MagicalLifeServer.JobSystem
         private void StartJob(Job job, Living living)
         {
             living.Task = job;
+            MasterLog.DebugWriteLine("Dependency ID before: " + job.Dependencies.ElementAt(0).Key.ToString());
             ServerSendRecieve.Send(new JobAssignedMessage(living, job), this.PlayerID);
         }
 
         public void AddJob(KeyValuePair<Guid, Job> job)
         {
-            if (job.Value.Dependencies != null && job.Value.Dependencies.Count > 0)
+            if (job.Value.RequireSameWorker)
             {
-                job.Value.DependenciesResolved += this.Job_DependenciesResolved;
-                this.WithDependencies.Add(job.Key, job.Value);
-
-                foreach (KeyValuePair<Guid, Job> item in job.Value.Dependencies)
-                {
-                    this.AddJob(item);
-                }
+                this.SameWorkerJobs.Add(job.Key, job.Value);
             }
             else
             {
-                this.NoDependencies.Add(job.Key, job.Value);
+                if (job.Value.Dependencies != null && job.Value.Dependencies.Count > 0)
+                {
+                    job.Value.DependenciesResolved += this.Job_DependenciesResolved;
+                    this.WithDependencies.Add(job.Key, job.Value);
+
+                    foreach (KeyValuePair<Guid, Job> item in job.Value.Dependencies)
+                    {
+                        this.AddJob(item);
+                    }
+                }
+                else
+                {
+                    this.NoDependencies.Add(job.Key, job.Value);
+                }
             }
         }
 
         private void Job_DependenciesResolved(object sender, Guid ID)
         {
-            //lock (this.WithDependencies)
+            lock (this.WithDependencies)
             {
                 Job job = this.WithDependencies[ID];
                 this.WithDependencies.Remove(ID);

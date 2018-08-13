@@ -1,6 +1,6 @@
 ﻿using MagicalLifeSettings.Storage;
 
-namespace MagicalLifeGUIWindows.GUI.Host_Game_Menu
+namespace MagicalLifeGUIWindows.GUI.Host
 {
     /// <summary>
     /// Returns the correct hard coded values for the current screen resolution for the host game menu.

@@ -1,8 +1,8 @@
-﻿using MagicalLifeDedicatedServer.API.Commands;
-using MagicalLifeServerShell.API.Commands;
+﻿using MagicalLifeAPI.Server;
+using MagicalLifeDedicatedServer.API.Commands;
 using System.Collections.Generic;
 
-namespace MagicalLifeServerShell.API
+namespace MagicalLifeDedicatedServer.API
 {
     public class InternalCommandModule : ICommandModule
     {

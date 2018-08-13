@@ -1,29 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities;
 using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Pathfinding;
+using ProtoBuf;
 
 namespace MagicalLifeAPI.Entity.AI.Job.Jobs
 {
     /// <summary>
     /// This job gets the living to move from point 'A' to point 'B'.
     /// </summary>
+    [ProtoContract]
     public class MoveJob : Job
     {
+        [ProtoMember(1)]
         public Point2D Destination { get; private set; }
 
-        public MoveJob(Point2D destination) : base()
+        public MoveJob(Point2D destination, bool requireSameWorker) : base(requireSameWorker)
         {
             this.Destination = destination;
         }
 
-        public override void BeginJob(Living living)
+        public MoveJob()
+        {
+            //Protobuf-net constructor
+        }
+
+        protected override void StartJob(Living living)
         {
             Point2D start = living.MapLocation;
             if (start != this.Destination)
@@ -50,7 +53,7 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
             }
         }
 
-        public override void DoJob(Living living)
+        protected override void JobTick(Living living)
         {
             //We don't need to do anything more
         }

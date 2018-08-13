@@ -1,12 +1,12 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities;
-using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.World;
+using MagicalLifeAPI.Entity;
+using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Resources;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace MagicalLifeGUIWindows.Rendering.Map
 {
@@ -43,12 +43,12 @@ namespace MagicalLifeGUIWindows.Rendering.Map
                 {
                     Chunk chunk = World.Dimensions[dimension].GetChunk(x, y);
 
-                    foreach (Living item in chunk.Creatures)
+                    foreach (KeyValuePair<System.Guid, Living> item in chunk.Creatures)
                     {
-                        if (item != null)
+                        if (item.Value != null)
                         {
-                            Texture2D livingTexture = AssetManager.Textures[AssetManager.GetTextureIndex(item.GetTextureName())];
-                            Vector2 livingScreenLocation = new Vector2(item.ScreenLocation.X * Tile.GetTileSize().X, item.ScreenLocation.Y * Tile.GetTileSize().Y);
+                            Texture2D livingTexture = AssetManager.Textures[AssetManager.GetTextureIndex(item.Value.GetTextureName())];
+                            Vector2 livingScreenLocation = new Vector2(item.Value.ScreenLocation.X * Tile.GetTileSize().X, item.Value.ScreenLocation.Y * Tile.GetTileSize().Y);
                             spBatch.Draw(livingTexture, livingScreenLocation, RenderingPipe.colorMask);
                         }
                     }

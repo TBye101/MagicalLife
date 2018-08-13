@@ -1,28 +1,43 @@
-﻿using MagicalLifeAPI.DataTypes;
+﻿using MagicalLifeAPI.Entity.AI.Job.Jobs;
+using MagicalLifeAPI.Entity.Entity;
+using MagicalLifeAPI.Entity.Humanoid;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeAPI.World.Tiles;
+using MagicalLifeAPI.World;
+using MagicalLifeAPI.World.Data;
 using MagicalLifeServer;
-using MagicalLifeServer.ServerWorld.World_Generation.Generators;
+using MagicalLifeServer.ServerWorld.World;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace MagicalLifeAPI.Protobuf.Serialization.Tests
+namespace MagicalLifeAPITests1.Networking.Serialization
 {
     [TestClass()]
     public class ProtoUtilTests
     {
         [TestMethod()]
-        public void SerAndDeSerTest()
+        public void TestJobSerialization()
         {
             this.Setup();
-            this.WorldTest();
+            MineJob job = new MineJob(new MagicalLifeAPI.DataTypes.Point2D(3, 6));
+
+            HumanFactory humanFactory = new HumanFactory();
+            Human human = humanFactory.GenerateHuman(new MagicalLifeAPI.DataTypes.Point2D(1, 3), 0, Guid.NewGuid());
+
+            JobAssignedMessage message = new JobAssignedMessage(human, job);
+
+            byte[] data = ProtoUtil.Serialize(message);
+            Assert.IsNotNull(data);
+
+            JobAssignedMessage result = (JobAssignedMessage)ProtoUtil.Deserialize(data);
         }
 
+        [TestMethod()]
         private void WorldTest()
         {
-            World.Data.World.Initialize(1, 1, new GrassAndDirt(0));
-            WorldTransferMessage input = new WorldTransferMessage(World.Data.World.Dimensions);
+            this.Setup();
+            World.Initialize(1, 1, new GrassAndDirt(0));
+            WorldTransferMessage input = new WorldTransferMessage(World.Dimensions);
             byte[] data = ProtoUtil.Serialize(input);
             Assert.IsNotNull(data, "Failed to serialize");
 
@@ -31,7 +46,7 @@ namespace MagicalLifeAPI.Protobuf.Serialization.Tests
 
         private void Setup()
         {
-            Server.Load(Networking.EngineMode.ServerOnly);
+            Server.Load();
         }
     }
 }

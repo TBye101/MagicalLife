@@ -1,17 +1,13 @@
-﻿using MagicalLifeAPI.Networking.Messages;
+﻿using MagicalLifeAPI.Networking;
+using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeServer.JobSystem;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MagicalLifeServer.Processing.Message_Handlers
+namespace MagicalLifeServer.Processing.Message
 {
     public class JobCompletedMessageHandler : MessageHandler
     {
-        public JobCompletedMessageHandler() : base(7)
+        public JobCompletedMessageHandler() : base(NetMessageID.JobCompletedMessage)
         {
         }
 

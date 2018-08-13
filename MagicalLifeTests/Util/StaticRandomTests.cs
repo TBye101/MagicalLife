@@ -1,7 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using MagicalLifeAPI.Util;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace MagicalLifeAPI.Util.Tests
+namespace MagicalLifeTests.Util
 {
     [TestClass()]
     public class StaticRandomTests

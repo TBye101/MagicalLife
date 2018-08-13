@@ -1,5 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.World;
+using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 
 namespace MagicalLifeGUIWindows
@@ -32,7 +32,7 @@ namespace MagicalLifeGUIWindows
             else
             {
                 success = false;
-                throw new System.ArgumentException("Map location doesn't exist!");
+                return null;
             }
         }
     }

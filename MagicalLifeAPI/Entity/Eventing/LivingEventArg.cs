@@ -1,6 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 
-namespace MagicalLifeAPI.Entities.Eventing
+namespace MagicalLifeAPI.Entity.Eventing
 {
     /// <summary>
     /// Used to hold information about a event involving a living entity.

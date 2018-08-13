@@ -1,11 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.World.Tiles;
 using ProtoBuf;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Components.Tile.Renderable
 {
@@ -23,7 +18,7 @@ namespace MagicalLifeAPI.Components.Tile.Renderable
         /// The name of the texture that this <see cref="AbstractConnectedTexture"/> evaluates.
         /// </summary>
         /// <param name="textureName"></param>
-        public AbstractConnectedTexture(string[] textures)
+        protected AbstractConnectedTexture(string[] textures)
         {
             int length = textures.Length;
             this.TextureIDs = new int[length];

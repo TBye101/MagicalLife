@@ -1,7 +1,9 @@
-﻿using MagicalLifeAPI.Entities;
-using MagicalLifeAPI.Entities.Movement;
-using MagicalLifeAPI.Filing.Logging;
+﻿using MagicalLifeAPI.Entity;
+using MagicalLifeAPI.Entity.Movement;
 using MagicalLifeAPI.World.Data;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MagicalLifeClient.Entity
 {
@@ -30,16 +32,19 @@ namespace MagicalLifeClient.Entity
                     {
                         Chunk chunk = ii.GetChunk(chunkX, chunkY);
 
-                        foreach (Living item in chunk.Creatures)
+                        List<Guid> keys = chunk.Creatures.Keys.ToList();
+                        int length = keys.Count;
+                        for (int i = 0; i < length; i++)
                         {
-                            if (item != null)
+                            chunk.Creatures.TryGetValue(keys[i], out Living l);
+
+                            if (l != null)
                             {
-                                Living l = item;
                                 l.Movement.WearOff();
 
-                                if (item.QueuedMovement.Count > 0)
+                                if (l.QueuedMovement.Count > 0)
                                 {
-                                    EntityWorldMovement.MoveEntity(ref l);
+                                    EntityWorldMovement.MoveEntity(l);
                                 }
 
                                 if (l.Task != null)
@@ -48,6 +53,51 @@ namespace MagicalLifeClient.Entity
                                 }
                             }
                         }
+
+                        //Dictionary<Guid, Living>.KeyCollection keys = chunk.Creatures.Keys;
+                        //lock (keys)
+                        //{
+                        //    foreach (Guid item in keys)
+                        //    {
+                        //        chunk.Creatures.TryGetValue(item, out Living l);
+
+                        //        if (l != null)
+                        //        {
+                        //            l.Movement.WearOff();
+
+                        //            if (l.QueuedMovement.Count > 0)
+                        //            {
+                        //                EntityWorldMovement.MoveEntity(l);
+                        //            }
+
+                        //            if (l.Task != null)
+                        //            {
+                        //                l.Task.DoJob(l);
+                        //            }
+                        //        }
+                        //    }
+                        //}
+                        //lock (chunk.Creatures)
+                        //{
+                        //    foreach (KeyValuePair<System.Guid, Living> item in chunk.Creatures)
+                        //    {
+                        //        if (item.Value != null)
+                        //        {
+                        //            Living l = item.Value;
+                        //            l.Movement.WearOff();
+
+                        //            if (item.Value.QueuedMovement.Count > 0)
+                        //            {
+                        //                EntityWorldMovement.MoveEntity(l);
+                        //            }
+
+                        //            if (l.Task != null)
+                        //            {
+                        //                l.Task.DoJob(l);
+                        //            }
+                        //        }
+                        //    }
+                        //}
                     }
                 }
             }

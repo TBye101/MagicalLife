@@ -1,10 +1,10 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Networking.Client;
-using MagicalLifeAPI.Networking.Message_Handlers;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeClient.Entity;
+using MagicalLifeClient.Message;
 using MagicalLifeClient.Message_Handlers;
 using System;
 using System.Collections.Generic;
@@ -44,6 +44,7 @@ namespace MagicalLifeClient
             {
                 new ServerTickMessageHandler(),
                 new JobAssignedMessageHandler(),
+                new WorldModifierMessageHandler(),
 
                 //Least important messages
                 new WorldTransferMessageHandler()

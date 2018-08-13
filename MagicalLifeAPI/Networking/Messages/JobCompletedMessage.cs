@@ -1,10 +1,6 @@
 ﻿using MagicalLifeAPI.Networking.Serialization;
 using ProtoBuf;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Networking.Messages
 {
@@ -20,12 +16,12 @@ namespace MagicalLifeAPI.Networking.Messages
         [ProtoMember(1)]
         public Guid CompletedID { get; set; }
 
-        public JobCompletedMessage(Guid completedID) : base(7)
+        public JobCompletedMessage(Guid completedID) : base(NetMessageID.JobCompletedMessage)
         {
             this.CompletedID = completedID;
         }
 
-        public JobCompletedMessage() : base(7)
+        public JobCompletedMessage() : base(NetMessageID.JobCompletedMessage)
         {
 
         }
