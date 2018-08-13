@@ -9,6 +9,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 #### Server
 
 #### GUI
+* The host game button has been replaced by the load game button
 
 #### Sound
 
