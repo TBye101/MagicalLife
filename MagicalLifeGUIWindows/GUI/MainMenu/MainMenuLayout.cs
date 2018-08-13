@@ -99,17 +99,17 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
         /// <summary>
         /// The y position of the top of the host game button.
         /// </summary>
-        public static int HostGameButtonY
+        public static int LoadGameButtonY
         {
             get
             {
                 switch ((Resolution)MainWindow.Default.Resolution)
                 {
                     case Resolution._1920x1080:
-                        return MainMenuLayout1920x1080.HostGameButtonY;
+                        return MainMenuLayout1920x1080.LoadGameButtonY;
 
                     default:
-                        return MainMenuLayout1920x1080.HostGameButtonY;
+                        return MainMenuLayout1920x1080.LoadGameButtonY;
                 }
             }
         }

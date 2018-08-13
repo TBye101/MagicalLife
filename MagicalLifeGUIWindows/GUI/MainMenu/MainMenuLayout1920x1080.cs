@@ -28,7 +28,7 @@
         /// <summary>
         /// The y position of the top of the host game button.
         /// </summary>
-        public static readonly int HostGameButtonY = 200;
+        public static readonly int LoadGameButtonY = 200;
 
         /// <summary>
         /// The y position of the top of the join game button.
