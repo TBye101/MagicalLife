@@ -32,7 +32,7 @@ Thanks!
 * Multiplayer support
 * Hardware accelerated graphics via Monogame
 
-Check out the [demo](https://youtu.be/dsWu4G6p4aM) to see the latest progress!
+Check out the [demo](https://youtu.be/NV8WLheFxtM) to see the latest progress!
 
 ## Roadmap (In no particular order)
 AKA TODO:
