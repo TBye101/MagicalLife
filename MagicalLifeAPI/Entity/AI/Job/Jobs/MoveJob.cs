@@ -21,7 +21,7 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
             this.Destination = destination;
         }
 
-        public MoveJob() : base()
+        public MoveJob()
         {
             //Protobuf-net constructor
         }

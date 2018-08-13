@@ -37,7 +37,7 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
             this.HitTimer = new TickTimer(30);
         }
 
-        public MineJob() : base()
+        public MineJob()
         {
             //Protobuf-net constructor
         }

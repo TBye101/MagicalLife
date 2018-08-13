@@ -23,6 +23,7 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
 
         public override void CalculateTexture(ProtoArray<World.Base.Tile> tiles, Point2D myLocation)
         {
+            //Static textures don't change
         }
     }
 }

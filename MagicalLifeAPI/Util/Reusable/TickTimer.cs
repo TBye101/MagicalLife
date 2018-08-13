@@ -16,7 +16,7 @@ namespace MagicalLifeAPI.Util.Reusable
         protected int Ticks { get; set; }
 
         [ProtoMember(2)]
-        protected int CurrentTick { get; set; } = 0;
+        protected int CurrentTick { get; set; }
 
         /// <param name="ticks">The number of ticks between every time that something is allowed.</param>
         public TickTimer(int ticks)

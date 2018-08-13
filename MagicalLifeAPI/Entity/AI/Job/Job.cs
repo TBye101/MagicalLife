@@ -61,26 +61,20 @@ namespace MagicalLifeAPI.Entity.AI.Job
 
         /// <param name="dependencies"></param>
         /// <param name="requireSameWorker">If true, the same worker must do all steps of this job in order all at once.</param>
-        public Job(Dictionary<Guid, Job> dependencies, bool requireSameWorker)
+        protected Job(Dictionary<Guid, Job> dependencies, bool requireSameWorker)
         {
             this.ID = Guid.NewGuid();
             this.Dependencies = dependencies;
             this.RequireSameWorker = requireSameWorker;
-
-            //foreach (KeyValuePair<Guid, Job> item in this.Dependencies)
-            //{
-            //    item.Value.JobComplete += this.Item_JobComplete;
-            //    item.Value.ParentJob = this.ID;
-            //}
         }
 
-        public Job(bool requireSameWorker)
+        protected Job(bool requireSameWorker)
         {
             this.ID = Guid.NewGuid();
             this.RequireSameWorker = requireSameWorker;
         }
 
-        public Job()
+        protected Job()
         {
             //Protobuf-net constructor
         }
@@ -151,7 +145,7 @@ namespace MagicalLifeAPI.Entity.AI.Job
             {
                 if (this.Dependencies.Count > 0)
                 {
-                    this.CurrentTask = this.GetNextDependency(this.Dependencies);
+                    this.CurrentTask = this.GetNextDependency();
                     this.CurrentTask.StartJob(living);
                 }
                 else
@@ -169,13 +163,13 @@ namespace MagicalLifeAPI.Entity.AI.Job
         /// Gets the next dependency to work on.
         /// </summary>
         /// <returns></returns>
-        private Job GetNextDependency(Dictionary<Guid, Job> dependencies)
+        private Job GetNextDependency()
         {
             Job job = this.Dependencies.ElementAt(0).Value;
 
             if (job.Dependencies != null && job.Dependencies.Count > 0)
             {
-                return this.GetNextDependency(job.Dependencies);
+                return this.GetNextDependency();
             }
 
             return job;
@@ -198,7 +192,7 @@ namespace MagicalLifeAPI.Entity.AI.Job
                 {
                     if (this.Dependencies != null && this.Dependencies.Count != 0)
                     {
-                        this.CurrentTask = this.GetNextDependency(this.Dependencies);
+                        this.CurrentTask = this.GetNextDependency();
                         this.CurrentTask.StartJob(living);
                     }
                     else
@@ -228,7 +222,6 @@ namespace MagicalLifeAPI.Entity.AI.Job
             if (this.AssignedWorker == Guid.Empty)
             {
                 this.AssignedWorker = living.ID;
-                //this.BeginJob(living);
 
                 return true;
             }

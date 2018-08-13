@@ -13,7 +13,7 @@ namespace MagicalLifeAPI.Networking.Client
     {
         public SimpleTcpClient Client;
 
-        private MessageBuffer MsgBuffer { get; set; } = new MessageBuffer();
+        private MessageBuffer MsgBuffer { get; } = new MessageBuffer();
 
         public void Start(int port, string ip)
         {
@@ -29,8 +29,9 @@ namespace MagicalLifeAPI.Networking.Client
             MasterLog.DebugWriteLine("Receiving " + e.Data.Length + " bytes");
             this.MsgBuffer.ReceiveData(e.Data);
 
-            while (this.MsgBuffer.GetMessageData(out BaseMessage msg))
+            while (this.MsgBuffer.IsMessageAvailible())
             {
+                BaseMessage msg = this.MsgBuffer.GetMessageData();
                 if (msg is JobAssignedMessage)
                 {
                     JobAssignedMessage m = (JobAssignedMessage)msg;

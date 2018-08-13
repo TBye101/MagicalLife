@@ -51,12 +51,21 @@ namespace MagicalLifeAPI.Networking
         }
 
         /// <summary>
-        /// Returns true if <paramref name="data"/> contains a message to be deserialized.
+        /// Determines if there is a message to be taken.
         /// </summary>
-        /// <param name="data">Null if there is no message fully buffered yet.</param>
         /// <returns></returns>
-        public bool GetMessageData(out BaseMessage data)
+        public bool IsMessageAvailible()
         {
+            return (this.NextMessageLength != -1 && this.NextMessageLength <= this.Buffer.Count);
+        }
+
+        /// <summary>
+        /// Returns the next message. Returns null if no message is ready.
+        /// </summary>
+        /// <returns></returns>
+        public BaseMessage GetMessageData()
+        {
+            BaseMessage data = null;
             if (this.NextMessageLength != -1 && this.NextMessageLength <= this.Buffer.Count)
             {
                 using (MemoryStream ms = new MemoryStream(this.Buffer.ToArray()))
@@ -81,11 +90,9 @@ namespace MagicalLifeAPI.Networking
 
                 MasterLog.DebugWriteLine("Message Buffer: " + this.Buffer.Count);
                 this.CalculateNextMessageLength();
-                return true;
             }
 
-            data = null;
-            return false;
+            return data;
         }
     }
 }

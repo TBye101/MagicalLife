@@ -17,9 +17,9 @@ namespace MagicalLifeAPI.Networking.Server
     {
         public SimpleTcpServer Server = new SimpleTcpServer();
 
-        public readonly Dictionary<Guid, Socket> PlayerToSocket = new Dictionary<Guid, Socket>();
+        public Dictionary<Guid, Socket> PlayerToSocket { get; private set; } = new Dictionary<Guid, Socket>();
 
-        private MessageBuffer MsgBuffer { get; set; } = new MessageBuffer();
+        private MessageBuffer MsgBuffer { get; } = new MessageBuffer();
 
         public TCPServer()
         {
@@ -45,10 +45,10 @@ namespace MagicalLifeAPI.Networking.Server
         private void Server_DataReceived(object sender, Message e)
         {
             this.MsgBuffer.ReceiveData(e.Data);
-            //BaseMessage msg = ProtoUtil.Deserialize(e.Data);
 
-            while (this.MsgBuffer.GetMessageData(out BaseMessage msg))
+            while (this.MsgBuffer.IsMessageAvailible())
             {
+                BaseMessage msg = this.MsgBuffer.GetMessageData();
                 if (msg is LoginMessage login)
                 {
                     this.PlayerToSocket.Add(login.PlayerID, e.TcpClient.Client);
