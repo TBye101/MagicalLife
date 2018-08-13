@@ -1,4 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MagicalLifeGUIWindows.Rendering;
+using MagicalLifeGUIWindows.Rendering.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
 
 namespace MagicalLifeGUIWindows.GUI.Reusable
 {
@@ -24,5 +28,15 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// The text to display on the monolith.
         /// </summary>
         public string Text { get; set; }
+
+        public override void Render(SpriteBatch spBatch, Rectangle containerBounds)
+        {
+            Rectangle location;
+            int x = this.DrawingBounds.X + containerBounds.X;
+            int y = this.DrawingBounds.Y + containerBounds.Y;
+            location = new Rectangle(x, y, this.DrawingBounds.Width, this.DrawingBounds.Height);
+            spBatch.Draw(this.Image, location, RenderingPipe.colorMask);
+            SimpleTextRenderer.DrawString(this.Font, this.Text, location, Alignment.Center, RenderingPipe.colorMask, ref spBatch);
+        }
     }
 }

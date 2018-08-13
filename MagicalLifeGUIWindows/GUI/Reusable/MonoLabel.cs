@@ -1,4 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MagicalLifeGUIWindows.Rendering;
+using MagicalLifeGUIWindows.Rendering.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Input.InputListeners;
 using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
 
@@ -40,6 +43,17 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
         public override void DoubleClick(MouseEventArgs e)
         {
+        }
+
+        public override void Render(SpriteBatch spBatch, Rectangle containerBounds)
+        {
+            int x = containerBounds.X + this.DrawingBounds.X;
+            int y = containerBounds.Y + this.DrawingBounds.Y;
+            int width = this.DrawingBounds.Width;
+            int height = this.DrawingBounds.Height;
+
+            Rectangle Bounds = new Rectangle(x, y, width, height);
+            SimpleTextRenderer.DrawString(this.Font, this.Text, Bounds, this.TextAlignment, RenderingPipe.colorMask, ref spBatch);
         }
     }
 }

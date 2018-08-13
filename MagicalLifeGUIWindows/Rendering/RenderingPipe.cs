@@ -88,25 +88,7 @@ namespace MagicalLifeGUIWindows.Rendering
                     {
                         if (control.Visible)
                         {
-                            switch (control)
-                            {
-                                case MonoButton button:
-                                    GUIRenderer.DrawButtonInContainer((MonoButton)control, ref spBatch, item);
-                                    break;
-
-                                case MonoInputBox textBox:
-                                    GUIRenderer.DrawInputBoxInContainer((MonoInputBox)control, ref spBatch, item);
-                                    break;
-
-                                case MonoLabel label:
-                                    GUIRenderer.DrawLabelInContainer((MonoLabel)control, ref spBatch, item);
-                                    break;
-
-                                default:
-                                    //Should probably send out a event or something, to allow someone else to render it.
-                                    //TODO:
-                                    break;
-                            }
+                            control.Render(spBatch, item.DrawingBounds);
                         }
                     }
                 }

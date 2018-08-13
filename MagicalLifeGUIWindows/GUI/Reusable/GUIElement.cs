@@ -78,5 +78,11 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// <param name="sender"></param>
         /// <param name="e"></param>
         public abstract void DoubleClick(MouseEventArgs e);
+
+        /// <summary>
+        /// Called every frame that the element is visible.
+        /// </summary>
+        /// <param name="spBatch"></param>
+        public abstract void Render(SpriteBatch spBatch, Rectangle containerBounds);
     }
 }

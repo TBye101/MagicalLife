@@ -109,6 +109,7 @@
     <Compile Include="GUI\MainMenu\Buttons\JoinGameButton.cs" />
     <Compile Include="GUI\New World Menu\Labels\LengthLabel.cs" />
     <Compile Include="GUI\New World Menu\Labels\WidthLabel.cs" />
+    <Compile Include="GUI\Reusable\ListBox.cs" />
     <Compile Include="Input\ClickBounds.cs" />
     <Compile Include="GUI\In Game GUI\InGameGUI.cs" />
     <Compile Include="GUI\In Game GUI\InGameGUIContainer.cs" />

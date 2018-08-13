@@ -1,5 +1,7 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeGUIWindows.Input;
+using MagicalLifeGUIWindows.Rendering;
+using MagicalLifeGUIWindows.Rendering.GUI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Input.InputListeners;
@@ -201,5 +203,64 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         public override void DoubleClick(MouseEventArgs e)
         {
         }
-    }
+
+        public override void Render(SpriteBatch spBatch, Rectangle containerBounds)
+        {
+            Rectangle location;
+            int x = this.DrawingBounds.X + containerBounds.X;
+            int y = this.DrawingBounds.Y + containerBounds.Y;
+            location = new Rectangle(x, y, this.DrawingBounds.Width, this.DrawingBounds.Height);
+            spBatch.Draw(this.Image, location, RenderingPipe.colorMask);
+            DrawString(this.Font, this.Text, location, Alignment.Left, RenderingPipe.colorMask, ref spBatch);
+
+            Rectangle carrotLocation = this.CalculateCarrotBounds(this, containerBounds);
+
+            spBatch.Draw(this.CarrotTexture, carrotLocation, RenderingPipe.colorMask);
+        }
+
+            private Rectangle CalculateCarrotBounds(MonoInputBox textbox, Rectangle containerBounds)
+            {
+                Vector2 size = textbox.Font.MeasureString(textbox.Text);
+                Vector2 pos = new Vector2(textbox.DrawingBounds.Center.X, textbox.DrawingBounds.Center.Y);
+                Vector2 origin = size * 0.5f;
+
+                #pragma warning disable RCS1096 // Use bitwise operation instead of calling 'HasFlag'.
+                if (textbox.TextAlignment.HasFlag(Alignment.Left))
+                {
+                    origin.X += (textbox.DrawingBounds.Width / 2) - (size.X / 2);
+                }
+
+                if (textbox.TextAlignment.HasFlag(Alignment.Right))
+                {
+                    origin.X -= (textbox.DrawingBounds.Width / 2) - (size.X / 2);
+                }
+
+                if (textbox.TextAlignment.HasFlag(Alignment.Top))
+                {
+                    origin.Y += (textbox.DrawingBounds.Height / 2) - (size.Y / 2);
+                }
+
+                if (textbox.TextAlignment.HasFlag(Alignment.Bottom))
+                {
+                    origin.Y -= (textbox.DrawingBounds.Height / 2) - (size.Y / 2);
+                }
+
+                string TextBeforeCarrot = textbox.Text.Substring(0, textbox.CarrotPosition);
+                int XPos = (int)Math.Round(origin.X + textbox.DrawingBounds.X + textbox.Font.MeasureString(TextBeforeCarrot).X) + containerBounds.X;
+                int YPos = (int)Math.Round(origin.Y + textbox.DrawingBounds.Y) + containerBounds.Y;
+
+                switch (textbox.TextAlignment)
+                {
+                    case Alignment.Left:
+                        XPos -= (int)Math.Round(origin.X);
+                        YPos += (int)Math.Round(origin.Y);
+                        break;
+
+                    default:
+                        break;
+                }
+
+                return new Rectangle(XPos, YPos, textbox.CarrotWidth, textbox.CarrotHeight);
+            }
+        }
 }
