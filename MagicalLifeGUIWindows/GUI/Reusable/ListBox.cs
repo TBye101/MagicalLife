@@ -48,7 +48,8 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
         /// <param name="itemRenderCount">How many items should be displayed at any given time.</param>
         /// <param name="items">The items that will be displayed.</param>
-        public ListBox(Rectangle drawingBounds, int priority, bool isContained, string font, int itemRenderCount, List<AbstractGUIRenderable> items) : base(drawingBounds, priority, isContained, font)
+        public ListBox(Rectangle drawingBounds, int priority, bool isContained, string font, int itemRenderCount, List<AbstractGUIRenderable> items)
+            : base(drawingBounds, priority, isContained, font)
         {
             this.ItemBackgroundTexture = AssetManager.GetTextureIndex("InputBox100x50");
             this.ItemRenderCount = itemRenderCount;
@@ -101,10 +102,11 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             for (int i = 0; i < this.ItemRenderCount; i++)
             {
                 //Draw the background
-                spBatch.Draw(AssetManager.Textures[this.ItemBackgroundTexture], new Rectangle(new Point(x, y), this.ItemDisplayBounds), RenderingPipe.colorMask);
+                Rectangle target = new Rectangle(new Point(x, y), this.ItemDisplayBounds);
+                spBatch.Draw(AssetManager.Textures[this.ItemBackgroundTexture], target, RenderingPipe.colorMask);
 
                 //Have the item draw itself
-                this.Items[this.FirstItemIndex + i].Render(spBatch, containerBounds);
+                this.Items[this.FirstItemIndex + i].Render(spBatch, target);
             }
         }
 

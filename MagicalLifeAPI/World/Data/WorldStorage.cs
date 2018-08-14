@@ -14,11 +14,6 @@ namespace MagicalLifeAPI.World.Data
     public class WorldStorage
     {
         /// <summary>
-        /// The path to the save directory.
-        /// </summary>
-        private readonly string SaveDirectory;
-
-        /// <summary>
         /// The name of the save game.
         /// </summary>
         private readonly string SaveName;
@@ -36,10 +31,7 @@ namespace MagicalLifeAPI.World.Data
         {
             this.SaveName = saveName;
 
-            DirectoryInfo savePath = Directory.CreateDirectory(FileSystemManager.RootDirectory + Path.DirectorySeparatorChar + "Save");
-            this.SaveDirectory = savePath.FullName;
-
-            DirectoryInfo gameSavePath = Directory.CreateDirectory(this.SaveDirectory + Path.DirectorySeparatorChar + this.SaveName);
+            DirectoryInfo gameSavePath = Directory.CreateDirectory(FileSystemManager.SaveDirectory + Path.DirectorySeparatorChar + this.SaveName);
             this.GameSaveRoot = gameSavePath.FullName;
         }
 

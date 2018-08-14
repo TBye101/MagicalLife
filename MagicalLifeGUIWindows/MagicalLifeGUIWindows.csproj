@@ -97,6 +97,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
+    <Compile Include="GUI\Load Game Menu\Buttons\LoadSaveButton.cs" />
+    <Compile Include="GUI\Load Game Menu\List Boxes\SelectGameListBox.cs" />
+    <Compile Include="GUI\Load Game Menu\LoadGameMenu.cs" />
+    <Compile Include="GUI\Load Game Menu\LoadGameMenuContainer.cs" />
+    <Compile Include="GUI\Load Game Menu\LoadGameMenuLayout.cs" />
+    <Compile Include="GUI\Load Game Menu\LoadGameMenuLayout1920x1080.cs" />
     <Compile Include="GUI\Reusable\API\AbstractGUIRenderable.cs" />
     <Compile Include="GUI\In Game GUI\Buttons\MineActionButton.cs" />
     <Compile Include="GUI\Join Game Menu\Buttons\JoinButton.cs" />
@@ -111,6 +117,7 @@
     <Compile Include="GUI\New World Menu\Labels\LengthLabel.cs" />
     <Compile Include="GUI\New World Menu\Labels\WidthLabel.cs" />
     <Compile Include="GUI\Reusable\API\IScrollable.cs" />
+    <Compile Include="GUI\Reusable\API\RenderableString.cs" />
     <Compile Include="GUI\Reusable\ListBox.cs" />
     <Compile Include="Input\ClickBounds.cs" />
     <Compile Include="GUI\In Game GUI\InGameGUI.cs" />
@@ -167,11 +174,17 @@
     <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="MonoGame.Extended, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Extended.1.1.0\lib\portable-net45+win8+wpa81\MonoGame.Extended.dll</HintPath>
+    </Reference>
     <Reference Include="MonoGame.Extended.Input, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MonoGame.Extended.Input.1.1.0\lib\portable-net45+win8+wpa81\MonoGame.Extended.Input.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Framework">
       <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
   </ItemGroup>

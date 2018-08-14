@@ -8,6 +8,6 @@ namespace MagicalLifeGUIWindows.GUI.Reusable.API
     /// </summary>
     public abstract class AbstractGUIRenderable
     {
-        public abstract void Render(SpriteBatch spBatch, Rectangle containerBounds);
+        public abstract void Render(SpriteBatch spBatch, Rectangle targetLocation);
     }
 }
