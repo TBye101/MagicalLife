@@ -97,6 +97,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
+    <Compile Include="GUI\AbstractGUIRenderable.cs" />
     <Compile Include="GUI\In Game GUI\Buttons\MineActionButton.cs" />
     <Compile Include="GUI\Join Game Menu\Buttons\JoinButton.cs" />
     <Compile Include="GUI\Join Game Menu\Input Boxes\IPInputBox.cs" />

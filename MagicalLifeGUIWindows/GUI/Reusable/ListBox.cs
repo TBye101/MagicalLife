@@ -17,30 +17,31 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// <summary>
         /// The items that are displayed in this <see cref="ListBox"/>.
         /// </summary>
-        public List<string> Items { get; set; }
+        public List<AbstractGUIRenderable> Items { get; set; }
 
-        public ListBox(List<string> items)
+        public ListBox(List<AbstractGUIRenderable> items)
         {
             this.Items = items;
         }
 
         public ListBox(string image, Rectangle drawingBounds, int priority, bool isContained, string font) : base(image, drawingBounds, priority, isContained, font)
         {
+
         }
 
         public override void Click(MouseEventArgs e)
         {
-            throw new NotImplementedException();
+
         }
 
         public override void DoubleClick(MouseEventArgs e)
         {
-            throw new NotImplementedException();
+
         }
 
         public override void Render(SpriteBatch spBatch, Rectangle containerBounds)
         {
-            throw new NotImplementedException();
+
         }
     }
 }

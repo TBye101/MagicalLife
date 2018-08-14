@@ -112,15 +112,6 @@
 /processorParam:TextureFormat=Color
 /build:MarbleChunk.png
 
-#begin Music/MainMenu1.flac
-/copy:Music/MainMenu1.flac
-
-#begin SFX/Test1.flac
-/copy:SFX/Test1.flac
-
-#begin SFX/Test2.flac
-/copy:SFX/Test2.flac
-
 #begin Logo/FMODLogo.png
 /importer:TextureImporter
 /processor:TextureProcessor
