@@ -53,6 +53,8 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// </summary>
         public Alignment TextAlignment { get; private set; }
 
+        private int TextureID { get; set; }
+
         /// <summary>
         ///
         /// </summary>
@@ -64,12 +66,13 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// <param name="isLocked"></param>
         /// <param name="textAlignment"></param>
         /// <param name="isContained">If true, this GUI element is within a container.</param>
-        public MonoInputBox(string image, string CarrotTexture, Rectangle drawingBounds, int priority, string font, bool isLocked, Alignment textAlignment, bool isContained) : base(image, drawingBounds, priority, isContained, font)
+        public MonoInputBox(string image, string CarrotTexture, Rectangle drawingBounds, int priority, string font, bool isLocked, Alignment textAlignment, bool isContained)
+            : base(drawingBounds, priority, isContained, font)
         {
             KeyboardHandler.keyboardListener.KeyPressed += this.KeyboardListener_KeyPressed;
             this.CarrotPosition = this.Text.Count();
             this.CarrotTexture = AssetManager.Textures[AssetManager.GetTextureIndex(CarrotTexture)];
-            this.Image = AssetManager.Textures[AssetManager.GetTextureIndex(image)];
+            this.TextureID = AssetManager.GetTextureIndex(image);
             this.IsLocked = isLocked;
             this.LoadCarrotInformation(font);
             this.TextAlignment = textAlignment;
@@ -210,7 +213,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             int x = this.DrawingBounds.X + containerBounds.X;
             int y = this.DrawingBounds.Y + containerBounds.Y;
             location = new Rectangle(x, y, this.DrawingBounds.Width, this.DrawingBounds.Height);
-            spBatch.Draw(this.Image, location, RenderingPipe.colorMask);
+            spBatch.Draw(AssetManager.Textures[this.TextureID], location, RenderingPipe.colorMask);
             DrawString(this.Font, this.Text, location, Alignment.Left, RenderingPipe.colorMask, ref spBatch);
 
             Rectangle carrotLocation = this.CalculateCarrotBounds(this, containerBounds);

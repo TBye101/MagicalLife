@@ -7,7 +7,7 @@ using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MagicalLifeGUIWindows.GUI
+namespace MagicalLifeGUIWindows.GUI.Reusable.API
 {
     /// <summary>
     /// Used by <see cref="ListBox"/> to render any possible item.

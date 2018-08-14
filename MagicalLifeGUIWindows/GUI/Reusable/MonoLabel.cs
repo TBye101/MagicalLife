@@ -29,7 +29,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// <param name="image"></param>
         /// <param name="font"></param>
         /// <param name="isContained">If true, this GUI element is within a container.</param>
-        public MonoLabel(Rectangle bounds, string image, bool isContained, string font = "MainMenuFont12x") : base(image, bounds, int.MinValue, isContained, font)
+        public MonoLabel(Rectangle bounds, string image, bool isContained, string font = "MainMenuFont12x") : base(bounds, int.MinValue, isContained, font)
         {
         }
 
