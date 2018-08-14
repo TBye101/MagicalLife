@@ -31,14 +31,16 @@ namespace MagicalLifeAPI.Asset
         {
             this.TexturesToLoad.Add("Basic Human");
             this.TexturesToLoad.Add("CursorCarrot");
+
             this.TexturesToLoad.Add("MenuBackground");
             this.TexturesToLoad.Add("MenuButton");
-            this.TexturesToLoad.Add("TestTile");
             this.TexturesToLoad.Add("InputBox100x50");
+            this.TexturesToLoad.Add("GUI/ListBoxItemBackground");
 
             this.TexturesToLoad.Add("Stone");
             this.TexturesToLoad.Add("MarbleChunk");
 
+            this.TexturesToLoad.Add("TestTile");
             this.TexturesToLoad.Add("Dirt");
 
             this.TexturesToLoad.Add("DirtGrassTrans1");

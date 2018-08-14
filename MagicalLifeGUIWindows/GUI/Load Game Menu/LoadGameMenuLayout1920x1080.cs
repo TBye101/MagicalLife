@@ -19,7 +19,7 @@ namespace MagicalLifeGUIWindows.GUI.Load_Game_Menu
         /// <summary>
         /// How many items to render within the list box at any given time.
         /// </summary>
-        public static readonly int ItemRenderCount = 8;
+        public static readonly int ItemRenderCount = 16;
 
 
 
