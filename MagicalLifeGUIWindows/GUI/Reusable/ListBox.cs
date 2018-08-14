@@ -37,6 +37,12 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         private int FirstItemIndex { get; set; }
 
         /// <summary>
+        /// The index of the selected item.
+        /// Is -1 when no item is selected.
+        /// </summary>
+        public int SelectedIndex { get; private set; } = -1;
+
+        /// <summary>
         /// Raised whenever there is a click in this <see cref="ListBox"/>, and has a parameter of what the index of the item that was clicked on is.
         /// </summary>
         public event EventHandler<int> ItemClick;
@@ -71,14 +77,14 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
         public override void Click(MouseEventArgs e, GUIContainer container)
         {
-            int indexClicked = ((e.Position.Y + container.DrawingBounds.Y) / this.ItemDisplayBounds.Y) - 1;
-            this.ItemClickHandler(indexClicked);
+            this.SelectedIndex = ((e.Position.Y + container.DrawingBounds.Y) / this.ItemDisplayBounds.Y) - 1;
+            this.ItemClickHandler(this.SelectedIndex);
         }
 
         public override void DoubleClick(MouseEventArgs e, GUIContainer container)
         {
-            int indexDoubleClicked = ((e.Position.Y + container.DrawingBounds.Y) / this.ItemDisplayBounds.Y) - 1;
-            this.ItemDoubleClickHandler(indexDoubleClicked);
+            this.SelectedIndex = ((e.Position.Y + container.DrawingBounds.Y) / this.ItemDisplayBounds.Y) - 1;
+            this.ItemDoubleClickHandler(this.SelectedIndex);
         }
 
         public override void Render(SpriteBatch spBatch, Rectangle containerBounds)
@@ -103,7 +109,18 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             {
                 //Draw the background
                 Rectangle target = new Rectangle(new Point(x, y), this.ItemDisplayBounds);
-                spBatch.Draw(AssetManager.Textures[this.ItemBackgroundTexture], target, RenderingPipe.colorMask);
+                Color colorMask;
+
+                if (i == this.SelectedIndex)
+                {
+                    colorMask = new Color(255, 255, 255, 30);
+                }
+                else
+                {
+                    colorMask = Color.White;
+                }
+
+                spBatch.Draw(AssetManager.Textures[this.ItemBackgroundTexture], target, colorMask);
 
                 //Have the item draw itself
                 this.Items[this.FirstItemIndex + i].Render(spBatch, target);

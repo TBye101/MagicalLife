@@ -10,6 +10,8 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 #### GUI
 * The host game button has been replaced by the load game button
+* Added listbox support
+* Added the load game listbox
 
 #### Sound
 
