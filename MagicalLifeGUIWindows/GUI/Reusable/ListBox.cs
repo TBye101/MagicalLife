@@ -107,6 +107,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
                 //Have the item draw itself
                 this.Items[this.FirstItemIndex + i].Render(spBatch, target);
+                y += this.ItemDisplayBounds.Y;
             }
         }
 

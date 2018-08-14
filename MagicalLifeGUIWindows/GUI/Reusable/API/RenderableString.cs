@@ -24,7 +24,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable.API
 
         public override void Render(SpriteBatch spBatch, Rectangle targetLocation)
         {
-            SimpleTextRenderer.DrawString(this.Font, this.Text, targetLocation, SimpleTextRenderer.Alignment.Left, RenderingPipe.colorMask, ref spBatch);
+            SimpleTextRenderer.DrawString(this.Font, this.Text, targetLocation, SimpleTextRenderer.Alignment.Center, RenderingPipe.colorMask, ref spBatch);
         }
     }
 }
