@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MagicalLifeAPI.Filing.Logging;
+﻿using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Networking.Serialization;
 using ProtoBuf;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace MagicalLifeAPI.Networking
 {

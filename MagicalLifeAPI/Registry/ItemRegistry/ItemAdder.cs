@@ -89,11 +89,14 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
                 case Networking.EngineMode.ServerOnly:
                     ServerSendRecieve.SendAll(new WorldModifierMessage(new ItemCreatedModifier(item, mapLocation, dimension)));
                     break;
+
                 case Networking.EngineMode.ClientOnly:
                     ClientSendRecieve.Send(new WorldModifierMessage(new ItemCreatedModifier(item, mapLocation, dimension)));
                     break;
+
                 case Networking.EngineMode.ServerAndClient:
                     break;
+
                 default:
                     throw new InternalExceptions.UnexpectedEnumMemberException();
             }

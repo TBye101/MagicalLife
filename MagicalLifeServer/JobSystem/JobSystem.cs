@@ -118,7 +118,7 @@ namespace MagicalLifeServer.JobSystem
         }
 
         /// <summary>
-        /// Assigns a job that the creature is capable of doing. Returns whether or not this operation succeeded. 
+        /// Assigns a job that the creature is capable of doing. Returns whether or not this operation succeeded.
         /// </summary>
         /// <param name="living"></param>
         /// <returns></returns>

@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Universal;
 using MagicalLifeGUIWindows.Map;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

@@ -11,6 +11,7 @@ namespace MagicalLifeAPI.Sound
     public static class FMODUtil
     {
         private static FMOD.Studio.System _System;
+
         public static FMOD.Studio.System System
         {
             get

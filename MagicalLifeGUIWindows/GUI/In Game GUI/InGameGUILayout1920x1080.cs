@@ -25,12 +25,10 @@
         /// </summary>
         public static readonly int ContainerHeight = 140;
 
-
         /// <summary>
         /// The Y position at which to render the top of every action button.
         /// </summary>
         public static readonly int ActionButtonY = 30;
-
 
         /// <summary>
         /// The size of each action button.

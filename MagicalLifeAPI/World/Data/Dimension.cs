@@ -1,6 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Registry.ItemRegistry;
-using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 using System;

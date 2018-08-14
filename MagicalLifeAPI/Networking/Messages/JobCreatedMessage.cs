@@ -1,7 +1,6 @@
 ﻿using MagicalLifeAPI.Entity.AI.Job;
 using MagicalLifeAPI.Networking.Serialization;
 using ProtoBuf;
-using System.Diagnostics;
 
 namespace MagicalLifeAPI.Networking.Messages
 {
@@ -17,7 +16,6 @@ namespace MagicalLifeAPI.Networking.Messages
         public JobCreatedMessage(Job job) : base(NetMessageID.JobCreatedMessage)
         {
             this.Job = job;
-            
         }
 
         public JobCreatedMessage() : base(NetMessageID.JobCreatedMessage)

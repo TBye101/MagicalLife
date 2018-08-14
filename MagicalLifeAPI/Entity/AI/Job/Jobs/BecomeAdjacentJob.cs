@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using MagicalLifeAPI.DataTypes;
+﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
 using ProtoBuf;
+using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Entity.AI.Job.Jobs
 {

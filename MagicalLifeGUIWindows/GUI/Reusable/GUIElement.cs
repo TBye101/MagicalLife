@@ -1,6 +1,4 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Universal;
-using MagicalLifeGUIWindows.Input;
+﻿using MagicalLifeGUIWindows.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Input.InputListeners;

@@ -41,7 +41,6 @@ namespace MagicalLifeServer.JobSystem
 
         public JobSystemManager()
         {
-
         }
 
         private void Living_LivingCreated(object sender, LivingEventArg e)

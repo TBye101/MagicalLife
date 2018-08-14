@@ -128,7 +128,7 @@ namespace MagicalLifeAPI.Entity.Movement
                 entity.QueuedMovement.Dequeue();
                 movementPenalty = MathUtil.GetDistance(entity.ScreenLocation, destination.MapLocation);
                 FootStepSound(entity, destination);
-                
+
                 //If this entity is the current client's and therefore that clients responsibility to report about
                 if (entity.PlayerID == MagicalLifeSettings.Storage.Player.Default.PlayerID)
                 {

@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using MagicalLifeAPI.Components.Resource;
+﻿using MagicalLifeAPI.Components.Resource;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.Util.Reusable;
 using MagicalLifeAPI.World.Base;
 using ProtoBuf;
+using System;
+using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Entity.AI.Job.Jobs
 {
@@ -26,7 +26,7 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
         private TickTimer HitTimer { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="target">The tile that contains the object to mine up.</param>
         /// <param name="workStation">The position at which the creature will be at when it begins mining.</param>

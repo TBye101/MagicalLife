@@ -38,8 +38,10 @@ namespace MagicalLifeGUIWindows.Input.History
             {
                 case ActionSelected.None:
                     return this.NoAction(e);
+
                 case ActionSelected.Mine:
                     return this.MineAction(e);
+
                 default:
                     throw new UnexpectedEnumMemberException();
             }

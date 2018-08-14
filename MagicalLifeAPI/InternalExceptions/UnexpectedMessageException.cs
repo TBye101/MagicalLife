@@ -9,7 +9,6 @@ namespace MagicalLifeAPI.InternalExceptions
     {
         public UnexpectedMessageException(string msg) : base(msg)
         {
-
         }
 
         public UnexpectedMessageException() : base("A message was not handled due to its type being unexpected!")

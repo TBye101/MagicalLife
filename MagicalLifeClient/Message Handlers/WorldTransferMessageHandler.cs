@@ -17,7 +17,7 @@ namespace MagicalLifeClient.Message
 
             foreach (Dimension item in msg.World)
             {
-               MagicalLifeAPI.World.Data.World.AddDimension(item);
+                MagicalLifeAPI.World.Data.World.AddDimension(item);
             }
         }
     }

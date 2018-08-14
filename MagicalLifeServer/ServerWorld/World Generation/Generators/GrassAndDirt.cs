@@ -1,13 +1,9 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entity.Entity;
-using MagicalLifeAPI.Entity.Humanoid;
-using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Resources;
 using MagicalLifeAPI.World.Tiles;
-using MagicalLifeSettings.Storage;
 using System;
 
 namespace MagicalLifeServer.ServerWorld.World

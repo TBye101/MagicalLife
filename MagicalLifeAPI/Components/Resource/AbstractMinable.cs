@@ -1,5 +1,4 @@
-﻿using MagicalLifeAPI.Networking;
-using MagicalLifeAPI.World.Base;
+﻿using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;

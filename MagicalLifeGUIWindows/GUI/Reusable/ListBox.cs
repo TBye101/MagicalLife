@@ -1,21 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MagicalLifeAPI.Asset;
+﻿using MagicalLifeAPI.Asset;
 using MagicalLifeGUIWindows.GUI.Reusable.API;
 using MagicalLifeGUIWindows.Rendering;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Input.InputListeners;
+using System;
+using System.Collections.Generic;
 
 namespace MagicalLifeGUIWindows.GUI.Reusable
 {
     /// <summary>
     /// Used to display a list of strings.
     /// </summary>
-    public class ListBox : GUIElement , IScrollable
+    public class ListBox : GUIElement, IScrollable
     {
         private int ItemBackgroundTexture { get; set; }
 
@@ -24,6 +21,9 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// </summary>
         public List<AbstractGUIRenderable> Items { get; set; }
 
+        /// <summary>
+        /// Width and height of an item display.
+        /// </summary>
         private Point ItemDisplayBounds { get; set; }
 
         /// <summary>
@@ -70,12 +70,14 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
         public override void Click(MouseEventArgs e, GUIContainer container)
         {
-            int indexClicked;
+            int indexClicked = ((e.Position.Y + container.DrawingBounds.Y) / this.ItemDisplayBounds.Y) - 1;
+            this.ItemClickHandler(indexClicked);
         }
 
         public override void DoubleClick(MouseEventArgs e, GUIContainer container)
         {
-            //Throw a double click event 
+            int indexDoubleClicked = ((e.Position.Y + container.DrawingBounds.Y) / this.ItemDisplayBounds.Y) - 1;
+            this.ItemDoubleClickHandler(indexDoubleClicked);
         }
 
         public override void Render(SpriteBatch spBatch, Rectangle containerBounds)

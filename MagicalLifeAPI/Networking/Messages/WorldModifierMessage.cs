@@ -1,11 +1,6 @@
 ﻿using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Networking.World.Modifiers;
 using ProtoBuf;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Networking.Messages
 {

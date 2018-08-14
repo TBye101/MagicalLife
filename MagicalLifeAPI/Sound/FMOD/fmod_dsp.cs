@@ -29,16 +29,16 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_DESCRIPTION
     ]
     */
+
     [StructLayout(LayoutKind.Sequential)]
     public struct DSP_BUFFER_ARRAY
     {
-        public int              numbuffers;              /* [r/w] number of buffers */
-        public int[]            buffernumchannels;       /* [r/w] array of number of channels for each buffer */
-        public CHANNELMASK[]    bufferchannelmask;       /* [r/w] array of channel masks for each buffer */
-        public IntPtr[]         buffers;                 /* [r/w] array of buffers */
-        public SPEAKERMODE      speakermode;             /* [r/w] speaker mode for all buffers in the array */
+        public int numbuffers;              /* [r/w] number of buffers */
+        public int[] buffernumchannels;       /* [r/w] array of number of channels for each buffer */
+        public CHANNELMASK[] bufferchannelmask;       /* [r/w] array of channel masks for each buffer */
+        public IntPtr[] buffers;                 /* [r/w] array of buffers */
+        public SPEAKERMODE speakermode;             /* [r/w] speaker mode for all buffers in the array */
     }
-
 
     /*
     [ENUM]
@@ -47,38 +47,36 @@ namespace MagicalLifeAPI.Sound.FMOD
         Operation type for FMOD_DSP_PROCESS_CALLBACK.
 
         [REMARKS]
-
         [SEE_ALSO]
         FMOD_DSP_DESCRIPTION
     ]
     */
+
     public enum DSP_PROCESS_OPERATION
     {
         PROCESS_PERFORM = 0,               /* Process the incoming audio in 'inbufferarray' and output to 'outbufferarray'. */
         PROCESS_QUERY                      /* The DSP is being queried for the expected output format and whether it needs to process audio or should be bypassed.  The function should return any value other than FMOD_OK if audio can pass through unprocessed. If audio is to be processed, 'outbufferarray' must be filled with the expected output format, channel count and mask. */
     }
 
-
     /*
-    [STRUCTURE] 
+    [STRUCTURE]
     [
         [DESCRIPTION]
         Complex number structure used for holding FFT frequency domain-data for FMOD_FFTREAL and FMOD_IFFTREAL DSP functions.
 
         [REMARKS]
-
-        [SEE_ALSO]    
+        [SEE_ALSO]
         FMOD_DSP_STATE_FUNCTIONS
         FMOD_DSP_STATE_DFT_FUNCTIONS
     ]
     */
+
     [StructLayout(LayoutKind.Sequential)]
     public struct COMPLEX
     {
         public float real; /* Real component */
         public float imag; /* Imaginary component */
     }
-
 
     /*
     [ENUM]
@@ -93,63 +91,92 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_STATE_PAN_FUNCTIONS
     ]
     */
+
     public enum DSP_PAN_SURROUND_FLAGS
     {
         DEFAULT = 0,
         ROTATION_NOT_BIASED = 1,
     }
 
-
     /*
         FMOD_DSP_DESCRIPTION callbacks
     */
-    public delegate RESULT DSP_CREATECALLBACK                   (ref DSP_STATE dsp_state);
-    public delegate RESULT DSP_RELEASECALLBACK                  (ref DSP_STATE dsp_state);
-    public delegate RESULT DSP_RESETCALLBACK                    (ref DSP_STATE dsp_state);
-    public delegate RESULT DSP_SETPOSITIONCALLBACK              (ref DSP_STATE dsp_state, uint pos);
-    public delegate RESULT DSP_READCALLBACK                     (ref DSP_STATE dsp_state, IntPtr inbuffer, IntPtr outbuffer, uint length, int inchannels, ref int outchannels);
-    public delegate RESULT DSP_SHOULDIPROCESS_CALLBACK          (ref DSP_STATE dsp_state, bool inputsidle, uint length, CHANNELMASK inmask, int inchannels, SPEAKERMODE speakermode);
-    public delegate RESULT DSP_PROCESS_CALLBACK                 (ref DSP_STATE dsp_state, uint length, ref DSP_BUFFER_ARRAY inbufferarray, ref DSP_BUFFER_ARRAY outbufferarray, bool inputsidle, DSP_PROCESS_OPERATION op);
 
-    public delegate RESULT DSP_SETPARAM_FLOAT_CALLBACK          (ref DSP_STATE dsp_state, int index, float value);
-    public delegate RESULT DSP_SETPARAM_INT_CALLBACK            (ref DSP_STATE dsp_state, int index, int value);
-    public delegate RESULT DSP_SETPARAM_BOOL_CALLBACK           (ref DSP_STATE dsp_state, int index, bool value);
-    public delegate RESULT DSP_SETPARAM_DATA_CALLBACK           (ref DSP_STATE dsp_state, int index, IntPtr data, uint length);
-    public delegate RESULT DSP_GETPARAM_FLOAT_CALLBACK          (ref DSP_STATE dsp_state, int index, ref float value, IntPtr valuestr);
-    public delegate RESULT DSP_GETPARAM_INT_CALLBACK            (ref DSP_STATE dsp_state, int index, ref int value, IntPtr valuestr);
-    public delegate RESULT DSP_GETPARAM_BOOL_CALLBACK           (ref DSP_STATE dsp_state, int index, ref bool value, IntPtr valuestr);
-    public delegate RESULT DSP_GETPARAM_DATA_CALLBACK           (ref DSP_STATE dsp_state, int index, ref IntPtr data, ref uint length, IntPtr valuestr);
+    public delegate RESULT DSP_CREATECALLBACK(ref DSP_STATE dsp_state);
 
-    public delegate RESULT DSP_SYSTEM_REGISTER_CALLBACK         (ref DSP_STATE dsp_state);
-    public delegate RESULT DSP_SYSTEM_DEREGISTER_CALLBACK       (ref DSP_STATE dsp_state);
-    public delegate RESULT DSP_SYSTEM_MIX_CALLBACK              (ref DSP_STATE dsp_state, int stage);
+    public delegate RESULT DSP_RELEASECALLBACK(ref DSP_STATE dsp_state);
 
+    public delegate RESULT DSP_RESETCALLBACK(ref DSP_STATE dsp_state);
+
+    public delegate RESULT DSP_SETPOSITIONCALLBACK(ref DSP_STATE dsp_state, uint pos);
+
+    public delegate RESULT DSP_READCALLBACK(ref DSP_STATE dsp_state, IntPtr inbuffer, IntPtr outbuffer, uint length, int inchannels, ref int outchannels);
+
+    public delegate RESULT DSP_SHOULDIPROCESS_CALLBACK(ref DSP_STATE dsp_state, bool inputsidle, uint length, CHANNELMASK inmask, int inchannels, SPEAKERMODE speakermode);
+
+    public delegate RESULT DSP_PROCESS_CALLBACK(ref DSP_STATE dsp_state, uint length, ref DSP_BUFFER_ARRAY inbufferarray, ref DSP_BUFFER_ARRAY outbufferarray, bool inputsidle, DSP_PROCESS_OPERATION op);
+
+    public delegate RESULT DSP_SETPARAM_FLOAT_CALLBACK(ref DSP_STATE dsp_state, int index, float value);
+
+    public delegate RESULT DSP_SETPARAM_INT_CALLBACK(ref DSP_STATE dsp_state, int index, int value);
+
+    public delegate RESULT DSP_SETPARAM_BOOL_CALLBACK(ref DSP_STATE dsp_state, int index, bool value);
+
+    public delegate RESULT DSP_SETPARAM_DATA_CALLBACK(ref DSP_STATE dsp_state, int index, IntPtr data, uint length);
+
+    public delegate RESULT DSP_GETPARAM_FLOAT_CALLBACK(ref DSP_STATE dsp_state, int index, ref float value, IntPtr valuestr);
+
+    public delegate RESULT DSP_GETPARAM_INT_CALLBACK(ref DSP_STATE dsp_state, int index, ref int value, IntPtr valuestr);
+
+    public delegate RESULT DSP_GETPARAM_BOOL_CALLBACK(ref DSP_STATE dsp_state, int index, ref bool value, IntPtr valuestr);
+
+    public delegate RESULT DSP_GETPARAM_DATA_CALLBACK(ref DSP_STATE dsp_state, int index, ref IntPtr data, ref uint length, IntPtr valuestr);
+
+    public delegate RESULT DSP_SYSTEM_REGISTER_CALLBACK(ref DSP_STATE dsp_state);
+
+    public delegate RESULT DSP_SYSTEM_DEREGISTER_CALLBACK(ref DSP_STATE dsp_state);
+
+    public delegate RESULT DSP_SYSTEM_MIX_CALLBACK(ref DSP_STATE dsp_state, int stage);
 
     /*
         FMOD_DSP_STATE functions
     */
-    public delegate IntPtr DSP_ALLOC_FUNC                         (uint size, MEMORY_TYPE type, StringWrapper sourcestr);
-    public delegate IntPtr DSP_REALLOC_FUNC                       (IntPtr ptr, uint size, MEMORY_TYPE type, StringWrapper sourcestr);
-    public delegate void   DSP_FREE_FUNC                          (IntPtr ptr, MEMORY_TYPE type, StringWrapper sourcestr);
-    public delegate void   DSP_LOG_FUNC                           (DEBUG_FLAGS level, StringWrapper file, int line, StringWrapper function, StringWrapper format);
-    public delegate RESULT DSP_GETSAMPLERATE_FUNC                 (ref DSP_STATE dsp_state, ref int rate);
-    public delegate RESULT DSP_GETBLOCKSIZE_FUNC                  (ref DSP_STATE dsp_state, ref uint blocksize);
-    public delegate RESULT DSP_GETSPEAKERMODE_FUNC                (ref DSP_STATE dsp_state, ref int speakermode_mixer, ref int speakermode_output);
-    public delegate RESULT DSP_GETCLOCK_FUNC                      (ref DSP_STATE dsp_state, out ulong clock, out uint offset, out uint length);
-    public delegate RESULT DSP_GETLISTENERATTRIBUTES_FUNC         (ref DSP_STATE dsp_state, ref int numlisteners, IntPtr attributes);
-    public delegate RESULT DSP_GETUSERDATA_FUNC                   (ref DSP_STATE dsp_state, out IntPtr userdata);
 
-    public delegate RESULT DSP_DFT_FFTREAL_FUNC                   (ref DSP_STATE dsp_state, int size, IntPtr signal, IntPtr dft, IntPtr window, int signalhop);
-    public delegate RESULT DSP_DFT_IFFTREAL_FUNC                  (ref DSP_STATE dsp_state, int size, IntPtr dft, IntPtr signal, IntPtr window, int signalhop);
+    public delegate IntPtr DSP_ALLOC_FUNC(uint size, MEMORY_TYPE type, StringWrapper sourcestr);
 
-    public delegate RESULT DSP_PAN_SUMMONOMATRIX_FUNC             (ref DSP_STATE dsp_state, int sourceSpeakerMode, float lowFrequencyGain, float overallGain, IntPtr matrix);
-    public delegate RESULT DSP_PAN_SUMSTEREOMATRIX_FUNC           (ref DSP_STATE dsp_state, int sourceSpeakerMode, float pan, float lowFrequencyGain, float overallGain, int matrixHop, IntPtr matrix);
-    public delegate RESULT DSP_PAN_SUMSURROUNDMATRIX_FUNC         (ref DSP_STATE dsp_state, int sourceSpeakerMode, int targetSpeakerMode, float direction, float extent, float rotation, float lowFrequencyGain, float overallGain, int matrixHop, IntPtr matrix, DSP_PAN_SURROUND_FLAGS flags);
-    public delegate RESULT DSP_PAN_SUMMONOTOSURROUNDMATRIX_FUNC   (ref DSP_STATE dsp_state, int targetSpeakerMode, float direction, float extent, float lowFrequencyGain, float overallGain, int matrixHop, IntPtr matrix);
-    public delegate RESULT DSP_PAN_SUMSTEREOTOSURROUNDMATRIX_FUNC (ref DSP_STATE dsp_state, int targetSpeakerMode, float direction, float extent, float rotation, float lowFrequencyGain, float overallGain, int matrixHop, IntPtr matrix);
-    public delegate RESULT DSP_PAN_GETROLLOFFGAIN_FUNC            (ref DSP_STATE dsp_state, DSP_PAN_3D_ROLLOFF_TYPE rolloff, float distance, float mindistance, float maxdistance, out float gain);
-    
+    public delegate IntPtr DSP_REALLOC_FUNC(IntPtr ptr, uint size, MEMORY_TYPE type, StringWrapper sourcestr);
 
+    public delegate void DSP_FREE_FUNC(IntPtr ptr, MEMORY_TYPE type, StringWrapper sourcestr);
+
+    public delegate void DSP_LOG_FUNC(DEBUG_FLAGS level, StringWrapper file, int line, StringWrapper function, StringWrapper format);
+
+    public delegate RESULT DSP_GETSAMPLERATE_FUNC(ref DSP_STATE dsp_state, ref int rate);
+
+    public delegate RESULT DSP_GETBLOCKSIZE_FUNC(ref DSP_STATE dsp_state, ref uint blocksize);
+
+    public delegate RESULT DSP_GETSPEAKERMODE_FUNC(ref DSP_STATE dsp_state, ref int speakermode_mixer, ref int speakermode_output);
+
+    public delegate RESULT DSP_GETCLOCK_FUNC(ref DSP_STATE dsp_state, out ulong clock, out uint offset, out uint length);
+
+    public delegate RESULT DSP_GETLISTENERATTRIBUTES_FUNC(ref DSP_STATE dsp_state, ref int numlisteners, IntPtr attributes);
+
+    public delegate RESULT DSP_GETUSERDATA_FUNC(ref DSP_STATE dsp_state, out IntPtr userdata);
+
+    public delegate RESULT DSP_DFT_FFTREAL_FUNC(ref DSP_STATE dsp_state, int size, IntPtr signal, IntPtr dft, IntPtr window, int signalhop);
+
+    public delegate RESULT DSP_DFT_IFFTREAL_FUNC(ref DSP_STATE dsp_state, int size, IntPtr dft, IntPtr signal, IntPtr window, int signalhop);
+
+    public delegate RESULT DSP_PAN_SUMMONOMATRIX_FUNC(ref DSP_STATE dsp_state, int sourceSpeakerMode, float lowFrequencyGain, float overallGain, IntPtr matrix);
+
+    public delegate RESULT DSP_PAN_SUMSTEREOMATRIX_FUNC(ref DSP_STATE dsp_state, int sourceSpeakerMode, float pan, float lowFrequencyGain, float overallGain, int matrixHop, IntPtr matrix);
+
+    public delegate RESULT DSP_PAN_SUMSURROUNDMATRIX_FUNC(ref DSP_STATE dsp_state, int sourceSpeakerMode, int targetSpeakerMode, float direction, float extent, float rotation, float lowFrequencyGain, float overallGain, int matrixHop, IntPtr matrix, DSP_PAN_SURROUND_FLAGS flags);
+
+    public delegate RESULT DSP_PAN_SUMMONOTOSURROUNDMATRIX_FUNC(ref DSP_STATE dsp_state, int targetSpeakerMode, float direction, float extent, float lowFrequencyGain, float overallGain, int matrixHop, IntPtr matrix);
+
+    public delegate RESULT DSP_PAN_SUMSTEREOTOSURROUNDMATRIX_FUNC(ref DSP_STATE dsp_state, int targetSpeakerMode, float direction, float extent, float rotation, float lowFrequencyGain, float overallGain, int matrixHop, IntPtr matrix);
+
+    public delegate RESULT DSP_PAN_GETROLLOFFGAIN_FUNC(ref DSP_STATE dsp_state, DSP_PAN_3D_ROLLOFF_TYPE rolloff, float distance, float mindistance, float maxdistance, out float gain);
 
     /*
     [ENUM]
@@ -164,6 +191,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         System::createDSPByType
     ]
     */
+
     public enum DSP_TYPE : int
     {
         UNKNOWN,            /* This unit was created via a non FMOD plugin so has an unknown purpose. */
@@ -205,7 +233,6 @@ namespace MagicalLifeAPI.Sound.FMOD
         MULTIBAND_EQ,       /* This unit is a flexible five band parametric equalizer. */
     }
 
-
     /*
     [ENUM]
     [
@@ -213,11 +240,11 @@ namespace MagicalLifeAPI.Sound.FMOD
         DSP parameter types.
 
         [REMARKS]
-
         [SEE_ALSO]
         FMOD_DSP_PARAMETER_DESC
     ]
     */
+
     public enum DSP_PARAMETER_TYPE
     {
         FLOAT = 0,
@@ -225,7 +252,6 @@ namespace MagicalLifeAPI.Sound.FMOD
         BOOL,
         DATA,
     }
-
 
     /*
     [ENUM]
@@ -240,6 +266,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_PARAMETER_FLOAT_MAPPING
     ]
     */
+
     public enum DSP_PARAMETER_FLOAT_MAPPING_TYPE
     {
         DSP_PARAMETER_FLOAT_MAPPING_TYPE_LINEAR = 0,          /* Values mapped linearly across range. */
@@ -248,7 +275,7 @@ namespace MagicalLifeAPI.Sound.FMOD
     }
 
     /*
-    [STRUCTURE] 
+    [STRUCTURE]
     [
         [DESCRIPTION]
         Structure to define a piecewise linear mapping.
@@ -257,11 +284,12 @@ namespace MagicalLifeAPI.Sound.FMOD
         Members marked with [r] mean the variable is modified by FMOD and is for reading purposes only.  Do not change this value.
         Members marked with [w] mean the variable can be written to.  The user can set the value.
 
-        [SEE_ALSO]    
+        [SEE_ALSO]
         FMOD_DSP_PARAMETER_FLOAT_MAPPING_TYPE
         FMOD_DSP_PARAMETER_FLOAT_MAPPING
     ]
     */
+
     [StructLayout(LayoutKind.Sequential)]
     public struct DSP_PARAMETER_FLOAT_MAPPING_PIECEWISE_LINEAR
     {
@@ -285,13 +313,13 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_PARAMETER_DESC_FLOAT
     ]
     */
+
     [StructLayout(LayoutKind.Sequential)]
     public struct DSP_PARAMETER_FLOAT_MAPPING
     {
         public DSP_PARAMETER_FLOAT_MAPPING_TYPE type;
         public DSP_PARAMETER_FLOAT_MAPPING_PIECEWISE_LINEAR piecewiselinearmapping;    /* [w] Only required for FMOD_DSP_PARAMETER_FLOAT_MAPPING_TYPE_PIECEWISE_LINEAR type mapping. */
     }
-
 
     /*
     [STRUCTURE]
@@ -311,15 +339,15 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_PARAMETER_FLOAT_MAPPING
     ]
     */
+
     [StructLayout(LayoutKind.Sequential)]
     public struct DSP_PARAMETER_DESC_FLOAT
     {
-        public float                     min;                      /* [w] Minimum parameter value. */
-        public float                     max;                      /* [w] Maximum parameter value. */
-        public float                     defaultval;               /* [w] Default parameter value. */
+        public float min;                      /* [w] Minimum parameter value. */
+        public float max;                      /* [w] Maximum parameter value. */
+        public float defaultval;               /* [w] Default parameter value. */
         public DSP_PARAMETER_FLOAT_MAPPING mapping;           /* [w] How the values are distributed across dials and automation curves (e.g. linearly, exponentially etc). */
     }
-
 
     /*
     [STRUCTURE]
@@ -338,16 +366,16 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_PARAMETER_DESC
     ]
     */
+
     [StructLayout(LayoutKind.Sequential)]
     public struct DSP_PARAMETER_DESC_INT
     {
-        public int                       min;                      /* [w] Minimum parameter value. */
-        public int                       max;                      /* [w] Maximum parameter value. */
-        public int                       defaultval;               /* [w] Default parameter value. */
-        public bool                      goestoinf;                /* [w] Whether the last value represents infiniy. */
-        public IntPtr                    valuenames;               /* [w] Names for each value.  There should be as many strings as there are possible values (max - min + 1).  Optional. */
+        public int min;                      /* [w] Minimum parameter value. */
+        public int max;                      /* [w] Maximum parameter value. */
+        public int defaultval;               /* [w] Default parameter value. */
+        public bool goestoinf;                /* [w] Whether the last value represents infiniy. */
+        public IntPtr valuenames;               /* [w] Names for each value.  There should be as many strings as there are possible values (max - min + 1).  Optional. */
     }
-
 
     /*
     [STRUCTURE]
@@ -366,13 +394,13 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_PARAMETER_DESC
     ]
     */
+
     [StructLayout(LayoutKind.Sequential)]
     public struct DSP_PARAMETER_DESC_BOOL
     {
-        public bool                      defaultval;               /* [w] Default parameter value. */
-        public IntPtr                    valuenames;               /* [w] Names for false and true, respectively.  There should be two strings.  Optional. */
+        public bool defaultval;               /* [w] Default parameter value. */
+        public IntPtr valuenames;               /* [w] Names for false and true, respectively.  There should be two strings.  Optional. */
     }
-
 
     /*
     [STRUCTURE]
@@ -392,22 +420,21 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_PARAMETER_DESC
     ]
     */
+
     [StructLayout(LayoutKind.Sequential)]
     public struct DSP_PARAMETER_DESC_DATA
     {
-        public int                       datatype;                 /* [w] The type of data for this parameter.  Use 0 or above for custom types or set to one of the FMOD_DSP_PARAMETER_DATA_TYPE values. */
+        public int datatype;                 /* [w] The type of data for this parameter.  Use 0 or above for custom types or set to one of the FMOD_DSP_PARAMETER_DATA_TYPE values. */
     }
-
 
     /*
     [STRUCTURE]
     [
         [DESCRIPTION]
-
         [REMARKS]
         Members marked with [w] mean the user sets the value before passing it to the function.
         Members marked with [r] mean FMOD sets the value to be used after the function exits.
-        
+
         The step parameter tells the gui or application that the parameter has a certain granularity.
         For example in the example of cutoff frequency with a range from 100.0 to 22050.0 you might only want the selection to be in 10hz increments.  For this you would simply use 10.0 as the step value.
         For a boolean, you can use min = 0.0, max = 1.0, step = 1.0.  This way the only possible values are 0.0 and 1.0.
@@ -420,28 +447,35 @@ namespace MagicalLifeAPI.Sound.FMOD
         System::getDSP
     ]
     */
+
     [StructLayout(LayoutKind.Explicit)]
     public struct DSP_PARAMETER_DESC_UNION
     {
         [FieldOffset(0)]
-        public DSP_PARAMETER_DESC_FLOAT   floatdesc;  /* [w] Struct containing information about the parameter in floating point format.  Use when type is FMOD_DSP_PARAMETER_TYPE_FLOAT. */
+        public DSP_PARAMETER_DESC_FLOAT floatdesc;  /* [w] Struct containing information about the parameter in floating point format.  Use when type is FMOD_DSP_PARAMETER_TYPE_FLOAT. */
+
         [FieldOffset(0)]
-        public DSP_PARAMETER_DESC_INT     intdesc;    /* [w] Struct containing information about the parameter in integer format.  Use when type is FMOD_DSP_PARAMETER_TYPE_INT. */
+        public DSP_PARAMETER_DESC_INT intdesc;    /* [w] Struct containing information about the parameter in integer format.  Use when type is FMOD_DSP_PARAMETER_TYPE_INT. */
+
         [FieldOffset(0)]
-        public DSP_PARAMETER_DESC_BOOL    booldesc;   /* [w] Struct containing information about the parameter in boolean format.  Use when type is FMOD_DSP_PARAMETER_TYPE_BOOL. */
+        public DSP_PARAMETER_DESC_BOOL booldesc;   /* [w] Struct containing information about the parameter in boolean format.  Use when type is FMOD_DSP_PARAMETER_TYPE_BOOL. */
+
         [FieldOffset(0)]
-        public DSP_PARAMETER_DESC_DATA    datadesc;   /* [w] Struct containing information about the parameter in data format.  Use when type is FMOD_DSP_PARAMETER_TYPE_DATA. */
+        public DSP_PARAMETER_DESC_DATA datadesc;   /* [w] Struct containing information about the parameter in data format.  Use when type is FMOD_DSP_PARAMETER_TYPE_DATA. */
     }
 
     [StructLayout(LayoutKind.Sequential)]
     public struct DSP_PARAMETER_DESC
     {
-        public DSP_PARAMETER_TYPE   type;            /* [w] Type of this parameter. */
+        public DSP_PARAMETER_TYPE type;            /* [w] Type of this parameter. */
+
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 16)]
-        public char[]               name;            /* [w] Name of the parameter to be displayed (ie "Cutoff frequency"). */
+        public char[] name;            /* [w] Name of the parameter to be displayed (ie "Cutoff frequency"). */
+
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 16)]
-        public char[]               label;           /* [w] Short string to be put next to value to denote the unit type (ie "hz"). */
-        public string               description;     /* [w] Description of the parameter to be displayed as a help item / tooltip for this parameter. */
+        public char[] label;           /* [w] Short string to be put next to value to denote the unit type (ie "hz"). */
+
+        public string description;     /* [w] Description of the parameter to be displayed as a help item / tooltip for this parameter. */
 
         public DSP_PARAMETER_DESC_UNION desc;
     }
@@ -453,7 +487,6 @@ namespace MagicalLifeAPI.Sound.FMOD
         Built-in types for the 'datatype' member of FMOD_DSP_PARAMETER_DESC_DATA.  Data parameters of type other than FMOD_DSP_PARAMETER_DATA_TYPE_USER will be treated specially by the system.
 
         [REMARKS]
-
         [SEE_ALSO]
         FMOD_DSP_PARAMETER_DESC_DATA
         FMOD_DSP_PARAMETER_OVERALLGAIN
@@ -462,6 +495,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_PARAMETER_SIDECHAIN
     ]
     */
+
     public enum DSP_PARAMETER_DATA_TYPE
     {
         DSP_PARAMETER_DATA_TYPE_USER = 0,                /* The default data type.  All user data types should be 0 or above. */
@@ -472,128 +506,132 @@ namespace MagicalLifeAPI.Sound.FMOD
         DSP_PARAMETER_DATA_TYPE_3DATTRIBUTES_MULTI = -5  /* The data type for FMOD_DSP_PARAMETER_3DATTRIBUTES_MULTI parameters.  There should a maximum of one per DSP. */
     }
 
-
     /*
-    [STRUCTURE] 
+    [STRUCTURE]
     [
         [DESCRIPTION]
         Structure for data parameters of type FMOD_DSP_PARAMETER_DATA_TYPE_OVERALLGAIN.
         A parameter of this type is used in effects that affect the overgain of the signal in a predictable way.
         This parameter is read by the system to determine the effect's gain for voice virtualization.
-    
+
         [REMARKS]
         Members marked with [r] mean the variable is modified by FMOD and is for reading purposes only.  Do not change this value.
         Members marked with [w] mean the variable can be written to.  The user can set the value.
-    
-        [SEE_ALSO]    
+
+        [SEE_ALSO]
         FMOD_DSP_PARAMETER_DATA_TYPE
         FMOD_DSP_PARAMETER_DESC
     ]
     */
+
     [StructLayout(LayoutKind.Sequential)]
     public struct DSP_PARAMETER_OVERALLGAIN
     {
         public float linear_gain;                                  /* [r] The overall linear gain of the effect on the direct signal path */
         public float linear_gain_additive;                         /* [r] Additive gain, for parallel signal paths */
     }
-    
-    
+
     /*
-    [STRUCTURE] 
+    [STRUCTURE]
     [
         [DESCRIPTION]
         Structure for data parameters of type FMOD_DSP_PARAMETER_DATA_TYPE_3DATTRIBUTES.
         A parameter of this type is used in effects that respond to a sound's 3D position.
         The system will set this parameter automatically if a sound's position changes.
-    
+
         [REMARKS]
         FMOD will convert passed in co-ordinates to left-handed for the plugin if the System was initialized with the FMOD_INIT_3D_RIGHTHANDED flag.
 
         Members marked with [r] mean the variable is modified by FMOD and is for reading purposes only.  Do not change this value.
         Members marked with [w] mean the variable can be written to.  The user can set the value.
-    
-        [SEE_ALSO]    
+
+        [SEE_ALSO]
         FMOD_DSP_PARAMETER_DATA_TYPE
         FMOD_DSP_PARAMETER_DESC
     ]
     */
+
     [StructLayout(LayoutKind.Sequential)]
     public struct DSP_PARAMETER_3DATTRIBUTES
     {
         public _3D_ATTRIBUTES relative;                        /* [w] The position of the sound relative to the listener. */
         public _3D_ATTRIBUTES absolute;                        /* [w] The position of the sound in world coordinates. */
     }
-    
+
     /*
-    [STRUCTURE] 
+    [STRUCTURE]
     [
         [DESCRIPTION]
         Structure for data parameters of type FMOD_DSP_PARAMETER_DATA_TYPE_3DATTRIBUTES.
         A parameter of this type is used in effects that respond to a sound's 3D position.
         The system will set this parameter automatically if a sound's position changes.
-    
+
         [REMARKS]
         FMOD will convert passed in co-ordinates to left-handed for the plugin if the System was initialized with the FMOD_INIT_3D_RIGHTHANDED flag.
 
         Members marked with [r] mean the variable is modified by FMOD and is for reading purposes only.  Do not change this value.
         Members marked with [w] mean the variable can be written to.  The user can set the value.
-    
-        [SEE_ALSO]    
+
+        [SEE_ALSO]
         FMOD_DSP_PARAMETER_DATA_TYPE
         FMOD_DSP_PARAMETER_DESC
     ]
     */
+
     [StructLayout(LayoutKind.Sequential)]
     public struct DSP_PARAMETER_3DATTRIBUTES_MULTI
     {
-        public int            numlisteners;                    /* [w] The number of listeners. */
+        public int numlisteners;                    /* [w] The number of listeners. */
+
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
         public _3D_ATTRIBUTES[] relative;                      /* [w] The position of the sound relative to the listeners. */
+
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
         public float[] weight;                                 /* [w] The weighting of the listeners where 0 means listener has no contribution and 1 means full contribution. */
+
         public _3D_ATTRIBUTES absolute;                        /* [w] The position of the sound in world coordinates. */
     }
-    
+
     /*
-    [STRUCTURE] 
+    [STRUCTURE]
     [
         [DESCRIPTION]
         Structure for data parameters of type FMOD_DSP_PARAMETER_DATA_TYPE_SIDECHAIN.
         A parameter of this type is declared for effects which support sidechaining.
-    
+
         [REMARKS]
         Members marked with [r] mean the variable is modified by FMOD and is for reading purposes only.  Do not change this value.
         Members marked with [w] mean the variable can be written to.  The user can set the value.
-    
-        [SEE_ALSO]    
+
+        [SEE_ALSO]
         FMOD_DSP_PARAMETER_DATA_TYPE
         FMOD_DSP_PARAMETER_DESC
     ]
     */
+
     [StructLayout(LayoutKind.Sequential)]
     public struct DSP_PARAMETER_SIDECHAIN
     {
         public int sidechainenable;                               /* [r/w] Whether sidechains are enabled. */
     }
-    
-    
+
     /*
-    [STRUCTURE] 
+    [STRUCTURE]
     [
         [DESCRIPTION]
         Structure for data parameters of type FMOD_DSP_PARAMETER_DATA_TYPE_FFT.
         A parameter of this type is declared for the FMOD_DSP_TYPE_FFT effect.
-    
+
         [REMARKS]
         Members marked with [r] mean the variable is modified by FMOD and is for reading purposes only.  Do not change this value.
         Members marked with [w] mean the variable can be written to.  The user can set the value.
-        
+
         Notes on the spectrum data member.  Values inside the float buffer are typically between 0 and 1.0.
         Each top level array represents one PCM channel of data.
         Address data as spectrum[channel][bin].  A bin is 1 fft window entry.
         Only read/display half of the buffer typically for analysis as the 2nd half is usually the same data reversed due to the nature of the way FFT works.
-    
-        [SEE_ALSO]    
+
+        [SEE_ALSO]
         FMOD_DSP_PARAMETER_DATA_TYPE
         FMOD_DSP_PARAMETER_DESC
         FMOD_DSP_PARAMETER_DATA_TYPE_FFT
@@ -601,32 +639,32 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_FFT
     ]
     */
+
     [StructLayout(LayoutKind.Sequential)]
     public struct DSP_PARAMETER_FFT
     {
-        public int     length;                                    /* [r] Number of entries in this spectrum window.   Divide this by the output rate to get the hz per entry. */
-        public int     numchannels;                               /* [r] Number of channels in spectrum. */
-        
-        [MarshalAs(UnmanagedType.ByValArray,SizeConst=32)]
+        public int length;                                    /* [r] Number of entries in this spectrum window.   Divide this by the output rate to get the hz per entry. */
+        public int numchannels;                               /* [r] Number of channels in spectrum. */
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 32)]
         private IntPtr[] spectrum_internal;                           /* [r] Per channel spectrum arrays.  See remarks for more. */
-        
+
         public float[][] spectrum
         {
             get
             {
                 var buffer = new float[numchannels][];
-                
+
                 for (int i = 0; i < numchannels; ++i)
                 {
                     buffer[i] = new float[length];
                     Marshal.Copy(spectrum_internal[i], buffer[i], 0, length);
                 }
-                
+
                 return buffer;
             }
         }
     }
-
 
     /*
     [STRUCTURE]
@@ -637,12 +675,12 @@ namespace MagicalLifeAPI.Sound.FMOD
         [REMARKS]
         Members marked with [r] mean the variable is modified by FMOD and is for reading purposes only.  Do not change this value.
         Members marked with [w] mean the variable can be written to.  The user can set the value.
-        
+
         There are 2 different ways to change a parameter in this architecture.
         One is to use DSP::setParameterFloat / DSP::setParameterInt / DSP::setParameterBool / DSP::setParameterData.  This is platform independant and is dynamic, so new unknown plugins can have their parameters enumerated and used.
         The other is to use DSP::showConfigDialog.  This is platform specific and requires a GUI, and will display a dialog box to configure the plugin.
 
-        [SEE_ALSO]    
+        [SEE_ALSO]
         System::createDSP
         DSP::setParameterFloat
         DSP::setParameterInt
@@ -670,42 +708,45 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_SYSTEM_MIX_CALLBACK
     ]
     */
+
     [StructLayout(LayoutKind.Sequential)]
     public struct DSP_DESCRIPTION
     {
-        public uint                           pluginsdkversion;   /* [w] The plugin SDK version this plugin is built for.  set to this to FMOD_PLUGIN_SDK_VERSION defined above. */
+        public uint pluginsdkversion;   /* [w] The plugin SDK version this plugin is built for.  set to this to FMOD_PLUGIN_SDK_VERSION defined above. */
+
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 32)]
-        public char[]                         name;               /* [w] Name of the unit to be displayed in the network. */
-        public uint                           version;            /* [w] Plugin writer's version number. */
-        public int                            numinputbuffers;    /* [w] Number of input buffers to process.  Use 0 for DSPs that only generate sound and 1 for effects that process incoming sound. */
-        public int                            numoutputbuffers;   /* [w] Number of audio output buffers.  Only one output buffer is currently supported. */
-        public DSP_CREATECALLBACK             create;             /* [w] Create callback.  This is called when DSP unit is created.  Can be null. */
-        public DSP_RELEASECALLBACK            release;            /* [w] Release callback.  This is called just before the unit is freed so the user can do any cleanup needed for the unit.  Can be null. */
-        public DSP_RESETCALLBACK              reset;              /* [w] Reset callback.  This is called by the user to reset any history buffers that may need resetting for a filter, when it is to be used or re-used for the first time to its initial clean state.  Use to avoid clicks or artifacts. */
-        public DSP_READCALLBACK               read;               /* [w] Read callback.  Processing is done here.  Can be null. */
-        public DSP_PROCESS_CALLBACK           process;            /* [w] Process callback.  Can be specified instead of the read callback if any channel format changes occur between input and output.  This also replaces shouldiprocess and should return an error if the effect is to be bypassed.  Can be null. */
-        public DSP_SETPOSITIONCALLBACK        setposition;        /* [w] Setposition callback.  This is called if the unit wants to update its position info but not process data.  Can be null. */
+        public char[] name;               /* [w] Name of the unit to be displayed in the network. */
 
-        public int                            numparameters;      /* [w] Number of parameters used in this filter.  The user finds this with DSP::getNumParameters */
-        public IntPtr                         paramdesc;          /* [w] Variable number of parameter structures. */
-        public DSP_SETPARAM_FLOAT_CALLBACK    setparameterfloat;  /* [w] This is called when the user calls DSP.setParameterFloat. Can be null. */
-        public DSP_SETPARAM_INT_CALLBACK      setparameterint;    /* [w] This is called when the user calls DSP.setParameterInt.   Can be null. */
-        public DSP_SETPARAM_BOOL_CALLBACK     setparameterbool;   /* [w] This is called when the user calls DSP.setParameterBool.  Can be null. */
-        public DSP_SETPARAM_DATA_CALLBACK     setparameterdata;   /* [w] This is called when the user calls DSP.setParameterData.  Can be null. */
-        public DSP_GETPARAM_FLOAT_CALLBACK    getparameterfloat;  /* [w] This is called when the user calls DSP.getParameterFloat. Can be null. */
-        public DSP_GETPARAM_INT_CALLBACK      getparameterint;    /* [w] This is called when the user calls DSP.getParameterInt.   Can be null. */
-        public DSP_GETPARAM_BOOL_CALLBACK     getparameterbool;   /* [w] This is called when the user calls DSP.getParameterBool.  Can be null. */
-        public DSP_GETPARAM_DATA_CALLBACK     getparameterdata;   /* [w] This is called when the user calls DSP.getParameterData.  Can be null. */
-        public DSP_SHOULDIPROCESS_CALLBACK    shouldiprocess;     /* [w] This is called before processing.  You can detect if inputs are idle and return FMOD_OK to process, or any other error code to avoid processing the effect.  Use a count down timer to allow effect tails to process before idling! */
-        public IntPtr                         userdata;           /* [w] Optional. Specify 0 to ignore. This is user data to be attached to the DSP unit during creation.  Access via FMOD_DSP_STATE_FUNCTIONS::getuserdata. */
+        public uint version;            /* [w] Plugin writer's version number. */
+        public int numinputbuffers;    /* [w] Number of input buffers to process.  Use 0 for DSPs that only generate sound and 1 for effects that process incoming sound. */
+        public int numoutputbuffers;   /* [w] Number of audio output buffers.  Only one output buffer is currently supported. */
+        public DSP_CREATECALLBACK create;             /* [w] Create callback.  This is called when DSP unit is created.  Can be null. */
+        public DSP_RELEASECALLBACK release;            /* [w] Release callback.  This is called just before the unit is freed so the user can do any cleanup needed for the unit.  Can be null. */
+        public DSP_RESETCALLBACK reset;              /* [w] Reset callback.  This is called by the user to reset any history buffers that may need resetting for a filter, when it is to be used or re-used for the first time to its initial clean state.  Use to avoid clicks or artifacts. */
+        public DSP_READCALLBACK read;               /* [w] Read callback.  Processing is done here.  Can be null. */
+        public DSP_PROCESS_CALLBACK process;            /* [w] Process callback.  Can be specified instead of the read callback if any channel format changes occur between input and output.  This also replaces shouldiprocess and should return an error if the effect is to be bypassed.  Can be null. */
+        public DSP_SETPOSITIONCALLBACK setposition;        /* [w] Setposition callback.  This is called if the unit wants to update its position info but not process data.  Can be null. */
 
-        public DSP_SYSTEM_REGISTER_CALLBACK   sys_register;       /* [w] Register callback.  This is called when DSP unit is loaded/registered.  Useful for 'global'/per system object init for plugin.  Can be null. */
+        public int numparameters;      /* [w] Number of parameters used in this filter.  The user finds this with DSP::getNumParameters */
+        public IntPtr paramdesc;          /* [w] Variable number of parameter structures. */
+        public DSP_SETPARAM_FLOAT_CALLBACK setparameterfloat;  /* [w] This is called when the user calls DSP.setParameterFloat. Can be null. */
+        public DSP_SETPARAM_INT_CALLBACK setparameterint;    /* [w] This is called when the user calls DSP.setParameterInt.   Can be null. */
+        public DSP_SETPARAM_BOOL_CALLBACK setparameterbool;   /* [w] This is called when the user calls DSP.setParameterBool.  Can be null. */
+        public DSP_SETPARAM_DATA_CALLBACK setparameterdata;   /* [w] This is called when the user calls DSP.setParameterData.  Can be null. */
+        public DSP_GETPARAM_FLOAT_CALLBACK getparameterfloat;  /* [w] This is called when the user calls DSP.getParameterFloat. Can be null. */
+        public DSP_GETPARAM_INT_CALLBACK getparameterint;    /* [w] This is called when the user calls DSP.getParameterInt.   Can be null. */
+        public DSP_GETPARAM_BOOL_CALLBACK getparameterbool;   /* [w] This is called when the user calls DSP.getParameterBool.  Can be null. */
+        public DSP_GETPARAM_DATA_CALLBACK getparameterdata;   /* [w] This is called when the user calls DSP.getParameterData.  Can be null. */
+        public DSP_SHOULDIPROCESS_CALLBACK shouldiprocess;     /* [w] This is called before processing.  You can detect if inputs are idle and return FMOD_OK to process, or any other error code to avoid processing the effect.  Use a count down timer to allow effect tails to process before idling! */
+        public IntPtr userdata;           /* [w] Optional. Specify 0 to ignore. This is user data to be attached to the DSP unit during creation.  Access via FMOD_DSP_STATE_FUNCTIONS::getuserdata. */
+
+        public DSP_SYSTEM_REGISTER_CALLBACK sys_register;       /* [w] Register callback.  This is called when DSP unit is loaded/registered.  Useful for 'global'/per system object init for plugin.  Can be null. */
         public DSP_SYSTEM_DEREGISTER_CALLBACK sys_deregister;     /* [w] Deregister callback.  This is called when DSP unit is unloaded/deregistered.  Useful as 'global'/per system object shutdown for plugin.  Can be null. */
-        public DSP_SYSTEM_MIX_CALLBACK        sys_mix;            /* [w] System mix stage callback.  This is called when the mixer starts to execute or is just finishing executing.  Useful for 'global'/per system object once a mix update calls for a plugin.  Can be null. */
+        public DSP_SYSTEM_MIX_CALLBACK sys_mix;            /* [w] System mix stage callback.  This is called when the mixer starts to execute or is just finishing executing.  Useful for 'global'/per system object once a mix update calls for a plugin.  Can be null. */
     }
 
     /*
-    [STRUCTURE] 
+    [STRUCTURE]
     [
         [DESCRIPTION]
         Struct containing DFT functions to enable a plugin to perform optimized time-frequency domain conversion.
@@ -719,15 +760,16 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_STATE_FUNCTIONS
     ]
     */
+
     [StructLayout(LayoutKind.Sequential)]
     public struct DSP_STATE_DFT_FUNCTIONS
     {
-        public DSP_DFT_FFTREAL_FUNC  fftreal;        /* [r] Function for performing an FFT on a real signal. */
+        public DSP_DFT_FFTREAL_FUNC fftreal;        /* [r] Function for performing an FFT on a real signal. */
         public DSP_DFT_IFFTREAL_FUNC inversefftreal; /* [r] Function for performing an inverse FFT to get a real signal. */
     }
 
     /*
-    [STRUCTURE] 
+    [STRUCTURE]
     [
         [DESCRIPTION]
         Struct containing panning helper functions for spatialization plugins.
@@ -744,19 +786,20 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_PAN_SURROUND_FLAGS
     ]
     */
+
     [StructLayout(LayoutKind.Sequential)]
     public struct DSP_STATE_PAN_FUNCTIONS
     {
-        public DSP_PAN_SUMMONOMATRIX_FUNC             summonomatrix;             /* [r] TBD. */
-        public DSP_PAN_SUMSTEREOMATRIX_FUNC           sumstereomatrix;           /* [r] TBD. */
-        public DSP_PAN_SUMSURROUNDMATRIX_FUNC         sumsurroundmatrix;         /* [r] TBD. */
-        public DSP_PAN_SUMMONOTOSURROUNDMATRIX_FUNC   summonotosurroundmatrix;   /* [r] TBD. */
+        public DSP_PAN_SUMMONOMATRIX_FUNC summonomatrix;             /* [r] TBD. */
+        public DSP_PAN_SUMSTEREOMATRIX_FUNC sumstereomatrix;           /* [r] TBD. */
+        public DSP_PAN_SUMSURROUNDMATRIX_FUNC sumsurroundmatrix;         /* [r] TBD. */
+        public DSP_PAN_SUMMONOTOSURROUNDMATRIX_FUNC summonotosurroundmatrix;   /* [r] TBD. */
         public DSP_PAN_SUMSTEREOTOSURROUNDMATRIX_FUNC sumstereotosurroundmatrix; /* [r] TBD. */
-        public DSP_PAN_GETROLLOFFGAIN_FUNC            getrolloffgain;            /* [r] TBD. */
+        public DSP_PAN_GETROLLOFFGAIN_FUNC getrolloffgain;            /* [r] TBD. */
     }
 
     /*
-    [STRUCTURE] 
+    [STRUCTURE]
     [
         [DESCRIPTION]
         Struct containing functions to give plugin developers the ability to query system state, access system level functionality and helpers.
@@ -772,25 +815,26 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_STATE_PAN_FUNCTIONS
     ]
     */
+
     [StructLayout(LayoutKind.Sequential)]
     public struct DSP_STATE_FUNCTIONS
     {
-        DSP_ALLOC_FUNC                  alloc;                  /* [r] Memory allocation callback. Use this for all dynamic memory allocation within the plugin. */
-        DSP_REALLOC_FUNC                realloc;                /* [r] Memory reallocation callback. */
-        DSP_FREE_FUNC                   free;                   /* [r] Memory free callback. */
-        DSP_GETSAMPLERATE_FUNC          getsamplerate;          /* [r] Callback for getting the system samplerate. */
-        DSP_GETBLOCKSIZE_FUNC           getblocksize;           /* [r] Callback for getting the system's block size.  DSPs will be requested to process blocks of varying length up to this size.*/
-        IntPtr                          dft;                    /* [r] Struct containing callbacks for performing FFTs and inverse FFTs. */
-        IntPtr                          pan;                    /* [r] Pointer to a structure of callbacks for calculating pan, up-mix and down-mix matrices. */
-        DSP_GETSPEAKERMODE_FUNC         getspeakermode;         /* [r] Callback for getting the system's speaker modes.  One is the mixer's default speaker mode, the other is the output mode the system is downmixing or upmixing to.*/
-        DSP_GETCLOCK_FUNC               getclock;               /* [r] Callback for getting the clock of the current DSP, as well as the subset of the input buffer that contains the signal */
-        DSP_GETLISTENERATTRIBUTES_FUNC  getlistenerattributes;  /* [r] Callback for getting the absolute listener attributes set via the API (returned as left-handed co-ordinates). */
-        DSP_LOG_FUNC                    log;                    /* [r] Function to write to the FMOD logging system. */
-        DSP_GETUSERDATA_FUNC            getuserdata;            /* [r] Function to get the user data attached to this DSP. See FMOD_DSP_DESCRIPTION::userdata. */
+        private DSP_ALLOC_FUNC alloc;                  /* [r] Memory allocation callback. Use this for all dynamic memory allocation within the plugin. */
+        private DSP_REALLOC_FUNC realloc;                /* [r] Memory reallocation callback. */
+        private DSP_FREE_FUNC free;                   /* [r] Memory free callback. */
+        private DSP_GETSAMPLERATE_FUNC getsamplerate;          /* [r] Callback for getting the system samplerate. */
+        private DSP_GETBLOCKSIZE_FUNC getblocksize;           /* [r] Callback for getting the system's block size.  DSPs will be requested to process blocks of varying length up to this size.*/
+        private IntPtr dft;                    /* [r] Struct containing callbacks for performing FFTs and inverse FFTs. */
+        private IntPtr pan;                    /* [r] Pointer to a structure of callbacks for calculating pan, up-mix and down-mix matrices. */
+        private DSP_GETSPEAKERMODE_FUNC getspeakermode;         /* [r] Callback for getting the system's speaker modes.  One is the mixer's default speaker mode, the other is the output mode the system is downmixing or upmixing to.*/
+        private DSP_GETCLOCK_FUNC getclock;               /* [r] Callback for getting the clock of the current DSP, as well as the subset of the input buffer that contains the signal */
+        private DSP_GETLISTENERATTRIBUTES_FUNC getlistenerattributes;  /* [r] Callback for getting the absolute listener attributes set via the API (returned as left-handed co-ordinates). */
+        private DSP_LOG_FUNC log;                    /* [r] Function to write to the FMOD logging system. */
+        private DSP_GETUSERDATA_FUNC getuserdata;            /* [r] Function to get the user data attached to this DSP. See FMOD_DSP_DESCRIPTION::userdata. */
     }
 
     /*
-    [STRUCTURE] 
+    [STRUCTURE]
     [
         [DESCRIPTION]
         DSP plugin structure that is passed into each callback.
@@ -807,21 +851,22 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_STATE_FUNCTIONS
     ]
     */
+
     [StructLayout(LayoutKind.Sequential)]
     public struct DSP_STATE
     {
-        public IntPtr     instance;            /* [r] Handle to the DSP hand the user created.  Not to be modified.  C++ users cast to FMOD::DSP to use.  */
-        public IntPtr     plugindata;          /* [r/w] Plugin writer created data the output author wants to attach to this object. */
-        public uint       channelmask;         /* [r] Specifies which speakers the DSP effect is active on */
-        public int        source_speakermode;  /* [r] Specifies which speaker mode the signal originated for information purposes, ie in case panning needs to be done differently. */
-        public IntPtr     sidechaindata;       /* [r] The mixed result of all incoming sidechains is stored at this pointer address. */
-        public int        sidechainchannels;   /* [r] The number of channels of pcm data stored within the sidechain buffer. */
-        public IntPtr     functions;           /* [r] Struct containing callbacks for system level functionality. */
-        public int        systemobject;        /* [r] FMOD::System object index, relating to the System object that created this DSP. */
+        public IntPtr instance;            /* [r] Handle to the DSP hand the user created.  Not to be modified.  C++ users cast to FMOD::DSP to use.  */
+        public IntPtr plugindata;          /* [r/w] Plugin writer created data the output author wants to attach to this object. */
+        public uint channelmask;         /* [r] Specifies which speakers the DSP effect is active on */
+        public int source_speakermode;  /* [r] Specifies which speaker mode the signal originated for information purposes, ie in case panning needs to be done differently. */
+        public IntPtr sidechaindata;       /* [r] The mixed result of all incoming sidechains is stored at this pointer address. */
+        public int sidechainchannels;   /* [r] The number of channels of pcm data stored within the sidechain buffer. */
+        public IntPtr functions;           /* [r] Struct containing callbacks for system level functionality. */
+        public int systemobject;        /* [r] FMOD::System object index, relating to the System object that created this DSP. */
     }
 
     /*
-    [STRUCTURE] 
+    [STRUCTURE]
     [
         [DESCRIPTION]
         DSP metering info used for retrieving metering info
@@ -834,18 +879,20 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_SPEAKER
     ]
     */
+
     [StructLayout(LayoutKind.Sequential)]
     public class DSP_METERING_INFO
     {
-        public int   numsamples;        /* [r] The number of samples considered for this metering info. */
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst=32)]
+        public int numsamples;        /* [r] The number of samples considered for this metering info. */
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 32)]
         public float[] peaklevel;       /* [r] The peak level per channel. */
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst=32)]
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 32)]
         public float[] rmslevel;        /* [r] The rms level per channel. */
+
         public short numchannels;       /* [r] Number of channels. */
     }
-
-
 
     /*
         ==============================================================================================================
@@ -863,19 +910,18 @@ namespace MagicalLifeAPI.Sound.FMOD
         Parameter types for the FMOD_DSP_TYPE_OSCILLATOR filter.
 
         [REMARKS]
-
         [SEE_ALSO]
         DSP::setParameter
         DSP::getParameter
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_OSCILLATOR
     {
         TYPE,   /* Waveform type.  0 = sine.  1 = square. 2 = sawup. 3 = sawdown. 4 = triangle. 5 = noise.  */
         RATE    /* Frequency of the sinewave in hz.  1.0 to 22000.0.  Default = 220.0. */
     }
-
 
     /*
     [ENUM]
@@ -884,19 +930,18 @@ namespace MagicalLifeAPI.Sound.FMOD
         Parameter types for the FMOD_DSP_TYPE_LOWPASS filter.
 
         [REMARKS]
-
         [SEE_ALSO]
         DSP::setParameter
         DSP::getParameter
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_LOWPASS
     {
         CUTOFF,    /* Lowpass cutoff frequency in hz.   1.0 to 22000.0.  Default = 5000.0. */
         RESONANCE  /* Lowpass resonance Q value. 1.0 to 10.0.  Default = 1.0. */
     }
-
 
     /*
     [ENUM]
@@ -919,12 +964,12 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_ITLOWPASS
     {
         CUTOFF,    /* Lowpass cutoff frequency in hz.  1.0 to 22000.0.  Default = 5000.0/ */
         RESONANCE  /* Lowpass resonance Q value.  0.0 to 127.0.  Default = 1.0. */
     }
-
 
     /*
     [ENUM]
@@ -933,19 +978,18 @@ namespace MagicalLifeAPI.Sound.FMOD
         Parameter types for the FMOD_DSP_TYPE_HIGHPASS filter.
 
         [REMARKS]
-
         [SEE_ALSO]
         DSP::setParameter
         DSP::getParameter
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_HIGHPASS
     {
         CUTOFF,    /* (Type:float) - Highpass cutoff frequency in hz.  1.0 to output 22000.0.  Default = 5000.0. */
         RESONANCE  /* (Type:float) - Highpass resonance Q value.  1.0 to 10.0.  Default = 1.0. */
     }
-
 
     /*
     [ENUM]
@@ -963,6 +1007,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_ECHO
     {
         DELAY,       /* (Type:float) - Echo delay in ms.  10  to 5000.  Default = 500. */
@@ -971,7 +1016,6 @@ namespace MagicalLifeAPI.Sound.FMOD
         WETLEVEL     /* (Type:float) - Volume of echo signal to pass to output in dB.  -80.0 to 10.0.  Default = 0. */
     }
 
-
     /*
     [ENUM]
     [
@@ -979,19 +1023,18 @@ namespace MagicalLifeAPI.Sound.FMOD
         Parameter types for the FMOD_DSP_TYPE_FADER filter.
 
         [REMARKS]
-
         [SEE_ALSO]
         DSP::setParameterFloat
         DSP::getParameterFloat
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_FADER
     {
         GAIN,           /* (Type:float) - Signal gain in dB. -80.0 to 10.0. Default = 0.0. */
         OVERALL_GAIN,   /* (Type:data)  - Overall gain. For information only, not set by user. Data of type FMOD_DSP_PARAMETER_DATA_TYPE_OVERALLGAIN to provide to FMOD, to allow FMOD to know the DSP is scaling the signal for virtualization purposes. */
     }
-
 
     /*
     [ENUM]
@@ -1010,6 +1053,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_DELAY
     {
         CH0,      /* Channel #0 Delay in ms.   0  to 10000.  Default = 0.  */
@@ -1031,7 +1075,6 @@ namespace MagicalLifeAPI.Sound.FMOD
         MAXDELAY, /* Maximum delay in ms.      0  to 1000.   Default = 10. */
     }
 
-
     /*
     [ENUM]
     [
@@ -1041,7 +1084,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         [REMARKS]
         Flange is an effect where the signal is played twice at the same time, and one copy slides back and forth creating a whooshing or flanging effect.
         As there are 2 copies of the same signal, by default each signal is given 50% mix, so that the total is not louder than the original unaffected signal.
-        
+
         Flange depth is a percentage of a 10ms shift from the original signal.  Anything above 10ms is not considered flange because to the ear it begins to 'echo' so 10ms is the highest value possible.
 
         [SEE_ALSO]
@@ -1050,13 +1093,13 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_FLANGE
     {
         MIX,         /* (Type:float) - Percentage of wet signal in mix.  0 to 100. Default = 50. */
         DEPTH,       /* (Type:float) - Flange depth (percentage of 40ms delay).  0.01 to 1.0.  Default = 1.0. */
         RATE         /* (Type:float) - Flange speed in hz.  0.0 to 20.0.  Default = 0.1. */
     }
-
 
     /*
     [ENUM]
@@ -1066,7 +1109,7 @@ namespace MagicalLifeAPI.Sound.FMOD
 
         [REMARKS]
         The tremolo effect varies the amplitude of a sound. Depending on the settings, this unit can produce a tremolo, chopper or auto-pan effect.
-        
+
         The shape of the LFO (low freq. oscillator) can morphed between sine, triangle and sawtooth waves using the FMOD_DSP_TREMOLO_SHAPE and FMOD_DSP_TREMOLO_SKEW parameters.
         FMOD_DSP_TREMOLO_DUTY and FMOD_DSP_TREMOLO_SQUARE are useful for a chopper-type effect where the first controls the on-time duration and second controls the flatness of the envelope.
         FMOD_DSP_TREMOLO_SPREAD varies the LFO phase between channels to get an auto-pan effect. This works best with a sine shape LFO.
@@ -1078,6 +1121,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_TREMOLO
     {
         FREQUENCY,     /* LFO frequency in Hz.  0.1 to 20.  Default = 4. */
@@ -1090,7 +1134,6 @@ namespace MagicalLifeAPI.Sound.FMOD
         SPREAD         /* Rotation / auto-pan effect.  -1 to 1.  Default = 0. */
     }
 
-
     /*
     [ENUM]
     [
@@ -1098,18 +1141,17 @@ namespace MagicalLifeAPI.Sound.FMOD
         Parameter types for the FMOD_DSP_TYPE_DISTORTION filter.
 
         [REMARKS]
-
         [SEE_ALSO]
         DSP::setParameterFloat
         DSP::getParameterFloat
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_DISTORTION
     {
         LEVEL    /* Distortion value.  0.0 to 1.0.  Default = 0.5. */
     }
-
 
     /*
     [ENUM]
@@ -1121,7 +1163,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         Normalize amplifies the sound based on the maximum peaks within the signal.
         For example if the maximum peaks in the signal were 50% of the bandwidth, it would scale the whole sound by 2.
         The lower threshold value makes the normalizer ignores peaks below a certain point, to avoid over-amplification if a loud signal suddenly came in, and also to avoid amplifying to maximum things like background hiss.
-        
+
         Because FMOD is a realtime audio processor, it doesn't have the luxury of knowing the peak for the whole sound (ie it can't see into the future), so it has to process data as it comes in.
         To avoid very sudden changes in volume level based on small samples of new data, fmod fades towards the desired amplification which makes for smooth gain control.  The fadetime parameter can control this.
 
@@ -1131,13 +1173,13 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_NORMALIZE
     {
         FADETIME,    /* Time to ramp the silence to full in ms.  0.0 to 20000.0. Default = 5000.0. */
         THRESHHOLD,  /* Lower volume range threshold to ignore.  0.0 to 1.0.  Default = 0.1.  Raise higher to stop amplification of very quiet signals. */
         MAXAMP       /* Maximum amplification allowed.  1.0 to 100000.0.  Default = 20.0.  1.0 = no amplifaction, higher values allow more boost. */
     }
-
 
     /*
     [ENUM]
@@ -1146,13 +1188,13 @@ namespace MagicalLifeAPI.Sound.FMOD
         Parameter types for the FMOD_DSP_TYPE_LIMITER filter.
 
         [REMARKS]
-
         [SEE_ALSO]
         DSP::setParameterFloat
         DSP::getParameterFloat
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_LIMITER
     {
         RELEASETIME,   /* (Type:float) - Time to ramp the silence to full in ms.  1.0 to 1000.0. Default = 10.0. */
@@ -1160,7 +1202,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         MAXIMIZERGAIN, /* (Type:float) - Maximum amplification allowed in dB.  0.0 to 12.0.  Default = 0.0. 0.0 = no amplifaction, higher values allow more boost. */
         MODE,          /* (Type:float) - Channel processing mode. 0 or 1. Default = 0. 0 = Independent (limiter per channel), 1 = Linked. */
     }
-    
+
     /*
     [ENUM]
     [
@@ -1169,9 +1211,9 @@ namespace MagicalLifeAPI.Sound.FMOD
 
         [REMARKS]
         Parametric EQ is a bandpass filter that attenuates or amplifies a selected frequency and its neighbouring frequencies.
-        
+
         To create a multi-band EQ create multiple FMOD_DSP_TYPE_PARAMEQ units and set each unit to different frequencies, for example 1000hz, 2000hz, 4000hz, 8000hz, 16000hz with a range of 1 octave each.
-        
+
         When a frequency has its gain set to 1.0, the sound will be unaffected and represents the original signal exactly.
 
         [SEE_ALSO]
@@ -1180,13 +1222,13 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_PARAMEQ
     {
         CENTER,     /* Frequency center.  20.0 to 22000.0.  Default = 8000.0. */
         BANDWIDTH,  /* Octave range around the center frequency to filter.  0.2 to 5.0.  Default = 1.0. */
         GAIN        /* Frequency Gain.  0.05 to 3.0.  Default = 1.0.  */
     }
-
 
     /*
     [ENUM]
@@ -1205,6 +1247,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_MULTIBAND_EQ
     {
         A_FILTER,    /* (Type:int)   - Band A: FMOD_DSP_MULTIBAND_EQ_FILTER_TYPE used to interpret the behavior of the remaining parameters. Default = FMOD_DSP_MULTIBAND_EQ_FILTER_LOWPASS_12DB */
@@ -1229,7 +1272,6 @@ namespace MagicalLifeAPI.Sound.FMOD
         E_GAIN,      /* (Type:float) - Band E: See Band A. */
     }
 
-
     /*
     [ENUM]
     [
@@ -1237,12 +1279,12 @@ namespace MagicalLifeAPI.Sound.FMOD
         Filter types for FMOD_DSP_MULTIBAND_EQ.
 
         [REMARKS]
-
         [SEE_ALSO]
         FMOD_DSP_MULTIBAND_EQ
-        
+
     ]
     */
+
     public enum DSP_MULTIBAND_EQ_FILTER_TYPE
     {
         DISABLED,       /* Disabled filter, no processing. */
@@ -1260,7 +1302,6 @@ namespace MagicalLifeAPI.Sound.FMOD
         ALLPASS,        /* All-pass filter, allows all frequencies to pass, but changes the phase response at a given point (with specified sharpness). */
     }
 
-
     /*
     [ENUM]
     [
@@ -1270,14 +1311,14 @@ namespace MagicalLifeAPI.Sound.FMOD
         [REMARKS]
         This pitch shifting unit can be used to change the pitch of a sound without speeding it up or slowing it down.
         It can also be used for time stretching or scaling, for example if the pitch was doubled, and the frequency of the sound was halved, the pitch of the sound would sound correct but it would be twice as slow.
-        
+
         Warning! This filter is very computationally expensive!  Similar to a vocoder, it requires several overlapping FFT and IFFT's to produce smooth output, and can require around 440mhz for 1 stereo 48khz signal using the default settings.
         Reducing the signal to mono will half the cpu usage, as will the overlap count.
         Reducing this will lower audio quality, but what settings to use are largely dependant on the sound being played.  A noisy polyphonic signal will need higher overlap and fft size compared to a speaking voice for example.
-        
+
         This pitch shifter is based on the pitch shifter code at http://www.dspdimension.com, written by Stephan M. Bernsee.
         The original code is COPYRIGHT 1999-2003 Stephan M. Bernsee <smb@dspdimension.com>.
-        
+
         'maxchannels' dictates the amount of memory allocated.  By default, the maxchannels value is 0.  If FMOD is set to stereo, the pitch shift unit will allocate enough memory for 2 channels.  If it is 5.1, it will allocate enough memory for a 6 channel pitch shift, etc.
         If the pitch shift effect is only ever applied to the global mix (ie it was added with System::addDSP), then 0 is the value to set as it will be enough to handle all speaker modes.
         When the pitch shift is added to a channel (ie Channel::addDSP) then the channel count that comes in could be anything from 1 to 8 possibly.  It is only in this case where you might want to increase the channel count above the output's channel count.
@@ -1289,6 +1330,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_PITCHSHIFT
     {
         PITCH,       /* Pitch value.  0.5 to 2.0.  Default = 1.0. 0.5 = one octave down, 2.0 = one octave up.  1.0 does not change the pitch. */
@@ -1296,8 +1338,6 @@ namespace MagicalLifeAPI.Sound.FMOD
         OVERLAP,     /* Window overlap.  1 to 32.  Default = 4.  Increase this to reduce 'tremolo' effect.  Increasing it by a factor of 2 doubles the CPU usage. */
         MAXCHANNELS  /* Maximum channels supported.  0 to 16.  0 = same as fmod's default output polyphony, 1 = mono, 2 = stereo etc.  See remarks for more.  Default = 0.  It is suggested to leave at 0! */
     }
-
-
 
     /*
     [ENUM]
@@ -1316,13 +1356,13 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_CHORUS
     {
         MIX,      /* (Type:float) - Volume of original signal to pass to output.  0.0 to 100.0. Default = 50.0. */
         RATE,     /* (Type:float) - Chorus modulation rate in Hz.  0.0 to 20.0.  Default = 0.8 Hz. */
         DEPTH,    /* (Type:float) - Chorus modulation depth.  0.0 to 100.0.  Default = 3.0. */
     }
-
 
     /*
     [ENUM]
@@ -1334,7 +1374,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         [REMARKS]
         Note.  Every time the delay is changed, the plugin re-allocates the echo buffer.  This means the echo will dissapear at that time while it refills its new buffer.
         Larger echo delays result in larger amounts of memory allocated.
-        
+
         As this is a stereo filter made mainly for IT playback, it is targeted for stereo signals.
         With mono signals only the FMOD_DSP_ITECHO_LEFTDELAY is used.
         For multichannel signals (>2) there will be no echo on those channels.
@@ -1346,6 +1386,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         System::addDSP
     ]
     */
+
     public enum DSP_ITECHO
     {
         WETDRYMIX,      /* (Type:float) - Ratio of wet (processed) signal to dry (unprocessed) signal. Must be in the range from 0.0 through 100.0 (all wet).  Default = 50. */
@@ -1354,7 +1395,6 @@ namespace MagicalLifeAPI.Sound.FMOD
         RIGHTDELAY,     /* (Type:float) - Delay for right channel, in milliseconds, in the range from 1.0 through 2000.0.  Default = 500 ms. */
         PANDELAY        /* (Type:float) - Value that specifies whether to swap left and right delays with each successive echo.  Ranges from 0.0 (equivalent to FALSE) to 1.0 (equivalent to TRUE), meaning no swap.  Default = 0.  CURRENTLY NOT SUPPORTED. */
     }
-
 
     /*
     [ENUM]
@@ -1370,7 +1410,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         distort the sound, so it is a compromise. High level peaks can be avoided by
         using a short attack time - but not too short, and setting the threshold a few
         decibels below the critical level.
-        
+
         [SEE_ALSO]
         DSP::setParameterFloat
         DSP::getParameterFloat
@@ -1379,17 +1419,17 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_COMPRESSOR
     {
-        THRESHOLD,   /* (Type:float) - Threshold level (dB) in the range from -80 through 0. The default value is 0. */ 
-        RATIO,       /* (Type:float) - Compression Ratio (dB/dB) in the range from 1 to 50. The default value is 2.5. */ 
+        THRESHOLD,   /* (Type:float) - Threshold level (dB) in the range from -80 through 0. The default value is 0. */
+        RATIO,       /* (Type:float) - Compression Ratio (dB/dB) in the range from 1 to 50. The default value is 2.5. */
         ATTACK,      /* (Type:float) - Attack time (milliseconds), in the range from 0.1 through 1000. The default value is 20. */
         RELEASE,     /* (Type:float) - Release time (milliseconds), in the range from 10 through 5000. The default value is 100 */
         GAINMAKEUP,  /* (Type:float) - Make-up gain (dB) applied after limiting, in the range from 0 through 30. The default value is 0. */
         USESIDECHAIN,/* (Type:bool)  - Whether to analyse the sidechain signal instead of the input signal. The default value is false */
         LINKED       /* (Type:bool)  - FALSE = Independent (compressor per channel), TRUE = Linked.  The default value is TRUE. */
     }
-
 
     /*
     [ENUM]
@@ -1400,7 +1440,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         [REMARKS]
         This is a high quality I3DL2 based reverb.
         On top of the I3DL2 property set, "Dry Level" is also included to allow the dry mix to be changed.
-        
+
         These properties can be set with presets in FMOD_REVERB_PRESETS.
 
         [SEE_ALSO]
@@ -1410,6 +1450,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_REVERB_PRESETS
     ]
     */
+
     public enum DSP_SFXREVERB
     {
         DECAYTIME,           /* (Type:float) - Decay Time       : Reverberation decay time at low-frequencies in milliseconds.  Ranges from 100.0 to 20000.0. Default is 1500. */
@@ -1436,18 +1477,17 @@ namespace MagicalLifeAPI.Sound.FMOD
         The emphasis is on speed rather than accuracy, so this should not be used for task requiring critical filtering.
 
         [REMARKS]
-
         [SEE_ALSO]
         DSP::setParameterFloat
         DSP::getParameterFloat
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_LOWPASS_SIMPLE
     {
         CUTOFF     /* Lowpass cutoff frequency in hz.  10.0 to 22000.0.  Default = 5000.0 */
     }
-
 
     /*
     [ENUM]
@@ -1456,7 +1496,6 @@ namespace MagicalLifeAPI.Sound.FMOD
         Parameter types for the FMOD_DSP_TYPE_SEND DSP.
 
         [REMARKS]
-
         [SEE_ALSO]
         DSP::setParameterInt
         DSP::getParameterInt
@@ -1465,12 +1504,12 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_SEND
     {
         RETURNID,     /* (Type:int) - ID of the Return DSP this send is connected to (integer values only). -1 indicates no connected Return DSP. Default = -1. */
         LEVEL,        /* (Type:float) - Send level. 0.0 to 1.0. Default = 1.0 */
     }
-
 
     /*
     [ENUM]
@@ -1479,19 +1518,18 @@ namespace MagicalLifeAPI.Sound.FMOD
         Parameter types for the FMOD_DSP_TYPE_RETURN DSP.
 
         [REMARKS]
-
         [SEE_ALSO]
         DSP::setParameterInt
         DSP::getParameterInt
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_RETURN
     {
         ID,                 /* (Type:int) - ID of this Return DSP. Read-only.  Default = -1. */
         INPUT_SPEAKER_MODE  /* (Type:int) - Input speaker mode of this return.  Default = FMOD_SPEAKERMODE_DEFAULT. */
     }
-
 
     /*
     [ENUM]
@@ -1499,21 +1537,20 @@ namespace MagicalLifeAPI.Sound.FMOD
         [DESCRIPTION]
         Parameter types for the FMOD_DSP_TYPE_HIGHPASS_SIMPLE filter.
         This is a very simple single-order high pass filter.
-        The emphasis is on speed rather than accuracy, so this should not be used for task requiring critical filtering. 
+        The emphasis is on speed rather than accuracy, so this should not be used for task requiring critical filtering.
 
         [REMARKS]
-
         [SEE_ALSO]
         DSP::setParameterFloat
         DSP::getParameterFloat
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_HIGHPASS_SIMPLE
     {
         CUTOFF     /* (Type:float) - Highpass cutoff frequency in hz.  10.0 to 22000.0.  Default = 1000.0 */
     }
-
 
     /*
     [ENUM]
@@ -1522,17 +1559,16 @@ namespace MagicalLifeAPI.Sound.FMOD
         Parameter values for the FMOD_DSP_PAN_2D_STEREO_MODE parameter of the FMOD_DSP_TYPE_PAN DSP.
 
         [REMARKS]
-
         [SEE_ALSO]
         FMOD_DSP_PAN
     ]
     */
+
     public enum DSP_PAN_2D_STEREO_MODE_TYPE
     {
         DISTRIBUTED,        /* The parts of a stereo sound are spread around desination speakers based on FMOD_DSP_PAN_2D_EXTENT / FMOD_DSP_PAN_2D_DIRECTION */
         DISCRETE            /* The L/R parts of a stereo sound are rotated around a circle based on FMOD_DSP_PAN_2D_STEREO_AXIS / FMOD_DSP_PAN_2D_STEREO_SEPARATION. */
     }
-
 
     /*
     [ENUM]
@@ -1541,18 +1577,17 @@ namespace MagicalLifeAPI.Sound.FMOD
         Parameter values for the FMOD_DSP_PAN_MODE parameter of the FMOD_DSP_TYPE_PAN DSP.
 
         [REMARKS]
-
         [SEE_ALSO]
         FMOD_DSP_PAN
     ]
     */
+
     public enum DSP_PAN_MODE_TYPE
     {
         MONO,
         STEREO,
         SURROUND
     }
-
 
     /*
     [ENUM]
@@ -1561,11 +1596,11 @@ namespace MagicalLifeAPI.Sound.FMOD
         Parameter values for the FMOD_DSP_PAN_3D_ROLLOFF parameter of the FMOD_DSP_TYPE_PAN DSP.
 
         [REMARKS]
-
         [SEE_ALSO]
         FMOD_DSP_PAN
     ]
     */
+
     public enum DSP_PAN_3D_ROLLOFF_TYPE
     {
         LINEARSQUARED,
@@ -1575,7 +1610,6 @@ namespace MagicalLifeAPI.Sound.FMOD
         CUSTOM
     }
 
-
     /*
     [ENUM]
     [
@@ -1583,18 +1617,17 @@ namespace MagicalLifeAPI.Sound.FMOD
         Parameter values for the FMOD_DSP_PAN_3D_EXTENT_MODE parameter of the FMOD_DSP_TYPE_PAN DSP.
 
         [REMARKS]
-
         [SEE_ALSO]
         FMOD_DSP_PAN
     ]
     */
+
     public enum DSP_PAN_3D_EXTENT_MODE_TYPE
     {
         AUTO,
         USER,
         OFF
     }
-
 
     /*
     [ENUM]
@@ -1608,7 +1641,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         For FMOD_DSP_PAN_3D_POSITION, the following members in the FMOD_DSP_PARAMETER_3DATTRIBUTES_MULTI struct should be non zero.
         - numlisteners                   - This is typically 1, can be up to 8.  Typically more than 1 is only used for split screen purposes.  The FMOD Panner will average angles and produce the best compromise for panning and attenuation.
         - relative[listenernum].position - This is the delta between the listener position and the sound position.  Typically the listener position is subtracted from the sound position.
-        - relative[listenernum].forward  - This is the sound's forward vector.  Optional, set to 0,0,1 if not needed.  This is only relevant for more than mono sounds in 3D, that are spread amongst the destination speakers at the time of panning.   
+        - relative[listenernum].forward  - This is the sound's forward vector.  Optional, set to 0,0,1 if not needed.  This is only relevant for more than mono sounds in 3D, that are spread amongst the destination speakers at the time of panning.
                                            If the sound rotates then the L/R part of a stereo sound will rotate amongst its destination speakers.
                                            If the sound has moved and pinpointed into a single speaker, rotation of the sound will have no effect as at that point the channels are collapsed into a single point.
 
@@ -1625,6 +1658,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_PAN
     {
         MODE,                          /* (Type:int)   - Panner mode.               FMOD_DSP_PAN_MODE_MONO for mono down-mix, FMOD_DSP_PAN_MODE_STEREO for stereo panning or FMOD_DSP_PAN_MODE_SURROUND for surround panning.  Default = FMOD_DSP_PAN_MODE_SURROUND */
@@ -1651,7 +1685,6 @@ namespace MagicalLifeAPI.Sound.FMOD
         _2D_HEIGHT_BLEND,              /* (Type:float) - 2D Height blend.           When FMOD_DSP_PAN_SURROUND_SPEAKER_MODE has height speakers, control the blend between ground and height. 0.0 (ground speakers only) to 1.0 (top speakers only). Default = 0.0. */
     }
 
-
     /*
     [ENUM]
     [
@@ -1659,18 +1692,17 @@ namespace MagicalLifeAPI.Sound.FMOD
         Parameter values for the FMOD_DSP_THREE_EQ_CROSSOVERSLOPE parameter of the FMOD_DSP_TYPE_THREE_EQ DSP.
 
         [REMARKS]
-
         [SEE_ALSO]
         FMOD_DSP_THREE_EQ
     ]
     */
+
     public enum DSP_THREE_EQ_CROSSOVERSLOPE_TYPE
     {
         _12DB,
         _24DB,
         _48DB
     }
-
 
     /*
     [ENUM]
@@ -1679,7 +1711,6 @@ namespace MagicalLifeAPI.Sound.FMOD
         Parameter types for the FMOD_DSP_TYPE_THREE_EQ filter.
 
         [REMARKS]
-
         [SEE_ALSO]
         DSP::setParameterFloat
         DSP::getParameterFloat
@@ -1689,6 +1720,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_THREE_EQ_CROSSOVERSLOPE_TYPE
     ]
     */
+
     public enum DSP_THREE_EQ
     {
         LOWGAIN,       /* (Type:float) - Low frequency gain in dB.  -80.0 to 10.0.  Default = 0. */
@@ -1698,7 +1730,6 @@ namespace MagicalLifeAPI.Sound.FMOD
         HIGHCROSSOVER, /* (Type:float) - Mid-to-high crossover frequency in Hz.  10.0 to 22000.0.  Default = 4000.0. */
         CROSSOVERSLOPE /* (Type:int)   - Crossover Slope.  0 = 12dB/Octave, 1 = 24dB/Octave, 2 = 48dB/Octave.  Default = 1 (24dB/Octave). */
     }
-
 
     /*
     [ENUM]
@@ -1713,29 +1744,30 @@ namespace MagicalLifeAPI.Sound.FMOD
         I.e. If the sine wave repeats every 1024, 512, 256 etc samples and the FMOD fft window is 1024, then the signal would not need windowing.
         Not windowing is the same as FMOD_DSP_FFT_WINDOW_RECT, which is the default.
         If the cycle of the signal (ie the sine wave) is not a multiple of the window size, it will cause frequency abnormalities, so a different windowing method is needed.
-        
+
         FMOD_DSP_FFT_WINDOW_RECT.
         <img src="..\static\overview\rectangle.gif"></img>
-        
+
         FMOD_DSP_FFT_WINDOW_TRIANGLE.
         <img src="..\static\overview\triangle.gif"></img>
-        
+
         FMOD_DSP_FFT_WINDOW_HAMMING.
         <img src="..\static\overview\hamming.gif"></img>
-        
+
         FMOD_DSP_FFT_WINDOW_HANNING.
         <img src="..\static\overview\hanning.gif"></img>
-        
+
         FMOD_DSP_FFT_WINDOW_BLACKMAN.
         <img src="..\static\overview\blackman.gif"></img>
-        
+
         FMOD_DSP_FFT_WINDOW_BLACKMANHARRIS.
         <img src="..\static\overview\blackmanharris.gif"></img>
-    
+
         [SEE_ALSO]
         FMOD_DSP_FFT
     ]
     */
+
     public enum DSP_FFT_WINDOW
     {
         RECT,            /* w[n] = 1.0                                                                                            */
@@ -1745,7 +1777,6 @@ namespace MagicalLifeAPI.Sound.FMOD
         BLACKMAN,        /* w[n] = 0.42 - (0.5  * COS(n/N) ) + (0.08 * COS(2.0 * n/N) )                                           */
         BLACKMANHARRIS   /* w[n] = 0.35875 - (0.48829 * COS(1.0 * n/N)) + (0.14128 * COS(2.0 * n/N)) - (0.01168 * COS(3.0 * n/N)) */
     }
-
 
     /*
     [ENUM]
@@ -1768,6 +1799,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_FFT_WINDOW
     ]
     */
+
     public enum DSP_FFT
     {
         WINDOWSIZE,            /*  (Type:int)   - [r/w] Must be a power of 2 between 128 and 16384.  128, 256, 512, 1024, 2048, 4096, 8192, 16384 are accepted.  Default = 2048. */
@@ -1775,7 +1807,6 @@ namespace MagicalLifeAPI.Sound.FMOD
         SPECTRUMDATA,          /*  (Type:data)  - [r]   Returns the current spectrum values between 0 and 1 for each 'fft bin'.  Cast data to FMOD_DSP_PARAMETER_DATA_TYPE_FFT.  Divide the niquist rate by the window size to get the hz value per entry. */
         DOMINANT_FREQ          /*  (Type:float) - [r]   Returns the dominant frequencies for each channel. */
     }
-
 
     /*
     [ENUM]
@@ -1790,7 +1821,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         Deprecated and will be removed in a future release.
 
         This unit does not affect the incoming signal.
-        
+
         [SEE_ALSO]
         DSP::setParameterFloat
         DSP::getParameterFloat
@@ -1799,6 +1830,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_ENVELOPEFOLLOWER
     {
         ATTACK,      /* (Type:float) - Attack time (milliseconds), in the range from 0.1 through 1000. The default value is 20. */
@@ -1806,7 +1838,6 @@ namespace MagicalLifeAPI.Sound.FMOD
         ENVELOPE,    /* (Type:float) - Current value of the envelope, in the range 0 to 1. Read-only. */
         USESIDECHAIN /* (Type:bool)  - Whether to analyse the sidechain signal instead of the input signal. The default value is false */
     }
-
 
     /*
     [ENUM]
@@ -1825,6 +1856,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_CONVOLUTION_REVERB
     {
         IR,       /* (Type:data)  - [w]   16-bit reverb IR (short*) with an extra sample prepended to the start which specifies the number of channels. */
@@ -1833,7 +1865,6 @@ namespace MagicalLifeAPI.Sound.FMOD
         LINKED    /* (Type:bool)  - [r/w] Linked - channels are mixed together before processing through the reverb.  Default = TRUE. */
     }
 
-
     /*
     [ENUM]
     [
@@ -1841,13 +1872,13 @@ namespace MagicalLifeAPI.Sound.FMOD
         Parameter types for the FMOD_DSP_CHANNELMIX_OUTPUTGROUPING parameter for FMOD_DSP_TYPE_CHANNELMIX effect.
 
         [REMARKS]
-
         [SEE_ALSO]
         DSP::setParameterInt
         DSP::getParameterInt
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_CHANNELMIX_OUTPUT
     {
         DEFAULT,      /*  Output channel count = input channel count.  Mapping: See FMOD_SPEAKER enumeration. */
@@ -1859,7 +1890,6 @@ namespace MagicalLifeAPI.Sound.FMOD
         ALLLFE        /*  Output channel count = 6.  Mapping: Repeating pattern of LFE in a 5.1 output signal.  */
     }
 
-
     /*
     [ENUM]
     [
@@ -1867,16 +1897,15 @@ namespace MagicalLifeAPI.Sound.FMOD
         Parameter types for the FMOD_DSP_TYPE_CHANNELMIX filter.
 
         [REMARKS]
-        For FMOD_DSP_CHANNELMIX_OUTPUTGROUPING, this value will set the output speaker format for the DSP, and also map the incoming channels to the 
+        For FMOD_DSP_CHANNELMIX_OUTPUTGROUPING, this value will set the output speaker format for the DSP, and also map the incoming channels to the
         outgoing channels in a round-robin fashion.  Use this for example play a 32 channel input signal as if it were a repeating group of output signals.
         Ie.
         FMOD_DSP_CHANNELMIX_OUTPUT_ALLMONO    = all incoming channels are mixed to a mono output.
         FMOD_DSP_CHANNELMIX_OUTPUT_ALLSTEREO  = all incoming channels are mixed to a stereo output, ie even incoming channels 0,2,4,6,etc are mixed to left, and odd incoming channels 1,3,5,7,etc are mixed to right.
-        FMOD_DSP_CHANNELMIX_OUTPUT_ALL5POINT1 = all incoming channels are mixed to a 5.1 output.  If there are less than 6 coming in, it will just fill the first n channels in the 6 output channels.   
-                                                 If there are more, then it will repeat the input pattern to the output like it did with the stereo case, ie 12 incoming channels are mapped as 0-5 mixed to the 
+        FMOD_DSP_CHANNELMIX_OUTPUT_ALL5POINT1 = all incoming channels are mixed to a 5.1 output.  If there are less than 6 coming in, it will just fill the first n channels in the 6 output channels.
+                                                 If there are more, then it will repeat the input pattern to the output like it did with the stereo case, ie 12 incoming channels are mapped as 0-5 mixed to the
                                                  5.1 output and 6 to 11 mapped to the 5.1 output.
         FMOD_DSP_CHANNELMIX_OUTPUT_ALLLFE     = all incoming channels are mixed to a 5.1 output but via the LFE channel only.
-
 
         [SEE_ALSO]
         DSP::setParameterInt
@@ -1886,6 +1915,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_CHANNELMIX
     {
         OUTPUTGROUPING,     /* (Type:int)   - Refer to FMOD_DSP_CHANNELMIX_OUTPUT enumeration.  Default = FMOD_DSP_CHANNELMIX_OUTPUT_DEFAULT.  See remarks. */
@@ -1923,7 +1953,6 @@ namespace MagicalLifeAPI.Sound.FMOD
         GAIN_CH31           /* (Type:float) - Channel #31 gain in dB.  -80.0 to 10.0.  Default = 0. */
     }
 
-
     /*
     [ENUM]
     [
@@ -1947,6 +1976,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_TRANSCEIVER_SPEAKERMODE
     {
         AUTO = -1,     /* A transmitter will use whatever signal channel count coming in to the transmitter, to determine which speaker mode is allocated for the transceiver channel. */
@@ -1954,7 +1984,6 @@ namespace MagicalLifeAPI.Sound.FMOD
         STEREO,        /* A transmitter will always upmix or downmix to a stereo channel buffer. */
         SURROUND,      /* A transmitter will always upmix or downmix to a surround channel buffer.   Surround is the speaker mode of the system above stereo, so could be quad/surround/5.1/7.1. */
     }
-
 
     /*
     [ENUM]
@@ -1965,7 +1994,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         [REMARKS]
         The transceiver only transmits and receives to a global array of 32 channels.   The transceiver can be set to receiver mode (like a return) and can receive the signal at a variable gain (FMOD_DSP_TRANSCEIVER_GAIN).
         The transceiver can also be set to transmit to a chnnel (like a send) and can transmit the signal with a variable gain (FMOD_DSP_TRANSCEIVER_GAIN).
-    
+
         The FMOD_DSP_TRANSCEIVER_TRANSMITSPEAKERMODE is only applicable to the transmission format, not the receive format.   This means this parameter is ignored in 'receive mode'.  This allows receivers to receive at
         the speaker mode of the user's choice.   Receiving from a mono channel, is cheaper than receiving from a surround channel for example.
         The 3 speaker modes FMOD_DSP_TRANSCEIVER_SPEAKERMODE_MONO, FMOD_DSP_TRANSCEIVER_SPEAKERMODE_STEREO, FMOD_DSP_TRANSCEIVER_SPEAKERMODE_SURROUND are stored as seperate buffers in memory for a tranmitter channel.
@@ -1985,6 +2014,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_TRANSCEIVER
     {
         TRANSMIT,            /* (Type:bool)  - [r/w] - FALSE = Transceiver is a 'receiver' (like a return) and accepts data from a channel.  TRUE = Transceiver is a 'transmitter' (like a send).  Default = FALSE. */
@@ -1992,7 +2022,6 @@ namespace MagicalLifeAPI.Sound.FMOD
         CHANNEL,             /* (Type:int)   - [r/w] - Integer to select current global slot, shared by all Transceivers, that can be transmitted to or received from.  0 to 31.  Default = 0.*/
         TRANSMITSPEAKERMODE  /* (Type:int)   - [r/w] - Speaker mode (transmitter mode only).  Specifies either 0 (Auto) Default = 0.*/
     }
-
 
     /*
     [ENUM]
@@ -2002,7 +2031,6 @@ namespace MagicalLifeAPI.Sound.FMOD
         These object panners take input in, and send it to the 7.1 bed, but do not send the signal further down the DSP chain (the output of the dsp is silence).
 
         [REMARKS]
-
         [SEE_ALSO]
         DSP::setParameterFloat
         DSP::getParameterFloat
@@ -2013,6 +2041,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         FMOD_DSP_TYPE
     ]
     */
+
     public enum DSP_OBJECTPAN
     {
         _3D_POSITION,        /* (Type:data)  - 3D Position.               data of type FMOD_DSP_PARAMETER_3DATTRIBUTES_MULTI */
@@ -2026,6 +2055,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         OUTPUTGAIN           /* (Type:float) - Output gain level.         0.0 to 1.0 linear scale.  For the user to scale the output of the object panner's signal. */
     }
 
-/*$ preserve start $*/
+    /*$ preserve start $*/
 }
+
 /*$ preserve end $*/

@@ -39,7 +39,7 @@ namespace MagicalLifeAPI.Util.Reusable
         public bool Allow()
         {
             this.CurrentTick++;
-            
+
             if (this.CurrentTick >= this.Ticks)
             {
                 this.CurrentTick = 0;

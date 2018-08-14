@@ -1,12 +1,11 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.DataTypes.R;
 using MagicalLifeAPI.Entity;
-using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MagicalLifeAPI.World.Data
 {
@@ -39,7 +38,6 @@ namespace MagicalLifeAPI.World.Data
 
         [ProtoMember(6)]
         public Guid ID { get; }
-
 
         /// <summary>
         /// The width of this chunk in tiles.

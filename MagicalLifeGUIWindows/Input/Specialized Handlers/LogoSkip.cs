@@ -1,5 +1,4 @@
 ﻿using MagicalLifeGUIWindows.Screens;
-using System.Linq;
 
 namespace MagicalLifeGUIWindows.Input.Specialized
 {

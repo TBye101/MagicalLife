@@ -3,7 +3,6 @@ using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.GUI.MainMenu;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;
-using MagicalLifeGUIWindows.Rendering.GUI;
 using MagicalLifeGUIWindows.Rendering.Map;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

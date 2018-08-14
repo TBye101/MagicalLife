@@ -2,11 +2,6 @@
 using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.World.Base;
 using ProtoBuf;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Networking.World.Modifiers
 {
@@ -24,7 +19,6 @@ namespace MagicalLifeAPI.Networking.World.Modifiers
 
         [ProtoMember(3)]
         public int Dimension { get; private set; }
-
 
         /// <param name="item">The item which is being added, and needs to be synced.</param>
         /// <param name="mapLocation">The location at which the item was added at.</param>

@@ -12,7 +12,6 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
     /// </summary>
     public abstract class MonoButton : GUIElement
     {
-
         /// <summary>
         /// The text to display on the monolith.
         /// </summary>

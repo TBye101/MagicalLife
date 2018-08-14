@@ -1,7 +1,6 @@
 ﻿using MagicalLifeAPI.Entity.AI.Job.Jobs;
 using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Messages;
-using MagicalLifeAPI.Universal;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
@@ -11,7 +10,7 @@ namespace MagicalLifeAPI.Entity.AI.Job
 {
     /// <summary>
     /// Everything a <see cref="Living"/> does is a job. From construction, to hauling, to casting spells.
-    /// At some point, all implementers of <see cref="Job"/> must call <see cref="CompleteJob"/>. 
+    /// At some point, all implementers of <see cref="Job"/> must call <see cref="CompleteJob"/>.
     /// </summary>
     [ProtoContract]
     [ProtoInclude(7, typeof(BecomeAdjacentJob))]
