@@ -12,13 +12,13 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
         {
         }
 
-        public override void Click(MouseEventArgs e)
+        public override void Click(MouseEventArgs e, GUIContainer container)
         {
             FMODUtil.RaiseEvent(EffectsTable.UIClick);
             JoinGameMenu.Initialize();
         }
 
-        public override void DoubleClick(MouseEventArgs e)
+        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
         {
         }
 

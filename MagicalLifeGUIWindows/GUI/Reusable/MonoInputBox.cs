@@ -199,11 +199,11 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             }
         }
 
-        public override void Click(MouseEventArgs e)
+        public override void Click(MouseEventArgs e, GUIContainer container)
         {
         }
 
-        public override void DoubleClick(MouseEventArgs e)
+        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
         {
         }
 

@@ -88,45 +88,8 @@ namespace MagicalLifeGUIWindows.Input
                 }
             }
 
-            if (!Click(clickData, Bounds))
-            {
-                InputHistory.MapMouseClick(clickData);
-            }
-        }
-
-        /// <summary>
-        /// Handles who gets the single click event from the options provided.
-        /// </summary>
-        /// <param name="clickData"></param>
-        private static bool Click(MouseEventArgs clickData, List<GUIElement> Options)
-        {
-            int focus = -1;
-            int length = Options.Count;
-            GUIElement item = null;
-
-            for (int i = 0; i < length; i++)
-            {
-                item = Options[i];
-                if (focus == -1 && item.MouseBounds.Bounds.Contains(clickData.Position.X, clickData.Position.Y))
-                {
-                    item.HasFocus = true;
-                    focus = i;
-                }
-                else
-                {
-                    item.HasFocus = false;
-                }
-            }
-
-            if (focus != -1)
-            {
-                Options[focus].Click(clickData);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            //If the click isn't in a GUI, then it must be in the map...
+            InputHistory.MapMouseClick(clickData);
         }
 
         /// <summary>
@@ -157,7 +120,7 @@ namespace MagicalLifeGUIWindows.Input
             if (focus != -1)
             {
                 MasterLog.DebugWriteLine("Clicking on item: " + Options[focus].GetType().FullName);
-                Options[focus].Click(clickData);
+                Options[focus].Click(clickData, container);
             }
         }
 
@@ -167,19 +130,20 @@ namespace MagicalLifeGUIWindows.Input
             {
                 if (item.Visible && item.DrawingBounds.Contains(clickData.Position))
                 {
-                    DoubleClick(clickData, item.Controls);
+                    DoubleClick(clickData, item.Controls, item);
                     return;
                 }
             }
 
-            DoubleClick(clickData, Bounds);
+            //TODO: Make a special map double click handler
+            InputHistory.MapMouseClick(clickData);
         }
 
         /// <summary>
         /// Handles who gets the double click event.
         /// </summary>
         /// <param name="clickData"></param>
-        private static void DoubleClick(MouseEventArgs clickData, List<GUIElement> Options)
+        private static void DoubleClick(MouseEventArgs clickData, List<GUIElement> Options, GUIContainer container)
         {
             int focus = -1;
             int length = Options.Count;
@@ -201,7 +165,7 @@ namespace MagicalLifeGUIWindows.Input
 
             if (focus != -1)
             {
-                Options[focus].DoubleClick(clickData);
+                Options[focus].DoubleClick(clickData, container);
             }
         }
 

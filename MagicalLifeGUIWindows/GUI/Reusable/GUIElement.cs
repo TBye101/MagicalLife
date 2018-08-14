@@ -59,14 +59,14 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public abstract void Click(MouseEventArgs e);
+        public abstract void Click(MouseEventArgs e, GUIContainer container);
 
         /// <summary>
         /// Called whenever this GUI element is clicked on.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public abstract void DoubleClick(MouseEventArgs e);
+        public abstract void DoubleClick(MouseEventArgs e, GUIContainer container);
 
         /// <summary>
         /// Called every frame that the element is visible.

@@ -68,12 +68,12 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             return new Point(width, height);
         }
 
-        public override void Click(MouseEventArgs e)
+        public override void Click(MouseEventArgs e, GUIContainer container)
         {
             int indexClicked;
         }
 
-        public override void DoubleClick(MouseEventArgs e)
+        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
         {
             //Throw a double click event 
         }

@@ -25,7 +25,7 @@ namespace MagicalLifeGUIWindows.GUI.Join
             return new Rectangle(x, y, width, height);
         }
 
-        public override void Click(MouseEventArgs e)
+        public override void Click(MouseEventArgs e, GUIContainer container)
         {
             World.Mode = MagicalLifeAPI.Networking.EngineMode.ClientOnly;
             FMODUtil.RaiseEvent(EffectsTable.UIClick);
@@ -36,7 +36,7 @@ namespace MagicalLifeGUIWindows.GUI.Join
             BoundHandler.Popup(InGameGUI.InGame);
         }
 
-        public override void DoubleClick(MouseEventArgs e)
+        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
         {
         }
     }
