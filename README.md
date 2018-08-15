@@ -37,19 +37,27 @@ Check out the [demo](https://youtu.be/NV8WLheFxtM) to see the latest progress!
 ## Roadmap (In no particular order)
 AKA TODO:
 
-1. Not buggy graphics
-1.5 Items
-2. Character Actions (such as mining or building)
-3. Natural objects such as trees
-4. Character Classes and XP system
-5. Creatures (Enemies and Animals)
-6. AI
-7. Spells/Abilities
-8. Fantasy Loot
-9. Dungeons
-10. Randomized Quests
+~~Not buggy graphics~~
+~~Items~~
+~~Character Actions (such as mining or building)~~
+Save/Load Game
+Natural objects such as trees
+Character Classes and XP system
+Creatures (Enemies and Animals)
+AI
+Spells/Abilities
+Fantasy Loot
+Dungeons
+Randomized Quests
 
 Mod support: Always a priority
+
+# Installation Instructions
+
+1. Download and install the [.Net Framework 4.7.1 Runtime](https://www.microsoft.com/en-US/download/details.aspx?id=56116)
+2. Find and download a release from the releases tab of this project
+3. Extract the release
+4. Enjoy!
 
 # Vision
 
