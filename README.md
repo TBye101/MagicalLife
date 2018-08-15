@@ -38,17 +38,29 @@ Check out the [demo](https://youtu.be/NV8WLheFxtM) to see the latest progress!
 AKA TODO:
 
 ~~Not buggy graphics~~
+
 ~~Items~~
+
 ~~Character Actions (such as mining or building)~~
+
 Save/Load Game
+
 Natural objects such as trees
+
 Character Classes and XP system
+
 Creatures (Enemies and Animals)
+
 AI
+
 Spells/Abilities
+
 Fantasy Loot
+
 Dungeons
+
 Randomized Quests
+
 
 Mod support: Always a priority
 
