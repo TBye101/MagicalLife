@@ -11,25 +11,25 @@ namespace MagicalLifeAPI.World.Data
     /// Holds some information about the level of the world.
     /// Could be a dungeon, the starting Point2D, or some other thing.
     /// </summary>
-    [ProtoContract]
+    //[ProtoContract]
     public class Dimension
     {
         /// <summary>
         /// Handles access to the chunks stored in this dimension.
         /// </summary>
-        [ProtoMember(1)]
+        //[ProtoMember(1)]
         private readonly ChunkManager Manager;
 
         /// <summary>
         /// The display name of the dimension.
         /// </summary>
-        [ProtoMember(2)]
+        //[ProtoMember(2)]
         public string DimensionName { get; set; }
 
-        [ProtoMember(3)]
+        //[ProtoMember(3)]
         public Guid ID { get; }
 
-        [ProtoMember(4)]
+        //[ProtoMember(4)]
         public ItemRegistry Items { get; set; }
 
         /// <summary>
@@ -70,17 +70,12 @@ namespace MagicalLifeAPI.World.Data
         {
             this.Manager = new ChunkManager(this.ID, chunks);
             this.DimensionName = dimensionName;
-            World.Storage.PrepareForDimension(this.ID);
             this.ID = Guid.NewGuid();
 
             int dimensionID = World.AddDimension(this);
 
             //Anything that needs a dimensionID
             this.Items = new ItemRegistry(dimensionID);
-        }
-
-        public Dimension()
-        {
         }
 
         public Chunk GetChunkForLocation(int x, int y)

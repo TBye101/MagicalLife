@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.World.Base;
+using MagicalLifeAPI.World.Data.Disk;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
@@ -19,8 +20,6 @@ namespace MagicalLifeAPI.World.Data
         /// </summary>
         [ProtoMember(1)]
         public static List<Dimension> Dimensions { get; set; } = new List<Dimension>();
-
-        public static WorldChunkStorage Storage { get; set; } = new WorldChunkStorage(Filing.FileSystemManager.GetIOSafeTime());
 
         public static EngineMode Mode { get; set; }
         public static object Data { get; set; }

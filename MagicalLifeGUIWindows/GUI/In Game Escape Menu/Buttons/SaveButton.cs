@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Sound;
+using MagicalLifeAPI.World.Data.Disk;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
@@ -29,11 +30,13 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu.Buttons
         public override void Click(MouseEventArgs e, GUIContainer container)
         {
             FMODUtil.RaiseEvent(EffectsTable.UIClick);
+            WorldStorage.Save(WorldStorage.SaveName);
         }
 
         public override void DoubleClick(MouseEventArgs e, GUIContainer container)
         {
             FMODUtil.RaiseEvent(EffectsTable.UIClick);
+            WorldStorage.Save(WorldStorage.SaveName);
         }
     }
 }

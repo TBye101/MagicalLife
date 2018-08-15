@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.World.Base;
+using MagicalLifeAPI.World.Data.Disk;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
@@ -15,25 +16,25 @@ namespace MagicalLifeAPI.World.Data
         /// <summary>
         /// A 2D array that holds every chunk in the dimension that this chunk manager services.
         /// </summary>
-        [ProtoMember(1)]
+        //[ProtoMember(1)]
         private ProtoArray<ChunkAccess> Chunks { get; set; }
 
         /// <summary>
         /// The ID of the dimension that this chunk manager services.
         /// </summary>
-        [ProtoMember(2)]
+        //[ProtoMember(2)]
         private Guid DimensionID;
 
         /// <summary>
         /// The width of this dimension in chunks.
         /// </summary>
-        [ProtoMember(3)]
+        //[ProtoMember(3)]
         public int Width { get; set; }
 
         /// <summary>
         /// The height of the dimension in chunks.
         /// </summary>
-        [ProtoMember(4)]
+        //[ProtoMember(4)]
         public int Height { get; set; }
 
         public ChunkManager(Guid dimensionID, ProtoArray<Chunk> chunks)
@@ -113,7 +114,7 @@ namespace MagicalLifeAPI.World.Data
 
             if (storage.Chunk == null)
             {
-                return World.Storage.LoadChunk(chunkX, chunkY, this.DimensionID);
+                return WorldStorage.ChunkStorage.LoadChunk(chunkX, chunkY, this.DimensionID);
             }
             else
             {

@@ -215,8 +215,12 @@
     <Compile Include="World\Data\ChunkManager.cs" />
     <Compile Include="World\Data\Dimension.cs" />
     <Compile Include="World\Data\ComplexItemStack.cs" />
+    <Compile Include="World\Data\Disk\DataStorage\DimensionHeader.cs" />
+    <Compile Include="World\Data\Disk\DataStorage\AbstractWorldSink.cs" />
+    <Compile Include="World\Data\Disk\DataStorage\WorldDiskSink.cs" />
     <Compile Include="World\Data\Disk\DimensionStorage.cs" />
     <Compile Include="World\Data\Disk\ChunkStorage.cs" />
+    <Compile Include="World\Data\Disk\ItemRegistryStorage.cs" />
     <Compile Include="World\Data\Disk\WorldStorage.cs" />
     <Compile Include="World\Items\StoneChunk.cs" />
     <Compile Include="World\Resources\Stone.cs" />

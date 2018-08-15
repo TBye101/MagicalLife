@@ -32,12 +32,14 @@ namespace MagicalLifeAPI.World.Data.Disk
         /// </summary>
         public static readonly Dictionary<Guid, string> DimensionPaths = new Dictionary<Guid, string>();
 
-        private static DimensionStorage Dimension { get; set; } = new DimensionStorage();
+        public static DimensionStorage DimensionStorage { get; private set; } = new DimensionStorage();
+
+        public static ChunkStorage ChunkStorage { get; private set; }
 
 
         public static void Save(string saveName)
         {
-            SaveName = saveName;
+            Initialize(saveName);
 
             DirectoryInfo gameSavePath = Directory.CreateDirectory(FileSystemManager.SaveDirectory + Path.DirectorySeparatorChar + saveName);
             GameSaveRoot = gameSavePath.FullName;
@@ -47,13 +49,34 @@ namespace MagicalLifeAPI.World.Data.Disk
 
             foreach (Dimension item in World.Dimensions)
             {
-                Dimension.Save(item);
+                DimensionStorage.Save(item);
             }
         }
 
-        public static void Load(string saveName, Guid ID)
+        private static void Initialize(string saveName)
         {
             SaveName = saveName;
+
+            if (ChunkStorage == null)
+            {
+                ChunkStorage = new ChunkStorage(saveName);
+            }
+
+            ParseDimensions(saveName);
+        }
+
+        /// <summary>
+        /// Parses the dimension headers to determine the Guid and integer IDs of the dimension.
+        /// </summary>
+        /// <param name="saveName"></param>
+        private static void ParseDimensions(string saveName)
+        {
+
+        }
+
+        public static void Load(string saveName)
+        {
+            Initialize(saveName);
 
             if (Directory.Exists(FileSystemManager.SaveDirectory + Path.DirectorySeparatorChar + saveName))
             {
@@ -63,7 +86,7 @@ namespace MagicalLifeAPI.World.Data.Disk
                 {
                     foreach (string item in Directory.EnumerateFiles(GameSaveRoot + Path.DirectorySeparatorChar + "Dimensions"))
                     {
-                        World.Dimensions.Add(Dimension.Load(Guid.Parse(item)));
+                        World.Dimensions.Add(DimensionStorage.Load(Guid.Parse(item)));
                     }
                 }
                 else
