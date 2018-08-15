@@ -20,7 +20,7 @@ namespace MagicalLifeAPI.World.Data
         [ProtoMember(1)]
         public static List<Dimension> Dimensions { get; set; } = new List<Dimension>();
 
-        public static WorldStorage Storage { get; set; } = new WorldStorage(Filing.FileSystemManager.GetIOSafeTime());
+        public static WorldChunkStorage Storage { get; set; } = new WorldChunkStorage(Filing.FileSystemManager.GetIOSafeTime());
 
         public static EngineMode Mode { get; set; }
         public static object Data { get; set; }

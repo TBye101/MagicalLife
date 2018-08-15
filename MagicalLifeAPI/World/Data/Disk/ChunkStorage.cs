@@ -6,42 +6,17 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace MagicalLifeAPI.World.Data
+namespace MagicalLifeAPI.World.Data.Disk
 {
     /// <summary>
-    /// Knows how to load and save data from every dimension in the world.
+    /// Knows how to load and save chunks from every dimension in the world.
     /// </summary>
-    public class WorldStorage
+    public class ChunkStorage
     {
-        /// <summary>
-        /// The name of the save game.
-        /// </summary>
-        private readonly string SaveName;
 
-        private readonly string GameSaveRoot;
-
-        /// <summary>
-        /// Contains the path to the root of each dimension directory, where the chunk files go.
-        /// Key: The ID of the dimension.
-        /// Value: The path to the root of where all of the chunks are stored for the dimension.
-        /// </summary>
-        private readonly Dictionary<Guid, string> DimensionPaths = new Dictionary<Guid, string>();
-
-        public WorldStorage(string saveName)
+        public ChunkStorage(string saveName)
         {
-            this.SaveName = saveName;
 
-            DirectoryInfo gameSavePath = Directory.CreateDirectory(FileSystemManager.SaveDirectory + Path.DirectorySeparatorChar + this.SaveName);
-            this.GameSaveRoot = gameSavePath.FullName;
-        }
-
-        /// <summary>
-        /// Creates folders for a new dimension.
-        /// </summary>
-        public void PrepareForDimension(Guid dimensionID)
-        {
-            DirectoryInfo info = Directory.CreateDirectory(this.GameSaveRoot + Path.DirectorySeparatorChar + dimensionID);
-            this.DimensionPaths.Add(dimensionID, info.FullName);
         }
 
         /// <summary>
@@ -51,7 +26,7 @@ namespace MagicalLifeAPI.World.Data
         /// <param name="dimensionID">The ID of the dimension the chunk belongs to.</param>
         public void SaveChunk(Chunk chunk, Guid dimensionID)
         {
-            bool dimensionExists = this.DimensionPaths.TryGetValue(dimensionID, out string path);
+            bool dimensionExists = WorldStorage.DimensionPaths.TryGetValue(dimensionID, out string path);
 
             if (!dimensionExists)
             {
@@ -90,7 +65,7 @@ namespace MagicalLifeAPI.World.Data
         /// <returns></returns>
         public Chunk LoadChunk(Point2D chunkLocation, Guid dimensionID)
         {
-            bool dimensionExists = this.DimensionPaths.TryGetValue(dimensionID, out string path);
+            bool dimensionExists = WorldStorage.DimensionPaths.TryGetValue(dimensionID, out string path);
 
             if (!dimensionExists)
             {
