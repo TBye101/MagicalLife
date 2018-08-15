@@ -4,6 +4,7 @@ using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Items;
 using MagicalLifeGUIWindows.GUI;
+using MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu;
 using MonoGame.Extended.Input.InputListeners;
 
 namespace MagicalLifeGUIWindows.Input
@@ -24,18 +25,6 @@ namespace MagicalLifeGUIWindows.Input
             {
                 this.HandleEscapeKey();
             }
-            if (e.Key == Microsoft.Xna.Framework.Input.Keys.R)
-            {
-                Point2D result = ItemFinder.FindNearestLocation(0, new MagicalLifeAPI.DataTypes.Point2D(0, 0), 0);
-
-                if (result != null)
-                {
-                    ItemAdder.AddItem(new StoneChunk(0), result, 0);
-                    ItemAdder.AddItem(new StoneChunk(0), result, 0);
-                    ItemRemover.RemoveSome(result, 0, 1);
-                    ItemRemover.RemoveAllItems(result, 0);
-                }
-            }
         }
 
         private void HandleEscapeKey()
@@ -46,6 +35,8 @@ namespace MagicalLifeGUIWindows.Input
             if (World.Dimensions.Count > 0)
             {
                 //Ingame: Open up in game menu
+                InGameEscapeMenu.Initialize();
+
             }
             else
             {

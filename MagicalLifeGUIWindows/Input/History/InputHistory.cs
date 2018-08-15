@@ -55,6 +55,7 @@ namespace MagicalLifeGUIWindows.Input.History
 
         private static void KeyboardListener_KeyReleased(object sender, KeyboardEventArgs e)
         {
+            //MasterLog.DebugWriteLine("Character: " + e.Character.ToString() + ", int: " + e.Key);
             switch (e.Key)
             {
                 case Microsoft.Xna.Framework.Input.Keys.LeftShift:

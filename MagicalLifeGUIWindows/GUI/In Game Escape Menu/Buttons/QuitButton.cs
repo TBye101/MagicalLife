@@ -8,20 +8,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MagicalLifeGUIWindows.GUI.Load_Game_Menu.Buttons
+namespace MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu.Buttons
 {
-    public class LoadSaveButton : MonoButton
+    public class QuitButton : MonoButton
     {
-        public LoadSaveButton() : base("MenuButton", GetDisplayArea(), true, "Load Save")
+        public QuitButton() : base("MenuButton", GetDisplayArea(), true, "Quit")
         {
         }
 
         private static Rectangle GetDisplayArea()
         {
-            int x = LoadGameMenuLayout.LoadSaveButtonX;
-            int y = LoadGameMenuLayout.LoadSaveButtonY;
-            int width = LoadGameMenuLayout.LoadSaveButtonWidth;
-            int height = LoadGameMenuLayout.LoadSaveButtonHeight;
+            int x = InGameEscapeMenuLayout.ButtonX;
+            int y = InGameEscapeMenuLayout.QuitButtonY;
+            int width = InGameEscapeMenuLayout.ButtonWidth;
+            int height = InGameEscapeMenuLayout.ButtonHeight;
 
             return new Rectangle(x, y, width, height);
         }
