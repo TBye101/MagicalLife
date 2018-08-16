@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Filing;
+using MagicalLifeAPI.World.Data.Disk.DataStorage;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -32,14 +33,24 @@ namespace MagicalLifeAPI.World.Data.Disk
         /// </summary>
         public static readonly Dictionary<Guid, string> DimensionPaths = new Dictionary<Guid, string>();
 
-        public static DimensionStorage DimensionStorage { get; private set; } = new DimensionStorage();
+        /// <summary>
+        /// Knows how to save information about a dimension.
+        /// </summary>
+        public static DimensionStorage DimensionStorage { get; private set; }
 
+        /// <summary>
+        /// Knows how to save a dimensions chunks.
+        /// </summary>
         public static ChunkStorage ChunkStorage { get; private set; }
 
+        /// <summary>
+        /// Knows how to save a dimension's item registry.
+        /// </summary>
+        public static ItemRegistryStorage ItemStorage { get; private set; }
 
-        public static void Save(string saveName)
+
+        public static void SerializeWorld(string saveName, AbstractWorldSink sink)
         {
-            Initialize(saveName);
 
             DirectoryInfo gameSavePath = Directory.CreateDirectory(FileSystemManager.SaveDirectory + Path.DirectorySeparatorChar + saveName);
             GameSaveRoot = gameSavePath.FullName;
@@ -47,9 +58,11 @@ namespace MagicalLifeAPI.World.Data.Disk
             DirectoryInfo dimensionSavePath = Directory.CreateDirectory(GameSaveRoot + Path.DirectorySeparatorChar + "Dimensions");
             DimensionSaveFolder = dimensionSavePath.FullName;
 
+            Initialize(saveName);
+
             foreach (Dimension item in World.Dimensions)
             {
-                DimensionStorage.Save(item);
+                DimensionStorage.Serialize(item, sink);
             }
         }
 
@@ -62,19 +75,33 @@ namespace MagicalLifeAPI.World.Data.Disk
                 ChunkStorage = new ChunkStorage(saveName);
             }
 
+            if (DimensionStorage == null)
+            {
+                DimensionStorage = new DimensionStorage();
+            }
+
+            if (ItemStorage == null)
+            {
+                ItemStorage = new ItemRegistryStorage();
+            }
+
             ParseDimensions(saveName);
         }
 
         /// <summary>
-        /// Parses the dimension headers to determine the Guid and integer IDs of the dimension.
+        /// Parses the dimensions to setup for serialization.
         /// </summary>
         /// <param name="saveName"></param>
         private static void ParseDimensions(string saveName)
         {
-
+            foreach (Dimension item in World.Dimensions)
+            {
+                DirectoryInfo dirInfo = Directory.CreateDirectory(WorldStorage.DimensionSaveFolder + Path.DirectorySeparatorChar + item.ID);
+                DimensionPaths.Add(item.ID, dirInfo.FullName);
+            }
         }
 
-        public static void Load(string saveName)
+        public static void LoadWorld(string saveName)
         {
             Initialize(saveName);
 

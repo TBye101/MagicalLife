@@ -33,7 +33,7 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
         public MineJob(Point2D target) : base(GetDependencies(target), true)
         {
             this.Target = target;
-            MasterLog.DebugWriteLine("Target: " + this.Target.ToXNA().ToString());
+            MasterLog.DebugWriteLine("Target: " + this.Target.ToString());
             this.HitTimer = new TickTimer(30);
         }
 

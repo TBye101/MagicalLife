@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Filing;
 using MagicalLifeAPI.Networking.Serialization;
+using MagicalLifeAPI.World.Data.Disk.DataStorage;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,7 +25,7 @@ namespace MagicalLifeAPI.World.Data.Disk
         /// </summary>
         /// <param name="chunk">The chunk to save.</param>
         /// <param name="dimensionID">The ID of the dimension the chunk belongs to.</param>
-        public void SaveChunk(Chunk chunk, Guid dimensionID)
+        public void SaveChunk(Chunk chunk, Guid dimensionID, AbstractWorldSink sink)
         {
             bool dimensionExists = WorldStorage.DimensionPaths.TryGetValue(dimensionID, out string path);
 
@@ -33,15 +34,7 @@ namespace MagicalLifeAPI.World.Data.Disk
                 throw new DirectoryNotFoundException("Dimension save folder does not exist!");
             }
 
-            using (FileStream fs = File.Create(path + chunk.ChunkLocation.ToString() + ".chunk"))
-            {
-                string serialized = Convert.ToBase64String(ProtoUtil.Serialize<Chunk>(chunk));
-
-                using (StreamWriter sw = new StreamWriter(fs))
-                {
-                    sw.WriteAsync(serialized);
-                }
-            }
+            sink.Receive(chunk, path + Path.DirectorySeparatorChar + chunk.ChunkLocation.ToString() + ".chunk");
         }
 
         /// <summary>

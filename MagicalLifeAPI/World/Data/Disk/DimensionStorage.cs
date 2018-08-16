@@ -1,4 +1,6 @@
-﻿using MagicalLifeAPI.Networking.Serialization;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Networking.Serialization;
+using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.World.Data.Disk.DataStorage;
 using System;
 using System.Collections.Generic;
@@ -10,7 +12,7 @@ using System.Threading.Tasks;
 namespace MagicalLifeAPI.World.Data.Disk
 {
     /// <summary>
-    /// Knows how to save a dimension
+    /// Knows how to serialize a dimension.
     /// </summary>
     public class DimensionStorage
     {
@@ -28,13 +30,34 @@ namespace MagicalLifeAPI.World.Data.Disk
             WorldStorage.DimensionPaths.Add(dimensionID, info.FullName);
         }
 
-        public Dimension Load(Guid ID)
+        /// <summary>
+        /// Loads the dimension, without actually loading any chunks.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Dimension Load(Guid id)
         {
-            throw new NotImplementedException();
+            Dimension dimension; //need name, and chunks
+            DimensionHeader header = this.LoadDimensionHeader(id);
+
+            //A array of unloaded chunks.
+            ProtoArray<Chunk> chunks = new ProtoArray<Chunk>(header.Width, header.Height);
+
+            dimension = new Dimension(header.DimensionName, chunks);
+
+            return dimension;
         }
 
-        public void Save(Dimension dimension)
+        /// <summary>
+        /// Serializes the dimension.
+        /// </summary>
+        /// <param name="dimension"></param>
+        /// <param name="sink"></param>
+        public void Serialize(Dimension dimension, AbstractWorldSink sink)
         {
+            this.SerializeDimensionHeader(dimension, sink);
+            this.SerializeItemRegistry(dimension, sink);
+
             int width = dimension.Width;
             int height = dimension.Height;
 
@@ -43,24 +66,39 @@ namespace MagicalLifeAPI.World.Data.Disk
                 for (int y = 0; y < height; y++)
                 {
                     Chunk chunk = dimension.GetChunk(x, y);
-                    WorldStorage.ChunkStorage.SaveChunk(chunk, dimension.ID);
-                    SaveDimensionHeader(dimension);
+                    WorldStorage.ChunkStorage.SaveChunk(chunk, dimension.ID, sink);
                 }
             }
         }
 
-        private void SaveDimensionHeader(Dimension dimension)
+        private void SerializeItemRegistry(Dimension dimension, AbstractWorldSink sink)
+        {
+            WorldStorage.ItemStorage.SaveItemRegistry(dimension, sink);
+        }
+
+        private ItemRegistry LoadItemRegistry(Guid id)
+        {
+            return WorldStorage.ItemStorage.LoadItemRegistry(id);
+        }
+
+        private DimensionHeader LoadDimensionHeader(Guid id)
+        {
+            string dimensionRoot = WorldStorage.DimensionPaths[id];
+
+            using (StreamReader sr = new StreamReader(dimensionRoot + id + ".header"))
+            {
+                DimensionHeader result = (DimensionHeader)ProtoUtil.TypeModel.Deserialize(sr.BaseStream, null, typeof(DimensionHeader));
+
+                return result;
+            }
+        }
+
+        private void SerializeDimensionHeader(Dimension dimension, AbstractWorldSink sink)
         {
             string dimensionRoot = WorldStorage.DimensionPaths[dimension.ID];
+            DimensionHeader header = new DimensionHeader(dimension.DimensionName, dimension.ID, dimension.Width, dimension.Height);
 
-            using (FileStream writer = new FileStream(dimensionRoot + dimension.ID + ".header", FileMode.Create))
-            {
-                DimensionHeader header = new DimensionHeader(dimension.DimensionName, dimension.ID, dimension.Width, dimension.Height);
-                byte[] headerData = ProtoUtil.Serialize(header);
-
-                writer.WriteAsync(headerData, 0, headerData.Length);
-                //Have an IWorldReciever so that serializing the world into its parts doesn't know if it is going on disk or over the network
-            }
+            sink.Receive(header, dimensionRoot + Path.DirectorySeparatorChar + dimension.ID + ".header");
         }
     }
 }

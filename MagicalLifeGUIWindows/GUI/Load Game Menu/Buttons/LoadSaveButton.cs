@@ -35,7 +35,7 @@ namespace MagicalLifeGUIWindows.GUI.Load_Game_Menu.Buttons
             {
                 FMODUtil.RaiseEvent(EffectsTable.UIClick);
                 RenderableString selectedItem = (RenderableString)LoadGameMenu.menu.SaveSelectListBox.Items[selected];
-                WorldStorage.Load(selectedItem.Text);
+                WorldStorage.LoadWorld(selectedItem.Text);
             }
         }
 

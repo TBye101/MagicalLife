@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using ProtoBuf;
+using System;
 
 namespace MagicalLifeAPI.DataTypes
 {
@@ -43,13 +44,30 @@ namespace MagicalLifeAPI.DataTypes
             return new Point2D(value.X, value.Y);
         }
 
-        /// <summary>
-        /// Converts this point to a monogame/xna point.
-        /// </summary>
-        /// <returns></returns>
-        public Point ToXNA()
+        public static implicit operator Point(Point2D value)
         {
-            return new Point(this.X, this.Y);
+            return new Point(value.X, value.Y);
+        }
+
+        public static Point2D Parse(string str)
+        {
+            int x;
+            int y;
+
+            int xStart = 2;
+            int xEnd = str.IndexOf(',');
+            x = Convert.ToInt32(str.Substring(xStart, xEnd - xStart));
+
+            int yStart = xEnd + 2;
+            int yEnd = str.Length - 2;
+            y = Convert.ToInt32(str.Substring(yStart, yEnd - yStart));
+
+            return new Point2D(x, y);
+        }
+
+        public override string ToString()
+        {
+            return "{ " + this.X.ToString() + ", " + this.Y.ToString() + " }";
         }
     }
 }

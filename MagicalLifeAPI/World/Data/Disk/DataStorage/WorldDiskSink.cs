@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.World.Data.Disk.DataStorage
 {
+    /// <summary>
+    /// Serializes Protobuf-net objects to disk.
+    /// </summary>
     public class WorldDiskSink : AbstractWorldSink
     {
         public WorldDiskSink()
@@ -21,7 +24,7 @@ namespace MagicalLifeAPI.World.Data.Disk.DataStorage
             byte[] worldData = ProtoUtil.Serialize(data);
             using (FileStream fs = new FileStream(filePath, FileMode.Create))
             {
-                fs.WriteAsync(worldData, 0, worldData.Length);
+                fs.Write(worldData, 0, worldData.Length);
             }
         }
 
