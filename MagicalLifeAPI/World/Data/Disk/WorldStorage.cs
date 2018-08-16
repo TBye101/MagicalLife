@@ -51,13 +51,6 @@ namespace MagicalLifeAPI.World.Data.Disk
 
         public static void SerializeWorld(string saveName, AbstractWorldSink sink)
         {
-
-            DirectoryInfo gameSavePath = Directory.CreateDirectory(FileSystemManager.SaveDirectory + Path.DirectorySeparatorChar + saveName);
-            GameSaveRoot = gameSavePath.FullName;
-
-            DirectoryInfo dimensionSavePath = Directory.CreateDirectory(GameSaveRoot + Path.DirectorySeparatorChar + "Dimensions");
-            DimensionSaveFolder = dimensionSavePath.FullName;
-
             Initialize(saveName);
 
             foreach (Dimension item in World.Dimensions)
@@ -69,6 +62,12 @@ namespace MagicalLifeAPI.World.Data.Disk
         private static void Initialize(string saveName)
         {
             SaveName = saveName;
+
+            DirectoryInfo gameSavePath = Directory.CreateDirectory(FileSystemManager.SaveDirectory + Path.DirectorySeparatorChar + saveName);
+            GameSaveRoot = gameSavePath.FullName;
+
+            DirectoryInfo dimensionSavePath = Directory.CreateDirectory(GameSaveRoot + Path.DirectorySeparatorChar + "Dimensions");
+            DimensionSaveFolder = dimensionSavePath.FullName;
 
             if (ChunkStorage == null)
             {
@@ -94,10 +93,27 @@ namespace MagicalLifeAPI.World.Data.Disk
         /// <param name="saveName"></param>
         private static void ParseDimensions(string saveName)
         {
-            foreach (Dimension item in World.Dimensions)
+            if (World.Dimensions.Count > 0)
             {
-                DirectoryInfo dirInfo = Directory.CreateDirectory(WorldStorage.DimensionSaveFolder + Path.DirectorySeparatorChar + item.ID);
-                DimensionPaths.Add(item.ID, dirInfo.FullName);
+                //We are saving
+                foreach (Dimension item in World.Dimensions)
+                {
+                    DirectoryInfo dirInfo = Directory.CreateDirectory(WorldStorage.DimensionSaveFolder + Path.DirectorySeparatorChar + item.ID);
+                    DimensionPaths.Add(item.ID, dirInfo.FullName);
+                }
+            }
+            else
+            {
+                //We are loading
+
+
+
+                foreach (string item in Directory.EnumerateDirectories(DimensionSaveFolder))
+                {
+                    string dirName = Path.GetFileName(item);
+                    DimensionHeader header = DimensionStorage.LoadDimensionHeader(Guid.Parse(dirName), item);
+                    DimensionPaths.Add(header.ID, item);
+                }
             }
         }
 
@@ -111,9 +127,10 @@ namespace MagicalLifeAPI.World.Data.Disk
 
                 if (Directory.Exists(GameSaveRoot + Path.DirectorySeparatorChar + "Dimensions"))
                 {
-                    foreach (string item in Directory.EnumerateFiles(GameSaveRoot + Path.DirectorySeparatorChar + "Dimensions"))
+                    foreach (string item in Directory.EnumerateDirectories(GameSaveRoot + Path.DirectorySeparatorChar + "Dimensions"))
                     {
-                        World.Dimensions.Add(DimensionStorage.Load(Guid.Parse(item)));
+                        string dirName = Path.GetFileName(item);
+                        DimensionStorage.Load(Guid.Parse(dirName));
                     }
                 }
                 else

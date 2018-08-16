@@ -1,7 +1,15 @@
-﻿using MagicalLifeAPI.Sound;
+﻿using MagicalLifeAPI.Networking.Client;
+using MagicalLifeAPI.Networking.Server;
+using MagicalLifeAPI.Sound;
+using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Data.Disk;
+using MagicalLifeClient;
+using MagicalLifeGUIWindows.GUI.In;
+using MagicalLifeGUIWindows.GUI.New;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.GUI.Reusable.API;
+using MagicalLifeGUIWindows.Input;
+using MagicalLifeServer;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 using System;
@@ -34,14 +42,25 @@ namespace MagicalLifeGUIWindows.GUI.Load_Game_Menu.Buttons
             if (selected != -1)
             {
                 FMODUtil.RaiseEvent(EffectsTable.UIClick);
+                World.Mode = MagicalLifeAPI.Networking.EngineMode.ServerAndClient;
                 RenderableString selectedItem = (RenderableString)LoadGameMenu.menu.SaveSelectListBox.Items[selected];
                 WorldStorage.LoadWorld(selectedItem.Text);
+
+                Server.Load();
+                ClientSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings());
+                ServerSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings());
+                Client.Load();
+                Server.StartGame();
+                BoundHandler.RemoveContainer(LoadGameMenu.menu);
+                MenuHandler.Clear();
+                BoundHandler.HideAll();
+                InGameGUI.Initialize();
+                BoundHandler.Popup(InGameGUI.InGame);
             }
         }
 
         public override void DoubleClick(MouseEventArgs e, GUIContainer container)
         {
-            FMODUtil.RaiseEvent(EffectsTable.UIClick);
         }
     }
 }

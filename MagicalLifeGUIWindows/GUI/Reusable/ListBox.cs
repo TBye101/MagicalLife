@@ -105,7 +105,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             }
 
             //Display each item
-            for (int i = 0; i < this.ItemRenderCount; i++)
+            for (int i = 0; i < length; i++)
             {
                 //Draw the background
                 Rectangle target = new Rectangle(new Point(x, y), this.ItemDisplayBounds);

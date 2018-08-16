@@ -43,7 +43,7 @@ namespace MagicalLifeAPI.World.Data.Disk
             //A array of unloaded chunks.
             ProtoArray<Chunk> chunks = new ProtoArray<Chunk>(header.Width, header.Height);
 
-            dimension = new Dimension(header.DimensionName, chunks);
+            dimension = new Dimension(header.DimensionName, chunks, header.ID, WorldStorage.ItemStorage.LoadItemRegistry(id));
 
             return dimension;
         }
@@ -81,16 +81,31 @@ namespace MagicalLifeAPI.World.Data.Disk
             return WorldStorage.ItemStorage.LoadItemRegistry(id);
         }
 
-        private DimensionHeader LoadDimensionHeader(Guid id)
+        /// <summary>
+        /// Loads the dimension header for the specified dimension.
+        /// </summary>
+        /// <param name="id">The ID of the dimension.</param>
+        /// <param name="dimensionRoot">The path to the dimension's root directory.</param>
+        /// <returns></returns>
+        public DimensionHeader LoadDimensionHeader(Guid id, string dimensionRoot)
         {
-            string dimensionRoot = WorldStorage.DimensionPaths[id];
-
-            using (StreamReader sr = new StreamReader(dimensionRoot + id + ".header"))
+            using (StreamReader sr = new StreamReader(dimensionRoot + Path.DirectorySeparatorChar + id + ".header"))
             {
-                DimensionHeader result = (DimensionHeader)ProtoUtil.TypeModel.Deserialize(sr.BaseStream, null, typeof(DimensionHeader));
+                DimensionHeader result = (DimensionHeader)ProtoUtil.TypeModel.DeserializeWithLengthPrefix(sr.BaseStream, null, typeof(DimensionHeader), ProtoBuf.PrefixStyle.Base128, 0);
 
                 return result;
             }
+        }
+
+        /// <summary>
+        /// Loads the dimension header for the specified dimension.
+        /// </summary>
+        /// <param name="id">The ID of the dimension.</param>
+        /// <returns></returns>
+        public DimensionHeader LoadDimensionHeader(Guid id)
+        {
+            string dimensionRoot = WorldStorage.DimensionPaths[id];
+            return this.LoadDimensionHeader(id, dimensionRoot);
         }
 
         private void SerializeDimensionHeader(Dimension dimension, AbstractWorldSink sink)

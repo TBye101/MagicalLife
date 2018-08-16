@@ -65,10 +65,9 @@ namespace MagicalLifeAPI.World.Data.Disk
                 throw new DirectoryNotFoundException("Dimension save folder does not exist!");
             }
 
-            using (StreamReader sr = new StreamReader(path + chunkLocation.ToString() + ".chunk"))
+            using (StreamReader sr = new StreamReader(path + Path.DirectorySeparatorChar + chunkLocation.ToString() + ".chunk"))
             {
-                Task<string> serialized = sr.ReadToEndAsync();
-                return ProtoUtil.Deserialize<Chunk>(serialized.Result);
+                return (Chunk)ProtoUtil.TypeModel.DeserializeWithLengthPrefix(sr.BaseStream, null, typeof(Chunk), ProtoBuf.PrefixStyle.Base128, 0);
             }
         }
     }

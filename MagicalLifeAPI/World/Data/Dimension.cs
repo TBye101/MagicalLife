@@ -67,6 +67,11 @@ namespace MagicalLifeAPI.World.Data
             }
         }
 
+        /// <summary>
+        /// This constructor creates a new dimension.
+        /// </summary>
+        /// <param name="dimensionName"></param>
+        /// <param name="chunks"></param>
         public Dimension(string dimensionName, ProtoArray<Chunk> chunks)
         {
             this.Manager = new ChunkManager(this.ID, chunks);
@@ -77,6 +82,25 @@ namespace MagicalLifeAPI.World.Data
 
             //Anything that needs a dimensionID
             this.Items = new ItemRegistry(dimensionID);
+        }
+
+        /// <summary>
+        /// This constructor is for creating a dimension identical to a dimension loaded from disk/network.
+        /// </summary>
+        /// <param name="dimensionName"></param>
+        /// <param name="chunks"></param>
+        /// <param name="id"></param>
+        /// <param name="registry"></param>
+        public Dimension(string dimensionName, ProtoArray<Chunk> chunks, Guid id, ItemRegistry registry)
+        {
+            this.ID = id;
+            this.Manager = new ChunkManager(id, chunks);
+            this.DimensionName = dimensionName;
+
+            int dimensionID = World.AddDimension(this);
+
+            //Anything that needs a dimensionID
+            this.Items = registry;
         }
 
         public Chunk GetChunkForLocation(int x, int y)

@@ -45,9 +45,15 @@ namespace MagicalLifeAPI.World.Data
 
             List<ChunkAccess> temp = new List<ChunkAccess>();
 
-            foreach (Chunk item in chunks)
+            int xLength = chunks.Width;
+            int yLength = chunks.Height;
+
+            for (int x = 0; x < xLength; x++)
             {
-                temp.Add(new ChunkAccess(item, new ChunkAccessRecorder(item.ChunkLocation.X, item.ChunkLocation.Y)));
+                for (int y = 0; y < yLength; y++)
+                {
+                    temp.Add(new ChunkAccess(chunks[x, y], new ChunkAccessRecorder(x, y)));
+                }
             }
 
             this.Chunks = new ProtoArray<ChunkAccess>(chunks.Width, chunks.Height, temp.ToArray());
@@ -139,11 +145,21 @@ namespace MagicalLifeAPI.World.Data
 
         public IEnumerator<Tile> GetEnumerator()
         {
-            foreach (ChunkAccess item in this.Chunks)
+            for (int x = 0; x < this.Width; x++)
             {
-                foreach (Tile item2 in item.Chunk)
+                for (int y = 0; y < this.Height; y++)
                 {
-                    yield return item2;
+                    ChunkAccess item = this.Chunks[x, y];
+
+                    if (item.Chunk == null)
+                    {
+                        this.Chunks[x, y].Chunk = this.FetchChunk(x, y);
+                    }
+
+                    foreach (Tile item2 in item.Chunk)
+                    {
+                        yield return item2;
+                    }
                 }
             }
         }

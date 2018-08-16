@@ -30,7 +30,7 @@ namespace MagicalLifeAPI.World.Data.Disk
         {
             using (StreamReader sr = new StreamReader(WorldStorage.DimensionPaths[dimensionID] + Path.DirectorySeparatorChar + dimensionID + ".itemreg"))
             {
-                ItemRegistry reg = (ItemRegistry)ProtoUtil.TypeModel.Deserialize(sr.BaseStream, null, typeof(ItemRegistry));
+                ItemRegistry reg = (ItemRegistry)ProtoUtil.TypeModel.DeserializeWithLengthPrefix(sr.BaseStream, null, typeof(ItemRegistry), ProtoBuf.PrefixStyle.Base128, 0);
 
                 return reg;
             }
