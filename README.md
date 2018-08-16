@@ -71,6 +71,17 @@ Mod support: Always a priority
 3. Extract the release
 4. Enjoy!
 
+# Development Instructions
+
+1. Download and install *any* version of [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+2. Download and install [Monogame 1.6](http://www.monogame.net/2017/03/01/monogame-3-6/) for Visual Studio.
+3. Download and install the [2012 VC++ x64 Redistributable](https://www.microsoft.com/en-us/download/details.aspx?id=30679)
+4. Clone this repository
+5. Open the solution, and set the solution configuration to *debug, x64*. 
+6. That's all!
+
+Hint: Due to something weird with Monogame in Visual Studio, I advise *building* everytime you make a code change and want to run this game. Hitting *start* doesn't always seem to compile your changes when working with Monogame.
+
 # Vision
 
 A polished game with aspects similar to [RimWorld](https://store.steampowered.com/app/294100/RimWorld/),
