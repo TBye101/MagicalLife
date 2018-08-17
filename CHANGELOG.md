@@ -16,6 +16,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 * Added the load game listbox
 * Load game menu now works
 * Added a back button to the in game escape menu
+* Input boxes no longer error when reopening menus and backspacing
 
 #### Sound
 

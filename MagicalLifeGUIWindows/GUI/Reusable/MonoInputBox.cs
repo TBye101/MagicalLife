@@ -124,7 +124,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
         private void AcceptKeystroke(KeyboardEventArgs e)
         {
-            if (!this.IsLocked && !this.LastKeySpecial)
+            if (!this.IsLocked && !this.LastKeySpecial && e.Character != null)
             {
                 string p1 = this.Text.Substring(0, this.CarrotPosition);
                 p1 += e.Character.ToString();
