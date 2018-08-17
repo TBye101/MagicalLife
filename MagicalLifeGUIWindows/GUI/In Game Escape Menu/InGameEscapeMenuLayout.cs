@@ -85,5 +85,20 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu
                 }
             }
         }
+
+        public static int BackButtonY
+        {
+            get
+            {
+                switch ((Resolution)MainWindow.Default.Resolution)
+                {
+                    case Resolution._1920x1080:
+                        return InGameEscapeMenuLayout1920x1080.BackButtonY;
+
+                    default:
+                        return InGameEscapeMenuLayout1920x1080.BackButtonY;
+                }
+            }
+        }
     }
 }

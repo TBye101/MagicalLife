@@ -16,10 +16,13 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu
 
         public SaveButton Save = new SaveButton();
 
+        public BackButton Back = new BackButton();
+
         public InGameEscapeMenuContainer() : base("MenuBackground", RenderingPipe.FullScreenWindow)
         {
             this.Controls.Add(this.Quit);
             this.Controls.Add(this.Save);
+            this.Controls.Add(this.Back);
         }
 
         public override string GetTextureName()

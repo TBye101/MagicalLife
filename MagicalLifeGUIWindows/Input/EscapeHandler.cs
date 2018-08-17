@@ -36,15 +36,12 @@ namespace MagicalLifeGUIWindows.Input
             {
                 //Ingame: Open up in game menu
                 InGameEscapeMenu.Initialize();
-
             }
             else
             {
                 //Pregame:
                 MenuHandler.Back();
             }
-
-            MenuHandler.Back();
         }
     }
 }

@@ -5,6 +5,8 @@ SneakyTactician  <SneakyTactician@outlook.com>
 ## [Version 0.0.*]
 
 #### API
+* Saving a game is now supported
+* Loading a game is now supported
 
 #### Server
 
@@ -12,6 +14,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 * The host game button has been replaced by the load game button
 * Added listbox support
 * Added the load game listbox
+* Load game menu now works
 
 #### Sound
 

@@ -19,5 +19,7 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu
         public static readonly int SaveButtonY = 400;
 
         public static readonly int QuitButtonY = 470;
+
+        public static readonly int BackButtonY = 540;
     }
 }

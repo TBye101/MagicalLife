@@ -97,6 +97,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
+    <Compile Include="GUI\In Game Escape Menu\Buttons\BackButton.cs" />
     <Compile Include="GUI\In Game Escape Menu\Buttons\QuitButton.cs" />
     <Compile Include="GUI\In Game Escape Menu\Buttons\SaveButton.cs" />
     <Compile Include="GUI\In Game Escape Menu\InGameEscapeMenu.cs" />
