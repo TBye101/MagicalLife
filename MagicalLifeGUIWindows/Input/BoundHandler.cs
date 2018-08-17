@@ -191,6 +191,11 @@ namespace MagicalLifeGUIWindows.Input
         public static void RemoveContainer(GUIContainer container)
         {
             GUIWindows.Remove(container);
+
+            if (container.Visible)
+            {
+                ShowLast();
+            }
         }
 
         /// <summary>
@@ -206,6 +211,11 @@ namespace MagicalLifeGUIWindows.Input
             }
 
             Bounds.Insert(index, bounds);
+        }
+
+        private static void ShowLast()
+        {
+            GUIWindows[GUIWindows.Count - 1].Visible = true;
         }
 
         /// <summary>

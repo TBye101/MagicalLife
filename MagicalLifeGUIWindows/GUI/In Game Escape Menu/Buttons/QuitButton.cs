@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Sound;
+using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
@@ -12,8 +13,21 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu.Buttons
 {
     public class QuitButton : MonoButton
     {
-        public QuitButton() : base("MenuButton", GetDisplayArea(), true, "Quit")
+        public QuitButton() : base("MenuButton", GetDisplayArea(), true, GetText())
         {
+        }
+
+        public static string GetText()
+        {
+            switch (World.Mode)
+            {
+                case MagicalLifeAPI.Networking.EngineMode.ClientOnly:
+                    return "Disconnect";
+                case MagicalLifeAPI.Networking.EngineMode.ServerAndClient:
+                    return "Quit";
+                default:
+                    throw new MagicalLifeAPI.InternalExceptions.UnexpectedEnumMemberException();
+            }
         }
 
         private static Rectangle GetDisplayArea()

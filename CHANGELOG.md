@@ -15,6 +15,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 * Added listbox support
 * Added the load game listbox
 * Load game menu now works
+* Added a back button to the in game escape menu
 
 #### Sound
 

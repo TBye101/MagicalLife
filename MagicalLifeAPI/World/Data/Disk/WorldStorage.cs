@@ -105,9 +105,6 @@ namespace MagicalLifeAPI.World.Data.Disk
             else
             {
                 //We are loading
-
-
-
                 foreach (string item in Directory.EnumerateDirectories(DimensionSaveFolder))
                 {
                     string dirName = Path.GetFileName(item);

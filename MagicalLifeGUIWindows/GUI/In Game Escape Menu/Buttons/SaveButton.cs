@@ -2,6 +2,8 @@
 using MagicalLifeAPI.World.Data.Disk;
 using MagicalLifeAPI.World.Data.Disk.DataStorage;
 using MagicalLifeGUIWindows.GUI.Reusable;
+using MagicalLifeGUIWindows.GUI.Save_Game_Menu;
+using MagicalLifeGUIWindows.Input;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 using System;
@@ -30,14 +32,19 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu.Buttons
 
         public override void Click(MouseEventArgs e, GUIContainer container)
         {
+            this.Save();
+        }
+
+        private void Save()
+        {
             FMODUtil.RaiseEvent(EffectsTable.UIClick);
-            WorldStorage.SerializeWorld("Test World", new WorldDiskSink());
+            SaveGameMenu.Initialize();
+
         }
 
         public override void DoubleClick(MouseEventArgs e, GUIContainer container)
         {
-            FMODUtil.RaiseEvent(EffectsTable.UIClick);
-            WorldStorage.SerializeWorld("Test World", new WorldDiskSink());
+            this.Save();
         }
     }
 }

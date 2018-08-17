@@ -1,4 +1,6 @@
 ﻿using MagicalLifeGUIWindows.GUI.Reusable;
+using MagicalLifeGUIWindows.GUI.Save_Game_Menu;
+using MagicalLifeGUIWindows.Input;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 using System;
@@ -27,12 +29,12 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu.Buttons
 
         public override void Click(MouseEventArgs e, GUIContainer container)
         {
-            MenuHandler.Back();
+            BoundHandler.RemoveContainer(InGameEscapeMenu.menu);
         }
 
         public override void DoubleClick(MouseEventArgs e, GUIContainer container)
         {
-            MenuHandler.Back();
+            BoundHandler.RemoveContainer(InGameEscapeMenu.menu);
         }
     }
 }
