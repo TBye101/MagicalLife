@@ -24,7 +24,7 @@ namespace MagicalLifeAPI.Networking.Messages
             this.DimensionID = dimensionID;
         }
 
-        protected WorldTransferBodyMessage() : base(NetMessageID.WorldTransferBodyMessage)
+        public WorldTransferBodyMessage() : base(NetMessageID.WorldTransferBodyMessage)
         {
 
         }
