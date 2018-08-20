@@ -99,7 +99,15 @@ namespace MagicalLifeAPI.World.Data.Disk
                 foreach (Dimension item in World.Dimensions)
                 {
                     DirectoryInfo dirInfo = Directory.CreateDirectory(WorldStorage.DimensionSaveFolder + Path.DirectorySeparatorChar + item.ID);
-                    DimensionPaths.Add(item.ID, dirInfo.FullName);
+
+                    if (DimensionPaths.TryGetValue(item.ID, out string value))
+                    {
+
+                    }
+                    else
+                    {
+                        DimensionPaths.Add(item.ID, dirInfo.FullName);
+                    }
                 }
             }
             else
