@@ -18,7 +18,7 @@ namespace MagicalLifeAPI.World.Data.Disk.DataStorage
         {
         }
 
-        public override void Receive<T>(T data, string filePath)
+        public override void Receive<T>(T data, string filePath, Guid dimensionID)
         {
             this.ValidateData(data);
             byte[] worldData = ProtoUtil.Serialize(data);

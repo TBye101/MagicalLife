@@ -29,18 +29,18 @@ namespace MagicalLifeAPI.World.Data.Disk.DataStorage
             this.Client.Send(data);
         }
 
-        public override void Receive<T>(T data, string filePath)
+        public override void Receive<T>(T data, string filePath, Guid dimensionID)
         {
             switch (data)
             {
                 case Chunk chunk:
-                    this.Send(new WorldTransferBodyMessage(chunk));
+                    this.Send(new WorldTransferBodyMessage(chunk, dimensionID));
                     break;
                 case List<DimensionHeader> header:
                     this.Send(new WorldTransferHeaderMessage(header));
                     break;
                 case ItemRegistry registry:
-                    this.Send(new WorldTransferRegistryMessage(registry));
+                    this.Send(new WorldTransferRegistryMessage(registry, dimensionID));
                     break;
                 default:
                     throw new Exception();

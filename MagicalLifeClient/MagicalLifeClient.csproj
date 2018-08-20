@@ -101,7 +101,9 @@
     <Compile Include="Message Handlers\JobAssignedMessageHandler.cs" />
     <Compile Include="Message Handlers\ServerTickMessageHandler.cs" />
     <Compile Include="Message Handlers\WorldModifierMessageHandler.cs" />
+    <Compile Include="Message Handlers\WorldTransferBodyMessageHandler.cs" />
     <Compile Include="Message Handlers\WorldTransferHeaderMessageHandler.cs" />
+    <Compile Include="Message Handlers\WorldTransferRegistryMessageHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

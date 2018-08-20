@@ -15,9 +15,13 @@ namespace MagicalLifeAPI.Networking.Messages
         [ProtoMember(1)]
         public Chunk Chunk { get; private set; }
 
-        public WorldTransferBodyMessage(Chunk chunk) : base(NetMessageID.WorldTransferBodyMessage)
+        [ProtoMember(2)]
+        public Guid DimensionID { get; private set; }
+
+        public WorldTransferBodyMessage(Chunk chunk, Guid dimensionID) : base(NetMessageID.WorldTransferBodyMessage)
         {
             this.Chunk = chunk;
+            this.DimensionID = dimensionID;
         }
 
         protected WorldTransferBodyMessage() : base(NetMessageID.WorldTransferBodyMessage)

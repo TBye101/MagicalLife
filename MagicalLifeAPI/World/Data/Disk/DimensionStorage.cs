@@ -112,8 +112,12 @@ namespace MagicalLifeAPI.World.Data.Disk
         {
             string dimensionRoot = WorldStorage.DimensionPaths[dimension.ID];
             DimensionHeader header = new DimensionHeader(dimension.DimensionName, dimension.ID, dimension.Width, dimension.Height);
+            SerializeDimensionHeader(header, sink, dimensionRoot);
+        }
 
-            sink.Receive(header, dimensionRoot + Path.DirectorySeparatorChar + dimension.ID + ".header");
+        public void SerializeDimensionHeader(DimensionHeader header, AbstractWorldSink sink, string dimensionRoot)
+        {
+            sink.Receive(header, dimensionRoot + Path.DirectorySeparatorChar + header.ID + ".header", header.ID);
         }
     }
 }

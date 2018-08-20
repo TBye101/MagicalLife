@@ -15,9 +15,13 @@ namespace MagicalLifeAPI.Networking.Messages
         [ProtoMember(1)]
         public ItemRegistry ItemReg { get; private set; }
 
-        public WorldTransferRegistryMessage(ItemRegistry itemReg) : base(NetMessageID.WorldTransferRegistryMessage)
+        [ProtoMember(2)]
+        public Guid DimensionID { get; private set; }
+
+        public WorldTransferRegistryMessage(ItemRegistry itemReg, Guid dimensionID) : base(NetMessageID.WorldTransferRegistryMessage)
         {
             this.ItemReg = itemReg;
+            this.DimensionID = dimensionID;
         }
         public WorldTransferRegistryMessage() : base(NetMessageID.WorldTransferRegistryMessage)
         {

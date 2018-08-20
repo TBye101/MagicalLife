@@ -23,7 +23,7 @@ namespace MagicalLifeAPI.World.Data.Disk
         public void SaveItemRegistry(Dimension dimension, AbstractWorldSink sink)
         {
             string result = WorldStorage.DimensionPaths[dimension.ID];
-            sink.Receive(dimension.Items, result + Path.DirectorySeparatorChar + dimension.ID + ".itemreg");
+            sink.Receive(dimension.Items, result + Path.DirectorySeparatorChar + dimension.ID + ".itemreg", dimension.ID);
         }
 
         public ItemRegistry LoadItemRegistry(Guid dimensionID)

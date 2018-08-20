@@ -64,7 +64,7 @@ namespace MagicalLifeAPI.World.Data.Disk
 
             //Send header information about all dimensions
             //This is so that the client can properly handle the incoming parts of the world.
-            sink.Receive(headers, null);
+            sink.Receive(headers, null, Guid.Empty);
 
             //Send the client the world.
             SerializeWorld(saveName, sink);

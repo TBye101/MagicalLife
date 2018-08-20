@@ -47,7 +47,9 @@ namespace MagicalLifeClient
                 new WorldModifierMessageHandler(),
 
                 //Least important messages
-                new WorldTransferHeaderMessageHandler()
+                new WorldTransferHeaderMessageHandler(),
+                new WorldTransferBodyMessageHandler(),
+                new WorldTransferRegistryMessageHandler()
             };
         }
 

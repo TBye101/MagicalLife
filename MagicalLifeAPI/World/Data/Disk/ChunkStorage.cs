@@ -34,7 +34,7 @@ namespace MagicalLifeAPI.World.Data.Disk
                 throw new DirectoryNotFoundException("Dimension save folder does not exist!");
             }
 
-            sink.Receive(chunk, path + Path.DirectorySeparatorChar + chunk.ChunkLocation.ToString() + ".chunk");
+            sink.Receive(chunk, path + Path.DirectorySeparatorChar + chunk.ChunkLocation.ToString() + ".chunk", dimensionID);
         }
 
         /// <summary>
