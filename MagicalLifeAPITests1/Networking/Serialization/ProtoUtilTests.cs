@@ -34,13 +34,7 @@ namespace MagicalLifeAPITests1.Networking.Serialization
         [TestMethod()]
         private void WorldTest()
         {
-            this.Setup();
-            World.Initialize(1, 1, new GrassAndDirt(0));
-            WorldTransferMessage input = new WorldTransferMessage(World.Dimensions);
-            byte[] data = ProtoUtil.Serialize(input);
-            Assert.IsNotNull(data, "Failed to serialize");
-
-            WorldTransferMessage result = (WorldTransferMessage)ProtoUtil.Deserialize(data);
+            Assert.Fail();//Need to rewrite the world serialization/deserialization test.
         }
 
         private void Setup()

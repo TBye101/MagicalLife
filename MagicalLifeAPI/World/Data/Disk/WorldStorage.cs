@@ -48,7 +48,33 @@ namespace MagicalLifeAPI.World.Data.Disk
         /// </summary>
         public static ItemRegistryStorage ItemStorage { get; private set; }
 
+        /// <summary>
+        /// Sends a <see cref="WorldTransferHeaderMessage"/>, then serializes and sends the world of the network.
+        /// </summary>
+        /// <param name="saveName"></param>
+        /// <param name="sink"></param>
+        public static void NetSerializeWorld(string saveName, AbstractWorldSink sink)
+        {
+            List<DimensionHeader> headers = new List<DimensionHeader>();
 
+            foreach (KeyValuePair<Guid, string> item in DimensionPaths)
+            {
+                headers.Add(DimensionStorage.LoadDimensionHeader(item.Key));
+            }
+
+            //Send header information about all dimensions
+            //This is so that the client can properly handle the incoming parts of the world.
+            sink.Receive(headers, null);
+
+            //Send the client the world.
+            SerializeWorld(saveName, sink);
+        }
+
+        /// <summary>
+        /// Serializes the world to the sink.
+        /// </summary>
+        /// <param name="saveName"></param>
+        /// <param name="sink"></param>
         public static void SerializeWorld(string saveName, AbstractWorldSink sink)
         {
             Initialize(saveName);

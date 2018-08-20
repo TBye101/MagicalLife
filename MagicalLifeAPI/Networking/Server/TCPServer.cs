@@ -1,6 +1,8 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
+using MagicalLifeAPI.World.Data.Disk;
+using MagicalLifeAPI.World.Data.Disk.DataStorage;
 using SimpleTCP;
 using System;
 using System.Collections.Generic;
@@ -71,7 +73,8 @@ namespace MagicalLifeAPI.Networking.Server
         {
             MasterLog.DebugWriteLine("Client connected: " + e.Client.RemoteEndPoint.ToString());
 
-            this.Send<WorldTransferMessage>(new WorldTransferMessage(MagicalLifeAPI.World.Data.World.Dimensions), e.Client);
+            WorldStorage.NetSerializeWorld(WorldStorage.SaveName, new WorldNetSink(e.Client));
+            //this.Send<WorldTransferHeaderMessage>(new WorldTransferHeaderMessage(MagicalLifeAPI.World.Data.World.Dimensions), e.Client);
         }
 
         /// <summary>

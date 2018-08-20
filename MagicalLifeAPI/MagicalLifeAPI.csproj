@@ -129,6 +129,8 @@
     <Compile Include="InternalExceptions\UnexpectedMessageException.cs" />
     <Compile Include="Load\ItemLoader.cs" />
     <Compile Include="Networking\MessageBuffer.cs" />
+    <Compile Include="Networking\Messages\WorldTransferBodyMessage.cs" />
+    <Compile Include="Networking\Messages\WorldTransferRegistryMessage.cs" />
     <Compile Include="Networking\NetMessageID.cs" />
     <Compile Include="Networking\Messages\DisconnectMessage.cs" />
     <Compile Include="Networking\Messages\JobAssignedMessage.cs" />
@@ -169,7 +171,7 @@
     <Compile Include="Networking\ITeachSerialization.cs" />
     <Compile Include="Networking\Messages\RouteCreatedMessage.cs" />
     <Compile Include="Networking\Messages\ServerTickMessage.cs" />
-    <Compile Include="Networking\Messages\WorldTransferMessage.cs" />
+    <Compile Include="Networking\Messages\WorldTransferHeaderMessage.cs" />
     <Compile Include="Networking\NetworkSettings.cs" />
     <Compile Include="Networking\Serialization\BaseMessage.cs" />
     <Compile Include="Networking\Serialization\MessageHandler.cs" />
@@ -219,6 +221,7 @@
     <Compile Include="World\Data\Disk\DataStorage\DimensionHeader.cs" />
     <Compile Include="World\Data\Disk\DataStorage\AbstractWorldSink.cs" />
     <Compile Include="World\Data\Disk\DataStorage\WorldDiskSink.cs" />
+    <Compile Include="World\Data\Disk\DataStorage\WorldNetSink.cs" />
     <Compile Include="World\Data\Disk\DimensionStorage.cs" />
     <Compile Include="World\Data\Disk\ChunkStorage.cs" />
     <Compile Include="World\Data\Disk\ItemRegistryStorage.cs" />
@@ -246,7 +249,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Networking\Messages\ID Chart.md" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
