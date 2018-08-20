@@ -17,7 +17,7 @@ namespace MagicalLifeDedicatedServer
             AssetManager.isServerOnly = true;
             FileSystemManager.Initialize();
             MasterLog.Initialize();
-            SettingsHandler.Initialize();
+            SettingsHandler.Initialize();//Fix menu system, after making auto save capability
         }
     }
 }
