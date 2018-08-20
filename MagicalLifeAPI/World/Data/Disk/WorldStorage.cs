@@ -59,6 +59,12 @@ namespace MagicalLifeAPI.World.Data.Disk
             }
         }
 
+        public static void AutoSave(string saveName, AbstractWorldSink sink)
+        {
+            string name = saveName + "-" + FileSystemManager.GetIOSafeTime();
+            SerializeWorld(name, sink);
+        }
+
         private static void Initialize(string saveName)
         {
             SaveName = saveName;

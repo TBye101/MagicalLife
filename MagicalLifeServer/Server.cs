@@ -6,8 +6,12 @@ using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Networking.Server;
+using MagicalLifeAPI.Time;
+using MagicalLifeAPI.Util.Reusable;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
+using MagicalLifeAPI.World.Data.Disk;
+using MagicalLifeAPI.World.Data.Disk.DataStorage;
 using MagicalLifeServer.Load;
 using System;
 using System.Collections.Generic;
@@ -26,6 +30,11 @@ namespace MagicalLifeServer
         public static UInt64 GameTick { get; private set; } = 0;
 
         private static Timer TickTimer = new Timer(50);
+
+        /// <summary>
+        /// The timer counting down the time between auto-saves.
+        /// </summary>
+        private static TickTimer AutoSave = new TickTimer(RealTime.HalfHour);
 
         /// <summary>
         /// The event that is raised when the game ticks.
@@ -74,6 +83,10 @@ namespace MagicalLifeServer
 
         private static void Server_ServerTick(object sender, ulong e)
         {
+            if (AutoSave.Allow())
+            {
+                WorldStorage.AutoSave(WorldStorage.SaveName, new WorldDiskSink());
+            }
         }
 
         private static void Tick(object sender, ElapsedEventArgs e)
