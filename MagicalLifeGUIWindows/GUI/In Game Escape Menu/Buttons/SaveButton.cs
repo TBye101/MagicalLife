@@ -39,6 +39,7 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu.Buttons
         {
             FMODUtil.RaiseEvent(EffectsTable.UIClick);
             SaveGameMenu.Initialize();
+            InGameEscapeMenu.menu.PopupChild(SaveGameMenu.menu);
 
         }
 

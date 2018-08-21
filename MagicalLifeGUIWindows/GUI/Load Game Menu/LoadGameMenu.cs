@@ -14,7 +14,6 @@ namespace MagicalLifeGUIWindows.GUI.Load_Game_Menu
         {
             LoadGameMenuContainer mainMenu = new LoadGameMenuContainer();
             menu = mainMenu;
-            MenuHandler.DisplayMenu(menu);
         }
     }
 }

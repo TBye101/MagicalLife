@@ -14,7 +14,6 @@ namespace MagicalLifeGUIWindows.GUI.Save_Game_Menu
         {
             SaveGameMenuContainer mainMenu = new SaveGameMenuContainer();
             menu = mainMenu;
-            MenuHandler.DisplayMenu(menu);
         }
     }
 }

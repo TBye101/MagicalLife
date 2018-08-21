@@ -29,12 +29,12 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu.Buttons
 
         public override void Click(MouseEventArgs e, GUIContainer container)
         {
-            BoundHandler.RemoveContainer(InGameEscapeMenu.menu);
+            MenuHandler.Back();
         }
 
         public override void DoubleClick(MouseEventArgs e, GUIContainer container)
         {
-            BoundHandler.RemoveContainer(InGameEscapeMenu.menu);
+            MenuHandler.Back();
         }
     }
 }

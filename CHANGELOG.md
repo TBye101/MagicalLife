@@ -9,6 +9,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 * Loading a game is now supported
 
 #### Server
+* The newgame command now requires a 3rd parameter, the world's name
 
 #### GUI
 * The host game button has been replaced by the load game button

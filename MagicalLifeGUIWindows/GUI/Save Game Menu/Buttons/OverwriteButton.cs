@@ -43,6 +43,7 @@ namespace MagicalLifeGUIWindows.GUI.Save_Game_Menu.Buttons
                 RenderableString selectedItem = (RenderableString)SaveGameMenu.menu.SavesList.Items[selected];
                 WorldStorage.SerializeWorld(selectedItem.Text, new WorldDiskSink());
             }
+            MenuHandler.Back();
         }
 
         public override void DoubleClick(MouseEventArgs e, GUIContainer container)

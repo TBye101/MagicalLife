@@ -16,6 +16,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
         {
             FMODUtil.RaiseEvent(EffectsTable.UIClick);
             NewWorldMenu.Initialize();
+            MainMenu.MainMenuID.PopupChild(NewWorldMenu.NewWorldMenuM);
         }
 
         public override void DoubleClick(MouseEventArgs e, GUIContainer container)

@@ -81,16 +81,28 @@ namespace MagicalLifeGUIWindows.Rendering
             {
                 if (item.Visible)
                 {
-                    spBatch.Draw(item.Image, item.DrawingBounds, colorMask);
+                    RenderYoungestChild(item, spBatch);
+                }
+            }
+        }
 
-                    foreach (GUIElement control in item.Controls)
+        private static void RenderYoungestChild(GUIContainer item, SpriteBatch spBatch)
+        {
+            if (item.Child == null)
+            {
+                spBatch.Draw(item.Image, item.DrawingBounds, colorMask);
+
+                foreach (GUIElement control in item.Controls)
+                {
+                    if (control.Visible)
                     {
-                        if (control.Visible)
-                        {
-                            control.Render(spBatch, item.DrawingBounds);
-                        }
+                        control.Render(spBatch, item.DrawingBounds);
                     }
                 }
+            }
+            else
+            {
+                RenderYoungestChild(item.Child, spBatch);
             }
         }
     }

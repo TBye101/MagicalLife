@@ -34,22 +34,26 @@ namespace MagicalLifeGUIWindows.GUI
         /// </summary>
         public static void Back()
         {
-            if (DisplayIndex > 0)
-            {
-                DisplayIndex--;
-                BoundHandler.Popup(Containers[DisplayIndex]);
-            }
+                if (DisplayIndex > 0 && Containers[DisplayIndex].Child == null)
+                {
+                    DisplayIndex--;
+                    BoundHandler.Popup(Containers[DisplayIndex]);
+                }
+                else
+                {
+                    NullChild(BoundHandler.GUIWindows[DisplayIndex]);
+                }
         }
 
-        /// <summary>
-        /// Displays the menu displayed 1 step ahead of the currently displayed menu.
-        /// </summary>
-        public static void Forward()
+        private static void NullChild(GUIContainer container)
         {
-            if (DisplayIndex <= Containers.Count)
+            if (container.Child.Child == null)
             {
-                DisplayIndex++;
-                BoundHandler.Popup(Containers[DisplayIndex]);
+                container.Child = null;
+            }
+            else
+            {
+                NullChild(container.Child);
             }
         }
 
