@@ -36,11 +36,15 @@ namespace MagicalLifeAPI.World.Data.Disk.DataStorage
                 case Chunk chunk:
                     this.Send(new WorldTransferBodyMessage(chunk, dimensionID));
                     break;
-                case List<DimensionHeader> header:
-                    this.Send(new WorldTransferHeaderMessage(header));
+                case List<DimensionHeader> headers:
+                    this.Send(new WorldTransferHeaderMessage(headers));
                     break;
                 case ItemRegistry registry:
                     this.Send(new WorldTransferRegistryMessage(registry, dimensionID));
+                    break;
+                case DimensionHeader header:
+                    WorldDiskSink sink = new WorldDiskSink();
+                    sink.Receive(header, filePath, dimensionID);
                     break;
                 default:
                     throw new Exception();

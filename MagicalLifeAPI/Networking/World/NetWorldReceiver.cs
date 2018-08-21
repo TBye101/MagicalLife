@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Networking.Messages;
+﻿using MagicalLifeAPI.Filing;
+using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.World.Data.Disk;
 using MagicalLifeAPI.World.Data.Disk.DataStorage;
 using System;
@@ -30,10 +31,32 @@ namespace MagicalLifeAPI.Networking.World
 
         private static WorldDiskSink DiskSink = new WorldDiskSink();
 
+        private static string SaveName;
+
+        /// <summary>
+        /// Checks to see if we are done receiving the world.
+        /// </summary>
+        private static void CheckCompletion()
+        {
+            if (ReceivedChunks == ExpectedChunks && ReceivedItemRegistries == ExpectedItemRegistries)
+            {
+                HandleCompletion();
+            }
+        }
+
+        /// <summary>
+        /// Handles when we are done receiving the world.
+        /// </summary>
+        private static void HandleCompletion()
+        {
+            WorldStorage.LoadWorld(SaveName);
+        }
+
         public static void Receive(WorldTransferBodyMessage msg)
         {
             ReceivedChunks++;
             WorldStorage.ChunkStorage.SaveChunk(msg.Chunk, msg.DimensionID, DiskSink);
+            CheckCompletion();
         }
 
         public static void Receive(WorldTransferHeaderMessage msg)
@@ -42,6 +65,9 @@ namespace MagicalLifeAPI.Networking.World
             ExpectedItemRegistries = 0;
             ReceivedChunks = 0;
             ReceivedItemRegistries = 0;
+
+            SaveName = FileSystemManager.GetIOSafeTime();
+            WorldStorage.Initialize(SaveName);
 
             foreach (DimensionHeader item in msg.DimensionHeaders)
             {
@@ -58,6 +84,7 @@ namespace MagicalLifeAPI.Networking.World
         {
             ReceivedItemRegistries++;
             WorldStorage.ItemStorage.SaveItemRegistry(msg.ItemReg, DiskSink, msg.DimensionID);
+            CheckCompletion();
         }
     }
 }

@@ -17,7 +17,7 @@ namespace MagicalLifeAPI.World.Data.Disk
         /// <summary>
         /// The name of the save game.
         /// </summary>
-        public static string SaveName { get; set; }
+        public static string SaveName { get; set; } = string.Empty;
 
         /// <summary>
         /// The path to the root of the directory where the current game is saved.
@@ -64,7 +64,7 @@ namespace MagicalLifeAPI.World.Data.Disk
 
             //Send header information about all dimensions
             //This is so that the client can properly handle the incoming parts of the world.
-            sink.Receive(headers, null, Guid.Empty);
+            sink.Receive(headers, null, Guid.Empty);//No headers
 
             //Send the client the world.
             SerializeWorld(saveName, sink);
@@ -91,7 +91,7 @@ namespace MagicalLifeAPI.World.Data.Disk
             SerializeWorld(name, sink);
         }
 
-        private static void Initialize(string saveName)
+        public static void Initialize(string saveName)
         {
             SaveName = saveName;
 
@@ -149,7 +149,11 @@ namespace MagicalLifeAPI.World.Data.Disk
                 {
                     string dirName = Path.GetFileName(item);
                     DimensionHeader header = DimensionStorage.LoadDimensionHeader(Guid.Parse(dirName), item);
-                    DimensionPaths.Add(header.ID, item);
+
+                    if (!DimensionPaths.ContainsKey(header.ID))
+                    {
+                        DimensionPaths.Add(header.ID, item);
+                    }
                 }
             }
         }
