@@ -170,10 +170,11 @@ namespace MagicalLifeServer.JobSystem
         {
             lock (this.SyncObject)
             {
+                MasterLog.DebugWriteLine("Marking job as complete " + ID.ToString());
                 Guid workerID = this.InProgress[ID].AssignedWorker;
-                Living worker = this.Busy[workerID];//Need another lock
-                this.InProgress[ID].RaiseJobCompleted(new Tuple<Guid, Living>(workerID, worker));
+                Living worker = this.Busy[workerID];
 
+                this.InProgress[ID].RaiseJobCompleted(new Tuple<Guid, Living>(workerID, worker));
                 this.InProgress.Remove(ID);
 
                 this.Busy.Remove(workerID);

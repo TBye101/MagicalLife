@@ -49,6 +49,8 @@ namespace MagicalLifeAPI.Entity.AI.Job
         private bool DependResolved = false;
         private bool Done = false;
 
+        private object SyncObject = new object();
+
         /// <summary>
         /// Used when all components of the job must be completed by the same character.
         /// </summary>
@@ -113,14 +115,18 @@ namespace MagicalLifeAPI.Entity.AI.Job
         /// </summary>
         protected void CompleteJob(Living living)
         {
-            if (!this.Done && !this.RequireSameWorker || this.ParentJob == Guid.Empty)
+            lock (this.SyncObject)
             {
-                this.Done = true;
-                ClientSendRecieve.Send<JobCompletedMessage>(new JobCompletedMessage(this.ID));
-            }
-            else
-            {
-                this.RaiseJobCompleted(new Tuple<Guid, Living>(this.ID, living));
+                if (!this.Done && !this.RequireSameWorker || this.ParentJob == Guid.Empty)
+                {
+                    this.Done = true;
+                    living.Task = null;
+                    ClientSendRecieve.Send<JobCompletedMessage>(new JobCompletedMessage(this.ID));
+                }
+                else
+                {
+                    this.RaiseJobCompleted(new Tuple<Guid, Living>(this.ID, living));
+                }
             }
         }
 
