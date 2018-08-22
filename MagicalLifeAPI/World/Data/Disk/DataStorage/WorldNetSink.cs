@@ -4,10 +4,7 @@ using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Registry.ItemRegistry;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.World.Data.Disk.DataStorage
 {
@@ -37,16 +34,20 @@ namespace MagicalLifeAPI.World.Data.Disk.DataStorage
                 case Chunk chunk:
                     this.Send(new WorldTransferBodyMessage(chunk, dimensionID));
                     break;
+
                 case List<DimensionHeader> headers:
                     this.Send(new WorldTransferHeaderMessage(headers));
                     break;
+
                 case ItemRegistry registry:
                     this.Send(new WorldTransferRegistryMessage(registry, dimensionID));
                     break;
+
                 case DimensionHeader header:
                     WorldDiskSink sink = new WorldDiskSink();
                     sink.Receive(header, filePath, dimensionID);
                     break;
+
                 default:
                     throw new UnexpectedTypeException();
             }

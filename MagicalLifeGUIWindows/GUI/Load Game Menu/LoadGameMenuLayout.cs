@@ -1,9 +1,4 @@
 ﻿using MagicalLifeSettings.Storage;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.GUI.Load_Game_Menu
 {
@@ -68,13 +63,6 @@ namespace MagicalLifeGUIWindows.GUI.Load_Game_Menu
                 }
             }
         }
-
-
-
-
-
-
-
 
         public static int LoadSaveButtonX
         {

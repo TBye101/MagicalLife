@@ -1,9 +1,4 @@
 ﻿using MagicalLifeSettings.Storage;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.GUI.Save_Game_Menu
 {
@@ -83,8 +78,6 @@ namespace MagicalLifeGUIWindows.GUI.Save_Game_Menu
                 }
             }
         }
-
-
 
         public static int OverwriteButtonX
         {
@@ -205,9 +198,6 @@ namespace MagicalLifeGUIWindows.GUI.Save_Game_Menu
                 }
             }
         }
-
-
-
 
         public static int NewSaveButtonX
         {

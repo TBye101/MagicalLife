@@ -1,11 +1,7 @@
 ﻿using MagicalLifeAPI.Networking.Serialization;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.World.Data.Disk.DataStorage
 {

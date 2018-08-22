@@ -2,8 +2,6 @@
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Networking.World;
-using MagicalLifeAPI.World.Data;
-using MagicalLifeAPI.World.Data.Disk.DataStorage;
 
 namespace MagicalLifeClient.Message
 {

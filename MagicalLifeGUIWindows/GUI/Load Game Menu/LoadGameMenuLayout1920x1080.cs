@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MagicalLifeGUIWindows.GUI.Load_Game_Menu
+﻿namespace MagicalLifeGUIWindows.GUI.Load_Game_Menu
 {
     public static class LoadGameMenuLayout1920x1080
     {
@@ -20,8 +14,6 @@ namespace MagicalLifeGUIWindows.GUI.Load_Game_Menu
         /// How many items to render within the list box at any given time.
         /// </summary>
         public static readonly int ItemRenderCount = 16;
-
-
 
         public static readonly int LoadSaveButtonX = 1500;
 

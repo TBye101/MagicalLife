@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MagicalLifeAPI.Time
+﻿namespace MagicalLifeAPI.Time
 {
     /// <summary>
     /// Knows various things about real life time, measured in ticks.
@@ -22,8 +16,6 @@ namespace MagicalLifeAPI.Time
         public static readonly int Day = Hour * 24;
 
         public static readonly int Week = Day * 7;
-
-
 
         public static readonly int January = Day * 31;
 

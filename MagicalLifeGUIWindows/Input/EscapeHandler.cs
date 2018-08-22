@@ -1,8 +1,5 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Registry.ItemRegistry;
+﻿using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World.Data;
-using MagicalLifeAPI.World.Items;
 using MagicalLifeGUIWindows.GUI;
 using MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu;
 using MonoGame.Extended.Input.InputListeners;

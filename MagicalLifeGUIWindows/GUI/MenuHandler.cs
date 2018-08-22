@@ -2,7 +2,6 @@
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace MagicalLifeGUIWindows.GUI
 {
@@ -36,15 +35,15 @@ namespace MagicalLifeGUIWindows.GUI
         /// </summary>
         public static void Back()
         {
-                if (DisplayIndex > 0 && Containers[DisplayIndex].Child == null)
-                {
-                    DisplayIndex--;
-                    BoundHandler.Popup(Containers[DisplayIndex]);
-                }
-                else
-                {
-                    NullChild(BoundHandler.GUIWindows[DisplayIndex]);
-                }
+            if (DisplayIndex > 0 && Containers[DisplayIndex].Child == null)
+            {
+                DisplayIndex--;
+                BoundHandler.Popup(Containers[DisplayIndex]);
+            }
+            else
+            {
+                NullChild(BoundHandler.GUIWindows[DisplayIndex]);
+            }
         }
 
         private static void NullChild(GUIContainer container)

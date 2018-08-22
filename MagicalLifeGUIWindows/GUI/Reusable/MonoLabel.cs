@@ -37,7 +37,6 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         {
         }
 
-
         public override void Click(MouseEventArgs e, GUIContainer container)
         {
             //This is a label. Nothing happens when you click on it.

@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Data.Disk.DataStorage;
 using System.Collections.Generic;
 

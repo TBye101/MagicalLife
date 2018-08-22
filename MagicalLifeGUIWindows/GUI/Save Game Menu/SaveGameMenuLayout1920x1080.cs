@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MagicalLifeGUIWindows.GUI.Save_Game_Menu
+﻿namespace MagicalLifeGUIWindows.GUI.Save_Game_Menu
 {
     public static class SaveGameMenuLayout1920x1080
     {
@@ -21,8 +15,6 @@ namespace MagicalLifeGUIWindows.GUI.Save_Game_Menu
         /// </summary>
         public static readonly int ItemRenderCount = 16;
 
-
-
         public static readonly int OverwriteButtonX = 1500;
 
         public static readonly int OverwriteButtonY = 50;
@@ -31,8 +23,6 @@ namespace MagicalLifeGUIWindows.GUI.Save_Game_Menu
 
         public static readonly int OverwriteButtonHeight = 50;
 
-
-
         public static readonly int NewSaveInputBoxX = 100;
 
         public static readonly int NewSaveInputBoxY = 830;
@@ -40,9 +30,6 @@ namespace MagicalLifeGUIWindows.GUI.Save_Game_Menu
         public static readonly int NewSaveInputBoxWidth = 1300;
 
         public static readonly int NewSaveInputBoxHeight = 50;
-
-
-
 
         public static readonly int NewSaveButtonX = 1450;
 

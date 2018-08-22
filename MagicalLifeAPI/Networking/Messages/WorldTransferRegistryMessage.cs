@@ -2,10 +2,6 @@
 using MagicalLifeAPI.Registry.ItemRegistry;
 using ProtoBuf;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Networking.Messages
 {
@@ -23,6 +19,7 @@ namespace MagicalLifeAPI.Networking.Messages
             this.ItemReg = itemReg;
             this.DimensionID = dimensionID;
         }
+
         public WorldTransferRegistryMessage() : base(NetMessageID.WorldTransferRegistryMessage)
         {
         }

@@ -1,11 +1,8 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Filing;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.World.Data.Disk.DataStorage;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.World.Data.Disk
 {
@@ -14,10 +11,8 @@ namespace MagicalLifeAPI.World.Data.Disk
     /// </summary>
     public class ChunkStorage
     {
-
         public ChunkStorage(string saveName)
         {
-
         }
 
         /// <summary>

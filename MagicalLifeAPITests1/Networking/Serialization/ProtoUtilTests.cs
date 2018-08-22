@@ -3,9 +3,7 @@ using MagicalLifeAPI.Entity.Entity;
 using MagicalLifeAPI.Entity.Humanoid;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeAPI.World.Data;
 using MagicalLifeServer;
-using MagicalLifeServer.ServerWorld.World;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 

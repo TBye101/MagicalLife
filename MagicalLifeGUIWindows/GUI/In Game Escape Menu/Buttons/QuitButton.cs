@@ -3,11 +3,6 @@ using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu.Buttons
 {
@@ -23,8 +18,10 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu.Buttons
             {
                 case MagicalLifeAPI.Networking.EngineMode.ClientOnly:
                     return "Disconnect";
+
                 case MagicalLifeAPI.Networking.EngineMode.ServerAndClient:
                     return "Quit";
+
                 default:
                     throw new MagicalLifeAPI.InternalExceptions.UnexpectedEnumMemberException();
             }
