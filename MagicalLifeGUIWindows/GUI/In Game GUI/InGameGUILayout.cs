@@ -16,9 +16,6 @@ namespace MagicalLifeGUIWindows.GUI.In
             {
                 switch ((Resolution)MainWindow.Default.Resolution)
                 {
-                    case Resolution._1920x1080:
-                        return InGameGUILayout1920x1080.ContainerX;
-
                     default:
                         return InGameGUILayout1920x1080.ContainerX;
                 }
@@ -34,9 +31,6 @@ namespace MagicalLifeGUIWindows.GUI.In
             {
                 switch ((Resolution)MainWindow.Default.Resolution)
                 {
-                    case Resolution._1920x1080:
-                        return InGameGUILayout1920x1080.ContainerY;
-
                     default:
                         return InGameGUILayout1920x1080.ContainerY;
                 }
@@ -52,9 +46,6 @@ namespace MagicalLifeGUIWindows.GUI.In
             {
                 switch ((Resolution)MainWindow.Default.Resolution)
                 {
-                    case Resolution._1920x1080:
-                        return InGameGUILayout1920x1080.ContainerWidth;
-
                     default:
                         return InGameGUILayout1920x1080.ContainerWidth;
                 }
@@ -70,9 +61,6 @@ namespace MagicalLifeGUIWindows.GUI.In
             {
                 switch ((Resolution)MainWindow.Default.Resolution)
                 {
-                    case Resolution._1920x1080:
-                        return InGameGUILayout1920x1080.ContainerHeight;
-
                     default:
                         return InGameGUILayout1920x1080.ContainerHeight;
                 }
@@ -88,9 +76,6 @@ namespace MagicalLifeGUIWindows.GUI.In
             {
                 switch ((Resolution)MainWindow.Default.Resolution)
                 {
-                    case Resolution._1920x1080:
-                        return InGameGUILayout1920x1080.ActionButtonY;
-
                     default:
                         return InGameGUILayout1920x1080.ActionButtonY;
                 }
@@ -106,9 +91,6 @@ namespace MagicalLifeGUIWindows.GUI.In
             {
                 switch ((Resolution)MainWindow.Default.Resolution)
                 {
-                    case Resolution._1920x1080:
-                        return InGameGUILayout1920x1080.ActionButtonSize;
-
                     default:
                         return InGameGUILayout1920x1080.ActionButtonSize;
                 }
@@ -124,9 +106,6 @@ namespace MagicalLifeGUIWindows.GUI.In
             {
                 switch ((Resolution)MainWindow.Default.Resolution)
                 {
-                    case Resolution._1920x1080:
-                        return InGameGUILayout1920x1080.MineActionButtonX;
-
                     default:
                         return InGameGUILayout1920x1080.MineActionButtonX;
                 }

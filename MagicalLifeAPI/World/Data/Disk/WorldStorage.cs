@@ -32,7 +32,7 @@ namespace MagicalLifeAPI.World.Data.Disk
         /// Key: The ID of the dimension.
         /// Value: The path to the root of where all of the chunks are stored for the dimension.
         /// </summary>
-        public static readonly Dictionary<Guid, string> DimensionPaths = new Dictionary<Guid, string>();
+        public static Dictionary<Guid, string> DimensionPaths { get; set; } = new Dictionary<Guid, string>();
 
         /// <summary>
         /// Knows how to save information about a dimension.

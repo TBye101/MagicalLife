@@ -224,7 +224,6 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         private Rectangle CalculateCarrotBounds(MonoInputBox textbox, Rectangle containerBounds)
         {
             Vector2 size = textbox.Font.MeasureString(textbox.Text);
-            Vector2 pos = new Vector2(textbox.DrawingBounds.Center.X, textbox.DrawingBounds.Center.Y);
             Vector2 origin = size * 0.5f;
 
 #pragma warning disable RCS1096 // Use bitwise operation instead of calling 'HasFlag'.

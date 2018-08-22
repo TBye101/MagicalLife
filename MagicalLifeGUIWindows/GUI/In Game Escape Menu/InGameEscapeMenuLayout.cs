@@ -27,9 +27,6 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu
             {
                 switch ((Resolution)MainWindow.Default.Resolution)
                 {
-                    case Resolution._1920x1080:
-                        return InGameEscapeMenuLayout1920x1080.ButtonWidth;
-
                     default:
                         return InGameEscapeMenuLayout1920x1080.ButtonWidth;
                 }
@@ -42,9 +39,6 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu
             {
                 switch ((Resolution)MainWindow.Default.Resolution)
                 {
-                    case Resolution._1920x1080:
-                        return InGameEscapeMenuLayout1920x1080.ButtonHeight;
-
                     default:
                         return InGameEscapeMenuLayout1920x1080.ButtonHeight;
                 }
@@ -59,9 +53,6 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu
             {
                 switch ((Resolution)MainWindow.Default.Resolution)
                 {
-                    case Resolution._1920x1080:
-                        return InGameEscapeMenuLayout1920x1080.SaveButtonY;
-
                     default:
                         return InGameEscapeMenuLayout1920x1080.SaveButtonY;
                 }
@@ -74,9 +65,6 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu
             {
                 switch ((Resolution)MainWindow.Default.Resolution)
                 {
-                    case Resolution._1920x1080:
-                        return InGameEscapeMenuLayout1920x1080.QuitButtonY;
-
                     default:
                         return InGameEscapeMenuLayout1920x1080.QuitButtonY;
                 }
@@ -89,9 +77,6 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu
             {
                 switch ((Resolution)MainWindow.Default.Resolution)
                 {
-                    case Resolution._1920x1080:
-                        return InGameEscapeMenuLayout1920x1080.BackButtonY;
-
                     default:
                         return InGameEscapeMenuLayout1920x1080.BackButtonY;
                 }

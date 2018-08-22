@@ -73,11 +73,7 @@ namespace MagicalLifeAPI.World.Data
             this.Manager = new ChunkManager(this.ID, chunks);
             this.DimensionName = dimensionName;
             this.ID = Guid.NewGuid();
-
-            int dimensionID = World.AddDimension(this);
-
-            //Anything that needs a dimensionID
-            this.Items = new ItemRegistry(dimensionID);
+            this.Items = new ItemRegistry(World.AddDimension(this));
         }
 
         /// <summary>
