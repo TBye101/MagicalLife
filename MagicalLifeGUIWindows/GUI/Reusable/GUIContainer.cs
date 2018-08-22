@@ -12,7 +12,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
     /// </summary>
     public abstract class GUIContainer
     {
-        public GUIContainer Child;
+        public GUIContainer Child { get; set; }
 
         /// <summary>
         /// Constructs a new instance of the <see cref="GUIContainer"/> class.

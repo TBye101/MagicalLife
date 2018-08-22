@@ -13,7 +13,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// <param name="drawingBounds">The bounds for which to draw the texture on the screen at.</param>
         /// <param name="priority">Determines if this GUI element should have priority over other GUI elements when sorting through input.</param>
         /// <param name="isContained">If true, this GUI element is within a container.</param>
-        public GUIElement(Rectangle drawingBounds, int priority, bool isContained, string font)
+        protected GUIElement(Rectangle drawingBounds, int priority, bool isContained, string font)
         {
             this.DrawingBounds = drawingBounds;
             this.MouseBounds = new ClickBounds(drawingBounds, priority);

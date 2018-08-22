@@ -11,10 +11,6 @@ namespace MagicalLifeDedicatedServer.API.Commands
 {
     public class SaveGame : ICommand
     {
-        public SaveGame()
-        {
-        }
-
         public string getHelp()
         {
             return "Saves the game to disk";

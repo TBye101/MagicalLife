@@ -204,6 +204,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
         public override void DoubleClick(MouseEventArgs e, GUIContainer container)
         {
+            //Single click is good enough for now
         }
 
         public override void Render(SpriteBatch spBatch, Rectangle containerBounds)
@@ -251,15 +252,10 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             int XPos = (int)Math.Round(origin.X + textbox.DrawingBounds.X + textbox.Font.MeasureString(TextBeforeCarrot).X) + containerBounds.X;
             int YPos = (int)Math.Round(origin.Y + textbox.DrawingBounds.Y) + containerBounds.Y;
 
-            switch (textbox.TextAlignment)
+            if (textbox.TextAlignment == Alignment.Left)
             {
-                case Alignment.Left:
-                    XPos -= (int)Math.Round(origin.X);
-                    YPos += (int)Math.Round(origin.Y);
-                    break;
-
-                default:
-                    break;
+                XPos -= (int)Math.Round(origin.X);
+                YPos += (int)Math.Round(origin.Y);
             }
 
             return new Rectangle(XPos, YPos, textbox.CarrotWidth, textbox.CarrotHeight);

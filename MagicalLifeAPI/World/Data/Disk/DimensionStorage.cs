@@ -16,11 +16,6 @@ namespace MagicalLifeAPI.World.Data.Disk
     /// </summary>
     public class DimensionStorage
     {
-        public DimensionStorage()
-        {
-
-        }
-
         /// <summary>
         /// Creates folders for a new dimension.
         /// </summary>
@@ -74,11 +69,6 @@ namespace MagicalLifeAPI.World.Data.Disk
         private void SerializeItemRegistry(Dimension dimension, AbstractWorldSink sink)
         {
             WorldStorage.ItemStorage.SaveItemRegistry(dimension, sink);
-        }
-
-        private ItemRegistry LoadItemRegistry(Guid id)
-        {
-            return WorldStorage.ItemStorage.LoadItemRegistry(id);
         }
 
         /// <summary>

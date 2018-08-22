@@ -12,11 +12,11 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu
 {
     public class InGameEscapeMenuContainer : GUIContainer
     {
-        public QuitButton Quit = new QuitButton();
+        public QuitButton Quit { get; private set; } = new QuitButton();
 
-        public SaveButton Save = new SaveButton();
+        public SaveButton Save { get; private set; } = new SaveButton();
 
-        public BackButton Back = new BackButton();
+        public BackButton Back { get; private set; } = new BackButton();
 
         public InGameEscapeMenuContainer() : base("MenuBackground", RenderingPipe.FullScreenWindow)
         {

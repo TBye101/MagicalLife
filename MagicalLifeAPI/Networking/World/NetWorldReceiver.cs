@@ -19,15 +19,15 @@ namespace MagicalLifeAPI.Networking.World
         /// <summary>
         /// How many chunks are expected from all incoming dimensions.
         /// </summary>
-        private static int ExpectedChunks = 0;
+        private static int ExpectedChunks;
 
         /// <summary>
         /// How many item registries are expected from all incoming dimensions.
         /// </summary>
-        private static int ExpectedItemRegistries = 0;
+        private static int ExpectedItemRegistries;
 
-        private static int ReceivedChunks = 0;
-        private static int ReceivedItemRegistries = 0;
+        private static int ReceivedChunks;
+        private static int ReceivedItemRegistries;
 
         private static WorldDiskSink DiskSink = new WorldDiskSink();
 

@@ -15,9 +15,6 @@ namespace MagicalLifeGUIWindows.GUI.Save_Game_Menu
             {
                 switch ((Resolution)MainWindow.Default.Resolution)
                 {
-                    case Resolution._1920x1080:
-                        return SaveGameMenuLayout1920x1080.OverwriteSaveListBoxX;
-
                     default:
                         return SaveGameMenuLayout1920x1080.OverwriteSaveListBoxX;
                 }

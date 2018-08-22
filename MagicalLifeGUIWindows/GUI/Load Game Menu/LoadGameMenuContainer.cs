@@ -12,8 +12,8 @@ namespace MagicalLifeGUIWindows.GUI.Load_Game_Menu
 {
     public class LoadGameMenuContainer : GUIContainer
     {
-        public SelectGameListBox SaveSelectListBox = new SelectGameListBox();
-        public LoadSaveButton LoadSaveButton = new LoadSaveButton();
+        public SelectGameListBox SaveSelectListBox { get; private set; } = new SelectGameListBox();
+        public LoadSaveButton LoadSaveButton { get; private set; } = new LoadSaveButton();
 
         public LoadGameMenuContainer() : base("MenuBackground", RenderingPipe.FullScreenWindow)
         {

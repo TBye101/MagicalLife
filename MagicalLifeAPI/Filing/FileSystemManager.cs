@@ -68,7 +68,6 @@ namespace MagicalLifeAPI.Filing
         /// <returns></returns>
         public static string[] GetAllSaveNames()
         {
-            //IEnumerable<string> ret = Directory.EnumerateDirectories(FileSystemManager.SaveDirectory);
             string[] ret = Directory.GetDirectories(FileSystemManager.SaveDirectory);
 
             int length = ret.Length;

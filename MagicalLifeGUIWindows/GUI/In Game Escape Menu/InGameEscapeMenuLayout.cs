@@ -15,9 +15,6 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu
             {
                 switch ((Resolution)MainWindow.Default.Resolution)
                 {
-                    case Resolution._1920x1080:
-                        return InGameEscapeMenuLayout1920x1080.ButtonX;
-
                     default:
                         return InGameEscapeMenuLayout1920x1080.ButtonX;
                 }

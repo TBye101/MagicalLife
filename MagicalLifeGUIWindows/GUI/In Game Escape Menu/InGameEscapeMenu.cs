@@ -8,7 +8,7 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu
 {
     public static class InGameEscapeMenu
     {
-        public static InGameEscapeMenuContainer menu;
+        public static InGameEscapeMenuContainer menu { get; private set; }
 
         internal static void Initialize()
         {

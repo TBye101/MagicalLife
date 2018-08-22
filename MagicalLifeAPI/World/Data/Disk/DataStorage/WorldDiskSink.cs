@@ -14,10 +14,6 @@ namespace MagicalLifeAPI.World.Data.Disk.DataStorage
     /// </summary>
     public class WorldDiskSink : AbstractWorldSink
     {
-        public WorldDiskSink()
-        {
-        }
-
         public override void Receive<T>(T data, string filePath, Guid dimensionID)
         {
             this.ValidateData(data);

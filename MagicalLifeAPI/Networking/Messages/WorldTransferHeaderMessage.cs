@@ -12,7 +12,7 @@ namespace MagicalLifeAPI.Networking.Messages
     public class WorldTransferHeaderMessage : BaseMessage
     {
         [ProtoBuf.ProtoMember(5)]
-        public List<DimensionHeader> DimensionHeaders;
+        public List<DimensionHeader> DimensionHeaders { get; private set; }
 
         public WorldTransferHeaderMessage(List<DimensionHeader> dimensionHeaders) : base(NetMessageID.WorldTransferHeaderMessage)
         {

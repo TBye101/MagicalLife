@@ -18,19 +18,15 @@ namespace MagicalLifeAPI.World.Data
         /// <summary>
         /// Handles access to the chunks stored in this dimension.
         /// </summary>
-        //[ProtoMember(1)]
         private readonly ChunkManager Manager;
 
         /// <summary>
         /// The display name of the dimension.
         /// </summary>
-        //[ProtoMember(2)]
         public string DimensionName { get; set; }
 
-        //[ProtoMember(3)]
         public Guid ID { get; }
 
-        //[ProtoMember(4)]
         public ItemRegistry Items { get; set; }
 
         /// <summary>

@@ -38,12 +38,12 @@ namespace MagicalLifeGUIWindows.GUI.Load_Game_Menu.Buttons
 
         public override void Click(MouseEventArgs e, GUIContainer container)
         {
-            int selected = LoadGameMenu.menu.SaveSelectListBox.SelectedIndex;
+            int selected = LoadGameMenu.Menu.SaveSelectListBox.SelectedIndex;
             if (selected != -1)
             {
                 FMODUtil.RaiseEvent(EffectsTable.UIClick);
                 World.Mode = MagicalLifeAPI.Networking.EngineMode.ServerAndClient;
-                RenderableString selectedItem = (RenderableString)LoadGameMenu.menu.SaveSelectListBox.Items[selected];
+                RenderableString selectedItem = (RenderableString)LoadGameMenu.Menu.SaveSelectListBox.Items[selected];
                 WorldStorage.LoadWorld(selectedItem.Text);
 
                 Server.Load();
@@ -51,7 +51,7 @@ namespace MagicalLifeGUIWindows.GUI.Load_Game_Menu.Buttons
                 ServerSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings());
                 Client.Load();
                 Server.StartGame();
-                BoundHandler.RemoveContainer(LoadGameMenu.menu);
+                BoundHandler.RemoveContainer(LoadGameMenu.Menu);
                 MenuHandler.Clear();
                 BoundHandler.HideAll();
                 InGameGUI.Initialize();
@@ -61,6 +61,7 @@ namespace MagicalLifeGUIWindows.GUI.Load_Game_Menu.Buttons
 
         public override void DoubleClick(MouseEventArgs e, GUIContainer container)
         {
+            // Single click is good enough
         }
     }
 }

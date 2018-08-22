@@ -2,6 +2,7 @@
 using MagicalLifeAPI.World.Data.Disk.DataStorage;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -116,14 +117,14 @@ namespace MagicalLifeAPI.World.Data.Disk
                 ItemStorage = new ItemRegistryStorage();
             }
 
-            ParseDimensions(saveName);
+            ParseDimensions();
         }
 
         /// <summary>
         /// Parses the dimensions to setup for serialization.
         /// </summary>
         /// <param name="saveName"></param>
-        private static void ParseDimensions(string saveName)
+        private static void ParseDimensions()
         {
             if (World.Dimensions.Count > 0)
             {
@@ -132,11 +133,7 @@ namespace MagicalLifeAPI.World.Data.Disk
                 {
                     DirectoryInfo dirInfo = Directory.CreateDirectory(WorldStorage.DimensionSaveFolder + Path.DirectorySeparatorChar + item.ID);
 
-                    if (DimensionPaths.TryGetValue(item.ID, out string value))
-                    {
-
-                    }
-                    else
+                    if (DimensionPaths.TryGetValue(item.ID, out string value) == false)
                     {
                         DimensionPaths.Add(item.ID, dirInfo.FullName);
                     }

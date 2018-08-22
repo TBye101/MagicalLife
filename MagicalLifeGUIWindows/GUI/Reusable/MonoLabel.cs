@@ -29,7 +29,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// <param name="image"></param>
         /// <param name="font"></param>
         /// <param name="isContained">If true, this GUI element is within a container.</param>
-        public MonoLabel(Rectangle bounds, string image, bool isContained, string font = "MainMenuFont12x") : base(bounds, int.MinValue, isContained, font)
+        public MonoLabel(Rectangle bounds, string image, bool isContained) : base(bounds, int.MinValue, isContained, "MainMenuFont12x")
         {
         }
 
@@ -37,12 +37,15 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         {
         }
 
+
         public override void Click(MouseEventArgs e, GUIContainer container)
         {
+            //This is a label. Nothing happens when you click on it.
         }
 
         public override void DoubleClick(MouseEventArgs e, GUIContainer container)
         {
+            //This is a label. Nothing happens when you click on it.
         }
 
         public override void Render(SpriteBatch spBatch, Rectangle containerBounds)

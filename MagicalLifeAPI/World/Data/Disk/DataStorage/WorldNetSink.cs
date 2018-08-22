@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Networking.Messages;
+﻿using MagicalLifeAPI.InternalExceptions;
+using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Registry.ItemRegistry;
 using System;
@@ -16,7 +17,7 @@ namespace MagicalLifeAPI.World.Data.Disk.DataStorage
     /// </summary>
     public class WorldNetSink : AbstractWorldSink
     {
-        private Socket Client;
+        private readonly Socket Client;
 
         public WorldNetSink(Socket client)
         {
@@ -47,7 +48,7 @@ namespace MagicalLifeAPI.World.Data.Disk.DataStorage
                     sink.Receive(header, filePath, dimensionID);
                     break;
                 default:
-                    throw new Exception();
+                    throw new UnexpectedTypeException();
             }
         }
     }

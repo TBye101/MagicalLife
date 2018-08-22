@@ -21,6 +21,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
 
         public override void DoubleClick(MouseEventArgs e, GUIContainer container)
         {
+            //Single click is good enough for now
         }
 
         private static Rectangle GetLocation()

@@ -15,9 +15,6 @@ namespace MagicalLifeGUIWindows.GUI.Load_Game_Menu
             {
                 switch ((Resolution)MainWindow.Default.Resolution)
                 {
-                    case Resolution._1920x1080:
-                        return LoadGameMenuLayout1920x1080.LoadSaveListBoxX;
-
                     default:
                         return LoadGameMenuLayout1920x1080.LoadSaveListBoxX;
                 }

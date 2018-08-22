@@ -74,7 +74,6 @@ namespace MagicalLifeAPI.Networking.Server
             MasterLog.DebugWriteLine("Client connected: " + e.Client.RemoteEndPoint.ToString());
 
             WorldStorage.NetSerializeWorld(WorldStorage.SaveName, new WorldNetSink(e.Client));
-            //this.Send<WorldTransferHeaderMessage>(new WorldTransferHeaderMessage(MagicalLifeAPI.World.Data.World.Dimensions), e.Client);
         }
 
         /// <summary>

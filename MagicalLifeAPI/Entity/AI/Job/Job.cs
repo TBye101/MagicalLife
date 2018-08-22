@@ -49,7 +49,7 @@ namespace MagicalLifeAPI.Entity.AI.Job
         private bool DependResolved = false;
         private bool Done = false;
 
-        private object SyncObject = new object();
+        private readonly object SyncObject = new object();
 
         /// <summary>
         /// Used when all components of the job must be completed by the same character.
