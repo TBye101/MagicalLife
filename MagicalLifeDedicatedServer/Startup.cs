@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Error;
 using MagicalLifeAPI.Filing;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World.Data;
@@ -17,7 +18,8 @@ namespace MagicalLifeDedicatedServer
             AssetManager.isServerOnly = true;
             FileSystemManager.Initialize();
             MasterLog.Initialize();
-            SettingsHandler.Initialize();//Fix menu system, after making auto save capability
+            ErrorReporter.Initialize();
+            SettingsHandler.Initialize();
         }
     }
 }
