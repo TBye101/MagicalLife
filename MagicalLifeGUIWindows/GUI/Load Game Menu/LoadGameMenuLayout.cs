@@ -70,9 +70,6 @@ namespace MagicalLifeGUIWindows.GUI.Load_Game_Menu
             {
                 switch ((Resolution)MainWindow.Default.Resolution)
                 {
-                    case Resolution._1920x1080:
-                        return LoadGameMenuLayout1920x1080.LoadSaveButtonX;
-
                     default:
                         return LoadGameMenuLayout1920x1080.LoadSaveButtonX;
                 }
@@ -85,9 +82,6 @@ namespace MagicalLifeGUIWindows.GUI.Load_Game_Menu
             {
                 switch ((Resolution)MainWindow.Default.Resolution)
                 {
-                    case Resolution._1920x1080:
-                        return LoadGameMenuLayout1920x1080.LoadSaveButtonY;
-
                     default:
                         return LoadGameMenuLayout1920x1080.LoadSaveButtonY;
                 }
@@ -100,9 +94,6 @@ namespace MagicalLifeGUIWindows.GUI.Load_Game_Menu
             {
                 switch ((Resolution)MainWindow.Default.Resolution)
                 {
-                    case Resolution._1920x1080:
-                        return LoadGameMenuLayout1920x1080.LoadSaveButtonWidth;
-
                     default:
                         return LoadGameMenuLayout1920x1080.LoadSaveButtonWidth;
                 }
@@ -115,9 +106,6 @@ namespace MagicalLifeGUIWindows.GUI.Load_Game_Menu
             {
                 switch ((Resolution)MainWindow.Default.Resolution)
                 {
-                    case Resolution._1920x1080:
-                        return LoadGameMenuLayout1920x1080.LoadSaveButtonHeight;
-
                     default:
                         return LoadGameMenuLayout1920x1080.LoadSaveButtonHeight;
                 }
