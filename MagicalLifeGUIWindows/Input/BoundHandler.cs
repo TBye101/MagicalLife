@@ -76,14 +76,15 @@ namespace MagicalLifeGUIWindows.Input
         /// </summary>
         /// <param name="clickData"></param>
         /// <returns></returns>
-        private static void ContainerClick(MouseEventArgs clickData)
+        private static void ContainerClick(MouseEventArgs clickData)//Clicks arn't getting to the children
         {
             foreach (GUIContainer item in GUIWindows)
             {
-                if (item.Visible && item.DrawingBounds.Contains(clickData.Position))
+                GUIContainer youngest = GetYoungestChild(item);
+                if (youngest.Visible && youngest.DrawingBounds.Contains(clickData.Position))
                 {
-                    Click(clickData, item.Controls, item);
-                    MasterLog.DebugWriteLine("Clicking in menu: " + item.GetType().FullName);
+                    Click(clickData, youngest.Controls, youngest);
+                    MasterLog.DebugWriteLine("Clicking in menu: " + youngest.GetType().FullName);
                     return;
                 }
             }
@@ -128,9 +129,10 @@ namespace MagicalLifeGUIWindows.Input
         {
             foreach (GUIContainer item in GUIWindows)
             {
-                if (item.Visible && item.DrawingBounds.Contains(clickData.Position))
+                GUIContainer youngest = GetYoungestChild(item);
+                if (youngest.Visible && youngest.DrawingBounds.Contains(clickData.Position))
                 {
-                    DoubleClick(clickData, item.Controls, item);
+                    DoubleClick(clickData, youngest.Controls, youngest);
                     return;
                 }
             }
@@ -166,6 +168,25 @@ namespace MagicalLifeGUIWindows.Input
             if (focus != -1)
             {
                 Options[focus].DoubleClick(clickData, container);
+            }
+        }
+
+        private static GUIContainer GetYoungestChild(GUIContainer container)
+        {
+            if (container.Child != null)
+            {
+                if (container.Child.Child != null)
+                {
+                    return GetYoungestChild(container.Child);
+                }
+                else
+                {
+                    return container.Child;
+                }
+            }
+            else
+            {
+                return container;
             }
         }
 
