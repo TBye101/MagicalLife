@@ -1,6 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.InternalExceptions;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using RoyT.AStar;

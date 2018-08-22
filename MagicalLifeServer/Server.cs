@@ -1,6 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.Filing;
-using MagicalLifeAPI.InternalExceptions;
 using MagicalLifeAPI.Load;
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Messages;

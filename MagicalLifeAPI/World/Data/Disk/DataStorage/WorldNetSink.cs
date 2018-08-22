@@ -1,4 +1,4 @@
-﻿using MagicalLifeAPI.InternalExceptions;
+﻿using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Registry.ItemRegistry;

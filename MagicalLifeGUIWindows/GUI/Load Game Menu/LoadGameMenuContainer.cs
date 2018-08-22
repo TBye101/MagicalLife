@@ -1,9 +1,7 @@
-﻿using MagicalLifeGUIWindows.GUI.Load_Game_Menu.Buttons;
-using MagicalLifeGUIWindows.GUI.Load_Game_Menu.List_Boxes;
-using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Rendering;
 
-namespace MagicalLifeGUIWindows.GUI.Load_Game_Menu
+namespace MagicalLifeGUIWindows.GUI.Load
 {
     public class LoadGameMenuContainer : GUIContainer
     {

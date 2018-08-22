@@ -12,7 +12,7 @@ using MagicalLifeServer;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 
-namespace MagicalLifeGUIWindows.GUI.Load_Game_Menu.Buttons
+namespace MagicalLifeGUIWindows.GUI.Load
 {
     public class LoadSaveButton : MonoButton
     {

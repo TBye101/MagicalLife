@@ -1,6 +1,6 @@
 ﻿using MagicalLifeSettings.Storage;
 
-namespace MagicalLifeGUIWindows.GUI.Load_Game_Menu
+namespace MagicalLifeGUIWindows.GUI.Load
 {
     public static class LoadGameMenuLayout
     {

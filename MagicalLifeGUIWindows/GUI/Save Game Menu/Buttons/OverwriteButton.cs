@@ -5,7 +5,7 @@ using MagicalLifeGUIWindows.GUI.Reusable.API;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 
-namespace MagicalLifeGUIWindows.GUI.Save_Game_Menu.Buttons
+namespace MagicalLifeGUIWindows.GUI.Save
 {
     public class OverwriteButton : MonoButton
     {

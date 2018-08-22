@@ -1,4 +1,4 @@
-﻿using MagicalLifeAPI.InternalExceptions;
+﻿using MagicalLifeAPI.Error.InternalExceptions;
 using ProtoBuf;
 using System.Collections;
 using System.Collections.Generic;

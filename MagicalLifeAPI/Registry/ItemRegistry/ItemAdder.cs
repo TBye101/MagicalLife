@@ -98,7 +98,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
                     break;
 
                 default:
-                    throw new InternalExceptions.UnexpectedEnumMemberException();
+                    throw new Error.InternalExceptions.UnexpectedEnumMemberException();
             }
         }
 

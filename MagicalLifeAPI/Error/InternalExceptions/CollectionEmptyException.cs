@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeAPI.InternalExceptions
+﻿namespace MagicalLifeAPI.Error.InternalExceptions
 {
     public class CollectionEmptyException : System.Exception
     {

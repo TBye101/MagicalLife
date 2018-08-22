@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu
+﻿namespace MagicalLifeGUIWindows.GUI.In
 {
     public static class InGameEscapeMenu
     {

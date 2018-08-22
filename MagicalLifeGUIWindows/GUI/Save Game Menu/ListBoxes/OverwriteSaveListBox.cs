@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
-namespace MagicalLifeGUIWindows.GUI.Save_Game_Menu.ListBoxes
+namespace MagicalLifeGUIWindows.GUI.Save
 {
     public class OverwriteSaveListBox : ListBox
     {

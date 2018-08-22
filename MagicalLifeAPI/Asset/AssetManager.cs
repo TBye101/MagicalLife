@@ -1,4 +1,4 @@
-﻿using MagicalLifeAPI.InternalExceptions;
+﻿using MagicalLifeAPI.Error.InternalExceptions;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 

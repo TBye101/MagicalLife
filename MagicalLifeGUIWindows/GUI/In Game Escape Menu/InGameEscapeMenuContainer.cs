@@ -1,8 +1,7 @@
-﻿using MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu.Buttons;
-using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Rendering;
 
-namespace MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu
+namespace MagicalLifeGUIWindows.GUI.In
 {
     public class InGameEscapeMenuContainer : GUIContainer
     {

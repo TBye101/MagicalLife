@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeGUIWindows.GUI.Save_Game_Menu
+﻿namespace MagicalLifeGUIWindows.GUI.Save
 {
     public static class SaveGameMenuLayout1920x1080
     {

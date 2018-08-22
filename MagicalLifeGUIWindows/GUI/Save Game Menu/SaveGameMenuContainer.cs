@@ -1,10 +1,7 @@
 ﻿using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeGUIWindows.GUI.Save_Game_Menu.Buttons;
-using MagicalLifeGUIWindows.GUI.Save_Game_Menu.InputBoxes;
-using MagicalLifeGUIWindows.GUI.Save_Game_Menu.ListBoxes;
 using MagicalLifeGUIWindows.Rendering;
 
-namespace MagicalLifeGUIWindows.GUI.Save_Game_Menu
+namespace MagicalLifeGUIWindows.GUI.Save
 {
     public class SaveGameMenuContainer : GUIContainer
     {

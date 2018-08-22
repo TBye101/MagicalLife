@@ -1,7 +1,7 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.GUI;
-using MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu;
+using MagicalLifeGUIWindows.GUI.In;
 using MonoGame.Extended.Input.InputListeners;
 
 namespace MagicalLifeGUIWindows.Input

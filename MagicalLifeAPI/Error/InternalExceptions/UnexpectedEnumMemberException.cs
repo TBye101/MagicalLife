@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MagicalLifeAPI.InternalExceptions
+namespace MagicalLifeAPI.Error.InternalExceptions
 {
     public class UnexpectedEnumMemberException : Exception
     {

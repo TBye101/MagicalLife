@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MagicalLifeAPI.InternalExceptions
+namespace MagicalLifeAPI.Error.InternalExceptions
 {
     /// <summary>
     /// For use when a type was not expected.

@@ -1,10 +1,10 @@
 ﻿using MagicalLifeAPI.Sound;
 using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeGUIWindows.GUI.Save_Game_Menu;
+using MagicalLifeGUIWindows.GUI.Save;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 
-namespace MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu.Buttons
+namespace MagicalLifeGUIWindows.GUI.In
 {
     public class SaveButton : MonoButton
     {

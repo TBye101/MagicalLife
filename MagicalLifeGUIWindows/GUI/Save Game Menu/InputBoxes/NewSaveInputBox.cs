@@ -2,7 +2,7 @@
 using MagicalLifeGUIWindows.Rendering.Text;
 using Microsoft.Xna.Framework;
 
-namespace MagicalLifeGUIWindows.GUI.Save_Game_Menu.InputBoxes
+namespace MagicalLifeGUIWindows.GUI.Save
 {
     public class NewSaveInputBox : MonoInputBox
     {

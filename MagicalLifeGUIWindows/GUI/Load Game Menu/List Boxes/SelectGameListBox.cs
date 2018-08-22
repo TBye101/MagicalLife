@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
-namespace MagicalLifeGUIWindows.GUI.Load_Game_Menu.List_Boxes
+namespace MagicalLifeGUIWindows.GUI.Load
 {
     public class SelectGameListBox : ListBox
     {

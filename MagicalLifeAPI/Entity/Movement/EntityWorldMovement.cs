@@ -1,7 +1,7 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.DataTypes.Attribute;
 using MagicalLifeAPI.Entity.Util.Modifier;
-using MagicalLifeAPI.InternalExceptions;
+using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.World.Modifiers;

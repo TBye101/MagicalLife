@@ -1,5 +1,5 @@
 ﻿using MagicalLifeAPI.Sound;
-using MagicalLifeGUIWindows.GUI.Load_Game_Menu;
+using MagicalLifeGUIWindows.GUI.Load;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;

@@ -3,7 +3,7 @@ using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Networking.World;
 
-namespace MagicalLifeClient.Message_Handlers
+namespace MagicalLifeClient.Message
 {
     public class WorldTransferBodyMessageHandler : MessageHandler
     {

@@ -4,7 +4,7 @@ using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 
-namespace MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu.Buttons
+namespace MagicalLifeGUIWindows.GUI.In
 {
     public class QuitButton : MonoButton
     {
@@ -23,7 +23,7 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu.Buttons
                     return "Quit";
 
                 default:
-                    throw new MagicalLifeAPI.InternalExceptions.UnexpectedEnumMemberException();
+                    throw new MagicalLifeAPI.Error.InternalExceptions.UnexpectedEnumMemberException();
             }
         }
 

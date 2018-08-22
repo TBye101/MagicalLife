@@ -1,6 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.DataTypes.R;
-using MagicalLifeAPI.InternalExceptions;
+using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using System;

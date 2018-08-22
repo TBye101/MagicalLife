@@ -5,7 +5,6 @@ using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeClient.Entity;
 using MagicalLifeClient.Message;
-using MagicalLifeClient.Message_Handlers;
 using System;
 using System.Collections.Generic;
 

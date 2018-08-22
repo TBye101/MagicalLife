@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 
-namespace MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu.Buttons
+namespace MagicalLifeGUIWindows.GUI.In
 {
     public class BackButton : MonoButton
     {

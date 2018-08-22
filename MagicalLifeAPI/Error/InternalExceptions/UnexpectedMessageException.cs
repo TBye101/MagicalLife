@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MagicalLifeAPI.InternalExceptions
+namespace MagicalLifeAPI.Error.InternalExceptions
 {
     /// <summary>
     /// Thrown whenever a message was not handled due to its type.

@@ -2,7 +2,7 @@
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 
-namespace MagicalLifeClient.Message_Handlers
+namespace MagicalLifeClient.Message
 {
     /// <summary>
     /// Handles the <see cref="WorldModifierMessage"/> for the client.

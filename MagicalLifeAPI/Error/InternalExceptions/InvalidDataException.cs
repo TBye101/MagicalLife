@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MagicalLifeAPI.InternalExceptions
+namespace MagicalLifeAPI.Error.InternalExceptions
 {
     /// <summary>
     /// Thrown when some circumstance causes data to be invalid/unusable.
