@@ -43,7 +43,7 @@ AKA TODO:
 
 ~~Character Actions (such as mining or building)~~
 
-Save/Load Game
+~~Save/Load Game~~
 
 Natural objects such as trees
 
