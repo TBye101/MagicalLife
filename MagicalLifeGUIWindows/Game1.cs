@@ -3,6 +3,8 @@ using MagicalLifeAPI.Load;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Universal;
+using MagicalLifeAPI.World.Data;
+using MagicalLifeGUIWindows.GUI.In;
 using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Load;
 using MagicalLifeGUIWindows.Rendering;
@@ -127,6 +129,7 @@ namespace MagicalLifeGUIWindows
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            this.DisplayInGame();
             FMODUtil.System.update();
             this.GraphicsDevice.SetRenderTarget(null);
             this.GraphicsDevice.Clear(Color.Black);
@@ -161,6 +164,17 @@ namespace MagicalLifeGUIWindows
             }
 
             base.Draw(gameTime);
+        }
+
+        private void DisplayInGame()
+        {
+            if (World.Dimensions.Count > 0)
+            {
+                if (!BoundHandler.GUIWindows.Contains(InGameGUI.InGame))
+                {
+                    InGameGUI.Initialize();
+                }
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeGUIWindows.GUI;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input.Comparators;
 using MagicalLifeGUIWindows.Input.History;
@@ -76,7 +77,7 @@ namespace MagicalLifeGUIWindows.Input
         /// </summary>
         /// <param name="clickData"></param>
         /// <returns></returns>
-        private static void ContainerClick(MouseEventArgs clickData)//Clicks arn't getting to the children
+        private static void ContainerClick(MouseEventArgs clickData)
         {
             foreach (GUIContainer item in GUIWindows)
             {
@@ -247,7 +248,7 @@ namespace MagicalLifeGUIWindows.Input
         {
             if (GUIWindows.Contains(container))
             {
-                HideAll();
+                MenuHandler.Clear();
                 container.Visible = true;
                 container.Priority = RenderingData.GetGUIContainerPriority();
 
@@ -256,7 +257,7 @@ namespace MagicalLifeGUIWindows.Input
             }
             else
             {
-                HideAll();
+                MenuHandler.Clear();
                 container.Visible = true;
                 container.Priority = RenderingData.GetGUIContainerPriority();
 
