@@ -21,7 +21,6 @@ namespace MagicalLifeAPI.Networking.Messages
 
         public DisconnectMessage() : base(NetMessageID.DisconnectMessage)
         {
-
         }
     }
 }

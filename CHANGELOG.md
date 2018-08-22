@@ -2,14 +2,22 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 ---
 
-## [Version 0.0.*]
+## [Version 0.0.*] 
 
 #### API
+* Saving a game is now supported
+* Loading a game is now supported
 
 #### Server
+* The newgame command now requires a 3rd parameter, the world's name
 
 #### GUI
 * The host game button has been replaced by the load game button
+* Added listbox support
+* Added the load game listbox
+* Load game menu now works
+* Added a back button to the in game escape menu
+* Input boxes no longer error when reopening menus and backspacing
 
 #### Sound
 

@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Networking;
-using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Base;
+using MagicalLifeAPI.World.Data.Disk;
+using MagicalLifeAPI.World.Data.Disk.DataStorage;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
@@ -20,8 +21,6 @@ namespace MagicalLifeAPI.World.Data
         /// </summary>
         [ProtoMember(1)]
         public static List<Dimension> Dimensions { get; set; } = new List<Dimension>();
-
-        public static WorldStorage Storage { get; set; } = new WorldStorage(Filing.FileSystemManager.GetIOSafeTime());
 
         public static EngineMode Mode { get; set; }
         public static object Data { get; set; }
@@ -95,6 +94,7 @@ namespace MagicalLifeAPI.World.Data
         {
             Random r = new Random();
             Dimension zero = new Dimension("First Reality", generator.GenerateWorld(chunkWidth, chunkHeight, r));
+            WorldStorage.SerializeWorld(WorldStorage.SaveName, new WorldDiskSink());
         }
 
         /// <summary>

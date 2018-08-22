@@ -56,20 +56,8 @@
     <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MSTest.TestFramework.1.3.2\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MSTest.TestFramework.1.3.2\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
-    </Reference>
     <Reference Include="MonoGame.Extended, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MonoGame.Extended.1.1.0\lib\portable-net45+win8+wpa81\MonoGame.Extended.dll</HintPath>
-    </Reference>
-    <Reference Include="MonoGame.Extended.Input, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoGame.Extended.Input.1.1.0\lib\portable-net45+win8+wpa81\MonoGame.Extended.Input.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Framework, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -77,9 +65,6 @@
     </Reference>
     <Reference Include="protobuf-net, Version=2.3.0.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
       <HintPath>..\packages\protobuf-net.2.3.17\lib\net40\protobuf-net.dll</HintPath>
-    </Reference>
-    <Reference Include="RBush, Version=2.0.31.0, Culture=neutral, PublicKeyToken=b1d5b814a0c60675, processorArchitecture=MSIL">
-      <HintPath>..\packages\RBush.2.0.31\lib\netstandard1.2\RBush.dll</HintPath>
     </Reference>
     <Reference Include="RoyT.AStar, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RoyT.AStar.2.1.0\lib\netstandard1.0\RoyT.AStar.dll</HintPath>
@@ -97,35 +82,16 @@
     <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Collections.Immutable.1.5.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
     </Reference>
-    <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Console, Version=4.0.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Console.4.3.1\lib\net46\System.Console.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Core" />
-    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.IO.Compression.FileSystem" />
-    <Reference Include="System.Net.Http, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Net.Http.4.3.3\lib\net46\System.Net.Http.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Numerics" />
     <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Web.DataVisualization" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Asset\AssetManager.cs" />
@@ -164,8 +130,11 @@
     <Compile Include="InternalExceptions\ResourceMissingException.cs" />
     <Compile Include="InternalExceptions\UnexpectedEnumMemberException.cs" />
     <Compile Include="InternalExceptions\UnexpectedMessageException.cs" />
+    <Compile Include="InternalExceptions\UnexpectedTypeException.cs" />
     <Compile Include="Load\ItemLoader.cs" />
     <Compile Include="Networking\MessageBuffer.cs" />
+    <Compile Include="Networking\Messages\WorldTransferBodyMessage.cs" />
+    <Compile Include="Networking\Messages\WorldTransferRegistryMessage.cs" />
     <Compile Include="Networking\NetMessageID.cs" />
     <Compile Include="Networking\Messages\DisconnectMessage.cs" />
     <Compile Include="Networking\Messages\JobAssignedMessage.cs" />
@@ -177,6 +146,7 @@
     <Compile Include="Networking\World\Modifiers\ItemCreatedModifier.cs" />
     <Compile Include="Networking\World\Modifiers\LivingCreatedModifier.cs" />
     <Compile Include="Networking\World\Modifiers\LivingLocationModifier.cs" />
+    <Compile Include="Networking\World\NetWorldReceiver.cs" />
     <Compile Include="Registry\ItemRegistry\ItemAdder.cs" />
     <Compile Include="Registry\ItemRegistry\ItemFinder.cs" />
     <Compile Include="Registry\ItemRegistry\ItemRegistry.cs" />
@@ -206,7 +176,7 @@
     <Compile Include="Networking\ITeachSerialization.cs" />
     <Compile Include="Networking\Messages\RouteCreatedMessage.cs" />
     <Compile Include="Networking\Messages\ServerTickMessage.cs" />
-    <Compile Include="Networking\Messages\WorldTransferMessage.cs" />
+    <Compile Include="Networking\Messages\WorldTransferHeaderMessage.cs" />
     <Compile Include="Networking\NetworkSettings.cs" />
     <Compile Include="Networking\Serialization\BaseMessage.cs" />
     <Compile Include="Networking\Serialization\MessageHandler.cs" />
@@ -236,6 +206,7 @@
     <Compile Include="Sound\FMOD\fmod_errors.cs" />
     <Compile Include="Sound\FMOD\fmod_studio.cs" />
     <Compile Include="Sound\MusicPlayer.cs" />
+    <Compile Include="Time\RealTime.cs" />
     <Compile Include="Universal\UniversalEvents.cs" />
     <Compile Include="Util\Algorithms.cs" />
     <Compile Include="Util\Extensions.cs" />
@@ -252,7 +223,14 @@
     <Compile Include="World\Data\ChunkManager.cs" />
     <Compile Include="World\Data\Dimension.cs" />
     <Compile Include="World\Data\ComplexItemStack.cs" />
-    <Compile Include="World\Data\WorldStorage.cs" />
+    <Compile Include="World\Data\Disk\DataStorage\DimensionHeader.cs" />
+    <Compile Include="World\Data\Disk\DataStorage\AbstractWorldSink.cs" />
+    <Compile Include="World\Data\Disk\DataStorage\WorldDiskSink.cs" />
+    <Compile Include="World\Data\Disk\DataStorage\WorldNetSink.cs" />
+    <Compile Include="World\Data\Disk\DimensionStorage.cs" />
+    <Compile Include="World\Data\Disk\ChunkStorage.cs" />
+    <Compile Include="World\Data\Disk\ItemRegistryStorage.cs" />
+    <Compile Include="World\Data\Disk\WorldStorage.cs" />
     <Compile Include="World\Items\StoneChunk.cs" />
     <Compile Include="World\Resources\Stone.cs" />
     <Compile Include="World\Resources\StoneBase.cs" />
@@ -276,7 +254,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Networking\Messages\ID Chart.md" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

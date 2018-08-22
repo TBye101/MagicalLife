@@ -11,7 +11,6 @@
         {
             NewWorldMenuContainer mainMenu = new NewWorldMenuContainer(true);
             NewWorldMenuM = mainMenu;
-            MenuHandler.DisplayMenu(NewWorldMenuM);
         }
     }
 }

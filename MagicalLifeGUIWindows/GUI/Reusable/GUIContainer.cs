@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Universal;
 using MagicalLifeGUIWindows.Map;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -13,9 +12,11 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
     /// </summary>
     public abstract class GUIContainer
     {
+        public GUIContainer Child { get; set; }
+
         /// <summary>
         /// Constructs a new instance of the <see cref="GUIContainer"/> class.
-        /// Anything that implements this must have an empty constructor, which refererences the empty base constructor.
+        /// Anything that implements this must have an empty constructor, which references the empty base constructor.
         /// </summary>
         /// <param name="image">The texture of this GUI container.</param>
         /// <param name="drawingBounds">The bounds for which to draw the texture on the screen at.</param>
@@ -59,5 +60,10 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         public List<GUIElement> Controls { get; set; }
 
         public abstract string GetTextureName();
+
+        public void PopupChild(GUIContainer child)
+        {
+            this.Child = child;
+        }
     }
 }

@@ -1,11 +1,13 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
+using MagicalLifeAPI.World.Data.Disk;
+using MagicalLifeAPI.World.Data.Disk.DataStorage;
 using SimpleTCP;
 using System;
 using System.Collections.Generic;
-using System.Net.Sockets;
 using System.Linq;
+using System.Net.Sockets;
 
 namespace MagicalLifeAPI.Networking.Server
 {
@@ -71,7 +73,7 @@ namespace MagicalLifeAPI.Networking.Server
         {
             MasterLog.DebugWriteLine("Client connected: " + e.Client.RemoteEndPoint.ToString());
 
-            this.Send<WorldTransferMessage>(new WorldTransferMessage(MagicalLifeAPI.World.Data.World.Dimensions), e.Client);
+            WorldStorage.NetSerializeWorld(WorldStorage.SaveName, new WorldNetSink(e.Client));
         }
 
         /// <summary>

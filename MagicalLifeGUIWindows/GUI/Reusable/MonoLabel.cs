@@ -1,4 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MagicalLifeGUIWindows.Rendering;
+using MagicalLifeGUIWindows.Rendering.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Input.InputListeners;
 using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
 
@@ -26,7 +29,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// <param name="image"></param>
         /// <param name="font"></param>
         /// <param name="isContained">If true, this GUI element is within a container.</param>
-        public MonoLabel(Rectangle bounds, string image, bool isContained, string font = "MainMenuFont12x") : base(image, bounds, int.MinValue, isContained, font)
+        public MonoLabel(Rectangle bounds, string image, bool isContained) : base(bounds, int.MinValue, isContained, "MainMenuFont12x")
         {
         }
 
@@ -34,12 +37,25 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         {
         }
 
-        public override void Click(MouseEventArgs e)
+        public override void Click(MouseEventArgs e, GUIContainer container)
         {
+            //This is a label. Nothing happens when you click on it.
         }
 
-        public override void DoubleClick(MouseEventArgs e)
+        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
         {
+            //This is a label. Nothing happens when you click on it.
+        }
+
+        public override void Render(SpriteBatch spBatch, Rectangle containerBounds)
+        {
+            int x = containerBounds.X + this.DrawingBounds.X;
+            int y = containerBounds.Y + this.DrawingBounds.Y;
+            int width = this.DrawingBounds.Width;
+            int height = this.DrawingBounds.Height;
+
+            Rectangle Bounds = new Rectangle(x, y, width, height);
+            SimpleTextRenderer.DrawString(this.Font, this.Text, Bounds, this.TextAlignment, RenderingPipe.colorMask, ref spBatch);
         }
     }
 }

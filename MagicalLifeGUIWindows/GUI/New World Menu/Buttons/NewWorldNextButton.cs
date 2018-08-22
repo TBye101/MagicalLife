@@ -22,7 +22,7 @@ namespace MagicalLifeGUIWindows.GUI.New
         {
         }
 
-        public override void Click(MouseEventArgs e)
+        public override void Click(MouseEventArgs e, GUIContainer container)
         {
             World.Mode = MagicalLifeAPI.Networking.EngineMode.ServerAndClient;
             Server.Load();
@@ -40,7 +40,7 @@ namespace MagicalLifeGUIWindows.GUI.New
             BoundHandler.Popup(InGameGUI.InGame);
         }
 
-        public override void DoubleClick(MouseEventArgs e)
+        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
         {
         }
 

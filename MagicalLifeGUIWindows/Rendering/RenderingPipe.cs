@@ -3,7 +3,6 @@ using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.GUI.MainMenu;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;
-using MagicalLifeGUIWindows.Rendering.GUI;
 using MagicalLifeGUIWindows.Rendering.Map;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -21,7 +20,7 @@ namespace MagicalLifeGUIWindows.Rendering
         /// <summary>
         /// The standard size of the tiles.
         /// </summary>
-        public static readonly Point tileSize = Tile.GetTileSize().ToXNA();
+        public static readonly Point tileSize = Tile.GetTileSize();
 
         public static readonly Rectangle FullScreenWindow = new Rectangle(new Point(0, 0), new Point(MagicalLifeSettings.Storage.MainWindow.Default.ScreenSize.Width, MagicalLifeSettings.Storage.MainWindow.Default.ScreenSize.Height));
 
@@ -82,34 +81,28 @@ namespace MagicalLifeGUIWindows.Rendering
             {
                 if (item.Visible)
                 {
-                    spBatch.Draw(item.Image, item.DrawingBounds, colorMask);
+                    RenderYoungestChild(item, spBatch);
+                }
+            }
+        }
 
-                    foreach (GUIElement control in item.Controls)
+        private static void RenderYoungestChild(GUIContainer item, SpriteBatch spBatch)
+        {
+            if (item.Child == null)
+            {
+                spBatch.Draw(item.Image, item.DrawingBounds, colorMask);
+
+                foreach (GUIElement control in item.Controls)
+                {
+                    if (control.Visible)
                     {
-                        if (control.Visible)
-                        {
-                            switch (control)
-                            {
-                                case MonoButton button:
-                                    GUIRenderer.DrawButtonInContainer((MonoButton)control, ref spBatch, item);
-                                    break;
-
-                                case MonoInputBox textBox:
-                                    GUIRenderer.DrawInputBoxInContainer((MonoInputBox)control, ref spBatch, item);
-                                    break;
-
-                                case MonoLabel label:
-                                    GUIRenderer.DrawLabelInContainer((MonoLabel)control, ref spBatch, item);
-                                    break;
-
-                                default:
-                                    //Should probably send out a event or something, to allow someone else to render it.
-                                    //TODO:
-                                    break;
-                            }
-                        }
+                        control.Render(spBatch, item.DrawingBounds);
                     }
                 }
+            }
+            else
+            {
+                RenderYoungestChild(item.Child, spBatch);
             }
         }
     }

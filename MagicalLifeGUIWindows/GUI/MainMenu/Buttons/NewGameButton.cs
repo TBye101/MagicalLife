@@ -12,14 +12,16 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
         {
         }
 
-        public override void Click(MouseEventArgs e)
+        public override void Click(MouseEventArgs e, GUIContainer container)
         {
             FMODUtil.RaiseEvent(EffectsTable.UIClick);
             NewWorldMenu.Initialize();
+            MainMenu.MainMenuID.PopupChild(NewWorldMenu.NewWorldMenuM);
         }
 
-        public override void DoubleClick(MouseEventArgs e)
+        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
         {
+            //Single click is good enough
         }
 
         private static Rectangle GetLocation()

@@ -21,7 +21,7 @@ namespace MagicalLifeGUIWindows.GUI.In
             return new Rectangle(x, y, width, height);
         }
 
-        public override void Click(MouseEventArgs e)
+        public override void Click(MouseEventArgs e, GUIContainer container)
         {
             if (InGameGUI.Selected == ActionSelected.Mine)
             {
@@ -33,7 +33,7 @@ namespace MagicalLifeGUIWindows.GUI.In
             }
         }
 
-        public override void DoubleClick(MouseEventArgs e)
+        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
         {
         }
     }

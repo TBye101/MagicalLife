@@ -36,7 +36,7 @@ namespace MagicalLifeGUIWindows.Screens
         protected Color Mask { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="logoFileName">The resource path to the logo file that is to be displayed.</param>
         /// <param name="duration">How many seconds to show the logo.</param>

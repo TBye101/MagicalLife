@@ -1,7 +1,6 @@
 ﻿using MagicalLifeAPI.Entity.AI.Job.Jobs;
 using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Messages;
-using MagicalLifeAPI.Universal;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
@@ -11,7 +10,7 @@ namespace MagicalLifeAPI.Entity.AI.Job
 {
     /// <summary>
     /// Everything a <see cref="Living"/> does is a job. From construction, to hauling, to casting spells.
-    /// At some point, all implementers of <see cref="Job"/> must call <see cref="CompleteJob"/>. 
+    /// At some point, all implementers of <see cref="Job"/> must call <see cref="CompleteJob"/>.
     /// </summary>
     [ProtoContract]
     [ProtoInclude(7, typeof(BecomeAdjacentJob))]
@@ -49,6 +48,8 @@ namespace MagicalLifeAPI.Entity.AI.Job
 
         private bool DependResolved = false;
         private bool Done = false;
+
+        private readonly object SyncObject = new object();
 
         /// <summary>
         /// Used when all components of the job must be completed by the same character.
@@ -114,14 +115,18 @@ namespace MagicalLifeAPI.Entity.AI.Job
         /// </summary>
         protected void CompleteJob(Living living)
         {
-            if (!this.Done && !this.RequireSameWorker || this.ParentJob == Guid.Empty)
+            lock (this.SyncObject)
             {
-                this.Done = true;
-                ClientSendRecieve.Send<JobCompletedMessage>(new JobCompletedMessage(this.ID));
-            }
-            else
-            {
-                this.RaiseJobCompleted(new Tuple<Guid, Living>(this.ID, living));
+                if (!this.Done && !this.RequireSameWorker || this.ParentJob == Guid.Empty)
+                {
+                    this.Done = true;
+                    living.Task = null;
+                    ClientSendRecieve.Send<JobCompletedMessage>(new JobCompletedMessage(this.ID));
+                }
+                else
+                {
+                    this.RaiseJobCompleted(new Tuple<Guid, Living>(this.ID, living));
+                }
             }
         }
 

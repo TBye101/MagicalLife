@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using MagicalLifeAPI.DataTypes;
+﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Pathfinding;
 using ProtoBuf;
+using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Entity.AI.Job.Jobs
 {

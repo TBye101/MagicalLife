@@ -23,7 +23,6 @@ namespace MagicalLifeAPI.Networking.Messages
 
         public JobCompletedMessage() : base(NetMessageID.JobCompletedMessage)
         {
-
         }
     }
 }

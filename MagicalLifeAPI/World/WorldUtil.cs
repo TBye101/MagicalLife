@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Entity.Entity;
 using MagicalLifeAPI.Entity.Humanoid;
 using MagicalLifeAPI.Networking.Messages;

@@ -13,9 +13,6 @@ namespace MagicalLifeGUIWindows.GUI.Join
             {
                 switch ((Resolution)MainWindow.Default.Resolution)
                 {
-                    case Resolution._1920x1080:
-                        return JoinGameMenuLayout1920x1080.IPInputBoxHeight;
-
                     default:
                         return JoinGameMenuLayout1920x1080.IPInputBoxHeight;
                 }
@@ -31,9 +28,6 @@ namespace MagicalLifeGUIWindows.GUI.Join
             {
                 switch ((Resolution)MainWindow.Default.Resolution)
                 {
-                    case Resolution._1920x1080:
-                        return JoinGameMenuLayout1920x1080.IPInputBoxWidth;
-
                     default:
                         return JoinGameMenuLayout1920x1080.IPInputBoxWidth;
                 }
@@ -49,9 +43,6 @@ namespace MagicalLifeGUIWindows.GUI.Join
             {
                 switch ((Resolution)MainWindow.Default.Resolution)
                 {
-                    case Resolution._1920x1080:
-                        return JoinGameMenuLayout1920x1080.IPInputBoxX;
-
                     default:
                         return JoinGameMenuLayout1920x1080.IPInputBoxX;
                 }
@@ -67,9 +58,6 @@ namespace MagicalLifeGUIWindows.GUI.Join
             {
                 switch ((Resolution)MainWindow.Default.Resolution)
                 {
-                    case Resolution._1920x1080:
-                        return JoinGameMenuLayout1920x1080.IPInputBoxY;
-
                     default:
                         return JoinGameMenuLayout1920x1080.IPInputBoxY;
                 }
@@ -85,9 +73,6 @@ namespace MagicalLifeGUIWindows.GUI.Join
             {
                 switch ((Resolution)MainWindow.Default.Resolution)
                 {
-                    case Resolution._1920x1080:
-                        return JoinGameMenuLayout1920x1080.PortInputBoxX;
-
                     default:
                         return JoinGameMenuLayout1920x1080.PortInputBoxX;
                 }
@@ -103,9 +88,6 @@ namespace MagicalLifeGUIWindows.GUI.Join
             {
                 switch ((Resolution)MainWindow.Default.Resolution)
                 {
-                    case Resolution._1920x1080:
-                        return JoinGameMenuLayout1920x1080.JoinButtonX;
-
                     default:
                         return JoinGameMenuLayout1920x1080.JoinButtonX;
                 }

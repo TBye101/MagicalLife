@@ -11,7 +11,6 @@
         {
             JoinGameMenuContainer mainMenu = new JoinGameMenuContainer();
             menu = mainMenu;
-            MenuHandler.DisplayMenu(menu);
         }
     }
 }

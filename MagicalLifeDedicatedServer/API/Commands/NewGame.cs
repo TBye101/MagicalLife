@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Networking.Server;
 using MagicalLifeAPI.Server;
 using MagicalLifeAPI.World.Data;
+using MagicalLifeAPI.World.Data.Disk;
 using MagicalLifeDedicatedServer.API.Settings;
 using MagicalLifeServer;
 using MagicalLifeServer.ServerWorld.World;
@@ -17,7 +18,7 @@ namespace MagicalLifeDedicatedServer.API.Commands
     {
         public string getHelp()
         {
-            return "Creates a new world and hosts a new game";
+            return "Creates a new world and hosts a new game\r\n Usage: ml newgame (mygamenamehere)";
         }
 
         public string getName()
@@ -27,20 +28,28 @@ namespace MagicalLifeDedicatedServer.API.Commands
 
         public void run(List<string> input)
         {
-            Server.Load();
+            if (input.Count > 0)
+            {
+                WorldStorage.SaveName = input[0];
+                Server.Load();
 
-            WorldGenerationSettings wset = SettingsHandler.WorldGenerationSettings.Settings;
-            Util.WriteLine("Generating world!");
-            World.Initialize(wset.DimensionWidth, wset.DimensionHeight, new GrassAndDirt(0));
-            Util.WriteLine("World generated!");
+                WorldGenerationSettings wset = SettingsHandler.WorldGenerationSettings.Settings;
+                Util.WriteLine("Generating world!");
+                World.Initialize(wset.DimensionWidth, wset.DimensionHeight, new GrassAndDirt(0));
+                Util.WriteLine("World generated!");
 
-            Util.WriteLine("Initializing networking!");
-            int port = SettingsHandler.NetworkSettings.Settings.Port;
-            ServerSendRecieve.Initialize(new NetworkSettings(port));
-            ServerSendRecieve.TCPServer.Server.ClientConnected += Server_ClientConnected;
-            ServerSendRecieve.TCPServer.Server.ClientDisconnected += Server_ClientDisconnected;
+                Util.WriteLine("Initializing networking!");
+                int port = SettingsHandler.NetworkSettings.Settings.Port;
+                ServerSendRecieve.Initialize(new NetworkSettings(port));
+                ServerSendRecieve.TCPServer.Server.ClientConnected += Server_ClientConnected;
+                ServerSendRecieve.TCPServer.Server.ClientDisconnected += Server_ClientDisconnected;
 
-            Util.WriteLine("Done!");
+                Util.WriteLine("Done!");
+            }
+            else
+            {
+                Util.WriteLine("Invalid command parameters");
+            }
         }
 
         private static void Server_ClientDisconnected(object sender, TcpClient e)

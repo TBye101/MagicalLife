@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using MagicalLifeAPI.Sound;
+﻿using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.World.Base;
 using ProtoBuf;
+using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Components.Resource
 {
@@ -18,7 +18,6 @@ namespace MagicalLifeAPI.Components.Resource
 
         public DropWhenCompletelyMined()
         {
-
         }
 
         public override List<Item> Mined()

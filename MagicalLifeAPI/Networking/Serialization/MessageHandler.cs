@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MagicalLifeAPI.Networking.Serialization
+﻿namespace MagicalLifeAPI.Networking.Serialization
 {
     /// <summary>
     /// Used to handle messages that are sent over the network.
