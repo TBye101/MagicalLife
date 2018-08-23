@@ -1,4 +1,4 @@
-﻿using MagicalLifeAPI.Settings;
+﻿using MagicalLifeAPI.Filing.Settings;
 using System.IO;
 
 namespace MagicalLifeAPI.Filing

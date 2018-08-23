@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Filing.Logging;
+﻿using MagicalLifeAPI.Filing;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.GUI;
 using MagicalLifeGUIWindows.GUI.In;
@@ -18,7 +19,7 @@ namespace MagicalLifeGUIWindows.Input
 
         private void Listener_KeyPressed(object sender, KeyboardEventArgs e)
         {
-            if (e.Key == Microsoft.Xna.Framework.Input.Keys.Escape)
+            if (e.Key == SettingsManager.Keybindings.Settings.OpenInGameEscapeMenu)
             {
                 this.HandleEscapeKey();
             }
