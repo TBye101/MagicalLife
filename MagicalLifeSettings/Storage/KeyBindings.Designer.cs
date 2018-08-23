@@ -12,7 +12,7 @@ namespace MagicalLifeSettings.Storage {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.5.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.8.0.0")]
     public sealed partial class KeyBindings : global::System.Configuration.ApplicationSettingsBase {
         
         private static KeyBindings defaultInstance = ((KeyBindings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new KeyBindings())));
@@ -37,13 +37,49 @@ namespace MagicalLifeSettings.Storage {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Setting {
+        [global::System.Configuration.DefaultSettingValueAttribute("W")]
+        public global::System.Windows.Forms.Keys ScreenUp {
             get {
-                return ((string)(this["Setting"]));
+                return ((global::System.Windows.Forms.Keys)(this["ScreenUp"]));
             }
             set {
-                this["Setting"] = value;
+                this["ScreenUp"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("S")]
+        public global::System.Windows.Forms.Keys ScreenDown {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["ScreenDown"]));
+            }
+            set {
+                this["ScreenDown"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("A")]
+        public global::System.Windows.Forms.Keys ScreenLeft {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["ScreenLeft"]));
+            }
+            set {
+                this["ScreenLeft"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("D")]
+        public global::System.Windows.Forms.Keys ScreenRight {
+            get {
+                return ((global::System.Windows.Forms.Keys)(this["ScreenRight"]));
+            }
+            set {
+                this["ScreenRight"] = value;
             }
         }
     }

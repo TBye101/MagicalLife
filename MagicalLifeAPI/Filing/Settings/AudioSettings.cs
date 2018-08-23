@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeAPI.Settings
+﻿namespace MagicalLifeAPI.Filing.Settings
 {
     /// <summary>
     /// Holds some audio setting values.
