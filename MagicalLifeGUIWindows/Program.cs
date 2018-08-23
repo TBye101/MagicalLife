@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Filing;
+﻿using MagicalLifeAPI.Error;
+using MagicalLifeAPI.Filing;
 using MagicalLifeAPI.Filing.Logging;
 using System;
 
@@ -13,6 +14,7 @@ namespace MagicalLifeGUIWindows
         {
             FileSystemManager.Initialize();
             MasterLog.Initialize();
+            ErrorReporter.Initialize();
 
             using (Game1 game = new Game1())
             {
