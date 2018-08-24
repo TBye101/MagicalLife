@@ -6,14 +6,14 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
     {
         public LogoSkip()
         {
-            KeyboardHandler.keyboardListener.KeyTyped += this.KeyboardListener_KeyTyped;
+            KeyboardHandler.KeysDown += this.KeyboardHandler_KeysDown;
         }
 
-        private void KeyboardListener_KeyTyped(object sender, MonoGame.Extended.Input.InputListeners.KeyboardEventArgs e)
+        private void KeyboardHandler_KeysDown(object sender, Microsoft.Xna.Framework.Input.Keys e)
         {
             if (!Game1.SplashDone)
             {
-                if (e.Key == Microsoft.Xna.Framework.Input.Keys.Escape || e.Key == Microsoft.Xna.Framework.Input.Keys.Enter || e.Key == Microsoft.Xna.Framework.Input.Keys.Space)
+                if (e == Microsoft.Xna.Framework.Input.Keys.Escape || e == Microsoft.Xna.Framework.Input.Keys.Enter || e == Microsoft.Xna.Framework.Input.Keys.Space)
                 {
                     this.SkipOne();
                 }

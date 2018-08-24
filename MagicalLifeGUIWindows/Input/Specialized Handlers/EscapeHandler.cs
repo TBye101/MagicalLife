@@ -14,12 +14,12 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
     {
         public EscapeHandler()
         {
-            KeyboardHandler.keyboardListener.KeyPressed += this.Listener_KeyPressed;
+            KeyboardHandler.KeysPressed += this.KeyboardHandler_KeysPressed;
         }
 
-        private void Listener_KeyPressed(object sender, KeyboardEventArgs e)
+        private void KeyboardHandler_KeysPressed(object sender, Microsoft.Xna.Framework.Input.Keys e)
         {
-            if (e.Key == SettingsManager.Keybindings.Settings.OpenInGameEscapeMenu)
+            if (e == SettingsManager.Keybindings.Settings.OpenInGameEscapeMenu)
             {
                 this.HandleEscapeKey();
             }

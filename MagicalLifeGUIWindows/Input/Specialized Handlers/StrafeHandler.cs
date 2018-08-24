@@ -15,37 +15,35 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
         public StrafeHandler()
         {
-            KeyboardHandler.keyboardListener.KeyTyped += this.KeyboardListener_KeyTyped;
-            KeyboardHandler.keyboardListener.KeyPressed += this.KeyboardListener_KeyPressed;
-            
+            KeyboardHandler.KeysDown += this.KeyboardHandler_KeysDown;
+            KeyboardHandler.KeysPressed += this.KeyboardHandler_KeysPressed;
         }
 
-        private void KeyboardListener_KeyPressed(object sender, MonoGame.Extended.Input.InputListeners.KeyboardEventArgs e)
+        private void KeyboardHandler_KeysPressed(object sender, Keys e)
         {
-            if (e.Key == SettingsManager.Keybindings.Settings.StrafeDown)
+            if (e == SettingsManager.Keybindings.Settings.StrafeDown)
             {
                 RenderingPipe.YViewOffset += 10;
             }
 
-            if (e.Key == SettingsManager.Keybindings.Settings.StrafeLeft)
+            if (e == SettingsManager.Keybindings.Settings.StrafeLeft)
             {
                 RenderingPipe.XViewOffset -= 10;
             }
 
-            if (e.Key == SettingsManager.Keybindings.Settings.StrafeRight)
+            if (e == SettingsManager.Keybindings.Settings.StrafeRight)
             {
                 RenderingPipe.XViewOffset += 10;
             }
 
-            if (e.Key == SettingsManager.Keybindings.Settings.StrafeUp)
+            if (e == SettingsManager.Keybindings.Settings.StrafeUp)
             {
                 RenderingPipe.YViewOffset -= 10;
             }
         }
 
-        private void KeyboardListener_KeyTyped(object sender, MonoGame.Extended.Input.InputListeners.KeyboardEventArgs e)
+        private void KeyboardHandler_KeysDown(object sender, Keys e)
         {
-
         }
     }
 }
