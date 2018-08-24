@@ -10,13 +10,9 @@ namespace MagicalLifeGUIWindows.Input
     {
         public static KeyboardListener keyboardListener;
 
-        private static EscapeHandler escapeHandler;
-
         public static void Initialize()
         {
             keyboardListener = new KeyboardListener();
-
-            escapeHandler = new EscapeHandler(keyboardListener);
         }
 
         /// <summary>

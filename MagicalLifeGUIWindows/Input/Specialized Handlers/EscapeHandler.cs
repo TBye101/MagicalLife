@@ -5,16 +5,16 @@ using MagicalLifeGUIWindows.GUI;
 using MagicalLifeGUIWindows.GUI.In;
 using MonoGame.Extended.Input.InputListeners;
 
-namespace MagicalLifeGUIWindows.Input
+namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 {
     /// <summary>
     /// Used to handle the escape key, and it's many uses.
     /// </summary>
     public class EscapeHandler
     {
-        public EscapeHandler(KeyboardListener listener)
+        public EscapeHandler()
         {
-            listener.KeyPressed += this.Listener_KeyPressed;
+            KeyboardHandler.keyboardListener.KeyPressed += this.Listener_KeyPressed;
         }
 
         private void Listener_KeyPressed(object sender, KeyboardEventArgs e)

@@ -1,6 +1,6 @@
 ﻿using MagicalLifeGUIWindows.Screens;
 
-namespace MagicalLifeGUIWindows.Input.Specialized
+namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 {
     public class LogoSkip
     {

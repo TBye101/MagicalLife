@@ -8,7 +8,7 @@ using MagicalLifeGUIWindows.Input.History;
 using MagicalLifeGUIWindows.Rendering;
 using System.Linq;
 
-namespace MagicalLifeGUIWindows.Input.Specialized
+namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 {
     public class MiningActionHandler
     {
