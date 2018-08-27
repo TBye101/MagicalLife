@@ -102,7 +102,6 @@ namespace MagicalLifeAPI.Networking.Server
             MasterLog.DebugWriteLine("Sending message: " + message.GetType().FullName);
             if (Local == EngineMode.ServerAndClient)
             {
-                ClientSendRecieve.Recieve(message);
             }
             else
             {

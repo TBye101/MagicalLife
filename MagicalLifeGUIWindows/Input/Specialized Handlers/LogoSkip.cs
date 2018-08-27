@@ -6,10 +6,10 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
     {
         public LogoSkip()
         {
-            KeyboardHandler.KeysDown += this.KeyboardHandler_KeysDown;
+            KeyboardHandler.KeysPressed += this.KeyboardHandler_KeysPressed;
         }
 
-        private void KeyboardHandler_KeysDown(object sender, Microsoft.Xna.Framework.Input.Keys e)
+        private void KeyboardHandler_KeysPressed(object sender, Microsoft.Xna.Framework.Input.Keys e)
         {
             if (!Game1.SplashDone)
             {

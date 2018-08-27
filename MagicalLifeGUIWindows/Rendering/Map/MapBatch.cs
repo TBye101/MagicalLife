@@ -40,7 +40,10 @@ namespace MagicalLifeGUIWindows.Rendering.Map
 
         internal void Draw(Texture2D texture, Vector2 target)
         {
-            this.SpriteBat.Draw(texture, target, Color.White);
+            int x = (int)Math.Round(target.X + RenderingPipe.XViewOffset);
+            int y = (int)Math.Round(target.Y + RenderingPipe.YViewOffset);
+
+            this.SpriteBat.Draw(texture, new Vector2(x, y), Color.White);
         }
     }
 }

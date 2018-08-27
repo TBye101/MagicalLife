@@ -21,29 +21,30 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
         private void KeyboardHandler_KeysPressed(object sender, Keys e)
         {
-            if (e == SettingsManager.Keybindings.Settings.StrafeDown)
-            {
-                RenderingPipe.YViewOffset += 10;
-            }
 
-            if (e == SettingsManager.Keybindings.Settings.StrafeLeft)
-            {
-                RenderingPipe.XViewOffset -= 10;
-            }
-
-            if (e == SettingsManager.Keybindings.Settings.StrafeRight)
-            {
-                RenderingPipe.XViewOffset += 10;
-            }
-
-            if (e == SettingsManager.Keybindings.Settings.StrafeUp)
-            {
-                RenderingPipe.YViewOffset -= 10;
-            }
         }
 
         private void KeyboardHandler_KeysDown(object sender, Keys e)
         {
+            if (e == SettingsManager.Keybindings.Settings.StrafeDown)
+            {
+                RenderingPipe.YViewOffset -= 10;
+            }
+
+            if (e == SettingsManager.Keybindings.Settings.StrafeLeft)
+            {
+                RenderingPipe.XViewOffset += 10;
+            }
+
+            if (e == SettingsManager.Keybindings.Settings.StrafeRight)
+            {
+                RenderingPipe.XViewOffset -= 10;
+            }
+
+            if (e == SettingsManager.Keybindings.Settings.StrafeUp)
+            {
+                RenderingPipe.YViewOffset += 10;
+            }
         }
     }
 }
