@@ -49,13 +49,13 @@ namespace MagicalLifeGUIWindows.Input.History
             BoundHandler.MouseListner.MouseDragStart += MouseListner_MouseDragStart;
             BoundHandler.MouseListner.MouseDragEnd += MouseListner_MouseDragEnd;
             BoundHandler.MouseListner.MouseWheelMoved += MouseListner_MouseWheelMoved;
-            KeyboardHandler.keyboardListener.KeyPressed += KeyboardListener_KeyPressed;
-            KeyboardHandler.keyboardListener.KeyReleased += KeyboardListener_KeyReleased;
+            KeyboardHandler.KeysPressed += KeyboardHandler_KeysPressed;
+            KeyboardHandler.KeysReleased += KeyboardHandler_KeysReleased;
         }
 
-        private static void KeyboardListener_KeyReleased(object sender, KeyboardEventArgs e)
+        private static void KeyboardHandler_KeysReleased(object sender, Microsoft.Xna.Framework.Input.Keys e)
         {
-            switch (e.Key)
+            switch (e)
             {
                 case Microsoft.Xna.Framework.Input.Keys.LeftShift:
                 case Microsoft.Xna.Framework.Input.Keys.RightShift:
@@ -72,9 +72,9 @@ namespace MagicalLifeGUIWindows.Input.History
             }
         }
 
-        private static void KeyboardListener_KeyPressed(object sender, KeyboardEventArgs e)
+        private static void KeyboardHandler_KeysPressed(object sender, Microsoft.Xna.Framework.Input.Keys e)
         {
-            switch (e.Key)
+            switch (e)
             {
                 case Microsoft.Xna.Framework.Input.Keys.LeftShift:
                 case Microsoft.Xna.Framework.Input.Keys.RightShift:

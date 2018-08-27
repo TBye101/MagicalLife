@@ -10,7 +10,7 @@ using MagicalLifeGUIWindows.Rendering;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MagicalLifeGUIWindows.Input.Specialized
+namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 {
     /// <summary>
     /// Used to check if the correct sequence of events has occurred to order a <see cref="Living"/> to move.

@@ -1,19 +1,19 @@
 ﻿using MagicalLifeGUIWindows.Screens;
 
-namespace MagicalLifeGUIWindows.Input.Specialized
+namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 {
     public class LogoSkip
     {
         public LogoSkip()
         {
-            KeyboardHandler.keyboardListener.KeyTyped += this.KeyboardListener_KeyTyped;
+            KeyboardHandler.KeysPressed += this.KeyboardHandler_KeysPressed;
         }
 
-        private void KeyboardListener_KeyTyped(object sender, MonoGame.Extended.Input.InputListeners.KeyboardEventArgs e)
+        private void KeyboardHandler_KeysPressed(object sender, Microsoft.Xna.Framework.Input.Keys e)
         {
             if (!Game1.SplashDone)
             {
-                if (e.Key == Microsoft.Xna.Framework.Input.Keys.Escape || e.Key == Microsoft.Xna.Framework.Input.Keys.Enter || e.Key == Microsoft.Xna.Framework.Input.Keys.Space)
+                if (e == Microsoft.Xna.Framework.Input.Keys.Escape || e == Microsoft.Xna.Framework.Input.Keys.Enter || e == Microsoft.Xna.Framework.Input.Keys.Space)
                 {
                     this.SkipOne();
                 }

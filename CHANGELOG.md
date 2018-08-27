@@ -2,11 +2,12 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 ---
 
-## [Version 0.0.*] 
+## [Version 0.1.0] 
 
 #### API
 * Saving a game is now supported
 * Loading a game is now supported
+* Errors are now logged
 
 #### Server
 * The newgame command now requires a 3rd parameter, the world's name

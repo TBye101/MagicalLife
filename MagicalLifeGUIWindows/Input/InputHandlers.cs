@@ -1,4 +1,6 @@
-﻿namespace MagicalLifeGUIWindows.Input.Specialized
+﻿using MagicalLifeGUIWindows.Input.Specialized_Handlers;
+
+namespace MagicalLifeGUIWindows.Input
 {
     /// <summary>
     /// Holds all of the specialized input handlers.
@@ -10,6 +12,10 @@
         public static LogoSkip LogoSkipper;
 
         public static MiningActionHandler MiningAction;
+
+        public static StrafeHandler StrafingHandler = new StrafeHandler();
+
+        public static EscapeHandler EscHandler = new EscapeHandler();
 
         public static void Initialize()
         {

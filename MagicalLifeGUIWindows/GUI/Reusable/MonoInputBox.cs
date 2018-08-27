@@ -3,6 +3,7 @@ using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Rendering;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Input.InputListeners;
 using System;
 using System.Linq;
@@ -68,7 +69,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         public MonoInputBox(string image, string CarrotTexture, Rectangle drawingBounds, int priority, string font, bool isLocked, Alignment textAlignment, bool isContained)
             : base(drawingBounds, priority, isContained, font)
         {
-            KeyboardHandler.keyboardListener.KeyPressed += this.KeyboardListener_KeyPressed;
+            KeyboardHandler.KeysPressed += this.KeyboardHandler_KeysPressed;
             this.CarrotPosition = this.Text.Count();
             this.CarrotTexture = AssetManager.Textures[AssetManager.GetTextureIndex(CarrotTexture)];
             this.TextureID = AssetManager.GetTextureIndex(image);
@@ -77,23 +78,11 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             this.TextAlignment = textAlignment;
         }
 
-        private void LoadCarrotInformation(string font)
-        {
-            this.Font = Game1.AssetManager.Load<SpriteFont>(font);
-            Vector2 size = this.Font.MeasureString("|");
-            this.CarrotWidth = (int)Math.Round(size.X);
-            this.CarrotHeight = (int)Math.Round(size.Y);
-        }
-
-        public MonoInputBox() : base()
-        {
-        }
-
-        private void KeyboardListener_KeyPressed(object sender, KeyboardEventArgs e)
+        private void KeyboardHandler_KeysPressed(object sender, Keys e)
         {
             if (!this.IsLocked && this.HasFocus)
             {
-                switch (e.Key)
+                switch (e)
                 {
                     case Microsoft.Xna.Framework.Input.Keys.Back:
                         this.Back();
@@ -116,18 +105,30 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
                         break;
 
                     default:
-                        this.AcceptKeystroke(e);
+                        this.AcceptKeystroke(KeyboardHandler.ToChar(e));
                         break;
                 }
             }
         }
 
-        private void AcceptKeystroke(KeyboardEventArgs e)
+        private void LoadCarrotInformation(string font)
         {
-            if (!this.IsLocked && !this.LastKeySpecial && e.Character != null)
+            this.Font = Game1.AssetManager.Load<SpriteFont>(font);
+            Vector2 size = this.Font.MeasureString("|");
+            this.CarrotWidth = (int)Math.Round(size.X);
+            this.CarrotHeight = (int)Math.Round(size.Y);
+        }
+
+        public MonoInputBox() : base()
+        {
+        }
+
+        private void AcceptKeystroke(char? e)
+        {
+            if (!this.IsLocked && !this.LastKeySpecial && e != null)
             {
                 string p1 = this.Text.Substring(0, this.CarrotPosition);
-                p1 += e.Character.ToString();
+                p1 += e.ToString();
 
                 string p2 = this.Text.Substring(this.CarrotPosition, this.Text.Count() - this.CarrotPosition);
                 this.Text = p1 + p2;

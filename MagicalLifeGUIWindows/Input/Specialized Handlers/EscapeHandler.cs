@@ -1,24 +1,25 @@
-﻿using MagicalLifeAPI.Filing.Logging;
+﻿using MagicalLifeAPI.Filing;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.GUI;
 using MagicalLifeGUIWindows.GUI.In;
 using MonoGame.Extended.Input.InputListeners;
 
-namespace MagicalLifeGUIWindows.Input
+namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 {
     /// <summary>
     /// Used to handle the escape key, and it's many uses.
     /// </summary>
     public class EscapeHandler
     {
-        public EscapeHandler(KeyboardListener listener)
+        public EscapeHandler()
         {
-            listener.KeyPressed += this.Listener_KeyPressed;
+            KeyboardHandler.KeysPressed += this.KeyboardHandler_KeysPressed;
         }
 
-        private void Listener_KeyPressed(object sender, KeyboardEventArgs e)
+        private void KeyboardHandler_KeysPressed(object sender, Microsoft.Xna.Framework.Input.Keys e)
         {
-            if (e.Key == Microsoft.Xna.Framework.Input.Keys.Escape)
+            if (e == SettingsManager.Keybindings.Settings.OpenInGameEscapeMenu)
             {
                 this.HandleEscapeKey();
             }
