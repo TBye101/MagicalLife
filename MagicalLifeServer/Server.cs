@@ -112,6 +112,8 @@ namespace MagicalLifeServer
                 {
                     //Spawns a creature in the default dimension (0).
                     WorldUtil.SpawnRandomCharacter(item.Key, 0);
+                    WorldUtil.SpawnRandomCharacter(item.Key, 0);
+                    WorldUtil.SpawnRandomCharacter(item.Key, 0);
                 }
             }
 
