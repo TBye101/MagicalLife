@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Networking;
+﻿using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeServer.JobSystem;
@@ -15,6 +16,9 @@ namespace MagicalLifeServer.Processing.Message
         {
             JobCompletedMessage msg = (JobCompletedMessage)message;
             JobSystemManager.Manager.PlayerToJobSystem[msg.PlayerID].MarkJobAsComplete(msg.CompletedID);
+            JobSystemManager.Manager.PlayerToJobSystem[msg.PlayerID].JobsCompleted++;
+            MasterLog.DebugWriteLine("Worker jobs completed: " + JobSystemManager.Manager.PlayerToJobSystem[msg.PlayerID].JobsCompleted.ToString() + "/" + JobSystemManager.Manager.PlayerToJobSystem[msg.PlayerID].JobsAssigned.ToString());
+
         }
     }
 }

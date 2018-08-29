@@ -25,7 +25,6 @@ namespace MagicalLifeAPI.Networking.Client
 
         public static void Process(BaseMessage msg)
         {
-            MasterLog.DebugWriteLine("Receiving message: " + msg.GetType().FullName);
             MessageHandlers.TryGetValue(msg.ID, out MessageHandler handler);
             handler.HandleMessage(msg);
         }

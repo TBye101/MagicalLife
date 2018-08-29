@@ -4,6 +4,7 @@ using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Networking.Server;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace MagicalLifeAPI.Networking.Client
 {
@@ -39,14 +40,17 @@ namespace MagicalLifeAPI.Networking.Client
             }
         }
 
+        static int TotalSent = 0;
+
         /// <summary>
-        /// Sends a message to the client.
+        /// Sends a message to the server.
         /// </summary>
         /// <param name="message"></param>
         public static void Send<T>(T message)
             where T : BaseMessage
         {
-            MasterLog.DebugWriteLine("Sending message: " + message.GetType().FullName);
+            TotalSent++;
+            MasterLog.DebugWriteLine("Sent total: " + TotalSent.ToString());
             if (NetworkSettings.Mode == EngineMode.ServerAndClient)
             {
                 ServerSendRecieve.Recieve(message);
@@ -63,8 +67,14 @@ namespace MagicalLifeAPI.Networking.Client
         /// <param name="message"></param>
         public static void Recieve(BaseMessage message)
         {
+            if (message is JobAssignedMessage m)
+            {
+                MasterLog.DebugWriteLine("Job: " + m.Task.ID);
+            }
+
             //RecievedMessages.Enqueue(message);
-            Task.Run(() => ClientProcessor.Process(message));
+            //Task.Run(() => ClientProcessor.Process(message));
+            ClientProcessor.Process(message);
         }
     }
 }

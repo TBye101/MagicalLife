@@ -86,7 +86,6 @@ namespace MagicalLifeAPI.Networking.Server
             where T : BaseMessage
         {
             byte[] buffer = ProtoUtil.Serialize<T>(data);
-            MasterLog.DebugWriteLine("Sending " + buffer.Length + " bytes");
             client.Send(buffer);
         }
 
@@ -94,7 +93,6 @@ namespace MagicalLifeAPI.Networking.Server
             where T : BaseMessage
         {
             byte[] buffer = ProtoUtil.Serialize<T>(data);
-            MasterLog.DebugWriteLine("Sending " + buffer.Length + " bytes");
             this.PlayerToSocket[player].Send(buffer);
         }
 
@@ -107,7 +105,6 @@ namespace MagicalLifeAPI.Networking.Server
             where T : BaseMessage
         {
             byte[] buffer = ProtoUtil.Serialize<T>(data);
-            MasterLog.DebugWriteLine("Sending " + buffer.Length + " bytes");
             this.Server.Broadcast(buffer);
         }
     }

@@ -63,6 +63,9 @@ namespace MagicalLifeServer.JobSystem
         /// </summary>
         private object SyncObject { get; set; } = new object();
 
+        public int JobsAssigned = 0;
+        public int JobsCompleted = 0;
+
         public JobSystem(Dictionary<Guid, Living> workers, Guid playerID)
         {
             this.NoDependencies = new Dictionary<Guid, Job>();
@@ -185,6 +188,7 @@ namespace MagicalLifeServer.JobSystem
 
         private void StartJob(Job job, Living living)
         {
+            this.JobsAssigned++;
             living.Task = job;
             MasterLog.DebugWriteLine("Dependency ID before: " + job.Dependencies.ElementAt(0).Key.ToString());
             ServerSendRecieve.Send(new JobAssignedMessage(living, job), this.PlayerID);

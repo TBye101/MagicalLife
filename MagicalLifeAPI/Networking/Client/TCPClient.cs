@@ -26,7 +26,6 @@ namespace MagicalLifeAPI.Networking.Client
 
         private void Client_DataReceived(object sender, Message e)
         {
-            MasterLog.DebugWriteLine("Receiving " + e.Data.Length + " bytes");
             this.MsgBuffer.ReceiveData(e.Data);
 
             while (this.MsgBuffer.IsMessageAvailible())
@@ -35,7 +34,8 @@ namespace MagicalLifeAPI.Networking.Client
                 if (msg is JobAssignedMessage)
                 {
                     JobAssignedMessage m = (JobAssignedMessage)msg;
-                    MasterLog.DebugWriteLine("Job ID After: " + m.Task.Dependencies.ElementAt(0).Key.ToString());
+                    MasterLog.DebugWriteLine("Job: " + m.Task.ID);
+                    MasterLog.DebugWriteLine("Dependency: " + m.Task.Dependencies.ElementAt(0).Key.ToString());
                 }
 
                 ClientProcessor.Process(msg);
@@ -46,7 +46,6 @@ namespace MagicalLifeAPI.Networking.Client
             where T : BaseMessage
         {
             byte[] buffer = ProtoUtil.Serialize<T>(message);
-            MasterLog.DebugWriteLine("Sending " + buffer.Length + " bytes");
             this.Client.Write(buffer);
         }
     }
