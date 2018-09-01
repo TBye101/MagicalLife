@@ -11,5 +11,7 @@ namespace MagicalLifeServer.JobSystem
     /// </summary>
     public class TaskManager
     {
+        //Need to find a way to create a dependency tree.
+        //private Queue<>
     }
 }
