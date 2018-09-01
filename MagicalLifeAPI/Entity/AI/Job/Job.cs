@@ -1,10 +1,12 @@
 ﻿using MagicalLifeAPI.Entity.AI.Job.Jobs;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Messages;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Entity.AI.Job
 {
@@ -119,12 +121,14 @@ namespace MagicalLifeAPI.Entity.AI.Job
             {
                 if (!this.Done && !this.RequireSameWorker || this.ParentJob == Guid.Empty)
                 {
+                    MasterLog.DebugWriteLine("Client side Job done!!!");
                     this.Done = true;
                     living.Task = null;
                     ClientSendRecieve.Send<JobCompletedMessage>(new JobCompletedMessage(this.ID));
                 }
                 else
                 {
+                    MasterLog.DebugWriteLine("Dependency job done");
                     this.RaiseJobCompleted(new Tuple<Guid, Living>(this.ID, living));
                 }
             }

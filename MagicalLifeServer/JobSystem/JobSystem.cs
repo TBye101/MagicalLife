@@ -98,6 +98,9 @@ namespace MagicalLifeServer.JobSystem
 
             lock (this.SyncObject)
             {
+                MasterLog.DebugWriteLine("Idle: " + this.Idle.Count.ToString());
+                MasterLog.DebugWriteLine("Busy: " + this.Busy.Count.ToString());
+                MasterLog.DebugWriteLine("Jobs in progress: " + this.InProgress.Count.ToString());
                 while (i != this.Idle.Count)
                 {
                     Living worker = this.Idle.ElementAt(i).Value;
