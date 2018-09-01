@@ -13,13 +13,99 @@ namespace MagicalLifeAPI.Entity.AI.Task
     public class TaskDriver
     {
         /// <summary>
+        /// The task to be completed.
+        /// </summary>
+        private readonly MagicalTask Task;
+
+        public TaskDriver(MagicalTask task)
+        {
+            this.Task = task;
+        }
+
+        /// <summary>
+        /// Returns all tasks that do not have uncompleted dependencies that still need to be completed.
+        /// </summary>
+        /// <returns></returns>
+        private List<MagicalTask> GetReadyTasks()
+        {
+            return this.GetReadyTasksRecursion(new List<MagicalTask>() { this.Task });
+        }
+
+        private List<MagicalTask> GetReadyTasksRecursion(List<MagicalTask> tasks)
+        {
+            List<MagicalTask> ret = new List<MagicalTask>();
+
+            foreach (MagicalTask item in tasks)
+            {
+                if (item.Dependencies.PreRequisite.Count > 0)
+                {
+                    ret.AddRange(this.GetReadyTasksRecursion(item.Dependencies.PreRequisite));
+                }
+                else
+                {
+                    ret.Add(item);
+                }
+            }
+
+            return ret;
+        }
+
+        /// <summary>
         /// Returns all of the tasks that this <see cref="TaskDriver"/> has control of that the creature can do. 
         /// </summary>
         /// <param name="l"></param>
         /// <returns></returns>
         public List<MagicalTask> GetCompatibleJobs(Living l)
         {
+            List<MagicalTask> qualified = this.GetAllQualifiedJobs(l);
 
+            for (int i = qualified.Count; i > 0; i--)
+            {
+                MagicalTask item = qualified[i];
+
+                //If a creature has already started on a related task, and the task requires the same worker to do this task too
+                if (item.BoundID != Guid.Empty && item.BoundID != l.ID)
+                {
+                    qualified.RemoveAt(i);
+                }
+            }
+
+            return qualified;
+        }
+
+        /// <summary>
+        /// Returns all of the tasks that the creature is qualified for.
+        /// </summary>
+        /// <param name="l"></param>
+        /// <returns></returns>
+        private List<MagicalTask> GetAllQualifiedJobs(Living l)
+        {
+            List<MagicalTask> availibleTasks = this.GetReadyTasks();
+            List<MagicalTask> ret = new List<MagicalTask>();
+
+            foreach (MagicalTask item in availibleTasks)
+            {
+                //If true, the worker passed all criteria to do the task.
+                bool compatible = true;
+
+                foreach (Qualification qualification in item.Qualifications)
+                {
+                    //Does the creature meet the criteria?
+                    if (!qualification.IsQualified(l))
+                    {
+                        compatible = false;
+                        break;
+                    }
+                }
+
+                //If the creature met all criteria
+                if (compatible)
+                {
+                    ret.Add(item);
+                }
+            }
+
+            return ret;
         }
     }
 }

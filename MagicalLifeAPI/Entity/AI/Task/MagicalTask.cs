@@ -40,7 +40,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
         /// The criteria to determine if a worker is qualified to do a job.
         /// </summary>
         [ProtoMember(4)]
-        public Qualification Qualifications { get; private set; }
+        public List<Qualification> Qualifications { get; private set; }
 
         /// <summary>
         /// The ID of the worker assigned to work on this <see cref="MagicalTask"/>.
@@ -63,6 +63,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
         public MagicalTask(Dependencies preRequisites, List<Qualification> qualifications)
         {
             this.Dependencies = preRequisites;
+            this.Qualifications = qualifications;
         }
 
         public MagicalTask()

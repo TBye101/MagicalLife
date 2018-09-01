@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MagicalLifeAPI.Entity.AI.Task;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,5 @@ namespace MagicalLifeServer.JobSystem
     /// </summary>
     public class TaskManager
     {
-        //Need to find a way to create a dependency tree.
-        //private Queue<>
     }
 }
