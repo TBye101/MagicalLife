@@ -49,7 +49,11 @@ namespace MagicalLifeClient.Entity
 
                                 if (l.Task != null)
                                 {
-                                    l.Task.DoJob(l);
+                                    l.Task.Tick(l);
+                                }
+                                else
+                                {
+                                    //Find a job
                                 }
                             }
                         }

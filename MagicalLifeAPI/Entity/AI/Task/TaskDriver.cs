@@ -43,7 +43,10 @@ namespace MagicalLifeAPI.Entity.AI.Task
                 }
                 else
                 {
-                    ret.Add(item);
+                    if (item.ToilingWorker == Guid.Empty)
+                    {
+                        ret.Add(item);
+                    }
                 }
             }
 

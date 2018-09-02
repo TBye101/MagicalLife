@@ -1,6 +1,9 @@
 CPU:
 
 * The TypeModel for protobuf-net can be "compiled", boosting performance
+* Task system:
+	* Task drivers can be written in either a more intelligent way
+	* or they can just cache their results
 
 Network:
 

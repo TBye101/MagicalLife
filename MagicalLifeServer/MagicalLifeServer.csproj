@@ -49,7 +49,6 @@
   <ItemGroup>
     <Compile Include="JobSystem\JobSystem.cs" />
     <Compile Include="JobSystem\JobSystemManager.cs" />
-    <Compile Include="JobSystem\TaskManager.cs" />
     <Compile Include="Load\MainLoad.cs" />
     <Compile Include="Processing\Message Handlers\DisconnectMessageHandler.cs" />
     <Compile Include="Processing\Message Handlers\JobCompletedMessageHandler.cs" />

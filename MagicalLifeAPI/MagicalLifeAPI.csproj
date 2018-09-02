@@ -123,6 +123,7 @@
     <Compile Include="Entity\AI\Task\Qualification.cs" />
     <Compile Include="Entity\AI\Task\MagicalTask.cs" />
     <Compile Include="Entity\AI\Task\TaskDriver.cs" />
+    <Compile Include="Entity\AI\Task\TaskManager.cs" />
     <Compile Include="Error\ErrorReporter.cs" />
     <Compile Include="Filing\Setting.cs" />
     <Compile Include="Filing\SettingsManager.cs" />

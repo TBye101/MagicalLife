@@ -43,11 +43,11 @@ namespace MagicalLifeAPI.Entity.AI.Task
         public List<Qualification> Qualifications { get; private set; }
 
         /// <summary>
-        /// The ID of the worker assigned to work on this <see cref="MagicalTask"/>.
+        /// The ID of the worker this task has been reserved for.
         /// Will equal <see cref="Guid.Empty"/> if no worker is assigned.
         /// </summary>
         [ProtoMember(5)]
-        public Guid ToilingWorker { get; private set; }
+        public Guid ToilingWorker { get; set; }
 
         /// <param name="preRequisites">The dependencies of this task.</param>
         /// <param name="boundID">An ID used to determine if multiple tasks must be completed by the same worker.
@@ -64,6 +64,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
         {
             this.Dependencies = preRequisites;
             this.Qualifications = qualifications;
+            this.ToilingWorker = Guid.Empty;
         }
 
         public MagicalTask()
