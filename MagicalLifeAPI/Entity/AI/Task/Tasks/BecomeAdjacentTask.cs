@@ -1,6 +1,8 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity.AI.Task.Qualifications;
 using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.Networking.Client;
+using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
@@ -36,6 +38,12 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             int closestIndex = Algorithms.GetClosestPoint2D(result, l.MapLocation);
             this.AdjacentLocation = result[closestIndex];
             List<PathLink> path = MainPathFinder.GetRoute(l.Dimension, l.MapLocation, result[closestIndex]);
+
+            if (World.Data.World.Mode == Networking.EngineMode.ClientOnly)
+            {
+                ClientSendRecieve.Send(new RouteCreatedMessage(path, l.ID, l.Dimension));
+            }
+
             l.QueuedMovement.Clear();
             Extensions.EnqueueCollection(l.QueuedMovement, path);
         }
