@@ -1,32 +1,41 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Entity.AI.Task.Qualifications;
 using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Pathfinding;
 using ProtoBuf;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace MagicalLifeAPI.Entity.AI.Job.Jobs
+namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 {
-    /// <summary>
-    /// This job gets the living to move from point 'A' to point 'B'.
-    /// </summary>
     [ProtoContract]
-    public class MoveJob : Job
+    public class MoveTask : MagicalTask
     {
         [ProtoMember(1)]
         public Point2D Destination { get; private set; }
 
-        public MoveJob(Point2D destination, bool requireSameWorker) : base(requireSameWorker)
+        public MoveTask(Guid boundID, Point2D destination)
+            : base(Dependencies.None, boundID, new List<Qualification> { new CanMoveQualification() })
         {
             this.Destination = destination;
         }
 
-        public MoveJob()
+        public MoveTask(Point2D destination)
+            : base(Dependencies.None, new List<Qualification> { new CanMoveQualification() })
+        {
+            this.Destination = destination;
+        }
+
+        public MoveTask()
         {
             //Protobuf-net constructor
         }
 
-        protected override void StartJob(Living living)
+        public override void MakePreparations(Living living)
         {
             Point2D start = living.MapLocation;
             if (start != this.Destination)
@@ -53,13 +62,13 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
             }
         }
 
-        protected override void JobTick(Living living)
+        public override void Reset()
         {
-            //We don't need to do anything more
         }
 
-        public override void ReevaluateDependencies()
+        public override void Tick(Living l)
         {
+            //We don't need to do anything more
         }
     }
 }

@@ -22,6 +22,8 @@ namespace MagicalLifeAPI.Entity.AI.Task
         [ProtoMember(2)]
         public int InitialCount;
 
+        public static readonly Dependencies None = new Dependencies(new List<MagicalTask>());
+
         public Dependencies(List<MagicalTask> dependencies)
         {
             this.PreRequisite = dependencies;

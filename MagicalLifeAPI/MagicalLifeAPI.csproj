@@ -117,13 +117,14 @@
     <Compile Include="DataTypes\R-Tree\RTree.cs" />
     <Compile Include="Entity\AI\Task\ActionSelected.cs" />
     <Compile Include="Entity\AI\Task\Dependencies.cs" />
-    <Compile Include="Entity\AI\Task\Jobs\BecomeAdjacentJob.cs" />
-    <Compile Include="Entity\AI\Task\Jobs\MineJob.cs" />
-    <Compile Include="Entity\AI\Task\Jobs\MoveJob.cs" />
+    <Compile Include="Entity\AI\Task\Qualifications\CanMoveQualification.cs" />
+    <Compile Include="Entity\AI\Task\Tasks\BecomeAdjacentTask.cs" />
     <Compile Include="Entity\AI\Task\Qualification.cs" />
     <Compile Include="Entity\AI\Task\MagicalTask.cs" />
     <Compile Include="Entity\AI\Task\TaskDriver.cs" />
     <Compile Include="Entity\AI\Task\TaskManager.cs" />
+    <Compile Include="Entity\AI\Task\Tasks\MineTask.cs" />
+    <Compile Include="Entity\AI\Task\Tasks\MoveTask.cs" />
     <Compile Include="Error\ErrorReporter.cs" />
     <Compile Include="Filing\Setting.cs" />
     <Compile Include="Filing\SettingsManager.cs" />

@@ -1,4 +1,5 @@
-﻿using ProtoBuf;
+﻿using MagicalLifeAPI.Entity.AI.Task.Tasks;
+using ProtoBuf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace MagicalLifeAPI.Entity.AI.Task
     /// Represents a task for the player to do.
     /// </summary>
     [ProtoContract]
+    [ProtoInclude(1, typeof(BecomeAdjacentTask))]
+    [ProtoInclude(2, typeof(MoveTask))]
     public abstract class MagicalTask
     {
         public delegate void CompletionEventHandler(MagicalTask task);
@@ -60,7 +63,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
         }
 
         /// <param name="preRequisites">The dependencies of this task.</param>
-        public MagicalTask(Dependencies preRequisites, List<Qualification> qualifications)
+        private MagicalTask(Dependencies preRequisites, List<Qualification> qualifications)
         {
             this.Dependencies = preRequisites;
             this.Qualifications = qualifications;

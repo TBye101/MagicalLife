@@ -13,6 +13,8 @@ namespace MagicalLifeServer.JobSystem
     /// </summary>
     public class TaskManager
     {
+        public static TaskManager TaskManager = new TaskManager();
+
         public List<TaskDriver> TaskDrivers { get; private set; }
 
         public void AddTask(MagicalTask task)
@@ -46,7 +48,10 @@ namespace MagicalLifeServer.JobSystem
                 }
             }
 
-            this.AssignJob(l, allCompatibleTasks[0]);
+            if (allCompatibleTasks.Count > 0)
+            {
+                this.AssignJob(l, allCompatibleTasks[0]);
+            }
         }
 
         private void AssignJob(Living l, MagicalTask task)

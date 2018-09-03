@@ -1,4 +1,5 @@
-﻿using ProtoBuf;
+﻿using MagicalLifeAPI.Entity.AI.Task.Qualifications;
+using ProtoBuf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
     /// A task normally has many criteria for allowing a creature to do the task.
     /// </summary>
     [ProtoContract]
+    [ProtoInclude(1, typeof(CanMoveQualification))]
     public abstract class Qualification
     {
         /// <summary>
