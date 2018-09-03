@@ -13,6 +13,7 @@ using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Data.Disk;
 using MagicalLifeAPI.World.Data.Disk.DataStorage;
 using MagicalLifeServer.Load;
+using MagicalLifeSettings.Storage;
 using System;
 using System.Collections.Generic;
 using System.Timers;
@@ -106,12 +107,22 @@ namespace MagicalLifeServer
         /// </summary>
         public static void StartGame()
         {
-            foreach (KeyValuePair<Guid, System.Net.Sockets.Socket> item 
-                in ServerSendRecieve.TCPServer.PlayerToSocket)
+            if (World.Mode == EngineMode.ServerOnly)
             {
-                WorldUtil.SpawnRandomCharacter(item.Key, 0);
-                WorldUtil.SpawnRandomCharacter(item.Key, 0);
-                WorldUtil.SpawnRandomCharacter(item.Key, 0);
+                foreach (KeyValuePair<Guid, System.Net.Sockets.Socket> item 
+                    in ServerSendRecieve.TCPServer.PlayerToSocket)
+                {
+                    WorldUtil.SpawnRandomCharacter(item.Key, 0);
+                    WorldUtil.SpawnRandomCharacter(item.Key, 0);
+                    WorldUtil.SpawnRandomCharacter(item.Key, 0);
+                }
+            }
+
+            if (World.Mode == EngineMode.ServerAndClient)
+            {
+                WorldUtil.SpawnRandomCharacter(Player.Default.PlayerID, 0);
+                WorldUtil.SpawnRandomCharacter(Player.Default.PlayerID, 0);
+                WorldUtil.SpawnRandomCharacter(Player.Default.PlayerID, 0);
             }
 
 

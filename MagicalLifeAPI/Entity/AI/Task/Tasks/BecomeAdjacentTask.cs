@@ -23,9 +23,9 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         [ProtoMember(3)]
         public Point2D AdjacentLocation { get; private set; }
 
-        public BecomeAdjacentTask(Guid boundID) : base(Dependencies.None, boundID, new List<Qualification> { new CanMoveQualification() })
+        public BecomeAdjacentTask(Guid boundID, Point2D target) : base(Dependencies.None, boundID, new List<Qualification> { new CanMoveQualification() })
         {
-
+            this.Target = target;
         }
 
         public override void MakePreparations(Living l)

@@ -64,12 +64,13 @@ namespace MagicalLifeAPI.Entity.AI.Task
 
             for (int i = qualified.Count; i > 0; i--)
             {
-                MagicalTask item = qualified[i];
+                MagicalTask item = qualified[i - 1];
 
-                //If a creature has already started on a related task, and the task requires the same worker to do this task too
-                if (item.BoundID != Guid.Empty && item.BoundID != l.ID)
+                //If a creature has already started on a related task,
+                //and the task requires the same worker to do this task too
+                if (item.ToilingWorker != Guid.Empty && item.ToilingWorker != l.ID)
                 {
-                    qualified.RemoveAt(i);
+                    qualified.RemoveAt(i - 1);
                 }
             }
 

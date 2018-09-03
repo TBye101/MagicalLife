@@ -26,7 +26,8 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         [ProtoMember(3)]
         private TickTimer HitTimer { get; set; }
 
-        public MineTask(Point2D target, Guid boundID) : base(GetDependencies(boundID), boundID, new List<Qualification>())
+        public MineTask(Point2D target, Guid boundID)
+            : base(GetDependencies(boundID, target), boundID, new List<Qualification>())
         {
             this.Target = target;
             MasterLog.DebugWriteLine("Target: " + this.Target.ToString());
@@ -38,11 +39,11 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         }
 
-        protected static Dependencies GetDependencies(Guid boundID)
+        protected static Dependencies GetDependencies(Guid boundID, Point2D target)
         {
             List<MagicalTask> deps = new List<MagicalTask>
             {
-                new BecomeAdjacentTask(boundID)
+                new BecomeAdjacentTask(boundID, target)
             };
 
             return new Dependencies(deps);
