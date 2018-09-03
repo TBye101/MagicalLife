@@ -8,6 +8,9 @@ SneakyTactician  <SneakyTactician@outlook.com>
 * Saving a game is now supported
 * Loading a game is now supported
 * Errors are now logged
+* Job system is now client side
+* Job system now has enhanced support for dependencies
+* Job system now has enhanced support for "bound" (same worker) jobs
 
 #### Server
 * The newgame command now requires a 3rd parameter, the world's name
@@ -24,6 +27,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 #### Bugs
 
+* Fixed a mining command bug
 ---
 
 ## [Version 0.0.9]
