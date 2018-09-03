@@ -15,7 +15,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
         /// <summary>
         /// The task to be completed.
         /// </summary>
-        private readonly MagicalTask Task;
+        public readonly MagicalTask Task;
 
         public TaskDriver(MagicalTask task)
         {

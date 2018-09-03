@@ -25,6 +25,12 @@ namespace MagicalLifeServer.JobSystem
         public void AddTask(MagicalTask task)
         {
             this.TaskDrivers.Add(new TaskDriver(task));
+            task.Completed += this.Task_Completed;
+        }
+
+        private void Task_Completed(MagicalTask task)
+        {
+            this.TaskDrivers.RemoveAll(x => x.Task.Equals(task));
         }
 
         /// <summary>
@@ -61,7 +67,7 @@ namespace MagicalLifeServer.JobSystem
 
         private void AssignJob(Living l, MagicalTask task)
         {
-            l.Task = task;
+            l.AssignTask(task);
             task.MakePreparations(l);
             task.ToilingWorker = l.ID;
         }

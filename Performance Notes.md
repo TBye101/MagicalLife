@@ -4,6 +4,7 @@ CPU:
 * Task system:
 	* Task drivers can be written in either a more intelligent way
 	* or they can just cache their results
+	* Task completion runs really slow, consider having separate lists or an ID or something to speed that up
 
 Network:
 

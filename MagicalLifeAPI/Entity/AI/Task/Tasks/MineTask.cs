@@ -53,6 +53,10 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         {
             Tile tile = World.Data.World.GetTile(l.Dimension, this.Target.X, this.Target.Y);
             this.Minable = tile.Resources;
+            if (tile.Resources == null)
+            {
+                MasterLog.DebugWriteLine("Minable is null");
+            }
         }
 
         public override void Reset()

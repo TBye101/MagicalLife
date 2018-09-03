@@ -29,7 +29,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                 {
                     Tile tile = World.GetTile(RenderingPipe.Dimension, item.MapLocation.X, item.MapLocation.Y);
 
-                    if (tile.Resources != null)
+                    if (tile.Resources != null && tile.ImpendingAction == ActionSelected.None)
                     {
                         MineTask task = new MineTask(tile.MapLocation, Guid.NewGuid());
                         tile.ImpendingAction = ActionSelected.Mine;

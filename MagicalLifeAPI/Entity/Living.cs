@@ -95,6 +95,17 @@ namespace MagicalLifeAPI.Entity
         {
         }
 
+        public void AssignTask(MagicalTask task)
+        {
+            this.Task = task;
+            this.Task.Completed += this.Task_Completed;
+        }
+
+        private void Task_Completed(MagicalTask task)
+        {
+            this.Task = null;
+        }
+
         /// <summary>
         /// Returns the name of the texture.
         /// </summary>
