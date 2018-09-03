@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MagicalLifeServer.JobSystem
+namespace MagicalLifeAPI.Entity.AI.Task
 {
     /// <summary>
     /// Manages all of the TaskDrivers for a player.
