@@ -1,11 +1,10 @@
-﻿using MagicalLifeAPI.Entity.AI.Job;
-using MagicalLifeAPI.Entity.AI.Job.Jobs;
-using MagicalLifeAPI.Networking.Client;
-using MagicalLifeAPI.Networking.Messages;
+﻿using MagicalLifeAPI.Entity.AI.Task;
+using MagicalLifeAPI.Entity.AI.Task.Tasks;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.Input.History;
 using MagicalLifeGUIWindows.Rendering;
+using System;
 using System.Linq;
 
 namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
@@ -27,11 +26,11 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                 {
                     Tile tile = World.GetTile(RenderingPipe.Dimension, item.MapLocation.X, item.MapLocation.Y);
 
-                    if (tile.Resources != null)
+                    if (tile.Resources != null && tile.ImpendingAction == ActionSelected.None)
                     {
-                        MineJob job = new MineJob(tile.MapLocation);
+                        MineTask task = new MineTask(tile.MapLocation, Guid.NewGuid());
                         tile.ImpendingAction = ActionSelected.Mine;
-                        ClientSendRecieve.Send(new JobCreatedMessage(job));
+                        TaskManager.Manager.AddTask(task);
                     }
                 }
             }

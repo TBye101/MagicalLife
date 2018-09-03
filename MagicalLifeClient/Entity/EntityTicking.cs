@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Entity;
+using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.Entity.Movement;
 using MagicalLifeAPI.World.Data;
 using System;
@@ -49,55 +50,15 @@ namespace MagicalLifeClient.Entity
 
                                 if (l.Task != null)
                                 {
-                                    l.Task.DoJob(l);
+                                    l.Task.Tick(l);
+                                }
+                                else
+                                {
+                                    TaskManager.Manager.AssignTask(l);
+                                    //Find a job
                                 }
                             }
                         }
-
-                        //Dictionary<Guid, Living>.KeyCollection keys = chunk.Creatures.Keys;
-                        //lock (keys)
-                        //{
-                        //    foreach (Guid item in keys)
-                        //    {
-                        //        chunk.Creatures.TryGetValue(item, out Living l);
-
-                        //        if (l != null)
-                        //        {
-                        //            l.Movement.WearOff();
-
-                        //            if (l.QueuedMovement.Count > 0)
-                        //            {
-                        //                EntityWorldMovement.MoveEntity(l);
-                        //            }
-
-                        //            if (l.Task != null)
-                        //            {
-                        //                l.Task.DoJob(l);
-                        //            }
-                        //        }
-                        //    }
-                        //}
-                        //lock (chunk.Creatures)
-                        //{
-                        //    foreach (KeyValuePair<System.Guid, Living> item in chunk.Creatures)
-                        //    {
-                        //        if (item.Value != null)
-                        //        {
-                        //            Living l = item.Value;
-                        //            l.Movement.WearOff();
-
-                        //            if (item.Value.QueuedMovement.Count > 0)
-                        //            {
-                        //                EntityWorldMovement.MoveEntity(l);
-                        //            }
-
-                        //            if (l.Task != null)
-                        //            {
-                        //                l.Task.DoJob(l);
-                        //            }
-                        //        }
-                        //    }
-                        //}
                     }
                 }
             }

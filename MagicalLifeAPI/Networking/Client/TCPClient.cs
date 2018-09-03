@@ -1,8 +1,6 @@
-﻿using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Networking.Messages;
+﻿using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using SimpleTCP;
-using System.Linq;
 
 namespace MagicalLifeAPI.Networking.Client
 {
@@ -26,17 +24,11 @@ namespace MagicalLifeAPI.Networking.Client
 
         private void Client_DataReceived(object sender, Message e)
         {
-            MasterLog.DebugWriteLine("Receiving " + e.Data.Length + " bytes");
             this.MsgBuffer.ReceiveData(e.Data);
 
             while (this.MsgBuffer.IsMessageAvailible())
             {
                 BaseMessage msg = this.MsgBuffer.GetMessageData();
-                if (msg is JobAssignedMessage)
-                {
-                    JobAssignedMessage m = (JobAssignedMessage)msg;
-                    MasterLog.DebugWriteLine("Job ID After: " + m.Task.Dependencies.ElementAt(0).Key.ToString());
-                }
 
                 ClientProcessor.Process(msg);
             }
@@ -46,7 +38,6 @@ namespace MagicalLifeAPI.Networking.Client
             where T : BaseMessage
         {
             byte[] buffer = ProtoUtil.Serialize<T>(message);
-            MasterLog.DebugWriteLine("Sending " + buffer.Length + " bytes");
             this.Client.Write(buffer);
         }
     }

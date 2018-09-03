@@ -42,7 +42,6 @@ namespace MagicalLifeClient
             return new List<MessageHandler>()
             {
                 new ServerTickMessageHandler(),
-                new JobAssignedMessageHandler(),
                 new WorldModifierMessageHandler(),
 
                 //Least important messages

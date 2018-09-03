@@ -3,7 +3,6 @@ using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.GUI;
 using MagicalLifeGUIWindows.GUI.In;
-using MonoGame.Extended.Input.InputListeners;
 
 namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 {

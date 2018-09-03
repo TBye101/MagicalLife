@@ -1,4 +1,4 @@
-﻿using MagicalLifeAPI.Entity.AI.Job;
+﻿using MagicalLifeAPI.Entity.AI.Task;
 
 namespace MagicalLifeGUIWindows.GUI.In
 {

@@ -1,6 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.DataTypes.Attribute;
-using MagicalLifeAPI.Entity.AI.Job;
+using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.Entity.Eventing;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Pathfinding;
@@ -48,7 +48,7 @@ namespace MagicalLifeAPI.Entity
         public int Dimension { get; set; }
 
         [ProtoMember(6)]
-        public Job Task { get; set; }
+        public MagicalTask Task { get; set; }
 
         /// <summary>
         /// The ID of the player that this creature belongs to.
@@ -92,6 +92,17 @@ namespace MagicalLifeAPI.Entity
 
         public Living()
         {
+        }
+
+        public void AssignTask(MagicalTask task)
+        {
+            this.Task = task;
+            this.Task.Completed += this.Task_Completed;
+        }
+
+        private void Task_Completed(MagicalTask task)
+        {
+            this.Task = null;
         }
 
         /// <summary>

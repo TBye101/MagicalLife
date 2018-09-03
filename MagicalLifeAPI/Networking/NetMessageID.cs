@@ -10,13 +10,10 @@
         WorldTransferHeaderMessage = 2,
         RouteCreatedMessage = 3,
         ServerTickMessage = 4,
-        JobAssignedMessage = 5,
-        LoginMessage = 6,
-        JobCompletedMessage = 7,
-        JobCreatedMessage = 8,
-        DisconnectMessage = 9,
-        WorldModifierMessage = 10,
-        WorldTransferBodyMessage = 11,
-        WorldTransferRegistryMessage = 12
+        LoginMessage = 5,
+        DisconnectMessage = 6,
+        WorldModifierMessage = 7,
+        WorldTransferBodyMessage = 8,
+        WorldTransferRegistryMessage = 9
     }
 }

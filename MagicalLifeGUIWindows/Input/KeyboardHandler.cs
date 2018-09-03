@@ -4,7 +4,6 @@ using MonoGame.Extended.Input.InputListeners;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 
 namespace MagicalLifeGUIWindows.Input
 {
@@ -84,8 +83,6 @@ namespace MagicalLifeGUIWindows.Input
                 Modifiers |= KeyboardModifiers.Control;
             }
 
-
-
             if (keyboardState.IsKeyDown(Keys.LeftShift) || keyboardState.IsKeyDown(Keys.RightShift))
             {
                 Modifiers |= KeyboardModifiers.Shift;
@@ -127,10 +124,7 @@ namespace MagicalLifeGUIWindows.Input
         public static char? ToChar(Keys key)
 
         {
-
             bool isShiftDown = (Modifiers & KeyboardModifiers.Shift) == KeyboardModifiers.Shift;
-
-
 
             if (key == Keys.A)
             {

@@ -1,5 +1,4 @@
-﻿using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Networking.Serialization;
+﻿using MagicalLifeAPI.Networking.Serialization;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Networking.Client
@@ -25,7 +24,6 @@ namespace MagicalLifeAPI.Networking.Client
 
         public static void Process(BaseMessage msg)
         {
-            MasterLog.DebugWriteLine("Receiving message: " + msg.GetType().FullName);
             MessageHandlers.TryGetValue(msg.ID, out MessageHandler handler);
             handler.HandleMessage(msg);
         }

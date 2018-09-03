@@ -21,12 +21,10 @@ namespace MagicalLifeServer.Processing
 
             //More important messages
             MessageHandlers.Add(NetMessageID.DisconnectMessage, new DisconnectMessageHandler());
-            MessageHandlers.Add(NetMessageID.JobCompletedMessage, new JobCompletedMessageHandler());
             MessageHandlers.Add(NetMessageID.WorldModifierMessage, new WorldModifierMessageHandler());
 
             //Least important messages
             MessageHandlers.Add(NetMessageID.RouteCreatedMessage, new RouteCreatedMessageHandler());
-            MessageHandlers.Add(NetMessageID.JobCreatedMessage, new JobCreatedMessageHandler());
             MessageHandlers.Add(NetMessageID.LoginMessage, new LoginMessageHandler());
         }
 

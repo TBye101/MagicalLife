@@ -25,13 +25,13 @@ namespace MagicalLifeServer.Processing.Message
         {
             RouteCreatedMessage msg = (RouteCreatedMessage)message;
 
-            if (Validated(msg.Path, msg.Dimension))
+            if (this.Validated(msg.Path, msg.Dimension))
             {
                 Point2D location = msg.Path[0].Origin;
                 Point2D chunkLocation = WorldUtil.CalculateChunkLocation(location);
                 Chunk chunk = World.GetChunk(msg.Dimension, chunkLocation.X, chunkLocation.Y);
 
-                Living l = chunk.Creatures.Where(t => t.Value.MapLocation == location).ElementAt(0).Value;
+                Living l = chunk.Creatures.Where(t => t.Value.MapLocation.Equals(location)).ElementAt(0).Value;
 
                 if (l != null && l.ID == msg.LivingID)
                 {

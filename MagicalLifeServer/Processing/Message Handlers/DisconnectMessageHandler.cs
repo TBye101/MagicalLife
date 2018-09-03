@@ -13,7 +13,6 @@ namespace MagicalLifeServer.Processing.Message
         public override void HandleMessage(BaseMessage message)
         {
             DisconnectMessage msg = (DisconnectMessage)message;
-            JobSystem.JobSystemManager.Manager.PlayerToJobSystem.Remove(msg.ClientPlayerID);
         }
     }
 }

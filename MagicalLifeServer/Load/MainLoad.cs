@@ -12,7 +12,6 @@ namespace MagicalLifeServer.Load
         public void InitialStartup()
         {
             World.DimensionAdded += this.World_DimensionGenerated;
-            JobSystem.JobSystemManager.Manager = new JobSystem.JobSystemManager(true);
             ServerProcessor.Initialize();
         }
 

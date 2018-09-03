@@ -8,13 +8,10 @@ using ProtoBuf;
 using System;
 using System.Collections.Generic;
 
-namespace MagicalLifeAPI.Entity.AI.Job.Jobs
+namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 {
-    /// <summary>
-    /// Has the creature mine something.
-    /// </summary>
     [ProtoContract]
-    public class MineJob : Job
+    public class MineTask : MagicalTask
     {
         [ProtoMember(1)]
         public Point2D Target { get; private set; }
@@ -25,40 +22,44 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
         [ProtoMember(3)]
         private TickTimer HitTimer { get; set; }
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="target">The tile that contains the object to mine up.</param>
-        /// <param name="workStation">The position at which the creature will be at when it begins mining.</param>
-        public MineJob(Point2D target) : base(GetDependencies(target), true)
+        public MineTask(Point2D target, Guid boundID)
+            : base(GetDependencies(boundID, target), boundID, new List<Qualification>())
         {
             this.Target = target;
             MasterLog.DebugWriteLine("Target: " + this.Target.ToString());
             this.HitTimer = new TickTimer(30);
         }
 
-        public MineJob()
+        private MineTask()
         {
-            //Protobuf-net constructor
         }
 
-        protected static Dictionary<Guid, Job> GetDependencies(Point2D target)
+        protected static Dependencies GetDependencies(Guid boundID, Point2D target)
         {
-            Dictionary<Guid, Job> ret = new Dictionary<Guid, Job>();
-            BecomeAdjacentJob dependency = new BecomeAdjacentJob(target, true);
+            List<MagicalTask> deps = new List<MagicalTask>
+            {
+                new BecomeAdjacentTask(boundID, target)
+            };
 
-            ret.Add(dependency.ID, dependency);
-
-            return ret;
+            return new Dependencies(deps);
         }
 
-        protected override void StartJob(Living living)
+        public override void MakePreparations(Living l)
         {
-            Tile tile = World.Data.World.GetTile(living.Dimension, this.Target.X, this.Target.Y);
+            Tile tile = World.Data.World.GetTile(l.Dimension, this.Target.X, this.Target.Y);
             this.Minable = tile.Resources;
+            if (tile.Resources == null)
+            {
+                MasterLog.DebugWriteLine("Minable is null");
+            }
         }
 
-        protected override void JobTick(Living living)
+        public override void Reset()
+        {
+            //Nothing to do here...
+        }
+
+        public override void Tick(Living l)
         {
             if (this.HitTimer.Allow())
             {
@@ -66,13 +67,13 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
 
                 if (drop != null && drop.Count > 0)
                 {
-                    ItemAdder.AddItem(drop[0], living.MapLocation, living.Dimension);
+                    ItemAdder.AddItem(drop[0], l.MapLocation, l.Dimension);
                 }
 
                 if (this.Minable.MiningBehavior.PercentMined > 1)
                 {
-                    this.RemoveResource(living.Dimension);
-                    this.CompleteJob(living);
+                    this.RemoveResource(l.Dimension);
+                    this.CompleteTask();
                 }
             }
         }
@@ -85,11 +86,6 @@ namespace MagicalLifeAPI.Entity.AI.Job.Jobs
             Tile tile = World.Data.World.GetTile(dimension, this.Target.X, this.Target.Y);
             tile.Resources = null;
             tile.ImpendingAction = ActionSelected.None;
-        }
-
-        public override void ReevaluateDependencies()
-        {
-            //Evaluate that something needs to be mined first or something.
         }
     }
 }
