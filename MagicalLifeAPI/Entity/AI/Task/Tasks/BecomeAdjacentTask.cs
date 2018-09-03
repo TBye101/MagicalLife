@@ -28,11 +28,6 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         }
 
-        public BecomeAdjacentTask() : base(Dependencies.None, new List<Qualification> { new CanMoveQualification() })
-
-        {
-        }
-
         public override void MakePreparations(Living l)
         {
             List<Point2D> result = WorldUtil.GetNeighboringTiles(this.Target, l.Dimension);

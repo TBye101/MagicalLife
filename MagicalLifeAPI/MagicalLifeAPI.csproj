@@ -143,9 +143,6 @@
     <Compile Include="Networking\Messages\WorldTransferRegistryMessage.cs" />
     <Compile Include="Networking\NetMessageID.cs" />
     <Compile Include="Networking\Messages\DisconnectMessage.cs" />
-    <Compile Include="Networking\Messages\JobAssignedMessage.cs" />
-    <Compile Include="Networking\Messages\JobCompletedMessage.cs" />
-    <Compile Include="Networking\Messages\JobCreatedMessage.cs" />
     <Compile Include="Networking\Messages\LoginMessage.cs" />
     <Compile Include="Networking\Messages\WorldModifierMessage.cs" />
     <Compile Include="Networking\World\Modifiers\AbstractWorldModifier.cs" />

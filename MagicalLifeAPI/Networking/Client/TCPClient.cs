@@ -31,12 +31,6 @@ namespace MagicalLifeAPI.Networking.Client
             while (this.MsgBuffer.IsMessageAvailible())
             {
                 BaseMessage msg = this.MsgBuffer.GetMessageData();
-                if (msg is JobAssignedMessage)
-                {
-                    JobAssignedMessage m = (JobAssignedMessage)msg;
-                    MasterLog.DebugWriteLine("Job: " + m.Task.ID);
-                    MasterLog.DebugWriteLine("Dependency: " + m.Task.Dependencies.ElementAt(0).Key.ToString());
-                }
 
                 ClientProcessor.Process(msg);
             }

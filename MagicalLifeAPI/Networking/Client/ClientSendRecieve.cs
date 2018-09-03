@@ -67,13 +67,6 @@ namespace MagicalLifeAPI.Networking.Client
         /// <param name="message"></param>
         public static void Recieve(BaseMessage message)
         {
-            if (message is JobAssignedMessage m)
-            {
-                MasterLog.DebugWriteLine("Job: " + m.Task.ID);
-            }
-
-            //RecievedMessages.Enqueue(message);
-            //Task.Run(() => ClientProcessor.Process(message));
             ClientProcessor.Process(message);
         }
     }

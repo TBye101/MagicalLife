@@ -16,8 +16,6 @@ namespace MagicalLifeServer.Processing.Message
         public override void HandleMessage(BaseMessage message)
         {
             LoginMessage msg = (LoginMessage)message;
-            JobSystem.JobSystemManager.Manager.PlayerToJobSystem.Add(msg.PlayerID, new JobSystem.JobSystem(new Dictionary<Guid, Living>(), msg.PlayerID));//Need to handle game loads, saves, player connect, and player disconnect
-            JobSystem.JobSystemManager.Manager.EvaluateUnassigned();
         }
     }
 }

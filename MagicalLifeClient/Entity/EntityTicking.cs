@@ -54,7 +54,7 @@ namespace MagicalLifeClient.Entity
                                 }
                                 else
                                 {
-                                    TaskManager.TaskManager.AssignTask(l);
+                                    TaskManager.Manager.AssignTask(l);
                                     //Find a job
                                 }
                             }

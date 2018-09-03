@@ -13,9 +13,14 @@ namespace MagicalLifeServer.JobSystem
     /// </summary>
     public class TaskManager
     {
-        public static TaskManager TaskManager = new TaskManager();
+        public static TaskManager Manager = new TaskManager();
 
         public List<TaskDriver> TaskDrivers { get; private set; }
+
+        public TaskManager()
+        {
+            this.TaskDrivers = new List<TaskDriver>();
+        }
 
         public void AddTask(MagicalTask task)
         {

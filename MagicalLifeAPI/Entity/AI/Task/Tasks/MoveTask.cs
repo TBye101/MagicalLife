@@ -24,12 +24,6 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             this.Destination = destination;
         }
 
-        public MoveTask(Point2D destination)
-            : base(Dependencies.None, new List<Qualification> { new CanMoveQualification() })
-        {
-            this.Destination = destination;
-        }
-
         public MoveTask()
         {
             //Protobuf-net constructor

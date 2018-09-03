@@ -106,16 +106,14 @@ namespace MagicalLifeServer
         /// </summary>
         public static void StartGame()
         {
-            foreach (KeyValuePair<Guid, JobSystem.JobSystem> item in JobSystem.JobSystemManager.Manager.PlayerToJobSystem)
+            foreach (KeyValuePair<Guid, System.Net.Sockets.Socket> item 
+                in ServerSendRecieve.TCPServer.PlayerToSocket)
             {
-                if (item.Value.Idle.Count == 0 && item.Value.Busy.Count == 0)
-                {
-                    //Spawns a creature in the default dimension (0).
-                    WorldUtil.SpawnRandomCharacter(item.Key, 0);
-                    WorldUtil.SpawnRandomCharacter(item.Key, 0);
-                    WorldUtil.SpawnRandomCharacter(item.Key, 0);
-                }
+                WorldUtil.SpawnRandomCharacter(item.Key, 0);
+                WorldUtil.SpawnRandomCharacter(item.Key, 0);
+                WorldUtil.SpawnRandomCharacter(item.Key, 0);
             }
+
 
             SetupTick();
         }
