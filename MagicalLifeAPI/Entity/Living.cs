@@ -1,6 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.DataTypes.Attribute;
-using MagicalLifeAPI.Entity.AI.Job;
 using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.Entity.Eventing;
 using MagicalLifeAPI.GUI;

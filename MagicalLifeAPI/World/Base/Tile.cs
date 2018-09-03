@@ -1,6 +1,5 @@
 ﻿using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entity.AI.Job;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.World.Tiles;

@@ -9,16 +9,12 @@ using MagicalLifeAPI.World;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 {
     [ProtoContract]
     public class BecomeAdjacentTask : MagicalTask
     {
-
         [ProtoMember(1)]
         public Point2D Target { get; private set; }
 

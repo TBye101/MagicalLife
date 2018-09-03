@@ -1,8 +1,6 @@
-﻿using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Networking.Messages;
+﻿using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using SimpleTCP;
-using System.Linq;
 
 namespace MagicalLifeAPI.Networking.Client
 {

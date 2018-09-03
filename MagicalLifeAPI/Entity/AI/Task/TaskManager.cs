@@ -1,10 +1,4 @@
-﻿using MagicalLifeAPI.Entity;
-using MagicalLifeAPI.Entity.AI.Task;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Entity.AI.Task
 {

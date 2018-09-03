@@ -1,7 +1,6 @@
 ﻿using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Entity.Movement;
 using MagicalLifeAPI.World.Data;
-using MagicalLifeServer.JobSystem;
 using System;
 using System.Collections.Generic;
 using System.Linq;

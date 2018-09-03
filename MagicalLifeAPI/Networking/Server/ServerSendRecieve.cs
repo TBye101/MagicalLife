@@ -111,7 +111,7 @@ namespace MagicalLifeAPI.Networking.Server
             }
         }
 
-        static int TotalReceived = 0;
+        private static int TotalReceived = 0;
 
         /// <summary>
         /// Receives a message.

@@ -1,12 +1,8 @@
-﻿using MagicalLifeAPI.Entity.AI.Job;
-using MagicalLifeAPI.Entity.AI.Task.Tasks;
-using MagicalLifeAPI.Networking.Client;
-using MagicalLifeAPI.Networking.Messages;
+﻿using MagicalLifeAPI.Entity.AI.Task.Tasks;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.Input.History;
 using MagicalLifeGUIWindows.Rendering;
-using MagicalLifeServer.JobSystem;
 using System;
 using System.Linq;
 

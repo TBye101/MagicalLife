@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Entity.AI.Task
 {
@@ -54,7 +51,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
         }
 
         /// <summary>
-        /// Returns all of the tasks that this <see cref="TaskDriver"/> has control of that the creature can do. 
+        /// Returns all of the tasks that this <see cref="TaskDriver"/> has control of that the creature can do.
         /// </summary>
         /// <param name="l"></param>
         /// <returns></returns>

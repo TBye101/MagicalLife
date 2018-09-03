@@ -1,6 +1,5 @@
 ﻿using MagicalLifeAPI.Components.Resource;
 using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entity.AI.Job;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.Util.Reusable;
@@ -8,9 +7,6 @@ using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 {
@@ -36,7 +32,6 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         private MineTask()
         {
-
         }
 
         protected static Dependencies GetDependencies(Guid boundID, Point2D target)

@@ -1,6 +1,5 @@
 ﻿using MagicalLifeAPI.Load;
 using MagicalLifeAPI.World.Data;
-using MagicalLifeServer.JobSystem;
 using MagicalLifeServer.Processing;
 
 namespace MagicalLifeServer.Load

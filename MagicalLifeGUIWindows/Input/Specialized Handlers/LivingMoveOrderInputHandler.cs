@@ -1,6 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity;
-using MagicalLifeAPI.Entity.AI.Job;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util;

@@ -109,7 +109,7 @@ namespace MagicalLifeServer
         {
             if (World.Mode == EngineMode.ServerOnly)
             {
-                foreach (KeyValuePair<Guid, System.Net.Sockets.Socket> item 
+                foreach (KeyValuePair<Guid, System.Net.Sockets.Socket> item
                     in ServerSendRecieve.TCPServer.PlayerToSocket)
                 {
                     WorldUtil.SpawnRandomCharacter(item.Key, 0);
@@ -124,7 +124,6 @@ namespace MagicalLifeServer
                 WorldUtil.SpawnRandomCharacter(Player.Default.PlayerID, 0);
                 WorldUtil.SpawnRandomCharacter(Player.Default.PlayerID, 0);
             }
-
 
             SetupTick();
         }

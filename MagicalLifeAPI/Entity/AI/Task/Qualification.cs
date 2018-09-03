@@ -1,10 +1,5 @@
 ﻿using MagicalLifeAPI.Entity.AI.Task.Qualifications;
 using ProtoBuf;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Entity.AI.Task
 {
@@ -17,7 +12,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
     public abstract class Qualification
     {
         /// <summary>
-        /// Determines if the creature has the 
+        /// Determines if the creature has the
         /// </summary>
         /// <param name="l"></param>
         /// <returns></returns>

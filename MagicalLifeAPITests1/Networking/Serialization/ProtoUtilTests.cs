@@ -1,9 +1,5 @@
-﻿using MagicalLifeAPI.Entity.Humanoid;
-using MagicalLifeAPI.Networking.Messages;
-using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeServer;
+﻿using MagicalLifeServer;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
 namespace MagicalLifeAPITests1.Networking.Serialization
 {

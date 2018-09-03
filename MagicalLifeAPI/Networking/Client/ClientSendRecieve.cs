@@ -3,8 +3,6 @@ using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Networking.Server;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Linq;
 
 namespace MagicalLifeAPI.Networking.Client
 {
@@ -40,7 +38,7 @@ namespace MagicalLifeAPI.Networking.Client
             }
         }
 
-        static int TotalSent = 0;
+        private static int TotalSent = 0;
 
         /// <summary>
         /// Sends a message to the server.

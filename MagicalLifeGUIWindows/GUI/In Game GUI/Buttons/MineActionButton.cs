@@ -1,5 +1,4 @@
-﻿using MagicalLifeAPI.Entity.AI.Job;
-using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 

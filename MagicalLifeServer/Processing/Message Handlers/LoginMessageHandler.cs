@@ -1,9 +1,6 @@
-﻿using MagicalLifeAPI.Entity;
-using MagicalLifeAPI.Networking;
+﻿using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
-using System;
-using System.Collections.Generic;
 
 namespace MagicalLifeServer.Processing.Message
 {

@@ -1,5 +1,4 @@
-﻿using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Networking.Serialization;
+﻿using MagicalLifeAPI.Networking.Serialization;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Networking.Client
