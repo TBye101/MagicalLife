@@ -1,4 +1,6 @@
-﻿namespace MagicalLifeGUIWindows.GUI.In
+﻿using MagicalLifeAPI.Entity.AI.Task;
+
+namespace MagicalLifeGUIWindows.GUI.In
 {
     /// <summary>
     /// Holds the container which is the in game GUI.

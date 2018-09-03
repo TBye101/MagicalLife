@@ -72,7 +72,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
             DrawStone(tile, ref spBatch, target);
             DrawItems(ref spBatch, tile, target);
 
-            if (tile.ImpendingAction == MagicalLifeAPI.Entity.AI.Job.ActionSelected.Mine)
+            if (tile.ImpendingAction == MagicalLifeAPI.Entity.AI.Task.ActionSelected.Mine)
             {
                 MapDrawer.Draw(AssetManager.Textures[AssetManager.NameToIndex["MineActionOverlay"]], target);
             }

@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.GUI;
 using MagicalLifeGUIWindows.GUI.In;
 using System.Collections.Generic;

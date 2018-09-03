@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Entity.AI.Task.Tasks;
+﻿using MagicalLifeAPI.Entity.AI.Task;
+using MagicalLifeAPI.Entity.AI.Task.Tasks;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.Input.History;

@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Entity;
+using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.Entity.Movement;
 using MagicalLifeAPI.World.Data;
 using System;
