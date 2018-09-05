@@ -59,8 +59,10 @@ namespace MagicalLifeAPI.Asset
 
             this.TexturesToLoad.Add("Grass");
 
-            this.TexturesToLoad.Add("MineAction");
-            this.TexturesToLoad.Add("MineActionOverlay");
+            this.TexturesToLoad.Add("GUI/PickaxeButton_Grey");
+            this.TexturesToLoad.Add("GUI/PickaxeButton_Gold");
+            this.TexturesToLoad.Add("PickaxeMapIcon");
+            
         }
 
         public void InitialStartup()

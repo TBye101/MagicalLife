@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Entity.AI.Task;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
@@ -7,8 +8,13 @@ namespace MagicalLifeGUIWindows.GUI.In
 {
     public class MineActionButton : MonoButton
     {
-        public MineActionButton() : base("MineAction", GetDisplayArea(), true)
+        protected int GreyTextureIndex;
+        protected int GoldTextureIndex;
+
+        public MineActionButton() : base("GUI/PickaxeButton_Grey", GetDisplayArea(), true)
         {
+            this.GreyTextureIndex = AssetManager.GetTextureIndex("GUI/PickaxeButton_Grey");
+            this.GoldTextureIndex = AssetManager.GetTextureIndex("GUI/PickaxeButton_Gold");
         }
 
         private static Rectangle GetDisplayArea()
@@ -26,10 +32,13 @@ namespace MagicalLifeGUIWindows.GUI.In
             if (InGameGUI.Selected == ActionSelected.Mine)
             {
                 InGameGUI.Selected = ActionSelected.None;
+                this.TextureID = this.GreyTextureIndex;
             }
             else
             {
                 InGameGUI.Selected = ActionSelected.Mine;
+                this.TextureID = this.GoldTextureIndex;
+                
             }
         }
 
