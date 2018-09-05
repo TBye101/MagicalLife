@@ -12,7 +12,12 @@ namespace MagicalLifeAPI.Filing
         /// <summary>
         /// The path to the current instance folder.
         /// </summary>
-        public static string instanceRootFolder;
+        public static string InstanceRootFolder { get; private set; }
+
+        /// <summary>
+        /// The path to the save directory.
+        /// </summary>
+        public static string SaveDirectory { get; private set; }
 
         /// <summary>
         /// The directory the main executable is in.
@@ -22,6 +27,9 @@ namespace MagicalLifeAPI.Filing
         public static void Initialize()
         {
             SetupRootFolder();
+
+            DirectoryInfo savePath = Directory.CreateDirectory(FileSystemManager.RootDirectory + Path.DirectorySeparatorChar + "Save");
+            SaveDirectory = savePath.FullName;
         }
 
         /// <summary>
@@ -29,18 +37,18 @@ namespace MagicalLifeAPI.Filing
         /// </summary>
         private static void SetupRootFolder()
         {
-            instanceRootFolder = Assembly.GetExecutingAssembly().Location;
-            instanceRootFolder = Path.GetDirectoryName(instanceRootFolder);
-            RootDirectory = instanceRootFolder;
-            instanceRootFolder += Path.DirectorySeparatorChar;
-            instanceRootFolder += "Logging";
-            Directory.CreateDirectory(instanceRootFolder);
-            instanceRootFolder += Path.DirectorySeparatorChar;
-            instanceRootFolder += "Instances";
-            Directory.CreateDirectory(instanceRootFolder);
-            instanceRootFolder += Path.DirectorySeparatorChar;
-            instanceRootFolder += GetIOSafeTime();
-            Directory.CreateDirectory(instanceRootFolder);
+            InstanceRootFolder = Assembly.GetExecutingAssembly().Location;
+            InstanceRootFolder = Path.GetDirectoryName(InstanceRootFolder);
+            RootDirectory = InstanceRootFolder;
+            InstanceRootFolder += Path.DirectorySeparatorChar;
+            InstanceRootFolder += "Logging";
+            Directory.CreateDirectory(InstanceRootFolder);
+            InstanceRootFolder += Path.DirectorySeparatorChar;
+            InstanceRootFolder += "Instances";
+            Directory.CreateDirectory(InstanceRootFolder);
+            InstanceRootFolder += Path.DirectorySeparatorChar;
+            InstanceRootFolder += GetIOSafeTime();
+            Directory.CreateDirectory(InstanceRootFolder);
         }
 
         /// <summary>
@@ -51,6 +59,24 @@ namespace MagicalLifeAPI.Filing
         {
             return string.Format("{0:[yyyy-MM-dd][hh-mm-ss-tt}]",
             DateTime.Now);
+        }
+
+        /// <summary>
+        /// Returns the path of all save games.
+        /// </summary>
+        /// <returns></returns>
+        public static string[] GetAllSaveNames()
+        {
+            string[] ret = Directory.GetDirectories(FileSystemManager.SaveDirectory);
+
+            int length = ret.Length;
+            for (int i = 0; i < length; i++)
+            {
+                DirectoryInfo info = new DirectoryInfo(ret[i]);
+                ret[i] = info.Name;
+            }
+
+            return ret;
         }
     }
 }

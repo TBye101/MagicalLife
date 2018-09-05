@@ -1,30 +1,10 @@
-﻿namespace MagicalLifeGUIWindows.GUI.In_Game_GUI
+﻿namespace MagicalLifeGUIWindows.GUI.In
 {
     /// <summary>
     /// The layout of the in game GUI for 1920x1080 resolution.
     /// </summary>
     public static class InGameGUILayout1920x1080
     {
-        /// <summary>
-        /// The x position of the turn button.
-        /// </summary>
-        public static readonly int TurnButtonX = 1820;
-
-        /// <summary>
-        /// The y position of the turn button.
-        /// </summary>
-        public static readonly int TurnButtonY = 0;
-
-        /// <summary>
-        /// The width of the turn button.
-        /// </summary>
-        public static readonly int TurnButtonWidth = 100;
-
-        /// <summary>
-        /// The height of the turn button.
-        /// </summary>
-        public static readonly int TurnButtonHeight = 100;
-
         /// <summary>
         /// The x position at which the in game GUI container is drawn.
         /// </summary>
@@ -44,5 +24,20 @@
         /// The height of the in game GUI container.
         /// </summary>
         public static readonly int ContainerHeight = 140;
+
+        /// <summary>
+        /// The Y position at which to render the top of every action button.
+        /// </summary>
+        public static readonly int ActionButtonY = 30;
+
+        /// <summary>
+        /// The size of each action button.
+        /// </summary>
+        public static readonly int ActionButtonSize = 64;
+
+        /// <summary>
+        /// The x position at which to render the mining action button.
+        /// </summary>
+        public static readonly int MineActionButtonX = 300;
     }
 }

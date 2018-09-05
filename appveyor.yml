@@ -1,0 +1,25 @@
+image: Visual Studio 2017
+
+install:
+
+# install monogame
+
+- ps: >-
+    (New-Object Net.WebClient).DownloadFile('http://www.monogame.net/releases/v3.6/MonoGameSetup.exe', 'C:\MonoGameSetup.exe')
+- ps: >-
+    Invoke-Command -ScriptBlock {C:\MonoGameSetup.exe /S /v/qn}
+
+platform:
+
+- x64
+
+configuration:
+
+- Debug
+
+before_build:
+
+# restore the nuget packages
+- ps: >-
+
+    nuget restore

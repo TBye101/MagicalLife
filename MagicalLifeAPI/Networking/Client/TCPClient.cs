@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Networking.Serialization;
+﻿using MagicalLifeAPI.Networking.Messages;
+using MagicalLifeAPI.Networking.Serialization;
 using SimpleTCP;
 
 namespace MagicalLifeAPI.Networking.Client
@@ -10,24 +11,34 @@ namespace MagicalLifeAPI.Networking.Client
     {
         public SimpleTcpClient Client;
 
-        public void Start(int port, string ip = "192.168.0.15")
+        private MessageBuffer MsgBuffer { get; } = new MessageBuffer();
+
+        public void Start(int port, string ip)
         {
             this.Client = new SimpleTcpClient();
             this.Client.DataReceived += this.Client_DataReceived;
 
             this.Client.Connect(ip, port);
+            this.Send<LoginMessage>(new LoginMessage());
         }
 
         private void Client_DataReceived(object sender, Message e)
         {
-            BaseMessage msg = (BaseMessage)ProtoUtil.Deserialize(e.Data);
-            ClientProcessor.Process(msg);
+            this.MsgBuffer.ReceiveData(e.Data);
+
+            while (this.MsgBuffer.IsMessageAvailible())
+            {
+                BaseMessage msg = this.MsgBuffer.GetMessageData();
+
+                ClientProcessor.Process(msg);
+            }
         }
 
         public void Send<T>(T message)
             where T : BaseMessage
         {
-            this.Client.Write(ProtoUtil.Serialize<T>(message));
+            byte[] buffer = ProtoUtil.Serialize<T>(message);
+            this.Client.Write(buffer);
         }
     }
 }

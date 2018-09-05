@@ -1,7 +1,7 @@
 ﻿using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 
-namespace MagicalLifeGUIWindows.GUI.New_World_Menu
+namespace MagicalLifeGUIWindows.GUI.New
 {
     /// <summary>
     /// Allows the user to input how wide they want the world to be.

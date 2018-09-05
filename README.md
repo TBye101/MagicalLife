@@ -1,9 +1,16 @@
-<p align="center"><img src="MagicalLifelogo/logo.png" alt="MagicalLife" height="300px"></p>
+<p align="center"><img src="Assets/Logo/logo.png" alt="MagicalLife" height="300px"></p>
 
 Thanks for the logo Batarian711!
 
 # Magical Life
 A fantasy world that imagines what a Rimworld style game could truly do if it had more elements in common with an RPG.
+
+Master Branch:
+[![Build status](https://ci.appveyor.com/api/projects/status/utahvkv3dvsp330m/branch/master?svg=true)](https://ci.appveyor.com/project/SneakyTactician/magicallife/branch/master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d8fc3d3cd10a4b6890660dffbcae158a)](https://www.codacy.com/app/sneakytactician/MagicalLife?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SneakyTactician/MagicalLife&amp;utm_campaign=Badge_Grade)
+
+Development Branch:
+[![Build status](https://ci.appveyor.com/api/projects/status/utahvkv3dvsp330m?svg=true)](https://ci.appveyor.com/project/SneakyTactician/magicallife)
 
 ## Project Needs
 * Textures
@@ -25,22 +32,55 @@ Thanks!
 * Multiplayer support
 * Hardware accelerated graphics via Monogame
 
+Check out the [demo](https://youtu.be/NV8WLheFxtM) to see the latest progress!
+
 ## Roadmap (In no particular order)
 AKA TODO:
 
-1. Not buggy graphics
-1.5 Items
-2. Character Actions (such as mining or building)
-3. Natural objects such as trees
-4. Character Classes and XP system
-5. Creatures (Enemies and Animals)
-6. AI
-7. Spells/Abilities
-8. Fantasy Loot
-9. Dungeons
-10. Randomized Quests
+~~Not buggy graphics~~
+
+~~Items~~
+
+~~Character Actions (such as mining or building)~~
+
+~~Save/Load Game~~
+
+Natural objects such as trees
+
+Character Classes and XP system
+
+Creatures (Enemies and Animals)
+
+AI
+
+Spells/Abilities
+
+Fantasy Loot
+
+Dungeons
+
+Randomized Quests
+
 
 Mod support: Always a priority
+
+# Installation Instructions
+
+1. Download and install the [.Net Framework 4.7.1 Runtime](https://www.microsoft.com/en-US/download/details.aspx?id=56116)
+2. Find and download a release from the releases tab of this project
+3. Extract the release
+4. Enjoy!
+
+# Development Instructions
+
+1. Download and install *any* version of [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+2. Download and install [Monogame 1.6](http://www.monogame.net/2017/03/01/monogame-3-6/) for Visual Studio.
+3. Download and install the [2012 VC++ x64 Redistributable](https://www.microsoft.com/en-us/download/details.aspx?id=30679)
+4. Clone this repository
+5. Open the solution, and set the solution configuration to *debug, x64*. 
+6. That's all!
+
+Hint: Due to something weird with Monogame in Visual Studio, I advise *building* everytime you make a code change and want to run this game. Hitting *start* doesn't always seem to compile your changes when working with Monogame.
 
 # Vision
 
@@ -136,6 +176,8 @@ but with magic and aspects of RPG.
 # Credits
 
 ## Contributors
+Lynngr - Created the dirt, grass, and stone textures.
+
 ockenyberg - Created the dirt and grass stepping sound effects
 
 Batarian711 - Created the logo for this project
@@ -146,6 +188,14 @@ Batarian711 - Created the logo for this project
 Released under the [Microsoft Public License and the MIT License](https://github.com/MonoGame/MonoGame/blob/develop/LICENSE.txt)
 
 #### Does the heavy lifting for graphics, asset loading, and more!
+---
+
+[FMOD](https://www.fmod.com/)
+
+Released under the [FMOD END USER LICENCE AGREEMENT](https://www.fmod.com/resources/eula)
+
+#### Audio
+
 ---
 [MonoGame.Extended](https://github.com/craftworkgames/MonoGame.Extended)
 

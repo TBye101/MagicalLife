@@ -1,4 +1,5 @@
-﻿using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeGUIWindows.GUI.In;
+using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;
 using System.Collections.Generic;
 
@@ -34,22 +35,33 @@ namespace MagicalLifeGUIWindows.GUI
         /// </summary>
         public static void Back()
         {
-            if (DisplayIndex > 0)
+            if (DisplayIndex > 0 && Containers[DisplayIndex].Child == null)
             {
                 DisplayIndex--;
                 BoundHandler.Popup(Containers[DisplayIndex]);
             }
+            else
+            {
+                NullChild(BoundHandler.GUIWindows[DisplayIndex]);
+            }
         }
 
-        /// <summary>
-        /// Displays the menu displayed 1 step ahead of the currently displayed menu.
-        /// </summary>
-        public static void Forward()
+        private static void NullChild(GUIContainer container)
         {
-            if (DisplayIndex <= Containers.Count)
+            if (container.Child == null)
             {
-                DisplayIndex++;
-                BoundHandler.Popup(Containers[DisplayIndex]);
+                BoundHandler.GUIWindows.Remove(container);
+            }
+            else
+            {
+                if (container.Child.Child == null)
+                {
+                    container.Child = null;
+                }
+                else
+                {
+                    NullChild(container.Child);
+                }
             }
         }
 
@@ -58,6 +70,15 @@ namespace MagicalLifeGUIWindows.GUI
         /// </summary>
         public static void Clear()
         {
+            if (InGameGUI.InGame == null)
+            {
+                BoundHandler.GUIWindows.Clear();
+            }
+            else
+            {
+                BoundHandler.GUIWindows.RemoveAll(x => x.GetType() != InGameGUI.InGame.GetType());
+            }
+
             Containers.Clear();
         }
     }

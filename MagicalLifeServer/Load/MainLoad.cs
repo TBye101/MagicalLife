@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.Load;
-using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeServer.Processing;
 
@@ -18,7 +17,6 @@ namespace MagicalLifeServer.Load
 
         private void World_DimensionGenerated(object sender, int e)
         {
-            //ServerSendRecieve.SendAll<WorldTransferMessage>(new WorldTransferMessage());
         }
     }
 }

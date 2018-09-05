@@ -1,11 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using ProtoBuf;
-using RBush;
+using System;
 
 namespace MagicalLifeAPI.DataTypes
 {
     [ProtoContract]
-    public class Point2D : ISpatialData
+    public class Point2D
     {
         [ProtoMember(1)]
         public int X { get; set; }
@@ -13,26 +13,14 @@ namespace MagicalLifeAPI.DataTypes
         [ProtoMember(2)]
         public int Y { get; set; }
 
-        protected Envelope _Envelope;
-
         public Point2D(int x, int y)
         {
             this.X = x;
             this.Y = y;
-            this._Envelope = new Envelope(x, y, x, y);
         }
 
         public Point2D()
         {
-            this._Envelope = new Envelope(this.X, this.Y, this.X, this.Y);
-        }
-
-        public ref readonly Envelope Envelope
-        {
-            get
-            {
-                return ref this._Envelope;
-            }
         }
 
         public override bool Equals(object obj)
@@ -56,13 +44,30 @@ namespace MagicalLifeAPI.DataTypes
             return new Point2D(value.X, value.Y);
         }
 
-        /// <summary>
-        /// Converts this point to a monogame/xna point.
-        /// </summary>
-        /// <returns></returns>
-        public Point ToXNA()
+        public static implicit operator Point(Point2D value)
         {
-            return new Point(this.X, this.Y);
+            return new Point(value.X, value.Y);
+        }
+
+        public static Point2D Parse(string str)
+        {
+            int x;
+            int y;
+
+            int xStart = 2;
+            int xEnd = str.IndexOf(',');
+            x = Convert.ToInt32(str.Substring(xStart, xEnd - xStart));
+
+            int yStart = xEnd + 2;
+            int yEnd = str.Length - 2;
+            y = Convert.ToInt32(str.Substring(yStart, yEnd - yStart));
+
+            return new Point2D(x, y);
+        }
+
+        public override string ToString()
+        {
+            return "{ " + this.X.ToString() + ", " + this.Y.ToString() + " }";
         }
     }
 }

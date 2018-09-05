@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Networking.Client;
+﻿using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Serialization;
 using System;
 using System.Collections.Generic;
@@ -56,6 +57,19 @@ namespace MagicalLifeAPI.Networking.Server
             }
         }
 
+        public static void Send<T>(T message, Guid player)
+            where T : BaseMessage
+        {
+            if (Local == EngineMode.ServerAndClient)
+            {
+                ClientSendRecieve.Recieve(message);
+            }
+            else
+            {
+                TCPServer.Send(message, player);
+            }
+        }
+
         /// <summary>
         /// Sends a message to all connected clients.
         /// </summary>
@@ -74,11 +88,39 @@ namespace MagicalLifeAPI.Networking.Server
         }
 
         /// <summary>
+        /// Sends a message to all connected clients except for one.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="message"></param>
+        /// <param name="playerException"></param>
+        public static void SendAllExcept<T>(T message, Guid playerException)
+            where T : BaseMessage
+        {
+            if (Local == EngineMode.ServerAndClient)
+            {
+            }
+            else
+            {
+                foreach (KeyValuePair<Guid, Socket> item in TCPServer.PlayerToSocket)
+                {
+                    if (item.Key != playerException)
+                    {
+                        TCPServer.Send(message, item.Key);
+                    }
+                }
+            }
+        }
+
+        private static int TotalReceived = 0;
+
+        /// <summary>
         /// Receives a message.
         /// </summary>
         /// <param name="message"></param>
         public static void Recieve(BaseMessage message)
         {
+            TotalReceived++;
+            MasterLog.DebugWriteLine("Total received: " + TotalReceived.ToString());
             RecievedMessages.Enqueue(message);
             RaiseMessageRecieved(null, message);
         }

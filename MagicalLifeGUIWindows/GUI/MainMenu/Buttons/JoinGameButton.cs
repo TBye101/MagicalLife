@@ -1,4 +1,6 @@
-﻿using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeAPI.Sound;
+using MagicalLifeGUIWindows.GUI.Join;
+using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 
@@ -10,13 +12,16 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
         {
         }
 
-        public override void Click(MouseEventArgs e)
+        public override void Click(MouseEventArgs e, GUIContainer container)
         {
-            Join_Game_Menu.JoinGameMenu.Initialize();
+            FMODUtil.RaiseEvent(EffectsTable.UIClick);
+            JoinGameMenu.Initialize();
+            MainMenu.MainMenuID.PopupChild(JoinGameMenu.menu);
         }
 
-        public override void DoubleClick(MouseEventArgs e)
+        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
         {
+            //Single click is good enough for now
         }
 
         private static Rectangle GetLocation()

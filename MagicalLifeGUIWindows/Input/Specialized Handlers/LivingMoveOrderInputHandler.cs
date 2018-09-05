@@ -1,14 +1,12 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities;
+using MagicalLifeAPI.Entity;
+using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Networking.Client;
-using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.Input.History;
 using MagicalLifeGUIWindows.Rendering;
-using MonoGame.Extended.Input.InputListeners;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -29,7 +27,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
         {
             HistoricalInput historical = InputHistory.History.Last();
 
-            if (historical.OrderedToTile && historical.OrderPoint2D != null)
+            if (historical.ActionSelected == ActionSelected.None && historical.OrderedToTile && historical.OrderPoint2D != null)
             {
                 foreach (Selectable item in InputHistory.Selected)
                 {
@@ -67,7 +65,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                             }
 
                             Extensions.EnqueueCollection(living.QueuedMovement, pth);
-                            ClientSendRecieve.Send<RouteCreatedMessage>(new RouteCreatedMessage(pth, living.ID, living.Dimension));
+                            //ClientSendRecieve.Send<RouteCreatedMessage>(new RouteCreatedMessage(pth, living.ID, living.Dimension));
                         }
                         break;
 
@@ -75,31 +73,6 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                         break;
                 }
             }
-        }
-
-        /// <summary>
-        /// Returns all living creatures at the specified screen position.
-        /// </summary>
-        /// <param name="e"></param>
-        /// <returns></returns>
-        private Living GetLivingAtClick(MouseEventArgs e)
-        {
-            Point2D tileLocation = Util.GetMapLocation(e.Position.X, e.Position.Y, RenderingPipe.Dimension, out bool success);
-
-            if (success)
-            {
-                Chunk chunk = World.Dimensions[RenderingPipe.Dimension].GetChunkForLocation(tileLocation.X, tileLocation.Y);
-
-                foreach (Living item in chunk.Creatures)
-                {
-                    if (item.MapLocation == tileLocation)
-                    {
-                        return item;
-                    }
-                }
-            }
-
-            return null;
         }
     }
 }

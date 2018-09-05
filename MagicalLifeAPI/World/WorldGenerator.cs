@@ -1,7 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities;
-using MagicalLifeAPI.Registry.ItemRegistry;
-using MagicalLifeAPI.Universal;
+using MagicalLifeAPI.Entity;
+using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using System;
 using System.Collections.Generic;
@@ -11,13 +10,16 @@ namespace MagicalLifeAPI.World
     /// <summary>
     /// All classes that implement <see cref="DimensionGenerator"/> control how each biome is allocated space to be generated in, and which biome is to be generated where.
     /// </summary>
-    public abstract class DimensionGenerator : Unique
+    public abstract class DimensionGenerator
     {
+        public Guid ID { get; }
+
         public readonly int Dimension;
 
         public DimensionGenerator(int dimension)
         {
             this.Dimension = dimension;
+            this.ID = Guid.NewGuid();
         }
 
         /// <summary>
@@ -31,7 +33,6 @@ namespace MagicalLifeAPI.World
             string[,] biomes = this.AssignBiomes(chunkWidth, chunkHeight, random);
 
             ProtoArray<Chunk> map = this.GenerateBlank(chunkWidth, chunkHeight, biomes);
-            ItemRegistry.Registries.Add(new ItemRegistry());
 
             this.GenerateLandType(biomes, map, random);
 
@@ -53,7 +54,7 @@ namespace MagicalLifeAPI.World
                 for (int y = 0; y < chunkHeight; y++)
                 {
                     blank[x, y] = new Chunk(
-                        new List<Living>(), new ProtoArray<Tile>(Chunk.Width, Chunk.Height), new Point2D(x, y), biomes[x, y]);
+                        new Dictionary<Guid, Living>(), new ProtoArray<Tile>(Chunk.Width, Chunk.Height), new Point2D(x, y), biomes[x, y]);
                 }
             }
 

@@ -1,11 +1,9 @@
-﻿using MagicalLifeAPI.Universal;
-
-namespace MagicalLifeAPI.World.Base
+﻿namespace MagicalLifeAPI.World.Base
 {
     /// <summary>
     /// A base class used by anything that can grow, and is alive.
     /// </summary>
-    public abstract class Vegetation : Unique
+    public abstract class Vegetation
     {
         /// <summary>
         /// The constructor for <see cref="Vegetation"/>.

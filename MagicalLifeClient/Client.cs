@@ -1,12 +1,10 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Networking.Client;
-using MagicalLifeAPI.Networking.Message_Handlers;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeAPI.Networking.Test;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeClient.Entity;
-using MagicalLifeClient.Message_Handlers;
+using MagicalLifeClient.Message;
 using System;
 using System.Collections.Generic;
 
@@ -37,7 +35,6 @@ namespace MagicalLifeClient
 
         private static void Client_ClientTick(object sender, ulong e)
         {
-            //MasterLog.DebugWriteLine("Client tick!");
         }
 
         private static List<MessageHandler> GetMessageHandlers()
@@ -45,10 +42,12 @@ namespace MagicalLifeClient
             return new List<MessageHandler>()
             {
                 new ServerTickMessageHandler(),
-                new ConcreteTestHandler(),
+                new WorldModifierMessageHandler(),
 
                 //Least important messages
-                new WorldTransferMessageHandler()
+                new WorldTransferHeaderMessageHandler(),
+                new WorldTransferBodyMessageHandler(),
+                new WorldTransferRegistryMessageHandler()
             };
         }
 

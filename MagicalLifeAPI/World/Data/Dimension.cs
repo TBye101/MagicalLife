@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Universal;
-using ProtoBuf;
+using MagicalLifeAPI.Registry.ItemRegistry;
+using MagicalLifeAPI.World.Base;
+using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.World.Data
@@ -9,20 +10,22 @@ namespace MagicalLifeAPI.World.Data
     /// Holds some information about the level of the world.
     /// Could be a dungeon, the starting Point2D, or some other thing.
     /// </summary>
-    [ProtoContract]
-    public class Dimension : Unique
+    //[ProtoContract]
+    public class Dimension
     {
         /// <summary>
         /// Handles access to the chunks stored in this dimension.
         /// </summary>
-        [ProtoMember(1)]
         private readonly ChunkManager Manager;
 
         /// <summary>
         /// The display name of the dimension.
         /// </summary>
-        [ProtoMember(2)]
         public string DimensionName { get; set; }
+
+        public Guid ID { get; }
+
+        public ItemRegistry Items { get; set; }
 
         /// <summary>
         /// The width of this dimension in chunks.
@@ -58,19 +61,36 @@ namespace MagicalLifeAPI.World.Data
             }
         }
 
+        /// <summary>
+        /// This constructor creates a new dimension.
+        /// </summary>
+        /// <param name="dimensionName"></param>
+        /// <param name="chunks"></param>
         public Dimension(string dimensionName, ProtoArray<Chunk> chunks)
         {
             this.Manager = new ChunkManager(this.ID, chunks);
             this.DimensionName = dimensionName;
-            World.Storage.PrepareForDimension(this.ID);
+            this.ID = Guid.NewGuid();
+            this.Items = new ItemRegistry(World.AddDimension(this));
+        }
+
+        /// <summary>
+        /// This constructor is for creating a dimension identical to a dimension loaded from disk/network.
+        /// </summary>
+        /// <param name="dimensionName"></param>
+        /// <param name="chunks"></param>
+        /// <param name="id"></param>
+        /// <param name="registry"></param>
+        public Dimension(string dimensionName, ProtoArray<Chunk> chunks, Guid id, ItemRegistry registry)
+        {
+            this.ID = id;
+            this.Manager = new ChunkManager(id, chunks);
+            this.DimensionName = dimensionName;
 
             int dimensionID = World.AddDimension(this);
 
             //Anything that needs a dimensionID
-        }
-
-        public Dimension()
-        {
+            this.Items = registry;
         }
 
         public Chunk GetChunkForLocation(int x, int y)

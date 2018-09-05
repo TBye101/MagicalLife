@@ -2,18 +2,64 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 ---
 
-## [Version 0.*.*]
+## [Version 0.1.0] 
+
+#### API
+* Saving a game is now supported
+* Loading a game is now supported
+* Errors are now logged
+* Job system is now client side
+* Job system now has enhanced support for dependencies
+* Job system now has enhanced support for "bound" (same worker) jobs
+
+#### Server
+* The newgame command now requires a 3rd parameter, the world's name
+
+#### GUI
+* The host game button has been replaced by the load game button
+* Added listbox support
+* Added the load game listbox
+* Load game menu now works
+* Added a back button to the in game escape menu
+* Input boxes no longer error when reopening menus and backspacing
+
+#### Sound
+
+#### Bugs
+
+* Fixed a mining command bug
+---
+
+## [Version 0.0.9]
 
 #### API
 * Added internal support for having items in tiles
 * Added item addition, removal, and search functionality
+* Added a grass tile
+* Added the stone chunk item
+* Mining jobs are now possible
+* Added internal support for sfx/sound events
 
 #### Server
+* Seperated server loading and server starting into two seperate commands
+* Now handles player connections and disconnections in a safer way
 
 #### GUI
+* Grass textures now connect to form smoother patterns
+* Now showing logos for MonoGame and FMOD
+* Player can now mark stone to be mined
+
+#### Sound
+* Buttons now play a clicking sound when clicked upon
+* Stone now plays a pickaxe hitting noise while it is being mined
 
 #### Bugs
 * Fixed issue [#17](https://github.com/SneakyTactician/MagicalLife/issues/17)
+* Fixed issue [#57](https://github.com/SneakyTactician/MagicalLife/issues/57)
+* Fixed an issue sometimes causing the character to be unselectable
+* Discovered and fixed issue [#50](https://github.com/SneakyTactician/MagicalLife/issues/50)
+
+* Discovered issue [#51](https://github.com/SneakyTactician/MagicalLife/issues/51)
 
 ---
 

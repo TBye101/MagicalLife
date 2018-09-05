@@ -1,9 +1,7 @@
-﻿using MagicalLifeGUIWindows.GUI.Join_Game_Menu.Buttons;
-using MagicalLifeGUIWindows.GUI.Join_Game_Menu.Input_Boxes;
-using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Rendering;
 
-namespace MagicalLifeGUIWindows.GUI.Join_Game_Menu
+namespace MagicalLifeGUIWindows.GUI.Join
 {
     public class JoinGameMenuContainer : GUIContainer
     {

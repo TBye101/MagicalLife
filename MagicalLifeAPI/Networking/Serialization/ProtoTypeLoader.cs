@@ -1,8 +1,7 @@
 ﻿using MagicalLifeAPI.Load;
-using MagicalLifeAPI.Networking.External_Type_Serialization;
-using MagicalLifeAPI.Universal;
+using MagicalLifeAPI.Networking.External;
 using MagicalLifeAPI.Util;
-using MagicalLifeAPI.World;
+using MagicalLifeAPI.World.Base;
 using ProtoBuf.Meta;
 using System;
 using System.Collections.Generic;
@@ -39,42 +38,40 @@ namespace MagicalLifeAPI.Networking.Serialization
 
             foreach (ITeachSerialization item in this.Teachers)
             {
-                item.Teach(current);//Point2D teacher ain't loading
+                item.Teach(current);
             }
 
             MetaType baseMessageType = current.Add(typeof(BaseMessage), true);
-
-            // = ReflectionUtil.LoadAllInterface<IHasSubclasses>(Assembly.GetAssembly(typeof(BaseMessage)));
             List<IHasSubclasses> ToProcess = new List<IHasSubclasses>();
             ToProcess.AddRange(ReflectionUtil.LoadAllInterface<IHasSubclasses>(Assembly.GetAssembly(typeof(Tile))));
 
             foreach (IHasSubclasses item in ToProcess)
             {
-                MetaType meta = current.Add(item.GetBaseType(), true);
-
-                foreach (KeyValuePair<Type, int> subs in item.GetSubclassInformation())
+                if (item.GetType().IsAbstract)
                 {
-                    meta.AddSubType(subs.Value, subs.Key);
+                    MetaType meta = current.Add(item.GetBaseType(), true);
+
+                    foreach (KeyValuePair<Type, int> subs in item.GetSubclassInformation())
+                    {
+                        meta.AddSubType(subs.Value, subs.Key);
+                    }
                 }
             }
 
             //Must start at 2 because Protobuf-net can't have members and inheritance attributes with the same ID. I think. :D
-            int i = 2;
-            int length = this.Messages.Count + 2;
+            int i = 3;
+            int length = this.Messages.Count + 3;
             while (i < length)
             {
-                current.Add(this.Messages[i - 2], true);
-                baseMessageType.AddSubType(i, this.Messages[i - 2]);
+                current.Add(this.Messages[i - 3], true);
+                baseMessageType.AddSubType(i, this.Messages[i - 3]);
 
-                BaseMessage sample = (BaseMessage)Activator.CreateInstance(this.Messages[i - 2]);
-                ProtoUtil.IDToMessage.Add(sample.ID, this.Messages[i - 2]);
+                BaseMessage sample = (BaseMessage)Activator.CreateInstance(this.Messages[i - 3]);
+                ProtoUtil.IDToMessage.Add(sample.ID, this.Messages[i - 3]);
 
                 i++;
             }
 
-            //ProtoUtil.TypeModel = RuntimeTypeModel.Default.
-            //ProtoUtil.TypeModel = current.Compile();
-            //ProtoUtil.TypeModel
             ProtoUtil.TypeModel = current;
         }
     }

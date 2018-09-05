@@ -1,9 +1,5 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.World;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
+﻿using MagicalLifeAPI.World;
+using MagicalLifeAPI.World.Base;
 
 namespace MagicalLifeGUIWindows.Map
 {
@@ -34,26 +30,6 @@ namespace MagicalLifeGUIWindows.Map
 
         private static void Tile_TileCreated(object sender, TileEventArg e)
         {
-            RenderingData.AssignTextureIndex(e.Tile);
-        }
-
-        private static void AssignTextureIndex(Tile tile)
-        {
-            Point2D location = tile.Location;
-            string textureName = tile.GetTextureName();
-
-            List<Texture2D> textures = AssetManager.Textures;
-            int length = textures.Count;
-            for (int i = 0; i < length; i++)
-            {
-                if (textures[i].Name == textureName)
-                {
-                    tile.TextureIndex = i;
-                    return;
-                }
-            }
-
-            throw new Exception("Texture not found!");
         }
 
         /// <summary>

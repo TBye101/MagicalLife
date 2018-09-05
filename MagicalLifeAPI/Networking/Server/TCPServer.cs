@@ -1,6 +1,12 @@
-﻿using MagicalLifeAPI.Networking.Messages;
+﻿using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
+using MagicalLifeAPI.World.Data.Disk;
+using MagicalLifeAPI.World.Data.Disk.DataStorage;
 using SimpleTCP;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Sockets;
 
 namespace MagicalLifeAPI.Networking.Server
@@ -12,6 +18,10 @@ namespace MagicalLifeAPI.Networking.Server
     public class TCPServer
     {
         public SimpleTcpServer Server = new SimpleTcpServer();
+
+        public Dictionary<Guid, Socket> PlayerToSocket { get; private set; } = new Dictionary<Guid, Socket>();
+
+        private MessageBuffer MsgBuffer { get; } = new MessageBuffer();
 
         public TCPServer()
         {
@@ -26,7 +36,7 @@ namespace MagicalLifeAPI.Networking.Server
 
             foreach (System.Net.IPAddress item in this.Server.GetListeningIPs())
             {
-                //MasterLog.DebugWriteLine("Server listening on: " + item.ToString());
+                MasterLog.DebugWriteLine("Server listening on: " + item.ToString());
             }
 
             this.Server.ClientConnected += this.Server_ClientConnected;
@@ -36,19 +46,34 @@ namespace MagicalLifeAPI.Networking.Server
 
         private void Server_DataReceived(object sender, Message e)
         {
+            this.MsgBuffer.ReceiveData(e.Data);
+
+            while (this.MsgBuffer.IsMessageAvailible())
+            {
+                BaseMessage msg = this.MsgBuffer.GetMessageData();
+                if (msg is LoginMessage login)
+                {
+                    this.PlayerToSocket.Add(login.PlayerID, e.TcpClient.Client);
+                }
+
+                ServerSendRecieve.Recieve(msg);
+            }
         }
 
         private void Server_ClientDisconnected(object sender, System.Net.Sockets.TcpClient e)
         {
-            //MasterLog.DebugWriteLine("Client disconnected");
+            KeyValuePair<Guid, Socket> result = this.PlayerToSocket.First(x => x.Value == e.Client);
+            this.PlayerToSocket.Remove(result.Key);
+            ServerSendRecieve.Recieve(new DisconnectMessage(result.Key));
+
+            MasterLog.DebugWriteLine("Client disconnected: " + e.Client.RemoteEndPoint.ToString());
         }
 
         private void Server_ClientConnected(object sender, System.Net.Sockets.TcpClient e)
         {
-            //MasterLog.DebugWriteLine("Client connection received");
+            MasterLog.DebugWriteLine("Client connected: " + e.Client.RemoteEndPoint.ToString());
 
-            //this.Send<ConcreteTest>(new ConcreteTest(), e.Client);
-            this.Send<WorldTransferMessage>(new WorldTransferMessage(World.Data.World.Dimensions), e.Client);
+            WorldStorage.NetSerializeWorld(WorldStorage.SaveName, new WorldNetSink(e.Client));
         }
 
         /// <summary>
@@ -60,7 +85,15 @@ namespace MagicalLifeAPI.Networking.Server
         public void Send<T>(T data, Socket client)
             where T : BaseMessage
         {
-            client.Send(ProtoUtil.Serialize<T>(data));
+            byte[] buffer = ProtoUtil.Serialize<T>(data);
+            client.Send(buffer);
+        }
+
+        public void Send<T>(T data, Guid player)
+            where T : BaseMessage
+        {
+            byte[] buffer = ProtoUtil.Serialize<T>(data);
+            this.PlayerToSocket[player].Send(buffer);
         }
 
         /// <summary>
@@ -71,7 +104,8 @@ namespace MagicalLifeAPI.Networking.Server
         public void Broadcast<T>(T data)
             where T : BaseMessage
         {
-            this.Server.Broadcast(ProtoUtil.Serialize<T>(data));
+            byte[] buffer = ProtoUtil.Serialize<T>(data);
+            this.Server.Broadcast(buffer);
         }
     }
 }

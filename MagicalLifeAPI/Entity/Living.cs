@@ -1,21 +1,21 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.DataTypes.Attribute;
-using MagicalLifeAPI.Entities.Eventing;
-using MagicalLifeAPI.Entities.Util;
+using MagicalLifeAPI.Entity.AI.Task;
+using MagicalLifeAPI.Entity.Eventing;
 using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Pathfinding;
+using MagicalLifeAPI.Util.Reusable;
 using ProtoBuf;
 using System;
-using System.Collections.Generic;
 
-namespace MagicalLifeAPI.Entities
+namespace MagicalLifeAPI.Entity
 {
     /// <summary>
     /// All living things inherit from this, and utilize it.
     /// </summary>
     [ProtoContract]
-    public abstract class Living : Selectable, IHasSubclasses
+    [ProtoInclude(8, typeof(Humanoid.Human))]
+    public abstract class Living : Selectable
     {
         /// <summary>
         /// A queue that holds the queued movement steps up for this living creature.
@@ -47,6 +47,21 @@ namespace MagicalLifeAPI.Entities
         [ProtoMember(5)]
         public int Dimension { get; set; }
 
+        [ProtoMember(6)]
+        public MagicalTask Task { get; set; }
+
+        /// <summary>
+        /// The ID of the player that this creature belongs to.
+        /// </summary>
+        [ProtoMember(7)]
+        public Guid PlayerID { get; set; }
+
+        [ProtoMember(9)]
+        public TickTimer FootStepTimer { get; set; }
+
+        [ProtoMember(10)]
+        public Guid ID { get; }
+
         /// <summary>
         /// Raised when a <see cref="Living"/> is created.
         /// </summary>
@@ -57,23 +72,37 @@ namespace MagicalLifeAPI.Entities
         /// </summary>
         public event EventHandler<LivingEventArg> LivingModified;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Living"/> base class.
-        /// </summary>
-        /// <param name="health"></param>
-        /// <param name="movementSpeed"></param>
-        protected Living(int health, float movementSpeed, Point2D location, int dimension)
+        protected Living(int health, float movementSpeed, Point2D location, int dimension, Guid playerID)
         {
-            this.Health = new Util.Attribute32(health);
+            this.ID = Guid.NewGuid();
+            this.PlayerID = playerID;
+            this.Initialize(health, movementSpeed, location, dimension);
+        }
+
+        protected void Initialize(int health, float movementSpeed, Point2D location, int dimension)
+        {
+            this.Health = new Attribute32(health);
             this.Movement = new AttributeFloat(movementSpeed);
             this.MapLocation = location;
             this.ScreenLocation = new Point2DFloat(location.X, location.Y);
             this.Dimension = dimension;
             Living.LivingCreatedHandler(new LivingEventArg(this, location));
+            this.FootStepTimer = new TickTimer(5);
         }
 
         public Living()
         {
+        }
+
+        public void AssignTask(MagicalTask task)
+        {
+            this.Task = task;
+            this.Task.Completed += this.Task_Completed;
+        }
+
+        private void Task_Completed(MagicalTask task)
+        {
+            this.Task = null;
         }
 
         /// <summary>
@@ -98,19 +127,6 @@ namespace MagicalLifeAPI.Entities
         public static void LivingCreatedHandler(LivingEventArg e)
         {
             LivingCreated?.Invoke(e.Living, e);
-        }
-
-        public Dictionary<Type, int> GetSubclassInformation()
-        {
-            return new Dictionary<Type, int>()
-            {
-                { typeof(Humanoid.Human), 999}
-            };
-        }
-
-        public Type GetBaseType()
-        {
-            return typeof(Living);
         }
     }
 }

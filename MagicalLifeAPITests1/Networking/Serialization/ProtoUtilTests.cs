@@ -1,35 +1,25 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeAPI.World.Tiles;
+﻿using MagicalLifeServer;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
-namespace MagicalLifeAPI.Protobuf.Serialization.Tests
+namespace MagicalLifeAPITests1.Networking.Serialization
 {
     [TestClass()]
     public class ProtoUtilTests
     {
         [TestMethod()]
-        public void SerAndDeSerTest()
+        public void TestJobSerialization()
         {
-            this.Setup();
-            this.TileTest();
         }
 
-        private void TileTest()
+        [TestMethod()]
+        private void WorldTest()
         {
-            string data = Convert.ToBase64String(ProtoUtil.Serialize<Dirt>(new Dirt(3, 2)));
-            Dirt dirt = ProtoUtil.Deserialize<Dirt>(data);
-
-            Assert.AreEqual(dirt.Location, new Point2D(3, 2));
-            Assert.IsNotNull(dirt.ID);
+            Assert.Fail();//Need to rewrite the world serialization/deserialization test.
         }
 
         private void Setup()
         {
-            ProtoTypeLoader prep = new ProtoTypeLoader();
-            int prog = 0;
-            prep.InitialStartup();
+            Server.Load();
         }
     }
 }

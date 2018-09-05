@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MagicalLifeServerShell
+namespace MagicalLifeAPI.Server
 {
     /// <summary>
     /// A command.

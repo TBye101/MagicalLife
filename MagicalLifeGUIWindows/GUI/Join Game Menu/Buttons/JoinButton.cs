@@ -1,11 +1,14 @@
 ﻿using MagicalLifeAPI.Networking.Client;
+using MagicalLifeAPI.Sound;
+using MagicalLifeAPI.World.Data;
 using MagicalLifeClient;
+using MagicalLifeGUIWindows.GUI.In;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 
-namespace MagicalLifeGUIWindows.GUI.Join_Game_Menu.Buttons
+namespace MagicalLifeGUIWindows.GUI.Join
 {
     public class JoinButton : MonoButton
     {
@@ -22,16 +25,18 @@ namespace MagicalLifeGUIWindows.GUI.Join_Game_Menu.Buttons
             return new Rectangle(x, y, width, height);
         }
 
-        public override void Click(MouseEventArgs e)
+        public override void Click(MouseEventArgs e, GUIContainer container)
         {
+            World.Mode = MagicalLifeAPI.Networking.EngineMode.ClientOnly;
+            FMODUtil.RaiseEvent(EffectsTable.UIClick);
             ClientSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(JoinGameMenu.menu.IpInputBox.Text, int.Parse(JoinGameMenu.menu.PortInputBox.Text)));
             Client.Load();
             MenuHandler.Clear();
-            In_Game_GUI.InGameGUI.Initialize();
-            BoundHandler.Popup(In_Game_GUI.InGameGUI.InGame);
+            InGameGUI.Initialize();
+            BoundHandler.Popup(InGameGUI.InGame);
         }
 
-        public override void DoubleClick(MouseEventArgs e)
+        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
         {
         }
     }

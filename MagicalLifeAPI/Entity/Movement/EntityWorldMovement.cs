@@ -1,11 +1,17 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions;
+using MagicalLifeAPI.DataTypes.Attribute;
+using MagicalLifeAPI.Entity.Util.Modifier;
+using MagicalLifeAPI.Error.InternalExceptions;
+using MagicalLifeAPI.Networking.Client;
+using MagicalLifeAPI.Networking.Messages;
+using MagicalLifeAPI.Networking.World.Modifiers;
 using MagicalLifeAPI.Pathfinding;
+using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Util;
-using MagicalLifeAPI.World;
+using MagicalLifeAPI.World.Base;
 using System;
 
-namespace MagicalLifeAPI.Entities.Movement
+namespace MagicalLifeAPI.Entity.Movement
 {
     /// <summary>
     /// Used to move entities.
@@ -16,7 +22,7 @@ namespace MagicalLifeAPI.Entities.Movement
         /// Moves the entity as far along on its path as possible.
         /// </summary>
         /// <param name="entity"></param>
-        public static void MoveEntity(ref Living entity)
+        public static void MoveEntity(Living entity)
         {
             ProtoQueue<PathLink> path = entity.QueuedMovement;
 
@@ -26,7 +32,7 @@ namespace MagicalLifeAPI.Entities.Movement
 
                 Tile sourceTile = World.Data.World.Dimensions[entity.Dimension][section.Origin.X, section.Origin.Y];
                 Tile destinationTile = World.Data.World.Dimensions[entity.Dimension][section.Destination.X, section.Destination.Y];
-                Move(ref entity, sourceTile, destinationTile);
+                Move(entity, sourceTile, destinationTile);
             }
         }
 
@@ -54,9 +60,9 @@ namespace MagicalLifeAPI.Entities.Movement
         /// <param name="entity"></param>
         /// <param name="source"></param>
         /// <param name="destination"></param>
-        public static void Move(ref Living entity, Tile source, Tile destination)
+        public static void Move(Living entity, Tile source, Tile destination)
         {
-            Direction direction = DetermineMovementDirection(source.Location, destination.Location);
+            Direction direction = DetermineMovementDirection(source.MapLocation, destination.MapLocation);
 
             float xMove = 0;
             float yMove = 0;
@@ -100,7 +106,7 @@ namespace MagicalLifeAPI.Entities.Movement
                     break;
 
                 default:
-                    throw new Exception();
+                    throw new UnexpectedEnumMemberException();
             }
 
             xMove *= entity.Movement.GetValue();
@@ -108,19 +114,37 @@ namespace MagicalLifeAPI.Entities.Movement
 
             float movementPenalty = (float)Math.Abs(CalculateMovementReduction(xMove, yMove)) * -1;
 
-            if (MathUtil.GetDistance(entity.ScreenLocation, destination.Location) > entity.Movement.GetValue())
+            if (MathUtil.GetDistance(entity.ScreenLocation, destination.MapLocation) > entity.Movement.GetValue())
             {
+                //The character fell short of reaching the next tile
                 entity.ScreenLocation = new DataTypes.Point2DFloat(entity.ScreenLocation.X + xMove, entity.ScreenLocation.Y + yMove);
+                FootStepSound(entity, source);
             }
             else
             {
-                entity.MapLocation = destination.Location;
-                entity.ScreenLocation = new DataTypes.Point2DFloat(destination.Location.X, destination.Location.Y);
+                //The character made it to the next tile.
+                entity.MapLocation = destination.MapLocation;
+                entity.ScreenLocation = new DataTypes.Point2DFloat(destination.MapLocation.X, destination.MapLocation.Y);
                 entity.QueuedMovement.Dequeue();
-                movementPenalty = MathUtil.GetDistance(entity.ScreenLocation, destination.Location);
+                movementPenalty = MathUtil.GetDistance(entity.ScreenLocation, destination.MapLocation);
+                FootStepSound(entity, destination);
+
+                //If this entity is the current client's and therefore that clients responsibility to report about
+                if (entity.PlayerID == MagicalLifeSettings.Storage.Player.Default.PlayerID)
+                {
+                    ClientSendRecieve.Send(new WorldModifierMessage(new LivingLocationModifier(entity.ID, source.MapLocation, destination.MapLocation, entity.Dimension)));
+                }
             }
 
-            entity.Movement.AddModifier(new Entity.Util.ModifierFloat(movementPenalty, new TimeRemoveCondition(1), "Normal Movement"));
+            entity.Movement.AddModifier(new ModifierFloat(movementPenalty, new TimeRemoveCondition(1), "Normal Movement"));
+        }
+
+        private static void FootStepSound(Living living, Tile footStepsOn)
+        {
+            if (living.FootStepTimer.Allow())
+            {
+                FMODUtil.RaiseEvent(EffectsTable.FootSteps, "Material", footStepsOn.FootStepSound);
+            }
         }
 
         /// <summary>
@@ -174,7 +198,7 @@ namespace MagicalLifeAPI.Entities.Movement
                 }
             }
 
-            throw new ArgumentException();
+            throw new UnexpectedEnumMemberException();
         }
     }
 }

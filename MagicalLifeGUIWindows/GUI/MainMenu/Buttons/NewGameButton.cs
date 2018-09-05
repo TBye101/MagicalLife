@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Networking.Client;
+﻿using MagicalLifeAPI.Sound;
+using MagicalLifeGUIWindows.GUI.New;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
@@ -11,14 +12,16 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
         {
         }
 
-        public override void Click(MouseEventArgs e)
+        public override void Click(MouseEventArgs e, GUIContainer container)
         {
-            New_World_Menu.NewWorldMenu.Initialize();
-            ClientSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(MagicalLifeAPI.Networking.EngineMode.ServerAndClient));
+            FMODUtil.RaiseEvent(EffectsTable.UIClick);
+            NewWorldMenu.Initialize();
+            MainMenu.MainMenuID.PopupChild(NewWorldMenu.NewWorldMenuM);
         }
 
-        public override void DoubleClick(MouseEventArgs e)
+        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
         {
+            //Single click is good enough
         }
 
         private static Rectangle GetLocation()

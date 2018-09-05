@@ -1,23 +1,27 @@
-﻿using MagicalLifeAPI.GUI;
+﻿using MagicalLifeAPI.Components.Resource;
+using MagicalLifeAPI.DataTypes.Attribute;
+using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.World.Resources;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
 
-namespace MagicalLifeAPI.World
+namespace MagicalLifeAPI.World.Base
 {
     /// <summary>
     /// A base class for all resources.
-    /// Resources in tiles are things such as minerals.
+    /// Resources in tiles are things such as stone and minerals.
     /// </summary>
     [ProtoContract]
-    public abstract class Resource : HasTexture, IHasSubclasses
+    [ProtoInclude(1, typeof(StoneBase))]
+    public abstract class Resource : HasTexture, IHasSubclasses, IMinable
     {
-        public Resource(string name, int count)
+        public Resource(string name, int durability)
         {
-            this.Name = name;
-            this.Count = count;
+            this.DisplayName = name;
+            this.Durability = durability;
+            this.MaxDurability = new Attribute32(this.Durability);
         }
 
         public Resource()
@@ -28,13 +32,19 @@ namespace MagicalLifeAPI.World
         /// The display name of the resource.
         /// </summary>
         [ProtoMember(2)]
-        public string Name { get; }
+        public string DisplayName { get; }
 
         /// <summary>
         /// How much of the resources is left.
         /// </summary>
         [ProtoMember(3)]
-        public int Count { get; }
+        public int Durability { get; set; }
+
+        [ProtoMember(4)]
+        public Attribute32 MaxDurability { get; }
+
+        [ProtoMember(5)]
+        public abstract AbstractMinable MiningBehavior { get; set; }
 
         public Type GetBaseType()
         {
@@ -45,7 +55,7 @@ namespace MagicalLifeAPI.World
         {
             Dictionary<Type, int> ret = new Dictionary<Type, int>
             {
-                { typeof(MarbleResource), 1 }
+                { typeof(Stone), 1 }
             };
             return ret;
         }

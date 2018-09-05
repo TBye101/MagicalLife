@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Universal;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 using System;
@@ -9,7 +8,7 @@ namespace MagicalLifeGUIWindows.Input
     /// <summary>
     /// Holds information about where a click is clicking within bounds, as well as priority and a event to subscribe to.
     /// </summary>
-    public class ClickBounds : Unique
+    public class ClickBounds
     {
         /// <summary>
         /// The range of this <see cref="ClickBounds"/> obejct.

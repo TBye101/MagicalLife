@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using MagicalLifeAPI.Error.InternalExceptions;
+using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Asset
@@ -28,48 +29,15 @@ namespace MagicalLifeAPI.Asset
         /// <param name="name"></param>
         public static int GetTextureIndex(string name)
         {
-            //MasterLog.DebugWriteLine("Textures in texture index: ");
             foreach (KeyValuePair<string, int> item in NameToIndex)
             {
-                //MasterLog.DebugWriteLine(item.Key);
                 if (item.Key == name)
                 {
                     return item.Value;
                 }
             }
 
-            throw new System.Exception("Texture index not found! Texture: " + name);
+            throw new ResourceMissingException("Texture index not found! Texture: " + name);
         }
-
-        /// <summary>
-        /// Adds the specified texture to the registry.
-        /// </summary>
-        /// <param name="texture">The texture to add to the registry.</param>
-        /// <returns>Returns the index at which the texture can be retrieved from.</returns>
-        //public static int RegisterTexture(Texture2D texture)
-        //{
-        //    bool Exists = false;
-
-        //    foreach (Texture2D item in Textures)
-        //    {
-        //        if (item.Name == texture.Name)
-        //        {
-        //            Exists = true;
-        //            break;
-        //        }
-        //    }
-
-        //    if (!Exists)
-        //    {
-        //        Textures.Add(texture);
-        //        int count = Textures.Count - 1;
-        //        NameToIndex.Add(texture.Name, count);
-        //        return count;
-        //    }
-        //    else
-        //    {
-        //        return AssetManager.GetTextureIndex(texture.Name);
-        //    }
-        //}
     }
 }

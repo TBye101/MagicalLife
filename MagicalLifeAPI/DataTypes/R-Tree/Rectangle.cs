@@ -22,7 +22,7 @@
 using System;
 using System.Text;
 
-namespace RTree
+namespace MagicalLifeAPI.DataTypes.R
 {
     public struct dimension
     {

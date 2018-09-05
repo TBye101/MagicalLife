@@ -1,11 +1,12 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities;
-using MagicalLifeAPI.World;
+using MagicalLifeAPI.Entity;
+using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Resources;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace MagicalLifeGUIWindows.Rendering.Map
 {
@@ -14,15 +15,19 @@ namespace MagicalLifeGUIWindows.Rendering.Map
     /// </summary>
     public static class MapRenderer
     {
+        public static MapBatch MapDrawer { get; private set; } = new MapBatch();
+
         /// <summary>
         /// Draws the tiles that make up the map.
         /// </summary>
         /// <param name="spBatch"></param>
         public static void DrawMap(ref SpriteBatch spBatch, int dimension)
         {
+            MapDrawer.UpdateSpriteBatch(spBatch);
+
             foreach (Tile tile in World.Dimensions[dimension])
             {
-                Point2D start = new Point2D(RenderingPipe.tileSize.X * tile.Location.X, RenderingPipe.tileSize.Y * tile.Location.Y);
+                Point2D start = new Point2D(RenderingPipe.tileSize.X * tile.MapLocation.X, RenderingPipe.tileSize.Y * tile.MapLocation.Y);
                 DrawTile(tile, ref spBatch, start);
             }
 
@@ -42,13 +47,13 @@ namespace MagicalLifeGUIWindows.Rendering.Map
                 {
                     Chunk chunk = World.Dimensions[dimension].GetChunk(x, y);
 
-                    foreach (Living item in chunk.Creatures)
+                    foreach (KeyValuePair<System.Guid, Living> item in chunk.Creatures)
                     {
-                        if (item != null)
+                        if (item.Value != null)
                         {
-                            Texture2D livingTexture = AssetManager.Textures[AssetManager.GetTextureIndex(item.GetTextureName())];
-                            Vector2 livingScreenLocation = new Vector2(item.ScreenLocation.X * Tile.GetTileSize().X, item.ScreenLocation.Y * Tile.GetTileSize().Y);
-                            spBatch.Draw(livingTexture, livingScreenLocation, RenderingPipe.colorMask);
+                            Texture2D livingTexture = AssetManager.Textures[AssetManager.GetTextureIndex(item.Value.GetTextureName())];
+                            Vector2 livingScreenLocation = new Vector2(item.Value.ScreenLocation.X * Tile.GetTileSize().X, item.Value.ScreenLocation.Y * Tile.GetTileSize().Y);
+                            MapDrawer.Draw(livingTexture, livingScreenLocation);
                         }
                     }
                 }
@@ -60,11 +65,17 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// </summary>
         private static void DrawTile(Tile tile, ref SpriteBatch spBatch, Point2D start)
         {
-            Microsoft.Xna.Framework.Rectangle target = new Microsoft.Xna.Framework.Rectangle(start.ToXNA(), RenderingPipe.tileSize);
-            spBatch.Draw(AssetManager.Textures[tile.TextureIndex], target, RenderingPipe.colorMask);
+            Microsoft.Xna.Framework.Rectangle target = new Microsoft.Xna.Framework.Rectangle(start, RenderingPipe.tileSize);
+
+            MapDrawer.Draw(AssetManager.Textures[tile.GetRenderable().TextureID], target);
 
             DrawStone(tile, ref spBatch, target);
             DrawItems(ref spBatch, tile, target);
+
+            if (tile.ImpendingAction == MagicalLifeAPI.Entity.AI.Task.ActionSelected.Mine)
+            {
+                MapDrawer.Draw(AssetManager.Textures[AssetManager.NameToIndex["MineActionOverlay"]], target);
+            }
         }
 
         private static void DrawItems(ref SpriteBatch spBatch, Tile tile, Rectangle target)
@@ -72,7 +83,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
             if (tile.Item != null)
             {
                 Texture2D texture = AssetManager.Textures[tile.Item.TextureIndex];
-                spBatch.Draw(texture, target, RenderingPipe.colorMask);
+                MapDrawer.Draw(texture, target);
             }
         }
 
@@ -90,7 +101,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
                 {
                     case StoneBase stone:
                         Texture2D stoneTexture = AssetManager.Textures[AssetManager.GetTextureIndex(stone.GetUnconnectedTexture())];
-                        spBatch.Draw(stoneTexture, target, RenderingPipe.colorMask);
+                        MapDrawer.Draw(stoneTexture, target);
                         break;
 
                     default:

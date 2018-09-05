@@ -1,9 +1,11 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities;
-using MagicalLifeAPI.Universal;
+using MagicalLifeAPI.DataTypes.R;
+using MagicalLifeAPI.Entity;
+using MagicalLifeAPI.World.Base;
 using ProtoBuf;
-using RTree;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MagicalLifeAPI.World.Data
 {
@@ -11,10 +13,10 @@ namespace MagicalLifeAPI.World.Data
     /// Holds a section of the world.
     /// </summary>
     [ProtoContract]
-    public class Chunk : Unique
+    public class Chunk
     {
         [ProtoMember(1)]
-        public List<Living> Creatures;
+        public Dictionary<Guid, Living> Creatures;
 
         [ProtoMember(2)]
         public ProtoArray<Tile> Tiles;
@@ -34,6 +36,9 @@ namespace MagicalLifeAPI.World.Data
         [ProtoMember(5)]
         public Dictionary<int, RTree<Point2D>> Items = new Dictionary<int, RTree<Point2D>>();
 
+        [ProtoMember(6)]
+        public Guid ID { get; }
+
         /// <summary>
         /// The width of this chunk in tiles.
         /// </summary>
@@ -44,8 +49,9 @@ namespace MagicalLifeAPI.World.Data
         /// </summary>
         public static int Height = 15;
 
-        public Chunk(List<Living> creatures, ProtoArray<Tile> tiles, Point2D location, string biomeID) : base()
+        public Chunk(Dictionary<Guid, Living> creatures, ProtoArray<Tile> tiles, Point2D location, string biomeID)
         {
+            this.ID = Guid.NewGuid();
             this.Creatures = creatures;
             this.Tiles = tiles;
             this.ChunkLocation = location;
@@ -53,11 +59,12 @@ namespace MagicalLifeAPI.World.Data
             this.Items = new Dictionary<int, RTree<Point2D>>();
         }
 
-        public Chunk() : base()
+        public Chunk()
         {
+            //Protobuf-net constructor
             if (this.Creatures == null)
             {
-                this.Creatures = new List<Living>();
+                this.Creatures = new Dictionary<Guid, Living>();
             }
 
             if (this.Items == null)
@@ -68,6 +75,7 @@ namespace MagicalLifeAPI.World.Data
 
         /// <summary>
         /// Returns the creature in the specified location.
+        /// The overload of this method fetching based upon a <see cref="Guid"/> should be preferred over this, as it has faster performance in highly populated chunks.
         /// </summary>
         /// <param name="Point2D">The location to search.</param>
         /// <param name="living"></param>
@@ -75,17 +83,28 @@ namespace MagicalLifeAPI.World.Data
         public bool GetCreature(Point2D Point2D, out Living living)
         {
             living = null;
+            IEnumerable<KeyValuePair<Guid, Living>> result = this.Creatures.Where(x => Point2D.Equals(x.Value.MapLocation));
 
-            foreach (Living item in this.Creatures)
+            if (result.Count() != 0)
             {
-                if (item.MapLocation == Point2D)
-                {
-                    living = item;
-                    return true;
-                }
+                living = result.ElementAt(0).Value;
+                return true;
             }
+            else
+            {
+                return false;
+            }
+        }
 
-            return false;
+        /// <summary>
+        /// The fastest way of getting a creature.
+        /// </summary>
+        /// <param name="creatureID"></param>
+        /// <param name="living"></param>
+        /// <returns></returns>
+        public bool GetCreature(Guid creatureID, out Living living)
+        {
+            return this.Creatures.TryGetValue(creatureID, out living);
         }
 
         public IEnumerator<Tile> GetEnumerator()

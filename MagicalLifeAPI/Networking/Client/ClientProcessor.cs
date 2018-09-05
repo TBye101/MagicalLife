@@ -12,7 +12,7 @@ namespace MagicalLifeAPI.Networking.Client
         /// Key: The ID of the message to be handled.
         /// Value: The handler for that ID.
         /// </summary>
-        private static Dictionary<int, MessageHandler> MessageHandlers = new Dictionary<int, MessageHandler>();
+        private static Dictionary<NetMessageID, MessageHandler> MessageHandlers = new Dictionary<NetMessageID, MessageHandler>();
 
         public static void Initialize(List<MessageHandler> handlers)
         {

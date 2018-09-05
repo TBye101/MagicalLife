@@ -1,8 +1,8 @@
 ﻿using MagicalLifeAPI.World.Data;
-using MagicalLifeServer.ServerWorld.World_Generation.Generators;
+using MagicalLifeServer.ServerWorld.World;
 using System;
 
-namespace MagicalLifeGUIWindows.GUI.New_World_Menu
+namespace MagicalLifeGUIWindows.GUI.New
 {
     /// <summary>
     /// Handles all input from the new world menu.
@@ -14,20 +14,19 @@ namespace MagicalLifeGUIWindows.GUI.New_World_Menu
         /// </summary>
         public void StartNewGame()
         {
-            int width = -1;
-            bool widthSuccess = int.TryParse(NewWorldMenu.NewWorldMenuM.worldWidth.Text, out width);
+            bool widthSuccess = int.TryParse(NewWorldMenu.NewWorldMenuM.worldWidth.Text, out int width);
 
-            int length = -1;
-            bool lengthSuccess = int.TryParse(NewWorldMenu.NewWorldMenuM.worldLength.Text, out length);
+            bool lengthSuccess = int.TryParse(NewWorldMenu.NewWorldMenuM.worldLength.Text, out int length);
 
             if (widthSuccess && lengthSuccess && width > 0 && length > 0)
             {
                 //World.Initialize(width, length, new Dirtland(0));
-                World.Initialize(width, length, new StoneSprinkle(0));
+                //World.Initialize(width, length, new StoneSprinkle(0));
+                World.Initialize(width, length, new GrassAndDirt(0));
             }
             else
             {
-                throw new Exception("Invalid input!");
+                throw new ArgumentException("Invalid input!");
             }
         }
     }

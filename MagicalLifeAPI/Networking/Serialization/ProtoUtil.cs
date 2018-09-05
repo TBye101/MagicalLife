@@ -18,7 +18,7 @@ namespace MagicalLifeAPI.Networking.Serialization
         /// Value: The ID of a base message.
         /// Key: The type of the base message that the ID is connected with.
         /// </summary>
-        public static Dictionary<int, Type> IDToMessage = new Dictionary<int, Type>();
+        public static Dictionary<NetMessageID, Type> IDToMessage { get; private set; } = new Dictionary<NetMessageID, Type>();
 
         /// <summary>
         /// Serializes the object to string.
@@ -55,7 +55,6 @@ namespace MagicalLifeAPI.Networking.Serialization
                 using (MemoryStream ms = new System.IO.MemoryStream(data))
                 {
                     BaseMessage Base = (BaseMessage)TypeModel.DeserializeWithLengthPrefix(ms, null, typeof(BaseMessage), ProtoBuf.PrefixStyle.Base128, 0);
-                    //MasterLog.DebugWriteLine("Deserialized Message ID: " + Base.ID.ToString());
                     return Base;
                 }
             }
@@ -78,7 +77,7 @@ namespace MagicalLifeAPI.Networking.Serialization
             catch (Exception e)
             {
                 MasterLog.DebugWriteLine(e.Message);
-                return default(T);
+                return default;
             }
         }
     }

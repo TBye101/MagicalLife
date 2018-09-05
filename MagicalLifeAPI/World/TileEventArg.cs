@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MagicalLifeAPI.World.Base;
+using System;
 
 namespace MagicalLifeAPI.World
 {

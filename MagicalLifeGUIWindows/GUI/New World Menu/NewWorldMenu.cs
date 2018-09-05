@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeGUIWindows.GUI.New_World_Menu
+﻿namespace MagicalLifeGUIWindows.GUI.New
 {
     /// <summary>
     /// Holds a reference to the new world menu.
@@ -11,7 +11,6 @@
         {
             NewWorldMenuContainer mainMenu = new NewWorldMenuContainer(true);
             NewWorldMenuM = mainMenu;
-            MenuHandler.DisplayMenu(NewWorldMenuM);
         }
     }
 }

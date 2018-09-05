@@ -1,6 +1,6 @@
 ﻿using ProtoBuf;
 
-namespace MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions
+namespace MagicalLifeAPI.Entity.Util.Modifier
 {
     /// <summary>
     /// We shall never remove this modifier.

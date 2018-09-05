@@ -1,5 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.World;
+using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 
 namespace MagicalLifeGUIWindows
@@ -17,8 +17,8 @@ namespace MagicalLifeGUIWindows
         /// <returns></returns>
         public static Point2D GetMapLocation(int x, int y, int dimension, out bool success)
         {
-            int x2 = x + Rendering.RenderingPipe.XViewOffset;
-            int y2 = y + Rendering.RenderingPipe.YViewOffset;
+            int x2 = x - Rendering.RenderingPipe.XViewOffset;
+            int y2 = y - Rendering.RenderingPipe.YViewOffset;
             Point2D size = Tile.GetTileSize();
 
             x2 /= size.X;
@@ -32,7 +32,7 @@ namespace MagicalLifeGUIWindows
             else
             {
                 success = false;
-                throw new System.Exception("Map location doesn't exist!");
+                return null;
             }
         }
     }

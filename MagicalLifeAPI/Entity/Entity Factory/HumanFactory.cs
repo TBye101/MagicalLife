@@ -1,8 +1,9 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entities.Humanoid;
+using MagicalLifeAPI.Entity.Humanoid;
 using MagicalLifeAPI.Util;
+using System;
 
-namespace MagicalLifeAPI.Entities.Entity_Factory
+namespace MagicalLifeAPI.Entity.Entity
 {
     /// <summary>
     /// Used to initialize a new human properly.
@@ -22,7 +23,7 @@ namespace MagicalLifeAPI.Entities.Entity_Factory
         /// <summary>
         /// The fastest a human could possibly be without starting down a class path.
         /// </summary>
-        private readonly double MaxHumanMovement = .01;
+        private readonly double MaxHumanMovement = .1;
 
         /// <summary>
         /// The slowest a human could possibly be without some significant injuries.
@@ -33,12 +34,12 @@ namespace MagicalLifeAPI.Entities.Entity_Factory
         /// Returns a fully generated human character.
         /// </summary>
         /// <returns></returns>
-        public Human GenerateHuman(Point2D location, int dimension)
+        public Human GenerateHuman(Point2D location, int dimension, Guid playerID)
         {
             int health = StaticRandom.Rand(this.MinHumanHealthPerLevel, this.MaxHumanHealthPerLevel);
             float movement = (float)StaticRandom.Rand(this.MinHumanMovement, this.MaxHumanMovement);
 
-            return new Human(health, movement, location, dimension);
+            return new Human(health, movement, location, dimension, playerID);
         }
     }
 }

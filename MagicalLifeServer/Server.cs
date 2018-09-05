@@ -1,10 +1,19 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Error.InternalExceptions;
+using MagicalLifeAPI.Filing;
 using MagicalLifeAPI.Load;
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Networking.Server;
+using MagicalLifeAPI.Time;
+using MagicalLifeAPI.Util.Reusable;
+using MagicalLifeAPI.World;
+using MagicalLifeAPI.World.Data;
+using MagicalLifeAPI.World.Data.Disk;
+using MagicalLifeAPI.World.Data.Disk.DataStorage;
 using MagicalLifeServer.Load;
+using MagicalLifeSettings.Storage;
 using System;
 using System.Collections.Generic;
 using System.Timers;
@@ -21,20 +30,24 @@ namespace MagicalLifeServer
         /// </summary>
         public static UInt64 GameTick { get; private set; } = 0;
 
-        //private static Timer TickTimer = new Timer(50);
         private static Timer TickTimer = new Timer(50);
+
+        /// <summary>
+        /// The timer counting down the time between auto-saves.
+        /// </summary>
+        private static TickTimer AutoSave = new TickTimer(RealTime.HalfHour);
 
         /// <summary>
         /// The event that is raised when the game ticks.
         /// </summary>
         public static event EventHandler<UInt64> ServerTick;
 
-        public static void Load(EngineMode mode)
+        public static void Load()
         {
             Loader load = new Loader();
             string msg = "";
 
-            switch (mode)
+            switch (World.Mode)
             {
                 case EngineMode.ServerAndClient:
                     load.LoadAll(ref msg, new List<IGameLoader>()
@@ -45,6 +58,8 @@ namespace MagicalLifeServer
                     break;
 
                 case EngineMode.ServerOnly:
+                    SettingsManager.Initialize();
+
                     load.LoadAll(ref msg, new List<IGameLoader>()
                     {
                         new ItemLoader(),
@@ -55,7 +70,7 @@ namespace MagicalLifeServer
                     break;
 
                 default:
-                    throw new Exception("Unexpected networking mode initiated!");
+                    throw new UnexpectedEnumMemberException();
             }
         }
 
@@ -69,7 +84,10 @@ namespace MagicalLifeServer
 
         private static void Server_ServerTick(object sender, ulong e)
         {
-            //MagicalLifeAPI.Filing.Logging.MasterLog.DebugWriteLine("Server tick!");
+            if (AutoSave.Allow())
+            {
+                WorldStorage.AutoSave(WorldStorage.SaveName, new WorldDiskSink());
+            }
         }
 
         private static void Tick(object sender, ElapsedEventArgs e)
@@ -82,7 +100,6 @@ namespace MagicalLifeServer
         private static void RaiseServerTick(object sender, UInt64 tick)
         {
             ServerTick?.Invoke(sender, tick);
-            //TickTimer.Stop();
         }
 
         /// <summary>
@@ -90,6 +107,24 @@ namespace MagicalLifeServer
         /// </summary>
         public static void StartGame()
         {
+            if (World.Mode == EngineMode.ServerOnly)
+            {
+                foreach (KeyValuePair<Guid, System.Net.Sockets.Socket> item
+                    in ServerSendRecieve.TCPServer.PlayerToSocket)
+                {
+                    WorldUtil.SpawnRandomCharacter(item.Key, 0);
+                    WorldUtil.SpawnRandomCharacter(item.Key, 0);
+                    WorldUtil.SpawnRandomCharacter(item.Key, 0);
+                }
+            }
+
+            if (World.Mode == EngineMode.ServerAndClient)
+            {
+                WorldUtil.SpawnRandomCharacter(Player.Default.PlayerID, 0);
+                WorldUtil.SpawnRandomCharacter(Player.Default.PlayerID, 0);
+                WorldUtil.SpawnRandomCharacter(Player.Default.PlayerID, 0);
+            }
+
             SetupTick();
         }
     }

@@ -1,6 +1,10 @@
-﻿using MagicalLifeAPI.Entities;
-using MagicalLifeAPI.Entities.Movement;
+﻿using MagicalLifeAPI.Entity;
+using MagicalLifeAPI.Entity.AI.Task;
+using MagicalLifeAPI.Entity.Movement;
 using MagicalLifeAPI.World.Data;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MagicalLifeClient.Entity
 {
@@ -29,16 +33,29 @@ namespace MagicalLifeClient.Entity
                     {
                         Chunk chunk = ii.GetChunk(chunkX, chunkY);
 
-                        foreach (Living item in chunk.Creatures)
+                        List<Guid> keys = chunk.Creatures.Keys.ToList();
+                        int length = keys.Count;
+                        for (int i = 0; i < length; i++)
                         {
-                            if (item != null)
+                            chunk.Creatures.TryGetValue(keys[i], out Living l);
+
+                            if (l != null)
                             {
-                                Living l = item;
                                 l.Movement.WearOff();
 
-                                if (item.QueuedMovement.Count > 0)
+                                if (l.QueuedMovement.Count > 0)
                                 {
-                                    EntityWorldMovement.MoveEntity(ref l);
+                                    EntityWorldMovement.MoveEntity(l);
+                                }
+
+                                if (l.Task != null)
+                                {
+                                    l.Task.Tick(l);
+                                }
+                                else
+                                {
+                                    TaskManager.Manager.AssignTask(l);
+                                    //Find a job
                                 }
                             }
                         }

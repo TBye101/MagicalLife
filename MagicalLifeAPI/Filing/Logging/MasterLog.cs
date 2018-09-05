@@ -1,5 +1,6 @@
 ﻿using Serilog;
 using System;
+using System.Diagnostics;
 using System.IO;
 
 namespace MagicalLifeAPI.Filing.Logging
@@ -9,7 +10,7 @@ namespace MagicalLifeAPI.Filing.Logging
     /// </summary>
     public static class MasterLog
     {
-        private static readonly string LogPath = FileSystemManager.instanceRootFolder + Path.DirectorySeparatorChar + "MasterLog.txt";
+        private static readonly string LogPath = FileSystemManager.InstanceRootFolder + Path.DirectorySeparatorChar + "MasterLog.txt";
 
         public static void Initialize()
         {
@@ -35,6 +36,7 @@ namespace MagicalLifeAPI.Filing.Logging
         /// Writes a line to the master log.
         /// </summary>
         /// <param name="msg"></param>
+        [Conditional("DEBUG")]
         public static void DebugWriteLine(string msg)
         {
             Log.Debug(msg);

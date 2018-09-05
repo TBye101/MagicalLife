@@ -1,6 +1,6 @@
-﻿using MagicalLifeAPI.Universal;
-using MagicalLifeAPI.World;
-using MagicalLifeAPI.World.Base;
+﻿using MagicalLifeAPI.World.Base;
+using ProtoBuf;
+using System;
 
 namespace MagicalLifeAPI.GUI
 {
@@ -10,8 +10,12 @@ namespace MagicalLifeAPI.GUI
     [ProtoBuf.ProtoContract]
     [ProtoBuf.ProtoInclude(1, typeof(Tile))]
     [ProtoBuf.ProtoInclude(3, typeof(Item))]
-    public class HasTexture : Unique
+    [ProtoInclude(4, typeof(Resource))]
+    public class HasTexture
     {
+        [ProtoMember(5)]
+        public Guid ID { get; }
+
         /// <summary>
         /// The index of the texture in our asset manager.
         /// </summary>
@@ -21,6 +25,7 @@ namespace MagicalLifeAPI.GUI
         public HasTexture(int textureIndex)
         {
             this.TextureIndex = textureIndex;
+            this.ID = Guid.NewGuid();
         }
 
         public HasTexture()

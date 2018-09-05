@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.Load;
-using MagicalLifeAPI.Universal;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -14,8 +13,6 @@ namespace MagicalLifeAPI.Asset
     /// </summary>
     public class TextureLoader : IGameLoader
     {
-        private int TotalJobs = -1;
-
         private readonly List<string> TexturesToLoad = new List<string>();
 
         private readonly ContentManager Manager;
@@ -34,22 +31,35 @@ namespace MagicalLifeAPI.Asset
         {
             this.TexturesToLoad.Add("Basic Human");
             this.TexturesToLoad.Add("CursorCarrot");
-            this.TexturesToLoad.Add("DirtFloor");
-            this.TexturesToLoad.Add("EndTurnButtonState1");
-            this.TexturesToLoad.Add("EndTurnButtonState2");
+
             this.TexturesToLoad.Add("MenuBackground");
             this.TexturesToLoad.Add("MenuButton");
-            this.TexturesToLoad.Add("TestTile");
             this.TexturesToLoad.Add("InputBox100x50");
+            this.TexturesToLoad.Add("GUI/ListBoxItemBackground");
 
-            this.TexturesToLoad.Add("MarbleFloor");
-            this.TexturesToLoad.Add("MarbleResourceUnconnected");
-            this.TexturesToLoad.Add("MarbleResourceConnected1");
-            this.TexturesToLoad.Add("MarbleResourceConnected2");
-            this.TexturesToLoad.Add("MarbleResourceConnected3");
-            this.TexturesToLoad.Add("MarbleResourceConnected4");
-
+            this.TexturesToLoad.Add("Stone");
             this.TexturesToLoad.Add("MarbleChunk");
+
+            this.TexturesToLoad.Add("TestTile");
+            this.TexturesToLoad.Add("Dirt");
+
+            this.TexturesToLoad.Add("DirtGrassTrans1");
+            this.TexturesToLoad.Add("DirtGrassTrans2");
+            this.TexturesToLoad.Add("DirtGrassTrans3");
+            this.TexturesToLoad.Add("DirtGrassTrans4");
+            this.TexturesToLoad.Add("DirtGrassTrans5");
+            this.TexturesToLoad.Add("DirtGrassTrans6");
+            this.TexturesToLoad.Add("DirtGrassTrans7");
+            this.TexturesToLoad.Add("DirtGrassTrans8");
+            this.TexturesToLoad.Add("DirtGrassTrans9");
+            this.TexturesToLoad.Add("DirtGrassTrans10");
+            this.TexturesToLoad.Add("DirtGrassTrans11");
+            this.TexturesToLoad.Add("DirtGrassTrans12");
+
+            this.TexturesToLoad.Add("Grass");
+
+            this.TexturesToLoad.Add("MineAction");
+            this.TexturesToLoad.Add("MineActionOverlay");
         }
 
         public void InitialStartup()

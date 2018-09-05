@@ -1,10 +1,14 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Load;
 using MagicalLifeAPI.Networking.Serialization;
+using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Universal;
+using MagicalLifeAPI.World.Data;
+using MagicalLifeGUIWindows.GUI.In;
 using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Load;
 using MagicalLifeGUIWindows.Rendering;
+using MagicalLifeGUIWindows.Screens;
 using MagicalLifeSettings.Storage;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -23,13 +27,29 @@ namespace MagicalLifeGUIWindows
 
         public static ContentManager AssetManager { get; set; }
 
+        internal static List<LogoScreen> SplashScreens { get; set; }
+
+        /// <summary>
+        /// If true, then we are done displaying splash screens.
+        /// </summary>
+        internal static bool SplashDone { get; set; } = false;
+
         public Game1()
         {
             this.Graphics = new GraphicsDeviceManager(this);
             this.Content.RootDirectory = "Content";
             Game1.AssetManager = this.Content;
             UniversalEvents.GameExit += this.UniversalEvents_GameExit;
-            Graphics.HardwareModeSwitch = false;
+            this.Graphics.HardwareModeSwitch = false;
+        }
+
+        private void InitializeSplashScreens()
+        {
+            SplashScreens = new List<LogoScreen>()
+            {
+                new LogoScreen("Logo/MonoGameLogo", 5F),
+                new LogoScreen("Logo/FMODLogo", 5F, "\"FMOD\" and \"FMOD Studio\" are licensed by \"Firelight Technologies Pty Ltd\"")
+            };
         }
 
         private void UniversalEvents_GameExit(object sender, System.EventArgs e)
@@ -75,6 +95,7 @@ namespace MagicalLifeGUIWindows
                 new TextureLoader(this.Content),
                 new ProtoTypeLoader()
             });
+            this.InitializeSplashScreens();
         }
 
         /// <summary>
@@ -108,14 +129,52 @@ namespace MagicalLifeGUIWindows
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            this.DisplayInGame();
+            FMODUtil.System.update();
             this.GraphicsDevice.SetRenderTarget(null);
             this.GraphicsDevice.Clear(Color.Black);
-            this.SpriteBatch.Begin();
-            RenderingPipe.DrawScreen(ref this.SpriteBatch);
 
-            this.SpriteBatch.End();
+            if (Game1.SplashDone)
+            {
+                this.SpriteBatch.Begin();
+                RenderingPipe.DrawScreen(ref this.SpriteBatch);
+                this.SpriteBatch.End();
+            }
+            else
+            {
+                int length = Game1.SplashScreens.Count;
+                for (int i = 0; i < length; i++)
+                {
+                    LogoScreen item = Game1.SplashScreens[i];
+                    if (!item.Done())
+                    {
+                        item.Draw(ref this.SpriteBatch);
+                        break;
+                    }
+
+                    if (i == length - 1)
+                    {
+                        Game1.SplashDone = true;
+
+                        //Initialize main menu
+                        GUI.MainMenu.MainMenu.Initialize();
+                        this.IsMouseVisible = true;
+                    }
+                }
+            }
 
             base.Draw(gameTime);
+        }
+
+        private void DisplayInGame()
+        {
+            if (World.Dimensions.Count > 0)
+            {
+                if (!BoundHandler.GUIWindows.Contains(InGameGUI.InGame))
+                {
+                    InGameGUI.Initialize();
+                }
+            }
         }
     }
 }

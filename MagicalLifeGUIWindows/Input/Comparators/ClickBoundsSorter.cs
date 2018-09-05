@@ -1,4 +1,4 @@
-﻿using System;
+﻿using MagicalLifeAPI.Error.InternalExceptions;
 using System.Collections.Generic;
 
 namespace MagicalLifeGUIWindows.Input.Comparators
@@ -35,7 +35,7 @@ namespace MagicalLifeGUIWindows.Input.Comparators
                 return x.Priority.CompareTo(y.Priority);
             }
 
-            throw new Exception("There's two objects that are identical for all practical purposes!");
+            throw new DuplicateEntryException("There's two objects that are identical for all practical purposes!");
         }
     }
 }

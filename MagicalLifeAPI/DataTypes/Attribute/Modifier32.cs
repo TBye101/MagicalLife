@@ -1,8 +1,8 @@
-﻿using MagicalLifeAPI.Entities.Util.Modifier_Remove_Conditions;
+﻿using MagicalLifeAPI.Entity.Util.Modifier;
 using ProtoBuf;
 using System;
 
-namespace MagicalLifeAPI.Entity.Util
+namespace MagicalLifeAPI.DataTypes.Attribute
 {
     /// <summary>
     /// Used to store a modifier, and some other information for internal use.

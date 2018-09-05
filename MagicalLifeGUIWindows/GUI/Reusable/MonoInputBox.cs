@@ -1,7 +1,9 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeGUIWindows.Input;
+using MagicalLifeGUIWindows.Rendering;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Input.InputListeners;
 using System;
 using System.Linq;
@@ -51,6 +53,8 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// </summary>
         public Alignment TextAlignment { get; private set; }
 
+        private int TextureID { get; set; }
+
         /// <summary>
         ///
         /// </summary>
@@ -62,34 +66,23 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// <param name="isLocked"></param>
         /// <param name="textAlignment"></param>
         /// <param name="isContained">If true, this GUI element is within a container.</param>
-        public MonoInputBox(string image, string CarrotTexture, Rectangle drawingBounds, int priority, string font, bool isLocked, Alignment textAlignment, bool isContained) : base(image, drawingBounds, priority, isContained, font)
+        public MonoInputBox(string image, string CarrotTexture, Rectangle drawingBounds, int priority, string font, bool isLocked, Alignment textAlignment, bool isContained)
+            : base(drawingBounds, priority, isContained, font)
         {
-            KeyboardHandler.keyboardListener.KeyPressed += this.KeyboardListener_KeyPressed;
+            KeyboardHandler.KeysPressed += this.KeyboardHandler_KeysPressed;
             this.CarrotPosition = this.Text.Count();
             this.CarrotTexture = AssetManager.Textures[AssetManager.GetTextureIndex(CarrotTexture)];
-            this.Image = AssetManager.Textures[AssetManager.GetTextureIndex(image)];
+            this.TextureID = AssetManager.GetTextureIndex(image);
             this.IsLocked = isLocked;
             this.LoadCarrotInformation(font);
             this.TextAlignment = textAlignment;
         }
 
-        private void LoadCarrotInformation(string font)
-        {
-            this.Font = Game1.AssetManager.Load<SpriteFont>(font);
-            Vector2 size = this.Font.MeasureString("|");
-            this.CarrotWidth = (int)Math.Round(size.X);
-            this.CarrotHeight = (int)Math.Round(size.Y);
-        }
-
-        public MonoInputBox() : base()
-        {
-        }
-
-        private void KeyboardListener_KeyPressed(object sender, KeyboardEventArgs e)
+        private void KeyboardHandler_KeysPressed(object sender, Keys e)
         {
             if (!this.IsLocked && this.HasFocus)
             {
-                switch (e.Key)
+                switch (e)
                 {
                     case Microsoft.Xna.Framework.Input.Keys.Back:
                         this.Back();
@@ -112,18 +105,30 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
                         break;
 
                     default:
-                        this.AcceptKeystroke(e);
+                        this.AcceptKeystroke(KeyboardHandler.ToChar(e));
                         break;
                 }
             }
         }
 
-        private void AcceptKeystroke(KeyboardEventArgs e)
+        private void LoadCarrotInformation(string font)
         {
-            if (!this.IsLocked && !this.LastKeySpecial)
+            this.Font = Game1.AssetManager.Load<SpriteFont>(font);
+            Vector2 size = this.Font.MeasureString("|");
+            this.CarrotWidth = (int)Math.Round(size.X);
+            this.CarrotHeight = (int)Math.Round(size.Y);
+        }
+
+        public MonoInputBox() : base()
+        {
+        }
+
+        private void AcceptKeystroke(char? e)
+        {
+            if (!this.IsLocked && !this.LastKeySpecial && e != null)
             {
                 string p1 = this.Text.Substring(0, this.CarrotPosition);
-                p1 += e.Character.ToString();
+                p1 += e.ToString();
 
                 string p2 = this.Text.Substring(this.CarrotPosition, this.Text.Count() - this.CarrotPosition);
                 this.Text = p1 + p2;
@@ -194,12 +199,66 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             }
         }
 
-        public override void Click(MouseEventArgs e)
+        public override void Click(MouseEventArgs e, GUIContainer container)
         {
         }
 
-        public override void DoubleClick(MouseEventArgs e)
+        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
         {
+            //Single click is good enough for now
+        }
+
+        public override void Render(SpriteBatch spBatch, Rectangle containerBounds)
+        {
+            Rectangle location;
+            int x = this.DrawingBounds.X + containerBounds.X;
+            int y = this.DrawingBounds.Y + containerBounds.Y;
+            location = new Rectangle(x, y, this.DrawingBounds.Width, this.DrawingBounds.Height);
+            spBatch.Draw(AssetManager.Textures[this.TextureID], location, RenderingPipe.colorMask);
+            DrawString(this.Font, this.Text, location, Alignment.Left, RenderingPipe.colorMask, ref spBatch);
+
+            Rectangle carrotLocation = this.CalculateCarrotBounds(this, containerBounds);
+
+            spBatch.Draw(this.CarrotTexture, carrotLocation, RenderingPipe.colorMask);
+        }
+
+        private Rectangle CalculateCarrotBounds(MonoInputBox textbox, Rectangle containerBounds)
+        {
+            Vector2 size = textbox.Font.MeasureString(textbox.Text);
+            Vector2 origin = size * 0.5f;
+
+#pragma warning disable RCS1096 // Use bitwise operation instead of calling 'HasFlag'.
+            if (textbox.TextAlignment.HasFlag(Alignment.Left))
+            {
+                origin.X += (textbox.DrawingBounds.Width / 2) - (size.X / 2);
+            }
+
+            if (textbox.TextAlignment.HasFlag(Alignment.Right))
+            {
+                origin.X -= (textbox.DrawingBounds.Width / 2) - (size.X / 2);
+            }
+
+            if (textbox.TextAlignment.HasFlag(Alignment.Top))
+            {
+                origin.Y += (textbox.DrawingBounds.Height / 2) - (size.Y / 2);
+            }
+
+            if (textbox.TextAlignment.HasFlag(Alignment.Bottom))
+            {
+                origin.Y -= (textbox.DrawingBounds.Height / 2) - (size.Y / 2);
+            }
+
+            string TextBeforeCarrot = textbox.Text.Substring(0, textbox.CarrotPosition);
+            int XPos = (int)Math.Round(origin.X + textbox.DrawingBounds.X + textbox.Font.MeasureString(TextBeforeCarrot).X) + containerBounds.X;
+            int YPos = (int)Math.Round(origin.Y + textbox.DrawingBounds.Y) + containerBounds.Y;
+
+            if (textbox.TextAlignment == Alignment.Left)
+            {
+                XPos -= (int)Math.Round(origin.X);
+                YPos += (int)Math.Round(origin.Y);
+            }
+
+            return new Rectangle(XPos, YPos, textbox.CarrotWidth, textbox.CarrotHeight);
         }
     }
 }

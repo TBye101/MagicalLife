@@ -5,7 +5,7 @@
     /// </summary>
     public static class MainMenu
     {
-        private static MainMenuContainer MainMenuID;
+        public static MainMenuContainer MainMenuID { get; private set; }
 
         internal static void Initialize()
         {

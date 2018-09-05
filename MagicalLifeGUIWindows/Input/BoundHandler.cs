@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeGUIWindows.GUI;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input.Comparators;
 using MagicalLifeGUIWindows.Input.History;
@@ -33,12 +34,6 @@ namespace MagicalLifeGUIWindows.Input
         private static readonly ClickBoundsSorter ClickBoundsSorter = new ClickBoundsSorter();
 
         /// <summary>
-        /// Anything in game that can be clicked on, that is not considered a menu or popup.
-        /// Ex: a human, a sword.
-        /// </summary>
-        //public static List<ClickBounds> GameObjectBounds = new List<ClickBounds>();
-
-        /// <summary>
         /// Constructs the <see cref="BoundHandler"/> class.
         /// </summary>
         public static void Initialize()
@@ -59,13 +54,11 @@ namespace MagicalLifeGUIWindows.Input
 
         private static void MouseListener_MouseDoubleClicked(object sender, MouseEventArgs e)
         {
-            //MasterLog.DebugWriteLine("Double click detected: " + e.Position.ToString());
             ContainerDoubleClick(e);
         }
 
         private static void MouseListener_MouseClicked(object sender, MouseEventArgs e)
         {
-            //MasterLog.DebugWriteLine("Single click detected: " + e.Position.ToString());
             ContainerClick(e);
         }
 
@@ -88,53 +81,17 @@ namespace MagicalLifeGUIWindows.Input
         {
             foreach (GUIContainer item in GUIWindows)
             {
-                if (item.Visible && item.DrawingBounds.Contains(clickData.Position))
+                GUIContainer youngest = GetYoungestChild(item);
+                if (youngest.Visible && youngest.DrawingBounds.Contains(clickData.Position))
                 {
-                    Click(clickData, item.Controls, item);
-                    MasterLog.DebugWriteLine("Clicking in menu: " + item.GetType().FullName);
+                    Click(clickData, youngest.Controls, youngest);
+                    MasterLog.DebugWriteLine("Clicking in menu: " + youngest.GetType().FullName);
                     return;
                 }
             }
 
-            if (!Click(clickData, Bounds))
-            {
-                InputHistory.MapMouseClick(clickData);
-            }
-        }
-
-        /// <summary>
-        /// Handles who gets the single click event from the options provided.
-        /// </summary>
-        /// <param name="clickData"></param>
-        private static bool Click(MouseEventArgs clickData, List<GUIElement> Options)
-        {
-            int focus = -1;
-            int length = Options.Count;
-            GUIElement item = null;
-
-            for (int i = 0; i < length; i++)
-            {
-                item = Options[i];
-                if (focus == -1 && item.MouseBounds.Bounds.Contains(clickData.Position.X, clickData.Position.Y))
-                {
-                    item.HasFocus = true;
-                    focus = i;
-                }
-                else
-                {
-                    item.HasFocus = false;
-                }
-            }
-
-            if (focus != -1)
-            {
-                Options[focus].Click(clickData);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            //If the click isn't in a GUI, then it must be in the map...
+            InputHistory.MapMouseClick(clickData);
         }
 
         /// <summary>
@@ -165,7 +122,7 @@ namespace MagicalLifeGUIWindows.Input
             if (focus != -1)
             {
                 MasterLog.DebugWriteLine("Clicking on item: " + Options[focus].GetType().FullName);
-                Options[focus].Click(clickData);
+                Options[focus].Click(clickData, container);
             }
         }
 
@@ -173,24 +130,25 @@ namespace MagicalLifeGUIWindows.Input
         {
             foreach (GUIContainer item in GUIWindows)
             {
-                if (item.Visible && item.DrawingBounds.Contains(clickData.Position))
+                GUIContainer youngest = GetYoungestChild(item);
+                if (youngest.Visible && youngest.DrawingBounds.Contains(clickData.Position))
                 {
-                    DoubleClick(clickData, item.Controls);
+                    DoubleClick(clickData, youngest.Controls, youngest);
                     return;
                 }
             }
 
-            DoubleClick(clickData, Bounds);
+            //TODO: Make a special map double click handler
+            InputHistory.MapMouseClick(clickData);
         }
 
         /// <summary>
         /// Handles who gets the double click event.
         /// </summary>
         /// <param name="clickData"></param>
-        private static void DoubleClick(MouseEventArgs clickData, List<GUIElement> Options)
+        private static void DoubleClick(MouseEventArgs clickData, List<GUIElement> Options, GUIContainer container)
         {
             int focus = -1;
-            //Focus is wrong somehow.
             int length = Options.Count;
             GUIElement item = null;
 
@@ -210,7 +168,26 @@ namespace MagicalLifeGUIWindows.Input
 
             if (focus != -1)
             {
-                Options[focus].DoubleClick(clickData);
+                Options[focus].DoubleClick(clickData, container);
+            }
+        }
+
+        private static GUIContainer GetYoungestChild(GUIContainer container)
+        {
+            if (container.Child != null)
+            {
+                if (container.Child.Child != null)
+                {
+                    return GetYoungestChild(container.Child);
+                }
+                else
+                {
+                    return container.Child;
+                }
+            }
+            else
+            {
+                return container;
             }
         }
 
@@ -236,6 +213,11 @@ namespace MagicalLifeGUIWindows.Input
         public static void RemoveContainer(GUIContainer container)
         {
             GUIWindows.Remove(container);
+
+            if (container.Visible)
+            {
+                ShowLast();
+            }
         }
 
         /// <summary>
@@ -253,6 +235,11 @@ namespace MagicalLifeGUIWindows.Input
             Bounds.Insert(index, bounds);
         }
 
+        private static void ShowLast()
+        {
+            GUIWindows[GUIWindows.Count - 1].Visible = true;
+        }
+
         /// <summary>
         /// Sets that container as the visible container, and gives it priority.
         /// </summary>
@@ -261,7 +248,7 @@ namespace MagicalLifeGUIWindows.Input
         {
             if (GUIWindows.Contains(container))
             {
-                HideAll();
+                MenuHandler.Clear();
                 container.Visible = true;
                 container.Priority = RenderingData.GetGUIContainerPriority();
 
@@ -270,7 +257,7 @@ namespace MagicalLifeGUIWindows.Input
             }
             else
             {
-                HideAll();
+                MenuHandler.Clear();
                 container.Visible = true;
                 container.Priority = RenderingData.GetGUIContainerPriority();
 

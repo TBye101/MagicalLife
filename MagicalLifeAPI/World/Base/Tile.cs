@@ -1,45 +1,25 @@
-﻿using MagicalLifeAPI.Asset;
+﻿using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking;
-using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Tiles;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
 
-namespace MagicalLifeAPI.World
+namespace MagicalLifeAPI.World.Base
 {
     /// <summary>
     /// Every tile that implements this class must provide a parameterless version of itself for reflection purposes. That constructor will not be used during gameplay.
     /// </summary>
     [ProtoContract]
-    public abstract class Tile : HasTexture, IHasSubclasses
+    [ProtoInclude(8, typeof(Dirt))]
+    [ProtoInclude(9, typeof(Grass))]
+    public abstract class Tile : Selectable, IHasSubclasses, IRenderable
     {
-        /// <summary>
-        /// Initializes a new tile object.
-        /// </summary>
-        /// <param name="location">The 3D location of this tile in the map.</param>
-        /// <param name="movementCost">This value is the movement cost of walking on this tile. It should be between 1 and 100</param>
-        public Tile(Point2D location, int movementCost)
-        {
-            this.Location = location;
-            this.MovementCost = movementCost;
-            Tile.TileCreatedHandler(new TileEventArg(this));
-            this.TextureIndex = AssetManager.GetTextureIndex(this.GetTextureName());
-            this.IsWalkable = true;
-        }
-
-        public Tile(int x, int y, int movementCost) : this(new Point2D(x, y), movementCost)
-        {
-        }
-
-        /// <summary>
-        /// This constructor is used during loading/reflection only.
-        /// </summary>
-        public Tile()
-        {
-        }
+        [ProtoMember(1)]
+        private AbstractRenderable Renderable;
 
         [ProtoMember(2)]
         public bool IsWalkable;
@@ -66,12 +46,6 @@ namespace MagicalLifeAPI.World
         }
 
         /// <summary>
-        /// Returns the name of this tile.
-        /// </summary>
-        /// <returns></returns>
-        public abstract string GetName();
-
-        /// <summary>
         /// The resources that can be found in this tile.
         /// </summary>
         [ProtoMember(4)]
@@ -80,26 +54,52 @@ namespace MagicalLifeAPI.World
         //public List<Vegetation> Plants { get; set; } = new List<Vegetation>();
 
         /// <summary>
-        /// The location of this tile in the tile map.
-        /// </summary>
-        [ProtoMember(5)]
-        public Point2D Location { get; set; }
-
-        /// <summary>
         /// The item(s) that is stored in this tile.
         /// </summary>
         [ProtoMember(6)]
         public Item Item { get; set; }
 
+        [ProtoMember(7)]
+        public ActionSelected ImpendingAction { get; set; }
+
+        public readonly int FootStepSound;
+
         /// <summary>
-        /// Raised when the world is finished generating for the first time.
+        /// Initializes a new tile object.
+        /// </summary>
+        /// <param name="location">The 3D location of this tile in the map.</param>
+        /// <param name="movementCost">This value is the movement cost of walking on this tile. It should be between 1 and 100</param>
+        public Tile(Point2D location, int movementCost, AbstractRenderable renderable, int footStepSound)
+        {
+            this.MapLocation = location;
+            this.MovementCost = movementCost;
+            Tile.TileCreatedHandler(new TileEventArg(this));
+            this.IsWalkable = true;
+            this.Renderable = renderable;
+            this.FootStepSound = footStepSound;
+        }
+
+        public Tile(int x, int y, int movementCost, AbstractRenderable renderable, int footStepSound)
+            : this(new Point2D(x, y), movementCost, renderable, footStepSound)
+        {
+        }
+
+        /// <summary>
+        /// This constructor is used during loading/reflection only.
+        /// </summary>
+        public Tile()
+        {
+        }
+
+        /// <summary>
+        /// Raised whenever a tile is created after the world is finished generating for the first time.
         /// </summary>
         public static event EventHandler<TileEventArg> TileCreated;
 
         /// <summary>
         /// Raised whenever this specific tile is modified.
         /// </summary>
-        public event EventHandler<TileEventArg> TileModified; //have this be used by the stone stuff so it can determine when to change what texture it is using.
+        public event EventHandler<TileEventArg> TileModified;
 
         /// <summary>
         /// Raises the world generated event.
@@ -115,13 +115,12 @@ namespace MagicalLifeAPI.World
             TileModified?.Invoke(this, e);
         }
 
-        public abstract string GetTextureName();
-
         public Dictionary<Type, int> GetSubclassInformation()
         {
             Dictionary<Type, int> ret = new Dictionary<Type, int>
             {
-                { typeof(Dirt), 1 }
+                { typeof(Dirt), 7 },
+                { typeof(Grass), 8 }
             };
 
             return ret;
@@ -130,6 +129,22 @@ namespace MagicalLifeAPI.World
         public Type GetBaseType()
         {
             return typeof(Tile);
+        }
+
+        /// <summary>
+        /// Returns the name of this tile.
+        /// </summary>
+        /// <returns></returns>
+        public abstract string GetName();
+
+        public AbstractRenderable GetRenderable()
+        {
+            return this.Renderable;
+        }
+
+        public override SelectionType InGameObjectType(Selectable selectable)
+        {
+            return SelectionType.Tile;
         }
     }
 }
