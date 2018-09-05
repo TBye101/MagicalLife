@@ -13,7 +13,7 @@ namespace MagicalLifeAPI.World.Base
     /// Represents almost everything in a movable/harvested form.
     /// </summary>
     [ProtoContract]
-    [ProtoInclude(7, typeof(StoneChunk))]
+    [ProtoInclude(7, typeof(StoneRubble))]
     public abstract class Item : HasTexture
     {
         /// <summary>

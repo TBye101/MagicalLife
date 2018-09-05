@@ -38,7 +38,8 @@ namespace MagicalLifeAPI.Asset
             this.TexturesToLoad.Add("GUI/ListBoxItemBackground");
 
             this.TexturesToLoad.Add("Stone");
-            this.TexturesToLoad.Add("MarbleChunk");
+            this.TexturesToLoad.Add("StoneRubble_01");
+            this.TexturesToLoad.Add("StoneRubble_02");
 
             this.TexturesToLoad.Add("TestTile");
             this.TexturesToLoad.Add("Dirt");

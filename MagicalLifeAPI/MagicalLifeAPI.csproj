@@ -235,7 +235,7 @@
     <Compile Include="World\Data\Disk\ChunkStorage.cs" />
     <Compile Include="World\Data\Disk\ItemRegistryStorage.cs" />
     <Compile Include="World\Data\Disk\WorldStorage.cs" />
-    <Compile Include="World\Items\StoneChunk.cs" />
+    <Compile Include="World\Items\Stone Rubble.cs" />
     <Compile Include="World\Resources\Stone.cs" />
     <Compile Include="World\Resources\StoneBase.cs" />
     <Compile Include="World\TileEventArg.cs" />

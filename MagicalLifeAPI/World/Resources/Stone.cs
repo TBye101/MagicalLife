@@ -17,7 +17,7 @@ namespace MagicalLifeAPI.World.Resources
         {
             this.MiningBehavior = new DropWhenCompletelyMined(new List<Base.Item>()
             {
-                new StoneChunk(this.Durability)
+                new StoneRubble(this.Durability)
             });
         }
 
