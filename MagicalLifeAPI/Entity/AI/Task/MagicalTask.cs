@@ -47,6 +47,12 @@ namespace MagicalLifeAPI.Entity.AI.Task
         /// Will equal <see cref="Guid.Empty"/> if no worker is assigned.
         /// </summary>
         [ProtoMember(5)]
+        public Guid ReservedFor { get; set; }
+
+        /// <summary>
+        /// The ID of the worker that is currently working on this task.
+        /// </summary>
+        [ProtoMember(6)]
         public Guid ToilingWorker { get; set; }
 
         /// <param name="preRequisites">The dependencies of this task.</param>
@@ -64,8 +70,9 @@ namespace MagicalLifeAPI.Entity.AI.Task
         {
             this.Dependencies = preRequisites;
             this.Qualifications = qualifications;
-            this.ToilingWorker = Guid.Empty;
+            this.ReservedFor = Guid.Empty;
             this.ID = Guid.NewGuid();
+            this.ToilingWorker = Guid.Empty;
         }
 
         public MagicalTask()
@@ -84,6 +91,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
         /// <param name="l"></param>
         public void AssignTask(Living l)
         {
+            this.ReservedFor = l.ID;
             this.ToilingWorker = l.ID;
         }
 

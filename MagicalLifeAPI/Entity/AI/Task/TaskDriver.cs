@@ -42,7 +42,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
                 {
                     if (item.ToilingWorker == Guid.Empty)
                     {
-                        ret.Add(item);
+                        ret.Add(item);//Here's the issue
                     }
                 }
             }
@@ -65,7 +65,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
 
                 //If a creature has already started on a related task,
                 //and the task requires the same worker to do this task too
-                if (item.ToilingWorker != Guid.Empty && item.ToilingWorker != l.ID)
+                if (item.ReservedFor != Guid.Empty && item.ReservedFor != l.ID)
                 {
                     qualified.RemoveAt(i - 1);
                 }
