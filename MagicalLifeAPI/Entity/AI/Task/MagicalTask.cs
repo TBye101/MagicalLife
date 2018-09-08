@@ -65,6 +65,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
             this.Dependencies = preRequisites;
             this.Qualifications = qualifications;
             this.ToilingWorker = Guid.Empty;
+            this.ID = Guid.NewGuid();
         }
 
         public MagicalTask()
