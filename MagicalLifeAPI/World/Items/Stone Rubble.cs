@@ -4,22 +4,22 @@ using ProtoBuf;
 namespace MagicalLifeAPI.World.Items
 {
     [ProtoContract]
-    public class StoneChunk : Item
+    public class StoneRubble : Item
     {
-        public StoneChunk(int count) :
-            base("Stone Chunk", 200,
+        public StoneRubble(int count) :
+            base("Stone Rubble", 200,
             new System.Collections.Generic.List<string>()
             {
-                "Stone Chunk",
+                "Stone Rubble",
                 "Is dropped when stone is mined"
             },
             9999,
             count,
-            typeof(StoneChunk), "MarbleChunk")
+            typeof(StoneRubble), "StoneRubble_01")
         {
         }
 
-        public StoneChunk()
+        public StoneRubble()
         {
         }
     }

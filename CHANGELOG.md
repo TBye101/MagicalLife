@@ -22,6 +22,9 @@ SneakyTactician  <SneakyTactician@outlook.com>
 * Load game menu now works
 * Added a back button to the in game escape menu
 * Input boxes no longer error when reopening menus and backspacing
+* The placeholder texture for the mine action button has been replaced
+* Stone rubble texture has been replaced
+* Pickaxe icon in map when tile is queue up to be mined has changed
 
 #### Sound
 

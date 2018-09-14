@@ -17,7 +17,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// </summary>
         public string Text { get; set; }
 
-        private int TextureID { get; set; }
+        protected int TextureID { get; set; }
 
         /// <summary>
         ///

@@ -38,7 +38,8 @@ namespace MagicalLifeAPI.Asset
             this.TexturesToLoad.Add("GUI/ListBoxItemBackground");
 
             this.TexturesToLoad.Add("Stone");
-            this.TexturesToLoad.Add("MarbleChunk");
+            this.TexturesToLoad.Add("StoneRubble_01");
+            this.TexturesToLoad.Add("StoneRubble_02");
 
             this.TexturesToLoad.Add("TestTile");
             this.TexturesToLoad.Add("Dirt");
@@ -58,8 +59,10 @@ namespace MagicalLifeAPI.Asset
 
             this.TexturesToLoad.Add("Grass");
 
-            this.TexturesToLoad.Add("MineAction");
-            this.TexturesToLoad.Add("MineActionOverlay");
+            this.TexturesToLoad.Add("GUI/PickaxeButton_Grey");
+            this.TexturesToLoad.Add("GUI/PickaxeButton_Gold");
+            this.TexturesToLoad.Add("PickaxeMapIcon");
+            
         }
 
         public void InitialStartup()
