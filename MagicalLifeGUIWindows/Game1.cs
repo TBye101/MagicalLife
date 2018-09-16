@@ -171,11 +171,12 @@ namespace MagicalLifeGUIWindows
             }
 
             //set rendering back to the back buffer
-            GraphicsDevice.SetRenderTarget(null);
+            this.GraphicsDevice.SetRenderTarget(null);
 
             //render target to back buffer
             zoomBatch.Begin();
             zoomBatch.Draw(target, new Rectangle(0, 0, (int)(this.GraphicsDevice.DisplayMode.Width * RenderingPipe.Zoom), (int)(this.GraphicsDevice.DisplayMode.Height * RenderingPipe.Zoom)), Color.White);
+            RenderingPipe.DrawGUI(ref zoomBatch);
             zoomBatch.End();
 
             base.Draw(gameTime);

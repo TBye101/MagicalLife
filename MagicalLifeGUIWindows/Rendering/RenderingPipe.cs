@@ -59,8 +59,6 @@ namespace MagicalLifeGUIWindows.Rendering
             {
                 MapRenderer.DrawMap(ref spBatch, RenderingPipe.Dimension);
             }
-
-            DrawGUI(ref spBatch);
         }
 
         public static void DrawMouseLocation(ref SpriteBatch spBatch)
@@ -75,7 +73,7 @@ namespace MagicalLifeGUIWindows.Rendering
         /// Draws the GUI onto the screen.
         /// </summary>
         /// <param name="spBatch"></param>
-        private static void DrawGUI(ref SpriteBatch spBatch)
+        public static void DrawGUI(ref SpriteBatch spBatch)
         {
             DrawContainers(ref spBatch);
         }
