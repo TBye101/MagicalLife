@@ -131,14 +131,21 @@ namespace MagicalLifeGUIWindows
         {
             this.DisplayInGame();
             FMODUtil.System.update();
-            this.GraphicsDevice.SetRenderTarget(null);
+
+            //Used to render things to a buffer that will have a zoom multiplier applied before rendering.
+            SpriteBatch zoomBatch = new SpriteBatch(this.GraphicsDevice);
+            RenderTarget2D target = new RenderTarget2D(this.GraphicsDevice, RenderingPipe.FullScreenWindow.Width, RenderingPipe.FullScreenWindow.Height);
+            this.GraphicsDevice.SetRenderTarget(target);
+
             this.GraphicsDevice.Clear(Color.Black);
+
+
 
             if (Game1.SplashDone)
             {
-                this.SpriteBatch.Begin();
-                RenderingPipe.DrawScreen(ref this.SpriteBatch);
-                this.SpriteBatch.End();
+                zoomBatch.Begin();
+                RenderingPipe.DrawScreen(ref zoomBatch);
+                zoomBatch.End();
             }
             else
             {
@@ -148,7 +155,7 @@ namespace MagicalLifeGUIWindows
                     LogoScreen item = Game1.SplashScreens[i];
                     if (!item.Done())
                     {
-                        item.Draw(ref this.SpriteBatch);
+                        item.Draw(ref zoomBatch);
                         break;
                     }
 
@@ -162,6 +169,14 @@ namespace MagicalLifeGUIWindows
                     }
                 }
             }
+
+            //set rendering back to the back buffer
+            GraphicsDevice.SetRenderTarget(null);
+
+            //render target to back buffer
+            zoomBatch.Begin();
+            zoomBatch.Draw(target, new Rectangle(0, 0, (int)(this.GraphicsDevice.DisplayMode.Width * RenderingPipe.Zoom), (int)(this.GraphicsDevice.DisplayMode.Height * RenderingPipe.Zoom)), Color.White);
+            zoomBatch.End();
 
             base.Draw(gameTime);
         }

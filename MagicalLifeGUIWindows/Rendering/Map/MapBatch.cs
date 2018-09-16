@@ -28,20 +28,41 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// <param name="target"></param>
         public void Draw(Texture2D texture, Rectangle target)
         {
-            int x = (int)((target.X + RenderingPipe.XViewOffset) * RenderingPipe.Zoom);
-            int y = (int)((target.Y + RenderingPipe.YViewOffset) * RenderingPipe.Zoom);
-            int width = (int)(target.Width * RenderingPipe.Zoom);
-            int height = (int)(target.Height * RenderingPipe.Zoom);
+            int x = target.X + RenderingPipe.XViewOffset;
+            int y = target.Y + RenderingPipe.YViewOffset;
 
-            this.SpriteBat.Draw(texture, new Rectangle(x, y, width, height), Color.White);
+            this.SpriteBat.Draw(texture, new Rectangle(x, y, target.Width, target.Height), Color.White);
         }
 
         internal void Draw(Texture2D texture, Vector2 target)
         {
-            int x = (int)((target.X + RenderingPipe.XViewOffset) * RenderingPipe.Zoom);
-            int y = (int)((target.Y + RenderingPipe.YViewOffset) * RenderingPipe.Zoom);
+            int x = (int)Math.Round(target.X + RenderingPipe.XViewOffset);
+            int y = (int)Math.Round(target.Y + RenderingPipe.YViewOffset);
 
             this.SpriteBat.Draw(texture, new Vector2(x, y), Color.White);
         }
+
+        ///// <summary>
+        ///// Draws the <paramref name="texture"/> at the <paramref name="target"/> location. Applies a standard white mask.
+        ///// </summary>
+        ///// <param name="texture"></param>
+        ///// <param name="target"></param>
+        //public void Draw(Texture2D texture, Rectangle target)
+        //{
+        //    int x = (int)Math.Round(((target.X + RenderingPipe.XViewOffset) * RenderingPipe.Zoom));
+        //    int y = (int)Math.Round(((target.Y + RenderingPipe.YViewOffset) * RenderingPipe.Zoom));
+        //    int width = (int)Math.Round((target.Width * RenderingPipe.Zoom));
+        //    int height = (int)Math.Round((target.Height * RenderingPipe.Zoom));
+
+        //    this.SpriteBat.Draw(texture, new Rectangle(x, y, width, height), Color.White);
+        //}
+
+        //internal void Draw(Texture2D texture, Vector2 target)
+        //{
+        //    int x = (int)Math.Round(((target.X + RenderingPipe.XViewOffset) * RenderingPipe.Zoom));
+        //    int y = (int)Math.Round(((target.Y + RenderingPipe.YViewOffset) * RenderingPipe.Zoom));
+
+        //    this.SpriteBat.Draw(texture, new Vector2(x, y), Color.White);
+        //}
     }
 }

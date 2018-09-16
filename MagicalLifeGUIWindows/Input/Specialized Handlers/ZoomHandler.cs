@@ -1,4 +1,5 @@
-﻿using MagicalLifeGUIWindows.Input.History;
+﻿using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeGUIWindows.Input.History;
 using MagicalLifeGUIWindows.Rendering;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
             float belowMaxAndAboveMin = Math.Min(ZoomHandler.MaxZoom, aboveMin);
 
             RenderingPipe.Zoom = belowMaxAndAboveMin;
+            MasterLog.DebugWriteLine("Zoom: " + RenderingPipe.Zoom.ToString());
         }
     }
 }
