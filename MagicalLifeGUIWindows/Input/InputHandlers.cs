@@ -13,15 +13,20 @@ namespace MagicalLifeGUIWindows.Input
 
         public static MiningActionHandler MiningAction;
 
-        public static StrafeHandler StrafingHandler = new StrafeHandler();
+        public static StrafeHandler StrafingHandler;
 
-        public static EscapeHandler EscHandler = new EscapeHandler();
+        public static EscapeHandler EscHandler;
+
+        public static ZoomHandler ZooomHandler;
 
         public static void Initialize()
         {
             LivingMove = new LivingMoveOrderInputHandler();
             LogoSkipper = new LogoSkip();
             MiningAction = new MiningActionHandler();
+            StrafingHandler = new StrafeHandler();
+            EscHandler = new EscapeHandler();
+            ZooomHandler = new ZoomHandler();
         }
     }
 }
