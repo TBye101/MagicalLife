@@ -40,6 +40,11 @@ namespace MagicalLifeGUIWindows.Rendering
         public static int YViewOffset = 0;
 
         /// <summary>
+        /// The zoom level of the map.
+        /// </summary>
+        public static float Zoom = 1F;
+
+        /// <summary>
         /// The currently viewed dimension.
         /// </summary>
         public static int Dimension = 0;

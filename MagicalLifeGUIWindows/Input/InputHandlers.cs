@@ -17,6 +17,8 @@ namespace MagicalLifeGUIWindows.Input
 
         public static EscapeHandler EscHandler = new EscapeHandler();
 
+        public static ZoomHandler ZooomHandler = new ZoomHandler();
+
         public static void Initialize()
         {
             LivingMove = new LivingMoveOrderInputHandler();

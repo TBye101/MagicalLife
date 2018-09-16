@@ -175,6 +175,7 @@
     <Compile Include="Input\Specialized Handlers\LogoSkip.cs" />
     <Compile Include="Input\Specialized Handlers\MiningActionHandler.cs" />
     <Compile Include="Input\Specialized Handlers\StrafeHandler.cs" />
+    <Compile Include="Input\Specialized Handlers\ZoomHandler.cs" />
     <Compile Include="Load\Initializer.cs" />
     <Compile Include="Load\InputLoader.cs" />
     <Compile Include="Load\WindowConfig.cs" />
