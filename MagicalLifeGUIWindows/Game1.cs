@@ -144,7 +144,7 @@ namespace MagicalLifeGUIWindows
             if (Game1.SplashDone)
             {
                 zoomBatch.Begin();
-                RenderingPipe.DrawScreen(ref zoomBatch);
+                RenderingPipe.DrawScreen(zoomBatch);
                 zoomBatch.End();
             }
             else
@@ -175,8 +175,12 @@ namespace MagicalLifeGUIWindows
 
             //render target to back buffer
             zoomBatch.Begin();
-            zoomBatch.Draw(target, new Rectangle(0, 0, (int)(this.GraphicsDevice.DisplayMode.Width * RenderingPipe.Zoom), (int)(this.GraphicsDevice.DisplayMode.Height * RenderingPipe.Zoom)), Color.White);
-            RenderingPipe.DrawGUI(ref zoomBatch);
+
+            int width = (int)(this.GraphicsDevice.DisplayMode.Width * RenderingPipe.Zoom);
+            int height = (int)(this.GraphicsDevice.DisplayMode.Height * RenderingPipe.Zoom);
+
+            zoomBatch.Draw(target, new Rectangle(0, 0, width, height), Color.White);
+            RenderingPipe.DrawGUI(zoomBatch);
             zoomBatch.End();
 
             base.Draw(gameTime);
