@@ -32,33 +32,36 @@ namespace MagicalLifeGUIWindows.Rendering
         /// <summary>
         /// The x offset of the view due to the player moving the camera around the map.
         /// </summary>
-        public static int XViewOffset = 0;
+        public static int XViewOffset { get; set; } = 0;
 
         /// <summary>
         /// The y offset of the view due to the player moving the camera around the map.
         /// </summary>
-        public static int YViewOffset = 0;
+        public static int YViewOffset { get; set; } = 0;
+
+        /// <summary>
+        /// The zoom level of the map.
+        /// </summary>
+        public static float Zoom { get; set; } = 1F;
 
         /// <summary>
         /// The currently viewed dimension.
         /// </summary>
-        public static int Dimension = 0;
+        public static int Dimension { get; set; } = 0;
 
         /// <summary>
         /// Draws the screen.
         /// </summary>
         /// <param name="spBatch"></param>
-        public static void DrawScreen(ref SpriteBatch spBatch)
+        public static void DrawScreen(SpriteBatch spBatch)
         {
             if (World.Dimensions.Count > 0)
             {
                 MapRenderer.DrawMap(ref spBatch, RenderingPipe.Dimension);
             }
-
-            DrawGUI(ref spBatch);
         }
 
-        public static void DrawMouseLocation(ref SpriteBatch spBatch)
+        public static void DrawMouseLocation(SpriteBatch spBatch)
         {
             int x = Mouse.GetState().X;
             int y = Mouse.GetState().Y;
@@ -70,12 +73,12 @@ namespace MagicalLifeGUIWindows.Rendering
         /// Draws the GUI onto the screen.
         /// </summary>
         /// <param name="spBatch"></param>
-        private static void DrawGUI(ref SpriteBatch spBatch)
+        public static void DrawGUI(SpriteBatch spBatch)
         {
-            DrawContainers(ref spBatch);
+            DrawContainers(spBatch);
         }
 
-        private static void DrawContainers(ref SpriteBatch spBatch)
+        private static void DrawContainers(SpriteBatch spBatch)
         {
             foreach (GUIContainer item in Enumerable.Reverse(BoundHandler.GUIWindows))
             {

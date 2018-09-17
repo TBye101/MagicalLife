@@ -25,6 +25,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 * The placeholder texture for the mine action button has been replaced
 * Stone rubble texture has been replaced
 * Pickaxe icon in map when tile is queue up to be mined has changed
+* Added the ability to zoom in
 
 #### Sound
 
