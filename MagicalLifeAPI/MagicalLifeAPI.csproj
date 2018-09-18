@@ -126,6 +126,7 @@
     <Compile Include="Entity\AI\Task\Tasks\MineTask.cs" />
     <Compile Include="Entity\AI\Task\Tasks\MoveTask.cs" />
     <Compile Include="Error\ErrorReporter.cs" />
+    <Compile Include="Error\InternalExceptions\InvalidTextureException.cs" />
     <Compile Include="Filing\Setting.cs" />
     <Compile Include="Filing\SettingsManager.cs" />
     <Compile Include="Error\InternalExceptions\CollectionEmptyException.cs" />
@@ -171,9 +172,12 @@
     <Compile Include="Networking\External Type Serialization\PointTeacher.cs" />
     <Compile Include="Filing\FileSystemManager.cs" />
     <Compile Include="Filing\Logging\MasterLog.cs" />
-    <Compile Include="GUI\HasTexture.cs" />
-    <Compile Include="GUI\Selectable.cs" />
-    <Compile Include="GUI\SelectionType.cs" />
+    <Compile Include="Visual\Animation\MonoAnimation.cs" />
+    <Compile Include="Visual\Animation\SpriteSheet.cs" />
+    <Compile Include="Visual\Animation\SpriteSheetReader.cs" />
+    <Compile Include="Visual\HasTexture.cs" />
+    <Compile Include="Visual\Selectable.cs" />
+    <Compile Include="Visual\SelectionType.cs" />
     <Compile Include="Entity\Movement\EntityWorldMovement.cs" />
     <Compile Include="Networking\IHasSubclasses.cs" />
     <Compile Include="Networking\ITeachSerialization.cs" />
