@@ -11,7 +11,7 @@ namespace MagicalLifeAPI.World.Tiles
     [ProtoBuf.ProtoContract]
     public class Dirt : Tile
     {
-        public Dirt(Point2D location) : base(location, 10, new StaticTexture(GetTextureID()), 0)
+        public Dirt(Point2D location) : base(location, 10, , 0)
         {
         }
 
@@ -21,6 +21,15 @@ namespace MagicalLifeAPI.World.Tiles
 
         public Dirt() : base()
         {
+        }
+
+        protected static ComponentRenderer GetRenderer()
+        {
+            ComponentRenderer renderer = new ComponentRenderer();
+            StaticTexture texture = new StaticTexture(GetTextureID(), RenderLayer.TileBase);
+
+            renderer.RenderQueue.Visuals.Add(texture);
+            return renderer;
         }
 
         public override string GetName()

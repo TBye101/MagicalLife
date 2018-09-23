@@ -97,21 +97,23 @@
   <ItemGroup>
     <Compile Include="Asset\AssetManager.cs" />
     <Compile Include="Comparators\ItemComparator.cs" />
-    <Compile Include="Components\Generic\Renderable\AbstractRenderable.cs" />
-    <Compile Include="Components\Generic\Renderable\ComponentRenderer.cs" />
-    <Compile Include="Components\Generic\Renderable\AbstractVisual.cs" />
-    <Compile Include="Components\Generic\Renderable\MapBatch.cs" />
-    <Compile Include="Components\Generic\Renderable\RenderInfo.cs" />
-    <Compile Include="Components\Generic\Renderable\RenderQueue.cs" />
-    <Compile Include="Components\Generic\Renderable\RenderQueueComparer.cs" />
+    <Compile Include="Visual\Rendering\AbstractRenderable.cs" />
+    <Compile Include="Visual\Rendering\Animation\AnimatedTexture.cs" />
+    <Compile Include="Visual\Rendering\ComponentRenderer.cs" />
+    <Compile Include="Visual\Rendering\AbstractVisual.cs" />
+    <Compile Include="Visual\Rendering\MapBatch.cs" />
+    <Compile Include="Visual\Rendering\RenderInfo.cs" />
+    <Compile Include="Visual\Rendering\RenderLayer.cs" />
+    <Compile Include="Visual\Rendering\RenderQueue.cs" />
+    <Compile Include="Visual\Rendering\RenderQueueComparer.cs" />
     <Compile Include="Components\Resource\AbstractMinable.cs" />
     <Compile Include="Components\Resource\DropWhenCompletelyMined.cs" />
     <Compile Include="Components\Resource\IMinable.cs" />
     <Compile Include="Components\Tile\Renderable\AbstractConnectedTexture.cs" />
     <Compile Include="Components\Tile\Renderable\TileState.cs" />
     <Compile Include="Components\Tile\Renderable\TransitionTextures.cs" />
-    <Compile Include="Components\Generic\Renderable\IRenderable.cs" />
-    <Compile Include="Components\Generic\Renderable\StaticTexture.cs" />
+    <Compile Include="Visual\Rendering\IRenderable.cs" />
+    <Compile Include="Visual\Rendering\StaticTexture.cs" />
     <Compile Include="DataTypes\Attribute\ModifierFloat.cs" />
     <Compile Include="DataTypes\FixedSizeQueue.cs" />
     <Compile Include="DataTypes\Point2D.cs" />
@@ -179,9 +181,8 @@
     <Compile Include="Networking\External Type Serialization\PointTeacher.cs" />
     <Compile Include="Filing\FileSystemManager.cs" />
     <Compile Include="Filing\Logging\MasterLog.cs" />
-    <Compile Include="Visual\Animation\MonoAnimation.cs" />
-    <Compile Include="Visual\Animation\SpriteSheet.cs" />
-    <Compile Include="Visual\Animation\SpriteSheetReader.cs" />
+    <Compile Include="Visual\Rendering\Animation\SpriteSheet.cs" />
+    <Compile Include="Visual\Rendering\Animation\SpriteSheetReader.cs" />
     <Compile Include="Visual\HasTexture.cs" />
     <Compile Include="Visual\Selectable.cs" />
     <Compile Include="Visual\SelectionType.cs" />
@@ -263,6 +264,7 @@
     <Compile Include="World\WorldUtil.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Components\Generic\" />
     <Folder Include="Components\Item\" />
     <Folder Include="Entity\Animal\" />
     <Folder Include="Entity\Entity Components\" />
