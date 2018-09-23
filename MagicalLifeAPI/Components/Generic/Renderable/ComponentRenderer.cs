@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using ProtoBuf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,10 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
     /// <summary>
     /// A renderer that takes various visual pieces and renders them in a meaningful fashion.
     /// </summary>
+    [ProtoContract]
     public class ComponentRenderer
     {
+        [ProtoMember(1)]
         public RenderQueue RenderQueue { get; set; }
 
         public ComponentRenderer()

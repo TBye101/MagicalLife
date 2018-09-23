@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.World.Base;
@@ -27,7 +28,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
 
             foreach (Tile tile in World.Dimensions[dimension])
             {
-                Point2D start = new Point2D(RenderingPipe.tileSize.X * tile.MapLocation.X, RenderingPipe.tileSize.Y * tile.MapLocation.Y);
+                Point2D start = new Point2D(RenderInfo.tileSize.X * tile.MapLocation.X, RenderInfo.tileSize.Y * tile.MapLocation.Y);
                 DrawTile(tile, ref spBatch, start);
             }
 

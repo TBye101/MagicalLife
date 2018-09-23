@@ -1,4 +1,5 @@
-﻿using MagicalLifeGUIWindows.GUI.MainMenu.Buttons;
+﻿using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeGUIWindows.GUI.MainMenu.Buttons;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Rendering;
 
@@ -6,7 +7,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
 {
     public class MainMenuContainer : GUIContainer
     {
-        public MainMenuContainer(bool visible) : base("MenuBackground", RenderingPipe.FullScreenWindow)
+        public MainMenuContainer(bool visible) : base("MenuBackground", RenderInfo.FullScreenWindow)
         {
             this.Visible = visible;
             this.Controls.Add(new NewGameButton());

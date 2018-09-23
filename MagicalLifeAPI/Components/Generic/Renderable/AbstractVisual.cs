@@ -24,11 +24,16 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         /// <summary>
         /// The bounds that this visual should be rendered at.
         /// </summary>
-        public Microsoft.Xna.Framework.Rectangle Bounds { get; set; }
+        public Rectangle Bounds { get; set; }
 
         public AbstractVisual(int priority)
         {
             this.Priority = priority;
+        }
+
+        public AbstractVisual()
+        {
+
         }
 
         /// <summary>

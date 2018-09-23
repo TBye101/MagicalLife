@@ -1,4 +1,5 @@
-﻿using MagicalLifeGUIWindows.Rendering;
+﻿using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeGUIWindows.Rendering;
 using MagicalLifeGUIWindows.Rendering.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -70,7 +71,7 @@ namespace MagicalLifeGUIWindows.Screens
             spBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
 
             spBatch.Draw(this.Logo, this.DisplayZone.Center.ToVector2(), null, this.CalculateMask(), 0, new Vector2(this.Logo.Width / 2, this.Logo.Height / 2), 1.0f, SpriteEffects.None, 1.0f);
-            SimpleTextRenderer.DrawString(this.Font, this.Text, this.TextZone, SimpleTextRenderer.Alignment.Left, RenderingPipe.colorMask, ref spBatch);
+            SimpleTextRenderer.DrawString(this.Font, this.Text, this.TextZone, SimpleTextRenderer.Alignment.Left, Color.White, ref spBatch);
 
             this.Frames--;
             spBatch.End();
@@ -120,36 +121,36 @@ namespace MagicalLifeGUIWindows.Screens
             int width;
             int height;
 
-            if (this.Logo.Bounds.Width < RenderingPipe.FullScreenWindow.Width)
+            if (this.Logo.Bounds.Width < RenderInfo.FullScreenWindow.Width)
             {
                 width = this.Logo.Bounds.Width;
             }
             else
             {
-                width = RenderingPipe.FullScreenWindow.Width;
+                width = RenderInfo.FullScreenWindow.Width;
             }
 
-            if (this.Logo.Bounds.Height < RenderingPipe.FullScreenWindow.Height)
+            if (this.Logo.Bounds.Height < RenderInfo.FullScreenWindow.Height)
             {
                 height = this.Logo.Bounds.Height;
             }
             else
             {
-                height = RenderingPipe.FullScreenWindow.Height;
+                height = RenderInfo.FullScreenWindow.Height;
             }
 
-            if (this.Logo.Bounds.Width < RenderingPipe.FullScreenWindow.Width)
+            if (this.Logo.Bounds.Width < RenderInfo.FullScreenWindow.Width)
             {
-                x = (RenderingPipe.FullScreenWindow.Size.X - this.Logo.Bounds.Size.X) / 2;
+                x = (RenderInfo.FullScreenWindow.Size.X - this.Logo.Bounds.Size.X) / 2;
             }
             else
             {
                 x = 0;
             }
 
-            if (this.Logo.Bounds.Height < RenderingPipe.FullScreenWindow.Height)
+            if (this.Logo.Bounds.Height < RenderInfo.FullScreenWindow.Height)
             {
-                y = (RenderingPipe.FullScreenWindow.Size.Y - this.Logo.Bounds.Size.Y) / 2;
+                y = (RenderInfo.FullScreenWindow.Size.Y - this.Logo.Bounds.Size.Y) / 2;
             }
             else
             {

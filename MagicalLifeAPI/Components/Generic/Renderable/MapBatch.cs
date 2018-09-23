@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MagicalLifeAPI.Components.Generic.Renderable;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
@@ -28,16 +29,16 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// <param name="target"></param>
         public void Draw(Texture2D texture, Rectangle target)
         {
-            int x = target.X + RenderingPipe.XViewOffset;
-            int y = target.Y + RenderingPipe.YViewOffset;
+            int x = target.X + RenderInfo.XViewOffset;
+            int y = target.Y + RenderInfo.YViewOffset;
 
             this.SpriteBat.Draw(texture, new Rectangle(x, y, target.Width, target.Height), Color.White);
         }
 
         internal void Draw(Texture2D texture, Vector2 target)
         {
-            int x = (int)Math.Round(target.X + RenderingPipe.XViewOffset);
-            int y = (int)Math.Round(target.Y + RenderingPipe.YViewOffset);
+            int x = (int)Math.Round(target.X + RenderInfo.XViewOffset);
+            int y = (int)Math.Round(target.Y + RenderInfo.YViewOffset);
 
             this.SpriteBat.Draw(texture, new Vector2(x, y), Color.White);
         }

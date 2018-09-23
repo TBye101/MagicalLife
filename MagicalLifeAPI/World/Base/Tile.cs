@@ -19,7 +19,7 @@ namespace MagicalLifeAPI.World.Base
     public abstract class Tile : Selectable, IHasSubclasses, IRenderable
     {
         [ProtoMember(1)]
-        private AbstractRenderable Renderable;
+        private ComponentRenderer Renderable { get; set; }
 
         [ProtoMember(2)]
         public bool IsWalkable;
@@ -69,7 +69,7 @@ namespace MagicalLifeAPI.World.Base
         /// </summary>
         /// <param name="location">The 3D location of this tile in the map.</param>
         /// <param name="movementCost">This value is the movement cost of walking on this tile. It should be between 1 and 100</param>
-        public Tile(Point2D location, int movementCost, AbstractRenderable renderable, int footStepSound)
+        public Tile(Point2D location, int movementCost, ComponentRenderer renderable, int footStepSound)
         {
             this.MapLocation = location;
             this.MovementCost = movementCost;
@@ -79,7 +79,7 @@ namespace MagicalLifeAPI.World.Base
             this.FootStepSound = footStepSound;
         }
 
-        public Tile(int x, int y, int movementCost, AbstractRenderable renderable, int footStepSound)
+        public Tile(int x, int y, int movementCost, ComponentRenderer renderable, int footStepSound)
             : this(new Point2D(x, y), movementCost, renderable, footStepSound)
         {
         }
@@ -137,14 +137,14 @@ namespace MagicalLifeAPI.World.Base
         /// <returns></returns>
         public abstract string GetName();
 
-        public AbstractRenderable GetRenderable()
-        {
-            return this.Renderable;
-        }
-
         public override SelectionType InGameObjectType(Selectable selectable)
         {
             return SelectionType.Tile;
+        }
+
+        ComponentRenderer IRenderable.GetRenderable()
+        {
+            return this.Renderable;
         }
     }
 }

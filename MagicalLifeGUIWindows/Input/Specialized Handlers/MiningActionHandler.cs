@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Entity.AI.Task;
+﻿using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.Entity.AI.Task.Tasks;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
@@ -24,7 +25,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
             {
                 foreach (MagicalLifeAPI.GUI.Selectable item in last.Selected)
                 {
-                    Tile tile = World.GetTile(RenderingPipe.Dimension, item.MapLocation.X, item.MapLocation.Y);
+                    Tile tile = World.GetTile(RenderInfo.Dimension, item.MapLocation.X, item.MapLocation.Y);
 
                     if (tile.Resources != null && tile.ImpendingAction == ActionSelected.None)
                     {

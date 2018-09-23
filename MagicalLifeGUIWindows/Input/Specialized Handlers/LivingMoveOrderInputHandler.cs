@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.DataTypes;
+﻿using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.GUI;
@@ -38,7 +39,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
         private void Move(Selectable selectable, Point2D target)
         {
-            if (World.Dimensions[RenderingPipe.Dimension][target.X, target.Y].IsWalkable)
+            if (World.Dimensions[RenderInfo.Dimension][target.X, target.Y].IsWalkable)
             {
                 switch (selectable)
                 {
@@ -56,12 +57,12 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                                 PathLink previous = living.QueuedMovement.Peek();
                                 living.QueuedMovement.Clear();
                                 living.QueuedMovement.Enqueue(previous);
-                                pth = MainPathFinder.GetRoute(RenderingPipe.Dimension, previous.Destination, target);
+                                pth = MainPathFinder.GetRoute(RenderInfo.Dimension, previous.Destination, target);
                             }
                             //No reroute
                             else
                             {
-                                pth = MainPathFinder.GetRoute(RenderingPipe.Dimension, living.MapLocation, target);
+                                pth = MainPathFinder.GetRoute(RenderInfo.Dimension, living.MapLocation, target);
                             }
 
                             Extensions.EnqueueCollection(living.QueuedMovement, pth);

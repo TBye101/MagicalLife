@@ -1,4 +1,7 @@
-﻿using MagicalLifeAPI.DataTypes;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.DataTypes;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using ProtoBuf;
 
 namespace MagicalLifeAPI.Components.Generic.Renderable
@@ -7,9 +10,12 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
     /// For when an object has only one texture, that always is the same.
     /// </summary>
     [ProtoContract]
-    public class StaticTexture : AbstractRenderable
+    public class StaticTexture : AbstractVisual
     {
-        public StaticTexture(int textureID)
+        [ProtoMember(1)]
+        private int TextureID { get; set; }
+
+        public StaticTexture(int textureID, int priority) : base(priority)
         {
             this.TextureID = textureID;
         }
@@ -18,12 +24,9 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         {
         }
 
-        [ProtoMember(1)]
-        public override int TextureID { get; set; }
-
-        public override void CalculateTexture(ProtoArray<World.Base.Tile> tiles, Point2D myLocation)
+        public override void Render(SpriteBatch batch, Rectangle bounds)
         {
-            //Static textures don't change
+            batch.Draw(AssetManager.Textures[this.TextureID], bounds, Color.White);
         }
     }
 }

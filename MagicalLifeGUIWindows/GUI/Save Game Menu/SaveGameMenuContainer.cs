@@ -1,4 +1,5 @@
-﻿using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Rendering;
 
 namespace MagicalLifeGUIWindows.GUI.Save
@@ -13,7 +14,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
 
         public NewSaveButton NewButton { get; private set; } = new NewSaveButton();
 
-        public SaveGameMenuContainer() : base("MenuBackground", RenderingPipe.FullScreenWindow)
+        public SaveGameMenuContainer() : base("MenuBackground", RenderInfo.FullScreenWindow)
         {
             this.Controls.Add(this.SavesList);
             this.Controls.Add(this.OverwriteButton);

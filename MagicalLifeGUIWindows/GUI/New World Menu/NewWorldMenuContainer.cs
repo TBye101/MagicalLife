@@ -1,4 +1,5 @@
-﻿using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Rendering;
 
 namespace MagicalLifeGUIWindows.GUI.New
@@ -14,7 +15,7 @@ namespace MagicalLifeGUIWindows.GUI.New
         public LengthLabel lengthLabel = new LengthLabel();
         public WidthLabel widthLabel = new WidthLabel();
 
-        public NewWorldMenuContainer(bool visible) : base("MenuBackground", RenderingPipe.FullScreenWindow)
+        public NewWorldMenuContainer(bool visible) : base("MenuBackground", RenderInfo.FullScreenWindow)
         {
             this.Visible = visible;
             this.Controls.Add(this.worldWidth);

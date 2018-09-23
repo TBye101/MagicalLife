@@ -183,7 +183,6 @@
     <Compile Include="Map\RenderingData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rendering\Map\MapBatch.cs" />
     <Compile Include="Rendering\Map\MapRenderer.cs" />
     <Compile Include="Rendering\RenderingPipe.cs" />
     <Compile Include="Rendering\Text\SimpleTextRenderer.cs" />

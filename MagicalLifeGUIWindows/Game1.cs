@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Load;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Sound;
@@ -134,7 +135,7 @@ namespace MagicalLifeGUIWindows
 
             //Used to render things to a buffer that will have a zoom multiplier applied before rendering.
             SpriteBatch zoomBatch = new SpriteBatch(this.GraphicsDevice);
-            RenderTarget2D target = new RenderTarget2D(this.GraphicsDevice, RenderingPipe.FullScreenWindow.Width, RenderingPipe.FullScreenWindow.Height);
+            RenderTarget2D target = new RenderTarget2D(this.GraphicsDevice, RenderInfo.FullScreenWindow.Width, RenderInfo.FullScreenWindow.Height);
             this.GraphicsDevice.SetRenderTarget(target);
 
             this.GraphicsDevice.Clear(Color.Black);
@@ -176,8 +177,8 @@ namespace MagicalLifeGUIWindows
             //render target to back buffer
             zoomBatch.Begin();
 
-            int width = (int)(this.GraphicsDevice.DisplayMode.Width * RenderingPipe.Zoom);
-            int height = (int)(this.GraphicsDevice.DisplayMode.Height * RenderingPipe.Zoom);
+            int width = (int)(this.GraphicsDevice.DisplayMode.Width * RenderInfo.Zoom);
+            int height = (int)(this.GraphicsDevice.DisplayMode.Height * RenderInfo.Zoom);
 
             zoomBatch.Draw(target, new Rectangle(0, 0, width, height), Color.White);
             RenderingPipe.DrawGUI(zoomBatch);

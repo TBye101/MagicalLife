@@ -55,7 +55,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             int height = this.DrawingBounds.Height;
 
             Rectangle Bounds = new Rectangle(x, y, width, height);
-            SimpleTextRenderer.DrawString(this.Font, this.Text, Bounds, this.TextAlignment, RenderingPipe.colorMask, ref spBatch);
+            SimpleTextRenderer.DrawString(this.Font, this.Text, Bounds, this.TextAlignment, Color.White, ref spBatch);
         }
     }
 }

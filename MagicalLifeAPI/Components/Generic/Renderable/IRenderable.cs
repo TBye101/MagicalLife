@@ -9,6 +9,6 @@
         /// Returns the an instance of <see cref="AbstractRenderable"/> that knows what to render, and when.
         /// </summary>
         /// <returns></returns>
-        AbstractRenderable GetRenderable();
+        ComponentRenderer GetRenderable();
     }
 }
