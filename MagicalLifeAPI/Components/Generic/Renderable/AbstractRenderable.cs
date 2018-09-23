@@ -22,5 +22,7 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         /// Calculates the texture for the first time after world generation.
         /// </summary>
         public abstract void CalculateTexture(ProtoArray<World.Base.Tile> tiles, Point2D myLocation);
+
+
     }
 }
