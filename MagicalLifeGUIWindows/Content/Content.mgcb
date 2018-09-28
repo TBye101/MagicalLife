@@ -382,11 +382,6 @@
 /processorParam:TextureFormat=Color
 /build:StoneRubble_02.png
 
-#begin Character/Base Character/BaseCharacterData.json
-/importer:XmlImporter
-/processor:
-/build:Character/Base Character/BaseCharacterData.json
-
 #begin Character/Base Character/BaseCharacterSprite.png
 /importer:TextureImporter
 /processor:TextureProcessor

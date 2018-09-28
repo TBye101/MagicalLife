@@ -18,7 +18,7 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
     {
         private SpriteSheet AnimationFrames;//Find a way to render a specific texture from here
 
-        //Find a way to easily kick off a animation sequence
+        //Find a way to easily kick off a animation sequence/organize sprites from sheet into animations
 
 
 

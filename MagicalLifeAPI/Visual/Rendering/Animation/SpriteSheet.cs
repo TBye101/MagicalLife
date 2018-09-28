@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Error.InternalExceptions;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Error.InternalExceptions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -17,7 +18,15 @@ namespace MagicalLifeAPI.Visual.Animation
         /// <summary>
         /// The actual sprite sheet texture.
         /// </summary>
-        public Texture2D Sprites { get; private set; }
+        public Texture2D Sprites
+        {
+            get
+            {
+                return AssetManager.Textures[this.TextureID];
+            }
+        }
+
+        public int TextureID { get; private set; }
 
         /// <summary>
         /// How many sprites wide is the sheet.
@@ -39,10 +48,10 @@ namespace MagicalLifeAPI.Visual.Animation
         /// </summary>
         private int SpritePixelHeight { get; set; }
 
-        public SpriteSheet(Texture2D sprites, int sheetWidth, int sheetHeight, 
+        public SpriteSheet(int textureID, int sheetWidth, int sheetHeight, 
             int spritePixelWidth, int spritePixelHeight)
         {
-            this.Sprites = sprites;
+            this.TextureID = textureID;
             this.SheetWidth = sheetWidth;
             this.SheetHeight = sheetHeight;
             this.SpritePixelWidth = spritePixelWidth;

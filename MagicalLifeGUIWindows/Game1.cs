@@ -4,6 +4,7 @@ using MagicalLifeAPI.Load;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Universal;
+using MagicalLifeAPI.Visual.Animation;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.GUI.In;
 using MagicalLifeGUIWindows.Input;
@@ -97,6 +98,9 @@ namespace MagicalLifeGUIWindows
                 new ProtoTypeLoader()
             });
             this.InitializeSplashScreens();
+
+            SpriteSheetReader a = new SpriteSheetReader();
+            a.Read("MagicalLifeGUIWindows/Content/Animation/BaseCharacterData.xml", MagicalLifeAPI.Asset.AssetManager.NameToIndex["MagicalLifeGUIWindows / Content / Animation / BaseCharacterData.xml"]);
         }
 
         /// <summary>

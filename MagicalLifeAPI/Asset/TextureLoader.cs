@@ -62,6 +62,8 @@ namespace MagicalLifeAPI.Asset
             this.TexturesToLoad.Add("GUI/PickaxeButton_Grey");
             this.TexturesToLoad.Add("GUI/PickaxeButton_Gold");
             this.TexturesToLoad.Add("PickaxeMapIcon");
+
+            this.TexturesToLoad.Add("Character/Base Character/BaseCharacterSprite");
             
         }
 
