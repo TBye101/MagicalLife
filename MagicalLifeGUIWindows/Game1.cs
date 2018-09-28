@@ -74,6 +74,9 @@ namespace MagicalLifeGUIWindows
             winConfig.ConfigureMainWindow(this);
 
             Universal.Default.GameHasRunBefore = true;
+
+            SpriteSheetReader a = new SpriteSheetReader();
+            a.Read("MagicalLifeGUIWindows.Content.Animation.BaseCharacterData.xml", MagicalLifeAPI.Asset.AssetManager.NameToIndex["Character/Base Character/BaseCharacterSprite"]);
         }
 
         /// <summary>
@@ -98,9 +101,6 @@ namespace MagicalLifeGUIWindows
                 new ProtoTypeLoader()
             });
             this.InitializeSplashScreens();
-
-            SpriteSheetReader a = new SpriteSheetReader();
-            a.Read("MagicalLifeGUIWindows/Content/Animation/BaseCharacterData.xml", MagicalLifeAPI.Asset.AssetManager.NameToIndex["MagicalLifeGUIWindows / Content / Animation / BaseCharacterData.xml"]);
         }
 
         /// <summary>

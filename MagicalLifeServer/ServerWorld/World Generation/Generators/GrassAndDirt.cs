@@ -76,7 +76,7 @@ namespace MagicalLifeServer.ServerWorld.World
             {
                 foreach (Tile tile in item)
                 {
-                    tile.GetRenderable().CalculateTexture(item.Tiles, tile.MapLocation);
+                    //tile.GetRenderable().CalculateTexture(item.Tiles, tile.MapLocation);
                 }
             }
         }

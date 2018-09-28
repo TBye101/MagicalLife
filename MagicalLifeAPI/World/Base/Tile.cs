@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.Components.Tile.Renderable;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.GUI;
@@ -23,6 +24,7 @@ namespace MagicalLifeAPI.World.Base
 
         [ProtoMember(2)]
         public bool IsWalkable;
+        private TransitionTextures transitionTextures;
 
         /// <summary>
         /// Returns the name of the biome that this tile belongs to.
@@ -84,11 +86,21 @@ namespace MagicalLifeAPI.World.Base
         {
         }
 
+        public object GetRenderable()
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// This constructor is used during loading/reflection only.
         /// </summary>
         public Tile()
         {
+        }
+
+        protected Tile(Point2D location, TransitionTextures transitionTextures)
+        {
+            this.transitionTextures = transitionTextures;
         }
 
         /// <summary>

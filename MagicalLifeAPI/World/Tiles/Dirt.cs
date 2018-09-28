@@ -11,7 +11,7 @@ namespace MagicalLifeAPI.World.Tiles
     [ProtoBuf.ProtoContract]
     public class Dirt : Tile
     {
-        public Dirt(Point2D location) : base(location, 10, , 0)
+        public Dirt(Point2D location) : base(location, null)
         {
         }
 

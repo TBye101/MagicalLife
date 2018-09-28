@@ -54,7 +54,8 @@ namespace MagicalLifeGUIWindows.Rendering.Map
                         {
                             Texture2D livingTexture = AssetManager.Textures[AssetManager.GetTextureIndex(item.Value.GetTextureName())];
                             Vector2 livingScreenLocation = new Vector2(item.Value.ScreenLocation.X * Tile.GetTileSize().X, item.Value.ScreenLocation.Y * Tile.GetTileSize().Y);
-                            MapDrawer.Draw(livingTexture, livingScreenLocation);
+                            //MapDrawer.Draw(livingTexture, livingScreenLocation);
+                            //TODO: Fix above line
                         }
                     }
                 }
@@ -66,12 +67,13 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// </summary>
         private static void DrawTile(Tile tile, ref SpriteBatch spBatch, Point2D start)
         {
-            Microsoft.Xna.Framework.Rectangle target = new Microsoft.Xna.Framework.Rectangle(start, RenderingPipe.tileSize);
+            Microsoft.Xna.Framework.Rectangle target = new Microsoft.Xna.Framework.Rectangle(start, RenderInfo.tileSize);
 
             //A target location for 32x textures to be centered in the tile, without being enlarged.
             Rectangle x32Target = new Rectangle(start.X + 16, start.Y + 16, 32, 32);
 
-            MapDrawer.Draw(AssetManager.Textures[tile.GetRenderable().TextureID], target);
+            //MapDrawer.Draw(AssetManager.Textures[tile.GetRenderable().TextureID], target);
+            //TODO: Fix above line
 
             DrawStone(tile, ref spBatch, target);
             DrawItems(ref spBatch, tile, target);
