@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MagicalLifeAPI.Visual.Rendering.Animation.XML;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace MagicalLifeAPI.Visual.Animation
 {
@@ -33,11 +35,24 @@ namespace MagicalLifeAPI.Visual.Animation
             {
                 using (StreamReader sr = new StreamReader(stream))
                 {
+                    XmlSerializer serializer = new XmlSerializer(typeof(XMLTileMap));
+                    XMLTileMap result = (XMLTileMap)serializer.Deserialize(sr);
+
                     XDocument doc = XDocument.Load(stream);
 
                     XElement Descriptor = doc.Element("tilemap");
+                    System.Xml.XmlReader reader = doc.CreateReader();
 
-                    IEnumerable<XNode> nodes = doc.Nodes();
+                    //dynamic annotations = doc.Ancestors();
+                    IEnumerable<XElement> a = doc.Descendants();
+
+                    IEnumerable<XAttribute> one = a.ElementAt(0).Attributes();
+                    
+                    //dynamic b = doc.Elements();
+                    //dynamic c = doc.Nodes();
+                    //dynamic d = doc.Parent;
+                    //dynamic e = doc.Root;
+
                     XElement sheetWidth = Descriptor.Element("tileswide");
                     XElement sheetHeight = Descriptor.Element("tileshigh");
                     XElement tileWidth = Descriptor.Element("tilewidth");
