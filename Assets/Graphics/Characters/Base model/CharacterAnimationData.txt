@@ -1,0 +1,11 @@
+tileswide 4
+tileshigh 4
+tilewidth 64
+tileheight 64
+
+layer 0 
+0,1,0,2,
+3,4,3,5,
+6,7,6,8,
+9,10,9,11,
+
