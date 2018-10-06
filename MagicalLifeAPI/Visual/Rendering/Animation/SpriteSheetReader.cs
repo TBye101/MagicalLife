@@ -1,13 +1,7 @@
-﻿using MagicalLifeAPI.Visual.Rendering.Animation.XML;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using System.Xml.Serialization;
+using System.Xml;
 
 namespace MagicalLifeAPI.Visual.Animation
 {
@@ -16,9 +10,13 @@ namespace MagicalLifeAPI.Visual.Animation
     /// </summary>
     public class SpriteSheetReader
     {
+        private static readonly string XPathSheetWidth = "/tilemap/@tileswide";
+        private static readonly string XPathSheetHeight = "/tilemap/@tileshigh";
+        private static readonly string XPathTileWidth = "/tilemap/@tilewidth";
+        private static readonly string XPathTileHeight = "/tilemap/@tileheight";
+
         public SpriteSheetReader()
         {
-
         }
 
         /// <summary>
@@ -35,28 +33,16 @@ namespace MagicalLifeAPI.Visual.Animation
             {
                 using (StreamReader sr = new StreamReader(stream))
                 {
-                    XmlSerializer serializer = new XmlSerializer(typeof(XMLTileMap));
-                    XMLTileMap result = (XMLTileMap)serializer.Deserialize(sr);
+                    XmlReader reader = XmlReader.Create(sr);
+                    XmlDocument document = new XmlDocument();
 
-                    XDocument doc = XDocument.Load(stream);
+                    document.Load(reader);
+                    reader.Close();
 
-                    XElement Descriptor = doc.Element("tilemap");
-                    System.Xml.XmlReader reader = doc.CreateReader();
-
-                    //dynamic annotations = doc.Ancestors();
-                    IEnumerable<XElement> a = doc.Descendants();
-
-                    IEnumerable<XAttribute> one = a.ElementAt(0).Attributes();
-                    
-                    //dynamic b = doc.Elements();
-                    //dynamic c = doc.Nodes();
-                    //dynamic d = doc.Parent;
-                    //dynamic e = doc.Root;
-
-                    XElement sheetWidth = Descriptor.Element("tileswide");
-                    XElement sheetHeight = Descriptor.Element("tileshigh");
-                    XElement tileWidth = Descriptor.Element("tilewidth");
-                    XElement tileHeight = Descriptor.Element("tileheight");
+                    XmlNode sheetWidth = document.SelectSingleNode(XPathSheetWidth);
+                    XmlNode sheetHeight = document.SelectSingleNode(XPathSheetHeight);
+                    XmlNode tileWidth = document.SelectSingleNode(XPathTileWidth);
+                    XmlNode tileHeight = document.SelectSingleNode(XPathTileHeight);
 
                     int sheetWidthValue = Convert.ToInt32(sheetWidth.Value);
                     int sheetHeightValue = Convert.ToInt32(sheetHeight.Value);
