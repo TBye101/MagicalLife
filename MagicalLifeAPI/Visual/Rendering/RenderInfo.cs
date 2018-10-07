@@ -40,5 +40,10 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         /// The currently viewed dimension.
         /// </summary>
         public static int Dimension { get; set; } = 0;
+
+        /// <summary>
+        /// The game's current FPS.
+        /// </summary>
+        public static int GameFPS = 60;
     }
 }

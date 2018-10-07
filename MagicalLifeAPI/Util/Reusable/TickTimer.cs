@@ -36,13 +36,22 @@ namespace MagicalLifeAPI.Util.Reusable
         {
         }
 
+        /// <summary>
+        /// Resets the countdown on this tick timer.
+        /// This does not 
+        /// </summary>
+        public void Reset()
+        {
+            this.CurrentTick = 0;
+        }
+
         public bool Allow()
         {
             this.CurrentTick++;
 
             if (this.CurrentTick >= this.Ticks)
             {
-                this.CurrentTick = 0;
+                this.Reset();
                 return true;
             }
             else

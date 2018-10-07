@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using MagicalLifeAPI.DataTypes;
+using Microsoft.Xna.Framework.Graphics;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
@@ -22,11 +23,11 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
             this.RenderQueue = new RenderQueue();
         }
 
-        public void Render(SpriteBatch batch)
+        public void Render(SpriteBatch batch, Point2D ScreenTopLeft)
         {
             foreach (AbstractVisual item in this.RenderQueue.Visuals)
             {
-                item.Render(batch, item.RelativeBounds);
+                item.Render(batch, );
             }
         }
     }

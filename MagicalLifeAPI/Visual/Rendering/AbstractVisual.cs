@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeGUIWindows.Rendering.Map;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -22,9 +24,9 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         public int Priority { get; set; }
 
         /// <summary>
-        /// The bounds that this visual should be rendered at.
+        /// The top left bound to render at that is relative to the tile position this AbstractVisual belongs to.
         /// </summary>
-        public Rectangle Bounds { get; set; }
+        public Point2D RelativeTopLeft { get; set; }
 
         public AbstractVisual(int priority)
         {
@@ -41,6 +43,6 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         /// </summary>
         /// <param name="batch"></param>
         /// <param name="bounds">The bounds to render the texture at.</param>
-        public abstract void Render(SpriteBatch batch, Rectangle bounds);
+        public abstract void Render(MapBatch batch, Point2D ScreenTopLeft);
     }
 }

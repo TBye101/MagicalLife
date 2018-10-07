@@ -116,9 +116,6 @@
     <Compile Include="Components\Resource\AbstractMinable.cs" />
     <Compile Include="Components\Resource\DropWhenCompletelyMined.cs" />
     <Compile Include="Components\Resource\IMinable.cs" />
-    <Compile Include="Components\Tile\Renderable\AbstractConnectedTexture.cs" />
-    <Compile Include="Components\Tile\Renderable\TileState.cs" />
-    <Compile Include="Components\Tile\Renderable\TransitionTextures.cs" />
     <Compile Include="Visual\Rendering\StaticTexture.cs" />
     <Compile Include="DataTypes\Attribute\ModifierFloat.cs" />
     <Compile Include="DataTypes\FixedSizeQueue.cs" />
@@ -257,7 +254,6 @@
     <Compile Include="World\Resources\Stone.cs" />
     <Compile Include="World\Resources\StoneBase.cs" />
     <Compile Include="World\TileEventArg.cs" />
-    <Compile Include="World\Tiles\ConnectedGrass.cs" />
     <Compile Include="World\Tiles\Dirt.cs" />
     <Compile Include="World\Tiles\Grass.cs" />
     <Compile Include="World\Veggies\OakTree.cs" />

@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Error.InternalExceptions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ProtoBuf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace MagicalLifeAPI.Visual.Animation
     /// <summary>
     /// Holds a sprite sheet texture, as well as the positioning data that goes along with it.
     /// </summary>
+    [ProtoContract]
     public class SpriteSheet
     {
         /// <summary>
@@ -26,11 +28,13 @@ namespace MagicalLifeAPI.Visual.Animation
             }
         }
 
+        [ProtoMember(1)]
         public int TextureID { get; private set; }
 
         /// <summary>
         /// How many sprites wide is the sheet.
         /// </summary>
+        [ProtoMember(2)]
         public int SheetWidth { get; private set; }
 
         /// <summary>
@@ -41,11 +45,13 @@ namespace MagicalLifeAPI.Visual.Animation
         /// <summary>
         /// The width of each sprite in pixels.
         /// </summary>
+        [ProtoMember(3)]
         private int SpritePixelWidth { get; set; }
 
         /// <summary>
         /// The height of each sprite in pixels.
         /// </summary>
+        [ProtoMember(4)]
         private int SpritePixelHeight { get; set; }
 
         public SpriteSheet(int textureID, int sheetWidth, int sheetHeight, 
@@ -57,6 +63,23 @@ namespace MagicalLifeAPI.Visual.Animation
             this.SpritePixelWidth = spritePixelWidth;
             this.SpritePixelHeight = spritePixelHeight;
             this.VerifySheet();
+        }
+
+
+        /// <summary>
+        /// Calculates the correct rectangle section to render one frame of this sprite sheet.
+        /// </summary>
+        /// <param name="frame"></param>
+        /// <returns></returns>
+        public Rectangle GetSection(int frame)
+        {
+            int xPosition = frame / this.SheetWidth;
+            int yPosition = frame % this.SheetWidth;
+
+            int x = xPosition * this.SpritePixelWidth;
+            int y = yPosition * this.SpritePixelHeight;
+
+            return new Rectangle(x, y, this.SpritePixelWidth, this.SpritePixelHeight);
         }
 
         /// <summary>
