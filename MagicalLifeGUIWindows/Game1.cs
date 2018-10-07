@@ -67,16 +67,11 @@ namespace MagicalLifeGUIWindows
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
             base.Initialize();
             WindowConfig winConfig = new WindowConfig();
             winConfig.ConfigureMainWindow(this);
 
             Universal.Default.GameHasRunBefore = true;
-
-            SpriteSheetReader a = new SpriteSheetReader();
-            a.Read("MagicalLifeGUIWindows.Content.Animation.BaseCharacterData.xml", MagicalLifeAPI.Asset.AssetManager.NameToIndex["Character/Base Character/BaseCharacterSprite"]);
         }
 
         /// <summary>

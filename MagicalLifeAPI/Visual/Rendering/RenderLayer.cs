@@ -11,6 +11,6 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
     /// </summary>
     public static class RenderLayer
     {
-        public static readonly int TileBase = 0;
+        public static readonly int DirtBase = 0;
     }
 }

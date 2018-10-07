@@ -26,7 +26,7 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         {
             foreach (AbstractVisual item in this.RenderQueue.Visuals)
             {
-                item.Render(batch, item.Bounds);
+                item.Render(batch, item.RelativeBounds);
             }
         }
     }

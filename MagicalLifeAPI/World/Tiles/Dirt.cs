@@ -26,7 +26,7 @@ namespace MagicalLifeAPI.World.Tiles
         protected static ComponentRenderer GetRenderer()
         {
             ComponentRenderer renderer = new ComponentRenderer();
-            StaticTexture texture = new StaticTexture(GetTextureID(), RenderLayer.TileBase);
+            StaticTexture texture = new StaticTexture(GetTextureID(), RenderLayer.DirtBase);
 
             renderer.RenderQueue.Visuals.Add(texture);
             return renderer;

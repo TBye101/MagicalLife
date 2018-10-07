@@ -103,7 +103,5 @@ namespace MagicalLifeAPI.Components.Tile.Renderable
         private void Tile_TileCreated(object sender, World.TileEventArg e)
         {
         }
-
-        public override int TextureID { get; set; }
     }
 }

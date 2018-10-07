@@ -100,7 +100,7 @@
   <ItemGroup>
     <Compile Include="Asset\AssetManager.cs" />
     <Compile Include="Comparators\ItemComparator.cs" />
-    <Compile Include="Visual\Rendering\AbstractRenderable.cs" />
+    <Compile Include="Visual\Rendering\IRenderable.cs" />
     <Compile Include="Visual\Rendering\Animation\AnimatedTexture.cs" />
     <Compile Include="Visual\Rendering\Animation\AnimationSequence.cs" />
     <Compile Include="Visual\Rendering\Animation\XML\XMLLayer.cs" />
@@ -119,7 +119,6 @@
     <Compile Include="Components\Tile\Renderable\AbstractConnectedTexture.cs" />
     <Compile Include="Components\Tile\Renderable\TileState.cs" />
     <Compile Include="Components\Tile\Renderable\TransitionTextures.cs" />
-    <Compile Include="Visual\Rendering\IRenderable.cs" />
     <Compile Include="Visual\Rendering\StaticTexture.cs" />
     <Compile Include="DataTypes\Attribute\ModifierFloat.cs" />
     <Compile Include="DataTypes\FixedSizeQueue.cs" />

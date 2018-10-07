@@ -63,6 +63,7 @@ namespace MagicalLifeAPI.World.Base
 
         [ProtoMember(7)]
         public ActionSelected ImpendingAction { get; set; }
+        public abstract ComponentRenderer CompositeRenderer { get; set; }
 
         public readonly int FootStepSound;
 
@@ -152,11 +153,6 @@ namespace MagicalLifeAPI.World.Base
         public override SelectionType InGameObjectType(Selectable selectable)
         {
             return SelectionType.Tile;
-        }
-
-        ComponentRenderer IRenderable.GetRenderable()
-        {
-            return this.Renderable;
         }
     }
 }
