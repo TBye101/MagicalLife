@@ -1,6 +1,4 @@
-﻿using MagicalLifeAPI.Components.Tile.Renderable;
-using MagicalLifeAPI.DataTypes;
-using ProtoBuf;
+﻿using ProtoBuf;
 
 namespace MagicalLifeAPI.Components.Generic.Renderable
 {

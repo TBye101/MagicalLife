@@ -12,5 +12,6 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
     public static class RenderLayer
     {
         public static readonly int DirtBase = 0;
+        public static readonly int GrassBase = 1;
     }
 }

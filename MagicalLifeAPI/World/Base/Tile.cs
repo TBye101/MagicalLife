@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.Components.Tile.Renderable;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.GUI;
@@ -24,7 +23,6 @@ namespace MagicalLifeAPI.World.Base
 
         [ProtoMember(2)]
         public bool IsWalkable;
-        private TransitionTextures transitionTextures;
 
         /// <summary>
         /// Returns the name of the biome that this tile belongs to.
@@ -63,6 +61,7 @@ namespace MagicalLifeAPI.World.Base
 
         [ProtoMember(7)]
         public ActionSelected ImpendingAction { get; set; }
+
         public abstract ComponentRenderer CompositeRenderer { get; set; }
 
         public readonly int FootStepSound;
@@ -72,18 +71,17 @@ namespace MagicalLifeAPI.World.Base
         /// </summary>
         /// <param name="location">The 3D location of this tile in the map.</param>
         /// <param name="movementCost">This value is the movement cost of walking on this tile. It should be between 1 and 100</param>
-        public Tile(Point2D location, int movementCost, ComponentRenderer renderable, int footStepSound)
+        public Tile(Point2D location, int movementCost, int footStepSound)
         {
             this.MapLocation = location;
             this.MovementCost = movementCost;
             Tile.TileCreatedHandler(new TileEventArg(this));
             this.IsWalkable = true;
-            this.Renderable = renderable;
             this.FootStepSound = footStepSound;
         }
 
-        public Tile(int x, int y, int movementCost, ComponentRenderer renderable, int footStepSound)
-            : this(new Point2D(x, y), movementCost, renderable, footStepSound)
+        public Tile(int x, int y, int movementCost, int footStepSound)
+            : this(new Point2D(x, y), movementCost, footStepSound)
         {
         }
 
@@ -97,11 +95,6 @@ namespace MagicalLifeAPI.World.Base
         /// </summary>
         public Tile()
         {
-        }
-
-        protected Tile(Point2D location, TransitionTextures transitionTextures)
-        {
-            this.transitionTextures = transitionTextures;
         }
 
         /// <summary>
