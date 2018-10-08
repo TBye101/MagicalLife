@@ -56,7 +56,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         public ListBox(Rectangle drawingBounds, int priority, bool isContained, string font, int itemRenderCount, List<AbstractGUIRenderable> items)
             : base(drawingBounds, priority, isContained, font)
         {
-            this.ItemBackgroundTexture = AssetManager.GetTextureIndex("GUI/ListBoxItemBackground");
+            this.ItemBackgroundTexture = AssetManager.GetTextureIndex(TextureLoader.GUIListBoxItemBackground);
             this.ItemRenderCount = itemRenderCount;
             this.Items = items;
             this.ItemDisplayBounds = this.CalculateItemBounds();

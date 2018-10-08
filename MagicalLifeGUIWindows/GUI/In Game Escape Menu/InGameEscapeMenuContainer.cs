@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Rendering;
 
@@ -12,7 +13,7 @@ namespace MagicalLifeGUIWindows.GUI.In
 
         public BackButton Back { get; private set; } = new BackButton();
 
-        public InGameEscapeMenuContainer() : base("MenuBackground", RenderInfo.FullScreenWindow)
+        public InGameEscapeMenuContainer() : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow)
         {
             this.Controls.Add(this.Quit);
             this.Controls.Add(this.Save);
@@ -21,7 +22,7 @@ namespace MagicalLifeGUIWindows.GUI.In
 
         public override string GetTextureName()
         {
-            return "MenuBackground";
+            return TextureLoader.GUIMenuBackground;
         }
     }
 }

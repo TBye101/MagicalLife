@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Networking.Client;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Server;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.World.Data;
@@ -18,7 +19,7 @@ namespace MagicalLifeGUIWindows.GUI.New
     /// </summary>
     public class NewWorldNextButton : MonoButton
     {
-        public NewWorldNextButton() : base("MenuButton", GetLocation(), true, "Next")
+        public NewWorldNextButton() : base(TextureLoader.GUIMenuButton, GetLocation(), true, "Next")
         {
         }
 

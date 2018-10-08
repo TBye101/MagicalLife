@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Sound;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Sound;
 using MagicalLifeGUIWindows.GUI.New;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
@@ -8,7 +9,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
 {
     public class NewGameButton : MonoButton
     {
-        public NewGameButton() : base("MenuButton", GetLocation(), true, "New Game")
+        public NewGameButton() : base(TextureLoader.GUIMenuButton, GetLocation(), true, "New Game")
         {
         }
 

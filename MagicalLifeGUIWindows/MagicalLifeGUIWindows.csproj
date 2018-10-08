@@ -237,7 +237,6 @@
   <ItemGroup>
     <Folder Include="Event\" />
     <Folder Include="GUI\History\" />
-    <Folder Include="GUI\Join Game Menu\Labels\" />
     <Folder Include="Rendering\GUI\" />
   </ItemGroup>
   <ItemGroup>

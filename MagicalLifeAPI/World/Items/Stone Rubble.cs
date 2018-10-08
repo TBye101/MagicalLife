@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.Util;
 using MagicalLifeAPI.Visual.Rendering;
 using MagicalLifeAPI.World.Base;
 using ProtoBuf;
@@ -19,7 +20,7 @@ namespace MagicalLifeAPI.World.Items
             },
             9999,
             count,
-            typeof(StoneRubble), "StoneRubble_01")
+            typeof(StoneRubble), TextureLoader.TextureStoneRubble1)
         {
         }
 
@@ -30,9 +31,26 @@ namespace MagicalLifeAPI.World.Items
         public override List<AbstractVisual> GetVisuals()
         {
             List<AbstractVisual> visuals = new List<AbstractVisual>();
-            visuals.Add(new StaticTexture(AssetManager.NameToIndex["StoneRubble_01"], RenderLayer.Items));
+            visuals.Add(new StaticTexture(AssetManager.NameToIndex[this.GetRandomStoneRubbleTexture()], RenderLayer.Items));
 
             return visuals;
+        }
+
+        private string GetRandomStoneRubbleTexture()
+        {
+            int r = StaticRandom.Rand(0, 2);
+            string ret;
+
+            if (r == 0)
+            {
+                ret = TextureLoader.TextureStoneRubble1;
+            }
+            else
+            {
+                ret = TextureLoader.TextureStoneRubble2;
+            }
+
+            return ret;
         }
     }
 }

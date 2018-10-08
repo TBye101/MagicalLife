@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Networking.Client;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Server;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.World.Data;
@@ -16,7 +17,7 @@ namespace MagicalLifeGUIWindows.GUI.Load
 {
     public class LoadSaveButton : MonoButton
     {
-        public LoadSaveButton() : base("MenuButton", GetDisplayArea(), true, "Load Save")
+        public LoadSaveButton() : base(TextureLoader.GUIMenuButton, GetDisplayArea(), true, "Load Save")
         {
         }
 

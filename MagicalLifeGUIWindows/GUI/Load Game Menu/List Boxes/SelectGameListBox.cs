@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Filing;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Filing;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.GUI.Reusable.API;
 using Microsoft.Xna.Framework;
@@ -9,9 +10,9 @@ namespace MagicalLifeGUIWindows.GUI.Load
 {
     public class SelectGameListBox : ListBox
     {
-        private static SpriteFont ItemFont = Game1.AssetManager.Load<SpriteFont>("MainMenuFont12x");
+        private static SpriteFont ItemFont = Game1.AssetManager.Load<SpriteFont>(TextureLoader.FontMainMenuFont12x);
 
-        public SelectGameListBox() : base(GetDrawingBounds(), 1, true, "MainMenuFont12x", LoadGameMenuLayout.ItemRenderCount, GetAllSaveGames())
+        public SelectGameListBox() : base(GetDrawingBounds(), 1, true, TextureLoader.FontMainMenuFont12x, LoadGameMenuLayout.ItemRenderCount, GetAllSaveGames())
         {
         }
 

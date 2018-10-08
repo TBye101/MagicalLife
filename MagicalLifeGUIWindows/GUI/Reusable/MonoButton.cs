@@ -27,7 +27,13 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// <param name="text"></param>
         /// <param name="isContained">If true, this GUI element is within a container.</param>
         /// <param name="font"></param>
-        protected MonoButton(string imageName, Rectangle displayArea, bool isContained, string text = "", string font = "MainMenuFont24x") : base(displayArea, int.MaxValue, isContained, font)
+        protected MonoButton(string imageName, Rectangle displayArea, bool isContained, string font, string text = "") : base(displayArea, int.MaxValue, isContained, font)
+        {
+            this.Text = text;
+            this.TextureID = AssetManager.GetTextureIndex(imageName);
+        }
+
+        protected MonoButton(string imageName, Rectangle displayArea, bool isContained, string text = "") : base(displayArea, int.MaxValue, isContained, TextureLoader.FontMainMenuFont12x)
         {
             this.Text = text;
             this.TextureID = AssetManager.GetTextureIndex(imageName);

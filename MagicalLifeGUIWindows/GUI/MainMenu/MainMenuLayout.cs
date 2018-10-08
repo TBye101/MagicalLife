@@ -1,4 +1,5 @@
-﻿using MagicalLifeSettings.Storage;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeSettings.Storage;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace MagicalLifeGUIWindows.GUI.MainMenu
@@ -13,7 +14,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
             switch ((Resolution)MainWindow.Default.Resolution)
             {
                 default:
-                    MainMenuFont = Game1.AssetManager.Load<SpriteFont>("MainMenuFont24x");
+                    MainMenuFont = Game1.AssetManager.Load<SpriteFont>(TextureLoader.FontMainMenuFont24x);
                     break;
             }
         }

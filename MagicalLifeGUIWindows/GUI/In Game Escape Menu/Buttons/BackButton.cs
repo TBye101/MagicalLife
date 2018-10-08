@@ -1,4 +1,5 @@
-﻿using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 
@@ -6,7 +7,7 @@ namespace MagicalLifeGUIWindows.GUI.In
 {
     public class BackButton : MonoButton
     {
-        public BackButton() : base("MenuButton", GetDisplayArea(), true, "Back")
+        public BackButton() : base(TextureLoader.GUIMenuButton, GetDisplayArea(), true, "Back")
         {
         }
 

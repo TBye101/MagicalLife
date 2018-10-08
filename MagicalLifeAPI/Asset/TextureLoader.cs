@@ -20,7 +20,7 @@ namespace MagicalLifeAPI.Asset
         public static readonly string GUIListBoxItemBackground = "GUI/ListBoxItemBackground";
         public static readonly string GUIPickaxeButtonGold = "GUI/PickaxeButton_Gold";
         public static readonly string GUIPickaxeButtonGrey = "GUI/PickaxeButton_Grey";
-        public static readonly string GUICursorCarrot = "GUI/PickaxeButton_Grey";
+        public static readonly string GUICursorCarrot = "GUI/CursorCarrot";
         public static readonly string GUIInputBox100x50 = "GUI/InputBox100x50";
         public static readonly string GUIMenuBackground = "GUI/MenuBackground";
         public static readonly string GUIMenuButton = "GUI/MenuButton";
@@ -78,9 +78,6 @@ namespace MagicalLifeAPI.Asset
             this.TexturesToLoad.Add(TextureStoneRubble1);
             this.TexturesToLoad.Add(TextureStoneRubble2);
             this.TexturesToLoad.Add(TextureTestTile);
-
-            this.TexturesToLoad.Add(FontMainMenuFont12x);
-            this.TexturesToLoad.Add(FontMainMenuFont24x);
 
             this.TexturesToLoad.Add(LogoFMOD);
             this.TexturesToLoad.Add(LogoMonoGame);

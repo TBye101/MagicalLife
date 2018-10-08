@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeGUIWindows.Rendering;
 using MagicalLifeGUIWindows.Rendering.Text;
 using Microsoft.Xna.Framework;
@@ -20,7 +21,7 @@ namespace MagicalLifeGUIWindows.Screens
 
         protected string Text { get; set; }
 
-        protected SpriteFont Font = Game1.AssetManager.Load<SpriteFont>("MainMenuFont12x");
+        protected SpriteFont Font = Game1.AssetManager.Load<SpriteFont>(TextureLoader.FontMainMenuFont12x);
 
         /// <summary>
         /// How many frames to show the splash screen.

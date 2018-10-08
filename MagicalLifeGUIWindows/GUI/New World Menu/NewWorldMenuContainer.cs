@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Rendering;
 
@@ -15,7 +16,7 @@ namespace MagicalLifeGUIWindows.GUI.New
         public LengthLabel lengthLabel = new LengthLabel();
         public WidthLabel widthLabel = new WidthLabel();
 
-        public NewWorldMenuContainer(bool visible) : base("MenuBackground", RenderInfo.FullScreenWindow)
+        public NewWorldMenuContainer(bool visible) : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow)
         {
             this.Visible = visible;
             this.Controls.Add(this.worldWidth);
@@ -31,7 +32,7 @@ namespace MagicalLifeGUIWindows.GUI.New
 
         public override string GetTextureName()
         {
-            return "MenuBackground";
+            return TextureLoader.GUIMenuBackground;
         }
     }
 }
