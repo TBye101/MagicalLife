@@ -17,6 +17,35 @@ namespace MagicalLifeAPI.Asset
 
         private readonly ContentManager Manager;
 
+        public static readonly string GUIListBoxItemBackground = "GUI/ListBoxItemBackground";
+        public static readonly string GUIPickaxeButtonGold = "GUI/PickaxeButton_Gold";
+        public static readonly string GUIPickaxeButtonGrey = "GUI/PickaxeButton_Grey";
+        public static readonly string GUICursorCarrot = "GUI/PickaxeButton_Grey";
+        public static readonly string GUIInputBox100x50 = "GUI/InputBox100x50";
+        public static readonly string GUIMenuBackground = "GUI/MenuBackground";
+        public static readonly string GUIMenuButton = "GUI/MenuButton";
+        public static readonly string GUIPickaxeMapIcon = "GUI/PickaxeMapIcon";
+
+        public static readonly string TextureDirt1 = "Textures/Tile/Dirt_01";
+        public static readonly string TextureDirt2 = "Textures/Tile/Dirt_02";
+        public static readonly string TextureGrass1 = "Textures/Tile/Grass_01";
+        public static readonly string TextureGrass2 = "Textures/Tile/Grass_02";
+        public static readonly string TextureGrass3 = "Textures/Tile/Grass_03";
+        public static readonly string TextureGrass4 = "Textures/Tile/Grass_04";
+        public static readonly string TextureStone1 = "Textures/Resource/Stone_01";
+        public static readonly string TextureStone2 = "Textures/Resource/Stone_02";
+        public static readonly string TextureStoneRubble1 = "Textures/Items/StoneRubble_01";
+        public static readonly string TextureStoneRubble2 = "Textures/Items/StoneRubble_02";
+        public static readonly string TextureTestTile = "Textures/Tile/TestTile";
+
+        public static readonly string FontMainMenuFont12x = "Fonts/MainMenuFont12x";
+        public static readonly string FontMainMenuFont24x = "Fonts/MainMenuFont24x";
+
+        public static readonly string LogoFMOD = "Logo/FMODLogo";
+        public static readonly string LogoMonoGame = "Logo/MonoGameLogo";
+
+        public static readonly string AnimationBaseCharacter = "Character/Base Character/BaseCharacterSprite";
+
         public TextureLoader(ContentManager manager)
         {
             this.Manager = manager;
@@ -29,42 +58,34 @@ namespace MagicalLifeAPI.Asset
 
         private void Prepare()
         {
-            this.TexturesToLoad.Add("Basic Human");
-            this.TexturesToLoad.Add("CursorCarrot");
+            this.TexturesToLoad.Add(GUIListBoxItemBackground);
+            this.TexturesToLoad.Add(GUIPickaxeButtonGold);
+            this.TexturesToLoad.Add(GUIPickaxeButtonGrey);
+            this.TexturesToLoad.Add(GUICursorCarrot);
+            this.TexturesToLoad.Add(GUIInputBox100x50);
+            this.TexturesToLoad.Add(GUIMenuBackground);
+            this.TexturesToLoad.Add(GUIMenuButton);
+            this.TexturesToLoad.Add(GUIPickaxeMapIcon);
 
-            this.TexturesToLoad.Add("MenuBackground");
-            this.TexturesToLoad.Add("MenuButton");
-            this.TexturesToLoad.Add("InputBox100x50");
-            this.TexturesToLoad.Add("GUI/ListBoxItemBackground");
+            this.TexturesToLoad.Add(TextureDirt1);
+            this.TexturesToLoad.Add(TextureDirt2);
+            this.TexturesToLoad.Add(TextureGrass1);
+            this.TexturesToLoad.Add(TextureGrass2);
+            this.TexturesToLoad.Add(TextureGrass3);
+            this.TexturesToLoad.Add(TextureGrass4);
+            this.TexturesToLoad.Add(TextureStone1);
+            this.TexturesToLoad.Add(TextureStone2);
+            this.TexturesToLoad.Add(TextureStoneRubble1);
+            this.TexturesToLoad.Add(TextureStoneRubble2);
+            this.TexturesToLoad.Add(TextureTestTile);
 
-            this.TexturesToLoad.Add("Stone");
-            this.TexturesToLoad.Add("StoneRubble_01");
-            this.TexturesToLoad.Add("StoneRubble_02");
+            this.TexturesToLoad.Add(FontMainMenuFont12x);
+            this.TexturesToLoad.Add(FontMainMenuFont24x);
 
-            this.TexturesToLoad.Add("TestTile");
-            this.TexturesToLoad.Add("Dirt");
+            this.TexturesToLoad.Add(LogoFMOD);
+            this.TexturesToLoad.Add(LogoMonoGame);
 
-            this.TexturesToLoad.Add("DirtGrassTrans1");
-            this.TexturesToLoad.Add("DirtGrassTrans2");
-            this.TexturesToLoad.Add("DirtGrassTrans3");
-            this.TexturesToLoad.Add("DirtGrassTrans4");
-            this.TexturesToLoad.Add("DirtGrassTrans5");
-            this.TexturesToLoad.Add("DirtGrassTrans6");
-            this.TexturesToLoad.Add("DirtGrassTrans7");
-            this.TexturesToLoad.Add("DirtGrassTrans8");
-            this.TexturesToLoad.Add("DirtGrassTrans9");
-            this.TexturesToLoad.Add("DirtGrassTrans10");
-            this.TexturesToLoad.Add("DirtGrassTrans11");
-            this.TexturesToLoad.Add("DirtGrassTrans12");
-
-            this.TexturesToLoad.Add("Grass");
-
-            this.TexturesToLoad.Add("GUI/PickaxeButton_Grey");
-            this.TexturesToLoad.Add("GUI/PickaxeButton_Gold");
-            this.TexturesToLoad.Add("PickaxeMapIcon");
-
-            this.TexturesToLoad.Add("Character/Base Character/BaseCharacterSprite");
-            
+            this.TexturesToLoad.Add(AnimationBaseCharacter);
         }
 
         public void InitialStartup()
