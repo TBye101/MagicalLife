@@ -24,12 +24,11 @@ namespace MagicalLifeAPI.Visual.Animation
         /// </summary>
         /// <param name="path">The internal resource path to the XML file.</param>
         /// <param name="textureID">The textureID of the SpriteSheet.</param>
-        public SpriteSheet Read(string path, int textureID)
+        public SpriteSheet Read(string path, int textureID, Assembly containingAssembly)
         {
             SpriteSheet sheet;
-            Assembly asm = Assembly.GetCallingAssembly();
 
-            using (Stream stream = asm.GetManifestResourceStream(path))
+            using (Stream stream = containingAssembly.GetManifestResourceStream(path))
             {
                 using (StreamReader sr = new StreamReader(stream))
                 {

@@ -1,5 +1,7 @@
-﻿using MagicalLifeAPI.Util.Reusable;
+﻿using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.Util.Reusable;
 using ProtoBuf;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +43,7 @@ namespace MagicalLifeAPI.Visual.Rendering.Animation
         {
             this.FrameOrder = frameOrder;
             this.FPS = FPS;
+            this.FrameTimer = new TickTimer(RenderInfo.GameFPS / FPS);
         }
 
         public void ResetToBeginning()
@@ -70,7 +73,9 @@ namespace MagicalLifeAPI.Visual.Rendering.Animation
         {
             if (this.FrameTimer.Allow())
             {
+                Log.Debug("Frame before: " + this.CurrentFrame.ToString());
                 this.CurrentFrame++;
+                Log.Debug("Frame after: " + this.CurrentFrame.ToString());
 
                 if (this.CurrentFrame > this.FrameOrder.Length)
                 {

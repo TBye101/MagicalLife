@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Visual.Animation;
 using MagicalLifeAPI.Visual.Rendering.Animation;
@@ -34,9 +36,22 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         [ProtoMember(3)]
         private int PlayingSequence = -1;
 
-        public AnimatedTexture(int priority, AnimationSequence[] sequences) : base(priority)
+        [ProtoMember(4)]
+        public bool HasFinished = true;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="priority"></param>
+        /// <param name="sequences"></param>
+        /// <param name="spriteSheet">The texture name of the sprite sheet.</param>
+        /// <param name="xmlResourcePath">The resource path to load the XML data about the sprite sheet as an embedded resource.</param>
+        public AnimatedTexture(int priority, AnimationSequence[] sequences, string spriteSheet, string xmlResourcePath, Assembly containingASM) : base(priority)
         {
             this.Sequences = sequences;
+
+            SpriteSheetReader reader = new SpriteSheetReader();
+            this.AnimationFrames = reader.Read(xmlResourcePath, AssetManager.NameToIndex[spriteSheet], containingASM);
         }
 
         public AnimatedTexture()
@@ -48,7 +63,13 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
             if (this.PlayingSequence != -1)
             {
                 bool isDone = this.Sequences[this.PlayingSequence].Tick(out int frame);
+                this.HasFinished = isDone;
                 batch.Draw(this.AnimationFrames.Sprites, ScreenTopLeft, this.AnimationFrames.GetSection(frame));
+
+                if (this.HasFinished)
+                {
+                    this.PlayingSequence = -1;
+                }
             }
         }
 
@@ -58,12 +79,15 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         /// <param name="SequenceID">The ID of the sequence to initiate.</param>
         public void StartSequence(int SequenceID)
         {
-            if (this.PlayingSequence != -1)
+            if (this.PlayingSequence != -1 && this.HasFinished)
             {
                 this.Sequences[this.PlayingSequence].ResetToBeginning();
             }
 
-            this.PlayingSequence = SequenceID;
+            if (this.HasFinished)
+            {
+                this.PlayingSequence = SequenceID;
+            }
         }
     }
 }

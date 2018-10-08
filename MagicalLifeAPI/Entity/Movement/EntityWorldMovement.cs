@@ -1,5 +1,7 @@
-﻿using MagicalLifeAPI.DataTypes;
+﻿using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.DataTypes.Attribute;
+using MagicalLifeAPI.Entity.Humanoid;
 using MagicalLifeAPI.Entity.Util.Modifier;
 using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.Networking.Client;
@@ -67,22 +69,28 @@ namespace MagicalLifeAPI.Entity.Movement
             float xMove = 0;
             float yMove = 0;
 
+            AnimatedTexture animated = (AnimatedTexture)entity.Visual;
+
             switch (direction)
             {
                 case Direction.North:
                     yMove = -1;
+                    animated.StartSequence(Human.UpSequence);
                     break;
 
                 case Direction.South:
                     yMove = 1;
+                    animated.StartSequence(Human.DownSequence);
                     break;
 
                 case Direction.East:
                     xMove = 1;
+                    animated.StartSequence(Human.RightSequence);
                     break;
 
                 case Direction.West:
                     xMove = -1;
+                    animated.StartSequence(Human.LeftSequence);
                     break;
 
                 case Direction.NorthWest:

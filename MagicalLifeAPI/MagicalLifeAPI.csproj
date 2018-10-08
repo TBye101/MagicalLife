@@ -100,13 +100,11 @@
   <ItemGroup>
     <Compile Include="Asset\AssetManager.cs" />
     <Compile Include="Comparators\ItemComparator.cs" />
+    <Compile Include="Visual\Rendering\Animation\XMLPaths.cs" />
     <Compile Include="Visual\Rendering\IRenderable.cs" />
     <Compile Include="Visual\Rendering\IRenderContainer.cs" />
     <Compile Include="Visual\Rendering\Animation\AnimatedTexture.cs" />
     <Compile Include="Visual\Rendering\Animation\AnimationSequence.cs" />
-    <Compile Include="Visual\Rendering\Animation\XML\XMLLayer.cs" />
-    <Compile Include="Visual\Rendering\Animation\XML\XMLTile.cs" />
-    <Compile Include="Visual\Rendering\Animation\XML\XMLTileMap.cs" />
     <Compile Include="Visual\Rendering\ComponentRenderer.cs" />
     <Compile Include="Visual\Rendering\AbstractVisual.cs" />
     <Compile Include="Visual\Rendering\MapBatch.cs" />

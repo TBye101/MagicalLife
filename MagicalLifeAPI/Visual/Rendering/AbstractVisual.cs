@@ -2,6 +2,7 @@
 using MagicalLifeGUIWindows.Rendering.Map;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ProtoBuf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
     /// <summary>
     /// Used to abstract away the complexities of animations and static textures.
     /// </summary>
+    [ProtoContract]
     public abstract class AbstractVisual
     {
         /// <summary>
@@ -21,11 +23,13 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         /// The later a <see cref="AbstractVisual"/> is rendered, the more likely it will not be overlapped/cut off by anything else.
         /// Think of this like layers of a painting.
         /// </summary>
+        [ProtoMember(1)]
         public int Priority { get; set; }
 
         /// <summary>
         /// The top left bound to render at that is relative to the tile position this AbstractVisual belongs to.
         /// </summary>
+        [ProtoMember(2)]
         public Point2D RelativeTopLeft { get; set; }
 
         public AbstractVisual(int priority)

@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.DataTypes;
+﻿using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.DataTypes.Attribute;
 using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.Entity.Eventing;
@@ -62,6 +63,9 @@ namespace MagicalLifeAPI.Entity
 
         [ProtoMember(10)]
         public Guid ID { get; }
+
+        [ProtoMember(11)]
+        public abstract AbstractVisual Visual { get; set; }
 
         /// <summary>
         /// Raised when a <see cref="Living"/> is created.

@@ -52,9 +52,12 @@ namespace MagicalLifeGUIWindows.Rendering.Map
                     {
                         if (item.Value != null)
                         {
-                            Texture2D livingTexture = AssetManager.Textures[AssetManager.GetTextureIndex(item.Value.GetTextureName())];
-                            Vector2 livingScreenLocation = new Vector2(item.Value.ScreenLocation.X * Tile.GetTileSize().X, item.Value.ScreenLocation.Y * Tile.GetTileSize().Y);
-                            MapDrawer.Draw(livingTexture, livingScreenLocation);
+                            Point2D livingScreenLocation = new Point2D((int)item.Value.ScreenLocation.X * Tile.GetTileSize().X, (int)item.Value.ScreenLocation.Y * Tile.GetTileSize().Y);
+                            item.Value.Visual.Render(MapDrawer, livingScreenLocation);
+
+                            //Texture2D livingTexture = AssetManager.Textures[AssetManager.GetTextureIndex(item.Value.GetTextureName())];
+
+                            //MapDrawer.Draw(livingTexture, livingScreenLocation);
                             //TODO: Fix above line
                         }
                     }
@@ -85,37 +88,5 @@ namespace MagicalLifeGUIWindows.Rendering.Map
                 MapDrawer.Draw(AssetManager.Textures[AssetManager.NameToIndex[TextureLoader.GUIPickaxeMapIcon]], x32Target);
             }
         }
-
-        //private static void DrawItems(Tile tile, Rectangle target)
-        //{
-        //    if (tile.Item != null)
-        //    {
-        //        Texture2D texture = AssetManager.Textures[tile.Item.TextureIndex];
-        //        MapDrawer.Draw(texture, target);
-        //    }
-        //}
-
-        /// <summary>
-        /// Draws stone if it is present in the tile.
-        /// </summary>
-        /// <param name="tile"></param>
-        /// <param name="spBatch"></param>
-        /// <param name="target"></param>
-        //private static void DrawStone(Tile tile, Rectangle target)
-        //{
-        //    if (tile.Resources != null)
-        //    {
-        //        switch (tile.Resources)
-        //        {
-        //            case StoneBase stone:
-        //                Texture2D stoneTexture = AssetManager.Textures[AssetManager.GetTextureIndex(stone.GetUnconnectedTexture())];
-        //                MapDrawer.Draw(stoneTexture, target);
-        //                break;
-
-        //            default:
-        //                break;
-        //        }
-        //    }
-        //}
     }
 }

@@ -21,7 +21,7 @@ namespace MagicalLifeAPI.Error
 
             if (Debugger.IsAttached)
             {
-                Debugger.Break();
+                //Debugger.Break();
             }
         }
 
@@ -31,7 +31,7 @@ namespace MagicalLifeAPI.Error
 
             if (Debugger.IsAttached)
             {
-                Debugger.Break();
+                //Debugger.Break();
             }
         }
     }

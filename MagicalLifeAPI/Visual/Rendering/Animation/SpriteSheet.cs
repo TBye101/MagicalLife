@@ -73,8 +73,8 @@ namespace MagicalLifeAPI.Visual.Animation
         /// <returns></returns>
         public Rectangle GetSection(int frame)
         {
-            int xPosition = frame / this.SheetWidth;
-            int yPosition = frame % this.SheetWidth;
+            int xPosition = frame % this.SheetWidth;
+            int yPosition = frame / this.SheetWidth;
 
             int x = xPosition * this.SpritePixelWidth;
             int y = yPosition * this.SpritePixelHeight;
