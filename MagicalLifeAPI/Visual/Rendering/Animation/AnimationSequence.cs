@@ -77,7 +77,7 @@ namespace MagicalLifeAPI.Visual.Rendering.Animation
                 this.CurrentFrame++;
                 Log.Debug("Frame after: " + this.CurrentFrame.ToString());
 
-                if (this.CurrentFrame > this.FrameOrder.Length)
+                if (this.CurrentFrame == this.FrameOrder.Length)
                 {
                     this.ResetToBeginning();
                     return true;
