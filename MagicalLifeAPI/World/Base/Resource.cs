@@ -1,7 +1,9 @@
-﻿using MagicalLifeAPI.Components.Resource;
+﻿using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.Components.Resource;
 using MagicalLifeAPI.DataTypes.Attribute;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking;
+using MagicalLifeAPI.Visual.Rendering;
 using MagicalLifeAPI.World.Resources;
 using ProtoBuf;
 using System;
@@ -15,7 +17,7 @@ namespace MagicalLifeAPI.World.Base
     /// </summary>
     [ProtoContract]
     [ProtoInclude(1, typeof(StoneBase))]
-    public abstract class Resource : HasTexture, IHasSubclasses, IMinable
+    public abstract class Resource : HasTexture, IHasSubclasses, IMinable, IRenderable
     {
         public Resource(string name, int durability)
         {
@@ -59,5 +61,7 @@ namespace MagicalLifeAPI.World.Base
             };
             return ret;
         }
+
+        public abstract List<AbstractVisual> GetVisuals();
     }
 }

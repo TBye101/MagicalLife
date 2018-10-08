@@ -1,6 +1,8 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Registry.ItemRegistry;
+using MagicalLifeAPI.Visual.Rendering;
 using MagicalLifeAPI.World.Items;
 using ProtoBuf;
 using System;
@@ -14,7 +16,7 @@ namespace MagicalLifeAPI.World.Base
     /// </summary>
     [ProtoContract]
     [ProtoInclude(7, typeof(StoneRubble))]
-    public abstract class Item : HasTexture
+    public abstract class Item : HasTexture, IRenderable
     {
         /// <summary>
         /// The name of this <see cref="Item"/>.
@@ -124,5 +126,7 @@ namespace MagicalLifeAPI.World.Base
                 throw new InvalidOperationException("Error: Combining two items of different types is impossible to store.");
             }
         }
+
+        public abstract List<AbstractVisual> GetVisuals();
     }
 }

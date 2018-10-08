@@ -1,4 +1,6 @@
-﻿using MagicalLifeAPI.Components.Resource;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.Components.Resource;
 using MagicalLifeAPI.World.Items;
 using ProtoBuf;
 using System.Collections.Generic;
@@ -28,6 +30,16 @@ namespace MagicalLifeAPI.World.Resources
         public override string GetUnconnectedTexture()
         {
             return "Stone";
+        }
+
+        public override List<AbstractVisual> GetVisuals()
+        {
+            List<AbstractVisual> visuals = new List<AbstractVisual>
+            {
+                new StaticTexture(AssetManager.NameToIndex["Stone"], RenderLayer.Stone)
+            };
+
+            return visuals;
         }
     }
 }

@@ -16,7 +16,7 @@ namespace MagicalLifeAPI.World.Base
     [ProtoContract]
     [ProtoInclude(8, typeof(Dirt))]
     [ProtoInclude(9, typeof(Grass))]
-    public abstract class Tile : Selectable, IHasSubclasses, IRenderable
+    public abstract class Tile : Selectable, IHasSubclasses, IRenderContainer
     {
         [ProtoMember(1)]
         private ComponentRenderer Renderable { get; set; }
@@ -45,11 +45,61 @@ namespace MagicalLifeAPI.World.Base
             return new Point2D(64, 64);
         }
 
+        [ProtoMember(4)]
+        private Resource resources;
+
         /// <summary>
         /// The resources that can be found in this tile.
         /// </summary>
-        [ProtoMember(4)]
-        public Resource Resources { get; set; }
+        public Resource Resources
+        {
+            get
+            {
+                return this.resources;
+            }
+
+            set
+            {
+                if (this.resources == null)
+                {
+                    this.resources = value;
+                    
+                    if (value != null)
+                    {
+                        this.CompositeRenderer.AddVisuals(value.GetVisuals());
+                    }
+
+                    return;
+                }
+
+                List<AbstractVisual> oldVisuals = this.resources.GetVisuals();
+
+                if (value == null)
+                {
+                    this.RemoveVisual(oldVisuals);
+                }
+                else
+                {
+                    List<AbstractVisual> newVisuals = value.GetVisuals();
+
+                    if (this.IsVisualDifferent(oldVisuals, newVisuals))
+                    {
+                        this.RemoveVisual(oldVisuals);
+                    }
+                    this.CompositeRenderer.AddVisuals(newVisuals);
+                }
+
+                this.resources = value;
+            }
+        }
+
+        private void RemoveVisual(List<AbstractVisual> visuals)
+        {
+            foreach (AbstractVisual item in visuals)
+            {
+                this.CompositeRenderer.RenderQueue.Visuals.Remove(item);
+            }
+        }
 
         //public List<Vegetation> Plants { get; set; } = new List<Vegetation>();
 
@@ -83,11 +133,6 @@ namespace MagicalLifeAPI.World.Base
         public Tile(int x, int y, int movementCost, int footStepSound)
             : this(new Point2D(x, y), movementCost, footStepSound)
         {
-        }
-
-        public object GetRenderable()
-        {
-            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -146,6 +191,27 @@ namespace MagicalLifeAPI.World.Base
         public override SelectionType InGameObjectType(Selectable selectable)
         {
             return SelectionType.Tile;
+        }
+
+        private bool IsVisualDifferent(List<AbstractVisual> visual, List<AbstractVisual> visual2)
+        {
+            if (visual.Count != visual.Count)
+            {
+                return true;
+            }
+
+            for (int i = 0; i < visual.Count; i++)
+            {
+                if (visual[i].Equals(visual2))
+                {
+                }
+                else
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

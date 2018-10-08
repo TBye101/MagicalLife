@@ -13,5 +13,9 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
     {
         public static readonly int DirtBase = 0;
         public static readonly int GrassBase = 1;
+
+        public static readonly int Items = 500;
+
+        public static readonly int Stone = 1000;
     }
 }

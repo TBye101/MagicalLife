@@ -1,17 +1,18 @@
-﻿using ProtoBuf;
+﻿using MagicalLifeAPI.Components.Generic.Renderable;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace MagicalLifeAPI.Components.Generic.Renderable
+namespace MagicalLifeAPI.Visual.Rendering
 {
     /// <summary>
-    /// Anything that implements this has a texture that can be rendered.
+    /// Things that implement this are renderable.
     /// </summary>
-    [ProtoContract]
     public interface IRenderable
     {
-        /// <summary>
-        /// Returns the an instance of <see cref="AbstractRenderable"/> that knows what to render, and when.
-        /// </summary>
-        /// <returns></returns>
-        ComponentRenderer CompositeRenderer { get; set; }
+        /// <returns>Returns the visual layers to be rendered for this object.</returns>
+        List<AbstractVisual> GetVisuals();
     }
 }

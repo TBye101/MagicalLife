@@ -101,6 +101,7 @@
     <Compile Include="Asset\AssetManager.cs" />
     <Compile Include="Comparators\ItemComparator.cs" />
     <Compile Include="Visual\Rendering\IRenderable.cs" />
+    <Compile Include="Visual\Rendering\IRenderContainer.cs" />
     <Compile Include="Visual\Rendering\Animation\AnimatedTexture.cs" />
     <Compile Include="Visual\Rendering\Animation\AnimationSequence.cs" />
     <Compile Include="Visual\Rendering\Animation\XML\XMLLayer.cs" />

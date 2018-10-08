@@ -1,4 +1,8 @@
-﻿using MagicalLifeAPI.World.Base;
+﻿using System.Collections.Generic;
+using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.Visual.Rendering;
+using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 
 namespace MagicalLifeAPI.World.Items
@@ -21,6 +25,14 @@ namespace MagicalLifeAPI.World.Items
 
         public StoneRubble()
         {
+        }
+
+        public override List<AbstractVisual> GetVisuals()
+        {
+            List<AbstractVisual> visuals = new List<AbstractVisual>();
+            visuals.Add(new StaticTexture(AssetManager.NameToIndex["StoneRubble_01"], RenderLayer.Items));
+
+            return visuals;
         }
     }
 }
