@@ -40,6 +40,12 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         public bool HasFinished = true;
 
         /// <summary>
+        /// The index of the last played frame.
+        /// </summary>
+        [ProtoMember(5)]
+        public int lastFrame = 0;
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="priority"></param>
@@ -60,10 +66,17 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
 
         public override void Render(MapBatch batch, Point2D ScreenTopLeft)
         {
-            if (this.PlayingSequence != -1)
+            if (this.PlayingSequence == -1)
+            {
+                batch.Draw(this.AnimationFrames.Sprites, ScreenTopLeft, this.AnimationFrames.GetSection(this.lastFrame));
+            }
+            else
             {
                 bool isDone = this.Sequences[this.PlayingSequence].Tick(out int frame);
+
+                this.lastFrame = frame;
                 this.HasFinished = isDone;
+
                 batch.Draw(this.AnimationFrames.Sprites, ScreenTopLeft, this.AnimationFrames.GetSection(frame));
 
                 if (this.HasFinished)
