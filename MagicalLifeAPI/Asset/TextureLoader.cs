@@ -58,6 +58,7 @@ namespace MagicalLifeAPI.Asset
 
         private void Prepare()
         {
+            this.TexturesToLoad.Add("Character/Character");
             this.TexturesToLoad.Add(GUIListBoxItemBackground);
             this.TexturesToLoad.Add(GUIPickaxeButtonGold);
             this.TexturesToLoad.Add(GUIPickaxeButtonGrey);

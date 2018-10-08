@@ -22,7 +22,7 @@ namespace MagicalLifeAPI.Entity.Humanoid
 
         public override string GetTextureName()
         {
-            return "Basic Human";
+            return "Character/Character";
         }
 
         public override SelectionType InGameObjectType(Selectable selectable)

@@ -52,11 +52,11 @@ namespace MagicalLifeAPI.World.Resources
 
             if (r == 0)
             {
-                ret = TextureLoader.TextureStoneRubble1;
+                ret = TextureLoader.TextureStone1;
             }
             else
             {
-                ret = TextureLoader.TextureStoneRubble2;
+                ret = TextureLoader.TextureStone2;
             }
 
             return ret;
