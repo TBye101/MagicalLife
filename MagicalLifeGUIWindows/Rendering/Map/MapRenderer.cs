@@ -52,13 +52,8 @@ namespace MagicalLifeGUIWindows.Rendering.Map
                     {
                         if (item.Value != null)
                         {
-                            Point2D livingScreenLocation = new Point2D((int)item.Value.ScreenLocation.X * Tile.GetTileSize().X, (int)item.Value.ScreenLocation.Y * Tile.GetTileSize().Y);
+                            Point2D livingScreenLocation = new Point2D((int)item.Value.ScreenLocation.X, (int)item.Value.ScreenLocation.Y);
                             item.Value.Visual.Render(MapDrawer, livingScreenLocation);
-
-                            //Texture2D livingTexture = AssetManager.Textures[AssetManager.GetTextureIndex(item.Value.GetTextureName())];
-
-                            //MapDrawer.Draw(livingTexture, livingScreenLocation);
-                            //TODO: Fix above line
                         }
                     }
                 }
@@ -70,18 +65,12 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// </summary>
         private static void DrawTile(Tile tile, Point2D start)
         {
-
             Microsoft.Xna.Framework.Rectangle target = new Microsoft.Xna.Framework.Rectangle(start, RenderInfo.tileSize);
 
             //A target location for 32x textures to be centered in the tile, without being enlarged.
             Rectangle x32Target = new Rectangle(start.X + 16, start.Y + 16, 32, 32);
 
             tile.CompositeRenderer.Render(MapDrawer, start);
-
-            //MapDrawer.Draw(AssetManager.Textures[tile.GetRenderable().TextureID], target);
-
-            //DrawStone(tile, target);
-            //DrawItems(tile, target);
 
             if (tile.ImpendingAction == MagicalLifeAPI.Entity.AI.Task.ActionSelected.Mine)
             {

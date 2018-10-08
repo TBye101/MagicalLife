@@ -7,6 +7,7 @@ using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util.Reusable;
+using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 using System;
 
@@ -89,7 +90,7 @@ namespace MagicalLifeAPI.Entity
             this.Health = new Attribute32(health);
             this.Movement = new AttributeFloat(movementSpeed);
             this.MapLocation = location;
-            this.ScreenLocation = new Point2DFloat(location.X, location.Y);
+            this.ScreenLocation = new Point2DFloat(location.X * Tile.GetTileSize().X, location.Y * Tile.GetTileSize().Y);
             this.Dimension = dimension;
             Living.LivingCreatedHandler(new LivingEventArg(this, location));
             this.FootStepTimer = new TickTimer(5);

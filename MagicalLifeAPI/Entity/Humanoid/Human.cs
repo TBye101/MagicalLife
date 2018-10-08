@@ -59,7 +59,7 @@ namespace MagicalLifeAPI.Entity.Humanoid
 
         private AnimationSequence[] GetSequences()
         {
-            int fps = 3;
+            int fps = 6;
 
             AnimationSequence down = new AnimationSequence(Human.DownSequenceFrames, fps);
             AnimationSequence left = new AnimationSequence(Human.LeftSequenceFrames, fps);

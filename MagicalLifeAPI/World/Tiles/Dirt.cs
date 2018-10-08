@@ -14,7 +14,7 @@ namespace MagicalLifeAPI.World.Tiles
     {
         public override ComponentRenderer CompositeRenderer { get; set; }
 
-        public Dirt(Point2D location) : base(location, 50, 0)
+        public Dirt(Point2D location) : base(location, 10, 0)
         {
             this.CompositeRenderer = new ComponentRenderer();
             this.CompositeRenderer.RenderQueue.Visuals.Add(new StaticTexture(Dirt.GetTextureID(), RenderLayer.DirtBase));
