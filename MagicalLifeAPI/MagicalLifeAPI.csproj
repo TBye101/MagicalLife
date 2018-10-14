@@ -100,6 +100,7 @@
   <ItemGroup>
     <Compile Include="Asset\AssetManager.cs" />
     <Compile Include="Comparators\ItemComparator.cs" />
+    <Compile Include="Util\Reusable\FrameCounter.cs" />
     <Compile Include="Visual\Rendering\Animation\XMLPaths.cs" />
     <Compile Include="Visual\Rendering\IRenderable.cs" />
     <Compile Include="Visual\Rendering\IRenderContainer.cs" />

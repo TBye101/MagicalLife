@@ -1,9 +1,11 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Load;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Universal;
+using MagicalLifeAPI.Util.Reusable;
 using MagicalLifeAPI.Visual.Animation;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.GUI.In;
@@ -35,6 +37,8 @@ namespace MagicalLifeGUIWindows
         /// If true, then we are done displaying splash screens.
         /// </summary>
         internal static bool SplashDone { get; set; } = false;
+
+        public static FrameCounter FPS = new FrameCounter();
 
         public Game1()
         {
@@ -129,6 +133,11 @@ namespace MagicalLifeGUIWindows
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            FPS.Update(deltaTime);
+            //MasterLog.DebugWriteLine("Average FPS: " + FPS.AverageFramesPerSecond.ToString());
+            //MasterLog.DebugWriteLine("Current FPS: " + FPS.CurrentFramesPerSecond.ToString());
+
             this.DisplayInGame();
             FMODUtil.System.update();
 
