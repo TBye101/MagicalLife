@@ -71,8 +71,6 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// </summary>
         private static void DrawTile(Tile tile, Point2D start)
         {
-            Microsoft.Xna.Framework.Rectangle target = new Microsoft.Xna.Framework.Rectangle(start, RenderInfo.tileSize);
-
             //A target location for 32x textures to be centered in the tile, without being enlarged.
             Rectangle x32Target = new Rectangle(start.X + 16, start.Y + 16, 32, 32);
 

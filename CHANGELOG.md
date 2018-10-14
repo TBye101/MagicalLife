@@ -11,6 +11,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 * Job system is now client side
 * Job system now has enhanced support for dependencies
 * Job system now has enhanced support for "bound" (same worker) jobs
+* Graphics API reworked to support animations, as well as any future different types of rendering
 
 #### Server
 * The newgame command now requires a 3rd parameter, the world's name
@@ -26,12 +27,16 @@ SneakyTactician  <SneakyTactician@outlook.com>
 * Stone rubble texture has been replaced
 * Pickaxe icon in map when tile is queue up to be mined has changed
 * Added the ability to zoom in
+* Characters now have new texture
+* Characters now have animations
 
 #### Sound
 
 #### Bugs
 
 * Fixed a mining command bug
+* Fixed a memory Leak
+
 ---
 
 ## [Version 0.0.9]
@@ -45,7 +50,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 * Added internal support for sfx/sound events
 
 #### Server
-* Seperated server loading and server starting into two seperate commands
+* Separated server loading and server starting into two separate commands
 * Now handles player connections and disconnections in a safer way
 
 #### GUI

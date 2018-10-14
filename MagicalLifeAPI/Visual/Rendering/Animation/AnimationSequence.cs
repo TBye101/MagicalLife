@@ -20,13 +20,13 @@ namespace MagicalLifeAPI.Visual.Rendering.Animation
         /// Holds a collection of numbers that specify what frame number is to be displayed next.
         /// </summary>
         [ProtoMember(1)]
-        public int[] FrameOrder;
+        public int[] FrameOrder { get; private set; }
 
         /// <summary>
         /// The target FPS for this animation.
         /// </summary>
         [ProtoMember(2)]
-        public int FPS;
+        public int FPS { get; private set; }
 
         /// <summary>
         /// Used to determine when to change frames.
@@ -35,7 +35,7 @@ namespace MagicalLifeAPI.Visual.Rendering.Animation
         private TickTimer FrameTimer;
 
         [ProtoMember(4)]
-        private int CurrentFrame = 0;
+        private int CurrentFrame;
 
         /// <param name="frameOrder">The order the frames should be played in.</param>
         /// <param name="FPS">The target FPS for this animation.</param>

@@ -14,7 +14,9 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         /// </summary>
         public static readonly Point tileSize = MagicalLifeAPI.World.Base.Tile.GetTileSize();
 
-        public static readonly Rectangle FullScreenWindow = new Rectangle(new Point(0, 0), new Point(MagicalLifeSettings.Storage.MainWindow.Default.ScreenSize.Width, MagicalLifeSettings.Storage.MainWindow.Default.ScreenSize.Height));
+        public static readonly Rectangle FullScreenWindow = 
+            new Rectangle(new Point(0, 0),
+            new Point(MagicalLifeSettings.Storage.MainWindow.Default.ScreenSize.Width, MagicalLifeSettings.Storage.MainWindow.Default.ScreenSize.Height));
 
         /// <summary>
         /// The standard color mask to apply to all tiles.
@@ -24,12 +26,12 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         /// <summary>
         /// The x offset of the view due to the player moving the camera around the map.
         /// </summary>
-        public static int XViewOffset { get; set; } = 0;
+        public static int XViewOffset { get; set; }
 
         /// <summary>
         /// The y offset of the view due to the player moving the camera around the map.
         /// </summary>
-        public static int YViewOffset { get; set; } = 0;
+        public static int YViewOffset { get; set; }
 
         /// <summary>
         /// The zoom level of the map.
@@ -39,11 +41,11 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         /// <summary>
         /// The currently viewed dimension.
         /// </summary>
-        public static int Dimension { get; set; } = 0;
+        public static int Dimension { get; set; }
 
         /// <summary>
         /// The game's current FPS.
         /// </summary>
-        public static int GameFPS = 60;
+        public static int GameFPS { get; private set; } = 60;
     }
 }

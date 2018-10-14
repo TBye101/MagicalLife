@@ -15,10 +15,6 @@ namespace MagicalLifeAPI.Visual.Animation
         private static readonly string XPathTileWidth = "/tilemap/@tilewidth";
         private static readonly string XPathTileHeight = "/tilemap/@tileheight";
 
-        public SpriteSheetReader()
-        {
-        }
-
         /// <summary>
         /// Reads the XML file describing the spritesheet.
         /// </summary>

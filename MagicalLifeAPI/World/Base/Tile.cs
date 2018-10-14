@@ -93,14 +93,6 @@ namespace MagicalLifeAPI.World.Base
             }
         }
 
-        private void RemoveVisual(List<AbstractVisual> visuals)
-        {
-            foreach (AbstractVisual item in visuals)
-            {
-                this.CompositeRenderer.RenderQueue.Visuals.Remove(item);
-            }
-        }
-
         //public List<Vegetation> Plants { get; set; } = new List<Vegetation>();
 
         /// <summary>
@@ -121,7 +113,7 @@ namespace MagicalLifeAPI.World.Base
         /// </summary>
         /// <param name="location">The 3D location of this tile in the map.</param>
         /// <param name="movementCost">This value is the movement cost of walking on this tile. It should be between 1 and 100</param>
-        public Tile(Point2D location, int movementCost, int footStepSound)
+        protected Tile(Point2D location, int movementCost, int footStepSound)
         {
             this.MapLocation = location;
             this.MovementCost = movementCost;
@@ -130,7 +122,7 @@ namespace MagicalLifeAPI.World.Base
             this.FootStepSound = footStepSound;
         }
 
-        public Tile(int x, int y, int movementCost, int footStepSound)
+        protected Tile(int x, int y, int movementCost, int footStepSound)
             : this(new Point2D(x, y), movementCost, footStepSound)
         {
         }
@@ -166,6 +158,14 @@ namespace MagicalLifeAPI.World.Base
             TileModified?.Invoke(this, e);
         }
 
+        private void RemoveVisual(List<AbstractVisual> visuals)
+        {
+            foreach (AbstractVisual item in visuals)
+            {
+                this.CompositeRenderer.RenderQueue.Visuals.Remove(item);
+            }
+        }
+
         public Dictionary<Type, int> GetSubclassInformation()
         {
             Dictionary<Type, int> ret = new Dictionary<Type, int>
@@ -195,17 +195,14 @@ namespace MagicalLifeAPI.World.Base
 
         private bool IsVisualDifferent(List<AbstractVisual> visual, List<AbstractVisual> visual2)
         {
-            if (visual.Count != visual.Count)
+            if (visual.Count != visual2.Count)
             {
                 return true;
             }
 
             for (int i = 0; i < visual.Count; i++)
             {
-                if (visual[i].Equals(visual2))
-                {
-                }
-                else
+                if (!visual[i].Equals(visual2))
                 {
                     return true;
                 }

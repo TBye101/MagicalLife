@@ -32,12 +32,12 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         [ProtoMember(2)]
         public Point2D RelativeTopLeft { get; set; }
 
-        public AbstractVisual(int priority)
+        protected AbstractVisual(int priority)
         {
             this.Priority = priority;
         }
 
-        public AbstractVisual()
+        protected AbstractVisual()
         {
 
         }

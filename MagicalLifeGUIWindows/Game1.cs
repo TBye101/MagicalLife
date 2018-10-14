@@ -38,7 +38,7 @@ namespace MagicalLifeGUIWindows
         /// </summary>
         internal static bool SplashDone { get; set; } = false;
 
-        public static FrameCounter FPS = new FrameCounter();
+        public static FrameCounter FPS { get; private set; } = new FrameCounter();
 
         public Game1()
         {
@@ -135,8 +135,6 @@ namespace MagicalLifeGUIWindows
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             FPS.Update(deltaTime);
-            //MasterLog.DebugWriteLine("Average FPS: " + FPS.AverageFramesPerSecond.ToString());
-            //MasterLog.DebugWriteLine("Current FPS: " + FPS.CurrentFramesPerSecond.ToString());
 
             this.DisplayInGame();
             FMODUtil.System.update();
@@ -197,7 +195,6 @@ namespace MagicalLifeGUIWindows
                     zoomBatch.End();
                 }
             }
-            //zoomBatch.Dispose();
             base.Draw(gameTime);
         }
 

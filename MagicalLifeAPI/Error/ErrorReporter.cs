@@ -18,21 +18,11 @@ namespace MagicalLifeAPI.Error
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             Log.Error((Exception)e.ExceptionObject, "Unhandled exception: ");
-
-            if (Debugger.IsAttached)
-            {
-                //Debugger.Break();
-            }
         }
 
         private static void CurrentDomain_FirstChanceException(object sender, System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs e)
         {
             Log.Error(e.Exception, "First chance exception: ");
-
-            if (Debugger.IsAttached)
-            {
-                //Debugger.Break();
-            }
         }
     }
 }

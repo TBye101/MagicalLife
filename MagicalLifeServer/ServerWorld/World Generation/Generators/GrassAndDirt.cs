@@ -72,13 +72,6 @@ namespace MagicalLifeServer.ServerWorld.World
 
         protected override void GenerateNaturalFeatures(ProtoArray<Chunk> map, Random random)
         {
-            foreach (Chunk item in map)
-            {
-                foreach (Tile tile in item)
-                {
-                    //tile.GetRenderable().CalculateTexture(item.Tiles, tile.MapLocation);
-                }
-            }
         }
 
         protected override void GenerateStructures(ProtoArray<Chunk> map, Random random)

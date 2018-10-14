@@ -38,13 +38,13 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         private int PlayingSequence = -1;
 
         [ProtoMember(4)]
-        public bool HasFinished = true;
+        public bool HasFinished { get; private set; } = true;
 
         /// <summary>
         /// The index of the last played frame.
         /// </summary>
         [ProtoMember(5)]
-        public int lastFrame = 0;
+        public int LastFrame { get; private set; }
 
         /// <summary>
         /// 
@@ -69,14 +69,14 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         {
             if (this.PlayingSequence == -1)
             {
-                batch.Draw(this.AnimationFrames.Sprites, ScreenTopLeft, this.AnimationFrames.GetSection(this.lastFrame));
+                batch.Draw(this.AnimationFrames.Sprites, ScreenTopLeft, this.AnimationFrames.GetSection(this.LastFrame));
             }
             else
             {
                 bool isDone = this.Sequences[this.PlayingSequence].Tick(out int frame);
                 Log.Debug("Shifting to frame: " + frame.ToString());
 
-                this.lastFrame = frame;
+                this.LastFrame = frame;
                 this.HasFinished = isDone;
 
                 batch.Draw(this.AnimationFrames.Sprites, ScreenTopLeft, this.AnimationFrames.GetSection(frame));

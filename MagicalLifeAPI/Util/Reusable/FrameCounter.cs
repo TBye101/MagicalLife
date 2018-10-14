@@ -18,13 +18,9 @@ namespace MagicalLifeAPI.Util.Reusable
         public float AverageFramesPerSecond { get; private set; }
         public float CurrentFramesPerSecond { get; private set; }
 
-        public const int MAXIMUM_SAMPLES = 100;
+        public static readonly int MAXIMUM_SAMPLES = 100;
 
         private readonly Queue<float> SampleBuffer = new Queue<float>();
-
-        public FrameCounter()
-        {
-        }
 
         public bool Update(float deltaTime)
         {

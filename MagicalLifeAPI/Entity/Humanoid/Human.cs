@@ -23,7 +23,7 @@ namespace MagicalLifeAPI.Entity.Humanoid
         /// <summary>
         /// The ID of the animation sequences that can be triggered.
         /// </summary>
-        public static readonly int DownSequence = 0;
+        public static readonly int DownSequence;
 
         /// <summary>
         /// The ID of the animation sequences that can be triggered.

@@ -6,7 +6,9 @@ namespace MagicalLifeGUIWindows.GUI.Join
 {
     public class IPInputBox : MonoInputBox
     {
-        public IPInputBox(bool isLocked) : base(TextureLoader.GUIInputBox100x50, TextureLoader.GUICursorCarrot, GetInitialLocation(), int.MaxValue, TextureLoader.FontMainMenuFont12x, isLocked, Rendering.Text.SimpleTextRenderer.Alignment.Left, true)
+        public IPInputBox(bool isLocked)
+            : base(TextureLoader.GUIInputBox100x50, TextureLoader.GUICursorCarrot, GetInitialLocation(),
+                  int.MaxValue, TextureLoader.FontMainMenuFont12x, isLocked, Rendering.Text.SimpleTextRenderer.Alignment.Left, true)
         {
         }
 

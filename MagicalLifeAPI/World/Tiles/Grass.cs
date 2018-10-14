@@ -28,9 +28,6 @@ namespace MagicalLifeAPI.World.Tiles
 
             switch (r)
             {
-                case 0:
-                    ret = TextureLoader.TextureGrass1;
-                    break;
                 case 1:
                     ret = TextureLoader.TextureGrass2;
                     break;
