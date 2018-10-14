@@ -12,6 +12,7 @@ using MagicalLifeGUIWindows.Rendering.Map;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ProtoBuf;
+using Serilog;
 
 namespace MagicalLifeAPI.Components.Generic.Renderable
 {
@@ -73,6 +74,7 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
             else
             {
                 bool isDone = this.Sequences[this.PlayingSequence].Tick(out int frame);
+                Log.Debug("Shifting to frame: " + frame.ToString());
 
                 this.lastFrame = frame;
                 this.HasFinished = isDone;

@@ -9,6 +9,7 @@ using MagicalLifeAPI.World.Resources;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MagicalLifeGUIWindows.Rendering.Map
 {
@@ -49,8 +50,11 @@ namespace MagicalLifeGUIWindows.Rendering.Map
                 {
                     Chunk chunk = World.Dimensions[dimension].GetChunk(x, y);
 
-                    foreach (KeyValuePair<System.Guid, Living> item in chunk.Creatures)
+                    int length = chunk.Creatures.Count;
+                    for (int i = 0; i < length; i++)
                     {
+                        KeyValuePair<System.Guid, Living> item = chunk.Creatures.ElementAt(i);
+
                         if (item.Value != null)
                         {
                             Point2D livingScreenLocation = new Point2D((int)(item.Value.ScreenLocation.X * Tile.GetTileSize().X), (int)(item.Value.ScreenLocation.Y * Tile.GetTileSize().Y));

@@ -142,56 +142,62 @@ namespace MagicalLifeGUIWindows
             FMODUtil.System.update();
 
             //Used to render things to a buffer that will have a zoom multiplier applied before rendering.
-            SpriteBatch zoomBatch = new SpriteBatch(this.GraphicsDevice);
-            RenderTarget2D target = new RenderTarget2D(this.GraphicsDevice, RenderInfo.FullScreenWindow.Width, RenderInfo.FullScreenWindow.Height);
-            this.GraphicsDevice.SetRenderTarget(target);
 
-            this.GraphicsDevice.Clear(Color.Black);
-
-
-
-            if (Game1.SplashDone)
+            using (SpriteBatch zoomBatch = new SpriteBatch(this.GraphicsDevice))
             {
-                zoomBatch.Begin();
-                RenderingPipe.DrawScreen(zoomBatch);
-                zoomBatch.End();
-            }
-            else
-            {
-                int length = Game1.SplashScreens.Count;
-                for (int i = 0; i < length; i++)
+                using (RenderTarget2D target = new RenderTarget2D(this.GraphicsDevice, RenderInfo.FullScreenWindow.Width, RenderInfo.FullScreenWindow.Height))
                 {
-                    LogoScreen item = Game1.SplashScreens[i];
-                    if (!item.Done())
+                    this.GraphicsDevice.SetRenderTarget(target);
+
+                    this.GraphicsDevice.Clear(Color.Black);
+
+
+
+                    if (Game1.SplashDone)
                     {
-                        item.Draw(ref zoomBatch);
-                        break;
+                        zoomBatch.Begin();
+                        RenderingPipe.DrawScreen(zoomBatch);
+                        zoomBatch.End();
+                    }
+                    else
+                    {
+                        int length = Game1.SplashScreens.Count;
+                        for (int i = 0; i < length; i++)
+                        {
+                            LogoScreen item = Game1.SplashScreens[i];
+                            if (!item.Done())
+                            {
+                                item.Draw(zoomBatch);
+                                break;
+                            }
+
+                            if (i == length - 1)
+                            {
+                                Game1.SplashDone = true;
+
+                                //Initialize main menu
+                                GUI.MainMenu.MainMenu.Initialize();
+                                this.IsMouseVisible = true;
+                            }
+                        }
                     }
 
-                    if (i == length - 1)
-                    {
-                        Game1.SplashDone = true;
+                    //set rendering back to the back buffer
+                    this.GraphicsDevice.SetRenderTarget(null);
 
-                        //Initialize main menu
-                        GUI.MainMenu.MainMenu.Initialize();
-                        this.IsMouseVisible = true;
-                    }
+                    //render target to back buffer
+                    zoomBatch.Begin();
+
+                    int width = (int)(this.GraphicsDevice.DisplayMode.Width * RenderInfo.Zoom);
+                    int height = (int)(this.GraphicsDevice.DisplayMode.Height * RenderInfo.Zoom);
+
+                    zoomBatch.Draw(target, new Rectangle(0, 0, width, height), Color.White);
+                    RenderingPipe.DrawGUI(zoomBatch);
+
+                    zoomBatch.End();
                 }
             }
-
-            //set rendering back to the back buffer
-            this.GraphicsDevice.SetRenderTarget(null);
-
-            //render target to back buffer
-            zoomBatch.Begin();
-
-            int width = (int)(this.GraphicsDevice.DisplayMode.Width * RenderInfo.Zoom);
-            int height = (int)(this.GraphicsDevice.DisplayMode.Height * RenderInfo.Zoom);
-
-            zoomBatch.Draw(target, new Rectangle(0, 0, width, height), Color.White);
-            RenderingPipe.DrawGUI(zoomBatch);
-            zoomBatch.End();
-
+            //zoomBatch.Dispose();
             base.Draw(gameTime);
         }
 

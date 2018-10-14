@@ -67,7 +67,7 @@ namespace MagicalLifeGUIWindows.Screens
             return this.Frames <= 0;
         }
 
-        public void Draw(ref SpriteBatch spBatch)
+        public void Draw(SpriteBatch spBatch)
         {
             spBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
 
