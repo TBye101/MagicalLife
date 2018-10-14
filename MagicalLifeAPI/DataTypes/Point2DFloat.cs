@@ -1,4 +1,5 @@
 ﻿using ProtoBuf;
+using System.Globalization;
 
 namespace MagicalLifeAPI.DataTypes
 {
@@ -19,7 +20,7 @@ namespace MagicalLifeAPI.DataTypes
 
         public override string ToString()
         {
-            return "{ " + this.X.ToString() + ", " + this.Y.ToString() + " }";
+            return "{ " + this.X.ToString(CultureInfo.InvariantCulture) + ", " + this.Y.ToString(CultureInfo.InvariantCulture) + " }";
         }
     }
 }

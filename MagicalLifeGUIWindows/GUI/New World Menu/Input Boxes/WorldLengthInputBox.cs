@@ -9,7 +9,10 @@ namespace MagicalLifeGUIWindows.GUI.New
     /// </summary>
     public class WorldLengthInputBox : MonoInputBox
     {
-        public WorldLengthInputBox(bool isLocked) : base(TextureLoader.GUIInputBox100x50, TextureLoader.GUICursorCarrot, GetInitialLocation(), int.MaxValue, TextureLoader.FontMainMenuFont12x, isLocked, Rendering.Text.SimpleTextRenderer.Alignment.Left, true)
+        public WorldLengthInputBox(bool isLocked)
+            : base(TextureLoader.GUIInputBox100x50, TextureLoader.GUICursorCarrot, GetInitialLocation(),
+                  int.MaxValue, TextureLoader.FontMainMenuFont12x, isLocked, 
+                  Rendering.Text.SimpleTextRenderer.Alignment.Left, true)
         {
         }
 
