@@ -11,10 +11,10 @@ namespace MagicalLifeGUIWindows.GUI.In
         protected int GreyTextureIndex;
         protected int GoldTextureIndex;
 
-        public MineActionButton() : base("GUI/PickaxeButton_Grey", GetDisplayArea(), true)
+        public MineActionButton() : base(TextureLoader.GUIPickaxeButtonGrey, GetDisplayArea(), true)
         {
-            this.GreyTextureIndex = AssetManager.GetTextureIndex("GUI/PickaxeButton_Grey");
-            this.GoldTextureIndex = AssetManager.GetTextureIndex("GUI/PickaxeButton_Gold");
+            this.GreyTextureIndex = AssetManager.GetTextureIndex(TextureLoader.GUIPickaxeButtonGrey);
+            this.GoldTextureIndex = AssetManager.GetTextureIndex(TextureLoader.GUIPickaxeButtonGold);
         }
 
         private static Rectangle GetDisplayArea()

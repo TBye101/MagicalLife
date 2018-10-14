@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Base;
 
 namespace MagicalLifeAPI.World.Tiles
@@ -11,8 +12,12 @@ namespace MagicalLifeAPI.World.Tiles
     [ProtoBuf.ProtoContract]
     public class Dirt : Tile
     {
-        public Dirt(Point2D location) : base(location, 10, new StaticTexture(GetTextureID()), 0)
+        public override ComponentRenderer CompositeRenderer { get; set; }
+
+        public Dirt(Point2D location) : base(location, 10, 0)
         {
+            this.CompositeRenderer = new ComponentRenderer();
+            this.CompositeRenderer.RenderQueue.Visuals.Add(new StaticTexture(Dirt.GetTextureID(), RenderLayer.DirtBase));
         }
 
         public Dirt(int x, int y) : this(new Point2D(x, y))
@@ -23,14 +28,40 @@ namespace MagicalLifeAPI.World.Tiles
         {
         }
 
+        protected static ComponentRenderer GetRenderer()
+        {
+            ComponentRenderer renderer = new ComponentRenderer();
+            StaticTexture texture = new StaticTexture(GetTextureID(), RenderLayer.DirtBase);
+
+            renderer.RenderQueue.Visuals.Add(texture);
+            return renderer;
+        }
+
         public override string GetName()
         {
             return "Dirt";
         }
 
-        private static int GetTextureID()
+        public static int GetTextureID()
         {
-            return AssetManager.GetTextureIndex("Dirt");
+            return AssetManager.GetTextureIndex(GetRandomDirtTexture());
+        }
+
+        private static string GetRandomDirtTexture()
+        {
+            int r = StaticRandom.Rand(0, 2);
+            string ret;
+
+            if (r == 0)
+            {
+                ret = TextureLoader.TextureDirt1;
+            }
+            else
+            {
+                ret = TextureLoader.TextureDirt2;
+            }
+
+            return ret;
         }
     }
 }

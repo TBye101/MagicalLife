@@ -1,4 +1,6 @@
-﻿using MagicalLifeGUIWindows.GUI.MainMenu.Buttons;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeGUIWindows.GUI.MainMenu.Buttons;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Rendering;
 
@@ -6,7 +8,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
 {
     public class MainMenuContainer : GUIContainer
     {
-        public MainMenuContainer(bool visible) : base("MenuBackground", RenderingPipe.FullScreenWindow)
+        public MainMenuContainer(bool visible) : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow)
         {
             this.Visible = visible;
             this.Controls.Add(new NewGameButton());
@@ -21,7 +23,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
 
         public override string GetTextureName()
         {
-            return "MenuBackground";
+            return TextureLoader.GUIMenuBackground;
         }
     }
 }

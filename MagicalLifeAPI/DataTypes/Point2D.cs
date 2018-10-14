@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using ProtoBuf;
 using System;
+using System.Globalization;
 
 namespace MagicalLifeAPI.DataTypes
 {
@@ -49,6 +50,11 @@ namespace MagicalLifeAPI.DataTypes
             return new Point(value.X, value.Y);
         }
 
+        public static implicit operator Vector2(Point2D value)
+        {
+            return new Vector2(value.X, value.Y);
+        }
+
         public static Point2D Parse(string str)
         {
             int x;
@@ -67,7 +73,7 @@ namespace MagicalLifeAPI.DataTypes
 
         public override string ToString()
         {
-            return "{ " + this.X.ToString() + ", " + this.Y.ToString() + " }";
+            return "{ " + this.X.ToString(CultureInfo.InvariantCulture) + ", " + this.Y.ToString(CultureInfo.InvariantCulture) + " }";
         }
     }
 }

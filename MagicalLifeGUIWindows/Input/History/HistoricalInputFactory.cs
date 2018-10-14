@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.DataTypes;
+﻿using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.Error.InternalExceptions;
@@ -54,13 +55,13 @@ namespace MagicalLifeGUIWindows.Input.History
         /// <returns></returns>
         private HistoricalInput MineAction(InputEventArgs e)
         {
-            Point2D mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y, RenderingPipe.Dimension, out bool success);
+            Point2D mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y, RenderInfo.Dimension, out bool success);
 
             if (success)
             {
                 Selectable select = null;
 
-                select = World.GetTile(RenderingPipe.Dimension, mapSpot.X, mapSpot.Y);
+                select = World.GetTile(RenderInfo.Dimension, mapSpot.X, mapSpot.Y);
 
                 if (select != null)
                 {
@@ -97,13 +98,13 @@ namespace MagicalLifeGUIWindows.Input.History
         /// <returns></returns>
         private HistoricalInput NoAction(InputEventArgs e)
         {
-            Point2D mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y, RenderingPipe.Dimension, out bool success);
+            Point2D mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y, RenderInfo.Dimension, out bool success);
 
             if (success)
             {
                 Selectable select = null;
 
-                Chunk chunk = World.Dimensions[RenderingPipe.Dimension].GetChunkForLocation(mapSpot.X, mapSpot.Y);
+                Chunk chunk = World.Dimensions[RenderInfo.Dimension].GetChunkForLocation(mapSpot.X, mapSpot.Y);
                 KeyValuePair<System.Guid, Living> result = chunk.Creatures.FirstOrDefault(x => mapSpot.Equals(x.Value.MapLocation));
                 select = result.Value;
 
@@ -158,7 +159,7 @@ namespace MagicalLifeGUIWindows.Input.History
         {
             Point2D screenLocation = e.MouseEventArgs.Position;
 
-            Point2D mapLocation = Util.GetMapLocation(screenLocation.X, screenLocation.Y, RenderingPipe.Dimension, out bool success);
+            Point2D mapLocation = Util.GetMapLocation(screenLocation.X, screenLocation.Y, RenderInfo.Dimension, out bool success);
 
             if (success)
             {

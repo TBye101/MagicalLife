@@ -1,4 +1,5 @@
-﻿using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 
 namespace MagicalLifeGUIWindows.GUI.New
@@ -8,7 +9,7 @@ namespace MagicalLifeGUIWindows.GUI.New
     /// </summary>
     public class LengthLabel : MonoLabel
     {
-        public LengthLabel() : base(GetLocation(), "InputBox100x50", true)
+        public LengthLabel() : base(GetLocation(), TextureLoader.GUIInputBox100x50, true)
         {
             this.Text = "World Length";
         }

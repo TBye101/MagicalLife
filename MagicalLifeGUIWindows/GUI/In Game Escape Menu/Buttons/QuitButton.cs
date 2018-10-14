@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Sound;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
@@ -8,7 +9,7 @@ namespace MagicalLifeGUIWindows.GUI.In
 {
     public class QuitButton : MonoButton
     {
-        public QuitButton() : base("MenuButton", GetDisplayArea(), true, GetText())
+        public QuitButton() : base(TextureLoader.GUIMenuButton, GetDisplayArea(), true, GetText())
         {
         }
 

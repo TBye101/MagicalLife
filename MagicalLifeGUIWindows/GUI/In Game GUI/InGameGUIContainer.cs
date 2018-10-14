@@ -1,4 +1,5 @@
-﻿using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 
 namespace MagicalLifeGUIWindows.GUI.In
@@ -10,7 +11,7 @@ namespace MagicalLifeGUIWindows.GUI.In
     {
         public MineActionButton MineActionButton { get; set; } = new MineActionButton();
 
-        public InGameGUIContainer(bool visible) : base("MenuBackground", GetDrawingBounds())
+        public InGameGUIContainer(bool visible) : base(TextureLoader.GUIMenuBackground, GetDrawingBounds())
         {
             this.Visible = visible;
             this.Controls.Add(this.MineActionButton);
@@ -32,7 +33,7 @@ namespace MagicalLifeGUIWindows.GUI.In
 
         public override string GetTextureName()
         {
-            return "MenuBackground";
+            return TextureLoader.GUIMenuBackground;
         }
     }
 }

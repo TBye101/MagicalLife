@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Filing;
+﻿using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.Filing;
 using MagicalLifeGUIWindows.Rendering;
 using Microsoft.Xna.Framework.Input;
 
@@ -20,22 +21,22 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
         {
             if (e == SettingsManager.Keybindings.Settings.StrafeDown)
             {
-                RenderingPipe.YViewOffset -= 10;
+                RenderInfo.YViewOffset -= 10;
             }
 
             if (e == SettingsManager.Keybindings.Settings.StrafeLeft)
             {
-                RenderingPipe.XViewOffset += 10;
+                RenderInfo.XViewOffset += 10;
             }
 
             if (e == SettingsManager.Keybindings.Settings.StrafeRight)
             {
-                RenderingPipe.XViewOffset -= 10;
+                RenderInfo.XViewOffset -= 10;
             }
 
             if (e == SettingsManager.Keybindings.Settings.StrafeUp)
             {
-                RenderingPipe.YViewOffset += 10;
+                RenderInfo.YViewOffset += 10;
             }
         }
     }

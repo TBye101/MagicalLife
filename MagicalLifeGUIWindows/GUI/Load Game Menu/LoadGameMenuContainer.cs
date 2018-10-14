@@ -1,4 +1,6 @@
-﻿using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Rendering;
 
 namespace MagicalLifeGUIWindows.GUI.Load
@@ -8,7 +10,7 @@ namespace MagicalLifeGUIWindows.GUI.Load
         public SelectGameListBox SaveSelectListBox { get; private set; } = new SelectGameListBox();
         public LoadSaveButton LoadSaveButton { get; private set; } = new LoadSaveButton();
 
-        public LoadGameMenuContainer() : base("MenuBackground", RenderingPipe.FullScreenWindow)
+        public LoadGameMenuContainer() : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow)
         {
             this.Controls.Add(this.SaveSelectListBox);
             this.Controls.Add(this.LoadSaveButton);
@@ -16,7 +18,7 @@ namespace MagicalLifeGUIWindows.GUI.Load
 
         public override string GetTextureName()
         {
-            return "MenuBackground";
+            return TextureLoader.GUIMenuBackground;
         }
     }
 }

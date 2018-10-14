@@ -1,8 +1,12 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Load;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Universal;
+using MagicalLifeAPI.Util.Reusable;
+using MagicalLifeAPI.Visual.Animation;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.GUI.In;
 using MagicalLifeGUIWindows.Input;
@@ -34,6 +38,8 @@ namespace MagicalLifeGUIWindows
         /// </summary>
         internal static bool SplashDone { get; set; } = false;
 
+        public static FrameCounter FPS { get; private set; } = new FrameCounter();
+
         public Game1()
         {
             this.Graphics = new GraphicsDeviceManager(this);
@@ -47,8 +53,8 @@ namespace MagicalLifeGUIWindows
         {
             SplashScreens = new List<LogoScreen>()
             {
-                new LogoScreen("Logo/MonoGameLogo", 5F),
-                new LogoScreen("Logo/FMODLogo", 5F, "\"FMOD\" and \"FMOD Studio\" are licensed by \"Firelight Technologies Pty Ltd\"")
+                new LogoScreen(TextureLoader.LogoMonoGame, 5F),
+                new LogoScreen(TextureLoader.LogoFMOD, 5F, "\"FMOD\" and \"FMOD Studio\" are licensed by \"Firelight Technologies Pty Ltd\"")
             };
         }
 
@@ -60,13 +66,11 @@ namespace MagicalLifeGUIWindows
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
         /// This is where it can query for any required services and load any non-graphic
-        /// related content.  Calling base.Initialize will enumerate through any components
+        /// related content.  Calling base. Initialize will enumerate through any components
         /// and initialize them as well.
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
             base.Initialize();
             WindowConfig winConfig = new WindowConfig();
             winConfig.ConfigureMainWindow(this);
@@ -129,60 +133,68 @@ namespace MagicalLifeGUIWindows
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            FPS.Update(deltaTime);
+
             this.DisplayInGame();
             FMODUtil.System.update();
 
             //Used to render things to a buffer that will have a zoom multiplier applied before rendering.
-            SpriteBatch zoomBatch = new SpriteBatch(this.GraphicsDevice);
-            RenderTarget2D target = new RenderTarget2D(this.GraphicsDevice, RenderingPipe.FullScreenWindow.Width, RenderingPipe.FullScreenWindow.Height);
-            this.GraphicsDevice.SetRenderTarget(target);
 
-            this.GraphicsDevice.Clear(Color.Black);
-
-
-
-            if (Game1.SplashDone)
+            using (SpriteBatch zoomBatch = new SpriteBatch(this.GraphicsDevice))
             {
-                zoomBatch.Begin();
-                RenderingPipe.DrawScreen(zoomBatch);
-                zoomBatch.End();
-            }
-            else
-            {
-                int length = Game1.SplashScreens.Count;
-                for (int i = 0; i < length; i++)
+                using (RenderTarget2D target = new RenderTarget2D(this.GraphicsDevice, RenderInfo.FullScreenWindow.Width, RenderInfo.FullScreenWindow.Height))
                 {
-                    LogoScreen item = Game1.SplashScreens[i];
-                    if (!item.Done())
+                    this.GraphicsDevice.SetRenderTarget(target);
+
+                    this.GraphicsDevice.Clear(Color.Black);
+
+
+
+                    if (Game1.SplashDone)
                     {
-                        item.Draw(ref zoomBatch);
-                        break;
+                        zoomBatch.Begin();
+                        RenderingPipe.DrawScreen(zoomBatch);
+                        zoomBatch.End();
+                    }
+                    else
+                    {
+                        int length = Game1.SplashScreens.Count;
+                        for (int i = 0; i < length; i++)
+                        {
+                            LogoScreen item = Game1.SplashScreens[i];
+                            if (!item.Done())
+                            {
+                                item.Draw(zoomBatch);
+                                break;
+                            }
+
+                            if (i == length - 1)
+                            {
+                                Game1.SplashDone = true;
+
+                                //Initialize main menu
+                                GUI.MainMenu.MainMenu.Initialize();
+                                this.IsMouseVisible = true;
+                            }
+                        }
                     }
 
-                    if (i == length - 1)
-                    {
-                        Game1.SplashDone = true;
+                    //set rendering back to the back buffer
+                    this.GraphicsDevice.SetRenderTarget(null);
 
-                        //Initialize main menu
-                        GUI.MainMenu.MainMenu.Initialize();
-                        this.IsMouseVisible = true;
-                    }
+                    //render target to back buffer
+                    zoomBatch.Begin();
+
+                    int width = (int)(this.GraphicsDevice.DisplayMode.Width * RenderInfo.Zoom);
+                    int height = (int)(this.GraphicsDevice.DisplayMode.Height * RenderInfo.Zoom);
+
+                    zoomBatch.Draw(target, new Rectangle(0, 0, width, height), Color.White);
+                    RenderingPipe.DrawGUI(zoomBatch);
+
+                    zoomBatch.End();
                 }
             }
-
-            //set rendering back to the back buffer
-            this.GraphicsDevice.SetRenderTarget(null);
-
-            //render target to back buffer
-            zoomBatch.Begin();
-
-            int width = (int)(this.GraphicsDevice.DisplayMode.Width * RenderingPipe.Zoom);
-            int height = (int)(this.GraphicsDevice.DisplayMode.Height * RenderingPipe.Zoom);
-
-            zoomBatch.Draw(target, new Rectangle(0, 0, width, height), Color.White);
-            RenderingPipe.DrawGUI(zoomBatch);
-            zoomBatch.End();
-
             base.Draw(gameTime);
         }
 

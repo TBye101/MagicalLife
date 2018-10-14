@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Filing;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Filing;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.GUI.Reusable.API;
 using Microsoft.Xna.Framework;
@@ -9,9 +10,9 @@ namespace MagicalLifeGUIWindows.GUI.Save
 {
     public class OverwriteSaveListBox : ListBox
     {
-        private static readonly SpriteFont ItemFont = Game1.AssetManager.Load<SpriteFont>("MainMenuFont12x");
+        private static readonly SpriteFont ItemFont = Game1.AssetManager.Load<SpriteFont>(TextureLoader.FontMainMenuFont12x);
 
-        public OverwriteSaveListBox() : base(GetDrawingBounds(), 1, true, "MainMenuFont12x", SaveGameMenuLayout.ItemRenderCount, GetAllSaveGames())
+        public OverwriteSaveListBox() : base(GetDrawingBounds(), 1, true, TextureLoader.FontMainMenuFont12x, SaveGameMenuLayout.ItemRenderCount, GetAllSaveGames())
         {
         }
 

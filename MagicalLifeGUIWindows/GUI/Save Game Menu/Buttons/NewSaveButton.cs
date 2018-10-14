@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.World.Data.Disk;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.World.Data.Disk;
 using MagicalLifeAPI.World.Data.Disk.DataStorage;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
@@ -8,7 +9,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
 {
     public class NewSaveButton : MonoButton
     {
-        public NewSaveButton() : base("MenuButton", GetDrawingBounds(), true, "New Save")
+        public NewSaveButton() : base(TextureLoader.GUIMenuButton, GetDrawingBounds(), true, "New Save")
         {
         }
 

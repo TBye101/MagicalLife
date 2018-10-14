@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Networking.Client;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeClient;
@@ -12,7 +13,7 @@ namespace MagicalLifeGUIWindows.GUI.Join
 {
     public class JoinButton : MonoButton
     {
-        public JoinButton() : base("MenuButton", GetDisplayArea(), true, "Join Game")
+        public JoinButton() : base(TextureLoader.GUIMenuBackground, GetDisplayArea(), true, "Join Game")
         {
         }
 
