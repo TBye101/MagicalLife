@@ -11,6 +11,7 @@ using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Base;
+using Serilog;
 using System;
 
 namespace MagicalLifeAPI.Entity.Movement
@@ -26,6 +27,9 @@ namespace MagicalLifeAPI.Entity.Movement
         /// <param name="entity"></param>
         public static void MoveEntity(Living entity)
         {
+            Log.Debug("Entity movement speed: " + entity.Movement.GetValue().ToString());
+            Log.Debug("Entity starting position: " + entity.ScreenLocation.ToString());
+
             ProtoQueue<PathLink> path = entity.QueuedMovement;
 
             while (entity.Movement.GetValue() > 0 && path.Count > 0)
@@ -35,7 +39,11 @@ namespace MagicalLifeAPI.Entity.Movement
                 Tile sourceTile = World.Data.World.Dimensions[entity.Dimension][section.Origin.X, section.Origin.Y];
                 Tile destinationTile = World.Data.World.Dimensions[entity.Dimension][section.Destination.X, section.Destination.Y];
                 Move(entity, sourceTile, destinationTile);
+                Log.Debug("Entity position: " + entity.ScreenLocation.ToString());
             }
+
+            Log.Debug("Entity end position: " + entity.ScreenLocation.ToString());
+            Log.Debug("Entity movement speed after: " + entity.Movement.GetValue().ToString());
         }
 
         /// <summary>
@@ -75,22 +83,22 @@ namespace MagicalLifeAPI.Entity.Movement
             {
                 case Direction.North:
                     yMove = -1;
-                    animated.StartSequence(Human.UpSequence);
+                    //animated.StartSequence(Human.UpSequence);
                     break;
 
                 case Direction.South:
                     yMove = 1;
-                    animated.StartSequence(Human.DownSequence);
+                    //animated.StartSequence(Human.DownSequence);
                     break;
 
                 case Direction.East:
                     xMove = 1;
-                    animated.StartSequence(Human.RightSequence);
+                    //animated.StartSequence(Human.RightSequence);
                     break;
 
                 case Direction.West:
                     xMove = -1;
-                    animated.StartSequence(Human.LeftSequence);
+                    //animated.StartSequence(Human.LeftSequence);
                     break;
 
                 case Direction.NorthWest:

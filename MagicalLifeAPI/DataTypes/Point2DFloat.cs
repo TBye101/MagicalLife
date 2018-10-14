@@ -16,5 +16,10 @@ namespace MagicalLifeAPI.DataTypes
             this.X = x;
             this.Y = y;
         }
+
+        public override string ToString()
+        {
+            return "{ " + this.X.ToString() + ", " + this.Y.ToString() + " }";
+        }
     }
 }
