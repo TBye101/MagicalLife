@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Resources;
@@ -52,7 +53,8 @@ namespace MagicalLifeGUIWindows.Rendering.Map
                     {
                         if (item.Value != null)
                         {
-                            Point2D livingScreenLocation = new Point2D((int)item.Value.ScreenLocation.X, (int)item.Value.ScreenLocation.Y);
+                            Point2D livingScreenLocation = new Point2D((int)(item.Value.ScreenLocation.X * Tile.GetTileSize().X), (int)(item.Value.ScreenLocation.Y * Tile.GetTileSize().Y));
+                            MasterLog.DebugWriteLine("Entity: " + item.Value.ID.ToString() + "Screen position: " + item.Value.ScreenLocation.ToString());
                             item.Value.Visual.Render(MapDrawer, livingScreenLocation);
                         }
                     }
