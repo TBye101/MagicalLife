@@ -14,13 +14,10 @@ namespace MagicalLifeAPI.World.Base
     /// Every tile that implements this class must provide a parameterless version of itself for reflection purposes. That constructor will not be used during gameplay.
     /// </summary>
     [ProtoContract]
-    [ProtoInclude(8, typeof(Dirt))]
-    [ProtoInclude(9, typeof(Grass))]
+    [ProtoInclude(9, typeof(Dirt))]
+    [ProtoInclude(10, typeof(Grass))]
     public abstract class Tile : Selectable, IHasSubclasses, IRenderContainer
     {
-        [ProtoMember(1)]
-        private ComponentRenderer Renderable { get; set; }
-
         [ProtoMember(2)]
         public bool IsWalkable;
 
@@ -104,6 +101,7 @@ namespace MagicalLifeAPI.World.Base
         [ProtoMember(7)]
         public ActionSelected ImpendingAction { get; set; }
 
+        [ProtoMember(8)]
         public abstract ComponentRenderer CompositeRenderer { get; set; }
 
         public readonly int FootStepSound;

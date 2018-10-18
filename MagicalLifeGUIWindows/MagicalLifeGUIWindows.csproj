@@ -206,7 +206,6 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Content\Animation\BaseCharacterData.xml" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>

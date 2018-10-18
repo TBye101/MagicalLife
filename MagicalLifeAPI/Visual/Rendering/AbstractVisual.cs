@@ -15,6 +15,8 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
     /// Used to abstract away the complexities of animations and static textures.
     /// </summary>
     [ProtoContract]
+    [ProtoInclude(3, typeof(StaticTexture))]
+    [ProtoInclude(4, typeof(AnimatedTexture))]
     public abstract class AbstractVisual
     {
         /// <summary>

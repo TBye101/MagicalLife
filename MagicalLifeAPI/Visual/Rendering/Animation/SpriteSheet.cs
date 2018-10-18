@@ -40,18 +40,19 @@ namespace MagicalLifeAPI.Visual.Animation
         /// <summary>
         /// How many sprites high is the sheet.
         /// </summary>
+        [ProtoMember(3)]
         public int SheetHeight { get; private set; }
 
         /// <summary>
         /// The width of each sprite in pixels.
         /// </summary>
-        [ProtoMember(3)]
+        [ProtoMember(4)]
         private int SpritePixelWidth { get; set; }
 
         /// <summary>
         /// The height of each sprite in pixels.
         /// </summary>
-        [ProtoMember(4)]
+        [ProtoMember(5)]
         private int SpritePixelHeight { get; set; }
 
         public SpriteSheet(int textureID, int sheetWidth, int sheetHeight, 
@@ -62,6 +63,16 @@ namespace MagicalLifeAPI.Visual.Animation
             this.SheetHeight = sheetHeight;
             this.SpritePixelWidth = spritePixelWidth;
             this.SpritePixelHeight = spritePixelHeight;
+
+            if (World.Data.World.Mode == Networking.EngineMode.ServerAndClient)
+            {
+                this.VerifySheet();
+            }
+        }
+
+        private SpriteSheet()
+        {
+            //Protobuf-net constructor.
             this.VerifySheet();
         }
 

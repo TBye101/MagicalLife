@@ -2,6 +2,17 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 ---
 
+## [Version 0.1.1]
+
+#### API
+
+#### GUI
+
+#### Bugs
+*Items now render properly again
+
+---
+
 ## [Version 0.1.0] 
 
 #### API
