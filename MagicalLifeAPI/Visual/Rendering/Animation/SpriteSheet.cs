@@ -73,7 +73,7 @@ namespace MagicalLifeAPI.Visual.Animation
         private SpriteSheet()
         {
             //Protobuf-net constructor.
-            this.VerifySheet();
+            //this.VerifySheet();
         }
 
 
