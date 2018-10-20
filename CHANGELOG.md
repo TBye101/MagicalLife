@@ -10,6 +10,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 #### Bugs
 *Items now render properly again
+*Reduced the occurrences of a saving bug
 
 ---
 
