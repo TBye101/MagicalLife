@@ -153,7 +153,7 @@ namespace MagicalLifeAPI.Entity.Movement
         {
             if (living.FootStepTimer.Allow())
             {
-                FMODUtil.RaiseEvent(EffectsTable.FootSteps, "Material", footStepsOn.FootStepSound);
+                FMODUtil.RaiseEvent(EffectsTable.FootSteps, "Material", footStepsOn.FootStepSound, living.ScreenLocation.ToPoint2D());
             }
         }
 

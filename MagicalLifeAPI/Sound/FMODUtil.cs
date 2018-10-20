@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Filing;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Filing;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Sound.FMOD.Studio;
 using System;
@@ -60,6 +61,36 @@ namespace MagicalLifeAPI.Sound
             _System.getEvent(eventPath, out EventDescription _event);
             _event.createInstance(out EventInstance instance);
             instance.setParameterValue(parameterName, value);
+            instance.start();
+        }
+
+        public static void RaiseEvent(string eventPath, string parameterName, int value, Point2D screenPosition)
+        {
+            _System.getEvent(eventPath, out EventDescription _event);
+            _event.createInstance(out EventInstance instance);
+            instance.setParameterValue(parameterName, value);
+            _3D_ATTRIBUTES D3 = new _3D_ATTRIBUTES();
+
+            FMOD.VECTOR forward = new FMOD.VECTOR();
+            forward.x = 0;
+            forward.y = 0;
+            forward.z = 1;
+
+            FMOD.VECTOR up = new FMOD.VECTOR();
+            up.x = 0;
+            up.y = 1;
+            up.z = 0;
+
+            FMOD.VECTOR position = new FMOD.VECTOR();
+            position.x = screenPosition.X;
+            position.y = 0;
+            position.z = screenPosition.Y;
+
+            D3.forward = forward;
+            D3.up = up;
+            D3.position = position;
+
+            instance.set3DAttributes(D3);
             instance.start();
         }
 
