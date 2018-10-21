@@ -31,6 +31,10 @@ namespace MagicalLifeAPI.Sound
         {
             FMOD.Studio.System.create(out _System);
             _System.getLowLevelSystem(out FMOD.System low);
+
+            //low.setOutput(FMOD.OUTPUTTYPE.WINSONIC);
+            //low.createDSPByType(FMOD.DSP_TYPE.MIXER, out FMOD.DSP dsp);
+
             low.setSoftwareFormat(0, FMOD.SPEAKERMODE._7POINT1, 0);
             _System.initialize(1, FMOD.Studio.INITFLAGS.NORMAL, FMOD.INITFLAGS.NORMAL, IntPtr.Zero);
             _System.loadBankFile(FileSystemManager.RootDirectory + "/Content/Banks/Master_Bank.bank", FMOD.Studio.LOAD_BANK_FLAGS.NORMAL, out Bank MainBank);
@@ -66,32 +70,33 @@ namespace MagicalLifeAPI.Sound
 
         public static void RaiseEvent(string eventPath, string parameterName, int value, Point2D screenPosition)
         {
-            _System.getEvent(eventPath, out EventDescription _event);
-            _event.createInstance(out EventInstance instance);
-            instance.setParameterValue(parameterName, value);
-            _3D_ATTRIBUTES D3 = new _3D_ATTRIBUTES();
+            RaiseEvent(eventPath, parameterName, value);
+            //_System.getEvent(eventPath, out EventDescription _event);
+            //_event.createInstance(out EventInstance instance);
+            //instance.setParameterValue(parameterName, value);
+            //_3D_ATTRIBUTES D3 = new _3D_ATTRIBUTES();
 
-            FMOD.VECTOR forward = new FMOD.VECTOR();
-            forward.x = 0;
-            forward.y = 0;
-            forward.z = 1;
+            //FMOD.VECTOR forward = new FMOD.VECTOR();
+            //forward.x = 0;
+            //forward.y = 0;
+            //forward.z = 1;
 
-            FMOD.VECTOR up = new FMOD.VECTOR();
-            up.x = 0;
-            up.y = 1;
-            up.z = 0;
+            //FMOD.VECTOR up = new FMOD.VECTOR();
+            //up.x = 0;
+            //up.y = 1;
+            //up.z = 0;
 
-            FMOD.VECTOR position = new FMOD.VECTOR();
-            position.x = screenPosition.X;
-            position.y = 0;
-            position.z = screenPosition.Y;
+            //FMOD.VECTOR position = new FMOD.VECTOR();
+            //position.x = screenPosition.Y;
+            //position.y = 0;
+            //position.z = screenPosition.X;
 
-            D3.forward = forward;
-            D3.up = up;
-            D3.position = position;
+            //D3.forward = forward;
+            //D3.up = up;
+            //D3.position = position;
 
-            instance.set3DAttributes(D3);
-            instance.start();
+            //instance.set3DAttributes(D3);
+            //instance.start();
         }
 
         public static void Test()
