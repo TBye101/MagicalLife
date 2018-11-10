@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Filing.Logging;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,5 +49,18 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         /// The game's current FPS.
         /// </summary>
         public static int GameFPS { get; private set; } = 60;
+
+        /// <summary>
+        /// Returns the center of the player's screen view.
+        /// </summary>
+        /// <returns></returns>
+        public static Point2D GetCameraCenter()
+        {
+            int x = (FullScreenWindow.Width / 2) + XViewOffset;
+            int y = (FullScreenWindow.Height / 2) + YViewOffset;
+
+            MasterLog.DebugWriteLine("Center Camera/Listener: " + x.ToString() + ", " + y.ToString());
+            return new Point2D(x, y);
+        }
     }
 }

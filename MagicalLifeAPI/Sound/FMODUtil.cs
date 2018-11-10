@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.DataTypes;
+﻿using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Filing;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Sound.FMOD.Studio;
@@ -27,6 +28,26 @@ namespace MagicalLifeAPI.Sound
 
         private static EventDescription[] MainEvents;
 
+        public static void Update()
+        {
+            _3D_ATTRIBUTES atts = new _3D_ATTRIBUTES();
+            atts.forward.x = 1;
+            atts.forward.y = 1;
+            atts.forward.z = 0;
+
+            Point2D camera = RenderInfo.GetCameraCenter();
+            atts.position.x = camera.X;
+            atts.position.y = camera.Y;
+            atts.position.z = 0;
+
+            atts.up.x = 1;
+            atts.up.y = 1;
+            atts.up.z = -1;
+
+            System.setListenerAttributes(0, atts);
+            System.update();
+        }
+
         public static void Init()
         {
             FMOD.Studio.System.create(out _System);
@@ -49,9 +70,9 @@ namespace MagicalLifeAPI.Sound
         /// <param name="eventPath">The path to the event in a bank file. Ex: event:/Footsteps</param>
         public static void RaiseEvent(string eventPath)
         {
-            _System.getEvent(eventPath, out EventDescription _event);
-            _event.createInstance(out EventInstance instance);
-            instance.start();
+            //_System.getEvent(eventPath, out EventDescription _event);
+            //_event.createInstance(out EventInstance instance);
+            //instance.start();
         }
 
         /// <summary>
@@ -70,33 +91,34 @@ namespace MagicalLifeAPI.Sound
 
         public static void RaiseEvent(string eventPath, string parameterName, int value, Point2D screenPosition)
         {
-            RaiseEvent(eventPath, parameterName, value);
-            //_System.getEvent(eventPath, out EventDescription _event);
-            //_event.createInstance(out EventInstance instance);
-            //instance.setParameterValue(parameterName, value);
-            //_3D_ATTRIBUTES D3 = new _3D_ATTRIBUTES();
+            //RaiseEvent(eventPath, parameterName, value);
+            _System.getEvent(eventPath, out EventDescription _event);
+            _event.createInstance(out EventInstance instance);
+            instance.setParameterValue(parameterName, value);
 
-            //FMOD.VECTOR forward = new FMOD.VECTOR();
-            //forward.x = 0;
-            //forward.y = 0;
-            //forward.z = 1;
+            _3D_ATTRIBUTES D3 = new _3D_ATTRIBUTES();
 
-            //FMOD.VECTOR up = new FMOD.VECTOR();
-            //up.x = 0;
-            //up.y = 1;
-            //up.z = 0;
+            FMOD.VECTOR forward = new FMOD.VECTOR();
+            forward.x = 1;
+            forward.y = 1;
+            forward.z = 0;
 
-            //FMOD.VECTOR position = new FMOD.VECTOR();
-            //position.x = screenPosition.Y;
-            //position.y = 0;
-            //position.z = screenPosition.X;
+            FMOD.VECTOR up = new FMOD.VECTOR();
+            up.x = 1;
+            up.y = 1;
+            up.z = -1;
 
-            //D3.forward = forward;
-            //D3.up = up;
-            //D3.position = position;
+            FMOD.VECTOR position = new FMOD.VECTOR();
+            position.x = screenPosition.X;
+            position.y = screenPosition.Y;
+            position.z = 0;
 
-            //instance.set3DAttributes(D3);
-            //instance.start();
+            D3.forward = forward;
+            D3.up = up;
+            D3.position = position;
+
+            instance.set3DAttributes(D3);
+            instance.start();
         }
 
         public static void Test()
@@ -111,6 +133,8 @@ namespace MagicalLifeAPI.Sound
             {
                 item.getPath(out string path);
                 MasterLog.DebugWriteLine(path);
+                item.is3D(out bool is3D);
+                MasterLog.DebugWriteLine("Is 3D: " + is3D.ToString());
 
                 item.getParameterCount(out int length);
 
