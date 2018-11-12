@@ -34,10 +34,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Included DLL", "Included DL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeDedicatedServer", "MagicalLifeDedicatedServer\MagicalLifeDedicatedServer.csproj", "{38385939-AFA9-44AA-9291-20F48EBFE8E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundConvert", "SoundConvert\SoundConvert.csproj", "{7C9F47EE-63D2-4FED-B195-7E14502C841A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundPOC", "SoundPOC\SoundPOC.csproj", "{535C6DA5-CDF1-4F4A-9550-C8D2D7781D28}"
+EndProject
 Global
-	GlobalSection(Performance) = preSolution
-		HasPerformanceSessions = true
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
@@ -139,11 +140,38 @@ Global
 		{38385939-AFA9-44AA-9291-20F48EBFE8E9}.Release|x64.Build.0 = Release|Any CPU
 		{38385939-AFA9-44AA-9291-20F48EBFE8E9}.Release|x86.ActiveCfg = Release|Any CPU
 		{38385939-AFA9-44AA-9291-20F48EBFE8E9}.Release|x86.Build.0 = Release|Any CPU
+		{7C9F47EE-63D2-4FED-B195-7E14502C841A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C9F47EE-63D2-4FED-B195-7E14502C841A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C9F47EE-63D2-4FED-B195-7E14502C841A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7C9F47EE-63D2-4FED-B195-7E14502C841A}.Debug|x64.Build.0 = Debug|Any CPU
+		{7C9F47EE-63D2-4FED-B195-7E14502C841A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7C9F47EE-63D2-4FED-B195-7E14502C841A}.Debug|x86.Build.0 = Debug|Any CPU
+		{7C9F47EE-63D2-4FED-B195-7E14502C841A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C9F47EE-63D2-4FED-B195-7E14502C841A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C9F47EE-63D2-4FED-B195-7E14502C841A}.Release|x64.ActiveCfg = Release|Any CPU
+		{7C9F47EE-63D2-4FED-B195-7E14502C841A}.Release|x64.Build.0 = Release|Any CPU
+		{7C9F47EE-63D2-4FED-B195-7E14502C841A}.Release|x86.ActiveCfg = Release|Any CPU
+		{7C9F47EE-63D2-4FED-B195-7E14502C841A}.Release|x86.Build.0 = Release|Any CPU
+		{535C6DA5-CDF1-4F4A-9550-C8D2D7781D28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{535C6DA5-CDF1-4F4A-9550-C8D2D7781D28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{535C6DA5-CDF1-4F4A-9550-C8D2D7781D28}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{535C6DA5-CDF1-4F4A-9550-C8D2D7781D28}.Debug|x64.Build.0 = Debug|Any CPU
+		{535C6DA5-CDF1-4F4A-9550-C8D2D7781D28}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{535C6DA5-CDF1-4F4A-9550-C8D2D7781D28}.Debug|x86.Build.0 = Debug|Any CPU
+		{535C6DA5-CDF1-4F4A-9550-C8D2D7781D28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{535C6DA5-CDF1-4F4A-9550-C8D2D7781D28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{535C6DA5-CDF1-4F4A-9550-C8D2D7781D28}.Release|x64.ActiveCfg = Release|Any CPU
+		{535C6DA5-CDF1-4F4A-9550-C8D2D7781D28}.Release|x64.Build.0 = Release|Any CPU
+		{535C6DA5-CDF1-4F4A-9550-C8D2D7781D28}.Release|x86.ActiveCfg = Release|Any CPU
+		{535C6DA5-CDF1-4F4A-9550-C8D2D7781D28}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FF8B4622-BBFB-41B1-9FEC-01091A7B38BB}
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
 	EndGlobalSection
 EndGlobal

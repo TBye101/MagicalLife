@@ -34,8 +34,17 @@ namespace MagicalLifeAPI.Sound
             _3D_ATTRIBUTES atts = new _3D_ATTRIBUTES();
 
             Point2D camera = RenderInfo.GetCameraCenter();
-            atts.forward.z = 1.0f;
-            atts.up.y = 1.0f;
+            atts.position.x = camera.X;
+            atts.position.y = camera.Y;
+            atts.position.z = -1;
+
+            atts.forward.x = 1;
+            atts.forward.y = 1;
+            atts.forward.z = 0;
+
+            atts.up.x = 0;
+            atts.up.y = 0;
+            atts.up.z = 0;
 
             System.setListenerAttributes(0, atts);
             System.update();
@@ -45,11 +54,12 @@ namespace MagicalLifeAPI.Sound
         {
             FMOD.Studio.System.create(out _System);
             _System.getLowLevelSystem(out FMOD.System low);
+            low.set3DSettings(1, 100, 100);
 
             //low.setOutput(FMOD.OUTPUTTYPE.WINSONIC);
             //low.createDSPByType(FMOD.DSP_TYPE.MIXER, out FMOD.DSP dsp);
 
-            low.setSoftwareFormat(0, FMOD.SPEAKERMODE._5POINT1, 0);
+            low.setSoftwareFormat(0, FMOD.SPEAKERMODE._7POINT1, 0);
             _System.initialize(1, FMOD.Studio.INITFLAGS.NORMAL, FMOD.INITFLAGS.NORMAL, IntPtr.Zero);
             _System.loadBankFile(FileSystemManager.RootDirectory + "/Content/Banks/Master_Bank.bank", FMOD.Studio.LOAD_BANK_FLAGS.NORMAL, out Bank MainBank);
             _System.loadBankFile(FileSystemManager.RootDirectory + "/Content/Banks/Master_Bank.strings.bank", LOAD_BANK_FLAGS.NORMAL, out Bank MainBankStrings);
@@ -92,13 +102,19 @@ namespace MagicalLifeAPI.Sound
             _3D_ATTRIBUTES D3 = new _3D_ATTRIBUTES();
 
             FMOD.VECTOR forward = new FMOD.VECTOR();
+            forward.x = 1;
+            forward.y = 1;
+            forward.z = 1;
 
             FMOD.VECTOR up = new FMOD.VECTOR();
+            up.x = 0;
+            up.y = 0;
+            up.z = 0;
 
             FMOD.VECTOR position = new FMOD.VECTOR();
             position.x = screenPosition.X;
-            position.y = 0;
-            position.z = screenPosition.Y;
+            position.y = screenPosition.Y;
+            position.z = 0;
 
             D3.forward = forward;
             D3.up = up;
