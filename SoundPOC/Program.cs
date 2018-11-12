@@ -118,7 +118,7 @@ namespace SoundPOC
             //ERRCHECK(system->setListenerAttributes(0, &attributes));
 
             // Position the event 2 units in front of the listener
-            attributes.position.z = 2.0f;
+            //attributes.position.z = 2.0f;
 
             //FMOD::Studio::EventDescription* eventDescription = NULL;
             //ERRCHECK(system->getEvent("event:/Vehicles/Ride-on Mower", &eventDescription));

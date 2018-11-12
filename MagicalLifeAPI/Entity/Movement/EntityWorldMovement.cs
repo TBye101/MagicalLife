@@ -123,10 +123,10 @@ namespace MagicalLifeAPI.Entity.Movement
 
             float movementPenalty = (float)Math.Abs(CalculateMovementReduction(xMove, yMove)) * -1;
 
-            if (MathUtil.GetDistance(entity.ScreenLocation, destination.MapLocation) > entity.Movement.GetValue())
+            if (MathUtil.GetDistance(entity.TileLocation, destination.MapLocation) > entity.Movement.GetValue())
             {
                 //The character fell short of reaching the next tile
-                entity.ScreenLocation = new DataTypes.Point2DFloat(entity.ScreenLocation.X + xMove, entity.ScreenLocation.Y + yMove);
+                entity.TileLocation = new DataTypes.Point2DFloat(entity.TileLocation.X + xMove, entity.TileLocation.Y + yMove);
                 FootStepSound(entity, source);
             }
             else
@@ -134,9 +134,9 @@ namespace MagicalLifeAPI.Entity.Movement
                 Log.Debug("Made it to the next tile!");
                 //The character made it to the next tile.
                 entity.MapLocation = destination.MapLocation;
-                entity.ScreenLocation = new DataTypes.Point2DFloat(destination.MapLocation.X, destination.MapLocation.Y);
+                entity.TileLocation = new DataTypes.Point2DFloat(destination.MapLocation.X, destination.MapLocation.Y);
                 entity.QueuedMovement.Dequeue();
-                movementPenalty = MathUtil.GetDistance(entity.ScreenLocation, destination.MapLocation);
+                movementPenalty = MathUtil.GetDistance(entity.TileLocation, destination.MapLocation);
                 FootStepSound(entity, destination);
 
                 //If this entity is the current client's and therefore that clients responsibility to report about
@@ -153,7 +153,12 @@ namespace MagicalLifeAPI.Entity.Movement
         {
             if (living.FootStepTimer.Allow())
             {
-                FMODUtil.RaiseEvent(EffectsTable.FootSteps, "Material", footStepsOn.FootStepSound, living.ScreenLocation.ToPoint2D());
+                Point2DFloat screenLocation = living.TileLocation;
+
+                screenLocation.X *= Tile.GetTileSize().X;
+                screenLocation.Y *= Tile.GetTileSize().Y;
+
+                FMODUtil.RaiseEvent(EffectsTable.FootSteps, "Material", footStepsOn.FootStepSound, screenLocation.ToPoint2D());
             }
         }
 

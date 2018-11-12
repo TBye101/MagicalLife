@@ -42,7 +42,7 @@ namespace MagicalLifeAPI.Entity
         /// The location of the creature on the screen. This represents the progress through a tile for a moving creature.
         /// </summary>
         [ProtoMember(4)]
-        public Point2DFloat ScreenLocation { get; set; }
+        public Point2DFloat TileLocation { get; set; }
 
         /// <summary>
         /// The dimension that this creature is in.
@@ -90,7 +90,7 @@ namespace MagicalLifeAPI.Entity
             this.Health = new Attribute32(health);
             this.Movement = new AttributeFloat(movementSpeed);
             this.MapLocation = location;
-            this.ScreenLocation = new Point2DFloat(location.X, location.Y);
+            this.TileLocation = new Point2DFloat(location.X, location.Y);
             this.Dimension = dimension;
             Living.LivingCreatedHandler(new LivingEventArg(this, location));
             this.FootStepTimer = new TickTimer(5);

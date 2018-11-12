@@ -57,8 +57,8 @@ namespace MagicalLifeGUIWindows.Rendering.Map
 
                         if (item.Value != null)
                         {
-                            Point2D livingScreenLocation = new Point2D((int)(item.Value.ScreenLocation.X * Tile.GetTileSize().X), (int)(item.Value.ScreenLocation.Y * Tile.GetTileSize().Y));
-                            MasterLog.DebugWriteLine("Entity: " + item.Value.ID.ToString() + "Screen position: " + item.Value.ScreenLocation.ToString());
+                            Point2D livingScreenLocation = new Point2D((int)(item.Value.TileLocation.X * Tile.GetTileSize().X), (int)(item.Value.TileLocation.Y * Tile.GetTileSize().Y));
+                            MasterLog.DebugWriteLine("Entity: " + item.Value.ID.ToString() + "Screen position: " + item.Value.TileLocation.ToString());
                             item.Value.Visual.Render(MapDrawer, livingScreenLocation);
                         }
                     }
