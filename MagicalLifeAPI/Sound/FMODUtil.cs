@@ -58,7 +58,7 @@ namespace MagicalLifeAPI.Sound
             //low.createDSPByType(FMOD.DSP_TYPE.MIXER, out FMOD.DSP dsp);
 
             low.setSoftwareFormat(0, FMOD.SPEAKERMODE._5POINT1, 0);
-            _System.initialize(1, FMOD.Studio.INITFLAGS.NORMAL, FMOD.INITFLAGS.NORMAL, IntPtr.Zero);
+            _System.initialize(64, FMOD.Studio.INITFLAGS.NORMAL, FMOD.INITFLAGS.NORMAL, IntPtr.Zero);
             _System.loadBankFile(FileSystemManager.RootDirectory + "/Content/Banks/Master_Bank.bank", FMOD.Studio.LOAD_BANK_FLAGS.NORMAL, out Bank MainBank);
             _System.loadBankFile(FileSystemManager.RootDirectory + "/Content/Banks/Master_Bank.strings.bank", LOAD_BANK_FLAGS.NORMAL, out Bank MainBankStrings);
             MainBank.getEventList(out MainEvents);
