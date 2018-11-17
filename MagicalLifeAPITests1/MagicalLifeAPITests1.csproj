@@ -66,9 +66,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MagicalLifeAPI\MagicalLifeAPI.csproj">
+    <ProjectReference Include="..\MagicalLifeAPI\MagicalLifeAPIOld.csproj">
       <Project>{fe8400a7-9dc8-4ab4-8c54-ac5f36bf7639}</Project>
-      <Name>MagicalLifeAPI</Name>
+      <Name>MagicalLifeAPIOld</Name>
     </ProjectReference>
     <ProjectReference Include="..\MagicalLifeServer\MagicalLifeServer.csproj">
       <Project>{297BEA4D-42A0-4790-8020-C8114AB4DF7E}</Project>

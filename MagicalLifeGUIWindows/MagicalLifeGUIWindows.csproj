@@ -218,9 +218,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MagicalLifeAPI\MagicalLifeAPI.csproj">
+    <ProjectReference Include="..\MagicalLifeAPI\MagicalLifeAPIOld.csproj">
       <Project>{FE8400A7-9DC8-4AB4-8C54-AC5F36BF7639}</Project>
-      <Name>MagicalLifeAPI</Name>
+      <Name>MagicalLifeAPIOld</Name>
     </ProjectReference>
     <ProjectReference Include="..\MagicalLifeClient\MagicalLifeClient.csproj">
       <Project>{fc0297b3-bace-4edc-b951-6f89a779dbe4}</Project>

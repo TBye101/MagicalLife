@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Components\Generic\" />
+    <Folder Include="Components\Item\" />
+    <Folder Include="Entity\Animal\" />
+    <Folder Include="Entity\Entity Components\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Framework.Portable" Version="3.7.0.1708" />
+    <PackageReference Include="protobuf-net" Version="2.4.0" />
+    <PackageReference Include="Serilog" Version="2.7.1" />
+  </ItemGroup>
+
+</Project>

@@ -67,9 +67,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MagicalLifeAPI\MagicalLifeAPI.csproj">
+    <ProjectReference Include="..\MagicalLifeAPI\MagicalLifeAPIOld.csproj">
       <Project>{fe8400a7-9dc8-4ab4-8c54-ac5f36bf7639}</Project>
-      <Name>MagicalLifeAPI</Name>
+      <Name>MagicalLifeAPIOld</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
