@@ -2,6 +2,21 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 ---
 
+## [Version 0.1.1]
+
+#### API
+*Audio now has multiple channels/can play multiple sounds simultaneously
+*Audio now has a surround sound effect
+	*Audio listening is set from the center of the screen
+
+#### GUI
+
+#### Bugs
+*Items now render properly again
+*Reduced the occurrences of a saving bug
+
+---
+
 ## [Version 0.1.0] 
 
 #### API

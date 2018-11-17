@@ -28,7 +28,8 @@ namespace MagicalLifeGUIWindows.GUI.New
             World.Mode = MagicalLifeAPI.Networking.EngineMode.ServerAndClient;
             Server.Load();
             ClientSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings());
-            FMODUtil.RaiseEvent(EffectsTable.UIClick);
+            FMODUtil.RaiseEvent(SoundsTable.UIClick);
+            FMODUtil.RaiseEvent(SoundsTable.Ambience);
             ServerSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings());
             Client.Load();
             NewGameInputHandler a = new NewGameInputHandler();

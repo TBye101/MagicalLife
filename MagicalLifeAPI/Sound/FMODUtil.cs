@@ -1,6 +1,9 @@
-﻿using MagicalLifeAPI.Filing;
+﻿using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Filing;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Sound.FMOD.Studio;
+using MagicalLifeAPI.World.Base;
 using System;
 
 namespace MagicalLifeAPI.Sound
@@ -26,12 +29,28 @@ namespace MagicalLifeAPI.Sound
 
         private static EventDescription[] MainEvents;
 
+        public static void Update()
+        {
+            Point2D camera = RenderInfo.GetCameraCenter();
+
+            _3D_ATTRIBUTES attributes = new _3D_ATTRIBUTES();
+            attributes.forward.z = 1.0f;
+            attributes.up.y = 1.0f;
+            attributes.position.x = camera.X;
+            attributes.position.z = camera.Y;
+
+            System.setListenerAttributes(0, attributes);
+
+            System.update();
+        }
+
         public static void Init()
         {
             FMOD.Studio.System.create(out _System);
             _System.getLowLevelSystem(out FMOD.System low);
-            low.setSoftwareFormat(0, FMOD.SPEAKERMODE._7POINT1, 0);
-            _System.initialize(1, FMOD.Studio.INITFLAGS.NORMAL, FMOD.INITFLAGS.NORMAL, IntPtr.Zero);
+
+            low.setSoftwareFormat(0, FMOD.SPEAKERMODE._5POINT1, 0);
+            _System.initialize(64, FMOD.Studio.INITFLAGS.NORMAL, FMOD.INITFLAGS.NORMAL, IntPtr.Zero);
             _System.loadBankFile(FileSystemManager.RootDirectory + "/Content/Banks/Master_Bank.bank", FMOD.Studio.LOAD_BANK_FLAGS.NORMAL, out Bank MainBank);
             _System.loadBankFile(FileSystemManager.RootDirectory + "/Content/Banks/Master_Bank.strings.bank", LOAD_BANK_FLAGS.NORMAL, out Bank MainBankStrings);
             MainBank.getEventList(out MainEvents);
@@ -62,6 +81,23 @@ namespace MagicalLifeAPI.Sound
             instance.setParameterValue(parameterName, value);
             instance.start();
         }
+        public static void RaiseEvent(string eventPath, string parameterName, int value, Point2D screenPosition)
+        {
+            _System.getEvent(eventPath, out EventDescription _event);
+            _event.createInstance(out EventInstance instance);
+            instance.setParameterValue(parameterName, value);
+
+            _3D_ATTRIBUTES attributes = new _3D_ATTRIBUTES();
+            attributes.forward.z = 1.0f;
+            attributes.up.y = 1.0f;
+            attributes.position.x = screenPosition.X;
+            attributes.position.z = screenPosition.Y;
+            instance.setProperty(EVENT_PROPERTY.MINIMUM_DISTANCE, 300);
+            instance.setProperty(EVENT_PROPERTY.MAXIMUM_DISTANCE, 1600);
+
+            instance.set3DAttributes(attributes);
+            instance.start();
+        }
 
         public static void Test()
         {
@@ -75,6 +111,8 @@ namespace MagicalLifeAPI.Sound
             {
                 item.getPath(out string path);
                 MasterLog.DebugWriteLine(path);
+                item.is3D(out bool is3D);
+                MasterLog.DebugWriteLine("Is 3D: " + is3D.ToString());
 
                 item.getParameterCount(out int length);
 

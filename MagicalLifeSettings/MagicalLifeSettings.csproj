@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssemblyGetter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Storage\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.settings</DependentUpon>
@@ -60,6 +61,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Animation\BaseCharacterData.xml" />
     <Content Include="Storage\MainWindow.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>MainWindow.Designer.cs</LastGenOutput>

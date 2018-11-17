@@ -30,7 +30,7 @@ namespace MagicalLifeGUIWindows.GUI.In
 
         private void Save()
         {
-            FMODUtil.RaiseEvent(EffectsTable.UIClick);
+            FMODUtil.RaiseEvent(SoundsTable.UIClick);
             SaveGameMenu.Initialize();
             InGameEscapeMenu.menu.PopupChild(SaveGameMenu.menu);
         }

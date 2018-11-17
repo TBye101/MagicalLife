@@ -46,6 +46,11 @@ namespace MagicalLifeAPI.Visual.Rendering.Animation
             this.FrameTimer = new TickTimer(RenderInfo.GameFPS / FPS);
         }
 
+        private AnimationSequence()
+        {
+            //Protobuf-net constructor
+        }
+
         public void ResetToBeginning()
         {
             this.FrameTimer.Reset();

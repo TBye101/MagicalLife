@@ -36,7 +36,7 @@ namespace MagicalLifeGUIWindows.GUI.Load
             int selected = LoadGameMenu.Menu.SaveSelectListBox.SelectedIndex;
             if (selected != -1)
             {
-                FMODUtil.RaiseEvent(EffectsTable.UIClick);
+                FMODUtil.RaiseEvent(SoundsTable.UIClick);
                 World.Mode = MagicalLifeAPI.Networking.EngineMode.ServerAndClient;
                 RenderableString selectedItem = (RenderableString)LoadGameMenu.Menu.SaveSelectListBox.Items[selected];
                 WorldStorage.LoadWorld(selectedItem.Text);

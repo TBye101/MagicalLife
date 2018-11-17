@@ -57,12 +57,22 @@ namespace MagicalLifeGUIWindows.Rendering.Map
 
                         if (item.Value != null)
                         {
-                            Point2D livingScreenLocation = new Point2D((int)(item.Value.ScreenLocation.X * Tile.GetTileSize().X), (int)(item.Value.ScreenLocation.Y * Tile.GetTileSize().Y));
-                            MasterLog.DebugWriteLine("Entity: " + item.Value.ID.ToString() + "Screen position: " + item.Value.ScreenLocation.ToString());
+                            Point2D livingScreenLocation = new Point2D((int)(item.Value.TileLocation.X * Tile.GetTileSize().X), (int)(item.Value.TileLocation.Y * Tile.GetTileSize().Y));
+                            MasterLog.DebugWriteLine("Entity: " + item.Value.ID.ToString() + "Screen position: " + item.Value.TileLocation.ToString());
                             item.Value.Visual.Render(MapDrawer, livingScreenLocation);
                         }
                     }
                 }
+            }
+        }
+
+
+        private static void DrawItems(Tile tile, Rectangle target)
+        {
+            if (tile.Item != null)
+            {
+                Texture2D texture = AssetManager.Textures[tile.Item.TextureIndex];
+                MapDrawer.Draw(texture, target);
             }
         }
 
@@ -75,6 +85,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
             Rectangle x32Target = new Rectangle(start.X + 16, start.Y + 16, 32, 32);
 
             tile.CompositeRenderer.Render(MapDrawer, start);
+            DrawItems(tile, new Rectangle(start.X, start.Y, Tile.GetTileSize().X, Tile.GetTileSize().Y));
 
             if (tile.ImpendingAction == MagicalLifeAPI.Entity.AI.Task.ActionSelected.Mine)
             {

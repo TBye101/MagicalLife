@@ -15,7 +15,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
 
         public override void Click(MouseEventArgs e, GUIContainer container)
         {
-            FMODUtil.RaiseEvent(EffectsTable.UIClick);
+            FMODUtil.RaiseEvent(SoundsTable.UIClick);
             UniversalEvents.GameExitHandler();
         }
 

@@ -22,5 +22,10 @@ namespace MagicalLifeAPI.DataTypes
         {
             return "{ " + this.X.ToString(CultureInfo.InvariantCulture) + ", " + this.Y.ToString(CultureInfo.InvariantCulture) + " }";
         }
+
+        public Point2D ToPoint2D()
+        {
+            return new Point2D((int)this.X, (int)this.Y);
+        }
     }
 }
