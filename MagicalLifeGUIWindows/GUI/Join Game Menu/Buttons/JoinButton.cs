@@ -29,7 +29,7 @@ namespace MagicalLifeGUIWindows.GUI.Join
         public override void Click(MouseEventArgs e, GUIContainer container)
         {
             World.Mode = MagicalLifeAPI.Networking.EngineMode.ClientOnly;
-            FMODUtil.RaiseEvent(EffectsTable.UIClick);
+            FMODUtil.RaiseEvent(SoundsTable.UIClick);
             ClientSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(JoinGameMenu.menu.IpInputBox.Text, int.Parse(JoinGameMenu.menu.PortInputBox.Text)));
             Client.Load();
             MenuHandler.Clear();

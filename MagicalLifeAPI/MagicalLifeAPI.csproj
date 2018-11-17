@@ -218,7 +218,7 @@
     <Compile Include="Load\LoadMoniter.cs" />
     <Compile Include="Filing\Settings\AudioSettings.cs" />
     <Compile Include="Filing\Settings\Keybindings.cs" />
-    <Compile Include="Sound\EffectsTable.cs" />
+    <Compile Include="Sound\SoundsTable.cs" />
     <Compile Include="Sound\FMODUtil.cs" />
     <Compile Include="Sound\FMOD\fmod.cs" />
     <Compile Include="Sound\FMOD\fmod_dsp.cs" />

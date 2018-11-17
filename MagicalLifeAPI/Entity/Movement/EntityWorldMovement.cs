@@ -158,7 +158,7 @@ namespace MagicalLifeAPI.Entity.Movement
                 screenLocation.X *= Tile.GetTileSize().X;
                 screenLocation.Y *= Tile.GetTileSize().Y;
 
-                FMODUtil.RaiseEvent(EffectsTable.FootSteps, "Material", footStepsOn.FootStepSound, screenLocation.ToPoint2D());
+                FMODUtil.RaiseEvent(SoundsTable.FootSteps, "Material", footStepsOn.FootStepSound, screenLocation.ToPoint2D());
             }
         }
 
