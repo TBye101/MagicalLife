@@ -67,7 +67,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         }
 
 
-        private static void DrawItems(MapBatch spBatch, Tile tile, Rectangle target)
+        private static void DrawItems(Tile tile, Rectangle target)
         {
             if (tile.Item != null)
             {
@@ -85,7 +85,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
             Rectangle x32Target = new Rectangle(start.X + 16, start.Y + 16, 32, 32);
 
             tile.CompositeRenderer.Render(MapDrawer, start);
-            DrawItems(MapDrawer, tile, new Rectangle(start.X, start.Y, Tile.GetTileSize().X, Tile.GetTileSize().Y));
+            DrawItems(tile, new Rectangle(start.X, start.Y, Tile.GetTileSize().X, Tile.GetTileSize().Y));
 
             if (tile.ImpendingAction == MagicalLifeAPI.Entity.AI.Task.ActionSelected.Mine)
             {
