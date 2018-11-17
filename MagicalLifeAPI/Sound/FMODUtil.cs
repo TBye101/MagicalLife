@@ -31,11 +31,7 @@ namespace MagicalLifeAPI.Sound
 
         public static void Update()
         {
-            //_3D_ATTRIBUTES atts = new _3D_ATTRIBUTES();
-
             Point2D camera = RenderInfo.GetCameraCenter();
-            //atts.forward.z = 1.0f;
-            //atts.up.y = 1.0f;
 
             _3D_ATTRIBUTES attributes = new _3D_ATTRIBUTES();
             attributes.forward.z = 1.0f;
@@ -52,10 +48,6 @@ namespace MagicalLifeAPI.Sound
         {
             FMOD.Studio.System.create(out _System);
             _System.getLowLevelSystem(out FMOD.System low);
-            //low.set3DSettings(1, 64, 1);
-
-            //low.setOutput(FMOD.OUTPUTTYPE.WINSONIC);
-            //low.createDSPByType(FMOD.DSP_TYPE.MIXER, out FMOD.DSP dsp);
 
             low.setSoftwareFormat(0, FMOD.SPEAKERMODE._5POINT1, 0);
             _System.initialize(64, FMOD.Studio.INITFLAGS.NORMAL, FMOD.INITFLAGS.NORMAL, IntPtr.Zero);
@@ -91,12 +83,10 @@ namespace MagicalLifeAPI.Sound
         }
         public static void RaiseEvent(string eventPath, string parameterName, int value, Point2D screenPosition)
         {
-            //RaiseEvent(eventPath, parameterName, value);
             _System.getEvent(eventPath, out EventDescription _event);
             _event.createInstance(out EventInstance instance);
             instance.setParameterValue(parameterName, value);
 
-            //Point2D camera = RenderInfo.GetCameraCenter();
             _3D_ATTRIBUTES attributes = new _3D_ATTRIBUTES();
             attributes.forward.z = 1.0f;
             attributes.up.y = 1.0f;
@@ -104,23 +94,6 @@ namespace MagicalLifeAPI.Sound
             attributes.position.z = screenPosition.Y;
             instance.setProperty(EVENT_PROPERTY.MINIMUM_DISTANCE, 300);
             instance.setProperty(EVENT_PROPERTY.MAXIMUM_DISTANCE, 1600);
-
-            //_3D_ATTRIBUTES D3 = new _3D_ATTRIBUTES();
-
-            //FMOD.VECTOR forward = new FMOD.VECTOR();
-
-            //FMOD.VECTOR up = new FMOD.VECTOR();
-
-            //FMOD.VECTOR position = new FMOD.VECTOR();
-            //position.x = screenPosition.X;
-            //position.y = 0;
-            //position.z = screenPosition.Y;
-
-            //D3.forward = forward;
-            //D3.up = up;
-            //D3.position = position;
-
-            //MasterLog.DebugWriteLine("Play footstep: " + D3.position.x.ToString() + ", " + D3.position.y.ToString() + ", " + D3.position.z.ToString());
 
             instance.set3DAttributes(attributes);
             instance.start();

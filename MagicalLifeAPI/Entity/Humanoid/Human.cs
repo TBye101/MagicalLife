@@ -46,7 +46,9 @@ namespace MagicalLifeAPI.Entity.Humanoid
         public Human(int health, float movementSpeed, Point2D location, int dimension, Guid playerID) : base(health, movementSpeed, location, dimension, playerID)
         {
             Filing.Logging.MasterLog.DebugWriteLine("Living spawned at: " + location.ToString());
-            this.Visual = new AnimatedTexture(RenderLayer.Character, this.GetSequences(), TextureLoader.AnimationBaseCharacter, XMLPaths.BaseCharacterSpriteSheet, Assembly.GetAssembly(typeof(AssemblyGetter)));
+            this.Visual = new AnimatedTexture(RenderLayer.Character, this.GetSequences(), 
+                TextureLoader.AnimationBaseCharacter,
+                XMLPaths.BaseCharacterSpriteSheet, Assembly.GetAssembly(typeof(AssemblyGetter)));
         }
 
         public Human() : base()
