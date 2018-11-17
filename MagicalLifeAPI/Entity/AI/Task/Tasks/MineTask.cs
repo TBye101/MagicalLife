@@ -63,7 +63,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         {
             if (this.HitTimer.Allow())
             {
-                List<World.Base.Item> drop = this.Minable.MiningBehavior.MineSomePercent(.1F);
+                List<World.Base.Item> drop = this.Minable.MiningBehavior.MineSomePercent(.1F, this.Target);
 
                 if (drop != null && drop.Count > 0)
                 {
