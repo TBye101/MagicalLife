@@ -218,21 +218,21 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MagicalLifeAPI\MagicalLifeAPIOld.csproj">
-      <Project>{FE8400A7-9DC8-4AB4-8C54-AC5F36BF7639}</Project>
-      <Name>MagicalLifeAPIOld</Name>
+    <ProjectReference Include="..\APICore\MagicalLifeAPI.csproj">
+      <Project>{3e99c146-d68a-4074-8f0e-ada3b6e22120}</Project>
+      <Name>MagicalLifeAPI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MagicalLifeClient\MagicalLifeClient.csproj">
-      <Project>{fc0297b3-bace-4edc-b951-6f89a779dbe4}</Project>
-      <Name>MagicalLifeClient</Name>
+    <ProjectReference Include="..\MagicalLifeClientCore\MagicalLifeClientCore.csproj">
+      <Project>{c2128141-95c1-417f-a4e4-cd58ffefdd82}</Project>
+      <Name>MagicalLifeClientCore</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MagicalLifeServer\MagicalLifeServer.csproj">
-      <Project>{297BEA4D-42A0-4790-8020-C8114AB4DF7E}</Project>
-      <Name>MagicalLifeServer</Name>
+    <ProjectReference Include="..\MagicalLifeServerCore\MagicalLifeServerCore.csproj">
+      <Project>{6643b97f-d0fe-493e-93e5-6252e8d16635}</Project>
+      <Name>MagicalLifeServerCore</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MagicalLifeSettings\MagicalLifeSettings.csproj">
-      <Project>{76b12b63-df5d-40fd-8e90-03395095dd71}</Project>
-      <Name>MagicalLifeSettings</Name>
+    <ProjectReference Include="..\MagicalLifeSettingsCore\MagicalLifeSettingsCore.csproj">
+      <Project>{588bacec-7816-444f-ab80-b44077275b50}</Project>
+      <Name>MagicalLifeSettingsCore</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
