@@ -5,12 +5,6 @@
     <Setting Name="ScreenSize" Type="System.Drawing.Size" Scope="User">
       <Value Profile="(Default)">1920, 1080</Value>
     </Setting>
-    <Setting Name="WindowState" Type="System.Windows.Forms.FormWindowState" Scope="User">
-      <Value Profile="(Default)">Maximized</Value>
-    </Setting>
-    <Setting Name="Boarder" Type="System.Windows.Forms.FormBorderStyle" Scope="User">
-      <Value Profile="(Default)">None</Value>
-    </Setting>
     <Setting Name="Resolution" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>

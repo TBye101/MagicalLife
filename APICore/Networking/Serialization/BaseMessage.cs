@@ -24,7 +24,7 @@ namespace MagicalLifeAPI.Networking.Serialization
         public BaseMessage(NetMessageID id)
         {
             this.ID = id;
-            this.PlayerID = MagicalLifeSettings.Storage.Player.Default.PlayerID;
+            this.PlayerID = MagicalLifeSettingsCore.Storage.Player.Default.PlayerID;
         }
 
         public BaseMessage()

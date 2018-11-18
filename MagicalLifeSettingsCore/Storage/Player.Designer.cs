@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MagicalLifeSettings.Storage {
+namespace MagicalLifeSettingsCore.Storage {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
     public sealed partial class Player : global::System.Configuration.ApplicationSettingsBase {
         
         private static Player defaultInstance = ((Player)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Player())));

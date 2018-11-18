@@ -140,7 +140,7 @@ namespace MagicalLifeAPI.Entity.Movement
                 FootStepSound(entity, destination);
 
                 //If this entity is the current client's and therefore that clients responsibility to report about
-                if (entity.PlayerID == MagicalLifeSettings.Storage.Player.Default.PlayerID)
+                if (entity.PlayerID == MagicalLifeSettingsCore.Storage.Player.Default.PlayerID)
                 {
                     ClientSendRecieve.Send(new WorldModifierMessage(new LivingLocationModifier(entity.ID, source.MapLocation, destination.MapLocation, entity.Dimension)));
                 }
