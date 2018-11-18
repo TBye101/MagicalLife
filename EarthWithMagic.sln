@@ -22,15 +22,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Included DLL", "Included DL
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicalLifeAPI", "APICore\MagicalLifeAPI.csproj", "{3E99C146-D68A-4074-8F0E-ADA3B6E22120}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeSettingsCore", "MagicalLifeSettingsCore\MagicalLifeSettingsCore.csproj", "{588BACEC-7816-444F-AB80-B44077275B50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicalLifeSettingsCore", "MagicalLifeSettingsCore\MagicalLifeSettingsCore.csproj", "{588BACEC-7816-444F-AB80-B44077275B50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeClientCore", "MagicalLifeClientCore\MagicalLifeClientCore.csproj", "{C2128141-95C1-417F-A4E4-CD58FFEFDD82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicalLifeClientCore", "MagicalLifeClientCore\MagicalLifeClientCore.csproj", "{C2128141-95C1-417F-A4E4-CD58FFEFDD82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeServerCore", "MagicalLifeServerCore\MagicalLifeServerCore.csproj", "{6643B97F-D0FE-493E-93E5-6252E8D16635}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicalLifeServerCore", "MagicalLifeServerCore\MagicalLifeServerCore.csproj", "{6643B97F-D0FE-493E-93E5-6252E8D16635}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeAPITest1Core", "MagicalLifeAPITest1Core\MagicalLifeAPITest1Core.csproj", "{394C2C52-6FB3-46BE-9B12-5942450D10F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicalLifeAPITest1Core", "MagicalLifeAPITest1Core\MagicalLifeAPITest1Core.csproj", "{394C2C52-6FB3-46BE-9B12-5942450D10F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeDedicatedServerCore", "MagicalLifeDedicatedServerCore\MagicalLifeDedicatedServerCore.csproj", "{4715EEEC-40D9-4243-9442-BBD0B828A428}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicalLifeDedicatedServerCore", "MagicalLifeDedicatedServerCore\MagicalLifeDedicatedServerCore.csproj", "{4715EEEC-40D9-4243-9442-BBD0B828A428}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{2C3C1761-D31A-4284-9059-C168156A5BF4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -122,6 +124,18 @@ Global
 		{4715EEEC-40D9-4243-9442-BBD0B828A428}.Release|x64.Build.0 = Release|Any CPU
 		{4715EEEC-40D9-4243-9442-BBD0B828A428}.Release|x86.ActiveCfg = Release|Any CPU
 		{4715EEEC-40D9-4243-9442-BBD0B828A428}.Release|x86.Build.0 = Release|Any CPU
+		{2C3C1761-D31A-4284-9059-C168156A5BF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C3C1761-D31A-4284-9059-C168156A5BF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C3C1761-D31A-4284-9059-C168156A5BF4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2C3C1761-D31A-4284-9059-C168156A5BF4}.Debug|x64.Build.0 = Debug|Any CPU
+		{2C3C1761-D31A-4284-9059-C168156A5BF4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2C3C1761-D31A-4284-9059-C168156A5BF4}.Debug|x86.Build.0 = Debug|Any CPU
+		{2C3C1761-D31A-4284-9059-C168156A5BF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C3C1761-D31A-4284-9059-C168156A5BF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C3C1761-D31A-4284-9059-C168156A5BF4}.Release|x64.ActiveCfg = Release|Any CPU
+		{2C3C1761-D31A-4284-9059-C168156A5BF4}.Release|x64.Build.0 = Release|Any CPU
+		{2C3C1761-D31A-4284-9059-C168156A5BF4}.Release|x86.ActiveCfg = Release|Any CPU
+		{2C3C1761-D31A-4284-9059-C168156A5BF4}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

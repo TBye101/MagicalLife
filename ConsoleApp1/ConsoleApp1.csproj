@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Content\Animation\BaseCharacterData.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Content\Animation\BaseCharacterData.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Event\" />
+    <Folder Include="GUI\History\" />
+    <Folder Include="Rendering\GUI\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Extended" Version="1.1.0" />
+    <PackageReference Include="MonoGame.Extended.Input" Version="1.1.0" />
+    <PackageReference Include="MonoGame.Framework.Portable" Version="3.7.0.1708" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\APICore\MagicalLifeAPI.csproj" />
+    <ProjectReference Include="..\MagicalLifeClientCore\MagicalLifeClientCore.csproj" />
+    <ProjectReference Include="..\MagicalLifeServerCore\MagicalLifeServerCore.csproj" />
+    <ProjectReference Include="..\MagicalLifeSettingsCore\MagicalLifeSettingsCore.csproj" />
+  </ItemGroup>
+
+</Project>

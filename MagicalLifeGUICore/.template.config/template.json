@@ -1,0 +1,15 @@
+{
+    "author": "kiootic",
+    "name": "MonoGame DesktopGL Project",
+    "classifications": [
+        "Game",
+        "MonoGame"
+    ],
+    "tags": {
+        "language": "C#",
+        "type": "project"
+    },
+    "identity": "MonoGame.DesktopGL.CSharp",
+    "shortName": "monogamegl",
+    "sourceName": "App"
+}
