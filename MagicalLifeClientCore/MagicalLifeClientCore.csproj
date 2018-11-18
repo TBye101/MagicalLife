@@ -13,8 +13,4 @@
     <Folder Include="Processing\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\APICore\MagicalLifeAPI.csproj" />
-  </ItemGroup>
-
 </Project>

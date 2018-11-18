@@ -5,9 +5,4 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\APICore\MagicalLifeAPI.csproj" />
-    <ProjectReference Include="..\MagicalLifeServerCore\MagicalLifeServerCore.csproj" />
-  </ItemGroup>
-
 </Project>

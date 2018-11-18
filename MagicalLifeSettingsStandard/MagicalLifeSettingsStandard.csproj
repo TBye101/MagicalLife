@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Storage\MainWindow.settings" />
+    <None Remove="Storage\Universal.settings" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Storage\MainWindow.settings" />
+    <Content Include="Storage\Universal.settings" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Storage\MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Storage\Player.Designer.cs">
+      <DependentUpon>Player.settings</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Storage\Universal.Designer.cs">
+      <DependentUpon>Universal.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Storage\Player.settings">
+      <LastGenOutput>Player.Designer.cs</LastGenOutput>
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+    </None>
+  </ItemGroup>
+
+</Project>
