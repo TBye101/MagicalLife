@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Networking\" />
+    <Folder Include="Processing\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\APICore\MagicalLifeAPI.csproj" />
+  </ItemGroup>
+
+</Project>
