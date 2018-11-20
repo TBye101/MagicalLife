@@ -9,4 +9,8 @@
     <Folder Include="Processing\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MagicalLifeAPIStandard\MagicalLifeAPIStandard.csproj" />
+  </ItemGroup>
+
 </Project>

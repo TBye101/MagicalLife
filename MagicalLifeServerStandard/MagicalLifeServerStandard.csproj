@@ -9,4 +9,8 @@
     <Folder Include="Validation\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MagicalLifeAPIStandard\MagicalLifeAPIStandard.csproj" />
+  </ItemGroup>
+
 </Project>
