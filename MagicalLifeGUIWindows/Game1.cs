@@ -137,7 +137,7 @@ namespace MagicalLifeGUIWindows
             FPS.Update(deltaTime);
 
             this.DisplayInGame();
-            FMODUtil.System.update();
+            FMODUtil.Update();
 
             //Used to render things to a buffer that will have a zoom multiplier applied before rendering.
 

@@ -40,12 +40,12 @@ namespace MagicalLifeGUIWindows.GUI.In
 
         public override void Click(MouseEventArgs e, GUIContainer container)
         {
-            FMODUtil.RaiseEvent(EffectsTable.UIClick);
+            FMODUtil.RaiseEvent(SoundsTable.UIClick);
         }
 
         public override void DoubleClick(MouseEventArgs e, GUIContainer container)
         {
-            FMODUtil.RaiseEvent(EffectsTable.UIClick);
+            FMODUtil.RaiseEvent(SoundsTable.UIClick);
         }
     }
 }

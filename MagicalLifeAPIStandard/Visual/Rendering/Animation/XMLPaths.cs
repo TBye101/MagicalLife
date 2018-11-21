@@ -11,6 +11,6 @@ namespace MagicalLifeAPI.Visual.Rendering.Animation
     /// </summary>
     public static class XMLPaths
     {
-        public static readonly string BaseCharacterSpriteSheet = "MagicalLifeGUIWindows.Content.Animation.BaseCharacterData.xml";
+        public static readonly string BaseCharacterSpriteSheet = "MagicalLifeSettings.Animation.BaseCharacterData.xml";
     }
 }

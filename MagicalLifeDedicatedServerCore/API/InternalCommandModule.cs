@@ -11,7 +11,8 @@ namespace MagicalLifeDedicatedServer.API
             return new List<ICommand>()
             {
                 new NewGame(),
-                new StartGame()
+                new StartGame(),
+                new SaveGame()
             };
         }
 

@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.World.Base;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
@@ -40,13 +41,13 @@ namespace MagicalLifeAPI.Components.Resource
         /// </summary>
         /// <param name="percentMined"></param>
         /// <returns>Any items that should be dropped due to the progress in mining the object. Return null to drop nothing.</returns>
-        public List<Item> MineSomePercent(float percentMined)
+        public List<Item> MineSomePercent(float percentMined, Point2D position)
         {
             this.PercentMined += percentMined;
 
             if (this.PercentMined < 1)
             {
-                return this.MinePercent(this.PercentMined);
+                return this.MinePercent(this.PercentMined, position);
             }
             else
             {
@@ -56,6 +57,6 @@ namespace MagicalLifeAPI.Components.Resource
 
         /// <param name="percent">The total percent mined so far.</param>
         /// <returns></returns>
-        protected abstract List<Item> MinePercent(float percent);
+        protected abstract List<Item> MinePercent(float percent, Point2D position);
     }
 }
