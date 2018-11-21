@@ -20,17 +20,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Included DLL", "Included DL
 		Included DLL\fmodstudio64.dll = Included DLL\fmodstudio64.dll
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicalLifeAPITest1Core", "MagicalLifeAPITest1Core\MagicalLifeAPITest1Core.csproj", "{394C2C52-6FB3-46BE-9B12-5942450D10F6}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicalLifeDedicatedServerCore", "MagicalLifeDedicatedServerCore\MagicalLifeDedicatedServerCore.csproj", "{4715EEEC-40D9-4243-9442-BBD0B828A428}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeAPIStandard", "MagicalLifeAPIStandard\MagicalLifeAPIStandard.csproj", "{1F068781-8FEE-4AC2-A8AE-2251C558CF28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicalLifeAPIStandard", "MagicalLifeAPIStandard\MagicalLifeAPIStandard.csproj", "{1F068781-8FEE-4AC2-A8AE-2251C558CF28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeClientStandard", "MagicalLifeClientStandard\MagicalLifeClientStandard.csproj", "{6EF2D2B5-BFCB-4EB7-B3A0-57A9B32E37CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicalLifeClientStandard", "MagicalLifeClientStandard\MagicalLifeClientStandard.csproj", "{6EF2D2B5-BFCB-4EB7-B3A0-57A9B32E37CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeServerStandard", "MagicalLifeServerStandard\MagicalLifeServerStandard.csproj", "{551AF4EC-5AE6-408C-9825-1471B53D4414}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicalLifeServerStandard", "MagicalLifeServerStandard\MagicalLifeServerStandard.csproj", "{551AF4EC-5AE6-408C-9825-1471B53D4414}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeSettingsStandard", "MagicalLifeSettingsStandard\MagicalLifeSettingsStandard.csproj", "{EC7FD282-023D-4926-A766-19B36AEAC4C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicalLifeSettingsStandard", "MagicalLifeSettingsStandard\MagicalLifeSettingsStandard.csproj", "{EC7FD282-023D-4926-A766-19B36AEAC4C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeAPITest", "MagicalLifeAPITest\MagicalLifeAPITest.csproj", "{9CA6C7EF-99BC-4066-BB9D-0613E248B91D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,18 +50,6 @@ Global
 		{9096A50A-058B-40F4-80A7-3C4D8725B658}.Release|x64.ActiveCfg = Release|x64
 		{9096A50A-058B-40F4-80A7-3C4D8725B658}.Release|x86.ActiveCfg = Release|x86
 		{9096A50A-058B-40F4-80A7-3C4D8725B658}.Release|x86.Build.0 = Release|x86
-		{394C2C52-6FB3-46BE-9B12-5942450D10F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{394C2C52-6FB3-46BE-9B12-5942450D10F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{394C2C52-6FB3-46BE-9B12-5942450D10F6}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{394C2C52-6FB3-46BE-9B12-5942450D10F6}.Debug|x64.Build.0 = Debug|Any CPU
-		{394C2C52-6FB3-46BE-9B12-5942450D10F6}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{394C2C52-6FB3-46BE-9B12-5942450D10F6}.Debug|x86.Build.0 = Debug|Any CPU
-		{394C2C52-6FB3-46BE-9B12-5942450D10F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{394C2C52-6FB3-46BE-9B12-5942450D10F6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{394C2C52-6FB3-46BE-9B12-5942450D10F6}.Release|x64.ActiveCfg = Release|Any CPU
-		{394C2C52-6FB3-46BE-9B12-5942450D10F6}.Release|x64.Build.0 = Release|Any CPU
-		{394C2C52-6FB3-46BE-9B12-5942450D10F6}.Release|x86.ActiveCfg = Release|Any CPU
-		{394C2C52-6FB3-46BE-9B12-5942450D10F6}.Release|x86.Build.0 = Release|Any CPU
 		{4715EEEC-40D9-4243-9442-BBD0B828A428}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4715EEEC-40D9-4243-9442-BBD0B828A428}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4715EEEC-40D9-4243-9442-BBD0B828A428}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -122,6 +110,18 @@ Global
 		{EC7FD282-023D-4926-A766-19B36AEAC4C2}.Release|x64.Build.0 = Release|Any CPU
 		{EC7FD282-023D-4926-A766-19B36AEAC4C2}.Release|x86.ActiveCfg = Release|Any CPU
 		{EC7FD282-023D-4926-A766-19B36AEAC4C2}.Release|x86.Build.0 = Release|Any CPU
+		{9CA6C7EF-99BC-4066-BB9D-0613E248B91D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CA6C7EF-99BC-4066-BB9D-0613E248B91D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CA6C7EF-99BC-4066-BB9D-0613E248B91D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9CA6C7EF-99BC-4066-BB9D-0613E248B91D}.Debug|x64.Build.0 = Debug|Any CPU
+		{9CA6C7EF-99BC-4066-BB9D-0613E248B91D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9CA6C7EF-99BC-4066-BB9D-0613E248B91D}.Debug|x86.Build.0 = Debug|Any CPU
+		{9CA6C7EF-99BC-4066-BB9D-0613E248B91D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CA6C7EF-99BC-4066-BB9D-0613E248B91D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CA6C7EF-99BC-4066-BB9D-0613E248B91D}.Release|x64.ActiveCfg = Release|Any CPU
+		{9CA6C7EF-99BC-4066-BB9D-0613E248B91D}.Release|x64.Build.0 = Release|Any CPU
+		{9CA6C7EF-99BC-4066-BB9D-0613E248B91D}.Release|x86.ActiveCfg = Release|Any CPU
+		{9CA6C7EF-99BC-4066-BB9D-0613E248B91D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
