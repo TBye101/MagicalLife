@@ -4,6 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>7.1</LangVersion>
     <RootNamespace>MagicalLifeSettings</RootNamespace>
+    <AssemblyName>MagicalLifeSettingsStandard</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -11,6 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Animation\BaseCharacterData.xml" />
     <None Remove="Storage\MainWindow.settings" />
     <None Remove="Storage\Universal.settings" />
   </ItemGroup>
@@ -18,6 +20,10 @@
   <ItemGroup>
     <Content Include="Storage\MainWindow.settings" />
     <Content Include="Storage\Universal.settings" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Animation\BaseCharacterData.xml" />
   </ItemGroup>
 
   <ItemGroup>
