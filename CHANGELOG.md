@@ -8,6 +8,8 @@ SneakyTactician  <SneakyTactician@outlook.com>
 *Audio now has multiple channels/can play multiple sounds simultaneously
 *Audio now has a surround sound effect
 	*Audio listening is set from the center of the screen
+*API now works anywhere C# can run
+*Dedicated server now runs on Mac and Linux in addition to windows
 
 #### GUI
 
