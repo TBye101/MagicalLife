@@ -18,10 +18,10 @@ Development Branch:
 * Songs/Soundtrack
 * Quests/Written story/Lore
 
-* Graphical Programmer
+* Programmers
 * Testers
 
-If you can provide one of the above things or have skills involving programming graphics or testing, let me know!
+If you can provide one of the above things, let me know!
 
 You can email me at SneakyTactician@outlook.com or create an issue in this repository.
 
@@ -80,7 +80,7 @@ Mod support: Always a priority
 5. Open the solution, and set the solution configuration to *debug, x64*. 
 6. That's all!
 
-Hint: Due to something weird with Monogame in Visual Studio, I advise *building* everytime you make a code change and want to run this game. Hitting *start* doesn't always seem to compile your changes when working with Monogame.
+Hint: Due to something weird with Monogame in Visual Studio, I advise *building* the GUI or Dedicated server (Depending on what you want to debug) everytime you make a code change and want to run this game. Hitting *start* doesn't always seem to compile your changes/insert breakpoints when working with Monogame.
 
 # Vision
 
@@ -176,9 +176,9 @@ but with magic and aspects of RPG.
 # Credits
 
 ## Contributors
-Lynngr - Created the dirt, grass, and stone textures.
+Lynngr - Did all of the artwork
 
-ockenyberg - Created the dirt and grass stepping sound effects
+ockenyberg - Made all of the sound effects
 
 Batarian711 - Created the logo for this project
 
