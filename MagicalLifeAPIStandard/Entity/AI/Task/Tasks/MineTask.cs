@@ -17,7 +17,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         public Point2D Target { get; private set; }
 
         [ProtoMember(2)]
-        private IMinable Minable { get; set; }
+        private IHarvestable Minable { get; set; }
 
         [ProtoMember(3)]
         private TickTimer HitTimer { get; set; }
@@ -63,14 +63,14 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         {
             if (this.HitTimer.Allow())
             {
-                List<World.Base.Item> drop = this.Minable.MiningBehavior.MineSomePercent(.1F, this.Target);
+                List<World.Base.Item> drop = this.Minable.HarvestingBehavior.HarvestSomePercent(.1F, this.Target);
 
                 if (drop != null && drop.Count > 0)
                 {
                     ItemAdder.AddItem(drop[0], l.MapLocation, l.Dimension);
                 }
 
-                if (this.Minable.MiningBehavior.PercentMined > 1)
+                if (this.Minable.HarvestingBehavior.PercentHarvested > 1)
                 {
                     this.RemoveResource(l.Dimension);
                     this.CompleteTask();

@@ -69,7 +69,8 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         {
             if (this.PlayingSequence == -1)
             {
-                batch.Draw(this.AnimationFrames.Sprites, ScreenTopLeft, this.AnimationFrames.GetSection(this.LastFrame));
+                batch.Draw(this.AnimationFrames.Sprites,
+                    ScreenTopLeft, this.AnimationFrames.GetSection(this.LastFrame), this.Priority);
             }
             else
             {
@@ -79,7 +80,8 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
                 this.LastFrame = frame;
                 this.HasFinished = isDone;
 
-                batch.Draw(this.AnimationFrames.Sprites, ScreenTopLeft, this.AnimationFrames.GetSection(frame));
+                batch.Draw(this.AnimationFrames.Sprites,
+                    ScreenTopLeft, this.AnimationFrames.GetSection(frame), this.Priority);
 
                 if (this.HasFinished)
                 {

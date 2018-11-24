@@ -77,7 +77,7 @@ namespace MagicalLifeServer.ServerWorld.World
                             Dirt dirt = new Dirt(new Point2D((chunkWidth * x) + cx, (chunkHeight * y) + cy));
                             if (random.Next(4) == 2)
                             {
-                                dirt.Resources = new Stone(random.Next(25));
+                                dirt.Resources = new Rock(random.Next(25));
                                 dirt.IsWalkable = false;
                             }
 

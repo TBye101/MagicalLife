@@ -3,6 +3,7 @@ using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Resources;
+using MagicalLifeAPI.World.Resources.Tree;
 using MagicalLifeAPI.World.Tiles;
 using System;
 
@@ -55,8 +56,16 @@ namespace MagicalLifeServer.ServerWorld.World
 
                             if (random.Next(4) == 2)
                             {
-                                tile.Resources = new Stone(random.Next(25) + 1);
+                                tile.Resources = new Rock(random.Next(25) + 1);
                                 tile.IsWalkable = false;
+                            }
+
+                            if (random.Next(4) == 2)
+                            {
+                                if (tile.Resources == null || tile.Resources != null && tile.Resources.DisplayName != Rock.StoneName)
+                                {
+                                    tile.Resources = new OakTree(OakTree.Durabilitie);
+                                }
                             }
 
                             chunk.Tiles[cx, cy] = tile;

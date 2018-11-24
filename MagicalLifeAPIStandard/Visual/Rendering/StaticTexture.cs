@@ -27,7 +27,7 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
 
         public override void Render(MapBatch batch, Point2D ScreenTopLeft)
         {
-            batch.Draw(AssetManager.Textures[this.TextureID], ScreenTopLeft);
+            batch.Draw(AssetManager.Textures[this.TextureID], ScreenTopLeft, this.Priority);
         }
     }
 }

@@ -16,8 +16,9 @@ namespace MagicalLifeAPI.World.Base
     /// Resources in tiles are things such as stone and minerals.
     /// </summary>
     [ProtoContract]
-    [ProtoInclude(7, typeof(StoneBase))]
-    public abstract class Resource : HasTexture, IHasSubclasses, IMinable, IRenderable
+    [ProtoInclude(7, typeof(RockBase))] 
+    [ProtoInclude(8, typeof(TreeBase))]
+    public abstract class Resource : HasTexture, IHasSubclasses, IHarvestable, IRenderable
     {
         public Resource(string name, int durability)
         {
@@ -46,7 +47,7 @@ namespace MagicalLifeAPI.World.Base
         public Attribute32 MaxDurability { get; }
 
         [ProtoMember(6)]
-        public abstract AbstractMinable MiningBehavior { get; set; }
+        public abstract AbstractHarvestable HarvestingBehavior { get; set; }
 
         public Type GetBaseType()
         {
@@ -57,7 +58,7 @@ namespace MagicalLifeAPI.World.Base
         {
             Dictionary<Type, int> ret = new Dictionary<Type, int>
             {
-                { typeof(StoneBase), 7 }
+                { typeof(RockBase), 7 }
             };
             return ret;
         }

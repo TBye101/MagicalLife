@@ -10,8 +10,10 @@ SneakyTactician  <SneakyTactician@outlook.com>
 	*Audio listening is set from the center of the screen
 *API now works anywhere C# can run
 *Dedicated server now runs on Mac and Linux in addition to windows
+*Trees now in as a resource
 
 #### GUI
+*Trees now render
 
 #### Bugs
 *Items now render properly again

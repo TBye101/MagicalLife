@@ -7,26 +7,26 @@ using System.Collections.Generic;
 namespace MagicalLifeAPI.Components.Resource
 {
     [ProtoContract]
-    public class DropWhenCompletelyMined : AbstractMinable
+    public class DropWhenCompletelyHarvested : AbstractHarvestable
     {
         [ProtoMember(1)]
         protected List<Item> Items { get; set; }
 
-        public DropWhenCompletelyMined(List<Item> items)
+        public DropWhenCompletelyHarvested(List<Item> items)
         {
             this.Items = items;
         }
 
-        public DropWhenCompletelyMined()
+        public DropWhenCompletelyHarvested()
         {
         }
 
-        public override List<Item> Mined()
+        public override List<Item> Harvested()
         {
             return this.Items;
         }
 
-        protected override List<Item> MinePercent(float percentMined, Point2D position)
+        protected override List<Item> HarvestPercent(float percentMined, Point2D position)
         {
             FMODUtil.RaiseEvent(SoundsTable.PickaxeHit, "", 0, position);
             return null;

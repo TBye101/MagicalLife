@@ -72,7 +72,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
             if (tile.Item != null)
             {
                 Texture2D texture = AssetManager.Textures[tile.Item.TextureIndex];
-                MapDrawer.Draw(texture, target);
+                MapDrawer.Draw(texture, target, RenderLayer.Items);
             }
         }
 
@@ -89,7 +89,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
 
             if (tile.ImpendingAction == MagicalLifeAPI.Entity.AI.Task.ActionSelected.Mine)
             {
-                MapDrawer.Draw(AssetManager.Textures[AssetManager.NameToIndex[TextureLoader.GUIPickaxeMapIcon]], x32Target);
+                MapDrawer.Draw(AssetManager.Textures[AssetManager.NameToIndex[TextureLoader.GUIPickaxeMapIcon]], x32Target, RenderLayer.GUI);
             }
         }
     }

@@ -12,6 +12,7 @@ using MagicalLifeGUIWindows.GUI.In;
 using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Load;
 using MagicalLifeGUIWindows.Rendering;
+using MagicalLifeGUIWindows.Rendering.Map;
 using MagicalLifeGUIWindows.Screens;
 using MagicalLifeSettings.Storage;
 using Microsoft.Xna.Framework;
@@ -155,6 +156,7 @@ namespace MagicalLifeGUIWindows
                     {
                         zoomBatch.Begin();
                         RenderingPipe.DrawScreen(zoomBatch);
+                        MapRenderer.MapDrawer.RenderAll();
                         zoomBatch.End();
                     }
                     else

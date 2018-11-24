@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Visual.Rendering.AbstractVisuals;
 using MagicalLifeGUIWindows.Rendering.Map;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -17,6 +18,7 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
     [ProtoContract]
     [ProtoInclude(3, typeof(StaticTexture))]
     [ProtoInclude(4, typeof(AnimatedTexture))]
+    [ProtoInclude(5, typeof(OffsetTexture))]
     public abstract class AbstractVisual
     {
         /// <summary>
