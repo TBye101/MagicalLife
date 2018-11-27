@@ -372,7 +372,10 @@ namespace MagicalLifeAPI.DataTypes.R
             nearest(p, rootNode, nearestIds, furthestDistance);
 
             foreach (int id in nearestIds)
+            {
                 v(id);
+            }
+
             nearestIds.Clear();
         }
 
@@ -1162,7 +1165,7 @@ namespace MagicalLifeAPI.DataTypes.R
             {
                 locker.AcquireReaderLock(locking_timeout);
 
-                var size = this.msize;
+                int size = this.msize;
 
                 locker.ReleaseReaderLock();
 

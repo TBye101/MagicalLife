@@ -2656,7 +2656,10 @@ namespace MagicalLifeAPI.Sound.FMOD
             public static int stringLengthUtf8(IntPtr nativeUtf8)
             {
                 int len = 0;
-                while (Marshal.ReadByte(nativeUtf8, len) != 0) ++len;
+                while (Marshal.ReadByte(nativeUtf8, len) != 0)
+                {
+                    ++len;
+                }
 
                 return len;
             }
@@ -2665,7 +2668,11 @@ namespace MagicalLifeAPI.Sound.FMOD
             {
                 // There is no one line marshal IntPtr->string for UTF8
                 int len = stringLengthUtf8(nativeUtf8);
-                if (len == 0) return string.Empty;
+                if (len == 0)
+                {
+                    return string.Empty;
+                }
+
                 byte[] buffer = new byte[len];
                 Marshal.Copy(nativeUtf8, buffer, 0, buffer.Length);
                 return Encoding.UTF8.GetString(buffer, 0, len);
