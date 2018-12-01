@@ -29,6 +29,7 @@ namespace MagicalLifeAPI.Asset
         public static readonly string GUIMenuBackground = "GUI/MenuBackground";
         public static readonly string GUIMenuButton = "GUI/MenuButton";
         public static readonly string GUIPickaxeMapIcon = "GUI/PickaxeMapIcon";
+        public static readonly string GUIAxeMapIcon = "GUI/AxeMapIcon";
 
         #endregion
 
@@ -106,6 +107,7 @@ namespace MagicalLifeAPI.Asset
             this.TexturesToLoad.Add(GUIMenuBackground);
             this.TexturesToLoad.Add(GUIMenuButton);
             this.TexturesToLoad.Add(GUIPickaxeMapIcon);
+            this.TexturesToLoad.Add(GUIAxeMapIcon);
 
             this.TexturesToLoad.Add(TextureDirt1);
             this.TexturesToLoad.Add(TextureDirt2);
