@@ -11,10 +11,13 @@ namespace MagicalLifeGUIWindows.GUI.In
     {
         public MineActionButton MineActionButton { get; set; } = new MineActionButton();
 
+        public ChopActionButton ChopActionButton { get; set; } = new ChopActionButton();
+
         public InGameGUIContainer(bool visible) : base(TextureLoader.GUIMenuBackground, GetDrawingBounds())
         {
             this.Visible = visible;
             this.Controls.Add(this.MineActionButton);
+            this.Controls.Add(this.ChopActionButton);
         }
 
         /// <summary>

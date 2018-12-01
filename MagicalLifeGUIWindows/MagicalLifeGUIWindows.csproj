@@ -106,6 +106,7 @@
     <Compile Include="GUI\In Game Escape Menu\InGameEscapeMenuContainer.cs" />
     <Compile Include="GUI\In Game Escape Menu\InGameEscapeMenuLayout.cs" />
     <Compile Include="GUI\In Game Escape Menu\InGameEscapeMenuLayout1920x1080.cs" />
+    <Compile Include="GUI\In Game GUI\Buttons\ChopActionButton.cs" />
     <Compile Include="GUI\Load Game Menu\Buttons\LoadSaveButton.cs" />
     <Compile Include="GUI\Load Game Menu\List Boxes\SelectGameListBox.cs" />
     <Compile Include="GUI\Load Game Menu\LoadGameMenu.cs" />
