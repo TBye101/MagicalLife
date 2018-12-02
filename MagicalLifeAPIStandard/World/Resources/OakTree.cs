@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Components.Resource;
+using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Sound;
+using MagicalLifeAPI.Visual.Rendering.AbstractVisuals;
+using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Items;
 using ProtoBuf;
 
@@ -30,6 +33,14 @@ namespace MagicalLifeAPI.World.Resources.Tree
         private static readonly StaticTexture Leaves = new
             StaticTexture(AssetManager.NameToIndex[TextureLoader.OakLeaves1], RenderLayer.TreeLeaves);
 
+
+        private static readonly int XOffset = Tile.GetTileSize().X / -2;
+        private static readonly int YOffset = Tile.GetTileSize().Y * -3 / 2;
+
+        private static readonly OffsetTexture OffsetStump = new OffsetTexture(RenderLayer.TreeStump, Stump, XOffset, YOffset);
+        private static readonly OffsetTexture OffsetTrunk = new OffsetTexture(RenderLayer.TreeTrunk, Trunk, XOffset, YOffset);
+        private static readonly OffsetTexture OffsetLeaves = new OffsetTexture(RenderLayer.TreeLeaves, Leaves, XOffset, YOffset);
+
         public OakTree(int durability) : base(Name, durability)
         {
             this.HarvestingBehavior = new DropWhenCompletelyHarvested(new List<Base.Item>()
@@ -49,9 +60,10 @@ namespace MagicalLifeAPI.World.Resources.Tree
         {
             List<AbstractVisual> ret = new List<AbstractVisual>
             {
-                Trunk,
-                Leaves,
-                Stump
+                
+                OffsetTrunk,
+                OffsetLeaves,
+                OffsetStump
             };
 
             return ret;
