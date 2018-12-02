@@ -12,9 +12,16 @@ namespace MagicalLifeAPI.Components.Resource
         [ProtoMember(1)]
         protected List<Item> Items { get; set; }
 
-        public DropWhenCompletelyHarvested(List<Item> items)
+        /// <summary>
+        /// The sound that plays whenever harvesting happens.
+        /// </summary>
+        [ProtoMember(2)]
+        protected string HarvestSound { get; set; }
+
+        public DropWhenCompletelyHarvested(List<Item> items, string mineSound)
         {
             this.Items = items;
+            this.HarvestSound = mineSound;
         }
 
         public DropWhenCompletelyHarvested()
@@ -28,7 +35,7 @@ namespace MagicalLifeAPI.Components.Resource
 
         protected override List<Item> HarvestPercent(float percentMined, Point2D position)
         {
-            FMODUtil.RaiseEvent(SoundsTable.PickaxeHit, "", 0, position);
+            FMODUtil.RaiseEvent(this.HarvestSound, "", 0, position);
             return null;
         }
     }

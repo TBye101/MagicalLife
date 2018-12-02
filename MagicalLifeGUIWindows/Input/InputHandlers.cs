@@ -13,6 +13,8 @@ namespace MagicalLifeGUIWindows.Input
 
         public static MiningActionHandler MiningAction;
 
+        public static ChopActionHandler ChopAction;
+
         public static StrafeHandler StrafingHandler;
 
         public static EscapeHandler EscHandler;
@@ -27,6 +29,7 @@ namespace MagicalLifeGUIWindows.Input
             StrafingHandler = new StrafeHandler();
             EscHandler = new EscapeHandler();
             ZooomHandler = new ZoomHandler();
+            ChopAction = new ChopActionHandler();
         }
     }
 }

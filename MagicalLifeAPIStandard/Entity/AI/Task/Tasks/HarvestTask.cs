@@ -11,18 +11,18 @@ using System.Collections.Generic;
 namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 {
     [ProtoContract]
-    public class MineTask : MagicalTask
+    public class HarvestTask : MagicalTask
     {
         [ProtoMember(1)]
         public Point2D Target { get; private set; }
 
         [ProtoMember(2)]
-        private IHarvestable Minable { get; set; }
+        private IHarvestable Harvestable { get; set; }
 
         [ProtoMember(3)]
         private TickTimer HitTimer { get; set; }
 
-        public MineTask(Point2D target, Guid boundID)
+        public HarvestTask(Point2D target, Guid boundID)
             : base(GetDependencies(boundID, target), boundID, new List<Qualification>())
         {
             this.Target = target;
@@ -30,7 +30,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             this.HitTimer = new TickTimer(30);
         }
 
-        private MineTask()
+        private HarvestTask()
         {
         }
 
@@ -47,7 +47,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         public override void MakePreparations(Living l)
         {
             Tile tile = World.Data.World.GetTile(l.Dimension, this.Target.X, this.Target.Y);
-            this.Minable = tile.Resources;
+            this.Harvestable = tile.Resources;
             if (tile.Resources == null)
             {
                 MasterLog.DebugWriteLine("Minable is null");
@@ -63,14 +63,14 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         {
             if (this.HitTimer.Allow())
             {
-                List<World.Base.Item> drop = this.Minable.HarvestingBehavior.HarvestSomePercent(.1F, this.Target);
+                List<World.Base.Item> drop = this.Harvestable.HarvestingBehavior.HarvestSomePercent(.1F, this.Target);
 
                 if (drop != null && drop.Count > 0)
                 {
                     ItemAdder.AddItem(drop[0], l.MapLocation, l.Dimension);
                 }
 
-                if (this.Minable.HarvestingBehavior.PercentHarvested > 1)
+                if (this.Harvestable.HarvestingBehavior.PercentHarvested > 1)
                 {
                     this.RemoveResource(l.Dimension);
                     this.CompleteTask();

@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Components.Resource;
+using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Items;
 using ProtoBuf;
@@ -23,7 +24,7 @@ namespace MagicalLifeAPI.World.Resources
             this.HarvestingBehavior = new DropWhenCompletelyHarvested(new List<Base.Item>()
             {
                 new StoneRubble(this.Durability)
-            });
+            }, SoundsTable.PickaxeHit);
         }
 
         public Rock() : base()

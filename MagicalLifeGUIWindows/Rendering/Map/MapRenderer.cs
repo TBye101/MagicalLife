@@ -87,9 +87,18 @@ namespace MagicalLifeGUIWindows.Rendering.Map
             tile.CompositeRenderer.Render(MapDrawer, start);
             DrawItems(tile, new Rectangle(start.X, start.Y, Tile.GetTileSize().X, Tile.GetTileSize().Y));
 
-            if (tile.ImpendingAction == MagicalLifeAPI.Entity.AI.Task.ActionSelected.Mine)
+            switch (tile.ImpendingAction)
             {
-                MapDrawer.Draw(AssetManager.Textures[AssetManager.NameToIndex[TextureLoader.GUIPickaxeMapIcon]], x32Target, RenderLayer.GUI);
+                case MagicalLifeAPI.Entity.AI.Task.ActionSelected.None:
+                    break;
+                case MagicalLifeAPI.Entity.AI.Task.ActionSelected.Mine:
+                    MapDrawer.Draw(AssetManager.Textures[AssetManager.NameToIndex[TextureLoader.GUIPickaxeMapIcon]], x32Target, RenderLayer.GUI);
+                    break;
+                case MagicalLifeAPI.Entity.AI.Task.ActionSelected.Chop:
+                    MapDrawer.Draw(AssetManager.Textures[AssetManager.NameToIndex[TextureLoader.GUIAxeMapIcon]], x32Target, RenderLayer.GUI);
+                    break;
+                default:
+                    break;
             }
         }
     }

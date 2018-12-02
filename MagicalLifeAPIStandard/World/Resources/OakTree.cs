@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Components.Resource;
+using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.World.Items;
 using ProtoBuf;
 
@@ -34,7 +35,7 @@ namespace MagicalLifeAPI.World.Resources.Tree
             this.HarvestingBehavior = new DropWhenCompletelyHarvested(new List<Base.Item>()
             {
                 new StoneRubble(this.Durability)
-            });
+            }, SoundsTable.UIClick);
         }
 
         public OakTree() : base()
