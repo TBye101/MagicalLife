@@ -11,9 +11,11 @@ SneakyTactician  <SneakyTactician@outlook.com>
 *API now works anywhere C# can run
 *Dedicated server now runs on Mac and Linux in addition to windows
 *Trees now in as a resource
+*Trees are now harvestable
 
 #### GUI
 *Trees now render
+*Axe button now allows for the user to mark which trees to chop down
 
 #### Bugs
 *Items now render properly again
