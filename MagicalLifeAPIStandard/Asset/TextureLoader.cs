@@ -61,6 +61,8 @@ namespace MagicalLifeAPI.Asset
         public static readonly string TextureStoneRubble1 = "Textures/Items/StoneRubble_01";
         public static readonly string TextureStoneRubble2 = "Textures/Items/StoneRubble_02";
 
+        public static readonly string LogTexture1 = "Textures/Items/Log_1";
+
         #endregion
 
 
@@ -121,6 +123,7 @@ namespace MagicalLifeAPI.Asset
 
             this.TexturesToLoad.Add(TextureStoneRubble1);
             this.TexturesToLoad.Add(TextureStoneRubble2);
+            this.TexturesToLoad.Add(LogTexture1);
 
             this.TexturesToLoad.Add(OakStump);
             this.TexturesToLoad.Add(OakTrunk);

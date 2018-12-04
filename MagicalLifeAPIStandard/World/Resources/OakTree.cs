@@ -45,7 +45,7 @@ namespace MagicalLifeAPI.World.Resources.Tree
         {
             this.HarvestingBehavior = new DropWhenCompletelyHarvested(new List<Base.Item>()
             {
-                new StoneRubble(this.Durability)
+                new Log(1, this.Durability)
             }, SoundsTable.UIClick);
         }
 

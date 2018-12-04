@@ -11,7 +11,8 @@ namespace MagicalLifeAPI.Load
         {
             ItemRegistry.Initialize(new List<Type>()
             {
-                typeof(StoneRubble)
+                typeof(StoneRubble),
+                typeof(Log)
             });
         }
     }
