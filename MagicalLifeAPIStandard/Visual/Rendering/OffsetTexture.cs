@@ -36,6 +36,11 @@ namespace MagicalLifeAPI.Visual.Rendering.AbstractVisuals
             this.YOffset = yOffset;
         }
 
+        protected OffsetTexture() : base()
+        {
+
+        }
+
         public override void Render(MapBatch batch, Point2D ScreenTopLeft)
         {
             this.Texture.Render(batch, new Point2D(ScreenTopLeft.X + this.XOffset, ScreenTopLeft.Y + this.YOffset));

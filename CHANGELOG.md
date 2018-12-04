@@ -12,6 +12,9 @@ SneakyTactician  <SneakyTactician@outlook.com>
 *Dedicated server now runs on Mac and Linux in addition to windows
 *Trees now in as a resource
 *Trees are now harvestable
+*Oak Trees are now in
+*Maple Trees are now in
+*Pine trees are now in
 
 #### GUI
 *Trees now render

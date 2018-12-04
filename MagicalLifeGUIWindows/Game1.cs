@@ -96,7 +96,7 @@ namespace MagicalLifeGUIWindows
                 new ItemLoader(),
                 new InputLoader(),
                 new Initializer(),
-                new TextureLoader(),
+                //new TextureLoader(),
                 new TextureLoader(this.Content),
                 new ProtoTypeLoader()
             });

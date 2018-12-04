@@ -158,22 +158,34 @@ namespace MagicalLifeAPI.Asset
 
         public void InitialStartup()
         {
-            if (this.Manager != null)
+            if (World.Data.World.Mode == Networking.EngineMode.ClientOnly || World.Data.World.Mode == Networking.EngineMode.ServerAndClient)
             {
-                foreach (KeyValuePair<string, int> item in AssetManager.NameToIndex)
-                {
-                    Texture2D texture = this.Manager.Load<Texture2D>(item.Key);
-                    AssetManager.Textures.Add(texture);
-                }
+                this.LoadNameIndex();
+                this.LoadTextures();
             }
-            else
+
+            if (World.Data.World.Mode == Networking.EngineMode.ServerOnly)
             {
-                if (AssetManager.NameToIndex.Count == 0)
+                this.LoadNameIndex();
+            }
+        }
+
+        private void LoadTextures()
+        {
+            foreach (KeyValuePair<string, int> item in AssetManager.NameToIndex)
+            {
+                Texture2D texture = this.Manager.Load<Texture2D>(item.Key);
+                AssetManager.Textures.Add(texture);
+            }
+        }
+
+        private void LoadNameIndex()
+        {
+            if (AssetManager.NameToIndex.Count == 0)
+            {
+                foreach (string item in this.TexturesToLoad)
                 {
-                    foreach (string item in this.TexturesToLoad)
-                    {
-                        AssetManager.NameToIndex.Add(item, AssetManager.NameToIndex.Count);
-                    }
+                    AssetManager.NameToIndex.Add(item, AssetManager.NameToIndex.Count);
                 }
             }
         }

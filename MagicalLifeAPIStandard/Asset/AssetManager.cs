@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Asset
 {
@@ -39,6 +40,15 @@ namespace MagicalLifeAPI.Asset
             }
 
             throw new ResourceMissingException("Texture index not found! Texture: " + name);
+        }
+
+        public static async Task<int> AwaitLoadOfTextures(string Texture)
+        {
+            while (NameToIndex.Count == 0)
+            {
+                System.Threading.Thread.Sleep(10);
+            }
+            return await Task.FromResult(NameToIndex[Texture]);
         }
     }
 }
