@@ -358,18 +358,6 @@
 /processorParam:TextureFormat=Color
 /build:Textures/Resource/Plants/Trees/Leaves/Oak_Leaves_02.png
 
-#begin Textures/Resource/Plants/Trees/Leaves/Pine_leaves_01.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Textures/Resource/Plants/Trees/Leaves/Pine_leaves_01.png
-
 #begin Textures/Resource/Plants/Trees/Leaves/Pine_Leaves_02.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -501,4 +489,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Textures/Items/Log_1.png
+
+#begin Textures/Resource/Plants/Trees/Leaves/Pine_Leaves_01.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/Resource/Plants/Trees/Leaves/Pine_Leaves_01.png
 

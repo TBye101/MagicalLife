@@ -50,9 +50,19 @@ namespace MagicalLifeAPI.Asset
         #region TreeTextures
 
         public static readonly string OakStump = "Textures/Resource/Plants/Trees/Stumps/Oak_Stump";
+        public static readonly string MapleStump = "Textures/Resource/Plants/Trees/Stumps/Maple_Stump";
+        public static readonly string PineStump = "Textures/Resource/Plants/Trees/Stumps/Pine_Stump";
+
         public static readonly string OakTrunk = "Textures/Resource/Plants/Trees/Trunks/Oak_Trunk";
+        public static readonly string MapleTrunk = "Textures/Resource/Plants/Trees/Trunks/Maple_Trunk";
+        public static readonly string PineTrunk = "Textures/Resource/Plants/Trees/Trunks/Pine_Trunk";
+
         public static readonly string OakLeaves1 = "Textures/Resource/Plants/Trees/Leaves/Oak_Leaves_01";
         public static readonly string OakLeaves2 = "Textures/Resource/Plants/Trees/Leaves/Oak_Leaves_02";
+        public static readonly string MapleLeaves1 = "Textures/Resource/Plants/Trees/Leaves/Maple_Leaves_01";
+        public static readonly string MapleLeaves2 = "Textures/Resource/Plants/Trees/Leaves/Maple_Leaves_02";
+        public static readonly string PineLeaves1 = "Textures/Resource/Plants/Trees/Leaves/Pine_Leaves_01";
+        public static readonly string PineLeaves2 = "Textures/Resource/Plants/Trees/Leaves/Pine_Leaves_02";
 
         #endregion
 
@@ -126,9 +136,19 @@ namespace MagicalLifeAPI.Asset
             this.TexturesToLoad.Add(LogTexture1);
 
             this.TexturesToLoad.Add(OakStump);
+            this.TexturesToLoad.Add(MapleStump);
+            this.TexturesToLoad.Add(PineStump);
+
             this.TexturesToLoad.Add(OakTrunk);
+            this.TexturesToLoad.Add(MapleTrunk);
+            this.TexturesToLoad.Add(PineTrunk);
+
             this.TexturesToLoad.Add(OakLeaves1);
             this.TexturesToLoad.Add(OakLeaves2);
+            this.TexturesToLoad.Add(MapleLeaves1);
+            this.TexturesToLoad.Add(MapleLeaves2);
+            this.TexturesToLoad.Add(PineLeaves1);
+            this.TexturesToLoad.Add(PineLeaves2);
 
             this.TexturesToLoad.Add(LogoFMOD);
             this.TexturesToLoad.Add(LogoMonoGame);

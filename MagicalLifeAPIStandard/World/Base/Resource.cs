@@ -58,7 +58,8 @@ namespace MagicalLifeAPI.World.Base
         {
             Dictionary<Type, int> ret = new Dictionary<Type, int>
             {
-                { typeof(RockBase), 7 }
+                { typeof(RockBase), 7 },
+                { typeof(TreeBase), 8 }
             };
             return ret;
         }

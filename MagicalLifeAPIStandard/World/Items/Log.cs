@@ -22,6 +22,11 @@ namespace MagicalLifeAPI.World.Items
 
         }
 
+        protected Log() : base()
+        {
+            //Protobuf-net constructor.
+        }
+
         public override List<AbstractVisual> GetVisuals()
         {
             return new List<AbstractVisual>()

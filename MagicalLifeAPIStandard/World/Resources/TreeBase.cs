@@ -14,6 +14,8 @@ namespace MagicalLifeAPI.World.Resources
     /// </summary>
     [ProtoContract]
     [ProtoInclude(1, typeof(OakTree))]
+    [ProtoInclude(2, typeof(MapleTree))]
+    [ProtoInclude(3, typeof(PineTree))]
     public abstract class TreeBase : Resource
     {
         public TreeBase(string name, int durability) : base(name, durability)

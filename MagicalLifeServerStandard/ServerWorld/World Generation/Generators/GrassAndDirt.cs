@@ -64,7 +64,22 @@ namespace MagicalLifeServer.ServerWorld.World
                             {
                                 if (tile.Resources == null || tile.Resources != null && tile.Resources.DisplayName != Rock.StoneName)
                                 {
-                                    tile.Resources = new OakTree(OakTree.Durabilitie);
+                                    int treeType = random.Next(3);
+
+                                    switch (treeType)
+                                    {
+                                        case 0:
+                                            tile.Resources = new OakTree(OakTree.Durabilitie);
+                                            break;
+                                        case 1:
+                                            tile.Resources = new MapleTree(MapleTree.Durabilitie);
+                                            break;
+                                        case 2:
+                                            tile.Resources = new PineTree(PineTree.Durabilitie);
+                                            break;
+                                        default:
+                                            throw new MagicalLifeAPI.Error.InternalExceptions.UnexpectedEnumMemberException();
+                                    }
                                 }
                             }
 
