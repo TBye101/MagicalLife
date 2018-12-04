@@ -19,9 +19,13 @@ namespace MagicalLifeAPI.Visual.Rendering.AbstractVisuals
         /// <summary>
         /// The texture that is being offset.
         /// </summary>
+        [ProtoMember(1)]
         private AbstractVisual Texture;
 
+        [ProtoMember(2)]
         private int XOffset;
+
+        [ProtoMember(3)]
         private int YOffset;
 
 

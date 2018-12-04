@@ -65,6 +65,7 @@ namespace MagicalLifeServer
                     {
                         new ItemLoader(),
                         new TextureLoader(),
+                        new SpecificTextureLoader(),
                         new ProtoTypeLoader(),
                         new MainLoad()
                     });

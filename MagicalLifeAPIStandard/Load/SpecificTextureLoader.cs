@@ -16,8 +16,8 @@ namespace MagicalLifeAPI.Load
     {
         public void InitialStartup()
         {
-            if (World.Data.World.Mode != Networking.EngineMode.ServerOnly)
-            {
+            //if (World.Data.World.Mode != Networking.EngineMode.ServerOnly)
+            //{
                 StaticTexture MapleStump = new StaticTexture(AssetManager.NameToIndex[TextureLoader.MapleStump], RenderLayer.TreeStump);
                 StaticTexture MapleTrunk = new StaticTexture(AssetManager.NameToIndex[TextureLoader.MapleTrunk], RenderLayer.TreeTrunk);
                 StaticTexture MapleLeaves = new StaticTexture(AssetManager.NameToIndex[TextureLoader.MapleLeaves1], RenderLayer.TreeLeaves);
@@ -58,7 +58,7 @@ namespace MagicalLifeAPI.Load
                 PineTree.OffsetStump = OffsetPineStump;
                 PineTree.OffsetTrunk = OffsetPineTrunk;
                 PineTree.OffsetLeaves = OffsetPineLeaves;
-            }
+            //}
         }
     }
 }
