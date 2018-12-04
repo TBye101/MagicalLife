@@ -99,6 +99,7 @@ namespace MagicalLifeAPI.Asset
         public TextureLoader(ContentManager manager)
         {
             this.Manager = manager;
+            this.Prepare();
         }
 
         public TextureLoader()
@@ -172,10 +173,13 @@ namespace MagicalLifeAPI.Asset
 
         private void LoadTextures()
         {
-            foreach (KeyValuePair<string, int> item in AssetManager.NameToIndex)
+            if (this.Manager != null)
             {
-                Texture2D texture = this.Manager.Load<Texture2D>(item.Key);
-                AssetManager.Textures.Add(texture);
+                foreach (KeyValuePair<string, int> item in AssetManager.NameToIndex)
+                {
+                    Texture2D texture = this.Manager.Load<Texture2D>(item.Key);
+                    AssetManager.Textures.Add(texture);
+                }
             }
         }
 

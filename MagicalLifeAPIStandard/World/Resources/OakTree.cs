@@ -24,22 +24,12 @@ namespace MagicalLifeAPI.World.Resources.Tree
         private static readonly string Name = "Oak Tree";
         public static readonly int Durabilitie = 20;
 
-        private static readonly StaticTexture Stump = new
-            StaticTexture(AssetManager.NameToIndex[TextureLoader.OakStump], RenderLayer.TreeStump);
+        public static readonly int XOffset = Tile.GetTileSize().X / -2;
+        public static readonly int YOffset = Tile.GetTileSize().Y * -3 / 2;
 
-        private static readonly StaticTexture Trunk = new
-            StaticTexture(AssetManager.NameToIndex[TextureLoader.OakTrunk], RenderLayer.TreeTrunk);
-
-        private static readonly StaticTexture Leaves = new
-            StaticTexture(AssetManager.NameToIndex[TextureLoader.OakLeaves1], RenderLayer.TreeLeaves);
-
-
-        private static readonly int XOffset = Tile.GetTileSize().X / -2;
-        private static readonly int YOffset = Tile.GetTileSize().Y * -3 / 2;
-
-        private static readonly OffsetTexture OffsetStump = new OffsetTexture(RenderLayer.TreeStump, Stump, XOffset, YOffset);
-        private static readonly OffsetTexture OffsetTrunk = new OffsetTexture(RenderLayer.TreeTrunk, Trunk, XOffset, YOffset);
-        private static readonly OffsetTexture OffsetLeaves = new OffsetTexture(RenderLayer.TreeLeaves, Leaves, XOffset, YOffset);
+        public static OffsetTexture OffsetStump;
+        public static OffsetTexture OffsetTrunk;
+        public static OffsetTexture OffsetLeaves;
 
         public OakTree(int durability) : base(Name, durability)
         {

@@ -45,8 +45,6 @@ namespace MagicalLifeServer
 
         public static void Load()
         {
-            World.Mode = EngineMode.ServerOnly;
-
             Loader load = new Loader();
             string msg = "";
 
