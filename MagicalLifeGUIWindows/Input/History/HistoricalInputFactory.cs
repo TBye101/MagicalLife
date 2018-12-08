@@ -43,6 +43,9 @@ namespace MagicalLifeGUIWindows.Input.History
                 case ActionSelected.Mine:
                     return this.MineAction(e);
 
+                case ActionSelected.Till:
+                    return this.TillAction(e);
+
                 default:
                     throw new UnexpectedEnumMemberException();
             }
@@ -54,6 +57,26 @@ namespace MagicalLifeGUIWindows.Input.History
         /// <param name="e"></param>
         /// <returns></returns>
         private HistoricalInput MineAction(InputEventArgs e)
+        {
+            return this.GenericAction(e, ActionSelected.Mine);
+        }
+
+        /// <summary>
+        /// Generates a <see cref="HistoricalInput"/> for when there is a mining action selected by the player.
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
+        private HistoricalInput TillAction(InputEventArgs e)
+        {
+            return this.GenericAction(e, ActionSelected.Till);
+        }
+
+        /// <summary>
+        /// Generates a <see cref="HistoricalInput"/> for when there is a generic action selected by the player.
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
+        private HistoricalInput GenericAction(InputEventArgs e, ActionSelected _action)
         {
             Point2D mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y, RenderInfo.Dimension, out bool success);
 
@@ -75,23 +98,22 @@ namespace MagicalLifeGUIWindows.Input.History
                     {
                         if (this.IsSelectableSelected(select))
                         {
-                            return new HistoricalInput(false, selected, ActionSelected.Mine);
+                            return new HistoricalInput(false, selected, _action);
                         }
                         else
                         {
-                            return new HistoricalInput(selected, ActionSelected.Mine);
+                            return new HistoricalInput(selected, _action);
                         }
                     }
                     else
                     {
-                        return new HistoricalInput(selected, true, ActionSelected.Mine);
+                        return new HistoricalInput(selected, true, _action);
                     }
                 }
             }
 
-            return new HistoricalInput(true, InputHistory.Selected, ActionSelected.Mine);
+            return new HistoricalInput(true, InputHistory.Selected, _action);
         }
-
         /// <summary>
         /// Generates a <see cref="HistoricalInput"/> for when there is no action selected by the player.
         /// </summary>

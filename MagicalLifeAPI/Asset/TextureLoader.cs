@@ -25,6 +25,8 @@ namespace MagicalLifeAPI.Asset
         public static readonly string GUIMenuBackground = "GUI/MenuBackground";
         public static readonly string GUIMenuButton = "GUI/MenuButton";
         public static readonly string GUIPickaxeMapIcon = "GUI/PickaxeMapIcon";
+        public static readonly string GUIHoeButton = "GUI/HoeButton";
+        public static readonly string GUIHoeButtonGold = "GUI/HoeButtonGold";
 
         public static readonly string TextureDirt1 = "Textures/Tile/Dirt_01";
         public static readonly string TextureDirt2 = "Textures/Tile/Dirt_02";
@@ -37,6 +39,7 @@ namespace MagicalLifeAPI.Asset
         public static readonly string TextureStoneRubble1 = "Textures/Items/StoneRubble_01";
         public static readonly string TextureStoneRubble2 = "Textures/Items/StoneRubble_02";
         public static readonly string TextureTestTile = "Textures/Tile/TestTile";
+        public static readonly string TextureTilledDirt = "Textures/Tile/TilledDirt";
 
         public static readonly string FontMainMenuFont12x = "Fonts/MainMenuFont12x";
         public static readonly string FontMainMenuFont24x = "Fonts/MainMenuFont24x";
@@ -67,6 +70,8 @@ namespace MagicalLifeAPI.Asset
             this.TexturesToLoad.Add(GUIMenuBackground);
             this.TexturesToLoad.Add(GUIMenuButton);
             this.TexturesToLoad.Add(GUIPickaxeMapIcon);
+            this.TexturesToLoad.Add(GUIHoeButton);
+            this.TexturesToLoad.Add(GUIHoeButtonGold);
 
             this.TexturesToLoad.Add(TextureDirt1);
             this.TexturesToLoad.Add(TextureDirt2);
@@ -79,6 +84,7 @@ namespace MagicalLifeAPI.Asset
             this.TexturesToLoad.Add(TextureStoneRubble1);
             this.TexturesToLoad.Add(TextureStoneRubble2);
             this.TexturesToLoad.Add(TextureTestTile);
+            this.TexturesToLoad.Add(TextureTilledDirt);
 
             this.TexturesToLoad.Add(LogoFMOD);
             this.TexturesToLoad.Add(LogoMonoGame);

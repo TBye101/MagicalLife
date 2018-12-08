@@ -15,6 +15,8 @@ namespace MagicalLifeGUIWindows.Input
 
         public static StrafeHandler StrafingHandler;
 
+        public static TillingActionHandler TillingAction;
+
         public static EscapeHandler EscHandler;
 
         public static ZoomHandler ZooomHandler;
@@ -24,6 +26,7 @@ namespace MagicalLifeGUIWindows.Input
             LivingMove = new LivingMoveOrderInputHandler();
             LogoSkipper = new LogoSkip();
             MiningAction = new MiningActionHandler();
+            TillingAction = new TillingActionHandler();
             StrafingHandler = new StrafeHandler();
             EscHandler = new EscapeHandler();
             ZooomHandler = new ZoomHandler();

@@ -100,6 +100,10 @@
   <ItemGroup>
     <Compile Include="Asset\AssetManager.cs" />
     <Compile Include="Comparators\ItemComparator.cs" />
+    <Compile Include="Components\Resource\AbstractTillable.cs" />
+    <Compile Include="Components\Resource\ITillable.cs" />
+    <Compile Include="Components\Resource\TillingPercentDone.cs" />
+    <Compile Include="Entity\AI\Task\Tasks\TillTask.cs" />
     <Compile Include="Util\Reusable\FrameCounter.cs" />
     <Compile Include="Visual\Rendering\Animation\XMLPaths.cs" />
     <Compile Include="Visual\Rendering\IRenderable.cs" />
@@ -256,6 +260,7 @@
     <Compile Include="World\TileEventArg.cs" />
     <Compile Include="World\Tiles\Dirt.cs" />
     <Compile Include="World\Tiles\Grass.cs" />
+    <Compile Include="World\Tiles\TilledDirt.cs" />
     <Compile Include="World\Veggies\OakTree.cs" />
     <Compile Include="World\WorldEventArgs.cs" />
     <Compile Include="World\Base\Resource.cs" />

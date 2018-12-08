@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.Components.Resource;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Base;
@@ -10,12 +11,15 @@ namespace MagicalLifeAPI.World.Tiles
     /// A dirt tile.
     /// </summary>
     [ProtoBuf.ProtoContract]
-    public class Dirt : Tile
+    public class Dirt : Tile, ITillable
     {
         public override ComponentRenderer CompositeRenderer { get; set; }
 
+        public AbstractTillable TillableBehavior { get; set; }
+
         public Dirt(Point2D location) : base(location, 10, 0)
         {
+            this.TillableBehavior = new TillablePercentDone();
             this.CompositeRenderer = new ComponentRenderer();
             this.CompositeRenderer.RenderQueue.Visuals.Add(new StaticTexture(Dirt.GetTextureID(), RenderLayer.DirtBase));
         }
