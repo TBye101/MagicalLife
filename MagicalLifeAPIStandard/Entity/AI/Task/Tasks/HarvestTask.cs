@@ -67,7 +67,11 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
                 if (drop != null && drop.Count > 0)
                 {
-                    ItemAdder.AddItem(drop[0], l.MapLocation, l.Dimension);
+                    int length = drop.Count;
+                    for (int i = 0; i < length; i++)
+                    {
+                        this.DropItem(l, drop[i]);
+                    }
                 }
 
                 if (this.Harvestable.HarvestingBehavior.PercentHarvested > 1)
@@ -75,6 +79,29 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
                     this.RemoveResource(l.Dimension);
                     this.CompleteTask();
                 }
+            }
+        }
+
+        /// <summary>
+        /// Drops the result of the harvesting down.
+        /// </summary>
+        /// <param name="l"></param>
+        /// <param name="drop"></param>
+        private void DropItem(Living l, Item drop)
+        {
+            //The tile the entity is standing on
+            Tile entityOn = World.Data.World.GetTile(l.Dimension, l.MapLocation.X, l.MapLocation.Y);
+
+            if (entityOn.Item == null || entityOn.Item.GetType() == drop.GetType())
+            {
+                ItemAdder.AddItem(drop, l.MapLocation, l.Dimension);
+            }
+            else
+            {
+                Point2D emtpyTile = ItemFinder.FindNearestNoItemResource(entityOn.MapLocation, l.Dimension);
+                DropItemTask task = new DropItemTask(emtpyTile, l.Dimension, drop, l.ID);
+                task.ReservedFor = l.ID;
+                TaskManager.Manager.AddTask(task);
             }
         }
 

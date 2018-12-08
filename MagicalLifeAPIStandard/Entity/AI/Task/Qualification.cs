@@ -9,6 +9,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
     /// </summary>
     [ProtoContract]
     [ProtoInclude(1, typeof(CanMoveQualification))]
+    [ProtoInclude(2, typeof(SpecificCreatureQualification))]
     public abstract class Qualification
     {
         /// <summary>

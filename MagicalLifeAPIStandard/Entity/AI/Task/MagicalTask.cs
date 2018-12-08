@@ -12,6 +12,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
     [ProtoInclude(7, typeof(BecomeAdjacentTask))]
     [ProtoInclude(8, typeof(MoveTask))]
     [ProtoInclude(9, typeof(HarvestTask))]
+    [ProtoInclude(11, typeof(DropItemTask))]
     public abstract class MagicalTask
     {
         public delegate void CompletionEventHandler(MagicalTask task);

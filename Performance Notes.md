@@ -5,6 +5,8 @@ CPU:
 	* Task drivers can be written in either a more intelligent way
 	* or they can just cache their results
 	* Task completion runs really slow, consider having separate lists or an ID or something to speed that up
+*Item Finder:
+	*FindNearestNoItemResource() can be sped up. The nearest neighbor search will check many duplicate tiles.
 
 Network:
 

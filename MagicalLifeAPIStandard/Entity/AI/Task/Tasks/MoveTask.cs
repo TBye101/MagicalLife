@@ -59,7 +59,10 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         public override void Tick(Living l)
         {
-            //We don't need to do anything more
+            if (l.MapLocation.Equals(this.Destination))
+            {
+                this.CompleteTask();
+            }
         }
     }
 }

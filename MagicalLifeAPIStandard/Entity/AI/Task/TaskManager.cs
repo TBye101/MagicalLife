@@ -22,13 +22,19 @@ namespace MagicalLifeAPI.Entity.AI.Task
 
         public void AddTask(MagicalTask task)
         {
-            this.TaskDrivers.Add(new TaskDriver(task));
-            task.Completed += this.Task_Completed;
+            lock (this.syncObject)
+            {
+                this.TaskDrivers.Add(new TaskDriver(task));
+                task.Completed += this.Task_Completed;
+            }
         }
 
         private void Task_Completed(MagicalTask task)
         {
-            this.TaskDrivers.RemoveAll(x => x.Task.Equals(task));
+            lock (this.syncObject)
+            {
+                this.TaskDrivers.RemoveAll(x => x.Task.Equals(task));
+            }
         }
 
         /// <summary>
@@ -39,6 +45,8 @@ namespace MagicalLifeAPI.Entity.AI.Task
         /// <returns></returns>
         public void AssignTask(Living l)
         {
+            lock (this.syncObject)
+            {
                 List<MagicalTask> allCompatibleTasks = new List<MagicalTask>();
 
                 //Get all compatible jobs
@@ -67,6 +75,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
                     {
                         this.ReserveBoundTree(l, task.BoundID, item.Task);
                     }
+                }
             }
         }
 

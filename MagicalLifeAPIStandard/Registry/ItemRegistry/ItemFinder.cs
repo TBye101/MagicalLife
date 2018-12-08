@@ -1,6 +1,10 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.DataTypes.R;
+using MagicalLifeAPI.Util.Math;
+using MagicalLifeAPI.World;
+using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
+using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Registry.ItemRegistry
@@ -71,6 +75,56 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
             {
                 return result;//Hopefully these are sorted from closest to furthest.
             }
+        }
+
+        /// <summary>
+        /// Finds the nearest tile to a location without an item or a resource on it.
+        /// Returns null if all tiles have an item or a resource in the entire map.
+        /// Will not ever return the starting point specified. 
+        /// </summary>
+        /// <param name="mapLocation"></param>
+        /// <param name="dimension"></param>
+        /// <returns></returns>
+        public static Point2D FindNearestNoItemResource(Point2D mapLocation, int dimension)
+        {
+            List<Point2D> tilesChecking = WorldUtil.GetNeighboringTiles(mapLocation, dimension);
+
+            while (tilesChecking.Count > 0)
+            {
+                Point2D currentlyChecking = tilesChecking[0];
+                Tile tile = World.Data.World.GetTile(dimension, currentlyChecking.X, currentlyChecking.Y);
+
+                if (tile.Item == null && tile.Resources == null)
+                {
+                    //Found one!
+                    return currentlyChecking;
+                }
+
+                //Add all neighbors of the tile since it wasn't free from items and resources.
+                tilesChecking.AddRange(WorldUtil.GetNeighboringTiles(currentlyChecking, dimension));
+                tilesChecking.RemoveAt(0);
+            }
+
+            //Didn't find anything
+            return null;
+        }
+
+        /// <summary>
+        /// Expands the bounds of the rectangle by 1 in every direction.
+        /// </summary>
+        /// <param name="rectangle"></param>
+        /// <returns></returns>
+        private static MagicRectangle ExpandRectangularSearch(MagicRectangle magicRectangle)
+        {
+            MagicRectangle rectangle = magicRectangle;
+
+            rectangle.TopLeft.X -= 1;
+            rectangle.TopLeft.Y += 1;
+
+            rectangle.BottomRight.X += 1;
+            rectangle.BottomRight.Y -= 1;
+
+            return rectangle;
         }
     }
 }
