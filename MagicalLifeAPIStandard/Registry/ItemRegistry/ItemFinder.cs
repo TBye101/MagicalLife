@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.DataTypes.R;
+using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util.Math;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Base;
@@ -80,7 +81,8 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// <summary>
         /// Finds the nearest tile to a location without an item or a resource on it.
         /// Returns null if all tiles have an item or a resource in the entire map.
-        /// Will not ever return the starting point specified. 
+        /// Will not ever return the starting point specified.
+        /// Ensures that there is a walkable path for the creature to get there from the specific map location to the returned location.
         /// </summary>
         /// <param name="mapLocation"></param>
         /// <param name="dimension"></param>
@@ -94,7 +96,9 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
                 Point2D currentlyChecking = tilesChecking[0];
                 Tile tile = World.Data.World.GetTile(dimension, currentlyChecking.X, currentlyChecking.Y);
 
-                if (tile.Item == null && tile.Resources == null)
+                if (tile.Item == null
+                    && tile.Resources == null
+                    && MainPathFinder.IsRoutePossible(dimension, mapLocation, currentlyChecking))
                 {
                     //Found one!
                     return currentlyChecking;

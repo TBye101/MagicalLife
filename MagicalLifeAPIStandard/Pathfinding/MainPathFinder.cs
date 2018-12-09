@@ -39,5 +39,11 @@ namespace MagicalLifeAPI.Pathfinding
         {
             return PathFinders[dimension].GetRoute(dimension, start, end);
         }
+
+        public static bool IsRoutePossible(int dimension, Point2D origin, Point2D destination)
+        {
+            return PathFinders[dimension].IsRoutePossible(dimension, origin, destination);
+        }
+
     }
 }
