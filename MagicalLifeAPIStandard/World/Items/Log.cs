@@ -2,9 +2,7 @@
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.World.Base;
 using ProtoBuf;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeAPI.World.Items
 {
@@ -16,10 +14,9 @@ namespace MagicalLifeAPI.World.Items
     {
         private static readonly string ItemName = "Log";
 
-        public Log(int count, int durability) 
+        public Log(int count, int durability)
             : base(ItemName, durability, new List<string>(), 50, count, typeof(Log), TextureLoader.LogTexture1)
         {
-
         }
 
         protected Log() : base()

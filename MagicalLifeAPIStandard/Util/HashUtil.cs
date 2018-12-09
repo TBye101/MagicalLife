@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MagicalLifeAPI.Util
+﻿namespace MagicalLifeAPI.Util
 {
     /// <summary>
     /// Has various hashing functionality.

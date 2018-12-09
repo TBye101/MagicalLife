@@ -7,7 +7,6 @@ using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util.Reusable;
-using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 using System;
 

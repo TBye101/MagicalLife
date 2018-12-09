@@ -38,7 +38,6 @@ namespace MagicalLifeGUIWindows.GUI.In
             {
                 InGameGUI.Selected = ActionSelected.Chop;
                 this.TextureID = this.GoldTextureIndex;
-                
             }
         }
 

@@ -7,7 +7,6 @@ using MagicalLifeAPI.World.Tiles;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace MagicalLifeAPI.World.Base
 {
@@ -61,7 +60,7 @@ namespace MagicalLifeAPI.World.Base
                 if (this.resources == null)
                 {
                     this.resources = value;
-                    
+
                     if (value != null)
                     {
                         this.CompositeRenderer.AddVisuals(value.GetVisuals());

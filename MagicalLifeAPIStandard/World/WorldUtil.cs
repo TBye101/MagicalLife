@@ -9,7 +9,6 @@ using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace MagicalLifeAPI.World
 {
@@ -50,7 +49,7 @@ namespace MagicalLifeAPI.World
         {
             List<Point2D> neighborCandidates = new List<Point2D>();
             List<Point2D> neighbors = new List<Point2D>();
-            
+
             neighborCandidates.Add(new Point2D(tileLocation.X + 1, tileLocation.Y));
             neighborCandidates.Add(new Point2D(tileLocation.X - 1, tileLocation.Y));
             neighborCandidates.Add(new Point2D(tileLocation.X, tileLocation.Y + 1));

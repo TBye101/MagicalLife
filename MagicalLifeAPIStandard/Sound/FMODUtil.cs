@@ -3,7 +3,6 @@ using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Filing;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Sound.FMOD.Studio;
-using MagicalLifeAPI.World.Base;
 using System;
 
 namespace MagicalLifeAPI.Sound
@@ -81,6 +80,7 @@ namespace MagicalLifeAPI.Sound
             instance.setParameterValue(parameterName, value);
             instance.start();
         }
+
         public static void RaiseEvent(string eventPath, string parameterName, int value, Point2D screenPosition)
         {
             _System.getEvent(eventPath, out EventDescription _event);

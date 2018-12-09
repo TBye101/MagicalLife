@@ -5,7 +5,6 @@ using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Tiles;
-using MagicalLifeSettings.Storage;
 using MagicalLifeSettingsCore.Storage;
 using System;
 

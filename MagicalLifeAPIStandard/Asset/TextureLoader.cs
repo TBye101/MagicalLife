@@ -31,7 +31,7 @@ namespace MagicalLifeAPI.Asset
         public static readonly string GUIPickaxeMapIcon = "GUI/PickaxeMapIcon";
         public static readonly string GUIAxeMapIcon = "GUI/AxeMapIcon";
 
-        #endregion
+        #endregion GUI
 
         #region TileTextures
 
@@ -45,7 +45,7 @@ namespace MagicalLifeAPI.Asset
         public static readonly string TextureStone2 = "Textures/Resource/Stone_02";
         public static readonly string TextureTestTile = "Textures/Tile/TestTile";
 
-        #endregion
+        #endregion TileTextures
 
         #region TreeTextures
 
@@ -64,7 +64,7 @@ namespace MagicalLifeAPI.Asset
         public static readonly string PineLeaves1 = "Textures/Resource/Plants/Trees/Leaves/Pine_Leaves_01";
         public static readonly string PineLeaves2 = "Textures/Resource/Plants/Trees/Leaves/Pine_Leaves_02";
 
-        #endregion
+        #endregion TreeTextures
 
         #region Items
 
@@ -73,28 +73,27 @@ namespace MagicalLifeAPI.Asset
 
         public static readonly string LogTexture1 = "Textures/Items/Log_1";
 
-        #endregion
-
+        #endregion Items
 
         #region Fonts
 
         public static readonly string FontMainMenuFont12x = "Fonts/MainMenuFont12x";
         public static readonly string FontMainMenuFont24x = "Fonts/MainMenuFont24x";
 
-        #endregion
+        #endregion Fonts
 
         #region Logos
 
         public static readonly string LogoFMOD = "Logo/FMODLogo";
         public static readonly string LogoMonoGame = "Logo/MonoGameLogo";
 
-        #endregion
+        #endregion Logos
 
         #region Animations
 
         public static readonly string AnimationBaseCharacter = "Character/Base Character/BaseCharacterSprite";
 
-        #endregion
+        #endregion Animations
 
         public TextureLoader(ContentManager manager)
         {

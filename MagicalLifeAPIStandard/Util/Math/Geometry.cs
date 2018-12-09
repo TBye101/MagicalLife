@@ -1,8 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Error.InternalExceptions;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 
 namespace MagicalLifeAPI.Util.Math

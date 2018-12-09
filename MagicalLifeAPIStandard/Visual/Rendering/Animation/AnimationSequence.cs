@@ -2,11 +2,6 @@
 using MagicalLifeAPI.Util.Reusable;
 using ProtoBuf;
 using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Visual.Rendering.Animation
 {
@@ -58,7 +53,7 @@ namespace MagicalLifeAPI.Visual.Rendering.Animation
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="Frame">The position within a sprite sheet that should be played next.</param>
         /// <returns>Returns true if the AnimationSequence has completed, and has been reset.</returns>

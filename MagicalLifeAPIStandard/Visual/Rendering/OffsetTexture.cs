@@ -2,11 +2,6 @@
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeGUIWindows.Rendering.Map;
 using ProtoBuf;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Visual.Rendering.AbstractVisuals
 {
@@ -28,7 +23,6 @@ namespace MagicalLifeAPI.Visual.Rendering.AbstractVisuals
         [ProtoMember(3)]
         private int YOffset;
 
-
         /// <param name="priority"></param>
         /// <param name="offsetTexture">The texture that will be offset.</param>
         /// <param name="xOffset">The amount to offset the texture by.</param>
@@ -42,7 +36,6 @@ namespace MagicalLifeAPI.Visual.Rendering.AbstractVisuals
 
         protected OffsetTexture() : base()
         {
-
         }
 
         public override void Render(MapBatch batch, Point2D ScreenTopLeft)

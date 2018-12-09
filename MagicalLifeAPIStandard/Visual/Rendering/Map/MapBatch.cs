@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Util.Reusable;
 using MagicalLifeAPI.Visual.Rendering.Renderer;
 using Microsoft.Xna.Framework;
@@ -20,6 +19,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// Holds all of the rendering actions that need to happen.
         /// </summary>
         private List<RenderCallHolder> RenderActions = new List<RenderCallHolder>();
+
         private RenderCallHolderComparer Comparator = new RenderCallHolderComparer();
 
         private Counter CallCounter = new Counter();

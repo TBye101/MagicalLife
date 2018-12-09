@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Generic.Renderable;
+﻿using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Components.Resource;
-using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Visual.Rendering.AbstractVisuals;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Items;
 using ProtoBuf;
+using System.Collections.Generic;
 
 namespace MagicalLifeAPI.World.Resources.Tree
 {
@@ -41,7 +35,6 @@ namespace MagicalLifeAPI.World.Resources.Tree
 
         public OakTree() : base()
         {
-
         }
 
         public override AbstractHarvestable HarvestingBehavior { get; set; }
@@ -50,7 +43,6 @@ namespace MagicalLifeAPI.World.Resources.Tree
         {
             List<AbstractVisual> ret = new List<AbstractVisual>
             {
-                
                 OffsetTrunk,
                 OffsetLeaves,
                 OffsetStump

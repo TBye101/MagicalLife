@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using MagicalLifeAPI.Asset;
+﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Util;
-using MagicalLifeAPI.Visual.Rendering;
 using MagicalLifeAPI.World.Base;
 using ProtoBuf;
+using System.Collections.Generic;
 
 namespace MagicalLifeAPI.World.Items
 {

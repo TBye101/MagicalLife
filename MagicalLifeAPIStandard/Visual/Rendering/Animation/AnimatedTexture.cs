@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using MagicalLifeAPI.Asset;
+﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Visual.Animation;
 using MagicalLifeAPI.Visual.Rendering.Animation;
 using MagicalLifeGUIWindows.Rendering.Map;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using ProtoBuf;
 using Serilog;
+using System.Reflection;
 
 namespace MagicalLifeAPI.Components.Generic.Renderable
 {
@@ -47,7 +40,7 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         public int LastFrame { get; private set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="priority"></param>
         /// <param name="sequences"></param>

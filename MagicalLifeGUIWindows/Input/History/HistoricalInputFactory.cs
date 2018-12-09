@@ -6,7 +6,6 @@ using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.GUI.In;
-using MagicalLifeGUIWindows.Rendering;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -39,10 +38,13 @@ namespace MagicalLifeGUIWindows.Input.History
             {
                 case ActionSelected.None:
                     return this.NoAction(e);
+
                 case ActionSelected.Mine:
                     return this.GenericAction(e, ActionSelected.Mine);
+
                 case ActionSelected.Chop:
                     return this.GenericAction(e, ActionSelected.Chop);
+
                 default:
                     throw new UnexpectedEnumMemberException();
             }

@@ -3,11 +3,6 @@ using MagicalLifeAPI.Error.InternalExceptions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ProtoBuf;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Visual.Animation
 {
@@ -55,7 +50,7 @@ namespace MagicalLifeAPI.Visual.Animation
         [ProtoMember(5)]
         private int SpritePixelHeight { get; set; }
 
-        public SpriteSheet(int textureID, int sheetWidth, int sheetHeight, 
+        public SpriteSheet(int textureID, int sheetWidth, int sheetHeight,
             int spritePixelWidth, int spritePixelHeight)
         {
             this.TextureID = textureID;
@@ -74,7 +69,6 @@ namespace MagicalLifeAPI.Visual.Animation
         {
             //Protobuf-net constructor.
         }
-
 
         /// <summary>
         /// Calculates the correct rectangle section to render one frame of this sprite sheet.

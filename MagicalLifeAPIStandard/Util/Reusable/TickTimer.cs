@@ -38,7 +38,7 @@ namespace MagicalLifeAPI.Util.Reusable
 
         /// <summary>
         /// Resets the countdown on this tick timer.
-        /// This does not 
+        /// This does not
         /// </summary>
         public void Reset()
         {

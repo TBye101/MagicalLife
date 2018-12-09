@@ -44,6 +44,5 @@ namespace MagicalLifeAPI.Pathfinding
         {
             return PathFinders[dimension].IsRoutePossible(dimension, origin, destination);
         }
-
     }
 }

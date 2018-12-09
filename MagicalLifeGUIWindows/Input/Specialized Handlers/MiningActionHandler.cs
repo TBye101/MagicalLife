@@ -5,7 +5,6 @@ using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Resources;
 using MagicalLifeGUIWindows.Input.History;
-using MagicalLifeGUIWindows.Rendering;
 using System;
 using System.Linq;
 

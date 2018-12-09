@@ -1,12 +1,10 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Load;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.Util.Reusable;
-using MagicalLifeAPI.Visual.Animation;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.GUI.In;
 using MagicalLifeGUIWindows.Input;
@@ -150,8 +148,6 @@ namespace MagicalLifeGUIWindows
                     this.GraphicsDevice.SetRenderTarget(target);
 
                     this.GraphicsDevice.Clear(Color.Black);
-
-
 
                     if (Game1.SplashDone)
                     {

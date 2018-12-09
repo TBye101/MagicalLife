@@ -1,11 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Filing.Logging;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Components.Generic.Renderable
 {
@@ -16,7 +11,7 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         /// </summary>
         public static readonly Point tileSize = MagicalLifeAPI.World.Base.Tile.GetTileSize();
 
-        public static readonly Rectangle FullScreenWindow = 
+        public static readonly Rectangle FullScreenWindow =
             new Rectangle(new Point(0, 0),
             new Point(MagicalLifeSettings.Storage.MainWindow.Default.ScreenSize.Width, MagicalLifeSettings.Storage.MainWindow.Default.ScreenSize.Height));
 

@@ -2,7 +2,6 @@
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeGUIWindows.GUI.MainMenu.Buttons;
 using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeGUIWindows.Rendering;
 
 namespace MagicalLifeGUIWindows.GUI.MainMenu
 {

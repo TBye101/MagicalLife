@@ -41,12 +41,12 @@ namespace MagicalLifeAPI.Entity.Humanoid
         /// </summary>
         public static readonly int UpSequence = 3;
 
-    public override AbstractVisual Visual { get; set; }
+        public override AbstractVisual Visual { get; set; }
 
         public Human(int health, float movementSpeed, Point2D location, int dimension, Guid playerID) : base(health, movementSpeed, location, dimension, playerID)
         {
             Filing.Logging.MasterLog.DebugWriteLine("Living spawned at: " + location.ToString());
-            this.Visual = new AnimatedTexture(RenderLayer.Character, this.GetSequences(), 
+            this.Visual = new AnimatedTexture(RenderLayer.Character, this.GetSequences(),
                 TextureLoader.AnimationBaseCharacter,
                 XMLPaths.BaseCharacterSpriteSheet, Assembly.GetAssembly(typeof(AssemblyGetter)));
         }

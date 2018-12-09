@@ -1,14 +1,11 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Generic.Renderable;
+﻿using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Components.Resource;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Visual.Rendering.AbstractVisuals;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Items;
 using ProtoBuf;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeAPI.World.Resources
 {
@@ -38,7 +35,6 @@ namespace MagicalLifeAPI.World.Resources
 
         public MapleTree() : base()
         {
-
         }
 
         public override AbstractHarvestable HarvestingBehavior { get; set; }
@@ -47,7 +43,6 @@ namespace MagicalLifeAPI.World.Resources
         {
             List<AbstractVisual> ret = new List<AbstractVisual>
             {
-
                 OffsetTrunk,
                 OffsetLeaves,
                 OffsetStump

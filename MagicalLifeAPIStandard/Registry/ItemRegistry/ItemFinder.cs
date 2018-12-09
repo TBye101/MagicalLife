@@ -5,7 +5,6 @@ using MagicalLifeAPI.Util.Math;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
-using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Registry.ItemRegistry

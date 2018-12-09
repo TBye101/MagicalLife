@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MagicalLifeAPI.Components.Generic.Renderable
+﻿namespace MagicalLifeAPI.Components.Generic.Renderable
 {
     /// <summary>
     /// Keeps track of what priority things have when rendering.
@@ -22,11 +16,7 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
 
         public static readonly int TreeStump = 1200;
 
-
-
         public static readonly int TreeTrunk = 1201;
-
-
 
         public static readonly int TreeLeaves = 1202;
 
