@@ -99,7 +99,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             else
             {
                 Point2D emtpyTile = ItemFinder.FindNearestNoItemResource(entityOn.MapLocation, l.Dimension);
-                DropItemTask task = new DropItemTask(emtpyTile, l.Dimension, drop, l.ID);
+                DropItemTask task = new DropItemTask(emtpyTile, l.Dimension, drop, l.ID, Guid.NewGuid());
                 task.ReservedFor = l.ID;
                 TaskManager.Manager.AddTask(task);
             }
