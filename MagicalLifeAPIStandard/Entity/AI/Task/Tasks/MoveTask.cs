@@ -16,7 +16,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         public Point2D Destination { get; private set; }
 
         public MoveTask(Guid boundID, Point2D destination)
-            : base(Dependencies.None, boundID, new List<Qualification> { new CanMoveQualification() })
+            : base(Dependencies.None, boundID, new List<Qualification> { new CanMoveQualification() }, PriorityLayers.Default)
         {
             this.Destination = destination;
         }

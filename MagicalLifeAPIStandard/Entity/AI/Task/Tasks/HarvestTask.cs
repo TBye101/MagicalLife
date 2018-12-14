@@ -23,7 +23,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         private TickTimer HitTimer { get; set; }
 
         public HarvestTask(Point2D target, Guid boundID)
-            : base(GetDependencies(boundID, target), boundID, new List<Qualification>())
+            : base(GetDependencies(boundID, target), boundID, new List<Qualification>(), PriorityLayers.Default)
         {
             this.Target = target;
             MasterLog.DebugWriteLine("Target: " + this.Target.ToString());

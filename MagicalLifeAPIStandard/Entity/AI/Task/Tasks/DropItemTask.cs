@@ -27,7 +27,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         /// <param name="dimension">The dimension to drop the item in.</param>
         /// <param name="item">The item to drop.</param>
         /// <param name="creatureID">The id of the creature with the object.</param>
-        public DropItemTask(Point2D location, int dimension, Item item, Guid creatureID, Guid boundID) : base(GetDependencies(boundID, location, creatureID), boundID, GetQualifications(creatureID))
+        public DropItemTask(Point2D location, int dimension, Item item, Guid creatureID, Guid boundID) : base(GetDependencies(boundID, location, creatureID), boundID, GetQualifications(creatureID), PriorityLayers.SpecificCreature)
         {
             this.Location = location;
             this.Dimension = dimension;

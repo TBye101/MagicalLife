@@ -54,7 +54,6 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
             int x = (FullScreenWindow.Width / 2) + XViewOffset;
             int y = (FullScreenWindow.Height / 2) + YViewOffset;
 
-            MasterLog.DebugWriteLine("Center Camera/Listener: " + x.ToString() + ", " + y.ToString());
             return new Point2D(x, y);
         }
     }

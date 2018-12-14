@@ -131,7 +131,6 @@ namespace MagicalLifeAPI.Entity.Movement
             }
             else
             {
-                Log.Debug("Made it to the next tile!");
                 //The character made it to the next tile.
                 entity.MapLocation = destination.MapLocation;
                 entity.TileLocation = new DataTypes.Point2DFloat(destination.MapLocation.X, destination.MapLocation.Y);

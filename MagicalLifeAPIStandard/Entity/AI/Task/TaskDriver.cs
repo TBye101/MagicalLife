@@ -42,7 +42,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
                 {
                     if (item.ToilingWorker == Guid.Empty)
                     {
-                        ret.Add(item);//Here's the issue
+                        ret.Add(item);
                     }
                 }
             }

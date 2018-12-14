@@ -68,7 +68,6 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
             else
             {
                 bool isDone = this.Sequences[this.PlayingSequence].Tick(out int frame);
-                Log.Debug("Shifting to frame: " + frame.ToString());
 
                 this.LastFrame = frame;
                 this.HasFinished = isDone;
