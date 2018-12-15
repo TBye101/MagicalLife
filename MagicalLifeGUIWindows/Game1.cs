@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Load;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Sound;
@@ -17,6 +18,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace MagicalLifeGUIWindows
 {
@@ -46,6 +48,7 @@ namespace MagicalLifeGUIWindows
             Game1.AssetManager = this.Content;
             UniversalEvents.GameExit += this.UniversalEvents_GameExit;
             this.Graphics.HardwareModeSwitch = false;
+            OutputDebugInfo();
         }
 
         private void InitializeSplashScreens()
@@ -205,6 +208,18 @@ namespace MagicalLifeGUIWindows
                 {
                     InGameGUI.Initialize();
                 }
+            }
+        }
+
+        private static void OutputDebugInfo()
+        {
+            foreach (Screen screen in Screen.AllScreens)
+            {
+                MasterLog.DebugWriteLine("Device Name: " + screen.DeviceName);
+                MasterLog.DebugWriteLine("Bounds: " + screen.Bounds.ToString());
+                MasterLog.DebugWriteLine("Type: " + screen.GetType().ToString());
+                MasterLog.DebugWriteLine("Working Area: " + screen.WorkingArea.ToString());
+                MasterLog.DebugWriteLine("Primary Screen: " + screen.Primary.ToString());
             }
         }
     }
