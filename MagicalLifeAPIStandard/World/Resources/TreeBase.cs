@@ -13,11 +13,11 @@ namespace MagicalLifeAPI.World.Resources
     [ProtoInclude(3, typeof(PineTree))]
     public abstract class TreeBase : Resource
     {
-        public TreeBase(string name, int durability) : base(name, durability)
+        protected TreeBase(string name, int durability) : base(name, durability)
         {
         }
 
-        protected TreeBase() : base()
+        protected TreeBase()
         {
         }
     }

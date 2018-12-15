@@ -19,14 +19,14 @@ namespace MagicalLifeAPI.World.Items
         {
         }
 
-        protected Log() : base()
+        protected Log()
         {
             //Protobuf-net constructor.
         }
 
         public override List<AbstractVisual> GetVisuals()
         {
-            return new List<AbstractVisual>()
+            return new List<AbstractVisual>
             {
                 new StaticTexture(AssetManager.NameToIndex[TextureLoader.LogTexture1], RenderLayer.Items)
             };

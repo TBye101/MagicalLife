@@ -111,23 +111,5 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
             //Didn't find anything
             return null;
         }
-
-        /// <summary>
-        /// Expands the bounds of the rectangle by 1 in every direction.
-        /// </summary>
-        /// <param name="rectangle"></param>
-        /// <returns></returns>
-        private static MagicRectangle ExpandRectangularSearch(MagicRectangle magicRectangle)
-        {
-            MagicRectangle rectangle = magicRectangle;
-
-            rectangle.TopLeft.X -= 1;
-            rectangle.TopLeft.Y += 1;
-
-            rectangle.BottomRight.X += 1;
-            rectangle.BottomRight.Y -= 1;
-
-            return rectangle;
-        }
     }
 }

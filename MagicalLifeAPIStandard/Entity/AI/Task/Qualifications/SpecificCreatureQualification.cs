@@ -13,12 +13,12 @@ namespace MagicalLifeAPI.Entity.AI.Task.Qualifications
         public Guid CreatureID { get; set; }
 
         /// <param name="creatureID">The ID of the only creature allowed to do a task.</param>
-        public SpecificCreatureQualification(Guid creatureID) : base()
+        public SpecificCreatureQualification(Guid creatureID)
         {
             this.CreatureID = creatureID;
         }
 
-        public SpecificCreatureQualification() : base()
+        public SpecificCreatureQualification()
         {
             //Protobuf-net constructor.
         }

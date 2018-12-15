@@ -15,7 +15,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
 
         public List<TaskDriver> TaskDrivers { get; private set; }
 
-        private object SyncObject = new object();
+        private readonly object SyncObject = new object();
 
         public TaskManager()
         {
@@ -58,7 +58,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
                 {
                     return lessThan; //x is less than y.
                 }
-                if (x != null && x == null)
+                if (x != null && y == null)
                 {
                     return greaterThan; //x is greater than y.
                 }
@@ -110,7 +110,6 @@ namespace MagicalLifeAPI.Entity.AI.Task
                     //Has the job been reserved for the unemployed creature
                     if (item.ReservedFor == l.ID)
                     {
-                        //MasterLog.DebugWriteLine("Its been reserved for me: " + item.ID);
                         this.AssignJob(l, item);
                         return;
                     }

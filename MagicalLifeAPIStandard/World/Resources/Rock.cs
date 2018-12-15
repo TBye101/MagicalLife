@@ -21,13 +21,13 @@ namespace MagicalLifeAPI.World.Resources
 
         public Rock(int durability) : base(StoneName, durability)
         {
-            this.HarvestingBehavior = new DropWhenCompletelyHarvested(new List<Base.Item>()
+            this.HarvestingBehavior = new DropWhenCompletelyHarvested(new List<Base.Item>
             {
                 new StoneRubble(this.Durability)
             }, SoundsTable.PickaxeHit);
         }
 
-        public Rock() : base()
+        public Rock()
         {
         }
 

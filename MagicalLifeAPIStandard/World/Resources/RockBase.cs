@@ -10,11 +10,11 @@ namespace MagicalLifeAPI.World.Resources
     [ProtoInclude(1, typeof(Rock))]
     public abstract class RockBase : Resource
     {
-        public RockBase(string name, int durability) : base(name, durability)
+        protected RockBase(string name, int durability) : base(name, durability)
         {
         }
 
-        public RockBase() : base()
+        protected RockBase()
         {
         }
 

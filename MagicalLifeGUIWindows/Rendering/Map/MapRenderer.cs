@@ -86,18 +86,12 @@ namespace MagicalLifeGUIWindows.Rendering.Map
 
             switch (tile.ImpendingAction)
             {
-                case MagicalLifeAPI.Entity.AI.Task.ActionSelected.None:
-                    break;
-
                 case MagicalLifeAPI.Entity.AI.Task.ActionSelected.Mine:
                     MapDrawer.Draw(AssetManager.Textures[AssetManager.NameToIndex[TextureLoader.GUIPickaxeMapIcon]], x32Target, RenderLayer.GUI);
                     break;
 
                 case MagicalLifeAPI.Entity.AI.Task.ActionSelected.Chop:
                     MapDrawer.Draw(AssetManager.Textures[AssetManager.NameToIndex[TextureLoader.GUIAxeMapIcon]], x32Target, RenderLayer.GUI);
-                    break;
-
-                default:
                     break;
             }
         }

@@ -67,7 +67,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
         /// <param name="boundID">An ID used to determine if multiple tasks must be completed by the same worker.
         /// If multiple tasks have the same <paramref name="boundID"/>,
         /// then they must all be completed by the same worker.</param>
-        public MagicalTask(Dependencies preRequisites, Guid boundID, List<Qualification> qualifications, int taskPriority)
+        protected MagicalTask(Dependencies preRequisites, Guid boundID, List<Qualification> qualifications, int taskPriority)
             : this(preRequisites, qualifications)
         {
             this.BoundID = boundID;

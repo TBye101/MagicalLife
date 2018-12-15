@@ -34,7 +34,7 @@ namespace MagicalLifeAPI.Visual.Rendering.AbstractVisuals
             this.YOffset = yOffset;
         }
 
-        protected OffsetTexture() : base()
+        protected OffsetTexture()
         {
         }
 

@@ -60,7 +60,7 @@ namespace MagicalLifeServer.ServerWorld.World
                                 tile.IsWalkable = false;
                             }
 
-                            if (random.Next(4) == 2)
+                            if (random.Next(5) == 2)
                             {
                                 if (tile.Resources == null || tile.Resources != null && tile.Resources.DisplayName != Rock.StoneName)
                                 {

@@ -27,7 +27,9 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         /// <param name="dimension">The dimension to drop the item in.</param>
         /// <param name="item">The item to drop.</param>
         /// <param name="creatureID">The id of the creature with the object.</param>
-        public DropItemTask(Point2D location, int dimension, Item item, Guid creatureID, Guid boundID) : base(GetDependencies(boundID, location, creatureID), boundID, GetQualifications(creatureID), PriorityLayers.SpecificCreature)
+        public DropItemTask(Point2D location, int dimension, Item item, Guid creatureID, Guid boundID)
+            : base(GetDependencies(boundID, location, creatureID),
+                  boundID, GetQualifications(creatureID), PriorityLayers.SpecificCreature)
         {
             this.Location = location;
             this.Dimension = dimension;
@@ -36,13 +38,13 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         private static List<Qualification> GetQualifications(Guid creatureID)
         {
-            return new List<Qualification>()
+            return new List<Qualification>
             {
                 new SpecificCreatureQualification(creatureID)
             };
         }
 
-        public DropItemTask() : base()
+        public DropItemTask()
         {
             //Protobuf-net constructor
         }
@@ -62,10 +64,12 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         public override void MakePreparations(Living l)
         {
+            //No preparations to make here
         }
 
         public override void Reset()
         {
+            //Nothing that I can think of to reset right now.
         }
 
         public override void Tick(Living l)
