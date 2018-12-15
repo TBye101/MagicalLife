@@ -93,6 +93,9 @@ namespace MagicalLifeGUIWindows.Rendering.Map
                 case MagicalLifeAPI.Entity.AI.Task.ActionSelected.Chop:
                     MapDrawer.Draw(AssetManager.Textures[AssetManager.NameToIndex[TextureLoader.GUIAxeMapIcon]], x32Target, RenderLayer.GUI);
                     break;
+                default:
+                    //Do nothing.
+                    break;
             }
         }
     }
