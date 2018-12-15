@@ -15,6 +15,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 *Oak Trees are now in
 *Maple Trees are now in
 *Pine trees are now in
+*Now handles the dropping of an item on a tile that already has an item of a different type on it.
 
 #### GUI
 *Trees now render
