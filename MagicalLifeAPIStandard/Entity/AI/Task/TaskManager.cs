@@ -1,6 +1,8 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace MagicalLifeAPI.Entity.AI.Task
 {
@@ -13,7 +15,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
 
         public List<TaskDriver> TaskDrivers { get; private set; }
 
-        private object syncObject = new object();
+        private readonly object SyncObject = new object();
 
         public TaskManager()
         {
@@ -22,13 +24,62 @@ namespace MagicalLifeAPI.Entity.AI.Task
 
         public void AddTask(MagicalTask task)
         {
-            this.TaskDrivers.Add(new TaskDriver(task));
-            task.Completed += this.Task_Completed;
+            lock (this.SyncObject)
+            {
+                this.TaskDrivers.Add(new TaskDriver(task));
+                task.Completed += this.Task_Completed;
+            }
         }
 
         private void Task_Completed(MagicalTask task)
         {
-            this.TaskDrivers.RemoveAll(x => x.Task.Equals(task));
+            lock (this.SyncObject)
+            {
+                this.TaskDrivers.RemoveAll(x => x.Task.Equals(task));
+            }
+        }
+
+        /// <summary>
+        /// A comparator used to compare magical tasks. 
+        /// Determines whether x is greater than, less than, or equal to y.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        private static int CompareTasks(MagicalTask x, MagicalTask y)
+        {
+            int equal = 0; //x and y are equal.
+            int lessThan = 1; //x is less than y.
+            int greaterThan = -1; //x is greater than y.
+
+            if (x == null || y == null)
+            {
+                if (x == null && y != null)
+                {
+                    return lessThan; //x is less than y.
+                }
+                if (x != null && y == null)
+                {
+                    return greaterThan; //x is greater than y.
+                }
+
+                return equal; //They are both null.
+            }
+            else
+            {
+                if (x.TaskPriority == y.TaskPriority)
+                {
+                    return equal; //They are equal in priority.
+                }
+                if (x.TaskPriority > y.TaskPriority)
+                {
+                    return greaterThan; //x is greater in priority.
+                }
+                else
+                {
+                    return lessThan; //x is less than y.
+                }
+            }
         }
 
         /// <summary>
@@ -39,6 +90,8 @@ namespace MagicalLifeAPI.Entity.AI.Task
         /// <returns></returns>
         public void AssignTask(Living l)
         {
+            lock (this.SyncObject)
+            {
                 List<MagicalTask> allCompatibleTasks = new List<MagicalTask>();
 
                 //Get all compatible jobs
@@ -47,12 +100,16 @@ namespace MagicalLifeAPI.Entity.AI.Task
                     allCompatibleTasks.AddRange(item.GetCompatibleJobs(l));
                 }
 
+                if (allCompatibleTasks.Count > 0)
+                {
+                    allCompatibleTasks.Sort(CompareTasks);
+                }
+
                 foreach (MagicalTask item in allCompatibleTasks)
                 {
                     //Has the job been reserved for the unemployed creature
                     if (item.ReservedFor == l.ID)
                     {
-                        MasterLog.DebugWriteLine("Its been reserved for me: " + item.ID);
                         this.AssignJob(l, item);
                         return;
                     }
@@ -67,6 +124,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
                     {
                         this.ReserveBoundTree(l, task.BoundID, item.Task);
                     }
+                }
             }
         }
 
@@ -96,8 +154,6 @@ namespace MagicalLifeAPI.Entity.AI.Task
 
         private void AssignJob(Living l, MagicalTask task)
         {
-            MasterLog.DebugWriteLine("Assigning job: " + task.ID);
-            MasterLog.DebugWriteLine("Assigning job to: " + l.ID);
             l.AssignTask(task);
             task.MakePreparations(l);
             task.ToilingWorker = l.ID;

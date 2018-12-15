@@ -653,7 +653,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         {
             get
             {
-                var buffer = new float[numchannels][];
+                float[][] buffer = new float[this.numchannels][];
 
                 for (int i = 0; i < numchannels; ++i)
                 {

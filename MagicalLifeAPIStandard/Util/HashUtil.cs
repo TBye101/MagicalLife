@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MagicalLifeAPI.Util
+﻿namespace MagicalLifeAPI.Util
 {
     /// <summary>
     /// Has various hashing functionality.
@@ -18,7 +16,7 @@ namespace MagicalLifeAPI.Util
 
             for (int i = 0; i < length; i++)
             {
-                ret += (int)((enumValues[i] + 1) * (Math.Pow(10, i)));
+                ret += (int)((enumValues[i] + 1) * (System.Math.Pow(10, i)));
             }
 
             return ret;

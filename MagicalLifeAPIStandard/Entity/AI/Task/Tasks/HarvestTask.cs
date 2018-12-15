@@ -11,26 +11,26 @@ using System.Collections.Generic;
 namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 {
     [ProtoContract]
-    public class MineTask : MagicalTask
+    public class HarvestTask : MagicalTask
     {
         [ProtoMember(1)]
         public Point2D Target { get; private set; }
 
         [ProtoMember(2)]
-        private IMinable Minable { get; set; }
+        private IHarvestable Harvestable { get; set; }
 
         [ProtoMember(3)]
         private TickTimer HitTimer { get; set; }
 
-        public MineTask(Point2D target, Guid boundID)
-            : base(GetDependencies(boundID, target), boundID, new List<Qualification>())
+        public HarvestTask(Point2D target, Guid boundID)
+            : base(GetDependencies(boundID, target), boundID, new List<Qualification>(), PriorityLayers.Default)
         {
             this.Target = target;
             MasterLog.DebugWriteLine("Target: " + this.Target.ToString());
             this.HitTimer = new TickTimer(30);
         }
 
-        private MineTask()
+        private HarvestTask()
         {
         }
 
@@ -47,7 +47,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         public override void MakePreparations(Living l)
         {
             Tile tile = World.Data.World.GetTile(l.Dimension, this.Target.X, this.Target.Y);
-            this.Minable = tile.Resources;
+            this.Harvestable = tile.Resources;
             if (tile.Resources == null)
             {
                 MasterLog.DebugWriteLine("Minable is null");
@@ -63,18 +63,45 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         {
             if (this.HitTimer.Allow())
             {
-                List<World.Base.Item> drop = this.Minable.MiningBehavior.MineSomePercent(.1F, this.Target);
+                List<World.Base.Item> drop = this.Harvestable.HarvestingBehavior.HarvestSomePercent(.1F, this.Target);
 
                 if (drop != null && drop.Count > 0)
                 {
-                    ItemAdder.AddItem(drop[0], l.MapLocation, l.Dimension);
+                    int length = drop.Count;
+                    for (int i = 0; i < length; i++)
+                    {
+                        this.DropItem(l, drop[i]);
+                    }
                 }
 
-                if (this.Minable.MiningBehavior.PercentMined > 1)
+                if (this.Harvestable.HarvestingBehavior.PercentHarvested > 1)
                 {
                     this.RemoveResource(l.Dimension);
                     this.CompleteTask();
                 }
+            }
+        }
+
+        /// <summary>
+        /// Drops the result of the harvesting down.
+        /// </summary>
+        /// <param name="l"></param>
+        /// <param name="drop"></param>
+        private void DropItem(Living l, Item drop)
+        {
+            //The tile the entity is standing on
+            Tile entityOn = World.Data.World.GetTile(l.Dimension, l.MapLocation.X, l.MapLocation.Y);
+
+            if (entityOn.Item == null || entityOn.Item.GetType() == drop.GetType())
+            {
+                ItemAdder.AddItem(drop, l.MapLocation, l.Dimension);
+            }
+            else
+            {
+                Point2D emtpyTile = ItemFinder.FindNearestNoItemResource(entityOn.MapLocation, l.Dimension);
+                DropItemTask task = new DropItemTask(emtpyTile, l.Dimension, drop, l.ID, Guid.NewGuid());
+                task.ReservedFor = l.ID;
+                TaskManager.Manager.AddTask(task);
             }
         }
 

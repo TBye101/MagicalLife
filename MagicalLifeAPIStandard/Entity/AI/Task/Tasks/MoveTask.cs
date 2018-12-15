@@ -15,8 +15,14 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         [ProtoMember(1)]
         public Point2D Destination { get; private set; }
 
+        public MoveTask(Guid boundID, Point2D destination, int taskPriority)
+            : base(Dependencies.None, boundID, new List<Qualification> { new CanMoveQualification() }, taskPriority)
+        {
+            this.Destination = destination;
+        }
+
         public MoveTask(Guid boundID, Point2D destination)
-            : base(Dependencies.None, boundID, new List<Qualification> { new CanMoveQualification() })
+            : base(Dependencies.None, boundID, new List<Qualification> { new CanMoveQualification() }, PriorityLayers.Default)
         {
             this.Destination = destination;
         }
@@ -59,7 +65,10 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         public override void Tick(Living l)
         {
-            //We don't need to do anything more
+            if (l.MapLocation.Equals(this.Destination))
+            {
+                this.CompleteTask();
+            }
         }
     }
 }

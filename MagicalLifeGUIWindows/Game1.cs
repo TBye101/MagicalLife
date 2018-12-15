@@ -1,17 +1,16 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Load;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.Util.Reusable;
-using MagicalLifeAPI.Visual.Animation;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.GUI.In;
 using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Load;
 using MagicalLifeGUIWindows.Rendering;
+using MagicalLifeGUIWindows.Rendering.Map;
 using MagicalLifeGUIWindows.Screens;
 using MagicalLifeSettings.Storage;
 using Microsoft.Xna.Framework;
@@ -95,8 +94,9 @@ namespace MagicalLifeGUIWindows
                 new ItemLoader(),
                 new InputLoader(),
                 new Initializer(),
-                new TextureLoader(),
+                //new TextureLoader(),
                 new TextureLoader(this.Content),
+                new SpecificTextureLoader(),
                 new ProtoTypeLoader()
             });
             this.InitializeSplashScreens();
@@ -149,12 +149,11 @@ namespace MagicalLifeGUIWindows
 
                     this.GraphicsDevice.Clear(Color.Black);
 
-
-
                     if (Game1.SplashDone)
                     {
                         zoomBatch.Begin();
                         RenderingPipe.DrawScreen(zoomBatch);
+                        MapRenderer.MapDrawer.RenderAll();
                         zoomBatch.End();
                     }
                     else

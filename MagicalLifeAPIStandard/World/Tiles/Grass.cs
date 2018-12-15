@@ -31,12 +31,15 @@ namespace MagicalLifeAPI.World.Tiles
                 case 1:
                     ret = TextureLoader.TextureGrass2;
                     break;
+
                 case 2:
                     ret = TextureLoader.TextureGrass3;
                     break;
+
                 case 3:
                     ret = TextureLoader.TextureGrass4;
                     break;
+
                 default:
                     ret = TextureLoader.TextureGrass1;
                     break;

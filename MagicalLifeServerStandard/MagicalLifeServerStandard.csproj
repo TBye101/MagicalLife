@@ -10,8 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Networking\" />
-    <Folder Include="Validation\" />
+    <Compile Remove="Networking\**" />
+    <Compile Remove="Validation\**" />
+    <EmbeddedResource Remove="Networking\**" />
+    <EmbeddedResource Remove="Validation\**" />
+    <None Remove="Networking\**" />
+    <None Remove="Validation\**" />
   </ItemGroup>
 
   <ItemGroup>

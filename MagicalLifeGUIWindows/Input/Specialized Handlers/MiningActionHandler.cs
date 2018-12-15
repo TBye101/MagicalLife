@@ -3,8 +3,8 @@ using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.Entity.AI.Task.Tasks;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
+using MagicalLifeAPI.World.Resources;
 using MagicalLifeGUIWindows.Input.History;
-using MagicalLifeGUIWindows.Rendering;
 using System;
 using System.Linq;
 
@@ -29,9 +29,12 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
                     if (tile.Resources != null && tile.ImpendingAction == ActionSelected.None)
                     {
-                        MineTask task = new MineTask(tile.MapLocation, Guid.NewGuid());
-                        tile.ImpendingAction = ActionSelected.Mine;
-                        TaskManager.Manager.AddTask(task);
+                        if (tile.Resources is RockBase)
+                        {
+                            HarvestTask task = new HarvestTask(tile.MapLocation, Guid.NewGuid());
+                            tile.ImpendingAction = ActionSelected.Mine;
+                            TaskManager.Manager.AddTask(task);
+                        }
                     }
                 }
             }

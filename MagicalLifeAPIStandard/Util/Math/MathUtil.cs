@@ -15,7 +15,7 @@ namespace MagicalLifeAPI.Util
         /// <returns></returns>
         public static int Round(double value)
         {
-            return (int)Math.Round(value);
+            return (int)System.Math.Round(value);
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace MagicalLifeAPI.Util
         /// <returns></returns>
         public static int GetDistanceFast(Point2D a, Point2D b)
         {
-            return Convert.ToInt32(Math.Pow(b.X - a.X, 2) + Math.Pow(b.Y - a.Y, 2));
+            return Convert.ToInt32(System.Math.Pow(b.X - a.X, 2) + System.Math.Pow(b.Y - a.Y, 2));
         }
 
         /// <summary>
@@ -39,12 +39,12 @@ namespace MagicalLifeAPI.Util
         /// <returns></returns>
         public static double GetDistance(Point2D a, Point2D b)
         {
-            return Math.Sqrt(Math.Pow(b.X - a.X, 2) + Math.Pow(b.Y - a.Y, 2));
+            return System.Math.Sqrt(System.Math.Pow(b.X - a.X, 2) + System.Math.Pow(b.Y - a.Y, 2));
         }
 
         public static float GetDistance(Point2DFloat a, Point2D b)
         {
-            return (float)Math.Sqrt(Math.Pow(b.X - a.X, 2) + Math.Pow(b.Y - a.Y, 2));
+            return (float)System.Math.Sqrt(System.Math.Pow(b.X - a.X, 2) + System.Math.Pow(b.Y - a.Y, 2));
         }
     }
 }

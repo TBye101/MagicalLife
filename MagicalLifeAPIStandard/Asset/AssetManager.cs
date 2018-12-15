@@ -1,6 +1,5 @@
 ﻿using MagicalLifeAPI.Error.InternalExceptions;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Asset

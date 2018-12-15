@@ -13,7 +13,6 @@ using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Data.Disk;
 using MagicalLifeAPI.World.Data.Disk.DataStorage;
 using MagicalLifeServer.Load;
-using MagicalLifeSettings.Storage;
 using MagicalLifeSettingsCore.Storage;
 using System;
 using System.Collections.Generic;
@@ -65,6 +64,7 @@ namespace MagicalLifeServer
                     {
                         new ItemLoader(),
                         new TextureLoader(),
+                        new SpecificTextureLoader(),
                         new ProtoTypeLoader(),
                         new MainLoad()
                     });

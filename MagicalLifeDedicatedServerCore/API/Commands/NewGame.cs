@@ -30,6 +30,7 @@ namespace MagicalLifeDedicatedServer.API.Commands
         {
             if (input.Count > 0)
             {
+                World.Mode = EngineMode.ServerOnly;
                 WorldStorage.SaveName = input[0];
                 Server.Load();
 

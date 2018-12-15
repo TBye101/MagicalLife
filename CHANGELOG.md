@@ -10,8 +10,16 @@ SneakyTactician  <SneakyTactician@outlook.com>
 	*Audio listening is set from the center of the screen
 *API now works anywhere C# can run
 *Dedicated server now runs on Mac and Linux in addition to windows
+*Trees now in as a resource
+*Trees are now harvestable
+*Oak Trees are now in
+*Maple Trees are now in
+*Pine trees are now in
+*Now handles the dropping of an item on a tile that already has an item of a different type on it.
 
 #### GUI
+*Trees now render
+*Axe button now allows for the user to mark which trees to chop down
 
 #### Bugs
 *Items now render properly again

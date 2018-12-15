@@ -7,7 +7,6 @@ using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util.Reusable;
-using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 using System;
 
@@ -108,7 +107,6 @@ namespace MagicalLifeAPI.Entity
 
         private void Task_Completed(MagicalTask task)
         {
-            MasterLog.DebugWriteLine("Task completed: " + task.ID);
             this.Task = null;
         }
 

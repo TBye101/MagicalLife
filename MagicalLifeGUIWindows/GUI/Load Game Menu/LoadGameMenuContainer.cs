@@ -1,7 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeGUIWindows.Rendering;
 
 namespace MagicalLifeGUIWindows.GUI.Load
 {

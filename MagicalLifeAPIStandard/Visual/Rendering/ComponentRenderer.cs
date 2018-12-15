@@ -1,12 +1,7 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeGUIWindows.Rendering.Map;
-using Microsoft.Xna.Framework.Graphics;
 using ProtoBuf;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Components.Generic.Renderable
 {

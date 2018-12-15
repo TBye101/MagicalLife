@@ -7,17 +7,19 @@ namespace MagicalLifeGUIWindows.Input
     /// </summary>
     public static class InputHandlers
     {
-        public static LivingMoveOrderInputHandler LivingMove;
+        public static LivingMoveOrderInputHandler LivingMove { get; set; }
 
-        public static LogoSkip LogoSkipper;
+        public static LogoSkip LogoSkipper { get; set; }
 
-        public static MiningActionHandler MiningAction;
+        public static MiningActionHandler MiningAction { get; set; }
 
-        public static StrafeHandler StrafingHandler;
+        public static ChopActionHandler ChopAction { get; set; }
 
-        public static EscapeHandler EscHandler;
+        public static StrafeHandler StrafingHandler { get; set; }
 
-        public static ZoomHandler ZooomHandler;
+        public static EscapeHandler EscHandler { get; set; }
+
+        public static ZoomHandler ZooomHandler { get; set; }
 
         public static void Initialize()
         {
@@ -27,6 +29,7 @@ namespace MagicalLifeGUIWindows.Input
             StrafingHandler = new StrafeHandler();
             EscHandler = new EscapeHandler();
             ZooomHandler = new ZoomHandler();
+            ChopAction = new ChopActionHandler();
         }
     }
 }

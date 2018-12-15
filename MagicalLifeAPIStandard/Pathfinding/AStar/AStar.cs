@@ -67,6 +67,35 @@ namespace MagicalLifeAPI.Pathfinding.AStar
             }
         }
 
+        public bool IsRoutePossible(int dimension, Point2D origin, Point2D destination)
+        {
+            Position[] path = this.Grid.GetPath(new Position(origin.X, origin.Y), new Position(destination.X, destination.Y));
+
+            if (!World.Data.World.Dimensions[dimension][destination.X, destination.Y].IsWalkable)
+            {
+                return false;
+            }
+
+            if (path.Length < 1)
+            {
+                return false;
+            }
+
+            int i = 0;
+            int length = path.Length - 1;
+            while (i != length)
+            {
+                if (!World.Data.World.Dimensions[dimension][path[i].X, path[i].Y].IsWalkable)
+                {
+                    return false;
+                }
+
+                i++;
+            }
+
+            return true;
+        }
+
         public void RemoveConnections(Point2D location)
         {
             this.Grid.BlockCell(new Position(location.X, location.Y));

@@ -5,6 +5,6 @@
     /// </summary>
     public enum EngineMode
     {
-        ServerOnly, ClientOnly, ServerAndClient
+        ServerAndClient, ServerOnly, ClientOnly
     }
 }

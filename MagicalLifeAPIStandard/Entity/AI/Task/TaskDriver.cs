@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MagicalLifeAPI.Filing.Logging;
+using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Entity.AI.Task
@@ -42,7 +43,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
                 {
                     if (item.ToilingWorker == Guid.Empty)
                     {
-                        ret.Add(item);//Here's the issue
+                        ret.Add(item);
                     }
                 }
             }

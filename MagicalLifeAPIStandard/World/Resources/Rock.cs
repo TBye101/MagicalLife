@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Components.Resource;
+using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Items;
 using ProtoBuf;
@@ -12,21 +13,21 @@ namespace MagicalLifeAPI.World.Resources
     /// Stone as a resource.
     /// </summary>
     [ProtoContract]
-    public class Stone : StoneBase
+    public class Rock : RockBase
     {
         public static readonly string StoneName = "Stone";
 
-        public override AbstractMinable MiningBehavior { get; set; }
+        public override AbstractHarvestable HarvestingBehavior { get; set; }
 
-        public Stone(int durability) : base(StoneName, durability)
+        public Rock(int durability) : base(StoneName, durability)
         {
-            this.MiningBehavior = new DropWhenCompletelyMined(new List<Base.Item>()
+            this.HarvestingBehavior = new DropWhenCompletelyHarvested(new List<Base.Item>
             {
                 new StoneRubble(this.Durability)
-            });
+            }, SoundsTable.PickaxeHit);
         }
 
-        public Stone() : base()
+        public Rock()
         {
         }
 

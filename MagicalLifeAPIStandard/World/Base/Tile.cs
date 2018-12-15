@@ -60,7 +60,7 @@ namespace MagicalLifeAPI.World.Base
                 if (this.resources == null)
                 {
                     this.resources = value;
-                    
+
                     if (value != null)
                     {
                         this.CompositeRenderer.AddVisuals(value.GetVisuals());

@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using MagicalLifeAPI.Asset;
+﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Visual.Animation;
 using MagicalLifeAPI.Visual.Rendering.Animation;
 using MagicalLifeGUIWindows.Rendering.Map;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using ProtoBuf;
 using Serilog;
+using System.Reflection;
 
 namespace MagicalLifeAPI.Components.Generic.Renderable
 {
@@ -47,7 +40,7 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         public int LastFrame { get; private set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="priority"></param>
         /// <param name="sequences"></param>
@@ -69,17 +62,18 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         {
             if (this.PlayingSequence == -1)
             {
-                batch.Draw(this.AnimationFrames.Sprites, ScreenTopLeft, this.AnimationFrames.GetSection(this.LastFrame));
+                batch.Draw(this.AnimationFrames.Sprites,
+                    ScreenTopLeft, this.AnimationFrames.GetSection(this.LastFrame), this.Priority);
             }
             else
             {
                 bool isDone = this.Sequences[this.PlayingSequence].Tick(out int frame);
-                Log.Debug("Shifting to frame: " + frame.ToString());
 
                 this.LastFrame = frame;
                 this.HasFinished = isDone;
 
-                batch.Draw(this.AnimationFrames.Sprites, ScreenTopLeft, this.AnimationFrames.GetSection(frame));
+                batch.Draw(this.AnimationFrames.Sprites,
+                    ScreenTopLeft, this.AnimationFrames.GetSection(frame), this.Priority);
 
                 if (this.HasFinished)
                 {

@@ -1,8 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeGUIWindows.Rendering.Map;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using ProtoBuf;
 
 namespace MagicalLifeAPI.Components.Generic.Renderable
@@ -27,7 +25,7 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
 
         public override void Render(MapBatch batch, Point2D ScreenTopLeft)
         {
-            batch.Draw(AssetManager.Textures[this.TextureID], ScreenTopLeft);
+            batch.Draw(AssetManager.Textures[this.TextureID], ScreenTopLeft, this.Priority);
         }
     }
 }

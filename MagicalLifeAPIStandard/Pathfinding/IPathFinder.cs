@@ -13,11 +13,19 @@ namespace MagicalLifeAPI.Pathfinding
         /// Must get a valid path between the origin and the destination.
         /// </summary>
         /// <param name="world">The world with which the <see cref="Living"/> exists within.</param>
-        /// <param name="living">The creature which will move between the two Point2Ds.</param>
         /// <param name="destination">The target location for the living to reach.</param>
         /// <param name="origin">The starting Point2D of the living.</param>
         /// <returns></returns>
         List<PathLink> GetRoute(int dimension, Point2D origin, Point2D destination);
+
+        /// <summary>
+        /// Determines whether or not there is a valid path from the origin to the destination.
+        /// </summary>
+        /// <param name="dimension"></param>
+        /// <param name="origin"></param>
+        /// <param name="destination"></param>
+        /// <returns></returns>
+        bool IsRoutePossible(int dimension, Point2D origin, Point2D destination);
 
         /// <summary>
         /// Run whatever startup code you need to before being capable of graph building  for the dimension.

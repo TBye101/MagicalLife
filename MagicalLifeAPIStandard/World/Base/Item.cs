@@ -16,6 +16,7 @@ namespace MagicalLifeAPI.World.Base
     /// </summary>
     [ProtoContract]
     [ProtoInclude(7, typeof(StoneRubble))]
+    [ProtoInclude(8, typeof(Log))]
     public abstract class Item : HasTexture, IRenderable
     {
         /// <summary>

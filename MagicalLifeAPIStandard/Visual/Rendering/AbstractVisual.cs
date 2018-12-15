@@ -1,13 +1,7 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Visual.Rendering.AbstractVisuals;
 using MagicalLifeGUIWindows.Rendering.Map;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using ProtoBuf;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Components.Generic.Renderable
 {
@@ -17,10 +11,11 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
     [ProtoContract]
     [ProtoInclude(3, typeof(StaticTexture))]
     [ProtoInclude(4, typeof(AnimatedTexture))]
+    [ProtoInclude(5, typeof(OffsetTexture))]
     public abstract class AbstractVisual
     {
         /// <summary>
-        /// The priority of this <see cref="AbstractVisual"/> to be rendered. 
+        /// The priority of this <see cref="AbstractVisual"/> to be rendered.
         /// The higher the number, the closer to last it is rendered.
         /// The later a <see cref="AbstractVisual"/> is rendered, the more likely it will not be overlapped/cut off by anything else.
         /// Think of this like layers of a painting.
@@ -41,11 +36,10 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
 
         protected AbstractVisual()
         {
-
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="batch"></param>
         /// <param name="bounds">The bounds to render the texture at.</param>

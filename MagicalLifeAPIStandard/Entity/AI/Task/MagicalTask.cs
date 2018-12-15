@@ -11,7 +11,8 @@ namespace MagicalLifeAPI.Entity.AI.Task
     [ProtoContract]
     [ProtoInclude(7, typeof(BecomeAdjacentTask))]
     [ProtoInclude(8, typeof(MoveTask))]
-    [ProtoInclude(9, typeof(MineTask))]
+    [ProtoInclude(9, typeof(HarvestTask))]
+    [ProtoInclude(11, typeof(DropItemTask))]
     public abstract class MagicalTask
     {
         public delegate void CompletionEventHandler(MagicalTask task);
@@ -56,14 +57,21 @@ namespace MagicalLifeAPI.Entity.AI.Task
         [ProtoMember(6)]
         public Guid ToilingWorker { get; set; }
 
+        /// <summary>
+        /// The priority of this task compared to other tasks.
+        /// </summary>
+        [ProtoMember(7)]
+        public int TaskPriority { get; set; }
+
         /// <param name="preRequisites">The dependencies of this task.</param>
         /// <param name="boundID">An ID used to determine if multiple tasks must be completed by the same worker.
         /// If multiple tasks have the same <paramref name="boundID"/>,
         /// then they must all be completed by the same worker.</param>
-        public MagicalTask(Dependencies preRequisites, Guid boundID, List<Qualification> qualifications)
+        protected MagicalTask(Dependencies preRequisites, Guid boundID, List<Qualification> qualifications, int taskPriority)
             : this(preRequisites, qualifications)
         {
             this.BoundID = boundID;
+            this.TaskPriority = taskPriority;
         }
 
         /// <param name="preRequisites">The dependencies of this task.</param>

@@ -1,6 +1,5 @@
 ﻿using Serilog;
 using System;
-using System.Diagnostics;
 
 namespace MagicalLifeAPI.Error
 {
