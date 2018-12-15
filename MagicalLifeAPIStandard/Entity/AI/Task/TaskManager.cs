@@ -102,21 +102,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
 
                 if (allCompatibleTasks.Count > 0)
                 {
-                    MasterLog.DebugWriteLine("Before sort: ");
-
-                    foreach (MagicalTask item in allCompatibleTasks)
-                    {
-                        MasterLog.DebugWriteLine(item.ID.ToString() + ", " + item.TaskPriority.ToString() + " " + item.GetType().FullName);
-                    }
-
                     allCompatibleTasks.Sort(CompareTasks);
-
-                    MasterLog.DebugWriteLine("After sort: ");
-
-                    foreach (MagicalTask item in allCompatibleTasks)
-                    {
-                        MasterLog.DebugWriteLine(item.ID.ToString() + ", " + item.TaskPriority.ToString() + " " + item.GetType().FullName);
-                    }
                 }
 
                 foreach (MagicalTask item in allCompatibleTasks)
@@ -169,8 +155,6 @@ namespace MagicalLifeAPI.Entity.AI.Task
 
         private void AssignJob(Living l, MagicalTask task)
         {
-            //MasterLog.DebugWriteLine("Assigning job: " + task.ID);
-            //MasterLog.DebugWriteLine("Assigning job to: " + l.ID);
             l.AssignTask(task);
             task.MakePreparations(l);
             task.ToilingWorker = l.ID;
