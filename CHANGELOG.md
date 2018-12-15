@@ -2,6 +2,16 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 ---
 
+## [Version 0.1.2]
+
+#### API
+
+#### GUI
+
+#### Bugs
+
+---
+
 ## [Version 0.1.1]
 
 #### API
@@ -54,8 +64,6 @@ SneakyTactician  <SneakyTactician@outlook.com>
 * Added the ability to zoom in
 * Characters now have new texture
 * Characters now have animations
-
-#### Sound
 
 #### Bugs
 
