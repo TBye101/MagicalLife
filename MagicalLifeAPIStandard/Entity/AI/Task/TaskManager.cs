@@ -49,8 +49,8 @@ namespace MagicalLifeAPI.Entity.AI.Task
         private static int CompareTasks(MagicalTask x, MagicalTask y)
         {
             int equal = 0; //x and y are equal.
-            int lessThan = -1; //x is less than y.
-            int greaterThan = 1; //x is greater than y.
+            int lessThan = 1; //x is less than y.
+            int greaterThan = -1; //x is greater than y.
 
             if (x == null || y == null)
             {

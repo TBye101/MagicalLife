@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MagicalLifeAPI.Filing.Logging;
+using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Entity.AI.Task
@@ -62,6 +63,10 @@ namespace MagicalLifeAPI.Entity.AI.Task
             for (int i = qualified.Count; i > 0; i--)
             {
                 MagicalTask item = qualified[i - 1];
+
+                MasterLog.DebugWriteLine("Found job: ");
+                MasterLog.DebugWriteLine(item.ID.ToString() + ", " + item.TaskPriority.ToString() + " " + item.GetType().FullName);
+
 
                 //If a creature has already started on a related task,
                 //and the task requires the same worker to do this task too

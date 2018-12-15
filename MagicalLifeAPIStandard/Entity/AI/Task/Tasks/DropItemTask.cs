@@ -49,7 +49,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         protected static Dependencies GetDependencies(Guid boundID, Point2D target, Guid creatureID)
         {
-            MoveTask move = new MoveTask(boundID, target);
+            MoveTask move = new MoveTask(boundID, target, PriorityLayers.SpecificCreature);
             move.Qualifications.Add(new SpecificCreatureQualification(creatureID));
 
             List<MagicalTask> deps = new List<MagicalTask>
