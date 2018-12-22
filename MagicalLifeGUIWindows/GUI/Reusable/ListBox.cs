@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace MagicalLifeGUIWindows.GUI.Reusable
 {
     /// <summary>
-    /// Used to display a list of strings.
+    /// Used to display a list of things.
     /// </summary>
     public class ListBox : GUIElement, IScrollable
     {

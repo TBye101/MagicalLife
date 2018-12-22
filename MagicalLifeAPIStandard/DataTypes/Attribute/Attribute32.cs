@@ -24,9 +24,9 @@ namespace MagicalLifeAPI.DataTypes.Attribute
         {
         }
 
-        public float GetValue()
+        public int GetValue()
         {
-            float ret = 0;
+            int ret = 0;
             foreach (Modifier32 item in this.Modifiers)
             {
                 ret += item.Value;
