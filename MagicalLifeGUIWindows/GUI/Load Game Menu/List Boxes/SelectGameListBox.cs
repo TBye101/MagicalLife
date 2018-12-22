@@ -26,11 +26,11 @@ namespace MagicalLifeGUIWindows.GUI.Load
             return new Rectangle(x, y, width, height);
         }
 
-        private static List<AbstractGUIRenderable> GetAllSaveGames()
+        private static List<GUIElement> GetAllSaveGames()
         {
             IEnumerable<string> saves = FileSystemManager.GetAllSaveNames();
 
-            List<AbstractGUIRenderable> ret = new List<AbstractGUIRenderable>();
+            List<GUIElement> ret = new List<GUIElement>();
             foreach (string item in saves)
             {
                 ret.Add(new RenderableString(ItemFont, item));

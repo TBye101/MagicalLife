@@ -1,13 +1,12 @@
 ﻿using MagicalLifeGUIWindows.Rendering.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Extended.Input.InputListeners;
 
 namespace MagicalLifeGUIWindows.GUI.Reusable.API
 {
-    public class RenderableString : AbstractGUIRenderable
+    public class RenderableString : GUIElement
     {
-        public SpriteFont Font { get; private set; }
-
         public string Text { get; private set; }
 
         public RenderableString(SpriteFont font, string text)
@@ -19,6 +18,14 @@ namespace MagicalLifeGUIWindows.GUI.Reusable.API
         public override void Render(SpriteBatch spBatch, Rectangle targetLocation)
         {
             SimpleTextRenderer.DrawString(this.Font, this.Text, targetLocation, SimpleTextRenderer.Alignment.Center, Color.White, ref spBatch);
+        }
+
+        public override void Click(MouseEventArgs e, GUIContainer container)
+        {
+        }
+
+        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
+        {
         }
     }
 }
