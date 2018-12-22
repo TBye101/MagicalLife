@@ -18,6 +18,17 @@ namespace MagicalLifeAPI.DataTypes.Attribute
         [ProtoMember(2)]
         public AttributeFloat Multiplier { get; set; }
 
+        public ComboAttribute(int baseValue, float baseMultiplier)
+        {
+            this.BaseValue = new Attribute32(baseValue);
+            this.Multiplier = new AttributeFloat(baseMultiplier);
+        }
+
+        protected ComboAttribute()
+        {
+            //Protobuf-net constructor.
+        }
+
         /// <summary>
         /// Adds the specified modifier to the base value of this <see cref="ComboAttribute"/>.
         /// </summary>

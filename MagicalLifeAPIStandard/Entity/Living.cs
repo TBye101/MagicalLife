@@ -3,12 +3,14 @@ using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.DataTypes.Attribute;
 using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.Entity.Eventing;
+using MagicalLifeAPI.Entity.Skills;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util.Reusable;
 using ProtoBuf;
 using System;
+using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Entity
 {
@@ -67,6 +69,9 @@ namespace MagicalLifeAPI.Entity
         [ProtoMember(11)]
         public abstract AbstractVisual Visual { get; set; }
 
+        [ProtoMember(12)]
+        public List<Skill> CreatureSkills { get; set; }
+
         /// <summary>
         /// Raised when a <see cref="Living"/> is created.
         /// </summary>
@@ -82,6 +87,7 @@ namespace MagicalLifeAPI.Entity
             this.ID = Guid.NewGuid();
             this.PlayerID = playerID;
             this.Initialize(health, movementSpeed, location, dimension);
+            this.CreatureSkills = new List<Skill>();
         }
 
         protected void Initialize(int health, float movementSpeed, Point2D location, int dimension)

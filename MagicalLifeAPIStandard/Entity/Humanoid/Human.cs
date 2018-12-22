@@ -1,11 +1,13 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Entity.Skills;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Visual.Rendering.Animation;
 using MagicalLifeSettings;
 using ProtoBuf;
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace MagicalLifeAPI.Entity.Humanoid
