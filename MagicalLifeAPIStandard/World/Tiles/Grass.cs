@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.Components.Resource;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Base;
@@ -8,14 +9,17 @@ using ProtoBuf;
 namespace MagicalLifeAPI.World.Tiles
 {
     [ProtoContract]
-    public class Grass : Tile
+    public class Grass : Tile, ITillable
     {
         public override ComponentRenderer CompositeRenderer { get; set; }
 
         public static readonly string GrassTileName = "Grass";
 
+        public AbstractTillable TillableBehavior { get; set; }
+
         public Grass(Point2D location) : base(location, 11, 1)
         {
+            this.TillableBehavior = new TillablePercentDone();
             this.CompositeRenderer = new ComponentRenderer();
             this.CompositeRenderer.RenderQueue.Visuals.Add(new StaticTexture(AssetManager.GetTextureIndex(this.GetRandomDirtTexture()), RenderLayer.DirtBase));
             this.CompositeRenderer.RenderQueue.Visuals.Add(new StaticTexture(AssetManager.GetTextureIndex(this.GetRandomGrassTexture()), RenderLayer.GrassBase));

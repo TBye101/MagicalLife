@@ -5,8 +5,10 @@ SneakyTactician  <SneakyTactician@outlook.com>
 ## [Version 0.1.2]
 
 #### API
+*Now supports the tilling of dirt
 
 #### GUI
+*Tilling dirt is now available from the in game GUI
 
 #### Bugs
 

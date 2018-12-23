@@ -113,6 +113,21 @@ namespace MagicalLifeGUIWindows.GUI.In
         }
 
         /// <summary>
+        /// The x position at which to render the mining action button.
+        /// </summary>
+        public static int HoeActionButtonX
+        {
+            get
+            {
+                switch ((Resolution)MainWindow.Default.Resolution)
+                {
+                    default:
+                        return InGameGUILayout1920x1080.HoeActionButtonX;
+                }
+            }
+        }
+
+        /// <summary>
         /// The x position at which to render the chop action button.
         /// </summary>
         public static int ChopActionButtonX
