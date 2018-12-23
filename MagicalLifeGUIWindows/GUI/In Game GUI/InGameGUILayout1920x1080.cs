@@ -48,6 +48,6 @@
         /// <summary>
         /// The x position at which to render the hoe action button.
         /// </summary>
-        public static readonly int HoeActionButtonX = 380;
+        public static readonly int HoeActionButtonX = 468;
     }
 }

@@ -9,9 +9,9 @@ namespace MagicalLifeAPI.Entity.AI.Task
     /// Represents a task for the player to do.
     /// </summary>
     [ProtoContract]
-    [ProtoInclude(7, typeof(BecomeAdjacentTask))]
-    [ProtoInclude(8, typeof(MoveTask))]
-    [ProtoInclude(9, typeof(HarvestTask))]
+    [ProtoInclude(8, typeof(BecomeAdjacentTask))]
+    [ProtoInclude(9, typeof(MoveTask))]
+    [ProtoInclude(10, typeof(HarvestTask))]
     [ProtoInclude(11, typeof(DropItemTask))]
     public abstract class MagicalTask
     {
