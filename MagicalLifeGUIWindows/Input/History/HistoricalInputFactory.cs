@@ -42,6 +42,9 @@ namespace MagicalLifeGUIWindows.Input.History
                 case ActionSelected.Mine:
                     return this.GenericAction(e, ActionSelected.Mine);
 
+                case ActionSelected.Till:
+                    return this.TillAction(e);
+
                 case ActionSelected.Chop:
                     return this.GenericAction(e, ActionSelected.Chop);
 
@@ -51,7 +54,17 @@ namespace MagicalLifeGUIWindows.Input.History
         }
 
         /// <summary>
-        /// Generates a <see cref="HistoricalInput"/> for when there is an action selected by the player.
+        /// Generates a <see cref="HistoricalInput"/> for when there is a mining action selected by the player.
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
+        private HistoricalInput TillAction(InputEventArgs e)
+        {
+            return this.GenericAction(e, ActionSelected.Till);
+        }
+
+        /// <summary>
+        /// Generates a <see cref="HistoricalInput"/> for when there is a generic action selected by the player.
         /// </summary>
         /// <param name="e"></param>
         /// <returns></returns>
@@ -90,9 +103,8 @@ namespace MagicalLifeGUIWindows.Input.History
                 }
             }
 
-            return new HistoricalInput(true, InputHistory.Selected, ActionSelected.Mine);
+            return new HistoricalInput(true, InputHistory.Selected, action);
         }
-
         /// <summary>
         /// Generates a <see cref="HistoricalInput"/> for when there is no action selected by the player.
         /// </summary>

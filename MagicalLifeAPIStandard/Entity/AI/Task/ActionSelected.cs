@@ -5,6 +5,6 @@
     /// </summary>
     public enum ActionSelected
     {
-        None, Mine, Chop
+        None, Mine, Chop, Till
     }
 }
