@@ -54,16 +54,6 @@ namespace MagicalLifeGUIWindows.Input.History
         }
 
         /// <summary>
-        /// Generates a <see cref="HistoricalInput"/> for when there is an action selected by the player.
-        /// </summary>
-        /// <param name="e"></param>
-        /// <returns></returns>
-        private HistoricalInput GenericAction(InputEventArgs e, ActionSelected action)
-        {
-            return this.GenericAction(e, ActionSelected.Mine);
-        }
-
-        /// <summary>
         /// Generates a <see cref="HistoricalInput"/> for when there is a mining action selected by the player.
         /// </summary>
         /// <param name="e"></param>
@@ -78,7 +68,7 @@ namespace MagicalLifeGUIWindows.Input.History
         /// </summary>
         /// <param name="e"></param>
         /// <returns></returns>
-        private HistoricalInput GenericAction(InputEventArgs e, ActionSelected _action)
+        private HistoricalInput GenericAction(InputEventArgs e, ActionSelected action)
         {
             Point2D mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y, RenderInfo.Dimension, out bool success);
 
@@ -113,7 +103,7 @@ namespace MagicalLifeGUIWindows.Input.History
                 }
             }
 
-            return new HistoricalInput(true, InputHistory.Selected, _action);
+            return new HistoricalInput(true, InputHistory.Selected, action);
         }
         /// <summary>
         /// Generates a <see cref="HistoricalInput"/> for when there is no action selected by the player.

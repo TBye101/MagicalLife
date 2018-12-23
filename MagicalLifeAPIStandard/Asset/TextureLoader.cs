@@ -46,7 +46,6 @@ namespace MagicalLifeAPI.Asset
         public static readonly string TextureStone1 = "Textures/Resource/Stone_01";
         public static readonly string TextureStone2 = "Textures/Resource/Stone_02";
         public static readonly string TextureTestTile = "Textures/Tile/TestTile";
-        public static readonly string TextureTestTile = "Textures/Tile/TestTile";
         public static readonly string TextureTilledDirt = "Textures/Tile/TilledDirt";
         #endregion TileTextures
 
