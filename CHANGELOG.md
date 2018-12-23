@@ -2,14 +2,34 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 ---
 
+## [Version 0.1.2]
+
+#### API
+
+#### GUI
+
+#### Bugs
+
+---
+
 ## [Version 0.1.1]
 
 #### API
 *Audio now has multiple channels/can play multiple sounds simultaneously
 *Audio now has a surround sound effect
 	*Audio listening is set from the center of the screen
+*API now works anywhere C# can run
+*Dedicated server now runs on Mac and Linux in addition to windows
+*Trees now in as a resource
+*Trees are now harvestable
+*Oak Trees are now in
+*Maple Trees are now in
+*Pine trees are now in
+*Now handles the dropping of an item on a tile that already has an item of a different type on it.
 
 #### GUI
+*Trees now render
+*Axe button now allows for the user to mark which trees to chop down
 
 #### Bugs
 *Items now render properly again
@@ -44,8 +64,6 @@ SneakyTactician  <SneakyTactician@outlook.com>
 * Added the ability to zoom in
 * Characters now have new texture
 * Characters now have animations
-
-#### Sound
 
 #### Bugs
 

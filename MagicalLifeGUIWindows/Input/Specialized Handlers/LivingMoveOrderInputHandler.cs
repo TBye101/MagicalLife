@@ -7,7 +7,6 @@ using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.Input.History;
-using MagicalLifeGUIWindows.Rendering;
 using System.Collections.Generic;
 using System.Linq;
 

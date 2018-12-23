@@ -104,18 +104,25 @@ namespace MagicalLifeGUIWindows.Input
             int focus = -1;
             int length = Options.Count;
             GUIElement item = null;
+            MasterLog.DebugWriteLine("Click position: " + clickData.Position.ToString());
 
             for (int i = 0; i < length; i++)
             {
                 item = Options[i];
+
+                MasterLog.DebugWriteLine(item.GetType().ToString() + " gui bounds: " + item.MouseBounds.Bounds.ToString());
+
                 if (focus == -1 && item.MouseBounds.Bounds.Contains(clickData.Position.X + container.DrawingBounds.X, clickData.Position.Y - container.DrawingBounds.Y))
                 {
                     item.HasFocus = true;
                     focus = i;
+                    MasterLog.DebugWriteLine(item.GetType().ToString() + " with a bounds of " + item.MouseBounds.Bounds.ToString() + "was clicked on");
                 }
                 else
                 {
                     item.HasFocus = false;
+                    MasterLog.DebugWriteLine(item.GetType().ToString() + " with a bounds of " + item.MouseBounds.Bounds.ToString() + "was not clicked on");
+
                 }
             }
 
@@ -152,17 +159,28 @@ namespace MagicalLifeGUIWindows.Input
             int length = Options.Count;
             GUIElement item = null;
 
+            MasterLog.DebugWriteLine("Double click position: " + clickData.Position.ToString());
+
+
             for (int i = 0; i < length; i++)
             {
                 item = Options[i];
+
+                MasterLog.DebugWriteLine(item.GetType().ToString() + " gui bounds: " + item.MouseBounds.Bounds.ToString());
+
+
                 if (focus == -1 && item.MouseBounds.Bounds.Contains(clickData.Position.X, clickData.Position.Y))
                 {
                     item.HasFocus = true;
                     focus = i;
+                    MasterLog.DebugWriteLine(item.GetType().ToString() + " with a bounds of " + item.MouseBounds.Bounds.ToString() + "was double clicked on");
+
                 }
                 else
                 {
                     item.HasFocus = false;
+                    MasterLog.DebugWriteLine(item.GetType().ToString() + " with a bounds of " + item.MouseBounds.Bounds.ToString() + "was not double clicked on");
+
                 }
             }
 

@@ -6,7 +6,6 @@ using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.GUI.In;
-using MagicalLifeGUIWindows.Rendering;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -41,10 +40,13 @@ namespace MagicalLifeGUIWindows.Input.History
                     return this.NoAction(e);
 
                 case ActionSelected.Mine:
-                    return this.MineAction(e);
+                    return this.GenericAction(e, ActionSelected.Mine);
 
                 case ActionSelected.Till:
                     return this.TillAction(e);
+
+                case ActionSelected.Chop:
+                    return this.GenericAction(e, ActionSelected.Chop);
 
                 default:
                     throw new UnexpectedEnumMemberException();
@@ -52,11 +54,11 @@ namespace MagicalLifeGUIWindows.Input.History
         }
 
         /// <summary>
-        /// Generates a <see cref="HistoricalInput"/> for when there is a mining action selected by the player.
+        /// Generates a <see cref="HistoricalInput"/> for when there is an action selected by the player.
         /// </summary>
         /// <param name="e"></param>
         /// <returns></returns>
-        private HistoricalInput MineAction(InputEventArgs e)
+        private HistoricalInput GenericAction(InputEventArgs e, ActionSelected action)
         {
             return this.GenericAction(e, ActionSelected.Mine);
         }
@@ -88,7 +90,6 @@ namespace MagicalLifeGUIWindows.Input.History
 
                 if (select != null)
                 {
-                    //Null check select, as it is null when an entity is not found
                     List<Selectable> selected = new List<Selectable>
                     {
                         select
@@ -98,16 +99,16 @@ namespace MagicalLifeGUIWindows.Input.History
                     {
                         if (this.IsSelectableSelected(select))
                         {
-                            return new HistoricalInput(false, selected, _action);
+                            return new HistoricalInput(false, selected, action);
                         }
                         else
                         {
-                            return new HistoricalInput(selected, _action);
+                            return new HistoricalInput(selected, action);
                         }
                     }
                     else
                     {
-                        return new HistoricalInput(selected, true, _action);
+                        return new HistoricalInput(selected, true, action);
                     }
                 }
             }

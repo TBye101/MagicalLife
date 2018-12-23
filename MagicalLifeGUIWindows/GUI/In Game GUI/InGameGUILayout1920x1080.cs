@@ -41,6 +41,11 @@
         public static readonly int MineActionButtonX = 300;
 
         /// <summary>
+        /// The x position at which to render the chop action button.
+        /// </summary>
+        public static readonly int ChopActionButtonX = 384;
+
+        /// <summary>
         /// The x position at which to render the hoe action button.
         /// </summary>
         public static readonly int HoeActionButtonX = 380;

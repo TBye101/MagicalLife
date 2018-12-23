@@ -1,6 +1,5 @@
 ﻿using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Filing;
-using MagicalLifeGUIWindows.Rendering;
 using Microsoft.Xna.Framework.Input;
 
 namespace MagicalLifeGUIWindows.Input.Specialized_Handlers

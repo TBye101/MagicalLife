@@ -5,7 +5,6 @@ using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
-using MagicalLifeAPI.World.Resources;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -58,7 +57,6 @@ namespace MagicalLifeGUIWindows.Rendering.Map
                         if (item.Value != null)
                         {
                             Point2D livingScreenLocation = new Point2D((int)(item.Value.TileLocation.X * Tile.GetTileSize().X), (int)(item.Value.TileLocation.Y * Tile.GetTileSize().Y));
-                            MasterLog.DebugWriteLine("Entity: " + item.Value.ID.ToString() + "Screen position: " + item.Value.TileLocation.ToString());
                             item.Value.Visual.Render(MapDrawer, livingScreenLocation);
                         }
                     }
@@ -66,13 +64,12 @@ namespace MagicalLifeGUIWindows.Rendering.Map
             }
         }
 
-
         private static void DrawItems(Tile tile, Rectangle target)
         {
             if (tile.Item != null)
             {
                 Texture2D texture = AssetManager.Textures[tile.Item.TextureIndex];
-                MapDrawer.Draw(texture, target);
+                MapDrawer.Draw(texture, target, RenderLayer.Items);
             }
         }
 
@@ -87,9 +84,18 @@ namespace MagicalLifeGUIWindows.Rendering.Map
             tile.CompositeRenderer.Render(MapDrawer, start);
             DrawItems(tile, new Rectangle(start.X, start.Y, Tile.GetTileSize().X, Tile.GetTileSize().Y));
 
-            if (tile.ImpendingAction == MagicalLifeAPI.Entity.AI.Task.ActionSelected.Mine)
+            switch (tile.ImpendingAction)
             {
-                MapDrawer.Draw(AssetManager.Textures[AssetManager.NameToIndex[TextureLoader.GUIPickaxeMapIcon]], x32Target);
+                case MagicalLifeAPI.Entity.AI.Task.ActionSelected.Mine:
+                    MapDrawer.Draw(AssetManager.Textures[AssetManager.NameToIndex[TextureLoader.GUIPickaxeMapIcon]], x32Target, RenderLayer.GUI);
+                    break;
+
+                case MagicalLifeAPI.Entity.AI.Task.ActionSelected.Chop:
+                    MapDrawer.Draw(AssetManager.Textures[AssetManager.NameToIndex[TextureLoader.GUIAxeMapIcon]], x32Target, RenderLayer.GUI);
+                    break;
+                default:
+                    //Do nothing.
+                    break;
             }
         }
     }

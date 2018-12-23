@@ -13,11 +13,14 @@ namespace MagicalLifeGUIWindows.GUI.In
 
         public TillDirtActionButton TillDirtActionButton { get; set; } = new TillDirtActionButton();
 
+        public ChopActionButton ChopActionButton { get; set; } = new ChopActionButton();
+
         public InGameGUIContainer(bool visible) : base(TextureLoader.GUIMenuBackground, GetDrawingBounds())
         {
             this.Visible = visible;
             this.Controls.Add(this.MineActionButton);
             this.Controls.Add(this.TillDirtActionButton);
+            this.Controls.Add(this.ChopActionButton);
         }
 
         /// <summary>
