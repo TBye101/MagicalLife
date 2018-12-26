@@ -11,6 +11,8 @@ namespace MagicalLifeGUIWindows.Load
     {
         public void InitialStartup()
         {
+            SettingsManager.Initialize();
+
             if (SettingsManager.PlayerSettings.Settings.PlayerID == Guid.Empty)
             {
                 SettingsManager.PlayerSettings.Settings.PlayerID = Guid.NewGuid();
@@ -18,7 +20,6 @@ namespace MagicalLifeGUIWindows.Load
 
             InputHistory.Initialize();
             InputHandlers.Initialize();
-            SettingsManager.Initialize();
             MusicPlayer.Init();
         }
     }
