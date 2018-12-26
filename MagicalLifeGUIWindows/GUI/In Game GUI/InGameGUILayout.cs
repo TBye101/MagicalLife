@@ -1,4 +1,4 @@
-﻿using MagicalLifeSettings.Storage;
+﻿using MagicalLifeAPI.Filing;
 
 namespace MagicalLifeGUIWindows.GUI.In
 {
@@ -14,7 +14,7 @@ namespace MagicalLifeGUIWindows.GUI.In
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     default:
                         return InGameGUILayout1920x1080.ContainerX;
@@ -29,7 +29,7 @@ namespace MagicalLifeGUIWindows.GUI.In
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     default:
                         return InGameGUILayout1920x1080.ContainerY;
@@ -44,7 +44,7 @@ namespace MagicalLifeGUIWindows.GUI.In
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     default:
                         return InGameGUILayout1920x1080.ContainerWidth;
@@ -59,7 +59,7 @@ namespace MagicalLifeGUIWindows.GUI.In
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     default:
                         return InGameGUILayout1920x1080.ContainerHeight;
@@ -74,7 +74,7 @@ namespace MagicalLifeGUIWindows.GUI.In
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     default:
                         return InGameGUILayout1920x1080.ActionButtonY;
@@ -89,7 +89,7 @@ namespace MagicalLifeGUIWindows.GUI.In
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     default:
                         return InGameGUILayout1920x1080.ActionButtonSize;
@@ -104,7 +104,7 @@ namespace MagicalLifeGUIWindows.GUI.In
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     default:
                         return InGameGUILayout1920x1080.MineActionButtonX;
@@ -119,7 +119,7 @@ namespace MagicalLifeGUIWindows.GUI.In
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     default:
                         return InGameGUILayout1920x1080.HoeActionButtonX;
@@ -134,7 +134,7 @@ namespace MagicalLifeGUIWindows.GUI.In
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     default:
                         return InGameGUILayout1920x1080.ChopActionButtonX;

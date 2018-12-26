@@ -1,4 +1,4 @@
-﻿using MagicalLifeSettings.Storage;
+﻿using MagicalLifeAPI.Filing;
 
 namespace MagicalLifeGUIWindows.GUI.Save
 {
@@ -8,7 +8,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     default:
                         return SaveGameMenuLayout1920x1080.OverwriteSaveListBoxX;
@@ -20,7 +20,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._1920x1080:
                         return SaveGameMenuLayout1920x1080.OverwriteSaveListBoxY;
@@ -35,7 +35,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._1920x1080:
                         return SaveGameMenuLayout1920x1080.OverwriteSaveBoxWidth;
@@ -50,7 +50,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._1920x1080:
                         return SaveGameMenuLayout1920x1080.OverwriteSaveBoxHeight;
@@ -68,7 +68,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._1920x1080:
                         return SaveGameMenuLayout1920x1080.ItemRenderCount;
@@ -83,7 +83,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._1920x1080:
                         return SaveGameMenuLayout1920x1080.OverwriteButtonX;
@@ -98,7 +98,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._1920x1080:
                         return SaveGameMenuLayout1920x1080.OverwriteButtonY;
@@ -113,7 +113,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._1920x1080:
                         return SaveGameMenuLayout1920x1080.OverwriteButtonWidth;
@@ -128,7 +128,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._1920x1080:
                         return SaveGameMenuLayout1920x1080.OverwriteButtonHeight;
@@ -143,7 +143,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._1920x1080:
                         return SaveGameMenuLayout1920x1080.NewSaveInputBoxX;
@@ -158,7 +158,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._1920x1080:
                         return SaveGameMenuLayout1920x1080.NewSaveInputBoxY;
@@ -173,7 +173,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._1920x1080:
                         return SaveGameMenuLayout1920x1080.NewSaveInputBoxWidth;
@@ -188,7 +188,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._1920x1080:
                         return SaveGameMenuLayout1920x1080.NewSaveInputBoxHeight;
@@ -203,7 +203,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._1920x1080:
                         return SaveGameMenuLayout1920x1080.NewSaveButtonX;
@@ -218,7 +218,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._1920x1080:
                         return SaveGameMenuLayout1920x1080.NewSaveButtonY;
@@ -233,7 +233,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._1920x1080:
                         return SaveGameMenuLayout1920x1080.NewSaveButtonWidth;
@@ -248,7 +248,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._1920x1080:
                         return SaveGameMenuLayout1920x1080.NewSaveButtonHeight;

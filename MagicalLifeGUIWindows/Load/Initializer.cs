@@ -11,9 +11,9 @@ namespace MagicalLifeGUIWindows.Load
     {
         public void InitialStartup()
         {
-            if (MagicalLifeSettingsCore.Storage.Player.Default.PlayerID == Guid.Empty)
+            if (SettingsManager.PlayerSettings.Settings.PlayerID == Guid.Empty)
             {
-                MagicalLifeSettingsCore.Storage.Player.Default.PlayerID = Guid.NewGuid();
+                SettingsManager.PlayerSettings.Settings.PlayerID = Guid.NewGuid();
             }
 
             InputHistory.Initialize();

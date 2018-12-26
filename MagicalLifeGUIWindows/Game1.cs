@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.Filing;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Load;
 using MagicalLifeAPI.Networking.Serialization;
@@ -13,7 +14,6 @@ using MagicalLifeGUIWindows.Load;
 using MagicalLifeGUIWindows.Rendering;
 using MagicalLifeGUIWindows.Rendering.Map;
 using MagicalLifeGUIWindows.Screens;
-using MagicalLifeSettings.Storage;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -77,7 +77,7 @@ namespace MagicalLifeGUIWindows
             WindowConfig winConfig = new WindowConfig();
             winConfig.ConfigureMainWindow(this);
 
-            Universal.Default.GameHasRunBefore = true;
+            SettingsManager.UniversalSettings.Settings.GameHasRunBefore = true;
         }
 
         /// <summary>

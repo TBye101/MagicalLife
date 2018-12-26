@@ -1,5 +1,5 @@
 ﻿using MagicalLifeAPI.Asset;
-using MagicalLifeSettings.Storage;
+using MagicalLifeAPI.Filing;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace MagicalLifeGUIWindows.GUI.MainMenu
@@ -11,7 +11,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
     {
         static MainMenuLayout()
         {
-            switch ((Resolution)MainWindow.Default.Resolution)
+            switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
             {
                 default:
                     MainMenuFont = Game1.AssetManager.Load<SpriteFont>(TextureLoader.FontMainMenuFont24x);
@@ -28,7 +28,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     default:
                         return MainMenuLayout1920x1080.ButtonX;
@@ -43,7 +43,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     default:
                         return MainMenuLayout1920x1080.ButtonWidth;
@@ -58,7 +58,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     default:
                         return MainMenuLayout1920x1080.ButtonHeight;
@@ -73,7 +73,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     default:
                         return MainMenuLayout1920x1080.NewGameButtonY;
@@ -88,7 +88,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     default:
                         return MainMenuLayout1920x1080.LoadGameButtonY;
@@ -103,7 +103,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     default:
                         return MainMenuLayout1920x1080.JoinGameButtonY;
@@ -118,7 +118,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     default:
                         return MainMenuLayout1920x1080.QuitButtonY;

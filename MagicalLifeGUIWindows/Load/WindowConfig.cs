@@ -1,4 +1,4 @@
-﻿using MagicalLifeSettings.Storage;
+﻿using MagicalLifeAPI.Filing;
 
 namespace MagicalLifeGUIWindows.Load
 {
@@ -13,8 +13,8 @@ namespace MagicalLifeGUIWindows.Load
         /// <param name="game"></param>
         public void ConfigureMainWindow(Game1 game)
         {
-            game.Graphics.PreferredBackBufferHeight = MainWindow.Default.ScreenSize.Height;
-            game.Graphics.PreferredBackBufferWidth = MainWindow.Default.ScreenSize.Width;
+            game.Graphics.PreferredBackBufferHeight = SettingsManager.WindowSettings.Settings.ScreenHeight;
+            game.Graphics.PreferredBackBufferWidth = SettingsManager.WindowSettings.Settings.ScreenWidth;
 
             game.Graphics.ToggleFullScreen();
         }
