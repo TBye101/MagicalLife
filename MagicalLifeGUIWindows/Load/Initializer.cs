@@ -21,6 +21,19 @@ namespace MagicalLifeGUIWindows.Load
             InputHistory.Initialize();
             InputHandlers.Initialize();
             MusicPlayer.Init();
+            this.SaveSettings();
+        }
+
+        /// <summary>
+        /// Save settings after setting initialization so that any first time setting initialization is saved.
+        /// </summary>
+        private void SaveSettings()
+        {
+            SettingsManager.AudioSettings.Save();
+            SettingsManager.Keybindings.Save();
+            SettingsManager.PlayerSettings.Save();
+            SettingsManager.UniversalSettings.Save();
+            SettingsManager.WindowSettings.Save();
         }
     }
 }

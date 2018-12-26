@@ -78,6 +78,7 @@ namespace MagicalLifeGUIWindows
             winConfig.ConfigureMainWindow(this);
 
             SettingsManager.UniversalSettings.Settings.GameHasRunBefore = true;
+            SettingsManager.UniversalSettings.Save();
         }
 
         /// <summary>
