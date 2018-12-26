@@ -11,9 +11,7 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         /// </summary>
         public static readonly Point tileSize = MagicalLifeAPI.World.Base.Tile.GetTileSize();
 
-        public static readonly Rectangle FullScreenWindow =
-            new Rectangle(new Point(0, 0),
-            new Point(SettingsManager.WindowSettings.Settings.ScreenWidth, SettingsManager.WindowSettings.Settings.ScreenHeight));
+        public static Rectangle FullScreenWindow;
 
         /// <summary>
         /// The standard color mask to apply to all tiles.

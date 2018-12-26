@@ -53,6 +53,9 @@ namespace MagicalLifeGUIWindows
 
         private void InitializeSplashScreens()
         {
+            WindowConfig winConfig = new WindowConfig();
+            winConfig.ConfigureMainWindow(this);
+
             SplashScreens = new List<LogoScreen>()
             {
                 new LogoScreen(TextureLoader.LogoMonoGame, 5F),
@@ -74,8 +77,6 @@ namespace MagicalLifeGUIWindows
         protected override void Initialize()
         {
             base.Initialize();
-            WindowConfig winConfig = new WindowConfig();
-            winConfig.ConfigureMainWindow(this);
 
             SettingsManager.UniversalSettings.Settings.GameHasRunBefore = true;
             SettingsManager.UniversalSettings.Save();
