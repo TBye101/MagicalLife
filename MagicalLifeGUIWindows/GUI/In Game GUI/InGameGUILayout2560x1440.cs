@@ -8,7 +8,7 @@
         /// <summary>
         /// The x position at which the in game GUI container is drawn.
         /// </summary>
-        public static readonly int ContainerX = 0;
+        public static readonly int ContainerX;
 
         /// <summary>
         /// The y position at which the in game GUI container is drawn.

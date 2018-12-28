@@ -9,6 +9,6 @@ namespace MagicalLifeAPI.Filing.Settings
     /// </summary>
     public class UniversalSettings
     {
-        public bool GameHasRunBefore { get; set; } = false;
+        public bool GameHasRunBefore { get; set; }
     }
 }
