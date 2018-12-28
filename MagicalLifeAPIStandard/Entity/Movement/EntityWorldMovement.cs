@@ -4,6 +4,7 @@ using MagicalLifeAPI.DataTypes.Attribute;
 using MagicalLifeAPI.Entity.Humanoid;
 using MagicalLifeAPI.Entity.Util.Modifier;
 using MagicalLifeAPI.Error.InternalExceptions;
+using MagicalLifeAPI.Filing;
 using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.World.Modifiers;
@@ -139,7 +140,7 @@ namespace MagicalLifeAPI.Entity.Movement
                 FootStepSound(entity, destination);
 
                 //If this entity is the current client's and therefore that clients responsibility to report about
-                if (entity.PlayerID == MagicalLifeSettingsCore.Storage.Player.Default.PlayerID)
+                if (entity.PlayerID == SettingsManager.PlayerSettings.Settings.PlayerID)
                 {
                     ClientSendRecieve.Send(new WorldModifierMessage(new LivingLocationModifier(entity.ID, source.MapLocation, destination.MapLocation, entity.Dimension)));
                 }

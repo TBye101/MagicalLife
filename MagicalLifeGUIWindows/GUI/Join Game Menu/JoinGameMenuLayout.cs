@@ -1,4 +1,4 @@
-﻿using MagicalLifeSettings.Storage;
+﻿using MagicalLifeAPI.Filing;
 
 namespace MagicalLifeGUIWindows.GUI.Join
 {
@@ -11,8 +11,10 @@ namespace MagicalLifeGUIWindows.GUI.Join
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
+                    case Resolution._2560x1440:
+                        return JoinGameMenuLayout2560x1440.IPInputBoxHeight;
                     default:
                         return JoinGameMenuLayout1920x1080.IPInputBoxHeight;
                 }
@@ -26,8 +28,10 @@ namespace MagicalLifeGUIWindows.GUI.Join
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
+                    case Resolution._2560x1440:
+                        return JoinGameMenuLayout2560x1440.IPInputBoxWidth;
                     default:
                         return JoinGameMenuLayout1920x1080.IPInputBoxWidth;
                 }
@@ -41,8 +45,10 @@ namespace MagicalLifeGUIWindows.GUI.Join
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
+                    case Resolution._2560x1440:
+                        return JoinGameMenuLayout2560x1440.IPInputBoxX;
                     default:
                         return JoinGameMenuLayout1920x1080.IPInputBoxX;
                 }
@@ -56,8 +62,10 @@ namespace MagicalLifeGUIWindows.GUI.Join
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
+                    case Resolution._2560x1440:
+                        return JoinGameMenuLayout2560x1440.IPInputBoxY;
                     default:
                         return JoinGameMenuLayout1920x1080.IPInputBoxY;
                 }
@@ -71,8 +79,10 @@ namespace MagicalLifeGUIWindows.GUI.Join
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
+                    case Resolution._2560x1440:
+                        return JoinGameMenuLayout2560x1440.PortInputBoxX;
                     default:
                         return JoinGameMenuLayout1920x1080.PortInputBoxX;
                 }
@@ -86,8 +96,10 @@ namespace MagicalLifeGUIWindows.GUI.Join
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
+                    case Resolution._2560x1440:
+                        return JoinGameMenuLayout2560x1440.JoinButtonX;
                     default:
                         return JoinGameMenuLayout1920x1080.JoinButtonX;
                 }

@@ -1,12 +1,12 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity.Entity;
 using MagicalLifeAPI.Entity.Humanoid;
+using MagicalLifeAPI.Filing;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Resources;
 using MagicalLifeAPI.World.Tiles;
-using MagicalLifeSettingsCore.Storage;
 using System;
 
 namespace MagicalLifeServer.ServerWorld.World
@@ -48,7 +48,7 @@ namespace MagicalLifeServer.ServerWorld.World
 
             HumanFactory hFactory = new HumanFactory();
             Point2D entityLocation = new Point2D(((chunkX * Chunk.Width) + x), (chunkY * Chunk.Height) + y);
-            Human human = hFactory.GenerateHuman(entityLocation, this.Dimension, Player.Default.PlayerID);
+            Human human = hFactory.GenerateHuman(entityLocation, this.Dimension, SettingsManager.PlayerSettings.Settings.PlayerID);
 
             map[chunkX, chunkY].Creatures.Add(human.ID, human);
         }

@@ -1,4 +1,4 @@
-﻿using MagicalLifeSettings.Storage;
+﻿using MagicalLifeAPI.Filing;
 
 namespace MagicalLifeGUIWindows.GUI.In
 {
@@ -8,8 +8,10 @@ namespace MagicalLifeGUIWindows.GUI.In
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
+                    case Resolution._2560x1440:
+                        return InGameEscapeMenuLayout2560x1440.ButtonX;
                     default:
                         return InGameEscapeMenuLayout1920x1080.ButtonX;
                 }
@@ -20,8 +22,10 @@ namespace MagicalLifeGUIWindows.GUI.In
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
+                    case Resolution._2560x1440:
+                        return InGameEscapeMenuLayout2560x1440.ButtonWidth;
                     default:
                         return InGameEscapeMenuLayout1920x1080.ButtonWidth;
                 }
@@ -32,8 +36,10 @@ namespace MagicalLifeGUIWindows.GUI.In
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
+                    case Resolution._2560x1440:
+                        return InGameEscapeMenuLayout2560x1440.ButtonHeight;
                     default:
                         return InGameEscapeMenuLayout1920x1080.ButtonHeight;
                 }
@@ -44,8 +50,10 @@ namespace MagicalLifeGUIWindows.GUI.In
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
+                    case Resolution._2560x1440:
+                        return InGameEscapeMenuLayout2560x1440.SaveButtonY;
                     default:
                         return InGameEscapeMenuLayout1920x1080.SaveButtonY;
                 }
@@ -56,8 +64,10 @@ namespace MagicalLifeGUIWindows.GUI.In
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
+                    case Resolution._2560x1440:
+                        return InGameEscapeMenuLayout2560x1440.QuitButtonY;
                     default:
                         return InGameEscapeMenuLayout1920x1080.QuitButtonY;
                 }
@@ -68,8 +78,10 @@ namespace MagicalLifeGUIWindows.GUI.In
         {
             get
             {
-                switch ((Resolution)MainWindow.Default.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
+                    case Resolution._2560x1440:
+                        return InGameEscapeMenuLayout2560x1440.BackButtonY;
                     default:
                         return InGameEscapeMenuLayout1920x1080.BackButtonY;
                 }

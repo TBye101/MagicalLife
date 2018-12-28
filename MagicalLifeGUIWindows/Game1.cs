@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.Filing;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Load;
 using MagicalLifeAPI.Networking.Serialization;
@@ -13,7 +14,6 @@ using MagicalLifeGUIWindows.Load;
 using MagicalLifeGUIWindows.Rendering;
 using MagicalLifeGUIWindows.Rendering.Map;
 using MagicalLifeGUIWindows.Screens;
-using MagicalLifeSettings.Storage;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -53,6 +53,9 @@ namespace MagicalLifeGUIWindows
 
         private void InitializeSplashScreens()
         {
+            WindowConfig winConfig = new WindowConfig();
+            winConfig.ConfigureMainWindow(this);
+
             SplashScreens = new List<LogoScreen>()
             {
                 new LogoScreen(TextureLoader.LogoMonoGame, 5F),
@@ -74,10 +77,9 @@ namespace MagicalLifeGUIWindows
         protected override void Initialize()
         {
             base.Initialize();
-            WindowConfig winConfig = new WindowConfig();
-            winConfig.ConfigureMainWindow(this);
 
-            Universal.Default.GameHasRunBefore = true;
+            SettingsManager.UniversalSettings.Settings.GameHasRunBefore = true;
+            SettingsManager.UniversalSettings.Save();
         }
 
         /// <summary>
@@ -219,6 +221,7 @@ namespace MagicalLifeGUIWindows
                 MasterLog.DebugWriteLine("Bounds: " + screen.Bounds.ToString());
                 MasterLog.DebugWriteLine("Type: " + screen.GetType().ToString());
                 MasterLog.DebugWriteLine("Working Area: " + screen.WorkingArea.ToString());
+                MasterLog.DebugWriteLine("Bounds: " + screen.Bounds.ToString());
                 MasterLog.DebugWriteLine("Primary Screen: " + screen.Primary.ToString());
             }
         }
