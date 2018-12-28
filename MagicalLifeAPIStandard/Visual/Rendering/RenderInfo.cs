@@ -1,5 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.Filing;
 using Microsoft.Xna.Framework;
 
 namespace MagicalLifeAPI.Components.Generic.Renderable
@@ -11,9 +11,7 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         /// </summary>
         public static readonly Point tileSize = MagicalLifeAPI.World.Base.Tile.GetTileSize();
 
-        public static readonly Rectangle FullScreenWindow =
-            new Rectangle(new Point(0, 0),
-            new Point(MagicalLifeSettings.Storage.MainWindow.Default.ScreenSize.Width, MagicalLifeSettings.Storage.MainWindow.Default.ScreenSize.Height));
+        public static Rectangle FullScreenWindow { get; set; }
 
         /// <summary>
         /// The standard color mask to apply to all tiles.

@@ -13,7 +13,6 @@ using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Data.Disk;
 using MagicalLifeAPI.World.Data.Disk.DataStorage;
 using MagicalLifeServer.Load;
-using MagicalLifeSettingsCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Timers;
@@ -121,9 +120,9 @@ namespace MagicalLifeServer
 
             if (World.Mode == EngineMode.ServerAndClient)
             {
-                WorldUtil.SpawnRandomCharacter(Player.Default.PlayerID, 0);
-                WorldUtil.SpawnRandomCharacter(Player.Default.PlayerID, 0);
-                WorldUtil.SpawnRandomCharacter(Player.Default.PlayerID, 0);
+                WorldUtil.SpawnRandomCharacter(SettingsManager.PlayerSettings.Settings.PlayerID, 0);
+                WorldUtil.SpawnRandomCharacter(SettingsManager.PlayerSettings.Settings.PlayerID, 0);
+                WorldUtil.SpawnRandomCharacter(SettingsManager.PlayerSettings.Settings.PlayerID, 0);
             }
 
             SetupTick();

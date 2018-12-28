@@ -11,15 +11,29 @@ namespace MagicalLifeGUIWindows.Load
     {
         public void InitialStartup()
         {
-            if (MagicalLifeSettingsCore.Storage.Player.Default.PlayerID == Guid.Empty)
+            SettingsManager.Initialize();
+
+            if (SettingsManager.PlayerSettings.Settings.PlayerID == Guid.Empty)
             {
-                MagicalLifeSettingsCore.Storage.Player.Default.PlayerID = Guid.NewGuid();
+                SettingsManager.PlayerSettings.Settings.PlayerID = Guid.NewGuid();
             }
 
             InputHistory.Initialize();
             InputHandlers.Initialize();
-            SettingsManager.Initialize();
             MusicPlayer.Init();
+            this.SaveSettings();
+        }
+
+        /// <summary>
+        /// Save settings after setting initialization so that any first time setting initialization is saved.
+        /// </summary>
+        private void SaveSettings()
+        {
+            SettingsManager.AudioSettings.Save();
+            SettingsManager.Keybindings.Save();
+            SettingsManager.PlayerSettings.Save();
+            SettingsManager.UniversalSettings.Save();
+            SettingsManager.WindowSettings.Save();
         }
     }
 }

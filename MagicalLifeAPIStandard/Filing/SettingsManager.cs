@@ -12,6 +12,12 @@ namespace MagicalLifeAPI.Filing
 
         public static Setting<Keybindings> Keybindings { get; set; }
 
+        public static Setting<MainWindowSettings> WindowSettings { get; set; }
+
+        public static Setting<PlayerSettings> PlayerSettings { get; set; }
+
+        public static Setting<UniversalSettings> UniversalSettings { get; set; }
+
         private static readonly string SettingFolder = FileSystemManager.RootDirectory + Path.DirectorySeparatorChar + "Config";
 
         public static void Initialize()
@@ -19,6 +25,9 @@ namespace MagicalLifeAPI.Filing
             Directory.CreateDirectory(SettingFolder);
             AudioSettings = new Setting<AudioSettings>(SettingFolder + Path.DirectorySeparatorChar + "Audio.json", new Settings.AudioSettings());
             Keybindings = new Setting<Keybindings>(SettingFolder + Path.DirectorySeparatorChar + "Keybindings.json", new Settings.Keybindings());
+            WindowSettings = new Setting<MainWindowSettings>(SettingFolder + Path.DirectorySeparatorChar + "Window.json", new MainWindowSettings());
+            PlayerSettings = new Setting<PlayerSettings>(SettingFolder + Path.DirectorySeparatorChar + "Player.json", new Settings.PlayerSettings());
+            UniversalSettings = new Setting<UniversalSettings>(SettingFolder + Path.DirectorySeparatorChar + "Universal.json", new Settings.UniversalSettings());
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using ProtoBuf;
+﻿using MagicalLifeAPI.Filing;
+using ProtoBuf;
 using System;
 
 namespace MagicalLifeAPI.Networking.Serialization
@@ -24,7 +25,7 @@ namespace MagicalLifeAPI.Networking.Serialization
         public BaseMessage(NetMessageID id)
         {
             this.ID = id;
-            this.PlayerID = MagicalLifeSettingsCore.Storage.Player.Default.PlayerID;
+            this.PlayerID = SettingsManager.PlayerSettings.Settings.PlayerID;
         }
 
         public BaseMessage()
