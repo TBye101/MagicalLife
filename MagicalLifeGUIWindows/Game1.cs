@@ -221,6 +221,7 @@ namespace MagicalLifeGUIWindows
                 MasterLog.DebugWriteLine("Bounds: " + screen.Bounds.ToString());
                 MasterLog.DebugWriteLine("Type: " + screen.GetType().ToString());
                 MasterLog.DebugWriteLine("Working Area: " + screen.WorkingArea.ToString());
+                MasterLog.DebugWriteLine("Bounds: " + screen.Bounds.ToString());
                 MasterLog.DebugWriteLine("Primary Screen: " + screen.Primary.ToString());
             }
         }
