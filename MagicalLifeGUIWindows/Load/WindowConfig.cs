@@ -77,8 +77,6 @@ namespace MagicalLifeGUIWindows.Load
         /// <returns></returns>
         private bool IsACloser(decimal a, decimal b, decimal c)
         {
-            decimal aRatio = decimal.Divide(a, c);
-            decimal bRatio = decimal.Divide(b, c);
             decimal aError = Math.Abs(a - c);
             decimal bError = Math.Abs(b - c);
 

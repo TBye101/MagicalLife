@@ -15,6 +15,6 @@ namespace MagicalLifeAPI.Filing.Settings
         /// <summary>
         /// A reference to an enum that holds various resolution sizes.
         /// </summary>
-        public int Resolution { get; set; } = 0;
+        public int Resolution { get; set; }
     }
 }
