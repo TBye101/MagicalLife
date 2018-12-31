@@ -42,9 +42,20 @@ namespace MagicalLifeAPI.Util
             return System.Math.Sqrt(System.Math.Pow(b.X - a.X, 2) + System.Math.Pow(b.Y - a.Y, 2));
         }
 
-        public static float GetDistance(Point2DFloat a, Point2D b)
+        /// <summary>
+        /// Returns the distance between Point2DDouble a and Point2D b.
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static double GetDistance(Point2DDouble a, Point2D b)
         {
-            return (float)System.Math.Sqrt(System.Math.Pow(b.X - a.X, 2) + System.Math.Pow(b.Y - a.Y, 2));
+            return System.Math.Sqrt(System.Math.Pow(b.X - a.X, 2) + System.Math.Pow(b.Y - a.Y, 2));
+        }
+
+        public static double GetDistance(Point2DFloat a, Point2D b)
+        {
+            return (double)System.Math.Sqrt(System.Math.Pow(b.X - a.X, 2) + System.Math.Pow(b.Y - a.Y, 2));
         }
     }
 }

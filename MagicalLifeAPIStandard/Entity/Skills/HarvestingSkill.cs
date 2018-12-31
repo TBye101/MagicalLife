@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes.Attribute;
+using MagicalLifeAPI.Entity.Experience;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,10 @@ namespace MagicalLifeAPI.Entity.Skills
     public class HarvestingSkill : Skill
     {
         private static readonly string PublicDisplayName = "Harvesting";
-        private static readonly string InternalIDName = "HarvestingSkill";
+        public static readonly string InternalIDName = "HarvestingSkill";
 
         public HarvestingSkill(ComboAttribute skillAmount, bool learnable)
-            : base(PublicDisplayName, skillAmount, learnable, InternalIDName)
+            : base(PublicDisplayName, skillAmount, learnable, InternalIDName, new SqrtXPCalculator(12))
         {
 
         }

@@ -20,7 +20,7 @@ namespace MagicalLifeAPI.Entity.Experience
             this.Constant = constant;
         }
 
-        public ulong GetRequiredXP(ulong newLevel)
+        public ulong GetRequiredXP(int newLevel)
         {
             return (ulong)(this.Constant * (int)Math.Sqrt(newLevel));
         }

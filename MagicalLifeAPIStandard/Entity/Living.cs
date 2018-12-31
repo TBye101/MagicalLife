@@ -37,13 +37,13 @@ namespace MagicalLifeAPI.Entity
         /// How fast this creature can during a single tick.
         /// </summary>
         [ProtoMember(3)]
-        public AttributeFloat Movement { get; set; }
+        public AttributeDouble Movement { get; set; }
 
         /// <summary>
         /// The location of the creature on the screen. This represents the progress through a tile for a moving creature.
         /// </summary>
         [ProtoMember(4)]
-        public Point2DFloat TileLocation { get; set; }
+        public Point2DDouble TileLocation { get; set; }
 
         /// <summary>
         /// The dimension that this creature is in.
@@ -82,7 +82,7 @@ namespace MagicalLifeAPI.Entity
         /// </summary>
         public event EventHandler<LivingEventArg> LivingModified;
 
-        protected Living(int health, float movementSpeed, Point2D location, int dimension, Guid playerID)
+        protected Living(int health, double movementSpeed, Point2D location, int dimension, Guid playerID)
         {
             this.ID = Guid.NewGuid();
             this.PlayerID = playerID;
@@ -90,12 +90,12 @@ namespace MagicalLifeAPI.Entity
             this.CreatureSkills = new List<Skill>();
         }
 
-        protected void Initialize(int health, float movementSpeed, Point2D location, int dimension)
+        protected void Initialize(int health, double movementSpeed, Point2D location, int dimension)
         {
             this.Health = new Attribute32(health);
-            this.Movement = new AttributeFloat(movementSpeed);
+            this.Movement = new AttributeDouble(movementSpeed);
             this.MapLocation = location;
-            this.TileLocation = new Point2DFloat(location.X, location.Y);
+            this.TileLocation = new Point2DDouble(location.X, location.Y);
             this.Dimension = dimension;
             Living.LivingCreatedHandler(new LivingEventArg(this, location));
             this.FootStepTimer = new TickTimer(5);

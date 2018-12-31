@@ -16,12 +16,12 @@ namespace MagicalLifeAPI.DataTypes.Attribute
         public Attribute32 BaseValue { get; set; }
 
         [ProtoMember(2)]
-        public AttributeFloat Multiplier { get; set; }
+        public AttributeDouble Multiplier { get; set; }
 
-        public ComboAttribute(int baseValue, float baseMultiplier)
+        public ComboAttribute(int baseValue, double baseMultiplier)
         {
             this.BaseValue = new Attribute32(baseValue);
-            this.Multiplier = new AttributeFloat(baseMultiplier);
+            this.Multiplier = new AttributeDouble(baseMultiplier);
         }
 
         protected ComboAttribute()
@@ -42,7 +42,7 @@ namespace MagicalLifeAPI.DataTypes.Attribute
         /// Adds the specified modifier to the multiplier value of this <see cref="ComboAttribute"/>.
         /// </summary>
         /// <param name="multiplierValue"></param>
-        public void AddToModifier(ModifierFloat multiplierValue)
+        public void AddToModifier(ModifierDouble multiplierValue)
         {
             this.Multiplier.AddModifier(multiplierValue);
         }
@@ -51,9 +51,14 @@ namespace MagicalLifeAPI.DataTypes.Attribute
         /// Returns the calculated value of this <see cref="ComboAttribute"/>.
         /// </summary>
         /// <returns></returns>
-        public float GetValue()
+        public double GetValue()
         {
             return this.BaseValue.GetValue() * this.Multiplier.GetValue();
+        }
+
+        public void SetBaseValue(int value)
+        {
+            this.BaseValue.SetBaseValue(value);
         }
     }
 }

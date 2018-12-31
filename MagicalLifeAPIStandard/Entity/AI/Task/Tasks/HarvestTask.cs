@@ -1,5 +1,7 @@
 ﻿using MagicalLifeAPI.Components.Resource;
 using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Entity.AI.Task.Qualifications;
+using MagicalLifeAPI.Entity.Skills;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.Util.Reusable;
@@ -23,7 +25,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         private TickTimer HitTimer { get; set; }
 
         public HarvestTask(Point2D target, Guid boundID)
-            : base(GetDependencies(boundID, target), boundID, new List<Qualification>(), PriorityLayers.Default)
+            : base(GetDependencies(boundID, target), boundID, GetQualifications(), PriorityLayers.Default)
         {
             this.Target = target;
             MasterLog.DebugWriteLine("Target: " + this.Target.ToString());
@@ -32,6 +34,14 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         private HarvestTask()
         {
+        }
+
+        protected static List<Qualification> GetQualifications()
+        {
+            return new List<Qualification>
+            {
+                new HasSkillQualification(HarvestingSkill.InternalIDName)
+            };
         }
 
         protected static Dependencies GetDependencies(Guid boundID, Point2D target)
@@ -59,11 +69,38 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             //Nothing to do here...
         }
 
+        /// <summary>
+        /// Determines how much to harvest based upon the creatures skill.
+        /// </summary>
+        /// <returns></returns>
+        private double CalculatePercentHarvest(HarvestingSkill l)
+        {
+            float baseAmount = .1F;
+            return baseAmount + (double)Math.Sqrt(l.SkillAmount.GetValue() / 100);
+        }
+
         public override void Tick(Living l)
         {
             if (this.HitTimer.Allow())
             {
-                List<World.Base.Item> drop = this.Harvestable.HarvestingBehavior.HarvestSomePercent(.1F, this.Target);
+                //Locate harvest skill.
+                Skill skill = l.CreatureSkills.Find(x => x.InternalName == HarvestingSkill.InternalIDName);
+                HarvestingSkill harvestSkill = (HarvestingSkill)skill;
+
+                //Calculate how much to mine based upon skill of creature in harvesting
+                double amount = this.CalculatePercentHarvest(harvestSkill);
+
+                MasterLog.DebugWriteLine("Creature: " + l.ID.ToString());
+                MasterLog.DebugWriteLine("Harvesting amount: " + amount.ToString());
+                MasterLog.DebugWriteLine("Creature harvest skill level: " + l.CreatureSkills[0].SkillAmount.GetValue().ToString());
+                MasterLog.DebugWriteLine("END");
+
+                //Harvest whatever
+                List<World.Base.Item> drop = 
+                    this.Harvestable.HarvestingBehavior.HarvestSomePercent(amount, this.Target);
+                
+                //Give out XP for the harvest skill.
+                skill.GainXP(1);
 
                 if (drop != null && drop.Count > 0)
                 {

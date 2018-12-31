@@ -17,6 +17,6 @@ namespace MagicalLifeAPI.Entity.Experience
         /// </summary>
         /// <param name="previousLevel">The level that the creature just completed.</param>
         /// <returns></returns>
-        UInt64 GetRequiredXP(UInt64 newLevel);
+        UInt64 GetRequiredXP(int newLevel);
     }
 }

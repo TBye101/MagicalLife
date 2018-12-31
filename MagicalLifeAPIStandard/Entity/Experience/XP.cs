@@ -21,7 +21,7 @@ namespace MagicalLifeAPI.Entity.Experience
         public UInt64 NextLevelXPRequired { get; private set; }
 
         [ProtoMember(3)]
-        public UInt64 CurrentLevel { get; private set; }
+        public int CurrentLevel { get; private set; }
 
         [ProtoMember(4)]
         public IXPCalculator XPCalculator { get; private set; }
@@ -29,7 +29,7 @@ namespace MagicalLifeAPI.Entity.Experience
         /// <param name="currentXP">The current XP of the creature.</param>
         /// <param name="currentLevel">The current level of the creature.</param>
         /// <param name="xpCalculator">The method of calculating XP to the next level.</param>
-        public XP(UInt64 currentXP, UInt64 currentLevel, IXPCalculator xpCalculator)
+        public XP(UInt64 currentXP, int currentLevel, IXPCalculator xpCalculator)
         {
             this.CurrentXP = currentXP;
             this.CurrentLevel = currentLevel;

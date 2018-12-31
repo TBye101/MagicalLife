@@ -57,5 +57,18 @@ namespace MagicalLifeAPI.DataTypes.Attribute
                 }
             }
         }
+
+        /// <summary>
+        /// Sets the base value of this attribute.
+        /// </summary>
+        /// <param name="value"></param>
+        public void SetBaseValue(int value)
+        {
+            Modifier32 baseValue = this.Modifiers[0];
+            baseValue.Value = value;
+
+            this.Modifiers.RemoveAt(0);
+            this.Modifiers.Insert(0, baseValue);
+        }
     }
 }
