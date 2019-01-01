@@ -11,6 +11,7 @@ namespace MagicalLifeAPI.Entity.Skills
     /// Holds data about a specific skill.
     /// </summary>
     [ProtoContract]
+    [ProtoInclude(1, typeof(HarvestingSkill))]
     public class Skill
     {
         /// <summary>

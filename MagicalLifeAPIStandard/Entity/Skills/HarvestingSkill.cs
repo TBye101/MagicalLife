@@ -17,7 +17,7 @@ namespace MagicalLifeAPI.Entity.Skills
         public static readonly string InternalIDName = "HarvestingSkill";
 
         public HarvestingSkill(ComboAttribute skillAmount, bool learnable)
-            : base(PublicDisplayName, skillAmount, learnable, InternalIDName, new SqrtXPCalculator(12))
+            : base(PublicDisplayName, skillAmount, learnable, InternalIDName, new SqrtXPCalculator(48))
         {
 
         }

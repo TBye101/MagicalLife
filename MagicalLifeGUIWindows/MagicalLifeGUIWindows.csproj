@@ -120,7 +120,6 @@
     <Compile Include="GUI\Load Game Menu\LoadGameMenuLayout1920x1080.cs" />
     <Compile Include="GUI\MainMenu\MainMenuLayout2560x1440.cs" />
     <Compile Include="GUI\New World Menu\NewWorldMenuLayout2560x1440.cs" />
-    <Compile Include="GUI\Reusable\API\AbstractGUIRenderable.cs" />
     <Compile Include="GUI\In Game GUI\Buttons\MineActionButton.cs" />
     <Compile Include="GUI\Join Game Menu\Buttons\JoinButton.cs" />
     <Compile Include="GUI\Join Game Menu\Input Boxes\IPInputBox.cs" />
@@ -136,6 +135,7 @@
     <Compile Include="GUI\Reusable\API\IScrollable.cs" />
     <Compile Include="GUI\Reusable\API\RenderableString.cs" />
     <Compile Include="GUI\Reusable\ListBox.cs" />
+    <Compile Include="GUI\Reusable\Premade\WindowX.cs" />
     <Compile Include="GUI\Save Game Menu\Buttons\NewSaveButton.cs" />
     <Compile Include="GUI\Save Game Menu\Buttons\OverwriteButton.cs" />
     <Compile Include="GUI\Save Game Menu\InputBoxes\NewSaveInputBox.cs" />
@@ -419,7 +419,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Event\" />
-    <Folder Include="GUI\History\" />
+    <Folder Include="GUI\Character Menu\" />
     <Folder Include="Rendering\GUI\" />
   </ItemGroup>
   <ItemGroup>

@@ -6,6 +6,8 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 #### API
 *Now supports the tilling of dirt
+*Skills are now in
+*Harvest skill now has impact on the speed of harvesting resources
 
 #### GUI
 *Tilling dirt is now available from the in game GUI
