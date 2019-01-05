@@ -17,31 +17,31 @@ namespace MagicalLifeAPI.Entity.Skills
         /// <summary>
         /// The display name of the skill.
         /// </summary>
-        [ProtoMember(1)]
+        [ProtoMember(2)]
         public string DisplayName { get; set; }
 
         /// <summary>
         /// The level of the creature's skill.
         /// </summary>
-        [ProtoMember(2)]
+        [ProtoMember(3)]
         public ComboAttribute SkillAmount { get; set; }
 
         /// <summary>
         /// If true the creature is capable of learning the skill.
         /// </summary>
-        [ProtoMember(3)]
+        [ProtoMember(4)]
         public bool Learnable { get; set; }
 
         /// <summary>
         /// The internal name of the skill. Reference this to determine a skill's identity instead of the display name.
         /// </summary>
-        [ProtoMember(4)]
+        [ProtoMember(5)]
         public string InternalName { get; set; }
 
         /// <summary>
         /// Do not use this to get current level, use <see cref="SkillAmount"/>.
         /// </summary>
-        [ProtoMember(5)]
+        [ProtoMember(6)]
         public XP Experience { get; private set; }
 
         /// <summary>
