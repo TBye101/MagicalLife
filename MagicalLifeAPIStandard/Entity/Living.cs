@@ -72,6 +72,12 @@ namespace MagicalLifeAPI.Entity
         [ProtoMember(12)]
         public List<Skill> CreatureSkills { get; set; }
 
+        [ProtoMember(13)]
+        public string CreatureTypeName { get; set; }
+
+        [ProtoMember(14)]
+        public string CreatureName { get; set; }
+
         /// <summary>
         /// Raised when a <see cref="Living"/> is created.
         /// </summary>
@@ -82,7 +88,10 @@ namespace MagicalLifeAPI.Entity
         /// </summary>
         public event EventHandler<LivingEventArg> LivingModified;
 
-        protected Living(int health, double movementSpeed, Point2D location, int dimension, Guid playerID)
+        /// <param name="creatureTypeName">The name of our creature's type. Ex: Lion, Human, Robot.</param>
+        /// <param name="creatureName">The name of this specific creature.</param>
+        protected Living(int health, double movementSpeed, Point2D location,
+            int dimension, Guid playerID, string creatureTypeName, string creatureName)
         {
             this.ID = Guid.NewGuid();
             this.PlayerID = playerID;

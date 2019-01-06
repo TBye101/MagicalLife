@@ -99,6 +99,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
+    <Compile Include="GUI\Character Menu\CharacterContainer.cs" />
+    <Compile Include="GUI\Character Menu\CharacterMenu.cs" />
+    <Compile Include="GUI\Character Menu\CharacterMenuLayout.cs" />
     <Compile Include="GUI\In Game Escape Menu\Buttons\BackButton.cs" />
     <Compile Include="GUI\In Game Escape Menu\Buttons\QuitButton.cs" />
     <Compile Include="GUI\In Game Escape Menu\Buttons\SaveButton.cs" />
@@ -184,6 +187,7 @@
     <Compile Include="Input\KeyboardHandler.cs" />
     <Compile Include="Input\BoundHandler.cs" />
     <Compile Include="Input\InputHandlers.cs" />
+    <Compile Include="Input\Specialized Handlers\LivingMenuHandler.cs" />
     <Compile Include="Input\Specialized Handlers\LivingMoveOrderInputHandler.cs" />
     <Compile Include="Input\Specialized Handlers\LogoSkip.cs" />
     <Compile Include="Input\Specialized Handlers\MiningActionHandler.cs" />
@@ -420,7 +424,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Event\" />
-    <Folder Include="GUI\Character Menu\" />
     <Folder Include="Rendering\GUI\" />
   </ItemGroup>
   <ItemGroup>
