@@ -14,7 +14,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
 
         public NewSaveButton NewButton { get; private set; } = new NewSaveButton();
 
-        public SaveGameMenuContainer() : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow)
+        public SaveGameMenuContainer() : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow, false)
         {
             this.Controls.Add(this.SavesList);
             this.Controls.Add(this.OverwriteButton);

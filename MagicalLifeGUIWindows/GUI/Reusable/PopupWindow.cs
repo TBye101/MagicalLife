@@ -14,7 +14,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
     /// </summary>
     public abstract class PopupWindow : GUIContainer
     {
-        public PopupWindow(string image, Rectangle drawingBounds) : base(image, drawingBounds)
+        public PopupWindow(string image, Rectangle drawingBounds) : base(image, drawingBounds, true)
         {
             this.Controls.Add(new WindowX(new Point2D(drawingBounds.Width, drawingBounds.Height)));
         }

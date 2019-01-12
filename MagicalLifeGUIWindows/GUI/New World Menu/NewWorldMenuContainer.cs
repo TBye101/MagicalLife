@@ -15,7 +15,7 @@ namespace MagicalLifeGUIWindows.GUI.New
         public LengthLabel lengthLabel = new LengthLabel();
         public WidthLabel widthLabel = new WidthLabel();
 
-        public NewWorldMenuContainer(bool visible) : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow)
+        public NewWorldMenuContainer(bool visible) : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow, false)
         {
             this.Visible = visible;
             this.Controls.Add(this.worldWidth);

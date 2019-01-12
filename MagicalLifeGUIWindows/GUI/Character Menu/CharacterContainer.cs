@@ -22,7 +22,7 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu
         public Living Creature { get; set; }
 
         /// <param name="creature">The creature that has information being displayed about it.</param>
-        public CharacterContainer(Living creature) : base(TextureLoader.GUIMenuBackground, CharacterMenuLayout.GetMenuBounds())
+        public CharacterContainer(Living creature) : base(TextureLoader.GUIMenuBackground, CharacterMenuLayout.GetMenuBounds(), true)
         {
             this.Creature = creature;
 

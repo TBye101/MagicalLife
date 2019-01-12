@@ -10,7 +10,7 @@ namespace MagicalLifeGUIWindows.GUI.Join
         public IPInputBox IpInputBox = new IPInputBox(false);
         public PortInputBox PortInputBox = new PortInputBox(false);
 
-        public JoinGameMenuContainer() : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow)
+        public JoinGameMenuContainer() : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow, false)
         {
             this.Controls.Add(this.JoinButton);
             this.Controls.Add(this.IpInputBox);

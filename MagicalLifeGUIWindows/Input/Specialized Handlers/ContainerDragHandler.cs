@@ -22,7 +22,8 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
         {
             List<GUIContainer> windows = BoundHandler.GUIWindows.FindAll(
                 x => x.DrawingBounds.Contains(e.Position.X, e.Position.Y)
-                && x.DrawingBounds.Y - 40 < e.Position.Y);
+                && x.DrawingBounds.Y - 40 < e.Position.Y
+                && x.IsMovable);
 
             if (windows.Count > 0)
             {
@@ -33,6 +34,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                     (int)(e.Position.Y + e.DistanceMoved.Y)), windowToMove.DrawingBounds.Size);
 
                 windowToMove.DrawingBounds = newPosition;
+                windowToMove.AdjustClickBounds((int)e.DistanceMoved.X, (int)e.DistanceMoved.Y);
             }
         }
 

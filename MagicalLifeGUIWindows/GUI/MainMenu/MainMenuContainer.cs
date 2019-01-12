@@ -7,7 +7,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
 {
     public class MainMenuContainer : GUIContainer
     {
-        public MainMenuContainer(bool visible) : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow)
+        public MainMenuContainer(bool visible) : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow, false)
         {
             this.Visible = visible;
             this.Controls.Add(new NewGameButton());

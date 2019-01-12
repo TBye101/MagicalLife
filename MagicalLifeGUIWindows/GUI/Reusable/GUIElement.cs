@@ -34,6 +34,20 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         }
 
         /// <summary>
+        /// Moves the click bounds of this GUI element by some amount.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        public void MoveClickBounds(int xMove, int yMove)
+        {
+            Rectangle newPosition = new Rectangle(
+                new Point((this.MouseBounds.Bounds.Location.X + xMove),
+                (this.MouseBounds.Bounds.Location.Y + yMove)), this.MouseBounds.Bounds.Size);
+
+            this.MouseBounds.Bounds = newPosition;
+        }
+
+        /// <summary>
         /// The visibility of this button.
         /// </summary>
         public bool Visible { get; set; } = true;

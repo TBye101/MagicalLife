@@ -9,7 +9,7 @@ namespace MagicalLifeGUIWindows.GUI.Load
         public SelectGameListBox SaveSelectListBox { get; private set; } = new SelectGameListBox();
         public LoadSaveButton LoadSaveButton { get; private set; } = new LoadSaveButton();
 
-        public LoadGameMenuContainer() : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow)
+        public LoadGameMenuContainer() : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow, false)
         {
             this.Controls.Add(this.SaveSelectListBox);
             this.Controls.Add(this.LoadSaveButton);

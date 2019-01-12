@@ -15,18 +15,25 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         public GUIContainer Child { get; set; }
 
         /// <summary>
+        /// If true, then this form is dragable.
+        /// </summary>
+        public bool IsMovable { get; set; }
+
+        /// <summary>
         /// Constructs a new instance of the <see cref="GUIContainer"/> class.
         /// Anything that implements this must have an empty constructor, which references the empty base constructor.
         /// </summary>
         /// <param name="image">The texture of this GUI container.</param>
         /// <param name="drawingBounds">The bounds for which to draw the texture on the screen at.</param>
         /// <param name="priority">Determines if this GUI container should have priority over other GUI elements when sorting through input.</param>
-        public GUIContainer(string image, Rectangle drawingBounds)
+        /// <param name="isMovable">If true, then this GUI is movable.</param>
+        public GUIContainer(string image, Rectangle drawingBounds, bool isMovable)
         {
             this.Image = AssetManager.Textures[AssetManager.GetTextureIndex(image)];
             this.DrawingBounds = drawingBounds;
             this.Controls = new List<GUIElement>();
             this.Priority = RenderingData.GetGUIContainerPriority();
+            this.IsMovable = isMovable;
         }
 
         public GUIContainer()
@@ -64,6 +71,19 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         public void PopupChild(GUIContainer child)
         {
             this.Child = child;
+        }
+
+        /// <summary>
+        /// Adjusts all bounds of all elements on the container.
+        /// </summary>
+        /// <param name="xMove"></param>
+        /// <param name="yMove"></param>
+        public void AdjustClickBounds(int xMove, int yMove)
+        {
+            foreach (GUIElement item in this.Controls)
+            {
+                item.MoveClickBounds(xMove, yMove);
+            }
         }
     }
 }
