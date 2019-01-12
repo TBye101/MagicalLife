@@ -67,6 +67,7 @@ namespace MagicalLifeServer
                         new ProtoTypeLoader(),
                         new MainLoad()
                     });
+
                     break;
 
                 default:

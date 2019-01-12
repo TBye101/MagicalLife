@@ -12,6 +12,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 #### GUI
 *Tilling dirt is now available from the in game GUI
 *2K support (2560x1440)
+*Certain windows are now movable
 
 #### Bugs
 

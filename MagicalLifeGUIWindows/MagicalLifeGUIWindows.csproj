@@ -137,7 +137,7 @@
     <Compile Include="GUI\New World Menu\Labels\WidthLabel.cs" />
     <Compile Include="GUI\Reusable\API\IScrollable.cs" />
     <Compile Include="GUI\Reusable\API\RenderableString.cs" />
-    <Compile Include="GUI\Reusable\ListBox.cs" />
+    <Compile Include="GUI\Reusable\Collections\ListBox.cs" />
     <Compile Include="GUI\Reusable\Premade\WindowX.cs" />
     <Compile Include="GUI\Save Game Menu\Buttons\NewSaveButton.cs" />
     <Compile Include="GUI\Save Game Menu\Buttons\OverwriteButton.cs" />

@@ -1,4 +1,6 @@
-﻿using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.Util.Reusable;
+using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -42,28 +44,23 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                 && x.DrawingBounds.Y - 40 < e.Position.Y
                 && x.IsMovable);
 
+            MasterLog.DebugWriteLine("Distance moved start: " + e.DistanceMoved.ToString());
             if (windows.Count > 0)
             {
                 GUIContainer windowToMove = this.GetHighestPriority(windows);
                 this.LastDragged = windowToMove;
                 this.StillDraggingLast = true;
-
-                Rectangle newPosition = new Rectangle(
-                    new Point((int)(e.Position.X + e.DistanceMoved.X),
-                    (int)(e.Position.Y + e.DistanceMoved.Y)), windowToMove.DrawingBounds.Size);
-
-                windowToMove.DrawingBounds = newPosition;
-                windowToMove.AdjustClickBounds((int)e.DistanceMoved.X, (int)e.DistanceMoved.Y);
             }
         }
 
         private void MouseListner_MouseDrag(object sender, MonoGame.Extended.Input.InputListeners.MouseEventArgs e)
         {
-            if (StillDraggingLast)
+            if (this.StillDraggingLast)
             {
                 Rectangle newPosition = new Rectangle(
                     new Point((int)(e.Position.X + e.DistanceMoved.X),
                     (int)(e.Position.Y + e.DistanceMoved.Y)), this.LastDragged.DrawingBounds.Size);
+                MasterLog.DebugWriteLine("Distance moved normal drag: " + e.DistanceMoved.ToString());
 
                 this.LastDragged.DrawingBounds = newPosition;
                 this.LastDragged.AdjustClickBounds((int)e.DistanceMoved.X, (int)e.DistanceMoved.Y);
