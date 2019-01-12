@@ -179,6 +179,7 @@
     <Compile Include="Input\Comparators\ClickBoundsSorter.cs" />
     <Compile Include="Input\Comparators\ContainerSorter.cs" />
     <Compile Include="Input\Specialized Handlers\ChopActionHandler.cs" />
+    <Compile Include="Input\Specialized Handlers\ContainerDragHandler.cs" />
     <Compile Include="Input\Specialized Handlers\EscapeHandler.cs" />
     <Compile Include="Input\History\HistoricalInput.cs" />
     <Compile Include="Input\History\HistoricalInputFactory.cs" />

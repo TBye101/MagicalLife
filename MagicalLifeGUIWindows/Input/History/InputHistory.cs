@@ -51,6 +51,12 @@ namespace MagicalLifeGUIWindows.Input.History
             BoundHandler.MouseListner.MouseWheelMoved += MouseListner_MouseWheelMoved;
             KeyboardHandler.KeysPressed += KeyboardHandler_KeysPressed;
             KeyboardHandler.KeysReleased += KeyboardHandler_KeysReleased;
+            BoundHandler.MouseListner.MouseDrag += MouseListner_MouseDrag;
+        }
+
+        private static void MouseListner_MouseDrag(object sender, MouseEventArgs e)
+        {
+
         }
 
         private static void KeyboardHandler_KeysReleased(object sender, Microsoft.Xna.Framework.Input.Keys e)
