@@ -40,7 +40,7 @@ namespace MagicalLifeAPI.Entity.Entity
             int health = StaticRandom.Rand(this.MinHumanHealthPerLevel, this.MaxHumanHealthPerLevel);
             float movement = (float)StaticRandom.Rand(this.MinHumanMovement, this.MaxHumanMovement);
 
-            Human h = new Human(health, movement, location, dimension, playerID, GenerateRandomName());
+            Human h = new Human(health, movement, location, dimension, playerID, this.GenerateRandomName());
             h.CreatureSkills.Add(new HarvestingSkill(new DataTypes.Attribute.ComboAttribute(1, 1), true));
 
             return h;

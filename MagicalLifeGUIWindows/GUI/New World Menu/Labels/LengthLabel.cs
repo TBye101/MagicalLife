@@ -9,9 +9,8 @@ namespace MagicalLifeGUIWindows.GUI.New
     /// </summary>
     public class LengthLabel : MonoLabel
     {
-        public LengthLabel() : base(GetLocation(), TextureLoader.GUIInputBox100x50, true)
+        public LengthLabel() : base(GetLocation(), TextureLoader.GUIInputBox100x50, true, "World Length")
         {
-            this.Text = "World Length";
         }
 
         private static Rectangle GetLocation()

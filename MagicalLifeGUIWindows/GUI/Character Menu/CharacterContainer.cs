@@ -28,7 +28,7 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu
 
             this.X = new WindowX(new MagicalLifeAPI.DataTypes.Point2D(this.DrawingBounds.Width, this.DrawingBounds.Height));
             this.X.XClicked += this.X_XClicked;
-            this.CharacterName = new MonoLabel(CharacterMenuLayout.GetNameBounds(), TextureLoader.GUIMenuBackground, true);
+            this.CharacterName = new MonoLabel(CharacterMenuLayout.GetNameBounds(), TextureLoader.GUIMenuBackground, true, creature.CreatureName);
 
             this.Controls.Add(this.X);
             this.Controls.Add(this.CharacterName);

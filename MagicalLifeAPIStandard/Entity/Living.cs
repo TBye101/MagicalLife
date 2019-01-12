@@ -97,6 +97,7 @@ namespace MagicalLifeAPI.Entity
             this.PlayerID = playerID;
             this.Initialize(health, movementSpeed, location, dimension);
             this.CreatureSkills = new List<Skill>();
+            this.CreatureName = creatureName;
         }
 
         protected void Initialize(int health, double movementSpeed, Point2D location, int dimension)
