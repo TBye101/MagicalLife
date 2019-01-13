@@ -14,6 +14,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 *2K support (2560x1440)
 *Certain windows are now movable
 *Creatures can now be clicked upon to see their skills/creature window
+*Added the new log texture
 
 #### Bugs
 
