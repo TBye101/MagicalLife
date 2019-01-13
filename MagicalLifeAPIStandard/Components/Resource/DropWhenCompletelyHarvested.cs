@@ -33,7 +33,7 @@ namespace MagicalLifeAPI.Components.Resource
             return this.Items;
         }
 
-        protected override List<Item> HarvestPercent(float percentMined, Point2D position)
+        protected override List<Item> HarvestPercent(double percentMined, Point2D position)
         {
             FMODUtil.RaiseEvent(this.HarvestSound, "", 0, position);
             return null;

@@ -3,12 +3,14 @@ using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.DataTypes.Attribute;
 using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.Entity.Eventing;
+using MagicalLifeAPI.Entity.Skills;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util.Reusable;
 using ProtoBuf;
 using System;
+using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Entity
 {
@@ -35,13 +37,13 @@ namespace MagicalLifeAPI.Entity
         /// How fast this creature can during a single tick.
         /// </summary>
         [ProtoMember(3)]
-        public AttributeFloat Movement { get; set; }
+        public AttributeDouble Movement { get; set; }
 
         /// <summary>
         /// The location of the creature on the screen. This represents the progress through a tile for a moving creature.
         /// </summary>
         [ProtoMember(4)]
-        public Point2DFloat TileLocation { get; set; }
+        public Point2DDouble TileLocation { get; set; }
 
         /// <summary>
         /// The dimension that this creature is in.
@@ -67,6 +69,15 @@ namespace MagicalLifeAPI.Entity
         [ProtoMember(11)]
         public abstract AbstractVisual Visual { get; set; }
 
+        [ProtoMember(12)]
+        public List<Skill> CreatureSkills { get; set; }
+
+        [ProtoMember(13)]
+        public string CreatureTypeName { get; set; }
+
+        [ProtoMember(14)]
+        public string CreatureName { get; set; }
+
         /// <summary>
         /// Raised when a <see cref="Living"/> is created.
         /// </summary>
@@ -77,19 +88,24 @@ namespace MagicalLifeAPI.Entity
         /// </summary>
         public event EventHandler<LivingEventArg> LivingModified;
 
-        protected Living(int health, float movementSpeed, Point2D location, int dimension, Guid playerID)
+        /// <param name="creatureTypeName">The name of our creature's type. Ex: Lion, Human, Robot.</param>
+        /// <param name="creatureName">The name of this specific creature.</param>
+        protected Living(int health, double movementSpeed, Point2D location,
+            int dimension, Guid playerID, string creatureTypeName, string creatureName)
         {
             this.ID = Guid.NewGuid();
             this.PlayerID = playerID;
             this.Initialize(health, movementSpeed, location, dimension);
+            this.CreatureSkills = new List<Skill>();
+            this.CreatureName = creatureName;
         }
 
-        protected void Initialize(int health, float movementSpeed, Point2D location, int dimension)
+        protected void Initialize(int health, double movementSpeed, Point2D location, int dimension)
         {
             this.Health = new Attribute32(health);
-            this.Movement = new AttributeFloat(movementSpeed);
+            this.Movement = new AttributeDouble(movementSpeed);
             this.MapLocation = location;
-            this.TileLocation = new Point2DFloat(location.X, location.Y);
+            this.TileLocation = new Point2DDouble(location.X, location.Y);
             this.Dimension = dimension;
             Living.LivingCreatedHandler(new LivingEventArg(this, location));
             this.FootStepTimer = new TickTimer(5);

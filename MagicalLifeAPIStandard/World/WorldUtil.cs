@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Entity.Entity;
 using MagicalLifeAPI.Entity.Humanoid;
 using MagicalLifeAPI.Networking.Messages;
@@ -155,6 +156,19 @@ namespace MagicalLifeAPI.World
             {
                 ServerSendRecieve.SendAll(new WorldModifierMessage(new LivingCreatedModifier(human)));
             }
+        }
+
+        /// <summary>
+        /// Returns the creature at the specified point. 
+        /// Returns null if it is not at the specified location.
+        /// </summary>
+        /// <param name="tileLocation"></param>
+        /// <returns></returns>
+        public static Living GetCreature(Point2D tileLocation, int dimension)
+        {
+            Chunk chunk = Data.World.GetChunkByTile(dimension, tileLocation.X, tileLocation.Y);
+            chunk.GetCreature(tileLocation, out Living creature);
+            return creature;
         }
     }
 }

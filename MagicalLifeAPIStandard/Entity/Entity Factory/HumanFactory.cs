@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity.Humanoid;
+using MagicalLifeAPI.Entity.Skills;
 using MagicalLifeAPI.Util;
 using System;
 
@@ -39,7 +40,29 @@ namespace MagicalLifeAPI.Entity.Entity
             int health = StaticRandom.Rand(this.MinHumanHealthPerLevel, this.MaxHumanHealthPerLevel);
             float movement = (float)StaticRandom.Rand(this.MinHumanMovement, this.MaxHumanMovement);
 
-            return new Human(health, movement, location, dimension, playerID);
+            Human h = new Human(health, movement, location, dimension, playerID, this.GenerateRandomName());
+            h.CreatureSkills.Add(new HarvestingSkill(new DataTypes.Attribute.ComboAttribute(1, 1), true));
+
+            return h;
+        }
+
+        /// <summary>
+        /// Generates a random human name.
+        /// </summary>
+        /// <returns></returns>
+        private string GenerateRandomName()
+        {
+            string[] names =
+            {
+                "James",
+                "John",
+                "Jon",
+                "Jill",
+                "Jane"
+            };
+
+            int max = names.Length;
+            return names[StaticRandom.Rand(0, max)];
         }
     }
 }

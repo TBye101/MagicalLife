@@ -99,6 +99,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
+    <Compile Include="GUI\Character Menu\CharacterContainer.cs" />
+    <Compile Include="GUI\Character Menu\CharacterMenu.cs" />
+    <Compile Include="GUI\Character Menu\CharacterMenuLayout.cs" />
     <Compile Include="GUI\In Game Escape Menu\Buttons\BackButton.cs" />
     <Compile Include="GUI\In Game Escape Menu\Buttons\QuitButton.cs" />
     <Compile Include="GUI\In Game Escape Menu\Buttons\SaveButton.cs" />
@@ -120,7 +123,6 @@
     <Compile Include="GUI\Load Game Menu\LoadGameMenuLayout1920x1080.cs" />
     <Compile Include="GUI\MainMenu\MainMenuLayout2560x1440.cs" />
     <Compile Include="GUI\New World Menu\NewWorldMenuLayout2560x1440.cs" />
-    <Compile Include="GUI\Reusable\API\AbstractGUIRenderable.cs" />
     <Compile Include="GUI\In Game GUI\Buttons\MineActionButton.cs" />
     <Compile Include="GUI\Join Game Menu\Buttons\JoinButton.cs" />
     <Compile Include="GUI\Join Game Menu\Input Boxes\IPInputBox.cs" />
@@ -135,7 +137,8 @@
     <Compile Include="GUI\New World Menu\Labels\WidthLabel.cs" />
     <Compile Include="GUI\Reusable\API\IScrollable.cs" />
     <Compile Include="GUI\Reusable\API\RenderableString.cs" />
-    <Compile Include="GUI\Reusable\ListBox.cs" />
+    <Compile Include="GUI\Reusable\Collections\ListBox.cs" />
+    <Compile Include="GUI\Reusable\Premade\WindowX.cs" />
     <Compile Include="GUI\Save Game Menu\Buttons\NewSaveButton.cs" />
     <Compile Include="GUI\Save Game Menu\Buttons\OverwriteButton.cs" />
     <Compile Include="GUI\Save Game Menu\InputBoxes\NewSaveInputBox.cs" />
@@ -175,6 +178,7 @@
     <Compile Include="Input\Comparators\ClickBoundsSorter.cs" />
     <Compile Include="Input\Comparators\ContainerSorter.cs" />
     <Compile Include="Input\Specialized Handlers\ChopActionHandler.cs" />
+    <Compile Include="Input\Specialized Handlers\ContainerDragHandler.cs" />
     <Compile Include="Input\Specialized Handlers\EscapeHandler.cs" />
     <Compile Include="Input\History\HistoricalInput.cs" />
     <Compile Include="Input\History\HistoricalInputFactory.cs" />
@@ -183,6 +187,7 @@
     <Compile Include="Input\KeyboardHandler.cs" />
     <Compile Include="Input\BoundHandler.cs" />
     <Compile Include="Input\InputHandlers.cs" />
+    <Compile Include="Input\Specialized Handlers\LivingMenuHandler.cs" />
     <Compile Include="Input\Specialized Handlers\LivingMoveOrderInputHandler.cs" />
     <Compile Include="Input\Specialized Handlers\LogoSkip.cs" />
     <Compile Include="Input\Specialized Handlers\MiningActionHandler.cs" />
@@ -419,7 +424,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Event\" />
-    <Folder Include="GUI\History\" />
     <Folder Include="Rendering\GUI\" />
   </ItemGroup>
   <ItemGroup>

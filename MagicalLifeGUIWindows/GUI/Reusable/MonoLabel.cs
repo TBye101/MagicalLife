@@ -29,8 +29,9 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// <param name="image"></param>
         /// <param name="font"></param>
         /// <param name="isContained">If true, this GUI element is within a container.</param>
-        public MonoLabel(Rectangle bounds, string image, bool isContained) : base(bounds, int.MinValue, isContained, TextureLoader.FontMainMenuFont12x)
+        public MonoLabel(Rectangle bounds, string image, bool isContained, string text) : base(bounds, int.MinValue, isContained, TextureLoader.FontMainMenuFont12x)
         {
+            this.Text = text;
         }
 
         public MonoLabel() : base()
@@ -55,7 +56,11 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             int height = this.DrawingBounds.Height;
 
             Rectangle Bounds = new Rectangle(x, y, width, height);
-            SimpleTextRenderer.DrawString(this.Font, this.Text, Bounds, this.TextAlignment, Color.White, ref spBatch);
+
+            if (this.Text != null)
+            {
+                SimpleTextRenderer.DrawString(this.Font, this.Text, Bounds, this.TextAlignment, Color.White, ref spBatch);
+            }
         }
     }
 }

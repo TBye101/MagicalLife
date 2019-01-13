@@ -32,6 +32,7 @@ namespace MagicalLifeAPI.Asset
         public static readonly string GUIAxeMapIcon = "GUI/AxeMapIcon";
         public static readonly string GUIHoeButton = "GUI/HoeButton";
         public static readonly string GUIHoeButtonGold = "GUI/HoeButtonGold";
+        public static readonly string GUIX = "GUI/X";
 
         #endregion GUI
 
@@ -125,6 +126,7 @@ namespace MagicalLifeAPI.Asset
             this.TexturesToLoad.Add(GUIAxeMapIcon);
             this.TexturesToLoad.Add(GUIHoeButton);
             this.TexturesToLoad.Add(GUIHoeButtonGold);
+            this.TexturesToLoad.Add(GUIX);
 
             this.TexturesToLoad.Add(TextureDirt1);
             this.TexturesToLoad.Add(TextureDirt2);

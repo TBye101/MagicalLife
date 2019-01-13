@@ -17,7 +17,7 @@ namespace MagicalLifeAPI.Components.Resource
         /// The total percentage of the IMinable that has been mined so far.
         /// </summary>
         [ProtoMember(1)]
-        public float PercentHarvested { get; private set; }
+        public double PercentHarvested { get; private set; }
 
         protected AbstractHarvestable()
         {
@@ -41,7 +41,7 @@ namespace MagicalLifeAPI.Components.Resource
         /// </summary>
         /// <param name="percentHarvested"></param>
         /// <returns>Any items that should be dropped due to the progress in harvesting the object. Return null to drop nothing.</returns>
-        public List<Item> HarvestSomePercent(float percentHarvested, Point2D position)
+        public List<Item> HarvestSomePercent(double percentHarvested, Point2D position)
         {
             this.PercentHarvested += percentHarvested;
 
@@ -57,6 +57,6 @@ namespace MagicalLifeAPI.Components.Resource
 
         /// <param name="percent">The total percent harvested so far.</param>
         /// <returns></returns>
-        protected abstract List<Item> HarvestPercent(float percent, Point2D position);
+        protected abstract List<Item> HarvestPercent(double percent, Point2D position);
     }
 }

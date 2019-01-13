@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Entity.Util.Modifier;
 using ProtoBuf;
+using System;
 
 namespace MagicalLifeAPI.DataTypes.Attribute
 {
@@ -7,10 +8,10 @@ namespace MagicalLifeAPI.DataTypes.Attribute
     /// Used to store a modifier, and some other information for internal use.
     /// </summary>
     [ProtoContract]
-    public struct ModifierFloat
+    public struct ModifierDouble
     {
         [ProtoMember(1)]
-        public float Value { get; set; }
+        public double Value { get; set; }
 
         [ProtoMember(2)]
         public IModifierRemoveCondition RemoveCondition { get; set; }
@@ -18,7 +19,7 @@ namespace MagicalLifeAPI.DataTypes.Attribute
         [ProtoMember(3)]
         public string Explanation { get; set; }
 
-        public ModifierFloat(float value, IModifierRemoveCondition removeCondition, string explanation)
+        public ModifierDouble(double value, IModifierRemoveCondition removeCondition, string explanation)
         {
             this.Value = value;
             this.RemoveCondition = removeCondition;

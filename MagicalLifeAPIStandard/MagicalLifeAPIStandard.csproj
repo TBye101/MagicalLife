@@ -11,10 +11,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Entity\Animal\**" />
+    <Compile Remove="Entity\Entity Components\**" />
+    <EmbeddedResource Remove="Entity\Animal\**" />
+    <EmbeddedResource Remove="Entity\Entity Components\**" />
+    <None Remove="Entity\Animal\**" />
+    <None Remove="Entity\Entity Components\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Components\Generic\" />
     <Folder Include="Components\Item\" />
-    <Folder Include="Entity\Animal\" />
-    <Folder Include="Entity\Entity Components\" />
   </ItemGroup>
 
   <ItemGroup>

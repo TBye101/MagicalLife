@@ -15,7 +15,7 @@ namespace MagicalLifeGUIWindows.GUI.In
 
         public ChopActionButton ChopActionButton { get; set; } = new ChopActionButton();
 
-        public InGameGUIContainer(bool visible) : base(TextureLoader.GUIMenuBackground, GetDrawingBounds())
+        public InGameGUIContainer(bool visible) : base(TextureLoader.GUIMenuBackground, GetDrawingBounds(), false)
         {
             this.Visible = visible;
             this.Controls.Add(this.MineActionButton);

@@ -119,24 +119,24 @@ namespace MagicalLifeAPI.Entity.Movement
                     throw new UnexpectedEnumMemberException();
             }
 
-            xMove *= entity.Movement.GetValue();
-            yMove *= entity.Movement.GetValue();
+            xMove *= (float)entity.Movement.GetValue();
+            yMove *= (float)entity.Movement.GetValue();
 
             float movementPenalty = (float)Math.Abs(CalculateMovementReduction(xMove, yMove)) * -1;
 
             if (MathUtil.GetDistance(entity.TileLocation, destination.MapLocation) > entity.Movement.GetValue())
             {
                 //The character fell short of reaching the next tile
-                entity.TileLocation = new DataTypes.Point2DFloat(entity.TileLocation.X + xMove, entity.TileLocation.Y + yMove);
+                entity.TileLocation = new DataTypes.Point2DDouble((float)entity.TileLocation.X + xMove, (float)entity.TileLocation.Y + yMove);
                 FootStepSound(entity, source);
             }
             else
             {
                 //The character made it to the next tile.
                 entity.MapLocation = destination.MapLocation;
-                entity.TileLocation = new DataTypes.Point2DFloat(destination.MapLocation.X, destination.MapLocation.Y);
+                entity.TileLocation = new DataTypes.Point2DDouble(destination.MapLocation.X, destination.MapLocation.Y);
                 entity.QueuedMovement.Dequeue();
-                movementPenalty = MathUtil.GetDistance(entity.TileLocation, destination.MapLocation);
+                movementPenalty = (float)MathUtil.GetDistance(entity.TileLocation, destination.MapLocation);
                 FootStepSound(entity, destination);
 
                 //If this entity is the current client's and therefore that clients responsibility to report about
@@ -146,14 +146,14 @@ namespace MagicalLifeAPI.Entity.Movement
                 }
             }
 
-            entity.Movement.AddModifier(new ModifierFloat(movementPenalty, new TimeRemoveCondition(1), "Normal Movement"));
+            entity.Movement.AddModifier(new ModifierDouble(movementPenalty, new TimeRemoveCondition(1), "Normal Movement"));
         }
 
         private static void FootStepSound(Living living, Tile footStepsOn)
         {
             if (living.FootStepTimer.Allow())
             {
-                Point2DFloat screenLocation = living.TileLocation;
+                Point2DFloat screenLocation = new Point2DFloat((float)living.TileLocation.X, (float)living.TileLocation.Y);
 
                 screenLocation.X *= Tile.GetTileSize().X;
                 screenLocation.Y *= Tile.GetTileSize().Y;

@@ -24,9 +24,9 @@ namespace MagicalLifeAPI.DataTypes.Attribute
         {
         }
 
-        public float GetValue()
+        public int GetValue()
         {
-            float ret = 0;
+            int ret = 0;
             foreach (Modifier32 item in this.Modifiers)
             {
                 ret += item.Value;
@@ -56,6 +56,19 @@ namespace MagicalLifeAPI.DataTypes.Attribute
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Sets the base value of this attribute.
+        /// </summary>
+        /// <param name="value"></param>
+        public void SetBaseValue(int value)
+        {
+            Modifier32 baseValue = this.Modifiers[0];
+            baseValue.Value = value;
+
+            this.Modifiers.RemoveAt(0);
+            this.Modifiers.Insert(0, baseValue);
         }
     }
 }

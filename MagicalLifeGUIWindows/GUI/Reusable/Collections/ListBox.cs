@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace MagicalLifeGUIWindows.GUI.Reusable
 {
     /// <summary>
-    /// Used to display a list of strings.
+    /// Used to display a list of things.
     /// </summary>
     public class ListBox : GUIElement, IScrollable
     {
@@ -18,7 +18,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// <summary>
         /// The items that are displayed in this <see cref="ListBox"/>.
         /// </summary>
-        public List<AbstractGUIRenderable> Items { get; set; }
+        public List<GUIElement> Items { get; set; }
 
         /// <summary>
         /// Width and height of an item display.
@@ -53,7 +53,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
         /// <param name="itemRenderCount">How many items should be displayed at any given time.</param>
         /// <param name="items">The items that will be displayed.</param>
-        public ListBox(Rectangle drawingBounds, int priority, bool isContained, string font, int itemRenderCount, List<AbstractGUIRenderable> items)
+        public ListBox(Rectangle drawingBounds, int priority, bool isContained, string font, int itemRenderCount, List<GUIElement> items)
             : base(drawingBounds, priority, isContained, font)
         {
             this.ItemBackgroundTexture = AssetManager.GetTextureIndex(TextureLoader.GUIListBoxItemBackground);

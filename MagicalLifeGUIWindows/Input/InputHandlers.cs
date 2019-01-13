@@ -23,6 +23,10 @@ namespace MagicalLifeGUIWindows.Input
 
         public static ZoomHandler ZooomHandler { get; set; }
 
+        public static LivingMenuHandler LivingMenuHandler { get; set; }
+
+        public static ContainerDragHandler DragHandler { get; set; }
+
         public static void Initialize()
         {
             LivingMove = new LivingMoveOrderInputHandler();
@@ -33,6 +37,8 @@ namespace MagicalLifeGUIWindows.Input
             EscHandler = new EscapeHandler();
             ZooomHandler = new ZoomHandler();
             ChopAction = new ChopActionHandler();
+            LivingMenuHandler = new LivingMenuHandler();
+            DragHandler = new ContainerDragHandler();
         }
     }
 }
