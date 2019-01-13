@@ -57,9 +57,14 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
         {
             if (this.StillDraggingLast)
             {
+                //Rectangle newPosition = new Rectangle(
+                //    new Point(e.Position.X + (int)e.DistanceMoved.X,
+                //    e.Position.Y + (int)e.DistanceMoved.Y), this.LastDragged.DrawingBounds.Size);
+
                 Rectangle newPosition = new Rectangle(
-                    new Point((int)(e.Position.X + e.DistanceMoved.X),
-                    (int)(e.Position.Y + e.DistanceMoved.Y)), this.LastDragged.DrawingBounds.Size);
+                    new Point(this.LastDragged.DrawingBounds.X + (int)e.DistanceMoved.X,
+                    this.LastDragged.DrawingBounds.Y + (int)e.DistanceMoved.Y), this.LastDragged.DrawingBounds.Size);
+
                 MasterLog.DebugWriteLine("Distance moved normal drag: " + e.DistanceMoved.ToString());
 
                 this.LastDragged.DrawingBounds = newPosition;

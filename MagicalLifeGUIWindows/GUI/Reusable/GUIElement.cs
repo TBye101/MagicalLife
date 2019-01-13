@@ -1,4 +1,5 @@
-﻿using MagicalLifeGUIWindows.Input;
+﻿using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeGUIWindows.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Input.InputListeners;
@@ -10,6 +11,48 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
     /// </summary>
     public abstract class GUIElement
     {
+        /// <summary>
+        /// The visibility of this button.
+        /// </summary>
+        public bool Visible { get; set; } = true;
+
+        private ClickBounds mouseBounds;
+
+        /// <summary>
+        /// The area on the screen to draw the button at.
+        /// </summary>
+        public Rectangle DrawingBounds { get; set; }
+
+        /// <summary>
+        /// The click bounds, which contains the <see cref="DrawingBounds"/>.
+        /// </summary>
+        public ClickBounds MouseBounds
+        {
+            get
+            {
+                string text = this.GetType().FullName;
+
+                MasterLog.DebugWriteLine("Name: " + text);
+                MasterLog.DebugWriteLine("Get bounds: " + this.mouseBounds.Bounds.ToString());
+
+                return this.mouseBounds;
+            }
+
+            set
+            {
+                string text = this.GetType().FullName;
+                this.mouseBounds = value;
+
+                MasterLog.DebugWriteLine("Name: " + text);
+                MasterLog.DebugWriteLine("Set bounds to: " + value.Bounds.ToString());
+
+            }
+        }
+
+    public SpriteFont Font { get; set; }
+
+        public bool HasFocus { get; set; } = false;
+
         /// <param name="drawingBounds">The bounds for which to draw the texture on the screen at.</param>
         /// <param name="priority">Determines if this GUI element should have priority over other GUI elements when sorting through input.</param>
         /// <param name="isContained">If true, this GUI element is within a container.</param>
@@ -46,25 +89,6 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
             this.MouseBounds.Bounds = newPosition;
         }
-
-        /// <summary>
-        /// The visibility of this button.
-        /// </summary>
-        public bool Visible { get; set; } = true;
-
-        /// <summary>
-        /// The area on the screen to draw the button at.
-        /// </summary>
-        public Rectangle DrawingBounds { get; set; }
-
-        /// <summary>
-        /// The click bounds, which contains the <see cref="DrawingBounds"/>.
-        /// </summary>
-        public ClickBounds MouseBounds { get; set; }
-
-        public SpriteFont Font { get; set; }
-
-        public bool HasFocus { get; set; } = false;
 
         /// <summary>
         /// Called whenever this GUI element is clicked on.
