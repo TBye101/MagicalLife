@@ -22,10 +22,12 @@ namespace MagicalLifeGUIWindows.GUI.Reusable.API
 
         public override void Click(MouseEventArgs e, GUIContainer container)
         {
+            //Nothing to see here
         }
 
         public override void DoubleClick(MouseEventArgs e, GUIContainer container)
         {
+            //Nothing to see here
         }
     }
 }

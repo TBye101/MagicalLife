@@ -9,6 +9,7 @@ using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 {
@@ -76,7 +77,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         private double CalculatePercentHarvest(HarvestingSkill l)
         {
             float baseAmount = .1F;
-            return baseAmount + (double)Math.Sqrt(l.SkillAmount.GetValue() / 100);
+            return baseAmount + Math.Sqrt(l.SkillAmount.GetValue() / 100);
         }
 
         public override void Tick(Living l)
@@ -91,7 +92,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
                 double amount = this.CalculatePercentHarvest(harvestSkill);
 
                 MasterLog.DebugWriteLine("Creature: " + l.ID.ToString());
-                MasterLog.DebugWriteLine("Harvesting amount: " + amount.ToString());
+                MasterLog.DebugWriteLine("Harvesting amount: " + amount.ToString(CultureInfo.InvariantCulture));
                 MasterLog.DebugWriteLine("Creature harvest skill level: " + l.CreatureSkills[0].SkillAmount.GetValue().ToString());
                 MasterLog.DebugWriteLine("END");
 

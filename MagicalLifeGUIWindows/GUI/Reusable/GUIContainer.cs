@@ -27,7 +27,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// <param name="drawingBounds">The bounds for which to draw the texture on the screen at.</param>
         /// <param name="priority">Determines if this GUI container should have priority over other GUI elements when sorting through input.</param>
         /// <param name="isMovable">If true, then this GUI is movable.</param>
-        public GUIContainer(string image, Rectangle drawingBounds, bool isMovable)
+        protected GUIContainer(string image, Rectangle drawingBounds, bool isMovable)
         {
             this.Image = AssetManager.Textures[AssetManager.GetTextureIndex(image)];
             this.DrawingBounds = drawingBounds;

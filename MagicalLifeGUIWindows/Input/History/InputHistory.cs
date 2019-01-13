@@ -56,7 +56,7 @@ namespace MagicalLifeGUIWindows.Input.History
 
         private static void MouseListner_MouseDrag(object sender, MouseEventArgs e)
         {
-
+            //Haven't done anything here yet
         }
 
         private static void KeyboardHandler_KeysReleased(object sender, Microsoft.Xna.Framework.Input.Keys e)

@@ -23,7 +23,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
         /// <summary>
         /// If true, the last dragged window is still being dragged.
         /// </summary>
-        private bool StillDraggingLast = false;
+        private bool StillDraggingLast;
 
         public ContainerDragHandler()
         {

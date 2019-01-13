@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Entity.Util.Modifier;
 using ProtoBuf;
+using System;
 
 namespace MagicalLifeAPI.DataTypes.Attribute
 {

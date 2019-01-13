@@ -63,12 +63,7 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu
                     skillText += "Not Able to Learn";
                 }
 
-                //The list box will take care of setting up the x and y to render at.
-                //No need to do that here
-                Rectangle zero = new Rectangle(0, 0, 100, 50);
-
                 RenderableString result = new RenderableString(ItemFont, skillText);
-                //MonoLabel result = new MonoLabel(zero, TextureLoader.GUIListBoxItemBackground, true, skillText);
                 skills.Add(result);
             }
 

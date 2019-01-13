@@ -55,7 +55,7 @@ namespace MagicalLifeAPI.Util
 
         public static double GetDistance(Point2DFloat a, Point2D b)
         {
-            return (double)System.Math.Sqrt(System.Math.Pow(b.X - a.X, 2) + System.Math.Pow(b.Y - a.Y, 2));
+            return System.Math.Sqrt(System.Math.Pow(b.X - a.X, 2) + System.Math.Pow(b.Y - a.Y, 2));
         }
     }
 }
