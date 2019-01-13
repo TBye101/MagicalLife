@@ -39,12 +39,25 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
         private void MouseListner_MouseDragStart(object sender, MonoGame.Extended.Input.InputListeners.MouseEventArgs e)
         {
-            List<GUIContainer> windows = BoundHandler.GUIWindows.FindAll(
-                x => x.DrawingBounds.Contains(e.Position.X, e.Position.Y)
-                && x.DrawingBounds.Y - 40 < e.Position.Y
-                && x.IsMovable);
+            List<GUIContainer> windows = new List<GUIContainer>();
 
-            MasterLog.DebugWriteLine("Distance moved start: " + e.DistanceMoved.ToString());
+            foreach (GUIContainer item in BoundHandler.GUIWindows)
+            {
+                //If the container contains the mouse position
+                if (item.DrawingBounds.Contains(e.Position.X, e.Position.Y))
+                {
+                    //If the mouse position is within the drag zone
+                    if (item.DrawingBounds.Y - 40 < e.Position.Y)
+                    {
+                        //If the GUI is dragable
+                        if (item.IsMovable)
+                        {
+                            windows.Add(item);
+                        }
+                    }
+                }
+            }
+
             if (windows.Count > 0)
             {
                 GUIContainer windowToMove = this.GetHighestPriority(windows);
@@ -57,15 +70,10 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
         {
             if (this.StillDraggingLast)
             {
-                //Rectangle newPosition = new Rectangle(
-                //    new Point(e.Position.X + (int)e.DistanceMoved.X,
-                //    e.Position.Y + (int)e.DistanceMoved.Y), this.LastDragged.DrawingBounds.Size);
-
-                Rectangle newPosition = new Rectangle(
-                    new Point(this.LastDragged.DrawingBounds.X + (int)e.DistanceMoved.X,
-                    this.LastDragged.DrawingBounds.Y + (int)e.DistanceMoved.Y), this.LastDragged.DrawingBounds.Size);
-
-                MasterLog.DebugWriteLine("Distance moved normal drag: " + e.DistanceMoved.ToString());
+                int newX = this.LastDragged.DrawingBounds.X + (int)e.DistanceMoved.X;
+                int newY = this.LastDragged.DrawingBounds.Y + (int)e.DistanceMoved.Y;
+                Point position = new Point(newX, newY);
+                Rectangle newPosition = new Rectangle(position, this.LastDragged.DrawingBounds.Size);
 
                 this.LastDragged.DrawingBounds = newPosition;
                 this.LastDragged.AdjustClickBounds((int)e.DistanceMoved.X, (int)e.DistanceMoved.Y);

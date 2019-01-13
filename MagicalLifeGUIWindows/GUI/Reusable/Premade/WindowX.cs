@@ -26,7 +26,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable.Premade
         /// <param name="containingSize">The size of the containing form.</param>
         public WindowX(Point2D containingSize) : 
             base(TextureLoader.GUIX, 
-                new Rectangle(containingSize.X - TextureWidth, containingSize.Y - TextureHeight, TextureWidth, TextureHeight), true, "")
+                new Rectangle(containingSize.X - TextureWidth, 0, TextureWidth, TextureHeight), true, "")
         {
 
         }
