@@ -25,6 +25,8 @@ namespace MagicalLifeAPI.Time
 
         private UInt64 TickAt;
 
+        private SchedulerTaskComparer Comparer = new SchedulerTaskComparer();
+
         /// <param name="tickCounter">The counter that ticks are to be based off of.</param>
         public Scheduler()
         {
@@ -70,32 +72,35 @@ namespace MagicalLifeAPI.Time
         /// <param name="tick"></param>
         private void Insert(SchedulerTask task, UInt64 tick)
         {
-            int lowBound = 0;
-            int highBound = this.WaitingQueue.Count - 1;
+            int index = this.WaitingQueue.BinarySearch(0, this.WaitingQueue.Count, task, this.Comparer);
+            this.WaitingQueue.Insert(index, task);
 
-            while (lowBound != highBound)
-            {
-                int half = (highBound + lowBound) / 2;
+            //int lowBound = 0;
+            //int highBound = this.WaitingQueue.Count - 1;
 
-                SchedulerTask check = this.WaitingQueue[half];
-                if (check.WakeUp > tick)
-                {
-                    highBound = half;
-                }
-                if (check.WakeUp < tick)
-                {
-                    lowBound = half;
-                }
-                if (check.WakeUp == tick)
-                {
-                    //Set low and high bounds to equal half
-                    //Since we've found another that's waiting for the exact same tick as this task
-                    lowBound = half;
-                    highBound = half;
-                }
-            }
+            //while (lowBound != highBound)
+            //{
+            //    int half = (highBound + lowBound) / 2;
 
-            this.WaitingQueue.Insert(highBound, task);
+            //    SchedulerTask check = this.WaitingQueue[half];
+            //    if (check.WakeUp > tick)
+            //    {
+            //        highBound = half;
+            //    }
+            //    if (check.WakeUp < tick)
+            //    {
+            //        lowBound = half;
+            //    }
+            //    if (check.WakeUp == tick)
+            //    {
+            //        //Set low and high bounds to equal half
+            //        //Since we've found another that's waiting for the exact same tick as this task
+            //        lowBound = half;
+            //        highBound = half;
+            //    }
+            //}
+
+            //this.WaitingQueue.Insert(highBound, task);
         }
     }
 }
