@@ -11,25 +11,17 @@ namespace MagicalLifeAPI.Filing.Logging
     public static class MasterLog
     {
         private static readonly string LogPath = FileSystemManager.InstanceRootFolder + Path.DirectorySeparatorChar + "MasterLog.txt";
+        private static TextWriter Writer;
+
 
         public static void Initialize()
         {
-            //Just proved that telling it to write to the same file will not overwrite it.
-            Log.Logger = new LoggerConfiguration().MinimumLevel.Debug().WriteTo.File(LogPath).CreateLogger();
-            Log.Information("Log initialized!");
-            Log.Information("Session: " + Guid.NewGuid());
+            Writer = new StreamWriter(LogPath, true);
 
-            //Sample for later when we need a second log file.
-            //Log.Logger = new LoggerConfiguration()
-            //.MinimumLevel.Debug()
-            //.WriteTo.LiterateConsole()
-            //.WriteTo.Logger(l => l.Filter.ByIncludingOnly(e => e.Level == LogEventLevel.Information).WriteTo.RollingFile(@"Logs\Info-{Date}.log"))
-            //.WriteTo.Logger(l => l.Filter.ByIncludingOnly(e => e.Level == LogEventLevel.Debug).WriteTo.RollingFile(@"Logs\Debug-{Date}.log"))
-            //.WriteTo.Logger(l => l.Filter.ByIncludingOnly(e => e.Level == LogEventLevel.Warning).WriteTo.RollingFile(@"Logs\Warning-{Date}.log"))
-            //.WriteTo.Logger(l => l.Filter.ByIncludingOnly(e => e.Level == LogEventLevel.Error).WriteTo.RollingFile(@"Logs\Error-{Date}.log"))
-            //.WriteTo.Logger(l => l.Filter.ByIncludingOnly(e => e.Level == LogEventLevel.Fatal).WriteTo.RollingFile(@"Logs\Fatal-{Date}.log"))
-            //.WriteTo.RollingFile(@"Logs\Verbose-{Date}.log")
-            //.CreateLogger();
+            //Just proved that telling it to write to the same file will not overwrite it.
+            //Log.Logger = new LoggerConfiguration().MinimumLevel.Debug().WriteTo.File(LogPath).CreateLogger();
+            //Log.Information("Log initialized!");
+            //Log.Information("Session: " + Guid.NewGuid());
         }
 
         /// <summary>
@@ -39,7 +31,8 @@ namespace MagicalLifeAPI.Filing.Logging
         [Conditional("DEBUG")]
         public static void DebugWriteLine(string msg)
         {
-            Log.Debug(msg);
+            string time = DateTime.UtcNow.ToString("[yyyy-mm-dd hh:mm:ss.mmm]");
+            Writer.WriteLine(time + " [DBG]: " + msg);
         }
     }
 }
