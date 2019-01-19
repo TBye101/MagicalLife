@@ -12,7 +12,6 @@ using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Base;
-using Serilog;
 using System;
 
 namespace MagicalLifeAPI.Entity.Movement

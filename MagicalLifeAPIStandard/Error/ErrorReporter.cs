@@ -1,4 +1,4 @@
-﻿using Serilog;
+﻿using MagicalLifeAPI.Filing.Logging;
 using System;
 
 namespace MagicalLifeAPI.Error
@@ -16,12 +16,12 @@ namespace MagicalLifeAPI.Error
 
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            Log.Error((Exception)e.ExceptionObject, "Unhandled exception: ");
+            MasterLog.DebugWriteLine((Exception)e.ExceptionObject, "Unhandled exception: ");
         }
 
         private static void CurrentDomain_FirstChanceException(object sender, System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs e)
         {
-            Log.Error(e.Exception, "First chance exception: ");
+            MasterLog.DebugWriteLine(e.Exception, "First chance exception: ");
         }
     }
 }

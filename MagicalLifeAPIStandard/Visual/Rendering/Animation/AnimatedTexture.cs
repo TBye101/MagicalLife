@@ -4,7 +4,6 @@ using MagicalLifeAPI.Visual.Animation;
 using MagicalLifeAPI.Visual.Rendering.Animation;
 using MagicalLifeGUIWindows.Rendering.Map;
 using ProtoBuf;
-using Serilog;
 using System.Reflection;
 
 namespace MagicalLifeAPI.Components.Generic.Renderable

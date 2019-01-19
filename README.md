@@ -45,9 +45,15 @@ AKA TODO:
 
 ~~Save/Load Game~~
 
-~Natural objects such as trees~
+~~Natural objects such as trees~~
 
-Character Classes and XP system
+Character Classes and ~~XP system~~
+
+Inventory
+
+Agriculture
+
+Traders
 
 Creatures (Enemies and Animals)
 
