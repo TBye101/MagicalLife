@@ -18,6 +18,11 @@ namespace MagicalLifeAPI.Filing.Logging
             Writer = new StreamWriter(LogPath, true);
         }
 
+        public static void Dispose()
+        {
+            Writer.Dispose();
+        }
+
         /// <summary>
         /// Writes a line to the master log.
         /// </summary>

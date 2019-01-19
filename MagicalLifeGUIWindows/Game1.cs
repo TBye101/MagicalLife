@@ -224,18 +224,6 @@ namespace MagicalLifeGUIWindows
                 MasterLog.DebugWriteLine("Bounds: " + screen.Bounds.ToString());
                 MasterLog.DebugWriteLine("Primary Screen: " + screen.Primary.ToString());
             }
-
-            try
-            {
-                int a = 3;
-                int b = 0;
-                int c = a / b;
-            }
-            catch (System.Exception)
-            {
-
-                throw new System.Exception("Another Exception");
-            }
         }
     }
 }
