@@ -1,5 +1,4 @@
-﻿using Serilog;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
 
@@ -17,11 +16,6 @@ namespace MagicalLifeAPI.Filing.Logging
         public static void Initialize()
         {
             Writer = new StreamWriter(LogPath, true);
-
-            //Just proved that telling it to write to the same file will not overwrite it.
-            //Log.Logger = new LoggerConfiguration().MinimumLevel.Debug().WriteTo.File(LogPath).CreateLogger();
-            //Log.Information("Log initialized!");
-            //Log.Information("Session: " + Guid.NewGuid());
         }
 
         /// <summary>
@@ -33,6 +27,25 @@ namespace MagicalLifeAPI.Filing.Logging
         {
             string time = DateTime.UtcNow.ToString("[yyyy-mm-dd hh:mm:ss.mmm]");
             Writer.WriteLine(time + " [DBG]: " + msg);
+        }
+
+        [Conditional("DEBUG")]
+        public static void DebugWriteLine(Exception e, string msg)
+        {
+            DebugWriteLine(msg);
+            DebugWriteLine(e.GetType().AssemblyQualifiedName + ":");
+            DebugWriteLine("Help link: " + e.HelpLink);
+            DebugWriteLine("Error code: " + e.HResult.ToString());
+            DebugWriteLine("Message: " + e.Message);
+            DebugWriteLine("Source: " + e.Source);
+            DebugWriteLine("Stack trace: \r\n" + e.StackTrace);
+
+            if (e.InnerException != null)
+            {
+                DebugWriteLine(e, "Inner exception: ");
+            }
+
+            Writer.Flush();
         }
     }
 }

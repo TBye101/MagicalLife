@@ -1,7 +1,6 @@
 ﻿using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Util.Reusable;
 using ProtoBuf;
-using Serilog;
 
 namespace MagicalLifeAPI.Visual.Rendering.Animation
 {
