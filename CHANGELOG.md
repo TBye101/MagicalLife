@@ -8,6 +8,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 *Now supports the tilling of dirt
 *Skills are now in
 *Harvest skill now has impact on the speed of harvesting resources
+*Removed Serilog dependency
 
 #### GUI
 *Tilling dirt is now available from the in game GUI
