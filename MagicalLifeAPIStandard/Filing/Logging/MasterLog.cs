@@ -30,7 +30,7 @@ namespace MagicalLifeAPI.Filing.Logging
         [Conditional("DEBUG")]
         public static void DebugWriteLine(string msg)
         {
-            string time = DateTime.UtcNow.ToString("[yyyy-mm-dd hh:mm:ss.mmm]");
+            string time = DateTime.UtcNow.ToString("[yyyy-MM-dd HH:mm:ss.fff]");
             Writer.WriteLine(time + " [DBG]: " + msg);
         }
 
