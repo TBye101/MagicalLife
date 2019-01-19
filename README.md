@@ -49,6 +49,12 @@ AKA TODO:
 
 Character Classes and ~~XP system~~
 
+Inventory
+
+Agriculture
+
+Traders
+
 Creatures (Enemies and Animals)
 
 AI
