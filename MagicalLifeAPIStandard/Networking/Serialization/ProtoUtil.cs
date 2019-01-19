@@ -1,6 +1,5 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
 using ProtoBuf.Meta;
-using Serilog;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -60,7 +59,7 @@ namespace MagicalLifeAPI.Networking.Serialization
             }
             catch (IndexOutOfRangeException e)
             {
-                Log.Debug(e, "Unknown message type!");
+                MasterLog.DebugWriteLine(e, "Unknown message type!");
                 return null;
             }
         }
