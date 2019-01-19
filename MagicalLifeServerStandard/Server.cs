@@ -96,6 +96,7 @@ namespace MagicalLifeServer
             GameTick++;
             ServerSendRecieve.SendAll(new ServerTickMessage(GameTick));
             RaiseServerTick(sender, GameTick);
+            Scheduler.ServerScheduler.Tick(GameTick);
         }
 
         private static void RaiseServerTick(object sender, UInt64 tick)

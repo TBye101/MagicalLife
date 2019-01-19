@@ -3,6 +3,7 @@ using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Pathfinding;
+using MagicalLifeAPI.Time;
 using MagicalLifeClient.Entity;
 using MagicalLifeClient.Message;
 using System;
@@ -74,8 +75,9 @@ namespace MagicalLifeClient
             while (i != times)
             {
                 GameTick++;
-
                 ClientTick?.Invoke(null, GameTick);
+                Scheduler.ClientScheduler.Tick(GameTick);
+
                 i++;
             }
         }
