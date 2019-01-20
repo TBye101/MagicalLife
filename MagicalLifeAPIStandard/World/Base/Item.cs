@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.Visual.Rendering;
@@ -125,6 +126,32 @@ namespace MagicalLifeAPI.World.Base
             else
             {
                 throw new InvalidOperationException("Error: Combining two items of different types is impossible to store.");
+            }
+        }
+
+        /// <summary>
+        /// Creates two items and will have the first be the specified amount, and the second be the leftovers.
+        /// Note: This will not remove any items.
+        /// </summary>
+        /// <param name="firstItemSize">The size of how big the first item in the tuple should be. The second item gets whatever is leftover.</param>
+        /// <param name="originalItem"></param>
+        /// <returns></returns>
+        public static ValueTuple<Item, Item> Split(Item originalItem, int firstItemSize)
+        {
+            if (originalItem.CurrentlyStacked <= firstItemSize)
+            {
+                throw new InvalidDataException();
+            }
+            else
+            {
+                int totalCount = originalItem.CurrentlyStacked;
+                Item firstItem = originalItem;
+                Item secondItem = originalItem;
+
+                firstItem.CurrentlyStacked = firstItemSize;
+                secondItem.CurrentlyStacked = totalCount - firstItemSize;
+
+                return new ValueTuple<Item, Item>(firstItem, secondItem);
             }
         }
 
