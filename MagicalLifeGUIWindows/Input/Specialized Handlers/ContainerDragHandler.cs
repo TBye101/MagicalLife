@@ -1,17 +1,11 @@
-﻿using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Util.Reusable;
-using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 {
     /// <summary>
-    /// Handles GUI containers being dragged. 
+    /// Handles GUI containers being dragged.
     /// </summary>
     public class ContainerDragHandler
     {

@@ -18,6 +18,7 @@ namespace MagicalLifeGUIWindows.GUI.In
                 {
                     case Resolution._2560x1440:
                         return InGameGUILayout2560x1440.ContainerX;
+
                     default:
                         return InGameGUILayout1920x1080.ContainerX;
                 }
@@ -35,6 +36,7 @@ namespace MagicalLifeGUIWindows.GUI.In
                 {
                     case Resolution._2560x1440:
                         return InGameGUILayout2560x1440.ContainerY;
+
                     default:
                         return InGameGUILayout1920x1080.ContainerY;
                 }
@@ -52,6 +54,7 @@ namespace MagicalLifeGUIWindows.GUI.In
                 {
                     case Resolution._2560x1440:
                         return InGameGUILayout2560x1440.ContainerWidth;
+
                     default:
                         return InGameGUILayout1920x1080.ContainerWidth;
                 }
@@ -69,6 +72,7 @@ namespace MagicalLifeGUIWindows.GUI.In
                 {
                     case Resolution._2560x1440:
                         return InGameGUILayout2560x1440.ContainerHeight;
+
                     default:
                         return InGameGUILayout1920x1080.ContainerHeight;
                 }
@@ -86,6 +90,7 @@ namespace MagicalLifeGUIWindows.GUI.In
                 {
                     case Resolution._2560x1440:
                         return InGameGUILayout2560x1440.ActionButtonY;
+
                     default:
                         return InGameGUILayout1920x1080.ActionButtonY;
                 }
@@ -103,6 +108,7 @@ namespace MagicalLifeGUIWindows.GUI.In
                 {
                     case Resolution._2560x1440:
                         return InGameGUILayout2560x1440.ActionButtonSize;
+
                     default:
                         return InGameGUILayout1920x1080.ActionButtonSize;
                 }
@@ -120,6 +126,7 @@ namespace MagicalLifeGUIWindows.GUI.In
                 {
                     case Resolution._2560x1440:
                         return InGameGUILayout2560x1440.MineActionButtonX;
+
                     default:
                         return InGameGUILayout1920x1080.MineActionButtonX;
                 }
@@ -137,6 +144,7 @@ namespace MagicalLifeGUIWindows.GUI.In
                 {
                     case Resolution._2560x1440:
                         return InGameGUILayout2560x1440.HoeActionButtonX;
+
                     default:
                         return InGameGUILayout1920x1080.HoeActionButtonX;
                 }
@@ -154,6 +162,7 @@ namespace MagicalLifeGUIWindows.GUI.In
                 {
                     case Resolution._2560x1440:
                         return InGameGUILayout2560x1440.ChopActionButtonX;
+
                     default:
                         return InGameGUILayout1920x1080.ChopActionButtonX;
                 }

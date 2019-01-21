@@ -1,10 +1,8 @@
 ﻿using MagicalLifeAPI.DataTypes.Attribute;
 using MagicalLifeAPI.World.Base;
 using ProtoBuf;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace MagicalLifeAPI.Entity
 {
@@ -30,7 +28,7 @@ namespace MagicalLifeAPI.Entity
 
         [ProtoMember(3)]
         public AttributeDouble Multiplyer;
-        
+
         /// <summary>
         /// The weight of all items in this inventory taking into account multipliers.
         /// </summary>
@@ -84,7 +82,7 @@ namespace MagicalLifeAPI.Entity
         }
 
         /// <summary>
-        /// Returns as much of the item as requested. 
+        /// Returns as much of the item as requested.
         /// If more is requested than actually exists in this inventory than the amount stored is returned.
         /// Removes all items requested from this inventory.
         /// Returns null if this inventory stores non of the requested item.

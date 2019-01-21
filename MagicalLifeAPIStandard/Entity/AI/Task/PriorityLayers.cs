@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MagicalLifeAPI.Entity.AI.Task
+﻿namespace MagicalLifeAPI.Entity.AI.Task
 {
     /// <summary>
     /// Holds priority levels for various tasks.

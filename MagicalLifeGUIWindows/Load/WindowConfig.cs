@@ -1,12 +1,12 @@
 ﻿using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Filing;
+using MagicalLifeGUIWindows.GUI;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 using System.Linq;
-using MagicalLifeGUIWindows.GUI;
-using MagicalLifeAPI.DataTypes;
+using System.Windows.Forms;
 
 namespace MagicalLifeGUIWindows.Load
 {

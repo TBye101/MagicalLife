@@ -12,6 +12,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
                 {
                     case Resolution._2560x1440:
                         return SaveGameMenuLayout2560x1440.OverwriteSaveListBoxX;
+
                     default:
                         return SaveGameMenuLayout1920x1080.OverwriteSaveListBoxX;
                 }
@@ -26,6 +27,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
                 {
                     case Resolution._2560x1440:
                         return SaveGameMenuLayout2560x1440.OverwriteSaveListBoxY;
+
                     default:
                         return SaveGameMenuLayout1920x1080.OverwriteSaveListBoxY;
                 }
@@ -40,6 +42,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
                 {
                     case Resolution._2560x1440:
                         return SaveGameMenuLayout2560x1440.OverwriteSaveBoxWidth;
+
                     default:
                         return SaveGameMenuLayout1920x1080.OverwriteSaveBoxWidth;
                 }
@@ -54,6 +57,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
                 {
                     case Resolution._2560x1440:
                         return SaveGameMenuLayout2560x1440.OverwriteSaveBoxHeight;
+
                     default:
                         return SaveGameMenuLayout1920x1080.OverwriteSaveBoxHeight;
                 }
@@ -71,6 +75,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
                 {
                     case Resolution._2560x1440:
                         return SaveGameMenuLayout2560x1440.ItemRenderCount;
+
                     default:
                         return SaveGameMenuLayout1920x1080.ItemRenderCount;
                 }
@@ -85,6 +90,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
                 {
                     case Resolution._2560x1440:
                         return SaveGameMenuLayout2560x1440.OverwriteButtonX;
+
                     default:
                         return SaveGameMenuLayout1920x1080.OverwriteButtonX;
                 }
@@ -99,6 +105,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
                 {
                     case Resolution._2560x1440:
                         return SaveGameMenuLayout2560x1440.OverwriteButtonY;
+
                     default:
                         return SaveGameMenuLayout1920x1080.OverwriteButtonY;
                 }
@@ -113,6 +120,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
                 {
                     case Resolution._2560x1440:
                         return SaveGameMenuLayout2560x1440.OverwriteButtonWidth;
+
                     default:
                         return SaveGameMenuLayout1920x1080.OverwriteButtonWidth;
                 }
@@ -127,6 +135,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
                 {
                     case Resolution._2560x1440:
                         return SaveGameMenuLayout2560x1440.OverwriteButtonHeight;
+
                     default:
                         return SaveGameMenuLayout1920x1080.OverwriteButtonHeight;
                 }
@@ -141,6 +150,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
                 {
                     case Resolution._2560x1440:
                         return SaveGameMenuLayout2560x1440.NewSaveInputBoxX;
+
                     default:
                         return SaveGameMenuLayout1920x1080.NewSaveInputBoxX;
                 }
@@ -155,6 +165,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
                 {
                     case Resolution._2560x1440:
                         return SaveGameMenuLayout2560x1440.NewSaveInputBoxY;
+
                     default:
                         return SaveGameMenuLayout1920x1080.NewSaveInputBoxY;
                 }
@@ -169,6 +180,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
                 {
                     case Resolution._2560x1440:
                         return SaveGameMenuLayout2560x1440.NewSaveInputBoxWidth;
+
                     default:
                         return SaveGameMenuLayout1920x1080.NewSaveInputBoxWidth;
                 }
@@ -183,6 +195,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
                 {
                     case Resolution._2560x1440:
                         return SaveGameMenuLayout2560x1440.NewSaveInputBoxHeight;
+
                     default:
                         return SaveGameMenuLayout1920x1080.NewSaveInputBoxHeight;
                 }
@@ -197,6 +210,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
                 {
                     case Resolution._2560x1440:
                         return SaveGameMenuLayout2560x1440.NewSaveButtonX;
+
                     default:
                         return SaveGameMenuLayout1920x1080.NewSaveButtonX;
                 }
@@ -211,6 +225,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
                 {
                     case Resolution._2560x1440:
                         return SaveGameMenuLayout2560x1440.NewSaveButtonY;
+
                     default:
                         return SaveGameMenuLayout1920x1080.NewSaveButtonY;
                 }
@@ -225,6 +240,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
                 {
                     case Resolution._2560x1440:
                         return SaveGameMenuLayout2560x1440.NewSaveButtonWidth;
+
                     default:
                         return SaveGameMenuLayout1920x1080.NewSaveButtonWidth;
                 }
@@ -239,6 +255,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
                 {
                     case Resolution._2560x1440:
                         return SaveGameMenuLayout2560x1440.NewSaveButtonHeight;
+
                     default:
                         return SaveGameMenuLayout1920x1080.NewSaveButtonHeight;
                 }

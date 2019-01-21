@@ -1,13 +1,10 @@
 ﻿using ProtoBuf;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeAPI.DataTypes.Attribute
 {
     /// <summary>
     /// This type of attribute combines both whole number attributes
-    /// and float based attributes in order to support a whole number attribute that has a multiplier multiplying it. 
+    /// and float based attributes in order to support a whole number attribute that has a multiplier multiplying it.
     /// </summary>
     [ProtoContract]
     public class ComboAttribute

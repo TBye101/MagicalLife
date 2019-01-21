@@ -105,6 +105,7 @@ namespace MagicalLifeGUIWindows.Input.History
 
             return new HistoricalInput(true, InputHistory.Selected, action);
         }
+
         /// <summary>
         /// Generates a <see cref="HistoricalInput"/> for when there is no action selected by the player.
         /// </summary>

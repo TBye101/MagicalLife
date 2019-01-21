@@ -3,9 +3,6 @@ using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Components.Resource
 {
@@ -50,4 +47,3 @@ namespace MagicalLifeAPI.Components.Resource
         protected abstract List<Item> TillPercent(float percent, Point2D position);
     }
 }
-

@@ -4,7 +4,6 @@ using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.Util.Reusable;
 using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.Entity.AI.Task.Tasks;
 using MagicalLifeAPI.World.Tiles;
 using ProtoBuf;
 using System;
@@ -53,7 +52,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         public override void MakePreparations(Living l)
         {
             Tile tile = World.Data.World.GetTile(l.Dimension, this.Target.X, this.Target.Y);
-            this.Tillable = (ITillable) tile;
+            this.Tillable = (ITillable)tile;
         }
 
         public override void Reset()

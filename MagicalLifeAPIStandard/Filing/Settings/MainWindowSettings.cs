@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MagicalLifeAPI.Filing.Settings
+﻿namespace MagicalLifeAPI.Filing.Settings
 {
     /// <summary>
     /// Holds some settings for various properties of the main window.

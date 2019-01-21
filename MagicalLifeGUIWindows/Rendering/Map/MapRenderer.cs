@@ -2,7 +2,6 @@
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity;
-using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using Microsoft.Xna.Framework;
@@ -93,6 +92,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
                 case MagicalLifeAPI.Entity.AI.Task.ActionSelected.Chop:
                     MapDrawer.Draw(AssetManager.Textures[AssetManager.NameToIndex[TextureLoader.GUIAxeMapIcon]], x32Target, RenderLayer.GUI);
                     break;
+
                 default:
                     //Do nothing.
                     break;

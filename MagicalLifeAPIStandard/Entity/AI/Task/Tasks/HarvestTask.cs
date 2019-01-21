@@ -97,9 +97,9 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
                 MasterLog.DebugWriteLine("END");
 
                 //Harvest whatever
-                List<World.Base.Item> drop = 
+                List<World.Base.Item> drop =
                     this.Harvestable.HarvestingBehavior.HarvestSomePercent(amount, this.Target);
-                
+
                 //Give out XP for the harvest skill.
                 skill.GainXP(1);
 

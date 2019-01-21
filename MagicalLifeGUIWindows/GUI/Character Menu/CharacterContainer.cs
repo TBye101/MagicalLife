@@ -4,13 +4,9 @@ using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.GUI.Reusable.API;
 using MagicalLifeGUIWindows.GUI.Reusable.Premade;
 using MagicalLifeGUIWindows.Input;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.GUI.Character_Menu
 {
@@ -22,7 +18,6 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu
         public ListBox Skills { get; set; }
 
         private static readonly SpriteFont ItemFont = Game1.AssetManager.Load<SpriteFont>(TextureLoader.FontMainMenuFont12x);
-
 
         /// <summary>
         /// The creature that has information being displayed about it.

@@ -159,7 +159,7 @@ namespace MagicalLifeAPI.World
         }
 
         /// <summary>
-        /// Returns the creature at the specified point. 
+        /// Returns the creature at the specified point.
         /// Returns null if it is not at the specified location.
         /// </summary>
         /// <param name="tileLocation"></param>

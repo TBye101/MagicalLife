@@ -48,6 +48,7 @@ namespace MagicalLifeAPI.Asset
         public static readonly string TextureStone2 = "Textures/Resource/Stone_02";
         public static readonly string TextureTestTile = "Textures/Tile/TestTile";
         public static readonly string TextureTilledDirt = "Textures/Tile/TilledDirt";
+
         #endregion TileTextures
 
         #region TreeTextures
@@ -73,7 +74,6 @@ namespace MagicalLifeAPI.Asset
 
         public static readonly string TextureStoneRubble1 = "Textures/Items/StoneRubble_01";
         public static readonly string TextureStoneRubble2 = "Textures/Items/StoneRubble_02";
-
 
         public static readonly string LogTexture1 = "Textures/Items/Log_1";
 
@@ -157,7 +157,6 @@ namespace MagicalLifeAPI.Asset
             this.TexturesToLoad.Add(MapleLeaves2);
             this.TexturesToLoad.Add(PineLeaves1);
             this.TexturesToLoad.Add(PineLeaves2);
-
 
             this.TexturesToLoad.Add(LogoFMOD);
             this.TexturesToLoad.Add(LogoMonoGame);

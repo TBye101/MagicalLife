@@ -12,7 +12,6 @@ namespace MagicalLifeAPI.Filing.Logging
         private static readonly string LogPath = FileSystemManager.InstanceRootFolder + Path.DirectorySeparatorChar + "MasterLog.txt";
         private static TextWriter Writer;
 
-
         public static void Initialize()
         {
             Writer = new StreamWriter(LogPath, true);

@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeAPI.Filing.Settings
 {
     /// <summary>
-    /// Has some settings for the human player. 
+    /// Has some settings for the human player.
     /// </summary>
     public class PlayerSettings
     {

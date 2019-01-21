@@ -1,9 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes.Attribute;
 using MagicalLifeAPI.Entity.Experience;
 using ProtoBuf;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeAPI.Entity.Skills
 {
@@ -19,12 +16,11 @@ namespace MagicalLifeAPI.Entity.Skills
         public HarvestingSkill(ComboAttribute skillAmount, bool learnable)
             : base(PublicDisplayName, skillAmount, learnable, InternalIDName, new SqrtXPCalculator(48))
         {
-
         }
 
         protected HarvestingSkill()
         {
-            //Protobuf-net constructor. 
+            //Protobuf-net constructor.
         }
     }
 }
