@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.World.Base;
+﻿using MagicalLifeAPI.DataTypes.Attribute;
+using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,26 @@ namespace MagicalLifeAPI.Entity
         /// </summary>
         [ProtoMember(1)]
         private readonly Dictionary<int, List<Item>> Items;
+
+        /// <summary>
+        /// The combined weight of all the objects in the inventory.
+        /// </summary>
+        [ProtoMember(2)]
+        private double _Weight;
+
+        [ProtoMember(3)]
+        public AttributeDouble Multiplyer;
+        
+        /// <summary>
+        /// The weight of all items in this inventory taking into account multipliers.
+        /// </summary>
+        public double Weight
+        {
+            get
+            {
+                return this._Weight * this.Multiplyer.GetValue();
+            }
+        }
 
         public Inventory(bool someVar)
         {
@@ -43,6 +64,17 @@ namespace MagicalLifeAPI.Entity
             {
                 List<Item> stacks = this.Items[itemID];
                 this.Items.Remove(itemID);
+
+                int amount = 0;
+                double weight = 0;
+
+                foreach (Item item in stacks)
+                {
+                    amount += item.CurrentlyStacked;
+                    weight = item.ItemWeight;
+                }
+
+                this.AdjustWeight(weight, amount, false);
                 return stacks;
             }
             else
@@ -68,38 +100,7 @@ namespace MagicalLifeAPI.Entity
             {
                 if (itemAmountContained > amount)
                 {
-                    List<Item> Grabbed = new List<Item>();
-                    List<Item> allContained = this.Items[itemID];
-                    this.Items.Remove(itemID);
-
-                    int totalGrabbed = 0;
-                    int i = 0;
-                    while (totalGrabbed < amount)
-                    {
-                        Item current = allContained[i];
-
-                        if (current.CurrentlyStacked <= amount - totalGrabbed)
-                        {
-                            //The stack isn't too big, grab it
-                            allContained.RemoveAt(i);
-                            Grabbed.Add(current);
-                            totalGrabbed += current.CurrentlyStacked;
-                        }
-                        else
-                        {
-                            //Stack's too big, split it
-                            (Item, Item) result = Item.Split(current, amount - totalGrabbed);
-                            allContained.RemoveAt(i);
-
-                            Grabbed.Add(result.Item1);
-                            totalGrabbed += result.Item1.CurrentlyStacked;
-                            allContained.Add(result.Item2);
-                        }
-                        i++;
-                    }
-
-                    this.Items.Add(itemID, allContained);
-                    return Grabbed;
+                    return this.RemoveSomeSplit(itemID, amount);
                 }
                 else
                 {
@@ -110,6 +111,51 @@ namespace MagicalLifeAPI.Entity
             {
                 return null;
             }
+        }
+
+        /// <summary>
+        /// Removes some when the inventory stores more of the item than the amount which is requested.
+        /// </summary>
+        /// <param name="itemID"></param>
+        /// <param name="amount"></param>
+        /// <returns></returns>
+        private List<Item> RemoveSomeSplit(int itemID, int amount)
+        {
+            List<Item> Grabbed = new List<Item>();
+            List<Item> allContained = this.Items[itemID];
+            this.Items.Remove(itemID);
+
+            int totalGrabbed = 0;
+            int i = 0;
+            while (totalGrabbed < amount)
+            {
+                Item current = allContained[i];
+
+                if (current.CurrentlyStacked <= amount - totalGrabbed)
+                {
+                    //The stack isn't too big, grab it
+                    allContained.RemoveAt(i);
+                    Grabbed.Add(current);
+                    totalGrabbed += current.CurrentlyStacked;
+                    this.AdjustWeight(current.ItemWeight, current.CurrentlyStacked, false);
+                }
+                else
+                {
+                    //Stack's too big, split it
+                    (Item, Item) result = Item.Split(current, amount - totalGrabbed);
+                    allContained.RemoveAt(i);
+
+                    Grabbed.Add(result.Item1);
+                    totalGrabbed += result.Item1.CurrentlyStacked;
+                    allContained.Add(result.Item2);
+                    this.AdjustWeight(result.Item1.ItemWeight, result.Item1.CurrentlyStacked, false);
+                }
+                i++;
+            }
+
+            this.Items.Add(itemID, allContained);
+
+            return Grabbed;
         }
 
         /// <summary>
@@ -140,41 +186,79 @@ namespace MagicalLifeAPI.Entity
         /// <param name="item"></param>
         public void AddItem(Item item)
         {
+            this.AdjustWeight(item.ItemWeight, item.CurrentlyStacked, true);
+
             if (this.Items.ContainsKey(item.ItemID))
             {
-                List<Item> stored = this.Items[item.ItemID];
-                this.Items.Remove(item.ItemID);
-
-                int resultIndex = -1;
-                int length = stored.Count();
-                for (int i = 0; i < length; i++)
+                this.AddItemContaining(item);
+            }
+            else
+            {
+                List<Item> toAdd = new List<Item>
                 {
-                    Item current = stored[i];
-                    if (current.CurrentlyStacked < current.StackableLimit)
-                    {
-                        resultIndex = i;
-                        break;
-                    }
-                }
+                    item
+                };
 
-                if (resultIndex == -1)
+                this.Items.Add(item.ItemID, toAdd);
+            }
+        }
+
+        /// <summary>
+        /// Used to add an item when this inventory already contains some of that item.
+        /// </summary>
+        /// <param name="item"></param>
+        private void AddItemContaining(Item item)
+        {
+            List<Item> stored = this.Items[item.ItemID];
+            this.Items.Remove(item.ItemID);
+
+            int resultIndex = -1;
+            int length = stored.Count();
+            for (int i = 0; i < length; i++)
+            {
+                Item current = stored[i];
+                //If this stack can hold some more of the item...
+                if (current.CurrentlyStacked < current.StackableLimit)
                 {
-                    stored.Add(item);
+                    resultIndex = i;
+                    break;
                 }
-                else
+            }
+
+            if (resultIndex == -1)
+            {
+                stored.Add(item);
+            }
+            else
+            {
+                Item storedItem = stored[resultIndex];
+                stored.RemoveAt(resultIndex);
+
+                Item combined = Item.Combine(storedItem, item, out Item overflow);
+                stored.Add(combined);
+
+                if (overflow != null)
                 {
-                    Item storedItem = stored[resultIndex];
-                    stored.RemoveAt(resultIndex);
-
-                    Item combined = Item.Combine(storedItem, item, out Item overflow);
-                    stored.Add(combined);
-
-                    if (overflow != null)
-                    {
-                        stored.Add(overflow);
-                    }
+                    stored.Add(overflow);
                 }
-                
+            }
+        }
+
+        /// <summary>
+        /// Adjust the weight stored in this container.
+        /// </summary>
+        /// <param name="itemWeight"></param>
+        /// <param name="amountOfItem"></param>
+        /// <param name="adding"></param>
+        private void AdjustWeight(double itemWeight, int amountOfItem, bool adding)
+        {
+            if (adding)
+            {
+                this._Weight += itemWeight * amountOfItem;
+            }
+            else
+            {
+                this._Weight -= itemWeight * amountOfItem;
             }
         }
     }
