@@ -8,6 +8,11 @@ A fantasy world that imagines what a Rimworld style game could truly do if it ha
 Master Branch:
 [![Build status](https://ci.appveyor.com/api/projects/status/utahvkv3dvsp330m/branch/master?svg=true)](https://ci.appveyor.com/project/SneakyTactician/magicallife/branch/master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d8fc3d3cd10a4b6890660dffbcae158a)](https://www.codacy.com/app/sneakytactician/MagicalLife?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SneakyTactician/MagicalLife&amp;utm_campaign=Badge_Grade)
+[![](https://tokei.rs/b1/github/SneakyTactician/MagicalLife?category=code)](https://github.com/SneakyTactician/MagicalLife)
+[![](https://tokei.rs/b1/github/SneakyTactician/MagicalLife?category=blanks)](https://github.com/SneakyTactician/MagicalLife)
+[![](https://tokei.rs/b1/github/SneakyTactician/MagicalLife?category=files)](https://github.com/SneakyTactician/MagicalLife)
+[![](https://tokei.rs/b1/github/SneakyTactician/MagicalLife?category=lines)](https://github.com/SneakyTactician/MagicalLife)
+[![](https://tokei.rs/b1/github/SneakyTactician/MagicalLife?category=comments)](https://github.com/SneakyTactician/MagicalLife)
 
 Development Branch:
 [![Build status](https://ci.appveyor.com/api/projects/status/utahvkv3dvsp330m?svg=true)](https://ci.appveyor.com/project/SneakyTactician/magicallife)
