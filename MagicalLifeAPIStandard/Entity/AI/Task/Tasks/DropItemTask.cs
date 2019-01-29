@@ -20,8 +20,17 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         [ProtoMember(2)]
         private int Dimension { get; set; }
 
+        /// <summary>
+        /// The ID of the item to drop.
+        /// </summary>
         [ProtoMember(3)]
-        private Item ToDrop { get; set; }
+        private int ItemID;
+
+        /// <summary>
+        /// The amount of the item to drop.
+        /// </summary>
+        [ProtoMember(4)]
+        private int ItemAmount;
 
         /// <param name="location">The location to drop the item at.</param>
         /// <param name="dimension">The dimension to drop the item in.</param>
@@ -33,7 +42,8 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         {
             this.Location = location;
             this.Dimension = dimension;
-            this.ToDrop = item;
+            this.ItemID = item.ItemID;
+            this.ItemAmount = item.CurrentlyStacked;
         }
 
         private static List<Qualification> GetQualifications(Guid creatureID)
@@ -74,7 +84,17 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         public override void Tick(Living l)
         {
-            ItemAdder.AddItem(this.ToDrop, this.Location, this.Dimension);
+            List<Item> toDrop = l.Inventory.RemoveSomeOfItem(this.ItemID, this.ItemAmount);
+
+            if (toDrop != null)
+            {
+                //Drop all of the items that should be dropped.
+                foreach (Item item in toDrop)
+                {
+                    ItemAdder.AddItem(item, this.Location, this.Dimension);
+                }
+            }
+
             this.CompleteTask();
         }
     }

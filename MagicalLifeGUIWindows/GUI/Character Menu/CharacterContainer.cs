@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Entity;
+using MagicalLifeGUIWindows.GUI.Character_Menu.Buttons;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.GUI.Reusable.API;
 using MagicalLifeGUIWindows.GUI.Reusable.Premade;
@@ -16,6 +17,9 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu
         public MonoLabel CharacterName { get; set; }
 
         public ListBox Skills { get; set; }
+
+        public InventoryTabButton InventoryButton { get; set; } = new InventoryTabButton();
+        public SkillsTabButton SkillsButton { get; set; } = new SkillsTabButton();
 
         private static readonly SpriteFont ItemFont = Game1.AssetManager.Load<SpriteFont>(TextureLoader.FontMainMenuFont12x);
 
@@ -37,6 +41,8 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu
             this.Controls.Add(this.X);
             this.Controls.Add(this.CharacterName);
             this.Controls.Add(this.Skills);
+            this.Controls.Add(this.InventoryButton);
+            this.Controls.Add(this.SkillsButton);
         }
 
         private ListBox InitializeSkills(Living creature)
@@ -76,6 +82,14 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu
         public override string GetTextureName()
         {
             return TextureLoader.GUIMenuBackground;
+        }
+
+        public void HideAllControls()
+        {
+            foreach (GUIElement item in this.Controls)
+            {
+                item.Visible = false;
+            }
         }
     }
 }

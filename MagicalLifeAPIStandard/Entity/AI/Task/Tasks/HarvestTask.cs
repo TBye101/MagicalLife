@@ -91,11 +91,6 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
                 //Calculate how much to mine based upon skill of creature in harvesting
                 double amount = this.CalculatePercentHarvest(harvestSkill);
 
-                MasterLog.DebugWriteLine("Creature: " + l.ID.ToString());
-                MasterLog.DebugWriteLine("Harvesting amount: " + amount.ToString(CultureInfo.InvariantCulture));
-                MasterLog.DebugWriteLine("Creature harvest skill level: " + l.CreatureSkills[0].SkillAmount.GetValue().ToString());
-                MasterLog.DebugWriteLine("END");
-
                 //Harvest whatever
                 List<World.Base.Item> drop =
                     this.Harvestable.HarvestingBehavior.HarvestSomePercent(amount, this.Target);
@@ -136,6 +131,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             }
             else
             {
+                l.Inventory.AddItem(drop);
                 Point2D emtpyTile = ItemFinder.FindNearestNoItemResource(entityOn.MapLocation, l.Dimension);
                 DropItemTask task = new DropItemTask(emtpyTile, l.Dimension, drop, l.ID, Guid.NewGuid());
                 task.ReservedFor = l.ID;

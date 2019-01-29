@@ -99,6 +99,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
+    <Compile Include="GUI\Character Menu\Buttons\InventoryTabButton.cs" />
+    <Compile Include="GUI\Character Menu\Buttons\SkillsTabButton.cs" />
     <Compile Include="GUI\Character Menu\CharacterContainer.cs" />
     <Compile Include="GUI\Character Menu\CharacterMenu.cs" />
     <Compile Include="GUI\Character Menu\CharacterMenuLayout.cs" />

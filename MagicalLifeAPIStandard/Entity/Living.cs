@@ -77,6 +77,9 @@ namespace MagicalLifeAPI.Entity
         [ProtoMember(14)]
         public string CreatureName { get; set; }
 
+        [ProtoMember(15)]
+        public Inventory Inventory { get; set; }
+
         /// <summary>
         /// Raised when a <see cref="Living"/> is created.
         /// </summary>
@@ -97,6 +100,7 @@ namespace MagicalLifeAPI.Entity
             this.Initialize(health, movementSpeed, location, dimension);
             this.CreatureSkills = new List<Skill>();
             this.CreatureName = creatureName;
+            this.Inventory = new Inventory(true);
         }
 
         protected void Initialize(int health, double movementSpeed, Point2D location, int dimension)
