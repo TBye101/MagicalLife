@@ -5,6 +5,9 @@ using MonoGame.Extended.Input.InputListeners;
 
 namespace MagicalLifeGUIWindows.GUI.Reusable.API
 {
+    /// <summary>
+    /// Used to render a string from within a <see cref="ListBox"/>.
+    /// </summary>
     public class RenderableString : GUIElement
     {
         public string Text { get; private set; }

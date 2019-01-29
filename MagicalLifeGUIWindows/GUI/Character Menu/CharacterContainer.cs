@@ -1,10 +1,12 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Entity;
+using MagicalLifeAPI.World.Base;
 using MagicalLifeGUIWindows.GUI.Character_Menu.Buttons;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.GUI.Reusable.API;
 using MagicalLifeGUIWindows.GUI.Reusable.Premade;
 using MagicalLifeGUIWindows.Input;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -14,11 +16,15 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu
     public class CharacterContainer : GUIContainer
     {
         public WindowX X { get; set; }
+
         public MonoLabel CharacterName { get; set; }
 
         public ListBox Skills { get; set; }
 
+        public ScrollableGrid Inventory { get; set; }
+
         public InventoryTabButton InventoryButton { get; set; } = new InventoryTabButton();
+
         public SkillsTabButton SkillsButton { get; set; } = new SkillsTabButton();
 
         private static readonly SpriteFont ItemFont = Game1.AssetManager.Load<SpriteFont>(TextureLoader.FontMainMenuFont12x);
@@ -37,12 +43,34 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu
             this.X.XClicked += this.X_XClicked;
             this.CharacterName = new MonoLabel(CharacterMenuLayout.GetNameBounds(), TextureLoader.GUIMenuBackground, true, creature.CreatureName);
             this.Skills = this.InitializeSkills(creature);
+            this.Inventory = this.InitializeInventory(creature);
+
 
             this.Controls.Add(this.X);
             this.Controls.Add(this.CharacterName);
             this.Controls.Add(this.Skills);
             this.Controls.Add(this.InventoryButton);
             this.Controls.Add(this.SkillsButton);
+            this.Controls.Add(this.Inventory);
+        }
+
+        private ScrollableGrid InitializeInventory(Living creature)
+        {
+            ScrollableGrid grid = new ScrollableGrid(3, CharacterMenuLayout.GetInventoryBounds(), int.MaxValue, true, TextureLoader.FontMainMenuFont12x, 10);
+
+            Dictionary<int, List<Item>> inventoryItems = creature.Inventory.GetAllInventoryItems();
+            foreach (KeyValuePair<int, List<Item>> item in inventoryItems)
+            {
+                MonoLabel itemImage = new MonoLabel(new Rectangle(), item.Value[0].TextureName, true, "");
+                RenderableString itemName = new RenderableString(ItemFont, item.Value[0].Name);
+                RenderableString itemWeight = new RenderableString(ItemFont, item.Value[0].ItemWeight.ToString());
+
+                grid.Add(0, itemImage);
+                grid.Add(1, itemName);
+                grid.Add(2, itemWeight);
+            }
+
+            return grid;
         }
 
         private ListBox InitializeSkills(Living creature)

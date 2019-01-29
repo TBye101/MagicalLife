@@ -29,6 +29,7 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu.Buttons
             CharacterMenu.Menu.CharacterName.Visible = true;
             CharacterMenu.Menu.SkillsButton.Visible = true;
             CharacterMenu.Menu.InventoryButton.Visible = true;
+            CharacterMenu.Menu.Inventory.Visible = true;
         }
 
         public override void DoubleClick(MouseEventArgs e, GUIContainer container)

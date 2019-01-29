@@ -52,7 +52,7 @@ namespace MagicalLifeAPI.World.Base
         public int ItemID { get; private set; }
 
         [ProtoMember(6)]
-        private string TextureName { get; set; }
+        public string TextureName { get; set; }
 
         [ProtoMember(9)]
         public double ItemWeight { get; set; }

@@ -259,5 +259,15 @@ namespace MagicalLifeAPI.Entity
                 this._Weight -= itemWeight * amountOfItem;
             }
         }
+
+        /// <summary>
+        /// Returns a list of all of the items in this inventory.
+        /// Stored as: [itemID, itemObject]
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<int, List<Item>> GetAllInventoryItems()
+        {
+            return this.Items;
+        }
     }
 }

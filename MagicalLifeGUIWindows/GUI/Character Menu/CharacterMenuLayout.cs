@@ -31,6 +31,15 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu
         }
 
         /// <summary>
+        /// The bounds of the inventory display grid.
+        /// </summary>
+        /// <returns></returns>
+        public static Rectangle GetInventoryBounds()
+        {
+            return new Rectangle(160, 60, 300, 300);
+        }
+
+        /// <summary>
         /// The bounds of the button in the character menu which changes the view to look at the character's inventory.
         /// </summary>
         /// <returns></returns>
