@@ -3,6 +3,7 @@ using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Visual.Rendering.Animation;
+using MagicalLifeAPI.World.Items;
 using MagicalLifeSettings;
 using ProtoBuf;
 using System;
@@ -50,6 +51,8 @@ namespace MagicalLifeAPI.Entity.Humanoid
             this.Visual = new AnimatedTexture(RenderLayer.Character, this.GetSequences(),
                 TextureLoader.AnimationBaseCharacter,
                 XMLPaths.BaseCharacterSpriteSheet, Assembly.GetAssembly(typeof(AssemblyGetter)));
+            this.Inventory.AddItem(new Log(15, 30));
+            this.Inventory.AddItem(new StoneRubble(25));
         }
 
         public Human() : base()

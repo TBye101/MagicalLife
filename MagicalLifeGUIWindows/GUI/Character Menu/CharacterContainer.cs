@@ -44,7 +44,7 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu
             this.CharacterName = new MonoLabel(CharacterMenuLayout.GetNameBounds(), TextureLoader.GUIMenuBackground, true, creature.CreatureName);
             this.Skills = this.InitializeSkills(creature);
             this.Inventory = this.InitializeInventory(creature);
-
+            this.Inventory.Visible = false;
 
             this.Controls.Add(this.X);
             this.Controls.Add(this.CharacterName);
@@ -54,20 +54,43 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu
             this.Controls.Add(this.Inventory);
         }
 
+        /// <summary>
+        /// Counts how many items there are in all of the stacks.
+        /// </summary>
+        /// <param name="stacks"></param>
+        /// <returns></returns>
+        private int CountAllItems(List<Item> stacks)
+        {
+            int count = 0;
+            foreach (Item item in stacks)
+            {
+                count += item.CurrentlyStacked;
+            }
+
+            return count;
+        }
+
         private ScrollableGrid InitializeInventory(Living creature)
         {
-            ScrollableGrid grid = new ScrollableGrid(3, CharacterMenuLayout.GetInventoryBounds(), int.MaxValue, true, TextureLoader.FontMainMenuFont12x, 10);
+            ScrollableGrid grid = new ScrollableGrid(4, CharacterMenuLayout.GetInventoryBounds(), int.MaxValue, true, TextureLoader.FontMainMenuFont12x, 10);
 
             Dictionary<int, List<Item>> inventoryItems = creature.Inventory.GetAllInventoryItems();
             foreach (KeyValuePair<int, List<Item>> item in inventoryItems)
             {
+                int itemCount = this.CountAllItems(item.Value);
+
                 MonoLabel itemImage = new MonoLabel(new Rectangle(), item.Value[0].TextureName, true, "");
                 RenderableString itemName = new RenderableString(ItemFont, item.Value[0].Name);
-                RenderableString itemWeight = new RenderableString(ItemFont, item.Value[0].ItemWeight.ToString());
+
+                double stackWeight = item.Value[0].ItemWeight * itemCount;
+                RenderableString itemWeight = new RenderableString(ItemFont, "Weight: " + stackWeight.ToString());
+
+                RenderableString itemNumber = new RenderableString(ItemFont, "Count: " + itemCount.ToString());
 
                 grid.Add(0, itemImage);
                 grid.Add(1, itemName);
                 grid.Add(2, itemWeight);
+                grid.Add(3, itemNumber);
             }
 
             return grid;
