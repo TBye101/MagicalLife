@@ -84,9 +84,9 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu
                 RenderableString itemName = new RenderableString(ItemFont, item.Value[0].Name, Rendering.Text.SimpleTextRenderer.Alignment.Left);
 
                 double stackWeight = item.Value[0].ItemWeight * itemCount;
-                RenderableString itemWeight = new RenderableString(ItemFont, "Weight: " + stackWeight.ToString(), Rendering.Text.SimpleTextRenderer.Alignment.Center);
+                RenderableString itemWeight = new RenderableString(ItemFont, "Weight: " + stackWeight.ToString(), Rendering.Text.SimpleTextRenderer.Alignment.Left);
 
-                RenderableString itemNumber = new RenderableString(ItemFont, "Count: " + itemCount.ToString(), Rendering.Text.SimpleTextRenderer.Alignment.Center);
+                RenderableString itemNumber = new RenderableString(ItemFont, "Count: " + itemCount.ToString(), Rendering.Text.SimpleTextRenderer.Alignment.Right);
 
                 grid.Add(0, itemImage);
                 grid.Add(1, itemName);
