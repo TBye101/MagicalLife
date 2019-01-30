@@ -221,11 +221,6 @@ Released under the [MIT License](https://github.com/roy-t/AStar/blob/master/LICE
 
 #### Provides the pathfinding for Magical Life
 ---
-[Serilog](https://github.com/serilog/serilog)
-
-Released under the [Apache License 2.0](https://github.com/serilog/serilog/blob/dev/LICENSE)
-#### Used to log things
----
 [ProtoBuf-net](https://github.com/mgravell/protobuf-net)
 
 Released under the [Apache License 2.0](https://github.com/mgravell/protobuf-net/blob/master/Licence.txt)
