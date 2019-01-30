@@ -18,24 +18,41 @@ namespace MagicalLifeAPI.Components.Resource
         [ProtoMember(2)]
         protected string HarvestSound { get; set; }
 
-        public DropWhenCompletelyHarvested(List<Item> items, string mineSound)
+        /// <summary>
+        /// The sound played when the object is completely harvested.
+        /// </summary>
+        [ProtoMember(3)]
+        protected string CompletionSound { get; set; }
+
+        /// <param name="items">The items to drop when harvested.</param>
+        /// <param name="harvestSound">The sound to play each harvest tick. Can be empty to play no sound.</param>
+        /// <param name="completionSound">The sound to play when completely harvested/done. Can be empty to play no sound.</param>
+        public DropWhenCompletelyHarvested(List<Item> items, string harvestSound, string completionSound)
         {
             this.Items = items;
-            this.HarvestSound = mineSound;
+            this.HarvestSound = harvestSound;
+            this.CompletionSound = completionSound;
         }
 
-        public DropWhenCompletelyHarvested()
+        protected DropWhenCompletelyHarvested()
         {
         }
 
-        public override List<Item> Harvested()
+        public override List<Item> Harvested(Point2D position)
         {
+            if (this.CompletionSound != string.Empty)
+            {
+                FMODUtil.RaiseEvent(this.CompletionSound, "", 0, position);
+            }
             return this.Items;
         }
 
         protected override List<Item> HarvestPercent(double percentMined, Point2D position)
         {
-            FMODUtil.RaiseEvent(this.HarvestSound, "", 0, position);
+            if (this.HarvestSound != string.Empty)
+            {
+                FMODUtil.RaiseEvent(this.HarvestSound, "", 0, position);
+            }
             return null;
         }
     }

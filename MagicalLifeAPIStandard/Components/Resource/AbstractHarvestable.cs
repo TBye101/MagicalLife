@@ -33,7 +33,7 @@ namespace MagicalLifeAPI.Components.Resource
         /// Called when the object is harvested completely.
         /// </summary>
         /// <returns>Any items that should be dropped when completely harvested. Return null to drop nothing.</returns>
-        public abstract List<Item> Harvested();
+        public abstract List<Item> Harvested(Point2D position);
 
         /// <summary>
         /// Called anytime the object is in the process of being harvested, but not totally harvested.
@@ -51,7 +51,7 @@ namespace MagicalLifeAPI.Components.Resource
             }
             else
             {
-                return this.Harvested();
+                return this.Harvested(position);
             }
         }
 
