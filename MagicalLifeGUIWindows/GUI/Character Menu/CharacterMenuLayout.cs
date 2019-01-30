@@ -36,7 +36,7 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu
         /// <returns></returns>
         public static Rectangle GetInventoryBounds()
         {
-            return new Rectangle(160, 60, 300, 300);
+            return new Rectangle(160, 60, 400, 300);
         }
 
         /// <summary>

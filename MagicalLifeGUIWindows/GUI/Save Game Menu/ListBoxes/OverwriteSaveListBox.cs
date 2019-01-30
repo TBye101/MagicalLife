@@ -33,7 +33,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
             List<GUIElement> ret = new List<GUIElement>();
             foreach (string item in saves)
             {
-                ret.Add(new RenderableString(ItemFont, item));
+                ret.Add(new RenderableString(ItemFont, item, Rendering.Text.SimpleTextRenderer.Alignment.Center));
             }
 
             return ret;

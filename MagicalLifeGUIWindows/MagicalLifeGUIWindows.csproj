@@ -138,7 +138,8 @@
     <Compile Include="GUI\New World Menu\Labels\LengthLabel.cs" />
     <Compile Include="GUI\New World Menu\Labels\WidthLabel.cs" />
     <Compile Include="GUI\Reusable\API\IScrollable.cs" />
-    <Compile Include="GUI\Reusable\API\RenderableString.cs" />
+    <Compile Include="GUI\Reusable\RenderableImage.cs" />
+    <Compile Include="GUI\Reusable\RenderableString.cs" />
     <Compile Include="GUI\Reusable\Collections\ListBox.cs" />
     <Compile Include="GUI\Reusable\Collections\ScrollableGrid.cs" />
     <Compile Include="GUI\Reusable\Premade\WindowX.cs" />

@@ -11,31 +11,20 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
     /// <summary>
     /// A generic label class.
     /// </summary>
-    public class MonoLabel : GUIElement
+    public class RenderableImage : GUIElement
     {
-        /// <summary>
-        /// The text contained in this label box.
-        /// </summary>
-        public string Text { get; set; } = "";
+        private int TextureIndex;
 
-        /// <summary>
-        /// The text alignment of this <see cref="MonoLabel"/>.
-        /// </summary>
-        public Alignment TextAlignment { get; private set; }
-
-        /// <summary>
-        ///
-        /// </summary>
         /// <param name="bounds"></param>
         /// <param name="image"></param>
         /// <param name="font"></param>
         /// <param name="isContained">If true, this GUI element is within a container.</param>
-        public MonoLabel(Rectangle bounds, string image, bool isContained, string text) : base(bounds, int.MinValue, isContained, TextureLoader.FontMainMenuFont12x)
+        public RenderableImage(Rectangle bounds, string image, bool isContained) : base(bounds, int.MinValue, isContained, TextureLoader.FontMainMenuFont12x)
         {
-            this.Text = text;
+            this.TextureIndex = AssetManager.NameToIndex[image];
         }
 
-        public MonoLabel() : base()
+        public RenderableImage() : base()
         {
         }
 
@@ -63,10 +52,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
                 throw new InvalidDataException("Width or height cannot be 0");
             }
 
-            if (this.Text != null)
-            {
-                SimpleTextRenderer.DrawString(this.Font, this.Text, Bounds, this.TextAlignment, Color.White, ref spBatch);
-            }
+            spBatch.Draw(AssetManager.Textures[this.TextureIndex], Bounds, Color.White);
         }
     }
 }

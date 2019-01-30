@@ -79,13 +79,14 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu
             {
                 int itemCount = this.CountAllItems(item.Value);
 
-                MonoLabel itemImage = new MonoLabel(new Rectangle(), item.Value[0].TextureName, true, "");
-                RenderableString itemName = new RenderableString(ItemFont, item.Value[0].Name);
+                Rectangle imageBounds = new Rectangle(0, 0, 32, 32);
+                RenderableImage itemImage = new RenderableImage(imageBounds, item.Value[0].TextureName, true);
+                RenderableString itemName = new RenderableString(ItemFont, item.Value[0].Name, Rendering.Text.SimpleTextRenderer.Alignment.Left);
 
                 double stackWeight = item.Value[0].ItemWeight * itemCount;
-                RenderableString itemWeight = new RenderableString(ItemFont, "Weight: " + stackWeight.ToString());
+                RenderableString itemWeight = new RenderableString(ItemFont, "Weight: " + stackWeight.ToString(), Rendering.Text.SimpleTextRenderer.Alignment.Center);
 
-                RenderableString itemNumber = new RenderableString(ItemFont, "Count: " + itemCount.ToString());
+                RenderableString itemNumber = new RenderableString(ItemFont, "Count: " + itemCount.ToString(), Rendering.Text.SimpleTextRenderer.Alignment.Center);
 
                 grid.Add(0, itemImage);
                 grid.Add(1, itemName);
@@ -115,7 +116,7 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu
                     skillText += "Not Able to Learn";
                 }
 
-                RenderableString result = new RenderableString(ItemFont, skillText);
+                RenderableString result = new RenderableString(ItemFont, skillText, Rendering.Text.SimpleTextRenderer.Alignment.Center);
                 skills.Add(result);
             }
 

@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Error.InternalExceptions;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeGUIWindows.GUI.Reusable.API;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -113,6 +114,8 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             int x = containerBounds.X + this.DrawingBounds.X;
             int y = containerBounds.Y + this.DrawingBounds.Y;
 
+            MasterLog.DebugWriteLine("Grid x: " + x.ToString());
+
             int length;
 
             //How many items to display in our given bounds
@@ -143,7 +146,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
                 //Have the item draw itself
                 for (int ii = 0; ii < this.Columns; ii++)
                 {
-                    Rectangle target = new Rectangle(new Point(x * (ii * this.ItemDisplayBounds.X), y), this.ItemDisplayBounds);
+                    Rectangle target = new Rectangle(new Point(x + (ii * this.ItemDisplayBounds.X), y), this.ItemDisplayBounds);
                     spBatch.Draw(AssetManager.Textures[this.ItemBackgroundTexture], target, colorMask);
                     this.Items[ii][this.FirstItemIndex + i].Render(spBatch, target);
                 }
