@@ -3,25 +3,24 @@
 namespace MagicalLifeAPI.DataTypes.Attribute
 {
     /// <summary>
-    /// This type of attribute combines both whole number attributes
-    /// and float based attributes in order to support a whole number attribute that has a multiplier multiplying it.
+    /// Supports a double value that has a double multiplying it.
     /// </summary>
     [ProtoContract]
-    public class ComboAttribute
+    public class ComboDoubleAttribute
     {
         [ProtoMember(1)]
-        public Attribute32 BaseValue { get; set; }
+        public AttributeDouble BaseValue { get; set; }
 
         [ProtoMember(2)]
         public AttributeDouble Multiplier { get; set; }
 
-        public ComboAttribute(int baseValue, double baseMultiplier)
+        public ComboDoubleAttribute(int baseValue, double baseMultiplier)
         {
-            this.BaseValue = new Attribute32(baseValue);
+            this.BaseValue = new AttributeDouble(baseValue);
             this.Multiplier = new AttributeDouble(baseMultiplier);
         }
 
-        protected ComboAttribute()
+        protected ComboDoubleAttribute()
         {
             //Protobuf-net constructor.
         }
@@ -30,7 +29,7 @@ namespace MagicalLifeAPI.DataTypes.Attribute
         /// Adds the specified modifier to the base value of this <see cref="ComboAttribute"/>.
         /// </summary>
         /// <param name="baseValue"></param>
-        public void AddToBaseValue(Modifier32 baseValue)
+        public void AddToBaseValue(ModifierDouble baseValue)
         {
             this.BaseValue.AddModifier(baseValue);
         }

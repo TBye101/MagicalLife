@@ -1,23 +1,31 @@
-﻿using MagicalLifeGUIWindows.Rendering.Text;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Error.InternalExceptions;
+using MagicalLifeGUIWindows.Rendering.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Input.InputListeners;
+using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
 
-namespace MagicalLifeGUIWindows.GUI.Reusable.API
+namespace MagicalLifeGUIWindows.GUI.Reusable
 {
+    /// <summary>
+    /// A generic label class.
+    /// </summary>
     public class RenderableString : GUIElement
     {
         public string Text { get; private set; }
+        private Alignment Alignment { get; }
 
-        public RenderableString(SpriteFont font, string text)
+        public RenderableString(SpriteFont font, string text, Alignment alignment)
         {
             this.Font = font;
             this.Text = text;
+            this.Alignment = alignment;
         }
 
         public override void Render(SpriteBatch spBatch, Rectangle targetLocation)
         {
-            SimpleTextRenderer.DrawString(this.Font, this.Text, targetLocation, SimpleTextRenderer.Alignment.Center, Color.White, ref spBatch);
+            SimpleTextRenderer.DrawString(this.Font, this.Text, targetLocation, this.Alignment, Color.White, ref spBatch);
         }
 
         public override void Click(MouseEventArgs e, GUIContainer container)

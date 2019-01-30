@@ -19,7 +19,7 @@ namespace MagicalLifeAPI.World.Items
             },
             9999,
             count,
-            typeof(StoneRubble), TextureLoader.TextureStoneRubble1)
+            typeof(StoneRubble), TextureLoader.TextureStoneRubble1, 15)
         {
         }
 

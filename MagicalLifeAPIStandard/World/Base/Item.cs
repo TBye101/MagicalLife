@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.Visual.Rendering;
@@ -51,7 +52,10 @@ namespace MagicalLifeAPI.World.Base
         public int ItemID { get; private set; }
 
         [ProtoMember(6)]
-        private string TextureName { get; set; }
+        public string TextureName { get; set; }
+
+        [ProtoMember(9)]
+        public double ItemWeight { get; set; }
 
         /// <summary>
         ///
@@ -63,7 +67,7 @@ namespace MagicalLifeAPI.World.Base
         /// <param name="stackableLimit">How many items of this kind can be in one stack.</param>
         /// <param name="count">How many of this item to create into a stack.</param>
         /// <param name="itemID">The ID of this item.</param>
-        protected Item(string name, int durability, List<string> lore, int stackableLimit, int count, Type itemType, string textureName)
+        protected Item(string name, int durability, List<string> lore, int stackableLimit, int count, Type itemType, string textureName, double itemWeight)
         {
             this.Name = name;
             this.Lore = lore;
@@ -74,6 +78,7 @@ namespace MagicalLifeAPI.World.Base
             this.TextureName = textureName;
             this.Validate();
             this.TextureIndex = AssetManager.GetTextureIndex(this.TextureName);
+            this.ItemWeight = itemWeight;
         }
 
         protected Item()
@@ -125,6 +130,32 @@ namespace MagicalLifeAPI.World.Base
             else
             {
                 throw new InvalidOperationException("Error: Combining two items of different types is impossible to store.");
+            }
+        }
+
+        /// <summary>
+        /// Creates two items and will have the first be the specified amount, and the second be the leftovers.
+        /// Note: This will not remove any items.
+        /// </summary>
+        /// <param name="firstItemSize">The size of how big the first item in the tuple should be. The second item gets whatever is leftover.</param>
+        /// <param name="originalItem"></param>
+        /// <returns></returns>
+        public static ValueTuple<Item, Item> Split(Item originalItem, int firstItemSize)
+        {
+            if (originalItem.CurrentlyStacked <= firstItemSize)
+            {
+                throw new InvalidDataException();
+            }
+            else
+            {
+                int totalCount = originalItem.CurrentlyStacked;
+                Item firstItem = originalItem;
+                Item secondItem = originalItem;
+
+                firstItem.CurrentlyStacked = firstItemSize;
+                secondItem.CurrentlyStacked = totalCount - firstItemSize;
+
+                return new ValueTuple<Item, Item>(firstItem, secondItem);
             }
         }
 

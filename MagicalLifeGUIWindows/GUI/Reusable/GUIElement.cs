@@ -45,11 +45,10 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
                 MasterLog.DebugWriteLine("Name: " + text);
                 MasterLog.DebugWriteLine("Set bounds to: " + value.Bounds.ToString());
-
             }
         }
 
-    public SpriteFont Font { get; set; }
+        public SpriteFont Font { get; set; }
 
         public bool HasFocus { get; set; } = false;
 

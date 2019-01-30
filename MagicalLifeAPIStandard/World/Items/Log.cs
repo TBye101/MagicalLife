@@ -15,7 +15,7 @@ namespace MagicalLifeAPI.World.Items
         private static readonly string ItemName = "Log";
 
         public Log(int count, int durability)
-            : base(ItemName, durability, new List<string>(), 50, count, typeof(Log), TextureLoader.LogTexture1)
+            : base(ItemName, durability, new List<string>(), 50, count, typeof(Log), TextureLoader.LogTexture1, 5)
         {
         }
 

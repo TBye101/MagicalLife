@@ -1,8 +1,5 @@
-﻿using MagicalLifeAPI.Filing.Logging;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
 
 namespace MagicalLifeAPI.Entity.AI.Task
 {
@@ -40,7 +37,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
         }
 
         /// <summary>
-        /// A comparator used to compare magical tasks. 
+        /// A comparator used to compare magical tasks.
         /// Determines whether x is greater than, less than, or equal to y.
         /// </summary>
         /// <param name="x"></param>

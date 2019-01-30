@@ -1,14 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>MagicalLifeServer</RootNamespace>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Remove="Networking\**" />
     <Compile Remove="Validation\**" />
@@ -17,9 +14,7 @@
     <None Remove="Networking\**" />
     <None Remove="Validation\**" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\MagicalLifeAPIStandard\MagicalLifeAPIStandard.csproj" />
   </ItemGroup>
-
 </Project>

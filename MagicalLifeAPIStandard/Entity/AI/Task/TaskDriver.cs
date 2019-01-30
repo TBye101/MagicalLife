@@ -1,5 +1,4 @@
-﻿using MagicalLifeAPI.Filing.Logging;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Entity.AI.Task

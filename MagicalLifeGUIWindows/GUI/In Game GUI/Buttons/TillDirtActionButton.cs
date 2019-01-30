@@ -3,11 +3,6 @@ using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.GUI.In
 {
@@ -43,7 +38,6 @@ namespace MagicalLifeGUIWindows.GUI.In
             {
                 InGameGUI.Selected = ActionSelected.Till;
                 this.TextureID = this.GoldTextureIndex;
-
             }
         }
 
