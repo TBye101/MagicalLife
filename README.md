@@ -8,6 +8,11 @@ A fantasy world that imagines what a Rimworld style game could truly do if it ha
 Master Branch:
 [![Build status](https://ci.appveyor.com/api/projects/status/utahvkv3dvsp330m/branch/master?svg=true)](https://ci.appveyor.com/project/SneakyTactician/magicallife/branch/master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d8fc3d3cd10a4b6890660dffbcae158a)](https://www.codacy.com/app/sneakytactician/MagicalLife?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SneakyTactician/MagicalLife&amp;utm_campaign=Badge_Grade)
+[![](https://tokei.rs/b1/github/SneakyTactician/MagicalLife?category=code)](https://github.com/SneakyTactician/MagicalLife)
+[![](https://tokei.rs/b1/github/SneakyTactician/MagicalLife?category=blanks)](https://github.com/SneakyTactician/MagicalLife)
+[![](https://tokei.rs/b1/github/SneakyTactician/MagicalLife?category=files)](https://github.com/SneakyTactician/MagicalLife)
+[![](https://tokei.rs/b1/github/SneakyTactician/MagicalLife?category=lines)](https://github.com/SneakyTactician/MagicalLife)
+[![](https://tokei.rs/b1/github/SneakyTactician/MagicalLife?category=comments)](https://github.com/SneakyTactician/MagicalLife)
 
 Development Branch:
 [![Build status](https://ci.appveyor.com/api/projects/status/utahvkv3dvsp330m?svg=true)](https://ci.appveyor.com/project/SneakyTactician/magicallife)
@@ -80,7 +85,7 @@ Mod support: Always a priority
 # Development Instructions
 
 1. Download and install *any* version of [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-2. Download and install [Monogame 1.6](http://www.monogame.net/2017/03/01/monogame-3-6/) for Visual Studio.
+2. Download and install [Monogame 3.6](http://www.monogame.net/2017/03/01/monogame-3-6/) for Visual Studio.
 3. Download and install the [2012 VC++ x64 Redistributable](https://www.microsoft.com/en-us/download/details.aspx?id=30679)
 4. Clone this repository
 5. Open the solution, and set the solution configuration to *debug, x64*. 
@@ -215,11 +220,6 @@ Released under the [MIT License](https://github.com/craftworkgames/MonoGame.Exte
 Released under the [MIT License](https://github.com/roy-t/AStar/blob/master/LICENSE)
 
 #### Provides the pathfinding for Magical Life
----
-[Serilog](https://github.com/serilog/serilog)
-
-Released under the [Apache License 2.0](https://github.com/serilog/serilog/blob/dev/LICENSE)
-#### Used to log things
 ---
 [ProtoBuf-net](https://github.com/mgravell/protobuf-net)
 
