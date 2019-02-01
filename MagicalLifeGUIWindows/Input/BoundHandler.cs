@@ -112,7 +112,7 @@ namespace MagicalLifeGUIWindows.Input
 
                 MasterLog.DebugWriteLine(item.GetType().ToString() + " gui bounds: " + item.MouseBounds.Bounds.ToString());
 
-                if (focus == -1 && item.MouseBounds.Bounds.Contains(clickData.Position.X/* + container.DrawingBounds.X*/, clickData.Position.Y/* - container.DrawingBounds.Y*/))
+                if (focus == -1 && item.MouseBounds.Bounds.Contains(clickData.Position.X - container.DrawingBounds.X, clickData.Position.Y - container.DrawingBounds.Y))
                 {
                     item.HasFocus = true;
                     focus = i;

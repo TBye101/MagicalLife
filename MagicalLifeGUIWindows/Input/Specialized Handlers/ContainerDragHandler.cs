@@ -70,7 +70,6 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                 Rectangle newPosition = new Rectangle(position, this.LastDragged.DrawingBounds.Size);
 
                 this.LastDragged.DrawingBounds = newPosition;
-                this.LastDragged.AdjustClickBounds((int)e.DistanceMoved.X, (int)e.DistanceMoved.Y);
             }
         }
 

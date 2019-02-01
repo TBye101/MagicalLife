@@ -72,18 +72,5 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         {
             this.Child = child;
         }
-
-        /// <summary>
-        /// Adjusts all bounds of all elements on the container.
-        /// </summary>
-        /// <param name="xMove"></param>
-        /// <param name="yMove"></param>
-        public void AdjustClickBounds(int xMove, int yMove)
-        {
-            foreach (GUIElement item in this.Controls)
-            {
-                item.MoveClickBounds(xMove, yMove);
-            }
-        }
     }
 }
