@@ -54,7 +54,7 @@ AKA TODO:
 
 Character Classes and ~~XP system~~
 
-Inventory
+~~Inventory~~
 
 Agriculture
 
