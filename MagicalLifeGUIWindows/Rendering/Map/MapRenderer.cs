@@ -4,6 +4,7 @@ using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
+using MagicalLifeGUIWindows.Rendering.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -17,6 +18,8 @@ namespace MagicalLifeGUIWindows.Rendering.Map
     public static class MapRenderer
     {
         public static MapBatch MapDrawer { get; private set; } = new MapBatch();
+
+        private static SpriteFont ItemCountFont { get; set; } = Game1.AssetManager.Load<SpriteFont>(TextureLoader.FontMainMenuFont12x);
 
         /// <summary>
         /// Draws the tiles that make up the map.
@@ -69,6 +72,10 @@ namespace MagicalLifeGUIWindows.Rendering.Map
             {
                 Texture2D texture = AssetManager.Textures[tile.Item.TextureIndex];
                 MapDrawer.Draw(texture, target, RenderLayer.Items);
+
+                Rectangle itemCountBounds = new Rectangle(target.Location.X + Tile.GetTileSize().X / 2, target.Location.Y + Tile.GetTileSize().Y/* / 2*/, 32, 8);
+                MapDrawer.DrawText(tile.Item.CurrentlyStacked.ToString(), itemCountBounds,
+                    ItemCountFont, SimpleTextRenderer.Alignment.Left, RenderLayer.MapItemCount);
             }
         }
 

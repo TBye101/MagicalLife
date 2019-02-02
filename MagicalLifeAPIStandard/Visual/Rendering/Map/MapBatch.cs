@@ -1,10 +1,12 @@
 ﻿using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Util.Reusable;
 using MagicalLifeAPI.Visual.Rendering.Renderer;
+using MagicalLifeGUIWindows.Rendering.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
 
 namespace MagicalLifeGUIWindows.Rendering.Map
 {
@@ -63,6 +65,24 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         {
             void renderCall() => this.Draw(texture, target);
             this.RenderActions.Add(new RenderCallHolder(renderLayer, renderCall, this.CallCounter.Increment()));
+        }
+
+        /// <summary>
+        /// Draws text at the specified location within the map, accounting for player view positioning.
+        /// </summary>
+        public void DrawText(string text, Rectangle target, SpriteFont font, Alignment alignment, int renderLayer)
+        {
+            void renderCall() => this.DrawText(text, target, font, alignment);
+            this.RenderActions.Add(new RenderCallHolder(renderLayer, renderCall, this.CallCounter.Increment()));
+        }
+
+        private void DrawText(string text, Rectangle target, SpriteFont font, Alignment alignment)
+        {
+            int x = target.X + RenderInfo.XViewOffset;
+            int y = target.Y + RenderInfo.YViewOffset;
+
+            Rectangle newTarget = new Rectangle(x, y, target.Width, target.Height);
+            SimpleTextRenderer.DrawString(font, text, newTarget, alignment, Color.White, ref this.SpriteBat);
         }
 
         /// <summary>
