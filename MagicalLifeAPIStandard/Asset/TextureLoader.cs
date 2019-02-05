@@ -28,11 +28,13 @@ namespace MagicalLifeAPI.Asset
         public static readonly string GUIInputBox100x50 = "GUI/InputBox100x50";
         public static readonly string GUIMenuBackground = "GUI/MenuBackground";
         public static readonly string GUIMenuButton = "GUI/MenuButton";
+        public static readonly string GUIHoeButtonGrey = "GUI/HoeButton_Grey";
+        public static readonly string GUIHoeButtonGold = "GUI/HoeButton_Gold";
+        public static readonly string GUIX = "GUI/X";
+
         public static readonly string GUIPickaxeMapIcon = "GUI/PickaxeMapIcon";
         public static readonly string GUIAxeMapIcon = "GUI/AxeMapIcon";
-        public static readonly string GUIHoeButton = "GUI/HoeButton";
-        public static readonly string GUIHoeButtonGold = "GUI/HoeButtonGold";
-        public static readonly string GUIX = "GUI/X";
+        public static readonly string GUIHoeMapIcon = "GUI/HoeMapIcon";
 
         #endregion GUI
 
@@ -122,11 +124,13 @@ namespace MagicalLifeAPI.Asset
             this.TexturesToLoad.Add(GUIInputBox100x50);
             this.TexturesToLoad.Add(GUIMenuBackground);
             this.TexturesToLoad.Add(GUIMenuButton);
-            this.TexturesToLoad.Add(GUIPickaxeMapIcon);
-            this.TexturesToLoad.Add(GUIAxeMapIcon);
-            this.TexturesToLoad.Add(GUIHoeButton);
+            this.TexturesToLoad.Add(GUIHoeButtonGrey);
             this.TexturesToLoad.Add(GUIHoeButtonGold);
             this.TexturesToLoad.Add(GUIX);
+
+            this.TexturesToLoad.Add(GUIPickaxeMapIcon);
+            this.TexturesToLoad.Add(GUIAxeMapIcon);
+            this.TexturesToLoad.Add(GUIHoeMapIcon);
 
             this.TexturesToLoad.Add(TextureDirt1);
             this.TexturesToLoad.Add(TextureDirt2);

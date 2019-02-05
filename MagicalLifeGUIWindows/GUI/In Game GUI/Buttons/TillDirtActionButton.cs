@@ -11,9 +11,9 @@ namespace MagicalLifeGUIWindows.GUI.In
         protected int HoeTextureIndex;
         protected int GoldTextureIndex;
 
-        public TillDirtActionButton() : base(TextureLoader.GUIHoeButton, GetDisplayArea(), true)
+        public TillDirtActionButton() : base(TextureLoader.GUIHoeButtonGrey, GetDisplayArea(), true)
         {
-            this.HoeTextureIndex = AssetManager.GetTextureIndex(TextureLoader.GUIHoeButton);
+            this.HoeTextureIndex = AssetManager.GetTextureIndex(TextureLoader.GUIHoeButtonGrey);
             this.GoldTextureIndex = AssetManager.GetTextureIndex(TextureLoader.GUIHoeButtonGold);
         }
 
