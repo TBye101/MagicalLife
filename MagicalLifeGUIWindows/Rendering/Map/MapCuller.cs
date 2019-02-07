@@ -22,9 +22,9 @@ namespace MagicalLifeGUIWindows.Rendering.Map
             Point2D tileSize = Tile.GetTileSize();
 
             //How many tiles can fit left to right on the screen.
-            int screenChunksWidth = fullScreenWindow.Width / (tileSize.X * Chunk.Width) + 1;
+            int screenChunksWidth = fullScreenWindow.Width / (tileSize.X * Chunk.Width) + 2;
             //How man tiles can fit top to bottom on the screen.
-            int screenChunksHeight = fullScreenWindow.Height / (tileSize.Y * Chunk.Height) + 1;
+            int screenChunksHeight = fullScreenWindow.Height / (tileSize.Y * Chunk.Height) + 2;
 
             //The chunk position of the upper top left.
             int leftChunkX = Math.Abs((cameraXOffset / tileSize.X) / Chunk.Width);
