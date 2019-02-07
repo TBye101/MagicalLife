@@ -39,7 +39,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// <summary>
         /// Renders the backlog of rendering jobs to completion.
         /// </summary>
-        public void RenderAll()
+        public void RenderAll()//Slow, the sort is killing us
         {
             if (this.RenderActions.Count > 0)
             {
