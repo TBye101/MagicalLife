@@ -21,7 +21,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
 
         private static SpriteFont ItemCountFont { get; set; } = Game1.AssetManager.Load<SpriteFont>(TextureLoader.FontMainMenuFont12x);
 
-        private static MapCuller Culler = new MapCuller();
+        private static MapCuller Culler = new MapCuller(RenderInfo.FullScreenWindow);
 
         private static Point2D TileSize = Tile.GetTileSize();
 
@@ -33,7 +33,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         {
             MapDrawer.UpdateSpriteBatch(spBatch);
 
-            Point2D[,] result = Culler.GetChunksInView(RenderInfo.XViewOffset, RenderInfo.YViewOffset, RenderInfo.FullScreenWindow);
+            Point2D[,] result = Culler.GetChunksInView(RenderInfo.XViewOffset, RenderInfo.YViewOffset);
 
             //Iterates over all the chunks that are within view of the client's screen.
             int width = result.GetLength(0);

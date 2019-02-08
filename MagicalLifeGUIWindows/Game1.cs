@@ -199,6 +199,7 @@ namespace MagicalLifeGUIWindows
                     zoomBatch.End();
                 }
             }
+            MasterLog.DebugWriteLine("Average FPS: " + FPS.AverageFramesPerSecond.ToString());
             base.Draw(gameTime);
         }
 

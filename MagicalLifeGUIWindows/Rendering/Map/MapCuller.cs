@@ -17,30 +17,54 @@ namespace MagicalLifeGUIWindows.Rendering.Map
     /// </summary>
     public class MapCuller
     {
-        public Point2D[,] GetChunksInView(int cameraXOffset, int cameraYOffset, Rectangle fullScreenWindow)
+        private readonly Point2D TileSize = Tile.GetTileSize();
+
+        //How many tiles can fit left to right on the screen.
+        private readonly int ScreenChunksWidth;
+        //How many tiles can fit top to bottom on the screen.
+        private readonly int ScreenChunksHeight;
+
+        Point2D[,] ChunksInView;
+
+        public MapCuller(Rectangle fullScreenWindow)
         {
-            Point2D tileSize = Tile.GetTileSize();
+            this.ScreenChunksWidth = fullScreenWindow.Width / (this.TileSize.X * Chunk.Width) + 2;
+            this.ScreenChunksHeight = fullScreenWindow.Height / (this.TileSize.Y * Chunk.Height) + 2;
+            this.InitializeChunksInView();
+        }
 
-            //How many tiles can fit left to right on the screen.
-            int screenChunksWidth = fullScreenWindow.Width / (tileSize.X * Chunk.Width) + 2;
-            //How man tiles can fit top to bottom on the screen.
-            int screenChunksHeight = fullScreenWindow.Height / (tileSize.Y * Chunk.Height) + 2;
+        /// <summary>
+        /// Initializes <see cref="ChunksInView"/>.
+        /// </summary>
+        private void InitializeChunksInView()
+        {
+            this.ChunksInView = new Point2D[this.ScreenChunksWidth, this.ScreenChunksHeight];
 
-            //The chunk position of the upper top left.
-            int leftChunkX = Math.Abs((cameraXOffset / tileSize.X) / Chunk.Width);
-            int leftChunkY = Math.Abs((cameraYOffset / tileSize.Y) / Chunk.Height);
-
-            Point2D[,] chunksInView = new Point2D[screenChunksWidth, screenChunksHeight];
-
-            for (int x = 0; x < screenChunksWidth; x++)
+            for (int x = 0; x < this.ScreenChunksWidth; x++)
             {
-                for (int y = 0; y < screenChunksHeight; y++)
+                for (int y = 0; y < this.ScreenChunksHeight; y++)
                 {
-                    chunksInView[x, y] = new Point2D(leftChunkX + x, leftChunkY + y);
+                    this.ChunksInView[x, y] = new Point2D(0, 0);
+                }
+            }
+        }
+
+        public Point2D[,] GetChunksInView(int cameraXOffset, int cameraYOffset)
+        {
+            //The chunk position of the upper top left.
+            int leftChunkX = Math.Abs((cameraXOffset / this.TileSize.X) / Chunk.Width);
+            int leftChunkY = Math.Abs((cameraYOffset / this.TileSize.Y) / Chunk.Height);
+
+            for (int x = 0; x < this.ScreenChunksWidth; x++)
+            {
+                for (int y = 0; y < this.ScreenChunksHeight; y++)
+                {
+                    this.ChunksInView[x, y].X = leftChunkX + x;
+                    this.ChunksInView[x, y].Y = leftChunkY + y;
                 }
             }
 
-            return chunksInView;
+            return this.ChunksInView;
         }
     }
 }
