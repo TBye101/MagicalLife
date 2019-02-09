@@ -9,7 +9,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
         /// <summary>
         /// The most zoomed out the player can get.
         /// </summary>
-        private static readonly float MinZoom = 1F;
+        private static readonly float MinZoom = .125F;
 
         /// <summary>
         /// The most zoomed in the player can get.

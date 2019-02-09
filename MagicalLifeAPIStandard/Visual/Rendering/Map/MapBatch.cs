@@ -63,8 +63,34 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// <param name="renderLayer">The layer in which this rendering call should be made.</param>
         public void Draw(Texture2D texture, Rectangle target, int renderLayer)
         {
-            void renderCall() => this.Draw(texture, target);
+            void renderCall() => this.Draw(texture, this.AdjustByZoom(target));
             this.RenderActions.Add(new RenderCallHolder(renderLayer, renderCall, this.CallCounter.Increment()));
+        }
+
+        /// <summary>
+        /// Adjust the rectangle based upon the zoom.
+        /// </summary>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        private Rectangle AdjustByZoom(Rectangle target)
+        {
+            int zoomX = (int)(target.X * RenderInfo.Zoom);
+            int zoomY = (int)(target.Y * RenderInfo.Zoom);
+            int zoomWidth = (int)(target.Width * RenderInfo.Zoom);
+            int zoomHeight = (int)(target.Height * RenderInfo.Zoom);
+            return new Rectangle(zoomX, zoomY, zoomWidth, zoomHeight);
+        }
+
+        /// <summary>
+        /// Adjust the rectangle based upon the zoom.
+        /// </summary>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        private Vector2 AdjustByZoom(Vector2 target)
+        {
+            int zoomX = (int)(target.X * RenderInfo.Zoom);
+            int zoomY = (int)(target.Y * RenderInfo.Zoom);
+            return new Vector2(zoomX, zoomY);
         }
 
         /// <summary>
@@ -72,7 +98,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// </summary>
         public void DrawText(string text, Rectangle target, SpriteFont font, Alignment alignment, int renderLayer)
         {
-            void renderCall() => this.DrawText(text, target, font, alignment);
+            void renderCall() => this.DrawText(text, this.AdjustByZoom(target), font, alignment);
             this.RenderActions.Add(new RenderCallHolder(renderLayer, renderCall, this.CallCounter.Increment()));
         }
 
@@ -82,7 +108,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
             int y = target.Y + RenderInfo.YViewOffset;
 
             Rectangle newTarget = new Rectangle(x, y, target.Width, target.Height);
-            SimpleTextRenderer.DrawString(font, text, newTarget, alignment, Color.White, ref this.SpriteBat);
+            SimpleTextRenderer.DrawString(font, text, this.AdjustByZoom(newTarget), alignment, Color.White, ref this.SpriteBat);
         }
 
         /// <summary>
@@ -94,8 +120,9 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         {
             int x = target.X + RenderInfo.XViewOffset;
             int y = target.Y + RenderInfo.YViewOffset;
+            Rectangle offset = new Rectangle(x, y, target.Width, target.Height);
 
-            this.SpriteBat.Draw(texture, new Rectangle(x, y, target.Width, target.Height), Color.White);
+            this.SpriteBat.Draw(texture, this.AdjustByZoom(offset), Color.White);
         }
 
         /// <summary>
@@ -106,7 +133,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// <param name="textureSection">The section of the texture that will be drawn.</param>
         public void Draw(Texture2D texture, Vector2 target, Rectangle textureSection, int renderLayer)
         {
-            void renderCall() => this.Draw(texture, target, textureSection);
+            void renderCall() => this.Draw(texture, this.AdjustByZoom(target), textureSection);
             this.RenderActions.Add(new RenderCallHolder(renderLayer, renderCall, this.CallCounter.Increment()));
         }
 
@@ -120,13 +147,14 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         {
             float x = (float)Math.Round(target.X + RenderInfo.XViewOffset);
             float y = (float)Math.Round(target.Y + RenderInfo.YViewOffset);
+            Vector2 offsetVector = new Vector2(x, y);
 
-            this.SpriteBat.Draw(texture, new Vector2(x, y), textureSection, Color.White);
+            this.SpriteBat.Draw(texture, this.AdjustByZoom(offsetVector), textureSection, Color.White);
         }
 
         public void Draw(Texture2D texture, Vector2 target, int renderLayer)
         {
-            void renderCall() => this.Draw(texture, target);
+            void renderCall() => this.Draw(texture, this.AdjustByZoom(target));
             this.RenderActions.Add(new RenderCallHolder(renderLayer, renderCall, this.CallCounter.Increment()));
         }
 
@@ -134,8 +162,9 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         {
             int x = (int)Math.Round(target.X + RenderInfo.XViewOffset);
             int y = (int)Math.Round(target.Y + RenderInfo.YViewOffset);
+            Vector2 offsetVector = new Vector2(x, y);
 
-            this.SpriteBat.Draw(texture, new Vector2(x, y), Color.White);
+            this.SpriteBat.Draw(texture, this.AdjustByZoom(offsetVector), Color.White);
         }
     }
 }

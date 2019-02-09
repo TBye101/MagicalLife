@@ -190,8 +190,8 @@ namespace MagicalLifeGUIWindows
                     //render target to back buffer
                     zoomBatch.Begin();
 
-                    int width = (int)(this.GraphicsDevice.DisplayMode.Width * RenderInfo.Zoom);
-                    int height = (int)(this.GraphicsDevice.DisplayMode.Height * RenderInfo.Zoom);
+                    int width = (int)(this.GraphicsDevice.DisplayMode.Width/* * RenderInfo.Zoom*/);
+                    int height = (int)(this.GraphicsDevice.DisplayMode.Height/* * RenderInfo.Zoom*/);
 
                     zoomBatch.Draw(target, new Rectangle(0, 0, width, height), Color.White);
                     RenderingPipe.DrawGUI(zoomBatch);
