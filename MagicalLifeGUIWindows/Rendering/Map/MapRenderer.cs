@@ -33,16 +33,14 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         {
             MapDrawer.UpdateSpriteBatch(spBatch);
 
-            Point2D[,] result = Culler.GetChunksInView(RenderInfo.XViewOffset, RenderInfo.YViewOffset);
+            List<Point2D> result = Culler.GetChunksInView(RenderInfo.XViewOffset, RenderInfo.YViewOffset);
 
             //Iterates over all the chunks that are within view of the client's screen.
-            int width = result.GetLength(0);
-            int height = result.GetLength(1);
-            for (int x = 0; x < width; x++)
+
+            foreach (Point2D chunkCoordinates in result)
             {
-                for (int y = 0; y < height; y++)
+                if (chunkCoordinates.X != -1 && chunkCoordinates.Y != -1)
                 {
-                    Point2D chunkCoordinates = result[x, y];
                     Chunk chunk = World.GetChunk(dimension, chunkCoordinates.X, chunkCoordinates.Y);
 
                     foreach (Tile tile in chunk)

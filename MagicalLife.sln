@@ -8,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		CHANGELOG.md = CHANGELOG.md
 		Credit.txt = Credit.txt
 		Performance Notes.md = Performance Notes.md
+		Performance1.psess = Performance1.psess
 		TestSettings.runsettings = TestSettings.runsettings
 		Vision.md = Vision.md
 	EndProjectSection
@@ -131,6 +132,9 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FF8B4622-BBFB-41B1-9FEC-01091A7B38BB}
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
 	EndGlobalSection
 	GlobalSection(Performance) = preSolution
 		HasPerformanceSessions = true

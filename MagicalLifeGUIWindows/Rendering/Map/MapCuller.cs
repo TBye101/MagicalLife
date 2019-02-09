@@ -20,16 +20,16 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         private readonly Point2D TileSize = Tile.GetTileSize();
 
         //How many tiles can fit left to right on the screen.
-        private readonly int ScreenChunksWidth;
+        private int ScreenChunksWidth;
         //How many tiles can fit top to bottom on the screen.
-        private readonly int ScreenChunksHeight;
+        private int ScreenChunksHeight;
 
-        Point2D[,] ChunksInView;
+        private List<Point2D> ChunksInView;
 
         public MapCuller(Rectangle fullScreenWindow)
         {
-            this.ScreenChunksWidth = fullScreenWindow.Width / (this.TileSize.X * Chunk.Width) + 2;
-            this.ScreenChunksHeight = fullScreenWindow.Height / (this.TileSize.Y * Chunk.Height) + 2;
+            this.ScreenChunksWidth = (fullScreenWindow.Width / (this.TileSize.X * Chunk.Width) + 2);
+            this.ScreenChunksHeight = (fullScreenWindow.Height / (this.TileSize.Y * Chunk.Height) + 2);
             this.InitializeChunksInView();
         }
 
@@ -38,33 +38,61 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// </summary>
         private void InitializeChunksInView()
         {
-            this.ChunksInView = new Point2D[this.ScreenChunksWidth, this.ScreenChunksHeight];
-
-            for (int x = 0; x < this.ScreenChunksWidth; x++)
-            {
-                for (int y = 0; y < this.ScreenChunksHeight; y++)
-                {
-                    this.ChunksInView[x, y] = new Point2D(0, 0);
-                }
-            }
+            int arrayWidth = this.ScreenChunksWidth * 8;
+            int arrayHeight = this.ScreenChunksHeight * 8;
+            //Multiply by eight in order to compensate for the most zoomed out the map can be.
+            //this.ChunksInView = new List<Point2D>(arrayWidth * arrayHeight);
+            this.ChunksInView = new List<Point2D>();
         }
 
-        public Point2D[,] GetChunksInView(int cameraXOffset, int cameraYOffset)
+        public List<Point2D> GetChunksInView(int cameraXOffset, int cameraYOffset)
         {
+            this.ScreenChunksWidth = (int)(RenderInfo.FullScreenWindow.Width / (this.TileSize.X * Chunk.Width) / RenderInfo.Zoom) + 2;
+            this.ScreenChunksHeight = (int)(RenderInfo.FullScreenWindow.Height / (this.TileSize.Y * Chunk.Height) / RenderInfo.Zoom) + 2;
+
             //The chunk position of the upper top left.
             int leftChunkX = Math.Abs((cameraXOffset / this.TileSize.X) / Chunk.Width);
             int leftChunkY = Math.Abs((cameraYOffset / this.TileSize.Y) / Chunk.Height);
 
-            for (int x = 0; x < this.ScreenChunksWidth; x++)
+            int x = 0;
+            int y = 0;
+            while (x < this.ScreenChunksWidth)
             {
-                for (int y = 0; y < this.ScreenChunksHeight; y++)
+                while (y < this.ScreenChunksHeight)
                 {
-                    this.ChunksInView[x, y].X = leftChunkX + x;
-                    this.ChunksInView[x, y].Y = leftChunkY + y;
+                    this.ChunksInView.Add(new Point2D(x + leftChunkX, y + leftChunkY));
+                    y++;
                 }
+
+                y = 0;
+                x++;
             }
+            //this.SetEnd(x, y);
 
             return this.ChunksInView;
         }
+
+        /// <summary>
+        /// Sets the chunk coordinate after the last usable one to be a signal to stop.
+        /// This is accomplished by setting the point to be (-1, -1), as that position doesn't exist in the chunk coordinate system.
+        /// </summary>
+        /// <param name="lastUsable"></param>
+        //private void SetEnd(int lastX, int lastY)
+        //{
+        //    int arrayWidth = this.ChunksInView.GetLength(0);
+        //    int arrayHeight = this.ChunksInView.GetLength(1);
+
+        //    if (lastX < arrayWidth - 1 || lastY < arrayHeight - 1)
+        //    {
+        //        if (lastY < arrayHeight - 1)
+        //        {
+        //            this.ChunksInView[lastX, lastY + 1] = new Point2D(-1, -1);
+        //        }
+        //        else
+        //        {
+        //            this.ChunksInView[lastX + 1, 0] = new Point2D(-1, -1);
+        //        }
+        //    }
+        //}
     }
 }
