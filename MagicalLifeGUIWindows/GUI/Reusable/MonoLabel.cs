@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeGUIWindows.Rendering.Text;
 using Microsoft.Xna.Framework;
@@ -65,7 +66,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
             if (this.Text != null)
             {
-                SimpleTextRenderer.DrawString(this.Font, this.Text, Bounds, this.TextAlignment, Color.White, ref spBatch);
+                SimpleTextRenderer.DrawString(this.Font, this.Text, Bounds, this.TextAlignment, Color.White, ref spBatch, RenderLayer.GUI);
             }
         }
     }

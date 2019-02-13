@@ -57,7 +57,7 @@ namespace MagicalLifeGUIWindows.Rendering.Text
         /// <param name="align"></param>
         /// <param name="color"></param>
         /// <param name="spBatch"></param>
-        public static void DrawString(SpriteFont font, string text, Microsoft.Xna.Framework.Rectangle bounds, Alignment align, Microsoft.Xna.Framework.Color color, ref SpriteBatch spBatch)
+        public static void DrawString(SpriteFont font, string text, Microsoft.Xna.Framework.Rectangle bounds, Alignment align, Microsoft.Xna.Framework.Color color, ref SpriteBatch spBatch, int renderLayer)
         {
             if (text != string.Empty)
             {
@@ -86,9 +86,7 @@ namespace MagicalLifeGUIWindows.Rendering.Text
                     origin.Y -= (bounds.Height / 2) - (size.Y / 2);
                 }
 #pragma warning restore RCS1096 // Use bitwise operation instead of calling 'HasFlag'.
-
-                spBatch.DrawString(font, GetDrawableText(font, text, bounds), pos, color, 0, origin, 1, SpriteEffects.None, 0);
-            }
+                spBatch.DrawString(font, GetDrawableText(font, text, bounds), pos, color, 0F, origin, 1, SpriteEffects.None, renderLayer);            }
         }
     }
 }

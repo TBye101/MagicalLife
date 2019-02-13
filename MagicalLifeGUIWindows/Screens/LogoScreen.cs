@@ -71,7 +71,7 @@ namespace MagicalLifeGUIWindows.Screens
             spBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
 
             spBatch.Draw(this.Logo, this.DisplayZone.Center.ToVector2(), null, this.CalculateMask(), 0, new Vector2(this.Logo.Width / 2, this.Logo.Height / 2), 1.0f, SpriteEffects.None, 1.0f);
-            SimpleTextRenderer.DrawString(this.Font, this.Text, this.TextZone, SimpleTextRenderer.Alignment.Left, Color.White, ref spBatch);
+            SimpleTextRenderer.DrawString(this.Font, this.Text, this.TextZone, SimpleTextRenderer.Alignment.Left, Color.White, ref spBatch, RenderLayer.GUI);
 
             this.Frames--;
             spBatch.End();

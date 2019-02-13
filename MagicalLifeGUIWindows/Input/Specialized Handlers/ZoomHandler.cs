@@ -28,14 +28,14 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
             float change = (previous - current) / 1000;
 
-            //Ensure that zoom is above the minimum.
-            float aboveMin = Math.Max(ZoomHandler.MinZoom, RenderInfo.Zoom - change);
-
-            //Ensure that zoom is below the maximum.
-            float belowMaxAndAboveMin = Math.Min(ZoomHandler.MaxZoom, aboveMin);
-
-            RenderInfo.Zoom = belowMaxAndAboveMin;
-            MasterLog.DebugWriteLine("Zoom: " + RenderInfo.Zoom.ToString());
+            if (change > 0)
+            {
+                Game1.Camera2D.HandleInput(Rendering.Map.CameraMovementState.ZoomIn);
+            }
+            if (change < 0)
+            {
+                Game1.Camera2D.HandleInput(Rendering.Map.CameraMovementState.ZoomOut);
+            }
         }
     }
 }
