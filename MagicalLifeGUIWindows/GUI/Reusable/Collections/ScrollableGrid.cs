@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeGUIWindows.GUI.Reusable.API;
@@ -147,7 +148,8 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
                 for (int ii = 0; ii < this.Columns; ii++)
                 {
                     Rectangle target = new Rectangle(new Point(x + (ii * this.ItemDisplayBounds.X), y), this.ItemDisplayBounds);
-                    spBatch.Draw(AssetManager.Textures[this.ItemBackgroundTexture], target, colorMask);
+                    spBatch.Draw(AssetManager.Textures[this.ItemBackgroundTexture], target, null, Color.White, 0.0F, new Vector2(0, 0), SpriteEffects.None, RenderLayer.GUI);
+
                     this.Items[ii][this.FirstItemIndex + i].Render(spBatch, target);
                 }
                 y += this.ItemDisplayBounds.Y;
