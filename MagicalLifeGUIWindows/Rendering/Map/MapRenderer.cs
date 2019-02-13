@@ -33,7 +33,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         {
             MapDrawer.UpdateSpriteBatch(spBatch);
 
-            List<Point2D> result = Culler.GetChunksInView(RenderInfo.XViewOffset, RenderInfo.YViewOffset);
+            List<Point2D> result = Culler.GetChunksInView();
 
             //Iterates over all the chunks that are within view of the client's screen.
 
@@ -52,6 +52,8 @@ namespace MagicalLifeGUIWindows.Rendering.Map
                     DrawEntities(dimension, chunk);
                 }
             }
+
+            MapDrawer.RenderAll();
         }
 
         public static void DrawEntities(int dimension, Chunk chunk)

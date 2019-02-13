@@ -30,11 +30,11 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
             if (change > 0)
             {
-                Game1.Camera2D.HandleInput(Rendering.Map.CameraMovementState.ZoomIn);
+                RenderInfo.Camera2D.HandleInput(Rendering.Map.CameraMovementState.ZoomIn);
             }
             if (change < 0)
             {
-                Game1.Camera2D.HandleInput(Rendering.Map.CameraMovementState.ZoomOut);
+                RenderInfo.Camera2D.HandleInput(Rendering.Map.CameraMovementState.ZoomOut);
             }
         }
     }

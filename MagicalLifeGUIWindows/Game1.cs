@@ -29,7 +29,6 @@ namespace MagicalLifeGUIWindows
     {
         public GraphicsDeviceManager Graphics { get; set; }
         public SpriteBatch SpriteBatch;
-        public static Camera Camera2D = new Camera();
 
         public static ContentManager AssetManager { get; set; }
 
@@ -81,9 +80,9 @@ namespace MagicalLifeGUIWindows
 
             SettingsManager.UniversalSettings.Settings.GameHasRunBefore = true;
             SettingsManager.UniversalSettings.Save();
-            Camera2D.ViewportHeight = this.Graphics.GraphicsDevice.Viewport.Height;
-            Camera2D.ViewportWidth = this.Graphics.GraphicsDevice.Viewport.Width;
-            Camera2D.CenterOn(new Vector2(0, 0));
+            RenderInfo.Camera2D.ViewportHeight = this.Graphics.GraphicsDevice.Viewport.Height;
+            RenderInfo.Camera2D.ViewportWidth = this.Graphics.GraphicsDevice.Viewport.Width;
+            RenderInfo.Camera2D.CenterOn(new Vector2(0, 0));
         }
 
         /// <summary>
@@ -160,7 +159,7 @@ namespace MagicalLifeGUIWindows
                         {
 
                             zoomBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend,
-                                null, null, null, null, Camera2D.TranslationMatrix);
+                                null, null, null, null, RenderInfo.Camera2D.TranslationMatrix);
 
                             RenderingPipe.DrawScreen(zoomBatch);
                             RenderingPipe.DrawGUI(zoomBatch);

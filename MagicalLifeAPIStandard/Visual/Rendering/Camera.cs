@@ -8,9 +8,9 @@ using Microsoft.Xna.Framework;
 public class Camera
 {
     // Centered Position of the Camera in pixels.
-    private Vector2 Position { get; set; }
+    public Vector2 Position { get; private set; }
     // Current Zoom level with 1.0f being standard
-    private float Zoom { get; set; }
+    public float Zoom { get; private set; }
     // Current Rotation amount with 0.0f being standard orientation
     private float Rotation { get; set; }
 

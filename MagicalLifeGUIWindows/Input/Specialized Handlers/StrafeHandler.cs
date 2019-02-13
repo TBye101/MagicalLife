@@ -20,22 +20,22 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
         {
             if (e == SettingsManager.Keybindings.Settings.StrafeDown)
             {
-                Game1.Camera2D.HandleInput(Rendering.Map.CameraMovementState.Down);
+                RenderInfo.Camera2D.HandleInput(Rendering.Map.CameraMovementState.Down);
             }
 
             if (e == SettingsManager.Keybindings.Settings.StrafeLeft)
             {
-                Game1.Camera2D.HandleInput(Rendering.Map.CameraMovementState.Left);
+                RenderInfo.Camera2D.HandleInput(Rendering.Map.CameraMovementState.Left);
             }
 
             if (e == SettingsManager.Keybindings.Settings.StrafeRight)
             {
-                Game1.Camera2D.HandleInput(Rendering.Map.CameraMovementState.Right);
+                RenderInfo.Camera2D.HandleInput(Rendering.Map.CameraMovementState.Right);
             }
 
             if (e == SettingsManager.Keybindings.Settings.StrafeUp)
             {
-                Game1.Camera2D.HandleInput(Rendering.Map.CameraMovementState.Up);
+                RenderInfo.Camera2D.HandleInput(Rendering.Map.CameraMovementState.Up);
             }
         }
     }
