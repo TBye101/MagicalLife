@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeGUIWindows.GUI.Reusable.API;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -119,7 +118,8 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
                 {
                     colorMask = Color.White;
                 }
-                spBatch.Draw(AssetManager.Textures[this.ItemBackgroundTexture], target, null, Color.White, 0.0F, new Vector2(0, 0), SpriteEffects.None, RenderLayer.GUI);
+
+                spBatch.Draw(AssetManager.Textures[this.ItemBackgroundTexture], target, colorMask);
 
                 //Have the item draw itself
                 this.Items[this.FirstItemIndex + i].Render(spBatch, target);

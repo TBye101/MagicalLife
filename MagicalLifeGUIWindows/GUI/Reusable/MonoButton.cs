@@ -45,8 +45,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             int x = this.DrawingBounds.X + containerBounds.X;
             int y = this.DrawingBounds.Y + containerBounds.Y;
             location = new Rectangle(x, y, this.DrawingBounds.Width, this.DrawingBounds.Height);
-            spBatch.Draw(AssetManager.Textures[this.TextureID], location, null, Color.White, 0.0F, new Vector2(0, 0), SpriteEffects.None, RenderLayer.GUI);
-
+            spBatch.Draw(AssetManager.Textures[this.TextureID], location, Color.White);
             SimpleTextRenderer.DrawString(this.Font, this.Text, location, Alignment.Center, Color.White, ref spBatch, RenderLayer.GUI);
         }
     }

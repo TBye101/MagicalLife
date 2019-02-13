@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeGUIWindows.Rendering.Text;
 using Microsoft.Xna.Framework;
@@ -52,7 +51,8 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             {
                 throw new InvalidDataException("Width or height cannot be 0");
             }
-            spBatch.Draw(AssetManager.Textures[this.TextureIndex], Bounds, null, Color.White, 0.0F, new Vector2(0, 0), SpriteEffects.None, RenderLayer.GUI);
+
+            spBatch.Draw(AssetManager.Textures[this.TextureIndex], Bounds, Color.White);
         }
     }
 }

@@ -66,7 +66,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
             if (this.Text != null)
             {
-                SimpleTextRenderer.DrawString(this.Font, this.Text, Bounds, this.TextAlignment, Color.White, ref spBatch, RenderLayer.GUIText);
+                SimpleTextRenderer.DrawString(this.Font, this.Text, Bounds, this.TextAlignment, Color.White, ref spBatch, RenderLayer.GUI);
             }
         }
     }
