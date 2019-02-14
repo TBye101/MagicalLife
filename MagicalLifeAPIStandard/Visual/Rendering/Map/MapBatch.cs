@@ -48,12 +48,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
 
                 foreach (RenderCallHolder item in this.RenderActions)
                 {
-                    MasterLog.DebugWriteLine("Call ID: " + item.RenderCallID.ToString());
-                    MasterLog.DebugWriteLine("RenderLayer: " + item.RenderLayer.ToString());
-
                     item.Action.Invoke();
-
-                    MasterLog.DebugWriteLine(" ");
                 }
 
                 this.RenderActions.Clear();
@@ -94,7 +89,6 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// <param name="target"></param>
         private void Draw(Texture2D texture, Rectangle target)
         {
-            MasterLog.DebugWriteLine("Texture: " + texture.Name);
             this.SpriteBat.Draw(texture, target, Color.White);
         }
 
@@ -118,7 +112,6 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// <param name="textureSection">The section of the texture that will be drawn.</param>
         private void Draw(Texture2D texture, Vector2 target, Rectangle textureSection)
         {
-            MasterLog.DebugWriteLine("Texture: " + texture.Name);
             this.SpriteBat.Draw(texture, target, textureSection, Color.White);
         }
 
@@ -130,7 +123,6 @@ namespace MagicalLifeGUIWindows.Rendering.Map
 
         private void Draw(Texture2D texture, Vector2 target)
         {
-            MasterLog.DebugWriteLine("Texture: " + texture.Name);
             this.SpriteBat.Draw(texture, target, Color.White);
         }
     }
