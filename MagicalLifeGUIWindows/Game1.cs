@@ -158,18 +158,25 @@ namespace MagicalLifeGUIWindows
                         if (World.Dimensions.Count > 0)
                         {
 
-                            zoomBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend,
+                            zoomBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend,
                                 null, null, null, null, RenderInfo.Camera2D.TranslationMatrix);
 
                             RenderingPipe.DrawScreen(zoomBatch);
-                            RenderingPipe.DrawGUI(zoomBatch);
+                            //RenderingPipe.DrawGUI(zoomBatch);
                             zoomBatch.End();
                         }
-                        else
+                        //else
+                        //{
+                        //    zoomBatch.Begin();
+                        //    RenderingPipe.DrawGUI(zoomBatch);
+                        //    zoomBatch.End();
+                        //}
+
+                        using (SpriteBatch guiBatch = new SpriteBatch(this.GraphicsDevice))
                         {
-                            zoomBatch.Begin();
-                            RenderingPipe.DrawGUI(zoomBatch);
-                            zoomBatch.End();
+                            guiBatch.Begin();
+                            RenderingPipe.DrawGUI(guiBatch);
+                            guiBatch.End();
                         }
                     }
                     else
