@@ -21,8 +21,8 @@ namespace MagicalLifeAPI.World.Tiles
         {
             this.TillableBehavior = new TillablePercentDone();
             this.CompositeRenderer = new ComponentRenderer();
-            this.CompositeRenderer.RenderQueue.Visuals.Add(new StaticTexture(AssetManager.GetTextureIndex(this.GetRandomDirtTexture()), RenderLayer.DirtBase));
-            this.CompositeRenderer.RenderQueue.Visuals.Add(new StaticTexture(AssetManager.GetTextureIndex(this.GetRandomGrassTexture()), RenderLayer.GrassBase));
+            this.CompositeRenderer.RenderQueue.Add(new StaticTexture(AssetManager.GetTextureIndex(this.GetRandomDirtTexture()), RenderLayer.DirtBase));
+            this.CompositeRenderer.RenderQueue.Add(new StaticTexture(AssetManager.GetTextureIndex(this.GetRandomGrassTexture()), RenderLayer.GrassBase));
         }
 
         private string GetRandomGrassTexture()

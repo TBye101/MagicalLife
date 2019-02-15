@@ -160,7 +160,7 @@ namespace MagicalLifeAPI.World.Base
         {
             foreach (AbstractVisual item in visuals)
             {
-                this.CompositeRenderer.RenderQueue.Visuals.Remove(item);
+                this.CompositeRenderer.RenderQueue.Remove(item);
             }
         }
 

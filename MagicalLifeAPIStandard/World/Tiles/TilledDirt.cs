@@ -13,7 +13,7 @@ namespace MagicalLifeAPI.World.Tiles
         public TilledDirt(Point2D location) : base(location, 10, 0)
         {
             this.CompositeRenderer = new ComponentRenderer();
-            this.CompositeRenderer.RenderQueue.Visuals.Add(new StaticTexture(TilledDirt.GetTextureID(), RenderLayer.DirtBase));
+            this.CompositeRenderer.RenderQueue.Add(new StaticTexture(TilledDirt.GetTextureID(), RenderLayer.DirtBase));
         }
 
         public static int GetTextureID()

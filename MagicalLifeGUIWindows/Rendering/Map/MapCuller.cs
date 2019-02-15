@@ -47,8 +47,8 @@ namespace MagicalLifeGUIWindows.Rendering.Map
 
         public List<Point2D> GetChunksInView()
         {
-            this.ScreenChunksWidth = (int)(RenderInfo.FullScreenWindow.Width / (this.TileSize.X * Chunk.Width) / RenderInfo.Camera2D.Zoom) + 2;
-            this.ScreenChunksHeight = (int)(RenderInfo.FullScreenWindow.Height / (this.TileSize.Y * Chunk.Height) / RenderInfo.Camera2D.Zoom) + 2;
+            this.ScreenChunksWidth = (int)(RenderInfo.FullScreenWindow.Width / (this.TileSize.X * Chunk.Width) / RenderInfo.Camera2D.Zoom) + 1;
+            this.ScreenChunksHeight = (int)(RenderInfo.FullScreenWindow.Height / (this.TileSize.Y * Chunk.Height) / RenderInfo.Camera2D.Zoom) + 1;
 
             //The chunk position of the upper top left.
             int leftChunkX = Math.Abs(((int)RenderInfo.Camera2D.Position.X / this.TileSize.X) / Chunk.Width);
@@ -67,32 +67,8 @@ namespace MagicalLifeGUIWindows.Rendering.Map
                 y = 0;
                 x++;
             }
-            //this.SetEnd(x, y);
 
             return this.ChunksInView;
         }
-
-        /// <summary>
-        /// Sets the chunk coordinate after the last usable one to be a signal to stop.
-        /// This is accomplished by setting the point to be (-1, -1), as that position doesn't exist in the chunk coordinate system.
-        /// </summary>
-        /// <param name="lastUsable"></param>
-        //private void SetEnd(int lastX, int lastY)
-        //{
-        //    int arrayWidth = this.ChunksInView.GetLength(0);
-        //    int arrayHeight = this.ChunksInView.GetLength(1);
-
-        //    if (lastX < arrayWidth - 1 || lastY < arrayHeight - 1)
-        //    {
-        //        if (lastY < arrayHeight - 1)
-        //        {
-        //            this.ChunksInView[lastX, lastY + 1] = new Point2D(-1, -1);
-        //        }
-        //        else
-        //        {
-        //            this.ChunksInView[lastX + 1, 0] = new Point2D(-1, -1);
-        //        }
-        //    }
-        //}
     }
 }

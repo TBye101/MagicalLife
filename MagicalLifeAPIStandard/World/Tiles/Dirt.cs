@@ -21,7 +21,7 @@ namespace MagicalLifeAPI.World.Tiles
         {
             this.TillableBehavior = new TillablePercentDone();
             this.CompositeRenderer = new ComponentRenderer();
-            this.CompositeRenderer.RenderQueue.Visuals.Add(new StaticTexture(Dirt.GetTextureID(), RenderLayer.DirtBase));
+            this.CompositeRenderer.RenderQueue.Add(new StaticTexture(Dirt.GetTextureID(), RenderLayer.DirtBase));
         }
 
         public Dirt(int x, int y) : this(new Point2D(x, y))
@@ -37,7 +37,7 @@ namespace MagicalLifeAPI.World.Tiles
             ComponentRenderer renderer = new ComponentRenderer();
             StaticTexture texture = new StaticTexture(GetTextureID(), RenderLayer.DirtBase);
 
-            renderer.RenderQueue.Visuals.Add(texture);
+            renderer.RenderQueue.Add(texture);
             return renderer;
         }
 
