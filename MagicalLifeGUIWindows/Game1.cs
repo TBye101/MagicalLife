@@ -28,7 +28,8 @@ namespace MagicalLifeGUIWindows
     public class Game1 : Game
     {
         public GraphicsDeviceManager Graphics { get; set; }
-        public SpriteBatch SpriteBatch;
+        public SpriteBatch GUIBatch;
+        public SpriteBatch MapSpriteBatch;
 
         public static ContentManager AssetManager { get; set; }
 
@@ -92,7 +93,8 @@ namespace MagicalLifeGUIWindows
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            this.SpriteBatch = new SpriteBatch(this.GraphicsDevice);
+            this.GUIBatch = new SpriteBatch(this.GraphicsDevice);
+            this.MapSpriteBatch = new SpriteBatch(this.GraphicsDevice);
 
             Loader load = new Loader();
             string msg = string.Empty;
@@ -148,9 +150,6 @@ namespace MagicalLifeGUIWindows
             FMODUtil.Update();
 
             //Used to render things to a buffer that will have a zoom multiplier applied before rendering.
-
-            using (SpriteBatch zoomBatch = new SpriteBatch(this.GraphicsDevice))
-            {
                     this.GraphicsDevice.Clear(Color.Black);
 
                     if (Game1.SplashDone)
@@ -158,26 +157,16 @@ namespace MagicalLifeGUIWindows
                         if (World.Dimensions.Count > 0)
                         {
 
-                            zoomBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend,
+                            this.MapSpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend,
                                 null, null, null, null, RenderInfo.Camera2D.TranslationMatrix);
 
-                            RenderingPipe.DrawScreen(zoomBatch);
-                            //RenderingPipe.DrawGUI(zoomBatch);
-                            zoomBatch.End();
+                            RenderingPipe.DrawScreen(this.MapSpriteBatch);
+                            this.MapSpriteBatch.End();
                         }
-                        //else
-                        //{
-                        //    zoomBatch.Begin();
-                        //    RenderingPipe.DrawGUI(zoomBatch);
-                        //    zoomBatch.End();
-                        //}
 
-                        using (SpriteBatch guiBatch = new SpriteBatch(this.GraphicsDevice))
-                        {
-                            guiBatch.Begin();
-                            RenderingPipe.DrawGUI(guiBatch);
-                            guiBatch.End();
-                        }
+                        this.GUIBatch.Begin();
+                        RenderingPipe.DrawGUI(this.GUIBatch);
+                        this.GUIBatch.End();
                     }
                     else
                     {
@@ -187,7 +176,7 @@ namespace MagicalLifeGUIWindows
                             LogoScreen item = Game1.SplashScreens[i];
                             if (!item.Done())
                             {
-                                item.Draw(zoomBatch);
+                                item.Draw(this.MapSpriteBatch);
                                 break;
                             }
 
@@ -201,8 +190,7 @@ namespace MagicalLifeGUIWindows
                             }
                         }
                     }
-            }
-            MasterLog.DebugWriteLine("Average FPS: " + FPS.AverageFramesPerSecond.ToString());
+            //MasterLog.DebugWriteLine("Average FPS: " + FPS.AverageFramesPerSecond.ToString());
             base.Draw(gameTime);
         }
 

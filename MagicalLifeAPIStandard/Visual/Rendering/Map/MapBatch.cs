@@ -21,11 +21,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// <summary>
         /// Holds all of the rendering actions that need to happen.
         /// </summary>
-        private readonly List<RenderCallHolder> RenderActions = new List<RenderCallHolder>();
-
-        private readonly RenderCallHolderComparer Comparator = new RenderCallHolderComparer();
-
-        private readonly Counter CallCounter = new Counter();
+        private readonly Dictionary<int, List<RenderCallHolder>> RenderActions = new Dictionary<int, List<RenderCallHolder>>();
 
         /// <summary>
         /// Updates the internal handle to a new <see cref="SpriteBatch"/>.
@@ -44,15 +40,36 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         {
             if (this.RenderActions.Count > 0)
             {
-                this.RenderActions.Sort(this.Comparator);
-
-                foreach (RenderCallHolder item in this.RenderActions)
+                foreach (KeyValuePair<int, List<RenderCallHolder>> item in this.RenderActions)
                 {
-                    item.Action.Invoke();
+                    foreach (RenderCallHolder renderCallHolder in item.Value)
+                    {
+                        renderCallHolder.Action.Invoke();
+                    }
                 }
 
                 this.RenderActions.Clear();
-                this.CallCounter.Reset();
+            }
+        }
+
+        /// <summary>
+        /// Adds a new item to the render hold dictionary.
+        /// </summary>
+        /// <param name="holder"></param>
+        private void AddRenderAction(RenderCallHolder holder)
+        {
+            if (this.RenderActions.TryGetValue(holder.RenderLayer, out List<RenderCallHolder> holders))
+            {
+                holders.Add(holder);
+            }
+            else
+            {
+                List<RenderCallHolder> newHolderList = new List<RenderCallHolder>
+                {
+                    holder
+                };
+
+                this.RenderActions.Add(holder.RenderLayer, newHolderList);
             }
         }
 
@@ -65,7 +82,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         public void Draw(Texture2D texture, Rectangle target, int renderLayer)
         {
             void renderCall() => this.Draw(texture, target);
-            this.RenderActions.Add(new RenderCallHolder(renderLayer, renderCall, this.CallCounter.Increment()));
+            this.AddRenderAction(new RenderCallHolder(renderLayer, renderCall));
         }
 
         /// <summary>
@@ -74,7 +91,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         public void DrawText(string text, Rectangle target, SpriteFont font, Alignment alignment, int renderLayer)
         {
             void renderCall() => this.DrawText(text, target, font, alignment);
-            this.RenderActions.Add(new RenderCallHolder(renderLayer, renderCall, this.CallCounter.Increment()));
+            this.AddRenderAction(new RenderCallHolder(renderLayer, renderCall));
         }
 
         private void DrawText(string text, Rectangle target, SpriteFont font, Alignment alignment)
@@ -101,7 +118,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         public void Draw(Texture2D texture, Vector2 target, Rectangle textureSection, int renderLayer)
         {
             void renderCall() => this.Draw(texture, target, textureSection);
-            this.RenderActions.Add(new RenderCallHolder(renderLayer, renderCall, this.CallCounter.Increment()));
+            this.AddRenderAction(new RenderCallHolder(renderLayer, renderCall));
         }
 
         /// <summary>
@@ -118,7 +135,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         public void Draw(Texture2D texture, Vector2 target, int renderLayer)
         {
             void renderCall() => this.Draw(texture, target);
-            this.RenderActions.Add(new RenderCallHolder(renderLayer, renderCall, this.CallCounter.Increment()));
+            this.AddRenderAction(new RenderCallHolder(renderLayer, renderCall));
         }
 
         private void Draw(Texture2D texture, Vector2 target)
