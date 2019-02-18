@@ -157,7 +157,7 @@ namespace MagicalLifeGUIWindows
                         if (World.Dimensions.Count > 0)
                         {
 
-                            this.MapSpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend,
+                            this.MapSpriteBatch.Begin(SpriteSortMode.Texture, BlendState.AlphaBlend,
                                 null, null, null, null, RenderInfo.Camera2D.TranslationMatrix);
 
                             RenderingPipe.DrawScreen(this.MapSpriteBatch);
@@ -205,8 +205,20 @@ namespace MagicalLifeGUIWindows
             }
         }
 
+        private void SetBestGraphicsCard()
+        {
+            //System.Collections.ObjectModel.ReadOnlyCollection<GraphicsAdapter> gpus = GraphicsAdapter.Adapters;
+
+            //if (gpus.Count > 1)
+            //{
+            //    this.GraphicsDevice = new GraphicsDevice(gpus[1], GraphicsProfile.HiDef, new PresentationParameters());
+            //}
+        }
+
         private static void OutputDebugInfo()
         {
+            MasterLog.DebugWriteLine("Screens:");
+
             foreach (Screen screen in Screen.AllScreens)
             {
                 MasterLog.DebugWriteLine("Device Name: " + screen.DeviceName);
@@ -215,6 +227,21 @@ namespace MagicalLifeGUIWindows
                 MasterLog.DebugWriteLine("Working Area: " + screen.WorkingArea.ToString());
                 MasterLog.DebugWriteLine("Bounds: " + screen.Bounds.ToString());
                 MasterLog.DebugWriteLine("Primary Screen: " + screen.Primary.ToString());
+            }
+
+            MasterLog.DebugWriteLine("Screens end");
+
+            System.Collections.ObjectModel.ReadOnlyCollection<GraphicsAdapter> gpus = GraphicsAdapter.Adapters;
+
+            foreach (GraphicsAdapter item in gpus)
+            {
+                MasterLog.DebugWriteLine("Description: " + item.Description);
+                MasterLog.DebugWriteLine("Device ID" + item.DeviceId.ToString());
+                MasterLog.DebugWriteLine("Device Name: " + item.DeviceName);
+                MasterLog.DebugWriteLine("Is Default: " + item.IsDefaultAdapter.ToString());
+                MasterLog.DebugWriteLine("Revision: " + item.Revision.ToString());
+                MasterLog.DebugWriteLine("Sub System ID: " + item.SubSystemId.ToString());
+                MasterLog.DebugWriteLine("Vendor ID: " + item.VendorId.ToString());
             }
         }
     }

@@ -47,6 +47,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
 
         public List<Point2D> GetChunksInView()
         {
+            this.ChunksInView.Clear();
             this.ScreenChunksWidth = (int)(RenderInfo.FullScreenWindow.Width / (this.TileSize.X * Chunk.Width) / RenderInfo.Camera2D.Zoom) + 1;
             this.ScreenChunksHeight = (int)(RenderInfo.FullScreenWindow.Height / (this.TileSize.Y * Chunk.Height) / RenderInfo.Camera2D.Zoom) + 1;
 
