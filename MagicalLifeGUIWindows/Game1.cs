@@ -83,7 +83,7 @@ namespace MagicalLifeGUIWindows
             SettingsManager.UniversalSettings.Save();
             RenderInfo.Camera2D.ViewportHeight = this.Graphics.GraphicsDevice.Viewport.Height;
             RenderInfo.Camera2D.ViewportWidth = this.Graphics.GraphicsDevice.Viewport.Width;
-            RenderInfo.Camera2D.CenterOn(new Vector2(0, 0));
+            RenderInfo.Camera2D.CenterOn(new Vector2(8, 8));
         }
 
         /// <summary>

@@ -81,6 +81,10 @@ public class Camera
         {
             this.Zoom = 0.25f;
         }
+        if (this.Zoom > 4f)
+        {
+            this.Zoom = 4f;
+        }
     }
 
     // Move the camera in an X and Y amount based on the cameraMovement param.
@@ -207,6 +211,6 @@ public class Camera
         // scale our movement to move 25 pixels per second
         cameraMovement *= 25f;
 
-        this.MoveCamera(cameraMovement, true);
+        this.MoveCamera(cameraMovement, false);
     }
 }
