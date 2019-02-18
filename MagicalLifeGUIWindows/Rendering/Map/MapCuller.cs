@@ -48,12 +48,12 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         public List<Point2D> GetChunksInView()
         {
             this.ChunksInView.Clear();
-            this.ScreenChunksWidth = (int)(RenderInfo.FullScreenWindow.Width / (this.TileSize.X * Chunk.Width) / RenderInfo.Camera2D.Zoom) + 1;
-            this.ScreenChunksHeight = (int)(RenderInfo.FullScreenWindow.Height / (this.TileSize.Y * Chunk.Height) / RenderInfo.Camera2D.Zoom) + 1;
+            this.ScreenChunksWidth = (int)(RenderInfo.FullScreenWindow.Width / (this.TileSize.X * Chunk.Width) / RenderInfo.Camera2D.Zoom) + 3;
+            this.ScreenChunksHeight = (int)(RenderInfo.FullScreenWindow.Height / (this.TileSize.Y * Chunk.Height) / RenderInfo.Camera2D.Zoom) + 3;
 
             //The chunk position of the upper top left.
-            int leftChunkX = Math.Abs(((int)RenderInfo.Camera2D.Position.X / this.TileSize.X) / Chunk.Width);
-            int leftChunkY = Math.Abs(((int)RenderInfo.Camera2D.Position.Y / this.TileSize.Y) / Chunk.Height);
+            int leftChunkX = (int)(Math.Max(0, Math.Abs(((int)RenderInfo.Camera2D.Position.X / (this.TileSize.X * Chunk.Width))) - 2));//Doesn't handle zoom properly
+            int leftChunkY = (int)(Math.Max(0, Math.Abs(((int)RenderInfo.Camera2D.Position.Y / (this.TileSize.Y * Chunk.Height))) - 2));//Doesn't handle zoom properly
 
             int x = 0;
             int y = 0;
