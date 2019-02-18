@@ -19,17 +19,17 @@ public class Camera
     public int ViewportWidth { get; set; }
     public int ViewportHeight { get; set; }
 
-    private int Dimension { get; set; }
+    public int Dimension { get; set; }
 
     /// <summary>
     /// The width of the dimension in tiles.
     /// </summary>
-    private int DimensionWidth { get; set; }
+    public int DimensionWidth { get; set; }
 
     /// <summary>
     /// The height of the dimension in tiles.
     /// </summary>
-    private int DimensionHeight { get; set; }
+    public int DimensionHeight { get; set; }
 
     // Center of the Viewport which does not account for scale
     public Vector2 ViewportCenter

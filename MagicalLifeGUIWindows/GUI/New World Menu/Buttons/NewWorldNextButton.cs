@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Server;
 using MagicalLifeAPI.Sound;
@@ -35,6 +36,7 @@ namespace MagicalLifeGUIWindows.GUI.New
             NewGameInputHandler a = new NewGameInputHandler();
             a.StartNewGame();
             Server.StartGame();
+            RenderInfo.Camera2D.InitializeForDimension(0);
             BoundHandler.RemoveContainer(NewWorldMenu.NewWorldMenuM);
             MenuHandler.Clear();
             BoundHandler.HideAll();

@@ -48,10 +48,6 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// </summary>
         private void InitializeChunksInView()
         {
-            int arrayWidth = this.ScreenChunksWidth * 8;
-            int arrayHeight = this.ScreenChunksHeight * 8;
-            //Multiply by eight in order to compensate for the most zoomed out the map can be.
-            //this.ChunksInView = new List<Point2D>(arrayWidth * arrayHeight);
             this.ChunksInView = new List<Point2D>();
         }
 
@@ -91,13 +87,22 @@ namespace MagicalLifeGUIWindows.Rendering.Map
             int leftChunkX = Math.Max(0, this.VisibleArea.X / (this.TileSize.X * Chunk.Width));
             int leftChunkY = Math.Max(0, this.VisibleArea.Y / (this.TileSize.Y * Chunk.Height));
 
+            int dimensionWidth = RenderInfo.Camera2D.DimensionWidth;
+            int dimensionHeight = RenderInfo.Camera2D.DimensionHeight;
+
             int x = 0;
             int y = 0;
             while (x < this.ScreenChunksWidth)
             {
                 while (y < this.ScreenChunksHeight)
                 {
-                    this.ChunksInView.Add(new Point2D(x + leftChunkX, y + leftChunkY));
+                    int newChunkX = x + leftChunkX;
+                    int newChunkY = y + leftChunkY;
+
+                    if (newChunkX < dimensionWidth && newChunkY < dimensionHeight)
+                    {
+                        this.ChunksInView.Add(new Point2D(x + leftChunkX, y + leftChunkY));
+                    }
                     y++;
                 }
 
