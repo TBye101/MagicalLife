@@ -144,7 +144,7 @@ namespace MagicalLifeGUIWindows
         protected override void Draw(GameTime gameTime)
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            FPS.Update(deltaTime);
+            //FPS.Update(deltaTime);
 
             this.DisplayInGame();
             FMODUtil.Update();
