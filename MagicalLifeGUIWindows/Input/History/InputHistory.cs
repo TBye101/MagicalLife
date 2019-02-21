@@ -46,13 +46,13 @@ namespace MagicalLifeGUIWindows.Input.History
 
         public static void Initialize()
         {
-            BoundHandler.MouseListner.MouseDoubleClicked += MouseListner_MouseDoubleClicked;
-            BoundHandler.MouseListner.MouseDragStart += MouseListner_MouseDragStart;
-            BoundHandler.MouseListner.MouseDragEnd += MouseListner_MouseDragEnd;
-            BoundHandler.MouseListner.MouseWheelMoved += MouseListner_MouseWheelMoved;
+            BoundHandler.MouseListener.MouseDoubleClicked += MouseListner_MouseDoubleClicked;
+            BoundHandler.MouseListener.MouseDragStart += MouseListner_MouseDragStart;
+            BoundHandler.MouseListener.MouseDragEnd += MouseListner_MouseDragEnd;
+            BoundHandler.MouseListener.MouseWheelMoved += MouseListner_MouseWheelMoved;
             KeyboardHandler.KeysPressed += KeyboardHandler_KeysPressed;
             KeyboardHandler.KeysReleased += KeyboardHandler_KeysReleased;
-            BoundHandler.MouseListner.MouseDrag += MouseListner_MouseDrag;
+            BoundHandler.MouseListener.MouseDrag += MouseListner_MouseDrag;
         }
 
         private static void MouseListner_MouseDrag(object sender, MouseEventArgs e)

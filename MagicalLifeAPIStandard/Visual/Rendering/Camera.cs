@@ -162,10 +162,20 @@ public class Camera
         return Vector2.Transform(worldPosition, this.TranslationMatrix);
     }
 
+    /// <summary>
+    /// Converts screen coordinates into a non scaled, non offset coordinate.
+    /// </summary>
+    /// <param name="screenPosition"></param>
+    /// <returns></returns>
     public Vector2 ScreenToWorld(Vector2 screenPosition)
     {
-        return Vector2.Transform(screenPosition,
+        //return Vector2.Transform(screenPosition,
+        //    Matrix.Invert(this.TranslationMatrix));
+
+        Vector2 test = Vector2.Transform(screenPosition,
             Matrix.Invert(this.TranslationMatrix));
+
+        return test;
     }
 
     /// <summary>

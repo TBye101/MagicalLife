@@ -44,11 +44,11 @@ namespace MagicalLifeGUIWindows
 
         public Game1()
         {
-            this.Graphics = new GraphicsDeviceManager(this);
+            Graphics = new GraphicsDeviceManager(this);
             this.Content.RootDirectory = "Content";
             Game1.AssetManager = this.Content;
             UniversalEvents.GameExit += this.UniversalEvents_GameExit;
-            this.Graphics.HardwareModeSwitch = false;
+            Graphics.HardwareModeSwitch = false;
             OutputDebugInfo();
         }
 
@@ -81,8 +81,8 @@ namespace MagicalLifeGUIWindows
 
             SettingsManager.UniversalSettings.Settings.GameHasRunBefore = true;
             SettingsManager.UniversalSettings.Save();
-            RenderInfo.Camera2D.ViewportHeight = this.Graphics.GraphicsDevice.Viewport.Height;
-            RenderInfo.Camera2D.ViewportWidth = this.Graphics.GraphicsDevice.Viewport.Width;
+            RenderInfo.Camera2D.ViewportHeight = Graphics.GraphicsDevice.Viewport.Height;
+            RenderInfo.Camera2D.ViewportWidth = Graphics.GraphicsDevice.Viewport.Width;
             RenderInfo.Camera2D.CenterOn(new Vector2(8, 8));
         }
 

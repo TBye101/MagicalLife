@@ -18,17 +18,20 @@ namespace MagicalLifeGUIWindows
         /// <returns></returns>
         public static Point2D GetMapLocation(int x, int y, int dimension, out bool success)
         {
-            int x2 = x - (int)RenderInfo.Camera2D.Position.X;
-            int y2 = y - (int)RenderInfo.Camera2D.Position.Y;
+            //int x2 = x - (int)RenderInfo.Camera2D.Position.X;
+            //int y2 = y - (int)RenderInfo.Camera2D.Position.Y;
             Point2D size = Tile.GetTileSize();
 
-            x2 /= size.X;
-            y2 /= size.Y;
+            //x2 /= size.X;
+            //y2 /= size.Y;
 
-            if (World.Dimensions.Count > 0 && World.Dimensions[dimension].DoesTileExist(x2, y2))
+            int tileX = x / size.X;
+            int tileY = y / size.Y;
+
+            if (World.Dimensions.Count > 0 && World.Dimensions[dimension].DoesTileExist(tileX, tileY))
             {
                 success = true;
-                return new Point2D(x2, y2);
+                return new Point2D(tileX, tileY);
             }
             else
             {

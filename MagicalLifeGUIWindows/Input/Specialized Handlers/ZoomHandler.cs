@@ -18,7 +18,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
         public ZoomHandler()
         {
-            BoundHandler.MouseListner.MouseWheelMoved += this.MouseListner_MouseWheelMoved;
+            BoundHandler.MouseListener.MouseWheelMoved += this.MouseListner_MouseWheelMoved;
         }
 
         private void MouseListner_MouseWheelMoved(object sender, MonoGame.Extended.Input.InputListeners.MouseEventArgs e)
