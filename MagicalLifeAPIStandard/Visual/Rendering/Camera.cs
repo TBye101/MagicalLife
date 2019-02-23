@@ -201,10 +201,10 @@ public class Camera
                 cameraMovement.Y = 1;
                 break;
             case CameraMovementState.ZoomIn:
-                this.AdjustZoom(0.25f);
+                this.AdjustZoom(-0.25f);
                 break;
             case CameraMovementState.ZoomOut:
-                this.AdjustZoom(-0.25f);
+                this.AdjustZoom(0.25f);
                 break;
             default:
                 throw new UnexpectedEnumMemberException();
