@@ -156,8 +156,8 @@ namespace MagicalLifeGUIWindows
                     {
                         if (World.Dimensions.Count > 0)
                         {
-
-                            this.MapSpriteBatch.Begin(SpriteSortMode.Texture, BlendState.AlphaBlend,
+                            //Never set this to SpriteSortMode.Texture, as that causes bugs.
+                            this.MapSpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend,
                                 null, null, null, null, RenderInfo.Camera2D.TranslationMatrix);
 
                             RenderingPipe.DrawScreen(this.MapSpriteBatch);

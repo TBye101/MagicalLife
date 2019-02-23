@@ -22,5 +22,8 @@
 
         public static readonly int MapItemCount = int.MaxValue - 1;
         public static readonly int GUI = int.MaxValue;
+
+        //public static readonly int MapItemCount = 2000;
+        //public static readonly int GUI = 2001;
     }
 }
