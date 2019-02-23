@@ -21,7 +21,11 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// <summary>
         /// Holds all of the rendering actions that need to happen.
         /// </summary>
-        private readonly Dictionary<int, List<RenderCallHolder>> RenderActions = new Dictionary<int, List<RenderCallHolder>>();
+        private readonly List<RenderCallHolder> RenderActions = new List<RenderCallHolder>();
+
+        private readonly RenderCallHolderComparer Comparator = new RenderCallHolderComparer();
+
+        private readonly Counter CallCounter = new Counter();
 
         /// <summary>
         /// Updates the internal handle to a new <see cref="SpriteBatch"/>.
@@ -40,36 +44,16 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         {
             if (this.RenderActions.Count > 0)
             {
-                foreach (KeyValuePair<int, List<RenderCallHolder>> item in this.RenderActions)
+                this.RenderActions.Sort(this.Comparator);
+
+                foreach (RenderCallHolder item in this.RenderActions)
                 {
-                    foreach (RenderCallHolder renderCallHolder in item.Value)
-                    {
-                        renderCallHolder.Action.Invoke();
-                    }
+                    //MasterLog.DebugWriteLine("Render callID: " + item.RenderCallID.ToString() + " Layer: " + item.RenderLayer.ToString() + "Texture: ");
+                    item.Action.Invoke();
                 }
 
                 this.RenderActions.Clear();
-            }
-        }
-
-        /// <summary>
-        /// Adds a new item to the render hold dictionary.
-        /// </summary>
-        /// <param name="holder"></param>
-        private void AddRenderAction(RenderCallHolder holder)
-        {
-            if (this.RenderActions.TryGetValue(holder.RenderLayer, out List<RenderCallHolder> holders))
-            {
-                holders.Add(holder);
-            }
-            else
-            {
-                List<RenderCallHolder> newHolderList = new List<RenderCallHolder>
-                {
-                    holder
-                };
-
-                this.RenderActions.Add(holder.RenderLayer, newHolderList);
+                this.CallCounter.Reset();
             }
         }
 
@@ -82,7 +66,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         public void Draw(Texture2D texture, Rectangle target, int renderLayer)
         {
             void renderCall() => this.Draw(texture, target);
-            this.AddRenderAction(new RenderCallHolder(renderLayer, renderCall));
+            this.RenderActions.Add(new RenderCallHolder(renderLayer, renderCall, this.CallCounter.Increment()));
         }
 
         /// <summary>
@@ -91,7 +75,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         public void DrawText(string text, Rectangle target, SpriteFont font, Alignment alignment, int renderLayer)
         {
             void renderCall() => this.DrawText(text, target, font, alignment);
-            this.AddRenderAction(new RenderCallHolder(renderLayer, renderCall));
+            this.RenderActions.Add(new RenderCallHolder(renderLayer, renderCall, this.CallCounter.Increment()));
         }
 
         private void DrawText(string text, Rectangle target, SpriteFont font, Alignment alignment)
@@ -118,7 +102,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         public void Draw(Texture2D texture, Vector2 target, Rectangle textureSection, int renderLayer)
         {
             void renderCall() => this.Draw(texture, target, textureSection);
-            this.AddRenderAction(new RenderCallHolder(renderLayer, renderCall));
+            this.RenderActions.Add(new RenderCallHolder(renderLayer, renderCall, this.CallCounter.Increment()));
         }
 
         /// <summary>
@@ -135,7 +119,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         public void Draw(Texture2D texture, Vector2 target, int renderLayer)
         {
             void renderCall() => this.Draw(texture, target);
-            this.AddRenderAction(new RenderCallHolder(renderLayer, renderCall));
+            this.RenderActions.Add(new RenderCallHolder(renderLayer, renderCall, this.CallCounter.Increment()));
         }
 
         private void Draw(Texture2D texture, Vector2 target)
