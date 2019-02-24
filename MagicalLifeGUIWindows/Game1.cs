@@ -12,7 +12,6 @@ using MagicalLifeGUIWindows.GUI.In;
 using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Load;
 using MagicalLifeGUIWindows.Rendering;
-using MagicalLifeGUIWindows.Rendering.Map;
 using MagicalLifeGUIWindows.Screens;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -28,8 +27,8 @@ namespace MagicalLifeGUIWindows
     public class Game1 : Game
     {
         public GraphicsDeviceManager Graphics { get; set; }
-        public SpriteBatch GUIBatch;
-        public SpriteBatch MapSpriteBatch;
+        public SpriteBatch GUIBatch { get; set; }
+        public SpriteBatch MapSpriteBatch { get; set; }
 
         public static ContentManager AssetManager { get; set; }
 
@@ -144,53 +143,51 @@ namespace MagicalLifeGUIWindows
         protected override void Draw(GameTime gameTime)
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            //FPS.Update(deltaTime);
 
             this.DisplayInGame();
             FMODUtil.Update();
 
             //Used to render things to a buffer that will have a zoom multiplier applied before rendering.
-                    this.GraphicsDevice.Clear(Color.Black);
+            this.GraphicsDevice.Clear(Color.Black);
 
-                    if (Game1.SplashDone)
+            if (Game1.SplashDone)
+            {
+                if (World.Dimensions.Count > 0)
+                {
+                    //Never set this to SpriteSortMode.Texture, as that causes bugs.
+                    this.MapSpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend,
+                        null, null, null, null, RenderInfo.Camera2D.TranslationMatrix);
+
+                    RenderingPipe.DrawScreen(this.MapSpriteBatch);
+                    this.MapSpriteBatch.End();
+                }
+
+                this.GUIBatch.Begin();
+                RenderingPipe.DrawGUI(this.GUIBatch);
+                this.GUIBatch.End();
+            }
+            else
+            {
+                int length = Game1.SplashScreens.Count;
+                for (int i = 0; i < length; i++)
+                {
+                    LogoScreen item = Game1.SplashScreens[i];
+                    if (!item.Done())
                     {
-                        if (World.Dimensions.Count > 0)
-                        {
-                            //Never set this to SpriteSortMode.Texture, as that causes bugs.
-                            this.MapSpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend,
-                                null, null, null, null, RenderInfo.Camera2D.TranslationMatrix);
-
-                            RenderingPipe.DrawScreen(this.MapSpriteBatch);
-                            this.MapSpriteBatch.End();
-                        }
-
-                        this.GUIBatch.Begin();
-                        RenderingPipe.DrawGUI(this.GUIBatch);
-                        this.GUIBatch.End();
+                        item.Draw(this.MapSpriteBatch);
+                        break;
                     }
-                    else
+
+                    if (i == length - 1)
                     {
-                        int length = Game1.SplashScreens.Count;
-                        for (int i = 0; i < length; i++)
-                        {
-                            LogoScreen item = Game1.SplashScreens[i];
-                            if (!item.Done())
-                            {
-                                item.Draw(this.MapSpriteBatch);
-                                break;
-                            }
+                        Game1.SplashDone = true;
 
-                            if (i == length - 1)
-                            {
-                                Game1.SplashDone = true;
-
-                                //Initialize main menu
-                                GUI.MainMenu.MainMenu.Initialize();
-                                this.IsMouseVisible = true;
-                            }
-                        }
+                        //Initialize main menu
+                        GUI.MainMenu.MainMenu.Initialize();
+                        this.IsMouseVisible = true;
                     }
-            //MasterLog.DebugWriteLine("Average FPS: " + FPS.AverageFramesPerSecond.ToString());
+                }
+            }
             base.Draw(gameTime);
         }
 
@@ -203,16 +200,6 @@ namespace MagicalLifeGUIWindows
                     InGameGUI.Initialize();
                 }
             }
-        }
-
-        private void SetBestGraphicsCard()
-        {
-            //System.Collections.ObjectModel.ReadOnlyCollection<GraphicsAdapter> gpus = GraphicsAdapter.Adapters;
-
-            //if (gpus.Count > 1)
-            //{
-            //    this.GraphicsDevice = new GraphicsDevice(gpus[1], GraphicsProfile.HiDef, new PresentationParameters());
-            //}
         }
 
         private static void OutputDebugInfo()

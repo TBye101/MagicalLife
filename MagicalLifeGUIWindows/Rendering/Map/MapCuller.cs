@@ -5,24 +5,16 @@ using MagicalLifeAPI.World.Data;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.Rendering.Map
 {
     /// <summary>
-    /// Utilized to Perform some calculations that essentially cull 
+    /// Utilized to Perform some calculations that essentially cull
     /// what is to be rendered down to only what is on screen to the current client.
     /// </summary>
     public class MapCuller
     {
         private readonly Point2D TileSize = Tile.GetTileSize();
-
-        //How many tiles can fit left to right on the screen.
-        private int ScreenChunksWidth;
-        //How many tiles can fit top to bottom on the screen.
-        private int ScreenChunksHeight;
 
         private List<Point2D> ChunksInView;
 
@@ -35,8 +27,6 @@ namespace MagicalLifeGUIWindows.Rendering.Map
 
         public MapCuller(Rectangle fullScreenWindow)
         {
-            this.ScreenChunksWidth = (fullScreenWindow.Width / (this.TileSize.X * Chunk.Width) + 2);
-            this.ScreenChunksHeight = (fullScreenWindow.Height / (this.TileSize.Y * Chunk.Height) + 2);
             this.InitializeChunksInView();
         }
 
@@ -52,8 +42,8 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         {
             this.ChunksInView.Clear();
             this.VisibleArea = this.AreaCalculator.CalculateVisibleArea();
-            this.ScreenChunksWidth = (int)(RenderInfo.FullScreenWindow.Width / (this.TileSize.X * Chunk.Width) / RenderInfo.Camera2D.Zoom) + 2;
-            this.ScreenChunksHeight = (int)(RenderInfo.FullScreenWindow.Height / (this.TileSize.Y * Chunk.Height) / RenderInfo.Camera2D.Zoom) + 2;
+            int screenChunksWidth = (int)(RenderInfo.FullScreenWindow.Width / (this.TileSize.X * Chunk.Width) / RenderInfo.Camera2D.Zoom) + 2;
+            int screenChunksHeight = (int)(RenderInfo.FullScreenWindow.Height / (this.TileSize.Y * Chunk.Height) / RenderInfo.Camera2D.Zoom) + 2;
 
             //The chunk position of the upper top left.
             int leftChunkX = Math.Max(0, this.VisibleArea.X / (this.TileSize.X * Chunk.Width));
@@ -64,9 +54,9 @@ namespace MagicalLifeGUIWindows.Rendering.Map
 
             int x = 0;
             int y = 0;
-            while (x < this.ScreenChunksWidth)
+            while (x < screenChunksWidth)
             {
-                while (y < this.ScreenChunksHeight)
+                while (y < screenChunksHeight)
                 {
                     int newChunkX = x + leftChunkX;
                     int newChunkY = y + leftChunkY;

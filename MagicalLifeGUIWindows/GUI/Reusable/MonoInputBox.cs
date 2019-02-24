@@ -215,7 +215,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             int y = this.DrawingBounds.Y + containerBounds.Y;
             location = new Rectangle(x, y, this.DrawingBounds.Width, this.DrawingBounds.Height);
             spBatch.Draw(AssetManager.Textures[this.TextureID], location, Color.White);
-            DrawString(this.Font, this.Text, location, Alignment.Left, Color.White, ref spBatch, RenderLayer.GUI);
+            DrawString(this.Font, this.Text, location, Alignment.Left, Color.White, spBatch, RenderLayer.GUI);
 
             Rectangle carrotLocation = this.CalculateCarrotBounds(this, containerBounds);
 

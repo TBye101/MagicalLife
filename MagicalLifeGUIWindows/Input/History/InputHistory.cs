@@ -1,5 +1,4 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.DataTypes;
+﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.GUI;
 using MonoGame.Extended.Input.InputListeners;
@@ -31,7 +30,7 @@ namespace MagicalLifeGUIWindows.Input.History
 
         public static event Action InputAdded;
 
-        private static HistoricalInputFactory Factory = new HistoricalInputFactory();
+        private static readonly HistoricalInputFactory Factory = new HistoricalInputFactory();
 
         public static List<Selectable> Selected = new List<Selectable>();
 
@@ -100,18 +99,22 @@ namespace MagicalLifeGUIWindows.Input.History
 
         private static void MouseListner_MouseWheelMoved(object sender, MouseEventArgs e)
         {
+            //We don't need this yet
         }
 
         private static void MouseListner_MouseDragEnd(object sender, MouseEventArgs e)
         {
+            //We don't need this yet
         }
 
         private static void MouseListner_MouseDragStart(object sender, MouseEventArgs e)
         {
+            //We don't need this yet
         }
 
         private static void MouseListner_MouseDoubleClicked(object sender, MouseEventArgs e)
         {
+            //We don't need this yet
         }
 
         /// <summary>

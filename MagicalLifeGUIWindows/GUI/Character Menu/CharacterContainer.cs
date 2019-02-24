@@ -3,7 +3,6 @@ using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeGUIWindows.GUI.Character_Menu.Buttons;
 using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeGUIWindows.GUI.Reusable.API;
 using MagicalLifeGUIWindows.GUI.Reusable.Premade;
 using MagicalLifeGUIWindows.Input;
 using Microsoft.Xna.Framework;

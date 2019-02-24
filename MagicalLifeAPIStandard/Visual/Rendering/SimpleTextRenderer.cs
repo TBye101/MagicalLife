@@ -57,7 +57,8 @@ namespace MagicalLifeGUIWindows.Rendering.Text
         /// <param name="align"></param>
         /// <param name="color"></param>
         /// <param name="spBatch"></param>
-        public static void DrawString(SpriteFont font, string text, Microsoft.Xna.Framework.Rectangle bounds, Alignment align, Microsoft.Xna.Framework.Color color, ref SpriteBatch spBatch, int renderLayer)
+        public static void DrawString(SpriteFont font, string text, Rectangle bounds, Alignment align,
+            Color color, SpriteBatch spBatch, int renderLayer)
         {
             if (text != string.Empty)
             {

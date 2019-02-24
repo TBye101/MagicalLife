@@ -28,10 +28,10 @@ namespace MagicalLifeGUIWindows.GUI.New
         {
             World.Mode = MagicalLifeAPI.Networking.EngineMode.ServerAndClient;
             Server.Load();
-            ClientSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings());
+            ClientSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(MagicalLifeAPI.Networking.EngineMode.ServerAndClient));
             FMODUtil.RaiseEvent(SoundsTable.UIClick);
             FMODUtil.RaiseEvent(SoundsTable.Ambience);
-            ServerSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings());
+            ServerSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(MagicalLifeAPI.Networking.EngineMode.ServerAndClient));
             Client.Load();
             NewGameInputHandler a = new NewGameInputHandler();
             a.StartNewGame();

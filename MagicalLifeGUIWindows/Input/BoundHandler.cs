@@ -7,7 +7,6 @@ using MagicalLifeGUIWindows.Input.Comparators;
 using MagicalLifeGUIWindows.Input.History;
 using MagicalLifeGUIWindows.Map;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Input.InputListeners;
 using System.Collections.Generic;
@@ -29,7 +28,7 @@ namespace MagicalLifeGUIWindows.Input
         /// </summary>
         public static List<GUIContainer> GUIWindows { get; private set; } = new List<GUIContainer>();
 
-        public static MouseListener MouseListener;
+        public static MouseListener MouseListener { get; set; }
 
         private static readonly BoundsSorter BoundSorter = new BoundsSorter();
 
@@ -51,10 +50,12 @@ namespace MagicalLifeGUIWindows.Input
 
         private static void MouseListner_MouseDrag(object sender, MouseEventArgs e)
         {
+            //Don't need this yet
         }
 
         private static void MouseListener_MouseWheelMoved(object sender, MouseEventArgs e)
         {
+            //Don't need this yet
         }
 
         private static void MouseListener_MouseDoubleClicked(object sender, MouseEventArgs e)

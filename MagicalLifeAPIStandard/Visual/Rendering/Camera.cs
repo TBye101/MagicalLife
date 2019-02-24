@@ -9,14 +9,17 @@ public class Camera
 {
     // Centered Position of the Camera in pixels.
     public Vector2 Position { get; private set; }
+
     // Current Zoom level with 1.0f being standard
     public float Zoom { get; private set; }
+
     // Current Rotation amount with 0.0f being standard orientation
-    private float Rotation { get; set; }
+    private float Rotation { get; set; } = 0;
 
     // Height and width of the viewport window which we need to adjust
     // any time the player resizes the game window.
     public int ViewportWidth { get; set; }
+
     public int ViewportHeight { get; set; }
 
     public int Dimension { get; set; }
@@ -87,10 +90,13 @@ public class Camera
         }
     }
 
-    // Move the camera in an X and Y amount based on the cameraMovement param.
-    // if clampToMap is true the camera will try not to pan outside of the
-    // bounds of the map.
-    public void MoveCamera(Vector2 cameraMovement, bool clampToMap = false)
+    /// <summary>
+    /// Move the camera in an X and Y amount based on the <paramref name="cameraMovement"/> parameter.
+    /// If <paramref name="clampToMap"/> is true the camera will try not to pan outside of the bounds of the map.
+    /// </summary>
+    /// <param name="cameraMovement"></param>
+    /// <param name="clampToMap"></param>
+    public void MoveCamera(Vector2 cameraMovement, bool clampToMap)
     {
         Vector2 newPosition = this.Position + cameraMovement;
 
@@ -169,9 +175,6 @@ public class Camera
     /// <returns></returns>
     public Vector2 ScreenToWorld(Vector2 screenPosition)
     {
-        //return Vector2.Transform(screenPosition,
-        //    Matrix.Invert(this.TranslationMatrix));
-
         Vector2 test = Vector2.Transform(screenPosition,
             Matrix.Invert(this.TranslationMatrix));
 
@@ -191,21 +194,27 @@ public class Camera
             case CameraMovementState.Left:
                 cameraMovement.X = -1;
                 break;
+
             case CameraMovementState.Right:
                 cameraMovement.X = 1;
                 break;
+
             case CameraMovementState.Up:
                 cameraMovement.Y = -1;
                 break;
+
             case CameraMovementState.Down:
                 cameraMovement.Y = 1;
                 break;
+
             case CameraMovementState.ZoomIn:
                 this.AdjustZoom(-0.25f);
                 break;
+
             case CameraMovementState.ZoomOut:
                 this.AdjustZoom(0.25f);
                 break;
+
             default:
                 throw new UnexpectedEnumMemberException();
         }

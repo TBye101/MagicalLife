@@ -5,7 +5,6 @@ using MagicalLifeAPI.Visual.Rendering.Renderer;
 using MagicalLifeGUIWindows.Rendering.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
 using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
 
@@ -83,7 +82,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
 
         private void DrawText(string text, Rectangle target, SpriteFont font, Alignment alignment)
         {
-            SimpleTextRenderer.DrawString(font, text, target, alignment, Color.White, ref this.SpriteBat, 0);
+            SimpleTextRenderer.DrawString(font, text, target, alignment, Color.White, this.SpriteBat, 0);
         }
 
         /// <summary>

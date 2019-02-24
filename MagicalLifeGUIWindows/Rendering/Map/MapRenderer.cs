@@ -9,7 +9,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.Rendering.Map
 {
@@ -97,7 +96,6 @@ namespace MagicalLifeGUIWindows.Rendering.Map
                 KeyValuePair<System.Guid, Living> item = chunk.Creatures.ElementAt(i);
                 if (item.Value != null)
                 {
-                    //LivingScreenLocation = new Point2D((int)(item.Value.TileLocation.X * TileSize.X), (int)(item.Value.TileLocation.Y * TileSize.Y));
                     LivingScreenLocation.X = (int)(item.Value.TileLocation.X * TileSize.X);
                     LivingScreenLocation.Y = (int)(item.Value.TileLocation.Y * TileSize.Y);
                     item.Value.Visual.Render(MapDrawer, LivingScreenLocation);
@@ -112,7 +110,6 @@ namespace MagicalLifeGUIWindows.Rendering.Map
                 Texture2D texture = AssetManager.Textures[tile.Item.TextureIndex];
                 MapDrawer.Draw(texture, target, RenderLayer.Items);
 
-                //ItemCountBounds = new Rectangle(target.Location.X + TileSize.X / 2, target.Location.Y + TileSize.Y, 32, 8);
                 ItemCountBounds.X = target.Location.X + TileSize.X / 2;
                 ItemCountBounds.Y = target.Location.Y + TileSize.Y;
 

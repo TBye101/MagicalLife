@@ -1,21 +1,9 @@
 ﻿using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.Filing.Logging;
-using System;
 
 namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 {
     public class ZoomHandler
     {
-        /// <summary>
-        /// The most zoomed out the player can get.
-        /// </summary>
-        private static readonly float MinZoom = .125F;
-
-        /// <summary>
-        /// The most zoomed in the player can get.
-        /// </summary>
-        private static readonly float MaxZoom = 4F;
-
         public ZoomHandler()
         {
             BoundHandler.MouseListener.MouseWheelMoved += this.MouseListner_MouseWheelMoved;

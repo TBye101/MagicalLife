@@ -11,7 +11,7 @@ namespace MagicalLifeAPI.Networking.Serialization
     /// </summary>
     public static class ProtoUtil
     {
-        public static RuntimeTypeModel TypeModel;
+        public static RuntimeTypeModel TypeModel { get; set; }
 
         /// <summary>
         /// Value: The ID of a base message.

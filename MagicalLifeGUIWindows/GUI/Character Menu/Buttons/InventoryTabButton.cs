@@ -1,12 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeGUIWindows.GUI.Reusable;
-using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.GUI.Character_Menu.Buttons
 {
@@ -15,7 +9,7 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu.Buttons
     /// </summary>
     public class InventoryTabButton : MonoButton
     {
-        public InventoryTabButton() 
+        public InventoryTabButton()
             : base(TextureLoader.GUIMenuButton, CharacterMenuLayout.GetInventoryButtonBounds(),
                   true, TextureLoader.FontMainMenuFont12x, "Inventory Tab")
         {
@@ -34,6 +28,7 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu.Buttons
 
         public override void DoubleClick(MouseEventArgs e, GUIContainer container)
         {
+            //Nothing to see here
         }
     }
 }
