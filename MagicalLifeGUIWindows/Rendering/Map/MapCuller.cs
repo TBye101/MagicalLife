@@ -39,7 +39,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         }
 
         public List<Point2D> GetChunksInView()
-        {
+        {//Set the camera dimension
             this.ChunksInView.Clear();
             this.VisibleArea = this.AreaCalculator.CalculateVisibleArea();
             int screenChunksWidth = (int)(RenderInfo.FullScreenWindow.Width / (this.TileSize.X * Chunk.Width) / RenderInfo.Camera2D.Zoom) + 2;

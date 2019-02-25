@@ -26,6 +26,7 @@ namespace MagicalLifeAPI.Filing.Logging
         {
             string time = DateTime.UtcNow.ToString("[yyyy-MM-dd HH:mm:ss.fff]");
             Writer.WriteLine(time + " [DBG]: " + msg);
+            Writer.Flush();
         }
 
         [Conditional("DEBUG")]
