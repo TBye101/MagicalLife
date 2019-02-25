@@ -7,7 +7,6 @@ using MagicalLifeAPI.World.Data.Disk;
 using MagicalLifeClient;
 using MagicalLifeGUIWindows.GUI.In;
 using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeGUIWindows.GUI.Reusable.API;
 using MagicalLifeGUIWindows.Input;
 using MagicalLifeServer;
 using Microsoft.Xna.Framework;
@@ -42,8 +41,8 @@ namespace MagicalLifeGUIWindows.GUI.Load
                 WorldStorage.LoadWorld(selectedItem.Text);
 
                 Server.Load();
-                ClientSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings());
-                ServerSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings());
+                ClientSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(MagicalLifeAPI.Networking.EngineMode.ServerAndClient));
+                ServerSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(MagicalLifeAPI.Networking.EngineMode.ServerAndClient));
                 Client.Load();
                 Server.StartGame();
                 BoundHandler.RemoveContainer(LoadGameMenu.Menu);

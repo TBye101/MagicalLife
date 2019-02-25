@@ -18,16 +18,6 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         public static readonly Color colorMask = Color.White;
 
         /// <summary>
-        /// The x offset of the view due to the player moving the camera around the map.
-        /// </summary>
-        public static int XViewOffset { get; set; }
-
-        /// <summary>
-        /// The y offset of the view due to the player moving the camera around the map.
-        /// </summary>
-        public static int YViewOffset { get; set; }
-
-        /// <summary>
         /// The zoom level of the map.
         /// </summary>
         public static float Zoom { get; set; } = 1F;
@@ -42,14 +32,16 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         /// </summary>
         public static int GameFPS { get; private set; } = 60;
 
+        public static Camera Camera2D { get; set; } = new Camera();
+
         /// <summary>
         /// Returns the center of the player's screen view.
         /// </summary>
         /// <returns></returns>
         public static Point2D GetCameraCenter()
         {
-            int x = (FullScreenWindow.Width / 2) + XViewOffset;
-            int y = (FullScreenWindow.Height / 2) + YViewOffset;
+            int x = (FullScreenWindow.Width / 2) + (int)Camera2D.Position.X;
+            int y = (FullScreenWindow.Height / 2) + (int)Camera2D.Position.Y;
 
             return new Point2D(x, y);
         }

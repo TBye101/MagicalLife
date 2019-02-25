@@ -22,7 +22,7 @@ namespace MagicalLifeAPI.Filing
         /// <summary>
         /// The directory the main executable is in.
         /// </summary>
-        public static string RootDirectory;
+        public static string RootDirectory { get; set; }
 
         public static void Initialize()
         {

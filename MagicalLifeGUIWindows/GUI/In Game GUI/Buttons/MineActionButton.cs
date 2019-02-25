@@ -43,6 +43,7 @@ namespace MagicalLifeGUIWindows.GUI.In
 
         public override void DoubleClick(MouseEventArgs e, GUIContainer container)
         {
+            //Nothing to see here
         }
     }
 }

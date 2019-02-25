@@ -20,22 +20,22 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
         {
             if (e == SettingsManager.Keybindings.Settings.StrafeDown)
             {
-                RenderInfo.YViewOffset -= 10;
+                RenderInfo.Camera2D.HandleInput(Rendering.Map.CameraMovementState.Down);
             }
 
             if (e == SettingsManager.Keybindings.Settings.StrafeLeft)
             {
-                RenderInfo.XViewOffset += 10;
+                RenderInfo.Camera2D.HandleInput(Rendering.Map.CameraMovementState.Left);
             }
 
             if (e == SettingsManager.Keybindings.Settings.StrafeRight)
             {
-                RenderInfo.XViewOffset -= 10;
+                RenderInfo.Camera2D.HandleInput(Rendering.Map.CameraMovementState.Right);
             }
 
             if (e == SettingsManager.Keybindings.Settings.StrafeUp)
             {
-                RenderInfo.YViewOffset += 10;
+                RenderInfo.Camera2D.HandleInput(Rendering.Map.CameraMovementState.Up);
             }
         }
     }

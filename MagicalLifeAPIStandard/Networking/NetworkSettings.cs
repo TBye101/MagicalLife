@@ -20,7 +20,7 @@
         /// </summary>
         public int Port { get; set; }
 
-        public NetworkSettings(EngineMode mode = EngineMode.ServerAndClient)
+        public NetworkSettings(EngineMode mode)
         {
             this.Mode = mode;
         }

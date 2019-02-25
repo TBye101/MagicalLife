@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Server;
 using MagicalLifeAPI.Sound;
@@ -27,14 +28,15 @@ namespace MagicalLifeGUIWindows.GUI.New
         {
             World.Mode = MagicalLifeAPI.Networking.EngineMode.ServerAndClient;
             Server.Load();
-            ClientSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings());
+            ClientSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(MagicalLifeAPI.Networking.EngineMode.ServerAndClient));
             FMODUtil.RaiseEvent(SoundsTable.UIClick);
             FMODUtil.RaiseEvent(SoundsTable.Ambience);
-            ServerSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings());
+            ServerSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(MagicalLifeAPI.Networking.EngineMode.ServerAndClient));
             Client.Load();
             NewGameInputHandler a = new NewGameInputHandler();
             a.StartNewGame();
             Server.StartGame();
+            RenderInfo.Camera2D.InitializeForDimension(0);
             BoundHandler.RemoveContainer(NewWorldMenu.NewWorldMenuM);
             MenuHandler.Clear();
             BoundHandler.HideAll();

@@ -5,12 +5,12 @@
     /// </summary>
     public static class JoinGameMenu
     {
-        public static JoinGameMenuContainer menu;
+        public static JoinGameMenuContainer Menu { get; set; }
 
         internal static void Initialize()
         {
             JoinGameMenuContainer mainMenu = new JoinGameMenuContainer();
-            menu = mainMenu;
+            Menu = mainMenu;
         }
     }
 }

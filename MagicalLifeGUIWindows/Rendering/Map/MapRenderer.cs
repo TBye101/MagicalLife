@@ -21,6 +21,35 @@ namespace MagicalLifeGUIWindows.Rendering.Map
 
         private static SpriteFont ItemCountFont { get; set; } = Game1.AssetManager.Load<SpriteFont>(TextureLoader.FontMainMenuFont12x);
 
+        private static MapCuller Culler = new MapCuller(RenderInfo.FullScreenWindow);
+
+        private static Point2D TileSize = Tile.GetTileSize();
+
+        /// <summary>
+        /// The starting point of a tile, a reused Point2D.
+        /// </summary>
+        private static Point2D StartingPoint = new Point2D(0, 0);
+
+        /// <summary>
+        /// The location of an entity on screen. A reused Point2D.
+        /// </summary>
+        private static Point2D LivingScreenLocation = new Point2D(0, 0);
+
+        /// <summary>
+        /// A reused Rectangle for the location of the item count.
+        /// </summary>
+        private static Rectangle ItemCountBounds = new Rectangle(0, 0, 32, 8);
+
+        /// <summary>
+        /// A reused Rectangle for centering on a tile.
+        /// </summary>
+        private static Rectangle X32Target = new Rectangle(0, 0, 32, 32);
+
+        /// <summary>
+        /// A reused rectangle for the location of a tile.
+        /// </summary>
+        private static Rectangle TileItemTarget = new Rectangle(0, 0, TileSize.X, TileSize.Y);
+
         /// <summary>
         /// Draws the tiles that make up the map.
         /// </summary>
@@ -28,40 +57,48 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         public static void DrawMap(SpriteBatch spBatch, int dimension)
         {
             MapDrawer.UpdateSpriteBatch(spBatch);
+            List<Point2D> result = Culler.GetChunksInView();
 
-            foreach (Tile tile in World.Dimensions[dimension])
+            //Iterates over all the chunks that are within view of the client's screen.
+            int length = result.Count;
+
+            for (int i = 0; i < length; i++)
             {
-                Point2D start = new Point2D(RenderInfo.tileSize.X * tile.MapLocation.X, RenderInfo.tileSize.Y * tile.MapLocation.Y);
-                DrawTile(tile, start);
+                Point2D chunkCoordinates = result[i];
+
+                if (chunkCoordinates.X != -1 && chunkCoordinates.Y != -1)
+                {
+                    Chunk chunk = World.GetChunk(dimension, chunkCoordinates.X, chunkCoordinates.Y);
+                    RenderChunk(chunk, dimension);
+                }
             }
 
-            DrawEntities(dimension);
+            MapDrawer.RenderAll();
         }
 
-        public static void DrawEntities(int dimension)
+        private static void RenderChunk(Chunk chunk, int dimension)
         {
-            int chunkHeight = Chunk.Height;
-            int chunkWidth = Chunk.Width;
-            int xSize = World.Dimensions[dimension].Width;
-            int ySize = World.Dimensions[dimension].Height;
-
-            for (int x = 0; x < xSize; x++)
+            foreach (Tile tile in chunk)
             {
-                for (int y = 0; y < ySize; y++)
+                StartingPoint.X = RenderInfo.tileSize.X * tile.MapLocation.X;
+                StartingPoint.Y = RenderInfo.tileSize.Y * tile.MapLocation.Y;
+                DrawTile(tile, StartingPoint);
+            }
+
+            DrawEntities(dimension, chunk);
+        }
+
+        public static void DrawEntities(int dimension, Chunk chunk)
+        {
+            int length = chunk.Creatures.Count;
+            for (int i = 0; i < length; i++)
+            {
+                KeyValuePair<System.Guid, Living> item = chunk.Creatures.ElementAt(i);
+                if (item.Value != null)
                 {
-                    Chunk chunk = World.Dimensions[dimension].GetChunk(x, y);
-
-                    int length = chunk.Creatures.Count;
-                    for (int i = 0; i < length; i++)
-                    {
-                        KeyValuePair<System.Guid, Living> item = chunk.Creatures.ElementAt(i);
-
-                        if (item.Value != null)
-                        {
-                            Point2D livingScreenLocation = new Point2D((int)(item.Value.TileLocation.X * Tile.GetTileSize().X), (int)(item.Value.TileLocation.Y * Tile.GetTileSize().Y));
-                            item.Value.Visual.Render(MapDrawer, livingScreenLocation);
-                        }
-                    }
+                    LivingScreenLocation.X = (int)(item.Value.TileLocation.X * TileSize.X);
+                    LivingScreenLocation.Y = (int)(item.Value.TileLocation.Y * TileSize.Y);
+                    item.Value.Visual.Render(MapDrawer, LivingScreenLocation);
                 }
             }
         }
@@ -73,8 +110,10 @@ namespace MagicalLifeGUIWindows.Rendering.Map
                 Texture2D texture = AssetManager.Textures[tile.Item.TextureIndex];
                 MapDrawer.Draw(texture, target, RenderLayer.Items);
 
-                Rectangle itemCountBounds = new Rectangle(target.Location.X + Tile.GetTileSize().X / 2, target.Location.Y + Tile.GetTileSize().Y/* / 2*/, 32, 8);
-                MapDrawer.DrawText(tile.Item.CurrentlyStacked.ToString(), itemCountBounds,
+                ItemCountBounds.X = target.Location.X + TileSize.X / 2;
+                ItemCountBounds.Y = target.Location.Y + TileSize.Y;
+
+                MapDrawer.DrawText(tile.Item.CurrentlyStacked.ToString(), ItemCountBounds,
                     ItemCountFont, SimpleTextRenderer.Alignment.Left, RenderLayer.MapItemCount);
             }
         }
@@ -85,19 +124,24 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         private static void DrawTile(Tile tile, Point2D start)
         {
             //A target location for 32x textures to be centered in the tile, without being enlarged.
-            Rectangle x32Target = new Rectangle(start.X + 16, start.Y + 16, 32, 32);
+            X32Target.X = start.X + 16;
+            X32Target.Y = start.Y + 16;
 
             tile.CompositeRenderer.Render(MapDrawer, start);
-            DrawItems(tile, new Rectangle(start.X, start.Y, Tile.GetTileSize().X, Tile.GetTileSize().Y));
+
+            TileItemTarget.X = start.X;
+            TileItemTarget.Y = start.Y;
+
+            DrawItems(tile, TileItemTarget);
 
             switch (tile.ImpendingAction)
             {
                 case MagicalLifeAPI.Entity.AI.Task.ActionSelected.Mine:
-                    MapDrawer.Draw(AssetManager.Textures[AssetManager.NameToIndex[TextureLoader.GUIPickaxeMapIcon]], x32Target, RenderLayer.GUI);
+                    MapDrawer.Draw(AssetManager.Textures[AssetManager.NameToIndex[TextureLoader.GUIPickaxeMapIcon]], X32Target, RenderLayer.GUI);
                     break;
 
                 case MagicalLifeAPI.Entity.AI.Task.ActionSelected.Chop:
-                    MapDrawer.Draw(AssetManager.Textures[AssetManager.NameToIndex[TextureLoader.GUIAxeMapIcon]], x32Target, RenderLayer.GUI);
+                    MapDrawer.Draw(AssetManager.Textures[AssetManager.NameToIndex[TextureLoader.GUIAxeMapIcon]], X32Target, RenderLayer.GUI);
                     break;
 
                 default:

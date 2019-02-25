@@ -30,7 +30,7 @@ namespace MagicalLifeGUIWindows.GUI.Join
         {
             World.Mode = MagicalLifeAPI.Networking.EngineMode.ClientOnly;
             FMODUtil.RaiseEvent(SoundsTable.UIClick);
-            ClientSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(JoinGameMenu.menu.IpInputBox.Text, int.Parse(JoinGameMenu.menu.PortInputBox.Text)));
+            ClientSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(JoinGameMenu.Menu.IpInputBox.Text, int.Parse(JoinGameMenu.Menu.PortInputBox.Text)));
             Client.Load();
             MenuHandler.Clear();
             InGameGUI.Initialize();

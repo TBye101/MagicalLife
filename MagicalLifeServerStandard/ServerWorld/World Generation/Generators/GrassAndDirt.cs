@@ -22,6 +22,7 @@ namespace MagicalLifeServer.ServerWorld.World
 
         protected override void GenerateDetails(ProtoArray<Chunk> map, Random random)
         {
+            //Don't need this yet
         }
 
         protected override void GenerateLandType(string[,] biomeMap, ProtoArray<Chunk> map, Random random)
@@ -95,18 +96,22 @@ namespace MagicalLifeServer.ServerWorld.World
 
         protected override void GenerateMinerals(ProtoArray<Chunk> map, Random random)
         {
+            //Don't need this yet
         }
 
         protected override void GenerateNaturalFeatures(ProtoArray<Chunk> map, Random random)
         {
+            //Don't need this yet
         }
 
         protected override void GenerateStructures(ProtoArray<Chunk> map, Random random)
         {
+            //Don't need this yet
         }
 
         protected override void GenerateVegetation(ProtoArray<Chunk> map, Random random)
         {
+            //Don't need this yet
         }
     }
 }

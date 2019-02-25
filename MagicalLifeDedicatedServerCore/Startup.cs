@@ -15,7 +15,7 @@ namespace MagicalLifeDedicatedServer
         public static void Go()
         {
             World.Mode = MagicalLifeAPI.Networking.EngineMode.ServerOnly;
-            AssetManager.isServerOnly = true;
+            AssetManager.IsServerOnly = true;
             FileSystemManager.Initialize();
             MasterLog.Initialize();
             ErrorReporter.Initialize();

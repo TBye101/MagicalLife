@@ -10,6 +10,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 *Harvest skill now has impact on the speed of harvesting resources
 *Removed Serilog dependency
 *Inventories are now baked in for creatures
+*Increased camera performance, 100x100 worlds are possible (~22 fps)
 
 #### GUI
 *Tilling dirt is now available from the in game GUI
@@ -18,6 +19,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 *Creatures can now be clicked upon to see their skills/creature window
 *Added the new log texture
 *Skills/creature window now has an inventory tab
+*Zooming out now supported
 
 #### Bugs
 

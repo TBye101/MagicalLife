@@ -12,7 +12,6 @@ using MagicalLifeGUIWindows.GUI.In;
 using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Load;
 using MagicalLifeGUIWindows.Rendering;
-using MagicalLifeGUIWindows.Rendering.Map;
 using MagicalLifeGUIWindows.Screens;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -28,7 +27,8 @@ namespace MagicalLifeGUIWindows
     public class Game1 : Game
     {
         public GraphicsDeviceManager Graphics { get; set; }
-        public SpriteBatch SpriteBatch;
+        public SpriteBatch GUIBatch { get; set; }
+        public SpriteBatch MapSpriteBatch { get; set; }
 
         public static ContentManager AssetManager { get; set; }
 
@@ -43,11 +43,11 @@ namespace MagicalLifeGUIWindows
 
         public Game1()
         {
-            this.Graphics = new GraphicsDeviceManager(this);
+            Graphics = new GraphicsDeviceManager(this);
             this.Content.RootDirectory = "Content";
             Game1.AssetManager = this.Content;
             UniversalEvents.GameExit += this.UniversalEvents_GameExit;
-            this.Graphics.HardwareModeSwitch = false;
+            Graphics.HardwareModeSwitch = false;
             OutputDebugInfo();
         }
 
@@ -80,6 +80,9 @@ namespace MagicalLifeGUIWindows
 
             SettingsManager.UniversalSettings.Settings.GameHasRunBefore = true;
             SettingsManager.UniversalSettings.Save();
+            RenderInfo.Camera2D.ViewportHeight = Graphics.GraphicsDevice.Viewport.Height;
+            RenderInfo.Camera2D.ViewportWidth = Graphics.GraphicsDevice.Viewport.Width;
+            RenderInfo.Camera2D.CenterOn(new Vector2(8, 8));
         }
 
         /// <summary>
@@ -89,7 +92,8 @@ namespace MagicalLifeGUIWindows
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            this.SpriteBatch = new SpriteBatch(this.GraphicsDevice);
+            this.GUIBatch = new SpriteBatch(this.GraphicsDevice);
+            this.MapSpriteBatch = new SpriteBatch(this.GraphicsDevice);
 
             Loader load = new Loader();
             string msg = string.Empty;
@@ -139,64 +143,49 @@ namespace MagicalLifeGUIWindows
         protected override void Draw(GameTime gameTime)
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            FPS.Update(deltaTime);
 
             this.DisplayInGame();
             FMODUtil.Update();
 
             //Used to render things to a buffer that will have a zoom multiplier applied before rendering.
+            this.GraphicsDevice.Clear(Color.Black);
 
-            using (SpriteBatch zoomBatch = new SpriteBatch(this.GraphicsDevice))
+            if (Game1.SplashDone)
             {
-                using (RenderTarget2D target = new RenderTarget2D(this.GraphicsDevice, RenderInfo.FullScreenWindow.Width, RenderInfo.FullScreenWindow.Height))
+                if (World.Dimensions.Count > 0)
                 {
-                    this.GraphicsDevice.SetRenderTarget(target);
+                    //Never set this to SpriteSortMode.Texture, as that causes bugs.
+                    this.MapSpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend,
+                        null, null, null, null, RenderInfo.Camera2D.TranslationMatrix);
 
-                    this.GraphicsDevice.Clear(Color.Black);
+                    RenderingPipe.DrawScreen(this.MapSpriteBatch);
+                    this.MapSpriteBatch.End();
+                }
 
-                    if (Game1.SplashDone)
+                this.GUIBatch.Begin();
+                RenderingPipe.DrawGUI(this.GUIBatch);
+                this.GUIBatch.End();
+            }
+            else
+            {
+                int length = Game1.SplashScreens.Count;
+                for (int i = 0; i < length; i++)
+                {
+                    LogoScreen item = Game1.SplashScreens[i];
+                    if (!item.Done())
                     {
-                        zoomBatch.Begin();
-                        RenderingPipe.DrawScreen(zoomBatch);
-                        MapRenderer.MapDrawer.RenderAll();
-                        zoomBatch.End();
-                    }
-                    else
-                    {
-                        int length = Game1.SplashScreens.Count;
-                        for (int i = 0; i < length; i++)
-                        {
-                            LogoScreen item = Game1.SplashScreens[i];
-                            if (!item.Done())
-                            {
-                                item.Draw(zoomBatch);
-                                break;
-                            }
-
-                            if (i == length - 1)
-                            {
-                                Game1.SplashDone = true;
-
-                                //Initialize main menu
-                                GUI.MainMenu.MainMenu.Initialize();
-                                this.IsMouseVisible = true;
-                            }
-                        }
+                        item.Draw(this.MapSpriteBatch);
+                        break;
                     }
 
-                    //set rendering back to the back buffer
-                    this.GraphicsDevice.SetRenderTarget(null);
+                    if (i == length - 1)
+                    {
+                        Game1.SplashDone = true;
 
-                    //render target to back buffer
-                    zoomBatch.Begin();
-
-                    int width = (int)(this.GraphicsDevice.DisplayMode.Width * RenderInfo.Zoom);
-                    int height = (int)(this.GraphicsDevice.DisplayMode.Height * RenderInfo.Zoom);
-
-                    zoomBatch.Draw(target, new Rectangle(0, 0, width, height), Color.White);
-                    RenderingPipe.DrawGUI(zoomBatch);
-
-                    zoomBatch.End();
+                        //Initialize main menu
+                        GUI.MainMenu.MainMenu.Initialize();
+                        this.IsMouseVisible = true;
+                    }
                 }
             }
             base.Draw(gameTime);
@@ -215,6 +204,8 @@ namespace MagicalLifeGUIWindows
 
         private static void OutputDebugInfo()
         {
+            MasterLog.DebugWriteLine("Screens:");
+
             foreach (Screen screen in Screen.AllScreens)
             {
                 MasterLog.DebugWriteLine("Device Name: " + screen.DeviceName);
@@ -223,6 +214,21 @@ namespace MagicalLifeGUIWindows
                 MasterLog.DebugWriteLine("Working Area: " + screen.WorkingArea.ToString());
                 MasterLog.DebugWriteLine("Bounds: " + screen.Bounds.ToString());
                 MasterLog.DebugWriteLine("Primary Screen: " + screen.Primary.ToString());
+            }
+
+            MasterLog.DebugWriteLine("Screens end");
+
+            System.Collections.ObjectModel.ReadOnlyCollection<GraphicsAdapter> gpus = GraphicsAdapter.Adapters;
+
+            foreach (GraphicsAdapter item in gpus)
+            {
+                MasterLog.DebugWriteLine("Description: " + item.Description);
+                MasterLog.DebugWriteLine("Device ID" + item.DeviceId.ToString());
+                MasterLog.DebugWriteLine("Device Name: " + item.DeviceName);
+                MasterLog.DebugWriteLine("Is Default: " + item.IsDefaultAdapter.ToString());
+                MasterLog.DebugWriteLine("Revision: " + item.Revision.ToString());
+                MasterLog.DebugWriteLine("Sub System ID: " + item.SubSystemId.ToString());
+                MasterLog.DebugWriteLine("Vendor ID: " + item.VendorId.ToString());
             }
         }
     }

@@ -1,10 +1,13 @@
-﻿using MagicalLifeAPI.Filing.Logging;
+﻿using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.GUI;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input.Comparators;
 using MagicalLifeGUIWindows.Input.History;
 using MagicalLifeGUIWindows.Map;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Input.InputListeners;
 using System.Collections.Generic;
 
@@ -25,7 +28,7 @@ namespace MagicalLifeGUIWindows.Input
         /// </summary>
         public static List<GUIContainer> GUIWindows { get; private set; } = new List<GUIContainer>();
 
-        public static MouseListener MouseListner = new MouseListener();
+        public static MouseListener MouseListener { get; set; }
 
         private static readonly BoundsSorter BoundSorter = new BoundsSorter();
 
@@ -38,18 +41,21 @@ namespace MagicalLifeGUIWindows.Input
         /// </summary>
         public static void Initialize()
         {
-            MouseListner.MouseClicked += MouseListener_MouseClicked;
-            MouseListner.MouseDoubleClicked += MouseListener_MouseDoubleClicked;
-            MouseListner.MouseWheelMoved += MouseListener_MouseWheelMoved;
-            MouseListner.MouseDrag += MouseListner_MouseDrag;
+            MouseListener = new MouseListener();
+            MouseListener.MouseClicked += MouseListener_MouseClicked;
+            MouseListener.MouseDoubleClicked += MouseListener_MouseDoubleClicked;
+            MouseListener.MouseWheelMoved += MouseListener_MouseWheelMoved;
+            MouseListener.MouseDrag += MouseListner_MouseDrag;
         }
 
         private static void MouseListner_MouseDrag(object sender, MouseEventArgs e)
         {
+            //Don't need this yet
         }
 
         private static void MouseListener_MouseWheelMoved(object sender, MouseEventArgs e)
         {
+            //Don't need this yet
         }
 
         private static void MouseListener_MouseDoubleClicked(object sender, MouseEventArgs e)
@@ -69,7 +75,7 @@ namespace MagicalLifeGUIWindows.Input
         /// <param name="time"></param>
         public static void UpdateMouseInput(GameTime time)
         {
-            MouseListner.Update(time);
+            MouseListener.Update(time);
         }
 
         /// <summary>
@@ -91,7 +97,8 @@ namespace MagicalLifeGUIWindows.Input
             }
 
             //If the click isn't in a GUI, then it must be in the map...
-            InputHistory.MapMouseClick(clickData);
+            MouseEventArgs transformed = TransformViaCamera(clickData);
+            InputHistory.MapMouseClick(transformed);
         }
 
         /// <summary>
@@ -144,8 +151,9 @@ namespace MagicalLifeGUIWindows.Input
                 }
             }
 
+            MouseEventArgs transformed = TransformViaCamera(clickData);
             //TODO: Make a special map double click handler
-            InputHistory.MapMouseClick(clickData);
+            InputHistory.MapMouseClick(transformed);
         }
 
         /// <summary>
@@ -283,6 +291,32 @@ namespace MagicalLifeGUIWindows.Input
             foreach (GUIContainer item in GUIWindows)
             {
                 item.Visible = false;
+            }
+        }
+
+        /// <summary>
+        /// Transforms the old <see cref="MouseEventArgs"/> into a new one that takes into account the camera system.
+        /// </summary>
+        /// <param name="old"></param>
+        /// <returns></returns>
+        public static MouseEventArgs TransformViaCamera(MouseEventArgs old)
+        {
+            if (World.Dimensions.Count > 0)
+            {
+                //The new position adjusted for the camera
+                Point position = RenderInfo.Camera2D.ScreenToWorld(old.Position.ToVector2()).ToPoint();
+                //The previous state adjusted for the camera
+                MouseState previousState = new MouseState(position.X, position.Y, old.ScrollWheelValue, old.PreviousState.LeftButton,
+                    old.PreviousState.MiddleButton, old.PreviousState.RightButton, old.PreviousState.XButton1, old.PreviousState.XButton2);
+
+                MouseState currentState = new MouseState(position.X, position.Y, old.ScrollWheelValue, old.CurrentState.LeftButton,
+                    old.CurrentState.MiddleButton, old.CurrentState.RightButton, old.CurrentState.XButton1, old.CurrentState.XButton2);
+
+                return new MouseEventArgs(MouseListener.ViewportAdapter, old.Time, previousState, currentState, old.Button);
+            }
+            else
+            {
+                return old;
             }
         }
     }

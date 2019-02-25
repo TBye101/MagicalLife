@@ -42,12 +42,12 @@ namespace MagicalLifeAPI.World.Data
         /// <summary>
         /// The width of this chunk in tiles.
         /// </summary>
-        public static int Width = 15;
+        public static readonly int Width = 15;
 
         /// <summary>
         /// The height of this chunk in tiles.
         /// </summary>
-        public static int Height = 15;
+        public static readonly int Height = 15;
 
         public Chunk(Dictionary<Guid, Living> creatures, ProtoArray<Tile> tiles, Point2D location, string biomeID)
         {

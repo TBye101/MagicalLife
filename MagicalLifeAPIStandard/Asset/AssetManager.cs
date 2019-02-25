@@ -9,7 +9,7 @@ namespace MagicalLifeAPI.Asset
     /// </summary>
     public static class AssetManager
     {
-        public static bool isServerOnly = false;
+        public static bool IsServerOnly { get; set; } = false;
 
         /// <summary>
         /// Holds all of the textures for the game.

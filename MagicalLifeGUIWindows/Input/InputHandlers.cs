@@ -17,9 +17,9 @@ namespace MagicalLifeGUIWindows.Input
 
         public static StrafeHandler StrafingHandler { get; set; }
 
-        public static TillingActionHandler TillingAction;
+        public static TillingActionHandler TillingAction { get; set; }
 
-        public static EscapeHandler EscHandler;
+        public static EscapeHandler EscHandler { get; set; }
 
         public static ZoomHandler ZooomHandler { get; set; }
 

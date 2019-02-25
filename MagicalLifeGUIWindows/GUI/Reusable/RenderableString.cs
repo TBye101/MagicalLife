@@ -1,5 +1,4 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Error.InternalExceptions;
+﻿using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeGUIWindows.Rendering.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -25,7 +24,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
         public override void Render(SpriteBatch spBatch, Rectangle targetLocation)
         {
-            SimpleTextRenderer.DrawString(this.Font, this.Text, targetLocation, this.Alignment, Color.White, ref spBatch);
+            SimpleTextRenderer.DrawString(this.Font, this.Text, targetLocation, this.Alignment, Color.White, spBatch, RenderLayer.GUI);
         }
 
         public override void Click(MouseEventArgs e, GUIContainer container)

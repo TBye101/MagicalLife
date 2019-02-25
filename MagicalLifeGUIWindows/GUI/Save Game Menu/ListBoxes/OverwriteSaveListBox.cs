@@ -1,7 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Filing;
 using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeGUIWindows.GUI.Reusable.API;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;

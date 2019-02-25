@@ -22,7 +22,7 @@ namespace MagicalLifeAPI.Networking.Server
         /// <summary>
         /// The messages that have been received and are yet unprocessed.
         /// </summary>
-        public static Queue<BaseMessage> RecievedMessages = new Queue<BaseMessage>();
+        public static Queue<BaseMessage> RecievedMessages { get; set; } = new Queue<BaseMessage>();
 
         /// <summary>
         /// Raised whenever the server receives a message.

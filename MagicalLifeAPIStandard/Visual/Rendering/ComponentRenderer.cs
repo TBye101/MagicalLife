@@ -12,17 +12,19 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
     public class ComponentRenderer
     {
         [ProtoMember(1)]
-        public RenderQueue RenderQueue { get; set; }
+        public List<AbstractVisual> RenderQueue { get; set; }
 
         public ComponentRenderer()
         {
-            this.RenderQueue = new RenderQueue();
+            this.RenderQueue = new List<AbstractVisual>();
         }
 
         public void Render(MapBatch batch, Point2D ScreenTopLeft)
         {
-            foreach (AbstractVisual item in this.RenderQueue.Visuals)
+            int length = this.RenderQueue.Count;
+            for (int i = 0; i < length; i++)
             {
+                AbstractVisual item = this.RenderQueue[i];
                 item.Render(batch, ScreenTopLeft);
             }
         }
@@ -31,7 +33,7 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         {
             foreach (AbstractVisual item in visuals)
             {
-                this.RenderQueue.Visuals.Add(item);
+                this.RenderQueue.Add(item);
             }
         }
     }

@@ -13,20 +13,20 @@ namespace MagicalLifeAPI.Visual.Rendering.Renderer
         public int RenderLayer { get; set; }
 
         /// <summary>
+        /// The number in line to be rendered.
+        /// </summary>
+        public int RenderCallID { get; set; }
+
+        /// <summary>
         /// The method stored that will render something.
         /// </summary>
         public Action Action { get; set; }
 
-        /// <summary>
-        /// An ID used to track the order in which calls are recieved.
-        /// </summary>
-        public int RenderCallID { get; set; }
-
-        public RenderCallHolder(int renderLayer, Action action, int renderCallIID)
+        public RenderCallHolder(int renderLayer, Action action, int renderCallID)
         {
             this.RenderLayer = renderLayer;
             this.Action = action;
-            this.RenderCallID = renderCallIID;
+            this.RenderCallID = renderCallID;
         }
 
         public bool Equals(RenderCallHolder other)
