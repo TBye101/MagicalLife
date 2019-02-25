@@ -22,7 +22,7 @@ public class Camera
 
     public int ViewportHeight { get; set; }
 
-    public int Dimension { get; set; }
+    public int Dimension { get; set; } = -1;
 
     /// <summary>
     /// The width of the dimension in tiles.
@@ -63,6 +63,12 @@ public class Camera
     public Camera()
     {
         this.Zoom = 1.0f;
+        World.ChangeCameraDimension += this.World_ChangeCameraDimension;
+    }
+
+    private void World_ChangeCameraDimension(object sender, int e)
+    {
+        this.InitializeForDimension(e);
     }
 
     public void InitializeForDimension(int dimension)

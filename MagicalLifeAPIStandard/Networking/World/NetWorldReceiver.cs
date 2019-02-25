@@ -45,6 +45,7 @@ namespace MagicalLifeAPI.Networking.World
         private static void HandleCompletion()
         {
             WorldStorage.LoadWorld(SaveName);
+            MagicalLifeAPI.World.Data.World.RaiseChangeCameraDimension(0);
         }
 
         public static void Receive(WorldTransferBodyMessage msg)

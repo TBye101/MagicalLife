@@ -31,6 +31,11 @@ namespace MagicalLifeAPI.World.Data
         /// </summary>
         public static event EventHandler<int> DimensionAdded;
 
+        /// <summary>
+        /// Raised when the camera needs to recalibrate for a different dimension.
+        /// </summary>
+        public static event EventHandler<int> ChangeCameraDimension;
+
         public World()
         {
         }
@@ -45,6 +50,15 @@ namespace MagicalLifeAPI.World.Data
             World.Dimensions.Add(dimension);
             World.DimensionAddedHandler(World.Dimensions.Count - 1);
             return World.Dimensions.Count - 1;
+        }
+
+        /// <summary>
+        /// Used to raise the <see cref="ChangeCameraDimension"/> event.
+        /// </summary>
+        /// <param name="dimension"></param>
+        public static void RaiseChangeCameraDimension(int dimension)
+        {
+            ChangeCameraDimension?.Invoke(null, dimension);
         }
 
         /// <summary>
