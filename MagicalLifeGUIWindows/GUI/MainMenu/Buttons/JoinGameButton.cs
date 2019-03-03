@@ -11,18 +11,14 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
     {
         public JoinGameButton() : base(TextureLoader.GUIMenuButton, GetLocation(), true, "Join Game")
         {
+            this.ClickEvent += this.JoinGameButton_ClickEvent;
         }
 
-        public override void Click(MouseEventArgs e, GUIContainer container)
+        private void JoinGameButton_ClickEvent(object sender, Reusable.Event.ClickEventArgs e)
         {
             FMODUtil.RaiseEvent(SoundsTable.UIClick);
             JoinGameMenu.Initialize();
             MainMenu.MainMenuID.PopupChild(JoinGameMenu.Menu);
-        }
-
-        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
-        {
-            //Single click is good enough for now
         }
 
         private static Rectangle GetLocation()

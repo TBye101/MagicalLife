@@ -60,6 +60,13 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             this.ItemRenderCount = itemRenderCount;
             this.Items = items;
             this.ItemDisplayBounds = this.CalculateItemBounds();
+            this.ClickEvent += this.ListBox_ClickEvent;
+        }
+
+        private void ListBox_ClickEvent(object sender, Event.ClickEventArgs e)
+        {
+            this.SelectedIndex = ((e.MouseEventArgs.Position.Y + e.GUIContainer.DrawingBounds.Y) / this.ItemDisplayBounds.Y) - 1;
+            this.ItemClickHandler(this.SelectedIndex);
         }
 
         /// <summary>
@@ -72,18 +79,6 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             int height = this.DrawingBounds.Height / this.ItemRenderCount;
 
             return new Point(width, height);
-        }
-
-        public override void Click(MouseEventArgs e, GUIContainer container)
-        {
-            this.SelectedIndex = ((e.Position.Y + container.DrawingBounds.Y) / this.ItemDisplayBounds.Y) - 1;
-            this.ItemClickHandler(this.SelectedIndex);
-        }
-
-        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
-        {
-            this.SelectedIndex = ((e.Position.Y + container.DrawingBounds.Y) / this.ItemDisplayBounds.Y) - 1;
-            this.ItemDoubleClickHandler(this.SelectedIndex);
         }
 
         public override void Render(SpriteBatch spBatch, Rectangle containerBounds)

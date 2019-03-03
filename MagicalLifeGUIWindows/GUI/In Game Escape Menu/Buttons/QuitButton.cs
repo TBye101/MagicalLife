@@ -11,6 +11,12 @@ namespace MagicalLifeGUIWindows.GUI.In
     {
         public QuitButton() : base(TextureLoader.GUIMenuButton, GetDisplayArea(), true, GetText())
         {
+            this.ClickEvent += this.QuitButton_ClickEvent;
+        }
+
+        private void QuitButton_ClickEvent(object sender, Reusable.Event.ClickEventArgs e)
+        {
+            FMODUtil.RaiseEvent(SoundsTable.UIClick);
         }
 
         public static string GetText()
@@ -36,16 +42,6 @@ namespace MagicalLifeGUIWindows.GUI.In
             int height = InGameEscapeMenuLayout.ButtonHeight;
 
             return new Rectangle(x, y, width, height);
-        }
-
-        public override void Click(MouseEventArgs e, GUIContainer container)
-        {
-            FMODUtil.RaiseEvent(SoundsTable.UIClick);
-        }
-
-        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
-        {
-            FMODUtil.RaiseEvent(SoundsTable.UIClick);
         }
     }
 }

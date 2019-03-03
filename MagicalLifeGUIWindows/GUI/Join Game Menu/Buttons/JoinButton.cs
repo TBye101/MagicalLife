@@ -15,18 +15,10 @@ namespace MagicalLifeGUIWindows.GUI.Join
     {
         public JoinButton() : base(TextureLoader.GUIMenuBackground, GetDisplayArea(), true, "Join Game")
         {
+            this.ClickEvent += this.JoinButton_ClickEvent;
         }
 
-        private static Rectangle GetDisplayArea()
-        {
-            int x = JoinGameMenuLayout.JoinButtonX;
-            int y = JoinGameMenuLayout.IPInputBoxY;
-            int width = JoinGameMenuLayout.IPInputBoxWidth;
-            int height = JoinGameMenuLayout.IPInputBoxHeight;
-            return new Rectangle(x, y, width, height);
-        }
-
-        public override void Click(MouseEventArgs e, GUIContainer container)
+        private void JoinButton_ClickEvent(object sender, Reusable.Event.ClickEventArgs e)
         {
             World.Mode = MagicalLifeAPI.Networking.EngineMode.ClientOnly;
             FMODUtil.RaiseEvent(SoundsTable.UIClick);
@@ -37,8 +29,13 @@ namespace MagicalLifeGUIWindows.GUI.Join
             BoundHandler.Popup(InGameGUI.InGame);
         }
 
-        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
+        private static Rectangle GetDisplayArea()
         {
+            int x = JoinGameMenuLayout.JoinButtonX;
+            int y = JoinGameMenuLayout.IPInputBoxY;
+            int width = JoinGameMenuLayout.IPInputBoxWidth;
+            int height = JoinGameMenuLayout.IPInputBoxHeight;
+            return new Rectangle(x, y, width, height);
         }
     }
 }

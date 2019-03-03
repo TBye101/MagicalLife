@@ -1,8 +1,10 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeGUIWindows.GUI.Reusable.Event;
 using MagicalLifeGUIWindows.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Input.InputListeners;
+using System;
 
 namespace MagicalLifeGUIWindows.GUI.Reusable
 {
@@ -52,6 +54,9 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
         public bool HasFocus { get; set; } = false;
 
+        public event EventHandler<ClickEventArgs> ClickEvent;
+        public event EventHandler<ClickEventArgs> DoubleClickEvent;
+
         /// <param name="drawingBounds">The bounds for which to draw the texture on the screen at.</param>
         /// <param name="priority">Determines if this GUI element should have priority over other GUI elements when sorting through input.</param>
         /// <param name="isContained">If true, this GUI element is within a container.</param>
@@ -94,14 +99,20 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public abstract void Click(MouseEventArgs e, GUIContainer container);
+        public void Click(MouseEventArgs e, GUIContainer container)
+        {
+            this.ClickEvent?.Invoke(this, new ClickEventArgs(e, container));
+        }
 
         /// <summary>
         /// Called whenever this GUI element is clicked on.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public abstract void DoubleClick(MouseEventArgs e, GUIContainer container);
+        public void DoubleClick(MouseEventArgs e, GUIContainer container)
+        {
+            this.DoubleClickEvent?.Invoke(this, new ClickEventArgs(e, container));
+        }
 
         /// <summary>
         /// Called every frame that the element is visible.

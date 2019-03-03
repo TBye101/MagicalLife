@@ -18,19 +18,10 @@ namespace MagicalLifeGUIWindows.GUI.Load
     {
         public LoadSaveButton() : base(TextureLoader.GUIMenuButton, GetDisplayArea(), true, "Load Save")
         {
+            this.ClickEvent += this.LoadSaveButton_ClickEvent;
         }
 
-        private static Rectangle GetDisplayArea()
-        {
-            int x = LoadGameMenuLayout.LoadSaveButtonX;
-            int y = LoadGameMenuLayout.LoadSaveButtonY;
-            int width = LoadGameMenuLayout.LoadSaveButtonWidth;
-            int height = LoadGameMenuLayout.LoadSaveButtonHeight;
-
-            return new Rectangle(x, y, width, height);
-        }
-
-        public override void Click(MouseEventArgs e, GUIContainer container)
+        private void LoadSaveButton_ClickEvent(object sender, Reusable.Event.ClickEventArgs e)
         {
             int selected = LoadGameMenu.Menu.SaveSelectListBox.SelectedIndex;
             if (selected != -1)
@@ -53,9 +44,14 @@ namespace MagicalLifeGUIWindows.GUI.Load
             }
         }
 
-        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
+        private static Rectangle GetDisplayArea()
         {
-            // Single click is good enough
+            int x = LoadGameMenuLayout.LoadSaveButtonX;
+            int y = LoadGameMenuLayout.LoadSaveButtonY;
+            int width = LoadGameMenuLayout.LoadSaveButtonWidth;
+            int height = LoadGameMenuLayout.LoadSaveButtonHeight;
+
+            return new Rectangle(x, y, width, height);
         }
     }
 }

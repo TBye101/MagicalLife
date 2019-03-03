@@ -199,15 +199,6 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             }
         }
 
-        public override void Click(MouseEventArgs e, GUIContainer container)
-        {
-        }
-
-        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
-        {
-            //Single click is good enough for now
-        }
-
         public override void Render(SpriteBatch spBatch, Rectangle containerBounds)
         {
             Rectangle location;

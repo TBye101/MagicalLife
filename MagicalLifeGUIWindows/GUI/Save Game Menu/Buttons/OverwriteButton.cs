@@ -11,6 +11,12 @@ namespace MagicalLifeGUIWindows.GUI.Save
     {
         public OverwriteButton() : base(TextureLoader.GUIMenuButton, GetDrawingBounds(), true, "Overwrite Save")
         {
+            this.ClickEvent += this.OverwriteButton_ClickEvent;
+        }
+
+        private void OverwriteButton_ClickEvent(object sender, Reusable.Event.ClickEventArgs e)
+        {
+            this.Overwrite();
         }
 
         private static Rectangle GetDrawingBounds()
@@ -23,11 +29,6 @@ namespace MagicalLifeGUIWindows.GUI.Save
             return new Rectangle(x, y, width, height);
         }
 
-        public override void Click(MouseEventArgs e, GUIContainer container)
-        {
-            this.Overwrite();
-        }
-
         private void Overwrite()
         {
             int selected = SaveGameMenu.menu.SavesList.SelectedIndex;
@@ -38,11 +39,6 @@ namespace MagicalLifeGUIWindows.GUI.Save
                 WorldStorage.SerializeWorld(selectedItem.Text, new WorldDiskSink());
             }
             MenuHandler.Back();
-        }
-
-        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
-        {
-            this.Overwrite();
         }
     }
 }

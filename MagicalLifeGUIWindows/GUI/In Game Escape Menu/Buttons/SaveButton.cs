@@ -11,6 +11,12 @@ namespace MagicalLifeGUIWindows.GUI.In
     {
         public SaveButton() : base(TextureLoader.GUIMenuButton, GetDisplayArea(), true, "Save Game")
         {
+            this.ClickEvent += this.SaveButton_ClickEvent;
+        }
+
+        private void SaveButton_ClickEvent(object sender, Reusable.Event.ClickEventArgs e)
+        {
+            this.Save();
         }
 
         private static Rectangle GetDisplayArea()
@@ -23,21 +29,11 @@ namespace MagicalLifeGUIWindows.GUI.In
             return new Rectangle(x, y, width, height);
         }
 
-        public override void Click(MouseEventArgs e, GUIContainer container)
-        {
-            this.Save();
-        }
-
         private void Save()
         {
             FMODUtil.RaiseEvent(SoundsTable.UIClick);
             SaveGameMenu.Initialize();
             InGameEscapeMenu.menu.PopupChild(SaveGameMenu.menu);
-        }
-
-        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
-        {
-            this.Save();
         }
     }
 }

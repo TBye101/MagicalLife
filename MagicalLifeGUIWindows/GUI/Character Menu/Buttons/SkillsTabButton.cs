@@ -13,9 +13,10 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu.Buttons
             : base(TextureLoader.GUIMenuButton, CharacterMenuLayout.GetSkillsButtonBounds(),
                   true, TextureLoader.FontMainMenuFont12x, "Skills Tab")
         {
+            this.ClickEvent += this.SkillsTabButton_ClickEvent;
         }
 
-        public override void Click(MouseEventArgs e, GUIContainer container)
+        private void SkillsTabButton_ClickEvent(object sender, Reusable.Event.ClickEventArgs e)
         {
             CharacterMenu.Menu.HideAllControls();
             //Show the inventory menu.
@@ -24,11 +25,6 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu.Buttons
             CharacterMenu.Menu.CharacterName.Visible = true;
             CharacterMenu.Menu.SkillsButton.Visible = true;
             CharacterMenu.Menu.InventoryButton.Visible = true;
-        }
-
-        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
-        {
-            //Nothing to see here
         }
     }
 }
