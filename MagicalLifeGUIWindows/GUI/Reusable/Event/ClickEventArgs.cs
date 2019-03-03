@@ -10,7 +10,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable.Event
     /// <summary>
     /// Holds some data about click events.
     /// </summary>
-    public class ClickEventArgs
+    public class ClickEventArgs : EventArgs
     {
         public MouseEventArgs MouseEventArgs { get; set; }
 
