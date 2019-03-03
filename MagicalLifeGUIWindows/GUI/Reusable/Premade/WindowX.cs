@@ -11,11 +11,6 @@ namespace MagicalLifeGUIWindows.GUI.Reusable.Premade
     /// </summary>
     public class WindowX : MonoButton
     {
-        /// <summary>
-        /// Raised when the containing window should be closed.
-        /// </summary>
-        public event EventHandler XClicked;
-
         private static readonly int TextureWidth = 32;
         private static readonly int TextureHeight = 32;
 
@@ -24,16 +19,6 @@ namespace MagicalLifeGUIWindows.GUI.Reusable.Premade
             base(TextureLoader.GUIX,
                 new Rectangle(containingSize.X - TextureWidth, 0, TextureWidth, TextureHeight), true, "")
         {
-        }
-
-        public override void Click(MouseEventArgs e, GUIContainer container)
-        {
-            this.XClicked?.Invoke(null, e);
-        }
-
-        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
-        {
-            this.XClicked?.Invoke(null, e);
         }
     }
 }

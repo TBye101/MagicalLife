@@ -73,6 +73,14 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             this.ItemBackgroundTexture = AssetManager.GetTextureIndex(TextureLoader.GUIListBoxItemBackground);
             this.ItemRenderCount = itemRenderCount;
             this.ItemDisplayBounds = this.CalculateItemBounds();
+
+            this.ClickEvent += this.ScrollableGrid_ClickEvent;
+        }
+
+        private void ScrollableGrid_ClickEvent(object sender, Event.ClickEventArgs e)
+        {
+            this.SelectedIndex = ((e.MouseEventArgs.Position.Y + e.GUIContainer.DrawingBounds.Y) / this.ItemDisplayBounds.Y) - 1;
+            this.ItemClickHandler(this.SelectedIndex);
         }
 
         private void InitializeItems()
@@ -95,18 +103,6 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             int height = this.DrawingBounds.Height / this.ItemRenderCount;
 
             return new Point(width, height);
-        }
-
-        public override void Click(MouseEventArgs e, GUIContainer container)
-        {
-            this.SelectedIndex = ((e.Position.Y + container.DrawingBounds.Y) / this.ItemDisplayBounds.Y) - 1;
-            this.ItemClickHandler(this.SelectedIndex);
-        }
-
-        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
-        {
-            this.SelectedIndex = ((e.Position.Y + container.DrawingBounds.Y) / this.ItemDisplayBounds.Y) - 1;
-            this.ItemDoubleClickHandler(this.SelectedIndex);
         }
 
         public override void Render(SpriteBatch spBatch, Rectangle containerBounds)

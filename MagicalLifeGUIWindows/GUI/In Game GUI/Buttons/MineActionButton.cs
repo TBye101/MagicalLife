@@ -15,19 +15,10 @@ namespace MagicalLifeGUIWindows.GUI.In
         {
             this.GreyTextureIndex = AssetManager.GetTextureIndex(TextureLoader.GUIPickaxeButtonGrey);
             this.GoldTextureIndex = AssetManager.GetTextureIndex(TextureLoader.GUIPickaxeButtonGold);
+            this.ClickEvent += this.MineActionButton_ClickEvent;
         }
 
-        private static Rectangle GetDisplayArea()
-        {
-            int x = InGameGUILayout.MineActionButtonX;
-            int y = InGameGUILayout.ActionButtonY;
-            int width = InGameGUILayout.ActionButtonSize;
-            int height = InGameGUILayout.ActionButtonSize;
-
-            return new Rectangle(x, y, width, height);
-        }
-
-        public override void Click(MouseEventArgs e, GUIContainer container)
+        private void MineActionButton_ClickEvent(object sender, Reusable.Event.ClickEventArgs e)
         {
             if (InGameGUI.Selected == ActionSelected.Mine)
             {
@@ -41,9 +32,14 @@ namespace MagicalLifeGUIWindows.GUI.In
             }
         }
 
-        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
+        private static Rectangle GetDisplayArea()
         {
-            //Nothing to see here
+            int x = InGameGUILayout.MineActionButtonX;
+            int y = InGameGUILayout.ActionButtonY;
+            int width = InGameGUILayout.ActionButtonSize;
+            int height = InGameGUILayout.ActionButtonSize;
+
+            return new Rectangle(x, y, width, height);
         }
     }
 }

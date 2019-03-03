@@ -11,6 +11,12 @@ namespace MagicalLifeGUIWindows.GUI.Save
     {
         public NewSaveButton() : base(TextureLoader.GUIMenuButton, GetDrawingBounds(), true, "New Save")
         {
+            this.ClickEvent += this.NewSaveButton_ClickEvent;
+        }
+
+        private void NewSaveButton_ClickEvent(object sender, Reusable.Event.ClickEventArgs e)
+        {
+            this.NewSave();
         }
 
         private static Rectangle GetDrawingBounds()
@@ -23,11 +29,6 @@ namespace MagicalLifeGUIWindows.GUI.Save
             return new Rectangle(x, y, width, height);
         }
 
-        public override void Click(MouseEventArgs e, GUIContainer container)
-        {
-            this.NewSave();
-        }
-
         private void NewSave()
         {
             if (SaveGameMenu.menu.SaveInputBox.Text != string.Empty)
@@ -35,11 +36,6 @@ namespace MagicalLifeGUIWindows.GUI.Save
                 WorldStorage.SerializeWorld(SaveGameMenu.menu.SaveInputBox.Text, new WorldDiskSink());
             }
             MenuHandler.Back();
-        }
-
-        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
-        {
-            this.NewSave();
         }
     }
 }

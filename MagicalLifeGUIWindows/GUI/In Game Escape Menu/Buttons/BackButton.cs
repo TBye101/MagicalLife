@@ -9,6 +9,12 @@ namespace MagicalLifeGUIWindows.GUI.In
     {
         public BackButton() : base(TextureLoader.GUIMenuButton, GetDisplayArea(), true, "Back")
         {
+            this.ClickEvent += this.BackButton_ClickEvent;
+        }
+
+        private void BackButton_ClickEvent(object sender, Reusable.Event.ClickEventArgs e)
+        {
+            MenuHandler.Clear();
         }
 
         private static Rectangle GetDisplayArea()
@@ -19,16 +25,6 @@ namespace MagicalLifeGUIWindows.GUI.In
             int height = InGameEscapeMenuLayout.ButtonHeight;
 
             return new Rectangle(x, y, width, height);
-        }
-
-        public override void Click(MouseEventArgs e, GUIContainer container)
-        {
-            MenuHandler.Clear();
-        }
-
-        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
-        {
-            MenuHandler.Clear();
         }
     }
 }

@@ -11,16 +11,13 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
     {
         public QuitButton() : base(TextureLoader.GUIMenuButton, GetLocation(), true, "Quit")
         {
+            this.ClickEvent += this.QuitButton_ClickEvent;
         }
 
-        public override void Click(MouseEventArgs e, GUIContainer container)
+        private void QuitButton_ClickEvent(object sender, Reusable.Event.ClickEventArgs e)
         {
             FMODUtil.RaiseEvent(SoundsTable.UIClick);
             UniversalEvents.GameExitHandler();
-        }
-
-        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
-        {
         }
 
         private static Rectangle GetLocation()

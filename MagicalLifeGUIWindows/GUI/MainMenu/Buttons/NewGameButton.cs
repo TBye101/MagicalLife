@@ -11,18 +11,14 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
     {
         public NewGameButton() : base(TextureLoader.GUIMenuButton, GetLocation(), true, "New Game")
         {
+            this.ClickEvent += this.NewGameButton_ClickEvent;
         }
 
-        public override void Click(MouseEventArgs e, GUIContainer container)
+        private void NewGameButton_ClickEvent(object sender, Reusable.Event.ClickEventArgs e)
         {
             FMODUtil.RaiseEvent(SoundsTable.UIClick);
             NewWorldMenu.Initialize();
             MainMenu.MainMenuID.PopupChild(NewWorldMenu.NewWorldMenuM);
-        }
-
-        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
-        {
-            //Single click is good enough
         }
 
         private static Rectangle GetLocation()

@@ -22,9 +22,10 @@ namespace MagicalLifeGUIWindows.GUI.New
     {
         public NewWorldNextButton() : base(TextureLoader.GUIMenuButton, GetLocation(), true, "Next")
         {
+            this.ClickEvent += this.NewWorldNextButton_ClickEvent;
         }
 
-        public override void Click(MouseEventArgs e, GUIContainer container)
+        private void NewWorldNextButton_ClickEvent(object sender, Reusable.Event.ClickEventArgs e)
         {
             World.Mode = MagicalLifeAPI.Networking.EngineMode.ServerAndClient;
             Server.Load();
@@ -42,10 +43,6 @@ namespace MagicalLifeGUIWindows.GUI.New
             BoundHandler.HideAll();
             InGameGUI.Initialize();
             BoundHandler.Popup(InGameGUI.InGame);
-        }
-
-        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
-        {
         }
 
         private static Rectangle GetLocation()

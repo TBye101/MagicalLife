@@ -39,7 +39,7 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu
             this.Creature = creature;
 
             this.X = new WindowX(new MagicalLifeAPI.DataTypes.Point2D(this.DrawingBounds.Width, this.DrawingBounds.Height));
-            this.X.XClicked += this.X_XClicked;
+            this.X.ClickEvent += this.X_ClickEvent;
             this.CharacterName = new MonoLabel(CharacterMenuLayout.GetNameBounds(), TextureLoader.GUIMenuBackground, true, creature.CreatureName);
             this.Skills = this.InitializeSkills(creature);
             this.Inventory = this.InitializeInventory(creature);
@@ -51,6 +51,11 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu
             this.Controls.Add(this.InventoryButton);
             this.Controls.Add(this.SkillsButton);
             this.Controls.Add(this.Inventory);
+        }
+
+        private void X_ClickEvent(object sender, Reusable.Event.ClickEventArgs e)
+        {
+            BoundHandler.RemoveContainer(this);
         }
 
         /// <summary>
@@ -123,11 +128,6 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu
                 CharacterMenuLayout.GetSkillsBounds(),
                 int.MaxValue, true,
                 TextureLoader.FontMainMenuFont12x, 10, skills);
-        }
-
-        private void X_XClicked(object sender, EventArgs e)
-        {
-            BoundHandler.RemoveContainer(this);
         }
 
         public override string GetTextureName()

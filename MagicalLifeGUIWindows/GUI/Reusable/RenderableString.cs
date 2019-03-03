@@ -26,15 +26,5 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         {
             SimpleTextRenderer.DrawString(this.Font, this.Text, targetLocation, this.Alignment, Color.White, spBatch, RenderLayer.GUI);
         }
-
-        public override void Click(MouseEventArgs e, GUIContainer container)
-        {
-            //Nothing to see here
-        }
-
-        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
-        {
-            //Nothing to see here
-        }
     }
 }

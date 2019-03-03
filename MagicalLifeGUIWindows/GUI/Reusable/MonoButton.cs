@@ -1,8 +1,11 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeGUIWindows.GUI.Reusable.Event;
 using MagicalLifeGUIWindows.Rendering.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Extended.Input.InputListeners;
+using System;
 using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
 
 namespace MagicalLifeGUIWindows.GUI.Reusable
@@ -10,7 +13,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
     /// <summary>
     /// A generic button class for use with the monogame framework, as well as the MagicalLifeGUI and API.
     /// </summary>
-    public abstract class MonoButton : GUIElement
+    public class MonoButton : GUIElement
     {
         /// <summary>
         /// The text to display on the monolith.

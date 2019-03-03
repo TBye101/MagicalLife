@@ -15,19 +15,10 @@ namespace MagicalLifeGUIWindows.GUI.In
         {
             this.HoeTextureIndex = AssetManager.GetTextureIndex(TextureLoader.GUIHoeButtonGrey);
             this.GoldTextureIndex = AssetManager.GetTextureIndex(TextureLoader.GUIHoeButtonGold);
+            this.ClickEvent += this.TillDirtActionButton_ClickEvent;
         }
 
-        private static Rectangle GetDisplayArea()
-        {
-            int x = InGameGUILayout.HoeActionButtonX;
-            int y = InGameGUILayout.ActionButtonY;
-            int width = InGameGUILayout.ActionButtonSize;
-            int height = InGameGUILayout.ActionButtonSize;
-
-            return new Rectangle(x, y, width, height);
-        }
-
-        public override void Click(MouseEventArgs e, GUIContainer container)
+        private void TillDirtActionButton_ClickEvent(object sender, Reusable.Event.ClickEventArgs e)
         {
             if (InGameGUI.Selected == ActionSelected.Till)
             {
@@ -41,9 +32,14 @@ namespace MagicalLifeGUIWindows.GUI.In
             }
         }
 
-        public override void DoubleClick(MouseEventArgs e, GUIContainer container)
+        private static Rectangle GetDisplayArea()
         {
-            //Nothing to see here
+            int x = InGameGUILayout.HoeActionButtonX;
+            int y = InGameGUILayout.ActionButtonY;
+            int width = InGameGUILayout.ActionButtonSize;
+            int height = InGameGUILayout.ActionButtonSize;
+
+            return new Rectangle(x, y, width, height);
         }
     }
 }
