@@ -7,7 +7,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
     /// Used to determine available tasks for a creature, as well as complete tasks in required dependency order.
     /// This class also handles "bound" tasks, also known as tasks that require the same worker to complete them.
     /// </summary>
-    public class TaskDriver
+    internal class TaskDriver
     {
         /// <summary>
         /// The task to be completed.

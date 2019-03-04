@@ -20,7 +20,7 @@ namespace MagicalLifeAPI.World.Data.Disk
         /// </summary>
         /// <param name="chunk">The chunk to save.</param>
         /// <param name="dimensionID">The ID of the dimension the chunk belongs to.</param>
-        public void SaveChunk(Chunk chunk, Guid dimensionID, AbstractWorldSink sink)
+        internal void SaveChunk(Chunk chunk, Guid dimensionID, AbstractWorldSink sink)
         {
             bool dimensionExists = WorldStorage.DimensionPaths.TryGetValue(dimensionID, out string path);
 
@@ -39,7 +39,7 @@ namespace MagicalLifeAPI.World.Data.Disk
         /// <param name="chunkY">The y position of the chunk within the dimension.</param>
         /// <param name="dimensionID">The ID of the dimension that the chunk belongs to.</param>
         /// <returns></returns>
-        public Chunk LoadChunk(int chunkX, int chunkY, Guid dimensionID)
+        internal Chunk LoadChunk(int chunkX, int chunkY, Guid dimensionID)
         {
             return this.LoadChunk(new Point2D(chunkX, chunkY), dimensionID);
         }
@@ -51,7 +51,7 @@ namespace MagicalLifeAPI.World.Data.Disk
         /// <param name="chunkY">The y position of the chunk within the dimension.</param>
         /// <param name="dimensionID">The ID of the dimension that the chunk belongs to.</param>
         /// <returns></returns>
-        public Chunk LoadChunk(Point2D chunkLocation, Guid dimensionID)
+        internal Chunk LoadChunk(Point2D chunkLocation, Guid dimensionID)
         {
             bool dimensionExists = WorldStorage.DimensionPaths.TryGetValue(dimensionID, out string path);
 

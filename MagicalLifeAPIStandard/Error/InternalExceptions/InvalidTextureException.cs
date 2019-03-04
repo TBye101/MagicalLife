@@ -2,7 +2,7 @@
 
 namespace MagicalLifeAPI.Error.InternalExceptions
 {
-    public class InvalidTextureException : Exception
+    internal class InvalidTextureException : Exception
     {
         public InvalidTextureException() : base("A texture is invalid")
         {

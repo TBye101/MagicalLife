@@ -6,17 +6,17 @@ namespace MagicalLifeDedicatedServer.API.Commands
 {
     public class StartGame : ICommand
     {
-        public string getHelp()
+        public string GetHelp()
         {
             return "Starts the game";
         }
 
-        public string getName()
+        public string GetName()
         {
             return "startgame";
         }
 
-        public void run(List<string> input)
+        public void Run(List<string> input)
         {
             Server.StartGame();
             Util.WriteLine("Game started!");

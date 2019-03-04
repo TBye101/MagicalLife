@@ -16,7 +16,7 @@ namespace MagicalLifeAPI.Universal
         /// Raises the world generated event.
         /// </summary>
         /// <param name="e"></param>
-        public static void GameExitHandler()
+        internal static void GameExitHandler()
         {
             EventHandler handler = GameExit;
             if (handler != null)

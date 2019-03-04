@@ -14,7 +14,7 @@ namespace MagicalLifeAPI.Networking.Client
         /// </summary>
         private static Dictionary<NetMessageID, MessageHandler> MessageHandlers = new Dictionary<NetMessageID, MessageHandler>();
 
-        public static void Initialize(List<MessageHandler> handlers)
+        internal static void Initialize(List<MessageHandler> handlers)
         {
             foreach (MessageHandler item in handlers)
             {

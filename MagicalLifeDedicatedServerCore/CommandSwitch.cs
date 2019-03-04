@@ -46,20 +46,20 @@ namespace MagicalLifeDedicatedServer
         {
             foreach (ICommandModule item in modules)
             {
-                if (item.getCommandUsageName().ToLower() == inp[0])
+                if (item.GetCommandUsageName().ToLower() == inp[0])
                 {
-                    foreach (ICommand iitem in item.getCommands())
+                    foreach (ICommand iitem in item.GetCommands())
                     {
-                        if (iitem.getName().ToLower() == inp[1])
+                        if (iitem.GetName().ToLower() == inp[1])
                         {
                             commandFound = true;
                             if (inp.Length >= 3)
                             {
-                                iitem.run(inp.ToList().GetRange(2, inp.Length - 2));
+                                iitem.Run(inp.ToList().GetRange(2, inp.Length - 2));
                             }
                             else
                             {
-                                iitem.run(new List<string>());
+                                iitem.Run(new List<string>());
                             }
                         }
                     }
@@ -97,14 +97,14 @@ namespace MagicalLifeDedicatedServer
             bool cf = false;
             foreach (ICommandModule item in modules)
             {
-                if (item.getCommandUsageName().ToLower() == inp[0])
+                if (item.GetCommandUsageName().ToLower() == inp[0])
                 {
-                    foreach (ICommand iitem in item.getCommands())
+                    foreach (ICommand iitem in item.GetCommands())
                     {
-                        if (iitem.getName().ToLower() == inp[1])
+                        if (iitem.GetName().ToLower() == inp[1])
                         {
                             cf = true;
-                            Util.WriteLine(iitem.getHelp());
+                            Util.WriteLine(iitem.GetHelp());
                         }
                     }
                 }
@@ -126,11 +126,11 @@ namespace MagicalLifeDedicatedServer
 
             foreach (ICommandModule item in modules)
             {
-                if (item.getCommandUsageName().ToLower() == inp[0])
+                if (item.GetCommandUsageName().ToLower() == inp[0])
                 {
-                    foreach (ICommand iitem in item.getCommands())
+                    foreach (ICommand iitem in item.GetCommands())
                     {
-                        Util.WriteLine(iitem.getName());
+                        Util.WriteLine(iitem.GetName());
                     }
                 }
             }
@@ -145,7 +145,7 @@ namespace MagicalLifeDedicatedServer
             Util.WriteLine("");
             foreach (ICommandModule item in modules)
             {
-                Util.WriteLine(item.getCommandUsageName());
+                Util.WriteLine(item.GetCommandUsageName());
             }
         }
     }

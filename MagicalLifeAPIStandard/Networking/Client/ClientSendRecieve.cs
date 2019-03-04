@@ -21,9 +21,9 @@ namespace MagicalLifeAPI.Networking.Client
         /// <summary>
         /// Raised whenever a message is received
         /// </summary>
-        public static Queue<BaseMessage> RecievedMessages { get; set; } = new Queue<BaseMessage>();
+        internal static Queue<BaseMessage> RecievedMessages { get; set; } = new Queue<BaseMessage>();
 
-        public static void Initialize(NetworkSettings networkSettings)
+        internal static void Initialize(NetworkSettings networkSettings)
         {
             NetworkSettings = networkSettings;
 

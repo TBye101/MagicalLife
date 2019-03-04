@@ -2,7 +2,7 @@
 
 namespace MagicalLifeAPI.Error.InternalExceptions
 {
-    public class ResourceMissingException : Exception
+    internal class ResourceMissingException : Exception
     {
         public ResourceMissingException() : base("A resource was not found in its expected location!")
         {

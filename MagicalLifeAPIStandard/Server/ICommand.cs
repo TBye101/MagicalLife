@@ -11,19 +11,19 @@ namespace MagicalLifeAPI.Server
         /// Gets the name of this command.
         /// </summary>
         /// <returns></returns>
-        string getName();
+        string GetName();
 
         /// <summary>
         /// Tells this command to run with the specified input.
         /// This input doesn't contain the name of this command.
         /// </summary>
         /// <param name="input"></param>
-        void run(List<string> input);
+        void Run(List<string> input);
 
         /// <summary>
         /// Returns a string giving help information about this command.
         /// </summary>
         /// <returns></returns>
-        string getHelp();
+        string GetHelp();
     }
 }

@@ -31,7 +31,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// This should be called every frame.
         /// </summary>
         /// <param name="spBatch"></param>
-        public void UpdateSpriteBatch(SpriteBatch spBatch)
+        internal void UpdateSpriteBatch(SpriteBatch spBatch)
         {
             this.SpriteBat = spBatch;
         }
@@ -39,7 +39,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// <summary>
         /// Renders the backlog of rendering jobs to completion.
         /// </summary>
-        public void RenderAll()
+        internal void RenderAll()
         {
             if (this.RenderActions.Count > 0)
             {

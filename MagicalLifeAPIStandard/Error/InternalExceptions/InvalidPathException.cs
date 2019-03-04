@@ -2,7 +2,7 @@
 
 namespace MagicalLifeAPI.Error.InternalExceptions
 {
-    public class InvalidPathException : Exception
+    internal class InvalidPathException : Exception
     {
         public InvalidPathException() : base("A destination is not possible")
         {

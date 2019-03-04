@@ -16,17 +16,17 @@ namespace MagicalLifeDedicatedServer.API.Commands
     /// </summary>
     public class NewGame : ICommand
     {
-        public string getHelp()
+        public string GetHelp()
         {
             return "Creates a new world and hosts a new game\r\n Usage: ml newgame (mygamenamehere)";
         }
 
-        public string getName()
+        public string GetName()
         {
             return "NewGame";
         }
 
-        public void run(List<string> input)
+        public void Run(List<string> input)
         {
             if (input.Count > 0)
             {

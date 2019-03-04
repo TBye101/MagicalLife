@@ -2,7 +2,7 @@
 
 namespace MagicalLifeAPI.Error.InternalExceptions
 {
-    public class UnexpectedEnumMemberException : Exception
+    internal class UnexpectedEnumMemberException : Exception
     {
         public UnexpectedEnumMemberException() : base("A new member was added to an enum and was unaccounted")
         {

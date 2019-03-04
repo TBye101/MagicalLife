@@ -14,7 +14,7 @@ namespace MagicalLifeAPI.Sound
     {
         private static FMOD.Studio.System _System;
 
-        public static FMOD.Studio.System System
+        internal static FMOD.Studio.System System
         {
             get
             {
@@ -28,7 +28,7 @@ namespace MagicalLifeAPI.Sound
 
         private static EventDescription[] MainEvents;
 
-        public static void Update()
+        internal static void Update()
         {
             Point2D camera = RenderInfo.GetCameraCenter();
 
@@ -43,7 +43,7 @@ namespace MagicalLifeAPI.Sound
             System.update();
         }
 
-        public static void Init()
+        internal static void Init()
         {
             FMOD.Studio.System.create(out _System);
             _System.getLowLevelSystem(out FMOD.System low);

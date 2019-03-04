@@ -86,7 +86,7 @@ namespace MagicalLifeAPI.World.Base
             //Protobuf-net constructor
         }
 
-        protected void Validate()
+        protected internal void Validate()
         {
             if (this.CurrentlyStacked < 1)
             {

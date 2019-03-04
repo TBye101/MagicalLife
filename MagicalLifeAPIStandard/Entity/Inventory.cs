@@ -27,7 +27,7 @@ namespace MagicalLifeAPI.Entity
         private double _Weight;
 
         [ProtoMember(3)]
-        public AttributeDouble Multiplyer;
+        public AttributeDouble Multiplyer { get; set; }
 
         /// <summary>
         /// The weight of all items in this inventory taking into account multipliers.

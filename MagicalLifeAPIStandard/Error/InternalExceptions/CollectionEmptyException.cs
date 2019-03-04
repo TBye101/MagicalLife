@@ -1,6 +1,6 @@
 ﻿namespace MagicalLifeAPI.Error.InternalExceptions
 {
-    public class CollectionEmptyException : System.Exception
+    internal class CollectionEmptyException : System.Exception
     {
         public CollectionEmptyException() : base("Collection empty!")
         {

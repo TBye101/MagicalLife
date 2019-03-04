@@ -10,7 +10,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
     {
         public static TaskManager Manager = new TaskManager();
 
-        public List<TaskDriver> TaskDrivers { get; private set; }
+        internal List<TaskDriver> TaskDrivers { get; private set; }
 
         private readonly object SyncObject = new object();
 
@@ -85,7 +85,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
         /// </summary>
         /// <param name="l"></param>
         /// <returns></returns>
-        public void AssignTask(Living l)
+        internal void AssignTask(Living l)
         {
             lock (this.SyncObject)
             {

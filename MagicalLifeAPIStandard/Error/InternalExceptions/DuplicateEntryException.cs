@@ -2,7 +2,7 @@
 
 namespace MagicalLifeAPI.Error.InternalExceptions
 {
-    public class DuplicateEntryException : Exception
+    internal class DuplicateEntryException : Exception
     {
         public DuplicateEntryException() : base("A duplicate entry was detected")
         {

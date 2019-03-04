@@ -17,7 +17,7 @@ namespace MagicalLifeAPI.Networking.Server
     /// </summary>
     public class TCPServer
     {
-        public SimpleTcpServer Server = new SimpleTcpServer();
+        internal SimpleTcpServer Server = new SimpleTcpServer();
 
         public Dictionary<Guid, Socket> PlayerToSocket { get; private set; } = new Dictionary<Guid, Socket>();
 
@@ -30,7 +30,7 @@ namespace MagicalLifeAPI.Networking.Server
         /// <summary>
         /// Starts the network server.
         /// </summary>
-        public void Start(int port)
+        internal void Start(int port)
         {
             this.Server.Start(port);
 

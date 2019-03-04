@@ -85,7 +85,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// <param name="mapLocation"></param>
         /// <param name="dimension"></param>
         /// <returns></returns>
-        public static Point2D FindNearestNoItemResource(Point2D mapLocation, int dimension)
+        public static Point2D FindItemEmptyTile(Point2D mapLocation, int dimension)
         {
             List<Point2D> tilesChecking = WorldUtil.GetNeighboringTiles(mapLocation, dimension);
 

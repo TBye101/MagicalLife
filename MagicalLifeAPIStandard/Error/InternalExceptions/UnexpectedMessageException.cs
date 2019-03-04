@@ -5,7 +5,7 @@ namespace MagicalLifeAPI.Error.InternalExceptions
     /// <summary>
     /// Thrown whenever a message was not handled due to its type.
     /// </summary>
-    public class UnexpectedMessageException : Exception
+    internal class UnexpectedMessageException : Exception
     {
         public UnexpectedMessageException(string msg) : base(msg)
         {

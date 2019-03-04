@@ -30,13 +30,13 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// Holds which item id is associated with which item type.
         /// </summary>
         [ProtoMember(1)]
-        public static Dictionary<int, Type> ItemTypeID { get; set; }
+        internal static Dictionary<int, Type> ItemTypeID { get; set; }
 
         /// <summary>
         /// For each item in the dimension, this dictionary holds a R-Tree that contains chunk coordinates for every chunk that has at least one of that item.
         /// </summary>
         [ProtoMember(2)]
-        public Dictionary<int, RTree<Point2D>> ItemIDToChunk { get; set; }
+        internal Dictionary<int, RTree<Point2D>> ItemIDToChunk { get; set; }
 
         [ProtoMember(3)]
         public Guid ID { get; }
@@ -60,7 +60,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// Registers the items.
         /// </summary>
         /// <param name="toRegister"></param>
-        public static void Initialize(List<Type> toRegister)
+        internal static void Initialize(List<Type> toRegister)
         {
             ItemTypeID = new Dictionary<int, Type>();
 

@@ -3,7 +3,7 @@
     /// <summary>
     /// Implemented by anything that does initial startup code.
     /// </summary>
-    public interface IGameLoader
+    internal interface IGameLoader
     {
         /// <summary>
         /// This method is called to initiate the loading code for the object.

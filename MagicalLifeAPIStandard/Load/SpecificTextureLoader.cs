@@ -9,7 +9,7 @@ namespace MagicalLifeAPI.Load
     /// <summary>
     /// Loads specific textures for specific classes such as the trees.
     /// </summary>
-    public class SpecificTextureLoader : IGameLoader
+    internal class SpecificTextureLoader : IGameLoader
     {
         public void InitialStartup()
         {

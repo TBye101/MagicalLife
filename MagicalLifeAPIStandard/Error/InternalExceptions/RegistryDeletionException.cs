@@ -2,7 +2,7 @@
 
 namespace MagicalLifeAPI.Error.InternalExceptions
 {
-    public class RegistryDeletionException : Exception
+    internal class RegistryDeletionException : Exception
     {
         public RegistryDeletionException() : base("A failure occurred while trying a deletion operation in a registry.")
         {
