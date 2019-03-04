@@ -6,6 +6,8 @@
     public static class SoundsTable
     {
         public static readonly string PickaxeHit = "event:/Pickaxe_Hit";
+        public static readonly string MiningFinish = "event:/Mining_Finished";
+
         public static readonly string AxeHit = "event:/Axe_Hit";
         public static readonly string TreeFall = "event:/Tree_Fall";
         public static readonly string UIClick = "event:/UI/Click";

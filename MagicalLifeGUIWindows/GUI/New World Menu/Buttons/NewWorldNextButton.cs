@@ -31,7 +31,7 @@ namespace MagicalLifeGUIWindows.GUI.New
             Server.Load();
             ClientSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(MagicalLifeAPI.Networking.EngineMode.ServerAndClient));
             FMODUtil.RaiseEvent(SoundsTable.UIClick);
-            FMODUtil.RaiseEvent(SoundsTable.Ambience);
+            //FMODUtil.RaiseEvent(SoundsTable.Ambience);
             ServerSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(MagicalLifeAPI.Networking.EngineMode.ServerAndClient));
             Client.Load();
             NewGameInputHandler a = new NewGameInputHandler();

@@ -24,7 +24,7 @@ namespace MagicalLifeAPI.World.Resources
             this.HarvestingBehavior = new DropWhenCompletelyHarvested(new List<Base.Item>
             {
                 new StoneRubble(this.Durability)
-            }, SoundsTable.PickaxeHit, "");
+            }, SoundsTable.PickaxeHit, SoundsTable.MiningFinish);
         }
 
         public Rock()
