@@ -98,6 +98,7 @@
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="FriendAssemblies.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GUI\Character Menu\Buttons\InventoryTabButton.cs" />
     <Compile Include="GUI\Character Menu\Buttons\SkillsTabButton.cs" />
