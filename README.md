@@ -193,6 +193,35 @@ ockenyberg - Made all of the sound effects
 
 Batarian711 - Created the logo for this project
 
+## Assembly Descriptions
+
+### MagicalLifeAPIStandard
+* The main game API, manages most things except for graphics and server commands
+
+### MagicalLifeAPIClientStandard
+* Manages how the client interprets messages from the server
+
+### MagicalLifeDedicatedServerCore
+* Controls the server
+* Run server commands
+
+### MagicalLifeGUIWindows
+* Windows only graphical client
+
+### MagicalLifeModdingAPI
+* Exposes the functionality in MagicalLifeAPIStandard in a more restricted/managed manner
+* Handles conflicts between mods, mod loading, and mod communication
+
+### MagicalLifeServerStandard
+* Handles server functionality such as:
+	* Sending information to clients
+	* Handling information from clients
+	* Generating the world
+* Handles both dedicated and local server logic
+
+### MagicalLifeSettingsStandard
+* Holds some settings for all of the assemblies in the project
+
 ## Libraries Utilized
 [MonoGame](http://www.monogame.net/)
 

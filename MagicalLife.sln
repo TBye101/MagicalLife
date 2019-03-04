@@ -7,6 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		CHANGELOG.md = CHANGELOG.md
 		Credit.txt = Credit.txt
+		Notes.txt = Notes.txt
 		Performance Notes.md = Performance Notes.md
 		Recipe System Design.txt = Recipe System Design.txt
 		TestSettings.runsettings = TestSettings.runsettings
@@ -32,6 +33,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicalLifeSettingsStandard", "MagicalLifeSettingsStandard\MagicalLifeSettingsStandard.csproj", "{EC7FD282-023D-4926-A766-19B36AEAC4C2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeAPITest", "MagicalLifeAPITest\MagicalLifeAPITest.csproj", "{9CA6C7EF-99BC-4066-BB9D-0613E248B91D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeModdingAPI", "MagicalLifeModdingAPI\MagicalLifeModdingAPI.csproj", "{F2111C4B-8651-4AD4-8F3A-0F24C0753020}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,6 +126,18 @@ Global
 		{9CA6C7EF-99BC-4066-BB9D-0613E248B91D}.Release|x64.Build.0 = Release|Any CPU
 		{9CA6C7EF-99BC-4066-BB9D-0613E248B91D}.Release|x86.ActiveCfg = Release|Any CPU
 		{9CA6C7EF-99BC-4066-BB9D-0613E248B91D}.Release|x86.Build.0 = Release|Any CPU
+		{F2111C4B-8651-4AD4-8F3A-0F24C0753020}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2111C4B-8651-4AD4-8F3A-0F24C0753020}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2111C4B-8651-4AD4-8F3A-0F24C0753020}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F2111C4B-8651-4AD4-8F3A-0F24C0753020}.Debug|x64.Build.0 = Debug|Any CPU
+		{F2111C4B-8651-4AD4-8F3A-0F24C0753020}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F2111C4B-8651-4AD4-8F3A-0F24C0753020}.Debug|x86.Build.0 = Debug|Any CPU
+		{F2111C4B-8651-4AD4-8F3A-0F24C0753020}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2111C4B-8651-4AD4-8F3A-0F24C0753020}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2111C4B-8651-4AD4-8F3A-0F24C0753020}.Release|x64.ActiveCfg = Release|Any CPU
+		{F2111C4B-8651-4AD4-8F3A-0F24C0753020}.Release|x64.Build.0 = Release|Any CPU
+		{F2111C4B-8651-4AD4-8F3A-0F24C0753020}.Release|x86.ActiveCfg = Release|Any CPU
+		{F2111C4B-8651-4AD4-8F3A-0F24C0753020}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
