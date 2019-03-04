@@ -47,10 +47,6 @@ namespace MagicalLifeGUIWindows.Rendering.Map
 
                 foreach (RenderCallHolder item in this.RenderActions)
                 {
-                    if (item.RenderLayer == RenderLayer.GUI)
-                    {
-                        MasterLog.DebugWriteLine("Render callID: " + item.RenderCallID.ToString() + " Layer: " + item.RenderLayer.ToString() + "Texture: ");
-                    }
                     item.Action.Invoke();
                 }
 
