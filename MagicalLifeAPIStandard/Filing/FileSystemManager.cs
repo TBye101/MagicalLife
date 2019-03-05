@@ -20,6 +20,11 @@ namespace MagicalLifeAPI.Filing
         public static string SaveDirectory { get; private set; }
 
         /// <summary>
+        /// The directory that mods are stored in.
+        /// </summary>
+        public static string ModDirectory { get; private set; }
+
+        /// <summary>
         /// The directory the main executable is in.
         /// </summary>
         public static string RootDirectory { get; set; }
@@ -30,6 +35,8 @@ namespace MagicalLifeAPI.Filing
 
             DirectoryInfo savePath = Directory.CreateDirectory(FileSystemManager.RootDirectory + Path.DirectorySeparatorChar + "Save");
             SaveDirectory = savePath.FullName;
+            DirectoryInfo modPath = Directory.CreateDirectory(FileSystemManager.RootDirectory + Path.DirectorySeparatorChar + "Mods");
+            ModDirectory = modPath.FullName;
         }
 
         /// <summary>
