@@ -38,12 +38,6 @@
 /processorParam:TextureFormat=Color
 /build:Logo/MonoGameLogo.png
 
-#begin Banks/Master_Bank.bank
-/copy:Banks/Master_Bank.bank
-
-#begin Banks/Master_Bank.strings.bank
-/copy:Banks/Master_Bank.strings.bank
-
 #begin GUI/ListBoxItemBackground.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -561,4 +555,10 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Textures/Tile/TilledDirt.png
+
+#begin Banks/Master_Bank.bank
+/copy:Banks/Master_Bank.bank
+
+#begin Banks/Master_Bank.strings.bank
+/copy:Banks/Master_Bank.strings.bank
 

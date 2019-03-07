@@ -42,7 +42,8 @@ namespace MagicalLifeAPI.Components.Resource
         {
             if (this.CompletionSound != string.Empty)
             {
-                FMODUtil.RaiseEvent(this.CompletionSound, "", 0, position);
+                Point2D screenPosition = new Point2D(position.X * Tile.GetTileSize().X, position.Y * Tile.GetTileSize().Y);
+                FMODUtil.RaiseEvent(this.CompletionSound, "", 0, screenPosition);
             }
             return this.Items;
         }
@@ -51,7 +52,8 @@ namespace MagicalLifeAPI.Components.Resource
         {
             if (this.HarvestSound != string.Empty)
             {
-                FMODUtil.RaiseEvent(this.HarvestSound, "", 0, position);
+                Point2D screenPosition = new Point2D(position.X * Tile.GetTileSize().X, position.Y * Tile.GetTileSize().Y);
+                FMODUtil.RaiseEvent(this.HarvestSound, "", 0, screenPosition);
             }
             return null;
         }

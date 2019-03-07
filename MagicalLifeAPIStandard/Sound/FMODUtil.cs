@@ -81,11 +81,16 @@ namespace MagicalLifeAPI.Sound
             instance.start();
         }
 
+        /// <param name="screenPosition">The position on screen to play at. This is not adjusted for where the user is looking.</param>
         public static void RaiseEvent(string eventPath, string parameterName, int value, Point2D screenPosition)
         {
             _System.getEvent(eventPath, out EventDescription _event);
             _event.createInstance(out EventInstance instance);
-            instance.setParameterValue(parameterName, value);
+
+            if (parameterName != string.Empty)
+            {
+                instance.setParameterValue(parameterName, value);
+            }
 
             _3D_ATTRIBUTES attributes = new _3D_ATTRIBUTES();
             attributes.forward.z = 1.0f;
