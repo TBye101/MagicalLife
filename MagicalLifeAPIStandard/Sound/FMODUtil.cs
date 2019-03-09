@@ -36,7 +36,7 @@ namespace MagicalLifeAPI.Sound
             attributes.forward.z = 1.0f;
             attributes.up.y = 1.0f;
             attributes.position.x = camera.X;
-            attributes.position.z = camera.Y;
+            attributes.position.y = camera.Y;
 
             System.setListenerAttributes(0, attributes);
 
@@ -94,7 +94,7 @@ namespace MagicalLifeAPI.Sound
 
             _3D_ATTRIBUTES attributes = new _3D_ATTRIBUTES();
             attributes.forward.y = 1.0f;
-            attributes.up.z = -1.0f;
+            attributes.up.z = 1.0f;
             attributes.position.x = screenPosition.X;
             attributes.position.z = screenPosition.Y;
             //attributes.position.y = -200;

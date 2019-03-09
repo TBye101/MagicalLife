@@ -11,7 +11,7 @@ namespace MagicalLifeAPI.Util
     public static class ReflectionUtil
     {
         /// <summary>
-        /// Loads all objects of type "T", where T is an interface.
+        /// Loads all implementations of type "T", where T is an interface.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="containing"></param>
