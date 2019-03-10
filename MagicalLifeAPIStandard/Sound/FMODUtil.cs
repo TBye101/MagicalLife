@@ -33,11 +33,10 @@ namespace MagicalLifeAPI.Sound
             Point2D camera = RenderInfo.GetCameraCenter();
 
             _3D_ATTRIBUTES attributes = new _3D_ATTRIBUTES();
-            attributes.forward.z = 1.0f;
+            attributes.forward.z = RenderInfo.Camera2D.Zoom;
             attributes.up.y = 1.0f;
             attributes.position.x = camera.X;
             attributes.position.y = camera.Y;
-            //attributes.position.z = -1.0f;
 
             System.setListenerAttributes(0, attributes);
 
@@ -95,11 +94,16 @@ namespace MagicalLifeAPI.Sound
             }
 
             _3D_ATTRIBUTES attributes = new _3D_ATTRIBUTES();
+
             attributes.forward.z = 1.0f;
             attributes.up.y = 1.0f;
+
+            attributes.forward.y = 1.0f;
+            attributes.up.z = 1.0f;
+
             attributes.position.x = screenPosition.X;
             attributes.position.y = screenPosition.Y;
-            //attributes.position.y = -200;
+
             //instance.setProperty(EVENT_PROPERTY.MINIMUM_DISTANCE, 300);
             // instance.setProperty(EVENT_PROPERTY.MAXIMUM_DISTANCE, 1600);
 

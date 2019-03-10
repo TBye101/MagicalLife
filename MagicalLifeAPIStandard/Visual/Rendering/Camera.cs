@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Error.InternalExceptions;
+using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.Rendering.Map;
@@ -187,6 +188,8 @@ public class Camera
         return test;
     }
 
+    private Point2D eventC = new Point2D(0, 0);
+
     /// <summary>
     /// Move the camera's position based on input
     /// </summary>
@@ -195,6 +198,29 @@ public class Camera
     {
         Vector2 cameraMovement = Vector2.Zero;
 
+        //switch (inputState)
+        //{
+        //    case CameraMovementState.Left:
+        //        eventC.X -= 2;
+        //        break;
+        //    case CameraMovementState.Right:
+        //        eventC.X += 2;
+        //        break;
+        //    case CameraMovementState.Up:
+        //        eventC.Y -= 2;
+        //        break;
+        //    case CameraMovementState.Down:
+        //        eventC.Y += 2;
+        //        break;
+        //    case CameraMovementState.ZoomIn:
+        //        break;
+        //    case CameraMovementState.ZoomOut:
+        //        break;
+        //    default:
+        //        break;
+        //}
+
+        //FMODUtil.RaiseEvent(SoundsTable.PickaxeHit, "", 0, eventC);
         switch (inputState)
         {
             case CameraMovementState.Left:
