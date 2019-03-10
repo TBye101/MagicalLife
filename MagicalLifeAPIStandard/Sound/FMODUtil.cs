@@ -36,11 +36,13 @@ namespace MagicalLifeAPI.Sound
             attributes.forward.z = 1.0f;
             attributes.up.y = 1.0f;
             attributes.position.x = camera.X;
-            attributes.position.z = camera.Y;
+            attributes.position.y = camera.Y;
+            //attributes.position.z = -1.0f;
 
             System.setListenerAttributes(0, attributes);
 
             System.update();
+
         }
 
         internal static void Init()
@@ -49,7 +51,7 @@ namespace MagicalLifeAPI.Sound
             _System.getLowLevelSystem(out FMOD.System low);
 
             low.setSoftwareFormat(0, FMOD.SPEAKERMODE._5POINT1, 0);
-            _System.initialize(64, FMOD.Studio.INITFLAGS.NORMAL, FMOD.INITFLAGS.NORMAL, IntPtr.Zero);
+            _System.initialize(64, FMOD.Studio.INITFLAGS.LIVEUPDATE, FMOD.INITFLAGS.NORMAL, IntPtr.Zero);
             _System.loadBankFile(FileSystemManager.RootDirectory + "/Content/Banks/Master_Bank.bank", FMOD.Studio.LOAD_BANK_FLAGS.NORMAL, out Bank MainBank);
             _System.loadBankFile(FileSystemManager.RootDirectory + "/Content/Banks/Master_Bank.strings.bank", LOAD_BANK_FLAGS.NORMAL, out Bank MainBankStrings);
             MainBank.getEventList(out MainEvents);
@@ -93,16 +95,17 @@ namespace MagicalLifeAPI.Sound
             }
 
             _3D_ATTRIBUTES attributes = new _3D_ATTRIBUTES();
-            attributes.forward.y = 1.0f;
-            attributes.up.z = -1.0f;
+            attributes.forward.z = 1.0f;
+            attributes.up.y = 1.0f;
             attributes.position.x = screenPosition.X;
-            attributes.position.z = screenPosition.Y;
+            attributes.position.y = screenPosition.Y;
             //attributes.position.y = -200;
-            instance.setProperty(EVENT_PROPERTY.MINIMUM_DISTANCE, 300);
-            instance.setProperty(EVENT_PROPERTY.MAXIMUM_DISTANCE, 1600);
+            //instance.setProperty(EVENT_PROPERTY.MINIMUM_DISTANCE, 300);
+            // instance.setProperty(EVENT_PROPERTY.MAXIMUM_DISTANCE, 1600);
 
             instance.set3DAttributes(attributes);
             instance.start();
+            instance.release();
         }
 
         public static void Test()

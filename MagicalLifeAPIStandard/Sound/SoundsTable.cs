@@ -5,15 +5,15 @@
     /// </summary>
     public static class SoundsTable
     {
-        public static readonly string PickaxeHit = "event:/Pickaxe_Hit";
-        public static readonly string MiningFinish = "event:/Mining_Finished";
+        public static readonly string PickaxeHit = "event:/Work/Mining/Pickaxe_Hit";
+        public static readonly string MiningFinish = "event:/Work/Mining/Mining_Finished";
 
-        public static readonly string AxeHit = "event:/Axe_Hit";
-        public static readonly string TreeFall = "event:/Tree_Fall";
+        public static readonly string AxeHit = "event:/Work/Foresting/Axe_Hit";
+        public static readonly string TreeFall = "event:/Work/Foresting/Tree_Fall";
         public static readonly string UIClick = "event:/UI/Click";
-        public static readonly string FootSteps = "event:/Footsteps";
+        public static readonly string FootSteps = "event:/Characters/Footsteps";
 
-        public static readonly string Ambience = "event:/Ambience";
+        public static readonly string Ambience = "event:/Ambience/Ambience";
 
         public static readonly string Test = "event:/Test";
     }
