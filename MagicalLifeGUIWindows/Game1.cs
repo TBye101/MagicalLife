@@ -3,6 +3,7 @@ using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Filing;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Load;
+using MagicalLifeAPI.Mod;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Universal;
@@ -106,7 +107,8 @@ namespace MagicalLifeGUIWindows
                 //new TextureLoader(),
                 new TextureLoader(this.Content),
                 new SpecificTextureLoader(),
-                new ProtoTypeLoader()
+                new ProtoTypeLoader(),
+                new ModLoader()
             });
             this.InitializeSplashScreens();
         }

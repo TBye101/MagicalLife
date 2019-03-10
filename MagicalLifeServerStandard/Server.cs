@@ -2,10 +2,12 @@
 using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.Filing;
 using MagicalLifeAPI.Load;
+using MagicalLifeAPI.Mod;
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Networking.Server;
+using MagicalLifeAPI.Registry.Mod;
 using MagicalLifeAPI.Time;
 using MagicalLifeAPI.Util.Reusable;
 using MagicalLifeAPI.World;
@@ -58,16 +60,15 @@ namespace MagicalLifeServer
 
                 case EngineMode.ServerOnly:
                     SettingsManager.Initialize();
-
                     load.LoadAll(ref msg, new List<IGameLoader>()
                     {
                         new ItemLoader(),
                         new TextureLoader(),
                         new SpecificTextureLoader(),
                         new ProtoTypeLoader(),
-                        new MainLoad()
+                        new MainLoad(),
+                        new ModLoader()
                     });
-
                     break;
 
                 default:

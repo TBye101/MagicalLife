@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Error;
 using MagicalLifeAPI.Filing;
 using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.Registry.Mod;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeDedicatedServer.API;
 

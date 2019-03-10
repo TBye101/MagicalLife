@@ -19,6 +19,7 @@ namespace MagicalLifeAPI.Mod
         public void InitialStartup()
         {
             ModRegistry.LoadedMods = this.GetMods();
+            ModRegistry.LoadAllMods();
         }
 
         /// <summary>

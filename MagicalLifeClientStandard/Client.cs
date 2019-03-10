@@ -3,6 +3,7 @@ using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Pathfinding;
+using MagicalLifeAPI.Registry.Mod;
 using MagicalLifeClient.Entity;
 using MagicalLifeClient.Message;
 using System;
