@@ -33,12 +33,19 @@ namespace MagicalLifeAPI.Sound
             Point2D camera = RenderInfo.GetCameraCenter();
 
             _3D_ATTRIBUTES attributes = new _3D_ATTRIBUTES();
-            attributes.forward.z = 1.0f;
+            attributes.forward.z = RenderInfo.Camera2D.Zoom;
             attributes.up.y = 1.0f;
             attributes.position.x = camera.X;
             attributes.position.y = camera.Y;
 
             System.setListenerAttributes(0, attributes);
+
+            MasterLog.DebugWriteLine("Position of listener: " + attributes.position.x.ToString() +
+                ", " + attributes.position.y.ToString() + ", " + attributes.position.z.ToString());
+            MasterLog.DebugWriteLine("Position of forward in listener: " + attributes.forward.x.ToString() +
+    ", " + attributes.forward.y.ToString() + ", " + attributes.forward.z.ToString());
+            MasterLog.DebugWriteLine("Position of up in listener: " + attributes.up.x.ToString() +
+    ", " + attributes.up.y.ToString() + ", " + attributes.up.z.ToString());
 
             System.update();
         }
@@ -100,6 +107,13 @@ namespace MagicalLifeAPI.Sound
             //attributes.position.y = -200;
             instance.setProperty(EVENT_PROPERTY.MINIMUM_DISTANCE, 300);
             instance.setProperty(EVENT_PROPERTY.MAXIMUM_DISTANCE, 1600);
+
+            MasterLog.DebugWriteLine("Position of event: " + attributes.position.x.ToString() +
+    ", " + attributes.position.y.ToString() + ", " + attributes.position.z.ToString());
+            MasterLog.DebugWriteLine("Position of forward in event: " + attributes.forward.x.ToString() +
+    ", " + attributes.forward.y.ToString() + ", " + attributes.forward.z.ToString());
+            MasterLog.DebugWriteLine("Position of up in event: " + attributes.up.x.ToString() +
+    ", " + attributes.up.y.ToString() + ", " + attributes.up.z.ToString());
 
             instance.set3DAttributes(attributes);
             instance.start();
