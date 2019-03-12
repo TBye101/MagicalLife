@@ -22,6 +22,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 *Zooming out now supported
 
 #### Bugs
+*Surround sound now functions like it should
 
 ---
 

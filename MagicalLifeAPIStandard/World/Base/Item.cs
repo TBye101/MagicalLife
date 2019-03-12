@@ -61,13 +61,12 @@ namespace MagicalLifeAPI.World.Base
         ///
         /// </summary>
         /// <param name="name">The display name of the item.</param>
-        /// <param name="durability">The durability of the item.</param>
         /// <param name="lore">Any text accompanying the item.</param>
         /// <param name="location">The location of this item.</param>
         /// <param name="stackableLimit">How many items of this kind can be in one stack.</param>
         /// <param name="count">How many of this item to create into a stack.</param>
         /// <param name="itemID">The ID of this item.</param>
-        protected Item(string name, int durability, List<string> lore, int stackableLimit, int count, Type itemType, string textureName, double itemWeight)
+        protected Item(string name, List<string> lore, int stackableLimit, int count, Type itemType, string textureName, double itemWeight)
         {
             this.Name = name;
             this.Lore = lore;
@@ -160,5 +159,12 @@ namespace MagicalLifeAPI.World.Base
         }
 
         public abstract List<AbstractVisual> GetVisuals();
+
+        /// <summary>
+        /// Return a deep copy of the current item. 
+        /// </summary>
+        /// <param name="amouont">The amount of the item to be created via deep copy.</param>
+        /// <returns></returns>
+        public abstract Item GetDeepCopy(int amount);
     }
 }

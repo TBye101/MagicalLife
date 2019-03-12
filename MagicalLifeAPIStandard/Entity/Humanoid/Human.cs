@@ -51,7 +51,7 @@ namespace MagicalLifeAPI.Entity.Humanoid
             this.Visual = new AnimatedTexture(RenderLayer.Character, this.GetSequences(),
                 TextureLoader.AnimationBaseCharacter,
                 XMLPaths.BaseCharacterSpriteSheet, Assembly.GetAssembly(typeof(AssemblyGetter)));
-            this.Inventory.AddItem(new Log(15, 30));
+            this.Inventory.AddItem(new Log(15));
             this.Inventory.AddItem(new StoneRubble(25));
         }
 

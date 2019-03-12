@@ -11,7 +11,7 @@ namespace MagicalLifeAPI.World.Items
     public class StoneRubble : Item
     {
         public StoneRubble(int count) :
-            base("Stone Rubble", 200,
+            base("Stone Rubble",
             new System.Collections.Generic.List<string>()
             {
                 "Stone Rubble",
@@ -50,6 +50,11 @@ namespace MagicalLifeAPI.World.Items
             }
 
             return ret;
+        }
+
+        public override Item GetDeepCopy(int amount)
+        {
+            return new StoneRubble(amount);
         }
     }
 }

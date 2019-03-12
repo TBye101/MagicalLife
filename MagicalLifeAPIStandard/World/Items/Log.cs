@@ -14,14 +14,19 @@ namespace MagicalLifeAPI.World.Items
     {
         private static readonly string ItemName = "Log";
 
-        public Log(int count, int durability)
-            : base(ItemName, durability, new List<string>(), 50, count, typeof(Log), TextureLoader.LogTexture1, 5)
+        public Log(int count)
+            : base(ItemName, new List<string>(), 50, count, typeof(Log), TextureLoader.LogTexture1, 5)
         {
         }
 
         protected Log()
         {
             //Protobuf-net constructor.
+        }
+
+        public override Item GetDeepCopy(int amount)
+        {
+            return new Log(amount);
         }
 
         public override List<AbstractVisual> GetVisuals()

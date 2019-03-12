@@ -29,7 +29,7 @@ namespace MagicalLifeAPI.World.Resources.Tree
         {
             this.HarvestingBehavior = new DropWhenCompletelyHarvested(new List<Base.Item>
             {
-                new Log(1, this.Durability)
+                new Log(1)
             }, SoundsTable.AxeHit, SoundsTable.TreeFall);
         }
 
