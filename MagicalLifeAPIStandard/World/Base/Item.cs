@@ -4,7 +4,6 @@ using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.Visual.Rendering;
-using MagicalLifeAPI.World.Items;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
@@ -16,8 +15,6 @@ namespace MagicalLifeAPI.World.Base
     /// Represents almost everything in a movable/harvested form.
     /// </summary>
     [ProtoContract]
-    [ProtoInclude(7, typeof(StoneRubble))]
-    [ProtoInclude(8, typeof(Log))]
     public abstract class Item : HasTexture, IRenderable
     {
         /// <summary>
@@ -27,34 +24,40 @@ namespace MagicalLifeAPI.World.Base
         public string Name { get; }
 
         /// <summary>
-        /// The description and lore of this item. Is not revealed until the item has been identified, unless it never needed identification.
+        /// The name of the mod this item is from.
         /// </summary>
         [ProtoMember(2)]
+        public string ModFrom { get;  }
+
+        /// <summary>
+        /// The description and lore of this item. Is not revealed until the item has been identified, unless it never needed identification.
+        /// </summary>
+        [ProtoMember(3)]
         public List<string> Lore { get; set; }
 
         /// <summary>
         /// The maximum number of this item that may be contained in the same stack.
         /// Must be greater than or equal to one.
         /// </summary>
-        [ProtoMember(3)]
+        [ProtoMember(4)]
         public int StackableLimit { get; set; }
 
         /// <summary>
         /// How many identical items are currently being clumped and held be this class.
         /// </summary>
-        [ProtoMember(4)]
+        [ProtoMember(5)]
         public int CurrentlyStacked { get; set; }
 
         /// <summary>
         /// The ID that describes this item to the <see cref="ItemRegistry"/>.
         /// </summary>
-        [ProtoMember(5)]
+        [ProtoMember(6)]
         public int ItemID { get; private set; }
 
-        [ProtoMember(6)]
+        [ProtoMember(7)]
         public string TextureName { get; set; }
 
-        [ProtoMember(9)]
+        [ProtoMember(8)]
         public double ItemWeight { get; set; }
 
         /// <summary>
@@ -66,18 +69,19 @@ namespace MagicalLifeAPI.World.Base
         /// <param name="stackableLimit">How many items of this kind can be in one stack.</param>
         /// <param name="count">How many of this item to create into a stack.</param>
         /// <param name="itemID">The ID of this item.</param>
-        protected Item(string name, List<string> lore, int stackableLimit, int count, Type itemType, string textureName, double itemWeight)
+        protected Item(string name, List<string> lore, int stackableLimit, int count, string textureName, double itemWeight, string modFrom)
         {
             this.Name = name;
             this.Lore = lore;
             this.StackableLimit = stackableLimit;
             this.CurrentlyStacked = count;
-            this.ItemID = ItemRegistry.ItemTypeID.First(x => x.Value == itemType).Key;//slow
+            this.ItemID = ItemRegistry.IDToItem.First(x => x.Value.Equals(this)).Key;//slow
             this.TextureIndex = AssetManager.GetTextureIndex(textureName);
             this.TextureName = textureName;
             this.Validate();
             this.TextureIndex = AssetManager.GetTextureIndex(this.TextureName);
             this.ItemWeight = itemWeight;
+            this.ModFrom = modFrom;
         }
 
         protected Item()

@@ -46,15 +46,15 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
                 return null;
             }
 
-            Item removed = (Item)Activator.CreateInstance(ItemRegistry.ItemTypeID[tile.Item.ItemID]);
+            Item removed;
 
             if (tile.Item.CurrentlyStacked > count)
             {
-                removed.CurrentlyStacked = count;
+                removed = ItemRegistry.IDToItem[tile.Item.ItemID].GetDeepCopy(count);
             }
-            if (tile.Item.CurrentlyStacked < count || tile.Item.CurrentlyStacked == count)
+            else
             {
-                removed.CurrentlyStacked = tile.Item.CurrentlyStacked;
+                removed = ItemRegistry.IDToItem[tile.Item.ItemID].GetDeepCopy(tile.Item.CurrentlyStacked);
                 RemoveItem(tile, dimension);
             }
 

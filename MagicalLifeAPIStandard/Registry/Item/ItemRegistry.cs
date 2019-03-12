@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.DataTypes.R;
+using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
@@ -27,10 +28,10 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
     public class ItemRegistry
     {
         /// <summary>
-        /// Holds which item id is associated with which item type.
+        /// Holds which item id is associated with item.
         /// </summary>
         [ProtoMember(1)]
-        internal static Dictionary<int, Type> ItemTypeID { get; set; }
+        internal static Dictionary<int, Item> IDToItem { get; set; }
 
         /// <summary>
         /// For each item in the dimension, this dictionary holds a R-Tree that contains chunk coordinates for every chunk that has at least one of that item.
@@ -60,11 +61,11 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// Registers the items.
         /// </summary>
         /// <param name="toRegister"></param>
-        internal static void Initialize(List<Type> toRegister)
+        internal static void Initialize(List<Item> toRegister)
         {
-            ItemTypeID = new Dictionary<int, Type>();
+            IDToItem = new Dictionary<int, Item>();
 
-            foreach (Type item in toRegister)
+            foreach (Item item in toRegister)
             {
                 RegisterItemType(item);
             }
@@ -75,9 +76,9 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// All items that will be supported by this class must be added through here before Bake() is called.
         /// </summary>
         /// <param name="item"></param>
-        private static void RegisterItemType(Type item)
+        private static void RegisterItemType(Item item)
         {
-            ItemTypeID.Add(ItemTypeID.Count, item);
+            IDToItem.Add(IDToItem.Count, item);
         }
 
         /// <summary>
@@ -85,9 +86,9 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// </summary>
         private void Bake()
         {
-            this.ItemIDToChunk = new Dictionary<int, RTree<Point2D>>(ItemTypeID.Count);
+            this.ItemIDToChunk = new Dictionary<int, RTree<Point2D>>(IDToItem.Count);
 
-            foreach (KeyValuePair<int, Type> item in ItemTypeID)
+            foreach (KeyValuePair<int, Item> item in IDToItem)
             {
                 this.ItemIDToChunk.Add(item.Key, new RTree<Point2D>());
             }

@@ -3,7 +3,6 @@ using MagicalLifeAPI.Components.Resource;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Visual.Rendering.AbstractVisuals;
 using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Items;
 using ProtoBuf;
 using System.Collections.Generic;
 

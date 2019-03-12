@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Base;
+using MagicalLifeMod.Core;
 using ProtoBuf;
 using System.Collections.Generic;
 
@@ -19,7 +20,7 @@ namespace MagicalLifeAPI.World.Items
             },
             9999,
             count,
-            typeof(StoneRubble), TextureLoader.TextureStoneRubble1, 15)
+            TextureLoader.TextureStoneRubble1, 15, DescriptionValues.DisplayName)
         {
         }
 

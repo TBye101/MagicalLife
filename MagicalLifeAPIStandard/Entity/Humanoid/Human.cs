@@ -3,7 +3,6 @@ using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Visual.Rendering.Animation;
-using MagicalLifeAPI.World.Items;
 using MagicalLifeSettings;
 using ProtoBuf;
 using System;

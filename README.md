@@ -208,9 +208,10 @@ Batarian711 - Created the logo for this project
 ### MagicalLifeGUIWindows
 * Windows only graphical client
 
-### MagicalLifeModdingAPI
-* Exposes the functionality in MagicalLifeAPIStandard in a more restricted/managed manner
-* Handles conflicts between mods, mod loading, and mod communication
+### MagicalLifeMod
+* The core game content, added into the game in the form of a mod
+	*This is done to ensure that mods have a good API to interact with, and not limit modding capabilities
+		*If the main game can do it, so can any mod
 
 ### MagicalLifeServerStandard
 * Handles server functionality such as:
