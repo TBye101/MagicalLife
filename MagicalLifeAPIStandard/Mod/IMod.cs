@@ -20,5 +20,7 @@ namespace MagicalLifeAPI.Mod
         /// Should return a list of loading tasks to do to completely load the mod.
         /// </summary>
         List<IGameLoader> Load();
+
+        List<WorldGenerator>
     }
 }
