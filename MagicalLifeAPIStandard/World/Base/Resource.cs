@@ -4,7 +4,6 @@ using MagicalLifeAPI.DataTypes.Attribute;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Visual.Rendering;
-using MagicalLifeAPI.World.Resources;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
@@ -16,9 +15,7 @@ namespace MagicalLifeAPI.World.Base
     /// Resources in tiles are things such as stone and minerals.
     /// </summary>
     [ProtoContract]
-    [ProtoInclude(7, typeof(RockBase))]
-    [ProtoInclude(8, typeof(TreeBase))]
-    public abstract class Resource : HasTexture, IHasSubclasses, IHarvestable, IRenderable
+    public abstract class Resource : HasTexture, IHarvestable, IRenderable
     {
         public Resource(string name, int durability)
         {
@@ -52,16 +49,6 @@ namespace MagicalLifeAPI.World.Base
         public Type GetBaseType()
         {
             return typeof(Resource);
-        }
-
-        public Dictionary<Type, int> GetSubclassInformation()
-        {
-            Dictionary<Type, int> ret = new Dictionary<Type, int>
-            {
-                { typeof(RockBase), 7 },
-                { typeof(TreeBase), 8 }
-            };
-            return ret;
         }
 
         public abstract List<AbstractVisual> GetVisuals();

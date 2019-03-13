@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Mod;
+﻿using MagicalLifeAPI.Load;
+using MagicalLifeAPI.Mod;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -23,8 +24,12 @@ namespace MagicalLifeMod.Core
             return this.Info;
         }
 
-        public void Load()
+        public List<IGameLoader> Load()
         {
+            return new List<IGameLoader>
+            {
+                new SpecificTextureLoader()
+            };
         }
     }
 }

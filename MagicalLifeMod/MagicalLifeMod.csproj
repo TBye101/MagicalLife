@@ -10,9 +10,8 @@
 
   <ItemGroup>
     <Folder Include="Core\Entities\" />
-    <Folder Include="Core\Vegetation\" />
     <Folder Include="Core\Tiles\" />
-    <Folder Include="Core\Resources\" />
+    <Folder Include="Core\Vegetation\" />
   </ItemGroup>
 
 </Project>

@@ -27,7 +27,7 @@ namespace MagicalLifeAPI.Asset
         /// The name of the texture to find the index of.
         /// </summary>
         /// <param name="name"></param>
-        internal static int GetTextureIndex(string name)
+        public static int GetTextureIndex(string name)
         {
             foreach (KeyValuePair<string, int> item in NameToIndex)
             {

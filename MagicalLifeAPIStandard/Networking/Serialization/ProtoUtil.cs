@@ -29,6 +29,7 @@ namespace MagicalLifeAPI.Networking.Serialization
         {
             try
             {
+                
                 using (MemoryStream outputStream = new MemoryStream())
                 {
                     TypeModel.SerializeWithLengthPrefix(outputStream, data, typeof(T), ProtoBuf.PrefixStyle.Base128, 0);

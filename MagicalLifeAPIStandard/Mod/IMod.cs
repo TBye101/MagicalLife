@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MagicalLifeAPI.Load;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -16,8 +17,8 @@ namespace MagicalLifeAPI.Mod
         ModInformation GetInfo();
 
         /// <summary>
-        /// A chance for the mod to execute any code needed to load when the game loads.
+        /// Should return a list of loading tasks to do to completely load the mod.
         /// </summary>
-        void Load();
+        List<IGameLoader> Load();
     }
 }

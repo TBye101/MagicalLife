@@ -3,18 +3,19 @@ using MagicalLifeAPI.Components.Resource;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Visual.Rendering.AbstractVisuals;
 using MagicalLifeAPI.World.Base;
+using MagicalLifeAPI.World.Items;
 using ProtoBuf;
 using System.Collections.Generic;
 
-namespace MagicalLifeAPI.World.Resources.Tree
+namespace MagicalLifeAPI.World.Resources
 {
     /// <summary>
-    /// An oak tree.
+    /// A pine tree.
     /// </summary>
     [ProtoContract]
-    public class OakTree : TreeBase
+    public class PineTree : TreeBase
     {
-        private static readonly string Name = "Oak Tree";
+        private static readonly string Name = "Maple Tree";
         public static readonly int Durabilitie = 20;
 
         public static readonly int XOffset = Tile.GetTileSize().X / -2;
@@ -24,7 +25,7 @@ namespace MagicalLifeAPI.World.Resources.Tree
         public static OffsetTexture OffsetTrunk { get; set; }
         public static OffsetTexture OffsetLeaves { get; set; }
 
-        public OakTree(int durability) : base(Name, durability)
+        public PineTree(int durability) : base(Name, durability)
         {
             this.HarvestingBehavior = new DropWhenCompletelyHarvested(new List<Base.Item>
             {
@@ -32,7 +33,7 @@ namespace MagicalLifeAPI.World.Resources.Tree
             }, SoundsTable.AxeHit, SoundsTable.TreeFall);
         }
 
-        public OakTree()
+        public PineTree()
         {
         }
 

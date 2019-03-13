@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.World.Data;
-using MagicalLifeServer.ServerWorld.World;
 using System;
 
 namespace MagicalLifeGUIWindows.GUI.New
