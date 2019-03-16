@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Error.InternalExceptions;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Util
@@ -42,6 +43,74 @@ namespace MagicalLifeAPI.Util
             }
 
             return index;
+        }
+
+        /// <summary>
+        /// Returns the neighbors of the target in a 2D array. 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="collection"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        public static List<T> GetNeighbors<T>(T[,] collection, Point2D target)
+        {
+            List<T> neighbors = new List<T>();
+
+            int arrayWidth = collection.GetLength(0);
+            int arrayHeight = collection.GetLength(1);
+            if (IsInBounds(arrayWidth, arrayHeight, target.X, target.Y))
+            {
+                if (IsInBounds(arrayWidth, arrayHeight, target.X + 1, target.Y))
+                {
+                    neighbors.Add(collection[target.X + 1, target.Y]);
+                }
+                if (IsInBounds(arrayWidth, arrayHeight, target.X - 1, target.Y))
+                {
+                    neighbors.Add(collection[target.X - 1, target.Y]);
+                }
+                if (IsInBounds(arrayWidth, arrayHeight, target.X, target.Y + 1))
+                {
+                    neighbors.Add(collection[target.X, target.Y + 1]);
+                }
+                if (IsInBounds(arrayWidth, arrayHeight, target.X, target.Y - 1))
+                {
+                    neighbors.Add(collection[target.X, target.Y - 1]);
+                }
+                if (IsInBounds(arrayWidth, arrayHeight, target.X, target.Y))
+                {
+                    neighbors.Add(collection[target.X, target.Y]);
+                }
+                if (IsInBounds(arrayWidth, arrayHeight, target.X + 1, target.Y + 1))
+                {
+                    neighbors.Add(collection[target.X + 1, target.Y + 1]);
+                }
+                if (IsInBounds(arrayWidth, arrayHeight, target.X + 1, target.Y - 1))
+                {
+                    neighbors.Add(collection[target.X + 1, target.Y - 1]);
+                }
+                if (IsInBounds(arrayWidth, arrayHeight, target.X - 1, target.Y + 1))
+                {
+                    neighbors.Add(collection[target.X - 1, target.Y + 1]);
+                }
+                if (IsInBounds(arrayWidth, arrayHeight, target.X - 1, target.Y - 1))
+                {
+                    neighbors.Add(collection[target.X - 1, target.Y - 1]);
+                }
+
+                return neighbors;
+            }
+            else
+            {
+                throw new InvalidDataException("The starting point must be within the bounds of the 2D array");
+            }
+        }
+
+        /// <summary>
+        /// Determines if a location is contained within a 2D array.
+        /// </summary>
+        private static bool IsInBounds(int arrayWidth, int arrayHeight, int x, int y)
+        {
+            return x < arrayWidth && y < arrayHeight;
         }
     }
 }

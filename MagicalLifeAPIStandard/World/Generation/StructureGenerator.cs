@@ -16,6 +16,6 @@ namespace MagicalLifeAPI.World.Generation
         /// <param name="blankChunks"></param>
         /// <param name="biomeName">The name of the biome that is being worked with.</param>
         /// <returns></returns>
-        public abstract Chunk[] GenerateStructures(Chunk[] blankChunks, string dimensionName, string biomeName);
+        public abstract Chunk[] GenerateStructures(Chunk[] blankChunks, string dimensionName, Random random);
     }
 }

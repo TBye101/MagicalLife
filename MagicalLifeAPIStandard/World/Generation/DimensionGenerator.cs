@@ -9,13 +9,18 @@ using System.Collections.Generic;
 namespace MagicalLifeAPI.World
 {
     /// <summary>
-    /// All classes that implement <see cref="DimensionGenerator"/> control how each biome is allocated space to be generated in, and which biome is to be generated where.
+    /// All classes that implement <see cref="DimensionGenerator"/> control how each biome is allocated and what generates where.
     /// </summary>
     public abstract class DimensionGenerator
     {
         public Guid ID { get; }
 
         public readonly int Dimension;
+
+        /// <summary>
+        /// The seeded random number generator.
+        /// </summary>
+        public readonly Random RNG;
 
         /// <summary>
         /// All registered terrain generators from the core game and mods.
@@ -36,19 +41,32 @@ namespace MagicalLifeAPI.World
         /// <param name="terrainGenerators">All registered terrain generators from the core game and mods.</param>
         /// <param name="vegetationGenerators">All registered vegetation generators from the core game and mods.</param>
         /// <param name="structureGenerators">All registered structure generators from the core game and mods.</param>
+        /// <param name="random">This should be a seeded random number generator.</param>
         public DimensionGenerator(int dimension, List<TerrainGenerator> terrainGenerators,
-            List<VegetationGenerator> vegetationGenerators, List<StructureGenerator> structureGenerators)
+            List<VegetationGenerator> vegetationGenerators, List<StructureGenerator> structureGenerators, Random random)
         {
             this.Dimension = dimension;
             this.ID = Guid.NewGuid();
             this.TerrainGenerators = terrainGenerators;
             this.VegetationGenerators = vegetationGenerators;
             this.StructureGenerators = structureGenerators;
+            this.RNG = random;
         }
 
-        public abstract ProtoArray<Chunk> GenerateWorld(int chunkWidth, int chunkHeight);
+        /// <summary>
+        /// Generates width * height chunks.
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <returns></returns>
+        public ProtoArray<Chunk> Generate(int width, int height, string dimensionName)
+        {
+            return this.GenerateWorld(this.GenerateBlank(width, height), dimensionName);
+        }
 
-        internal ProtoArray<Chunk> GenerateBlank(int chunkWidth, int chunkHeight, string[,] biomes)
+        protected abstract ProtoArray<Chunk> GenerateWorld(ProtoArray<Chunk> blankWorld, string dimensionName);
+
+        internal ProtoArray<Chunk> GenerateBlank(int chunkWidth, int chunkHeight)
         {
             ProtoArray<Chunk> blank = new ProtoArray<Chunk>(chunkWidth, chunkHeight);
 
@@ -57,7 +75,7 @@ namespace MagicalLifeAPI.World
                 for (int y = 0; y < chunkHeight; y++)
                 {
                     blank[x, y] = new Chunk(
-                        new Dictionary<Guid, Living>(), new ProtoArray<Tile>(Chunk.Width, Chunk.Height), new Point2D(x, y), biomes[x, y]);
+                        new Dictionary<Guid, Living>(), new ProtoArray<Tile>(Chunk.Width, Chunk.Height), new Point2D(x, y));
                 }
             }
 
