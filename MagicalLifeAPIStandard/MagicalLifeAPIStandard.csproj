@@ -18,7 +18,6 @@
   <ItemGroup>
     <Folder Include="Components\Generic\" />
     <Folder Include="Components\Item\" />
-    <Folder Include="World\Resources\" />
     <Folder Include="World\Veggies\" />
   </ItemGroup>
   <ItemGroup>

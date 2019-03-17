@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Server;
+using MagicalLifeAPI.Registry.WorldGeneration;
 using MagicalLifeAPI.Server;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Data.Disk;
@@ -35,7 +36,7 @@ namespace MagicalLifeDedicatedServer.API.Commands
 
                 WorldGenerationSettings wset = SettingsHandler.WorldGenerationSettings.Settings;
                 Util.WriteLine("Generating world!");
-                World.Initialize(wset.DimensionWidth, wset.DimensionHeight, new GrassAndDirt(0));
+                World.Initialize(wset.DimensionWidth, wset.DimensionHeight, WorldGeneratorRegistry.Generators[0], "Main");
                 Util.WriteLine("World generated!");
 
                 Util.WriteLine("Initializing networking!");

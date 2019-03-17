@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace MagicalLifeAPI.World
 {
     /// <summary>
-    /// All classes that implement <see cref="DimensionGenerator"/> control how each biome is allocated and what generates where.
+    /// All classes that implement <see cref="DimensionGenerator"/> control what generators are applied to which chunks.
     /// </summary>
     public abstract class DimensionGenerator
     {
@@ -20,7 +20,7 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// The seeded random number generator.
         /// </summary>
-        public readonly Random RNG;
+        public Random RNG;
 
         /// <summary>
         /// All registered terrain generators from the core game and mods.
@@ -42,15 +42,9 @@ namespace MagicalLifeAPI.World
         /// <param name="vegetationGenerators">All registered vegetation generators from the core game and mods.</param>
         /// <param name="structureGenerators">All registered structure generators from the core game and mods.</param>
         /// <param name="random">This should be a seeded random number generator.</param>
-        public DimensionGenerator(int dimension, List<TerrainGenerator> terrainGenerators,
-            List<VegetationGenerator> vegetationGenerators, List<StructureGenerator> structureGenerators, Random random)
+        public DimensionGenerator()
         {
-            this.Dimension = dimension;
             this.ID = Guid.NewGuid();
-            this.TerrainGenerators = terrainGenerators;
-            this.VegetationGenerators = vegetationGenerators;
-            this.StructureGenerators = structureGenerators;
-            this.RNG = random;
         }
 
         /// <summary>
@@ -59,12 +53,12 @@ namespace MagicalLifeAPI.World
         /// <param name="width"></param>
         /// <param name="height"></param>
         /// <returns></returns>
-        public ProtoArray<Chunk> Generate(int width, int height, string dimensionName)
+        public ProtoArray<Chunk> Generate(int width, int height, string dimensionName, Random r)
         {
-            return this.GenerateWorld(this.GenerateBlank(width, height), dimensionName);
+            return this.GenerateWorld(this.GenerateBlank(width, height), dimensionName, r);
         }
 
-        protected abstract ProtoArray<Chunk> GenerateWorld(ProtoArray<Chunk> blankWorld, string dimensionName);
+        protected abstract ProtoArray<Chunk> GenerateWorld(ProtoArray<Chunk> blankWorld, string dimensionName, Random r);
 
         internal ProtoArray<Chunk> GenerateBlank(int chunkWidth, int chunkHeight)
         {

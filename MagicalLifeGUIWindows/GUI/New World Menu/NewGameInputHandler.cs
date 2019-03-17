@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.World.Data;
+﻿using MagicalLifeAPI.Registry.WorldGeneration;
+using MagicalLifeAPI.World.Data;
 using System;
 
 namespace MagicalLifeGUIWindows.GUI.New
@@ -19,9 +20,7 @@ namespace MagicalLifeGUIWindows.GUI.New
 
             if (widthSuccess && lengthSuccess && width > 0 && length > 0)
             {
-                //World.Initialize(width, length, new Dirtland(0));
-                //World.Initialize(width, length, new StoneSprinkle(0));
-                World.Initialize(width, length, new GrassAndDirt(0));
+                World.Initialize(width, length, WorldGeneratorRegistry.Generators[0], "Main");
             }
             else
             {

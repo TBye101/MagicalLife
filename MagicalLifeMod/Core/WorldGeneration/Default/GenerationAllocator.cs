@@ -16,30 +16,9 @@ namespace MagicalLifeMod.Core.WorldGeneration
     /// </summary>
     public class GenerationAllocator : DimensionGenerator
     {
-        public GenerationAllocator(int dimension, List<TerrainGenerator> terrainGenerators,
-            List<VegetationGenerator> vegetationGenerators,
-            List<StructureGenerator> structureGenerators, Random random)
-            : base(dimension, terrainGenerators, vegetationGenerators, structureGenerators, random)
+        public GenerationAllocator()
+            : base()
         {
-        }
-
-        protected override ProtoArray<Chunk> GenerateWorld(ProtoArray<Chunk> blankWorld, string dimensionName)
-        {
-            blankWorld = this.GenerateTerrain(blankWorld, dimensionName);
-
-            //Let all the vegetation generators decide for themselves if they want to generate
-            foreach (VegetationGenerator item in this.VegetationGenerators)
-            {
-                item.GenerateVegetation(blankWorld.Data, dimensionName, this.RNG);
-            }
-
-            //Let all the structure generators decide for themselves if they want to generate
-            foreach (StructureGenerator item in this.StructureGenerators)
-            {
-                item.GenerateStructures(blankWorld.Data, dimensionName, this.RNG);
-            }
-
-            return blankWorld;
         }
 
         private ProtoArray<Chunk> GenerateTerrain(ProtoArray<Chunk> blankWorld, string dimensionName)
@@ -174,6 +153,26 @@ namespace MagicalLifeMod.Core.WorldGeneration
                 //Use the chosen terrain generator.
                 return neighborGeneratorWeights[terrainGeneratorIndex].Item1;
             }
+        }
+
+        protected override ProtoArray<Chunk> GenerateWorld(ProtoArray<Chunk> blankWorld, string dimensionName, Random r)
+        {
+            this.RNG = r;
+            blankWorld = this.GenerateTerrain(blankWorld, dimensionName);
+
+            //Let all the vegetation generators decide for themselves if they want to generate
+            foreach (VegetationGenerator item in this.VegetationGenerators)
+            {
+                item.GenerateVegetation(blankWorld.Data, dimensionName, this.RNG);
+            }
+
+            //Let all the structure generators decide for themselves if they want to generate
+            foreach (StructureGenerator item in this.StructureGenerators)
+            {
+                item.GenerateStructures(blankWorld.Data, dimensionName, this.RNG);
+            }
+
+            return blankWorld;
         }
     }
 }

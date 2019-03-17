@@ -30,7 +30,8 @@ namespace MagicalLifeMod.Core
             return new List<IGameLoader>
             {
                 new SpecificTextureLoader(),
-                new SettingsInitializer()
+                new SettingsInitializer(),
+                new WorldGenerationRegistration()
             };
         }
     }
