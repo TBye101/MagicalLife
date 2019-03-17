@@ -7,6 +7,7 @@ namespace MagicalLifeAPI.World
 {
     /// <summary>
     /// Classes that implements this are responsible for generating the terrain for the specified chunks.
+    /// Terrain generators should generate which tiles to use, as well as fill them with Resources.
     /// </summary>
     public abstract class TerrainGenerator
     {

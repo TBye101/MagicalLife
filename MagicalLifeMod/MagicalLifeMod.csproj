@@ -13,6 +13,8 @@
     <Folder Include="Core\Entities\" />
     <Folder Include="Core\Tiles\" />
     <Folder Include="Core\Vegetation\" />
+    <Folder Include="Core\WorldGeneration\StructureGenerators\" />
+    <Folder Include="Core\WorldGeneration\VegetationGenerators\" />
   </ItemGroup>
 
 </Project>

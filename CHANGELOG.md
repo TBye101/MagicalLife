@@ -11,6 +11,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 *Removed Serilog dependency
 *Inventories are now baked in for creatures
 *Increased camera performance, 100x100 worlds are possible (~22 fps)
+*Now putting core game content in the "Magical Life Core" mod
 
 #### GUI
 *Tilling dirt is now available from the in game GUI

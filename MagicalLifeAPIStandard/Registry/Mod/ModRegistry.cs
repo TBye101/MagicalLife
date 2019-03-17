@@ -30,7 +30,6 @@ namespace MagicalLifeAPI.Registry.Mod
                 MasterLog.DebugWriteLine("Loading mod: " + info.DisplayName + "(" + info.ModID + ")");
                 List<Load.IGameLoader> loadJobs = item.Load();
                 loader.LoadAll(ref message, loadJobs);
-                MasterLog.DebugWriteLine(message);
                 MasterLog.DebugWriteLine("Done loading: " + info.DisplayName + "(" + info.ModID + ")");
             }
         }

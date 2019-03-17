@@ -18,5 +18,9 @@ namespace MagicalLifeMod.Core.WorldGeneration.Default
         /// The stackable percent that neighboring chunks give towards using the same terrain generation.
         /// </summary>
         public int NeighborWeight { get; set; } = 12;
+
+        #region TerrainSpecific
+        public int DirtTerrainWeight = 1;
+        #endregion
     }
 }
