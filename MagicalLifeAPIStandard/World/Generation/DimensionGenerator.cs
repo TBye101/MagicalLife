@@ -17,26 +17,6 @@ namespace MagicalLifeAPI.World
 
         public readonly int Dimension;
 
-        /// <summary>
-        /// The seeded random number generator.
-        /// </summary>
-        public Random RNG;
-
-        /// <summary>
-        /// All registered terrain generators from the core game and mods.
-        /// </summary>
-        protected readonly List<TerrainGenerator> TerrainGenerators;
-
-        /// <summary>
-        /// All registered vegetation generators from the core game and mods.
-        /// </summary>
-        protected readonly List<VegetationGenerator> VegetationGenerators;
-
-        /// <summary>
-        /// All registered structure generators from the core game and mods.
-        /// </summary>
-        protected readonly List<StructureGenerator> StructureGenerators;
-
         /// <param name="dimension">The dimension that is being generated.</param>
         /// <param name="terrainGenerators">All registered terrain generators from the core game and mods.</param>
         /// <param name="vegetationGenerators">All registered vegetation generators from the core game and mods.</param>

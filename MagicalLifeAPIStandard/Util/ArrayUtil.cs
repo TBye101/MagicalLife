@@ -22,7 +22,7 @@ namespace MagicalLifeAPI.Util
 
             for (int x = 0; x < width; x++)
             {
-                for (int y = 0; x < height; y++)
+                for (int y = 0; y < height; y++)
                 {
                     array[x, y] = value;
                 }

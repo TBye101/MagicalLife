@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Registry.WorldGeneration;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
@@ -21,9 +22,9 @@ namespace MagicalLifeMod.Core.WorldGeneration
         {
         }
 
-        private ProtoArray<Chunk> GenerateTerrain(ProtoArray<Chunk> blankWorld, string dimensionName)
+        private ProtoArray<Chunk> GenerateTerrain(ProtoArray<Chunk> blankWorld, string dimensionName, Random seededRandom)
         {
-            int[,] terrainGeneratorMap = this.AssignGenerators(blankWorld.Width, blankWorld.Height);
+            int[,] terrainGeneratorMap = this.AssignGenerators(blankWorld.Width, blankWorld.Height, seededRandom);
 
             //<Index of terrain generator to use, locations to use it at>
             Dictionary<int, List<Point2D>> generatorToAllocatedChunks = new Dictionary<int, List<Point2D>>();
@@ -61,7 +62,7 @@ namespace MagicalLifeMod.Core.WorldGeneration
                     toGenerator[i] = blankWorld[location.X, location.Y];
                 }
 
-                this.TerrainGenerators[item.Key].GenerateTerrain(toGenerator, dimensionName, this.RNG);
+                WorldGeneratorRegistry.TerrainGenerators[item.Key].GenerateTerrain(toGenerator, dimensionName, seededRandom);
             }
 
             return blankWorld;
@@ -74,16 +75,16 @@ namespace MagicalLifeMod.Core.WorldGeneration
         /// <param name="width"></param>
         /// <param name="height"></param>
         /// <returns></returns>
-        private int[,] AssignGenerators(int width, int height)
+        private int[,] AssignGenerators(int width, int height, Random seededRandom)
         {
             List<int> terrainWeights = new List<int>();
 
-            foreach (TerrainGenerator item in this.TerrainGenerators)
+            foreach (TerrainGenerator item in WorldGeneratorRegistry.TerrainGenerators)
             {
                 terrainWeights.Add(item.Weight);
             }
 
-            WeightedRandom randomTerrainGenerators = new WeightedRandom(terrainWeights, this.RNG);
+            WeightedRandom randomTerrainGenerators = new WeightedRandom(terrainWeights, seededRandom);
 
             int[,] terrainMap = new int[width, height];
             ArrayUtil.FillAll<int>(terrainMap, -1);
@@ -92,7 +93,7 @@ namespace MagicalLifeMod.Core.WorldGeneration
             {
                 for (int y = 0; y < height; y++)
                 {
-                    terrainMap[x, y] = this.ChooseTerrainGenerator(terrainMap, randomTerrainGenerators, x, y);
+                    terrainMap[x, y] = this.ChooseTerrainGenerator(terrainMap, randomTerrainGenerators, x, y, seededRandom);
                 }
             }
 
@@ -103,7 +104,7 @@ namespace MagicalLifeMod.Core.WorldGeneration
         /// Choses which terrain generator to use for a single chunk.
         /// </summary>
         /// <returns></returns>
-        private int ChooseTerrainGenerator(int[,] terrainMap, WeightedRandom randomTerrainGenerators, int x, int y)
+        private int ChooseTerrainGenerator(int[,] terrainMap, WeightedRandom randomTerrainGenerators, int x, int y, Random seededRandom)
         {
             //<terrainGenerator, weight>
             List<ValueTuple<int, int>> neighborGeneratorWeights = new List<(int, int)>();
@@ -139,7 +140,7 @@ namespace MagicalLifeMod.Core.WorldGeneration
                 weights.Add(100 - totalWeight);
             }
 
-            WeightedRandom neighborWeightedRandom = new WeightedRandom(weights, this.RNG);
+            WeightedRandom neighborWeightedRandom = new WeightedRandom(weights, seededRandom);
 
             int terrainGeneratorIndex = neighborWeightedRandom.GetNext();
 
@@ -155,21 +156,20 @@ namespace MagicalLifeMod.Core.WorldGeneration
             }
         }
 
-        protected override ProtoArray<Chunk> GenerateWorld(ProtoArray<Chunk> blankWorld, string dimensionName, Random r)
+        protected override ProtoArray<Chunk> GenerateWorld(ProtoArray<Chunk> blankWorld, string dimensionName, Random seededRandom)
         {
-            this.RNG = r;
-            blankWorld = this.GenerateTerrain(blankWorld, dimensionName);
+            blankWorld = this.GenerateTerrain(blankWorld, dimensionName, seededRandom);
 
             //Let all the vegetation generators decide for themselves if they want to generate
-            foreach (VegetationGenerator item in this.VegetationGenerators)
+            foreach (VegetationGenerator item in WorldGeneratorRegistry.VegetationGenerators)
             {
-                item.GenerateVegetation(blankWorld.Data, dimensionName, this.RNG);
+                item.GenerateVegetation(blankWorld.Data, dimensionName, seededRandom);
             }
 
             //Let all the structure generators decide for themselves if they want to generate
-            foreach (StructureGenerator item in this.StructureGenerators)
+            foreach (StructureGenerator item in WorldGeneratorRegistry.StructureGenerators)
             {
-                item.GenerateStructures(blankWorld.Data, dimensionName, this.RNG);
+                item.GenerateStructures(blankWorld.Data, dimensionName, seededRandom);
             }
 
             return blankWorld;

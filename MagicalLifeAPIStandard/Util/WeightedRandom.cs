@@ -45,7 +45,7 @@ namespace MagicalLifeAPI.Util
                 i++;
             }
 
-            return i;
+            return i - 1;
         }
     }
 }
