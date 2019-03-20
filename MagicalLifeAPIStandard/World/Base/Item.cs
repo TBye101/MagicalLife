@@ -72,16 +72,29 @@ namespace MagicalLifeAPI.World.Base
         protected Item(string name, List<string> lore, int stackableLimit, int count, string textureName, double itemWeight, string modFrom)
         {
             this.Name = name;
+            this.ModFrom = modFrom;
+            this.SetItemID();//Must be after "Name" and "ModFrom" is set, as it depends on these.
             this.Lore = lore;
             this.StackableLimit = stackableLimit;
             this.CurrentlyStacked = count;
-            this.ItemID = ItemRegistry.IDToItem.First(x => x.Value.Equals(this)).Key;//slow
             this.TextureIndex = AssetManager.GetTextureIndex(textureName);
             this.TextureName = textureName;
             this.Validate();
             this.TextureIndex = AssetManager.GetTextureIndex(this.TextureName);
             this.ItemWeight = itemWeight;
-            this.ModFrom = modFrom;
+        }
+
+        private void SetItemID()
+        {
+            try
+            {
+                this.ItemID = ItemRegistry.IDToItem.First(x => x.Value.ModFrom.Equals(this.ModFrom) &&
+                x.Value.Name.Equals(this.Name)).Key;//slow
+            }
+            catch (InvalidOperationException e)
+            {
+                this.ItemID = -1;
+            }
         }
 
         protected Item()

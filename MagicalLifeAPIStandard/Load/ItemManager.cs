@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Load
 {
-    internal class ItemLoader : IGameLoader
+    internal class ItemManager : IGameLoader
     {
         public void InitialStartup()
         {

@@ -101,13 +101,13 @@ namespace MagicalLifeGUIWindows
 
             load.LoadAll(ref msg, new List<IGameLoader>()
             {
-                new ItemLoader(),
                 new InputLoader(),
                 new Initializer(),
                 //new TextureLoader(),
                 new TextureLoader(this.Content),
                 new ProtoTypeLoader(),
-                new ModLoader()
+                new ModLoader(),
+                new ItemManager()
             });
             this.InitializeSplashScreens();
         }

@@ -20,7 +20,6 @@ namespace MagicalLifeMod.Core.WorldGeneration.TerrainGenerators
 
         public override Chunk[] GenerateTerrain(Chunk[] blankChunks, string dimensionName, Random seededRandom)
         {
-            Point2D chunkSize = Tile.GetTileSize();
             foreach (Chunk chunk in blankChunks)
             {
                 //Chunks have x and y chunk coordinates
@@ -30,8 +29,8 @@ namespace MagicalLifeMod.Core.WorldGeneration.TerrainGenerators
                     for (int j = 0; j < Chunk.Height; j++)
                     {
                         Point2D chunkLocation = chunk.ChunkLocation;
-                        int x = chunkLocation.X * chunkSize.X;
-                        int y = chunkLocation.Y * chunkSize.Y;
+                        int x = (chunkLocation.X * Chunk.Width) + i;
+                        int y = (chunkLocation.Y * Chunk.Height) + j;
                         chunk.Tiles[i, j] = this.GenerateTile(x, y, seededRandom);
                     }
                 }
@@ -46,7 +45,7 @@ namespace MagicalLifeMod.Core.WorldGeneration.TerrainGenerators
 
             if (seededRandom.Next(0, 5) == 3)
             {
-                dirt.Resources = new Rock(seededRandom.Next(0, 170));
+                dirt.Resources = new Rock(seededRandom.Next(1, 170));
             }
 
             return dirt;

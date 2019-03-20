@@ -19,11 +19,11 @@ namespace MagicalLifeAPI.World.Resources
 
         public override AbstractHarvestable HarvestingBehavior { get; set; }
 
-        public Rock(int durability) : base(StoneName, durability)
+        public Rock(int count) : base(StoneName, count)
         {
             this.HarvestingBehavior = new DropWhenCompletelyHarvested(new List<Base.Item>
             {
-                new StoneRubble(this.Durability)
+                new StoneRubble(count)
             }, SoundsTable.PickaxeHit, SoundsTable.MiningFinish);
         }
 

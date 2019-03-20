@@ -31,7 +31,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// Holds which item id is associated with item.
         /// </summary>
         [ProtoMember(1)]
-        internal static Dictionary<int, Item> IDToItem { get; set; }
+        internal static Dictionary<int, Item> IDToItem { get; set; } = new Dictionary<int, Item>();
 
         /// <summary>
         /// For each item in the dimension, this dictionary holds a R-Tree that contains chunk coordinates for every chunk that has at least one of that item.
@@ -49,7 +49,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         {
             this.ID = Guid.NewGuid();
             this.Dimension = dimension;
-            this.Bake();
+            this.BakeItemChunks();
         }
 
         public ItemRegistry()
@@ -58,25 +58,11 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         }
 
         /// <summary>
-        /// Registers the items.
-        /// </summary>
-        /// <param name="toRegister"></param>
-        internal static void Initialize(List<Item> toRegister)
-        {
-            IDToItem = new Dictionary<int, Item>();
-
-            foreach (Item item in toRegister)
-            {
-                RegisterItemType(item);
-            }
-        }
-
-        /// <summary>
         /// Registers an item type with this item registry.
         /// All items that will be supported by this class must be added through here before Bake() is called.
         /// </summary>
         /// <param name="item"></param>
-        private static void RegisterItemType(Item item)
+        public static void RegisterItemType(Item item)
         {
             IDToItem.Add(IDToItem.Count, item);
         }
@@ -84,7 +70,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// <summary>
         /// Initializes <see cref="ItemIDToChunk"/> for the first time.
         /// </summary>
-        private void Bake()
+        internal void BakeItemChunks()
         {
             this.ItemIDToChunk = new Dictionary<int, RTree<Point2D>>(IDToItem.Count);
 

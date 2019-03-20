@@ -42,6 +42,12 @@ namespace MagicalLifeAPI.Util
             while (currentWeightSum < rn)
             {
                 currentWeightSum += this.Weights[i];
+
+                if (currentWeightSum >= rn)
+                {
+                    break;
+                }
+
                 i++;
             }
 
