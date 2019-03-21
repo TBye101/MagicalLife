@@ -107,7 +107,7 @@ namespace MagicalLifeGUIWindows
                 new TextureLoader(this.Content),
                 new ProtoTypeLoader(),
                 new ModLoader(),
-                new ItemManager()
+                new ProtoManager()
             });
             this.InitializeSplashScreens();
         }

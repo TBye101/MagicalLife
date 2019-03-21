@@ -3,6 +3,9 @@ using ProtoBuf.Meta;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
+using System.Linq;
+using ProtoBuf;
 
 namespace MagicalLifeAPI.Networking.Serialization
 {
@@ -29,7 +32,6 @@ namespace MagicalLifeAPI.Networking.Serialization
         {
             try
             {
-                
                 using (MemoryStream outputStream = new MemoryStream())
                 {
                     TypeModel.SerializeWithLengthPrefix(outputStream, data, typeof(T), ProtoBuf.PrefixStyle.Base128, 0);
@@ -78,6 +80,57 @@ namespace MagicalLifeAPI.Networking.Serialization
             {
                 MasterLog.DebugWriteLine(e.Message);
                 return default;
+            }
+        }
+
+        /// <summary>
+        /// Registers a type as serializable.
+        /// </summary>
+        /// <param name="serializableClassType"></param>
+        internal static void RegisterSerializableClass(Type serializableClassType)
+        {
+            TypeModel.Add(serializableClassType, true);
+        }
+
+        /// <summary>
+        /// Registers a type as the subclass of another type.
+        /// </summary>
+        /// <param name="subclass"></param>
+        /// <param name="baseClass"></param>
+        internal static void RegisterSubclass(Type subclass, Type baseClass)
+        {
+            MetaType meta = TypeModel.Add(baseClass, true);
+            SubType[] subtypes = meta.GetSubtypes();
+            meta.AddSubType(subtypes.Length, subclass);
+        }
+
+        /// <summary>
+        /// Registers all serializable types found within an assembly.
+        /// While this is slower than <see cref="RegisterSerializableClass(Type)"/> and <see cref="RegisterSubclass(Type, Type)"/>, this is more convenient.
+        /// </summary>
+        /// <param name="assembly"></param>
+        internal static void RegisterAssembly(Assembly assembly)
+        {
+            Type[] allTypes = assembly.GetExportedTypes();
+
+            foreach (Type item in allTypes)
+            {
+                Attribute attribute = item.GetCustomAttribute(typeof(ProtoContractAttribute));
+
+                if (attribute != null)
+                {
+                    RegisterSerializableClass(item);
+                    
+                    if (item.BaseType != null)
+                    {
+                        Attribute baseAttribute = item.GetCustomAttribute(typeof(ProtoContractAttribute));
+
+                        if (baseAttribute != null)
+                        {
+                            RegisterSubclass(item, item.BaseType);
+                        }
+                    }
+                }
             }
         }
     }
