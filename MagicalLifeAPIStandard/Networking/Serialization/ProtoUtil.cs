@@ -89,6 +89,7 @@ namespace MagicalLifeAPI.Networking.Serialization
         /// <param name="serializableClassType"></param>
         internal static void RegisterSerializableClass(Type serializableClassType)
         {
+            MasterLog.DebugWriteLine("Registering type with Protobuf-net: " + serializableClassType.AssemblyQualifiedName);
             TypeModel.Add(serializableClassType, true);
         }
 
@@ -99,9 +100,12 @@ namespace MagicalLifeAPI.Networking.Serialization
         /// <param name="baseClass"></param>
         internal static void RegisterSubclass(Type subclass, Type baseClass)
         {
+            MasterLog.DebugWriteLine("Registering subtype with Protobuf-net: " + subclass.AssemblyQualifiedName);
+            MasterLog.DebugWriteLine("Base class name: " + baseClass.AssemblyQualifiedName);
             MetaType meta = TypeModel.Add(baseClass, true);
             SubType[] subtypes = meta.GetSubtypes();
             meta.AddSubType(subtypes.Length + 1, subclass);
+            MasterLog.DebugWriteLine("Subclass ID: " + (subtypes.Length + 1).ToString());
         }
 
         /// <summary>
