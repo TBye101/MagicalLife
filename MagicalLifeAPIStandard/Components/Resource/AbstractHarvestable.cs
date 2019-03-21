@@ -10,7 +10,6 @@ namespace MagicalLifeAPI.Components.Resource
     /// Anything that implements this must describe its behavior in terms of mining.
     /// </summary>
     [ProtoContract]
-    [ProtoInclude(2, typeof(DropWhenCompletelyHarvested))]
     public abstract class AbstractHarvestable
     {
         /// <summary>

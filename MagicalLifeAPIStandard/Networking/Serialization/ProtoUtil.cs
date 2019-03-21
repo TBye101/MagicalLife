@@ -101,7 +101,7 @@ namespace MagicalLifeAPI.Networking.Serialization
         {
             MetaType meta = TypeModel.Add(baseClass, true);
             SubType[] subtypes = meta.GetSubtypes();
-            meta.AddSubType(subtypes.Length, subclass);
+            meta.AddSubType(subtypes.Length + 1, subclass);
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace MagicalLifeAPI.Networking.Serialization
                     
                     if (item.BaseType != null)
                     {
-                        Attribute baseAttribute = item.GetCustomAttribute(typeof(ProtoContractAttribute));
+                        Attribute baseAttribute = item.BaseType.GetCustomAttribute(typeof(ProtoContractAttribute));
 
                         if (baseAttribute != null)
                         {

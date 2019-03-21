@@ -7,7 +7,6 @@ namespace MagicalLifeAPI.Entity.Experience
     /// Classes that implement this have custom algorithms for how to calculate the XP required to get to the next level.
     /// </summary>
     [ProtoContract]
-    [ProtoInclude(1, typeof(SqrtXPCalculator))]
     public interface IXPCalculator
     {
         /// <summary>

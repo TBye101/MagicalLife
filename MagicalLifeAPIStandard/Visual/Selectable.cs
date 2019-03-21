@@ -9,8 +9,6 @@ namespace MagicalLifeAPI.GUI
     /// All objects in the game that can be clicked on inherit from this.
     /// </summary>
     [ProtoContract]
-    [ProtoInclude(2, typeof(Living))]
-    [ProtoInclude(3, typeof(Tile))]
     public abstract class Selectable
     {
         /// <summary>
