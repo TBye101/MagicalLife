@@ -103,8 +103,28 @@ namespace MagicalLifeAPI.Networking.Serialization
             MasterLog.DebugWriteLine("Registering subtype with Protobuf-net: " + subclass.AssemblyQualifiedName);
             MasterLog.DebugWriteLine("Base class name: " + baseClass.AssemblyQualifiedName);
             MetaType meta = TypeModel.Add(baseClass, true);
+
+            int largestFieldNumber = 0;
             SubType[] subtypes = meta.GetSubtypes();
-            meta.AddSubType(subtypes.Length + 1, subclass);
+            ValueMember[] baseFields = meta.GetFields();
+
+            foreach (ValueMember item in baseFields)
+            {
+                if (item.FieldNumber > largestFieldNumber)
+                {
+                    largestFieldNumber = item.FieldNumber;
+                }
+            }
+
+            foreach (SubType item in subtypes)
+            {
+                if (item.FieldNumber > largestFieldNumber)
+                {
+                    largestFieldNumber = item.FieldNumber;
+                }
+            }
+            
+            meta.AddSubType(largestFieldNumber + 1, subclass);
             MasterLog.DebugWriteLine("Subclass ID: " + (subtypes.Length + 1).ToString());
         }
 
@@ -119,12 +139,17 @@ namespace MagicalLifeAPI.Networking.Serialization
 
             foreach (Type item in allTypes)
             {
+                if (item.Name.Equals("NeverRemoveCondition"))
+                {
+                    MasterLog.DebugWriteLine("hey");
+                }
+
                 Attribute attribute = item.GetCustomAttribute(typeof(ProtoContractAttribute));
 
                 if (attribute != null)
                 {
                     RegisterSerializableClass(item);
-                    
+
                     if (item.BaseType != null)
                     {
                         Attribute baseAttribute = item.BaseType.GetCustomAttribute(typeof(ProtoContractAttribute));
@@ -134,6 +159,17 @@ namespace MagicalLifeAPI.Networking.Serialization
                             RegisterSubclass(item, item.BaseType);
                         }
                     }
+
+                    //Type[] interfaces = item.GetInterfaces();
+
+                    //foreach (Type iface in interfaces)
+                    //{
+                    //    Attribute protoAttribute = item.GetCustomAttribute(typeof(ProtoContractAttribute));
+                    //    if (protoAttribute != null)
+                    //    {
+                    //        RegisterSubclass(item, iface);
+                    //    }
+                    //}
                 }
             }
         }

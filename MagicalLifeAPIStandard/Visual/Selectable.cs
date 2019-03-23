@@ -22,7 +22,7 @@ namespace MagicalLifeAPI.GUI
         /// <summary>
         /// The location of this selectable in game object.
         /// </summary>
-        [ProtoMember(1)]
+        [ProtoMember(999)]
         public Point2D MapLocation { get; set; }
     }
 }
