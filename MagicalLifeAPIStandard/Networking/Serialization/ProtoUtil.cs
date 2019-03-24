@@ -160,16 +160,16 @@ namespace MagicalLifeAPI.Networking.Serialization
                         }
                     }
 
-                    //Type[] interfaces = item.GetInterfaces();
+                    Type[] interfaces = item.GetInterfaces();
 
-                    //foreach (Type iface in interfaces)
-                    //{
-                    //    Attribute protoAttribute = item.GetCustomAttribute(typeof(ProtoContractAttribute));
-                    //    if (protoAttribute != null)
-                    //    {
-                    //        RegisterSubclass(item, iface);
-                    //    }
-                    //}
+                    foreach (Type iface in interfaces)
+                    {
+                        Attribute protoAttribute = item.GetCustomAttribute(typeof(ProtoContractAttribute));
+                        if (protoAttribute != null)
+                        {
+                            RegisterSubclass(item, iface);
+                        }
+                    }
                 }
             }
         }
