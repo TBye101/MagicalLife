@@ -161,13 +161,12 @@ namespace MagicalLifeAPI.Networking.Serialization
                     }
 
                     Type[] interfaces = item.GetInterfaces();
-
                     foreach (Type iface in interfaces)
                     {
                         Attribute protoAttribute = item.GetCustomAttribute(typeof(ProtoContractAttribute));
-                        if (protoAttribute != null)
+                        if (protoAttribute != null && !item.BaseType.GetInterfaces().Contains(iface))
                         {
-                            RegisterSubclass(item, iface);
+                            RegisterSubclass(item, iface);//Issue: not detecting when directly implementing interfaces properly
                         }
                     }
                 }

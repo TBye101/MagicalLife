@@ -27,7 +27,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                 {
                     Tile tile = World.GetTile(RenderInfo.Dimension, item.MapLocation.X, item.MapLocation.Y);
 
-                    if (tile is ITillable
+                    if (tile is TillableTile
                         && tile.ImpendingAction == ActionSelected.None
                         && tile.Resources == null)
                     {

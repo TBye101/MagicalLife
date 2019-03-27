@@ -5,7 +5,6 @@ namespace MagicalLifeAPI.Entity.Util.Modifier
     /// <summary>
     /// Utilized to allow for custom events/circumstances to be used to determine when a modifier wears off.
     /// </summary>
-    [ProtoContract]
     public interface IModifierRemoveCondition
     {
         /// <summary>

@@ -33,11 +33,14 @@ namespace MagicalLifeAPI.Crafting
         [ProtoMember(3)]
         private Item ExampleOutput;
 
+        [ProtoMember(4)]
+        private Guid ID;
 
-        public SimpleItemRecipe(List<Item> requiredItems, Item exampleOutput)
+        public SimpleItemRecipe(List<Item> requiredItems, Item exampleOutput, Guid constantGuid)
         {
             this.RequiredItems = requiredItems;
             this.ExampleOutput = exampleOutput;
+            this.ID = constantGuid;
         }
 
         /// <summary>
@@ -93,6 +96,11 @@ namespace MagicalLifeAPI.Crafting
         public Item GetExampleOutput()
         {
             return this.ExampleOutput;
+        }
+
+        public Guid GetUniqueID()
+        {
+            return this.ID;
         }
     }
 }

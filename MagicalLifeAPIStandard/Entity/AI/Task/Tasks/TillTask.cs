@@ -18,7 +18,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         public Point2D Target { get; private set; }
 
         [ProtoMember(2)]
-        private ITillable Tillable { get; set; }
+        private TillableTile Tillable { get; set; }
 
         [ProtoMember(3)]
         private TickTimer HitTimer { get; set; }
@@ -52,7 +52,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         public override void MakePreparations(Living l)
         {
             Tile tile = World.Data.World.GetTile(l.Dimension, this.Target.X, this.Target.Y);
-            this.Tillable = (ITillable)tile;
+            this.Tillable = (TillableTile)tile;
         }
 
         public override void Reset()

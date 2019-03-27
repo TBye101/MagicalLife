@@ -15,7 +15,7 @@ namespace MagicalLifeAPI.World.Base
     /// Resources in tiles are things such as stone and minerals.
     /// </summary>
     [ProtoContract]
-    public abstract class Resource : HasTexture, IHarvestable, IRenderable
+    public abstract class Resource : HasTexture, IHarvestable
     {
         public Resource(string name, int durability)
         {
@@ -50,7 +50,5 @@ namespace MagicalLifeAPI.World.Base
         {
             return typeof(Resource);
         }
-
-        public abstract List<AbstractVisual> GetVisuals();
     }
 }

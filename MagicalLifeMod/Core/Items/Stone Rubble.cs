@@ -28,14 +28,6 @@ namespace MagicalLifeAPI.World.Items
         {
         }
 
-        public override List<AbstractVisual> GetVisuals()
-        {
-            List<AbstractVisual> visuals = new List<AbstractVisual>();
-            visuals.Add(new StaticTexture(AssetManager.NameToIndex[this.GetRandomStoneRubbleTexture()], RenderLayer.Items));
-
-            return visuals;
-        }
-
         private string GetRandomStoneRubbleTexture()
         {
             int r = StaticRandom.Rand(0, 2);
@@ -56,6 +48,14 @@ namespace MagicalLifeAPI.World.Items
         public override Item GetDeepCopy(int amount)
         {
             return new StoneRubble(amount);
+        }
+
+        public override List<AbstractVisual> GetVisuals()
+        {
+            List<AbstractVisual> visuals = new List<AbstractVisual>();
+            visuals.Add(new StaticTexture(AssetManager.NameToIndex[this.GetRandomStoneRubbleTexture()], RenderLayer.Items));
+
+            return visuals;
         }
     }
 }

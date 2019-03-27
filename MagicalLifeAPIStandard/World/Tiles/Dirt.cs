@@ -11,7 +11,7 @@ namespace MagicalLifeAPI.World.Tiles
     /// A dirt tile.
     /// </summary>
     [ProtoBuf.ProtoContract]
-    public class Dirt : Tile, ITillable
+    public class Dirt : TillableTile
     {
         public override ComponentRenderer CompositeRenderer { get; set; }
 

@@ -15,7 +15,7 @@ namespace MagicalLifeAPI.World.Base
     /// Represents almost everything in a movable/harvested form.
     /// </summary>
     [ProtoContract]
-    public abstract class Item : HasTexture, IRenderable
+    public abstract class Item : HasTexture
     {
         /// <summary>
         /// The name of this <see cref="Item"/>.
@@ -174,8 +174,6 @@ namespace MagicalLifeAPI.World.Base
                 return new ValueTuple<Item, Item>(firstItem, secondItem);
             }
         }
-
-        public abstract List<AbstractVisual> GetVisuals();
 
         /// <summary>
         /// Return a deep copy of the current item. 

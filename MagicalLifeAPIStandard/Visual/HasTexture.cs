@@ -1,6 +1,8 @@
-﻿using MagicalLifeAPI.World.Base;
+﻿using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 using System;
+using System.Collections.Generic;
 
 namespace MagicalLifeAPI.GUI
 {
@@ -8,7 +10,7 @@ namespace MagicalLifeAPI.GUI
     /// Any class that inherits from this has a texture.
     /// </summary>
     [ProtoBuf.ProtoContract]
-    public class HasTexture
+    public abstract class HasTexture
     {
         [ProtoMember(5)]
         public Guid ID { get; }
@@ -28,5 +30,7 @@ namespace MagicalLifeAPI.GUI
         public HasTexture()
         {
         }
+
+        public abstract List<AbstractVisual> GetVisuals();
     }
 }

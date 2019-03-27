@@ -15,5 +15,12 @@ namespace MagicalLifeAPI.Crafting
         /// </summary>
         /// <returns></returns>
         Item GetExampleOutput();
+
+        /// <summary>
+        /// Return a constant but unique ID for this recipe.
+        /// Must be consistent between games/loads. 
+        /// </summary>
+        /// <returns></returns>
+        Guid GetUniqueID();
     }
 }
