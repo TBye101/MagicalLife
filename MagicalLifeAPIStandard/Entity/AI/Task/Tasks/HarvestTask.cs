@@ -19,7 +19,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         public Point2D Target { get; private set; }
 
         [ProtoMember(2)]
-        private IHarvestable Harvestable { get; set; }
+        private ComponentHarvestable Harvestable { get; set; }
 
         [ProtoMember(3)]
         private TickTimer HitTimer { get; set; }

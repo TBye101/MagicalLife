@@ -9,12 +9,12 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
     /// A renderer that takes various visual pieces and renders them in a meaningful fashion.
     /// </summary>
     [ProtoContract]
-    public class ComponentRenderer
+    public class ComponentRenderer : Component
     {
         [ProtoMember(1)]
         public List<AbstractVisual> RenderQueue { get; set; }
 
-        public ComponentRenderer()
+        public ComponentRenderer() : base()
         {
             this.RenderQueue = new List<AbstractVisual>();
         }

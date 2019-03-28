@@ -18,7 +18,7 @@ namespace MagicalLifeAPI.Components.Resource
         [ProtoMember(1)]
         public double PercentHarvested { get; private set; }
 
-        public ComponentHarvestable(Guid constantID) : base(constantID)
+        public ComponentHarvestable(Guid constantID)
         {
             this.PercentHarvested = 0;
         }

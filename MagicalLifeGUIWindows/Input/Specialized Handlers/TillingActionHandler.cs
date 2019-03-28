@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Components.Resource;
 using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.Entity.AI.Task.Tasks;
+using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.Input.History;
@@ -27,11 +28,11 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                 {
                     Tile tile = World.GetTile(RenderInfo.Dimension, item.MapLocation.X, item.MapLocation.Y);
 
-                    if (tile is TillableTile
+                    if (tile.HasComponent<ComponentTillable>()
                         && tile.ImpendingAction == ActionSelected.None
                         && tile.Resources == null)
                     {
-                        TillTask task = new TillTask(tile.MapLocation, Guid.NewGuid(), RenderInfo.Dimension);
+                        TillTask task = new TillTask(tile.GetComponent<Selectable>().MapLocation, Guid.NewGuid(), RenderInfo.Dimension);
                         tile.ImpendingAction = ActionSelected.Till;
                         TaskManager.Manager.AddTask(task);
                     }

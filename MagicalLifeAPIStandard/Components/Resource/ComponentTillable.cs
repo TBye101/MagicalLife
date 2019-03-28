@@ -12,7 +12,7 @@ namespace MagicalLifeAPI.Components.Resource
         [ProtoMember(1)]
         public float PercentTilled { get; private set; }
 
-        public ComponentTillable(Guid constantID) : base(constantID)
+        public ComponentTillable(Guid constantID)
         {
             this.PercentTilled = 0;
         }

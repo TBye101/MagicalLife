@@ -22,10 +22,8 @@ namespace MagicalLifeAPI.GUI
         [ProtoMember(2)]
         public Point2D MapLocation { get; set; }
 
-        public static readonly Guid ConstantID = Guid.Parse("9D588094-E026-4EFE-91E7-86C2AE0A8012");
-
         /// <param name="type">The map selection type to use for the containing object.</param>
-        public Selectable(SelectionType type) : base(ConstantID)
+        public Selectable(SelectionType type)
         {
             this.Type = type;
         }

@@ -9,7 +9,7 @@ using ProtoBuf;
 namespace MagicalLifeAPI.World.Tiles
 {
     [ProtoContract]
-    public class Grass : TillableTile
+    public class Grass : Tile
     {
         public override ComponentRenderer CompositeRenderer { get; set; }
 

@@ -25,12 +25,10 @@ namespace MagicalLifeAPI.Components.Resource
         [ProtoMember(3)]
         protected string CompletionSound { get; set; }
 
-        public static readonly Guid ConstantID = Guid.Parse("C5DB26F5-D450-432C-9CD2-C2ABBD627EF0");
-
         /// <param name="items">The items to drop when harvested.</param>
         /// <param name="harvestSound">The sound to play each harvest tick. Can be empty to play no sound.</param>
         /// <param name="completionSound">The sound to play when completely harvested/done. Can be empty to play no sound.</param>
-        public DropWhenCompletelyHarvested(List<Item> items, string harvestSound, string completionSound) : base(ConstantID)
+        public DropWhenCompletelyHarvested(List<Item> items, string harvestSound, string completionSound)
         {
             this.Items = items;
             this.HarvestSound = harvestSound;

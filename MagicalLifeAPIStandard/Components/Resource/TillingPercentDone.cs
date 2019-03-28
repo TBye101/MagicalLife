@@ -11,8 +11,7 @@ namespace MagicalLifeAPI.Components.Resource
     [ProtoContract]
     public class TillablePercentDone : ComponentTillable
     {
-        public static readonly Guid ConstantID = Guid.Parse("A1C52DAA-67C0-4C23-BDE2-9B0EE07AEE5E");
-        public TillablePercentDone() : base(ConstantID)
+        public TillablePercentDone()
         {
         }
 

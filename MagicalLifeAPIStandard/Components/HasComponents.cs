@@ -53,5 +53,12 @@ namespace MagicalLifeAPI.Components
         {
             this.Components.Add(component.GetType(), component);
         }
+
+        public bool HasComponent<T>()
+            where T : Component
+        {
+            T result = this.GetComponent<T>();
+            return result != null && result != default(T);
+        }
     }
 }

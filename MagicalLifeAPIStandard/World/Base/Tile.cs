@@ -15,7 +15,7 @@ namespace MagicalLifeAPI.World.Base
     /// Every tile that implements this class must provide a parameterless version of itself for reflection purposes. That constructor will not be used during gameplay.
     /// </summary>
     [ProtoContract]
-    public abstract class Tile : HasComponents, IRenderContainer
+    public abstract class Tile : HasComponents
     {
         [ProtoMember(2)]
         public bool IsWalkable;
@@ -100,9 +100,6 @@ namespace MagicalLifeAPI.World.Base
         [ProtoMember(7)]
         public ActionSelected ImpendingAction { get; set; }
 
-        [ProtoMember(8)]
-        public abstract ComponentRenderer CompositeRenderer { get; set; }
-
         public readonly int FootStepSound;
 
         /// <summary>
@@ -113,6 +110,8 @@ namespace MagicalLifeAPI.World.Base
         protected Tile(Point2D location, int movementCost, int footStepSound) : base(false)
         {
             this.AddComponent(new Selectable(SelectionType.Tile));
+            this.AddComponent(new ComponentRenderer());
+
             this.MovementCost = movementCost;
             Tile.TileCreatedHandler(new TileEventArg(this));
             this.IsWalkable = true;

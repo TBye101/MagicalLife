@@ -11,17 +11,16 @@ namespace MagicalLifeAPI.World.Tiles
     /// A dirt tile.
     /// </summary>
     [ProtoBuf.ProtoContract]
-    public class Dirt : TillableTile
+    public class Dirt : Tile
     {
-        public override ComponentRenderer CompositeRenderer { get; set; }
-
         public ComponentTillable TillableBehavior { get; set; }
 
         public Dirt(Point2D location) : base(location, 10, 0)
         {
-            this.TillableBehavior = new TillablePercentDone();
-            this.CompositeRenderer = new ComponentRenderer();
-            this.CompositeRenderer.RenderQueue.Add(new StaticTexture(Dirt.GetTextureID(), RenderLayer.DirtBase));
+            this.AddComponent(new TillablePercentDone());
+            this.AddComponent(new ComponentRenderer());
+            this.GetComponent<ComponentRenderer>().RenderQueue.Add(
+                new StaticTexture(Dirt.GetTextureID(), RenderLayer.DirtBase));
         }
 
         public Dirt(int x, int y) : this(new Point2D(x, y))

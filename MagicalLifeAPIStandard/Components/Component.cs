@@ -11,18 +11,11 @@ namespace MagicalLifeAPI.Components
     [ProtoContract]
     public class Component
     {
-        [ProtoMember(1)]
-        public Guid ID { get; private set; }
+        public Guid ID { get; set; }
 
-        /// <param name="constantID">This value should be constant/hard coded.</param>
-        public Component(Guid constantID)
+        public Component()
         {
-            this.ID = constantID;
-        }
-
-        protected Component()
-        {
-            //Protobuf-net constructor
+            this.ID = Guid.NewGuid();
         }
     }
 }

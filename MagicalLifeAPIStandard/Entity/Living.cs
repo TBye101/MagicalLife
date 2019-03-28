@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
+﻿using MagicalLifeAPI.Components;
+using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.DataTypes.Attribute;
 using MagicalLifeAPI.Entity.AI.Task;
@@ -17,7 +18,7 @@ namespace MagicalLifeAPI.Entity
     /// All living things inherit from this, and utilize it.
     /// </summary>
     [ProtoContract]
-    public abstract class Living : Selectable
+    public abstract class Living : HasComponents
     {
         /// <summary>
         /// A queue that holds the queued movement steps up for this living creature.
@@ -94,6 +95,8 @@ namespace MagicalLifeAPI.Entity
         protected Living(int health, double movementSpeed, Point2D location,
             int dimension, Guid playerID, string creatureTypeName, string creatureName)
         {
+            this.AddComponent(new Selectable(SelectionType.Creature));
+
             this.ID = Guid.NewGuid();
             this.PlayerID = playerID;
             this.Initialize(health, movementSpeed, location, dimension);
@@ -106,7 +109,7 @@ namespace MagicalLifeAPI.Entity
         {
             this.Health = new Attribute32(health);
             this.Movement = new AttributeDouble(movementSpeed);
-            this.MapLocation = location;
+            this.GetComponent<Selectable>().MapLocation = location;
             this.TileLocation = new Point2DDouble(location.X, location.Y);
             this.Dimension = dimension;
             Living.LivingCreatedHandler(new LivingEventArg(this, location));
