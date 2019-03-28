@@ -44,7 +44,7 @@ namespace MagicalLifeAPI.World.Base
         public Attribute32 MaxDurability { get; }
 
         [ProtoMember(6)]
-        public abstract AbstractHarvestable HarvestingBehavior { get; set; }
+        public abstract ComponentHarvestable HarvestingBehavior { get; set; }
 
         public Type GetBaseType()
         {

@@ -2,14 +2,17 @@
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.World.Base;
 using ProtoBuf;
+using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace MagicalLifeAPI.Components.Resource
 {
     [ProtoContract]
-    public class TillablePercentDone : AbstractTillable
+    public class TillablePercentDone : ComponentTillable
     {
-        public TillablePercentDone()
+        public static readonly Guid ConstantID = Guid.Parse("A1C52DAA-67C0-4C23-BDE2-9B0EE07AEE5E");
+        public TillablePercentDone() : base(ConstantID)
         {
         }
 

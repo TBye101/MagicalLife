@@ -17,8 +17,11 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         [ProtoMember(1)]
         public Point2D Target { get; private set; }
 
+        /// <summary>
+        /// The tillable component of the tile this task is supposed to till.
+        /// </summary>
         [ProtoMember(2)]
-        private TillableTile Tillable { get; set; }
+        private ComponentTillable Tillable { get; set; }
 
         [ProtoMember(3)]
         private TickTimer HitTimer { get; set; }

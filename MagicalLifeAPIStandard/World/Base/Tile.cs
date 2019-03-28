@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
+﻿using MagicalLifeAPI.Components;
+using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.GUI;
@@ -14,7 +15,7 @@ namespace MagicalLifeAPI.World.Base
     /// Every tile that implements this class must provide a parameterless version of itself for reflection purposes. That constructor will not be used during gameplay.
     /// </summary>
     [ProtoContract]
-    public abstract class Tile : Selectable, IHasSubclasses, IRenderContainer
+    public abstract class Tile : HasComponents, IRenderContainer
     {
         [ProtoMember(2)]
         public bool IsWalkable;
@@ -109,13 +110,14 @@ namespace MagicalLifeAPI.World.Base
         /// </summary>
         /// <param name="location">The 3D location of this tile in the map.</param>
         /// <param name="movementCost">This value is the movement cost of walking on this tile. It should be between 1 and 100</param>
-        protected Tile(Point2D location, int movementCost, int footStepSound)
+        protected Tile(Point2D location, int movementCost, int footStepSound) : base(false)
         {
-            this.MapLocation = location;
+            this.AddComponent(new Selectable(SelectionType.Tile));
             this.MovementCost = movementCost;
             Tile.TileCreatedHandler(new TileEventArg(this));
             this.IsWalkable = true;
             this.FootStepSound = footStepSound;
+            this.GetComponent<Selectable>().MapLocation = location;
         }
 
         protected Tile(int x, int y, int movementCost, int footStepSound)
@@ -183,11 +185,6 @@ namespace MagicalLifeAPI.World.Base
         /// </summary>
         /// <returns></returns>
         public abstract string GetName();
-
-        public override SelectionType InGameObjectType(Selectable selectable)
-        {
-            return SelectionType.Tile;
-        }
 
         private bool IsVisualDifferent(List<AbstractVisual> visual, List<AbstractVisual> visual2)
         {

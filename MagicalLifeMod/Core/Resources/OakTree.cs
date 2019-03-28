@@ -37,7 +37,7 @@ namespace MagicalLifeAPI.World.Resources.Tree
         {
         }
 
-        public override AbstractHarvestable HarvestingBehavior { get; set; }
+        public override ComponentHarvestable HarvestingBehavior { get; set; }
 
         public override List<AbstractVisual> GetVisuals()
         {

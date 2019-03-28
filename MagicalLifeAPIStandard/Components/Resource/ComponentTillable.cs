@@ -7,19 +7,24 @@ using System.Collections.Generic;
 namespace MagicalLifeAPI.Components.Resource
 {
     [ProtoContract]
-    public abstract class AbstractTillable
+    public abstract class ComponentTillable : Component
     {
         [ProtoMember(1)]
         public float PercentTilled { get; private set; }
 
-        protected AbstractTillable()
+        public ComponentTillable(Guid constantID) : base(constantID)
         {
             this.PercentTilled = 0;
         }
 
+        protected ComponentTillable() : base()
+        {
+            //Protobuf-net constructor
+        }
+
         public Type GetBaseType()
         {
-            return typeof(AbstractTillable);
+            return typeof(ComponentTillable);
         }
 
         /// <summary>

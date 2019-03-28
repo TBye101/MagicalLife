@@ -15,7 +15,7 @@ namespace MagicalLifeAPI.World.Tiles
     {
         public override ComponentRenderer CompositeRenderer { get; set; }
 
-        public AbstractTillable TillableBehavior { get; set; }
+        public ComponentTillable TillableBehavior { get; set; }
 
         public Dirt(Point2D location) : base(location, 10, 0)
         {

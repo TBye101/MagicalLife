@@ -15,7 +15,7 @@ namespace MagicalLifeAPI.World.Tiles
 
         public static readonly string GrassTileName = "Grass";
 
-        public AbstractTillable TillableBehavior { get; set; }
+        public ComponentTillable TillableBehavior { get; set; }
 
         public Grass(Point2D location) : base(location, 11, 1)
         {

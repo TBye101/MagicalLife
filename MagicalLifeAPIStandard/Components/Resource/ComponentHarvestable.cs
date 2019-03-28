@@ -10,7 +10,7 @@ namespace MagicalLifeAPI.Components.Resource
     /// Anything that implements this must describe its behavior in terms of mining.
     /// </summary>
     [ProtoContract]
-    public abstract class AbstractHarvestable
+    public abstract class ComponentHarvestable : Component
     {
         /// <summary>
         /// The total percentage of the IMinable that has been mined so far.
@@ -18,14 +18,19 @@ namespace MagicalLifeAPI.Components.Resource
         [ProtoMember(1)]
         public double PercentHarvested { get; private set; }
 
-        protected AbstractHarvestable()
+        public ComponentHarvestable(Guid constantID) : base(constantID)
         {
             this.PercentHarvested = 0;
         }
 
+        protected ComponentHarvestable()
+        {
+            //Protobuf-net constructor
+        }
+
         public Type GetBaseType()
         {
-            return typeof(AbstractHarvestable);
+            return typeof(ComponentHarvestable);
         }
 
         /// <summary>

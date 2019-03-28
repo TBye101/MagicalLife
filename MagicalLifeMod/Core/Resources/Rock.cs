@@ -17,7 +17,7 @@ namespace MagicalLifeAPI.World.Resources
     {
         public static readonly string StoneName = "Stone";
 
-        public override AbstractHarvestable HarvestingBehavior { get; set; }
+        public override ComponentHarvestable HarvestingBehavior { get; set; }
 
         public Rock(int count) : base(StoneName, count)
         {

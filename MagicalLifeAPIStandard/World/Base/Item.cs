@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Components;
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.GUI;
@@ -15,7 +16,7 @@ namespace MagicalLifeAPI.World.Base
     /// Represents almost everything in a movable/harvested form.
     /// </summary>
     [ProtoContract]
-    public abstract class Item : HasTexture
+    public abstract class Item : HasTexture, HasComponents
     {
         /// <summary>
         /// The name of this <see cref="Item"/>.
@@ -69,7 +70,7 @@ namespace MagicalLifeAPI.World.Base
         /// <param name="stackableLimit">How many items of this kind can be in one stack.</param>
         /// <param name="count">How many of this item to create into a stack.</param>
         /// <param name="itemID">The ID of this item.</param>
-        protected Item(string name, List<string> lore, int stackableLimit, int count, string textureName, double itemWeight, string modFrom)
+        protected Item(string name, List<string> lore, int stackableLimit, int count, string textureName, double itemWeight, string modFrom) : base(false)
         {
             this.Name = name;
             this.ModFrom = modFrom;
