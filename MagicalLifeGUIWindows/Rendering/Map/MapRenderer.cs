@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity;
+using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.Rendering.Text;
@@ -80,8 +81,9 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         {
             foreach (Tile tile in chunk)
             {
-                StartingPoint.X = RenderInfo.tileSize.X * tile.MapLocation.X;
-                StartingPoint.Y = RenderInfo.tileSize.Y * tile.MapLocation.Y;
+                ComponentSelectable selectable = tile.GetComponent<ComponentSelectable>();
+                StartingPoint.X = RenderInfo.tileSize.X * selectable.MapLocation.X;
+                StartingPoint.Y = RenderInfo.tileSize.Y * selectable.MapLocation.Y;
                 DrawTile(tile, StartingPoint);
             }
 
@@ -107,8 +109,17 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         {
             if (tile.Item != null)
             {
-                Texture2D texture = AssetManager.Textures[tile.Item.TextureIndex];
-                MapDrawer.Draw(texture, target, RenderLayer.Items);
+                ComponentHasTexture itemVisual = tile.Item.GetComponent<ComponentHasTexture>();
+
+                Point2D topLeft = new Point2D(0, 0);
+                int length = itemVisual.Visuals.Count;
+                for (int i = 0; i < length; i++)
+                {
+                    AbstractVisual visual = itemVisual.Visuals[i];
+                    topLeft.X = target.X;
+                    topLeft.Y = target.Y;
+                    visual.Render(MapDrawer, topLeft);
+                }
 
                 ItemCountBounds.X = target.Location.X + TileSize.X / 2;
                 ItemCountBounds.Y = target.Location.Y + TileSize.Y;
@@ -127,7 +138,8 @@ namespace MagicalLifeGUIWindows.Rendering.Map
             X32Target.X = start.X + 16;
             X32Target.Y = start.Y + 16;
 
-            tile.CompositeRenderer.Render(MapDrawer, start);
+            ComponentRenderer tileRenderer = tile.GetComponent<ComponentRenderer>();
+            tileRenderer.Render(MapDrawer, start);
 
             TileItemTarget.X = start.X;
             TileItemTarget.Y = start.Y;

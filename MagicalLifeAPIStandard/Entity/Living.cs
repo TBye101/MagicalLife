@@ -95,7 +95,7 @@ namespace MagicalLifeAPI.Entity
         protected Living(int health, double movementSpeed, Point2D location,
             int dimension, Guid playerID, string creatureTypeName, string creatureName)
         {
-            this.AddComponent(new Selectable(SelectionType.Creature));
+            this.AddComponent(new ComponentSelectable(SelectionType.Creature));
 
             this.ID = Guid.NewGuid();
             this.PlayerID = playerID;
@@ -109,7 +109,7 @@ namespace MagicalLifeAPI.Entity
         {
             this.Health = new Attribute32(health);
             this.Movement = new AttributeDouble(movementSpeed);
-            this.GetComponent<Selectable>().MapLocation = location;
+            this.GetComponent<ComponentSelectable>().MapLocation = location;
             this.TileLocation = new Point2DDouble(location.X, location.Y);
             this.Dimension = dimension;
             Living.LivingCreatedHandler(new LivingEventArg(this, location));

@@ -23,7 +23,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
             if (last.ActionSelected == ActionSelected.Mine)
             {
-                foreach (MagicalLifeAPI.GUI.Selectable item in last.Selected)
+                foreach (MagicalLifeAPI.GUI.ComponentSelectable item in last.Selected)
                 {
                     Tile tile = World.GetTile(RenderInfo.Dimension, item.MapLocation.X, item.MapLocation.Y);
 

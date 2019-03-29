@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.DataTypes.R;
 using MagicalLifeAPI.Error.InternalExceptions;
+using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using System;
@@ -67,7 +68,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         private static void RemoveItem(Tile tile, int dimension)
         {
             int itemID = tile.Item.ItemID;
-            Point2D l = tile.MapLocation;
+            Point2D l = tile.GetComponent<ComponentSelectable>().MapLocation;
             Chunk chunk = World.Data.World.GetChunkByTile(dimension, l.X, l.Y);
 
             if (chunk.Items.ContainsKey(itemID))

@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
+﻿using MagicalLifeAPI.Components;
+using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Entity.AI.Task;
@@ -29,22 +30,22 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
             if (historical.ActionSelected == ActionSelected.None && historical.OrderedToTile && historical.OrderPoint2D != null)
             {
-                foreach (Selectable item in InputHistory.Selected)
+                foreach (ComponentSelectable item in InputHistory.Selected)
                 {
                     this.Move(item, historical.OrderPoint2D);
                 }
             }
         }
 
-        private void Move(Selectable selectable, Point2D target)
+        private void Move(HasComponents selectable, Point2D target)
         {
             if (World.Dimensions[RenderInfo.Dimension][target.X, target.Y].IsWalkable)
             {
                 switch (selectable)
                 {
                     case Living living:
-
-                        Point2D start = selectable.MapLocation;
+                        ComponentSelectable positionData = living.GetComponent<ComponentSelectable>();
+                        Point2D start = positionData.MapLocation;
                         if (start != target)
                         {
                             List<PathLink> pth;
@@ -61,7 +62,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                             //No reroute
                             else
                             {
-                                pth = MainPathFinder.GetRoute(RenderInfo.Dimension, living.MapLocation, target);
+                                pth = MainPathFinder.GetRoute(RenderInfo.Dimension, positionData.MapLocation, target);
                             }
 
                             Extensions.EnqueueCollection(living.QueuedMovement, pth);

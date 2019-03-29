@@ -1,10 +1,12 @@
 ﻿using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Components.Resource;
+using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Visual.Rendering.AbstractVisuals;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Items;
 using ProtoBuf;
+using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.World.Resources
@@ -25,30 +27,30 @@ namespace MagicalLifeAPI.World.Resources
         public static OffsetTexture OffsetTrunk { get; set; }
         public static OffsetTexture OffsetLeaves { get; set; }
 
-        public MapleTree(int durability) : base(Name, durability)
+        public MapleTree(int durability) : base(Name, durability, GetHarvestBehavior())
         {
-            this.HarvestingBehavior = new DropWhenCompletelyHarvested(new List<Base.Item>
-            {
-                new Log(1)
-            }, SoundsTable.AxeHit, SoundsTable.TreeFall);
+            this.InitializeComponents();
+        }
+
+        private void InitializeComponents()
+        {
+            ComponentHasTexture textureComponent = this.GetComponent<ComponentHasTexture>();
+
+            textureComponent.Visuals.Add(OffsetTrunk);
+            textureComponent.Visuals.Add(OffsetLeaves);
+            textureComponent.Visuals.Add(OffsetStump);
         }
 
         public MapleTree()
         {
         }
 
-        public override ComponentHarvestable HarvestingBehavior { get; set; }
-
-        public override List<AbstractVisual> GetVisuals()
+        private static ComponentHarvestable GetHarvestBehavior()
         {
-            List<AbstractVisual> ret = new List<AbstractVisual>
+            return new DropWhenCompletelyHarvested(new List<Item>
             {
-                OffsetTrunk,
-                OffsetLeaves,
-                OffsetStump
-            };
-
-            return ret;
+                new Log(1)
+            }, SoundsTable.AxeHit, SoundsTable.TreeFall);
         }
     }
 }

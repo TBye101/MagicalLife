@@ -16,7 +16,7 @@ namespace MagicalLifeAPI.World.Base
     /// Represents almost everything in a movable/harvested form.
     /// </summary>
     [ProtoContract]
-    public abstract class Item : HasTexture, HasComponents
+    public abstract class Item : HasComponents
     {
         /// <summary>
         /// The name of this <see cref="Item"/>.
@@ -78,11 +78,20 @@ namespace MagicalLifeAPI.World.Base
             this.Lore = lore;
             this.StackableLimit = stackableLimit;
             this.CurrentlyStacked = count;
-            this.TextureIndex = AssetManager.GetTextureIndex(textureName);
             this.TextureName = textureName;
-            this.Validate();
-            this.TextureIndex = AssetManager.GetTextureIndex(this.TextureName);
             this.ItemWeight = itemWeight;
+            this.InitializeComponents();
+            this.Validate();
+        }
+
+        private void InitializeComponents()
+        {
+            int textureIndex = AssetManager.GetTextureIndex(this.TextureName);
+
+            ComponentHasTexture textureComponent = new ComponentHasTexture(false);
+            textureComponent.Visuals.Add(new StaticTexture(textureIndex, RenderLayer.Items));
+
+            this.AddComponent(new ComponentHasTexture(false));
         }
 
         private void SetItemID()

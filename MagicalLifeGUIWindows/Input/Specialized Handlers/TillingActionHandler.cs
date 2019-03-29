@@ -24,7 +24,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
             if (last.ActionSelected == ActionSelected.Till)
             {
-                foreach (MagicalLifeAPI.GUI.Selectable item in last.Selected)
+                foreach (MagicalLifeAPI.GUI.ComponentSelectable item in last.Selected)
                 {
                     Tile tile = World.GetTile(RenderInfo.Dimension, item.MapLocation.X, item.MapLocation.Y);
 
@@ -32,7 +32,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                         && tile.ImpendingAction == ActionSelected.None
                         && tile.Resources == null)
                     {
-                        TillTask task = new TillTask(tile.GetComponent<Selectable>().MapLocation, Guid.NewGuid(), RenderInfo.Dimension);
+                        TillTask task = new TillTask(tile.GetComponent<ComponentSelectable>().MapLocation, Guid.NewGuid(), RenderInfo.Dimension);
                         tile.ImpendingAction = ActionSelected.Till;
                         TaskManager.Manager.AddTask(task);
                     }

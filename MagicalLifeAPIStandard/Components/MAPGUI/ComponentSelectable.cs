@@ -11,7 +11,7 @@ namespace MagicalLifeAPI.GUI
     /// All objects in the game that can be clicked on inherit from this.
     /// </summary>
     [ProtoContract]
-    public sealed class Selectable : Component
+    public sealed class ComponentSelectable : Component
     {
         [ProtoMember(1)]
         private readonly SelectionType Type;
@@ -23,12 +23,12 @@ namespace MagicalLifeAPI.GUI
         public Point2D MapLocation { get; set; }
 
         /// <param name="type">The map selection type to use for the containing object.</param>
-        public Selectable(SelectionType type)
+        public ComponentSelectable(SelectionType type)
         {
             this.Type = type;
         }
 
-        private Selectable()
+        private ComponentSelectable()
         {
             //Protobuf-net constructor.
         }
@@ -39,7 +39,7 @@ namespace MagicalLifeAPI.GUI
         /// </summary>
         /// <param name="selectable"></param>
         /// <returns></returns>
-        public SelectionType InGameObjectType(Selectable selectable)
+        public SelectionType InGameObjectType(ComponentSelectable selectable)
         {
             return this.Type;
         }

@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.World.Base;
+﻿using MagicalLifeAPI.Components.Resource;
+using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 
 namespace MagicalLifeAPI.World.Resources
@@ -9,7 +10,8 @@ namespace MagicalLifeAPI.World.Resources
     [ProtoContract]
     public abstract class TreeBase : Resource
     {
-        protected TreeBase(string name, int durability) : base(name, durability)
+        protected TreeBase(string name, int durability, ComponentHarvestable harvestBehavior) 
+            : base(name, durability, harvestBehavior)
         {
         }
 

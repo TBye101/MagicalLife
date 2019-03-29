@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Components.Resource;
+using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Items;
@@ -17,11 +18,15 @@ namespace MagicalLifeAPI.World.Resources
     {
         public static readonly string StoneName = "Stone";
 
-        public override ComponentHarvestable HarvestingBehavior { get; set; }
-
-        public Rock(int count) : base(StoneName, count)
+        public Rock(int count) : base(StoneName, count, GetHarvestBehavior(count))
         {
-            this.HarvestingBehavior = new DropWhenCompletelyHarvested(new List<Base.Item>
+            this.GetComponent<ComponentHasTexture>().Visuals.Add(this.GetTextureInstance());
+            
+        }
+
+        private static ComponentHarvestable GetHarvestBehavior(int count)
+        {
+            return new DropWhenCompletelyHarvested(new List<Base.Item>
             {
                 new StoneRubble(count)
             }, SoundsTable.PickaxeHit, SoundsTable.MiningFinish);
@@ -31,19 +36,13 @@ namespace MagicalLifeAPI.World.Resources
         {
         }
 
-        public override string GetUnconnectedTexture()
+        /// <summary>
+        /// Returns a new instance of the stone texture.
+        /// </summary>
+        /// <returns></returns>
+        private AbstractVisual GetTextureInstance()
         {
-            return TextureLoader.TextureStone1;
-        }
-
-        public override List<AbstractVisual> GetVisuals()
-        {
-            List<AbstractVisual> visuals = new List<AbstractVisual>
-            {
-                new StaticTexture(AssetManager.NameToIndex[this.GetRandomStoneTexture()], RenderLayer.Stone)
-            };
-
-            return visuals;
+            return new StaticTexture(AssetManager.NameToIndex[this.GetRandomStoneTexture()], RenderLayer.Stone);
         }
 
         private string GetRandomStoneTexture()

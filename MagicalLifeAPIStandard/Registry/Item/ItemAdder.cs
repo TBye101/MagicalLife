@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.DataTypes.R;
+using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Server;
@@ -36,7 +37,11 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
             }
             else
             {
-                itemLocations.Add(new Rectangle(mapLocation.X, mapLocation.Y, mapLocation.X, mapLocation.Y), WorldUtil.GetTile(mapLocation, chunk).MapLocation);
+                Rectangle r = new Rectangle(mapLocation.X, mapLocation.Y, mapLocation.X, mapLocation.Y);
+                Tile tile = WorldUtil.GetTile(mapLocation, chunk);
+                ComponentSelectable selectable = tile.GetComponent<ComponentSelectable>();
+
+                itemLocations.Add(r, selectable.MapLocation);
             }
         }
 

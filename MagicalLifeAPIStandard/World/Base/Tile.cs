@@ -62,13 +62,13 @@ namespace MagicalLifeAPI.World.Base
 
                     if (value != null)
                     {
-                        this.CompositeRenderer.AddVisuals(value.GetVisuals());
+                        this.GetComponent<ComponentRenderer>().AddVisuals(value.GetComponent<ComponentHasTexture>().Visuals);
                     }
 
                     return;
                 }
 
-                List<AbstractVisual> oldVisuals = this.resources.GetVisuals();
+                List<AbstractVisual> oldVisuals = this.resources.GetComponent<ComponentHasTexture>().Visuals;
 
                 if (value == null)
                 {
@@ -76,13 +76,13 @@ namespace MagicalLifeAPI.World.Base
                 }
                 else
                 {
-                    List<AbstractVisual> newVisuals = value.GetVisuals();
+                    List<AbstractVisual> newVisuals = value.GetComponent<ComponentHasTexture>().Visuals;
 
                     if (this.IsVisualDifferent(oldVisuals, newVisuals))
                     {
                         this.RemoveVisual(oldVisuals);
                     }
-                    this.CompositeRenderer.AddVisuals(newVisuals);
+                    this.GetComponent<ComponentRenderer>().AddVisuals(newVisuals);
                 }
 
                 this.resources = value;
@@ -109,14 +109,14 @@ namespace MagicalLifeAPI.World.Base
         /// <param name="movementCost">This value is the movement cost of walking on this tile. It should be between 1 and 100</param>
         protected Tile(Point2D location, int movementCost, int footStepSound) : base(false)
         {
-            this.AddComponent(new Selectable(SelectionType.Tile));
+            this.AddComponent(new ComponentSelectable(SelectionType.Tile));
             this.AddComponent(new ComponentRenderer());
 
             this.MovementCost = movementCost;
             Tile.TileCreatedHandler(new TileEventArg(this));
             this.IsWalkable = true;
             this.FootStepSound = footStepSound;
-            this.GetComponent<Selectable>().MapLocation = location;
+            this.GetComponent<ComponentSelectable>().MapLocation = location;
         }
 
         protected Tile(int x, int y, int movementCost, int footStepSound)
@@ -159,7 +159,7 @@ namespace MagicalLifeAPI.World.Base
         {
             foreach (AbstractVisual item in visuals)
             {
-                this.CompositeRenderer.RenderQueue.Remove(item);
+                this.GetComponent<ComponentRenderer>().RenderQueue.Remove(item);
             }
         }
 

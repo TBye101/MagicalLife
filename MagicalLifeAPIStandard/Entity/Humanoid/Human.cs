@@ -75,7 +75,7 @@ namespace MagicalLifeAPI.Entity.Humanoid
             return sequences;
         }
 
-        public override SelectionType InGameObjectType(Selectable selectable)
+        public override SelectionType InGameObjectType(ComponentSelectable selectable)
         {
             return SelectionType.Creature;
         }

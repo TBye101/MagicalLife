@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.World.Base;
+﻿using MagicalLifeAPI.Components.Resource;
+using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 
 namespace MagicalLifeAPI.World.Resources
@@ -9,14 +10,12 @@ namespace MagicalLifeAPI.World.Resources
     [ProtoContract]
     public abstract class RockBase : Resource
     {
-        protected RockBase(string name, int durability) : base(name, durability)
+        protected RockBase(string name, int durability, ComponentHarvestable harvestBehavior) : base(name, durability, harvestBehavior)
         {
         }
 
         protected RockBase()
         {
         }
-
-        public abstract string GetUnconnectedTexture();
     }
 }

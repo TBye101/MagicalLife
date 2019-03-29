@@ -32,7 +32,7 @@ namespace MagicalLifeGUIWindows.Input.History
 
         private static readonly HistoricalInputFactory Factory = new HistoricalInputFactory();
 
-        public static List<Selectable> Selected = new List<Selectable>();
+        public static List<ComponentSelectable> Selected = new List<ComponentSelectable>();
 
         /// <summary>
         /// Raises the world generated event.
@@ -132,7 +132,7 @@ namespace MagicalLifeGUIWindows.Input.History
                     MasterLog.DebugWriteLine("Deselected all");
                 }
 
-                foreach (Selectable item in lastHistory.DeselectSome)
+                foreach (ComponentSelectable item in lastHistory.DeselectSome)
                 {
                     Selected.Remove(item);
                     MasterLog.DebugWriteLine("Deselected: " + item.MapLocation.ToString());

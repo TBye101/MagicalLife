@@ -18,13 +18,13 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         /// Think of this like layers of a painting.
         /// </summary>
         [ProtoMember(1)]
-        public int Priority { get; set; }
+        private int Priority { get; set; }
 
         /// <summary>
         /// The top left bound to render at that is relative to the tile position this AbstractVisual belongs to.
         /// </summary>
         [ProtoMember(2)]
-        public Point2D RelativeTopLeft { get; set; }
+        private Point2D RelativeTopLeft { get; set; }
 
         protected AbstractVisual(int priority)
         {

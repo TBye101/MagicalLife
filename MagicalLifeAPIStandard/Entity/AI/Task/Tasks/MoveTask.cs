@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity.AI.Task.Qualifications;
+using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Pathfinding;
@@ -34,7 +35,8 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         public override void MakePreparations(Living living)
         {
-            Point2D start = living.MapLocation;
+            ComponentSelectable entityData = living.GetComponent<ComponentSelectable>();
+            Point2D start = entityData.MapLocation;
             if (start != this.Destination)
             {
                 List<PathLink> pth;
@@ -51,7 +53,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
                 //No reroute
                 else
                 {
-                    pth = MainPathFinder.GetRoute(living.Dimension, living.MapLocation, this.Destination);
+                    pth = MainPathFinder.GetRoute(living.Dimension, start, this.Destination);
                 }
 
                 MagicalLifeAPI.Util.Extensions.EnqueueCollection(living.QueuedMovement, pth);
@@ -65,7 +67,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         public override void Tick(Living l)
         {
-            if (l.MapLocation.Equals(this.Destination))
+            if (l.GetComponent<ComponentSelectable>().MapLocation.Equals(this.Destination))
             {
                 this.CompleteTask();
             }

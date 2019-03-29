@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Components.Resource;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.Util.Reusable;
 using MagicalLifeAPI.World.Base;
@@ -81,7 +82,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
                 if (drop != null && drop.Count > 0)
                 {
-                    ItemAdder.AddItem(drop[0], l.MapLocation, l.Dimension);
+                    ItemAdder.AddItem(drop[0], l.GetComponent<ComponentSelectable>().MapLocation, l.Dimension);
                 }
 
                 if (this.Tillable.PercentTilled > 1)

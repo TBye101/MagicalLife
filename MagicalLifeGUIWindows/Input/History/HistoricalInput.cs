@@ -21,8 +21,8 @@ namespace MagicalLifeGUIWindows.Input.History
         /// </summary>
         public bool OrderedToTile { get; set; } = false;
 
-        public List<Selectable> Selected { get; set; } = new List<Selectable>();
-        public List<Selectable> DeselectSome { get; set; } = new List<Selectable>();
+        public List<ComponentSelectable> Selected { get; set; } = new List<ComponentSelectable>();
+        public List<ComponentSelectable> DeselectSome { get; set; } = new List<ComponentSelectable>();
 
         public ActionSelected ActionSelected { get; set; }
 
@@ -43,14 +43,14 @@ namespace MagicalLifeGUIWindows.Input.History
             this.DeselectingAll = false;
         }
 
-        public HistoricalInput(List<Selectable> selected, ActionSelected selectedAction) : this(selectedAction)
+        public HistoricalInput(List<ComponentSelectable> selected, ActionSelected selectedAction) : this(selectedAction)
         {
             this.Selected = selected;
             this.OrderedToTile = false;
             this.DeselectingAll = false;
         }
 
-        public HistoricalInput(bool deselectAll, List<Selectable> deselectSome, ActionSelected selected) : this(selected)
+        public HistoricalInput(bool deselectAll, List<ComponentSelectable> deselectSome, ActionSelected selected) : this(selected)
         {
             this.OrderedToTile = false;
 
@@ -65,7 +65,7 @@ namespace MagicalLifeGUIWindows.Input.History
             }
         }
 
-        public HistoricalInput(List<Selectable> selectSome, bool deselectAll, ActionSelected selected) : this(selected)
+        public HistoricalInput(List<ComponentSelectable> selectSome, bool deselectAll, ActionSelected selected) : this(selected)
         {
             this.OrderedToTile = false;
             this.DeselectingAll = deselectAll;

@@ -3,6 +3,7 @@ using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity.AI.Task.Qualifications;
 using MagicalLifeAPI.Entity.Skills;
 using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.Util.Reusable;
 using MagicalLifeAPI.World.Base;
@@ -57,7 +58,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         public override void MakePreparations(Living l)
         {
             Tile tile = World.Data.World.GetTile(l.Dimension, this.Target.X, this.Target.Y);
-            this.Harvestable = tile.Resources;
+            this.Harvestable = tile.Resources.GetComponent<ComponentHarvestable>();
             if (tile.Resources == null)
             {
                 MasterLog.DebugWriteLine("Minable is null");
@@ -91,8 +92,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
                 double amount = this.CalculatePercentHarvest(harvestSkill);
 
                 //Harvest whatever
-                List<World.Base.Item> drop =
-                    this.Harvestable.HarvestingBehavior.HarvestSomePercent(amount, this.Target);
+                List<World.Base.Item> drop = this.Harvestable.HarvestSomePercent(amount, this.Target);
 
                 //Give out XP for the harvest skill.
                 skill.GainXP(1);
@@ -106,7 +106,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
                     }
                 }
 
-                if (this.Harvestable.HarvestingBehavior.PercentHarvested > 1)
+                if (this.Harvestable.PercentHarvested > 1)
                 {
                     this.RemoveResource(l.Dimension);
                     this.CompleteTask();
@@ -122,16 +122,17 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         private void DropItem(Living l, Item drop)
         {
             //The tile the entity is standing on
-            Tile entityOn = World.Data.World.GetTile(l.Dimension, l.MapLocation.X, l.MapLocation.Y);
+            ComponentSelectable entityS = l.GetComponent<ComponentSelectable>();
+            Tile entityOn = World.Data.World.GetTile(l.Dimension, entityS.MapLocation.X, entityS.MapLocation.Y);
 
             if (entityOn.Item == null || entityOn.Item.GetType() == drop.GetType())
             {
-                ItemAdder.AddItem(drop, l.MapLocation, l.Dimension);
+                ItemAdder.AddItem(drop, entityS.MapLocation, l.Dimension);
             }
             else
             {
                 l.Inventory.AddItem(drop);
-                Point2D emtpyTile = ItemFinder.FindItemEmptyTile(entityOn.MapLocation, l.Dimension);
+                Point2D emtpyTile = ItemFinder.FindItemEmptyTile(entityOn.GetComponent<ComponentSelectable>().MapLocation, l.Dimension);
                 DropItemTask task = new DropItemTask(emtpyTile, l.Dimension, drop, l.ID, Guid.NewGuid());
                 task.ReservedFor = l.ID;
                 TaskManager.Manager.AddTask(task);
