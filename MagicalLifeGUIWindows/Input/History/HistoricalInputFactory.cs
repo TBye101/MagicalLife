@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
+﻿using MagicalLifeAPI.Components;
+using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Entity.AI.Task;
@@ -76,18 +77,17 @@ namespace MagicalLifeGUIWindows.Input.History
             if (success)
             {
                 Tile tile = World.GetTile(RenderInfo.Dimension, mapSpot.X, mapSpot.Y);
-                ComponentSelectable select = tile.GetComponent<ComponentSelectable>();
 
-                if (select != null)
+                if (tile != null)
                 {
-                    List<ComponentSelectable> selected = new List<ComponentSelectable>
+                    List<HasComponents> selected = new List<HasComponents>
                     {
-                        select
+                        tile
                     };
 
                     if (e.ShiftDown)
                     {
-                        if (this.IsSelectableSelected(select))
+                        if (this.IsSelectableSelected(tile))
                         {
                             return new HistoricalInput(false, selected, action);
                         }
@@ -116,18 +116,18 @@ namespace MagicalLifeGUIWindows.Input.History
 
             if (success)
             {
-                ComponentSelectable select = null;
+                Living select = null;
 
                 Chunk chunk = World.Dimensions[RenderInfo.Dimension].GetChunkForLocation(mapSpot.X, mapSpot.Y);
                 KeyValuePair<System.Guid, Living> result = chunk.Creatures.FirstOrDefault
                     (x => mapSpot.Equals(x.Value.GetComponent<ComponentSelectable>().MapLocation));
 
-                select = result.Value.GetComponent<ComponentSelectable>();
+                select = result.Value;
 
                 if (select != null)
                 {
                     //Null check select, as it is null when an entity is not found
-                    List<ComponentSelectable> selected = new List<ComponentSelectable>
+                    List<HasComponents> selected = new List<HasComponents>
                     {
                         select
                     };
@@ -158,11 +158,11 @@ namespace MagicalLifeGUIWindows.Input.History
         /// </summary>
         /// <param name="selectable"></param>
         /// <returns></returns>
-        private bool IsSelectableSelected(ComponentSelectable selectable)
+        private bool IsSelectableSelected(HasComponents selectable)
         {
-            foreach (ComponentSelectable item in InputHistory.Selected)
+            foreach (HasComponents item in InputHistory.Selected)
             {
-                if (selectable == item)
+                if (selectable.Equals(item))
                 {
                     return true;
                 }

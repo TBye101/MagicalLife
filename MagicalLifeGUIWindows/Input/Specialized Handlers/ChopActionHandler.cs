@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
+﻿using MagicalLifeAPI.Components;
+using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.Entity.AI.Task.Tasks;
 using MagicalLifeAPI.GUI;
@@ -24,15 +25,15 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
             if (last.ActionSelected == ActionSelected.Chop)
             {
-                foreach (MagicalLifeAPI.GUI.ComponentSelectable item in last.Selected)
+                foreach (HasComponents item in last.Selected)
                 {
-                    Tile tile = World.GetTile(RenderInfo.Dimension, item.MapLocation.X, item.MapLocation.Y);
+                    ComponentSelectable selectable = item.GetComponent<ComponentSelectable>();
+                    Tile tile = World.GetTile(RenderInfo.Dimension, selectable.MapLocation.X, selectable.MapLocation.Y);
 
                     if (tile.Resources != null && tile.ImpendingAction == ActionSelected.None)
                     {
                         if (tile.Resources is TreeBase)
                         {
-                            ComponentSelectable selectable = tile.GetComponent<ComponentSelectable>();
                             HarvestTask task = new HarvestTask(selectable.MapLocation, Guid.NewGuid());
                             tile.ImpendingAction = ActionSelected.Chop;
                             TaskManager.Manager.AddTask(task);

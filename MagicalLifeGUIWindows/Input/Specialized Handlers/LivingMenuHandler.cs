@@ -2,6 +2,7 @@
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Entity.AI.Task;
+using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.World;
 using MagicalLifeGUIWindows.GUI.Character_Menu;
 using MagicalLifeGUIWindows.Input.History;
@@ -25,7 +26,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
             if (historical.ActionSelected == ActionSelected.None && historical.Selected.Count == 1)
             {
-                Point2D mapLocation = historical.Selected[0].MapLocation;
+                Point2D mapLocation = historical.Selected[0].GetComponent<ComponentSelectable>().MapLocation;
                 Living creature = WorldUtil.GetCreature(mapLocation, RenderInfo.Dimension);
 
                 if (creature != null)

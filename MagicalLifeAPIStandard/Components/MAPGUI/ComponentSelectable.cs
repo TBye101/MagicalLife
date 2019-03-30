@@ -8,7 +8,7 @@ using System;
 namespace MagicalLifeAPI.GUI
 {
     /// <summary>
-    /// All objects in the game that can be clicked on inherit from this.
+    /// All objects in the game that can be clicked have this.
     /// </summary>
     [ProtoContract]
     public sealed class ComponentSelectable : Component

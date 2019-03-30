@@ -19,17 +19,9 @@ namespace MagicalLifeAPI.Components
         /// </summary>
         /// <param name="whatever">Only purpose of this is to prevent protobuf-net from calling this constructor.
         /// Value is not used.</param>
-        public HasComponents(bool whatever)
+        public HasComponents()
         {
             this.Components = new Dictionary<Type, Component>();
-        }
-
-        /// <summary>
-        /// Protobuf-net constructor
-        /// </summary>
-        protected HasComponents()
-        {
-            //Protobuf-net constructor.
         }
 
         /// <summary>

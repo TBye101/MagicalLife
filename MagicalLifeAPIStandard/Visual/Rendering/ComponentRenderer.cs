@@ -33,8 +33,13 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         {
             foreach (AbstractVisual item in visuals)
             {
-                this.RenderQueue.Add(item);
+                this.AddVisual(item);
             }
+        }
+
+        public void AddVisual(AbstractVisual visual)
+        {
+            this.RenderQueue.Add(visual);
         }
     }
 }

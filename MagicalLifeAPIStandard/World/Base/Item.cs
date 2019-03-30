@@ -61,6 +61,9 @@ namespace MagicalLifeAPI.World.Base
         [ProtoMember(8)]
         public double ItemWeight { get; set; }
 
+        [ProtoMember(9)]
+        public Guid ID { get; set; }
+
         /// <summary>
         ///
         /// </summary>
@@ -70,7 +73,7 @@ namespace MagicalLifeAPI.World.Base
         /// <param name="stackableLimit">How many items of this kind can be in one stack.</param>
         /// <param name="count">How many of this item to create into a stack.</param>
         /// <param name="itemID">The ID of this item.</param>
-        protected Item(string name, List<string> lore, int stackableLimit, int count, string textureName, double itemWeight, string modFrom) : base(false)
+        protected Item(string name, List<string> lore, int stackableLimit, int count, string textureName, double itemWeight, string modFrom)
         {
             this.Name = name;
             this.ModFrom = modFrom;
@@ -80,6 +83,7 @@ namespace MagicalLifeAPI.World.Base
             this.CurrentlyStacked = count;
             this.TextureName = textureName;
             this.ItemWeight = itemWeight;
+            this.ID = Guid.NewGuid();
             this.InitializeComponents();
             this.Validate();
         }

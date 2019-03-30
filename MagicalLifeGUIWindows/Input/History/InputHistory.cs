@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.DataTypes;
+﻿using MagicalLifeAPI.Components;
+using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.GUI;
 using MonoGame.Extended.Input.InputListeners;
@@ -32,7 +33,7 @@ namespace MagicalLifeGUIWindows.Input.History
 
         private static readonly HistoricalInputFactory Factory = new HistoricalInputFactory();
 
-        public static List<ComponentSelectable> Selected = new List<ComponentSelectable>();
+        public static List<HasComponents> Selected = new List<HasComponents>();
 
         /// <summary>
         /// Raises the world generated event.
@@ -132,10 +133,11 @@ namespace MagicalLifeGUIWindows.Input.History
                     MasterLog.DebugWriteLine("Deselected all");
                 }
 
-                foreach (ComponentSelectable item in lastHistory.DeselectSome)
+                foreach (HasComponents item in lastHistory.DeselectSome)
                 {
+                    ComponentSelectable selected = item.GetComponent<ComponentSelectable>();
                     Selected.Remove(item);
-                    MasterLog.DebugWriteLine("Deselected: " + item.MapLocation.ToString());
+                    MasterLog.DebugWriteLine("Deselected: " + selected.MapLocation.ToString());
                 }
 
                 Selected.AddRange(lastHistory.Selected);

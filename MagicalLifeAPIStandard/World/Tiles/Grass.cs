@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Asset;
+﻿using System;
+using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Components.Resource;
 using MagicalLifeAPI.DataTypes;
@@ -11,18 +12,30 @@ namespace MagicalLifeAPI.World.Tiles
     [ProtoContract]
     public class Grass : Tile
     {
-        public override ComponentRenderer CompositeRenderer { get; set; }
-
         public static readonly string GrassTileName = "Grass";
-
-        public ComponentTillable TillableBehavior { get; set; }
 
         public Grass(Point2D location) : base(location, 11, 1)
         {
-            this.TillableBehavior = new TillablePercentDone();
-            this.CompositeRenderer = new ComponentRenderer();
-            this.CompositeRenderer.RenderQueue.Add(new StaticTexture(AssetManager.GetTextureIndex(this.GetRandomDirtTexture()), RenderLayer.DirtBase));
-            this.CompositeRenderer.RenderQueue.Add(new StaticTexture(AssetManager.GetTextureIndex(this.GetRandomGrassTexture()), RenderLayer.GrassBase));
+            this.InitializeComponents();
+        }
+
+        private void InitializeComponents()
+        {
+            ComponentTillable tillingBehavior = new TillablePercentDone();
+            ComponentRenderer renderer = this.GetComponent<ComponentRenderer>();
+            this.AddComponent(tillingBehavior);
+
+            renderer.AddVisual(new StaticTexture(AssetManager.GetTextureIndex(this.GetRandomDirtTexture()), RenderLayer.DirtBase));
+            renderer.AddVisual(new StaticTexture(AssetManager.GetTextureIndex(this.GetRandomGrassTexture()), RenderLayer.GrassBase));
+        }
+
+        public Grass(int x, int y) : this(new Point2D(x, y))
+        {
+        }
+
+        public Grass() : base()
+        {
+            //Protobuf-net constructor
         }
 
         private string GetRandomGrassTexture()
@@ -67,14 +80,6 @@ namespace MagicalLifeAPI.World.Tiles
             }
 
             return ret;
-        }
-
-        public Grass(int x, int y) : this(new Point2D(x, y))
-        {
-        }
-
-        public Grass() : base()
-        {
         }
 
         public override string GetName()

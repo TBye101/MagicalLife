@@ -163,7 +163,7 @@ namespace MagicalLifeAPI.Networking.Serialization
                     Type[] interfaces = item.GetInterfaces();
                     foreach (Type iface in interfaces)
                     {
-                        Attribute protoAttribute = item.GetCustomAttribute(typeof(ProtoContractAttribute));
+                        Attribute protoAttribute = iface.GetCustomAttribute(typeof(ProtoContractAttribute));
                         if (protoAttribute != null && !item.BaseType.GetInterfaces().Contains(iface))
                         {
                             RegisterSubclass(item, iface);//Issue: not detecting when directly implementing interfaces properly

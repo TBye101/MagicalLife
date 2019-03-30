@@ -30,7 +30,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
             if (historical.ActionSelected == ActionSelected.None && historical.OrderedToTile && historical.OrderPoint2D != null)
             {
-                foreach (ComponentSelectable item in InputHistory.Selected)
+                foreach (HasComponents item in InputHistory.Selected)
                 {
                     this.Move(item, historical.OrderPoint2D);
                 }

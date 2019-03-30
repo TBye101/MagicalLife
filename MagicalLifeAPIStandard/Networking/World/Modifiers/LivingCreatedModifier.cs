@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Entity;
+using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.World.Data;
 using ProtoBuf;
 
@@ -25,7 +26,8 @@ namespace MagicalLifeAPI.Networking.World.Modifiers
 
         public override void ModifyWorld()
         {
-            Chunk chunk = MagicalLifeAPI.World.Data.World.GetChunkByTile(this.Living.Dimension, this.Living.MapLocation.X, this.Living.MapLocation.Y);
+            ComponentSelectable livingData = this.Living.GetComponent<ComponentSelectable>();
+            Chunk chunk = MagicalLifeAPI.World.Data.World.GetChunkByTile(this.Living.Dimension, livingData.MapLocation.X, livingData.MapLocation.Y);
             chunk.Creatures.Add(this.Living.ID, this.Living);
         }
     }

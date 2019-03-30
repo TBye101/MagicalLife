@@ -1,8 +1,10 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeMod.Core;
 using ProtoBuf;
+using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.World.Items
@@ -18,6 +20,13 @@ namespace MagicalLifeAPI.World.Items
         public Log(int count)
             : base(ItemName, new List<string>(), 50, count, TextureLoader.LogTexture1, 5, DescriptionValues.DisplayName)
         {
+            this.InitializeComponents();
+        }
+
+        private void InitializeComponents()
+        {
+            ComponentHasTexture visualComponent = this.GetComponent<ComponentHasTexture>();
+            visualComponent.Visuals.Add(new StaticTexture(AssetManager.NameToIndex[TextureLoader.LogTexture1], RenderLayer.Items));
         }
 
         protected Log()
@@ -28,14 +37,6 @@ namespace MagicalLifeAPI.World.Items
         public override Item GetDeepCopy(int amount)
         {
             return new Log(amount);
-        }
-
-        public override List<AbstractVisual> GetVisuals()
-        {
-            return new List<AbstractVisual>
-            {
-                new StaticTexture(AssetManager.NameToIndex[TextureLoader.LogTexture1], RenderLayer.Items)
-            };
         }
     }
 }

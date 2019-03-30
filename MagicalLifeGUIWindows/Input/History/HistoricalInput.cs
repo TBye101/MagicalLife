@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.DataTypes;
+﻿using MagicalLifeAPI.Components;
+using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.GUI;
 using MagicalLifeGUIWindows.GUI.In;
@@ -21,8 +22,8 @@ namespace MagicalLifeGUIWindows.Input.History
         /// </summary>
         public bool OrderedToTile { get; set; } = false;
 
-        public List<ComponentSelectable> Selected { get; set; } = new List<ComponentSelectable>();
-        public List<ComponentSelectable> DeselectSome { get; set; } = new List<ComponentSelectable>();
+        public List<HasComponents> Selected { get; set; } = new List<HasComponents>();
+        public List<HasComponents> DeselectSome { get; set; } = new List<HasComponents>();
 
         public ActionSelected ActionSelected { get; set; }
 
@@ -43,14 +44,14 @@ namespace MagicalLifeGUIWindows.Input.History
             this.DeselectingAll = false;
         }
 
-        public HistoricalInput(List<ComponentSelectable> selected, ActionSelected selectedAction) : this(selectedAction)
+        public HistoricalInput(List<HasComponents> selected, ActionSelected selectedAction) : this(selectedAction)
         {
             this.Selected = selected;
             this.OrderedToTile = false;
             this.DeselectingAll = false;
         }
 
-        public HistoricalInput(bool deselectAll, List<ComponentSelectable> deselectSome, ActionSelected selected) : this(selected)
+        public HistoricalInput(bool deselectAll, List<HasComponents> deselectSome, ActionSelected selected) : this(selected)
         {
             this.OrderedToTile = false;
 
@@ -65,7 +66,7 @@ namespace MagicalLifeGUIWindows.Input.History
             }
         }
 
-        public HistoricalInput(List<ComponentSelectable> selectSome, bool deselectAll, ActionSelected selected) : this(selected)
+        public HistoricalInput(List<HasComponents> selectSome, bool deselectAll, ActionSelected selected) : this(selected)
         {
             this.OrderedToTile = false;
             this.DeselectingAll = deselectAll;

@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.DataTypes.R;
 using MagicalLifeAPI.Entity;
+using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 using System;
@@ -76,7 +77,8 @@ namespace MagicalLifeAPI.World.Data
         public bool GetCreature(Point2D Point2D, out Living living)
         {
             living = null;
-            IEnumerable<KeyValuePair<Guid, Living>> result = this.Creatures.Where(x => Point2D.Equals(x.Value.MapLocation));
+            IEnumerable<KeyValuePair<Guid, Living>> result = 
+                this.Creatures.Where(x => Point2D.Equals(x.Value.GetComponent<ComponentSelectable>().MapLocation));
 
             if (result.Count() != 0)
             {

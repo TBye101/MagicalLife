@@ -1,9 +1,11 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeMod.Core;
 using ProtoBuf;
+using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.World.Items
@@ -22,6 +24,13 @@ namespace MagicalLifeAPI.World.Items
             count,
             TextureLoader.TextureStoneRubble1, 15, DescriptionValues.DisplayName)
         {
+            this.InitializeComponents();
+        }
+
+        private void InitializeComponents()
+        {
+            ComponentHasTexture visuals = this.GetComponent<ComponentHasTexture>();
+            visuals.Visuals.Add(new StaticTexture(AssetManager.NameToIndex[this.GetRandomStoneRubbleTexture()], RenderLayer.Items));
         }
 
         public StoneRubble()
@@ -48,14 +57,6 @@ namespace MagicalLifeAPI.World.Items
         public override Item GetDeepCopy(int amount)
         {
             return new StoneRubble(amount);
-        }
-
-        public override List<AbstractVisual> GetVisuals()
-        {
-            List<AbstractVisual> visuals = new List<AbstractVisual>();
-            visuals.Add(new StaticTexture(AssetManager.NameToIndex[this.GetRandomStoneRubbleTexture()], RenderLayer.Items));
-
-            return visuals;
         }
     }
 }

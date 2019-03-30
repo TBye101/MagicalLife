@@ -37,7 +37,6 @@ namespace MagicalLifeAPI.World.Base
         {
             this.AddComponent(new ComponentHasTexture(false));
             this.AddComponent(harvestBehavior);
-            this.AddComponent(harvestBehavior);
             this.DisplayName = name;
             this.Durability = durability;
             this.MaxDurability = new Attribute32(this.Durability);
