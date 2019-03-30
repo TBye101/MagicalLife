@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Filing;
+using Microsoft.Xna.Framework;
 
 namespace MagicalLifeGUIWindows.GUI.New
 {
@@ -129,6 +130,24 @@ namespace MagicalLifeGUIWindows.GUI.New
 
                     default:
                         return NewWorldMenuLayout1920x1080.LabelY;
+                }
+            }
+        }
+
+        /// <summary>
+        /// The y position at which the <see cref="LengthLabel"/> is to be displayed at.
+        /// </summary>
+        public static Rectangle GameNameInputBox
+        {
+            get
+            {
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
+                {
+                    case Resolution._2560x1440:
+                        return NewWorldMenuLayout2560x1440.GameNameInputBox;
+
+                    default:
+                        return NewWorldMenuLayout1920x1080.GameNameInputBox;
                 }
             }
         }

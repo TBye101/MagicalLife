@@ -1,4 +1,6 @@
-﻿namespace MagicalLifeGUIWindows.GUI.New
+﻿using Microsoft.Xna.Framework;
+
+namespace MagicalLifeGUIWindows.GUI.New
 {
     public class NewWorldMenuLayout1920x1080
     {
@@ -30,11 +32,16 @@
         /// <summary>
         /// The x position at which the <see cref="NewWorldNextButton"/> is to be displayed at.
         /// </summary>
-        public static readonly int NextButtonX = 360;
+        public static readonly int NextButtonX = 490;
 
         /// <summary>
         /// The y position at which the <see cref="LengthLabel"/> is to be displayed at.
         /// </summary>
         public static readonly int LabelY = 50;
+
+        /// <summary>
+        /// The position and size of the game name input box.
+        /// </summary>
+        public static readonly Rectangle GameNameInputBox = new Rectangle(360, WorldSizeInputBoxY, 100, 50);
     }
 }

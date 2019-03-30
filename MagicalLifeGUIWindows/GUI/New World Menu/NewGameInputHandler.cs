@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Registry.WorldGeneration;
 using MagicalLifeAPI.World.Data;
+using MagicalLifeAPI.World.Data.Disk;
 using System;
 
 namespace MagicalLifeGUIWindows.GUI.New
@@ -14,12 +15,15 @@ namespace MagicalLifeGUIWindows.GUI.New
         /// </summary>
         public void StartNewGame()
         {
-            bool widthSuccess = int.TryParse(NewWorldMenu.NewWorldMenuM.worldWidth.Text, out int width);
+            bool widthSuccess = int.TryParse(NewWorldMenu.NewWorldMenuM.WorldWidth.Text, out int width);
 
-            bool lengthSuccess = int.TryParse(NewWorldMenu.NewWorldMenuM.worldLength.Text, out int length);
+            bool lengthSuccess = int.TryParse(NewWorldMenu.NewWorldMenuM.WorldLength.Text, out int length);
 
-            if (widthSuccess && lengthSuccess && width > 0 && length > 0)
+            bool nameSuccess = !NewWorldMenu.NewWorldMenuM.GameName.Text.Equals(string.Empty);
+
+            if (widthSuccess && lengthSuccess && width > 0 && length > 0 && nameSuccess)
             {
+                WorldStorage.SaveName = NewWorldMenu.NewWorldMenuM.GameName.Text;
                 World.Initialize(width, length, WorldGeneratorRegistry.Generators[0], "Main");
             }
             else

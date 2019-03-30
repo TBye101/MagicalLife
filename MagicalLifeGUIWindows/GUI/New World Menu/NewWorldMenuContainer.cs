@@ -9,20 +9,27 @@ namespace MagicalLifeGUIWindows.GUI.New
     /// </summary>
     public class NewWorldMenuContainer : GUIContainer
     {
-        public WorldWidthInputBox worldWidth = new WorldWidthInputBox(false);
-        public WorldLengthInputBox worldLength = new WorldLengthInputBox(false);
-        public NewWorldNextButton nextButton = new NewWorldNextButton();
-        public LengthLabel lengthLabel = new LengthLabel();
-        public WidthLabel widthLabel = new WidthLabel();
+        public WorldWidthInputBox WorldWidth = new WorldWidthInputBox(false);
+        public WorldLengthInputBox WorldLength = new WorldLengthInputBox(false);
+        public NewWorldNextButton NextButton = new NewWorldNextButton();
+        public LengthLabel LengthLabel = new LengthLabel();
+        public WidthLabel WidthLabel = new WidthLabel();
+        public MonoInputBox GameName;
 
         public NewWorldMenuContainer(bool visible) : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow, false)
         {
             this.Visible = visible;
-            this.Controls.Add(this.worldWidth);
-            this.Controls.Add(this.worldLength);
-            this.Controls.Add(this.nextButton);
-            this.Controls.Add(this.lengthLabel);
-            this.Controls.Add(this.widthLabel);
+
+            this.GameName = new MonoInputBox(TextureLoader.GUIInputBox100x50, TextureLoader.GUICursorCarrot, NewWorldMenuLayout.GameNameInputBox,
+      int.MaxValue, TextureLoader.FontMainMenuFont12x, false,
+      Rendering.Text.SimpleTextRenderer.Alignment.Left, true);
+
+            this.Controls.Add(this.WorldWidth);
+            this.Controls.Add(this.WorldLength);
+            this.Controls.Add(this.NextButton);
+            this.Controls.Add(this.LengthLabel);
+            this.Controls.Add(this.WidthLabel);
+            this.Controls.Add(this.GameName);
         }
 
         public NewWorldMenuContainer() : base()
