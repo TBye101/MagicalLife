@@ -55,7 +55,12 @@ namespace MagicalLifeAPI.World.Data
 
         public Chunk()
         {
-            //Protobuf-net constructor
+            //Protobuf - net constructor
+        }
+
+        [ProtoAfterDeserialization]
+        private void AfterSerialization()
+        {
             if (this.Creatures == null)
             {
                 this.Creatures = new Dictionary<Guid, Living>();

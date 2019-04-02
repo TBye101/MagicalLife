@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Server;
 using MagicalLifeAPI.Sound;
@@ -41,6 +42,7 @@ namespace MagicalLifeGUIWindows.GUI.Load
                 BoundHandler.HideAll();
                 InGameGUI.Initialize();
                 BoundHandler.Popup(InGameGUI.InGame);
+                RenderInfo.Camera2D.InitializeForDimension(0);
             }
         }
 

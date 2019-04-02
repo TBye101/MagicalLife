@@ -10,6 +10,7 @@ using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MagicalLifeAPI.World
 {
@@ -18,6 +19,8 @@ namespace MagicalLifeAPI.World
     /// </summary>
     public static class WorldUtil
     {
+        private static IEnumerable<object> item;
+
         /// <summary>
         /// Returns a tile based on it's location in string format.
         /// </summary>
@@ -150,9 +153,9 @@ namespace MagicalLifeAPI.World
             HumanFactory humanFactory = new HumanFactory();
             Human human = humanFactory.GenerateHuman(randomLocation, dimension, playerID);
 
-            World.Data.World.GetChunkByTile(dimension, randomLocation.X, randomLocation.Y).Creatures.Add(human.ID, human);
+            Data.World.GetChunkByTile(dimension, randomLocation.X, randomLocation.Y).Creatures.Add(human.ID, human);
 
-            if (World.Data.World.Mode == Networking.EngineMode.ServerOnly)
+            if (Data.World.Mode == Networking.EngineMode.ServerOnly)
             {
                 ServerSendRecieve.SendAll(new WorldModifierMessage(new LivingCreatedModifier(human)));
             }
@@ -169,6 +172,30 @@ namespace MagicalLifeAPI.World
             Chunk chunk = Data.World.GetChunkByTile(dimension, tileLocation.X, tileLocation.Y);
             chunk.GetCreature(tileLocation, out Living creature);
             return creature;
+        }
+
+        /// <summary>
+        /// Determines if a player has a character within the world somewhere. 
+        /// </summary>
+        /// <returns></returns>
+        public static bool PlayerHasCharacter(Guid playerID)
+        {
+            foreach (Dimension dimension in Data.World.Dimensions)
+            {
+                for (int x = 0; x < dimension.Width; x++)
+                {
+                    for (int y = 0; y < dimension.Height; y++)
+                    {
+                        Chunk chunk = dimension.GetChunk(x, y);
+                        if (chunk.Creatures.Where(living => living.Value.PlayerID.Equals(playerID)).Count() > 0)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            return false;
         }
     }
 }

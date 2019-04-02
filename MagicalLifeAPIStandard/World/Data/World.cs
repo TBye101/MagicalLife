@@ -23,6 +23,7 @@ namespace MagicalLifeAPI.World.Data
         public static List<Dimension> Dimensions { get; set; } = new List<Dimension>();
 
         public static EngineMode Mode { get; set; }
+
         public static object Data { get; set; }
 
         /// <summary>
