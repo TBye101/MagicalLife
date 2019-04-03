@@ -18,7 +18,7 @@ namespace MagicalLifeAPI.World.Tiles
         public Dirt(Point2D location) : base(location, 10, 0)
         {
             this.AddComponent(new TillablePercentDone());
-            this.GetComponent<ComponentRenderer>().RenderQueue.Add(
+            this.GetExactComponent<ComponentRenderer>().RenderQueue.Add(
                 new StaticTexture(Dirt.GetTextureID(), RenderLayer.DirtBase));
         }
 

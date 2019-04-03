@@ -35,7 +35,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         public override void MakePreparations(Living living)
         {
-            ComponentSelectable entityData = living.GetComponent<ComponentSelectable>();
+            ComponentSelectable entityData = living.GetExactComponent<ComponentSelectable>();
             Point2D start = entityData.MapLocation;
             if (start != this.Destination)
             {
@@ -67,7 +67,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         public override void Tick(Living l)
         {
-            if (l.GetComponent<ComponentSelectable>().MapLocation.Equals(this.Destination))
+            if (l.GetExactComponent<ComponentSelectable>().MapLocation.Equals(this.Destination))
             {
                 this.CompleteTask();
             }

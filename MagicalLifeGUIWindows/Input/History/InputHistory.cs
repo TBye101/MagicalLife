@@ -135,7 +135,7 @@ namespace MagicalLifeGUIWindows.Input.History
 
                 foreach (HasComponents item in lastHistory.DeselectSome)
                 {
-                    ComponentSelectable selected = item.GetComponent<ComponentSelectable>();
+                    ComponentSelectable selected = item.GetExactComponent<ComponentSelectable>();
                     Selected.Remove(item);
                     MasterLog.DebugWriteLine("Deselected: " + selected.MapLocation.ToString());
                 }

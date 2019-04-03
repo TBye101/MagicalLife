@@ -120,7 +120,7 @@ namespace MagicalLifeGUIWindows.Input.History
 
                 Chunk chunk = World.Dimensions[RenderInfo.Dimension].GetChunkForLocation(mapSpot.X, mapSpot.Y);
                 KeyValuePair<System.Guid, Living> result = chunk.Creatures.FirstOrDefault
-                    (x => mapSpot.Equals(x.Value.GetComponent<ComponentSelectable>().MapLocation));
+                    (x => mapSpot.Equals(x.Value.GetExactComponent<ComponentSelectable>().MapLocation));
 
                 select = result.Value;
 

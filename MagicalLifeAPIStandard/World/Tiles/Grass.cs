@@ -22,7 +22,7 @@ namespace MagicalLifeAPI.World.Tiles
         private void InitializeComponents()
         {
             ComponentTillable tillingBehavior = new TillablePercentDone();
-            ComponentRenderer renderer = this.GetComponent<ComponentRenderer>();
+            ComponentRenderer renderer = this.GetExactComponent<ComponentRenderer>();
             this.AddComponent(tillingBehavior);
 
             renderer.AddVisual(new StaticTexture(AssetManager.GetTextureIndex(this.GetRandomDirtTexture()), RenderLayer.DirtBase));

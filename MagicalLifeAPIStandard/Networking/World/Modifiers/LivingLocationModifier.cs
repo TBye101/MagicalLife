@@ -44,7 +44,7 @@ namespace MagicalLifeAPI.Networking.World.Modifiers
             Chunk newChunk = MagicalLifeAPI.World.Data.World.GetChunkByTile(this.Dimension, this.NewLocation.X, this.NewLocation.Y);
             Living l = oldChunk.Creatures[this.EntityID];
 
-            l.GetComponent<ComponentSelectable>().MapLocation = this.NewLocation;
+            l.GetExactComponent<ComponentSelectable>().MapLocation = this.NewLocation;
             oldChunk.Creatures.Remove(this.EntityID);
             newChunk.Creatures.Add(this.EntityID, l);
         }

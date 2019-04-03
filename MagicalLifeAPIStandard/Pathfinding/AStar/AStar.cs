@@ -57,7 +57,7 @@ namespace MagicalLifeAPI.Pathfinding.AStar
             this.Grid = new Grid(dimension.Width * Chunk.Width, dimension.Height * Chunk.Height, 1);
             foreach (Tile item in dimension)
             {
-                ComponentSelectable selected = item.GetComponent<ComponentSelectable>();
+                ComponentSelectable selected = item.GetExactComponent<ComponentSelectable>();
                 Position pos = new Position(selected.MapLocation.X, selected.MapLocation.Y);
 
                 this.Grid.SetCellCost(pos, item.MovementCost);

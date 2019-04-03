@@ -81,7 +81,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         {
             foreach (Tile tile in chunk)
             {
-                ComponentSelectable selectable = tile.GetComponent<ComponentSelectable>();
+                ComponentSelectable selectable = tile.GetExactComponent<ComponentSelectable>();
                 StartingPoint.X = RenderInfo.tileSize.X * selectable.MapLocation.X;
                 StartingPoint.Y = RenderInfo.tileSize.Y * selectable.MapLocation.Y;
                 DrawTile(tile, StartingPoint);
@@ -109,7 +109,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         {
             if (tile.Item != null)
             {
-                ComponentHasTexture itemVisual = tile.Item.GetComponent<ComponentHasTexture>();
+                ComponentHasTexture itemVisual = tile.Item.GetExactComponent<ComponentHasTexture>();
 
                 Point2D topLeft = new Point2D(0, 0);
                 int length = itemVisual.Visuals.Count;

@@ -34,7 +34,7 @@ namespace MagicalLifeAPI.World.Resources
 
         private void InitializeComponents()
         {
-            ComponentHasTexture textureComponent = this.GetComponent<ComponentHasTexture>();
+            ComponentHasTexture textureComponent = this.GetExactComponent<ComponentHasTexture>();
 
             textureComponent.Visuals.Add(OffsetTrunk);
             textureComponent.Visuals.Add(OffsetLeaves);

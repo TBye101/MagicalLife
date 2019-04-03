@@ -59,7 +59,7 @@ namespace MagicalLifeAPI.World.Data
         }
 
         [ProtoAfterDeserialization]
-        private void AfterSerialization()
+        private void AfterDeserialization()
         {
             if (this.Creatures == null)
             {
@@ -83,7 +83,7 @@ namespace MagicalLifeAPI.World.Data
         {
             living = null;
             IEnumerable<KeyValuePair<Guid, Living>> result = 
-                this.Creatures.Where(x => Point2D.Equals(x.Value.GetComponent<ComponentSelectable>().MapLocation));
+                this.Creatures.Where(x => Point2D.Equals(x.Value.GetExactComponent<ComponentSelectable>().MapLocation));
 
             if (result.Count() != 0)
             {

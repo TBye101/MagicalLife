@@ -20,7 +20,7 @@ namespace MagicalLifeAPI.World.Resources
 
         public Rock(int count) : base(StoneName, count, GetHarvestBehavior(count))
         {
-            this.GetComponent<ComponentHasTexture>().Visuals.Add(this.GetTextureInstance());
+            this.GetExactComponent<ComponentHasTexture>().Visuals.Add(this.GetTextureInstance());
             
         }
 

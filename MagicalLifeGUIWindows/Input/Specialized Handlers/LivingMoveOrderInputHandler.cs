@@ -44,7 +44,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                 switch (selectable)
                 {
                     case Living living:
-                        ComponentSelectable positionData = living.GetComponent<ComponentSelectable>();
+                        ComponentSelectable positionData = living.GetExactComponent<ComponentSelectable>();
                         Point2D start = positionData.MapLocation;
                         if (start != target)
                         {

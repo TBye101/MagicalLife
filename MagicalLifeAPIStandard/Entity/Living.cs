@@ -109,7 +109,7 @@ namespace MagicalLifeAPI.Entity
         {
             this.Health = new Attribute32(health);
             this.Movement = new AttributeDouble(movementSpeed);
-            this.GetComponent<ComponentSelectable>().MapLocation = location;
+            this.GetExactComponent<ComponentSelectable>().MapLocation = location;
             this.TileLocation = new Point2DDouble(location.X, location.Y);
             this.Dimension = dimension;
             Living.LivingCreatedHandler(new LivingEventArg(this, location));

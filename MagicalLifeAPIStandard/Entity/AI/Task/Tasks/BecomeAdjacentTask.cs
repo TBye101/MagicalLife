@@ -32,7 +32,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             List<Point2D> result = WorldUtil.GetNeighboringTiles(this.Target, l.Dimension);
             result.RemoveAll(x => !World.Data.World.GetTile(l.Dimension, x.X, x.Y).IsWalkable);
 
-            ComponentSelectable entitySelected = l.GetComponent<ComponentSelectable>();
+            ComponentSelectable entitySelected = l.GetExactComponent<ComponentSelectable>();
             int closestIndex = Algorithms.GetClosestPoint2D(result, entitySelected.MapLocation);
             this.AdjacentLocation = result[closestIndex];
             List<PathLink> path = MainPathFinder.GetRoute(l.Dimension, entitySelected.MapLocation, result[closestIndex]);
@@ -53,7 +53,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         public override void Tick(Living l)
         {
-            ComponentSelectable selected = l.GetComponent<ComponentSelectable>();
+            ComponentSelectable selected = l.GetExactComponent<ComponentSelectable>();
             if (selected.MapLocation.Equals(this.AdjacentLocation))
             {
                 MasterLog.DebugWriteLine(this.ID.ToString());

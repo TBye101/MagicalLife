@@ -39,7 +39,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
             {
                 Rectangle r = new Rectangle(mapLocation.X, mapLocation.Y, mapLocation.X, mapLocation.Y);
                 Tile tile = WorldUtil.GetTile(mapLocation, chunk);
-                ComponentSelectable selectable = tile.GetComponent<ComponentSelectable>();
+                ComponentSelectable selectable = tile.GetExactComponent<ComponentSelectable>();
 
                 itemLocations.Add(r, selectable.MapLocation);
             }

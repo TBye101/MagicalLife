@@ -62,13 +62,13 @@ namespace MagicalLifeAPI.World.Base
 
                     if (value != null)
                     {
-                        this.GetComponent<ComponentRenderer>().AddVisuals(value.GetComponent<ComponentHasTexture>().Visuals);
+                        this.GetExactComponent<ComponentRenderer>().AddVisuals(value.GetExactComponent<ComponentHasTexture>().Visuals);
                     }
 
                     return;
                 }
 
-                List<AbstractVisual> oldVisuals = this.resources.GetComponent<ComponentHasTexture>().Visuals;
+                List<AbstractVisual> oldVisuals = this.resources.GetExactComponent<ComponentHasTexture>().Visuals;
 
                 if (value == null)
                 {
@@ -76,13 +76,13 @@ namespace MagicalLifeAPI.World.Base
                 }
                 else
                 {
-                    List<AbstractVisual> newVisuals = value.GetComponent<ComponentHasTexture>().Visuals;
+                    List<AbstractVisual> newVisuals = value.GetExactComponent<ComponentHasTexture>().Visuals;
 
                     if (this.IsVisualDifferent(oldVisuals, newVisuals))
                     {
                         this.RemoveVisual(oldVisuals);
                     }
-                    this.GetComponent<ComponentRenderer>().AddVisuals(newVisuals);
+                    this.GetExactComponent<ComponentRenderer>().AddVisuals(newVisuals);
                 }
 
                 this.resources = value;
@@ -116,7 +116,7 @@ namespace MagicalLifeAPI.World.Base
             Tile.TileCreatedHandler(new TileEventArg(this));
             this.IsWalkable = true;
             this.FootStepSound = footStepSound;
-            this.GetComponent<ComponentSelectable>().MapLocation = location;
+            this.GetExactComponent<ComponentSelectable>().MapLocation = location;
         }
 
         protected Tile(int x, int y, int movementCost, int footStepSound)
@@ -159,7 +159,7 @@ namespace MagicalLifeAPI.World.Base
         {
             foreach (AbstractVisual item in visuals)
             {
-                this.GetComponent<ComponentRenderer>().RenderQueue.Remove(item);
+                this.GetExactComponent<ComponentRenderer>().RenderQueue.Remove(item);
             }
         }
 

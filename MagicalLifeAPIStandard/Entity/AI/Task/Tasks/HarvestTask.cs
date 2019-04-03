@@ -122,7 +122,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         private void DropItem(Living l, Item drop)
         {
             //The tile the entity is standing on
-            ComponentSelectable entityS = l.GetComponent<ComponentSelectable>();
+            ComponentSelectable entityS = l.GetExactComponent<ComponentSelectable>();
             Tile entityOn = World.Data.World.GetTile(l.Dimension, entityS.MapLocation.X, entityS.MapLocation.Y);
 
             if (entityOn.Item == null || entityOn.Item.GetType() == drop.GetType())
@@ -132,7 +132,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             else
             {
                 l.Inventory.AddItem(drop);
-                Point2D emtpyTile = ItemFinder.FindItemEmptyTile(entityOn.GetComponent<ComponentSelectable>().MapLocation, l.Dimension);
+                Point2D emtpyTile = ItemFinder.FindItemEmptyTile(entityOn.GetExactComponent<ComponentSelectable>().MapLocation, l.Dimension);
                 DropItemTask task = new DropItemTask(emtpyTile, l.Dimension, drop, l.ID, Guid.NewGuid());
                 task.ReservedFor = l.ID;
                 TaskManager.Manager.AddTask(task);

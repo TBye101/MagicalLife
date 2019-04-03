@@ -26,7 +26,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
             if (historical.ActionSelected == ActionSelected.None && historical.Selected.Count == 1)
             {
-                Point2D mapLocation = historical.Selected[0].GetComponent<ComponentSelectable>().MapLocation;
+                Point2D mapLocation = historical.Selected[0].GetExactComponent<ComponentSelectable>().MapLocation;
                 Living creature = WorldUtil.GetCreature(mapLocation, RenderInfo.Dimension);
 
                 if (creature != null)

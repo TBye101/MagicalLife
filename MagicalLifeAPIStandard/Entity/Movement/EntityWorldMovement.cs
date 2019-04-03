@@ -66,8 +66,8 @@ namespace MagicalLifeAPI.Entity.Movement
         /// <param name="destination"></param>
         public static void Move(Living entity, Tile source, Tile destination)
         {
-            ComponentSelectable sLocation = source.GetComponent<ComponentSelectable>();
-            ComponentSelectable dLocation = source.GetComponent<ComponentSelectable>();
+            ComponentSelectable sLocation = source.GetExactComponent<ComponentSelectable>();
+            ComponentSelectable dLocation = destination.GetExactComponent<ComponentSelectable>();
             Direction direction = DetermineMovementDirection(sLocation.MapLocation, dLocation.MapLocation);
 
             float xMove = 0;
@@ -135,7 +135,7 @@ namespace MagicalLifeAPI.Entity.Movement
             else
             {
                 //The character made it to the next tile.
-                entity.GetComponent<ComponentSelectable>().MapLocation = dLocation.MapLocation;
+                entity.GetExactComponent<ComponentSelectable>().MapLocation = dLocation.MapLocation;
                 entity.TileLocation = new DataTypes.Point2DDouble(dLocation.MapLocation.X, dLocation.MapLocation.Y);
                 entity.QueuedMovement.Dequeue();
                 movementPenalty = (float)MathUtil.GetDistance(entity.TileLocation, dLocation.MapLocation);
