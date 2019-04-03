@@ -20,7 +20,10 @@ namespace MagicalLifeMod.Core.WorldGeneration.Default
         public int NeighborWeight { get; set; } = 12;
 
         #region TerrainSpecific
-        public int DirtTerrainWeight = 1;
+
+        public int DirtTerrainWeight { get; set; } = 1;
+        public int GrassTerrainWeight { get; set; } = 15;
+
         #endregion
     }
 }
