@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Registry.WorldGeneration;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
@@ -24,7 +25,13 @@ namespace MagicalLifeMod.Core.WorldGeneration
 
         private ProtoArray<Chunk> GenerateTerrain(ProtoArray<Chunk> blankWorld, string dimensionName, Random seededRandom)
         {
+            
             int[,] terrainGeneratorMap = this.AssignGenerators(blankWorld.Width, blankWorld.Height, seededRandom);
+
+            MasterLog.DebugWriteLine("Organizing terrain");
+
+            int done = 0;
+            int toDo = blankWorld.Width * blankWorld.Height;
 
             //<Index of terrain generator to use, locations to use it at>
             Dictionary<int, List<Point2D>> generatorToAllocatedChunks = new Dictionary<int, List<Point2D>>();
@@ -47,9 +54,16 @@ namespace MagicalLifeMod.Core.WorldGeneration
                         };
                         generatorToAllocatedChunks.Add(terrainGeneratorMap[x, y], firstLocation);
                     }
+                    done++;
+                    MasterLog.DebugWriteLine(done.ToString() + "/" + toDo.ToString());
                 }
             }
 
+            MasterLog.DebugWriteLine("Done organizing terrain");
+
+            MasterLog.DebugWriteLine("Generating terrain");
+            done = 0;
+            toDo = generatorToAllocatedChunks.Count;
             foreach (KeyValuePair<int, List<Point2D>> item in generatorToAllocatedChunks)
             {
                 int length = item.Value.Count;
@@ -63,8 +77,11 @@ namespace MagicalLifeMod.Core.WorldGeneration
                 }
 
                 WorldGeneratorRegistry.TerrainGenerators[item.Key].GenerateTerrain(toGenerator, dimensionName, seededRandom);
+                done++;
+                MasterLog.DebugWriteLine(done.ToString() + "/" + toDo.ToString());
             }
 
+            MasterLog.DebugWriteLine("Done generating terrain");
             return blankWorld;
         }
 
@@ -77,6 +94,7 @@ namespace MagicalLifeMod.Core.WorldGeneration
         /// <returns></returns>
         private int[,] AssignGenerators(int width, int height, Random seededRandom)
         {
+            MasterLog.DebugWriteLine("Assigning generators");
             List<int> terrainWeights = new List<int>();
 
             foreach (TerrainGenerator item in WorldGeneratorRegistry.TerrainGenerators)
@@ -89,14 +107,19 @@ namespace MagicalLifeMod.Core.WorldGeneration
             int[,] terrainMap = new int[width, height];
             ArrayUtil.FillAll<int>(terrainMap, -1);
 
+            int done = 0;
+            int toDo = width * height;
             for (int x = 0; x < width; x++)
             {
                 for (int y = 0; y < height; y++)
                 {
                     terrainMap[x, y] = this.ChooseTerrainGenerator(terrainMap, randomTerrainGenerators, x, y, seededRandom);
+                    done++;
+                    MasterLog.DebugWriteLine(done.ToString() + "/" + toDo.ToString());
                 }
             }
 
+            MasterLog.DebugWriteLine("Done assigning generators");
             return terrainMap;
         }
 
