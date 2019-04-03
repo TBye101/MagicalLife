@@ -16,7 +16,7 @@ namespace MagicalLifeAPI.World.Data.Disk
         /// </summary>
         public void PrepareForDimension(Guid dimensionID)
         {
-            DirectoryInfo info = Directory.CreateDirectory(WorldStorage.GameSaveRoot + Path.DirectorySeparatorChar + dimensionID);
+            DirectoryInfo info = Directory.CreateDirectory(WorldStorage.DimensionSaveFolder + Path.DirectorySeparatorChar + dimensionID);
             WorldStorage.DimensionPaths.Add(dimensionID, info.FullName);
         }
 

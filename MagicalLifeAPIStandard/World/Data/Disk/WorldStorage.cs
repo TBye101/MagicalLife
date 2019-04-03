@@ -124,10 +124,14 @@ namespace MagicalLifeAPI.World.Data.Disk
         {
             if (World.Dimensions.Count > 0)
             {
+                //Regenerate dimension paths each time to support saving in multiple save slots from one game.
+                DimensionPaths.Clear();
+
                 //We are saving
                 foreach (Dimension item in World.Dimensions)
                 {
                     DirectoryInfo dirInfo = Directory.CreateDirectory(WorldStorage.DimensionSaveFolder + Path.DirectorySeparatorChar + item.ID);
+                    DimensionStorage.PrepareForDimension(item.ID);
 
                     if (DimensionPaths.TryGetValue(item.ID, out string value) == false)
                     {
