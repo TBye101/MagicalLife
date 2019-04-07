@@ -6,6 +6,7 @@ using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Data.Disk;
 using MagicalLifeClient;
+using MagicalLifeGUIWindows.GUI.Action_Menu;
 using MagicalLifeGUIWindows.GUI.In;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;
@@ -41,6 +42,8 @@ namespace MagicalLifeGUIWindows.GUI.Load
                 MenuHandler.Clear();
                 BoundHandler.HideAll();
                 InGameGUI.Initialize();
+                ActionMenu.Initialize();
+                BoundHandler.Popup(ActionMenu.AMenu);
                 BoundHandler.Popup(InGameGUI.InGame);
                 RenderInfo.Camera2D.InitializeForDimension(0);
             }

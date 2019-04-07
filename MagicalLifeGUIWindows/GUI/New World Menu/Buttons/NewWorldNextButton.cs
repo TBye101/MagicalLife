@@ -5,6 +5,7 @@ using MagicalLifeAPI.Networking.Server;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeClient;
+using MagicalLifeGUIWindows.GUI.Action_Menu;
 using MagicalLifeGUIWindows.GUI.In;
 using MagicalLifeGUIWindows.GUI.MainMenu;
 using MagicalLifeGUIWindows.GUI.Reusable;
@@ -42,6 +43,8 @@ namespace MagicalLifeGUIWindows.GUI.New
             MenuHandler.Clear();
             BoundHandler.HideAll();
             InGameGUI.Initialize();
+            ActionMenu.Initialize();
+            BoundHandler.Popup(ActionMenu.AMenu);
             BoundHandler.Popup(InGameGUI.InGame);
         }
 

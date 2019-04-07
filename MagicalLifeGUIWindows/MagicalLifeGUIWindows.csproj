@@ -100,6 +100,11 @@
   <ItemGroup>
     <Compile Include="FriendAssemblies.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="GUI\Action Menu\ActionMenu.cs" />
+    <Compile Include="GUI\Action Menu\ActionMenuContainer.cs" />
+    <Compile Include="GUI\Action Menu\ActionMenuLayout.cs" />
+    <Compile Include="GUI\Action Menu\ActionMenuLayout1920x1080.cs" />
+    <Compile Include="GUI\Action Menu\ActionMenuLayout2560x1440.cs" />
     <Compile Include="GUI\Character Menu\Buttons\InventoryTabButton.cs" />
     <Compile Include="GUI\Character Menu\Buttons\SkillsTabButton.cs" />
     <Compile Include="GUI\Character Menu\CharacterContainer.cs" />
@@ -139,6 +144,7 @@
     <Compile Include="GUI\New World Menu\Labels\LengthLabel.cs" />
     <Compile Include="GUI\New World Menu\Labels\WidthLabel.cs" />
     <Compile Include="GUI\Reusable\API\IScrollable.cs" />
+    <Compile Include="GUI\Reusable\Collections\MonoGrid.cs" />
     <Compile Include="GUI\Reusable\Event\ClickEventArgs.cs" />
     <Compile Include="GUI\Reusable\RenderableImage.cs" />
     <Compile Include="GUI\Reusable\RenderableString.cs" />

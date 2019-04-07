@@ -3,6 +3,7 @@ using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeClient;
+using MagicalLifeGUIWindows.GUI.Action_Menu;
 using MagicalLifeGUIWindows.GUI.In;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;
@@ -26,6 +27,8 @@ namespace MagicalLifeGUIWindows.GUI.Join
             Client.Load();
             MenuHandler.Clear();
             InGameGUI.Initialize();
+            ActionMenu.Initialize();
+            BoundHandler.Popup(ActionMenu.AMenu);
             BoundHandler.Popup(InGameGUI.InGame);
         }
 
