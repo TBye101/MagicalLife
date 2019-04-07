@@ -56,6 +56,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
         public event EventHandler<ClickEventArgs> ClickEvent;
         public event EventHandler<ClickEventArgs> DoubleClickEvent;
+        public event EventHandler<ClickEventArgs> ScrollEvent;
 
         /// <param name="drawingBounds">The bounds for which to draw the texture on the screen at.</param>
         /// <param name="priority">Determines if this GUI element should have priority over other GUI elements when sorting through input.</param>
@@ -102,6 +103,16 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         public void Click(MouseEventArgs e, GUIContainer container)
         {
             this.ClickEvent?.Invoke(this, new ClickEventArgs(e, container));
+        }
+
+        /// <summary>
+        /// Called whenever this GUI element is scrolled on.
+        /// </summary>
+        /// <param name="e"></param>
+        /// <param name="container"></param>
+        public void Scroll(MouseEventArgs e, GUIContainer container)
+        {
+            this.ScrollEvent?.Invoke(this, new ClickEventArgs(e, container));
         }
 
         /// <summary>

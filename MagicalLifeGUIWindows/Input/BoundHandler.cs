@@ -9,6 +9,7 @@ using MagicalLifeGUIWindows.Map;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Input.InputListeners;
+using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeGUIWindows.Input
@@ -55,7 +56,7 @@ namespace MagicalLifeGUIWindows.Input
 
         private static void MouseListener_MouseWheelMoved(object sender, MouseEventArgs e)
         {
-            //Don't need this yet
+            ContainerMouseScroll(e);
         }
 
         private static void MouseListener_MouseDoubleClicked(object sender, MouseEventArgs e)
@@ -99,6 +100,78 @@ namespace MagicalLifeGUIWindows.Input
             //If the click isn't in a GUI, then it must be in the map...
             MouseEventArgs transformed = TransformViaCamera(clickData);
             InputHistory.MapMouseClick(transformed);
+        }
+
+        private static void ContainerMouseScroll(MouseEventArgs e)
+        {
+            foreach (GUIContainer item in GUIWindows)
+            {
+                GUIContainer youngest = GetYoungestChild(item);
+                if (youngest.Visible && youngest.DrawingBounds.Contains(e.Position))
+                {
+                    Scroll(e, youngest.Controls, youngest);
+                    MasterLog.DebugWriteLine("Clicking in menu: " + youngest.GetType().FullName);
+                    return;
+                }
+            }
+
+            //If the click isn't in a GUI, then it must be in the map...
+            MouseEventArgs transformed = TransformViaCamera(e);
+            ScrollMap(e);
+        }
+
+        private static void ScrollMap(MouseEventArgs e)
+        {
+            float previous = e.PreviousState.ScrollWheelValue;
+            float current = e.ScrollWheelValue;
+
+            float change = (previous - current) / 1000;
+
+            if (change > 0)
+            {
+                RenderInfo.Camera2D.HandleInput(Rendering.Map.CameraMovementState.ZoomIn);
+            }
+            if (change < 0)
+            {
+                RenderInfo.Camera2D.HandleInput(Rendering.Map.CameraMovementState.ZoomOut);
+            }
+        }
+
+        /// <summary>
+        /// Handles who gets the scroll event from the options provided.
+        /// For use if a container is being used.
+        /// </summary>
+        private static void Scroll(MouseEventArgs scrollData, List<GUIElement> options, GUIContainer container)
+        {
+            int focus = -1;
+            int length = options.Count;
+            GUIElement item = null;
+            MasterLog.DebugWriteLine("Scroll position: " + scrollData.Position.ToString());
+
+            for (int i = 0; i < length; i++)
+            {
+                item = options[i];
+
+                MasterLog.DebugWriteLine(item.GetType().ToString() + " gui bounds: " + item.MouseBounds.Bounds.ToString());
+
+                if (focus == -1 && item.MouseBounds.Bounds.Contains(scrollData.Position.X - container.DrawingBounds.X, scrollData.Position.Y - container.DrawingBounds.Y))
+                {
+                    item.HasFocus = true;
+                    focus = i;
+                    MasterLog.DebugWriteLine(item.GetType().ToString() + " with a bounds of " + item.MouseBounds.Bounds.ToString() + "was scrolled on");
+                }
+                else
+                {
+                    item.HasFocus = false;
+                    MasterLog.DebugWriteLine(item.GetType().ToString() + " with a bounds of " + item.MouseBounds.Bounds.ToString() + "was not scrolled on");
+                }
+            }
+
+            if (focus != -1)
+            {
+                MasterLog.DebugWriteLine("Scrolling on item: " + options[focus].GetType().FullName);
+                options[focus].Scroll(scrollData, container);
+            }
         }
 
         /// <summary>

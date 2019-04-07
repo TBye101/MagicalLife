@@ -21,8 +21,6 @@ namespace MagicalLifeGUIWindows.Input
 
         public static EscapeHandler EscHandler { get; set; }
 
-        public static ZoomHandler ZooomHandler { get; set; }
-
         public static LivingMenuHandler LivingMenuHandler { get; set; }
 
         public static ContainerDragHandler DragHandler { get; set; }
@@ -35,7 +33,6 @@ namespace MagicalLifeGUIWindows.Input
             TillingAction = new TillingActionHandler();
             StrafingHandler = new StrafeHandler();
             EscHandler = new EscapeHandler();
-            ZooomHandler = new ZoomHandler();
             ChopAction = new ChopActionHandler();
             LivingMenuHandler = new LivingMenuHandler();
             DragHandler = new ContainerDragHandler();
