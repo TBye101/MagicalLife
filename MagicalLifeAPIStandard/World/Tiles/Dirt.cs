@@ -13,8 +13,6 @@ namespace MagicalLifeAPI.World.Tiles
     [ProtoBuf.ProtoContract]
     public class Dirt : Tile
     {
-        public ComponentTillable TillableBehavior { get; set; }
-
         public Dirt(Point2D location) : base(location, 10, 0)
         {
             this.AddComponent(new TillablePercentDone());

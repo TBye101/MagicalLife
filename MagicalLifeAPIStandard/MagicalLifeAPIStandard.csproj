@@ -18,6 +18,7 @@
   <ItemGroup>
     <Folder Include="Components\Generic\" />
     <Folder Include="Components\Item\" />
+    <Folder Include="Registry\ManualTask\" />
     <Folder Include="World\Veggies\" />
   </ItemGroup>
   <ItemGroup>
