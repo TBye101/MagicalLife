@@ -22,6 +22,8 @@ SneakyTactician  <SneakyTactician@outlook.com>
 *Zooming out now supported
 
 #### Bugs
+*Fixed PineTree class property Name's value
+*Fixed mined stones not disappering
 
 ---
 

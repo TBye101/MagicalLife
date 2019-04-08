@@ -15,7 +15,7 @@ namespace MagicalLifeAPI.World.Resources
     [ProtoContract]
     public class PineTree : TreeBase
     {
-        private static readonly string Name = "Maple Tree";
+        private static readonly string Name = "Pine Tree";
         public static readonly int Durabilitie = 20;
 
         public static readonly int XOffset = Tile.GetTileSize().X / -2;
