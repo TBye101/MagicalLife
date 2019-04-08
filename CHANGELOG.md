@@ -1,5 +1,10 @@
 SneakyTactician  <SneakyTactician@outlook.com>
 
+
+#### Bugs
+*Fixed PineTree class property Name's value
+*Fixed mined stones not disappering
+
 ---
 
 ## [Version 0.1.2]

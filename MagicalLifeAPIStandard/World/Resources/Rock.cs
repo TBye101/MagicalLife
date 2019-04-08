@@ -15,6 +15,8 @@ namespace MagicalLifeAPI.World.Resources
     [ProtoContract]
     public class Rock : RockBase
     {
+        private AbstractVisual visual;
+
         public static readonly string StoneName = "Stone";
 
         public override AbstractHarvestable HarvestingBehavior { get; set; }
@@ -25,10 +27,12 @@ namespace MagicalLifeAPI.World.Resources
             {
                 new StoneRubble(this.Durability)
             }, SoundsTable.PickaxeHit, "");
+            visual = new StaticTexture(AssetManager.NameToIndex[this.GetRandomStoneTexture()], RenderLayer.Stone);
         }
 
         public Rock()
         {
+            visual = new StaticTexture(AssetManager.NameToIndex[this.GetRandomStoneTexture()], RenderLayer.Stone);
         }
 
         public override string GetUnconnectedTexture()
@@ -40,7 +44,8 @@ namespace MagicalLifeAPI.World.Resources
         {
             List<AbstractVisual> visuals = new List<AbstractVisual>
             {
-                new StaticTexture(AssetManager.NameToIndex[this.GetRandomStoneTexture()], RenderLayer.Stone)
+                //new StaticTexture(AssetManager.NameToIndex[this.GetRandomStoneTexture()], RenderLayer.Stone)
+                visual
             };
 
             return visuals;
