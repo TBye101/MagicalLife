@@ -144,6 +144,7 @@
     <Compile Include="GUI\New World Menu\Labels\LengthLabel.cs" />
     <Compile Include="GUI\New World Menu\Labels\WidthLabel.cs" />
     <Compile Include="GUI\Reusable\API\IScrollable.cs" />
+    <Compile Include="GUI\Reusable\Collections\MonoGenericGrid.cs" />
     <Compile Include="GUI\Reusable\Collections\MonoGrid.cs" />
     <Compile Include="GUI\Reusable\Event\ClickEventArgs.cs" />
     <Compile Include="GUI\Reusable\RenderableImage.cs" />
@@ -189,6 +190,7 @@
     <Compile Include="Input\Comparators\BoundsSorter.cs" />
     <Compile Include="Input\Comparators\ClickBoundsSorter.cs" />
     <Compile Include="Input\Comparators\ContainerSorter.cs" />
+    <Compile Include="Input\Specialized Handlers\ActionMenuHandler.cs" />
     <Compile Include="Input\Specialized Handlers\ChopActionHandler.cs" />
     <Compile Include="Input\Specialized Handlers\ContainerDragHandler.cs" />
     <Compile Include="Input\Specialized Handlers\EscapeHandler.cs" />
@@ -332,13 +334,13 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+    <Reference Include="System.Runtime, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.1\lib\net462\System.Runtime.dll</HintPath>
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Runtime.Extensions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.Extensions.4.3.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
+    <Reference Include="System.Runtime.Extensions, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Extensions.4.3.1\lib\net462\System.Runtime.Extensions.dll</HintPath>
       <Private>True</Private>
       <Private>True</Private>
     </Reference>

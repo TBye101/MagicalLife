@@ -17,7 +17,8 @@ namespace MagicalLifeGUIWindows.GUI.Reusable.Collections
     /// <summary>
     /// A scrollable grid element.
     /// </summary>
-    public class MonoGrid : GUIElement, IScrollable
+    public class MonoGenericGrid<T> : GUIElement, IScrollable
+        where T : GUIElement
     {
         private int ItemBackgroundTexture { get; set; }
 
@@ -25,7 +26,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable.Collections
         /// The items that are displayed in this <see cref="ListBox"/>.
         /// The elements within the list are each row.
         /// </summary>
-        public List<GUIElement[]> Items { get; set; }
+        public List<T[]> Items { get; set; }
 
         /// <summary>
         /// How many items should be displayed at any given time.
@@ -66,7 +67,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable.Collections
         /// <param name="itemRenderCount">How many items should be displayed at any given time.</param>
         /// <param name="items">The items that will be displayed.</param>
         /// <param name="displayBounds">The size of each item that will be displayed. Any items that are not this size will cause errors to occur in rendering.</param>
-        public MonoGrid(Point2D displayBounds, Rectangle drawingBounds, int priority, bool isContained, string font, int itemRenderCount)
+        public MonoGenericGrid(Point2D displayBounds, Rectangle drawingBounds, int priority, bool isContained, string font, int itemRenderCount)
             : base(drawingBounds, priority, isContained, font)
         {
             this.InitializeItems();
@@ -86,7 +87,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable.Collections
 
         private void InitializeItems()
         {
-            this.Items = new List<GUIElement[]>();
+            this.Items = new List<T[]>();
         }
 
         /// <summary>
@@ -170,7 +171,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable.Collections
         /// <summary>
         /// Adds an item to this grid.
         /// </summary>
-        public void Add(params GUIElement[] elements)
+        public void Add(params T[] elements)
         {
             if (elements.Length > this.Columns)
             {

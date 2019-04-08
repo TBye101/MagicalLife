@@ -201,10 +201,6 @@ namespace MagicalLifeGUIWindows
                 {
                     InGameGUI.Initialize();
                 }
-                if (!BoundHandler.GUIWindows.Contains(ActionMenu.AMenu))
-                {
-                    ActionMenu.Initialize();
-                }
             }
         }
 

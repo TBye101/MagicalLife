@@ -9,6 +9,8 @@ namespace MagicalLifeAPI.Filing.Settings
     {
         public Keys OpenInGameEscapeMenu = Keys.Escape;
 
+        public Keys OpenActionMenu = Keys.C;
+
         public Keys StrafeUp = Keys.W;
         public Keys StrafeDown = Keys.S;
         public Keys StrafeLeft = Keys.A;

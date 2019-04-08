@@ -27,8 +27,6 @@ namespace MagicalLifeGUIWindows.GUI.Join
             Client.Load();
             MenuHandler.Clear();
             InGameGUI.Initialize();
-            ActionMenu.Initialize();
-            BoundHandler.Popup(ActionMenu.AMenu);
             BoundHandler.Popup(InGameGUI.InGame);
         }
 

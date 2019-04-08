@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.DataTypes;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.GUI.Reusable.Collections;
 using System;
@@ -20,10 +21,16 @@ namespace MagicalLifeGUIWindows.GUI.Action_Menu
         {
             this.Visible = visible;
 
-            this.ActionGrid = new MonoGrid(ActionMenuLayout.ActionMenuLocation, int.MaxValue,
+            this.ActionGrid = new MonoGrid(new Point2D(32 ,32), ActionMenuLayout.ActionMenuLocation, int.MaxValue,
                 true, TextureLoader.FontMainMenuFont12x, 5);
+            this.PopulateActionGrid();
 
             this.Controls.Add(this.ActionGrid);
+        }
+
+        private void PopulateActionGrid()
+        {
+            throw new NotImplementedException();
         }
 
         public override string GetTextureName()
