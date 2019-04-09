@@ -7,7 +7,7 @@ using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
-using MagicalLifeGUIWindows.GUI.In;
+using MagicalLifeGUIWindows.Map;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -27,7 +27,7 @@ namespace MagicalLifeGUIWindows.Input.History
                     return this.SingleSelect(e);
 
                 case MonoGame.Extended.Input.InputListeners.MouseButton.Right:
-                    return this.Order(e, InGameGUI.Selected);
+                    return this.Order(e, RenderingData.CurrentlySelected);
 
                 default:
                     return null;
@@ -36,7 +36,7 @@ namespace MagicalLifeGUIWindows.Input.History
 
         private HistoricalInput SingleSelect(InputEventArgs e)
         {
-            switch (InGameGUI.Selected)
+            switch (RenderingData.CurrentlySelected)
             {
                 case ActionSelected.None:
                     return this.NoAction(e);

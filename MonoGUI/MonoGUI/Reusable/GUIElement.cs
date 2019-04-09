@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeGUIWindows.GUI.Reusable.Event;
 using MagicalLifeGUIWindows.Input;
+using MagicalLifeGUIWindows.Map;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Input.InputListeners;
@@ -73,7 +74,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
             if (font != null && font != string.Empty)
             {
-                this.Font = Game1.AssetManager.Load<SpriteFont>(font);
+                this.Font = RenderingData.AssetManagerClone.Load<SpriteFont>(font);
             }
         }
 

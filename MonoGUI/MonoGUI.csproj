@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Extended" Version="1.1.0" />
+    <PackageReference Include="MonoGame.Extended.Input" Version="1.1.0" />
+    <PackageReference Include="MonoGame.Framework.Portable" Version="3.7.1.189" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MagicalLifeAPIStandard\MagicalLifeAPIStandard.csproj" />
+  </ItemGroup>
+
+</Project>

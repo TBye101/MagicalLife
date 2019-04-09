@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Entity.AI.Task;
+using MagicalLifeGUIWindows.Map;
 
 namespace MagicalLifeGUIWindows.GUI.In
 {
@@ -7,7 +8,17 @@ namespace MagicalLifeGUIWindows.GUI.In
     /// </summary>
     public static class InGameGUI
     {
-        public static ActionSelected Selected = ActionSelected.None;
+        public static ActionSelected Selected
+        {
+            get
+            {
+                return RenderingData.CurrentlySelected;
+            }
+            set
+            {
+                RenderingData.CurrentlySelected = value;
+            }
+        }
 
         public static InGameGUIContainer InGame;
 
@@ -15,6 +26,7 @@ namespace MagicalLifeGUIWindows.GUI.In
         {
             InGame = new InGameGUIContainer(true);
             MenuHandler.DisplayMenu(InGame);
+            Selected = ActionSelected.None;
         }
     }
 }

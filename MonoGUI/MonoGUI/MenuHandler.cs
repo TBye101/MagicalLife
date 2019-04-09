@@ -1,5 +1,4 @@
-﻿using MagicalLifeGUIWindows.GUI.In;
-using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;
 using System.Collections.Generic;
 
@@ -70,15 +69,7 @@ namespace MagicalLifeGUIWindows.GUI
         /// </summary>
         public static void Clear()
         {
-            if (InGameGUI.InGame == null)
-            {
-                BoundHandler.GUIWindows.Clear();
-            }
-            else
-            {
-                BoundHandler.GUIWindows.RemoveAll(x => x.GetType() != InGameGUI.InGame.GetType());
-            }
-
+            BoundHandler.GUIWindows.Clear();
             Containers.Clear();
         }
     }

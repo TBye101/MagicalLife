@@ -13,6 +13,7 @@ using MagicalLifeGUIWindows.GUI.Action_Menu;
 using MagicalLifeGUIWindows.GUI.In;
 using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Load;
+using MagicalLifeGUIWindows.Map;
 using MagicalLifeGUIWindows.Rendering;
 using MagicalLifeGUIWindows.Screens;
 using Microsoft.Xna.Framework;
@@ -48,6 +49,7 @@ namespace MagicalLifeGUIWindows
             Graphics = new GraphicsDeviceManager(this);
             this.Content.RootDirectory = "Content";
             Game1.AssetManager = this.Content;
+            RenderingData.AssetManagerClone = Game1.AssetManager;
             UniversalEvents.GameExit += this.UniversalEvents_GameExit;
             Graphics.HardwareModeSwitch = false;
             OutputDebugInfo();

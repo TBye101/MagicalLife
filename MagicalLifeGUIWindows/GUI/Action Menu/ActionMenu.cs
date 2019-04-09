@@ -11,11 +11,10 @@ namespace MagicalLifeGUIWindows.GUI.Action_Menu
     /// </summary>
     public static class ActionMenu
     {
-        public static ActionMenuContainer AMenu;
+        public static ActionMenuContainer AMenu = new ActionMenuContainer(true);
 
         internal static void Initialize()
         {
-            AMenu = new ActionMenuContainer(true);
             MenuHandler.DisplayMenu(AMenu);
         }
     }

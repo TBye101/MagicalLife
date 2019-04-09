@@ -30,7 +30,6 @@ namespace MagicalLifeGUIWindows.GUI.Action_Menu
 
         private void PopulateActionGrid()
         {
-            throw new NotImplementedException();
         }
 
         public override string GetTextureName()
