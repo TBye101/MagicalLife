@@ -20,6 +20,11 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         public bool IsMovable { get; set; }
 
         /// <summary>
+        /// If true, this container is part of the HUD and shouldn't be cleared from the screen. Ever.
+        /// </summary>
+        public bool IsHUD { get; set; } = false;
+
+        /// <summary>
         /// Constructs a new instance of the <see cref="GUIContainer"/> class.
         /// Anything that implements this must have an empty constructor, which references the empty base constructor.
         /// </summary>
@@ -34,6 +39,13 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             this.Controls = new List<GUIElement>();
             this.Priority = RenderingData.GetGUIContainerPriority();
             this.IsMovable = isMovable;
+        }
+
+        /// <param name="isHUD">If true, this container is part of the HUD and shouldn't be cleared from the screen. Ever.</param>
+        protected GUIContainer(string image, Rectangle drawingBounds, bool isMovable, bool isHUD)
+            : this(image, drawingBounds, isMovable)
+        {
+            this.IsHUD = isHUD;
         }
 
         public GUIContainer()

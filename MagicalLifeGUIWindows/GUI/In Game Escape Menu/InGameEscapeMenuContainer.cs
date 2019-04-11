@@ -12,7 +12,8 @@ namespace MagicalLifeGUIWindows.GUI.In
 
         public BackButton Back { get; private set; } = new BackButton();
 
-        public InGameEscapeMenuContainer() : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow, false)
+        public InGameEscapeMenuContainer()
+            : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow, false)
         {
             this.Controls.Add(this.Quit);
             this.Controls.Add(this.Save);

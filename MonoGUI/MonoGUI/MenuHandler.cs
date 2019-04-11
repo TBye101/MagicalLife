@@ -20,6 +20,7 @@ namespace MagicalLifeGUIWindows.GUI
 
         /// <summary>
         /// Displays the menu/popup.
+        ///         <paramref name="ignore"/>A container to not clear when popping up a new one, such as the in game escape menu.<paramref name="ignore"/>
         /// </summary>
         /// <param name="container"></param>
         public static void DisplayMenu(GUIContainer container)
@@ -66,10 +67,11 @@ namespace MagicalLifeGUIWindows.GUI
 
         /// <summary>
         /// Clears all menu steps previously stored.
+        /// <paramref name="ignore"/>A container to not clear, such as the in game GUI.<paramref name="ignore"/>
         /// </summary>
         public static void Clear()
         {
-            BoundHandler.GUIWindows.Clear();
+            BoundHandler.GUIWindows.RemoveAll(x => !x.IsHUD);
             Containers.Clear();
         }
     }
