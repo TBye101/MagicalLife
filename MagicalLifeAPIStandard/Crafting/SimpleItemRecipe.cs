@@ -133,7 +133,7 @@ namespace MagicalLifeAPI.Crafting
 
         public void Clicked()
         {
-            throw new NotImplementedException();//Need to come up with a recipe for some new item or something to test this with
+            throw new NotImplementedException();//Need to create some sort of recipe viewing window now.
         }
     }
 }

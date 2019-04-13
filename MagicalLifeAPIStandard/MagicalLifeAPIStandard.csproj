@@ -8,20 +8,24 @@
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Components\Generic\**" />
+    <Compile Remove="Components\Item\**" />
     <Compile Remove="Entity\Animal\**" />
     <Compile Remove="Entity\Entity Components\**" />
+    <EmbeddedResource Remove="Components\Generic\**" />
+    <EmbeddedResource Remove="Components\Item\**" />
     <EmbeddedResource Remove="Entity\Animal\**" />
     <EmbeddedResource Remove="Entity\Entity Components\**" />
+    <None Remove="Components\Generic\**" />
+    <None Remove="Components\Item\**" />
     <None Remove="Entity\Animal\**" />
     <None Remove="Entity\Entity Components\**" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Components\Generic\" />
-    <Folder Include="Components\Item\" />
     <Folder Include="World\Veggies\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="MonoGame.Framework.Portable" Version="3.7.0.1708" />
+    <PackageReference Include="MonoGame.Framework.Portable" Version="3.7.1.189" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="protobuf-net" Version="2.4.0" />
     <PackageReference Include="RoyT.AStar" Version="2.1.0" />

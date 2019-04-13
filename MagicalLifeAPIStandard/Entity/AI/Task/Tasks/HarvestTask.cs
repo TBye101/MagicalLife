@@ -92,7 +92,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
                 double amount = this.CalculatePercentHarvest(harvestSkill);
 
                 //Harvest whatever
-                List<World.Base.Item> drop = this.Harvestable.HarvestSomePercent(amount, this.Target);
+                List<Item> drop = this.Harvestable.HarvestSomePercent(amount, this.Target);
 
                 //Give out XP for the harvest skill.
                 skill.GainXP(1);

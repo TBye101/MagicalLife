@@ -4,6 +4,7 @@ using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
+using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Registry.ItemRegistry
@@ -14,6 +15,49 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
     public static class ItemFinder//TODO: Rework this to be faster, possibly by writing my own R-tree/other data structure
     {
         public static readonly float SearchDistance = 10000;
+
+        /// <summary>
+        /// Finds the item(s) closest to the <paramref name="mapLocation"/> that matches the <paramref name="itemID"/> that are not already reserved for a job.
+        /// Returns null if no result found.
+        /// </summary>
+        /// <param name="itemID"></param>
+        /// <param name="mapLocation"></param>
+        /// <returns>Returns the map location of the closest item of a specified spot.</returns>
+        public static Point2D FindNearestUnreserved(int itemID, Point2D mapLocation, int dimension)
+        {
+            List<Point2D> nearestChunks = FindNearestChunks(itemID, mapLocation, dimension);
+
+            if (nearestChunks != null)
+            {
+                RTree<Point2D> allNear = new RTree<Point2D>();
+
+                Chunk chunk;
+                foreach (Point2D item in nearestChunks)
+                {
+                    chunk = World.Data.World.GetChunk(dimension, item.X, item.Y);
+                    RTree<Point2D> items = chunk.Items[itemID];
+                    List<Point2D> result = items.Intersects(new Rectangle(0, 0, Chunk.Width, Chunk.Height));
+
+                    foreach (Point2D it in result)
+                    {
+                        Tile tile = World.Data.World.GetTile(dimension, it.X, it.Y);
+                        if (tile.Item != null && tile.Item.ReservedID == Guid.Empty)
+                        {
+                            allNear.Add(new Rectangle(it.X, it.Y, it.X, it.Y), it);
+                        }
+                    }
+                }
+
+                List<Point2D> closest = allNear.Nearest(new Point(mapLocation.X, mapLocation.Y), SearchDistance);
+
+                if (closest != null && closest.Count > 0)
+                {
+                    return closest[0];
+                }
+            }
+
+            return null;
+        }
 
         /// <summary>
         /// Finds the item(s) closest to the <paramref name="mapLocation"/> that matches the <paramref name="itemID"/>.
