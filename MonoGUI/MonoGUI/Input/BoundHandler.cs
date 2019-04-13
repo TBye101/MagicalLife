@@ -336,6 +336,7 @@ namespace MagicalLifeGUIWindows.Input
 
         /// <summary>
         /// Sets that container as the visible container, and gives it priority.
+        /// <paramref name="ignore"/>A container to not clear when popping up a new one, such as the in game escape menu.<paramref name="ignore"/>
         /// </summary>
         /// <param name="container"></param>
         public static void Popup(GUIContainer container)

@@ -18,7 +18,7 @@
         /// <summary>
         /// The width of the in game GUI container.
         /// </summary>
-        public static readonly int ContainerWidth = 1920;
+        public static readonly int ContainerWidth = 1710;
 
         /// <summary>
         /// The height of the in game GUI container.

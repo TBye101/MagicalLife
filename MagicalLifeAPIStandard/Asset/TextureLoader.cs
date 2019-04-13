@@ -79,6 +79,8 @@ namespace MagicalLifeAPI.Asset
 
         public static readonly string LogTexture1 = "Textures/Items/Log_1";
 
+        public static readonly string TextureWoodPlank = "Textures/Items/WoodPlank";
+
         #endregion Items
 
         #region Fonts
@@ -146,6 +148,7 @@ namespace MagicalLifeAPI.Asset
             this.TexturesToLoad.Add(TextureStoneRubble1);
             this.TexturesToLoad.Add(TextureStoneRubble2);
             this.TexturesToLoad.Add(LogTexture1);
+            this.TexturesToLoad.Add(TextureWoodPlank);
 
             this.TexturesToLoad.Add(OakStump);
             this.TexturesToLoad.Add(MapleStump);

@@ -8,7 +8,7 @@ namespace MagicalLifeAPI.Crafting
     /// <summary>
     /// All recipes implement this.
     /// </summary>
-    public interface IRecipe
+    public interface IRecipe : IActionBarItem
     {
         /// <summary>
         /// Returns the an example of the item that this recipe creates.
@@ -21,6 +21,7 @@ namespace MagicalLifeAPI.Crafting
         /// Must be consistent between games/loads. 
         /// </summary>
         /// <returns></returns>
+
         Guid GetUniqueID();
     }
 }

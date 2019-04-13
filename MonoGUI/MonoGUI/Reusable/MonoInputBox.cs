@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeGUIWindows.Input;
+using MagicalLifeGUIWindows.Map;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -113,7 +114,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
         private void LoadCarrotInformation(string font)
         {
-            this.Font = Game1.AssetManager.Load<SpriteFont>(font);
+            this.Font = RenderingData.AssetManagerClone.Load<SpriteFont>(font);
             Vector2 size = this.Font.MeasureString("|");
             this.CarrotWidth = (int)Math.Round(size.X);
             this.CarrotHeight = (int)Math.Round(size.Y);

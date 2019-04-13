@@ -32,7 +32,8 @@ namespace MagicalLifeMod.Core
                 new SpecificTextureLoader(),
                 new SettingsInitializer(),
                 new WorldGenerationRegistration(),
-                new ItemRegisterer()
+                new ItemRegisterer(),
+                new RecipeRegisterer()
             };
         }
     }

@@ -10,6 +10,7 @@ using System.Text;
 [assembly: InternalsVisibleTo("MagicalLifeModdingAPI")]
 [assembly: InternalsVisibleTo("MagicalLifeServerStandard")]
 [assembly: InternalsVisibleTo("MagicalLifeSettingsStandard")]
+[assembly: InternalsVisibleTo("MonoGUI")]
 
 namespace MagicalLifeAPI.Security
 {

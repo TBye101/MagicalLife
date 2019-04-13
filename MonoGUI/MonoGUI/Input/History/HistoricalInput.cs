@@ -2,7 +2,6 @@
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.GUI;
-using MagicalLifeGUIWindows.GUI.In;
 using System.Collections.Generic;
 
 namespace MagicalLifeGUIWindows.Input.History
@@ -34,7 +33,7 @@ namespace MagicalLifeGUIWindows.Input.History
 
         public HistoricalInput(ActionSelected selected)
         {
-            this.ActionSelected = InGameGUI.Selected;
+            this.ActionSelected = selected;
         }
 
         public HistoricalInput(Point2D Point2D, ActionSelected selected) : this(selected)

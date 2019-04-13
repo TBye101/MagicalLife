@@ -12,7 +12,7 @@ namespace MagicalLifeAPI.Registry.Recipe
     /// </summary>
     public static class RecipeRegistry
     {
-        public static MultiValueDictionary<Item, SimpleItemRecipe> ItemToRecipe { get; private set; } = new MultiValueDictionary<Item, SimpleItemRecipe>();
+        public static MultiValueDictionary<Item, IRecipe> ItemToRecipe { get; private set; } = new MultiValueDictionary<Item, IRecipe>();
 
         /// <summary>
         /// Registers a recipe with the game.

@@ -11,7 +11,7 @@ namespace MagicalLifeAPI.DataTypes
     /// A wrapper around dictionaries that allows for the simplification of having multiple values per key.
     /// </summary>
     [ProtoContract]
-    public class MultiValueDictionary<TKey, TValue>
+    public class MultiValueDictionary<TKey, TValue> : IEnumerable<KeyValuePair<TKey, List<TValue>>>
     {
         [ProtoMember(1)]
         private readonly Dictionary<TKey, List<TValue>> Data = new Dictionary<TKey, List<TValue>>();
@@ -24,7 +24,7 @@ namespace MagicalLifeAPI.DataTypes
             }
         }
 
-        public ICollection Keys
+        public ICollection<TKey> Keys
         {
             get
             {
@@ -32,7 +32,7 @@ namespace MagicalLifeAPI.DataTypes
             }
         }
 
-        public ICollection Values
+        public Dictionary<TKey, List<TValue>>.ValueCollection Values
         {
             get
             {
@@ -51,7 +51,16 @@ namespace MagicalLifeAPI.DataTypes
         public void Add(TKey key, TValue value)
         {
             this.Data.TryGetValue(key, out List<TValue> values);
-            values.Add(value);
+
+            if (values == null)
+            {
+                List<TValue> temp = new List<TValue> { value };
+                this.Data.Add(key, temp);
+            }
+            else
+            {
+                values.Add(value);
+            }
         }
 
         public void Add(KeyValuePair<TKey, TValue> item)
@@ -75,7 +84,7 @@ namespace MagicalLifeAPI.DataTypes
             return this.Data.ContainsKey(key);
         }
 
-        public IDictionaryEnumerator GetEnumerator()
+        public IEnumerator<KeyValuePair<TKey, List<TValue>>> GetEnumerator()
         {
             return this.Data.GetEnumerator();
         }
@@ -106,6 +115,11 @@ namespace MagicalLifeAPI.DataTypes
         public bool TryGetValue(TKey key, out List<TValue> value)
         {
             return this.Data.TryGetValue(key, out value);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.Data.GetEnumerator();
         }
     }
 }

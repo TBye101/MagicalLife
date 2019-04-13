@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.GUI;
+using MagicalLifeGUIWindows.GUI.Action_Menu;
 using MagicalLifeGUIWindows.GUI.In;
 
 namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
@@ -28,6 +29,11 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
         {
             //Show main menu.
             MasterLog.DebugWriteLine("Escape key pressed");
+
+            if (ActionMenu.AMenu.Visible == true)
+            {
+                BoundHandler.RemoveContainer(ActionMenu.AMenu);   
+            }
 
             if (World.Dimensions.Count > 0)
             {

@@ -65,6 +65,13 @@ namespace MagicalLifeAPI.World.Base
         public Guid ID { get; set; }
 
         /// <summary>
+        /// The ID of the job that this item is reserved for.
+        /// Empty Guid signifies that this item is not reserved for a job.
+        /// </summary>
+        [ProtoMember(10)]
+        public Guid ReservedID { get; set; }
+
+        /// <summary>
         ///
         /// </summary>
         /// <param name="name">The display name of the item.</param>
@@ -84,6 +91,7 @@ namespace MagicalLifeAPI.World.Base
             this.TextureName = textureName;
             this.ItemWeight = itemWeight;
             this.ID = Guid.NewGuid();
+            this.ReservedID = Guid.Empty;
             this.InitializeComponents();
             this.Validate();
         }

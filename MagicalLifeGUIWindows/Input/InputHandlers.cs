@@ -25,6 +25,8 @@ namespace MagicalLifeGUIWindows.Input
 
         public static ContainerDragHandler DragHandler { get; set; }
 
+        public static ActionMenuHandler ActionMenu { get; set; }
+
         public static void Initialize()
         {
             LivingMove = new LivingMoveOrderInputHandler();
@@ -36,6 +38,7 @@ namespace MagicalLifeGUIWindows.Input
             ChopAction = new ChopActionHandler();
             LivingMenuHandler = new LivingMenuHandler();
             DragHandler = new ContainerDragHandler();
+            ActionMenu = new ActionMenuHandler();
         }
     }
 }
