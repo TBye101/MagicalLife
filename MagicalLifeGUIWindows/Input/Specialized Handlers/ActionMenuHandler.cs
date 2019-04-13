@@ -17,9 +17,17 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
         private void KeyboardHandler_KeysPressed(object sender, Microsoft.Xna.Framework.Input.Keys e)
         {
+
             if (e == SettingsManager.Keybindings.Settings.OpenActionMenu)
             {
-                ActionMenu.Initialize();
+                if (BoundHandler.GUIWindows.Contains(ActionMenu.AMenu))
+                {
+                    BoundHandler.RemoveContainer(ActionMenu.AMenu);
+                }
+                else
+                {
+                    ActionMenu.Initialize();
+                }
             }
         }
     }
