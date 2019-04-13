@@ -92,7 +92,8 @@ namespace MagicalLifeAPI.Entity.AI.Task
                 foreach (Qualification qualification in item.Qualifications)
                 {
                     //Does the creature meet the criteria?
-                    if (!qualification.IsQualified(l))
+                    //Is the job ready to begin?
+                    if (!qualification.IsQualified(l) || !qualification.ArePreconditionsMet())
                     {
                         compatible = false;
                         break;

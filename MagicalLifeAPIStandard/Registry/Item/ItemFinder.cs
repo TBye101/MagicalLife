@@ -154,5 +154,41 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
             //Didn't find anything
             return null;
         }
+
+        /// <summary>
+        /// Returns true if there exists a certain item that is unreserved. 
+        /// </summary>
+        /// <param name="itemID"></param>
+        /// <param name="dimension"></param>
+        /// <param name="startingPoint"></param>
+        /// <returns></returns>
+        public static bool IsItemAvailible(int itemID, int dimension, Point2D startingPoint)
+        {
+            List<Point2D> nearestChunks = FindNearestChunks(itemID, startingPoint, dimension);
+
+            if (nearestChunks != null && nearestChunks.Count > 0)
+            {
+                RTree<Point2D> allNear = new RTree<Point2D>();
+
+                Chunk chunk;
+                foreach (Point2D item in nearestChunks)
+                {
+                    chunk = World.Data.World.GetChunk(dimension, item.X, item.Y);
+                    RTree<Point2D> items = chunk.Items[itemID];
+                    List<Point2D> result = items.Intersects(new Rectangle(0, 0, Chunk.Width, Chunk.Height));
+
+                    foreach (Point2D it in result)
+                    {
+                        Tile tile = World.Data.World.GetTile(dimension, it.X, it.Y);
+                        if (tile.Item != null && tile.Item.ReservedID == Guid.Empty)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            return false;
+        }
     }
 }

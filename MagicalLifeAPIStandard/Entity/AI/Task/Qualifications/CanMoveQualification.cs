@@ -12,6 +12,11 @@ namespace MagicalLifeAPI.Entity.AI.Task.Qualifications
         {
         }
 
+        public override bool ArePreconditionsMet()
+        {
+            return true;
+        }
+
         public override bool IsQualified(Living l)
         {
             return l.Movement.GetValue() > 0;

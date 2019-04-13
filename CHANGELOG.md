@@ -21,6 +21,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 *Added the new log texture
 *Skills/creature window now has an inventory tab
 *Zooming out now supported
+*Added the Action Bar
 
 #### Bugs
 *Surround sound now functions like it should
