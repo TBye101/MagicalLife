@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Entity;
+﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.World.Base;
 using ProtoBuf;
@@ -31,16 +32,23 @@ namespace MagicalLifeAPI.Crafting
         /// <param name="requiredItems"></param>
         /// <param name="exampleOutput"></param>
         [ProtoMember(3)]
-        private Item ExampleOutput;
+        private Item ExampleOutput { get; set; }
 
         [ProtoMember(4)]
-        private Guid ID;
+        private Guid ID { get; set; }
 
-        public SimpleItemRecipe(List<Item> requiredItems, Item exampleOutput, Guid constantGuid)
+        /// <summary>
+        /// Keywords that can be used to more easily find this recipe.
+        /// </summary>
+        [ProtoMember(5)]
+        private string[] RecipeKeywords { get; set; }
+
+        public SimpleItemRecipe(List<Item> requiredItems, Item exampleOutput, Guid constantGuid, string[] recipeKeywords)
         {
             this.RequiredItems = requiredItems;
             this.ExampleOutput = exampleOutput;
             this.ID = constantGuid;
+            this.RecipeKeywords = recipeKeywords;
         }
 
         /// <summary>
@@ -101,6 +109,31 @@ namespace MagicalLifeAPI.Crafting
         public Guid GetUniqueID()
         {
             return this.ID;
+        }
+
+        public int GetDisplayTextureID()
+        {
+            return AssetManager.NameToIndex[this.ExampleOutput.TextureName];
+        }
+
+        public string GetDisplayName()
+        {
+            return this.ExampleOutput.Name;
+        }
+
+        public string[] GetKeywords()
+        {
+            return this.RecipeKeywords;
+        }
+
+        public string GetModName()
+        {
+            return this.ExampleOutput.ModFrom;
+        }
+
+        public void Clicked()
+        {
+            throw new NotImplementedException();//Need to come up with a recipe for some new item or something to test this with
         }
     }
 }

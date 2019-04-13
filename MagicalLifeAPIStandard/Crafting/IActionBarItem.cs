@@ -29,12 +29,6 @@ namespace MagicalLifeAPI.Crafting
         string[] GetKeywords();
 
         /// <summary>
-        /// Should return the unique id of the mod this action bar item is from.
-        /// </summary>
-        /// <returns></returns>
-        string GetModID();
-
-        /// <summary>
         /// Should return the display name of the mod this action bar item is from.
         /// </summary>
         /// <returns></returns>

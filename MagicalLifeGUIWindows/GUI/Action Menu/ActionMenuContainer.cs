@@ -1,12 +1,16 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Crafting;
 using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Registry.Recipe;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.GUI.Reusable.Collections;
+using MagicalLifeAPI.World.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
 
 namespace MagicalLifeGUIWindows.GUI.Action_Menu
 {
@@ -30,6 +34,15 @@ namespace MagicalLifeGUIWindows.GUI.Action_Menu
 
         private void PopulateActionGrid()
         {
+            Rectangle zero = new Rectangle(0, 0, 0, 0);
+            foreach (KeyValuePair<Item, List<IRecipe>> item in RecipeRegistry.ItemToRecipe)
+            {
+                foreach (IRecipe item2 in item.Value)
+                {
+                    RenderableImage recipeImage = new RenderableImage(zero, item2.GetDisplayTextureID(), true);
+                    this.ActionGrid.Add(recipeImage);
+                }
+            }
         }
 
         public override string GetTextureName()
