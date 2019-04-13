@@ -3,6 +3,7 @@ using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeGUIWindows.GUI.Reusable.API;
+using MagicalLifeGUIWindows.GUI.Reusable.Event;
 using MagicalLifeGUIWindows.GUI.Reusable.Premade;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -56,12 +57,12 @@ namespace MagicalLifeGUIWindows.GUI.Reusable.Collections
         /// <summary>
         /// Raised whenever there is a click in this <see cref="ListBox"/>, and has a parameter of what the index of the item that was clicked on is.
         /// </summary>
-        public event EventHandler<int> ItemClick;
+        public event EventHandler<Point2D> ItemClick;
 
         /// <summary>
         /// Raised whenever there is a double click in this <see cref="ListBox"/>, and has a parameter of what the index of the item that was double clicked on is.
         /// </summary>
-        public event EventHandler<int> ItemDoubleClick;
+        public event EventHandler<Point2D> ItemDoubleClick;
 
         /// <param name="itemRenderCount">How many items should be displayed at any given time.</param>
         /// <param name="items">The items that will be displayed.</param>
@@ -78,10 +79,12 @@ namespace MagicalLifeGUIWindows.GUI.Reusable.Collections
             this.ClickEvent += this.ScrollableGrid_ClickEvent;
         }
 
-        private void ScrollableGrid_ClickEvent(object sender, Event.ClickEventArgs e)
+        private void ScrollableGrid_ClickEvent(object sender, ClickEventArgs e)
         {
-            this.SelectedIndex = ((e.MouseEventArgs.Position.Y + e.GUIContainer.DrawingBounds.Y) / this.ItemDisplayBounds.Y) - 1;
-            this.ItemClickHandler(this.SelectedIndex);
+            //this.SelectedIndex = ((e.MouseEventArgs.Position.Y + e.GUIContainer.DrawingBounds.Y) / this.ItemDisplayBounds.Y) - 1;
+            int y = (e.MouseEventArgs.Position.Y - e.GUIContainer.DrawingBounds.Y) / this.ItemDisplayBounds.Y;
+            int x = (e.MouseEventArgs.Position.X - e.GUIContainer.DrawingBounds.X) / this.ItemDisplayBounds.X;
+            this.ItemClickHandler(new Point2D(x, y), e);
         }
 
         private void InitializeItems()
@@ -105,8 +108,6 @@ namespace MagicalLifeGUIWindows.GUI.Reusable.Collections
         {
             int x = containerBounds.X + this.DrawingBounds.X;
             int y = containerBounds.Y + this.DrawingBounds.Y;
-
-            MasterLog.DebugWriteLine("Grid x: " + x.ToString());
 
             int length;
 
@@ -184,14 +185,16 @@ namespace MagicalLifeGUIWindows.GUI.Reusable.Collections
         /// Raises the dimension added event.
         /// </summary>
         /// <param name="e"></param>
-        private void ItemClickHandler(int e)
+        private void ItemClickHandler(Point2D indexClicked, ClickEventArgs args)
         {
-            this.ItemClick?.Invoke(this, e);
+            this.ItemClick?.Invoke(this, indexClicked);
+            this.Items[indexClicked.Y][indexClicked.X].Click(args.MouseEventArgs, args.GUIContainer);
         }
 
-        private void ItemDoubleClickHandler(int e)
+        private void ItemDoubleClickHandler(Point2D indexClicked, ClickEventArgs args)
         {
-            this.ItemDoubleClick?.Invoke(this, e);
+            this.ItemDoubleClick?.Invoke(this, indexClicked);
+            this.Items[indexClicked.Y][indexClicked.X].DoubleClick(args.MouseEventArgs, args.GUIContainer);
         }
     }
 }

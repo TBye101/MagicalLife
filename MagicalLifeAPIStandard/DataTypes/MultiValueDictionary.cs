@@ -51,7 +51,16 @@ namespace MagicalLifeAPI.DataTypes
         public void Add(TKey key, TValue value)
         {
             this.Data.TryGetValue(key, out List<TValue> values);
-            values.Add(value);
+
+            if (values == null)
+            {
+                List<TValue> temp = new List<TValue> { value };
+                this.Data.Add(key, temp);
+            }
+            else
+            {
+                values.Add(value);
+            }
         }
 
         public void Add(KeyValuePair<TKey, TValue> item)

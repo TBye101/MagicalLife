@@ -30,5 +30,23 @@ namespace MagicalLifeGUIWindows.GUI.Action_Menu
                 }
             }
         }
+
+        /// <summary>
+        /// The dimensions of the actual grid containing the action items.
+        /// </summary>
+        public static Rectangle ActionGridBounds
+        {
+            get
+            {
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
+                {
+                    case Resolution._2560x1440:
+                        return ActionMenuLayout2560x1440.ActionGridBounds;
+
+                    default:
+                        return ActionMenuLayout1920x1080.ActionGridBounds;
+                }
+            }
+        }
     }
 }

@@ -21,6 +21,7 @@ namespace MagicalLifeAPI.Crafting
         /// Must be consistent between games/loads. 
         /// </summary>
         /// <returns></returns>
+
         Guid GetUniqueID();
     }
 }

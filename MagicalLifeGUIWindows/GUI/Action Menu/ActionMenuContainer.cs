@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using MonoGUI.Game.Custom;
 
 namespace MagicalLifeGUIWindows.GUI.Action_Menu
 {
@@ -25,7 +26,7 @@ namespace MagicalLifeGUIWindows.GUI.Action_Menu
         {
             this.Visible = visible;
 
-            this.ActionGrid = new MonoGrid(new Point2D(32 ,32), ActionMenuLayout.ActionMenuLocation, int.MaxValue,
+            this.ActionGrid = new MonoGrid(new Point2D(32 ,32), ActionMenuLayout.ActionGridBounds, int.MaxValue,
                 true, TextureLoader.FontMainMenuFont12x, 5);
             this.PopulateActionGrid();
 
@@ -34,12 +35,12 @@ namespace MagicalLifeGUIWindows.GUI.Action_Menu
 
         private void PopulateActionGrid()
         {
-            Rectangle zero = new Rectangle(0, 0, 0, 0);
+            Rectangle zero = new Rectangle(0, 0, 32, 32);
             foreach (KeyValuePair<Item, List<IRecipe>> item in RecipeRegistry.ItemToRecipe)
             {
                 foreach (IRecipe item2 in item.Value)
                 {
-                    RenderableImage recipeImage = new RenderableImage(zero, item2.GetDisplayTextureID(), true);
+                    RenderableImage recipeImage = new RenderableIRecipe(zero, item2.GetDisplayTextureID(), true, item2);
                     this.ActionGrid.Add(recipeImage);
                 }
             }

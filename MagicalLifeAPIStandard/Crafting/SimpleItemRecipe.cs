@@ -18,7 +18,7 @@ namespace MagicalLifeAPI.Crafting
     public class SimpleItemRecipe : IRecipe
     {
         [ProtoMember(1)]
-        public List<Item> RequiredItems { get; internal set; }
+        public Item[] RequiredItems { get; internal set; }
 
         /// <summary>
         /// The itemID of the item that this recipe constructs.
@@ -43,7 +43,7 @@ namespace MagicalLifeAPI.Crafting
         [ProtoMember(5)]
         private string[] RecipeKeywords { get; set; }
 
-        public SimpleItemRecipe(List<Item> requiredItems, Item exampleOutput, Guid constantGuid, string[] recipeKeywords)
+        public SimpleItemRecipe(Item exampleOutput, Guid constantGuid, string[] recipeKeywords, params Item[] requiredItems)
         {
             this.RequiredItems = requiredItems;
             this.ExampleOutput = exampleOutput;
