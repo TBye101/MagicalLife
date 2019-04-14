@@ -11,7 +11,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Qualifications
     /// Determines whether an item of the specified type is unreserved in the world.
     /// </summary>
     [ProtoContract]
-    public class IsItemAvailible : Qualification
+    public class IsItemAvailibleQualification : Qualification
     {
         [ProtoMember(1)]
         protected int ItemID { get; set; }
@@ -21,7 +21,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Qualifications
 
         protected Point2D SearchLocation { get; set; } = new Point2D(0, 0);
 
-        public IsItemAvailible(int itemID, int dimension)
+        public IsItemAvailibleQualification(int itemID, int dimension)
         {
             this.ItemID = itemID;
             this.Dimension = dimension;

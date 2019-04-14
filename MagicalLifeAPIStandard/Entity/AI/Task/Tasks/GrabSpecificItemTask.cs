@@ -12,10 +12,11 @@ using System.Text;
 namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 {
     /// <summary>
-    /// Gets the nearest of a certain item.
+    /// Has the character pick up the item specified.
+    /// Reserves the item that is to be picked up.
     /// </summary>
     [ProtoContract]
-    public class GetItemTask : MagicalTask
+    public class GrabSpecificItemTask : MagicalTask
     {
         /// <summary>
         /// The task used to move to the nearest item.
@@ -27,43 +28,25 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         private bool MoveTaskCompleted;
 
         [ProtoMember(3)]
-        protected readonly int ItemID;
-
-        [ProtoMember(4)]
         protected Point2D ReservedItemLocation;
 
-        public GetItemTask(Guid boundID, Item item, int dimension) 
-            : base(Dependencies.None, boundID, GetQualifications(item.ItemID, dimension),
+        public GrabSpecificItemTask(Guid boundID, Point2D itemLocation, int dimension)
+            : base(Dependencies.None, boundID, GetQualifications(),
                   PriorityLayers.Default)
         {
-            this.ItemID = item.ItemID;
             this.MoveTaskCompleted = false;
+            this.ReserveItem(itemLocation, dimension);
+            this.ReservedItemLocation = itemLocation;
         }
 
-        public GetItemTask(Guid boundID, int itemID, int dimension)
-            : base(Dependencies.None, boundID, GetQualifications(itemID, dimension),
-                  PriorityLayers.Default)
+        protected GrabSpecificItemTask()
         {
-            this.ItemID = itemID;
-            this.MoveTaskCompleted = false;
+            //Protobuf-net constructor
         }
 
-        private static List<Qualification> GetQualifications(int itemID, int dimension)
+        private void ReserveItem(Point2D itemLocation, int dimension)
         {
-            return new List<Qualification>
-            {
-                new CanMoveQualification(),
-                new IsItemAvailible(itemID, dimension)
-            };
-        }
-
-        public override void MakePreparations(Living l)
-        {
-            ComponentSelectable location = l.GetComponent<ComponentSelectable>();
-            this.ReservedItemLocation = ItemFinder.FindNearestUnreserved(this.ItemID, location.MapLocation, l.Dimension);
-
-            //Reserve the item
-            Tile containing = World.Data.World.GetTile(l.Dimension, this.ReservedItemLocation.X, this.ReservedItemLocation.Y);
+            Tile containing = World.Data.World.GetTile(dimension, itemLocation.X, itemLocation.Y);
 
             if (containing.Item.ReservedID == Guid.Empty)
             {
@@ -71,9 +54,21 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             }
             else
             {
-                throw new UnexpectedStateException("An item was reserved unexpectedly");
+                throw new UnexpectedStateException("An item was unexpectedly reserved");
             }
+        }
 
+        private static List<Qualification> GetQualifications()
+        {
+            return new List<Qualification>
+            {
+                new CanMoveQualification(),
+            };
+        }
+
+        public override void MakePreparations(Living l)
+        {
+            //Setup the task to move to the reserved item
             this.Move = new MoveTask(this.BoundID, this.ReservedItemLocation);
             this.Move.Completed += this.Move_Completed;
             this.Move.MakePreparations(l);
@@ -94,7 +89,9 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             {
                 //Pick it up
                 Item pickedUp = ItemRemover.RemoveAllItems(this.ReservedItemLocation, l.Dimension);
+                pickedUp.ReservedID = Guid.Empty;
                 l.Inventory.AddItem(pickedUp);
+                this.CompleteTask();
             }
             else
             {

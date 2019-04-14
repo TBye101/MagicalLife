@@ -8,6 +8,8 @@ namespace MagicalLifeAPI.DataTypes
     [ProtoContract]
     public class Point2D
     {
+        public static readonly Point2D Zero = new Point2D(0, 0);
+
         [ProtoMember(1)]
         public int X { get; set; }
 
