@@ -115,6 +115,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
                 if (allCompatibleTasks.Count > 0)
                 {
                     MagicalTask task = allCompatibleTasks[0];
+                    task.MakePreparations(l);
                     this.AssignJob(l, task);
 
                     foreach (TaskDriver item in this.TaskDrivers)

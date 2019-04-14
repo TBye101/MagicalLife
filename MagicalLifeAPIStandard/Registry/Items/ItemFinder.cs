@@ -190,5 +190,56 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
 
             return false;
         }
+
+        /// <summary>
+        /// Locates a certain quantity of a requested item, and returns their locations.
+        /// Returns null if not enough items were found to satisfy the request.
+        /// </summary>
+        /// <returns></returns>
+        public static List<Point2D> LocateQuantityOfItem(int itemID, int quantityDesired, Point2D startingPoint, int dimension)
+        {
+            List<Point2D> nearestChunks = FindNearestChunks(itemID, startingPoint, dimension);
+
+            int quantityFound = 0;
+            List<Point2D> locations = new List<Point2D>();
+
+            if (nearestChunks != null)
+            {
+                RTree<Point2D> allNear = new RTree<Point2D>();
+
+                Chunk chunk;
+                foreach (Point2D item in nearestChunks)
+                {
+                    chunk = World.Data.World.GetChunk(dimension, item.X, item.Y);
+                    RTree<Point2D> items = chunk.Items[itemID];
+                    List<Point2D> result = items.Intersects(new Rectangle(0, 0, Chunk.Width, Chunk.Height));
+
+                    foreach (Point2D it in result)
+                    {
+                        allNear.Add(new Rectangle(it.X, it.Y, it.X, it.Y), it);
+                    }
+                }
+
+                List<Point2D> closest = allNear.Nearest(new Point(startingPoint.X, startingPoint.Y), SearchDistance);
+
+                int length = closest.Count;
+                for (int i = 0; i < length && quantityFound < quantityDesired; i++)
+                {
+                    Point2D item = closest[i];
+                    Tile containing = World.Data.World.GetTile(dimension, item.X, item.Y);
+                    locations.Add(item);
+                    quantityFound += containing.Item.CurrentlyStacked;
+                }
+            }
+
+            if (quantityFound >= quantityDesired)
+            {
+                return locations;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }
