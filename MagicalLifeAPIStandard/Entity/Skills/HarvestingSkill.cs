@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes.Attribute;
 using MagicalLifeAPI.Entity.Experience;
+using MagicalLifeAPI.Properties;
 using ProtoBuf;
 
 namespace MagicalLifeAPI.Entity.Skills
@@ -10,7 +11,7 @@ namespace MagicalLifeAPI.Entity.Skills
     [ProtoContract]
     public class HarvestingSkill : Skill
     {
-        private static readonly string PublicDisplayName = "Harvesting";
+        private static readonly string PublicDisplayName = API.Harvesting;
         public static readonly string InternalIDName = "HarvestingSkill";
 
         public HarvestingSkill(ComboAttribute skillAmount, bool learnable)

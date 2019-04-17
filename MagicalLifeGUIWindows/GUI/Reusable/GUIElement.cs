@@ -74,7 +74,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
                 BoundHandler.AddGUIElement(this);
             }
 
-            if (!string.IsNullOrEmpty(font))
+            if (!string.IsNullOrWhiteSpace(font))
             {
                 this.Font = Game1.AssetManager.Load<SpriteFont>(font);
             }

@@ -9,6 +9,7 @@ using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.World.Modifiers;
 using MagicalLifeAPI.Pathfinding;
+using MagicalLifeAPI.Properties;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Base;
@@ -126,14 +127,14 @@ namespace MagicalLifeAPI.Entity.Movement
             if (MathUtil.GetDistance(entity.TileLocation, destination.MapLocation) > entity.Movement.GetValue())
             {
                 //The character fell short of reaching the next tile
-                entity.TileLocation = new DataTypes.Point2DDouble((float)entity.TileLocation.X + xMove, (float)entity.TileLocation.Y + yMove);
+                entity.TileLocation = new Point2DDouble((float)entity.TileLocation.X + xMove, (float)entity.TileLocation.Y + yMove);
                 FootStepSound(entity, source);
             }
             else
             {
                 //The character made it to the next tile.
                 entity.MapLocation = destination.MapLocation;
-                entity.TileLocation = new DataTypes.Point2DDouble(destination.MapLocation.X, destination.MapLocation.Y);
+                entity.TileLocation = new Point2DDouble(destination.MapLocation.X, destination.MapLocation.Y);
                 entity.QueuedMovement.Dequeue();
                 movementPenalty = (float)MathUtil.GetDistance(entity.TileLocation, destination.MapLocation);
                 FootStepSound(entity, destination);
@@ -145,7 +146,7 @@ namespace MagicalLifeAPI.Entity.Movement
                 }
             }
 
-            entity.Movement.AddModifier(new ModifierDouble(movementPenalty, new TimeRemoveCondition(1), "Normal Movement"));
+            entity.Movement.AddModifier(new ModifierDouble(movementPenalty, new TimeRemoveCondition(1), API.NormalMovement));
         }
 
         private static void FootStepSound(Living living, Tile footStepsOn)

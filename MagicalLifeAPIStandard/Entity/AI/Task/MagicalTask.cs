@@ -63,6 +63,9 @@ namespace MagicalLifeAPI.Entity.AI.Task
         [ProtoMember(7)]
         public int TaskPriority { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="preRequisites">The dependencies of this task.</param>
         /// <param name="boundID">An ID used to determine if multiple tasks must be completed by the same worker.
         /// If multiple tasks have the same <paramref name="boundID"/>,
@@ -74,6 +77,9 @@ namespace MagicalLifeAPI.Entity.AI.Task
             this.TaskPriority = taskPriority;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="preRequisites">The dependencies of this task.</param>
         private MagicalTask(Dependencies preRequisites, List<Qualification> qualifications)
         {

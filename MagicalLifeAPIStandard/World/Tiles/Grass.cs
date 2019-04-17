@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Components.Resource;
 using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Properties;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Base;
 using ProtoBuf;
@@ -13,7 +14,7 @@ namespace MagicalLifeAPI.World.Tiles
     {
         public override ComponentRenderer CompositeRenderer { get; set; }
 
-        public static readonly string GrassTileName = "Grass";
+        public static readonly string GrassTileName = API.Grass;
 
         public AbstractTillable TillableBehavior { get; set; }
 

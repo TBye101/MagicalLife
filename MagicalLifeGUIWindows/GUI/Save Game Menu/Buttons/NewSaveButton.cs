@@ -32,7 +32,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
 
         private void NewSave()
         {
-            if(!string.IsNullOrEmpty(SaveGameMenu.menu.SaveInputBox.Text))
+            if(!string.IsNullOrWhiteSpace(SaveGameMenu.menu.SaveInputBox.Text))
             {
                 WorldStorage.SerializeWorld(SaveGameMenu.menu.SaveInputBox.Text, new WorldDiskSink());
             }

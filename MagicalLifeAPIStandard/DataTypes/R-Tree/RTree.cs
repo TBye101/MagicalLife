@@ -518,16 +518,14 @@ namespace MagicalLifeAPI.DataTypes.R
         /// </summary>
         private int getNextNodeId()
         {
-            int nextNodeId = 0;
             if (deletedNodeIds.Count > 0)
             {
-                nextNodeId = deletedNodeIds.Pop();
+                return deletedNodeIds.Pop();
             }
             else
             {
-                nextNodeId = 1 + highestUsedNodeId++;
+                return 1 + highestUsedNodeId++;
             }
-            return nextNodeId;
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Server;
+using MagicalLifeDedicatedServer.Properties;
 using MagicalLifeServer;
 using System.Collections.Generic;
 
@@ -8,18 +9,18 @@ namespace MagicalLifeDedicatedServer.API.Commands
     {
         public string getHelp()
         {
-            return "Starts the game";
+            return DedicatedServer.StartGameCommandDesc;
         }
 
         public string getName()
         {
-            return "startgame";
+            return "Startgame";
         }
 
         public void run(List<string> input)
         {
             Server.StartGame();
-            Util.WriteLine("Game started!");
+            Util.WriteLine(DedicatedServer.GameStarted);
         }
     }
 }

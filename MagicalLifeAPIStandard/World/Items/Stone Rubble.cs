@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.Properties;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Base;
 using ProtoBuf;
@@ -11,11 +12,11 @@ namespace MagicalLifeAPI.World.Items
     public class StoneRubble : Item
     {
         public StoneRubble(int count) :
-            base("Stone Rubble", 200,
-            new System.Collections.Generic.List<string>()
+            base(API.StoneRubble, 200,
+            new List<string>()
             {
-                "Stone Rubble",
-                "Is dropped when stone is mined"
+                API.StoneRubble,
+                API.StoneRubbleDesc
             },
             9999,
             count,

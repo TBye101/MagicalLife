@@ -24,6 +24,9 @@ namespace MagicalLifeAPI.Components.Resource
         [ProtoMember(3)]
         protected string CompletionSound { get; set; }
 
+        /// <summary>
+        ///
+        /// </summary>
         /// <param name="items">The items to drop when harvested.</param>
         /// <param name="harvestSound">The sound to play each harvest tick. Can be empty to play no sound.</param>
         /// <param name="completionSound">The sound to play when completely harvested/done. Can be empty to play no sound.</param>
@@ -40,7 +43,7 @@ namespace MagicalLifeAPI.Components.Resource
 
         public override List<Item> Harvested(Point2D position)
         {
-            if (this.CompletionSound != string.Empty)
+            if (!string.IsNullOrWhiteSpace(this.CompletionSound))
             {
                 FMODUtil.RaiseEvent(this.CompletionSound, "", 0, position);
             }
@@ -49,7 +52,7 @@ namespace MagicalLifeAPI.Components.Resource
 
         protected override List<Item> HarvestPercent(double percentMined, Point2D position)
         {
-            if (this.HarvestSound != string.Empty)
+            if (!string.IsNullOrWhiteSpace(this.HarvestSound))
             {
                 FMODUtil.RaiseEvent(this.HarvestSound, "", 0, position);
             }

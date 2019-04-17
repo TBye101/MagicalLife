@@ -55,6 +55,10 @@ namespace MagicalLifeAPI.Entity.AI.Task
                 {
                     return lessThan; //x is less than y.
                 }
+                /*
+                 * TODO: Change this possible Y is always equal to null
+                 * on this condition.
+                 */
                 if (x != null && y == null)
                 {
                     return greaterThan; //x is greater than y.

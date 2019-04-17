@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Components.Resource;
 using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Properties;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Base;
 
@@ -43,7 +44,7 @@ namespace MagicalLifeAPI.World.Tiles
 
         public override string GetName()
         {
-            return "Dirt";
+            return API.Dirt;
         }
 
         public static int GetTextureID()
@@ -54,18 +55,15 @@ namespace MagicalLifeAPI.World.Tiles
         private static string GetRandomDirtTexture()
         {
             int r = StaticRandom.Rand(0, 2);
-            string ret;
 
             if (r == 0)
             {
-                ret = TextureLoader.TextureDirt1;
+                return TextureLoader.TextureDirt1;
             }
             else
             {
-                ret = TextureLoader.TextureDirt2;
+                return TextureLoader.TextureDirt2;
             }
-
-            return ret;
         }
     }
 }

@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.GUI;
+using MagicalLifeAPI.Properties;
 using MagicalLifeAPI.Visual.Rendering.Animation;
 using MagicalLifeAPI.World.Items;
 using MagicalLifeSettings;
@@ -45,7 +46,7 @@ namespace MagicalLifeAPI.Entity.Humanoid
         public override AbstractVisual Visual { get; set; }
 
         public Human(int health, float movementSpeed, Point2D location, int dimension, Guid playerID, string creatureName)
-            : base(health, movementSpeed, location, dimension, playerID, "Human", creatureName)
+            : base(health, movementSpeed, location, dimension, playerID, API.Human, creatureName)
         {
             Filing.Logging.MasterLog.DebugWriteLine("Living spawned at: " + location.ToString());
             this.Visual = new AnimatedTexture(RenderLayer.Character, this.GetSequences(),

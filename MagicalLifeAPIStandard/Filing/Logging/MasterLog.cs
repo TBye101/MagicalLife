@@ -10,11 +10,12 @@ namespace MagicalLifeAPI.Filing.Logging
     public static class MasterLog
     {
         private static readonly string LogPath = FileSystemManager.InstanceRootFolder + Path.DirectorySeparatorChar + "MasterLog.txt";
-        private static TextWriter Writer;
+
+        //private static TextWriter Writer;
 
         public static void Initialize()
         {
-            Writer = new StreamWriter(LogPath, true);
+           // Writer = new StreamWriter(LogPath, true);
         }
 
         /// <summary>
@@ -25,8 +26,14 @@ namespace MagicalLifeAPI.Filing.Logging
         public static void DebugWriteLine(string msg)
         {
             string time = DateTime.UtcNow.ToString("[yyyy-MM-dd HH:mm:ss.fff]");
-            Writer.WriteLine(time + " [DBG]: " + msg);
-            Writer.Flush();
+            using (StreamWriter Writer = new StreamWriter(LogPath, true))
+            {
+                Writer.WriteLine(time + " [DBG]: " + msg);
+                Writer.Flush();
+            }
+            //Writer.WriteLine(time + " [DBG]: " + msg);
+            //Writer.Flush();
+
         }
 
         [Conditional("DEBUG")]
@@ -44,8 +51,7 @@ namespace MagicalLifeAPI.Filing.Logging
             {
                 DebugWriteLine(e.InnerException, "Inner exception: ");
             }
-
-            Writer.Flush();
+            //Writer.Flush();
         }
     }
 }

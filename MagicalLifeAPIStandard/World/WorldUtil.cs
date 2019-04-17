@@ -115,7 +115,7 @@ namespace MagicalLifeAPI.World
         /// <returns></returns>
         public static Point2D FindRandomLocation(int dimension)
         {
-            Dimension dim = World.Data.World.Dimensions[dimension];
+            Dimension dim = Data.World.Dimensions[dimension];
 
             //The coordinates of the random chunk
             int randomChunkX = StaticRandom.Rand(0, dim.Width);
@@ -135,7 +135,7 @@ namespace MagicalLifeAPI.World
             }
             else
             {
-                return WorldUtil.FindRandomLocation(dimension);
+                return FindRandomLocation(dimension);
             }
         }
 
@@ -150,9 +150,9 @@ namespace MagicalLifeAPI.World
             HumanFactory humanFactory = new HumanFactory();
             Human human = humanFactory.GenerateHuman(randomLocation, dimension, playerID);
 
-            World.Data.World.GetChunkByTile(dimension, randomLocation.X, randomLocation.Y).Creatures.Add(human.ID, human);
+            Data.World.GetChunkByTile(dimension, randomLocation.X, randomLocation.Y).Creatures.Add(human.ID, human);
 
-            if (World.Data.World.Mode == Networking.EngineMode.ServerOnly)
+            if (Data.World.Mode == Networking.EngineMode.ServerOnly)
             {
                 ServerSendRecieve.SendAll(new WorldModifierMessage(new LivingCreatedModifier(human)));
             }

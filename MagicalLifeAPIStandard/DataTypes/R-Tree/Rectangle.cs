@@ -37,7 +37,7 @@ namespace MagicalLifeAPI.DataTypes.R
     {
         /// <summary>
         /// Number of dimensions in a rectangle. In theory this
-        /// could be exended to three or more dimensions.
+        /// could be extended to three or more dimensions.
         /// </summary>
         internal const int DIMENSIONS = 3;
 
