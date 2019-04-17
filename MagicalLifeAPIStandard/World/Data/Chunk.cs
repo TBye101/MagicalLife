@@ -85,7 +85,7 @@ namespace MagicalLifeAPI.World.Data
             living = null;
             IEnumerable<KeyValuePair<Guid, Living>> result = this.Creatures.Where(x => Point2D.Equals(x.Value.MapLocation));
 
-            if (result.Count() != 0)
+            if (result.Any())
             {
                 living = result.ElementAt(0).Value;
                 return true;

@@ -54,6 +54,9 @@ namespace MagicalLifeAPI.World.Base
         [ProtoMember(6)]
         public string TextureName { get; set; }
 
+        [ProtoMember(7)]
+        public int Durability { get; set; }
+
         [ProtoMember(9)]
         public double ItemWeight { get; set; }
 
@@ -70,6 +73,7 @@ namespace MagicalLifeAPI.World.Base
         protected Item(string name, int durability, List<string> lore, int stackableLimit, int count, Type itemType, string textureName, double itemWeight)
         {
             this.Name = name;
+            this.Durability = durability;
             this.Lore = lore;
             this.StackableLimit = stackableLimit;
             this.CurrentlyStacked = count;

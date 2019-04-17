@@ -6,6 +6,7 @@ using MagicalLifeClient;
 using MagicalLifeGUIWindows.GUI.In;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;
+using MagicalLifeGUIWindows.Properties;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 
@@ -13,7 +14,7 @@ namespace MagicalLifeGUIWindows.GUI.Join
 {
     public class JoinButton : MonoButton
     {
-        public JoinButton() : base(TextureLoader.GUIMenuBackground, GetDisplayArea(), true, "Join Game")
+        public JoinButton() : base(TextureLoader.GUIMenuBackground, GetDisplayArea(), true, Resources.JoinGame)
         {
             this.ClickEvent += this.JoinButton_ClickEvent;
         }

@@ -88,6 +88,9 @@ namespace MagicalLifeGUIWindows.Rendering.Map
             DrawEntities(dimension, chunk);
         }
 
+        /*
+         * TODO : Probably do something with the dimension variable
+         */
         public static void DrawEntities(int dimension, Chunk chunk)
         {
             int length = chunk.Creatures.Count;

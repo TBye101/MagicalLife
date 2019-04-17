@@ -42,7 +42,7 @@ namespace MagicalLifeAPI.Filing.Logging
 
             if (e.InnerException != null)
             {
-                DebugWriteLine(e, "Inner exception: ");
+                DebugWriteLine(e.InnerException, "Inner exception: ");
             }
 
             Writer.Flush();
