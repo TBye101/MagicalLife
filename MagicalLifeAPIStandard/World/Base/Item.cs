@@ -54,7 +54,7 @@ namespace MagicalLifeAPI.World.Base
         [ProtoMember(6)]
         public string TextureName { get; set; }
 
-        [ProtoMember(7)]
+        [ProtoMember(10)]
         public int Durability { get; set; }
 
         [ProtoMember(9)]
