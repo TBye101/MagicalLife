@@ -13,7 +13,7 @@ namespace MagicalLifeAPI.World.Items
     {
         public StoneRubble(int count) :
             base(API.StoneRubble, 200,
-            new List<string>()
+            new List<string>
             {
                 API.StoneRubble,
                 API.StoneRubbleDesc
