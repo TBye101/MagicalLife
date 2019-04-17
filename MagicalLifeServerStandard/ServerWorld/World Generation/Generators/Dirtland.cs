@@ -43,7 +43,7 @@ namespace MagicalLifeServer.ServerWorld.World
             return ret;
         }
 
-        protected override void GenerateDetails(ProtoArray<Chunk> map, Random r)
+        protected override void GenerateDetails(ProtoArray<Chunk> map, Random random)
         {
             int chunkWidth = map.Width;
             int chunkHeight = map.Height;

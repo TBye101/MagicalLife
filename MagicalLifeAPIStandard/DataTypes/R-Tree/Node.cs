@@ -120,7 +120,7 @@ namespace MagicalLifeAPI.DataTypes.R
         {
             if (mbr.edgeOverlaps(deletedRectangle))
             {
-                mbr.set(entries[0].min, entries[0].max);
+                mbr.Set(entries[0].min, entries[0].max);
 
                 for (int i = 1; i < entryCount; i++)
                 {

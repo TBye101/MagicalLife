@@ -54,9 +54,9 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             return new Dependencies(deps);
         }
 
-        public override void MakePreparations(Living l)
+        public override void MakePreparations(Living living)
         {
-            Tile tile = World.Data.World.GetTile(l.Dimension, this.Target.X, this.Target.Y);
+            Tile tile = World.Data.World.GetTile(living.Dimension, this.Target.X, this.Target.Y);
             this.Harvestable = tile.Resources;
             if (tile.Resources == null)
             {

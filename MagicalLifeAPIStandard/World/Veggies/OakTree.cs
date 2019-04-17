@@ -8,7 +8,7 @@ namespace MagicalLifeAPI.World.Veggies
     /// </summary>
     public class OakTree : Vegetation
     {
-        public OakTree() : base(API.OakTree)
+        public OakTree() : base(Lang.OakTree)
         {
             //this.IsDorment = false;
             //this.MovementCost = .2;

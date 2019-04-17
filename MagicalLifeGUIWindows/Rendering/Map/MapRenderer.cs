@@ -116,7 +116,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
                 Texture2D texture = AssetManager.Textures[tile.Item.TextureIndex];
                 MapDrawer.Draw(texture, target, RenderLayer.Items);
 
-                ItemCountBounds.X = target.Location.X + TileSize.X / 2;
+                ItemCountBounds.X = target.Location.X + (TileSize.X / 2);
                 ItemCountBounds.Y = target.Location.Y + TileSize.Y;
 
                 MapDrawer.DrawText(tile.Item.CurrentlyStacked.ToString(), ItemCountBounds,

@@ -14,7 +14,7 @@ namespace MagicalLifeAPI.World.Tiles
     {
         public override ComponentRenderer CompositeRenderer { get; set; }
 
-        public static readonly string GrassTileName = API.Grass;
+        public static readonly string GrassTileName = Lang.Grass;
 
         public AbstractTillable TillableBehavior { get; set; }
 

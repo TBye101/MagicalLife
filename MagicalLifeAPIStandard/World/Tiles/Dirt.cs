@@ -44,7 +44,7 @@ namespace MagicalLifeAPI.World.Tiles
 
         public override string GetName()
         {
-            return API.Dirt;
+            return Lang.Dirt;
         }
 
         public static int GetTextureID()

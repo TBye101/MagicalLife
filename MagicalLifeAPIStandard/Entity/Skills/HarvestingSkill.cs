@@ -11,7 +11,7 @@ namespace MagicalLifeAPI.Entity.Skills
     [ProtoContract]
     public class HarvestingSkill : Skill
     {
-        private static readonly string PublicDisplayName = API.Harvesting;
+        private static readonly string PublicDisplayName = Lang.Harvesting;
         public static readonly string InternalIDName = "HarvestingSkill";
 
         public HarvestingSkill(ComboAttribute skillAmount, bool learnable)

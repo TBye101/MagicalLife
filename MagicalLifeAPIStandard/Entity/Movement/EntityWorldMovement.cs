@@ -146,7 +146,7 @@ namespace MagicalLifeAPI.Entity.Movement
                 }
             }
 
-            entity.Movement.AddModifier(new ModifierDouble(movementPenalty, new TimeRemoveCondition(1), API.NormalMovement));
+            entity.Movement.AddModifier(new ModifierDouble(movementPenalty, new TimeRemoveCondition(1), Lang.NormalMovement));
         }
 
         private static void FootStepSound(Living living, Tile footStepsOn)

@@ -20,14 +20,35 @@
 // Ported to C# By Dror Gluska, April 9th, 2009
 
 using System;
+using System.Security.AccessControl;
 using System.Text;
 
 namespace MagicalLifeAPI.DataTypes.R
 {
-    public struct dimension
+    public struct Dimension
     {
         public float max;
         public float min;
+
+        public override bool Equals(object obj)
+        {
+            return obj is Dimension dimension && this == dimension;
+        }
+
+        public override int GetHashCode()
+        {
+            return max.GetHashCode() ^ min.GetHashCode();
+        }
+
+        public static bool operator ==(Dimension left, Dimension right)
+        {
+            return left.max == right.max && left.min == right.min;
+        }
+
+        public static bool operator !=(Dimension left, Dimension right)
+        {
+            return !(left == right);
+        }
     }
 
     /// <summary>
@@ -64,7 +85,7 @@ namespace MagicalLifeAPI.DataTypes.R
         {
             min = new float[DIMENSIONS];
             max = new float[DIMENSIONS];
-            set(x1, y1, x2, y2);
+            Set(x1, y1, x2, y2);
         }
 
         /// <summary>
@@ -83,7 +104,7 @@ namespace MagicalLifeAPI.DataTypes.R
             this.min = new float[DIMENSIONS];
             this.max = new float[DIMENSIONS];
 
-            set(min, max);
+            Set(min, max);
         }
 
         /// <summary>
@@ -95,7 +116,7 @@ namespace MagicalLifeAPI.DataTypes.R
         /// <param name="y2">coordinate of the opposite corner</param>
         /// <param name="z1">coordinate of any corner of the rectangle</param>
         /// <param name="z2">coordinate of the opposite corner</param>
-        internal void set(float x1, float y1, float x2, float y2)
+        internal void Set(float x1, float y1, float x2, float y2)
         {
             min[0] = Math.Min(x1, x2);
             min[1] = Math.Min(y1, y2);
@@ -108,11 +129,11 @@ namespace MagicalLifeAPI.DataTypes.R
         /// <para>probable dimensions:</para>
         /// <para>X = 0, Y = 1, Z = 2</para>
         /// </summary>
-        public dimension? get(int dimension)
+        public Dimension? get(int dimension)
         {
             if ((min.Length >= dimension) && (max.Length >= dimension))
             {
-                dimension retval = new dimension();
+                Dimension retval = new Dimension();
                 retval.min = min[dimension];
                 retval.max = max[dimension];
                 return retval;
@@ -125,10 +146,10 @@ namespace MagicalLifeAPI.DataTypes.R
         /// </summary>
         /// <param name="min">min array containing the minimum value for each dimension; ie { min(x), min(y) }</param>
         /// <param name="max">max array containing the maximum value for each dimension; ie { max(x), max(y) }</param>
-        internal void set(float[] min, float[] max)
+        internal void Set(float[] min, float[] max)
         {
-            System.Array.Copy(min, 0, this.min, 0, DIMENSIONS);
-            System.Array.Copy(max, 0, this.max, 0, DIMENSIONS);
+            Array.Copy(min, 0, this.min, 0, DIMENSIONS);
+            Array.Copy(max, 0, this.max, 0, DIMENSIONS);
         }
 
         /// <summary>
@@ -161,7 +182,7 @@ namespace MagicalLifeAPI.DataTypes.R
         /// </summary>
         /// <param name="r">The rectangle that might intersect this rectangle</param>
         /// <returns>true if the rectangles intersect, false if they do not intersect</returns>
-        internal bool intersects(Rectangle r)
+        internal bool Intersects(Rectangle r)
         {
             // Every dimension must intersect. If any dimension
             // does not intersect, return false immediately.
@@ -338,11 +359,11 @@ namespace MagicalLifeAPI.DataTypes.R
         }
 
         /// <summary>
-        /// Find the the union of this rectangle and the passed rectangle.
+        /// Find the union of this rectangle and the passed rectangle.
         /// Neither rectangle is altered
         /// </summary>
         /// <param name="r">The rectangle to union with this rectangle</param>
-        internal Rectangle union(Rectangle r)
+        internal Rectangle Union(Rectangle r)
         {
             Rectangle union = this.copy();
             union.add(r);
@@ -410,7 +431,7 @@ namespace MagicalLifeAPI.DataTypes.R
         /// if they both have the same bounds.
         /// </param>
         /// <returns></returns>
-        internal bool sameObject(object o)
+        internal bool SameObject(object o)
         {
             return base.Equals(o);
         }

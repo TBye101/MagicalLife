@@ -38,7 +38,7 @@ namespace MagicalLifeAPI.Components.Resource
             }
             else
             {
-                return null;
+                return default;
             }
         }
 
