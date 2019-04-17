@@ -22,7 +22,7 @@ namespace MagicalLifeAPI.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Lang {
+    internal class Lang {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,10 +36,10 @@ namespace MagicalLifeAPI.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MagicalLifeLang.Properties.Lang", typeof(Lang).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MagicalLifeAPI.Properties.Lang", typeof(Lang).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace MagicalLifeAPI.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace MagicalLifeAPI.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Dirt.
         /// </summary>
-        public static string Dirt {
+        internal static string Dirt {
             get {
                 return ResourceManager.GetString("Dirt", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace MagicalLifeAPI.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Grass.
         /// </summary>
-        public static string Grass {
+        internal static string Grass {
             get {
                 return ResourceManager.GetString("Grass", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace MagicalLifeAPI.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Harvesting.
         /// </summary>
-        public static string Harvesting {
+        internal static string Harvesting {
             get {
                 return ResourceManager.GetString("Harvesting", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace MagicalLifeAPI.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Harvesting Skill.
         /// </summary>
-        public static string HarvestingSkill {
+        internal static string HarvestingSkill {
             get {
                 return ResourceManager.GetString("HarvestingSkill", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace MagicalLifeAPI.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Human.
         /// </summary>
-        public static string Human {
+        internal static string Human {
             get {
                 return ResourceManager.GetString("Human", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace MagicalLifeAPI.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Log.
         /// </summary>
-        public static string Log {
+        internal static string Log {
             get {
                 return ResourceManager.GetString("Log", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace MagicalLifeAPI.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Maple Tree.
         /// </summary>
-        public static string MapleTree {
+        internal static string MapleTree {
             get {
                 return ResourceManager.GetString("MapleTree", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace MagicalLifeAPI.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Normal Movement.
         /// </summary>
-        public static string NormalMovement {
+        internal static string NormalMovement {
             get {
                 return ResourceManager.GetString("NormalMovement", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace MagicalLifeAPI.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Oak Tree.
         /// </summary>
-        public static string OakTree {
+        internal static string OakTree {
             get {
                 return ResourceManager.GetString("OakTree", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace MagicalLifeAPI.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Pine Tree.
         /// </summary>
-        public static string PineTree {
+        internal static string PineTree {
             get {
                 return ResourceManager.GetString("PineTree", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace MagicalLifeAPI.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Stone.
         /// </summary>
-        public static string Stone {
+        internal static string Stone {
             get {
                 return ResourceManager.GetString("Stone", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace MagicalLifeAPI.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Stone Rubble.
         /// </summary>
-        public static string StoneRubble {
+        internal static string StoneRubble {
             get {
                 return ResourceManager.GetString("StoneRubble", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace MagicalLifeAPI.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Is dropped when stone is mined.
         /// </summary>
-        public static string StoneRubbleDesc {
+        internal static string StoneRubbleDesc {
             get {
                 return ResourceManager.GetString("StoneRubbleDesc", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace MagicalLifeAPI.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Tilled Dirt.
         /// </summary>
-        public static string TilledDirt {
+        internal static string TilledDirt {
             get {
                 return ResourceManager.GetString("TilledDirt", resourceCulture);
             }
