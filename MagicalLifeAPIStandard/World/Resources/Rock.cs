@@ -18,7 +18,7 @@ namespace MagicalLifeAPI.World.Resources
     {
         private AbstractVisual visual;
 
-        public static readonly string StoneName = API.Stone;
+        public static readonly string StoneName = Lang.Stone;
 
         public override AbstractHarvestable HarvestingBehavior { get; set; }
 

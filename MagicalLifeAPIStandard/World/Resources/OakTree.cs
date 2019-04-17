@@ -16,7 +16,7 @@ namespace MagicalLifeAPI.World.Resources.Tree
     [ProtoContract]
     public class OakTree : TreeBase
     {
-        private static readonly string Name = API.OakTree;
+        private static readonly string Name = Lang.OakTree;
         public static readonly int Durabilitie = 20;
 
         public static readonly int XOffset = Tile.GetTileSize().X / -2;

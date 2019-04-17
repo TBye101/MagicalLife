@@ -16,7 +16,7 @@ namespace MagicalLifeAPI.World.Resources
     [ProtoContract]
     public class MapleTree : TreeBase
     {
-        private static readonly string Name = API.MapleTree;
+        private static readonly string Name = Lang.MapleTree;
         public static readonly int Durabilitie = 20;
 
         public static readonly int XOffset = Tile.GetTileSize().X / -2;
