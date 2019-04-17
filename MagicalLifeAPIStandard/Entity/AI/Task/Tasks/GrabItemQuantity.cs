@@ -63,6 +63,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         public override void Tick(Living l)
         {
+            this.CompleteTask();
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Entity;
+using MagicalLifeAPI.Entity.AI.Task;
+using MagicalLifeAPI.Entity.AI.Task.Tasks;
 using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.World.Base;
 using ProtoBuf;
@@ -134,6 +136,11 @@ namespace MagicalLifeAPI.Crafting
         public void Clicked()
         {
             throw new NotImplementedException();//Need to create some sort of recipe viewing window now.
+        }
+
+        public void SpecialClicked()
+        {
+            TaskManager.Manager.AddTask(new CraftSimpleItemTask(Guid.NewGuid(), this, 1));
         }
     }
 }

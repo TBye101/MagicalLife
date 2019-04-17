@@ -1,32 +1,53 @@
-﻿using System;
+﻿using MagicalLifeAPI.Crafting;
+using MagicalLifeAPI.World.Base;
+using ProtoBuf;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 {
+    [ProtoContract]
     public class CraftSimpleItemTask : MagicalTask
     {
-        protected CraftSimpleItemTask()
+        /// <summary>
+        /// The recipe used to craft a item.
+        /// </summary>
+        [ProtoMember(1)]
+        protected SimpleItemRecipe SimpleRecipe { get; set; }
+
+        [ProtoMember(2)]
+        protected int Quantity { get; set; }
+
+        public CraftSimpleItemTask(Guid boundID, SimpleItemRecipe simpleRecipe, int quantity)
+            : base(Dependencies.None, boundID, new List<Qualification>(), PriorityLayers.Default)
         {
+            this.SimpleRecipe = simpleRecipe;
+            this.Quantity = quantity;
         }
 
-        public CraftSimpleItemTask(Dependencies preRequisites, Guid boundID, List<Qualification> qualifications, int taskPriority) : base(preRequisites, boundID, qualifications, taskPriority)
+        protected CraftSimpleItemTask()
         {
+            //Protobuf-net constructor
         }
 
         public override void MakePreparations(Living l)
         {
-            throw new NotImplementedException();
+            foreach (Item item in this.SimpleRecipe.RequiredItems)
+            {
+                this.Dependencies.PreRequisite.Add(new GrabItemQuantity(this.BoundID, item, item.CurrentlyStacked * this.Quantity));
+            }
         }
 
         public override void Reset()
         {
-            throw new NotImplementedException();
         }
 
         public override void Tick(Living l)
         {
-            throw new NotImplementedException();
+            Item craft = this.SimpleRecipe.Craft(l.Inventory, this.Quantity);
+            l.Inventory.AddItem(craft);
+            this.CompleteTask();
         }
     }
 }

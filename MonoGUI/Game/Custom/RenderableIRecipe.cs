@@ -1,8 +1,11 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Crafting;
 using MagicalLifeGUIWindows.GUI.Reusable;
+using MagicalLifeGUIWindows.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using MonoGame.Extended.Input.InputListeners;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -22,7 +25,14 @@ namespace MonoGUI.Game.Custom
 
         private void RenderableIRecipe_ClickEvent(object sender, MagicalLifeGUIWindows.GUI.Reusable.Event.ClickEventArgs e)
         {
-            this.BarItem.Clicked();
+            if (Keyboard.GetState().IsKeyDown(Keys.LeftShift))
+            {
+                this.BarItem.SpecialClicked();
+            }
+            else
+            {
+                this.BarItem.Clicked();
+            }
         }
 
         public RenderableIRecipe(Rectangle bounds, string image, bool isContained, IActionBarItem actionBarItem) : base(bounds, image, isContained)
