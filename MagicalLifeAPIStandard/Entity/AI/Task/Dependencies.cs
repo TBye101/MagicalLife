@@ -29,14 +29,23 @@ namespace MagicalLifeAPI.Entity.AI.Task
             }
         }
 
+        protected Dependencies()
+        {
+            //Protobuf-net constructor
+        }
+
         private void Item_Completed(MagicalTask task)
         {
             this.PreRequisite.Remove(task);
         }
 
-        public Dependencies()
+        /// <summary>
+        /// Creates an empty dependencies object. For use when a task doesn't have dependencies.
+        /// </summary>
+        /// <returns></returns>
+        public static Dependencies CreateEmpty()
         {
-            //Protobuf-net constructor.
+            return new Dependencies(new List<MagicalTask>());
         }
     }
 }

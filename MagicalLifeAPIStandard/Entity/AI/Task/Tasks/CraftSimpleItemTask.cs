@@ -20,7 +20,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         protected int Quantity { get; set; }
 
         public CraftSimpleItemTask(Guid boundID, SimpleItemRecipe simpleRecipe, int quantity)
-            : base(Dependencies.None, boundID, new List<Qualification>(), PriorityLayers.Default)
+            : base(Dependencies.CreateEmpty(), boundID, new List<Qualification>(), PriorityLayers.Default)
         {
             this.SimpleRecipe = simpleRecipe;
             this.Quantity = quantity;

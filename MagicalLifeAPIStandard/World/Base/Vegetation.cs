@@ -22,6 +22,7 @@ namespace MagicalLifeAPI.World.Base
         /// </summary>
         /// <param name="name">The name of this vegetation.</param>
         protected Vegetation(string name, int durability, ComponentHarvestable harvestBehavior)
+            : base(name, durability, harvestBehavior)
         {
             this.Name = name;
         }

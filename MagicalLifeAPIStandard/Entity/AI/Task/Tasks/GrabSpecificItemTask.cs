@@ -31,7 +31,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         protected Point2D ReservedItemLocation;
 
         public GrabSpecificItemTask(Guid boundID, Point2D itemLocation, int dimension)
-            : base(Dependencies.None, boundID, GetQualifications(),
+            : base(Dependencies.CreateEmpty(), boundID, GetQualifications(),
                   PriorityLayers.Default)
         {
             this.MoveTaskCompleted = false;

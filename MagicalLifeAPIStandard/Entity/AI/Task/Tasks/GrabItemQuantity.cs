@@ -22,7 +22,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         private int Amount;
 
         public GrabItemQuantity(Guid boundID, int itemID, int amount)
-            : base(Dependencies.None, boundID, GetQualifications(), PriorityLayers.Default)
+            : base(Dependencies.CreateEmpty(), boundID, GetQualifications(), PriorityLayers.Default)
         {
             this.ItemID = itemID;
             this.Amount = amount;
