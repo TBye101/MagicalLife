@@ -7,13 +7,14 @@ namespace MagicalLifeAPI.Filing.Logging
     /// <summary>
     /// The master log class where we log everything that happens, that isn't historical/statistical information.
     /// </summary>
-    public static class MasterLog
+    public class MasterLog : IDisposable
     {
         private static readonly string LogPath = FileSystemManager.InstanceRootFolder + Path.DirectorySeparatorChar + "MasterLog.txt";
+        private static TextWriter Writer;
 
         public static void Initialize()
         {
-            //This was to initialize the StreamWriter that was never disposed.
+             Writer = new StreamWriter(LogPath, true);
         }
 
         /// <summary>
@@ -24,11 +25,8 @@ namespace MagicalLifeAPI.Filing.Logging
         public static void DebugWriteLine(string msg)
         {
             string time = DateTime.UtcNow.ToString("[yyyy-MM-dd HH:mm:ss.fff]");
-            using (StreamWriter Writer = new StreamWriter(LogPath, true))
-            {
-                Writer.WriteLine(time + " [DBG]: " + msg);
-                Writer.Flush();
-            }
+            Writer.WriteLine(time + " [DBG]: " + msg);
+            Writer.Flush();
         }
 
         [Conditional("DEBUG")]
@@ -47,5 +45,36 @@ namespace MagicalLifeAPI.Filing.Logging
                 DebugWriteLine(e.InnerException, "Inner exception: ");
             }
         }
+
+        #region IDisposable Support
+        private bool disposedValue = false; // To detect redundant calls
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    Writer.Dispose();
+                }
+                disposedValue = true;
+            }
+        }
+
+
+        ~MasterLog()
+        {
+           // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+           Dispose(false);
+         }
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        #endregion
     }
 }
