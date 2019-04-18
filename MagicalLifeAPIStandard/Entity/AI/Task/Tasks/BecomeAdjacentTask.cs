@@ -26,22 +26,22 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             this.Target = target;
         }
 
-        public override void MakePreparations(Living l)
+        public override void MakePreparations(Living living)
         {
-            List<Point2D> result = WorldUtil.GetNeighboringTiles(this.Target, l.Dimension);
-            result.RemoveAll(x => !World.Data.World.GetTile(l.Dimension, x.X, x.Y).IsWalkable);
+            List<Point2D> result = WorldUtil.GetNeighboringTiles(this.Target, living.Dimension);
+            result.RemoveAll(x => !World.Data.World.GetTile(living.Dimension, x.X, x.Y).IsWalkable);
 
-            int closestIndex = Algorithms.GetClosestPoint2D(result, l.MapLocation);
+            int closestIndex = Algorithms.GetClosestPoint2D(result, living.MapLocation);
             this.AdjacentLocation = result[closestIndex];
-            List<PathLink> path = MainPathFinder.GetRoute(l.Dimension, l.MapLocation, result[closestIndex]);
+            List<PathLink> path = MainPathFinder.GetRoute(living.Dimension, living.MapLocation, result[closestIndex]);
 
             if (World.Data.World.Mode == Networking.EngineMode.ClientOnly)
             {
-                ClientSendRecieve.Send(new RouteCreatedMessage(path, l.ID, l.Dimension));
+                ClientSendRecieve.Send(new RouteCreatedMessage(path, living.ID, living.Dimension));
             }
 
-            l.QueuedMovement.Clear();
-            Extensions.EnqueueCollection(l.QueuedMovement, path);
+            living.QueuedMovement.Clear();
+            Extensions.EnqueueCollection(living.QueuedMovement, path);
         }
 
         public override void Reset()

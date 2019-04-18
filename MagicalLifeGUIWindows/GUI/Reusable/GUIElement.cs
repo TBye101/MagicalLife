@@ -57,9 +57,13 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         public event EventHandler<ClickEventArgs> ClickEvent;
         public event EventHandler<ClickEventArgs> DoubleClickEvent;
 
+        /// <summary>
+        /// Initializes a new GUIElement to draw onto the screen.
+        /// </summary>
         /// <param name="drawingBounds">The bounds for which to draw the texture on the screen at.</param>
         /// <param name="priority">Determines if this GUI element should have priority over other GUI elements when sorting through input.</param>
         /// <param name="isContained">If true, this GUI element is within a container.</param>
+        /// <param name="font">The Name of the font to use</param>
         protected GUIElement(Rectangle drawingBounds, int priority, bool isContained, string font)
         {
             this.DrawingBounds = drawingBounds;
@@ -70,7 +74,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
                 BoundHandler.AddGUIElement(this);
             }
 
-            if (font != null && font != string.Empty)
+            if (!string.IsNullOrWhiteSpace(font))
             {
                 this.Font = Game1.AssetManager.Load<SpriteFont>(font);
             }

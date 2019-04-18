@@ -8,6 +8,7 @@ using MagicalLifeClient;
 using MagicalLifeGUIWindows.GUI.In;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;
+using MagicalLifeGUIWindows.Properties;
 using MagicalLifeServer;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
@@ -16,7 +17,7 @@ namespace MagicalLifeGUIWindows.GUI.Load
 {
     public class LoadSaveButton : MonoButton
     {
-        public LoadSaveButton() : base(TextureLoader.GUIMenuButton, GetDisplayArea(), true, "Load Save")
+        public LoadSaveButton() : base(TextureLoader.GUIMenuButton, GetDisplayArea(), true, Resources.LoadSave)
         {
             this.ClickEvent += this.LoadSaveButton_ClickEvent;
         }

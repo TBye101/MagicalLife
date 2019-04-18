@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Components.Resource;
+using MagicalLifeAPI.Properties;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Visual.Rendering.AbstractVisuals;
 using MagicalLifeAPI.World.Base;
@@ -15,7 +16,7 @@ namespace MagicalLifeAPI.World.Resources
     [ProtoContract]
     public class PineTree : TreeBase
     {
-        private static readonly string Name = "Pine Tree";
+        private static readonly string Name = Lang.PineTree;
         public static readonly int Durabilitie = 20;
 
         public static readonly int XOffset = Tile.GetTileSize().X / -2;

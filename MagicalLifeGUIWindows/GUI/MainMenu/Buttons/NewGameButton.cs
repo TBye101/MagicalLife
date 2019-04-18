@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Sound;
 using MagicalLifeGUIWindows.GUI.New;
 using MagicalLifeGUIWindows.GUI.Reusable;
+using MagicalLifeGUIWindows.Properties;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 
@@ -9,7 +10,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
 {
     public class NewGameButton : MonoButton
     {
-        public NewGameButton() : base(TextureLoader.GUIMenuButton, GetLocation(), true, "New Game")
+        public NewGameButton() : base(TextureLoader.GUIMenuButton, GetLocation(), true, Resources.NewGame)
         {
             this.ClickEvent += this.NewGameButton_ClickEvent;
         }

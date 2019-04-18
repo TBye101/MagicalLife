@@ -28,7 +28,7 @@ namespace MagicalLifeGUIWindows.Map
             Tile.TileCreated += Tile_TileCreated;
         }
 
-        private static void Tile_TileCreated(object sender, TileEventArg e)
+        private static void Tile_TileCreated(object sender, TileEventArgs e)
         {
         }
 

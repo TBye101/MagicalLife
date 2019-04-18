@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.World.Base;
+﻿using MagicalLifeAPI.Properties;
+using MagicalLifeAPI.World.Base;
 
 namespace MagicalLifeAPI.World.Veggies
 {
@@ -7,7 +8,7 @@ namespace MagicalLifeAPI.World.Veggies
     /// </summary>
     public class OakTree : Vegetation
     {
-        public OakTree() : base("Oak Tree")
+        public OakTree() : base(Lang.OakTree)
         {
             //this.IsDorment = false;
             //this.MovementCost = .2;

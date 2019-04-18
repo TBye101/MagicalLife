@@ -70,7 +70,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             : base(drawingBounds, priority, isContained, font)
         {
             KeyboardHandler.KeysPressed += this.KeyboardHandler_KeysPressed;
-            this.CarrotPosition = this.Text.Count();
+            this.CarrotPosition = this.Text.Length;
             this.CarrotTexture = AssetManager.Textures[AssetManager.GetTextureIndex(CarrotTexture)];
             this.TextureID = AssetManager.GetTextureIndex(image);
             this.IsLocked = isLocked;
@@ -130,7 +130,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
                 string p1 = this.Text.Substring(0, this.CarrotPosition);
                 p1 += e.ToString();
 
-                string p2 = this.Text.Substring(this.CarrotPosition, this.Text.Count() - this.CarrotPosition);
+                string p2 = this.Text.Substring(this.CarrotPosition, this.Text.Length - this.CarrotPosition);
                 this.Text = p1 + p2;
                 this.CarrotPosition += 1;
             }
@@ -144,7 +144,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
         private void Right()
         {
-            if (this.Text.Count() != this.CarrotPosition)
+            if (this.Text.Length != this.CarrotPosition)
             {
                 this.CarrotPosition += 1;
             }
@@ -164,9 +164,9 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             {
                 string p3 = this.Text.Substring(0, this.CarrotPosition - 1);
 
-                if (this.CarrotPosition != this.Text.Count())
+                if (this.CarrotPosition != this.Text.Length)
                 {
-                    string p4 = this.Text.Substring(this.CarrotPosition, this.Text.Count() - this.CarrotPosition);
+                    string p4 = this.Text.Substring(this.CarrotPosition, this.Text.Length - this.CarrotPosition);
                     this.Text = p3 + p4;
                 }
                 else
@@ -183,13 +183,13 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
         private void Delete()
         {
-            if (this.CarrotPosition != this.Text.Count())
+            if (this.CarrotPosition != this.Text.Length)
             {
                 string p1 = this.Text.Substring(0, this.CarrotPosition);
 
-                if (this.Text.Count() != this.CarrotPosition + 1)
+                if (this.Text.Length != this.CarrotPosition + 1)
                 {
-                    string p2 = this.Text.Substring(startIndex: this.CarrotPosition + 1, length: this.Text.Count() - (this.CarrotPosition + 1));
+                    string p2 = this.Text.Substring(startIndex: this.CarrotPosition + 1, length: this.Text.Length - (this.CarrotPosition + 1));
                     this.Text = p1 + p2;
                 }
                 else

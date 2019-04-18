@@ -26,6 +26,7 @@ namespace MagicalLifeGUIWindows.GUI.New
             }
             else
             {
+                //If we get here, the application blows up. It should probably recover somehow instead.
                 throw new ArgumentException("Invalid input!");
             }
         }

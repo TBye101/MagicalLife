@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Server;
+using MagicalLifeDedicatedServer.Properties;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -112,7 +113,7 @@ namespace MagicalLifeDedicatedServer
 
             if (!cf)
             {
-                Util.WriteLine("Command not found!");
+                Util.WriteLine(DedicatedServer.CommandNotFound);
             }
         }
 
@@ -122,7 +123,7 @@ namespace MagicalLifeDedicatedServer
         /// <param name="inp"></param>
         private static void DisplayModuleHelp(string[] inp)
         {
-            Util.WriteLine("Listing names of commands within the specified module. For detailed command information, do \"(modulename) (commandname) help\"");
+            Util.WriteLine(DedicatedServer.ListCommands);
 
             foreach (ICommandModule item in modules)
             {
@@ -141,7 +142,7 @@ namespace MagicalLifeDedicatedServer
         /// </summary>
         private static void DisplayModulesHelp()
         {
-            Util.WriteLine("Displaying module names. For help on individual commands in a module, do \"(modulename) help\"");
+            Util.WriteLine(DedicatedServer.DisplayCommandNames);
             Util.WriteLine("");
             foreach (ICommandModule item in modules)
             {

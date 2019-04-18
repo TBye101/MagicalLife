@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.Properties;
 using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace MagicalLifeAPI.World.Items
     [ProtoContract]
     public class Log : Item
     {
-        private static readonly string ItemName = "Log";
+        private static readonly string ItemName = Lang.Log;
 
         public Log(int count, int durability)
             : base(ItemName, durability, new List<string>(), 50, count, typeof(Log), TextureLoader.LogTexture1, 5)

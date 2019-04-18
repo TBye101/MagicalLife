@@ -19,7 +19,7 @@ namespace MagicalLifeServer.ServerWorld.World
         {
         }
 
-        protected override string[,] AssignBiomes(int xSize, int ySize, Random r)
+        protected override string[,] AssignBiomes(int xSize, int ySize, Random random)
         {
             string[,] ret = new string[xSize, ySize];
 
@@ -43,7 +43,7 @@ namespace MagicalLifeServer.ServerWorld.World
             return ret;
         }
 
-        protected override void GenerateDetails(ProtoArray<Chunk> map, Random r)
+        protected override void GenerateDetails(ProtoArray<Chunk> map, Random random)
         {
             int chunkWidth = map.Width;
             int chunkHeight = map.Height;
@@ -60,7 +60,7 @@ namespace MagicalLifeServer.ServerWorld.World
             map[chunkX, chunkY].Creatures.Add(human.ID, human);
         }
 
-        protected override void GenerateLandType(string[,] biomeMap, ProtoArray<Chunk> map, Random r)
+        protected override void GenerateLandType(string[,] biomeMap, ProtoArray<Chunk> map, Random random)
         {
             int xSize = biomeMap.GetLength(0);
             int ySize = biomeMap.GetLength(1);
@@ -87,11 +87,11 @@ namespace MagicalLifeServer.ServerWorld.World
             }
         }
 
-        protected override void GenerateMinerals(ProtoArray<Chunk> map, Random r)
+        protected override void GenerateMinerals(ProtoArray<Chunk> map, Random random)
         {
         }
 
-        protected override void GenerateNaturalFeatures(ProtoArray<Chunk> map, Random r)
+        protected override void GenerateNaturalFeatures(ProtoArray<Chunk> map, Random random)
         {
         }
 
@@ -99,7 +99,7 @@ namespace MagicalLifeServer.ServerWorld.World
         {
         }
 
-        protected override void GenerateVegetation(ProtoArray<Chunk> map, Random r)
+        protected override void GenerateVegetation(ProtoArray<Chunk> map, Random random)
         {
         }
     }

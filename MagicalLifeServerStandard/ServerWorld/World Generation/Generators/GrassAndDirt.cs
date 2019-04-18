@@ -63,7 +63,7 @@ namespace MagicalLifeServer.ServerWorld.World
 
                             if (random.Next(5) == 2)
                             {
-                                if (tile.Resources == null || tile.Resources != null && tile.Resources.DisplayName != Rock.StoneName)
+                                if (tile.Resources == null || (tile.Resources != null && tile.Resources.DisplayName != Rock.StoneName))
                                 {
                                     int treeType = random.Next(3);
 

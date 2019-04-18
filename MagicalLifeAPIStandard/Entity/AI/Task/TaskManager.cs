@@ -55,7 +55,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
                 {
                     return lessThan; //x is less than y.
                 }
-                if (x != null && y == null)
+                if (x != null)
                 {
                     return greaterThan; //x is greater than y.
                 }
@@ -129,8 +129,8 @@ namespace MagicalLifeAPI.Entity.AI.Task
         /// Reserve all tasks bound with the specified boundID for the specified creature.
         /// </summary>
         /// <param name="task"></param>
-        /// <param name="boundID"></param>
         /// <param name="l"></param>
+        /// <param name="boundID"></param>
         /// <param name="recursionTask">The task to recurse over.</param>
         private void ReserveBoundTree(Living l, Guid boundID, MagicalTask recursionTask)
         {

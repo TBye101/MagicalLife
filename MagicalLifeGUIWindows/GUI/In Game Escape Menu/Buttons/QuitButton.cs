@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.GUI.Reusable;
+using MagicalLifeGUIWindows.Properties;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 
@@ -24,10 +25,10 @@ namespace MagicalLifeGUIWindows.GUI.In
             switch (World.Mode)
             {
                 case MagicalLifeAPI.Networking.EngineMode.ClientOnly:
-                    return "Disconnect";
+                    return Resources.Disconnect;
 
                 case MagicalLifeAPI.Networking.EngineMode.ServerAndClient:
-                    return "Quit";
+                    return Resources.Quit;
 
                 default:
                     throw new MagicalLifeAPI.Error.InternalExceptions.UnexpectedEnumMemberException();

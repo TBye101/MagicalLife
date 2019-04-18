@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Components.Resource;
+using MagicalLifeAPI.Properties;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Items;
@@ -17,7 +18,7 @@ namespace MagicalLifeAPI.World.Resources
     {
         private AbstractVisual visual;
 
-        public static readonly string StoneName = "Stone";
+        public static readonly string StoneName = Lang.Stone;
 
         public override AbstractHarvestable HarvestingBehavior { get; set; }
 

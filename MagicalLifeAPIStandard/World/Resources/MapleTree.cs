@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Components.Resource;
+using MagicalLifeAPI.Properties;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Visual.Rendering.AbstractVisuals;
 using MagicalLifeAPI.World.Base;
@@ -15,7 +16,7 @@ namespace MagicalLifeAPI.World.Resources
     [ProtoContract]
     public class MapleTree : TreeBase
     {
-        private static readonly string Name = "Maple Tree";
+        private static readonly string Name = Lang.MapleTree;
         public static readonly int Durabilitie = 20;
 
         public static readonly int XOffset = Tile.GetTileSize().X / -2;
@@ -27,7 +28,7 @@ namespace MagicalLifeAPI.World.Resources
 
         public MapleTree(int durability) : base(Name, durability)
         {
-            this.HarvestingBehavior = new DropWhenCompletelyHarvested(new List<Base.Item>
+            this.HarvestingBehavior = new DropWhenCompletelyHarvested(new List<Item>
             {
                 new Log(1, this.Durability)
             }, SoundsTable.UIClick, SoundsTable.UIClick);

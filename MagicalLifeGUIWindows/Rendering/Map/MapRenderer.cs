@@ -7,6 +7,7 @@ using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.Rendering.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -88,12 +89,17 @@ namespace MagicalLifeGUIWindows.Rendering.Map
             DrawEntities(dimension, chunk);
         }
 
+        /// <summary>
+        /// Draws the entities.
+        /// </summary>
+        /// <param name="dimension">The dimension.</param>
+        /// <param name="chunk">The chunk.</param>
         public static void DrawEntities(int dimension, Chunk chunk)
         {
             int length = chunk.Creatures.Count;
             for (int i = 0; i < length; i++)
             {
-                KeyValuePair<System.Guid, Living> item = chunk.Creatures.ElementAt(i);
+                KeyValuePair<Guid, Living> item = chunk.Creatures.ElementAt(i);
                 if (item.Value != null)
                 {
                     LivingScreenLocation.X = (int)(item.Value.TileLocation.X * TileSize.X);
@@ -110,7 +116,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
                 Texture2D texture = AssetManager.Textures[tile.Item.TextureIndex];
                 MapDrawer.Draw(texture, target, RenderLayer.Items);
 
-                ItemCountBounds.X = target.Location.X + TileSize.X / 2;
+                ItemCountBounds.X = target.Location.X + (TileSize.X / 2);
                 ItemCountBounds.Y = target.Location.Y + TileSize.Y;
 
                 MapDrawer.DrawText(tile.Item.CurrentlyStacked.ToString(), ItemCountBounds,

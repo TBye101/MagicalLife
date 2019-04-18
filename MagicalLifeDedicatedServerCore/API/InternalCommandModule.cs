@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Server;
 using MagicalLifeDedicatedServer.API.Commands;
+using MagicalLifeDedicatedServer.Properties;
 using System.Collections.Generic;
 
 namespace MagicalLifeDedicatedServer.API
@@ -21,9 +22,13 @@ namespace MagicalLifeDedicatedServer.API
             return "ml";
         }
 
+        /// <summary>
+        /// The display name of this command module.
+        /// </summary>
+        /// <returns></returns>
         public string getFullName()
         {
-            return "Magical Life";
+            return DedicatedServer.MagicalLife;
         }
     }
 }

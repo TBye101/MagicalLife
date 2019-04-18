@@ -38,10 +38,13 @@ namespace MagicalLifeAPI.Components.Resource
             }
             else
             {
-                return null;
+                return default;
             }
         }
 
+        /// <summary>
+        /// Returns the total percent mined so far.
+        /// </summary>
         /// <param name="percent">The total percent mined so far.</param>
         /// <returns></returns>
         protected abstract List<Item> TillPercent(float percent, Point2D position);

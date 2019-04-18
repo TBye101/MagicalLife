@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeGUIWindows.GUI.Reusable;
+using MagicalLifeGUIWindows.Properties;
 using Microsoft.Xna.Framework;
 
 namespace MagicalLifeGUIWindows.GUI.New
@@ -9,7 +10,7 @@ namespace MagicalLifeGUIWindows.GUI.New
     /// </summary>
     public class WidthLabel : MonoLabel
     {
-        public WidthLabel() : base(GetLocation(), TextureLoader.GUIInputBox100x50, true, "World Width")
+        public WidthLabel() : base(GetLocation(), TextureLoader.GUIInputBox100x50, true, Resources.WorldWidth)
         {
         }
 

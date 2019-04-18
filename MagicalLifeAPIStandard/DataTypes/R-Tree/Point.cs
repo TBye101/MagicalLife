@@ -27,7 +27,7 @@ namespace MagicalLifeAPI.DataTypes.R
     {
         /// <summary>
         /// Number of dimensions in a point. In theory this
-        /// could be exended to three or more dimensions.
+        /// could be extended to three or more dimensions.
         /// </summary>
         private const int DIMENSIONS = 3;
 

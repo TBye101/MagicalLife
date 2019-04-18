@@ -7,14 +7,14 @@ namespace MagicalLifeAPI.Filing.Logging
     /// <summary>
     /// The master log class where we log everything that happens, that isn't historical/statistical information.
     /// </summary>
-    public static class MasterLog
+    public class MasterLog : IDisposable
     {
         private static readonly string LogPath = FileSystemManager.InstanceRootFolder + Path.DirectorySeparatorChar + "MasterLog.txt";
         private static TextWriter Writer;
 
         public static void Initialize()
         {
-            Writer = new StreamWriter(LogPath, true);
+             Writer = new StreamWriter(LogPath, true);
         }
 
         /// <summary>
@@ -42,10 +42,41 @@ namespace MagicalLifeAPI.Filing.Logging
 
             if (e.InnerException != null)
             {
-                DebugWriteLine(e, "Inner exception: ");
+                DebugWriteLine(e.InnerException, "Inner exception: ");
             }
 
             Writer.Flush();
         }
+
+        #region IDisposable Support
+        private bool disposedValue; // To detect redundant calls
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    Writer.Dispose();
+                }
+                disposedValue = true;
+            }
+        }
+
+
+        ~MasterLog()
+        {
+           // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+           Dispose(false);
+         }
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        #endregion
     }
 }
