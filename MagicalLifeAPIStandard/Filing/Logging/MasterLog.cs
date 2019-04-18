@@ -44,6 +44,8 @@ namespace MagicalLifeAPI.Filing.Logging
             {
                 DebugWriteLine(e.InnerException, "Inner exception: ");
             }
+
+            Writer.Flush();
         }
 
         #region IDisposable Support
