@@ -25,7 +25,7 @@ using System.Text;
 
 namespace MagicalLifeAPI.DataTypes.R
 {
-    public struct Dimension
+    public struct Dimension : IEquatable<Dimension>
     {
         public float max;
         public float min;
@@ -35,14 +35,19 @@ namespace MagicalLifeAPI.DataTypes.R
             return obj is Dimension dimension && this == dimension;
         }
 
+        public bool Equals(Dimension other)
+        {
+            return this == other;
+        }
+
         public override int GetHashCode()
         {
-            return max.GetHashCode() ^ min.GetHashCode();
+            return 0;
         }
 
         public static bool operator ==(Dimension left, Dimension right)
         {
-            return left.max == right.max && left.min == right.min;
+            return (left.max == right.max || Math.Abs(left.max - right.max) < 0.00001) && (left.min == right.min || Math.Abs(left.min - right.min)< 0.00001);
         }
 
         public static bool operator !=(Dimension left, Dimension right)
@@ -129,13 +134,15 @@ namespace MagicalLifeAPI.DataTypes.R
         /// <para>probable dimensions:</para>
         /// <para>X = 0, Y = 1, Z = 2</para>
         /// </summary>
-        public Dimension? get(int dimension)
+        public Dimension? Get(int dimension)
         {
             if ((min.Length >= dimension) && (max.Length >= dimension))
             {
-                Dimension retval = new Dimension();
-                retval.min = min[dimension];
-                retval.max = max[dimension];
+                Dimension retval = new Dimension
+                {
+                    min = min[dimension],
+                    max = max[dimension]
+                };
                 return retval;
             }
             return null;
@@ -156,7 +163,7 @@ namespace MagicalLifeAPI.DataTypes.R
         /// Make a copy of this rectangle
         /// </summary>
         /// <returns>copy of this rectangle</returns>
-        internal Rectangle copy()
+        internal Rectangle Copy()
         {
             return new Rectangle(min, max);
         }
@@ -165,7 +172,7 @@ namespace MagicalLifeAPI.DataTypes.R
         /// Determine whether an edge of this rectangle overlies the equivalent
         /// edge of the passed rectangle
         /// </summary>
-        internal bool edgeOverlaps(Rectangle r)
+        internal bool EdgeOverlaps(Rectangle r)
         {
             for (int i = 0; i < DIMENSIONS; i++)
             {
@@ -201,7 +208,7 @@ namespace MagicalLifeAPI.DataTypes.R
         /// </summary>
         /// <param name="r">The rectangle that might be contained by this rectangle</param>
         /// <returns>true if this rectangle contains the passed rectangle, false if it does not</returns>
-        internal bool contains(Rectangle r)
+        internal bool Contains(Rectangle r)
         {
             for (int i = 0; i < DIMENSIONS; i++)
             {
@@ -218,7 +225,7 @@ namespace MagicalLifeAPI.DataTypes.R
         /// </summary>
         /// <param name="r">The rectangle that might contain this rectangle</param>
         /// <returns>true if the passed rectangle contains this rectangle, false if it does not</returns>
-        internal bool containedBy(Rectangle r)
+        internal bool ContainedBy(Rectangle r)
         {
             for (int i = 0; i < DIMENSIONS; i++)
             {
@@ -236,7 +243,7 @@ namespace MagicalLifeAPI.DataTypes.R
         /// </summary>
         /// <param name="p">Point to find the distance to</param>
         /// <returns>distance beween this rectangle and the passed point.</returns>
-        internal float distance(Point p)
+        internal float Distance(Point p)
         {
             float distanceSquared = 0;
             for (int i = 0; i < DIMENSIONS; i++)
@@ -257,7 +264,7 @@ namespace MagicalLifeAPI.DataTypes.R
         /// </summary>
         /// <param name="r">Rectangle to find the distance to</param>
         /// <returns>distance between this rectangle and the passed rectangle</returns>
-        internal float distance(Rectangle r)
+        internal float Distance(Rectangle r)
         {
             float distanceSquared = 0;
             for (int i = 0; i < DIMENSIONS; i++)
@@ -275,7 +282,9 @@ namespace MagicalLifeAPI.DataTypes.R
         /// <summary>
         /// Return the squared distance from this rectangle to the passed point
         /// </summary>
-        internal float distanceSquared(int dimension, float point)
+        /// <param name="dimension"></param>
+        /// <param name="point"></param>
+        internal float DistanceSquared(int dimension, float point)
         {
             float distanceSquared = 0;
             float tempDistance = point - max[dimension];
@@ -292,10 +301,11 @@ namespace MagicalLifeAPI.DataTypes.R
         }
 
         /// <summary>
-        /// Return the furthst possible distance between this rectangle and
+        /// Return the furthest possible distance between this rectangle and
         /// the passed rectangle.
         /// </summary>
-        internal float furthestDistance(Rectangle r)
+        /// <param name="r"></param>
+        internal float FurthestDistance(Rectangle r)
         {
             //Find the distance between this rectangle and each corner of the
             //passed rectangle, and use the maximum.
@@ -321,19 +331,19 @@ namespace MagicalLifeAPI.DataTypes.R
         /// compute the difference in area of the union and the
         /// original rectangle
         /// </param>
-        internal float enlargement(Rectangle r)
+        internal float Enlargement(Rectangle r)
         {
             float enlargedArea = (Math.Max(max[0], r.max[0]) - Math.Min(min[0], r.min[0])) *
                                  (Math.Max(max[1], r.max[1]) - Math.Min(min[1], r.min[1]));
 
-            return enlargedArea - area();
+            return enlargedArea - Area();
         }
 
         /// <summary>
         /// Compute the area of this rectangle.
         /// </summary>
         /// <returns> The area of this rectangle</returns>
-        internal float area()
+        internal float Area()
         {
             return (max[0] - min[0]) * (max[1] - min[1]);
         }
@@ -343,7 +353,7 @@ namespace MagicalLifeAPI.DataTypes.R
         /// the result in this rectangle.
         /// </summary>
         /// <param name="r">Rectangle to add to this rectangle</param>
-        internal void add(Rectangle r)
+        internal void Add(Rectangle r)
         {
             for (int i = 0; i < DIMENSIONS; i++)
             {
@@ -365,8 +375,8 @@ namespace MagicalLifeAPI.DataTypes.R
         /// <param name="r">The rectangle to union with this rectangle</param>
         internal Rectangle Union(Rectangle r)
         {
-            Rectangle union = this.copy();
-            union.add(r);
+            Rectangle union = this.Copy();
+            union.Add(r);
             return union;
         }
 

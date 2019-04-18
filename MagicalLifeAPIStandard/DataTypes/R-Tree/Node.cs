@@ -40,40 +40,42 @@ namespace MagicalLifeAPI.DataTypes.R
             ids = new int[maxNodeEntries];
         }
 
-        internal void addEntry(Rectangle r, int id)
+        internal void AddEntry(Rectangle r, int id)
         {
             ids[entryCount] = id;
-            entries[entryCount] = r.copy();
+            entries[entryCount] = r.Copy();
             entryCount++;
             if (mbr == null)
             {
-                mbr = r.copy();
+                mbr = r.Copy();
             }
             else
             {
-                mbr.add(r);
+                mbr.Add(r);
             }
         }
 
-        internal void addEntryNoCopy(Rectangle r, int id)
+        internal void AddEntryNoCopy(Rectangle r, int id)
         {
             ids[entryCount] = id;
             entries[entryCount] = r;
             entryCount++;
             if (mbr == null)
             {
-                mbr = r.copy();
+                mbr = r.Copy();
             }
             else
             {
-                mbr.add(r);
+                mbr.Add(r);
             }
         }
 
         /// <summary>
         /// Return the index of the found entry, or -1 if not found
         /// </summary>
-        internal int findEntry(Rectangle r, int id)
+        /// <param name="r"></param>
+        /// <param name="id"></param>
+        internal int FindEntry(Rectangle r, int id)
         {
             for (int i = 0; i < entryCount; i++)
             {
@@ -90,7 +92,9 @@ namespace MagicalLifeAPI.DataTypes.R
         /// <summary>
         /// delete entry. This is done by setting it to null and copying the last entry into its space.
         /// </summary>
-        internal void deleteEntry(int i, int minNodeEntries)
+        /// <param name="i"></param>
+        /// <param name="minNodeEntries"></param>
+        internal void DeleteEntry(int i, int minNodeEntries)
         {
             int lastIndex = entryCount - 1;
             Rectangle deletedRectangle = entries[i];
@@ -108,7 +112,7 @@ namespace MagicalLifeAPI.DataTypes.R
             // eliminated anyway.
             if (entryCount >= minNodeEntries)
             {
-                recalculateMBR(deletedRectangle);
+                RecalculateMBR(deletedRectangle);
             }
         }
 
@@ -116,25 +120,35 @@ namespace MagicalLifeAPI.DataTypes.R
         /// oldRectangle is a rectangle that has just been deleted or made smaller.
         /// Thus, the MBR is only recalculated if the OldRectangle influenced the old MBR
         /// </summary>
-        internal void recalculateMBR(Rectangle deletedRectangle)
+        /// <param name="deletedRectangle"></param>
+        internal void RecalculateMBR(Rectangle deletedRectangle)
         {
-            if (mbr.edgeOverlaps(deletedRectangle))
+            if (mbr.EdgeOverlaps(deletedRectangle))
             {
                 mbr.Set(entries[0].min, entries[0].max);
 
                 for (int i = 1; i < entryCount; i++)
                 {
-                    mbr.add(entries[i]);
+                    mbr.Add(entries[i]);
                 }
             }
         }
 
-        public int getEntryCount()
+        /// <summary>
+        /// Gets the entry count.
+        /// </summary>
+        /// <returns></returns>
+        public int GetEntryCount()
         {
             return entryCount;
         }
 
-        public Rectangle getEntry(int index)
+        /// <summary>
+        /// Gets the entry.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <returns></returns>
+        public Rectangle GetEntry(int index)
         {
             if (index < entryCount)
             {
@@ -143,6 +157,11 @@ namespace MagicalLifeAPI.DataTypes.R
             return null;
         }
 
+        /// <summary>
+        /// Gets the identifier.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <returns></returns>
         public int getId(int index)
         {
             if (index < entryCount)
@@ -155,7 +174,8 @@ namespace MagicalLifeAPI.DataTypes.R
         /// <summary>
         /// eliminate null entries, move all entries to the start of the source node
         /// </summary>
-        internal void reorganize(RTree<T> rtree)
+        /// <param name="rtree"></param>
+        internal void Reorganize(RTree<T> rtree)
         {
             int countdownIndex = rtree.maxNodeEntries - 1;
             for (int index = 0; index < entryCount; index++)
@@ -173,17 +193,25 @@ namespace MagicalLifeAPI.DataTypes.R
             }
         }
 
-        internal bool isLeaf()
+        internal bool IsLeaf()
         {
             return (level == 1);
         }
 
-        public int getLevel()
+        /// <summary>
+        /// Gets the level.
+        /// </summary>
+        /// <returns></returns>
+        public int GetLevel()
         {
             return level;
         }
 
-        public Rectangle getMBR()
+        /// <summary>
+        /// Gets the MBR.
+        /// </summary>
+        /// <returns></returns>
+        public Rectangle GetMBR()
         {
             return mbr;
         }
