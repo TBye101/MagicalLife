@@ -210,7 +210,7 @@ namespace MagicalLifeAPI.DataTypes.R
         {
             // I1 [Find position for new record] Invoke ChooseLeaf to select a
             // leaf Node&lt;T&gt; L in which to place r
-            Node<T> n = chooseNode(r, level);
+            Node<T> n = ChooseNode(r, level);
             Node<T> newLeaf = null;
 
             // I2 [Add record to leaf node] If L has room for another entry,
@@ -969,7 +969,9 @@ namespace MagicalLifeAPI.DataTypes.R
         /// <summary>
         /// Used by add(). Chooses a leaf to add the rectangle to.
         /// </summary>
-        private Node<T> chooseNode(Rectangle r, int level)
+        /// <param name="r"></param>
+        /// <param name="level"></param>
+        private Node<T> ChooseNode(Rectangle r, int level)
         {
             // CL1 [Initialize] Set N to be the root node
             Node<T> n = GetNode(rootNodeId);
@@ -982,6 +984,7 @@ namespace MagicalLifeAPI.DataTypes.R
                 if (n == null)
                 {
                     Debug.WriteLine($"Could not get root Node<T> ({rootNodeId})");
+                    throw new InvalidOperationException($"Could not get root Node<T> ({rootNodeId})");
                 }
 
                 if (n?.level == level)

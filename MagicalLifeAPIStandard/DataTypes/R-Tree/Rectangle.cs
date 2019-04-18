@@ -47,7 +47,7 @@ namespace MagicalLifeAPI.DataTypes.R
 
         public static bool operator ==(Dimension left, Dimension right)
         {
-            return (left.max == right.max || Math.Abs(left.max - right.max) < 0.00001) && (left.min == right.min || Math.Abs(left.min - right.min)< 0.00001);
+            return (Math.Abs(left.max - right.max) < 0.00001) && (Math.Abs(left.min - right.min)< 0.00001);
         }
 
         public static bool operator !=(Dimension left, Dimension right)
