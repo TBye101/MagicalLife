@@ -16,7 +16,7 @@ namespace MagicalLifeMod.Core.Load
         public RecipeRegisterer()
         {
             this.WoodPlankRecipe = new SimpleItemRecipe(new WoodPlank(4), this.WoodPlankRecipeID,
-                new string[0], ItemRegisterer.ExampleLog);
+                new string[0], new RequiredItem(ItemRegisterer.ExampleLog, 1));
         }
 
         public void InitialStartup()

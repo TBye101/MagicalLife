@@ -48,9 +48,9 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         public override void CreateDependencies(Living l)
         {
-            foreach (Item item in this.SimpleRecipe.RequiredItems)
+            foreach (RequiredItem requiredItem in this.SimpleRecipe.RequiredItems)
             {
-                this.Dependencies.PreRequisite.Add(new GrabItemQuantity(this.BoundID, item, item.CurrentlyStacked * this.Quantity));
+                this.Dependencies.PreRequisite.Add(new GrabItemQuantity(this.BoundID, requiredItem.Item.ItemID, requiredItem.Count));
             }
         }
     }

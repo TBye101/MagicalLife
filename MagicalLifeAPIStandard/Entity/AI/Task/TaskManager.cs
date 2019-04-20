@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace MagicalLifeAPI.Entity.AI.Task
 {
@@ -205,7 +206,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
                 task.DependenciesGenerated = true;
             }
 
-            List<MagicalTask> childTasks = task.Dependencies.PreRequisite;
+            ObservableCollection<MagicalTask> childTasks = task.Dependencies.PreRequisite;
             foreach (MagicalTask childTask in childTasks)
             {
                 this.CreateDependencies(childTask, living);

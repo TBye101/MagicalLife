@@ -7,6 +7,7 @@ using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace MagicalLifeAPI.Entity.AI.Task.Tasks
@@ -44,7 +45,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         {
             Point2D nearest = ItemFinder.FindNearestUnreserved(itemID, Point2D.Zero, dimension);
 
-            List<MagicalTask> dependency = new List<MagicalTask>
+            ObservableCollection<MagicalTask> dependency = new ObservableCollection<MagicalTask>
             {
                 new GrabSpecificItemTask(boundID, nearest, dimension)
             };

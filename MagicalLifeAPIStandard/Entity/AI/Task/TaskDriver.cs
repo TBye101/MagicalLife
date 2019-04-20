@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace MagicalLifeAPI.Entity.AI.Task
 {
@@ -25,10 +26,10 @@ namespace MagicalLifeAPI.Entity.AI.Task
         /// <returns></returns>
         private List<MagicalTask> GetReadyTasks()
         {
-            return this.GetReadyTasksRecursion(new List<MagicalTask>() { this.Task });
+            return this.GetReadyTasksRecursion(new ObservableCollection<MagicalTask> { this.Task });
         }
 
-        private List<MagicalTask> GetReadyTasksRecursion(List<MagicalTask> tasks)
+        private List<MagicalTask> GetReadyTasksRecursion(ObservableCollection<MagicalTask> tasks)
         {
             List<MagicalTask> ret = new List<MagicalTask>();
 

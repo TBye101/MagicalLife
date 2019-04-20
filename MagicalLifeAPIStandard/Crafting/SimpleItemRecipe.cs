@@ -20,7 +20,7 @@ namespace MagicalLifeAPI.Crafting
     public class SimpleItemRecipe : IRecipe
     {
         [ProtoMember(1)]
-        public Item[] RequiredItems { get; internal set; }
+        public RequiredItem[] RequiredItems { get; internal set; }//Using item.stacked doesn't work, as there is a default so we need to store how much of each item is required in it's own struct or something.
 
         /// <summary>
         /// The itemID of the item that this recipe constructs.
@@ -45,7 +45,7 @@ namespace MagicalLifeAPI.Crafting
         [ProtoMember(5)]
         private string[] RecipeKeywords { get; set; }
 
-        public SimpleItemRecipe(Item exampleOutput, Guid constantGuid, string[] recipeKeywords, params Item[] requiredItems)
+        public SimpleItemRecipe(Item exampleOutput, Guid constantGuid, string[] recipeKeywords, params RequiredItem[] requiredItems)
         {
             this.RequiredItems = requiredItems;
             this.ExampleOutput = exampleOutput;
@@ -61,11 +61,11 @@ namespace MagicalLifeAPI.Crafting
         /// <returns>Returns null if the item cannot be crafted.</returns>
         public Item Craft(Inventory inventory, int craftAmount)
         {
-            if (this.CanCraft(inventory) > craftAmount)
+            if (this.CanCraft(inventory) >= craftAmount)
             {
-                foreach (Item item in this.RequiredItems)
+                foreach (RequiredItem requiredItem in this.RequiredItems)
                 {
-                    inventory.RemoveSomeOfItem(item.ItemID, item.CurrentlyStacked * craftAmount);
+                    inventory.RemoveSomeOfItem(requiredItem.Item.ItemID, requiredItem.Count);
                 }
 
                 Item output = this.ExampleOutput.GetDeepCopy(craftAmount);
@@ -87,12 +87,12 @@ namespace MagicalLifeAPI.Crafting
         {
             int limiter = int.MaxValue;
 
-            foreach (Item item in this.RequiredItems)
+            foreach (RequiredItem requiredItem in this.RequiredItems)
             {
                 //The amount the inventory has of the item.
-                int quantityStored = inventory.HasItem(item.ItemID);
+                int quantityStored = inventory.HasItem(requiredItem.Item.ItemID);
                 //The amount of this recipe we could craft if this were the only item.
-                int craftable = quantityStored / item.StackableLimit;
+                int craftable = quantityStored / requiredItem.Count;
 
                 if (craftable < limiter)
                 {

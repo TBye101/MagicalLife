@@ -5,6 +5,7 @@ using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 {
@@ -64,7 +65,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             MoveTask move = new MoveTask(boundID, target, PriorityLayers.SpecificCreature);
             move.Qualifications.Add(new SpecificCreatureQualification(creatureID));
 
-            List<MagicalTask> deps = new List<MagicalTask>
+            ObservableCollection<MagicalTask> deps = new ObservableCollection<MagicalTask>
             {
                 move
             };
