@@ -33,10 +33,6 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         public override void MakePreparations(Living l)
         {
-            foreach (Item item in this.SimpleRecipe.RequiredItems)
-            {
-                this.Dependencies.PreRequisite.Add(new GrabItemQuantity(this.BoundID, item, item.CurrentlyStacked * this.Quantity));
-            }
         }
 
         public override void Reset()
@@ -48,6 +44,14 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             Item craft = this.SimpleRecipe.Craft(l.Inventory, this.Quantity);
             l.Inventory.AddItem(craft);
             this.CompleteTask();
+        }
+
+        public override void CreateDependencies(Living l)
+        {
+            foreach (Item item in this.SimpleRecipe.RequiredItems)
+            {
+                this.Dependencies.PreRequisite.Add(new GrabItemQuantity(this.BoundID, item, item.CurrentlyStacked * this.Quantity));
+            }
         }
     }
 }

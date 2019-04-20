@@ -24,7 +24,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         protected Point2D ReservedItemLocation;
 
         public GrabItemTask(Guid boundID, int itemID, int dimension)
-            : base(GetDependencies(boundID, itemID, dimension), boundID, GetQualifications(itemID, dimension),
+            : base(Dependencies.CreateEmpty(), boundID, GetQualifications(itemID, dimension),
                   PriorityLayers.Default)
         {
             this.ItemID = itemID;
@@ -59,6 +59,11 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
                 new CanMoveQualification(),
                 new IsItemAvailibleQualification(itemID, dimension)
             };
+        }
+
+        public override void CreateDependencies(Living l)
+        {
+            this.Dependencies = GetDependencies(this.BoundID, this.ItemID, l.Dimension);
         }
 
         public override void MakePreparations(Living l)

@@ -115,13 +115,8 @@ namespace MagicalLifeAPI.Entity.AI.Task
                 if (allCompatibleTasks.Count > 0)
                 {
                     MagicalTask task = allCompatibleTasks[0];
-                    task.MakePreparations(l);
-                    this.AssignJob(l, task);
-
-                    foreach (TaskDriver item in this.TaskDrivers)
-                    {
-                        this.ReserveBoundTree(l, task.BoundID, item.Task);
-                    }
+                    MagicalTask actuallyAssigned = this.AssignJob(l, task);
+                    this.ReserveBoundTree(l, task.BoundID, actuallyAssigned);
                 }
             }
         }
@@ -150,11 +145,49 @@ namespace MagicalLifeAPI.Entity.AI.Task
             }
         }
 
-        private void AssignJob(Living l, MagicalTask task)
+        /// <summary>
+        /// Returns the task actually assigned.
+        /// </summary>
+        /// <param name="l"></param>
+        /// <param name="task"></param>
+        /// <returns></returns>
+        private MagicalTask AssignJob(Living l, MagicalTask task)
         {
-            l.AssignTask(task);
-            task.MakePreparations(l);
+            MagicalTask actualTask = this.GenerateAllDependencies(l, task);
+
+            actualTask.MakePreparations(l);
+            l.AssignTask(actualTask);
             task.ToilingWorker = l.ID;
+
+            return actualTask;
+        }
+
+        /// <summary>
+        /// Generates all the dependencies until there are non to generate left.
+        /// Returns the deepest task in the tree.
+        /// </summary>
+        /// <param name="l"></param>
+        /// <param name="task"></param>
+        /// <returns></returns>
+        private MagicalTask GenerateAllDependencies(Living l, MagicalTask task)
+        {
+            if (task.DependenciesGenerated)
+            {
+                return task;
+            }
+            else
+            {
+                task.CreateDependencies(l);
+                task.DependenciesGenerated = true;
+                if (task.Dependencies.PreRequisite.Count > 0)
+                {
+                    return this.GenerateAllDependencies(l, task.Dependencies.PreRequisite[0]);
+                }
+                else
+                {
+                    return task;
+                }
+            }
         }
     }
 }

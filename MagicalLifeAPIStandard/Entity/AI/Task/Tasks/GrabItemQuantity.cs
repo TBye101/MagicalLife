@@ -46,7 +46,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             };
         }
 
-        public override void MakePreparations(Living l)
+        public override void CreateDependencies(Living l)
         {
             List<Point2D> locations = ItemFinder.LocateQuantityOfItem(this.ItemID, this.Amount, Point2D.Zero, l.Dimension);
 
@@ -55,6 +55,10 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
                 GrabSpecificItemTask task = new GrabSpecificItemTask(this.BoundID, item, l.Dimension);
                 this.Dependencies.PreRequisite.Add(task);
             }
+        }
+
+        public override void MakePreparations(Living l)
+        {
         }
 
         public override void Reset()

@@ -148,5 +148,9 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             tile.Resources = null;
             tile.ImpendingAction = ActionSelected.None;
         }
+
+        public override void CreateDependencies(Living l)
+        {
+        }
     }
 }

@@ -22,7 +22,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
         /// The dependencies of this task.
         /// </summary>
         [ProtoMember(1)]
-        public Dependencies Dependencies { get; private set; }
+        public Dependencies Dependencies { get; protected set; }
 
         [ProtoMember(2)]
         public Guid ID { get; private set; }
@@ -58,6 +58,12 @@ namespace MagicalLifeAPI.Entity.AI.Task
         /// </summary>
         [ProtoMember(7)]
         public int TaskPriority { get; set; }
+
+        /// <summary>
+        /// If true, this task's dynamic dependencies have already been generated. 
+        /// </summary>
+        [ProtoMember(8)]
+        public bool DependenciesGenerated { get; set; }
 
         /// <param name="preRequisites">The dependencies of this task.</param>
         /// <param name="boundID">An ID used to determine if multiple tasks must be completed by the same worker.
@@ -105,6 +111,12 @@ namespace MagicalLifeAPI.Entity.AI.Task
         /// </summary>
         /// <param name="l"></param>
         public abstract void MakePreparations(Living l);
+
+        /// <summary>
+        /// Creates the dynamic dependencies of this task.
+        /// </summary>
+        /// <param name="l"></param>
+        public abstract void CreateDependencies(Living l);
 
         /// <summary>
         /// Resets the task, in order to prepare for something such as the assigned creature dying.
