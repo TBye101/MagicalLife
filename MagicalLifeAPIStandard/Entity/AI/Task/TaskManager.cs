@@ -1,29 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
+using System.Linq;
 
 namespace MagicalLifeAPI.Entity.AI.Task
 {
     /// <summary>
-    /// Manages all of the TaskDrivers for a player.
+    /// Manages task assignments to creatures.
     /// </summary>
     public class TaskManager
     {
-        public static TaskManager Manager = new TaskManager();
+        public static TaskManager Manager { get; set; } = new TaskManager();
 
-        internal List<TaskDriver> TaskDrivers { get; private set; }
+        private List<MagicalTask> Tasks { get; set; } = new List<MagicalTask>();
 
-        private readonly object SyncObject = new object();
+        private object SyncObject = new object();
 
-        public TaskManager()
+        internal TaskManager()
         {
-            this.TaskDrivers = new List<TaskDriver>();
+
         }
 
         public void AddTask(MagicalTask task)
         {
             lock (this.SyncObject)
             {
-                this.TaskDrivers.Add(new TaskDriver(task));
+                this.Tasks.Add(task);
                 task.Completed += this.Task_Completed;
             }
         }
@@ -32,93 +34,147 @@ namespace MagicalLifeAPI.Entity.AI.Task
         {
             lock (this.SyncObject)
             {
-                this.TaskDrivers.RemoveAll(x => x.Task.Equals(task));
+                this.Tasks.RemoveAll(x => x.Equals(task));
             }
         }
 
-        /// <summary>
-        /// A comparator used to compare magical tasks.
-        /// Determines whether x is greater than, less than, or equal to y.
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <returns></returns>
-        private static int CompareTasks(MagicalTask x, MagicalTask y)
-        {
-            int equal = 0; //x and y are equal.
-            int lessThan = 1; //x is less than y.
-            int greaterThan = -1; //x is greater than y.
-
-            if (x == null || y == null)
-            {
-                if (x == null && y != null)
-                {
-                    return lessThan; //x is less than y.
-                }
-                if (x != null && y == null)
-                {
-                    return greaterThan; //x is greater than y.
-                }
-
-                return equal; //They are both null.
-            }
-            else
-            {
-                if (x.TaskPriority == y.TaskPriority)
-                {
-                    return equal; //They are equal in priority.
-                }
-                if (x.TaskPriority > y.TaskPriority)
-                {
-                    return greaterThan; //x is greater in priority.
-                }
-                else
-                {
-                    return lessThan; //x is less than y.
-                }
-            }
-        }
-
-        /// <summary>
-        /// Gets a task for the creature.
-        /// This also reserves the task for the creature.
-        /// </summary>
-        /// <param name="l"></param>
-        /// <returns></returns>
-        internal void AssignTask(Living l)
+        internal void AssignTask(Living living)
         {
             lock (this.SyncObject)
             {
-                List<MagicalTask> allCompatibleTasks = new List<MagicalTask>();
+                //Get all valid parent tasks for the specified creature
+                List<MagicalTask> validTasks = this.GetValidTasks(living);
 
-                //Get all compatible jobs
-                foreach (TaskDriver item in this.TaskDrivers)
+                if (validTasks.Any())
                 {
-                    allCompatibleTasks.AddRange(item.GetCompatibleJobs(l));
-                }
+                    //Get the first task and dynamically create it's dependencies
+                    MagicalTask taskGoal = validTasks[0];
+                    this.CreateDependencies(taskGoal, living);
 
-                if (allCompatibleTasks.Count > 0)
-                {
-                    allCompatibleTasks.Sort(CompareTasks);
-                }
+                    //Get the deepest tasks from the dependency chain, and filter out ones that the creature can't do.
+                    List<MagicalTask> deepestTasks = this.GetDeepestTasks(taskGoal);
+                    List<MagicalTask> possibleTasks = this.FilterByValidTasks(living, deepestTasks);
 
-                foreach (MagicalTask item in allCompatibleTasks)
-                {
-                    //Has the job been reserved for the unemployed creature
-                    if (item.ReservedFor == l.ID)
+                    if (possibleTasks.Any())
                     {
-                        this.AssignJob(l, item);
-                        return;
+                        //Reserve the tasks that must all be done by the same creature for this creature.
+                        MagicalTask nextTask = possibleTasks[0];
+                        this.ReserveBoundTree(living, nextTask.BoundID, taskGoal);
+                        this.AssignJob(living, nextTask);
                     }
                 }
+            }
+        }
 
-                if (allCompatibleTasks.Count > 0)
+        /// <summary>
+        /// Assigns a task to the creature.
+        /// </summary>
+        /// <param name="l"></param>
+        /// <param name="task"></param>
+        /// <returns></returns>
+        private void AssignJob(Living l, MagicalTask task)
+        {
+            task.MakePreparations(l);
+            l.AssignTask(task);
+            task.ToilingWorker = l.ID;
+        }
+
+        /// <summary>
+        /// Gets all valid parent level tasks for the specified creature.
+        /// </summary>
+        /// <param name="living"></param>
+        /// <returns></returns>
+        private List<MagicalTask> GetValidTasks(Living living)
+        {
+            List<MagicalTask> result;
+
+            lock (this.SyncObject)
+            {
+                result = this.FilterByValidTasks(living, this.Tasks);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Returns a list of the tasks that the specified creature can complete.
+        /// </summary>
+        /// <param name="living"></param>
+        /// <param name="tasks"></param>
+        /// <returns></returns>
+        private List<MagicalTask> FilterByValidTasks(Living living, List<MagicalTask> tasks)
+        {
+            List<MagicalTask> validTasks = new List<MagicalTask>();
+            for (int i = 0; i < tasks.Count; i++)
+            {
+                MagicalTask task = tasks[i];
+
+                if (task.ReservedFor.Equals(Guid.Empty) && task.ToilingWorker.Equals(Guid.Empty))
                 {
-                    MagicalTask task = allCompatibleTasks[0];
-                    MagicalTask actuallyAssigned = this.AssignJob(l, task);
-                    this.ReserveBoundTree(l, task.BoundID, actuallyAssigned);
+                    bool compatible = true;
+                    foreach (Qualification qualification in task.Qualifications)
+                    {
+                        if (qualification.ArePreconditionsMet() && qualification.IsQualified(living))
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            compatible = false;
+                            break;
+                        }
+                    }
+
+                    if (compatible)
+                    {
+                        validTasks.Add(task);
+                    }
                 }
             }
+
+            return validTasks;
+        }
+
+        /// <summary>
+        /// Generates the unique dependencies for the task and all of it's child tasks.
+        /// </summary>
+        private void CreateDependencies(MagicalTask task, Living living)
+        {
+            if (!task.DependenciesGenerated)
+            {
+                task.CreateDependencies(living);
+                task.DependenciesGenerated = true;
+            }
+
+            List<MagicalTask> childTasks = task.Dependencies.PreRequisite;
+            foreach (MagicalTask childTask in childTasks)
+            {
+                this.CreateDependencies(childTask, living);
+            }
+        }
+
+        /// <summary>
+        /// Gets the deepest children tasks in the specified task. Returns the parent task if there are no child tasks.
+        /// </summary>
+        /// <param name="task"></param>
+        /// <returns></returns>
+        private List<MagicalTask> GetDeepestTasks(MagicalTask task)
+        {
+            List<MagicalTask> deepest = new List<MagicalTask>();
+
+            if (task.Dependencies.PreRequisite.Any())
+            {
+                foreach (MagicalTask childTask in task.Dependencies.PreRequisite)
+                {
+                    deepest.AddRange(this.GetDeepestTasks(childTask));
+                }
+            }
+            else
+            {
+                deepest.Add(task);
+            }
+
+            return deepest;
         }
 
         /// <summary>
@@ -141,51 +197,6 @@ namespace MagicalLifeAPI.Entity.AI.Task
                 foreach (MagicalTask item in recursionTask.Dependencies.PreRequisite)
                 {
                     this.ReserveBoundTree(l, boundID, item);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Returns the task actually assigned.
-        /// </summary>
-        /// <param name="l"></param>
-        /// <param name="task"></param>
-        /// <returns></returns>
-        private MagicalTask AssignJob(Living l, MagicalTask task)
-        {
-            MagicalTask actualTask = this.GenerateAllDependencies(l, task);
-
-            actualTask.MakePreparations(l);
-            l.AssignTask(actualTask);
-            task.ToilingWorker = l.ID;
-
-            return actualTask;
-        }
-
-        /// <summary>
-        /// Generates all the dependencies until there are non to generate left.
-        /// Returns the deepest task in the tree.
-        /// </summary>
-        /// <param name="l"></param>
-        /// <param name="task"></param>
-        /// <returns></returns>
-        private MagicalTask GenerateAllDependencies(Living l, MagicalTask task)
-        {
-            if (task.DependenciesGenerated)
-            {
-                return task;
-            }
-            else
-            {
-                task.CreateDependencies(l);
-                task.DependenciesGenerated = true;
-                if (task.Dependencies.PreRequisite.Count > 0)
-                {
-                    return this.GenerateAllDependencies(l, task.Dependencies.PreRequisite[0]);
-                }
-                else
-                {
-                    return task;
                 }
             }
         }
