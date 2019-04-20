@@ -130,6 +130,24 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
         }
 
         /// <summary>
+        /// The y position of the top of the join game button.
+        /// </summary>
+        public static int SettingsGameButtonY
+        {
+            get
+            {
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
+                {
+                    case Resolution._2560x1440:
+                        return MainMenuLayout2560x1440.SettingButtonY;
+
+                    default:
+                        return MainMenuLayout1920x1080.SettingButtonY;
+                }
+            }
+        }
+
+        /// <summary>
         /// The y position of the top of the quit button.
         /// </summary>
         public static int QuitButtonY

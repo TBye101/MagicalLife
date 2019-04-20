@@ -36,6 +36,11 @@
         public static readonly int JoinGameButtonY = 300;
 
         /// <summary>
+        /// The y position of the top of the settings button.
+        /// </summary>
+        public static readonly int SettingButtonY = 350;
+
+        /// <summary>
         /// The y position of the top of the quit button.
         /// </summary>
         public static readonly int QuitButtonY = 400;

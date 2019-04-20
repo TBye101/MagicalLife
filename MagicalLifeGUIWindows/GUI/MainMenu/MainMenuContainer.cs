@@ -13,6 +13,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu
             this.Controls.Add(new NewGameButton());
             this.Controls.Add(new LoadGameButton());
             this.Controls.Add(new JoinGameButton());
+             this.Controls.Add(new SettingsButton());
             this.Controls.Add(new QuitButton());
         }
 

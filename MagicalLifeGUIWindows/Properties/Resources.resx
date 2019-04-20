@@ -153,6 +153,9 @@
   <data name="Save" xml:space="preserve">
     <value>Save Game</value>
   </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
   <data name="SkillsTab" xml:space="preserve">
     <value>Skills Tab</value>
   </data>
