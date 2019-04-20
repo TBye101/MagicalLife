@@ -45,6 +45,8 @@ namespace MagicalLifeAPI.Entity.AI.Task
                 //Get all valid parent tasks for the specified creature
                 List<MagicalTask> validTasks = this.GetValidTasks(living);
 
+                validTasks.Sort((x, y) => CompareTasks(x, y, living));
+
                 if (validTasks.Any())
                 {
                     //Get the first task and dynamically create it's dependencies
@@ -54,6 +56,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
                     //Get the deepest tasks from the dependency chain, and filter out ones that the creature can't do.
                     List<MagicalTask> deepestTasks = this.GetDeepestTasks(taskGoal);
                     List<MagicalTask> possibleTasks = this.FilterByValidTasks(living, deepestTasks);
+                    possibleTasks.Sort((x, y) => CompareTasks(x, y, living));
 
                     if (possibleTasks.Any())
                     {
@@ -62,6 +65,58 @@ namespace MagicalLifeAPI.Entity.AI.Task
                         this.ReserveBoundTree(living, nextTask.BoundID, taskGoal);
                         this.AssignJob(living, nextTask);
                     }
+                }
+            }
+        }
+
+        /// <summary>
+        /// A comparator used to compare magical tasks in relations to a creature.
+        /// Determines whether x is greater than, less than, or equal to y.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        private static int CompareTasks(MagicalTask x, MagicalTask y, Living living)
+        {
+            int equal = 0; //x and y are equal.
+            int lessThan = 1; //x is less than y.
+            int greaterThan = -1; //x is greater than y.
+
+            if (x.ReservedFor.Equals(living.ID) && !y.ReservedFor.Equals(living.ID))
+            {
+                return greaterThan;
+            }
+            if (!x.ReservedFor.Equals(living.ID) && y.ReservedFor.Equals(living.ID))
+            {
+                return lessThan;
+            }
+
+            if (x == null || y == null)
+            {
+                if (x == null && y != null)
+                {
+                    return lessThan; //x is less than y.
+                }
+                if (x != null)
+                {
+                    return greaterThan; //x is greater than y.
+                }
+
+                return equal; //They are both null.
+            }
+            else
+            {
+                if (x.TaskPriority == y.TaskPriority)
+                {
+                    return equal; //They are equal in priority.
+                }
+                if (x.TaskPriority > y.TaskPriority)
+                {
+                    return greaterThan; //x is greater in priority.
+                }
+                else
+                {
+                    return lessThan; //x is less than y.
                 }
             }
         }
@@ -109,26 +164,30 @@ namespace MagicalLifeAPI.Entity.AI.Task
             {
                 MagicalTask task = tasks[i];
 
-                if (task.ReservedFor.Equals(Guid.Empty) && task.ToilingWorker.Equals(Guid.Empty))
+                if (task.ReservedFor.Equals(living.ID))
                 {
-                    bool compatible = true;
-                    foreach (Qualification qualification in task.Qualifications)
-                    {
-                        if (qualification.ArePreconditionsMet() && qualification.IsQualified(living))
+                    validTasks.Add(task);
+                }
+                else if (task.ReservedFor.Equals(Guid.Empty) && task.ToilingWorker.Equals(Guid.Empty))
+                {
+                        bool compatible = true;
+                        foreach (Qualification qualification in task.Qualifications)
                         {
-                            continue;
+                            if (qualification.ArePreconditionsMet() && qualification.IsQualified(living))
+                            {
+                                continue;
+                            }
+                            else
+                            {
+                                compatible = false;
+                                break;
+                            }
                         }
-                        else
-                        {
-                            compatible = false;
-                            break;
-                        }
-                    }
 
-                    if (compatible)
-                    {
-                        validTasks.Add(task);
-                    }
+                        if (compatible)
+                        {
+                            validTasks.Add(task);
+                        }
                 }
             }
 

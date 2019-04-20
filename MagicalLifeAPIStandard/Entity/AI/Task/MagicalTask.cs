@@ -65,6 +65,9 @@ namespace MagicalLifeAPI.Entity.AI.Task
         [ProtoMember(8)]
         public bool DependenciesGenerated { get; set; }
 
+        [ProtoMember(9)]
+        public bool IsFinished { get; internal set; }
+
         /// <param name="preRequisites">The dependencies of this task.</param>
         /// <param name="boundID">An ID used to determine if multiple tasks must be completed by the same worker.
         /// If multiple tasks have the same <paramref name="boundID"/>,
@@ -93,6 +96,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
 
         protected void CompleteTask()
         {
+            this.IsFinished = true;
             this.Completed?.Invoke(this);
         }
 

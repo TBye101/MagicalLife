@@ -85,18 +85,21 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         public override void Tick(Living l)
         {
-            if (this.MoveTaskCompleted)
+            lock (this)
             {
-                //Pick it up
-                Item pickedUp = ItemRemover.RemoveAllItems(this.ReservedItemLocation, l.Dimension);
-                pickedUp.ReservedID = Guid.Empty;
-                l.Inventory.AddItem(pickedUp);
-                this.CompleteTask();
-            }
-            else
-            {
-                //Move closer to it
-                this.Move.Tick(l);
+                if (this.MoveTaskCompleted)
+                {
+                    //Pick it up
+                    Item pickedUp = ItemRemover.RemoveAllItems(this.ReservedItemLocation, l.Dimension);
+                    pickedUp.ReservedID = Guid.Empty;
+                    l.Inventory.AddItem(pickedUp);
+                    this.CompleteTask();
+                }
+                else
+                {
+                    //Move closer to it
+                    this.Move.Tick(l);
+                }
             }
         }
 
