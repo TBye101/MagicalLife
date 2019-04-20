@@ -18,7 +18,7 @@ namespace MagicalLifeAPI.World.Base
     public abstract class Tile : HasComponents
     {
         [ProtoMember(2)]
-        public bool IsWalkable;
+        public bool IsWalkable { get; set; }
 
         /// <summary>
         /// Returns the name of the biome that this tile belongs to.
@@ -64,7 +64,7 @@ namespace MagicalLifeAPI.World.Base
                     {
                         this.GetExactComponent<ComponentRenderer>().AddVisuals(value.GetExactComponent<ComponentHasTexture>().Visuals);
                     }
-
+                    this.IsWalkable = (this.resources == null);
                     return;
                 }
 
@@ -86,6 +86,8 @@ namespace MagicalLifeAPI.World.Base
                 }
 
                 this.resources = value;
+
+                this.IsWalkable = (this.resources == null);
             }
         }
 
@@ -112,9 +114,9 @@ namespace MagicalLifeAPI.World.Base
             this.AddComponent(new ComponentSelectable(SelectionType.Tile));
             this.AddComponent(new ComponentRenderer());
 
+                        this.IsWalkable = true;
             this.MovementCost = movementCost;
             Tile.TileCreatedHandler(new TileEventArg(this));
-            this.IsWalkable = true;
             this.FootStepSound = footStepSound;
             this.GetExactComponent<ComponentSelectable>().MapLocation = location;
         }
