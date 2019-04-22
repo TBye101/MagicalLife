@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MagicalLifeGUIWindows.GUI.Settings_Menu.Buttons;
+using MagicalLifeGUIWindows.GUI.Settings_Menu.InputBoxes;
 
 namespace MagicalLifeGUIWindows.GUI.Settings_Menu
 {
@@ -15,6 +16,7 @@ namespace MagicalLifeGUIWindows.GUI.Settings_Menu
         public SettingsGameMenuContainer(bool fromMainMenu) : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow, false)
         {
             this.Controls.Add(new MainMenuButton(fromMainMenu));
+            this.Controls.Add(new MasterVolumeInputBox());
         }
 
         public override string GetTextureName()

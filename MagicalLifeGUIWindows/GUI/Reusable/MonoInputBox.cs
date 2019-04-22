@@ -7,16 +7,23 @@ using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Input.InputListeners;
 using System;
 using System.Linq;
+using System.Net.Mime;
 using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
 
 namespace MagicalLifeGUIWindows.GUI.Reusable
 {
     public class MonoInputBox : GUIElement
     {
+        private string _text  = "";
+
         /// <summary>
         /// The text contained in this input box.
         /// </summary>
-        public string Text { get; set; } = "";
+        public string Text
+        {
+            get { return _text;  }
+            set { _text = value; OnTextChanged(); }
+        }
 
         /// <summary>
         /// The position of the carrot.
@@ -54,6 +61,8 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         public Alignment TextAlignment { get; private set; }
 
         private int TextureID { get; set; }
+
+        public event System.EventHandler TextChanged;
 
         /// <summary>
         ///
@@ -139,7 +148,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         private void Enter()
         {
             this.Text += "\n";
-            this.CarrotPosition += 1;
+            this.CarrotPosition++;
         }
 
         private void Right()
@@ -211,6 +220,11 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             Rectangle carrotLocation = this.CalculateCarrotBounds(this, containerBounds);
 
             spBatch.Draw(this.CarrotTexture, carrotLocation, Color.White);
+        }
+
+        protected virtual void OnTextChanged()
+        {
+            TextChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private Rectangle CalculateCarrotBounds(MonoInputBox textbox, Rectangle containerBounds)

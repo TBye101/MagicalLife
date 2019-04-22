@@ -15,7 +15,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         public GUIContainer Child { get; set; }
 
         /// <summary>
-        /// If true, then this form is dragable.
+        /// If true, then this form is draggable.
         /// </summary>
         public bool IsMovable { get; set; }
 
