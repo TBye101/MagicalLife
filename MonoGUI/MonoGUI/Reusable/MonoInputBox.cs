@@ -14,10 +14,16 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 {
     public class MonoInputBox : GUIElement
     {
+        private string _text  = "";
+
         /// <summary>
         /// The text contained in this input box.
         /// </summary>
-        public string Text { get; set; } = "";
+        public string Text
+        {
+            get { return _text; }
+            set { _text = value; OnTextChanged(); }
+        }
 
         /// <summary>
         /// The position of the carrot.
@@ -55,6 +61,8 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         public Alignment TextAlignment { get; private set; }
 
         private int TextureID { get; set; }
+
+        public event System.EventHandler TextChanged;
 
         /// <summary>
         ///
@@ -184,11 +192,11 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
         private void Delete()
         {
-            if (this.CarrotPosition != this.Text.Count())
+            if (this.CarrotPosition != this.Text.Length)
             {
                 string p1 = this.Text.Substring(0, this.CarrotPosition);
 
-                if (this.Text.Count() != this.CarrotPosition + 1)
+                if (this.Text.Length != this.CarrotPosition + 1)
                 {
                     string p2 = this.Text.Substring(startIndex: this.CarrotPosition + 1, length: this.Text.Count() - (this.CarrotPosition + 1));
                     this.Text = p1 + p2;
@@ -212,6 +220,11 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             Rectangle carrotLocation = this.CalculateCarrotBounds(this, containerBounds);
 
             spBatch.Draw(this.CarrotTexture, carrotLocation, Color.White);
+        }
+
+        protected virtual void OnTextChanged()
+        {
+            TextChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private Rectangle CalculateCarrotBounds(MonoInputBox textbox, Rectangle containerBounds)

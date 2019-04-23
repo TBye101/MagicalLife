@@ -9,8 +9,7 @@
 
         internal static void Initialize()
         {
-            NewWorldMenuContainer mainMenu = new NewWorldMenuContainer(true);
-            NewWorldMenuM = mainMenu;
+            NewWorldMenuM = new NewWorldMenuContainer(true);
         }
     }
 }

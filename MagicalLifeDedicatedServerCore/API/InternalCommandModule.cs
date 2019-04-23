@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Server;
 using MagicalLifeDedicatedServer.API.Commands;
+using MagicalLifeDedicatedServer.Properties;
 using System.Collections.Generic;
 
 namespace MagicalLifeDedicatedServer.API
@@ -23,7 +24,7 @@ namespace MagicalLifeDedicatedServer.API
 
         public string GetFullName()
         {
-            return "Magical Life";
+            return DedicatedServer.MagicalLife;
         }
     }
 }

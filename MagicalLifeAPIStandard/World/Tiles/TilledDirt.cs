@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Properties;
 using MagicalLifeAPI.World.Base;
 
 namespace MagicalLifeAPI.World.Tiles
@@ -16,8 +17,8 @@ namespace MagicalLifeAPI.World.Tiles
 
         private void InitializeComponents()
         {
-            ComponentRenderer renderer = this.GetComponent<ComponentRenderer>();
-            renderer.AddVisual(new StaticTexture(TilledDirt.GetTextureID(), RenderLayer.DirtBase));
+            ComponentRenderer renderer = GetComponent<ComponentRenderer>();
+            renderer.AddVisual(new StaticTexture(GetTextureID(), RenderLayer.DirtBase));
         }
 
         private static int GetTextureID()
@@ -27,7 +28,7 @@ namespace MagicalLifeAPI.World.Tiles
 
         public override string GetName()
         {
-            return "TilledDirt";
+            return Lang.Dirt;
         }
     }
 }

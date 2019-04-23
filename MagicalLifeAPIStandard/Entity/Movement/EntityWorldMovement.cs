@@ -10,6 +10,7 @@ using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.World.Modifiers;
 using MagicalLifeAPI.Pathfinding;
+using MagicalLifeAPI.Properties;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Base;
@@ -148,7 +149,7 @@ namespace MagicalLifeAPI.Entity.Movement
                 }
             }
 
-            entity.Movement.AddModifier(new ModifierDouble(movementPenalty, new TimeRemoveCondition(1), "Normal Movement"));
+            entity.Movement.AddModifier(new ModifierDouble(movementPenalty, new TimeRemoveCondition(1), Lang.NormalMovement));
         }
 
         private static void FootStepSound(Living living, Tile footStepsOn)

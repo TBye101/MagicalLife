@@ -110,7 +110,8 @@ namespace MagicalLifeAPI.World.Base
         {
             try
             {
-                this.ItemID = ItemRegistry.IDToItem.First(x => x.Value.ModFrom.Equals(this.ModFrom) &&
+                this.ItemID = 
+                    ItemRegistry.IDToItem.First(x => x.Value.ModFrom.Equals(this.ModFrom) &&
                 x.Value.Name.Equals(this.Name)).Key;//slow
             }
             catch (InvalidOperationException e)

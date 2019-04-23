@@ -54,4 +54,17 @@
   <ItemGroup>
     <ProjectReference Include="..\MagicalLifeSettingsStandard\MagicalLifeSettingsStandard.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Lang.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Lang.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Lang.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Lang.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>

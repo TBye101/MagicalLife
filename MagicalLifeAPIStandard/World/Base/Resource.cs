@@ -33,7 +33,7 @@ namespace MagicalLifeAPI.World.Base
         [ProtoMember(3)]
         public Attribute32 MaxDurability { get; }
 
-        public Resource(string name, int durability, ComponentHarvestable harvestBehavior)
+        protected Resource(string name, int durability, ComponentHarvestable harvestBehavior)
         {
             this.AddComponent(new ComponentHasTexture(false));
             this.AddComponent(harvestBehavior);
@@ -42,7 +42,7 @@ namespace MagicalLifeAPI.World.Base
             this.MaxDurability = new Attribute32(this.Durability);
         }
 
-        public Resource()
+        protected Resource()
         {
         }
     }

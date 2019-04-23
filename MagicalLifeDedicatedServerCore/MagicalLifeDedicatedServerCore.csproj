@@ -12,4 +12,17 @@
     <ProjectReference Include="..\MagicalLifeMod\MagicalLifeMod.csproj" />
     <ProjectReference Include="..\MagicalLifeServerStandard\MagicalLifeServerStandard.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\DedicatedServer.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DedicatedServer.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\DedicatedServer.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DedicatedServer.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>

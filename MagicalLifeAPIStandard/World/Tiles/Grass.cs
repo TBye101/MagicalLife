@@ -3,6 +3,7 @@ using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Components.Resource;
 using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Properties;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Base;
 using ProtoBuf;
@@ -12,7 +13,7 @@ namespace MagicalLifeAPI.World.Tiles
     [ProtoContract]
     public class Grass : Tile
     {
-        public static readonly string GrassTileName = "Grass";
+        public static readonly string GrassTileName = Lang.Grass;
 
         public Grass(Point2D location) : base(location, 11, 1)
         {
@@ -33,53 +34,41 @@ namespace MagicalLifeAPI.World.Tiles
         {
         }
 
-        public Grass() : base()
+        public Grass()
         {
             //Protobuf-net constructor
         }
 
         private string GetRandomGrassTexture()
         {
-            int r = StaticRandom.Rand(0, 4);
-            string ret;
-
-            switch (r)
+            switch (StaticRandom.Rand(0, 4))
             {
                 case 1:
-                    ret = TextureLoader.TextureGrass2;
-                    break;
+                    return TextureLoader.TextureGrass2;
 
                 case 2:
-                    ret = TextureLoader.TextureGrass3;
-                    break;
+                    return TextureLoader.TextureGrass3;
 
                 case 3:
-                    ret = TextureLoader.TextureGrass4;
-                    break;
+                    return TextureLoader.TextureGrass4;
 
                 default:
-                    ret = TextureLoader.TextureGrass1;
-                    break;
+                    return TextureLoader.TextureGrass1;
             }
-
-            return ret;
         }
 
         private string GetRandomDirtTexture()
         {
             int r = StaticRandom.Rand(0, 2);
-            string ret;
 
             if (r == 0)
             {
-                ret = TextureLoader.TextureDirt1;
+                return TextureLoader.TextureDirt1;
             }
             else
             {
-                ret = TextureLoader.TextureDirt2;
+                return TextureLoader.TextureDirt2;
             }
-
-            return ret;
         }
 
         public override string GetName()

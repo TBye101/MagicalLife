@@ -18,7 +18,7 @@ namespace MagicalLifeAPI.World.Base
     public abstract class Tile : HasComponents
     {
         [ProtoMember(2)]
-        public bool IsWalkable;
+        public bool IsWalkable { get; set; }
 
         /// <summary>
         /// Returns the name of the biome that this tile belongs to.
@@ -127,7 +127,7 @@ namespace MagicalLifeAPI.World.Base
         /// <summary>
         /// This constructor is used during loading/reflection only.
         /// </summary>
-        public Tile()
+        protected Tile()
         {
         }
 

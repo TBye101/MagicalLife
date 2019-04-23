@@ -211,7 +211,7 @@ namespace MagicalLifeAPI.Entity
             this.Items.Remove(item.ItemID);
 
             int resultIndex = -1;
-            int length = stored.Count();
+            int length = stored.Count;
             for (int i = 0; i < length; i++)
             {
                 Item current = stored[i];

@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Universal;
 using MagicalLifeGUIWindows.GUI.Reusable;
+using MagicalLifeGUIWindows.Properties;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Input.InputListeners;
 
@@ -9,7 +10,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
 {
     public class QuitButton : MonoButton
     {
-        public QuitButton() : base(TextureLoader.GUIMenuButton, GetLocation(), true, "Quit")
+        public QuitButton() : base(TextureLoader.GUIMenuButton, GetLocation(), true, Resources.Quit)
         {
             this.ClickEvent += this.QuitButton_ClickEvent;
         }
