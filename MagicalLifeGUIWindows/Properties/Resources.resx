@@ -135,6 +135,9 @@
   <data name="LoadSave" xml:space="preserve">
     <value>Load Save</value>
   </data>
+  <data name="MasterVolume" xml:space="preserve">
+    <value>Master Volume</value>
+  </data>
   <data name="NewGame" xml:space="preserve">
     <value>New Game</value>
   </data>

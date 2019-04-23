@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MagicalLifeGUIWindows.GUI.Settings_Menu.Buttons;
 using MagicalLifeGUIWindows.GUI.Settings_Menu.InputBoxes;
+using MagicalLifeGUIWindows.GUI.Settings_Menu.Labels;
 
 namespace MagicalLifeGUIWindows.GUI.Settings_Menu
 {
@@ -17,6 +18,7 @@ namespace MagicalLifeGUIWindows.GUI.Settings_Menu
         {
             this.Controls.Add(new MainMenuButton(fromMainMenu));
             this.Controls.Add(new MasterVolumeInputBox());
+            this.Controls.Add(new MasterVolumeLabel());
         }
 
         public override string GetTextureName()

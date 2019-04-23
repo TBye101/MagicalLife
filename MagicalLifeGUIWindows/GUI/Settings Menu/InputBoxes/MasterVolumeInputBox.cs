@@ -31,6 +31,8 @@ namespace MagicalLifeGUIWindows.GUI.Settings_Menu.InputBoxes
             if (int.TryParse(this.Text, out int volume) && volume >=0 && volume <= 100)
             {
                 SettingsManager.AudioSettings.Settings.MasterVolume = volume;
+                 SettingsManager.AudioSettings.Save();
+
             }
         }
 

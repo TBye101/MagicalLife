@@ -157,6 +157,7 @@
     <Compile Include="GUI\Save Game Menu\SaveGameMenuLayout1920x1080.cs" />
     <Compile Include="GUI\Settings Menu\Buttons\MainMenuButton.cs" />
     <Compile Include="GUI\Settings Menu\InputBoxes\MasterVolumeInputBox.cs" />
+    <Compile Include="GUI\Settings Menu\Labels\MasterVolumeLabel.cs" />
     <Compile Include="GUI\Settings Menu\SettingsGameMenu.cs" />
     <Compile Include="GUI\Settings Menu\SettingsGameMenuContainer.cs" />
     <Compile Include="GUI\Settings Menu\SettingsMenuLayout2560x1440.cs" />

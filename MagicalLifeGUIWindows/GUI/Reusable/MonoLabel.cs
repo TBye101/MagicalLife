@@ -59,5 +59,6 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
                 SimpleTextRenderer.DrawString(this.Font, this.Text, Bounds, this.TextAlignment, Color.White, spBatch, RenderLayer.GUI);
             }
         }
+
     }
 }

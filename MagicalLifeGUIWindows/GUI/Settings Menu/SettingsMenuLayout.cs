@@ -84,5 +84,65 @@ namespace MagicalLifeGUIWindows.GUI.Settings_Menu
             }
 
         }
+
+        public static int MasterVolumeLabelX
+        {
+            get
+            {
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
+                {
+                    case Resolution._2560x1440:
+                        return SetingsMenuLayout2560x1440.MasterVolumeLabelX;
+
+                    default:
+                        return SettingsMenuLayout1920x1080.MasterVolumeLabelX;
+                }
+            }
+        }
+
+        public static int MasterVolumeLabelY
+        {
+            get
+            {
+                switch ((Resolution) SettingsManager.WindowSettings.Settings.Resolution)
+                {
+                    case Resolution._2560x1440:
+                        return SetingsMenuLayout2560x1440.MasterVolumeLabelY;
+
+                    default:
+                        return SettingsMenuLayout1920x1080.MasterVolumeLabelY;
+                }
+            }
+        }
+
+        public static int MasterVolumeLabelWidth
+        {
+            get
+            {
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
+                {
+                    case Resolution._2560x1440:
+                        return SetingsMenuLayout2560x1440.MasterVolumeLabelWidth;
+
+                    default:
+                        return SettingsMenuLayout1920x1080.MasterVolumeLabelWidth;
+                }
+            }
+        }
+
+        public static int MasterVolumeLabelHeight
+        {
+            get
+            {
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
+                {
+                    case Resolution._2560x1440:
+                        return SetingsMenuLayout2560x1440.MasterVolumeLabelHeight;
+
+                    default:
+                        return SettingsMenuLayout1920x1080.MasterVolumeLabelHeight;
+                }
+            }
+        }
     }
 }

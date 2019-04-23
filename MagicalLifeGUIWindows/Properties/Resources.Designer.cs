@@ -115,6 +115,15 @@ namespace MagicalLifeGUIWindows.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Master Volume.
+        /// </summary>
+        public static string MasterVolume {
+            get {
+                return ResourceManager.GetString("MasterVolume", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Game.
         /// </summary>
         public static string NewGame {
