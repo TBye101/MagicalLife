@@ -5,7 +5,7 @@ using MagicalLifeGUIWindows.GUI.Reusable;
 
 namespace MagicalLifeGUIWindows.GUI.MainMenu
 {
-    public class MainMenuContainer : GUIContainer
+    public class MainMenuContainer : GuiContainer
     {
         public MainMenuContainer(bool visible) : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow, false)
         {

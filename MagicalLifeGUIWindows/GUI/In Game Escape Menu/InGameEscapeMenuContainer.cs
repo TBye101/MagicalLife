@@ -5,7 +5,7 @@ using MagicalLifeGUIWindows.GUI.Reusable;
 
 namespace MagicalLifeGUIWindows.GUI.In
 {
-    public class InGameEscapeMenuContainer : GUIContainer
+    public class InGameEscapeMenuContainer : GuiContainer
     {
         public QuitButton Quit { get; private set; } = new QuitButton();
 

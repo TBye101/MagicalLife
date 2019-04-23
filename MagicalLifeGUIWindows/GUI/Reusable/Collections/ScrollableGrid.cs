@@ -58,6 +58,14 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// </summary>
         public event EventHandler<int> ItemDoubleClick;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="columns"></param>
+        /// <param name="drawingBounds"></param>
+        /// <param name="priority"></param>
+        /// <param name="isContained"></param>
+        /// <param name="font"></param>
         /// <param name="itemRenderCount">How many items should be displayed at any given time.</param>
         /// <param name="items">The items that will be displayed.</param>
         public ScrollableGrid(int columns, Rectangle drawingBounds, int priority, bool isContained, string font, int itemRenderCount)

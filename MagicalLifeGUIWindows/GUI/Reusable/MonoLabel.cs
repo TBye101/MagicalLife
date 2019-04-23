@@ -36,7 +36,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             this.Text = text;
         }
 
-        public MonoLabel() : base()
+        public MonoLabel()
         {
         }
 

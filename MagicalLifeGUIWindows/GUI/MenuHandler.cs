@@ -17,13 +17,13 @@ namespace MagicalLifeGUIWindows.GUI
         /// Containers[0] is the very first menu showed
         /// Containers[x] is the latest menu showed.
         /// </summary>
-        private static List<GUIContainer> Containers = new List<GUIContainer>();
+        private static List<GuiContainer> Containers = new List<GuiContainer>();
 
         /// <summary>
         /// Displays the menu/popup.
         /// </summary>
         /// <param name="container"></param>
-        public static void DisplayMenu(GUIContainer container)
+        public static void DisplayMenu(GuiContainer container)
         {
             BoundHandler.Popup(container);
             Containers.Add(container);
@@ -46,7 +46,7 @@ namespace MagicalLifeGUIWindows.GUI
             }
         }
 
-        private static void NullChild(GUIContainer container)
+        private static void NullChild(GuiContainer container)
         {
             if (container.Child == null)
             {

@@ -12,7 +12,7 @@ using MagicalLifeGUIWindows.GUI.Settings_Menu.Labels;
 
 namespace MagicalLifeGUIWindows.GUI.Settings_Menu
 {
-    public class SettingsGameMenuContainer : GUIContainer
+    public class SettingsGameMenuContainer : GuiContainer
     {
         public SettingsGameMenuContainer(bool fromMainMenu) : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow, false)
         {

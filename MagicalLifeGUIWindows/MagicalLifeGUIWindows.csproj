@@ -140,6 +140,7 @@
     <Compile Include="GUI\New World Menu\Labels\LengthLabel.cs" />
     <Compile Include="GUI\New World Menu\Labels\WidthLabel.cs" />
     <Compile Include="GUI\Reusable\API\IScrollable.cs" />
+    <Compile Include="GUI\Reusable\API\IUIContainer.cs" />
     <Compile Include="GUI\Reusable\Event\ClickEventArgs.cs" />
     <Compile Include="GUI\Reusable\RenderableImage.cs" />
     <Compile Include="GUI\Reusable\RenderableString.cs" />
@@ -184,7 +185,7 @@
     <Compile Include="GUI\New World Menu\Input Boxes\WorldWidthInputBox.cs" />
     <Compile Include="GUI\New World Menu\NewWorldMenuLayout1920x1080.cs" />
     <Compile Include="GUI\Resolution.cs" />
-    <Compile Include="GUI\Reusable\GUIContainer.cs" />
+    <Compile Include="GUI\Reusable\GuiContainer.cs" />
     <Compile Include="GUI\Reusable\GUIElement.cs" />
     <Compile Include="GUI\Reusable\MonoInputBox.cs" />
     <Compile Include="GUI\Reusable\MonoLabel.cs" />
@@ -229,11 +230,20 @@
     <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.2.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.2\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="MailKit, Version=2.1.0.0, Culture=neutral, PublicKeyToken=4e064fe7c44a8f1b, processorArchitecture=MSIL">
+      <HintPath>..\packages\MailKit.2.1.4\lib\net45\MailKit.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Win32.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
       <Private>True</Private>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="MimeKit, Version=2.1.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
+      <HintPath>..\packages\MimeKit.2.1.4\lib\net45\MimeKit.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Extended, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MonoGame.Extended.1.1.0\lib\portable-net45+win8+wpa81\MonoGame.Extended.dll</HintPath>
@@ -362,6 +372,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Security.AccessControl, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.AccessControl.4.5.0\lib\net461\System.Security.AccessControl.dll</HintPath>
     </Reference>

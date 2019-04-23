@@ -490,7 +490,7 @@ namespace MagicalLifeAPI.DataTypes.R
 
             locker.AcquireReaderLock(locking_timeout);
             Node<T> n = GetNode(getRootNodeId());
-            if (n != null && n.GetMBR() != null)
+            if (n?.GetMBR() != null)
             {
                 bounds = n.GetMBR().Copy();
             }
