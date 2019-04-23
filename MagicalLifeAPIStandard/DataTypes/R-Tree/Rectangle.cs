@@ -59,7 +59,7 @@ namespace MagicalLifeAPI.DataTypes.R
     /// <summary>
     /// Currently hardcoded to 3 dimensions, but could be extended.
     /// </summary>
-    public class Rectangle
+    public class Rectangle : IEquatable<Rectangle>
     {
         /// <summary>
         /// Number of dimensions in a rectangle. In theory this
@@ -102,8 +102,8 @@ namespace MagicalLifeAPI.DataTypes.R
         {
             if (min.Length != DIMENSIONS || max.Length != DIMENSIONS)
             {
-                throw new Exception("Error in Rectangle constructor: " +
-                          "min and max arrays must be of length " + DIMENSIONS);
+                throw new ArgumentException ("Error in Rectangle constructor: " +
+                          "min and max arrays must be of length " + DIMENSIONS + ".");
             }
 
             this.min = new float[DIMENSIONS];
@@ -394,7 +394,7 @@ namespace MagicalLifeAPI.DataTypes.R
 
             for (int i = 0; i < a1.Length; i++)
             {
-                if (a1[i] != a2[i])
+                if (Math.Abs(a1[i] - a2[i]) < 0.000000001f)
                 {
                     return false;
                 }
@@ -412,14 +412,10 @@ namespace MagicalLifeAPI.DataTypes.R
         public override bool Equals(object obj)
         {
             bool equals = false;
-            if (obj.GetType() == typeof(Rectangle))
+            if (obj is Rectangle r && CompareArrays(r.min, min)
+                && CompareArrays(r.max, max))
             {
-                Rectangle r = (Rectangle)obj;
-#warning possible didn't convert properly
-                if (CompareArrays(r.min, min) && CompareArrays(r.max, max))
-                {
-                    equals = true;
-                }
+                equals = true;
             }
             return equals;
         }
@@ -477,6 +473,12 @@ namespace MagicalLifeAPI.DataTypes.R
             }
             sb.Append(')');
             return sb.ToString();
+        }
+
+        public bool Equals(Rectangle other)
+        {
+            return CompareArrays(other.min, min)
+                    && CompareArrays(other.max, max);
         }
     }
 }

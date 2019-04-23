@@ -123,7 +123,7 @@ namespace MagicalLifeAPI.Entity
             this.FootStepTimer = new TickTimer(5);
         }
 
-        public Living()
+        protected Living()
         {
         }
 

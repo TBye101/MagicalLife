@@ -20,14 +20,14 @@ namespace MagicalLifeAPI.World.Base
     [ProtoInclude(8, typeof(TreeBase))]
     public abstract class Resource : HasTexture, IHasSubclasses, IHarvestable, IRenderable
     {
-        public Resource(string name, int durability)
+        protected Resource(string name, int durability)
         {
             this.DisplayName = name;
             this.Durability = durability;
             this.MaxDurability = new Attribute32(this.Durability);
         }
 
-        public Resource()
+        protected Resource()
         {
         }
 

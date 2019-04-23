@@ -1,7 +1,9 @@
-﻿using MagicalLifeAPI.Error.InternalExceptions;
+﻿using System;
+using MagicalLifeAPI.Error.InternalExceptions;
 using ProtoBuf;
 using System.Collections;
 using System.Collections.Generic;
+using MagicalLifeAPI.Sound.FMOD;
 
 namespace MagicalLifeAPI.DataTypes
 {
@@ -9,7 +11,7 @@ namespace MagicalLifeAPI.DataTypes
     /// A protobuf-net compatible FIFO (first in first out) Queue class
     /// </summary>
     [ProtoContract]
-    public class ProtoQueue<T> : IEnumerable<T>
+    public class ProtoQueue<T> : ICollection<T>
     {
         [ProtoMember(1)]
         internal List<T> Data = new List<T>();
@@ -21,6 +23,8 @@ namespace MagicalLifeAPI.DataTypes
                 return this.Data.Count;
             }
         }
+
+        public bool IsReadOnly => false;
 
         public IEnumerator<T> GetEnumerator()
         {
@@ -86,6 +90,16 @@ namespace MagicalLifeAPI.DataTypes
         public T[] ToArray()
         {
             return this.Data.ToArray();
+        }
+
+        public void Add(T item)
+        {
+            this.Enqueue(item);
+        }
+
+        public bool Remove(T item)
+        {
+            throw new NotSupportedException();
         }
     }
 }
