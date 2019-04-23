@@ -57,6 +57,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
                     //Get the deepest tasks from the dependency chain, and filter out ones that the creature can't do.
                     List<MagicalTask> deepestTasks = this.GetDeepestTasks(taskGoal);
                     List<MagicalTask> possibleTasks = this.FilterByValidTasks(living, deepestTasks);
+                    this.FilterByDependencyStatus(possibleTasks);
                     possibleTasks.Sort((x, y) => CompareTasks(x, y, living));
 
                     if (possibleTasks.Any())
@@ -153,6 +154,27 @@ namespace MagicalLifeAPI.Entity.AI.Task
         }
 
         /// <summary>
+        /// Filters out the tasks that haven't had their dependencies successfully generated. 
+        /// </summary>
+        /// <param name="tasks"></param>
+        /// <returns></returns>
+        private void FilterByDependencyStatus(List<MagicalTask> tasks)
+        {
+            if (tasks != null)
+            {
+                for (int i = tasks.Count - 1; i >= 0; i--)
+                {
+                    MagicalTask task = tasks[i];
+
+                    if (!task.DependenciesGenerated)
+                    {
+                        tasks.RemoveAt(i);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// Returns a list of the tasks that the specified creature can complete.
         /// </summary>
         /// <param name="living"></param>
@@ -164,35 +186,37 @@ namespace MagicalLifeAPI.Entity.AI.Task
             for (int i = 0; i < tasks.Count; i++)
             {
                 MagicalTask task = tasks[i];
-
                 if (task.ReservedFor.Equals(living.ID))
                 {
                     validTasks.Add(task);
                 }
                 else if (task.ReservedFor.Equals(Guid.Empty) && task.ToilingWorker.Equals(Guid.Empty))
                 {
-                        bool compatible = true;
-                        foreach (Qualification qualification in task.Qualifications)
-                        {
-                            if (qualification.ArePreconditionsMet() && qualification.IsQualified(living))
-                            {
-                                continue;
-                            }
-                            else
-                            {
-                                compatible = false;
-                                break;
-                            }
-                        }
-
-                        if (compatible)
-                        {
-                            validTasks.Add(task);
-                        }
+                    if (this.IsTaskValid(living, task))
+                    {
+                       validTasks.Add(task);
+                    }
                 }
             }
 
             return validTasks;
+        }
+
+        private bool IsTaskValid(Living living, MagicalTask task)
+        {
+            foreach (Qualification qualification in task.Qualifications)
+            {
+                if (qualification.ArePreconditionsMet() && qualification.IsQualified(living))
+                {
+                    continue;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         /// <summary>
@@ -202,19 +226,25 @@ namespace MagicalLifeAPI.Entity.AI.Task
         {
             if (!task.DependenciesGenerated)
             {
-                task.CreateDependencies(living);
-                task.DependenciesGenerated = true;
+                bool success = task.CreateDependencies(living);
+                if (success)
+                {
+                    task.DependenciesGenerated = true;
+                }
             }
 
-            ObservableCollection<MagicalTask> childTasks = task.Dependencies.PreRequisite;
-            foreach (MagicalTask childTask in childTasks)
+            if (task.DependenciesGenerated)
             {
-                this.CreateDependencies(childTask, living);
+                ObservableCollection<MagicalTask> childTasks = task.Dependencies.PreRequisite;
+                foreach (MagicalTask childTask in childTasks)
+                {
+                    this.CreateDependencies(childTask, living);
+                }
             }
         }
 
         /// <summary>
-        /// Gets the deepest children tasks in the specified task. Returns the parent task if there are no child tasks.
+        /// Gets the deepest children tasks in the specified task. Returns the parent task if there are no child tasks. 
         /// </summary>
         /// <param name="task"></param>
         /// <returns></returns>
@@ -231,7 +261,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
             }
             else
             {
-                deepest.Add(task);
+               deepest.Add(task);
             }
 
             return deepest;

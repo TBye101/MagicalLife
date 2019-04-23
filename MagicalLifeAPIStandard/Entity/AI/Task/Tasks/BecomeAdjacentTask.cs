@@ -61,9 +61,9 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             }
         }
 
-        public override void CreateDependencies(Living l)
+        public override bool CreateDependencies(Living l)
         {
-            
+            return true;
         }
     }
 }

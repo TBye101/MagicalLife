@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Crafting;
+using MagicalLifeAPI.Entity.AI.Task.Qualifications;
 using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 using System;
@@ -46,12 +47,14 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             this.CompleteTask();
         }
 
-        public override void CreateDependencies(Living l)
+        public override bool CreateDependencies(Living l)
         {
             foreach (RequiredItem requiredItem in this.SimpleRecipe.RequiredItems)
             {
-                this.Dependencies.PreRequisite.Add(new GrabItemQuantity(this.BoundID, requiredItem.Item.ItemID, requiredItem.Count));
+                this.Dependencies.PreRequisite.Add(new GrabItemQuantity(this.BoundID, requiredItem.Item.ItemID, requiredItem.Count, l.Dimension));
+                this.Qualifications.Add(new IsItemAvailibleQualification(requiredItem.Item.ItemID, l.Dimension));
             }
+            return true;
         }
     }
 }

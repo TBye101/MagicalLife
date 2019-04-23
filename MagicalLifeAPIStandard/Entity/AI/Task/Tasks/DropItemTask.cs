@@ -99,8 +99,9 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             this.CompleteTask();
         }
 
-        public override void CreateDependencies(Living l)
+        public override bool CreateDependencies(Living l)
         {
+            return true;
         }
     }
 }

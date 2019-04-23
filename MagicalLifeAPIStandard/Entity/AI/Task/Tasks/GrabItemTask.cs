@@ -62,9 +62,10 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             };
         }
 
-        public override void CreateDependencies(Living l)
+        public override bool CreateDependencies(Living l)
         {
             this.Dependencies = GetDependencies(this.BoundID, this.ItemID, l.Dimension);
+            return true;
         }
 
         public override void MakePreparations(Living l)

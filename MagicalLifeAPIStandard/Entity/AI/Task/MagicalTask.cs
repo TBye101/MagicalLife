@@ -118,9 +118,11 @@ namespace MagicalLifeAPI.Entity.AI.Task
 
         /// <summary>
         /// Creates the dynamic dependencies of this task.
+        /// Returns true if the dependencies were successfully created.
+        /// If false, the framework will attempt to create them at another time.
         /// </summary>
         /// <param name="l"></param>
-        public abstract void CreateDependencies(Living l);
+        public abstract bool CreateDependencies(Living l);
 
         /// <summary>
         /// Resets the task, in order to prepare for something such as the assigned creature dying.

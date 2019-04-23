@@ -5,6 +5,7 @@ using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace MagicalLifeAPI.Entity.AI.Task.Tasks
@@ -21,15 +22,15 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         [ProtoMember(2)]
         private int Amount;
 
-        public GrabItemQuantity(Guid boundID, int itemID, int amount)
-            : base(Dependencies.CreateEmpty(), boundID, GetQualifications(), PriorityLayers.Default)
+        public GrabItemQuantity(Guid boundID, int itemID, int amount, int dimension)
+            : base(Dependencies.CreateEmpty(), boundID, GetQualifications(itemID, dimension), PriorityLayers.Default)
         {
             this.ItemID = itemID;
             this.Amount = amount;
         }
 
-        public GrabItemQuantity(Guid boundID, Item item, int amount)
-            : this(boundID, item.ItemID, amount)
+        public GrabItemQuantity(Guid boundID, Item item, int amount, int dimension)
+            : this(boundID, item.ItemID, amount, dimension)
         {
         }
 
@@ -38,23 +39,31 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             //Protobuf-net constructor.
         }
 
-        private static List<Qualification> GetQualifications()
+        private static List<Qualification> GetQualifications(int itemID, int dimension)
         {
             return new List<Qualification>
             {
-                new CanMoveQualification()
+                new CanMoveQualification(),
+                new IsItemAvailibleQualification(itemID, dimension)
             };
         }
 
-        public override void CreateDependencies(Living l)
+        public override bool CreateDependencies(Living l)//Need to return a bool to say if this step was successful.
         {
             List<Point2D> locations = ItemFinder.LocateQuantityOfItem(this.ItemID, this.Amount, Point2D.Zero, l.Dimension);
 
-            foreach (Point2D item in locations)
+            if (locations != null && locations.Any())
             {
-                GrabSpecificItemTask task = new GrabSpecificItemTask(this.BoundID, item, l.Dimension);
-                this.Dependencies.PreRequisite.Add(task);
+                foreach (Point2D item in locations)
+                {
+                    GrabSpecificItemTask task = new GrabSpecificItemTask(this.BoundID, item, l.Dimension);
+                    this.Dependencies.PreRequisite.Add(task);
+                }
+
+                return true;
             }
+
+            return false;
         }
 
         public override void MakePreparations(Living l)
