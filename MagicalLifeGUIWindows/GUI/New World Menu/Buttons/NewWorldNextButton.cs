@@ -36,7 +36,12 @@ namespace MagicalLifeGUIWindows.GUI.New
             ServerSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(MagicalLifeAPI.Networking.EngineMode.ServerAndClient));
             Client.Load();
             NewGameInputHandler a = new NewGameInputHandler();
-            a.StartNewGame();
+            if(!a.StartNewGame())
+            {
+
+                //Should probably make an message box here or something
+                return;
+            }
             Server.StartGame();
             RenderInfo.Camera2D.InitializeForDimension(0);
             BoundHandler.RemoveContainer(NewWorldMenu.NewWorldMenuM);
