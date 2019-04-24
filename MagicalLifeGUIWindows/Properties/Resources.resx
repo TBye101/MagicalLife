@@ -162,6 +162,9 @@
   <data name="SkillsTab" xml:space="preserve">
     <value>Skills Tab</value>
   </data>
+  <data name="WaitingForKeyPress" xml:space="preserve">
+    <value>Waiting For Key Press</value>
+  </data>
   <data name="WorldLength" xml:space="preserve">
     <value>World Length</value>
   </data>

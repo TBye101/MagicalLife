@@ -196,6 +196,15 @@ namespace MagicalLifeGUIWindows.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Waiting For Key Press.
+        /// </summary>
+        public static string WaitingForKeyPress {
+            get {
+                return ResourceManager.GetString("WaitingForKeyPress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to World Length.
         /// </summary>
         public static string WorldLength {

@@ -142,6 +142,7 @@
     <Compile Include="GUI\Reusable\API\IScrollable.cs" />
     <Compile Include="GUI\Reusable\API\IUIContainer.cs" />
     <Compile Include="GUI\Reusable\Event\ClickEventArgs.cs" />
+    <Compile Include="GUI\Reusable\MonoKeyBindingButton.cs" />
     <Compile Include="GUI\Reusable\RenderableImage.cs" />
     <Compile Include="GUI\Reusable\RenderableString.cs" />
     <Compile Include="GUI\Reusable\Collections\ListBox.cs" />
