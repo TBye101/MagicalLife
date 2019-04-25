@@ -16,7 +16,7 @@ namespace MagicalLifeAPI.World.Base
     /// Represents almost everything in a movable/harvested form.
     /// </summary>
     [ProtoContract]
-    public abstract class Item : HasComponents
+    public abstract class Item : HasComponents, IEquatable<Item>
     {
         /// <summary>
         /// The name of this <see cref="Item"/>.
@@ -49,11 +49,28 @@ namespace MagicalLifeAPI.World.Base
         [ProtoMember(5)]
         public int CurrentlyStacked { get; set; }
 
+        private int _itemID = int.MinValue;
+
         /// <summary>
         /// The ID that describes this item to the <see cref="ItemRegistry"/>.
         /// </summary>
         [ProtoMember(6)]
-        public int ItemID { get; private set; }
+        public int ItemID
+        {
+            get
+            {
+                if (this._itemID == int.MinValue)
+                {
+                    this._itemID = ItemRegistry.ItemToID[this];
+                }
+                return this._itemID;
+            }
+
+            private set
+            {
+                this._itemID = value;
+            }
+        }
 
         [ProtoMember(7)]
         public string TextureName { get; set; }
@@ -84,7 +101,6 @@ namespace MagicalLifeAPI.World.Base
         {
             this.Name = name;
             this.ModFrom = modFrom;
-            this.SetItemID();//Must be after "Name" and "ModFrom" is set, as it depends on these.
             this.Lore = lore;
             this.StackableLimit = stackableLimit;
             this.CurrentlyStacked = count;
@@ -204,5 +220,23 @@ namespace MagicalLifeAPI.World.Base
         /// <param name="amouont">The amount of the item to be created via deep copy.</param>
         /// <returns></returns>
         public abstract Item GetDeepCopy(int amount);
+
+        /// <summary>
+        /// Returns true if the items are of the same type.
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public bool Equals(Item other)
+        {
+            return other.GetType().Equals(this.GetType());
+        }
+
+        public override int GetHashCode()
+        {
+            int hash = (this.Name != null ? this.Name.GetHashCode() : 0);
+            hash = (hash * 396) ^ (this.ModFrom != null ? this.ModFrom.GetHashCode() : 0);
+            hash = (hash * 396) ^ (this.StackableLimit.GetHashCode());
+            return hash;
+        }
     }
 }

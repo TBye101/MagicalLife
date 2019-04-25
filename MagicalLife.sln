@@ -10,6 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Notes.txt = Notes.txt
 		Performance Notes.md = Performance Notes.md
 		Recipe System Design.txt = Recipe System Design.txt
+		Task System Design 2.txt = Task System Design 2.txt
 		TestSettings.runsettings = TestSettings.runsettings
 		Vision.md = Vision.md
 	EndProjectSection
@@ -36,9 +37,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeAPITest", "Magic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicalLifeMod", "MagicalLifeMod\MagicalLifeMod.csproj", "{89B9DD2D-4904-4491-B111-E43A750E440B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGUI", "MonoGUI\MonoGUI.csproj", "{251190F6-AC08-4274-895D-E806FD2D16C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonoGUI", "MonoGUI\MonoGUI.csproj", "{251190F6-AC08-4274-895D-E806FD2D16C4}"
 EndProject
 Global
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64

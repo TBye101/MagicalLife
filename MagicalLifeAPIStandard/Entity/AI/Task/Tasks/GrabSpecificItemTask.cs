@@ -31,7 +31,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         protected Point2D ReservedItemLocation;
 
         public GrabSpecificItemTask(Guid boundID, Point2D itemLocation, int dimension)
-            : base(Dependencies.None, boundID, GetQualifications(),
+            : base(Dependencies.CreateEmpty(), boundID, GetQualifications(),
                   PriorityLayers.Default)
         {
             this.MoveTaskCompleted = false;
@@ -85,19 +85,27 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         public override void Tick(Living l)
         {
-            if (this.MoveTaskCompleted)
+            lock (this)
             {
-                //Pick it up
-                Item pickedUp = ItemRemover.RemoveAllItems(this.ReservedItemLocation, l.Dimension);
-                pickedUp.ReservedID = Guid.Empty;
-                l.Inventory.AddItem(pickedUp);
-                this.CompleteTask();
+                if (this.MoveTaskCompleted)
+                {
+                    //Pick it up
+                    Item pickedUp = ItemRemover.RemoveAllItems(this.ReservedItemLocation, l.Dimension);
+                    pickedUp.ReservedID = Guid.Empty;
+                    l.Inventory.AddItem(pickedUp);
+                    this.CompleteTask();
+                }
+                else
+                {
+                    //Move closer to it
+                    this.Move.Tick(l);
+                }
             }
-            else
-            {
-                //Move closer to it
-                this.Move.Tick(l);
-            }
+        }
+
+        public override bool CreateDependencies(Living l)
+        {
+            return true;
         }
     }
 }

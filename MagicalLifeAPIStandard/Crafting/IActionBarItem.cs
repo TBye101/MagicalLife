@@ -38,5 +38,10 @@ namespace MagicalLifeAPI.Crafting
         /// Called when this action bar item is clicked on within the action bar.
         /// </summary>
         void Clicked();
+
+        /// <summary>
+        /// Called when this action bar item is special clicked on.
+        /// </summary>
+        void SpecialClicked();
     }
 }

@@ -14,7 +14,7 @@ namespace MagicalLifeMod.Core.WorldGeneration.TerrainGenerators
 { 
     public class DirtTerrain : TerrainGenerator
     {
-        public DirtTerrain() : base(CoreSettingsHandler.GenerationSettings.Settings.DirtTerrainWeight)
+        public DirtTerrain(int dimension) : base(CoreSettingsHandler.GenerationSettings.Settings.DirtTerrainWeight, dimension)
         {
         }
 
@@ -41,7 +41,7 @@ namespace MagicalLifeMod.Core.WorldGeneration.TerrainGenerators
 
         private Tile GenerateTile(int x, int y, Random seededRandom)
         {
-            Dirt dirt = new Dirt(x, y);
+            Dirt dirt = new Dirt(x, y, this.Dimension);
 
             if (seededRandom.Next(0, 5) == 3)
             {

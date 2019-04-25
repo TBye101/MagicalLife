@@ -61,6 +61,8 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         public Alignment TextAlignment { get; private set; }
 
         private int TextureID { get; set; }
+        
+        public event System.EventHandler TextChanged;
 
         public event System.EventHandler TextChanged;
 
@@ -226,7 +228,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         {
             TextChanged?.Invoke(this, EventArgs.Empty);
         }
-
+        
         private Rectangle CalculateCarrotBounds(MonoInputBox textbox, Rectangle containerBounds)
         {
             Vector2 size = textbox.Font.MeasureString(textbox.Text);

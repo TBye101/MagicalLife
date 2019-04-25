@@ -14,14 +14,14 @@ namespace MagicalLifeAPI.World.Tiles
     [ProtoBuf.ProtoContract]
     public class Dirt : Tile
     {
-        public Dirt(Point2D location) : base(location, 10, 0)
+        public Dirt(Point2D location, int dimension) : base(location, dimension, 10, 0)
         {
             this.AddComponent(new TillablePercentDone());
             this.GetExactComponent<ComponentRenderer>().RenderQueue.Add(
                 new StaticTexture(Dirt.GetTextureID(), RenderLayer.DirtBase));
         }
 
-        public Dirt(int x, int y) : this(new Point2D(x, y))
+        public Dirt(int x, int y, int dimension) : this(new Point2D(x, y), dimension)
         {
         }
 

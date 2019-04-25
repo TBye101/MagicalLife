@@ -10,6 +10,7 @@ using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 {
@@ -47,7 +48,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         protected static Dependencies GetDependencies(Guid boundID, Point2D target)
         {
-            List<MagicalTask> deps = new List<MagicalTask>
+            ObservableCollection<MagicalTask> deps = new ObservableCollection<MagicalTask>
             {
                 new BecomeAdjacentTask(boundID, target)
             };
@@ -147,6 +148,11 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             Tile tile = World.Data.World.GetTile(dimension, this.Target.X, this.Target.Y);
             tile.Resources = null;
             tile.ImpendingAction = ActionSelected.None;
+        }
+
+        public override bool CreateDependencies(Living l)
+        {
+            return true;
         }
     }
 }

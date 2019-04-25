@@ -34,15 +34,21 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         internal static Dictionary<int, Item> IDToItem { get; set; } = new Dictionary<int, Item>();
 
         /// <summary>
-        /// For each item in the dimension, this dictionary holds a R-Tree that contains chunk coordinates for every chunk that has at least one of that item.
+        /// Holds which item is associated with which item id.
         /// </summary>
         [ProtoMember(2)]
+        internal static Dictionary<Item, int> ItemToID { get; set; } = new Dictionary<Item, int>();
+
+        /// <summary>
+        /// For each item in the dimension, this dictionary holds a R-Tree that contains chunk coordinates for every chunk that has at least one of that item.
+        /// </summary>
+        [ProtoMember(3)]
         internal Dictionary<int, RTree<Point2D>> ItemIDToChunk { get; set; }
 
-        [ProtoMember(3)]
+        [ProtoMember(4)]
         public Guid ID { get; }
 
-        [ProtoMember(4)]
+        [ProtoMember(5)]
         public int Dimension { get; }
 
         public ItemRegistry(int dimension)
@@ -65,6 +71,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         public static void RegisterItemType(Item item)
         {
             IDToItem.Add(IDToItem.Count, item);
+            ItemToID.Add(item, ItemToID.Count);
         }
 
         /// <summary>

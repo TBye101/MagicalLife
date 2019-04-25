@@ -15,7 +15,7 @@ namespace MagicalLifeAPI.World.Tiles
     {
         public static readonly string GrassTileName = Lang.Grass;
 
-        public Grass(Point2D location) : base(location, 11, 1)
+        public Grass(Point2D location, int dimension) : base(location, dimension, 11, 1)
         {
             this.InitializeComponents();
         }
@@ -30,7 +30,7 @@ namespace MagicalLifeAPI.World.Tiles
             renderer.AddVisual(new StaticTexture(AssetManager.GetTextureIndex(this.GetRandomGrassTexture()), RenderLayer.GrassBase));
         }
 
-        public Grass(int x, int y) : this(new Point2D(x, y))
+        public Grass(int x, int y, int dimension) : this(new Point2D(x, y), dimension)
         {
         }
 

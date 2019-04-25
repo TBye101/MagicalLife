@@ -17,13 +17,13 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         public Point2D Destination { get; private set; }
 
         public MoveTask(Guid boundID, Point2D destination, int taskPriority)
-            : base(Dependencies.None, boundID, new List<Qualification> { new CanMoveQualification() }, taskPriority)
+            : base(Dependencies.CreateEmpty(), boundID, new List<Qualification> { new CanMoveQualification() }, taskPriority)
         {
             this.Destination = destination;
         }
 
         public MoveTask(Guid boundID, Point2D destination)
-            : base(Dependencies.None, boundID, new List<Qualification> { new CanMoveQualification() }, PriorityLayers.Default)
+            : base(Dependencies.CreateEmpty(), boundID, new List<Qualification> { new CanMoveQualification() }, PriorityLayers.Default)
         {
             this.Destination = destination;
         }
@@ -71,6 +71,11 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             {
                 this.CompleteTask();
             }
+        }
+
+        public override bool CreateDependencies(Living l)
+        {
+            return true;
         }
     }
 }

@@ -22,7 +22,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         [ProtoMember(3)]
         public Point2D AdjacentLocation { get; private set; }
 
-        public BecomeAdjacentTask(Guid boundID, Point2D target) : base(Dependencies.None, boundID, new List<Qualification> { new CanMoveQualification() }, PriorityLayers.Default)
+        public BecomeAdjacentTask(Guid boundID, Point2D target) : base(Dependencies.CreateEmpty(), boundID, new List<Qualification> { new CanMoveQualification() }, PriorityLayers.Default)
         {
             this.Target = target;
         }
@@ -59,6 +59,11 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
                 MasterLog.DebugWriteLine(this.ID.ToString());
                 this.CompleteTask();
             }
+        }
+
+        public override bool CreateDependencies(Living l)
+        {
+            return true;
         }
     }
 }

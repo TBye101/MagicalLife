@@ -1,0 +1,37 @@
+Requirements:
+
+1. Tasks can be completed
+2. Tasks can be reset
+3. Tasks have qualifications for who can do the task
+4. Tasks have dependencies
+5. Dependencies can be generated on the fly
+	a. A task can be initialized/assigned and then generate new dependencies, which must then be completed by the creature
+6. Tasks can have requirements that ensure that once a certain creature starts doing it's dependencies, it is the only one allowed to finish all the tasks bound by this constraint.
+7. Tasks with dependencies can be completed by multiple creatures unless qualifications or constraints forbid it.
+
+
+Pseudo design:
+
+Task.cs
+Guid ID;
+
+abstract void Reset();
+abstract void CreateDependencies();
+abstract void Prepare();
+abstract void Tick();
+
+TaskAssigner.cs
+
+void assign(Living living)
+{
+	list = get all valid tasks for the living
+	
+
+	if the first task in the list can be done by living (check qualifications)
+		Task.CreateDependencies();
+			grab first item from here, repeat until no more new dependencies
+		Reserve the task and all tasks that must be completed by the same character 
+		Add the found task to the character, call Prepare();
+	else
+		check the next item...
+}

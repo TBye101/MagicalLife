@@ -7,6 +7,7 @@ using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace MagicalLifeAPI.Entity.AI.Task.Tasks
@@ -24,7 +25,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         protected Point2D ReservedItemLocation;
 
         public GrabItemTask(Guid boundID, int itemID, int dimension)
-            : base(GetDependencies(boundID, itemID, dimension), boundID, GetQualifications(itemID, dimension),
+            : base(Dependencies.CreateEmpty(), boundID, GetQualifications(itemID, dimension),
                   PriorityLayers.Default)
         {
             this.ItemID = itemID;
@@ -44,7 +45,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         {
             Point2D nearest = ItemFinder.FindNearestUnreserved(itemID, Point2D.Zero, dimension);
 
-            List<MagicalTask> dependency = new List<MagicalTask>
+            ObservableCollection<MagicalTask> dependency = new ObservableCollection<MagicalTask>
             {
                 new GrabSpecificItemTask(boundID, nearest, dimension)
             };
@@ -59,6 +60,12 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
                 new CanMoveQualification(),
                 new IsItemAvailibleQualification(itemID, dimension)
             };
+        }
+
+        public override bool CreateDependencies(Living l)
+        {
+            this.Dependencies = GetDependencies(this.BoundID, this.ItemID, l.Dimension);
+            return true;
         }
 
         public override void MakePreparations(Living l)
