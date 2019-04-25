@@ -4,6 +4,7 @@ using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking;
+using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.World.Tiles;
 using ProtoBuf;
 using System;
@@ -17,8 +18,30 @@ namespace MagicalLifeAPI.World.Base
     [ProtoContract]
     public abstract class Tile : HasComponents
     {
+        private bool _isWalkable { get; set; }
+
         [ProtoMember(2)]
-        public bool IsWalkable { get; set; }
+        public bool IsWalkable
+        {
+            get
+            {
+                return this._isWalkable;
+            }
+            set
+            {
+                this._isWalkable = value;
+
+                ComponentSelectable location = this.GetExactComponent<ComponentSelectable>();
+                if (this._isWalkable)
+                {
+                    MainPathFinder.UnBlock(location.MapLocation, location.Dimension);
+                }
+                else
+                {
+                    MainPathFinder.Block(location.MapLocation, location.Dimension);
+                }
+            }
+        }
 
         /// <summary>
         /// Returns the name of the biome that this tile belongs to.
@@ -109,20 +132,23 @@ namespace MagicalLifeAPI.World.Base
         /// </summary>
         /// <param name="location">The 3D location of this tile in the map.</param>
         /// <param name="movementCost">This value is the movement cost of walking on this tile. It should be between 1 and 100</param>
-        protected Tile(Point2D location, int movementCost, int footStepSound)
+        protected Tile(Point2D location, int dimension, int movementCost, int footStepSound)
         {
-            this.AddComponent(new ComponentSelectable(SelectionType.Tile));
+            ComponentSelectable selectable = new ComponentSelectable(SelectionType.Tile);
+            selectable.MapLocation = location;
+            selectable.Dimension = dimension;
+
+            this.AddComponent(selectable);
             this.AddComponent(new ComponentRenderer());
 
-                        this.IsWalkable = true;
+            this.IsWalkable = true;
             this.MovementCost = movementCost;
             Tile.TileCreatedHandler(new TileEventArg(this));
             this.FootStepSound = footStepSound;
-            this.GetExactComponent<ComponentSelectable>().MapLocation = location;
         }
 
-        protected Tile(int x, int y, int movementCost, int footStepSound)
-            : this(new Point2D(x, y), movementCost, footStepSound)
+        protected Tile(int x, int y, int dimension, int movementCost, int footStepSound)
+            : this(new Point2D(x, y), dimension, movementCost, footStepSound)
         {
         }
 

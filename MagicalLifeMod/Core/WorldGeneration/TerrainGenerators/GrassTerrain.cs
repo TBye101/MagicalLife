@@ -13,7 +13,7 @@ namespace MagicalLifeMod.Core.WorldGeneration.TerrainGenerators
 {
     public class GrassTerrain : TerrainGenerator
     {
-        public GrassTerrain() : base(CoreSettingsHandler.GenerationSettings.Settings.GrassTerrainWeight)
+        public GrassTerrain(int dimension) : base(CoreSettingsHandler.GenerationSettings.Settings.GrassTerrainWeight, dimension)
         {
         }
 
@@ -40,7 +40,7 @@ namespace MagicalLifeMod.Core.WorldGeneration.TerrainGenerators
 
         private Tile GenerateTile(int x, int y, Random seededRandom)
         {
-            Grass dirt = new Grass(x, y);
+            Grass dirt = new Grass(x, y, this.Dimension);
 
             if (seededRandom.Next(0, 5) == 3)
             {

@@ -88,7 +88,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
                 if (this.Tillable.PercentTilled > 1)
                 {
-                    Tile tillableTile = new TilledDirt(new Point2D(this.Target.X, this.Target.Y));
+                    Tile tillableTile = new TilledDirt(new Point2D(this.Target.X, this.Target.Y), this.Dimension);
                     World.Data.World.Dimensions[this.Dimension][this.Target.X, this.Target.Y] = tillableTile;
                     this.CompleteTask();
                 }

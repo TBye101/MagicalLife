@@ -22,6 +22,9 @@ namespace MagicalLifeAPI.GUI
         [ProtoMember(2)]
         public Point2D MapLocation { get; set; }
 
+        [ProtoMember(3)]
+        public int Dimension { get; set; }
+
         /// <param name="type">The map selection type to use for the containing object.</param>
         public ComponentSelectable(SelectionType type)
         {

@@ -192,11 +192,11 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         }
 
         /// <summary>
-        /// Locates a certain quantity of a requested item, and returns their locations.
+        /// Locates a certain quantity of a requested item that isn't reserved, and returns their locations.
         /// Returns null if not enough items were found to satisfy the request.
         /// </summary>
         /// <returns></returns>
-        public static List<Point2D> LocateQuantityOfItem(int itemID, int quantityDesired, Point2D startingPoint, int dimension)
+        public static List<Point2D> LocateUnreservedQuantityOfItem(int itemID, int quantityDesired, Point2D startingPoint, int dimension)
         {
             List<Point2D> nearestChunks = FindNearestChunks(itemID, startingPoint, dimension);
 
@@ -227,8 +227,11 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
                 {
                     Point2D item = closest[i];
                     Tile containing = World.Data.World.GetTile(dimension, item.X, item.Y);
-                    locations.Add(item);
-                    quantityFound += containing.Item.CurrentlyStacked;
+                    if (containing.Item.ReservedID.Equals(Guid.Empty))
+                    {
+                        locations.Add(item);
+                        quantityFound += containing.Item.CurrentlyStacked;
+                    }
                 }
             }
 

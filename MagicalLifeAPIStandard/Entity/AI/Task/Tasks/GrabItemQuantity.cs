@@ -50,7 +50,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         public override bool CreateDependencies(Living l)//Need to return a bool to say if this step was successful.
         {
-            List<Point2D> locations = ItemFinder.LocateQuantityOfItem(this.ItemID, this.Amount, Point2D.Zero, l.Dimension);
+            List<Point2D> locations = ItemFinder.LocateUnreservedQuantityOfItem(this.ItemID, this.Amount, Point2D.Zero, l.Dimension);
 
             if (locations != null && locations.Any())
             {

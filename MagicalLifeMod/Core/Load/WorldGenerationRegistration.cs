@@ -16,8 +16,8 @@ namespace MagicalLifeMod.Core.Load
         public void InitialStartup()
         {
             WorldGeneratorRegistry.Generators.Add(new GenerationAllocator());
-            WorldGeneratorRegistry.TerrainGenerators.Add(new DirtTerrain());
-            WorldGeneratorRegistry.TerrainGenerators.Add(new GrassTerrain());
+            WorldGeneratorRegistry.TerrainGenerators.Add(new DirtTerrain(-1));
+            WorldGeneratorRegistry.TerrainGenerators.Add(new GrassTerrain(-1));
         }
     }
 }
