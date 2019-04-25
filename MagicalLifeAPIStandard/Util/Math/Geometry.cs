@@ -107,5 +107,12 @@ namespace MagicalLifeAPI.Util.Math
             // (Y2 - Y1) / (X2 - X1) = Rise/Run = Slope
             return (end.Y - start.Y) / (end.X - start.X);
         }
+
+        /// <param name="origin">The point to calculate distance to all points being ordered.</param>
+        /// <param name="points">The points to order by how close they are to the origin point.</param>
+        public static void OrderPointsByProximity(Point2D origin, List<Point2D> points)
+        {
+            points.Sort((pointA, pointB) => MathUtil.GetDistanceFast(pointA, origin).CompareTo(MathUtil.GetDistanceFast(pointB, origin)));
+        }
     }
 }

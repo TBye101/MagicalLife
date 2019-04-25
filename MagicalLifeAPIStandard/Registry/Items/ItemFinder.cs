@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.DataTypes.R;
 using MagicalLifeAPI.Pathfinding;
+using MagicalLifeAPI.Util.Math;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
@@ -205,27 +206,25 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
 
             if (nearestChunks != null)
             {
-                RTree<Point2D> allNear = new RTree<Point2D>();
+                List<Point2D> allNear = new List<Point2D>();
 
                 Chunk chunk;
+                List<Point2D> allResults = new List<Point2D>();//Holds all found item locations.
                 foreach (Point2D item in nearestChunks)
                 {
                     chunk = World.Data.World.GetChunk(dimension, item.X, item.Y);
                     RTree<Point2D> items = chunk.Items[itemID];
                     List<Point2D> result = items.Intersects(new Rectangle(0, 0, Chunk.Width, Chunk.Height));
-
-                    foreach (Point2D it in result)
-                    {
-                        allNear.Add(new Rectangle(it.X, it.Y, it.X, it.Y), it);
-                    }
+                    allResults.AddRange(result);
                 }
 
-                List<Point2D> closest = allNear.Nearest(new Point(startingPoint.X, startingPoint.Y), SearchDistance);
+                //Orders all items found by their proximity to the starting location.
+                Geometry.OrderPointsByProximity(startingPoint, allResults);
 
-                int length = closest.Count;
+                int length = allResults.Count;
                 for (int i = 0; i < length && quantityFound < quantityDesired; i++)
                 {
-                    Point2D item = closest[i];
+                    Point2D item = allResults[i];
                     Tile containing = World.Data.World.GetTile(dimension, item.X, item.Y);
                     if (containing.Item.ReservedID.Equals(Guid.Empty))
                     {
