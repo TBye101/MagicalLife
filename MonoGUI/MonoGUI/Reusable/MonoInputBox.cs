@@ -63,9 +63,6 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         private int TextureID { get; set; }
         
         public event System.EventHandler TextChanged;
-
-        public event System.EventHandler TextChanged;
-
         /// <summary>
         ///
         /// </summary>
