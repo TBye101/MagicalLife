@@ -239,6 +239,7 @@ namespace MagicalLifeAPI.Entity
                 {
                     stored.Add(overflow);
                 }
+                this.Items.Add(item.ItemID, stored);
             }
         }
 

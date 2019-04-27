@@ -49,7 +49,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
 
                 validTasks.Sort((x, y) => CompareTasks(x, y, living));
 
-                if (validTasks.Any() && validTasks.Count > 5)
+                if (validTasks.Any())
                 {
                     MasterLog.DebugWriteLine("Creature searching for job: " + living.ID.ToString());
                     //Get the first task and dynamically create it's dependencies
