@@ -53,21 +53,26 @@ namespace MagicalLifeAPI.Entity.AI.Task
                 {
                     MasterLog.DebugWriteLine("Creature searching for job: " + living.ID.ToString());
                     //Get the first task and dynamically create it's dependencies
-                    MagicalTask taskGoal = validTasks[0];
-                    this.CreateDependencies(taskGoal, living);
 
-                    //Get the deepest tasks from the dependency chain, and filter out ones that the creature can't do.
-                    List<MagicalTask> deepestTasks = this.GetDeepestTasks(taskGoal);
-                    List<MagicalTask> possibleTasks = this.FilterByValidTasks(living, deepestTasks);
-                    this.FilterByDependencyStatus(possibleTasks);
-                    possibleTasks.Sort((x, y) => CompareTasks(x, y, living));
-
-                    if (possibleTasks.Any())
+                    for (int i = 0; i < validTasks.Count; i++)
                     {
-                        //Reserve the tasks that must all be done by the same creature for this creature.
-                        MagicalTask nextTask = possibleTasks[0];
-                        this.ReserveBoundTree(living, nextTask.BoundID, taskGoal);
-                        this.AssignJob(living, nextTask);
+                        MagicalTask taskGoal = validTasks[i];
+                        this.CreateDependencies(taskGoal, living);
+
+                        //Get the deepest tasks from the dependency chain, and filter out ones that the creature can't do.
+                        List<MagicalTask> deepestTasks = this.GetDeepestTasks(taskGoal);
+                        List<MagicalTask> possibleTasks = this.FilterByValidTasks(living, deepestTasks);
+                        this.FilterByDependencyStatus(possibleTasks);
+                        possibleTasks.Sort((x, y) => CompareTasks(x, y, living));
+
+                        if (possibleTasks.Any())
+                        {
+                            //Reserve the tasks that must all be done by the same creature for this creature.
+                            MagicalTask nextTask = possibleTasks[0];
+                            this.ReserveBoundTree(living, nextTask.BoundID, taskGoal);
+                            this.AssignJob(living, nextTask);
+                            break;
+                        }
                     }
                 }
             }
