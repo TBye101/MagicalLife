@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using System.Collections.ObjectModel;
+using MagicalLifeAPI.Filing.Logging;
 
 namespace MagicalLifeAPI.Entity.AI.Task
 {
@@ -48,8 +49,9 @@ namespace MagicalLifeAPI.Entity.AI.Task
 
                 validTasks.Sort((x, y) => CompareTasks(x, y, living));
 
-                if (validTasks.Any())
+                if (validTasks.Any() && validTasks.Count > 5)
                 {
+                    MasterLog.DebugWriteLine("Creature searching for job: " + living.ID.ToString());
                     //Get the first task and dynamically create it's dependencies
                     MagicalTask taskGoal = validTasks[0];
                     this.CreateDependencies(taskGoal, living);
@@ -131,6 +133,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
         /// <returns></returns>
         private void AssignJob(Living l, MagicalTask task)
         {
+            MasterLog.DebugWriteLine("Assigning job: " + task.ID.ToString() + " " + task.GetType().FullName);
             task.MakePreparations(l);
             l.AssignTask(task);
             task.ToilingWorker = l.ID;

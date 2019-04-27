@@ -136,12 +136,15 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         {
             if (!this.IsLocked && !this.LastKeySpecial && e != null)
             {
-                string p1 = this.Text.Substring(0, this.CarrotPosition);
-                p1 += e.ToString();
+                if (this.Font.Characters.Contains(e.Value) && e.Value != '\r' && e.Value != '\n')
+                {
+                    string p1 = this.Text.Substring(0, this.CarrotPosition);
+                    p1 += e.ToString();
 
-                string p2 = this.Text.Substring(this.CarrotPosition, this.Text.Count() - this.CarrotPosition);
-                this.Text = p1 + p2;
-                this.CarrotPosition += 1;
+                    string p2 = this.Text.Substring(this.CarrotPosition, this.Text.Count() - this.CarrotPosition);
+                    this.Text = p1 + p2;
+                    this.CarrotPosition += 1;
+                }
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.World.Base;
+using ProtoBuf;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,6 +10,7 @@ namespace MagicalLifeMod.Core.Items
     /// <summary>
     /// A wooden plank item, created from logs.
     /// </summary>
+    [ProtoContract]
     public class WoodPlank : Item
     {
         public static readonly string DisplayName = "Wood Plank";
