@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MagicalLifeAPI.Util
+﻿namespace MagicalLifeAPI.Util
 {
     /// <summary>
     /// Some basic array utilities.

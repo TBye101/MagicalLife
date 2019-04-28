@@ -70,7 +70,6 @@ namespace MagicalLifeAPI.DataTypes.R
         public Rectangle(Point2D a, Point2D b)
             : this(a.X, a.Y, b.X, b.Y)
         {
-            
         }
 
         /// <summary>
@@ -169,7 +168,6 @@ namespace MagicalLifeAPI.DataTypes.R
         /// <returns>true if the rectangles intersect, false if they do not intersect</returns>
         internal bool intersects(Rectangle r)
         {
-            
             // Every dimension must intersect. If any dimension
             // does not intersect, return false immediately.
             for (int i = 0; i < DIMENSIONS; i++)

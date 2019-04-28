@@ -5,7 +5,6 @@ using MagicalLifeGUIWindows.Map;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using MonoGame.Extended.Input.InputListeners;
 using System;
 using System.Linq;
 using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
@@ -14,14 +13,14 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 {
     public class MonoInputBox : GUIElement
     {
-        private string _text  = "";
+        private string _text = "";
 
         /// <summary>
         /// The text contained in this input box.
         /// </summary>
         public string Text
         {
-            get { return _text;  }
+            get { return _text; }
             set { _text = value; OnTextChanged(); }
         }
 
@@ -61,7 +60,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         public Alignment TextAlignment { get; private set; }
 
         private int TextureID { get; set; }
-        
+
         public event System.EventHandler TextChanged;
 
         /// <summary>
@@ -229,7 +228,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         {
             TextChanged?.Invoke(this, EventArgs.Empty);
         }
-        
+
         private Rectangle CalculateCarrotBounds(MonoInputBox textbox, Rectangle containerBounds)
         {
             Vector2 size = textbox.Font.MeasureString(textbox.Text);

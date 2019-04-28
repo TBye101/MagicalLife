@@ -1,8 +1,5 @@
 ﻿using MagicalLifeAPI.Load;
 using MagicalLifeMod.Core.Settings;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeMod.Core.Load
 {

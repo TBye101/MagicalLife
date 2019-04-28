@@ -1,7 +1,5 @@
 ﻿using MagicalLifeAPI.World.Base;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeAPI.Crafting
 {
@@ -18,7 +16,7 @@ namespace MagicalLifeAPI.Crafting
 
         /// <summary>
         /// Return a constant but unique ID for this recipe.
-        /// Must be consistent between games/loads. 
+        /// Must be consistent between games/loads.
         /// </summary>
         /// <returns></returns>
 

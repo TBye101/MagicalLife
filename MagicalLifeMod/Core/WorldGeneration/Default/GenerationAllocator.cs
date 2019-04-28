@@ -6,10 +6,8 @@ using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Generation;
 using MagicalLifeMod.Core.Settings;
-using MagicalLifeMod.Core.WorldGeneration.Default;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeMod.Core.WorldGeneration
 {
@@ -25,7 +23,6 @@ namespace MagicalLifeMod.Core.WorldGeneration
 
         private ProtoArray<Chunk> GenerateTerrain(ProtoArray<Chunk> blankWorld, string dimensionName, Random seededRandom)
         {
-            
             int[,] terrainGeneratorMap = this.AssignGenerators(blankWorld.Width, blankWorld.Height, seededRandom);
 
             MasterLog.DebugWriteLine("Organizing terrain");

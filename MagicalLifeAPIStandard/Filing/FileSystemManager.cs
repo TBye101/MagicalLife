@@ -61,6 +61,7 @@ namespace MagicalLifeAPI.Filing
                 }
             }
         }
+
         /// <summary>
         /// Sets up the root folder for our program.
         /// </summary>

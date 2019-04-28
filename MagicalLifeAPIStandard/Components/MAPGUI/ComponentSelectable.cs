@@ -1,9 +1,6 @@
 ﻿using MagicalLifeAPI.Components;
 using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entity;
-using MagicalLifeAPI.World.Base;
 using ProtoBuf;
-using System;
 
 namespace MagicalLifeAPI.GUI
 {

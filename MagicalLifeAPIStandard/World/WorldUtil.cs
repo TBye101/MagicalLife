@@ -175,7 +175,7 @@ namespace MagicalLifeAPI.World
         }
 
         /// <summary>
-        /// Determines if a player has a character within the world somewhere. 
+        /// Determines if a player has a character within the world somewhere.
         /// </summary>
         /// <returns></returns>
         public static bool PlayerHasCharacter(Guid playerID)

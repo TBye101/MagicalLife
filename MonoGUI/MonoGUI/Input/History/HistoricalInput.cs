@@ -1,7 +1,6 @@
 ﻿using MagicalLifeAPI.Components;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity.AI.Task;
-using MagicalLifeAPI.GUI;
 using System.Collections.Generic;
 
 namespace MagicalLifeGUIWindows.Input.History

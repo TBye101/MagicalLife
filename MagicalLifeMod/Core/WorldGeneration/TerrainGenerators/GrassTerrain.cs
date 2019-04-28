@@ -6,8 +6,6 @@ using MagicalLifeAPI.World.Resources;
 using MagicalLifeAPI.World.Tiles;
 using MagicalLifeMod.Core.Settings;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeMod.Core.WorldGeneration.TerrainGenerators
 {

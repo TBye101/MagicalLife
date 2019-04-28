@@ -1,9 +1,6 @@
 ﻿using MagicalLifeAPI.Filing;
 using MagicalLifeMod.Core.WorldGeneration.Default;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace MagicalLifeMod.Core.Settings
 {

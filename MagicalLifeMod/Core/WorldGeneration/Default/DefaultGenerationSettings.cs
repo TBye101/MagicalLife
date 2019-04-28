@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MagicalLifeMod.Core.WorldGeneration.Default
+﻿namespace MagicalLifeMod.Core.WorldGeneration.Default
 {
     /// <summary>
     /// Settings for how the default world generator should behave.
@@ -24,6 +20,6 @@ namespace MagicalLifeMod.Core.WorldGeneration.Default
         public int DirtTerrainWeight { get; set; } = 1;
         public int GrassTerrainWeight { get; set; } = 15;
 
-        #endregion
+        #endregion TerrainSpecific
     }
 }

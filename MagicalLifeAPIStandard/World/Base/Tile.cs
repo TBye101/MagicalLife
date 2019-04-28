@@ -3,7 +3,6 @@ using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.World.Tiles;
 using ProtoBuf;

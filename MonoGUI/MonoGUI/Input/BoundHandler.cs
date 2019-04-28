@@ -9,7 +9,6 @@ using MagicalLifeGUIWindows.Map;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Input.InputListeners;
-using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeGUIWindows.Input

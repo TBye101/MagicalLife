@@ -1,17 +1,11 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Error.InternalExceptions;
-using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeGUIWindows.GUI.Reusable.API;
 using MagicalLifeGUIWindows.GUI.Reusable.Event;
-using MagicalLifeGUIWindows.GUI.Reusable.Premade;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.GUI.Reusable.Collections
 {
@@ -93,8 +87,6 @@ namespace MagicalLifeGUIWindows.GUI.Reusable.Collections
             int x = (e.MouseEventArgs.Position.X - e.GUIContainer.DrawingBounds.X) / this.ItemDisplayBounds.X;
             this.ItemClickHandler(new Point2D(x, y), e);
         }
-
-
 
         private void InitializeItems()
         {

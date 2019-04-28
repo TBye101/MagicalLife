@@ -3,12 +3,10 @@ using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Pathfinding;
-using MagicalLifeAPI.Registry.Mod;
 using MagicalLifeClient.Entity;
 using MagicalLifeClient.Message;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 
 namespace MagicalLifeClient
 {
@@ -67,7 +65,6 @@ namespace MagicalLifeClient
             }
 
             TickLoop(ticksBehind + 1);
-            
         }
 
         private static void TickLoop(UInt64 times)

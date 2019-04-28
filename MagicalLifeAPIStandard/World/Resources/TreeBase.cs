@@ -10,7 +10,7 @@ namespace MagicalLifeAPI.World.Resources
     [ProtoContract]
     public abstract class TreeBase : Vegetation
     {
-        protected TreeBase(string name, int durability, ComponentHarvestable harvestBehavior) 
+        protected TreeBase(string name, int durability, ComponentHarvestable harvestBehavior)
             : base(name, durability, harvestBehavior)
         {
         }

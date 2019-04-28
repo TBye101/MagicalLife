@@ -1,5 +1,4 @@
-﻿using MagicalLifeAPI.Entity.AI.Task.Tasks;
-using ProtoBuf;
+﻿using ProtoBuf;
 using System;
 using System.Collections.Generic;
 
@@ -60,7 +59,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
         public int TaskPriority { get; set; }
 
         /// <summary>
-        /// If true, this task's dynamic dependencies have already been generated. 
+        /// If true, this task's dynamic dependencies have already been generated.
         /// </summary>
         [ProtoMember(8)]
         public bool DependenciesGenerated { get; set; }

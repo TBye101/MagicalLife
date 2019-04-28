@@ -1,9 +1,8 @@
-﻿using System;
+﻿using MagicalLifeAPI.Filing.Logging;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Linq;
 using System.Collections.ObjectModel;
-using MagicalLifeAPI.Filing.Logging;
+using System.Linq;
 
 namespace MagicalLifeAPI.Entity.AI.Task
 {
@@ -20,7 +19,6 @@ namespace MagicalLifeAPI.Entity.AI.Task
 
         internal TaskManager()
         {
-
         }
 
         public void AddTask(MagicalTask task)
@@ -162,7 +160,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
         }
 
         /// <summary>
-        /// Filters out the tasks that haven't had their dependencies successfully generated. 
+        /// Filters out the tasks that haven't had their dependencies successfully generated.
         /// </summary>
         /// <param name="tasks"></param>
         /// <returns></returns>
@@ -202,7 +200,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
                 {
                     if (this.IsTaskValid(living, task))
                     {
-                       validTasks.Add(task);
+                        validTasks.Add(task);
                     }
                 }
             }
@@ -252,7 +250,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
         }
 
         /// <summary>
-        /// Gets the deepest children tasks in the specified task. Returns the parent task if there are no child tasks. 
+        /// Gets the deepest children tasks in the specified task. Returns the parent task if there are no child tasks.
         /// </summary>
         /// <param name="task"></param>
         /// <returns></returns>
@@ -269,7 +267,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
             }
             else
             {
-               deepest.Add(task);
+                deepest.Add(task);
             }
 
             return deepest;

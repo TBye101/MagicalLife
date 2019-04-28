@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MagicalLifeAPI.Crafting
+﻿namespace MagicalLifeAPI.Crafting
 {
     /// <summary>
     /// Implementers of this belong on the action bar.

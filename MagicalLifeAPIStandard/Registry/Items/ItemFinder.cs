@@ -157,7 +157,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         }
 
         /// <summary>
-        /// Returns true if there exists a certain item that is unreserved. 
+        /// Returns true if there exists a certain item that is unreserved.
         /// </summary>
         /// <param name="itemID"></param>
         /// <param name="dimension"></param>

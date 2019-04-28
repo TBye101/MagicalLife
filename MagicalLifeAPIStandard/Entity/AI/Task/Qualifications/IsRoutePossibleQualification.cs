@@ -2,9 +2,6 @@
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Pathfinding;
 using ProtoBuf;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeAPI.Entity.AI.Task.Qualifications
 {

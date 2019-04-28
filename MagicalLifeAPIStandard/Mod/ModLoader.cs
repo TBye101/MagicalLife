@@ -3,11 +3,9 @@ using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Load;
 using MagicalLifeAPI.Registry.Mod;
 using MagicalLifeAPI.Util;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using System.Text;
 
 namespace MagicalLifeAPI.Mod
 {
@@ -55,7 +53,7 @@ namespace MagicalLifeAPI.Mod
                 if (idToMods.ContainsKey(info.ModID))
                 {
                     idToMods.TryGetValue(info.ModID, out IMod value);
-                    MasterLog.DebugWriteLine("Mod conflict: " + info.DisplayName + "(" + info.ModID + 
+                    MasterLog.DebugWriteLine("Mod conflict: " + info.DisplayName + "(" + info.ModID +
                         ") has an identical ModID to " + value.GetInfo().DisplayName + "(" + value.GetInfo().ModID + ")");
                     mods.Remove(item);
                     mods.Remove(value);
@@ -78,7 +76,6 @@ namespace MagicalLifeAPI.Mod
         /// <returns></returns>
         private bool IsValid(ModInformation info)
         {
-
             if (info == null)
             {
                 MasterLog.DebugWriteLine("Mod rejected due to ModInformation being invalid.");

@@ -1,11 +1,11 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
+using ProtoBuf;
 using ProtoBuf.Meta;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using System.Linq;
-using ProtoBuf;
+using System.Reflection;
 
 namespace MagicalLifeAPI.Networking.Serialization
 {
@@ -123,7 +123,7 @@ namespace MagicalLifeAPI.Networking.Serialization
                     largestFieldNumber = item.FieldNumber;
                 }
             }
-            
+
             meta.AddSubType(largestFieldNumber + 1, subclass);
             MasterLog.DebugWriteLine("Subclass ID: " + (subtypes.Length + 1).ToString());
         }

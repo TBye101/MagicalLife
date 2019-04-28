@@ -1,8 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.DataTypes;
 using Microsoft.Xna.Framework;
-using MonoGame.Extended.Input.InputListeners;
-using System;
 
 namespace MagicalLifeGUIWindows.GUI.Reusable.Premade
 {

@@ -1,8 +1,6 @@
 ﻿using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Generation;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeAPI.Registry.WorldGeneration
 {

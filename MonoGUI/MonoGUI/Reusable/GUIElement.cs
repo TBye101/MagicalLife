@@ -56,7 +56,9 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         public bool HasFocus { get; set; } = false;
 
         public event EventHandler<ClickEventArgs> ClickEvent;
+
         public event EventHandler<ClickEventArgs> DoubleClickEvent;
+
         public event EventHandler<ClickEventArgs> ScrollEvent;
 
         /// <param name="drawingBounds">The bounds for which to draw the texture on the screen at.</param>

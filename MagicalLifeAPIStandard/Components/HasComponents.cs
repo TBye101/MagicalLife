@@ -1,8 +1,6 @@
-﻿using MagicalLifeAPI.Components;
-using ProtoBuf;
+﻿using ProtoBuf;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 
 namespace MagicalLifeAPI.Components

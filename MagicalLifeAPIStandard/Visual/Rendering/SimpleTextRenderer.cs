@@ -62,7 +62,6 @@ namespace MagicalLifeGUIWindows.Rendering.Text
         {
             if (text != string.Empty)
             {
-                
                 Vector2 size = font.MeasureString(text);
                 Vector2 pos = new Vector2(bounds.Center.X, bounds.Center.Y);
                 Vector2 origin = size * 0.5f;

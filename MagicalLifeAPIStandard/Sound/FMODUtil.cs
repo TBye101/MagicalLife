@@ -41,7 +41,6 @@ namespace MagicalLifeAPI.Sound
             System.setListenerAttributes(0, attributes);
 
             System.update();
-
         }
 
         internal static void Init()

@@ -4,11 +4,9 @@ using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Registry.ItemRegistry;
-using MagicalLifeAPI.Visual.Rendering;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace MagicalLifeAPI.World.Base
 {
@@ -28,7 +26,7 @@ namespace MagicalLifeAPI.World.Base
         /// The name of the mod this item is from.
         /// </summary>
         [ProtoMember(2)]
-        public string ModFrom { get;  }
+        public string ModFrom { get; }
 
         /// <summary>
         /// The description and lore of this item. Is not revealed until the item has been identified, unless it never needed identification.
@@ -201,7 +199,7 @@ namespace MagicalLifeAPI.World.Base
         }
 
         /// <summary>
-        /// Return a deep copy of the current item. 
+        /// Return a deep copy of the current item.
         /// </summary>
         /// <param name="amouont">The amount of the item to be created via deep copy.</param>
         /// <returns></returns>

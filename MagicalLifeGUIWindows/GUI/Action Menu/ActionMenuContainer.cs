@@ -2,16 +2,12 @@
 using MagicalLifeAPI.Crafting;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Registry.Recipe;
+using MagicalLifeAPI.World.Base;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.GUI.Reusable.Collections;
-using MagicalLifeAPI.World.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using MonoGUI.Game.Custom;
+using System.Collections.Generic;
 
 namespace MagicalLifeGUIWindows.GUI.Action_Menu
 {
@@ -26,7 +22,7 @@ namespace MagicalLifeGUIWindows.GUI.Action_Menu
         {
             this.Visible = visible;
 
-            this.ActionGrid = new MonoGrid(new Point2D(32 ,32), ActionMenuLayout.ActionGridBounds, int.MaxValue,
+            this.ActionGrid = new MonoGrid(new Point2D(32, 32), ActionMenuLayout.ActionGridBounds, int.MaxValue,
                 true, TextureLoader.FontMainMenuFont12x, 5);
             this.PopulateActionGrid();
 
