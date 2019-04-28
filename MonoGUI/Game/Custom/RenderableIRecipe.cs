@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Crafting;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;
 using Microsoft.Xna.Framework;
@@ -27,6 +28,7 @@ namespace MonoGUI.Game.Custom
         {
             if (Keyboard.GetState().IsKeyDown(Keys.LeftShift))
             {
+                MasterLog.DebugWriteLine("Special click");
                 this.BarItem.SpecialClicked();
             }
             else

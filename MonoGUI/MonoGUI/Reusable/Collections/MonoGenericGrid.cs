@@ -77,6 +77,13 @@ namespace MagicalLifeGUIWindows.GUI.Reusable.Collections
             this.ItemRenderCount = itemRenderCount;
 
             this.ClickEvent += this.ScrollableGrid_ClickEvent;
+            this.DoubleClickEvent += this.MonoGenericGrid_DoubleClickEvent;
+        }
+
+        private void MonoGenericGrid_DoubleClickEvent(object sender, Event.ClickEventArgs e)
+        {
+            this.SelectedIndex = ((e.MouseEventArgs.Position.Y + e.GUIContainer.DrawingBounds.Y) / this.ItemDisplayBounds.Y) - 1;
+            this.ItemDoubleClickHandler(this.SelectedIndex);
         }
 
         private void ScrollableGrid_ClickEvent(object sender, Event.ClickEventArgs e)
@@ -106,8 +113,6 @@ namespace MagicalLifeGUIWindows.GUI.Reusable.Collections
         {
             int x = containerBounds.X + this.DrawingBounds.X;
             int y = containerBounds.Y + this.DrawingBounds.Y;
-
-            MasterLog.DebugWriteLine("Grid x: " + x.ToString());
 
             int length;
 
