@@ -67,6 +67,22 @@ namespace MagicalLifeAPI.Networking.Serialization
             }
         }
 
+        public static T Deserialize<T>(byte[] data)
+        {
+            try
+            {
+                using (MemoryStream ms = new MemoryStream(data))
+                {
+                    return (T)TypeModel.DeserializeWithLengthPrefix(ms, null, typeof(T), PrefixStyle.Base128, 0);
+                }
+            }
+            catch (Exception e)
+            {
+                MasterLog.DebugWriteLine(e.Message);
+                return default;
+            }
+        }
+
         public static T Deserialize<T>(string data)
         {
             try
@@ -129,6 +145,14 @@ namespace MagicalLifeAPI.Networking.Serialization
         }
 
         /// <summary>
+        /// Registers a surrogate with protobuf-net.
+        /// </summary>
+        internal static void RegisterSurrogate()
+        {
+
+        }
+
+        /// <summary>
         /// Registers all serializable types found within an assembly.
         /// While this is slower than <see cref="RegisterSerializableClass(Type)"/> and <see cref="RegisterSubclass(Type, Type)"/>, this is more convenient.
         /// </summary>
@@ -139,11 +163,6 @@ namespace MagicalLifeAPI.Networking.Serialization
 
             foreach (Type item in allTypes)
             {
-                if (item.Name.Equals("NeverRemoveCondition"))
-                {
-                    MasterLog.DebugWriteLine("hey");
-                }
-
                 Attribute attribute = item.GetCustomAttribute(typeof(ProtoContractAttribute));
 
                 if (attribute != null)
@@ -166,8 +185,17 @@ namespace MagicalLifeAPI.Networking.Serialization
                         Attribute protoAttribute = iface.GetCustomAttribute(typeof(ProtoContractAttribute));
                         if (protoAttribute != null && !item.BaseType.GetInterfaces().Contains(iface))
                         {
-                            RegisterSubclass(item, iface);//Issue: not detecting when directly implementing interfaces properly
+                            RegisterSubclass(item, iface);
                         }
+                    }
+
+
+                    if (item.GetCustomAttribute(typeof(Surrogate)) is Surrogate surrogateAttribute)
+                    {
+                        MasterLog.DebugWriteLine("Setting a surrogate:");
+                        MasterLog.DebugWriteLine("Class that needs a surrogate: " + surrogateAttribute.NeedsSurrogate.Name);
+                        MasterLog.DebugWriteLine("Surrogate: " + surrogateAttribute.SurrogateType.Name);
+                        TypeModel.Add(surrogateAttribute.NeedsSurrogate, true).SetSurrogate(surrogateAttribute.SurrogateType);
                     }
                 }
             }

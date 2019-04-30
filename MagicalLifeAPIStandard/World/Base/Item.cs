@@ -96,6 +96,7 @@ namespace MagicalLifeAPI.World.Base
         /// <param name="count">How many of this item to create into a stack.</param>
         /// <param name="itemID">The ID of this item.</param>
         protected Item(string name, List<string> lore, int stackableLimit, int count, string textureName, double itemWeight, string modFrom)
+            : base(true)
         {
             this.Name = name;
             this.ModFrom = modFrom;
@@ -110,6 +111,11 @@ namespace MagicalLifeAPI.World.Base
             this.Validate();
         }
 
+        protected Item() : base()
+        {
+            //Protobuf-net constructor
+        }
+
         private void InitializeComponents()
         {
             int textureIndex = AssetManager.GetTextureIndex(this.TextureName);
@@ -118,11 +124,6 @@ namespace MagicalLifeAPI.World.Base
             textureComponent.Visuals.Add(new StaticTexture(textureIndex, RenderLayer.Items));
 
             this.AddComponent(new ComponentHasTexture(false));
-        }
-
-        protected Item()
-        {
-            //Protobuf-net constructor
         }
 
         protected internal void Validate()

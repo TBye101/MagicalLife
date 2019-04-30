@@ -94,6 +94,7 @@ namespace MagicalLifeAPI.Entity
         /// <param name="creatureName">The name of this specific creature.</param>
         protected Living(int health, double movementSpeed, Point2D location,
             int dimension, Guid playerID, string creatureTypeName, string creatureName)
+            : base(true)
         {
             this.AddComponent(new ComponentSelectable(SelectionType.Creature));
 
@@ -105,6 +106,10 @@ namespace MagicalLifeAPI.Entity
             this.Inventory = new Inventory(true);
         }
 
+        public Living() : base()
+        {
+        }
+
         protected void Initialize(int health, double movementSpeed, Point2D location, int dimension)
         {
             this.Health = new Attribute32(health);
@@ -114,10 +119,6 @@ namespace MagicalLifeAPI.Entity
             this.Dimension = dimension;
             Living.LivingCreatedHandler(new LivingEventArg(this, location));
             this.FootStepTimer = new TickTimer(5);
-        }
-
-        public Living()
-        {
         }
 
         public void AssignTask(MagicalTask task)
