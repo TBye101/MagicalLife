@@ -27,27 +27,31 @@ namespace MagicalLifeAPITest.Components
     [TestClass]
     public class HasComponentsTests
     {
+        private bool Initialized { get; set; } = false;
+
         [TestInitialize]
         public void TestInitialize()
         {
-            MasterLog.Initialize();
-            Loader load = new Loader();
-            string msg = string.Empty;
-            SettingsManager.Initialize();
-            FileSystemManager.Initialize();
-            load.LoadAll(ref msg, new List<IGameLoader>()
+            if (!this.Initialized)
+            {
+                MasterLog.Initialize();
+                Loader load = new Loader();
+                string msg = string.Empty;
+                SettingsManager.Initialize();
+                FileSystemManager.Initialize();
+                load.LoadAll(ref msg, new List<IGameLoader>()
                     {
                         new ProtoTypeLoader(),
                         new ProtoManager(),
-                        new TextureLoader(),
-                        new MainLoad(),
-                        new ModLoader()
                     });
+                this.Initialized = true;
+            }
         }
 
         [TestCleanup]
         public void TestCleanup()
         {
+            MasterLog.Close();
         }
 
         private HasComponents CreateHasComponents()

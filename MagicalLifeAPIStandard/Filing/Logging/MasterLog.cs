@@ -47,5 +47,12 @@ namespace MagicalLifeAPI.Filing.Logging
 
             Writer.Flush();
         }
+
+        internal static void Close()
+        {
+            Writer.Flush();
+            Writer.Close();
+            Writer.Dispose();
+        }
     }
 }
