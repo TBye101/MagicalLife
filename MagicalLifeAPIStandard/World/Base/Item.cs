@@ -7,6 +7,7 @@ using MagicalLifeAPI.Registry.ItemRegistry;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MagicalLifeAPI.World.Base
 {
@@ -131,7 +132,7 @@ namespace MagicalLifeAPI.World.Base
         {
             try
             {
-                this.ItemID = 
+                this.ItemID =
                     ItemRegistry.IDToItem.First(x => x.Value.ModFrom.Equals(this.ModFrom) &&
                 x.Value.Name.Equals(this.Name)).Key;//slow
             }
