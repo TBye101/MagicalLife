@@ -56,7 +56,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         public override void MakePreparations(Living living)
         {
-            Tile tile = World.Data.World.GetTile(l.Dimension, this.Target.X, this.Target.Y);
+            Tile tile = World.Data.World.GetTile(living.Dimension, this.Target.X, this.Target.Y);
             this.Tillable = tile.GetComponent<ComponentTillable>();
         }
 

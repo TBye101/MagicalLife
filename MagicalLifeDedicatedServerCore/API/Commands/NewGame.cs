@@ -6,6 +6,7 @@ using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Data.Disk;
 using MagicalLifeDedicatedServer.API.Settings;
 using MagicalLifeDedicatedServer.Properties;
+using MagicalLifeMod.Core.WorldGeneration;
 using MagicalLifeServer;
 using System.Collections.Generic;
 using System.Net.Sockets;
@@ -37,7 +38,7 @@ namespace MagicalLifeDedicatedServer.API.Commands
 
                 WorldGenerationSettings wset = SettingsHandler.WorldGenerationSettings.Settings;
                 Util.WriteLine(DedicatedServer.GeneratingWorld);
-                World.Initialize(wset.DimensionWidth, wset.DimensionHeight, new GrassAndDirt(0));
+                World.Initialize(wset.DimensionWidth, wset.DimensionHeight, new GenerationAllocator(), "Overworld");
                 Util.WriteLine(DedicatedServer.WorldGenerated);
 
                 Util.WriteLine(DedicatedServer.InitializingNetwork);

@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Properties;
 using MagicalLifeAPI.Visual.Rendering.Animation;
 using MagicalLifeSettings;
 using ProtoBuf;

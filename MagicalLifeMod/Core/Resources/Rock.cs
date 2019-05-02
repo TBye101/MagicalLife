@@ -1,7 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Components.Resource;
-using MagicalLifeAPI.Properties;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Util;
@@ -19,7 +18,7 @@ namespace MagicalLifeAPI.World.Resources
     {
         private AbstractVisual visual;
 
-        public Rock(int count) : base(StoneName, count, GetHarvestBehavior(count))
+        public Rock(int count) : base(MagicalLifeAPI.Properties.Lang.StoneName, count, GetHarvestBehavior(count))
         {
             this.GetExactComponent<ComponentHasTexture>().Visuals.Add(this.GetTextureInstance());
         }

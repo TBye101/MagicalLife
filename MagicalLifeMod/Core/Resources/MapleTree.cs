@@ -1,6 +1,6 @@
 ﻿using MagicalLifeAPI.Components.Resource;
-using MagicalLifeAPI.Properties;
 using MagicalLifeAPI.GUI;
+using MagicalLifeAPI.Properties;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Visual.Rendering.AbstractVisuals;
 using MagicalLifeAPI.World.Base;

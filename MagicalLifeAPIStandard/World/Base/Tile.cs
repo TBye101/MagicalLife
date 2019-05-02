@@ -146,7 +146,7 @@ namespace MagicalLifeAPI.World.Base
 
             this.IsWalkable = true;
             this.MovementCost = movementCost;
-            Tile.TileCreatedHandler(new TileEventArg(this));
+            Tile.TileCreatedHandler(new TileEventArgs(this));
             this.FootStepSound = footStepSound;
         }
 

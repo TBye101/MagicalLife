@@ -48,18 +48,25 @@ namespace MagicalLifeAPI.Filing.Logging
             Writer.Flush();
         }
 
+        [Conditional("DEBUG")]
+        public static void Close()
+        {
+            //This is a method only utilized by test code. Do not utilize in non test code.
+            Writer.Dispose();
+        }
+
         #region IDisposable Support
         private bool disposedValue; // To detect redundant calls
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposedValue)
+            if (!this.disposedValue)
             {
                 if (disposing)
                 {
                     Writer.Dispose();
                 }
-                disposedValue = true;
+                this.disposedValue = true;
             }
         }
 
@@ -67,7 +74,7 @@ namespace MagicalLifeAPI.Filing.Logging
         ~MasterLog()
         {
            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-           Dispose(false);
+           this.Dispose(false);
          }
 
         // This code added to correctly implement the disposable pattern.
