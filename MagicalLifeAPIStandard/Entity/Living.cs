@@ -90,6 +90,14 @@ namespace MagicalLifeAPI.Entity
         /// </summary>
         public event EventHandler<LivingEventArg> LivingModified;
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="health"></param>
+        /// <param name="movementSpeed"></param>
+        /// <param name="location"></param>
+        /// <param name="dimension"></param>
+        /// <param name="playerID"></param>
         /// <param name="creatureTypeName">The name of our creature's type. Ex: Lion, Human, Robot.</param>
         /// <param name="creatureName">The name of this specific creature.</param>
         protected Living(int health, double movementSpeed, Point2D location,
@@ -102,6 +110,7 @@ namespace MagicalLifeAPI.Entity
             this.PlayerID = playerID;
             this.Initialize(health, movementSpeed, location, dimension);
             this.CreatureSkills = new List<Skill>();
+            this.CreatureTypeName = creatureTypeName;
             this.CreatureName = creatureName;
             this.Inventory = new Inventory(true);
         }
@@ -117,7 +126,7 @@ namespace MagicalLifeAPI.Entity
             this.GetExactComponent<ComponentSelectable>().MapLocation = location;
             this.TileLocation = new Point2DDouble(location.X, location.Y);
             this.Dimension = dimension;
-            Living.LivingCreatedHandler(new LivingEventArg(this, location));
+            LivingCreatedHandler(new LivingEventArg(this, location));
             this.FootStepTimer = new TickTimer(5);
         }
 

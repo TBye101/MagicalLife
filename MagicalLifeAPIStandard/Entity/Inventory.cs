@@ -61,7 +61,7 @@ namespace MagicalLifeAPI.Entity
 
         /// <summary>
         /// Returns all of the item contained in this inventory, and removes the item from this inventory.
-        /// Returns null if the item is not contained in this inventory.
+        /// Returns an empty list if the item is not contained in this inventory.
         /// </summary>
         /// <param name="itemID"></param>
         /// <returns></returns>
@@ -86,7 +86,7 @@ namespace MagicalLifeAPI.Entity
             }
             else
             {
-                return null;
+                return default;
             }
         }
 
@@ -94,7 +94,7 @@ namespace MagicalLifeAPI.Entity
         /// Returns as much of the item as requested.
         /// If more is requested than actually exists in this inventory than the amount stored is returned.
         /// Removes all items requested from this inventory.
-        /// Returns null if this inventory stores non of the requested item.
+        /// Returns an empty collection if this inventory stores non of the requested item.
         /// </summary>
         /// <param name="itemID"></param>
         /// <param name="amount">The amount to remove.</param>
@@ -116,7 +116,7 @@ namespace MagicalLifeAPI.Entity
             }
             else
             {
-                return null;
+                return default;
             }
         }
 
@@ -220,7 +220,7 @@ namespace MagicalLifeAPI.Entity
             this.Items.Remove(item.ItemID);
 
             int resultIndex = -1;
-            int length = stored.Count();
+            int length = stored.Count;
             for (int i = 0; i < length; i++)
             {
                 Item current = stored[i];

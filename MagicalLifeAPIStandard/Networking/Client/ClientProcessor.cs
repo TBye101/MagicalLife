@@ -6,7 +6,7 @@ namespace MagicalLifeAPI.Networking.Client
     /// <summary>
     /// Handles client side message processing.
     /// </summary>
-    public class ClientProcessor
+    public static class ClientProcessor
     {
         /// <summary>
         /// Key: The ID of the message to be handled.

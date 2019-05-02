@@ -12,9 +12,11 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
     {
         private int TextureIndex;
 
+        /// <summary>
+        ///
+        /// </summary>
         /// <param name="bounds"></param>
         /// <param name="image"></param>
-        /// <param name="font"></param>
         /// <param name="isContained">If true, this GUI element is within a container.</param>
         public RenderableImage(Rectangle bounds, string image, bool isContained)
             : base(bounds, int.MinValue, isContained, TextureLoader.FontMainMenuFont12x)

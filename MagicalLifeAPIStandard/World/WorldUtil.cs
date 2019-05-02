@@ -118,7 +118,7 @@ namespace MagicalLifeAPI.World
         /// <returns></returns>
         public static Point2D FindRandomLocation(int dimension)
         {
-            Dimension dim = World.Data.World.Dimensions[dimension];
+            Dimension dim = Data.World.Dimensions[dimension];
 
             //The coordinates of the random chunk
             int randomChunkX = StaticRandom.Rand(0, dim.Width);
@@ -138,7 +138,7 @@ namespace MagicalLifeAPI.World
             }
             else
             {
-                return WorldUtil.FindRandomLocation(dimension);
+                return FindRandomLocation(dimension);
             }
         }
 

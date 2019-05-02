@@ -13,6 +13,9 @@ namespace MagicalLifeAPI.Networking.Messages
         [ProtoMember(3)]
         public Guid ClientPlayerID { get; set; }
 
+        /// <summary>
+        ///
+        /// </summary>
         /// <param name="playerID">The ID of the player client that is disconnecting.</param>
         public DisconnectMessage(Guid playerID) : base(NetMessageID.DisconnectMessage)
         {

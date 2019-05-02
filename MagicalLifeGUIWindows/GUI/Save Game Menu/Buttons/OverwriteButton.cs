@@ -2,13 +2,14 @@
 using MagicalLifeAPI.World.Data.Disk;
 using MagicalLifeAPI.World.Data.Disk.DataStorage;
 using MagicalLifeGUIWindows.GUI.Reusable;
+using MagicalLifeGUIWindows.Properties;
 using Microsoft.Xna.Framework;
 
 namespace MagicalLifeGUIWindows.GUI.Save
 {
     public class OverwriteButton : MonoButton
     {
-        public OverwriteButton() : base(TextureLoader.GUIMenuButton, GetDrawingBounds(), true, "Overwrite Save")
+        public OverwriteButton() : base(TextureLoader.GUIMenuButton, GetDrawingBounds(), true, Resources.OverwriteSave)
         {
             this.ClickEvent += this.OverwriteButton_ClickEvent;
         }

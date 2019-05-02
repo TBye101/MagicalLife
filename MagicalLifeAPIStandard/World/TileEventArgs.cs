@@ -3,7 +3,7 @@ using System;
 
 namespace MagicalLifeAPI.World
 {
-    public class TileEventArg : EventArgs
+    public class TileEventArgs : EventArgs
     {
         public Tile Tile { get; set; }
 
@@ -11,7 +11,7 @@ namespace MagicalLifeAPI.World
         /// Initializes a new instance of the <see cref="TileEventArg"/> class.
         /// </summary>
         /// <param name="tile"></param>
-        public TileEventArg(Tile tile)
+        public TileEventArgs(Tile tile)
         {
             this.Tile = tile;
         }

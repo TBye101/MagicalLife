@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Components.Resource;
+using MagicalLifeAPI.Properties;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Util;
@@ -16,7 +17,7 @@ namespace MagicalLifeAPI.World.Resources
     [ProtoContract]
     public class Rock : RockBase
     {
-        public static readonly string StoneName = "Stone";
+        private AbstractVisual visual;
 
         public Rock(int count) : base(StoneName, count, GetHarvestBehavior(count))
         {
@@ -33,6 +34,7 @@ namespace MagicalLifeAPI.World.Resources
 
         public Rock()
         {
+            visual = new StaticTexture(AssetManager.NameToIndex[this.GetRandomStoneTexture()], RenderLayer.Stone);
         }
 
         /// <summary>

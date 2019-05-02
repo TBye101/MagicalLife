@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Server;
 using MagicalLifeAPI.World.Data.Disk;
 using MagicalLifeAPI.World.Data.Disk.DataStorage;
+using MagicalLifeDedicatedServer.Properties;
 using System.Collections.Generic;
 
 namespace MagicalLifeDedicatedServer.API.Commands
@@ -9,7 +10,7 @@ namespace MagicalLifeDedicatedServer.API.Commands
     {
         public string GetHelp()
         {
-            return "Saves the game to disk";
+            return DedicatedServer.SaveGameCommandDesc;
         }
 
         public string GetName()

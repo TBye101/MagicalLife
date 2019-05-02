@@ -1,12 +1,13 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeGUIWindows.GUI.Reusable;
+using MagicalLifeGUIWindows.Properties;
 using Microsoft.Xna.Framework;
 
 namespace MagicalLifeGUIWindows.GUI.In
 {
     public class BackButton : MonoButton
     {
-        public BackButton() : base(TextureLoader.GUIMenuButton, GetDisplayArea(), true, "Back")
+        public BackButton() : base(TextureLoader.GUIMenuButton, GetDisplayArea(), true, Resources.Back)
         {
             this.ClickEvent += this.BackButton_ClickEvent;
         }

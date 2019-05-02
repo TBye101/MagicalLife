@@ -2,13 +2,14 @@
 using MagicalLifeAPI.Sound;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.GUI.Save;
+using MagicalLifeGUIWindows.Properties;
 using Microsoft.Xna.Framework;
 
 namespace MagicalLifeGUIWindows.GUI.In
 {
     public class SaveButton : MonoButton
     {
-        public SaveButton() : base(TextureLoader.GUIMenuButton, GetDisplayArea(), true, "Save Game")
+        public SaveButton() : base(TextureLoader.GUIMenuButton, GetDisplayArea(), true, Resources.Save)
         {
             this.ClickEvent += this.SaveButton_ClickEvent;
         }

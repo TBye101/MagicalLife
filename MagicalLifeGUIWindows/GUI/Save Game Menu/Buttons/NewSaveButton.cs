@@ -2,13 +2,14 @@
 using MagicalLifeAPI.World.Data.Disk;
 using MagicalLifeAPI.World.Data.Disk.DataStorage;
 using MagicalLifeGUIWindows.GUI.Reusable;
+using MagicalLifeGUIWindows.Properties;
 using Microsoft.Xna.Framework;
 
 namespace MagicalLifeGUIWindows.GUI.Save
 {
     public class NewSaveButton : MonoButton
     {
-        public NewSaveButton() : base(TextureLoader.GUIMenuButton, GetDrawingBounds(), true, "New Save")
+        public NewSaveButton() : base(TextureLoader.GUIMenuButton, GetDrawingBounds(), true, Resources.NewSave)
         {
             this.ClickEvent += this.NewSaveButton_ClickEvent;
         }
@@ -30,7 +31,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
 
         private void NewSave()
         {
-            if (SaveGameMenu.menu.SaveInputBox.Text != string.Empty)
+            if(!string.IsNullOrWhiteSpace(SaveGameMenu.menu.SaveInputBox.Text))
             {
                 WorldStorage.SerializeWorld(SaveGameMenu.menu.SaveInputBox.Text, new WorldDiskSink());
             }

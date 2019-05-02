@@ -5,6 +5,7 @@ using MagicalLifeAPI.Server;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Data.Disk;
 using MagicalLifeDedicatedServer.API.Settings;
+using MagicalLifeDedicatedServer.Properties;
 using MagicalLifeServer;
 using System.Collections.Generic;
 using System.Net.Sockets;
@@ -18,7 +19,7 @@ namespace MagicalLifeDedicatedServer.API.Commands
     {
         public string GetHelp()
         {
-            return "Creates a new world and hosts a new game\r\n Usage: ml newgame (mygamenamehere)";
+            return DedicatedServer.NewGameCommandDesc;
         }
 
         public string GetName()
@@ -35,32 +36,32 @@ namespace MagicalLifeDedicatedServer.API.Commands
                 Server.Load();
 
                 WorldGenerationSettings wset = SettingsHandler.WorldGenerationSettings.Settings;
-                Util.WriteLine("Generating world!");
-                World.Initialize(wset.DimensionWidth, wset.DimensionHeight, WorldGeneratorRegistry.Generators[0], "Main");
-                Util.WriteLine("World generated!");
+                Util.WriteLine(DedicatedServer.GeneratingWorld);
+                World.Initialize(wset.DimensionWidth, wset.DimensionHeight, new GrassAndDirt(0));
+                Util.WriteLine(DedicatedServer.WorldGenerated);
 
-                Util.WriteLine("Initializing networking!");
+                Util.WriteLine(DedicatedServer.InitializingNetwork);
                 int port = SettingsHandler.NetworkSettings.Settings.Port;
                 ServerSendRecieve.Initialize(new NetworkSettings(port));
                 ServerSendRecieve.TCPServer.Server.ClientConnected += Server_ClientConnected;
                 ServerSendRecieve.TCPServer.Server.ClientDisconnected += Server_ClientDisconnected;
 
-                Util.WriteLine("Done!");
+                Util.WriteLine(DedicatedServer.Done);
             }
             else
             {
-                Util.WriteLine("Invalid command parameters");
+                Util.WriteLine(DedicatedServer.InvalidCommandParameters);
             }
         }
 
         private static void Server_ClientDisconnected(object sender, TcpClient e)
         {
-            Util.WriteLine("Client disconnected: " + e.Client.RemoteEndPoint.ToString());
+            Util.WriteLine(DedicatedServer.ClientDisconnected + ": " + e.Client.RemoteEndPoint.ToString());
         }
 
         private static void Server_ClientConnected(object sender, System.Net.Sockets.TcpClient e)
         {
-            Util.WriteLine("Client connected: " + e.Client.RemoteEndPoint.ToString());
+            Util.WriteLine(DedicatedServer.ClientConnected + ": "+ e.Client.RemoteEndPoint.ToString());
         }
     }
 }

@@ -54,7 +54,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             return new Dependencies(deps);
         }
 
-        public override void MakePreparations(Living l)
+        public override void MakePreparations(Living living)
         {
             Tile tile = World.Data.World.GetTile(l.Dimension, this.Target.X, this.Target.Y);
             this.Tillable = tile.GetComponent<ComponentTillable>();
@@ -71,7 +71,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             {
                 Tile tile = World.Data.World.GetTile(l.Dimension, this.Target.X, this.Target.Y);
 
-                List<World.Base.Item> drop = null;
+                List<Item> drop = null;
                 if (tile is Grass)
                 {
                     drop = this.Tillable.TillSomePercent(.02F, this.Target);
@@ -81,7 +81,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
                     drop = this.Tillable.TillSomePercent(.07F, this.Target);
                 }
 
-                if (drop != null && drop.Count > 0)
+                if (drop?.Count > 0)
                 {
                     ItemAdder.AddItem(drop[0], l.GetExactComponent<ComponentSelectable>().MapLocation, l.Dimension);
                 }

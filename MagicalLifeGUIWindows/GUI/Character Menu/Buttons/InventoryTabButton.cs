@@ -1,5 +1,7 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeGUIWindows.GUI.Reusable;
+using MagicalLifeGUIWindows.Properties;
+using MonoGame.Extended.Input.InputListeners;
 
 namespace MagicalLifeGUIWindows.GUI.Character_Menu.Buttons
 {
@@ -10,7 +12,7 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu.Buttons
     {
         public InventoryTabButton()
             : base(TextureLoader.GUIMenuButton, CharacterMenuLayout.GetInventoryButtonBounds(),
-                  true, TextureLoader.FontMainMenuFont12x, "Inventory Tab")
+                  true, TextureLoader.FontMainMenuFont12x, Resources.InventoryTab)
         {
             this.ClickEvent += this.InventoryTabButton_ClickEvent;
         }

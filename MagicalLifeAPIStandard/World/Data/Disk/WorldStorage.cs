@@ -133,7 +133,7 @@ namespace MagicalLifeAPI.World.Data.Disk
                     DirectoryInfo dirInfo = Directory.CreateDirectory(WorldStorage.DimensionSaveFolder + Path.DirectorySeparatorChar + item.ID);
                     DimensionStorage.PrepareForDimension(item.ID);
 
-                    if (DimensionPaths.TryGetValue(item.ID, out string value) == false)
+                    if (!DimensionPaths.TryGetValue(item.ID, out string value))
                     {
                         DimensionPaths.Add(item.ID, dirInfo.FullName);
                     }

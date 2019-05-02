@@ -53,7 +53,7 @@ namespace MagicalLifeServer.Processing.Message
                 bool a = World.Dimensions[dimension][item.Origin.X, item.Origin.Y].IsWalkable;
                 bool b = World.Dimensions[dimension][item.Destination.X, item.Destination.Y].IsWalkable;
 
-                if (a == false || b == false)
+                if (!a || !b)
                 {
                     return false;
                 }

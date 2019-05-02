@@ -1,5 +1,7 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeGUIWindows.GUI.Reusable;
+using MagicalLifeGUIWindows.Properties;
+using MonoGame.Extended.Input.InputListeners;
 
 namespace MagicalLifeGUIWindows.GUI.Character_Menu.Buttons
 {
@@ -10,7 +12,7 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu.Buttons
     {
         public SkillsTabButton()
             : base(TextureLoader.GUIMenuButton, CharacterMenuLayout.GetSkillsButtonBounds(),
-                  true, TextureLoader.FontMainMenuFont12x, "Skills Tab")
+                  true, TextureLoader.FontMainMenuFont12x, Resources.SkillsTab)
         {
             this.ClickEvent += this.SkillsTabButton_ClickEvent;
         }

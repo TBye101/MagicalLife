@@ -20,7 +20,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             this.Target = target;
         }
 
-        public override void MakePreparations(Living l)
+        public override void MakePreparations(Living living)
         {
         }
 
