@@ -4,6 +4,7 @@ using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.Rendering.Map;
 using Microsoft.Xna.Framework;
+using System;
 
 public class Camera
 {
@@ -222,10 +223,10 @@ public class Camera
                 break;
 
             default:
-                throw new UnexpectedEnumMemberException();
+               throw new InvalidOperationException("Unexpected value for Camera Zoom : " + inputState);
         }
 
-        // When using a controller, to match the thumbstick behavior,
+        // When using a controller, to match the thumb stick behavior,
         // we need to normalize non-zero vectors in case the user
         // is pressing a diagonal direction.
         if (cameraMovement != Vector2.Zero)

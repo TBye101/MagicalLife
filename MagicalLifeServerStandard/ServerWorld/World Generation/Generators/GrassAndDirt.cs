@@ -82,7 +82,7 @@ namespace MagicalLifeServer.ServerWorld.World
                                             break;
 
                                         default:
-                                            throw new MagicalLifeAPI.Error.InternalExceptions.UnexpectedEnumMemberException();
+                                            throw new InvalidOperationException("Unexpected value for tree type : " + treeType);
                                     }
                                 }
                             }

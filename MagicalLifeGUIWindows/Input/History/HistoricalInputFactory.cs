@@ -6,6 +6,7 @@ using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.GUI.In;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -49,7 +50,7 @@ namespace MagicalLifeGUIWindows.Input.History
                     return this.GenericAction(e, ActionSelected.Chop);
 
                 default:
-                    throw new UnexpectedEnumMemberException();
+                    throw new InvalidOperationException("Unexpected value for selected action = " + InGameGUI.Selected);
             }
         }
 
