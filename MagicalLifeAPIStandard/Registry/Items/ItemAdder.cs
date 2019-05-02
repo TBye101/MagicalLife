@@ -71,7 +71,10 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// </summary>
         public static void AddItem(Item item, Point2D mapLocation, int dimension)
         {
-            NetworkAdd(item, mapLocation, dimension);
+            if (World.Data.World.Mode != Networking.EngineMode.ServerOnly)
+            {
+                NetworkAdd(item, mapLocation, dimension);
+            }
 
             Point2D chunkLocation = WorldUtil.CalculateChunkLocation(mapLocation);
             Chunk chunk = World.Data.World.Dimensions[dimension].GetChunk(chunkLocation.X, chunkLocation.Y);

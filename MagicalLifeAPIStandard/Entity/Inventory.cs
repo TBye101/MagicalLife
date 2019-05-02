@@ -18,7 +18,7 @@ namespace MagicalLifeAPI.Entity
         /// Stored as: [itemID, itemObject]
         /// </summary>
         [ProtoMember(1)]
-        private readonly Dictionary<int, List<Item>> Items;
+        private Dictionary<int, List<Item>> Items;
 
         /// <summary>
         /// The combined weight of all the objects in the inventory.
@@ -48,6 +48,15 @@ namespace MagicalLifeAPI.Entity
         protected Inventory()
         {
             //Protobuf-net constructor
+        }
+
+        [ProtoAfterDeserialization]
+        private void PostDeserialization()
+        {
+            if (this.Items == null)
+            {
+                this.Items = new Dictionary<int, List<Item>>();
+            }
         }
 
         /// <summary>
