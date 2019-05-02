@@ -5,6 +5,7 @@ using MagicalLifeGUIWindows.Rendering.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Input.InputListeners;
+using System;
 using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
 
 namespace MagicalLifeGUIWindows.GUI.Reusable
@@ -51,7 +52,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
             if (width == 0 || height == 0)
             {
-                throw new InvalidDataException("Width or height cannot be 0");
+                throw new ArgumentException("Width or height cannot be 0");
             }
 
             if (this.Text != null)

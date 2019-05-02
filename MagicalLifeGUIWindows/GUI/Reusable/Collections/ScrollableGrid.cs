@@ -59,7 +59,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         public event EventHandler<int> ItemDoubleClick;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="columns"></param>
         /// <param name="drawingBounds"></param>
@@ -74,7 +74,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             this.Columns = columns;
             if (this.Columns == 0)
             {
-                throw new InvalidDataException("Columns must be greater than 0");
+                throw new ArgumentException("Columns must be greater than 0");
             }
             this.InitializeItems();
 

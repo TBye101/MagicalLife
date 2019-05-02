@@ -18,14 +18,16 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
         private readonly string KeyBindingName;
 
-        protected MonoKeyBindingButton(string imageName, Rectangle displayArea, bool isContained, string font,string keybinding,string text = "") : base(imageName, displayArea, isContained, font, text)
+        protected MonoKeyBindingButton(string imageName, Rectangle displayArea, bool isContained, string font,string keybinding,string text = "")
+            : base(imageName, displayArea, isContained, font, text)
         {
             ClickEvent += HandleAssignment;
             KeyBindingName = keybinding;
             KeyboardHandler.KeysPressed += KeyboardHandler_KeysPressed;
         }
 
-        protected MonoKeyBindingButton(string imageName, Rectangle displayArea, bool isContained, string keybinding, string text = "") : base(imageName, displayArea, isContained, text)
+        protected MonoKeyBindingButton(string imageName, Rectangle displayArea, bool isContained, string keybinding, string text = "")
+            : base(imageName, displayArea, isContained, text)
         {
             ClickEvent += HandleAssignment;
             KeyBindingName = keybinding;

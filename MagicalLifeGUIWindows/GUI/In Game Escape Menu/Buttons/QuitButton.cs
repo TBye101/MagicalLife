@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.GUI.Reusable;
@@ -31,7 +32,7 @@ namespace MagicalLifeGUIWindows.GUI.In
                     return Resources.Quit;
 
                 default:
-                    throw new MagicalLifeAPI.Error.InternalExceptions.UnexpectedEnumMemberException();
+                    throw new UnexpectedEnumMemberException();
             }
         }
 

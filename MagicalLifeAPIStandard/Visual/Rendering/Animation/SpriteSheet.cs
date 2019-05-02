@@ -3,6 +3,7 @@ using MagicalLifeAPI.Error.InternalExceptions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ProtoBuf;
+using System;
 
 namespace MagicalLifeAPI.Visual.Animation
 {
@@ -95,11 +96,11 @@ namespace MagicalLifeAPI.Visual.Animation
 
             if (sheetBounds.Width != this.SheetWidth * this.SpritePixelWidth)
             {
-                throw new InvalidTextureException("Invalid texture sheet width");
+                throw new ArgumentException("Invalid texture sheet width");
             }
             if (sheetBounds.Height != this.SheetHeight * this.SpritePixelHeight)
             {
-                throw new InvalidTextureException("Invalid texture sheet height");
+                throw new ArgumentException("Invalid texture sheet height");
             }
         }
     }

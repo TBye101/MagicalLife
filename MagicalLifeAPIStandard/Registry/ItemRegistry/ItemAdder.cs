@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.DataTypes.R;
+using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Server;
@@ -98,7 +99,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
                     break;
 
                 default:
-                    throw new Error.InternalExceptions.UnexpectedEnumMemberException();
+                    throw new UnexpectedEnumMemberException();
             }
         }
 

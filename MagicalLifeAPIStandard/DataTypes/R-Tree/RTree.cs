@@ -261,7 +261,7 @@ namespace MagicalLifeAPI.DataTypes.R
             locker.AcquireWriterLock(locking_timeout);
             int id = ItemsToIds[item];
 
-            bool success = delete(r, id);
+            bool success = Delete(r, id);
             if (success)
             {
                 IdsToItems.Remove(id);
@@ -271,9 +271,9 @@ namespace MagicalLifeAPI.DataTypes.R
             return success;
         }
 
-        private bool delete(Rectangle r, int id)
+        private bool Delete(Rectangle r, int id)
         {
-            // FindLeaf algorithm inlined here. Note the "official" algorithm
+            // FindLeaf algorithm in-lined here. Note the "official" algorithm
             // searches all overlapping entries. This seems inefficient to me,
             // as an entry is only worth searching if it contains (NOT overlaps)
             // the rectangle we are searching for.
@@ -310,7 +310,7 @@ namespace MagicalLifeAPI.DataTypes.R
                             parentsEntry.Push(i); // this becomes the start index when the child has been searched
                             parentsEntry.Push(-1);
                             contains = true;
-                            break; // ie go to next iteration of while()
+                            break; // IE go to next iteration of while()
                         }
                     }
                     if (contains)
@@ -345,7 +345,7 @@ namespace MagicalLifeAPI.DataTypes.R
                 root = GetNode(rootNodeId);
             }
 
-            return (foundIndex != -1);
+            return foundIndex != -1;
         }
 
         /// <summary>
