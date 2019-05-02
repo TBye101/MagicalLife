@@ -65,6 +65,8 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
                         Text = e.ToString();
                         ReAssigning = false;
                         break;
+                    default:
+                        throw new InvalidOperationException("Unexpected name for key binding  = " + KeyBindingName);
                 }
                 SettingsManager.Keybindings.Save();
             }

@@ -116,7 +116,7 @@ namespace MagicalLifeAPI.Entity.Movement
                     break;
 
                 default:
-                    throw new UnexpectedEnumMemberException();
+                    throw new InvalidOperationException("Unexpected value for direction: " + direction.ToString());
             }
 
             xMove *= (float)entity.Movement.GetValue();
@@ -213,7 +213,7 @@ namespace MagicalLifeAPI.Entity.Movement
                 }
             }
 
-            throw new UnexpectedEnumMemberException();
+            throw new InvalidOperationException("Unexpected movement direction found.");
         }
     }
 }

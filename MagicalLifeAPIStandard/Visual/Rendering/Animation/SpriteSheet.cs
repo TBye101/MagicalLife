@@ -96,11 +96,11 @@ namespace MagicalLifeAPI.Visual.Animation
 
             if (sheetBounds.Width != this.SheetWidth * this.SpritePixelWidth)
             {
-                throw new ArgumentException("Invalid texture sheet width");
+                throw new InvalidTextureException("Invalid texture sheet width");
             }
             if (sheetBounds.Height != this.SheetHeight * this.SpritePixelHeight)
             {
-                throw new ArgumentException("Invalid texture sheet height");
+                throw new InvalidTextureException("Invalid texture sheet height");
             }
         }
     }

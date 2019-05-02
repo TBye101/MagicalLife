@@ -49,7 +49,7 @@ namespace MagicalLifeAPI.World.Data.Disk.DataStorage
                     break;
 
                 default:
-                    throw new UnexpectedTypeException();
+                    throw new InvalidOperationException("Unexpected type for data: " + data.GetType().ToString());
             }
         }
     }

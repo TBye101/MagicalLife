@@ -5,9 +5,11 @@ using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Server;
 using MagicalLifeAPI.Networking.World.Modifiers;
+using MagicalLifeAPI.Sound.FMOD;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
+using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Registry.ItemRegistry
@@ -99,7 +101,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
                     break;
 
                 default:
-                    throw new UnexpectedEnumMemberException();
+                    throw new InvalidOperationException("Unexpected Mode for the World: " + World.Data.World.Mode.ToString());
             }
         }
 
