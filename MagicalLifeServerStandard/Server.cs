@@ -61,11 +61,11 @@ namespace MagicalLifeServer
                     SettingsManager.Initialize();
                     load.LoadAll(ref msg, new List<IGameLoader>()
                     {
-                        new ProtoTypeLoader(),
-                        new ProtoManager(),
                         new TextureLoader(),
                         new MainLoad(),
-                        new ModLoader()
+                        new ProtoTypeLoader(),
+                        new ModLoader(),
+                        new ProtoManager()
                     });
                     break;
 

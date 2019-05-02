@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Error.InternalExceptions;
+using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Registry.ItemRegistry;
@@ -29,6 +30,15 @@ namespace MagicalLifeAPI.World.Data.Disk.DataStorage
 
         public override void Receive<T>(T data, string filePath, Guid dimensionID)
         {
+            if (data is Chunk chunk2)
+            {
+                MessageBuffer buffer = new MessageBuffer();
+                WorldTransferBodyMessage message = new WorldTransferBodyMessage(chunk2, dimensionID);
+                byte[] a = ProtoUtil.Serialize(message);
+                buffer.ReceiveData(a);
+                BaseMessage resultingMessage = buffer.GetMessageData();
+            }
+
             switch (data)
             {
                 case Chunk chunk:

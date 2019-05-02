@@ -30,6 +30,10 @@ namespace MagicalLifeAPI.World.Resources
             this.InitializeComponents();
         }
 
+        protected MapleTree()
+        {
+        }
+
         private void InitializeComponents()
         {
             ComponentHasTexture textureComponent = this.GetExactComponent<ComponentHasTexture>();
@@ -37,10 +41,6 @@ namespace MagicalLifeAPI.World.Resources
             textureComponent.Visuals.Add(OffsetTrunk);
             textureComponent.Visuals.Add(OffsetLeaves);
             textureComponent.Visuals.Add(OffsetStump);
-        }
-
-        public MapleTree()
-        {
         }
 
         private static ComponentHarvestable GetHarvestBehavior()
