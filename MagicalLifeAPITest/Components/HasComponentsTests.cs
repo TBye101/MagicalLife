@@ -1,5 +1,6 @@
 using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components;
+using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Components.Resource;
 using MagicalLifeAPI.Filing;
 using MagicalLifeAPI.Filing.Logging;
@@ -57,8 +58,12 @@ namespace MagicalLifeAPITest.Components
         private HasComponents CreateHasComponents()
         {
             HasComponents components = new HasComponents(true);
+            ComponentRenderer renderer = new ComponentRenderer();
+            renderer.AddVisual(new StaticTexture(9, RenderLayer.DirtBase));
+
             components.AddComponent(new ComponentSelectable(SelectionType.Tile));
             components.AddComponent(new DropWhenCompletelyHarvested(new List<Item>(), string.Empty, string.Empty));
+            components.AddComponent(renderer);
             return components;
         }
 
@@ -143,14 +148,16 @@ namespace MagicalLifeAPITest.Components
             Assert.IsNotNull(deserialized, "Deserialization failed");
 
             Assert.IsTrue(unitUnderTest.HasComponent<DropWhenCompletelyHarvested>());
-            Assert.IsTrue(unitUnderTest.GetExactComponent<DropWhenCompletelyHarvested>() != null);
-            Assert.IsTrue(unitUnderTest.GetComponent<DropWhenCompletelyHarvested>() != null);
-            Assert.IsTrue(unitUnderTest.GetComponent<ComponentHarvestable>() != null);
+            Assert.IsNotNull(unitUnderTest.GetExactComponent<DropWhenCompletelyHarvested>());
+            Assert.IsNotNull(unitUnderTest.GetComponent<DropWhenCompletelyHarvested>());
+            Assert.IsNotNull(unitUnderTest.GetComponent<ComponentHarvestable>());
 
             Assert.IsTrue(deserialized.HasComponent<DropWhenCompletelyHarvested>());
-            Assert.IsTrue(deserialized.GetExactComponent<DropWhenCompletelyHarvested>() != null);
-            Assert.IsTrue(deserialized.GetComponent<DropWhenCompletelyHarvested>() != null);
-            Assert.IsTrue(deserialized.GetComponent<ComponentHarvestable>() != null);
+            Assert.IsNotNull(deserialized.GetExactComponent<DropWhenCompletelyHarvested>());
+            Assert.IsNotNull(deserialized.GetComponent<DropWhenCompletelyHarvested>());
+            Assert.IsNotNull(deserialized.GetComponent<ComponentHarvestable>());
+            Assert.IsNotNull(deserialized.GetExactComponent<ComponentSelectable>(), "Components didn't serialize properly");
+            Assert.IsNotNull(deserialized.GetExactComponent<ComponentRenderer>(), "Components didn't serialize properly");
         }
     }
 }

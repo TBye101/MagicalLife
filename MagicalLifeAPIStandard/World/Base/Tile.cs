@@ -29,15 +29,18 @@ namespace MagicalLifeAPI.World.Base
             set
             {
                 this._isWalkable = value;
+                if (this.ComponentCount() > 0)
+                {
 
-                ComponentSelectable location = this.GetExactComponent<ComponentSelectable>();
-                if (this._isWalkable)
-                {
-                    MainPathFinder.UnBlock(location.MapLocation, location.Dimension);
-                }
-                else
-                {
-                    MainPathFinder.Block(location.MapLocation, location.Dimension);
+                    ComponentSelectable location = this.GetExactComponent<ComponentSelectable>();
+                    if (this._isWalkable)
+                    {
+                        MainPathFinder.UnBlock(location.MapLocation, location.Dimension);
+                    }
+                    else
+                    {
+                        MainPathFinder.Block(location.MapLocation, location.Dimension);
+                    }
                 }
             }
         }

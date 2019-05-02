@@ -25,18 +25,32 @@ namespace MagicalLifeAPI.Components
         protected HasComponents()
         {
             //Protobuf-net constructor
-            MasterLog.DebugWriteLine("Hey we made it to the constructor");
         }
 
-        //[ProtoAfterDeserialization]
-        //protected void AfterDeserialization()
-        //{
-        //    MasterLog.DebugWriteLine("Hey we made it to the after deserialization method");
-        //    if (this.Components == null)
-        //    {
-        //        this.Components = new Dictionary<string, Component>();
-        //    }
-        //}
+        [ProtoAfterDeserialization]
+        protected void AfterDeserialization()
+        {
+            if (this.Components == null)
+            {
+                this.Components = new Dictionary<Type, Component>();
+            }
+        }
+
+        /// <summary>
+        /// Returns the number of components.
+        /// </summary>
+        /// <returns></returns>
+        public int ComponentCount()
+        {
+            if (this.Components != null)
+            {
+                return this.Components.Count;
+            }
+            else
+            {
+                return 0;
+            }
+        }
 
         /// <summary>
         /// Returns a component if a component of the exact same type as specified is found.
