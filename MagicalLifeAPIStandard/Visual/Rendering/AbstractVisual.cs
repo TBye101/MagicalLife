@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Visual.Rendering.AbstractVisuals;
 using MagicalLifeGUIWindows.Rendering.Map;
 using ProtoBuf;
 

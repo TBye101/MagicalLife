@@ -1,8 +1,8 @@
-﻿using System;
+﻿using MagicalLifeAPI.Filing.Logging;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Linq;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace MagicalLifeAPI.Entity.AI.Task
 {
@@ -19,7 +19,6 @@ namespace MagicalLifeAPI.Entity.AI.Task
 
         internal TaskManager()
         {
-
         }
 
         public void AddTask(MagicalTask task)
@@ -50,22 +49,28 @@ namespace MagicalLifeAPI.Entity.AI.Task
 
                 if (validTasks.Any())
                 {
+                    MasterLog.DebugWriteLine("Creature searching for job: " + living.ID.ToString());
                     //Get the first task and dynamically create it's dependencies
-                    MagicalTask taskGoal = validTasks[0];
-                    this.CreateDependencies(taskGoal, living);
 
-                    //Get the deepest tasks from the dependency chain, and filter out ones that the creature can't do.
-                    List<MagicalTask> deepestTasks = this.GetDeepestTasks(taskGoal);
-                    List<MagicalTask> possibleTasks = this.FilterByValidTasks(living, deepestTasks);
-                    this.FilterByDependencyStatus(possibleTasks);
-                    possibleTasks.Sort((x, y) => CompareTasks(x, y, living));
-
-                    if (possibleTasks.Any())
+                    for (int i = 0; i < validTasks.Count; i++)
                     {
-                        //Reserve the tasks that must all be done by the same creature for this creature.
-                        MagicalTask nextTask = possibleTasks[0];
-                        this.ReserveBoundTree(living, nextTask.BoundID, taskGoal);
-                        this.AssignJob(living, nextTask);
+                        MagicalTask taskGoal = validTasks[i];
+                        this.CreateDependencies(taskGoal, living);
+
+                        //Get the deepest tasks from the dependency chain, and filter out ones that the creature can't do.
+                        List<MagicalTask> deepestTasks = this.GetDeepestTasks(taskGoal);
+                        List<MagicalTask> possibleTasks = this.FilterByValidTasks(living, deepestTasks);
+                        this.FilterByDependencyStatus(possibleTasks);
+                        possibleTasks.Sort((x, y) => CompareTasks(x, y, living));
+
+                        if (possibleTasks.Any())
+                        {
+                            //Reserve the tasks that must all be done by the same creature for this creature.
+                            MagicalTask nextTask = possibleTasks[0];
+                            this.ReserveBoundTree(living, nextTask.BoundID, taskGoal);
+                            this.AssignJob(living, nextTask);
+                            break;
+                        }
                     }
                 }
             }
@@ -131,6 +136,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
         /// <returns></returns>
         private void AssignJob(Living l, MagicalTask task)
         {
+            MasterLog.DebugWriteLine("Assigning job: " + task.ID.ToString() + " " + task.GetType().FullName);
             task.MakePreparations(l);
             l.AssignTask(task);
             task.ToilingWorker = l.ID;
@@ -154,7 +160,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
         }
 
         /// <summary>
-        /// Filters out the tasks that haven't had their dependencies successfully generated. 
+        /// Filters out the tasks that haven't had their dependencies successfully generated.
         /// </summary>
         /// <param name="tasks"></param>
         /// <returns></returns>
@@ -194,7 +200,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
                 {
                     if (this.IsTaskValid(living, task))
                     {
-                       validTasks.Add(task);
+                        validTasks.Add(task);
                     }
                 }
             }
@@ -244,7 +250,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
         }
 
         /// <summary>
-        /// Gets the deepest children tasks in the specified task. Returns the parent task if there are no child tasks. 
+        /// Gets the deepest children tasks in the specified task. Returns the parent task if there are no child tasks.
         /// </summary>
         /// <param name="task"></param>
         /// <returns></returns>
@@ -261,7 +267,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
             }
             else
             {
-               deepest.Add(task);
+                deepest.Add(task);
             }
 
             return deepest;

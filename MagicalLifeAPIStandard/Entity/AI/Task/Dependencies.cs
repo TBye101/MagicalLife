@@ -1,5 +1,4 @@
 ﻿using ProtoBuf;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace MagicalLifeAPI.Entity.AI.Task

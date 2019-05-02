@@ -1,5 +1,4 @@
-﻿using System;
-using MagicalLifeAPI.Asset;
+﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Components.Resource;
 using MagicalLifeAPI.DataTypes;

@@ -82,7 +82,7 @@ namespace MagicalLifeAPI.World.Data
         public bool GetCreature(Point2D Point2D, out Living living)
         {
             living = null;
-            IEnumerable<KeyValuePair<Guid, Living>> result = 
+            IEnumerable<KeyValuePair<Guid, Living>> result =
                 this.Creatures.Where(x => Point2D.Equals(x.Value.GetExactComponent<ComponentSelectable>().MapLocation));
 
             if (result.Count() != 0)

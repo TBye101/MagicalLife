@@ -1,7 +1,4 @@
 ﻿using ProtoBuf;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeAPI.Mod
 {
@@ -13,7 +10,7 @@ namespace MagicalLifeAPI.Mod
     {
         /// <summary>
         /// A unique ID for the mod. This must not conflict with any other mod's.
-        /// It is recommend to generate a random id (GUID) once (hard code it) and use that. 
+        /// It is recommend to generate a random id (GUID) once (hard code it) and use that.
         /// </summary>
         public string ModID { get; private set; }
 
@@ -33,7 +30,7 @@ namespace MagicalLifeAPI.Mod
         public string Description { get; private set; }
 
         /// <summary>
-        /// The version of the mod. 
+        /// The version of the mod.
         /// </summary>
         public ProtoVersion Version { get; private set; }
 

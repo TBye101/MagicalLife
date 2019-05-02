@@ -46,7 +46,7 @@ namespace MagicalLifeAPI.Util
         }
 
         /// <summary>
-        /// Returns the neighbors of the target in a 2D array. 
+        /// Returns the neighbors of the target in a 2D array.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="collection"></param>

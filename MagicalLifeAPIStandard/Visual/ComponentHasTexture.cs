@@ -1,6 +1,5 @@
 ﻿using MagicalLifeAPI.Components;
 using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;

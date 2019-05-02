@@ -48,6 +48,7 @@ namespace MagicalLifeAPI.Filing.Logging
             Writer.Flush();
         }
 
+
         #region IDisposable Support
         private bool disposedValue; // To detect redundant calls
 
@@ -78,5 +79,13 @@ namespace MagicalLifeAPI.Filing.Logging
             GC.SuppressFinalize(this);
         }
         #endregion
+
+        internal static void Close()
+        {
+            Writer.Flush();
+            Writer.Close();
+            Writer.Dispose();
+        }
+
     }
 }

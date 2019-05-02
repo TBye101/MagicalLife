@@ -1,6 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Error.InternalExceptions;
-using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.Rendering.Map;

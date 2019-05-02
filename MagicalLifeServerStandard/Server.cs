@@ -7,7 +7,6 @@ using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Networking.Server;
-using MagicalLifeAPI.Registry.Mod;
 using MagicalLifeAPI.Time;
 using MagicalLifeAPI.Util.Reusable;
 using MagicalLifeAPI.World;
@@ -62,9 +61,9 @@ namespace MagicalLifeServer
                     SettingsManager.Initialize();
                     load.LoadAll(ref msg, new List<IGameLoader>()
                     {
+                        new ProtoTypeLoader(),
                         new ProtoManager(),
                         new TextureLoader(),
-                        new ProtoTypeLoader(),
                         new MainLoad(),
                         new ModLoader()
                     });

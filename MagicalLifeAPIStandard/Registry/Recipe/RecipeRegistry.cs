@@ -1,9 +1,6 @@
 ﻿using MagicalLifeAPI.Crafting;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.World.Base;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeAPI.Registry.Recipe
 {

@@ -1,12 +1,10 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.Components.Resource;
+﻿using MagicalLifeAPI.Components.Resource;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Visual.Rendering.AbstractVisuals;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Items;
 using ProtoBuf;
-using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.World.Resources

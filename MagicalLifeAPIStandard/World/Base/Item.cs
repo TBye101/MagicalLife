@@ -4,11 +4,9 @@ using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Registry.ItemRegistry;
-using MagicalLifeAPI.Visual.Rendering;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace MagicalLifeAPI.World.Base
 {
@@ -28,7 +26,7 @@ namespace MagicalLifeAPI.World.Base
         /// The name of the mod this item is from.
         /// </summary>
         [ProtoMember(2)]
-        public string ModFrom { get;  }
+        public string ModFrom { get; }
 
         /// <summary>
         /// The description and lore of this item. Is not revealed until the item has been identified, unless it never needed identification.
@@ -98,6 +96,7 @@ namespace MagicalLifeAPI.World.Base
         /// <param name="count">How many of this item to create into a stack.</param>
         /// <param name="itemID">The ID of this item.</param>
         protected Item(string name, List<string> lore, int stackableLimit, int count, string textureName, double itemWeight, string modFrom)
+            : base(true)
         {
             this.Name = name;
             this.ModFrom = modFrom;
@@ -112,6 +111,11 @@ namespace MagicalLifeAPI.World.Base
             this.Validate();
         }
 
+        protected Item() : base()
+        {
+            //Protobuf-net constructor
+        }
+
         private void InitializeComponents()
         {
             int textureIndex = AssetManager.GetTextureIndex(this.TextureName);
@@ -121,6 +125,7 @@ namespace MagicalLifeAPI.World.Base
 
             this.AddComponent(new ComponentHasTexture(false));
         }
+
 
         private void SetItemID()
         {
@@ -134,11 +139,6 @@ namespace MagicalLifeAPI.World.Base
             {
                 this.ItemID = -1;
             }
-        }
-
-        protected Item()
-        {
-            //Protobuf-net constructor
         }
 
         protected internal void Validate()
@@ -215,7 +215,7 @@ namespace MagicalLifeAPI.World.Base
         }
 
         /// <summary>
-        /// Return a deep copy of the current item. 
+        /// Return a deep copy of the current item.
         /// </summary>
         /// <param name="amouont">The amount of the item to be created via deep copy.</param>
         /// <returns></returns>

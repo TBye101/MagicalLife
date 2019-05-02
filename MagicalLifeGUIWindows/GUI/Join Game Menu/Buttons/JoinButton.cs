@@ -3,13 +3,11 @@ using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeClient;
-using MagicalLifeGUIWindows.GUI.Action_Menu;
 using MagicalLifeGUIWindows.GUI.In;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Properties;
 using Microsoft.Xna.Framework;
-using MonoGame.Extended.Input.InputListeners;
 
 namespace MagicalLifeGUIWindows.GUI.Join
 {

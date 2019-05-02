@@ -2,9 +2,6 @@
 using MagicalLifeAPI.Registry.WorldGeneration;
 using MagicalLifeMod.Core.WorldGeneration;
 using MagicalLifeMod.Core.WorldGeneration.TerrainGenerators;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeMod.Core.Load
 {

@@ -32,7 +32,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
             if (ActionMenu.AMenu.Visible == true)
             {
-                BoundHandler.RemoveContainer(ActionMenu.AMenu);   
+                BoundHandler.RemoveContainer(ActionMenu.AMenu);
             }
 
             if (World.Dimensions.Count > 0)

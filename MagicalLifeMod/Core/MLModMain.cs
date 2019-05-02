@@ -1,9 +1,7 @@
 ﻿using MagicalLifeAPI.Load;
 using MagicalLifeAPI.Mod;
 using MagicalLifeMod.Core.Load;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeMod.Core
 {
@@ -17,7 +15,6 @@ namespace MagicalLifeMod.Core
 
         public MLModMain()
         {
-
         }
 
         public ModInformation GetInfo()

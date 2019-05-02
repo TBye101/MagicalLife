@@ -12,17 +12,17 @@
     <Compile Remove="Components\Item\**" />
     <Compile Remove="Entity\Animal\**" />
     <Compile Remove="Entity\Entity Components\**" />
+    <Compile Remove="World\Veggies\**" />
     <EmbeddedResource Remove="Components\Generic\**" />
     <EmbeddedResource Remove="Components\Item\**" />
     <EmbeddedResource Remove="Entity\Animal\**" />
     <EmbeddedResource Remove="Entity\Entity Components\**" />
+    <EmbeddedResource Remove="World\Veggies\**" />
     <None Remove="Components\Generic\**" />
     <None Remove="Components\Item\**" />
     <None Remove="Entity\Animal\**" />
     <None Remove="Entity\Entity Components\**" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="World\Veggies\" />
+    <None Remove="World\Veggies\**" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MonoGame.Framework.Portable" Version="3.7.1.189" />

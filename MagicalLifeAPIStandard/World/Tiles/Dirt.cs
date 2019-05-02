@@ -5,13 +5,14 @@ using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Properties;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Base;
+using ProtoBuf;
 
 namespace MagicalLifeAPI.World.Tiles
 {
     /// <summary>
     /// A dirt tile.
     /// </summary>
-    [ProtoBuf.ProtoContract]
+    [ProtoContract]
     public class Dirt : Tile
     {
         public Dirt(Point2D location, int dimension) : base(location, dimension, 10, 0)

@@ -2,7 +2,6 @@
 using MagicalLifeAPI.Error.InternalExceptions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGame.Extended.Input.InputListeners;
 
 namespace MagicalLifeGUIWindows.GUI.Reusable
 {

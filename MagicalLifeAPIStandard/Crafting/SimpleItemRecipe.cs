@@ -2,12 +2,9 @@
 using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.Entity.AI.Task.Tasks;
-using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeAPI.Crafting
 {

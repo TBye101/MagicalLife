@@ -1,10 +1,5 @@
 ﻿using MagicalLifeAPI.Filing;
 using MagicalLifeGUIWindows.GUI.Action_Menu;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 {
@@ -17,7 +12,6 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
         private void KeyboardHandler_KeysPressed(object sender, Microsoft.Xna.Framework.Input.Keys e)
         {
-
             if (e == SettingsManager.Keybindings.Settings.OpenActionMenu)
             {
                 if (BoundHandler.GUIWindows.Contains(ActionMenu.AMenu))

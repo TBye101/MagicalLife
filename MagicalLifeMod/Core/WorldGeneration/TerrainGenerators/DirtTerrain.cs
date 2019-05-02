@@ -5,13 +5,10 @@ using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Resources;
 using MagicalLifeAPI.World.Tiles;
 using MagicalLifeMod.Core.Settings;
-using MagicalLifeMod.Core.WorldGeneration.Default;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeMod.Core.WorldGeneration.TerrainGenerators
-{ 
+{
     public class DirtTerrain : TerrainGenerator
     {
         public DirtTerrain(int dimension) : base(CoreSettingsHandler.GenerationSettings.Settings.DirtTerrainWeight, dimension)

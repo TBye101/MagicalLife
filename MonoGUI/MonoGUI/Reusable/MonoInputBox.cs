@@ -5,7 +5,6 @@ using MagicalLifeGUIWindows.Map;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using MonoGame.Extended.Input.InputListeners;
 using System;
 using System.Linq;
 using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
@@ -14,7 +13,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 {
     public class MonoInputBox : GUIElement
     {
-        private string _text  = "";
+        private string _text = "";
 
         /// <summary>
         /// The text contained in this input box.
@@ -61,7 +60,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         public Alignment TextAlignment { get; private set; }
 
         private int TextureID { get; set; }
-        
+
         public event System.EventHandler TextChanged;
         /// <summary>
         ///
@@ -135,12 +134,15 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         {
             if (!this.IsLocked && !this.LastKeySpecial && e != null)
             {
-                string p1 = this.Text.Substring(0, this.CarrotPosition);
-                p1 += e.ToString();
+                if (this.Font.Characters.Contains(e.Value) && e.Value != '\r' && e.Value != '\n')
+                {
+                    string p1 = this.Text.Substring(0, this.CarrotPosition);
+                    p1 += e.ToString();
 
-                string p2 = this.Text.Substring(this.CarrotPosition, this.Text.Count() - this.CarrotPosition);
-                this.Text = p1 + p2;
-                this.CarrotPosition += 1;
+                    string p2 = this.Text.Substring(this.CarrotPosition, this.Text.Count() - this.CarrotPosition);
+                    this.Text = p1 + p2;
+                    this.CarrotPosition += 1;
+                }
             }
         }
 
@@ -225,7 +227,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         {
             TextChanged?.Invoke(this, EventArgs.Empty);
         }
-        
+
         private Rectangle CalculateCarrotBounds(MonoInputBox textbox, Rectangle containerBounds)
         {
             Vector2 size = textbox.Font.MeasureString(textbox.Text);

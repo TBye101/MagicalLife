@@ -50,7 +50,10 @@ namespace MagicalLifeGUIWindows.GUI
         {
             if (container.Child == null)
             {
-                BoundHandler.GUIWindows.Remove(container);
+                if (DisplayIndex > 0)
+                {
+                    BoundHandler.GUIWindows.Remove(container);
+                }
             }
             else
             {

@@ -3,7 +3,6 @@ using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.World.Tiles;
 using ProtoBuf;
@@ -30,15 +29,18 @@ namespace MagicalLifeAPI.World.Base
             set
             {
                 this._isWalkable = value;
+                if (this.ComponentCount() > 0)
+                {
 
-                ComponentSelectable location = this.GetExactComponent<ComponentSelectable>();
-                if (this._isWalkable)
-                {
-                    MainPathFinder.UnBlock(location.MapLocation, location.Dimension);
-                }
-                else
-                {
-                    MainPathFinder.Block(location.MapLocation, location.Dimension);
+                    ComponentSelectable location = this.GetExactComponent<ComponentSelectable>();
+                    if (this._isWalkable)
+                    {
+                        MainPathFinder.UnBlock(location.MapLocation, location.Dimension);
+                    }
+                    else
+                    {
+                        MainPathFinder.Block(location.MapLocation, location.Dimension);
+                    }
                 }
             }
         }
@@ -133,6 +135,7 @@ namespace MagicalLifeAPI.World.Base
         /// <param name="location">The 3D location of this tile in the map.</param>
         /// <param name="movementCost">This value is the movement cost of walking on this tile. It should be between 1 and 100</param>
         protected Tile(Point2D location, int dimension, int movementCost, int footStepSound)
+            :base(true)
         {
             ComponentSelectable selectable = new ComponentSelectable(SelectionType.Tile);
             selectable.MapLocation = location;
@@ -155,7 +158,7 @@ namespace MagicalLifeAPI.World.Base
         /// <summary>
         /// This constructor is used during loading/reflection only.
         /// </summary>
-        protected Tile()
+        protected Tile() : base()
         {
         }
 

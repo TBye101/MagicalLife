@@ -1,5 +1,4 @@
-﻿using MagicalLifeAPI.Entity.AI.Task.Qualifications;
-using ProtoBuf;
+﻿using ProtoBuf;
 
 namespace MagicalLifeAPI.Entity.AI.Task
 {

@@ -1,16 +1,10 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Error.InternalExceptions;
-using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeGUIWindows.GUI.Reusable.API;
-using MagicalLifeGUIWindows.GUI.Reusable.Premade;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.GUI.Reusable.Collections
 {
@@ -77,6 +71,13 @@ namespace MagicalLifeGUIWindows.GUI.Reusable.Collections
             this.ItemRenderCount = itemRenderCount;
 
             this.ClickEvent += this.ScrollableGrid_ClickEvent;
+            this.DoubleClickEvent += this.MonoGenericGrid_DoubleClickEvent;
+        }
+
+        private void MonoGenericGrid_DoubleClickEvent(object sender, Event.ClickEventArgs e)
+        {
+            this.SelectedIndex = ((e.MouseEventArgs.Position.Y + e.GUIContainer.DrawingBounds.Y) / this.ItemDisplayBounds.Y) - 1;
+            this.ItemDoubleClickHandler(this.SelectedIndex);
         }
 
         private void ScrollableGrid_ClickEvent(object sender, Event.ClickEventArgs e)
@@ -106,8 +107,6 @@ namespace MagicalLifeGUIWindows.GUI.Reusable.Collections
         {
             int x = containerBounds.X + this.DrawingBounds.X;
             int y = containerBounds.Y + this.DrawingBounds.Y;
-
-            MasterLog.DebugWriteLine("Grid x: " + x.ToString());
 
             int length;
 

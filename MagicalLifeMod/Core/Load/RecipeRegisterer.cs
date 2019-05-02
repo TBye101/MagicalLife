@@ -3,8 +3,6 @@ using MagicalLifeAPI.Load;
 using MagicalLifeAPI.Registry.Recipe;
 using MagicalLifeMod.Core.Items;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeMod.Core.Load
 {

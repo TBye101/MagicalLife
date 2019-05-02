@@ -6,14 +6,12 @@ using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Data.Disk;
 using MagicalLifeClient;
-using MagicalLifeGUIWindows.GUI.Action_Menu;
 using MagicalLifeGUIWindows.GUI.In;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Properties;
 using MagicalLifeServer;
 using Microsoft.Xna.Framework;
-using MonoGame.Extended.Input.InputListeners;
 
 namespace MagicalLifeGUIWindows.GUI.Load
 {

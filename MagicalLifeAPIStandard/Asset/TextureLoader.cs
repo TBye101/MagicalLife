@@ -39,11 +39,13 @@ namespace MagicalLifeAPI.Asset
         #endregion GUI
 
         #region Crops
+
         public static readonly string CornSeedling = "Textures/Resource/Plants/Crops/CornSeedling";
         public static readonly string CornGrowth1 = "Textures/Resource/Plants/Crops/CornGrowth1";
         public static readonly string CornGrowth2 = "Textures/Resource/Plants/Crops/CornGrowth2";
         public static readonly string CornGrowth3 = "Textures/Resource/Plants/Crops/CornFullGrowth";
-        #endregion
+
+        #endregion Crops
 
         #region TileTextures
 

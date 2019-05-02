@@ -9,7 +9,6 @@ using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.Util.Reusable;
 using MagicalLifeAPI.World.Data;
-using MagicalLifeGUIWindows.GUI.Action_Menu;
 using MagicalLifeGUIWindows.GUI.In;
 using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Load;

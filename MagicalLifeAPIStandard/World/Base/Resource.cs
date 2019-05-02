@@ -1,13 +1,8 @@
 ﻿using MagicalLifeAPI.Components;
-using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Components.Resource;
 using MagicalLifeAPI.DataTypes.Attribute;
 using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Networking;
-using MagicalLifeAPI.Visual.Rendering;
 using ProtoBuf;
-using System;
-using System.Collections.Generic;
 
 namespace MagicalLifeAPI.World.Base
 {
@@ -33,7 +28,8 @@ namespace MagicalLifeAPI.World.Base
         [ProtoMember(3)]
         public Attribute32 MaxDurability { get; }
 
-        protected Resource(string name, int durability, ComponentHarvestable harvestBehavior)
+        public Resource(string name, int durability, ComponentHarvestable harvestBehavior)
+            : base(true)
         {
             this.AddComponent(new ComponentHasTexture(false));
             this.AddComponent(harvestBehavior);
@@ -42,7 +38,8 @@ namespace MagicalLifeAPI.World.Base
             this.MaxDurability = new Attribute32(this.Durability);
         }
 
-        protected Resource()
+
+        public Resource() : base()
         {
         }
     }

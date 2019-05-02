@@ -1,8 +1,7 @@
-﻿using MagicalLifeAPI.Components;
+﻿using MagicalLifeAPI.Filing.Logging;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 
 namespace MagicalLifeAPI.Components
@@ -10,15 +9,22 @@ namespace MagicalLifeAPI.Components
     /// <summary>
     /// Contains a collection of components, and allows for the manipulation and access of these components.
     /// </summary>
-    [ProtoContract(SkipConstructor = true)]
+    [ProtoContract]
     public class HasComponents
     {
+        //<AssemblyQualifiedName, Component>
         [ProtoMember(1)]
         private Dictionary<Type, Component> Components;
 
-        public HasComponents()
+        /// <param name="irrelevant">A parameter to ensure that protobuf-net doesn't use this constructor. Its value doesn't matter.</param>
+        public HasComponents(bool irrelevant)
         {
             this.Components = new Dictionary<Type, Component>();
+        }
+
+        protected HasComponents()
+        {
+            //Protobuf-net constructor
         }
 
         [ProtoAfterDeserialization]
@@ -27,6 +33,22 @@ namespace MagicalLifeAPI.Components
             if (this.Components == null)
             {
                 this.Components = new Dictionary<Type, Component>();
+            }
+        }
+
+        /// <summary>
+        /// Returns the number of components.
+        /// </summary>
+        /// <returns></returns>
+        public int ComponentCount()
+        {
+            if (this.Components != null)
+            {
+                return this.Components.Count;
+            }
+            else
+            {
+                return 0;
             }
         }
 
@@ -51,6 +73,7 @@ namespace MagicalLifeAPI.Components
 
         /// <summary>
         /// Returns the first component that is exactly the same as the type specified, or is a subclass.
+        /// Returns null if none are found.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
@@ -60,7 +83,15 @@ namespace MagicalLifeAPI.Components
             T exact = this.GetExactComponent<T>();
             if (exact == null)
             {
-                return (T)this.Components.First(x => x.Key.IsSubclassOf(typeof(T))).Value;
+                foreach (KeyValuePair<Type, Component> item in this.Components)
+                {
+                    if (typeof(T).IsAssignableFrom(item.Key))
+                    {
+                        return (T)item.Value;
+                    }
+                }
+
+                return null;
             }
             else
             {
@@ -78,6 +109,11 @@ namespace MagicalLifeAPI.Components
         {
             Component result = this.GetComponent<T>();
             return result != null && result != default(T);
+        }
+
+        public void ClearComponents()
+        {
+            this.Components.Clear();
         }
     }
 }

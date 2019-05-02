@@ -4,7 +4,6 @@ using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
-using System;
 
 namespace MagicalLifeAPI.Registry.ItemRegistry
 {

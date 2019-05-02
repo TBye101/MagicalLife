@@ -5,8 +5,6 @@ using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeMod.Core;
 using ProtoBuf;
-using System;
-using System.Collections.Generic;
 
 namespace MagicalLifeAPI.World.Items
 {

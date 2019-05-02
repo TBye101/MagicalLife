@@ -1,17 +1,11 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Error.InternalExceptions;
-using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeGUIWindows.GUI.Reusable.API;
 using MagicalLifeGUIWindows.GUI.Reusable.Event;
-using MagicalLifeGUIWindows.GUI.Reusable.Premade;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.GUI.Reusable.Collections
 {
@@ -77,11 +71,18 @@ namespace MagicalLifeGUIWindows.GUI.Reusable.Collections
             this.ItemRenderCount = itemRenderCount;
 
             this.ClickEvent += this.ScrollableGrid_ClickEvent;
+            this.DoubleClickEvent += this.MonoGrid_DoubleClickEvent;
+        }
+
+        private void MonoGrid_DoubleClickEvent(object sender, ClickEventArgs e)
+        {
+            int y = (e.MouseEventArgs.Position.Y - e.GUIContainer.DrawingBounds.Y) / this.ItemDisplayBounds.Y;
+            int x = (e.MouseEventArgs.Position.X - e.GUIContainer.DrawingBounds.X) / this.ItemDisplayBounds.X;
+            this.ItemDoubleClickHandler(new Point2D(x, y), e);
         }
 
         private void ScrollableGrid_ClickEvent(object sender, ClickEventArgs e)
         {
-            //this.SelectedIndex = ((e.MouseEventArgs.Position.Y + e.GUIContainer.DrawingBounds.Y) / this.ItemDisplayBounds.Y) - 1;
             int y = (e.MouseEventArgs.Position.Y - e.GUIContainer.DrawingBounds.Y) / this.ItemDisplayBounds.Y;
             int x = (e.MouseEventArgs.Position.X - e.GUIContainer.DrawingBounds.X) / this.ItemDisplayBounds.X;
             this.ItemClickHandler(new Point2D(x, y), e);

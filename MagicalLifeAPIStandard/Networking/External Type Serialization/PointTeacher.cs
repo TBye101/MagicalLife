@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Networking.Serialization;
 using ProtoBuf.Meta;
 
 namespace MagicalLifeAPI.Networking.External

@@ -1,6 +1,4 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Util.Reusable;
+﻿using MagicalLifeAPI.Util.Reusable;
 using MagicalLifeAPI.Visual.Rendering.Renderer;
 using MagicalLifeGUIWindows.Rendering.Text;
 using Microsoft.Xna.Framework;

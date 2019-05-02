@@ -93,14 +93,17 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         public static void DrawEntities(int dimension, Chunk chunk)
         {
             int length = chunk.Creatures.Count;
-            for (int i = 0; i < length; i++)
+            lock (chunk.Creatures)
             {
-                KeyValuePair<System.Guid, Living> item = chunk.Creatures.ElementAt(i);
-                if (item.Value != null)
+                for (int i = 0; i < length; i++)
                 {
-                    LivingScreenLocation.X = (int)(item.Value.TileLocation.X * TileSize.X);
-                    LivingScreenLocation.Y = (int)(item.Value.TileLocation.Y * TileSize.Y);
-                    item.Value.Visual.Render(MapDrawer, LivingScreenLocation);
+                    KeyValuePair<System.Guid, Living> item = chunk.Creatures.ElementAt(i);
+                    if (item.Value != null)
+                    {
+                        LivingScreenLocation.X = (int)(item.Value.TileLocation.X * TileSize.X);
+                        LivingScreenLocation.Y = (int)(item.Value.TileLocation.Y * TileSize.Y);
+                        item.Value.Visual.Render(MapDrawer, LivingScreenLocation);
+                    }
                 }
             }
         }

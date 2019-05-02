@@ -1,5 +1,4 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.Components.Resource;
+﻿using MagicalLifeAPI.Components.Resource;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.Visual.Rendering.AbstractVisuals;

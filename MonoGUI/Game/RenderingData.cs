@@ -1,6 +1,4 @@
 ﻿using MagicalLifeAPI.Entity.AI.Task;
-using MagicalLifeAPI.World;
-using MagicalLifeAPI.World.Base;
 using Microsoft.Xna.Framework.Content;
 
 namespace MagicalLifeGUIWindows.Map

@@ -67,6 +67,11 @@ namespace MagicalLifeAPI.DataTypes.R
             set(x1, y1, x2, y2);
         }
 
+        public Rectangle(Point2D a, Point2D b)
+            : this(a.X, a.Y, b.X, b.Y)
+        {
+        }
+
         /// <summary>
         /// ctor
         /// </summary>

@@ -2,9 +2,6 @@
 using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.World.Items;
 using MagicalLifeMod.Core.Items;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeMod.Core.Load
 {

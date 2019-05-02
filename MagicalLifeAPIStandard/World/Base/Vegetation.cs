@@ -2,7 +2,7 @@
 using ProtoBuf;
 
 namespace MagicalLifeAPI.World.Base
-{ 
+{
     /// <summary>
     /// A base class used by anything that can grow, and is alive.
     /// </summary>

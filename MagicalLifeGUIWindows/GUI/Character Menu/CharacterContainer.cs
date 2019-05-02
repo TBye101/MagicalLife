@@ -7,7 +7,6 @@ using MagicalLifeGUIWindows.GUI.Reusable.Premade;
 using MagicalLifeGUIWindows.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeGUIWindows.GUI.Character_Menu

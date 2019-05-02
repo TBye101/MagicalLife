@@ -1,11 +1,7 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity.AI.Task.Qualifications;
-using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Networking.Client;
-using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Pathfinding;
-using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
 using ProtoBuf;
 using System;
@@ -19,9 +15,6 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         [ProtoMember(1)]
         public Point2D Target { get; private set; }
 
-        [ProtoMember(3)]
-        public Point2D AdjacentLocation { get; private set; }
-
         public BecomeAdjacentTask(Guid boundID, Point2D target) : base(Dependencies.CreateEmpty(), boundID, new List<Qualification> { new CanMoveQualification() }, PriorityLayers.Default)
         {
             this.Target = target;
@@ -29,21 +22,6 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         public override void MakePreparations(Living l)
         {
-            List<Point2D> result = WorldUtil.GetNeighboringTiles(this.Target, l.Dimension);
-            result.RemoveAll(x => !World.Data.World.GetTile(l.Dimension, x.X, x.Y).IsWalkable);
-
-            ComponentSelectable entitySelected = l.GetExactComponent<ComponentSelectable>();
-            int closestIndex = Algorithms.GetClosestPoint2D(result, entitySelected.MapLocation);
-            this.AdjacentLocation = result[closestIndex];
-            List<PathLink> path = MainPathFinder.GetRoute(l.Dimension, entitySelected.MapLocation, result[closestIndex]);
-
-            if (World.Data.World.Mode == Networking.EngineMode.ClientOnly)
-            {
-                ClientSendRecieve.Send(new RouteCreatedMessage(path, l.ID, l.Dimension));
-            }
-
-            l.QueuedMovement.Clear();
-            Extensions.EnqueueCollection(l.QueuedMovement, path);
         }
 
         public override void Reset()
@@ -53,17 +31,27 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         public override void Tick(Living l)
         {
-            ComponentSelectable selected = l.GetExactComponent<ComponentSelectable>();
-            if (selected.MapLocation.Equals(this.AdjacentLocation))
-            {
-                MasterLog.DebugWriteLine(this.ID.ToString());
-                this.CompleteTask();
-            }
+            this.CompleteTask();
         }
 
         public override bool CreateDependencies(Living l)
         {
-            return true;
+            List<Point2D> result = WorldUtil.GetNeighboringTiles(this.Target, l.Dimension);
+            result.RemoveAll(x => !World.Data.World.GetTile(l.Dimension, x.X, x.Y).IsWalkable);
+
+            ComponentSelectable entitySelected = l.GetExactComponent<ComponentSelectable>();
+            Point2D adjacentLocation = PathUtil.GetFirstReachable(result, entitySelected.MapLocation, l.Dimension);
+
+            if (adjacentLocation == null)
+            {
+                return false;
+            }
+            else
+            {
+                MoveTask task = new MoveTask(this.BoundID, adjacentLocation);
+                this.Dependencies.PreRequisite.Add(task);
+                return true;
+            }
         }
     }
 }

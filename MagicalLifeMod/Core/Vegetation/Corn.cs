@@ -1,9 +1,7 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Generic.Renderable;
+﻿using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Components.Resource;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Sound;
-using MagicalLifeAPI.Visual.Rendering.AbstractVisuals;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Items;
 using ProtoBuf;
@@ -50,10 +48,10 @@ namespace MagicalLifeAPI.World.Resources
             textureComponent.Visuals.Add(CornGrowth1);
             textureComponent.Visuals.Add(CornGrowth2);
             textureComponent.Visuals.Add(CornFullGrowth);
-
         }
 
-        public Corn() : base() { }
-
+        public Corn() : base()
+        {
+        }
     }
 }

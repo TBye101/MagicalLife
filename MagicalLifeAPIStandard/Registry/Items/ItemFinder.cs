@@ -157,7 +157,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         }
 
         /// <summary>
-        /// Returns true if there exists a certain item that is unreserved. 
+        /// Returns true if there exists a certain item that is unreserved.
         /// </summary>
         /// <param name="itemID"></param>
         /// <param name="dimension"></param>
@@ -174,9 +174,10 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
                 Chunk chunk;
                 foreach (Point2D item in nearestChunks)
                 {
+                    //0-15
                     chunk = World.Data.World.GetChunk(dimension, item.X, item.Y);
                     RTree<Point2D> items = chunk.Items[itemID];
-                    List<Point2D> result = items.Intersects(new Rectangle(0, 0, Chunk.Width, Chunk.Height));
+                    List<Point2D> result = items.Intersects(new Rectangle(WorldUtil.GetFirstTileLocation(chunk.ChunkLocation), WorldUtil.GetLastTileLocation(chunk.ChunkLocation)));
 
                     foreach (Point2D it in result)
                     {
@@ -214,7 +215,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
                 {
                     chunk = World.Data.World.GetChunk(dimension, item.X, item.Y);
                     RTree<Point2D> items = chunk.Items[itemID];
-                    List<Point2D> result = items.Intersects(new Rectangle(0, 0, Chunk.Width, Chunk.Height));
+                    List<Point2D> result = items.Intersects(new Rectangle(WorldUtil.GetFirstTileLocation(chunk.ChunkLocation), WorldUtil.GetLastTileLocation(chunk.ChunkLocation)));
                     allResults.AddRange(result);
                 }
 

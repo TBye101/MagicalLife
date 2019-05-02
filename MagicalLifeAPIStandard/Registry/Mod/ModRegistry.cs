@@ -2,9 +2,7 @@
 using MagicalLifeAPI.Load;
 using MagicalLifeAPI.Mod;
 using MagicalLifeAPI.Networking.Serialization;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeAPI.Registry.Mod
 {

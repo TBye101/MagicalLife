@@ -4,7 +4,6 @@ using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.GUI.Save;
 using MagicalLifeGUIWindows.Properties;
 using Microsoft.Xna.Framework;
-using MonoGame.Extended.Input.InputListeners;
 
 namespace MagicalLifeGUIWindows.GUI.In
 {

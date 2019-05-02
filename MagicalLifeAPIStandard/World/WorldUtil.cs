@@ -195,5 +195,28 @@ namespace MagicalLifeAPI.World
 
             return false;
         }
+
+        /// <summary>
+        /// Gets the location of the top left/first tile coordinate from the specified chunk coordinate.
+        /// </summary>
+        /// <param name="chunkCoordinate"></param>
+        /// <returns></returns>
+        public static Point2D GetFirstTileLocation(Point2D chunkCoordinate)
+        {
+            return new Point2D(chunkCoordinate.X * Chunk.Width, chunkCoordinate.Y * Chunk.Height);
+        }
+
+        /// <summary>
+        /// Gets the location of the bottom right/last tile coordinate from the specified chunk coordinate.
+        /// </summary>
+        /// <param name="chunkCoordinate"></param>
+        /// <returns></returns>
+        public static Point2D GetLastTileLocation(Point2D chunkCoordinate)
+        {
+            Point2D first = GetFirstTileLocation(chunkCoordinate);
+            first.X += Chunk.Width - 1;
+            first.Y += Chunk.Height - 1;
+            return first;
+        }
     }
 }

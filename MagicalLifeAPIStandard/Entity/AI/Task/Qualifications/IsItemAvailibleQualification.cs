@@ -1,9 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Registry.ItemRegistry;
 using ProtoBuf;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeAPI.Entity.AI.Task.Qualifications
 {
