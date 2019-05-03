@@ -146,7 +146,7 @@ namespace MagicalLifeAPI.World.Base
 
             this.IsWalkable = true;
             this.MovementCost = movementCost;
-            Tile.TileCreatedHandler(new TileEventArg(this));
+            Tile.TileCreatedHandler(new TileEventArgs(this));
             this.FootStepSound = footStepSound;
         }
 
@@ -165,23 +165,23 @@ namespace MagicalLifeAPI.World.Base
         /// <summary>
         /// Raised whenever a tile is created after the world is finished generating for the first time.
         /// </summary>
-        public static event EventHandler<TileEventArg> TileCreated;
+        public static event EventHandler<TileEventArgs> TileCreated;
 
         /// <summary>
         /// Raised whenever this specific tile is modified.
         /// </summary>
-        public event EventHandler<TileEventArg> TileModified;
+        public event EventHandler<TileEventArgs> TileModified;
 
         /// <summary>
         /// Raises the world generated event.
         /// </summary>
         /// <param name="e"></param>
-        public static void TileCreatedHandler(TileEventArg e)
+        public static void TileCreatedHandler(TileEventArgs e)
         {
             TileCreated?.Invoke(e, e);
         }
 
-        public void TileModifiedHandler(TileEventArg e)
+        public void TileModifiedHandler(TileEventArgs e)
         {
             TileModified?.Invoke(this, e);
         }

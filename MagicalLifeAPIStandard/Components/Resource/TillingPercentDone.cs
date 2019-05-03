@@ -13,10 +13,10 @@ namespace MagicalLifeAPI.Components.Resource
         {
         }
 
-        protected override List<Item> TillPercent(float percentMined, Point2D position)
+        protected override List<Item> TillPercent(float percent, Point2D position)
         {
             FMODUtil.RaiseEvent(SoundsTable.PickaxeHit, "", 0, position);
-            return null;
+            return default;
         }
     }
 }

@@ -9,6 +9,7 @@ using MagicalLifeGUIWindows.GUI.In;
 using MagicalLifeGUIWindows.GUI.MainMenu;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Input;
+using MagicalLifeGUIWindows.Properties;
 using MagicalLifeServer;
 using Microsoft.Xna.Framework;
 
@@ -19,7 +20,7 @@ namespace MagicalLifeGUIWindows.GUI.New
     /// </summary>
     public class NewWorldNextButton : MonoButton
     {
-        public NewWorldNextButton() : base(TextureLoader.GUIMenuButton, GetLocation(), true, "Next")
+        public NewWorldNextButton() : base(TextureLoader.GUIMenuButton, GetLocation(), true, Resources.Next)
         {
             this.ClickEvent += this.NewWorldNextButton_ClickEvent;
         }

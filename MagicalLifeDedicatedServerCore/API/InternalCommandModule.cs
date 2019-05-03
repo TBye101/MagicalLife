@@ -22,6 +22,10 @@ namespace MagicalLifeDedicatedServer.API
             return "ml";
         }
 
+        /// <summary>
+        /// The display name of this command module.
+        /// </summary>
+        /// <returns></returns>
         public string GetFullName()
         {
             return DedicatedServer.MagicalLife;

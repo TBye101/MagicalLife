@@ -12,6 +12,10 @@ SneakyTactician  <SneakyTactician@outlook.com>
 *Inventories are now baked in for creatures
 *Increased camera performance, 100x100 worlds are possible (~22 fps)
 *Now putting core game content in the "Magical Life Core" mod
+*Task manager rewrite to be more intelligent, offer more options for dynamic dependencies
+*Crafting is now supported
+*Protobuf-net inheritance and surrogates are now automatically handled
+*Mods are now supported, and when found will be loaded
 
 #### GUI
 *Tilling dirt is now available from the in game GUI
@@ -24,6 +28,8 @@ SneakyTactician  <SneakyTactician@outlook.com>
 *Added the Action Bar
 
 #### Bugs
+*Fixed PineTree class property Name's value
+*Fixed mined stones not disappering
 *Surround sound now functions like it should
 
 ---

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace MagicalLifeAPI.Error.InternalExceptions
 {
@@ -20,7 +21,7 @@ namespace MagicalLifeAPI.Error.InternalExceptions
         {
         }
 
-        protected UnexpectedTypeException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) : base(info, context)
+        protected UnexpectedTypeException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
     }

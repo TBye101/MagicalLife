@@ -160,6 +160,15 @@ namespace MagicalLifeAPI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stone.
+        /// </summary>
+        public static string StoneName {
+            get {
+                return ResourceManager.GetString("StoneName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stone Rubble.
         /// </summary>
         public static string StoneRubble {

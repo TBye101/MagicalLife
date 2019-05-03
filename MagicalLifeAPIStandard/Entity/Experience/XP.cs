@@ -24,6 +24,9 @@ namespace MagicalLifeAPI.Entity.Experience
         [ProtoMember(4)]
         public IXPCalculator XPCalculator { get; private set; }
 
+        /// <summary>
+        ///
+        /// </summary>
         /// <param name="currentXP">The current XP of the creature.</param>
         /// <param name="currentLevel">The current level of the creature.</param>
         /// <param name="xpCalculator">The method of calculating XP to the next level.</param>

@@ -18,7 +18,7 @@ namespace MagicalLifeAPI.Entity
         /// Stored as: [itemID, itemObject]
         /// </summary>
         [ProtoMember(1)]
-        private readonly Dictionary<int, List<Item>> Items;
+        private Dictionary<int, List<Item>> Items;
 
         /// <summary>
         /// The combined weight of all the objects in the inventory.
@@ -50,9 +50,18 @@ namespace MagicalLifeAPI.Entity
             //Protobuf-net constructor
         }
 
+        [ProtoAfterDeserialization]
+        private void PostDeserialization()
+        {
+            if (this.Items == null)
+            {
+                this.Items = new Dictionary<int, List<Item>>();
+            }
+        }
+
         /// <summary>
         /// Returns all of the item contained in this inventory, and removes the item from this inventory.
-        /// Returns null if the item is not contained in this inventory.
+        /// Returns an empty list if the item is not contained in this inventory.
         /// </summary>
         /// <param name="itemID"></param>
         /// <returns></returns>
@@ -77,7 +86,7 @@ namespace MagicalLifeAPI.Entity
             }
             else
             {
-                return null;
+                return default;
             }
         }
 
@@ -85,7 +94,7 @@ namespace MagicalLifeAPI.Entity
         /// Returns as much of the item as requested.
         /// If more is requested than actually exists in this inventory than the amount stored is returned.
         /// Removes all items requested from this inventory.
-        /// Returns null if this inventory stores non of the requested item.
+        /// Returns an empty collection if this inventory stores non of the requested item.
         /// </summary>
         /// <param name="itemID"></param>
         /// <param name="amount">The amount to remove.</param>
@@ -107,7 +116,7 @@ namespace MagicalLifeAPI.Entity
             }
             else
             {
-                return null;
+                return default;
             }
         }
 

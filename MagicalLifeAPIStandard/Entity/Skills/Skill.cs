@@ -52,9 +52,14 @@ namespace MagicalLifeAPI.Entity.Skills
             }
         }
 
+        /// <summary>
+        ///
+        /// </summary>
         /// <param name="displayName">The display name of the skill.</param>
         /// <param name="skillAmount">The level of the creature's skill.</param>
         /// <param name="learnable">If true the creature is capable of learning the skill.</param>
+        /// <param name="internalName"></param>
+        /// <param name="xpProgression"></param>
         public Skill(string displayName, ComboAttribute skillAmount, bool learnable, string internalName, IXPCalculator xpProgression)
         {
             this.DisplayName = displayName;

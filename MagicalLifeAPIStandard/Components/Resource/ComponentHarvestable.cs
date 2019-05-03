@@ -54,6 +54,9 @@ namespace MagicalLifeAPI.Components.Resource
             }
         }
 
+        /// <summary>
+        /// Returns the amount harvested so far.
+        /// </summary>
         /// <param name="percent">The total percent harvested so far.</param>
         /// <returns></returns>
         protected abstract List<Item> HarvestPercent(double percent, Point2D position);

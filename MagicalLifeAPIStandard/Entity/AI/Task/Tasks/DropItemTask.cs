@@ -73,7 +73,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             return new Dependencies(deps);
         }
 
-        public override void MakePreparations(Living l)
+        public override void MakePreparations(Living living)
         {
             //No preparations to make here
         }

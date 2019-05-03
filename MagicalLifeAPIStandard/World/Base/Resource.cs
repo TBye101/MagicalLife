@@ -17,7 +17,7 @@ namespace MagicalLifeAPI.World.Base
         /// The display name of the resource.
         /// </summary>
         [ProtoMember(1)]
-        public string DisplayName { get; }
+        public string DisplayName { get; private set; }
 
         /// <summary>
         /// How much of the resources is left.
@@ -26,7 +26,7 @@ namespace MagicalLifeAPI.World.Base
         public int Durability { get; set; }
 
         [ProtoMember(3)]
-        public Attribute32 MaxDurability { get; }
+        public Attribute32 MaxDurability { get; private set; }
 
         public Resource(string name, int durability, ComponentHarvestable harvestBehavior)
             : base(true)

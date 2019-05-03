@@ -67,6 +67,9 @@ namespace MagicalLifeAPI.Entity.AI.Task
         [ProtoMember(9)]
         public bool IsFinished { get; internal set; }
 
+        /// <summary>
+        ///
+        /// </summary>
         /// <param name="preRequisites">The dependencies of this task.</param>
         /// <param name="boundID">An ID used to determine if multiple tasks must be completed by the same worker.
         /// If multiple tasks have the same <paramref name="boundID"/>,
@@ -78,6 +81,9 @@ namespace MagicalLifeAPI.Entity.AI.Task
             this.TaskPriority = taskPriority;
         }
 
+        /// <summary>
+        ///
+        /// </summary>
         /// <param name="preRequisites">The dependencies of this task.</param>
         private MagicalTask(Dependencies preRequisites, List<Qualification> qualifications)
         {
@@ -103,17 +109,17 @@ namespace MagicalLifeAPI.Entity.AI.Task
         /// Assigns this task to the provided creature.
         /// </summary>
         /// <param name="l"></param>
-        public void AssignTask(Living l)
+        public void AssignTask(Living living)
         {
-            this.ReservedFor = l.ID;
-            this.ToilingWorker = l.ID;
+            this.ReservedFor = living.ID;
+            this.ToilingWorker = living.ID;
         }
 
         /// <summary>
         /// Make any preparations required to execute the job in this method.
         /// </summary>
-        /// <param name="l"></param>
-        public abstract void MakePreparations(Living l);
+        /// <param name="living"></param>
+        public abstract void MakePreparations(Living living);
 
         /// <summary>
         /// Creates the dynamic dependencies of this task.

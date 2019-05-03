@@ -130,7 +130,7 @@ namespace MagicalLifeAPI.Entity.Movement
             if (MathUtil.GetDistance(entity.TileLocation, dLocation.MapLocation) > entity.Movement.GetValue())
             {
                 //The character fell short of reaching the next tile
-                entity.TileLocation = new DataTypes.Point2DDouble((float)entity.TileLocation.X + xMove, (float)entity.TileLocation.Y + yMove);
+                entity.TileLocation = new Point2DDouble((float)entity.TileLocation.X + xMove, (float)entity.TileLocation.Y + yMove);
                 FootStepSound(entity, source);
             }
             else
