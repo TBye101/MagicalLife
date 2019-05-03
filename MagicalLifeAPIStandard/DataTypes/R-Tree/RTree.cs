@@ -411,7 +411,7 @@ namespace MagicalLifeAPI.DataTypes.R
         {
             List<T> retval = new List<T>();
             locker.AcquireReaderLock(locking_timeout);
-            contains(r, (int id) =>
+            Contains(r, (int id) =>
             {
                 retval.Add(IdsToItems[id]);
             });

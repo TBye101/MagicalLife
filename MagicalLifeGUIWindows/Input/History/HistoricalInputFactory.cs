@@ -75,9 +75,7 @@ namespace MagicalLifeGUIWindows.Input.History
 
             if (success)
             {
-                Selectable select = null;
-
-                select = World.GetTile(RenderInfo.Dimension, mapSpot.X, mapSpot.Y);
+                Selectable select = World.GetTile(RenderInfo.Dimension, mapSpot.X, mapSpot.Y);
 
                 if (select != null)
                 {

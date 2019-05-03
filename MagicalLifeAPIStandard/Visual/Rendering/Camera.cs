@@ -66,7 +66,7 @@ namespace MagicalLifeAPI.Visual.Rendering
         public Camera()
         {
             this.Zoom = 1.0f;
-            World.ChangeCameraDimension += this.World_ChangeCameraDimension;
+            World.Data.World.ChangeCameraDimension += this.World_ChangeCameraDimension;
         }
 
         private void World_ChangeCameraDimension(object sender, int e)
@@ -77,8 +77,8 @@ namespace MagicalLifeAPI.Visual.Rendering
         public void InitializeForDimension(int dimension)
         {
             this.Dimension = dimension;
-            this.DimensionWidth = World.Dimensions[dimension].Width;
-            this.DimensionHeight = World.Dimensions[dimension].Height;
+            this.DimensionWidth = World.Data.World.Dimensions[dimension].Width;
+            this.DimensionHeight = World.Data.World.Dimensions[dimension].Height;
         }
 
         // Call this method with negative values to zoom out

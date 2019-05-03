@@ -409,7 +409,7 @@ namespace MagicalLifeAPI.DataTypes.R
         /// </summary>
         /// <param name="obj">The object to compare with this rectangle</param>
         /// <returns></returns>
-        public virtual override bool Equals(object obj)
+        public  override bool Equals(object obj)
         {
             bool equals = false;
             if (obj is Rectangle r && CompareArrays(r.min, min)
