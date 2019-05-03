@@ -25,10 +25,10 @@ namespace MagicalLifeAPI.DataTypes.R
     /// </summary>
     internal class Node<T>
     {
-        internal int nodeId = 0;
-        internal Rectangle mbr = null;
-        internal Rectangle[] entries = null;
-        internal int[] ids = null;
+        internal int nodeId;
+        internal Rectangle mbr;
+        internal Rectangle[] entries;
+        internal int[] ids;
         internal int level;
         internal int entryCount;
 

@@ -78,7 +78,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
                 if (drop?.Count > 0)
                 {
-                    ItemAdder.AddItem(drop[0], l.MapLocation, l.Dimension);
+                    ItemAdder.AddItem(drop?[0], l.MapLocation, l.Dimension);
                 }
 
                 if (this.Tillable.TillableBehavior.PercentTilled > 1)

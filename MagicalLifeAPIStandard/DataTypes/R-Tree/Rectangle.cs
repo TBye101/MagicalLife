@@ -27,8 +27,8 @@ namespace MagicalLifeAPI.DataTypes.R
 {
     public struct Dimension : IEquatable<Dimension>
     {
-        public float max;
-        public float min;
+        public float Max { get; set; }
+        public float Min { get; set; }
 
         public override bool Equals(object obj)
         {
@@ -47,7 +47,7 @@ namespace MagicalLifeAPI.DataTypes.R
 
         public static bool operator ==(Dimension left, Dimension right)
         {
-            return (Math.Abs(left.max - right.max) < 0.00001) && (Math.Abs(left.min - right.min)< 0.00001);
+            return (Math.Abs(left.Max - right.Max) < 0.00001) && (Math.Abs(left.Min - right.Min)< 0.00001);
         }
 
         public static bool operator !=(Dimension left, Dimension right)
@@ -140,8 +140,8 @@ namespace MagicalLifeAPI.DataTypes.R
             {
                 Dimension retval = new Dimension
                 {
-                    min = min[dimension],
-                    max = max[dimension]
+                    Min = min[dimension],
+                    Max = max[dimension]
                 };
                 return retval;
             }
@@ -409,7 +409,7 @@ namespace MagicalLifeAPI.DataTypes.R
         /// </summary>
         /// <param name="obj">The object to compare with this rectangle</param>
         /// <returns></returns>
-        public override bool Equals(object obj)
+        public virtual override bool Equals(object obj)
         {
             bool equals = false;
             if (obj is Rectangle r && CompareArrays(r.min, min)

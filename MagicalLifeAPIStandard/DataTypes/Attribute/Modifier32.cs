@@ -32,7 +32,10 @@ namespace MagicalLifeAPI.DataTypes.Attribute
             {
                 return this.Equals(modifier32);
             }
-            return false;
+            else
+            {
+                return false;
+            }
         }
 
         public override int GetHashCode()

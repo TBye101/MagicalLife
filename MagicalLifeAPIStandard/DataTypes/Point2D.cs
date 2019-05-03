@@ -60,7 +60,7 @@ namespace MagicalLifeAPI.DataTypes
             int x;
             int y;
 
-            int xStart = 2;
+            const int xStart = 2;
             int xEnd = str.IndexOf(',');
             x = Convert.ToInt32(str.Substring(xStart, xEnd - xStart));
 

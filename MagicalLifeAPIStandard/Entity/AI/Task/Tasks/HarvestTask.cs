@@ -99,10 +99,10 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
                 if (drop?.Count > 0)
                 {
-                    int length = drop.Count;
+                    int length = drop?.Count;
                     for (int i = 0; i < length; i++)
                     {
-                        this.DropItem(l, drop[i]);
+                        this.DropItem(l, drop?[i]);
                     }
                 }
 
