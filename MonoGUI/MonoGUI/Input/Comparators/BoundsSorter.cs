@@ -10,8 +10,7 @@ namespace MagicalLifeGUIWindows.Input.Comparators
     {
         public int Compare(GUIElement x, GUIElement y)
         {
-            int ret = x.MouseBounds.Priority.CompareTo(y.MouseBounds.Priority);
-            return ret;
+            return x.MouseBounds.Priority.CompareTo(y.MouseBounds.Priority);
         }
     }
 }

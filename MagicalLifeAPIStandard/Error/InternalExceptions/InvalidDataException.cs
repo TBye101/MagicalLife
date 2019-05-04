@@ -6,7 +6,6 @@ namespace MagicalLifeAPI.Error.InternalExceptions
     /// <summary>
     /// Thrown when some circumstance causes data to be invalid/unusable.
     /// </summary>
-    /// <seealso cref="System.Exception" />
     [Serializable]
     public class InvalidDataException : Exception
     {

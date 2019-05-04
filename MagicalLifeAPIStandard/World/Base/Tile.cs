@@ -44,7 +44,7 @@ namespace MagicalLifeAPI.World.Base
                 }
             }
         }
-
+        
         /// <summary>
         /// Returns the name of the biome that this tile belongs to.
         /// </summary>

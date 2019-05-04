@@ -7,6 +7,7 @@ using MagicalLifeAPI.Registry.ItemRegistry;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MagicalLifeAPI.World.Base
 {
@@ -124,6 +125,21 @@ namespace MagicalLifeAPI.World.Base
             textureComponent.Visuals.Add(new StaticTexture(textureIndex, RenderLayer.Items));
 
             this.AddComponent(new ComponentHasTexture(false));
+        }
+
+
+        private void SetItemID()
+        {
+            try
+            {
+                this.ItemID =
+                    ItemRegistry.IDToItem.First(x => x.Value.ModFrom.Equals(this.ModFrom) &&
+                x.Value.Name.Equals(this.Name)).Key;//slow
+            }
+            catch (InvalidOperationException e)
+            {
+                this.ItemID = -1;
+            }
         }
 
         protected internal void Validate()

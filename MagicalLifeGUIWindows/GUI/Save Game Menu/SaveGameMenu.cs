@@ -6,8 +6,7 @@
 
         internal static void Initialize()
         {
-            SaveGameMenuContainer mainMenu = new SaveGameMenuContainer();
-            menu = mainMenu;
+            menu = new SaveGameMenuContainer();
         }
     }
 }
