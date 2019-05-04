@@ -48,7 +48,7 @@ namespace MagicalLifeGUIWindows.Rendering
 
         private static void DrawContainers(SpriteBatch spBatch)
         {
-            foreach (GUIContainer item in Enumerable.Reverse(BoundHandler.GUIWindows))
+            foreach (GuiContainer item in Enumerable.Reverse(BoundHandler.GUIWindows))
             {
                 if (item.Visible)
                 {
@@ -57,7 +57,7 @@ namespace MagicalLifeGUIWindows.Rendering
             }
         }
 
-        private static void RenderYoungestChild(GUIContainer item, SpriteBatch spBatch)
+        private static void RenderYoungestChild(GuiContainer item, SpriteBatch spBatch)
         {
             if (item.Child == null)
             {

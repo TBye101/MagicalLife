@@ -80,7 +80,14 @@ namespace MagicalLifeAPI.World.Base
             this.ItemID = ItemRegistry.ItemTypeID.First(x => x.Value == itemType).Key;//slow
             this.TextureIndex = AssetManager.GetTextureIndex(textureName);
             this.TextureName = textureName;
-            this.Validate();
+            if (this.CurrentlyStacked < 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(count), "Error: Cannot have an item with 0 items");
+            }
+            if (this.StackableLimit < 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(stackableLimit), "Error: Must be able to stack at least one item");
+            }
             this.TextureIndex = AssetManager.GetTextureIndex(this.TextureName);
             this.ItemWeight = itemWeight;
         }
@@ -88,18 +95,6 @@ namespace MagicalLifeAPI.World.Base
         protected Item()
         {
             //Protobuf-net constructor
-        }
-
-        protected void Validate()
-        {
-            if (this.CurrentlyStacked < 1)
-            {
-                throw new ArgumentOutOfRangeException("Error: Cannot have an item with 0 items");
-            }
-            if (this.StackableLimit < 1)
-            {
-                throw new ArgumentOutOfRangeException("Error: Must be able to stack at least one item");
-            }
         }
 
         /// <summary>
@@ -141,14 +136,15 @@ namespace MagicalLifeAPI.World.Base
         /// Creates two items and will have the first be the specified amount, and the second be the leftovers.
         /// Note: This will not remove any items.
         /// </summary>
-        /// <param name="firstItemSize">The size of how big the first item in the tuple should be. The second item gets whatever is leftover.</param>
         /// <param name="originalItem"></param>
+        /// <param name="firstItemSize">The size of how big the first item in the tuple should be. The second item gets whatever is leftover.</param>
         /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
         public static ValueTuple<Item, Item> Split(Item originalItem, int firstItemSize)
         {
             if (originalItem.CurrentlyStacked <= firstItemSize)
             {
-                throw new InvalidDataException();
+                throw new ArgumentException(string.Format("{0} is greater than {1}, the amount originally stacked.",firstItemSize,originalItem.CurrentlyStacked));
             }
             else
             {

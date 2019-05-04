@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Visual.Rendering;
 using Microsoft.Xna.Framework;
 
 namespace MagicalLifeAPI.Components.Generic.Renderable

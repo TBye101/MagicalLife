@@ -71,7 +71,7 @@ namespace MagicalLifeServer
                     break;
 
                 default:
-                    throw new UnexpectedEnumMemberException();
+                    throw new InvalidOperationException("Unexpected value for World Mode: " + World.Mode.ToString());
             }
         }
 

@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.World.Data;
 using MagicalLifeServer.ServerWorld.World;
 using System;
+using System.ServiceModel.Configuration;
 
 namespace MagicalLifeGUIWindows.GUI.New
 {
@@ -11,8 +12,9 @@ namespace MagicalLifeGUIWindows.GUI.New
     {
         /// <summary>
         /// Handles the input in the world size input boxes, and starts a new game.
+        /// Returns true if the operation was successful.
         /// </summary>
-        public void StartNewGame()
+        public bool StartNewGame()
         {
             bool widthSuccess = int.TryParse(NewWorldMenu.NewWorldMenuM.worldWidth.Text, out int width);
 
@@ -23,11 +25,13 @@ namespace MagicalLifeGUIWindows.GUI.New
                 //World.Initialize(width, length, new Dirtland(0));
                 //World.Initialize(width, length, new StoneSprinkle(0));
                 World.Initialize(width, length, new GrassAndDirt(0));
+                return true;
             }
             else
             {
-                //If we get here, the application blows up. It should probably recover somehow instead.
-                throw new ArgumentException("Invalid input!");
+                //The application no longer blows up but we should
+                //Go to the NewWorldNextButton click event and notify the user.
+                return false;
             }
         }
     }

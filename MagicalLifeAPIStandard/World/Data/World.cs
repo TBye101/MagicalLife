@@ -36,7 +36,7 @@ namespace MagicalLifeAPI.World.Data
         /// </summary>
         public static event EventHandler<int> ChangeCameraDimension;
 
-        public World()
+        protected World()
         {
         }
 

@@ -90,7 +90,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
             this.ToilingWorker = Guid.Empty;
         }
 
-        public MagicalTask()
+        protected MagicalTask()
         {
             //Protobuf-net Constructor
         }

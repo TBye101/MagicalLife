@@ -97,12 +97,12 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
                 //Give out XP for the harvest skill.
                 skill.GainXP(1);
 
-                if (drop?.Count > 0)
+                if (drop?.Count > 0 && drop != null)
                 {
                     int length = drop.Count;
                     for (int i = 0; i < length; i++)
                     {
-                        this.DropItem(l, drop[i]);
+                        this.DropItem(l, drop?[i]);
                     }
                 }
 

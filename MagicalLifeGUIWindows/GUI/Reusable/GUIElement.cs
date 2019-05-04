@@ -80,7 +80,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             }
         }
 
-        public GUIElement()
+        protected GUIElement()
         {
         }
 
@@ -103,7 +103,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void Click(MouseEventArgs e, GUIContainer container)
+        public void Click(MouseEventArgs e, GuiContainer container)
         {
             this.ClickEvent?.Invoke(this, new ClickEventArgs(e, container));
         }
@@ -113,7 +113,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void DoubleClick(MouseEventArgs e, GUIContainer container)
+        public void DoubleClick(MouseEventArgs e, GuiContainer container)
         {
             this.DoubleClickEvent?.Invoke(this, new ClickEventArgs(e, container));
         }

@@ -7,7 +7,7 @@ namespace MagicalLifeGUIWindows.GUI.In
     /// <summary>
     /// The in game GUI container.
     /// </summary>
-    public class InGameGUIContainer : GUIContainer
+    public class InGameGUIContainer : GuiContainer
     {
         public MineActionButton MineActionButton { get; set; } = new MineActionButton();
 

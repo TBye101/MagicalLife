@@ -26,7 +26,7 @@ namespace MagicalLifeGUIWindows.Input
         /// <summary>
         /// All of the GUI windows.
         /// </summary>
-        public static List<GUIContainer> GUIWindows { get; private set; } = new List<GUIContainer>();
+        public static List<GuiContainer> GUIWindows { get; private set; } = new List<GuiContainer>();
 
         public static MouseListener MouseListener { get; set; }
 
@@ -85,9 +85,9 @@ namespace MagicalLifeGUIWindows.Input
         /// <returns></returns>
         private static void ContainerClick(MouseEventArgs clickData)
         {
-            foreach (GUIContainer item in GUIWindows)
+            foreach (GuiContainer item in GUIWindows)
             {
-                GUIContainer youngest = GetYoungestChild(item);
+                GuiContainer youngest = GetYoungestChild(item);
                 if (youngest.Visible && youngest.DrawingBounds.Contains(clickData.Position))
                 {
                     Click(clickData, youngest.Controls, youngest);
@@ -106,7 +106,7 @@ namespace MagicalLifeGUIWindows.Input
         /// For use if a container is being used.
         /// </summary>
         /// <param name="clickData"></param>
-        private static void Click(MouseEventArgs clickData, List<GUIElement> Options, GUIContainer container)
+        private static void Click(MouseEventArgs clickData, List<GUIElement> Options, GuiContainer container)
         {
             int focus = -1;
             int length = Options.Count;
@@ -141,9 +141,9 @@ namespace MagicalLifeGUIWindows.Input
 
         private static void ContainerDoubleClick(MouseEventArgs clickData)
         {
-            foreach (GUIContainer item in GUIWindows)
+            foreach (GuiContainer item in GUIWindows)
             {
-                GUIContainer youngest = GetYoungestChild(item);
+                GuiContainer youngest = GetYoungestChild(item);
                 if (youngest.Visible && youngest.DrawingBounds.Contains(clickData.Position))
                 {
                     DoubleClick(clickData, youngest.Controls, youngest);
@@ -160,7 +160,7 @@ namespace MagicalLifeGUIWindows.Input
         /// Handles who gets the double click event.
         /// </summary>
         /// <param name="clickData"></param>
-        private static void DoubleClick(MouseEventArgs clickData, List<GUIElement> Options, GUIContainer container)
+        private static void DoubleClick(MouseEventArgs clickData, List<GUIElement> Options, GuiContainer container)
         {
             int focus = -1;
             int length = Options.Count;
@@ -193,7 +193,7 @@ namespace MagicalLifeGUIWindows.Input
             }
         }
 
-        private static GUIContainer GetYoungestChild(GUIContainer container)
+        private static GuiContainer GetYoungestChild(GuiContainer container)
         {
             if (container.Child != null)
             {
@@ -216,7 +216,7 @@ namespace MagicalLifeGUIWindows.Input
         /// Adds a container.
         /// </summary>
         /// <param name="container"></param>
-        public static void AddContainer(GUIContainer container)
+        public static void AddContainer(GuiContainer container)
         {
             int index = GUIWindows.BinarySearch(container, containerSorter);
             if (index < 0)
@@ -231,7 +231,7 @@ namespace MagicalLifeGUIWindows.Input
         /// Removes a container.
         /// </summary>
         /// <param name="container"></param>
-        public static void RemoveContainer(GUIContainer container)
+        public static void RemoveContainer(GuiContainer container)
         {
             GUIWindows.Remove(container);
 
@@ -265,7 +265,7 @@ namespace MagicalLifeGUIWindows.Input
         /// Sets that container as the visible container, and gives it priority.
         /// </summary>
         /// <param name="container"></param>
-        public static void Popup(GUIContainer container)
+        public static void Popup(GuiContainer container)
         {
             if (GUIWindows.Contains(container))
             {
@@ -288,7 +288,7 @@ namespace MagicalLifeGUIWindows.Input
 
         public static void HideAll()
         {
-            foreach (GUIContainer item in GUIWindows)
+            foreach (GuiContainer item in GUIWindows)
             {
                 item.Visible = false;
             }

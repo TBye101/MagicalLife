@@ -4,7 +4,7 @@ using MagicalLifeGUIWindows.GUI.Reusable;
 
 namespace MagicalLifeGUIWindows.GUI.Save
 {
-    public class SaveGameMenuContainer : GUIContainer
+    public class SaveGameMenuContainer : GuiContainer
     {
         public OverwriteSaveListBox SavesList { get; private set; } = new OverwriteSaveListBox();
 

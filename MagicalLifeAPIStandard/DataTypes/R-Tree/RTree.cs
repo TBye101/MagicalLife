@@ -86,7 +86,7 @@ namespace MagicalLifeAPI.DataTypes.R
         //private TIntStack parentsEntry = new TIntStack();
         private Stack<int> parentsEntry = new Stack<int>();
 
-        // initialisation
+        // initialization
         private int treeHeight = 1; // leaves are always level 1
 
         private int rootNodeId = 0;
@@ -119,7 +119,7 @@ namespace MagicalLifeAPI.DataTypes.R
         /// </summary>
         public RTree()
         {
-            init();
+            Init();
         }
 
         /// <summary>
@@ -136,10 +136,10 @@ namespace MagicalLifeAPI.DataTypes.R
         {
             minNodeEntries = MinNodeEntries;
             maxNodeEntries = MaxNodeEntries;
-            init();
+            Init();
         }
 
-        private void init()
+        private void Init()
         {
             locker.AcquireWriterLock(locking_timeout);
             // Obviously a Node&lt;T&gt; with less than 2 entries cannot be split.
@@ -187,15 +187,15 @@ namespace MagicalLifeAPI.DataTypes.R
             IdsToItems.Add(id, item);
             ItemsToIds.Add(item, id);
 
-            add(r, id);
+            Add(r, id);
             locker.ReleaseWriterLock();
         }
 
-        private void add(Rectangle r, int id)
+        private void Add(Rectangle r, int id)
         {
             Debug.WriteLine($"Adding rectangle {r}, id {id}");
 
-            add(r.Copy(), id, 1);
+            Add(r.Copy(), id, 1);
 
             msize++;
         }
@@ -206,7 +206,7 @@ namespace MagicalLifeAPI.DataTypes.R
         /// <param name="r"></param>
         /// <param name="id"></param>
         /// <param name="level"></param>
-        private void add(Rectangle r, int id, int level)
+        private void Add(Rectangle r, int id, int level)
         {
             // I1 [Find position for new record] Invoke ChooseLeaf to select a
             // leaf Node&lt;T&gt; L in which to place r
@@ -261,7 +261,7 @@ namespace MagicalLifeAPI.DataTypes.R
             locker.AcquireWriterLock(locking_timeout);
             int id = ItemsToIds[item];
 
-            bool success = delete(r, id);
+            bool success = Delete(r, id);
             if (success)
             {
                 IdsToItems.Remove(id);
@@ -271,9 +271,9 @@ namespace MagicalLifeAPI.DataTypes.R
             return success;
         }
 
-        private bool delete(Rectangle r, int id)
+        private bool Delete(Rectangle r, int id)
         {
-            // FindLeaf algorithm inlined here. Note the "official" algorithm
+            // FindLeaf algorithm in-lined here. Note the "official" algorithm
             // searches all overlapping entries. This seems inefficient to me,
             // as an entry is only worth searching if it contains (NOT overlaps)
             // the rectangle we are searching for.
@@ -310,7 +310,7 @@ namespace MagicalLifeAPI.DataTypes.R
                             parentsEntry.Push(i); // this becomes the start index when the child has been searched
                             parentsEntry.Push(-1);
                             contains = true;
-                            break; // ie go to next iteration of while()
+                            break; // IE go to next iteration of while()
                         }
                     }
                     if (contains)
@@ -345,7 +345,7 @@ namespace MagicalLifeAPI.DataTypes.R
                 root = GetNode(rootNodeId);
             }
 
-            return (foundIndex != -1);
+            return foundIndex != -1;
         }
 
         /// <summary>
@@ -411,7 +411,7 @@ namespace MagicalLifeAPI.DataTypes.R
         {
             List<T> retval = new List<T>();
             locker.AcquireReaderLock(locking_timeout);
-            contains(r, (int id) =>
+            Contains(r, (int id) =>
             {
                 retval.Add(IdsToItems[id]);
             });
@@ -420,7 +420,7 @@ namespace MagicalLifeAPI.DataTypes.R
             return retval;
         }
 
-        private void contains(Rectangle r, Action<int> v)
+        private void Contains(Rectangle r, Action<int> v)
         {
             Stack<int> _parents = new Stack<int>();
             //private TIntStack parentsEntry = new TIntStack();
@@ -490,7 +490,7 @@ namespace MagicalLifeAPI.DataTypes.R
 
             locker.AcquireReaderLock(locking_timeout);
             Node<T> n = GetNode(getRootNodeId());
-            if (n != null && n.GetMBR() != null)
+            if (n?.GetMBR() != null)
             {
                 bounds = n.GetMBR().Copy();
             }
@@ -501,7 +501,7 @@ namespace MagicalLifeAPI.DataTypes.R
         /// <summary>
         /// Returns a string identifying the type of spatial index, and the version number
         /// </summary>
-        public string getVersion()
+        public string GetVersion()
         {
             return "RTree-" + version;
         }
@@ -957,7 +957,7 @@ namespace MagicalLifeAPI.DataTypes.R
                 Node<T> e = GetNode(eliminatedNodeIds.Pop());
                 for (int j = 0; j < e.entryCount; j++)
                 {
-                    add(e.entries[j], e.ids[j], e.level);
+                    Add(e.entries[j], e.ids[j], e.level);
                     e.entries[j] = null;
                 }
                 e.entryCount = 0;

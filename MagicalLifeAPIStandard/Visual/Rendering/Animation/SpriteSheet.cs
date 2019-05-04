@@ -3,6 +3,7 @@ using MagicalLifeAPI.Error.InternalExceptions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ProtoBuf;
+using System;
 
 namespace MagicalLifeAPI.Visual.Animation
 {

@@ -7,16 +7,23 @@ using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Input.InputListeners;
 using System;
 using System.Linq;
+using System.Net.Mime;
 using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
 
 namespace MagicalLifeGUIWindows.GUI.Reusable
 {
     public class MonoInputBox : GUIElement
     {
+        private string _text  = "";
+
         /// <summary>
         /// The text contained in this input box.
         /// </summary>
-        public string Text { get; set; } = "";
+        public string Text
+        {
+            get { return _text;  }
+            set { _text = value; OnTextChanged(); }
+        }
 
         /// <summary>
         /// The position of the carrot.
@@ -54,6 +61,8 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         public Alignment TextAlignment { get; private set; }
 
         private int TextureID { get; set; }
+
+        public event System.EventHandler TextChanged;
 
         /// <summary>
         ///
@@ -132,21 +141,21 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
                 string p2 = this.Text.Substring(this.CarrotPosition, this.Text.Length - this.CarrotPosition);
                 this.Text = p1 + p2;
-                this.CarrotPosition += 1;
+                this.CarrotPosition++;
             }
         }
 
         private void Enter()
         {
             this.Text += "\n";
-            this.CarrotPosition += 1;
+            this.CarrotPosition++;
         }
 
         private void Right()
         {
             if (this.Text.Length != this.CarrotPosition)
             {
-                this.CarrotPosition += 1;
+                this.CarrotPosition++;
             }
         }
 
@@ -154,7 +163,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         {
             if (this.CarrotPosition > 0)
             {
-                this.CarrotPosition -= 1;
+                this.CarrotPosition--;
             }
         }
 
@@ -176,7 +185,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
                 if (this.CarrotPosition > 0)
                 {
-                    this.CarrotPosition -= 1;
+                    this.CarrotPosition--;
                 }
             }
         }
@@ -213,28 +222,32 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             spBatch.Draw(this.CarrotTexture, carrotLocation, Color.White);
         }
 
+        protected virtual void OnTextChanged()
+        {
+            TextChanged?.Invoke(this, EventArgs.Empty);
+        }
+
         private Rectangle CalculateCarrotBounds(MonoInputBox textbox, Rectangle containerBounds)
         {
             Vector2 size = textbox.Font.MeasureString(textbox.Text);
             Vector2 origin = size * 0.5f;
 
-#pragma warning disable RCS1096 // Use bitwise operation instead of calling 'HasFlag'.
-            if (textbox.TextAlignment.HasFlag(Alignment.Left))
+            if ((textbox.TextAlignment & Alignment.Left) != 0)
             {
                 origin.X += (textbox.DrawingBounds.Width / 2) - (size.X / 2);
             }
 
-            if (textbox.TextAlignment.HasFlag(Alignment.Right))
+            if ((textbox.TextAlignment & Alignment.Right) != 0)
             {
                 origin.X -= (textbox.DrawingBounds.Width / 2) - (size.X / 2);
             }
 
-            if (textbox.TextAlignment.HasFlag(Alignment.Top))
+            if ((textbox.TextAlignment & Alignment.Top) != 0)
             {
                 origin.Y += (textbox.DrawingBounds.Height / 2) - (size.Y / 2);
             }
 
-            if (textbox.TextAlignment.HasFlag(Alignment.Bottom))
+            if ((textbox.TextAlignment & Alignment.Bottom) != 0)
             {
                 origin.Y -= (textbox.DrawingBounds.Height / 2) - (size.Y / 2);
             }

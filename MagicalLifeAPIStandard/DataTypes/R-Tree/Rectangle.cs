@@ -27,8 +27,8 @@ namespace MagicalLifeAPI.DataTypes.R
 {
     public struct Dimension : IEquatable<Dimension>
     {
-        public float max;
-        public float min;
+        public float Max { get; set; }
+        public float Min { get; set; }
 
         public override bool Equals(object obj)
         {
@@ -47,7 +47,7 @@ namespace MagicalLifeAPI.DataTypes.R
 
         public static bool operator ==(Dimension left, Dimension right)
         {
-            return (Math.Abs(left.max - right.max) < 0.00001) && (Math.Abs(left.min - right.min)< 0.00001);
+            return (Math.Abs(left.Max - right.Max) < 0.00001) && (Math.Abs(left.Min - right.Min)< 0.00001);
         }
 
         public static bool operator !=(Dimension left, Dimension right)
@@ -59,7 +59,7 @@ namespace MagicalLifeAPI.DataTypes.R
     /// <summary>
     /// Currently hardcoded to 3 dimensions, but could be extended.
     /// </summary>
-    public class Rectangle
+    public class Rectangle : IEquatable<Rectangle>
     {
         /// <summary>
         /// Number of dimensions in a rectangle. In theory this
@@ -102,8 +102,8 @@ namespace MagicalLifeAPI.DataTypes.R
         {
             if (min.Length != DIMENSIONS || max.Length != DIMENSIONS)
             {
-                throw new Exception("Error in Rectangle constructor: " +
-                          "min and max arrays must be of length " + DIMENSIONS);
+                throw new ArgumentException ("Error in Rectangle constructor: " +
+                          "min and max arrays must be of length " + DIMENSIONS + ".");
             }
 
             this.min = new float[DIMENSIONS];
@@ -140,8 +140,8 @@ namespace MagicalLifeAPI.DataTypes.R
             {
                 Dimension retval = new Dimension
                 {
-                    min = min[dimension],
-                    max = max[dimension]
+                    Min = min[dimension],
+                    Max = max[dimension]
                 };
                 return retval;
             }
@@ -394,7 +394,7 @@ namespace MagicalLifeAPI.DataTypes.R
 
             for (int i = 0; i < a1.Length; i++)
             {
-                if (a1[i] != a2[i])
+                if (Math.Abs(a1[i] - a2[i]) < 0.000000001f)
                 {
                     return false;
                 }
@@ -409,17 +409,13 @@ namespace MagicalLifeAPI.DataTypes.R
         /// </summary>
         /// <param name="obj">The object to compare with this rectangle</param>
         /// <returns></returns>
-        public override bool Equals(object obj)
+        public  override bool Equals(object obj)
         {
             bool equals = false;
-            if (obj.GetType() == typeof(Rectangle))
+            if (obj is Rectangle r && CompareArrays(r.min, min)
+                && CompareArrays(r.max, max))
             {
-                Rectangle r = (Rectangle)obj;
-#warning possible didn't convert properly
-                if (CompareArrays(r.min, min) && CompareArrays(r.max, max))
-                {
-                    equals = true;
-                }
+                equals = true;
             }
             return equals;
         }
@@ -477,6 +473,12 @@ namespace MagicalLifeAPI.DataTypes.R
             }
             sb.Append(')');
             return sb.ToString();
+        }
+
+        public bool Equals(Rectangle other)
+        {
+            return CompareArrays(other.min, min)
+                    && CompareArrays(other.max, max);
         }
     }
 }
