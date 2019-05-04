@@ -19,8 +19,6 @@ namespace MagicalLifeAPI.World
     /// </summary>
     public static class WorldUtil
     {
-        private static IEnumerable<object> item;
-
         /// <summary>
         /// Returns a tile based on it's location in string format.
         /// </summary>
@@ -63,11 +61,11 @@ namespace MagicalLifeAPI.World
             neighborCandidates.Add(new Point2D(tileLocation.X - 1, tileLocation.Y + 1));
             neighborCandidates.Add(new Point2D(tileLocation.X - 1, tileLocation.Y - 1));
 
-            foreach (Point2D item in neighborCandidates)
+            foreach (Point2D point2D in neighborCandidates)
             {
-                if (DoesTileExist(item, dimension))
+                if (DoesTileExist(point2D, dimension))
                 {
-                    neighbors.Add(item);
+                    neighbors.Add(point2D);
                 }
             }
 
@@ -81,7 +79,7 @@ namespace MagicalLifeAPI.World
         /// <returns></returns>
         public static bool DoesTileExist(Point2D tileLocation, int dimension)
         {
-            return World.Data.World.Dimensions[dimension].DoesTileExist(tileLocation.X, tileLocation.Y);
+            return Data.World.Dimensions[dimension].DoesTileExist(tileLocation.X, tileLocation.Y);
         }
 
         /// <summary>
@@ -187,7 +185,7 @@ namespace MagicalLifeAPI.World
                     for (int y = 0; y < dimension.Height; y++)
                     {
                         Chunk chunk = dimension.GetChunk(x, y);
-                        if (chunk.Creatures.Where(living => living.Value.PlayerID.Equals(playerID)).Count() > 0)
+                        if (chunk.Creatures.Any(living => living.Value.PlayerID.Equals(playerID)))
                         {
                             return true;
                         }

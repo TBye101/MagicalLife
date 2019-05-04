@@ -6,7 +6,6 @@ using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Data.Disk;
 using MagicalLifeDedicatedServer.API.Settings;
 using MagicalLifeDedicatedServer.Properties;
-using MagicalLifeMod.Core.WorldGeneration;
 using MagicalLifeServer;
 using System.Collections.Generic;
 using System.Net.Sockets;
@@ -20,7 +19,7 @@ namespace MagicalLifeDedicatedServer.API.Commands
     {
         public string GetHelp()
         {
-            return DedicatedServer.NewGameCommandDesc;
+            return DedicatedServer.GeneratingWorld;
         }
 
         public string GetName()
@@ -38,7 +37,7 @@ namespace MagicalLifeDedicatedServer.API.Commands
 
                 WorldGenerationSettings wset = SettingsHandler.WorldGenerationSettings.Settings;
                 Util.WriteLine(DedicatedServer.GeneratingWorld);
-                World.Initialize(wset.DimensionWidth, wset.DimensionHeight, new GenerationAllocator(), "Overworld");
+                World.Initialize(wset.DimensionWidth, wset.DimensionHeight, WorldGeneratorRegistry.Generators[0], "Main");
                 Util.WriteLine(DedicatedServer.WorldGenerated);
 
                 Util.WriteLine(DedicatedServer.InitializingNetwork);
@@ -60,7 +59,7 @@ namespace MagicalLifeDedicatedServer.API.Commands
             Util.WriteLine(DedicatedServer.ClientDisconnected + ": " + e.Client.RemoteEndPoint.ToString());
         }
 
-        private static void Server_ClientConnected(object sender, System.Net.Sockets.TcpClient e)
+        private static void Server_ClientConnected(object sender, TcpClient e)
         {
             Util.WriteLine(DedicatedServer.ClientConnected + ": "+ e.Client.RemoteEndPoint.ToString());
         }

@@ -14,7 +14,7 @@ namespace MagicalLifeAPI.Filing.Logging
 
         public static void Initialize()
         {
-             Writer = new StreamWriter(LogPath, true);
+            Writer = new StreamWriter(LogPath, true);
         }
 
         /// <summary>
@@ -48,34 +48,28 @@ namespace MagicalLifeAPI.Filing.Logging
             Writer.Flush();
         }
 
-        [Conditional("DEBUG")]
-        public static void Close()
-        {
-            //This is a method only utilized by test code. Do not utilize in non test code.
-            Writer.Dispose();
-        }
 
         #region IDisposable Support
         private bool disposedValue; // To detect redundant calls
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.disposedValue)
+            if (!disposedValue)
             {
                 if (disposing)
                 {
                     Writer.Dispose();
                 }
-                this.disposedValue = true;
+                disposedValue = true;
             }
         }
 
 
         ~MasterLog()
         {
-           // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-           this.Dispose(false);
-         }
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(false);
+        }
 
         // This code added to correctly implement the disposable pattern.
         public void Dispose()
@@ -85,5 +79,13 @@ namespace MagicalLifeAPI.Filing.Logging
             GC.SuppressFinalize(this);
         }
         #endregion
+
+        internal static void Close()
+        {
+            Writer.Flush();
+            Writer.Close();
+            Writer.Dispose();
+        }
+
     }
 }
