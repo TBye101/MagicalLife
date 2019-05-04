@@ -163,7 +163,6 @@
     <Compile Include="GUI\Settings Menu\SettingsMenuLayout2560x1440.cs" />
     <Compile Include="GUI\Settings Menu\SettingsMenuLayout1920x1080.cs" />
     <Compile Include="GUI\Settings Menu\SettingsMenuLayout.cs" />
-    <Compile Include="Input\ClickBounds.cs" />
     <Compile Include="GUI\In Game GUI\InGameGUI.cs" />
     <Compile Include="GUI\In Game GUI\InGameGUIContainer.cs" />
     <Compile Include="GUI\In Game GUI\InGameGUILayout.cs" />

@@ -14,7 +14,7 @@ namespace MagicalLifeGUIWindows.GUI.Action_Menu
     /// <summary>
     /// The action menu container.
     /// </summary>
-    public class ActionMenuContainer : GUIContainer
+    public class ActionMenuContainer : GuiContainer
     {
         public MonoGrid ActionGrid { get; set; }
 

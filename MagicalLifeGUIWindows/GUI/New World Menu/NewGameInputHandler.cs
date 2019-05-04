@@ -27,6 +27,7 @@ namespace MagicalLifeGUIWindows.GUI.New
             {
                 WorldStorage.SaveName = NewWorldMenu.NewWorldMenuM.GameName.Text;
                 World.Initialize(width, length, WorldGeneratorRegistry.Generators[0], "Main");
+                return true;
             }
             else
             {
