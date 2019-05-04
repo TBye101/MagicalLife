@@ -31,7 +31,6 @@ namespace MagicalLifeAPI.World.Base
                 this._isWalkable = value;
                 if (this.ComponentCount() > 0)
                 {
-
                     ComponentSelectable location = this.GetExactComponent<ComponentSelectable>();
                     if (this._isWalkable)
                     {
@@ -44,7 +43,7 @@ namespace MagicalLifeAPI.World.Base
                 }
             }
         }
-        
+
         /// <summary>
         /// Returns the name of the biome that this tile belongs to.
         /// </summary>
@@ -135,7 +134,7 @@ namespace MagicalLifeAPI.World.Base
         /// <param name="location">The 3D location of this tile in the map.</param>
         /// <param name="movementCost">This value is the movement cost of walking on this tile. It should be between 1 and 100</param>
         protected Tile(Point2D location, int dimension, int movementCost, int footStepSound)
-            :base(true)
+            : base(true)
         {
             ComponentSelectable selectable = new ComponentSelectable(SelectionType.Tile);
             selectable.MapLocation = location;

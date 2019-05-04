@@ -61,7 +61,7 @@ namespace MagicalLifeDedicatedServer.API.Commands
 
         private static void Server_ClientConnected(object sender, TcpClient e)
         {
-            Util.WriteLine(DedicatedServer.ClientConnected + ": "+ e.Client.RemoteEndPoint.ToString());
+            Util.WriteLine(DedicatedServer.ClientConnected + ": " + e.Client.RemoteEndPoint.ToString());
         }
     }
 }

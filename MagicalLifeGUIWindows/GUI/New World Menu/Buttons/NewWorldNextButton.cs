@@ -35,9 +35,8 @@ namespace MagicalLifeGUIWindows.GUI.New
             ServerSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(MagicalLifeAPI.Networking.EngineMode.ServerAndClient));
             Client.Load();
             NewGameInputHandler a = new NewGameInputHandler();
-            if(!a.StartNewGame())
+            if (!a.StartNewGame())
             {
-
                 //Should probably make an message box here or something
                 return;
             }

@@ -1,7 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Properties;
-using MonoGame.Extended.Input.InputListeners;
 
 namespace MagicalLifeGUIWindows.GUI.Character_Menu.Buttons
 {

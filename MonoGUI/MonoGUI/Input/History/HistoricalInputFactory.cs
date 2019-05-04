@@ -3,12 +3,11 @@ using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Entity.AI.Task;
-using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
-using System;
 using MagicalLifeGUIWindows.Map;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 

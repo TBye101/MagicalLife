@@ -1,9 +1,4 @@
 ﻿using MagicalLifeAPI.Filing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.GUI.Settings_Menu
 {
@@ -37,7 +32,6 @@ namespace MagicalLifeGUIWindows.GUI.Settings_Menu
                         return SettingsMenuLayout1920x1080.MasterVolumeInputBoxX;
                 }
             }
-
         }
 
         public static int MasterVolumeInputBoxY
@@ -69,6 +63,7 @@ namespace MagicalLifeGUIWindows.GUI.Settings_Menu
                 }
             }
         }
+
         public static int MasterVolumeInputBoxHeight
         {
             get
@@ -82,7 +77,6 @@ namespace MagicalLifeGUIWindows.GUI.Settings_Menu
                         return SettingsMenuLayout1920x1080.MasterVolumeInputBoxHeight;
                 }
             }
-
         }
 
         public static int MasterVolumeLabelX
@@ -104,7 +98,7 @@ namespace MagicalLifeGUIWindows.GUI.Settings_Menu
         {
             get
             {
-                switch ((Resolution) SettingsManager.WindowSettings.Settings.Resolution)
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
                         return SetingsMenuLayout2560x1440.MasterVolumeLabelY;

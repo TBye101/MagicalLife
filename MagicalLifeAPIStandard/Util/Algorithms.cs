@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Error.InternalExceptions;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Util

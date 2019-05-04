@@ -6,8 +6,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
-using System.Linq;
-using System.Net.Mime;
 using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
 
 namespace MagicalLifeGUIWindows.GUI.Reusable
@@ -63,6 +61,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         private int TextureID { get; set; }
 
         public event System.EventHandler TextChanged;
+
         /// <summary>
         ///
         /// </summary>

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MagicalLifeGUIWindows.GUI.Settings_Menu
+﻿namespace MagicalLifeGUIWindows.GUI.Settings_Menu
 {
     public static class SettingsGameMenu
     {
@@ -19,7 +13,5 @@ namespace MagicalLifeGUIWindows.GUI.Settings_Menu
             SettingsGameMenuContainer settingsMenu = new SettingsGameMenuContainer(fromMainMenu);
             Menu = settingsMenu;
         }
-
-
     }
 }

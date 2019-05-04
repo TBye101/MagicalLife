@@ -2,11 +2,6 @@
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Properties;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.GUI.Settings_Menu.Labels
 {
@@ -15,8 +10,6 @@ namespace MagicalLifeGUIWindows.GUI.Settings_Menu.Labels
         public MasterVolumeLabel() : base(GetLocation(), TextureLoader.GUIInputBox100x50, true, Resources.MasterVolume)
         {
         }
-
-
 
         private static Rectangle GetLocation()
         {

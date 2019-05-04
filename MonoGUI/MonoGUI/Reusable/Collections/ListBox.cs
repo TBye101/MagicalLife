@@ -51,7 +51,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         public event EventHandler<int> ItemDoubleClick;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="drawingBounds"></param>
         /// <param name="priority"></param>

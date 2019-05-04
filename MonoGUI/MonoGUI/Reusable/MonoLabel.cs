@@ -1,10 +1,8 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeGUIWindows.Rendering.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGame.Extended.Input.InputListeners;
 using System;
 using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
 
@@ -60,6 +58,5 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
                 SimpleTextRenderer.DrawString(this.Font, this.Text, Bounds, this.TextAlignment, Color.White, spBatch, RenderLayer.GUI);
             }
         }
-
     }
 }

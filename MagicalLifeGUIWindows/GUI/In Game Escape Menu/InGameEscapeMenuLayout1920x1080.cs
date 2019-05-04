@@ -15,7 +15,5 @@
         public static readonly int SettingsButtonY = 540;
 
         public static readonly int BackButtonY = 610;
-
-
     }
 }

@@ -1,9 +1,7 @@
-﻿using System;
-using MagicalLifeAPI.Error.InternalExceptions;
-using ProtoBuf;
+﻿using ProtoBuf;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using MagicalLifeAPI.Sound.FMOD;
 
 namespace MagicalLifeAPI.DataTypes
 {
@@ -59,7 +57,6 @@ namespace MagicalLifeAPI.DataTypes
             return this.GetEnumerator();
         }
 
-
         /// <summary>
         /// Removes and returns the object at the beginning of this Queue.
         /// </summary>
@@ -85,6 +82,7 @@ namespace MagicalLifeAPI.DataTypes
         {
             Data.Add(item);
         }
+
         /// <summary>
         /// Removes all items from the <see cref="T:System.Collections.Generic.ICollection`1"></see>.
         /// </summary>

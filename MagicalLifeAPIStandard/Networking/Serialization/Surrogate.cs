@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeAPI.Networking.Serialization
 {
     /// <summary>
-    /// Used to discover which class is a protobuf-net surrogate for which class. 
+    /// Used to discover which class is a protobuf-net surrogate for which class.
     /// </summary>
     public class Surrogate : Attribute
     {

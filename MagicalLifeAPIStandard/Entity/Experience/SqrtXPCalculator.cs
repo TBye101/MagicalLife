@@ -13,7 +13,7 @@ namespace MagicalLifeAPI.Entity.Experience
         private readonly int Constant;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="constant">A constant to scale the results by.</param>
         public SqrtXPCalculator(int constant)

@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Error.InternalExceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,13 +1,9 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Filing;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Rendering.Text;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MagicalLifeAPI.Filing;
 
 namespace MagicalLifeGUIWindows.GUI.Settings_Menu.InputBoxes
 {
@@ -20,7 +16,6 @@ namespace MagicalLifeGUIWindows.GUI.Settings_Menu.InputBoxes
             TextChanged += UpdateAudio;
         }
 
-
         /// <summary>
         /// Updates the audio.
         /// </summary>
@@ -28,11 +23,10 @@ namespace MagicalLifeGUIWindows.GUI.Settings_Menu.InputBoxes
         /// <param name="args">The <see cref="EventArgs"/> instance containing the event data.</param>
         protected void UpdateAudio(Object obj, EventArgs args)
         {
-            if (int.TryParse(this.Text, out int volume) && volume >=0 && volume <= 100)
+            if (int.TryParse(this.Text, out int volume) && volume >= 0 && volume <= 100)
             {
                 SettingsManager.AudioSettings.Settings.MasterVolume = volume;
-                 SettingsManager.AudioSettings.Save();
-
+                SettingsManager.AudioSettings.Save();
             }
         }
 
@@ -45,7 +39,5 @@ namespace MagicalLifeGUIWindows.GUI.Settings_Menu.InputBoxes
 
             return new Rectangle(x, y, width, height);
         }
-
-
     }
 }

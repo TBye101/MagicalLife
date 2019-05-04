@@ -1,4 +1,3 @@
-using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components;
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Components.Resource;
@@ -6,22 +5,10 @@ using MagicalLifeAPI.Filing;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Load;
-using MagicalLifeAPI.Mod;
 using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Tiles;
-using MagicalLifeServer;
-using MagicalLifeServer.Load;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-using SharpDX.MediaFoundation;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Windows.Forms;
 
 namespace MagicalLifeAPITest.Components
 {

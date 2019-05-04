@@ -10,14 +10,11 @@ namespace MonoGUI.MonoGUI.Reusable
 {
     public class ActionButton : MonoButton
     {
-
         protected int SelectedTextureID { get; set; }
 
         public bool IsSelected { get; set; } = false;
 
-
         protected int CorrectTextureID => IsSelected ? SelectedTextureID : TextureID;
-
 
         protected ActionButton(string imageName, Microsoft.Xna.Framework.Rectangle displayArea, bool isContained, string font, string text = "") : base(imageName, displayArea, isContained, font, text)
         {
@@ -36,6 +33,5 @@ namespace MonoGUI.MonoGUI.Reusable
             spBatch.Draw(AssetManager.Textures[CorrectTextureID], location, Color.White);
             SimpleTextRenderer.DrawString(this.Font, this.Text, location, Alignment.Center, Color.White, spBatch, RenderLayer.GUI);
         }
-
     }
 }

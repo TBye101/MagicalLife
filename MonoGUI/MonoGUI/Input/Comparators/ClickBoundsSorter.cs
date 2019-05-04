@@ -1,5 +1,4 @@
-﻿using MagicalLifeAPI.Error.InternalExceptions;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace MagicalLifeGUIWindows.Input.Comparators
 {
@@ -45,7 +44,6 @@ namespace MagicalLifeGUIWindows.Input.Comparators
             {
                 return x.Priority.CompareTo(y.Priority);
             }
-
 
             return 0;
         }

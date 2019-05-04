@@ -3,7 +3,6 @@ using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.DataTypes.Attribute;
 using MagicalLifeAPI.Entity.Humanoid;
 using MagicalLifeAPI.Entity.Util.Modifier;
-using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.Filing;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking.Client;

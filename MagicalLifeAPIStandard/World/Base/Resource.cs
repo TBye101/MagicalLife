@@ -38,7 +38,6 @@ namespace MagicalLifeAPI.World.Base
             this.MaxDurability = new Attribute32(this.Durability);
         }
 
-
         public Resource() : base()
         {
         }

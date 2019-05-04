@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.Filing;
 using MagicalLifeAPI.Load;
 using MagicalLifeAPI.Mod;

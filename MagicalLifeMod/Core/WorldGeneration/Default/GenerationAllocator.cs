@@ -1,13 +1,10 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Networking.Messages;
-using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Registry.WorldGeneration;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Generation;
-using MagicalLifeAPI.World.Resources;
 using MagicalLifeMod.Core.Settings;
 using System;
 using System.Collections.Generic;

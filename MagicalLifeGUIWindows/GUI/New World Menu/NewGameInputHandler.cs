@@ -1,8 +1,6 @@
 ﻿using MagicalLifeAPI.Registry.WorldGeneration;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Data.Disk;
-using System;
-using System.ServiceModel.Configuration;
 
 namespace MagicalLifeGUIWindows.GUI.New
 {

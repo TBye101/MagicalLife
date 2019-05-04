@@ -149,7 +149,6 @@ namespace MagicalLifeAPI.Networking.Serialization
         /// </summary>
         internal static void RegisterSurrogate()
         {
-
         }
 
         /// <summary>
@@ -188,7 +187,6 @@ namespace MagicalLifeAPI.Networking.Serialization
                             RegisterSubclass(item, iface);
                         }
                     }
-
 
                     if (item.GetCustomAttribute(typeof(Surrogate)) is Surrogate surrogateAttribute)
                     {

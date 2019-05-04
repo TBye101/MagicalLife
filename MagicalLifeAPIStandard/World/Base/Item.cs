@@ -1,7 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components;
 using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Registry.ItemRegistry;
 using ProtoBuf;
@@ -127,7 +126,6 @@ namespace MagicalLifeAPI.World.Base
             this.AddComponent(new ComponentHasTexture(false));
         }
 
-
         private void SetItemID()
         {
             try
@@ -201,7 +199,7 @@ namespace MagicalLifeAPI.World.Base
         {
             if (originalItem.CurrentlyStacked <= firstItemSize)
             {
-                throw new ArgumentException(string.Format("{0} is greater than {1}, the amount originally stacked.",firstItemSize,originalItem.CurrentlyStacked));
+                throw new ArgumentException(string.Format("{0} is greater than {1}, the amount originally stacked.", firstItemSize, originalItem.CurrentlyStacked));
             }
             else
             {

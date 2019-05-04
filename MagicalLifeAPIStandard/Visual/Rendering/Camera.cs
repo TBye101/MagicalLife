@@ -1,7 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.Rendering.Map;
 using Microsoft.Xna.Framework;
 using System;
@@ -81,23 +79,23 @@ namespace MagicalLifeAPI.Visual.Rendering
             this.DimensionHeight = World.Data.World.Dimensions[dimension].Height;
         }
 
-    // Call this method with negative values to zoom out
-    // or positive values to zoom in. It looks at the current zoom
-    // and adjusts it by the specified amount. If we were at a 1.0f
-    // zoom level and specified -0.5f amount it would leave us with
-    // 1.0f - 0.5f = 0.5f so everything would be drawn at half size.
-    internal void AdjustZoom(float amount)
-    {
-        this.Zoom += amount;
-        if (this.Zoom < 0.25f)
+        // Call this method with negative values to zoom out
+        // or positive values to zoom in. It looks at the current zoom
+        // and adjusts it by the specified amount. If we were at a 1.0f
+        // zoom level and specified -0.5f amount it would leave us with
+        // 1.0f - 0.5f = 0.5f so everything would be drawn at half size.
+        internal void AdjustZoom(float amount)
         {
-            this.Zoom = 0.25f;
+            this.Zoom += amount;
+            if (this.Zoom < 0.25f)
+            {
+                this.Zoom = 0.25f;
+            }
+            if (this.Zoom > 4f)
+            {
+                this.Zoom = 4f;
+            }
         }
-        if (this.Zoom > 4f)
-        {
-            this.Zoom = 4f;
-        }
-    }
 
         /// <summary>
         /// Move the camera in an X and Y amount based on the <paramref name="cameraMovement"/> parameter.

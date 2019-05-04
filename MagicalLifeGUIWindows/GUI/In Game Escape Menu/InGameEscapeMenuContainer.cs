@@ -15,7 +15,7 @@ namespace MagicalLifeGUIWindows.GUI.In
 
         public SettingsButton Settings { get; private set; } = new SettingsButton();
 
-        public InGameEscapeMenuContainer() 
+        public InGameEscapeMenuContainer()
             : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow, false)
         {
             this.Controls.Add(this.Quit);

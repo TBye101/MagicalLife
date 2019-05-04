@@ -1,11 +1,6 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeGUIWindows.GUI.Reusable;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MagicalLifeGUIWindows.GUI.Settings_Menu.Buttons;
 using MagicalLifeGUIWindows.GUI.Settings_Menu.InputBoxes;
 using MagicalLifeGUIWindows.GUI.Settings_Menu.Labels;
@@ -23,7 +18,7 @@ namespace MagicalLifeGUIWindows.GUI.Settings_Menu
 
         public override string GetTextureName()
         {
-             return TextureLoader.GUIMenuBackground;
+            return TextureLoader.GUIMenuBackground;
         }
     }
 }

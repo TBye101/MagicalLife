@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace MonoGUI.MonoGUI.Reusable.Collections
 {
@@ -22,7 +19,7 @@ namespace MonoGUI.MonoGUI.Reusable.Collections
         {
             get
             {
-                if(index >= 0 && index <= ActionButtons.Count - 1)
+                if (index >= 0 && index <= ActionButtons.Count - 1)
                 {
                     return ActionButtons[index];
                 }
@@ -47,13 +44,12 @@ namespace MonoGUI.MonoGUI.Reusable.Collections
 
         public void SetButtonActive(int index)
         {
-            if(index >= 0 && index <= ActionButtons.Count - 1)
+            if (index >= 0 && index <= ActionButtons.Count - 1)
             {
                 ActionButtons[SelectedIndex].IsSelected = false;
                 SelectedIndex = index;
                 ActionButtons[index].IsSelected = true;
             }
         }
-
     }
 }

@@ -4,18 +4,12 @@ using MagicalLifeGUIWindows.GUI.MainMenu;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Properties;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MagicalLifeGUIWindows.GUI.Settings_Menu.Buttons
 {
-    public class MainMenuButton: MonoButton
+    public class MainMenuButton : MonoButton
     {
         private bool FromMainMenu { get; set; }
-
 
         public MainMenuButton(bool fromMainMenu) : base(TextureLoader.GUIMenuButton, GetLocation(), true, Resources.Back)
         {
@@ -31,7 +25,6 @@ namespace MagicalLifeGUIWindows.GUI.Settings_Menu.Buttons
             {
                 MainMenu.MainMenu.Initialize();
             }
-
         }
 
         private static Rectangle GetLocation()
@@ -43,6 +36,5 @@ namespace MagicalLifeGUIWindows.GUI.Settings_Menu.Buttons
 
             return new Rectangle(x, y, width, height);
         }
-
     }
 }

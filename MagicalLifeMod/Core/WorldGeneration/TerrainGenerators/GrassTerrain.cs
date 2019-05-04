@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
