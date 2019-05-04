@@ -8,6 +8,17 @@ namespace MagicalLifeGUIWindows.Input.Comparators
     /// </summary>
     public class ClickBoundsSorter : Comparer<ClickBounds>
     {
+        /// <summary>
+        /// When overridden in a derived class, performs a comparison of two objects of the same type and returns a value indicating whether one object is less than, equal to, or greater than the other.
+        /// </summary>
+        /// <param name="x">The first object to compare.</param>
+        /// <param name="y">The second object to compare.</param>
+        /// <returns>
+        /// A signed integer that indicates the relative values of <paramref name="x" /> and <paramref name="y" />, as shown in the following table.Value Meaning Less than zero
+        /// <paramref name="x" /> is less than <paramref name="y" />.Zero
+        /// <paramref name="x" /> equals <paramref name="y" />.Greater than zero
+        /// <paramref name="x" /> is greater than <paramref name="y" />.
+        /// </returns>
         public override int Compare(ClickBounds x, ClickBounds y)
         {
             if (x.Bounds.X != y.Bounds.Y)
@@ -35,7 +46,8 @@ namespace MagicalLifeGUIWindows.Input.Comparators
                 return x.Priority.CompareTo(y.Priority);
             }
 
-            throw new DuplicateEntryException("There's two objects that are identical for all practical purposes!");
+
+            return 0;
         }
     }
 }

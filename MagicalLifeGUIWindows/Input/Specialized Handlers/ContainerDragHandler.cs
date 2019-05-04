@@ -12,7 +12,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
         /// <summary>
         /// The last dragged GUI window.
         /// </summary>
-        private GUIContainer LastDragged;
+        private GuiContainer LastDragged;
 
         /// <summary>
         /// If true, the last dragged window is still being dragged.
@@ -33,9 +33,9 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
         private void MouseListner_MouseDragStart(object sender, MonoGame.Extended.Input.InputListeners.MouseEventArgs e)
         {
-            List<GUIContainer> windows = new List<GUIContainer>();
+            List<GuiContainer> windows = new List<GuiContainer>();
 
-            foreach (GUIContainer item in BoundHandler.GUIWindows)
+            foreach (GuiContainer item in BoundHandler.GUIWindows)
             {
                 //If the container contains the mouse position
                 if (item.DrawingBounds.Contains(e.Position.X, e.Position.Y))
@@ -54,7 +54,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
             if (windows.Count > 0)
             {
-                GUIContainer windowToMove = this.GetHighestPriority(windows);
+                GuiContainer windowToMove = this.GetHighestPriority(windows);
                 this.LastDragged = windowToMove;
                 this.StillDraggingLast = true;
             }
@@ -78,7 +78,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
         /// </summary>
         /// <param name="containers"></param>
         /// <returns></returns>
-        private GUIContainer GetHighestPriority(List<GUIContainer> containers)
+        private GuiContainer GetHighestPriority(List<GuiContainer> containers)
         {
             while (containers.Count > 1)
             {

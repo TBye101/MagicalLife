@@ -4,10 +4,10 @@ using System;
 
 namespace MagicalLifeTests.Util
 {
-    [TestClass()]
+    [TestClass]
     public class StaticRandomTests
     {
-        [TestMethod()]
+        [TestMethod]
         public void RandTest()
         {
             this.TestPositive();
@@ -24,10 +24,11 @@ namespace MagicalLifeTests.Util
 
                 if (result < min || result > max || result < 0)
                 {
+#if DEBUG
                     Console.WriteLine("Min: " + min.ToString());
                     Console.WriteLine("Max: " + max.ToString());
                     Console.WriteLine("Result: " + result.ToString());
-
+#endif
                     Assert.Fail("Invalid result: ");
                 }
 

@@ -11,7 +11,7 @@ using System.Collections.Generic;
 
 namespace MagicalLifeGUIWindows.GUI.Character_Menu
 {
-    public class CharacterContainer : GUIContainer
+    public class CharacterContainer : GuiContainer
     {
         public WindowX X { get; set; }
 

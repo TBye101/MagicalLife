@@ -5,7 +5,7 @@ namespace MagicalLifeAPI.Universal
     /// <summary>
     /// Holds some universal events.
     /// </summary>
-    public class UniversalEvents
+    public static class UniversalEvents
     {
         /// <summary>
         /// Raised when the game is exiting, and done unloading.
@@ -19,10 +19,7 @@ namespace MagicalLifeAPI.Universal
         internal static void GameExitHandler()
         {
             EventHandler handler = GameExit;
-            if (handler != null)
-            {
-                handler.Invoke(null, null);
-            }
+            handler?.Invoke(null, null);
         }
     }
 }

@@ -101,7 +101,7 @@ namespace MagicalLifeAPI.Util
             }
             else
             {
-                throw new InvalidDataException("The starting point must be within the bounds of the 2D array");
+                throw new System.InvalidOperationException("The starting point must be within the bounds of the 2D array");
             }
         }
 

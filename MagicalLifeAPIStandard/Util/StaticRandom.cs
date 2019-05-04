@@ -23,12 +23,17 @@ namespace MagicalLifeAPI.Util
 
         public static double Rand(double min, double max)
         {
-            if (min < 0 || max < 0)
+            if (min < 0)
             {
-                throw new ArgumentOutOfRangeException("Invalid minimum or maximum range: Values must be greater than 0.");
+               throw new ArgumentOutOfRangeException(nameof(min), "Invalid minimum range: Values must be greater than 0.");
             }
 
-            return random.Value.NextDouble() * (max - min) + min;
+            if (max < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(max), "Invalid maximum range: Values must be greater than 0.");
+            }
+
+            return (random.Value.NextDouble() * (max - min)) + min;
         }
     }
 }

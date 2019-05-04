@@ -4,7 +4,7 @@ using MagicalLifeGUIWindows.GUI.Reusable;
 
 namespace MagicalLifeGUIWindows.GUI.Load
 {
-    public class LoadGameMenuContainer : GUIContainer
+    public class LoadGameMenuContainer : GuiContainer
     {
         public SelectGameListBox SaveSelectListBox { get; private set; } = new SelectGameListBox();
         public LoadSaveButton LoadSaveButton { get; private set; } = new LoadSaveButton();

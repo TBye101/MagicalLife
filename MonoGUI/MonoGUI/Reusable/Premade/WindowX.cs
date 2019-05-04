@@ -9,9 +9,12 @@ namespace MagicalLifeGUIWindows.GUI.Reusable.Premade
     /// </summary>
     public class WindowX : MonoButton
     {
-        private static readonly int TextureWidth = 32;
-        private static readonly int TextureHeight = 32;
+        private const int TextureWidth = 32;
+        private const int TextureHeight = 32;
 
+        /// <summary>
+        ///
+        /// </summary>
         /// <param name="containingSize">The size of the containing form.</param>
         public WindowX(Point2D containingSize) :
             base(TextureLoader.GUIX,

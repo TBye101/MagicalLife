@@ -93,5 +93,20 @@ namespace MagicalLifeGUIWindows.GUI.In
                 }
             }
         }
+
+        public static int SettingsButtonY
+        {
+            get
+            {
+                switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
+                {
+                    case Resolution._2560x1440:
+                        return InGameEscapeMenuLayout2560x1440.SettingsButtonY;
+
+                    default:
+                        return InGameEscapeMenuLayout1920x1080.SettingsButtonY;
+                }
+            }
+        }
     }
 }

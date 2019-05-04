@@ -1,9 +1,13 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Error.InternalExceptions;
+using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.GUI.Reusable;
 using MagicalLifeGUIWindows.Properties;
 using Microsoft.Xna.Framework;
+using MonoGame.Extended.Input.InputListeners;
+using System;
 
 namespace MagicalLifeGUIWindows.GUI.In
 {
@@ -23,14 +27,14 @@ namespace MagicalLifeGUIWindows.GUI.In
         {
             switch (World.Mode)
             {
-                case MagicalLifeAPI.Networking.EngineMode.ClientOnly:
+                case EngineMode.ClientOnly:
                     return Resources.Disconnect;
 
-                case MagicalLifeAPI.Networking.EngineMode.ServerAndClient:
+                case EngineMode.ServerAndClient:
                     return Resources.Quit;
 
                 default:
-                    throw new MagicalLifeAPI.Error.InternalExceptions.UnexpectedEnumMemberException();
+                    throw new InvalidOperationException("Unexpected value for world mode = " + World.Mode.ToString());
             }
         }
 

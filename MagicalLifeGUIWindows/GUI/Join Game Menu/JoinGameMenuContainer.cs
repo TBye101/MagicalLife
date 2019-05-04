@@ -4,7 +4,7 @@ using MagicalLifeGUIWindows.GUI.Reusable;
 
 namespace MagicalLifeGUIWindows.GUI.Join
 {
-    public class JoinGameMenuContainer : GUIContainer
+    public class JoinGameMenuContainer : GuiContainer
     {
         public JoinButton JoinButton = new JoinButton();
         public IPInputBox IpInputBox = new IPInputBox(false);

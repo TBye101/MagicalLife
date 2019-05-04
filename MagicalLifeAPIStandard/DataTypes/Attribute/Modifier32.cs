@@ -8,7 +8,7 @@ namespace MagicalLifeAPI.DataTypes.Attribute
     /// Used to store a modifier, and some other information for internal use.
     /// </summary>
     [ProtoContract]
-    public struct Modifier32
+    public struct Modifier32 : IEquatable<Modifier32>
     {
         [ProtoMember(1)]
         public Int32 Value { get; set; }
@@ -24,6 +24,38 @@ namespace MagicalLifeAPI.DataTypes.Attribute
             this.Value = value;
             this.RemoveCondition = removeCondition;
             this.Explanation = explanation;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Modifier32 modifier32)
+            {
+                return this.Equals(modifier32);
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            return Explanation.GetHashCode() ^ Value;
+        }
+
+        public bool Equals(Modifier32 other)
+        {
+            return other.Explanation == Explanation && other.Value == Value;
+        }
+
+        public static bool operator ==(Modifier32 left, Modifier32 right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(Modifier32 left, Modifier32 right)
+        {
+            return !left.Equals(right);
         }
     }
 }

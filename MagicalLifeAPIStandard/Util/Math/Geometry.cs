@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Error.InternalExceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -44,7 +45,7 @@ namespace MagicalLifeAPI.Util.Math
             {
                 if (start.X == end.X)
                 {
-                    throw new InvalidDataException("Expected a horizontal line, but got a point instead");
+                    throw new ArgumentException("Expected a horizontal line, but got a point instead");
                 }
                 else
                 {
@@ -60,7 +61,7 @@ namespace MagicalLifeAPI.Util.Math
             }
             else
             {
-                throw new InvalidDataException("Expected a horizontal line, but did not get one");
+                throw new ArgumentException("Expected a horizontal line, but did not get one");
             }
         }
 
@@ -76,7 +77,7 @@ namespace MagicalLifeAPI.Util.Math
             {
                 if (start.Y == end.Y)
                 {
-                    throw new InvalidDataException("Expected a vertical line, but got a point instead");
+                    throw new ArgumentException("Expected a vertical line, but got a point instead");
                 }
                 else
                 {
@@ -92,7 +93,7 @@ namespace MagicalLifeAPI.Util.Math
             }
             else
             {
-                throw new InvalidDataException("Expected a vertical line, but did not get one");
+                throw new ArgumentException("Expected a vertical line, but did not get one");
             }
         }
 

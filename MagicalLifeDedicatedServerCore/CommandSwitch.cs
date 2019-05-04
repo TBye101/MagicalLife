@@ -39,7 +39,7 @@ namespace MagicalLifeDedicatedServer
 
             if (!commandFound)
             {
-                Util.WriteLine("Command not found!");
+                Util.WriteLine(DedicatedServer.CommandNotFound);
             }
         }
 

@@ -6,7 +6,7 @@ using System.Globalization;
 namespace MagicalLifeAPI.DataTypes
 {
     [ProtoContract]
-    public class Point2D
+    public class Point2D : IEquatable<Point2D>
     {
         public static readonly Point2D Zero = new Point2D(0, 0);
 
@@ -31,7 +31,7 @@ namespace MagicalLifeAPI.DataTypes
             if (obj is Point2D)
             {
                 Point2D c = obj as Point2D;
-                return (this.X == c.X && this.Y == c.Y);
+                return this.X == c.X && this.Y == c.Y;
             }
 
             return false;
@@ -62,7 +62,7 @@ namespace MagicalLifeAPI.DataTypes
             int x;
             int y;
 
-            int xStart = 2;
+            const int xStart = 2;
             int xEnd = str.IndexOf(',');
             x = Convert.ToInt32(str.Substring(xStart, xEnd - xStart));
 
@@ -76,6 +76,11 @@ namespace MagicalLifeAPI.DataTypes
         public override string ToString()
         {
             return "{ " + this.X.ToString(CultureInfo.InvariantCulture) + ", " + this.Y.ToString(CultureInfo.InvariantCulture) + " }";
+        }
+
+        public virtual bool Equals(Point2D other)
+        {
+            return other.X == X && other.Y == Y;
         }
     }
 }

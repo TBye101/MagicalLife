@@ -10,12 +10,12 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
     /// Contains other <see cref="GUIElement"/>s.
     /// All coordinates of <see cref="GUIElement"/> objects are relative to the position of this container.
     /// </summary>
-    public abstract class GUIContainer
+    public abstract class GuiContainer
     {
-        public GUIContainer Child { get; set; }
+        public GuiContainer Child { get; set; }
 
         /// <summary>
-        /// If true, then this form is dragable.
+        /// If true, then this form is draggable.
         /// </summary>
         public bool IsMovable { get; set; }
 
@@ -32,7 +32,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// <param name="drawingBounds">The bounds for which to draw the texture on the screen at.</param>
         /// <param name="priority">Determines if this GUI container should have priority over other GUI elements when sorting through input.</param>
         /// <param name="isMovable">If true, then this GUI is movable.</param>
-        protected GUIContainer(string image, Rectangle drawingBounds, bool isMovable)
+        protected GuiContainer(string image, Rectangle drawingBounds, bool isMovable)
         {
             this.Image = AssetManager.Textures[AssetManager.GetTextureIndex(image)];
             this.DrawingBounds = drawingBounds;
@@ -42,18 +42,18 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         }
 
         /// <param name="isHUD">If true, this container is part of the HUD and shouldn't be cleared from the screen. Ever.</param>
-        protected GUIContainer(string image, Rectangle drawingBounds, bool isMovable, bool isHUD)
+        protected GuiContainer(string image, Rectangle drawingBounds, bool isMovable, bool isHUD)
             : this(image, drawingBounds, isMovable)
         {
             this.IsHUD = isHUD;
         }
 
-        public GUIContainer()
+        public GuiContainer() : base()
         {
         }
 
         /// <summary>
-        /// The priority level of this <see cref="GUIContainer"/>
+        /// The priority level of this <see cref="GuiContainer"/>
         /// </summary>
         public int Priority { get; set; }
 
@@ -74,13 +74,13 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         public Texture2D Image { get; set; }
 
         /// <summary>
-        /// The controls that are within this <see cref="GUIContainer"/>
+        /// The controls that are within this <see cref="GuiContainer"/>
         /// </summary>
         public List<GUIElement> Controls { get; set; }
 
         public abstract string GetTextureName();
 
-        public void PopupChild(GUIContainer child)
+        public void PopupChild(GuiContainer child)
         {
             this.Child = child;
         }

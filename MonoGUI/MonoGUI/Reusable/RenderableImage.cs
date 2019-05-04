@@ -2,6 +2,8 @@
 using MagicalLifeAPI.Error.InternalExceptions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Extended.Input.InputListeners;
+using System;
 
 namespace MagicalLifeGUIWindows.GUI.Reusable
 {
@@ -45,7 +47,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
 
             if (width == 0 || height == 0)
             {
-                throw new InvalidDataException("Width or height cannot be 0");
+                throw new ArgumentException("Width or height cannot be 0");
             }
 
             spBatch.Draw(AssetManager.Textures[this.TextureIndex], Bounds, Color.White);

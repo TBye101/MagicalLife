@@ -13,10 +13,14 @@ namespace MagicalLifeGUIWindows.GUI.Reusable.Event
         /// <summary>
         /// The container which was clicked in.
         /// </summary>
-        public GUIContainer GUIContainer { get; set; }
+        public GuiContainer GUIContainer { get; set; }
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="mouseEventArgs"></param>
         /// <param name="guiContainer">The container which was clicked in.</param>
-        public ClickEventArgs(MouseEventArgs mouseEventArgs, GUIContainer guiContainer)
+        public ClickEventArgs(MouseEventArgs mouseEventArgs, GuiContainer guiContainer)
         {
             this.MouseEventArgs = mouseEventArgs;
             this.GUIContainer = guiContainer;

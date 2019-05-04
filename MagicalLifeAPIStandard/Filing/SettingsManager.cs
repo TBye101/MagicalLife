@@ -23,11 +23,11 @@ namespace MagicalLifeAPI.Filing
         internal static void Initialize()
         {
             Directory.CreateDirectory(SettingFolder);
-            AudioSettings = new Setting<AudioSettings>(SettingFolder + Path.DirectorySeparatorChar + "Audio.json", new Settings.AudioSettings());
-            Keybindings = new Setting<Keybindings>(SettingFolder + Path.DirectorySeparatorChar + "Keybindings.json", new Settings.Keybindings());
+            AudioSettings = new Setting<AudioSettings>(SettingFolder + Path.DirectorySeparatorChar + "Audio.json", new AudioSettings());
+            Keybindings = new Setting<Keybindings>(SettingFolder + Path.DirectorySeparatorChar + "Keybindings.json", new Keybindings());
             WindowSettings = new Setting<MainWindowSettings>(SettingFolder + Path.DirectorySeparatorChar + "Window.json", new MainWindowSettings());
-            PlayerSettings = new Setting<PlayerSettings>(SettingFolder + Path.DirectorySeparatorChar + "Player.json", new Settings.PlayerSettings());
-            UniversalSettings = new Setting<UniversalSettings>(SettingFolder + Path.DirectorySeparatorChar + "Universal.json", new Settings.UniversalSettings());
+            PlayerSettings = new Setting<PlayerSettings>(SettingFolder + Path.DirectorySeparatorChar + "Player.json", new PlayerSettings());
+            UniversalSettings = new Setting<UniversalSettings>(SettingFolder + Path.DirectorySeparatorChar + "Universal.json", new UniversalSettings());
         }
     }
 }
