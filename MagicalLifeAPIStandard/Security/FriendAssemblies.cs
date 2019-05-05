@@ -3,7 +3,7 @@
 [assembly: InternalsVisibleTo("MagicalLifeAPITest")]
 [assembly: InternalsVisibleTo("MagicalLifeClientStandard")]
 [assembly: InternalsVisibleTo("MagicalLifeDedicatedServerCore")]
-[assembly: InternalsVisibleTo("MagicalLifeGUIWindows")]
+[assembly: InternalsVisibleTo("MLGUIWindows")]
 [assembly: InternalsVisibleTo("MagicalLifeModdingAPI")]
 [assembly: InternalsVisibleTo("MagicalLifeServerStandard")]
 [assembly: InternalsVisibleTo("MagicalLifeSettingsStandard")]
