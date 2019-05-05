@@ -5,7 +5,7 @@
     /// </summary>
     public static class ActionMenu
     {
-        public static ActionMenuContainer AMenu = new ActionMenuContainer(true);
+        public static ActionMenuContainer AMenu { get; } = new ActionMenuContainer(true);
 
         internal static void Initialize()
         {

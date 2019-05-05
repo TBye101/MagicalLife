@@ -6,14 +6,20 @@ namespace MonoGUI.MonoGUI.Reusable.Collections
     {
         public ActionButtonGroupManager()
         {
-            ActionButtons = new List<ActionButton>();
+            this.ActionButtons = new List<ActionButton>();
         }
 
         private readonly List<ActionButton> ActionButtons;
 
-        private int SelectedIndex { get; set; } = 0;
+        private int SelectedIndex { get; set; }
 
-        public int Count => ActionButtons.Count;
+        public int Count
+        {
+            get
+            {
+                return this.ActionButtons.Count;
+            }
+        }
 
         public ActionButton this[int index]
         {

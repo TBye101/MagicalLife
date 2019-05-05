@@ -28,6 +28,8 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         [ProtoMember(3)]
         protected Point2D ReservedItemLocation;
 
+        private object SyncObject = new object();
+
         public GrabSpecificItemTask(Guid boundID, Point2D itemLocation, int dimension)
             : base(Dependencies.CreateEmpty(), boundID, GetQualifications(),
                   PriorityLayers.Default)
@@ -79,11 +81,12 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         public override void Reset()
         {
+            //This method is not in use yet
         }
 
         public override void Tick(Living l)
         {
-            lock (this)
+            lock (this.SyncObject)
             {
                 if (this.MoveTaskCompleted)
                 {

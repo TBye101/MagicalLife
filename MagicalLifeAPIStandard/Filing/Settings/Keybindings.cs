@@ -7,13 +7,13 @@ namespace MagicalLifeAPI.Filing.Settings
     /// </summary>
     public class Keybindings
     {
-        public Keys OpenInGameEscapeMenu = Keys.Escape;
+        public Keys OpenInGameEscapeMenu { get; set; } = Keys.Escape;
 
-        public Keys OpenActionMenu = Keys.C;
+        public Keys OpenActionMenu { get; set; } = Keys.C;
 
-        public Keys StrafeUp = Keys.W;
-        public Keys StrafeDown = Keys.S;
-        public Keys StrafeLeft = Keys.A;
-        public Keys StrafeRight = Keys.D;
+        public Keys StrafeUp { get; set; } = Keys.W;
+        public Keys StrafeDown { get; set; } = Keys.S;
+        public Keys StrafeLeft { get; set; } = Keys.A;
+        public Keys StrafeRight { get; set; } = Keys.D;
     }
 }

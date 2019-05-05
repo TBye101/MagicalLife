@@ -28,6 +28,7 @@ namespace MagicalLifeAPI.World.Resources
 
         public PineTree(int durability) : base(Name, durability, GetHarvestBehavior())
         {
+            this.InitializeComponents();
         }
 
         public PineTree()

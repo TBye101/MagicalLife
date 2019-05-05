@@ -9,12 +9,12 @@ namespace MagicalLifeGUIWindows.GUI.New
     /// </summary>
     public class NewWorldMenuContainer : GuiContainer
     {
-        public WorldWidthInputBox WorldWidth = new WorldWidthInputBox(false);
-        public WorldLengthInputBox WorldLength = new WorldLengthInputBox(false);
-        public NewWorldNextButton NextButton = new NewWorldNextButton();
-        public LengthLabel LengthLabel = new LengthLabel();
-        public WidthLabel WidthLabel = new WidthLabel();
-        public MonoInputBox GameName;
+        public WorldWidthInputBox WorldWidth { get; } = new WorldWidthInputBox(false);
+        public WorldLengthInputBox WorldLength { get; } = new WorldLengthInputBox(false);
+        public NewWorldNextButton NextButton { get; } = new NewWorldNextButton();
+        public LengthLabel LengthLabel { get; } = new LengthLabel();
+        public WidthLabel WidthLabel { get; } = new WidthLabel();
+        public MonoInputBox GameName { get; private set; }
 
         public NewWorldMenuContainer(bool visible) : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow, false)
         {

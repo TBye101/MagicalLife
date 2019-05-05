@@ -15,7 +15,7 @@ namespace MagicalLifeAPI.World.Resources
         {
         }
 
-        protected TreeBase() : base()
+        protected TreeBase()
         {
         }
     }

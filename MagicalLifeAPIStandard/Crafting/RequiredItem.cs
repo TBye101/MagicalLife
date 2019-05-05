@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.World.Base;
 using ProtoBuf;
+using System;
 
 namespace MagicalLifeAPI.Crafting
 {
@@ -7,7 +8,7 @@ namespace MagicalLifeAPI.Crafting
     /// Holds an item and the amount required for various crafting purposes.
     /// </summary>
     [ProtoContract]
-    public struct RequiredItem
+    public struct RequiredItem : IEquatable<RequiredItem>
     {
         [ProtoMember(1)]
         public Item Item { get; set; }
@@ -19,6 +20,11 @@ namespace MagicalLifeAPI.Crafting
         {
             this.Item = item;
             this.Count = count;
+        }
+
+        public bool Equals(RequiredItem other)
+        {
+            return this.Item.Equals(other.Item) && this.Count == other.Count;
         }
     }
 }

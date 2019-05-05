@@ -16,12 +16,12 @@ namespace MagicalLifeGUIWindows.Map
         /// <summary>
         /// The currently selected action in the game.
         /// </summary>
-        public static ActionSelected CurrentlySelected = ActionSelected.None;
+        public static ActionSelected CurrentlySelected { get; set; } = ActionSelected.None;
 
         /// <summary>
         /// A gift from Game1.cs in the GUI project. Allows us to load data.
         /// </summary>
-        public static ContentManager AssetManagerClone;
+        public static ContentManager AssetManagerClone { get; set; }
 
         /// <summary>
         /// Returns an ever increasing number for pop-up window priorities.

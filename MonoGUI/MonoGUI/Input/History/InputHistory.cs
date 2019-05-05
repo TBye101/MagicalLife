@@ -33,7 +33,7 @@ namespace MagicalLifeGUIWindows.Input.History
 
         private static readonly HistoricalInputFactory Factory = new HistoricalInputFactory();
 
-        public static List<HasComponents> Selected = new List<HasComponents>();
+        public static List<HasComponents> Selected { get; } = new List<HasComponents>();
 
         /// <summary>
         /// Raises the world generated event.

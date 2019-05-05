@@ -14,7 +14,7 @@ namespace MagicalLifeAPI.World.Base
     /// Represents almost everything in a movable/harvested form.
     /// </summary>
     [ProtoContract]
-    public abstract class Item : HasComponents, IEquatable<Item>
+    public abstract class Item : HasComponents, IEquatable<Item>, IEquatable<object>
     {
         /// <summary>
         /// The name of this <see cref="Item"/>.
@@ -111,7 +111,7 @@ namespace MagicalLifeAPI.World.Base
             this.Validate();
         }
 
-        protected Item() : base()
+        protected Item()
         {
             //Protobuf-net constructor
         }
@@ -126,20 +126,10 @@ namespace MagicalLifeAPI.World.Base
             this.AddComponent(new ComponentHasTexture(false));
         }
 
-        private void SetItemID()
-        {
-            try
-            {
-                this.ItemID =
-                    ItemRegistry.IDToItem.First(x => x.Value.ModFrom.Equals(this.ModFrom) &&
-                x.Value.Name.Equals(this.Name)).Key;//slow
-            }
-            catch (InvalidOperationException e)
-            {
-                this.ItemID = -1;
-            }
-        }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException">Is thrown when there is less than one item stacked, or the stackable limit is less than one.</exception>
         protected internal void Validate()
         {
             if (this.CurrentlyStacked < 1)
@@ -229,6 +219,19 @@ namespace MagicalLifeAPI.World.Base
         public bool Equals(Item other)
         {
             return other.GetType().Equals(this.GetType());
+        }
+
+        public override bool Equals(object obj)
+        {
+            Item item = obj as Item;
+            if (item == null)
+            {
+                return false;
+            }
+            else
+            {
+                return this.Equals(item);
+            }
         }
 
         public override int GetHashCode()

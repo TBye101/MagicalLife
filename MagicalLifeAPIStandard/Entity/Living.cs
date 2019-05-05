@@ -115,7 +115,7 @@ namespace MagicalLifeAPI.Entity
             this.Inventory = new Inventory(true);
         }
 
-        public Living() : base()
+        protected Living()
         {
         }
 

@@ -145,13 +145,6 @@ namespace MagicalLifeAPI.Networking.Serialization
         }
 
         /// <summary>
-        /// Registers a surrogate with protobuf-net.
-        /// </summary>
-        internal static void RegisterSurrogate()
-        {
-        }
-
-        /// <summary>
         /// Registers all serializable types found within an assembly.
         /// While this is slower than <see cref="RegisterSerializableClass(Type)"/> and <see cref="RegisterSubclass(Type, Type)"/>, this is more convenient.
         /// </summary>

@@ -22,7 +22,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// <summary>
         /// If true, this container is part of the HUD and shouldn't be cleared from the screen. Ever.
         /// </summary>
-        public bool IsHUD { get; set; } = false;
+        public bool IsHUD { get; set; }
 
         /// <summary>
         /// Constructs a new instance of the <see cref="GUIContainer"/> class.
@@ -48,7 +48,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             this.IsHUD = isHUD;
         }
 
-        public GuiContainer() : base()
+        protected GuiContainer()
         {
         }
 

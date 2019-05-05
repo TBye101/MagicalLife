@@ -8,11 +8,11 @@ namespace MagicalLifeAPI.Util
     /// </summary>
     public class WeightedRandom
     {
-        private List<int> Weights;
+        private readonly List<int> Weights;
 
-        private Random RNG;
+        private readonly Random RNG;
 
-        private int TotalWeight;
+        private readonly int TotalWeight;
 
         /// <param name="weights">The weights of each item to be selected from.</param>
         /// <param name="seededRandom">The random number generator to use.</param>

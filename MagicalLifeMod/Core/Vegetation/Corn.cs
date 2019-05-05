@@ -50,7 +50,7 @@ namespace MagicalLifeAPI.World.Resources
             textureComponent.Visuals.Add(CornFullGrowth);
         }
 
-        public Corn() : base()
+        public Corn()
         {
         }
     }

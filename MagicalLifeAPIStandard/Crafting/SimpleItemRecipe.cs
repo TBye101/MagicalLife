@@ -17,7 +17,7 @@ namespace MagicalLifeAPI.Crafting
     public class SimpleItemRecipe : IRecipe
     {
         [ProtoMember(1)]
-        public RequiredItem[] RequiredItems { get; internal set; }//Using item.stacked doesn't work, as there is a default so we need to store how much of each item is required in it's own struct or something.
+        public RequiredItem[] RequiredItems { get; internal set; }
 
         /// <summary>
         /// The itemID of the item that this recipe constructs.
@@ -132,7 +132,7 @@ namespace MagicalLifeAPI.Crafting
 
         public void Clicked()
         {
-            throw new NotImplementedException();//Need to create some sort of recipe viewing window now.
+            throw new NotImplementedException();//Need to create some sort of recipe viewing window to display this recipe in
         }
 
         public void SpecialClicked()

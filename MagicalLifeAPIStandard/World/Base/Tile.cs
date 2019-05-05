@@ -157,7 +157,7 @@ namespace MagicalLifeAPI.World.Base
         /// <summary>
         /// This constructor is used during loading/reflection only.
         /// </summary>
-        protected Tile() : base()
+        protected Tile()
         {
         }
 

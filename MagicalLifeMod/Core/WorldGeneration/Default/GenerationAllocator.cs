@@ -17,7 +17,6 @@ namespace MagicalLifeMod.Core.WorldGeneration
     public class GenerationAllocator : DimensionGenerator
     {
         public GenerationAllocator()
-            : base()
         {
         }
 
@@ -66,7 +65,7 @@ namespace MagicalLifeMod.Core.WorldGeneration
                 int length = item.Value.Count;
                 Chunk[] toGenerator = new Chunk[length];
                 //A reused Point2D.
-                Point2D location = new Point2D(0, 0);
+                Point2D location;
                 for (int i = 0; i < length; i++)
                 {
                     location = item.Value[i];
@@ -178,7 +177,7 @@ namespace MagicalLifeMod.Core.WorldGeneration
 
         protected override ProtoArray<Chunk> GenerateWorld(ProtoArray<Chunk> blankWorld, string dimensionName, Random seededRandom)
         {
-            blankWorld = this.GenerateTerrain(blankWorld, dimensionName, seededRandom);
+            this.GenerateTerrain(blankWorld, dimensionName, seededRandom);
 
             //Let all the vegetation generators decide for themselves if they want to generate
             foreach (VegetationGenerator item in WorldGeneratorRegistry.VegetationGenerators)

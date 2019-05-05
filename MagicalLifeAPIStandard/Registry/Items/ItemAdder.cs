@@ -21,7 +21,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// <summary>
         /// Lets a chunk know that there is an item of the specified type in the specified tile position.
         /// </summary>
-        private static void RememberWhichTile(Item item, Point2D mapLocation, Chunk chunk, int dimension)
+        private static void RememberWhichTile(Item item, Point2D mapLocation, Chunk chunk)
         {
             if (!chunk.Items.ContainsKey(item.ItemID))
             {
@@ -81,7 +81,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
             Chunk chunk = World.Data.World.Dimensions[dimension].GetChunk(chunkLocation.X, chunkLocation.Y);
 
             ItemAdder.RememberWhichChunk(chunkLocation, item.ItemID, dimension);
-            ItemAdder.RememberWhichTile(item, mapLocation, chunk, dimension);
+            ItemAdder.RememberWhichTile(item, mapLocation, chunk);
             ItemAdder.StoreItem(chunk, mapLocation, item);
         }
 
@@ -120,7 +120,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
             Chunk chunk = map[chunkLocation.X, chunkLocation.Y];
 
             ItemAdder.RememberWhichChunk(chunkLocation, item.ItemID, dimension);
-            ItemAdder.RememberWhichTile(item, mapLocation, chunk, dimension);
+            ItemAdder.RememberWhichTile(item, mapLocation, chunk);
             ItemAdder.StoreItem(chunk, mapLocation, item);
         }
 

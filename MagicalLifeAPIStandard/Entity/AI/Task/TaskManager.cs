@@ -13,9 +13,9 @@ namespace MagicalLifeAPI.Entity.AI.Task
     {
         public static TaskManager Manager { get; set; } = new TaskManager();
 
-        private List<MagicalTask> Tasks { get; set; } = new List<MagicalTask>();
+        private List<MagicalTask> Tasks { get; } = new List<MagicalTask>();
 
-        private object SyncObject = new object();
+        private readonly object SyncObject = new object();
 
         internal TaskManager()
         {
@@ -214,7 +214,6 @@ namespace MagicalLifeAPI.Entity.AI.Task
             {
                 if (qualification.ArePreconditionsMet() && qualification.IsQualified(living))
                 {
-                    continue;
                 }
                 else
                 {

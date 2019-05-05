@@ -51,7 +51,7 @@ namespace MagicalLifeAPI.Util
         /// <param name="collection"></param>
         /// <param name="target"></param>
         /// <returns></returns>
-        public static List<T> GetNeighbors<T>(T[,] collection, Point2D target)
+        internal static List<T> GetNeighbors<T>(T[,] collection, Point2D target)
         {
             List<T> neighbors = new List<T>();
 

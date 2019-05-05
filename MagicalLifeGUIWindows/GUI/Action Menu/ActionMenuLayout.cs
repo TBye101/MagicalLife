@@ -6,7 +6,7 @@ namespace MagicalLifeGUIWindows.GUI.Action_Menu
     /// <summary>
     /// Positioning data for the action menu.
     /// </summary>
-    public class ActionMenuLayout
+    public static class ActionMenuLayout
     {
         /// <summary>
         /// The dimensions of the action menu.

@@ -12,12 +12,12 @@ namespace MagicalLifeAPI.Components.Resource
         [ProtoMember(1)]
         public float PercentTilled { get; private set; }
 
-        public ComponentTillable(Guid constantID)
+        protected ComponentTillable(Guid constantID)
         {
             this.PercentTilled = 0;
         }
 
-        protected ComponentTillable() : base()
+        protected ComponentTillable()
         {
             //Protobuf-net constructor
         }

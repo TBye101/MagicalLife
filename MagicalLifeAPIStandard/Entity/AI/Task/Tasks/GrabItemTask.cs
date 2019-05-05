@@ -67,10 +67,12 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         public override void MakePreparations(Living l)
         {
+            //No preparations to make
         }
 
         public override void Reset()
         {
+            //This method is not in use yet
         }
 
         public override void Tick(Living l)

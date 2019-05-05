@@ -14,14 +14,14 @@ namespace MagicalLifeAPI.World
     {
         public Guid ID { get; }
 
-        public readonly int Dimension;
+        public int Dimension { get; }
 
         /// <param name="dimension">The dimension that is being generated.</param>
         /// <param name="terrainGenerators">All registered terrain generators from the core game and mods.</param>
         /// <param name="vegetationGenerators">All registered vegetation generators from the core game and mods.</param>
         /// <param name="structureGenerators">All registered structure generators from the core game and mods.</param>
         /// <param name="random">This should be a seeded random number generator.</param>
-        public DimensionGenerator()
+        protected DimensionGenerator()
         {
             this.ID = Guid.NewGuid();
         }

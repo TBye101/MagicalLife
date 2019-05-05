@@ -17,7 +17,7 @@ namespace MagicalLifeAPI.World
         public int Dimension { get; set; }
 
         /// <param name="weight">The likelihood of this terrain generator being used when the default biome allocator is utilized.</param>
-        public TerrainGenerator(int weight, int dimension)
+        protected TerrainGenerator(int weight, int dimension)
         {
             this.Weight = weight;
         }

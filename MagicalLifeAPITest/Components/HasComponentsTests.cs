@@ -15,7 +15,7 @@ namespace MagicalLifeAPITest.Components
     [TestClass]
     public class HasComponentsTests
     {
-        private bool Initialized { get; set; } = false;
+        private bool Initialized { get; set; }
 
         [TestInitialize]
         public void TestInitialize()
@@ -27,7 +27,7 @@ namespace MagicalLifeAPITest.Components
                 string msg = string.Empty;
                 SettingsManager.Initialize();
                 FileSystemManager.Initialize();
-                load.LoadAll(ref msg, new List<IGameLoader>()
+                load.LoadAll(ref msg, new List<IGameLoader>
                     {
                         new ProtoTypeLoader(),
                         new ProtoManager(),
@@ -91,7 +91,6 @@ namespace MagicalLifeAPITest.Components
         {
             // Arrange
             HasComponents unitUnderTest = this.CreateHasComponents();
-            ComponentSelectable selectable = new ComponentSelectable(SelectionType.Tile);
             DropWhenCompletelyHarvested component = new DropWhenCompletelyHarvested(new List<Item>(), "", "");
 
             // Act

@@ -103,17 +103,9 @@ namespace MagicalLifeAPI.Sound
             attributes.position.x = screenPosition.X;
             attributes.position.y = screenPosition.Y;
 
-            //instance.setProperty(EVENT_PROPERTY.MINIMUM_DISTANCE, 300);
-            // instance.setProperty(EVENT_PROPERTY.MAXIMUM_DISTANCE, 1600);
-
             instance.set3DAttributes(attributes);
             instance.start();
             instance.release();
-        }
-
-        public static void Test()
-        {
-            //Temp method
         }
 
         public static void DumpEventInformation()

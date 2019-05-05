@@ -12,9 +12,15 @@ namespace MonoGUI.MonoGUI.Reusable
     {
         protected int SelectedTextureID { get; set; }
 
-        public bool IsSelected { get; set; } = false;
+        public bool IsSelected { get; set; }
 
-        protected int CorrectTextureID => IsSelected ? SelectedTextureID : TextureID;
+        protected int CorrectTextureID
+        {
+            get
+            {
+                return this.IsSelected ? this.SelectedTextureID : this.TextureID;
+            }
+        }
 
         protected ActionButton(string imageName, Microsoft.Xna.Framework.Rectangle displayArea, bool isContained, string font, string text = "") : base(imageName, displayArea, isContained, font, text)
         {

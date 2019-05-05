@@ -14,7 +14,7 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         [ProtoMember(1)]
         public List<AbstractVisual> RenderQueue { get; set; }
 
-        public ComponentRenderer() : base()
+        public ComponentRenderer()
         {
             this.RenderQueue = new List<AbstractVisual>();
         }

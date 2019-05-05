@@ -14,7 +14,7 @@ namespace MagicalLifeAPI.Registry.Mod
         /// <summary>
         /// Initialized by the <see cref="ModLoader"/> during game load.
         /// </summary>
-        public static List<IMod> LoadedMods;
+        public static List<IMod> LoadedMods { get; set; }
 
         /// <summary>
         /// Loads all the mods stored in this registry.

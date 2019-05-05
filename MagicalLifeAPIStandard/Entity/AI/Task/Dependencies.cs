@@ -27,7 +27,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
             {
                 item.Completed += this.Item_Completed;
             }
-            PreRequisite.CollectionChanged += this.PreRequisite_CollectionChanged;
+            this.PreRequisite.CollectionChanged += this.PreRequisite_CollectionChanged;
         }
 
         private void PreRequisite_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)

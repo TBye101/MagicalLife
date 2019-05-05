@@ -13,10 +13,6 @@ namespace MagicalLifeMod.Core
         private readonly ModInformation Info = new ModInformation(DescriptionValues.ModID, DescriptionValues.DisplayName,
             DescriptionValues.AuthorName, DescriptionValues.Description, DescriptionValues.Version);
 
-        public MLModMain()
-        {
-        }
-
         public ModInformation GetInfo()
         {
             return this.Info;

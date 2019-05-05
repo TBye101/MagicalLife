@@ -13,7 +13,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
     /// <summary>
     /// This class finds items that match various search parameters.
     /// </summary>
-    public static class ItemFinder//TODO: Rework this to be faster, possibly by writing my own R-tree/other data structure
+    public static class ItemFinder
     {
         public static readonly float SearchDistance = 10000;
 
@@ -169,8 +169,6 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
 
             if (nearestChunks != null && nearestChunks.Count > 0)
             {
-                RTree<Point2D> allNear = new RTree<Point2D>();
-
                 Chunk chunk;
                 foreach (Point2D item in nearestChunks)
                 {
@@ -207,8 +205,6 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
 
             if (nearestChunks != null)
             {
-                List<Point2D> allNear = new List<Point2D>();
-
                 Chunk chunk;
                 List<Point2D> allResults = new List<Point2D>();//Holds all found item locations.
                 foreach (Point2D item in nearestChunks)

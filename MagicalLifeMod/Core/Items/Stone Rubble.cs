@@ -13,7 +13,7 @@ namespace MagicalLifeAPI.World.Items
     {
         public StoneRubble(int count) :
             base("Stone Rubble",
-            new System.Collections.Generic.List<string>()
+            new System.Collections.Generic.List<string>
             {
                 "Stone Rubble",
                 "Is dropped when stone is mined"
