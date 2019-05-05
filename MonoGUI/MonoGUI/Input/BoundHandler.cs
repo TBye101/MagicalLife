@@ -115,8 +115,7 @@ namespace MagicalLifeGUIWindows.Input
             }
 
             //If the click isn't in a GUI, then it must be in the map...
-            MouseEventArgs transformed = TransformViaCamera(e);
-            ScrollMap(transformed);
+            ScrollMap(e);
         }
 
         private static void ScrollMap(MouseEventArgs e)
