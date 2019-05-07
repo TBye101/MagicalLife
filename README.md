@@ -201,7 +201,7 @@ Batarian711 - Created the logo for this project
 * Controls the server
 * Run server commands
 
-### MagicalLifeGUIWindows
+### MLGUIWindows
 * Windows only graphical client
 
 ### MagicalLifeMod
