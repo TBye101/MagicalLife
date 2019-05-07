@@ -39,7 +39,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 *Added the Action Bar
 
 #### Bugs
-*Fixed PineTree class property Name's value
+*Fixed PineTree class property Name's value (Thanks @a2937!)
 *Fixed mined stones not disappearing
 *Surround sound now functions like it should
 
