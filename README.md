@@ -81,7 +81,7 @@ Mod support: Always a priority
 # Development Instructions
 
 1. Download and install *any* version of [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-2. Download and install [Monogame 3.6](http://www.monogame.net/2017/03/01/monogame-3-6/) for Visual Studio.
+2. Download and install [Monogame 3.7.1](http://community.monogame.net/t/monogame-3-7-1-release/11173) for Visual Studio.
 3. Download and install the [2012 VC++ x64 Redistributable](https://www.microsoft.com/en-us/download/details.aspx?id=30679)
 4. Clone this repository
 5. Open the solution, and set the solution configuration to *debug, x64*. 
