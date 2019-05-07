@@ -10,12 +10,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Core\Entities\**" />
+    <Compile Remove="Core\Tiles\**" />
+    <EmbeddedResource Remove="Core\Entities\**" />
+    <EmbeddedResource Remove="Core\Tiles\**" />
+    <None Remove="Core\Entities\**" />
+    <None Remove="Core\Tiles\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MagicalLifeAPIStandard\MagicalLifeAPIStandard.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Core\Entities\" />
-    <Folder Include="Core\Tiles\" />
     <Folder Include="Core\WorldGeneration\StructureGenerators\" />
     <Folder Include="Core\WorldGeneration\VegetationGenerators\" />
   </ItemGroup>

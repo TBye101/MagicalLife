@@ -2,6 +2,17 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 ---
 
+## [Version 0.1.3]
+
+#### API
+*
+
+#### GUI
+*
+
+#### Bugs
+*
+
 ## [Version 0.1.2]
 
 #### API
@@ -29,7 +40,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 #### Bugs
 *Fixed PineTree class property Name's value
-*Fixed mined stones not disappering
+*Fixed mined stones not disappearing
 *Surround sound now functions like it should
 
 ---
