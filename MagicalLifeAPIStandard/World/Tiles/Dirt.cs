@@ -5,27 +5,24 @@ using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Properties;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Base;
+using ProtoBuf;
 
 namespace MagicalLifeAPI.World.Tiles
 {
     /// <summary>
     /// A dirt tile.
     /// </summary>
-    [ProtoBuf.ProtoContract]
-    public class Dirt : Tile, ITillable
+    [ProtoContract]
+    public class Dirt : Tile
     {
-        public override ComponentRenderer CompositeRenderer { get; set; }
-
-        public AbstractTillable TillableBehavior { get; set; }
-
-        public Dirt(Point2D location) : base(location, 10, 0)
+        public Dirt(Point2D location, int dimension) : base(location, dimension, 10, 0)
         {
-            this.TillableBehavior = new TillablePercentDone();
-            this.CompositeRenderer = new ComponentRenderer();
-            this.CompositeRenderer.RenderQueue.Add(new StaticTexture(Dirt.GetTextureID(), RenderLayer.DirtBase));
+            this.AddComponent(new TillablePercentDone());
+            this.GetExactComponent<ComponentRenderer>().RenderQueue.Add(
+                new StaticTexture(Dirt.GetTextureID(), RenderLayer.DirtBase));
         }
 
-        public Dirt(int x, int y) : this(new Point2D(x, y))
+        public Dirt(int x, int y, int dimension) : this(new Point2D(x, y), dimension)
         {
         }
 

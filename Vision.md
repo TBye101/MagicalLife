@@ -49,7 +49,13 @@ but with magic and aspects of RPG.
 ## Tech and Magic
 * Both technology and magic are available
 	* Technology is based more upon resource processing and research
-	* Magic is based upon character leveling up, learning new spells, and gathering components for permanent spells 
+	* Magic is based upon character leveling up, learning new spells
+		*Casters hold mana. This regenerates really slowly at night (Several nights of sleep per spell or something)
+		*Magical Nodes hold mana of a certain affinity: Earth, water, air, fire, and life
+			*These recharge quickly
+			*Spawned in dungeons/places of interest
+			*Can be moved back to your base at a very slow/painful rate
+		*Casters are bound to one type of magic, and can only perform that type of magic
 
 #### Classes
 * Various character classes exist

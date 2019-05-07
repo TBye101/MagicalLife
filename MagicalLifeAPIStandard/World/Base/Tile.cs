@@ -1,8 +1,9 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
+﻿using MagicalLifeAPI.Components;
+using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Networking;
+using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.World.Tiles;
 using ProtoBuf;
 using System;
@@ -14,12 +15,34 @@ namespace MagicalLifeAPI.World.Base
     /// Every tile that implements this class must provide a parameterless version of itself for reflection purposes. That constructor will not be used during gameplay.
     /// </summary>
     [ProtoContract]
-    [ProtoInclude(9, typeof(Dirt))]
-    [ProtoInclude(10, typeof(Grass))]
-    public abstract class Tile : Selectable, IHasSubclasses, IRenderContainer
+    public abstract class Tile : HasComponents
     {
+        private bool _isWalkable { get; set; }
+
         [ProtoMember(2)]
-        public bool IsWalkable { get; set; }
+        public bool IsWalkable
+        {
+            get
+            {
+                return this._isWalkable;
+            }
+            set
+            {
+                this._isWalkable = value;
+                if (this.ComponentCount() > 0)
+                {
+                    ComponentSelectable location = this.GetExactComponent<ComponentSelectable>();
+                    if (this._isWalkable)
+                    {
+                        MainPathFinder.UnBlock(location.MapLocation, location.Dimension);
+                    }
+                    else
+                    {
+                        MainPathFinder.Block(location.MapLocation, location.Dimension);
+                    }
+                }
+            }
+        }
 
         /// <summary>
         /// Returns the name of the biome that this tile belongs to.
@@ -63,13 +86,13 @@ namespace MagicalLifeAPI.World.Base
 
                     if (value != null)
                     {
-                        this.CompositeRenderer.AddVisuals(value.GetVisuals());
+                        this.GetExactComponent<ComponentRenderer>().AddVisuals(value.GetExactComponent<ComponentHasTexture>().Visuals);
                     }
-
+                    this.IsWalkable = (this.resources == null);
                     return;
                 }
 
-                List<AbstractVisual> oldVisuals = this.resources.GetVisuals();
+                List<AbstractVisual> oldVisuals = this.resources.GetExactComponent<ComponentHasTexture>().Visuals;
 
                 if (value == null)
                 {
@@ -77,16 +100,18 @@ namespace MagicalLifeAPI.World.Base
                 }
                 else
                 {
-                    List<AbstractVisual> newVisuals = value.GetVisuals();
+                    List<AbstractVisual> newVisuals = value.GetExactComponent<ComponentHasTexture>().Visuals;
 
                     if (this.IsVisualDifferent(oldVisuals, newVisuals))
                     {
                         this.RemoveVisual(oldVisuals);
                     }
-                    this.CompositeRenderer.AddVisuals(newVisuals);
+                    this.GetExactComponent<ComponentRenderer>().AddVisuals(newVisuals);
                 }
 
                 this.resources = value;
+
+                this.IsWalkable = (this.resources == null);
             }
         }
 
@@ -101,9 +126,6 @@ namespace MagicalLifeAPI.World.Base
         [ProtoMember(7)]
         public ActionSelected ImpendingAction { get; set; }
 
-        [ProtoMember(8)]
-        public abstract ComponentRenderer CompositeRenderer { get; set; }
-
         public readonly int FootStepSound;
 
         /// <summary>
@@ -111,17 +133,24 @@ namespace MagicalLifeAPI.World.Base
         /// </summary>
         /// <param name="location">The 3D location of this tile in the map.</param>
         /// <param name="movementCost">This value is the movement cost of walking on this tile. It should be between 1 and 100</param>
-        protected Tile(Point2D location, int movementCost, int footStepSound)
+        protected Tile(Point2D location, int dimension, int movementCost, int footStepSound)
+            : base(true)
         {
-            this.MapLocation = location;
+            ComponentSelectable selectable = new ComponentSelectable(SelectionType.Tile);
+            selectable.MapLocation = location;
+            selectable.Dimension = dimension;
+
+            this.AddComponent(selectable);
+            this.AddComponent(new ComponentRenderer());
+
+            this.IsWalkable = true;
             this.MovementCost = movementCost;
             Tile.TileCreatedHandler(new TileEventArgs(this));
-            this.IsWalkable = true;
             this.FootStepSound = footStepSound;
         }
 
-        protected Tile(int x, int y, int movementCost, int footStepSound)
-            : this(new Point2D(x, y), movementCost, footStepSound)
+        protected Tile(int x, int y, int dimension, int movementCost, int footStepSound)
+            : this(new Point2D(x, y), dimension, movementCost, footStepSound)
         {
         }
 
@@ -160,7 +189,7 @@ namespace MagicalLifeAPI.World.Base
         {
             foreach (AbstractVisual item in visuals)
             {
-                this.CompositeRenderer.RenderQueue.Remove(item);
+                this.GetExactComponent<ComponentRenderer>().RenderQueue.Remove(item);
             }
         }
 
@@ -185,11 +214,6 @@ namespace MagicalLifeAPI.World.Base
         /// </summary>
         /// <returns></returns>
         public abstract string GetName();
-
-        public override SelectionType InGameObjectType(Selectable selectable)
-        {
-            return SelectionType.Tile;
-        }
 
         private bool IsVisualDifferent(List<AbstractVisual> visual, List<AbstractVisual> visual2)
         {

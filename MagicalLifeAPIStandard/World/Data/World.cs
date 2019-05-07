@@ -23,6 +23,7 @@ namespace MagicalLifeAPI.World.Data
         public static List<Dimension> Dimensions { get; set; } = new List<Dimension>();
 
         public static EngineMode Mode { get; set; }
+
         public static object Data { get; set; }
 
         /// <summary>
@@ -104,10 +105,10 @@ namespace MagicalLifeAPI.World.Data
         /// <param name="chunkHeight"></param>
         /// <param name="depth"></param>
         /// <param name="generator"></param>
-        public static void Initialize(int chunkWidth, int chunkHeight, DimensionGenerator generator)
+        public static void Initialize(int chunkWidth, int chunkHeight, DimensionGenerator generator, string dimensionName)
         {
             Random r = new Random();
-            Dimension zero = new Dimension("First Reality", generator.GenerateWorld(chunkWidth, chunkHeight, r));
+            new Dimension("First Reality", generator.Generate(chunkWidth, chunkHeight, dimensionName, r));
             WorldStorage.SerializeWorld(WorldStorage.SaveName, new WorldDiskSink());
         }
 

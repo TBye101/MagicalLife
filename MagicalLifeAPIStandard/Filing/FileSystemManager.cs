@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 
@@ -20,6 +21,11 @@ namespace MagicalLifeAPI.Filing
         public static string SaveDirectory { get; private set; }
 
         /// <summary>
+        /// The directory that mods are stored in.
+        /// </summary>
+        public static string ModDirectory { get; private set; }
+
+        /// <summary>
         /// The directory the main executable is in.
         /// </summary>
         public static string RootDirectory { get; set; }
@@ -30,6 +36,30 @@ namespace MagicalLifeAPI.Filing
 
             DirectoryInfo savePath = Directory.CreateDirectory(FileSystemManager.RootDirectory + Path.DirectorySeparatorChar + "Save");
             SaveDirectory = savePath.FullName;
+            DirectoryInfo modPath = Directory.CreateDirectory(FileSystemManager.RootDirectory + Path.DirectorySeparatorChar + "Mods");
+            ModDirectory = modPath.FullName;
+            MoveCoreMod();
+        }
+
+        /// <summary>
+        /// Moves the core Magical Life mod into the mods folder if it is discovered.
+        /// </summary>
+        private static void MoveCoreMod()
+        {
+            Assembly currentAssembly = Assembly.GetExecutingAssembly();
+            UriBuilder uri = new UriBuilder(currentAssembly.CodeBase);
+            string unescaped = Uri.UnescapeDataString(uri.Path);
+            DirectoryInfo directory = new DirectoryInfo(Path.GetDirectoryName(unescaped));
+            IEnumerable<FileInfo> files = directory.EnumerateFiles("*.dll");
+
+            foreach (FileInfo item in files)
+            {
+                if (item.Name == "MagicalLifeCoreMod.dll")
+                {
+                    item.CopyTo(ModDirectory + Path.DirectorySeparatorChar + "MagicalLifeCoreMod.dll", true);
+                    break;
+                }
+            }
         }
 
         /// <summary>

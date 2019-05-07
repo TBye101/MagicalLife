@@ -31,7 +31,7 @@ namespace MagicalLifeAPI.DataTypes
 
         public bool Equals(Point2DFloat other)
         {
-             return Math.Abs(other.X - X) < 0.00001f && Math.Abs(other.Y - Y) < 0.00001f;
+            return Math.Abs(other.X - X) < 0.00001f && Math.Abs(other.Y - Y) < 0.00001f;
         }
 
         public override bool Equals(object obj)
@@ -45,7 +45,7 @@ namespace MagicalLifeAPI.DataTypes
 
         public override int GetHashCode()
         {
-            return (int) X ^ (int) Y;
+            return (int)X ^ (int)Y;
         }
 
         public static bool operator ==(Point2DFloat left, Point2DFloat right)

@@ -1,10 +1,8 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Components;
 using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Registry.ItemRegistry;
-using MagicalLifeAPI.Visual.Rendering;
-using MagicalLifeAPI.World.Items;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
@@ -16,9 +14,7 @@ namespace MagicalLifeAPI.World.Base
     /// Represents almost everything in a movable/harvested form.
     /// </summary>
     [ProtoContract]
-    [ProtoInclude(7, typeof(StoneRubble))]
-    [ProtoInclude(8, typeof(Log))]
-    public abstract class Item : HasTexture, IRenderable
+    public abstract class Item : HasComponents, IEquatable<Item>, IEquatable<object>
     {
         /// <summary>
         /// The name of this <see cref="Item"/>.
@@ -27,74 +23,123 @@ namespace MagicalLifeAPI.World.Base
         public string Name { get; }
 
         /// <summary>
-        /// The description and lore of this item. Is not revealed until the item has been identified, unless it never needed identification.
+        /// The name of the mod this item is from.
         /// </summary>
         [ProtoMember(2)]
+        public string ModFrom { get; }
+
+        /// <summary>
+        /// The description and lore of this item. Is not revealed until the item has been identified, unless it never needed identification.
+        /// </summary>
+        [ProtoMember(3)]
         public List<string> Lore { get; set; }
 
         /// <summary>
         /// The maximum number of this item that may be contained in the same stack.
         /// Must be greater than or equal to one.
         /// </summary>
-        [ProtoMember(3)]
+        [ProtoMember(4)]
         public int StackableLimit { get; set; }
 
         /// <summary>
         /// How many identical items are currently being clumped and held be this class.
         /// </summary>
-        [ProtoMember(4)]
+        [ProtoMember(5)]
         public int CurrentlyStacked { get; set; }
+
+        private int _itemID = int.MinValue;
 
         /// <summary>
         /// The ID that describes this item to the <see cref="ItemRegistry"/>.
         /// </summary>
-        [ProtoMember(5)]
-        public int ItemID { get; private set; }
-
         [ProtoMember(6)]
+        public int ItemID
+        {
+            get
+            {
+                if (this._itemID == int.MinValue)
+                {
+                    this._itemID = ItemRegistry.ItemToID[this];
+                }
+                return this._itemID;
+            }
+
+            private set
+            {
+                this._itemID = value;
+            }
+        }
+
+        [ProtoMember(7)]
         public string TextureName { get; set; }
 
-        [ProtoMember(10)]
-        public int Durability { get; set; }
+        [ProtoMember(8)]
+        public double ItemWeight { get; set; }
 
         [ProtoMember(9)]
-        public double ItemWeight { get; set; }
+        public Guid ID { get; set; }
+
+        /// <summary>
+        /// The ID of the job that this item is reserved for.
+        /// Empty Guid signifies that this item is not reserved for a job.
+        /// </summary>
+        [ProtoMember(10)]
+        public Guid ReservedID { get; set; }
 
         /// <summary>
         ///
         /// </summary>
         /// <param name="name">The display name of the item.</param>
-        /// <param name="durability">The durability of the item.</param>
         /// <param name="lore">Any text accompanying the item.</param>
         /// <param name="location">The location of this item.</param>
         /// <param name="stackableLimit">How many items of this kind can be in one stack.</param>
         /// <param name="count">How many of this item to create into a stack.</param>
         /// <param name="itemID">The ID of this item.</param>
-        protected Item(string name, int durability, List<string> lore, int stackableLimit, int count, Type itemType, string textureName, double itemWeight)
+        protected Item(string name, List<string> lore, int stackableLimit, int count, string textureName, double itemWeight, string modFrom)
+            : base(true)
         {
             this.Name = name;
-            this.Durability = durability;
+            this.ModFrom = modFrom;
             this.Lore = lore;
             this.StackableLimit = stackableLimit;
             this.CurrentlyStacked = count;
-            this.ItemID = ItemRegistry.ItemTypeID.First(x => x.Value == itemType).Key;//slow
-            this.TextureIndex = AssetManager.GetTextureIndex(textureName);
             this.TextureName = textureName;
-            if (this.CurrentlyStacked < 1)
-            {
-                throw new ArgumentOutOfRangeException(nameof(count), "Error: Cannot have an item with 0 items");
-            }
-            if (this.StackableLimit < 1)
-            {
-                throw new ArgumentOutOfRangeException(nameof(stackableLimit), "Error: Must be able to stack at least one item");
-            }
-            this.TextureIndex = AssetManager.GetTextureIndex(this.TextureName);
             this.ItemWeight = itemWeight;
+            this.ID = Guid.NewGuid();
+            this.ReservedID = Guid.Empty;
+            this.InitializeComponents();
+            this.Validate();
         }
 
         protected Item()
         {
             //Protobuf-net constructor
+        }
+
+        private void InitializeComponents()
+        {
+            int textureIndex = AssetManager.GetTextureIndex(this.TextureName);
+
+            ComponentHasTexture textureComponent = new ComponentHasTexture(false);
+            textureComponent.Visuals.Add(new StaticTexture(textureIndex, RenderLayer.Items));
+
+            this.AddComponent(new ComponentHasTexture(false));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException">Is thrown when there is less than one item stacked, or the stackable limit is less than one.</exception>
+        protected internal void Validate()
+        {
+            if (this.CurrentlyStacked < 1)
+            {
+                throw new ArgumentOutOfRangeException("Error: Cannot have an item with 0 items");
+            }
+            if (this.StackableLimit < 1)
+            {
+                throw new ArgumentOutOfRangeException("Error: Must be able to stack at least one item");
+            }
         }
 
         /// <summary>
@@ -144,7 +189,7 @@ namespace MagicalLifeAPI.World.Base
         {
             if (originalItem.CurrentlyStacked <= firstItemSize)
             {
-                throw new ArgumentException(string.Format("{0} is greater than {1}, the amount originally stacked.",firstItemSize,originalItem.CurrentlyStacked));
+                throw new ArgumentException(string.Format("{0} is greater than {1}, the amount originally stacked.", firstItemSize, originalItem.CurrentlyStacked));
             }
             else
             {
@@ -159,6 +204,42 @@ namespace MagicalLifeAPI.World.Base
             }
         }
 
-        public abstract List<AbstractVisual> GetVisuals();
+        /// <summary>
+        /// Return a deep copy of the current item.
+        /// </summary>
+        /// <param name="amouont">The amount of the item to be created via deep copy.</param>
+        /// <returns></returns>
+        public abstract Item GetDeepCopy(int amount);
+
+        /// <summary>
+        /// Returns true if the items are of the same type.
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public bool Equals(Item other)
+        {
+            return other.GetType().Equals(this.GetType());
+        }
+
+        public override bool Equals(object obj)
+        {
+            Item item = obj as Item;
+            if (item == null)
+            {
+                return false;
+            }
+            else
+            {
+                return this.Equals(item);
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            int hash = (this.Name != null ? this.Name.GetHashCode() : 0);
+            hash = (hash * 396) ^ (this.ModFrom != null ? this.ModFrom.GetHashCode() : 0);
+            hash = (hash * 396) ^ (this.StackableLimit.GetHashCode());
+            return hash;
+        }
     }
 }

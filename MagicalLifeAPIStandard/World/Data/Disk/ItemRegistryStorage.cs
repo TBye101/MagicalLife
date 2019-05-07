@@ -11,19 +11,19 @@ namespace MagicalLifeAPI.World.Data.Disk
     /// </summary>
     public class ItemRegistryStorage
     {
-        public void SaveItemRegistry(ItemRegistry registry, AbstractWorldSink sink, Guid dimensionID)
+        internal void SaveItemRegistry(ItemRegistry registry, AbstractWorldSink sink, Guid dimensionID)
         {
             string result = WorldStorage.DimensionPaths[dimensionID];
             sink.Receive(registry, result + Path.DirectorySeparatorChar + dimensionID + ".itemreg", dimensionID);
         }
 
-        public void SaveItemRegistry(Dimension dimension, AbstractWorldSink sink)
+        internal void SaveItemRegistry(Dimension dimension, AbstractWorldSink sink)
         {
             string result = WorldStorage.DimensionPaths[dimension.ID];
             sink.Receive(dimension.Items, result + Path.DirectorySeparatorChar + dimension.ID + ".itemreg", dimension.ID);
         }
 
-        public ItemRegistry LoadItemRegistry(Guid dimensionID)
+        internal ItemRegistry LoadItemRegistry(Guid dimensionID)
         {
             using (StreamReader sr = new StreamReader(WorldStorage.DimensionPaths[dimensionID] + Path.DirectorySeparatorChar + dimensionID + ".itemreg"))
             {

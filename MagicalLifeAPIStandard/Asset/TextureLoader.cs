@@ -38,6 +38,15 @@ namespace MagicalLifeAPI.Asset
 
         #endregion GUI
 
+        #region Crops
+
+        public static readonly string CornSeedling = "Textures/Resource/Plants/Crops/CornSeedling";
+        public static readonly string CornGrowth1 = "Textures/Resource/Plants/Crops/CornGrowth1";
+        public static readonly string CornGrowth2 = "Textures/Resource/Plants/Crops/CornGrowth2";
+        public static readonly string CornGrowth3 = "Textures/Resource/Plants/Crops/CornFullGrowth";
+
+        #endregion Crops
+
         #region TileTextures
 
         public static readonly string TextureDirt1 = "Textures/Tile/Dirt_01";
@@ -78,6 +87,10 @@ namespace MagicalLifeAPI.Asset
         public static readonly string TextureStoneRubble2 = "Textures/Items/StoneRubble_02";
 
         public static readonly string LogTexture1 = "Textures/Items/Log_1";
+
+        public static readonly string TextureWoodPlank = "Textures/Items/WoodPlank";
+
+        public static readonly string CornEar = "Textures/Items/Food/CornEar";
 
         #endregion Items
 
@@ -146,6 +159,7 @@ namespace MagicalLifeAPI.Asset
             this.TexturesToLoad.Add(TextureStoneRubble1);
             this.TexturesToLoad.Add(TextureStoneRubble2);
             this.TexturesToLoad.Add(LogTexture1);
+            this.TexturesToLoad.Add(TextureWoodPlank);
 
             this.TexturesToLoad.Add(OakStump);
             this.TexturesToLoad.Add(MapleStump);

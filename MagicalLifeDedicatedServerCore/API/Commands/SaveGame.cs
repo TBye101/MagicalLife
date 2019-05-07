@@ -8,17 +8,17 @@ namespace MagicalLifeDedicatedServer.API.Commands
 {
     public class SaveGame : ICommand
     {
-        public string getHelp()
+        public string GetHelp()
         {
             return DedicatedServer.SaveGameCommandDesc;
         }
 
-        public string getName()
+        public string GetName()
         {
             return "SaveGame";
         }
 
-        public void run(List<string> input)
+        public void Run(List<string> input)
         {
             WorldStorage.SerializeWorld("Server World", new WorldDiskSink());
         }

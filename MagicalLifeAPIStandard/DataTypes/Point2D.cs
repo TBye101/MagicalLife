@@ -8,6 +8,8 @@ namespace MagicalLifeAPI.DataTypes
     [ProtoContract]
     public class Point2D : IEquatable<Point2D>
     {
+        public static readonly Point2D Zero = new Point2D(0, 0);
+
         [ProtoMember(1)]
         public int X { get; set; }
 
@@ -78,7 +80,7 @@ namespace MagicalLifeAPI.DataTypes
 
         public virtual bool Equals(Point2D other)
         {
-            return other.X == X && other.Y == Y;
+            return other.X == this.X && other.Y == this.Y;
         }
     }
 }

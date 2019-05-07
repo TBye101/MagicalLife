@@ -17,9 +17,9 @@ namespace MagicalLifeAPI.Networking.Serialization
         /// <summary>
         /// The messages that need to be registered.
         /// </summary>
-        private readonly List<Type> Messages = new List<Type>();
+        internal List<Type> Messages { get; set; } = new List<Type>();
 
-        private readonly List<ITeachSerialization> Teachers = new List<ITeachSerialization>();
+        internal List<ITeachSerialization> Teachers { get; set; } = new List<ITeachSerialization>();
 
         public ProtoTypeLoader()
         {
@@ -67,7 +67,10 @@ namespace MagicalLifeAPI.Networking.Serialization
                 baseMessageType.AddSubType(i, this.Messages[i - 3]);
 
                 BaseMessage sample = (BaseMessage)Activator.CreateInstance(this.Messages[i - 3]);
-                ProtoUtil.IDToMessage.Add(sample.ID, this.Messages[i - 3]);
+                if (!ProtoUtil.IDToMessage.ContainsKey(sample.ID))
+                {
+                    ProtoUtil.IDToMessage.Add(sample.ID, this.Messages[i - 3]);
+                }
 
                 i++;
             }

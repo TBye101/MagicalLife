@@ -1,7 +1,7 @@
 ﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.Filing;
 using MagicalLifeAPI.Load;
+using MagicalLifeAPI.Mod;
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
@@ -58,16 +58,14 @@ namespace MagicalLifeServer
 
                 case EngineMode.ServerOnly:
                     SettingsManager.Initialize();
-
                     load.LoadAll(ref msg, new List<IGameLoader>()
                     {
-                        new ItemLoader(),
                         new TextureLoader(),
-                        new SpecificTextureLoader(),
+                        new MainLoad(),
                         new ProtoTypeLoader(),
-                        new MainLoad()
+                        new ModLoader(),
+                        new ProtoManager()
                     });
-
                     break;
 
                 default:
@@ -113,17 +111,23 @@ namespace MagicalLifeServer
                 foreach (KeyValuePair<Guid, System.Net.Sockets.Socket> item
                     in ServerSendRecieve.TCPServer.PlayerToSocket)
                 {
-                    WorldUtil.SpawnRandomCharacter(item.Key, 0);
-                    WorldUtil.SpawnRandomCharacter(item.Key, 0);
-                    WorldUtil.SpawnRandomCharacter(item.Key, 0);
+                    if (!WorldUtil.PlayerHasCharacter(item.Key))
+                    {
+                        WorldUtil.SpawnRandomCharacter(item.Key, 0);
+                        WorldUtil.SpawnRandomCharacter(item.Key, 0);
+                        WorldUtil.SpawnRandomCharacter(item.Key, 0);
+                    }
                 }
             }
 
             if (World.Mode == EngineMode.ServerAndClient)
             {
-                WorldUtil.SpawnRandomCharacter(SettingsManager.PlayerSettings.Settings.PlayerID, 0);
-                WorldUtil.SpawnRandomCharacter(SettingsManager.PlayerSettings.Settings.PlayerID, 0);
-                WorldUtil.SpawnRandomCharacter(SettingsManager.PlayerSettings.Settings.PlayerID, 0);
+                if (!WorldUtil.PlayerHasCharacter(SettingsManager.PlayerSettings.Settings.PlayerID))
+                {
+                    WorldUtil.SpawnRandomCharacter(SettingsManager.PlayerSettings.Settings.PlayerID, 0);
+                    WorldUtil.SpawnRandomCharacter(SettingsManager.PlayerSettings.Settings.PlayerID, 0);
+                    WorldUtil.SpawnRandomCharacter(SettingsManager.PlayerSettings.Settings.PlayerID, 0);
+                }
             }
 
             SetupTick();

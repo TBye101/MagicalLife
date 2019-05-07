@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace MagicalLifeAPI.Components.Resource
 {
     [ProtoContract]
-    public class DropWhenCompletelyHarvested : AbstractHarvestable
+    public class DropWhenCompletelyHarvested : ComponentHarvestable
     {
         [ProtoMember(1)]
         protected List<Item> Items { get; set; }
@@ -39,13 +39,15 @@ namespace MagicalLifeAPI.Components.Resource
 
         protected DropWhenCompletelyHarvested()
         {
+            //Protobuf-net constructor
         }
 
         public override List<Item> Harvested(Point2D position)
         {
             if (!string.IsNullOrWhiteSpace(this.CompletionSound))
             {
-                FMODUtil.RaiseEvent(this.CompletionSound, "", 0, position);
+                Point2D screenPosition = new Point2D(position.X * Tile.GetTileSize().X, position.Y * Tile.GetTileSize().Y);
+                FMODUtil.RaiseEvent(this.CompletionSound, "", 0, screenPosition);
             }
             return this.Items;
         }
@@ -54,7 +56,8 @@ namespace MagicalLifeAPI.Components.Resource
         {
             if (!string.IsNullOrWhiteSpace(this.HarvestSound))
             {
-                FMODUtil.RaiseEvent(this.HarvestSound, "", 0, position);
+                Point2D screenPosition = new Point2D(position.X * Tile.GetTileSize().X, position.Y * Tile.GetTileSize().Y);
+                FMODUtil.RaiseEvent(this.HarvestSound, "", 0, screenPosition);
             }
             return default;
         }

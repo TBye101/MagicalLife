@@ -14,7 +14,7 @@ namespace MagicalLifeAPI.Sound
     {
         private static FMOD.Studio.System _System;
 
-        public static FMOD.Studio.System System
+        internal static FMOD.Studio.System System
         {
             get
             {
@@ -28,28 +28,28 @@ namespace MagicalLifeAPI.Sound
 
         private static EventDescription[] MainEvents;
 
-        public static void Update()
+        internal static void Update()
         {
             Point2D camera = RenderInfo.GetCameraCenter();
 
             _3D_ATTRIBUTES attributes = new _3D_ATTRIBUTES();
-            attributes.forward.z = 1.0f;
+            attributes.forward.z = RenderInfo.Camera2D.Zoom;
             attributes.up.y = 1.0f;
             attributes.position.x = camera.X;
-            attributes.position.z = camera.Y;
+            attributes.position.y = camera.Y;
 
             System.setListenerAttributes(0, attributes);
 
             System.update();
         }
 
-        public static void Init()
+        internal static void Init()
         {
             FMOD.Studio.System.create(out _System);
             _System.getLowLevelSystem(out FMOD.System low);
 
             low.setSoftwareFormat(0, FMOD.SPEAKERMODE._5POINT1, 0);
-            _System.initialize(64, FMOD.Studio.INITFLAGS.NORMAL, FMOD.INITFLAGS.NORMAL, IntPtr.Zero);
+            _System.initialize(64, FMOD.Studio.INITFLAGS.LIVEUPDATE, FMOD.INITFLAGS.NORMAL, IntPtr.Zero);
             _System.loadBankFile(FileSystemManager.RootDirectory + "/Content/Banks/Master_Bank.bank", FMOD.Studio.LOAD_BANK_FLAGS.NORMAL, out Bank MainBank);
             _System.loadBankFile(FileSystemManager.RootDirectory + "/Content/Banks/Master_Bank.strings.bank", LOAD_BANK_FLAGS.NORMAL, out Bank MainBankStrings);
             MainBank.getEventList(out MainEvents);
@@ -81,27 +81,31 @@ namespace MagicalLifeAPI.Sound
             instance.start();
         }
 
+        /// <param name="screenPosition">The position on screen to play at. This is not adjusted for where the user is looking.</param>
         public static void RaiseEvent(string eventPath, string parameterName, int value, Point2D screenPosition)
         {
             _System.getEvent(eventPath, out EventDescription _event);
             _event.createInstance(out EventInstance instance);
-            instance.setParameterValue(parameterName, value);
+
+            if (parameterName != string.Empty)
+            {
+                instance.setParameterValue(parameterName, value);
+            }
 
             _3D_ATTRIBUTES attributes = new _3D_ATTRIBUTES();
+
             attributes.forward.z = 1.0f;
             attributes.up.y = 1.0f;
+
+            attributes.forward.y = 1.0f;
+            attributes.up.z = 1.0f;
+
             attributes.position.x = screenPosition.X;
-            attributes.position.z = screenPosition.Y;
-            instance.setProperty(EVENT_PROPERTY.MINIMUM_DISTANCE, 300);
-            instance.setProperty(EVENT_PROPERTY.MAXIMUM_DISTANCE, 1600);
+            attributes.position.y = screenPosition.Y;
 
             instance.set3DAttributes(attributes);
             instance.start();
-        }
-
-        public static void Test()
-        {
-            //Temp method
+            instance.release();
         }
 
         public static void DumpEventInformation()

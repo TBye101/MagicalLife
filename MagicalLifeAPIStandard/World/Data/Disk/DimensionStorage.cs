@@ -16,7 +16,7 @@ namespace MagicalLifeAPI.World.Data.Disk
         /// </summary>
         public void PrepareForDimension(Guid dimensionID)
         {
-            DirectoryInfo info = Directory.CreateDirectory(WorldStorage.GameSaveRoot + Path.DirectorySeparatorChar + dimensionID);
+            DirectoryInfo info = Directory.CreateDirectory(WorldStorage.DimensionSaveFolder + Path.DirectorySeparatorChar + dimensionID);
             WorldStorage.DimensionPaths.Add(dimensionID, info.FullName);
         }
 
@@ -25,7 +25,7 @@ namespace MagicalLifeAPI.World.Data.Disk
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Dimension Load(Guid id)
+        internal Dimension Load(Guid id)
         {
             Dimension dimension; //need name, and chunks
             DimensionHeader header = this.LoadDimensionHeader(id);
@@ -43,7 +43,7 @@ namespace MagicalLifeAPI.World.Data.Disk
         /// </summary>
         /// <param name="dimension"></param>
         /// <param name="sink"></param>
-        public void Serialize(Dimension dimension, AbstractWorldSink sink)
+        internal void Serialize(Dimension dimension, AbstractWorldSink sink)
         {
             this.SerializeDimensionHeader(dimension, sink);
             this.SerializeItemRegistry(dimension, sink);
@@ -72,7 +72,7 @@ namespace MagicalLifeAPI.World.Data.Disk
         /// <param name="id">The ID of the dimension.</param>
         /// <param name="dimensionRoot">The path to the dimension's root directory.</param>
         /// <returns></returns>
-        public DimensionHeader LoadDimensionHeader(Guid id, string dimensionRoot)
+        internal DimensionHeader LoadDimensionHeader(Guid id, string dimensionRoot)
         {
             using (StreamReader sr = new StreamReader(dimensionRoot + Path.DirectorySeparatorChar + id + ".header"))
             {
@@ -87,7 +87,7 @@ namespace MagicalLifeAPI.World.Data.Disk
         /// </summary>
         /// <param name="id">The ID of the dimension.</param>
         /// <returns></returns>
-        public DimensionHeader LoadDimensionHeader(Guid id)
+        internal DimensionHeader LoadDimensionHeader(Guid id)
         {
             string dimensionRoot = WorldStorage.DimensionPaths[id];
             return this.LoadDimensionHeader(id, dimensionRoot);
@@ -100,7 +100,7 @@ namespace MagicalLifeAPI.World.Data.Disk
             SerializeDimensionHeader(header, sink, dimensionRoot);
         }
 
-        public void SerializeDimensionHeader(DimensionHeader header, AbstractWorldSink sink, string dimensionRoot)
+        internal void SerializeDimensionHeader(DimensionHeader header, AbstractWorldSink sink, string dimensionRoot)
         {
             sink.Receive(header, dimensionRoot + Path.DirectorySeparatorChar + header.ID + ".header", header.ID);
         }

@@ -1,7 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.Rendering.Map;
 using Microsoft.Xna.Framework;
 using System;
@@ -86,7 +84,7 @@ namespace MagicalLifeAPI.Visual.Rendering
         // and adjusts it by the specified amount. If we were at a 1.0f
         // zoom level and specified -0.5f amount it would leave us with
         // 1.0f - 0.5f = 0.5f so everything would be drawn at half size.
-        public void AdjustZoom(float amount)
+        internal void AdjustZoom(float amount)
         {
             this.Zoom += amount;
             if (this.Zoom < 0.25f)

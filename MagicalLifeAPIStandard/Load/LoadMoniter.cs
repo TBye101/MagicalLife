@@ -8,7 +8,7 @@ namespace MagicalLifeAPI.Load
     /// <summary>
     /// Used to handle calculating how many jobs to do, and how many completed.
     /// </summary>
-    public class LoadMoniter
+    internal class LoadMoniter
     {
         /// <summary>
         /// The number of jobs total to do.

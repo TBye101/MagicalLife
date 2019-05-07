@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Components.Resource;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.Util.Reusable;
 using MagicalLifeAPI.World.Base;
@@ -8,6 +9,7 @@ using MagicalLifeAPI.World.Tiles;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 {
@@ -17,8 +19,11 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         [ProtoMember(1)]
         public Point2D Target { get; private set; }
 
+        /// <summary>
+        /// The tillable component of the tile this task is supposed to till.
+        /// </summary>
         [ProtoMember(2)]
-        private ITillable Tillable { get; set; }
+        private ComponentTillable Tillable { get; set; }
 
         [ProtoMember(3)]
         private TickTimer HitTimer { get; set; }
@@ -41,7 +46,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         protected static Dependencies GetDependencies(Guid boundID, Point2D target)
         {
-            List<MagicalTask> deps = new List<MagicalTask>
+            ObservableCollection<MagicalTask> deps = new ObservableCollection<MagicalTask>
             {
                 new BecomeAdjacentTask(boundID, target)
             };
@@ -52,7 +57,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         public override void MakePreparations(Living living)
         {
             Tile tile = World.Data.World.GetTile(living.Dimension, this.Target.X, this.Target.Y);
-            this.Tillable = (ITillable)tile;
+            this.Tillable = tile.GetComponent<ComponentTillable>();
         }
 
         public override void Reset()
@@ -69,21 +74,21 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
                 List<Item> drop = null;
                 if (tile is Grass)
                 {
-                    drop = this.Tillable.TillableBehavior.TillSomePercent(.02F, this.Target);
+                    drop = this.Tillable.TillSomePercent(.02F, this.Target);
                 }
                 else if (tile is Dirt)
                 {
-                    drop = this.Tillable.TillableBehavior.TillSomePercent(.07F, this.Target);
+                    drop = this.Tillable.TillSomePercent(.07F, this.Target);
                 }
 
                 if (drop?.Count > 0)
                 {
-                    ItemAdder.AddItem(drop?[0], l.MapLocation, l.Dimension);
+                    ItemAdder.AddItem(drop[0], l.GetExactComponent<ComponentSelectable>().MapLocation, l.Dimension);
                 }
 
-                if (this.Tillable.TillableBehavior.PercentTilled > 1)
+                if (this.Tillable.PercentTilled > 1)
                 {
-                    Tile tillableTile = new TilledDirt(new Point2D(this.Target.X, this.Target.Y));
+                    Tile tillableTile = new TilledDirt(new Point2D(this.Target.X, this.Target.Y), this.Dimension);
                     World.Data.World.Dimensions[this.Dimension][this.Target.X, this.Target.Y] = tillableTile;
                     this.CompleteTask();
                 }
@@ -98,6 +103,11 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             Tile tile = World.Data.World.GetTile(dimension, this.Target.X, this.Target.Y);
             tile.Resources = null;
             tile.ImpendingAction = ActionSelected.None;
+        }
+
+        public override bool CreateDependencies(Living l)
+        {
+            return true;
         }
     }
 }

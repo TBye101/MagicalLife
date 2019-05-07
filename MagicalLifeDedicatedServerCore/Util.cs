@@ -34,11 +34,11 @@ namespace MagicalLifeDedicatedServer
 
             foreach (ICommandModule item in modules)
             {
-                MasterLog.DebugWriteLine("Discovered server command module: " + item.getFullName());
+                MasterLog.DebugWriteLine("Discovered server command module: " + item.GetFullName());
 
-                foreach (ICommand iitem in item.getCommands())
+                foreach (ICommand iitem in item.GetCommands())
                 {
-                    MasterLog.DebugWriteLine("Found command: " + iitem.getName());
+                    MasterLog.DebugWriteLine("Found command: " + iitem.GetName());
                 }
             }
 

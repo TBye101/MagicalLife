@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
+﻿using MagicalLifeAPI.Components;
+using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.DataTypes.Attribute;
 using MagicalLifeAPI.Entity.AI.Task;
@@ -17,8 +18,7 @@ namespace MagicalLifeAPI.Entity
     /// All living things inherit from this, and utilize it.
     /// </summary>
     [ProtoContract]
-    [ProtoInclude(8, typeof(Humanoid.Human))]
-    public abstract class Living : Selectable
+    public abstract class Living : HasComponents
     {
         /// <summary>
         /// A queue that holds the queued movement steps up for this living creature.
@@ -102,7 +102,10 @@ namespace MagicalLifeAPI.Entity
         /// <param name="creatureName">The name of this specific creature.</param>
         protected Living(int health, double movementSpeed, Point2D location,
             int dimension, Guid playerID, string creatureTypeName, string creatureName)
+            : base(true)
         {
+            this.AddComponent(new ComponentSelectable(SelectionType.Creature));
+
             this.ID = Guid.NewGuid();
             this.PlayerID = playerID;
             this.Initialize(health, movementSpeed, location, dimension);
@@ -112,19 +115,19 @@ namespace MagicalLifeAPI.Entity
             this.Inventory = new Inventory(true);
         }
 
+        protected Living()
+        {
+        }
+
         protected void Initialize(int health, double movementSpeed, Point2D location, int dimension)
         {
             this.Health = new Attribute32(health);
             this.Movement = new AttributeDouble(movementSpeed);
-            this.MapLocation = location;
+            this.GetExactComponent<ComponentSelectable>().MapLocation = location;
             this.TileLocation = new Point2DDouble(location.X, location.Y);
             this.Dimension = dimension;
             LivingCreatedHandler(new LivingEventArg(this, location));
             this.FootStepTimer = new TickTimer(5);
-        }
-
-        protected Living()
-        {
         }
 
         public void AssignTask(MagicalTask task)

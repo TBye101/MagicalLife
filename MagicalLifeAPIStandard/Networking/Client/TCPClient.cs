@@ -9,11 +9,11 @@ namespace MagicalLifeAPI.Networking.Client
     /// </summary>
     public class TCPClient
     {
-        public SimpleTcpClient Client;
+        internal SimpleTcpClient Client;
 
         private MessageBuffer MsgBuffer { get; } = new MessageBuffer();
 
-        public void Start(int port, string ip)
+        internal void Start(int port, string ip)
         {
             this.Client = new SimpleTcpClient();
             this.Client.DataReceived += this.Client_DataReceived;

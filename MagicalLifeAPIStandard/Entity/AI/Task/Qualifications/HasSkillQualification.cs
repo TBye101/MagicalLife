@@ -16,9 +16,19 @@ namespace MagicalLifeAPI.Entity.AI.Task.Qualifications
             this.InternalSkillName = internalSkillName;
         }
 
+        protected HasSkillQualification()
+        {
+            //Protobuf-net constructor
+        }
+
         public override bool IsQualified(Living l)
         {
             return l.CreatureSkills.Find(x => x.InternalName == this.InternalSkillName) != null;
+        }
+
+        public override bool ArePreconditionsMet()
+        {
+            return true;
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Resources.Tree;
+﻿using MagicalLifeAPI.Components.Resource;
+using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 
 namespace MagicalLifeAPI.World.Resources
@@ -8,12 +8,10 @@ namespace MagicalLifeAPI.World.Resources
     /// A base class for all trees.
     /// </summary>
     [ProtoContract]
-    [ProtoInclude(1, typeof(OakTree))]
-    [ProtoInclude(2, typeof(MapleTree))]
-    [ProtoInclude(3, typeof(PineTree))]
-    public abstract class TreeBase : Resource
+    public abstract class TreeBase : Vegetation
     {
-        protected TreeBase(string name, int durability) : base(name, durability)
+        protected TreeBase(string name, int durability, ComponentHarvestable harvestBehavior)
+            : base(name, durability, harvestBehavior)
         {
         }
 

@@ -10,6 +10,7 @@ using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MagicalLifeAPI.World
 {
@@ -60,11 +61,11 @@ namespace MagicalLifeAPI.World
             neighborCandidates.Add(new Point2D(tileLocation.X - 1, tileLocation.Y + 1));
             neighborCandidates.Add(new Point2D(tileLocation.X - 1, tileLocation.Y - 1));
 
-            foreach (Point2D item in neighborCandidates)
+            foreach (Point2D point2D in neighborCandidates)
             {
-                if (DoesTileExist(item, dimension))
+                if (DoesTileExist(point2D, dimension))
                 {
-                    neighbors.Add(item);
+                    neighbors.Add(point2D);
                 }
             }
 
@@ -78,7 +79,7 @@ namespace MagicalLifeAPI.World
         /// <returns></returns>
         public static bool DoesTileExist(Point2D tileLocation, int dimension)
         {
-            return World.Data.World.Dimensions[dimension].DoesTileExist(tileLocation.X, tileLocation.Y);
+            return Data.World.Dimensions[dimension].DoesTileExist(tileLocation.X, tileLocation.Y);
         }
 
         /// <summary>
@@ -169,6 +170,53 @@ namespace MagicalLifeAPI.World
             Chunk chunk = Data.World.GetChunkByTile(dimension, tileLocation.X, tileLocation.Y);
             chunk.GetCreature(tileLocation, out Living creature);
             return creature;
+        }
+
+        /// <summary>
+        /// Determines if a player has a character within the world somewhere.
+        /// </summary>
+        /// <returns></returns>
+        public static bool PlayerHasCharacter(Guid playerID)
+        {
+            foreach (Dimension dimension in Data.World.Dimensions)
+            {
+                for (int x = 0; x < dimension.Width; x++)
+                {
+                    for (int y = 0; y < dimension.Height; y++)
+                    {
+                        Chunk chunk = dimension.GetChunk(x, y);
+                        if (chunk.Creatures.Any(living => living.Value.PlayerID.Equals(playerID)))
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Gets the location of the top left/first tile coordinate from the specified chunk coordinate.
+        /// </summary>
+        /// <param name="chunkCoordinate"></param>
+        /// <returns></returns>
+        public static Point2D GetFirstTileLocation(Point2D chunkCoordinate)
+        {
+            return new Point2D(chunkCoordinate.X * Chunk.Width, chunkCoordinate.Y * Chunk.Height);
+        }
+
+        /// <summary>
+        /// Gets the location of the bottom right/last tile coordinate from the specified chunk coordinate.
+        /// </summary>
+        /// <param name="chunkCoordinate"></param>
+        /// <returns></returns>
+        public static Point2D GetLastTileLocation(Point2D chunkCoordinate)
+        {
+            Point2D first = GetFirstTileLocation(chunkCoordinate);
+            first.X += Chunk.Width - 1;
+            first.Y += Chunk.Height - 1;
+            return first;
         }
     }
 }

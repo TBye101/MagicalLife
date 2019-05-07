@@ -6,9 +6,9 @@ namespace MagicalLifeAPI.Error
     /// <summary>
     /// Reports all exceptions thrown in Magical Life.
     /// </summary>
-    public static class ErrorReporter
+    internal static class ErrorReporter
     {
-        public static void Initialize()
+        internal static void Initialize()
         {
             AppDomain.CurrentDomain.FirstChanceException += CurrentDomain_FirstChanceException;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;

@@ -65,7 +65,6 @@ namespace MagicalLifeClient
             }
 
             TickLoop(ticksBehind + 1);
-            
         }
 
         private static void TickLoop(UInt64 times)

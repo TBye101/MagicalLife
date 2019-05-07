@@ -35,6 +35,22 @@ namespace MagicalLifeAPI.Pathfinding
             PathFinders.Add(star);
         }
 
+        public static void Block(Point2D tile, int dimension)
+        {
+            if (PathFinders.Count > 0)
+            {
+                PathFinders[dimension].RemoveConnections(tile);
+            }
+        }
+
+        public static void UnBlock(Point2D tile, int dimension)
+        {
+            if (PathFinders.Count > 0)
+            {
+                PathFinders[dimension].AddConnections(tile);
+            }
+        }
+
         public static List<PathLink> GetRoute(int dimension, Point2D start, Point2D end)
         {
             return PathFinders[dimension].GetRoute(dimension, start, end);

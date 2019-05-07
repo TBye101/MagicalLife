@@ -8,19 +8,19 @@ namespace MagicalLifeAPI.Filing
     /// </summary>
     public static class SettingsManager
     {
-        public static Setting<AudioSettings> AudioSettings { get; set; }
+        public static Setting<AudioSettings> AudioSettings { get; internal set; }
 
         public static Setting<Keybindings> Keybindings { get; set; }
 
-        public static Setting<MainWindowSettings> WindowSettings { get; set; }
+        public static Setting<MainWindowSettings> WindowSettings { get; internal set; }
 
-        public static Setting<PlayerSettings> PlayerSettings { get; set; }
+        public static Setting<PlayerSettings> PlayerSettings { get; internal set; }
 
-        public static Setting<UniversalSettings> UniversalSettings { get; set; }
+        public static Setting<UniversalSettings> UniversalSettings { get; internal set; }
 
         private static readonly string SettingFolder = FileSystemManager.RootDirectory + Path.DirectorySeparatorChar + "Config";
 
-        public static void Initialize()
+        internal static void Initialize()
         {
             Directory.CreateDirectory(SettingFolder);
             AudioSettings = new Setting<AudioSettings>(SettingFolder + Path.DirectorySeparatorChar + "Audio.json", new AudioSettings());

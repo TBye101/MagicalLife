@@ -150,6 +150,9 @@
   <data name="Stone" xml:space="preserve">
     <value>Stone</value>
   </data>
+  <data name="StoneName" xml:space="preserve">
+    <value>Stone</value>
+  </data>
   <data name="StoneRubble" xml:space="preserve">
     <value>Stone Rubble</value>
   </data>
