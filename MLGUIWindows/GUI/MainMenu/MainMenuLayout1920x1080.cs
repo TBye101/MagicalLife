@@ -28,21 +28,21 @@
         /// <summary>
         /// The y position of the top of the host game button.
         /// </summary>
-        public static readonly int LoadGameButtonY = 200;
+        public static readonly int LoadGameButtonY = 170;
 
         /// <summary>
         /// The y position of the top of the join game button.
         /// </summary>
-        public static readonly int JoinGameButtonY = 300;
+        public static readonly int JoinGameButtonY = 240;
 
         /// <summary>
         /// The y position of the top of the settings button.
         /// </summary>
-        public static readonly int SettingButtonY = 350;
+        public static readonly int SettingButtonY = 310;
 
         /// <summary>
         /// The y position of the top of the quit button.
         /// </summary>
-        public static readonly int QuitButtonY = 400;
+        public static readonly int QuitButtonY = 380;
     }
 }

@@ -80,7 +80,7 @@ namespace MagicalLifeAPI.DataTypes
 
         public virtual bool Equals(Point2D other)
         {
-            return other.X == X && other.Y == Y;
+            return other.X == this.X && other.Y == this.Y;
         }
     }
 }

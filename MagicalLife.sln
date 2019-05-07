@@ -15,8 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Vision.md = Vision.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeGUIWindows", "MagicalLifeGUIWindows\MagicalLifeGUIWindows.csproj", "{9096A50A-058B-40F4-80A7-3C4D8725B658}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Included DLL", "Included DLL", "{010D1A58-0BFA-4DE4-818D-CE960B66C4CE}"
 	ProjectSection(SolutionItems) = preProject
 		Included DLL\fmod64.dll = Included DLL\fmod64.dll
@@ -51,15 +49,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9096A50A-058B-40F4-80A7-3C4D8725B658}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{9096A50A-058B-40F4-80A7-3C4D8725B658}.Debug|Any CPU.Build.0 = Debug|x64
-		{9096A50A-058B-40F4-80A7-3C4D8725B658}.Debug|x64.ActiveCfg = Debug|x64
-		{9096A50A-058B-40F4-80A7-3C4D8725B658}.Debug|x86.ActiveCfg = Debug|x86
-		{9096A50A-058B-40F4-80A7-3C4D8725B658}.Debug|x86.Build.0 = Debug|x86
-		{9096A50A-058B-40F4-80A7-3C4D8725B658}.Release|Any CPU.ActiveCfg = Release|x86
-		{9096A50A-058B-40F4-80A7-3C4D8725B658}.Release|x64.ActiveCfg = Release|x64
-		{9096A50A-058B-40F4-80A7-3C4D8725B658}.Release|x86.ActiveCfg = Release|x86
-		{9096A50A-058B-40F4-80A7-3C4D8725B658}.Release|x86.Build.0 = Release|x86
 		{4715EEEC-40D9-4243-9442-BBD0B828A428}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4715EEEC-40D9-4243-9442-BBD0B828A428}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4715EEEC-40D9-4243-9442-BBD0B828A428}.Debug|x64.ActiveCfg = Debug|Any CPU

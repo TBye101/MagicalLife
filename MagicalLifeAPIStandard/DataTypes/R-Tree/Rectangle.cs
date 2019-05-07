@@ -398,7 +398,7 @@ namespace MagicalLifeAPI.DataTypes.R
 
             for (int i = 0; i < a1.Length; i++)
             {
-                if (Math.Abs(a1[i] - a2[i]) < 0.000000001f)
+                if (Math.Abs(a1[i] - a2[i]) > 0.000000001f)
                 {
                     return false;
                 }
