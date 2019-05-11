@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{09293283-6E6D-4652-A633-5B70452244DA}"
 	ProjectSection(SolutionItems) = preProject
 		CHANGELOG.md = CHANGELOG.md
+		Combat System Design.txt = Combat System Design.txt
 		Credit.txt = Credit.txt
 		NetworkingDesign.txt = NetworkingDesign.txt
 		Notes.txt = Notes.txt

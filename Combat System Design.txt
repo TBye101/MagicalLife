@@ -1,0 +1,25 @@
+Combat:
+
+*Damage
+	*Have a concept of a damage type, and allow mods to add types of damage
+	*Have various default damage types such as crushing, piercing, fire, magic, poison...
+
+*Dealing damage
+	*Every weapon/offensive ability has a damage type associated with it
+	*Has some sort of numerical damage amount to deal to the target
+
+*Taking damage
+	*Concept of resistances/armor to individual/multiple types of damage
+		*Ex: Eldrich armor gives 25% damage reduction from crushing and fire damage
+	*Damage not reduced is subtracted from health
+*Timing:
+	*creature can only use one ability/attack at a time
+	*Some attacks should have cooldowns
+*Creatures
+	*Have attacks/abilities (Should be some sort of component on the creature)
+*Abilities/Spells/Attacks
+	*Should have an effect range (Range that they can hit a target area/point from)
+	*AOE spells/abilities/attacks should have a diamater/area defined that they effect
+	*Should have a damage type assigned
+	*Should have an amount of the damage the attack/spell/ability does
+	*May have a cooldown/ammo/cost to use
