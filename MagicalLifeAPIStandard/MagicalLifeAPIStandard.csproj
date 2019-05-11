@@ -67,7 +67,4 @@
       <LastGenOutput>Lang.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Networking\Discord\SDK\" />
-  </ItemGroup>
 </Project>
