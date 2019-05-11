@@ -17,7 +17,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
         private void QuitButton_ClickEvent(object sender, Reusable.Event.ClickEventArgs e)
         {
             FMODUtil.RaiseEvent(SoundsTable.UIClick);
-            UniversalEvents.GameExitHandler();
+            Uni.GameExitHandler();
         }
 
         private static Rectangle GetLocation()

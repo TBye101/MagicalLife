@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
+using MagicalLifeAPI.Universal;
 
 namespace MagicalLifeClient.Message
 {
@@ -13,7 +14,7 @@ namespace MagicalLifeClient.Message
         public override void HandleMessage(BaseMessage message)
         {
             ServerTickMessage serverTickMessage = (ServerTickMessage)message;
-            Client.Tick(serverTickMessage);
+            Uni.Tick(serverTickMessage);
         }
     }
 }

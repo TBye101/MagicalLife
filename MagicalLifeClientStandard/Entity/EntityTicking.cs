@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.Entity.Movement;
+using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Data;
 using System;
 using System.Collections.Generic;
@@ -17,10 +18,10 @@ namespace MagicalLifeClient.Entity
 
         public static void Initialize()
         {
-            Client.ClientTick += Client_ClientTick;
+            Uni.TickEvent += Uni_TickEvent;
         }
 
-        private static void Client_ClientTick(object sender, ulong e)
+        private static void Uni_TickEvent(object sender, ulong e)
         {
             lock (SyncObject)
             {

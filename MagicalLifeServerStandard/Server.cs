@@ -7,6 +7,7 @@ using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Networking.Server;
 using MagicalLifeAPI.Time;
+using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.Util.Reusable;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
@@ -24,11 +25,6 @@ namespace MagicalLifeServer
     /// </summary>
     public static class Server
     {
-        /// <summary>
-        /// The tick the server is executing.
-        /// </summary>
-        public static UInt64 GameTick { get; private set; } = 0;
-
         private static Timer TickTimer = new Timer(50);
 
         /// <summary>
@@ -91,14 +87,14 @@ namespace MagicalLifeServer
 
         private static void Tick(object sender, ElapsedEventArgs e)
         {
-            GameTick++;
-            ServerSendRecieve.SendAll(new ServerTickMessage(GameTick));
-            RaiseServerTick(sender, GameTick);
-        }
-
-        private static void RaiseServerTick(object sender, UInt64 tick)
-        {
-            ServerTick?.Invoke(sender, tick);
+            if (World.Mode == EngineMode.ServerOnly)
+            {
+                ServerSendRecieve.SendAll(new ServerTickMessage());
+            }
+            else
+            {
+                Uni.Tick(Uni.GameTick + 1);
+            }
         }
 
         /// <summary>

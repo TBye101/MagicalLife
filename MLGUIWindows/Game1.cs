@@ -49,7 +49,7 @@ namespace MagicalLifeGUIWindows
             this.Content.RootDirectory = "Content";
             Game1.AssetManager = this.Content;
             RenderingData.AssetManagerClone = Game1.AssetManager;
-            UniversalEvents.GameExit += this.UniversalEvents_GameExit;
+            Uni.GameExit += this.UniversalEvents_GameExit;
             Graphics.HardwareModeSwitch = false;
             OutputDebugInfo();
         }
