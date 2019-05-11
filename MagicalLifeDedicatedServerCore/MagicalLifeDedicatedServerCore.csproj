@@ -27,6 +27,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="copy &quot;$(SolutionDir)\Included DLL\*.dll&quot; &quot;$(ProjectDir)bin\x64\Debug&quot;&#xD;&#xA;copy &quot;$(SolutionDir)\Included DLL\*.dll&quot; &quot;$(ProjectDir)bin\x64\Release&quot;" />
+    <Exec Command="copy &quot;$(SolutionDir)\Included DLL\*.dll&quot; &quot;$(ProjectDir)bin\Debug\netcoreapp2.1&quot;&#xD;&#xA;copy &quot;$(SolutionDir)\Included DLL\*.dll&quot; &quot;$(ProjectDir)bin\Release\netcoreapp2.1&quot;" />
   </Target>
 </Project>
