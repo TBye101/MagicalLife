@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.DataTypes;
+﻿using MagicalLifeAPI.Components.Entity;
+using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.GUI;
@@ -36,8 +37,9 @@ namespace MagicalLifeServer.Processing.Message
 
                 if (l != null && l.ID == msg.LivingID)
                 {
-                    l.QueuedMovement.Clear();
-                    MagicalLifeAPI.Util.Extensions.EnqueueCollection<PathLink>(l.QueuedMovement, msg.Path);
+                    ComponentMovement movementComponent = l.GetExactComponent<ComponentMovement>();
+                    movementComponent.QueuedMovement.Clear();
+                    MagicalLifeAPI.Util.Extensions.EnqueueCollection<PathLink>(movementComponent.QueuedMovement, msg.Path);
                 }
             }
             else

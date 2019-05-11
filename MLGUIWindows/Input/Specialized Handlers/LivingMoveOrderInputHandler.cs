@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Components;
+using MagicalLifeAPI.Components.Entity;
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity;
@@ -49,14 +50,15 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                         if (start != target)
                         {
                             List<PathLink> pth;
+                            ComponentMovement movementComponent = living.GetExactComponent<ComponentMovement>();
 
                             //Handle reroute
-                            if (living.QueuedMovement.Count > 0)
+                            if (movementComponent.QueuedMovement.Count > 0)
                             {
                                 //Get a path to the nearest/next tile so that path finding and the screen location sync up.
-                                PathLink previous = living.QueuedMovement.Peek();
-                                living.QueuedMovement.Clear();
-                                living.QueuedMovement.Enqueue(previous);
+                                PathLink previous = movementComponent.QueuedMovement.Peek();
+                                movementComponent.QueuedMovement.Clear();
+                                movementComponent.QueuedMovement.Enqueue(previous);
                                 pth = MainPathFinder.GetRoute(RenderInfo.Dimension, previous.Destination, target);
                             }
                             //No reroute
@@ -65,8 +67,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                                 pth = MainPathFinder.GetRoute(RenderInfo.Dimension, positionData.MapLocation, target);
                             }
 
-                            Extensions.EnqueueCollection(living.QueuedMovement, pth);
-                            //ClientSendRecieve.Send<RouteCreatedMessage>(new RouteCreatedMessage(pth, living.ID, living.Dimension));
+                            Extensions.EnqueueCollection(movementComponent.QueuedMovement, pth);
                         }
                         break;
 

@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Asset;
+using MagicalLifeAPI.Components.Entity;
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity;
@@ -105,8 +106,9 @@ namespace MagicalLifeGUIWindows.Rendering.Map
                     KeyValuePair<System.Guid, Living> item = chunk.Creatures.ElementAt(i);
                     if (item.Value != null)
                     {
-                        LivingScreenLocation.X = (int)(item.Value.TileLocation.X * TileSize.X);
-                        LivingScreenLocation.Y = (int)(item.Value.TileLocation.Y * TileSize.Y);
+                        ComponentMovement movementComponent = item.Value.GetExactComponent<ComponentMovement>();
+                        LivingScreenLocation.X = (int)(movementComponent.TileLocation.X * TileSize.X);
+                        LivingScreenLocation.Y = (int)(movementComponent.TileLocation.Y * TileSize.Y);
                         item.Value.Visual.Render(MapDrawer, LivingScreenLocation);
                     }
                 }

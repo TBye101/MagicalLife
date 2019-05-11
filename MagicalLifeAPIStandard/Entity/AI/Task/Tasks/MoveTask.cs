@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.DataTypes;
+﻿using MagicalLifeAPI.Components.Entity;
+using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity.AI.Task.Qualifications;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking.Client;
@@ -39,14 +40,15 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             if (start != this.Destination)
             {
                 List<PathLink> pth;
+                ComponentMovement movementComponent = living.GetExactComponent<ComponentMovement>();
 
                 //Handle reroute
-                if (living.QueuedMovement.Count > 0)
+                if (movementComponent.QueuedMovement.Count > 0)
                 {
                     //Get a path to the nearest/next tile so that path finding and the screen location sync up.
-                    PathLink previous = living.QueuedMovement.Peek();
-                    living.QueuedMovement.Clear();
-                    living.QueuedMovement.Enqueue(previous);
+                    PathLink previous = movementComponent.QueuedMovement.Peek();
+                    movementComponent.QueuedMovement.Clear();
+                    movementComponent.QueuedMovement.Enqueue(previous);
                     pth = MainPathFinder.GetRoute(living.Dimension, previous.Destination, this.Destination);
                 }
                 //No reroute
@@ -55,7 +57,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
                     pth = MainPathFinder.GetRoute(living.Dimension, start, this.Destination);
                 }
 
-                MagicalLifeAPI.Util.Extensions.EnqueueCollection(living.QueuedMovement, pth);
+                MagicalLifeAPI.Util.Extensions.EnqueueCollection(movementComponent.QueuedMovement, pth);
                 ClientSendRecieve.Send<RouteCreatedMessage>(new RouteCreatedMessage(pth, living.ID, living.Dimension));
             }
         }

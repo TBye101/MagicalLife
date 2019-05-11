@@ -44,18 +44,3 @@ abstract INetSyncable
 	//Called until the client's syncable object matches with the server's response.
 	void Resolve();
 }
-
-abstract NetObjectServerMessage
-{
-	//The tick that this message was sent at.
-	int TickSent;
-	object Data;
-}
-
-abstract NetObjectClientMessage
-{
-	//The tick that this message was sent at.
-	int TickSent;
-	
-	object Data;
-}

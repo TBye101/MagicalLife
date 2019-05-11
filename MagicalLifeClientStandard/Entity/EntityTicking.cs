@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.Entity;
+﻿using MagicalLifeAPI.Components.Entity;
+using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.Entity.Movement;
 using MagicalLifeAPI.Universal;
@@ -44,9 +45,10 @@ namespace MagicalLifeClient.Entity
 
                                 if (l != null)
                                 {
-                                    l.Movement.WearOff();
+                                    ComponentMovement movementComponent = l.GetExactComponent<ComponentMovement>();
+                                    movementComponent.Movement.WearOff();
 
-                                    if (l.QueuedMovement.Count > 0)
+                                    if (movementComponent.QueuedMovement.Count > 0)
                                     {
                                         EntityWorldMovement.MoveEntity(l);
                                     }
