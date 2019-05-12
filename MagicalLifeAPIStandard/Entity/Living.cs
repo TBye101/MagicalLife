@@ -22,42 +22,42 @@ namespace MagicalLifeAPI.Entity
     public abstract class Living : HasComponents
     {
         /// <summary>
-        /// How many hit Point2Ds this creature has.
+        /// How many hit points this creature has.
         /// </summary>
-        [ProtoMember(2)]
+        [ProtoMember(1)]
         public Attribute32 Health { get; set; }
 
         /// <summary>
         /// The dimension that this creature is in.
         /// </summary>
-        [ProtoMember(5)]
+        [ProtoMember(2)]
         public int Dimension { get; set; }
 
-        [ProtoMember(6)]
+        [ProtoMember(3)]
         public MagicalTask Task { get; set; }
 
         /// <summary>
         /// The ID of the player that this creature belongs to.
         /// </summary>
-        [ProtoMember(7)]
+        [ProtoMember(4)]
         public Guid PlayerID { get; set; }
 
-        [ProtoMember(10)]
+        [ProtoMember(5)]
         public Guid ID { get; }
 
-        [ProtoMember(11)]
+        [ProtoMember(6)]
         public abstract AbstractVisual Visual { get; set; }
 
-        [ProtoMember(12)]
+        [ProtoMember(7)]
         public List<Skill> CreatureSkills { get; set; }
 
-        [ProtoMember(13)]
+        [ProtoMember(8)]
         public string CreatureTypeName { get; set; }
 
-        [ProtoMember(14)]
+        [ProtoMember(9)]
         public string CreatureName { get; set; }
 
-        [ProtoMember(15)]
+        [ProtoMember(10)]
         public Inventory Inventory { get; set; }
 
         /// <summary>

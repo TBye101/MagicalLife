@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Networking.Object;
+using MagicalLifeAPI.Registry.Network;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,6 +17,7 @@ namespace MagicalLifeAPI.Components.Networking
         protected NetComponent(T syncedComponent)
         {
             this.SyncedComponent = syncedComponent;
+            NetComponentManager.AddComponent(this);
         }
     }
 }

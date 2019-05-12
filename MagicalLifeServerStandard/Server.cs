@@ -25,18 +25,6 @@ namespace MagicalLifeServer
     /// </summary>
     public static class Server
     {
-        private static Timer TickTimer = new Timer(50);
-
-        /// <summary>
-        /// The timer counting down the time between auto-saves.
-        /// </summary>
-        private static TickTimer AutoSave = new TickTimer(RealTime.HalfHour);
-
-        /// <summary>
-        /// The event that is raised when the game ticks.
-        /// </summary>
-        public static event EventHandler<UInt64> ServerTick;
-
         public static void Load()
         {
             Loader load = new Loader();
@@ -69,34 +57,6 @@ namespace MagicalLifeServer
             }
         }
 
-        private static void SetupTick()
-        {
-            TickTimer.AutoReset = true;
-            TickTimer.Elapsed += Tick;
-            ServerTick += Server_ServerTick;
-            TickTimer.Start();
-        }
-
-        private static void Server_ServerTick(object sender, ulong e)
-        {
-            if (AutoSave.Allow())
-            {
-                WorldStorage.AutoSave(WorldStorage.SaveName, new WorldDiskSink());
-            }
-        }
-
-        private static void Tick(object sender, ElapsedEventArgs e)
-        {
-            if (World.Mode == EngineMode.ServerOnly)
-            {
-                ServerSendRecieve.SendAll(new ServerTickMessage());
-            }
-            else
-            {
-                Uni.Tick(Uni.GameTick + 1);
-            }
-        }
-
         /// <summary>
         /// Starts the internal tick system, and begins running game logic.
         /// </summary>
@@ -125,8 +85,6 @@ namespace MagicalLifeServer
                     WorldUtil.SpawnRandomCharacter(SettingsManager.PlayerSettings.Settings.PlayerID, 0);
                 }
             }
-
-            SetupTick();
         }
     }
 }

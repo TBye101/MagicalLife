@@ -1,6 +1,13 @@
 ﻿using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Messages;
+using MagicalLifeAPI.Networking.Server;
+using MagicalLifeAPI.Time;
+using MagicalLifeAPI.Util.Reusable;
+using MagicalLifeAPI.World.Data.Disk;
+using MagicalLifeAPI.World.Data.Disk.DataStorage;
 using System;
+using System.Timers;
 
 namespace MagicalLifeAPI.Universal
 {
@@ -19,10 +26,41 @@ namespace MagicalLifeAPI.Universal
         /// </summary>
         public static event EventHandler<UInt64> TickEvent;
 
+        private static Timer TickTimer = new Timer(50);
+
+        /// <summary>
+        /// The timer counting down the time between auto-saves.
+        /// </summary>
+        private static TickTimer AutoSave = new TickTimer(RealTime.HalfHour);
+
         /// <summary>
         /// Raised when the game is exiting, and done unloading.
         /// </summary>
         public static event EventHandler GameExit;
+
+        static Uni()
+        {
+            TickTimer.Elapsed += TickTimer_Elapsed;
+            TickTimer.AutoReset = true;
+            TickTimer.Start();
+        }
+
+        private static void TickTimer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            if (World.Data.World.Mode == EngineMode.ServerOnly)
+            {
+                ServerSendRecieve.SendAll(new ServerTickMessage());
+            }
+            else
+            {
+                Uni.Tick(Uni.GameTick + 1);
+            }
+
+            if (AutoSave.Allow())
+            {
+                WorldStorage.AutoSave(WorldStorage.SaveName, new WorldDiskSink());
+            }
+        }
 
         /// <summary>
         /// Raises the world generated event.

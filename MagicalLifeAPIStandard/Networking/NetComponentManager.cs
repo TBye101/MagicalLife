@@ -10,6 +10,11 @@ namespace MagicalLifeAPI.Registry.Network
     /// </summary>
     public static class NetComponentManager
     {
-        private static Dictionary<Guid, NComponent> NetComponents;
+        private static Dictionary<Guid, NComponent> NetComponents = new Dictionary<Guid, NComponent>();
+
+        public static void AddComponent(NComponent component)
+        {
+            NetComponents.Add(component.ID, component);
+        }
     }
 }

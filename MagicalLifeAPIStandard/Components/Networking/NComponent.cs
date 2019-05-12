@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Components;
 using MagicalLifeAPI.Networking.Serialization;
+using MagicalLifeAPI.Registry.Network;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,6 @@ namespace MagicalLifeAPI.Networking.Object
     {
         protected NComponent()
         {
-            //Protobuf-net constructor
         }
 
         /// <summary>
