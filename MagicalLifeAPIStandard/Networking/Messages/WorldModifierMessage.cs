@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Networking.World.Modifiers;
 using ProtoBuf;
+using System;
 
 namespace MagicalLifeAPI.Networking.Messages
 {
@@ -18,8 +19,9 @@ namespace MagicalLifeAPI.Networking.Messages
             this.WorldModifier = worldModifier;
         }
 
-        public WorldModifierMessage() : base(NetMessageID.WorldModifierMessage)
+        public WorldModifierMessage()
         {
+            //Protobuf-net constructor.
         }
     }
 }

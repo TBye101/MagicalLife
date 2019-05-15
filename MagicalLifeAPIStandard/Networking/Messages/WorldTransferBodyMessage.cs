@@ -20,8 +20,9 @@ namespace MagicalLifeAPI.Networking.Messages
             this.DimensionID = dimensionID;
         }
 
-        public WorldTransferBodyMessage() : base(NetMessageID.WorldTransferBodyMessage)
+        public WorldTransferBodyMessage()
         {
+            //Protobuf-net constructor.
         }
     }
 }
