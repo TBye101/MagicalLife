@@ -2,6 +2,7 @@
 using MonoGUI.MonoLib.CustomTypes;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace MagicalLifeAPI.Combat
@@ -18,8 +19,25 @@ namespace MagicalLifeAPI.Combat
 
         public static readonly DamageTypes Piercing = new DamageTypes(5, Lang.Piercing);
 
+        public static ICollection<DamageTypes> List = new List<DamageTypes> { Piercing, Crushing, Fire, Magic, Poison };
+
         protected DamageTypes(int id, string name) : base(id, name)
         {
+        }
+
+        /// <summary>
+        /// Adds the type of the damage.
+        /// </summary>
+        /// <param name="damage">The damage.</param>
+        /// <returns>If the new damage type was registered</returns>
+        public bool AddDamageType(DamageTypes damage)
+        {
+            if(!List.Contains(damage))
+            {
+                List.Add(damage);
+                return true;
+            }
+            return false;
         }
 
         public override bool Equals(object obj)
@@ -91,6 +109,15 @@ namespace MagicalLifeAPI.Combat
         }
 
 
+        public static DamageTypes FromString(string roleString)
+        {
+            return List.Single(r => string.Equals(r.Name, roleString, StringComparison.OrdinalIgnoreCase));
+        }
+
+        public static DamageTypes FromValue(int value)
+        {
+            return List.Single(r => r.Id == value);
+        }
 
 
     }

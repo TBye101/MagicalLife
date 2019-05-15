@@ -40,6 +40,7 @@ namespace MonoGUI.MonoLib.CustomTypes
             return typeMatches && valueMatches;
         }
 
+
         public int CompareTo(object obj) => Id.CompareTo(((Enumeration)obj).Id);
 
         public bool Equals(Enumeration other)
@@ -91,6 +92,16 @@ namespace MonoGUI.MonoLib.CustomTypes
         {
             return (left is null) ? (right is null) : left.CompareTo(right) >= 0;
         }
+
+      
+
+
+        //public static Enumeration FromString(string roleString)
+        //{
+        //    return new List<Enumeration>().Single(r => string.Equals(r.Name, roleString, StringComparison.OrdinalIgnoreCase));
+        //}
+
+        //public abstract 
 
         // Other utility methods ...
     }
