@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MagicalLifeSettingsStandard\MagicalLifeSettingsStandard.csproj" />
+    <ProjectReference Include="..\MonoLib\MonoLib.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Lang.Designer.cs">
