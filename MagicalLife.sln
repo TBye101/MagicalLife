@@ -8,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		CHANGELOG.md = CHANGELOG.md
 		Combat System Design.txt = Combat System Design.txt
 		Credit.txt = Credit.txt
+		In Game Object Design.txt = In Game Object Design.txt
 		NetworkingDesign.txt = NetworkingDesign.txt
 		Notes.txt = Notes.txt
 		Performance Notes.md = Performance Notes.md

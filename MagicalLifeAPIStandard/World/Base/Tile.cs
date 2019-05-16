@@ -115,8 +115,6 @@ namespace MagicalLifeAPI.World.Base
             }
         }
 
-        //public List<Vegetation> Plants { get; set; } = new List<Vegetation>();
-
         /// <summary>
         /// The item(s) that is stored in this tile.
         /// </summary>
@@ -191,22 +189,6 @@ namespace MagicalLifeAPI.World.Base
             {
                 this.GetExactComponent<ComponentRenderer>().RenderQueue.Remove(item);
             }
-        }
-
-        public Dictionary<Type, int> GetSubclassInformation()
-        {
-            Dictionary<Type, int> ret = new Dictionary<Type, int>
-            {
-                { typeof(Dirt), 7 },
-                { typeof(Grass), 8 }
-            };
-
-            return ret;
-        }
-
-        public Type GetBaseType()
-        {
-            return typeof(Tile);
         }
 
         /// <summary>
