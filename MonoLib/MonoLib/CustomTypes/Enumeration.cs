@@ -93,7 +93,7 @@ namespace MonoGUI.MonoLib.CustomTypes
             return (left is null) ? (right is null) : left.CompareTo(right) >= 0;
         }
 
-      
+
 
 
         //public static Enumeration FromString(string roleString)
@@ -101,7 +101,7 @@ namespace MonoGUI.MonoLib.CustomTypes
         //    return new List<Enumeration>().Single(r => string.Equals(r.Name, roleString, StringComparison.OrdinalIgnoreCase));
         //}
 
-        //public abstract 
+        //public abstract
 
         // Other utility methods ...
     }

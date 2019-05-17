@@ -7,7 +7,7 @@ using System.Text;
 
 namespace MagicalLifeAPI.Combat
 {
-    public class DamageTypes : Enumeration
+    public class DamageTypes : Enumeration, IEquatable<DamageTypes>
     {
         public static readonly DamageTypes Poison = new DamageTypes(1, Lang.Poison);
 
@@ -19,7 +19,7 @@ namespace MagicalLifeAPI.Combat
 
         public static readonly DamageTypes Piercing = new DamageTypes(5, Lang.Piercing);
 
-        public static ICollection<DamageTypes> List = new List<DamageTypes> { Piercing, Crushing, Fire, Magic, Poison };
+        public static readonly ICollection<DamageTypes> List = new List<DamageTypes> { Piercing, Crushing, Fire, Magic, Poison };
 
         protected DamageTypes(int id, string name) : base(id, name)
         {
@@ -48,18 +48,7 @@ namespace MagicalLifeAPI.Combat
             }
 
             DamageTypes damageTypes = obj as DamageTypes;
-
-            if (!damageTypes.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase))
-            {
-                return false;
-            }
-
-            if (damageTypes.Id != Id)
-            {
-                return false;
-            }
-
-            return true;
+            return Equals(damageTypes);
         }
 
         public override string ToString()
@@ -119,6 +108,20 @@ namespace MagicalLifeAPI.Combat
             return List.Single(r => r.Id == value);
         }
 
+        public bool Equals(DamageTypes other)
+        {
 
+            if (!other.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase))
+            {
+                return false;
+            }
+
+            if (other.Id != Id)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }
