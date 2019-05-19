@@ -8,16 +8,24 @@ Tile data layout:
 [structureFloor][Structures]						
 [items]			[Living]
 
+abstract class IGameObject
+{
+abstract bool IsUnwalkable();
+
+//If true the objects should be able to share the same tile space. 
+abstract bool IsCompatible(IGameObject other);
+}
+
 Tile
 {
-	Floor floor;
+	Floor floor;//Floor could be grass, or natural stone
 	Item item;
 	Resource resource;//Cannot have a resource and a structure part in the same tile...
-	StructurePart structurePart;
+	StructurePart structurePart;//A structure could have a natural stone floor, or grass for a floor too....
 	Roof roof;
 }
 
-//Structures must h2ave all of their parts interconnected. There must be a part adjacent (left, right, up, down) from each part.
+//Structures must have all of their parts interconnected. There must be a part adjacent (left, right, up, down) from each part.
 class Structure
 {
 string name;
