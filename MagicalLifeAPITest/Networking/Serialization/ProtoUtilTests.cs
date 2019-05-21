@@ -1,21 +1,22 @@
 ﻿using MagicalLifeServer;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace MagicalLifeAPITests1.Networking.Serialization
 {
-    [TestClass()]
+
     public class ProtoUtilTests
     {
-        [TestMethod()]
+        [Fact]
         public void TestJobSerialization()
         {
         }
 
-        [TestMethod()]
+
         private void WorldTest()
         {
-            Assert.Fail();//Need to rewrite the world serialization/deserialization test.
+            //Assert.Fail();//Need to rewrite the world serialization/deserialization test.
         }
+
 
         private void Setup()
         {
