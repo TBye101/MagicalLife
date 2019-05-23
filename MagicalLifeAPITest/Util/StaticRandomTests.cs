@@ -1,19 +1,13 @@
 ﻿using MagicalLifeAPI.Util;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using Xunit;
 
 namespace MagicalLifeTests.Util
 {
-    [TestClass]
     public class StaticRandomTests
     {
-        [TestMethod]
-        public void RandTest()
-        {
-            this.TestPositive();
-        }
-
-        private void TestPositive()
+        [Fact]
+        public void RandTestPositive()
         {
             double min = 15;
             double max = 18;
@@ -22,15 +16,11 @@ namespace MagicalLifeTests.Util
             {
                 double result = StaticRandom.Rand(min, max);
 
-                if (result < min || result > max || result < 0)
-                {
-#if DEBUG
-                    Console.WriteLine("Min: " + min.ToString());
-                    Console.WriteLine("Max: " + max.ToString());
-                    Console.WriteLine("Result: " + result.ToString());
-#endif
-                    Assert.Fail("Invalid result: ");
-                }
+                Assert.False(result < min);
+
+                Assert.False(result > max);
+
+                Assert.False(result < 0);
 
                 min -= .05;
                 max -= .05;

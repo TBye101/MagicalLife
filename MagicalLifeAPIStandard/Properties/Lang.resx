@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Crushing" xml:space="preserve">
+    <value>Crushing</value>
+  </data>
   <data name="Dirt" xml:space="preserve">
     <value>Dirt</value>
+  </data>
+  <data name="Fire" xml:space="preserve">
+    <value>Fire</value>
   </data>
   <data name="Grass" xml:space="preserve">
     <value>Grass</value>
@@ -135,6 +141,9 @@
   <data name="Log" xml:space="preserve">
     <value>Log</value>
   </data>
+  <data name="Magic" xml:space="preserve">
+    <value>Magic</value>
+  </data>
   <data name="MapleTree" xml:space="preserve">
     <value>Maple Tree</value>
   </data>
@@ -144,8 +153,14 @@
   <data name="OakTree" xml:space="preserve">
     <value>Oak Tree</value>
   </data>
+  <data name="Piercing" xml:space="preserve">
+    <value>Piercing</value>
+  </data>
   <data name="PineTree" xml:space="preserve">
     <value>Pine Tree</value>
+  </data>
+  <data name="Poison" xml:space="preserve">
+    <value>Poison</value>
   </data>
   <data name="Stone" xml:space="preserve">
     <value>Stone</value>

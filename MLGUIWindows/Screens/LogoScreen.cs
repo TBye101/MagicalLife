@@ -18,6 +18,8 @@ namespace MagicalLifeGUIWindows.Screens
 
         protected Rectangle TextZone { get; set; }
 
+
+
         protected string Text { get; set; }
 
         protected SpriteFont Font = Game1.AssetManager.Load<SpriteFont>(TextureLoader.FontMainMenuFont12x);
@@ -32,6 +34,7 @@ namespace MagicalLifeGUIWindows.Screens
         /// </summary>
         protected int Half { get; set; }
 
+
         protected Texture2D Logo { get; set; }
 
         protected Color Mask { get; set; }
@@ -41,15 +44,43 @@ namespace MagicalLifeGUIWindows.Screens
         /// </summary>
         /// <param name="logo">The resource path to the logo file that is to be displayed.</param>
         /// <param name="duration">How many seconds to show the logo.</param>
-        public LogoScreen(string logo, float duration, string text = "")
+        public LogoScreen(string logo, float duration)
         {
             this.Frames = (int)duration * LogoScreen.FPS;
             this.Half = this.Frames / 2;
             this.Logo = Game1.AssetManager.Load<Texture2D>(logo);
             this.DisplayZone = this.CalculateDisplayLocation();
-            this.Text = text;
+            this.Text = "";
             this.CalculateTextZone();
             this.Mask = Color.Black;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="logo">The resource path to the logo file that is to be displayed.</param>
+        /// <param name="duration">How many seconds to show the logo.</param>
+        public LogoScreen(string logo, float duration, string text)
+        {
+            this.Frames = (int)duration * LogoScreen.FPS;
+            this.Half = this.Frames / 2;
+            this.Logo = Game1.AssetManager.Load<Texture2D>(logo);
+            this.DisplayZone = this.CalculateDisplayLocation();
+            this.InitText(text);
+            this.CalculateTextZone();
+            this.Mask = Color.Black;
+        }
+
+        private void InitText(string text)
+        {
+            if (!string.IsNullOrWhiteSpace(text))
+            {
+                this.Text = text;
+            }
+            else
+            {
+                Text = "";
+            }
         }
 
         public void Skip()

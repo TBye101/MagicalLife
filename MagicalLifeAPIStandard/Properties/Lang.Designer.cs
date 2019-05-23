@@ -61,11 +61,29 @@ namespace MagicalLifeAPI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Crushing.
+        /// </summary>
+        internal static string Crushing {
+            get {
+                return ResourceManager.GetString("Crushing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dirt.
         /// </summary>
         public static string Dirt {
             get {
                 return ResourceManager.GetString("Dirt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fire.
+        /// </summary>
+        internal static string Fire {
+            get {
+                return ResourceManager.GetString("Fire", resourceCulture);
             }
         }
         
@@ -115,6 +133,15 @@ namespace MagicalLifeAPI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Magic.
+        /// </summary>
+        internal static string Magic {
+            get {
+                return ResourceManager.GetString("Magic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Maple Tree.
         /// </summary>
         public static string MapleTree {
@@ -142,11 +169,29 @@ namespace MagicalLifeAPI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Piercing.
+        /// </summary>
+        internal static string Piercing {
+            get {
+                return ResourceManager.GetString("Piercing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pine Tree.
         /// </summary>
         public static string PineTree {
             get {
                 return ResourceManager.GetString("PineTree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Poison.
+        /// </summary>
+        internal static string Poison {
+            get {
+                return ResourceManager.GetString("Poison", resourceCulture);
             }
         }
         

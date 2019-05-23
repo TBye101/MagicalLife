@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28917.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{09293283-6E6D-4652-A633-5B70452244DA}"
 	ProjectSection(SolutionItems) = preProject
@@ -33,13 +33,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicalLifeServerStandard",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicalLifeSettingsStandard", "MagicalLifeSettingsStandard\MagicalLifeSettingsStandard.csproj", "{EC7FD282-023D-4926-A766-19B36AEAC4C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicalLifeAPITest", "MagicalLifeAPITest\MagicalLifeAPITest.csproj", "{9CA6C7EF-99BC-4066-BB9D-0613E248B91D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicalLifeAPITest", "MagicalLifeAPITest\MagicalLifeAPITest.csproj", "{9CA6C7EF-99BC-4066-BB9D-0613E248B91D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicalLifeMod", "MagicalLifeMod\MagicalLifeMod.csproj", "{89B9DD2D-4904-4491-B111-E43A750E440B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonoGUI", "MonoGUI\MonoGUI.csproj", "{251190F6-AC08-4274-895D-E806FD2D16C4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MLGUIWindows", "MLGUIWindows\MLGUIWindows.csproj", "{94CBCEE0-960D-4B20-B7C5-020C24022A79}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonoLib", "MonoLib\MonoLib.csproj", "{893380B0-B822-4AAA-85DF-8E83A7620340}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -156,6 +158,18 @@ Global
 		{94CBCEE0-960D-4B20-B7C5-020C24022A79}.Release|x64.ActiveCfg = Release|x86
 		{94CBCEE0-960D-4B20-B7C5-020C24022A79}.Release|x86.ActiveCfg = Release|x86
 		{94CBCEE0-960D-4B20-B7C5-020C24022A79}.Release|x86.Build.0 = Release|x86
+		{893380B0-B822-4AAA-85DF-8E83A7620340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{893380B0-B822-4AAA-85DF-8E83A7620340}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{893380B0-B822-4AAA-85DF-8E83A7620340}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{893380B0-B822-4AAA-85DF-8E83A7620340}.Debug|x64.Build.0 = Debug|Any CPU
+		{893380B0-B822-4AAA-85DF-8E83A7620340}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{893380B0-B822-4AAA-85DF-8E83A7620340}.Debug|x86.Build.0 = Debug|Any CPU
+		{893380B0-B822-4AAA-85DF-8E83A7620340}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{893380B0-B822-4AAA-85DF-8E83A7620340}.Release|Any CPU.Build.0 = Release|Any CPU
+		{893380B0-B822-4AAA-85DF-8E83A7620340}.Release|x64.ActiveCfg = Release|Any CPU
+		{893380B0-B822-4AAA-85DF-8E83A7620340}.Release|x64.Build.0 = Release|Any CPU
+		{893380B0-B822-4AAA-85DF-8E83A7620340}.Release|x86.ActiveCfg = Release|Any CPU
+		{893380B0-B822-4AAA-85DF-8E83A7620340}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

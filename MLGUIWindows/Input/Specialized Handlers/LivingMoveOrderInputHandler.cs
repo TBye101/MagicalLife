@@ -9,6 +9,7 @@ using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.Input.History;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -69,9 +70,6 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
                             Extensions.EnqueueCollection(movementComponent.QueuedMovement, pth);
                         }
-                        break;
-
-                    default:
                         break;
                 }
             }

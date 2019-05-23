@@ -9,7 +9,7 @@ namespace MagicalLifeAPI.DataTypes
     /// A protobuf-net compatible FIFO (first in first out) Queue class
     /// </summary>
     [ProtoContract]
-    public class ProtoQueue<T> : ICollection<T>
+    public class ProtoQueue<T> : ICollection<T>, ICollection
     {
         [ProtoMember(1)]
         internal List<T> Data = new List<T>();
@@ -29,6 +29,10 @@ namespace MagicalLifeAPI.DataTypes
         /// Gets a value indicating whether the <see cref="T:System.Collections.Generic.ICollection`1"></see> is read-only.
         /// </summary>
         public bool IsReadOnly => false;
+
+        public bool IsSynchronized => ((ICollection)Data).IsSynchronized;
+
+        public object SyncRoot => ((ICollection)Data).SyncRoot;
 
         /// <summary>
         /// Returns an enumerator that iterates through the collection.
@@ -160,6 +164,11 @@ namespace MagicalLifeAPI.DataTypes
         public bool Remove(T item)
         {
             throw new NotSupportedException();
+        }
+
+        public void CopyTo(Array array, int index)
+        {
+            ((ICollection)Data).CopyTo(array, index);
         }
     }
 }
