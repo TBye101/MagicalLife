@@ -7,18 +7,18 @@ using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Load;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.World.Base;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
+using Xunit;
 
 namespace MagicalLifeAPITest.Components
 {
-    [TestClass]
-    public class HasComponentsTests
+    public class HasComponentsTests : IDisposable
     {
         private bool Initialized { get; set; }
 
-        [TestInitialize]
-        public void TestInitialize()
+
+        public HasComponentsTests()
         {
             if (!this.Initialized)
             {
@@ -36,11 +36,7 @@ namespace MagicalLifeAPITest.Components
             }
         }
 
-        [TestCleanup]
-        public void TestCleanup()
-        {
-            MasterLog.Close();
-        }
+
 
         private HasComponents CreateHasComponents()
         {
@@ -54,7 +50,7 @@ namespace MagicalLifeAPITest.Components
             return components;
         }
 
-        [TestMethod]
+        [Fact]
         public void GetExactComponent_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
@@ -66,12 +62,12 @@ namespace MagicalLifeAPITest.Components
             DropWhenCompletelyHarvested result3 = unitUnderTest.GetExactComponent<DropWhenCompletelyHarvested>();
 
             // Assert
-            Assert.IsNotNull(result);
-            Assert.IsNull(result2);
-            Assert.IsNotNull(result3);
+            Assert.NotNull(result);
+            Assert.Null(result2);
+            Assert.NotNull(result3);
         }
 
-        [TestMethod]
+        [Fact]
         public void GetComponent_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
@@ -82,11 +78,11 @@ namespace MagicalLifeAPITest.Components
             ComponentHarvestable result2 = unitUnderTest.GetComponent<ComponentHarvestable>();
 
             // Assert
-            Assert.IsNotNull(result);
-            Assert.IsNotNull(result2);
+            Assert.NotNull(result);
+            Assert.NotNull(result2);
         }
 
-        [TestMethod]
+        [Fact]
         public void AddComponent_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
@@ -98,13 +94,13 @@ namespace MagicalLifeAPITest.Components
             unitUnderTest.AddComponent(component);
 
             // Assert
-            Assert.IsTrue(unitUnderTest.HasComponent<DropWhenCompletelyHarvested>());
-            Assert.IsTrue(unitUnderTest.GetExactComponent<DropWhenCompletelyHarvested>() != null);
-            Assert.IsTrue(unitUnderTest.GetComponent<DropWhenCompletelyHarvested>() != null);
-            Assert.IsTrue(unitUnderTest.GetComponent<ComponentHarvestable>() != null);
+            Assert.True(unitUnderTest.HasComponent<DropWhenCompletelyHarvested>());
+            Assert.True(unitUnderTest.GetExactComponent<DropWhenCompletelyHarvested>() != null);
+            Assert.True(unitUnderTest.GetComponent<DropWhenCompletelyHarvested>() != null);
+            Assert.True(unitUnderTest.GetComponent<ComponentHarvestable>() != null);
         }
 
-        [TestMethod]
+        [Fact]
         public void HasComponent_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
@@ -114,10 +110,10 @@ namespace MagicalLifeAPITest.Components
             bool result = unitUnderTest.HasComponent<ComponentHarvestable>();
 
             // Assert
-            Assert.IsTrue(result);
+            Assert.True(result);
         }
 
-        [TestMethod]
+        [Fact]
         public void TestHasComponentSerialization()
         {
             // Arrange
@@ -126,24 +122,61 @@ namespace MagicalLifeAPITest.Components
             // Act
             byte[] data = ProtoUtil.Serialize(unitUnderTest);
 
-            Assert.IsNotNull(data, "Serialization failed");
+            Assert.NotNull(data);
 
             HasComponents deserialized = ProtoUtil.Deserialize<HasComponents>(data);
 
             // Assert
-            Assert.IsNotNull(deserialized, "Deserialization failed");
+            Assert.NotNull(deserialized);
 
-            Assert.IsTrue(unitUnderTest.HasComponent<DropWhenCompletelyHarvested>());
-            Assert.IsNotNull(unitUnderTest.GetExactComponent<DropWhenCompletelyHarvested>());
-            Assert.IsNotNull(unitUnderTest.GetComponent<DropWhenCompletelyHarvested>());
-            Assert.IsNotNull(unitUnderTest.GetComponent<ComponentHarvestable>());
+            Assert.True(unitUnderTest.HasComponent<DropWhenCompletelyHarvested>());
+            Assert.NotNull(unitUnderTest.GetExactComponent<DropWhenCompletelyHarvested>());
+            Assert.NotNull(unitUnderTest.GetComponent<DropWhenCompletelyHarvested>());
+            Assert.NotNull(unitUnderTest.GetComponent<ComponentHarvestable>());
 
-            Assert.IsTrue(deserialized.HasComponent<DropWhenCompletelyHarvested>());
-            Assert.IsNotNull(deserialized.GetExactComponent<DropWhenCompletelyHarvested>());
-            Assert.IsNotNull(deserialized.GetComponent<DropWhenCompletelyHarvested>());
-            Assert.IsNotNull(deserialized.GetComponent<ComponentHarvestable>());
-            Assert.IsNotNull(deserialized.GetExactComponent<ComponentSelectable>(), "Components didn't serialize properly");
-            Assert.IsNotNull(deserialized.GetExactComponent<ComponentRenderer>(), "Components didn't serialize properly");
+            Assert.True(deserialized.HasComponent<DropWhenCompletelyHarvested>());
+            Assert.NotNull(deserialized.GetExactComponent<DropWhenCompletelyHarvested>());
+            Assert.NotNull(deserialized.GetComponent<DropWhenCompletelyHarvested>());
+            Assert.NotNull(deserialized.GetComponent<ComponentHarvestable>());
+            Assert.NotNull(deserialized.GetExactComponent<ComponentSelectable>());
+            Assert.NotNull(deserialized.GetExactComponent<ComponentRenderer>());
         }
+
+        #region IDisposable Support
+        private bool disposedValue = false; // To detect redundant calls
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    MasterLog.Close();
+                    // TODO: dispose managed state (managed objects).
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+                // TODO: set large fields to null.
+
+                disposedValue = true;
+            }
+        }
+
+        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
+         ~HasComponentsTests()
+         {
+           // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+           Dispose(false);
+         }
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            // TODO: uncomment the following line if the finalizer is overridden above.
+            GC.SuppressFinalize(this);
+        }
+        #endregion
     }
 }
