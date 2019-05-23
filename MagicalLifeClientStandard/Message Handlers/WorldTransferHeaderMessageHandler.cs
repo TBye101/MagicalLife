@@ -2,7 +2,6 @@
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Networking.World;
-using MagicalLifeAPI.World.Data;
 
 namespace MagicalLifeClient.Message
 {
@@ -16,7 +15,7 @@ namespace MagicalLifeClient.Message
         {
             WorldTransferHeaderMessage msg = (WorldTransferHeaderMessage)message;
             NetWorldReceiver.Receive(msg);
-            
+
             if (msg.DimensionHeaders.Count > 0)
             {
                 //System.Guid aDimension = msg.DimensionHeaders[0].ID;
@@ -24,7 +23,7 @@ namespace MagicalLifeClient.Message
 
                 //if (index != -1)
                 //{
-                    //World.RaiseChangeCameraDimension(0);
+                //World.RaiseChangeCameraDimension(0);
                 //}
             }
         }

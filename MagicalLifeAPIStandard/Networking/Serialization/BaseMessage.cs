@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Filing;
+using MagicalLifeAPI.Universal;
 using ProtoBuf;
 using System;
 
@@ -22,14 +23,19 @@ namespace MagicalLifeAPI.Networking.Serialization
         [ProtoMember(2)]
         public Guid PlayerID { get; }
 
+        [ProtoMember(3)]
+        public UInt64 TickSent { get; private set; }
+
         public BaseMessage(NetMessageID id)
         {
             this.ID = id;
             this.PlayerID = SettingsManager.PlayerSettings.Settings.PlayerID;
+            this.TickSent = Uni.GameTick;
         }
 
-        public BaseMessage()
+        protected BaseMessage()
         {
+            //Protobuf-net constructor.
         }
     }
 }

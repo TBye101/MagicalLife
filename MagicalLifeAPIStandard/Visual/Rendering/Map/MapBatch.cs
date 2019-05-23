@@ -1,6 +1,4 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Util.Reusable;
+﻿using MagicalLifeAPI.Util.Reusable;
 using MagicalLifeAPI.Visual.Rendering.Renderer;
 using MagicalLifeGUIWindows.Rendering.Text;
 using Microsoft.Xna.Framework;
@@ -31,7 +29,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// This should be called every frame.
         /// </summary>
         /// <param name="spBatch"></param>
-        public void UpdateSpriteBatch(SpriteBatch spBatch)
+        internal void UpdateSpriteBatch(SpriteBatch spBatch)
         {
             this.SpriteBat = spBatch;
         }
@@ -39,7 +37,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// <summary>
         /// Renders the backlog of rendering jobs to completion.
         /// </summary>
-        public void RenderAll()
+        internal void RenderAll()
         {
             if (this.RenderActions.Count > 0)
             {
@@ -47,10 +45,6 @@ namespace MagicalLifeGUIWindows.Rendering.Map
 
                 foreach (RenderCallHolder item in this.RenderActions)
                 {
-                    if (item.RenderLayer == RenderLayer.GUI)
-                    {
-                        MasterLog.DebugWriteLine("Render callID: " + item.RenderCallID.ToString() + " Layer: " + item.RenderLayer.ToString() + "Texture: ");
-                    }
                     item.Action.Invoke();
                 }
 

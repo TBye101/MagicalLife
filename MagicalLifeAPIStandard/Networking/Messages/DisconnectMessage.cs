@@ -22,8 +22,9 @@ namespace MagicalLifeAPI.Networking.Messages
             this.ClientPlayerID = playerID;
         }
 
-        public DisconnectMessage() : base(NetMessageID.DisconnectMessage)
+        public DisconnectMessage()
         {
+            //Protobuf-net constructor.
         }
     }
 }

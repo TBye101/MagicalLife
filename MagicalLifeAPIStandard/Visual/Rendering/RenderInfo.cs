@@ -41,8 +41,8 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         /// <returns></returns>
         public static Point2D GetCameraCenter()
         {
-            int x = (FullScreenWindow.Width / 2) + (int)Camera2D.Position.X;
-            int y = (FullScreenWindow.Height / 2) + (int)Camera2D.Position.Y;
+            int x = (int)Camera2D.Position.X;
+            int y = (int)Camera2D.Position.Y;
 
             return new Point2D(x, y);
         }

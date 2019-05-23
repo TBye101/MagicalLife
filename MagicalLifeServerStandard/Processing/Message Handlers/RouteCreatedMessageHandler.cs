@@ -1,6 +1,8 @@
-﻿using MagicalLifeAPI.DataTypes;
+﻿using MagicalLifeAPI.Components.Entity;
+using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
@@ -31,12 +33,13 @@ namespace MagicalLifeServer.Processing.Message
                 Point2D chunkLocation = WorldUtil.CalculateChunkLocation(location);
                 Chunk chunk = World.GetChunk(msg.Dimension, chunkLocation.X, chunkLocation.Y);
 
-                Living l = chunk.Creatures.Where(t => t.Value.MapLocation.Equals(location)).ElementAt(0).Value;
+                Living l = chunk.Creatures.Where(t => t.Value.GetExactComponent<ComponentSelectable>().MapLocation.Equals(location)).ElementAt(0).Value;
 
                 if (l != null && l.ID == msg.LivingID)
                 {
-                    l.QueuedMovement.Clear();
-                    MagicalLifeAPI.Util.Extensions.EnqueueCollection<PathLink>(l.QueuedMovement, msg.Path);
+                    ComponentMovement movementComponent = l.GetExactComponent<ComponentMovement>();
+                    movementComponent.QueuedMovement.Clear();
+                    MagicalLifeAPI.Util.Extensions.EnqueueCollection<PathLink>(movementComponent.QueuedMovement, msg.Path);
                 }
             }
             else

@@ -1,6 +1,8 @@
-﻿using MagicalLifeAPI.Entity;
+﻿using MagicalLifeAPI.Components.Entity;
+using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.Entity.Movement;
+using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.World.Data;
 using System;
 using System.Collections.Generic;
@@ -13,49 +15,53 @@ namespace MagicalLifeClient.Entity
     /// </summary>
     public static class EntityTicking
     {
+        private static object SyncObject = new object();
+
         public static void Initialize()
         {
-            Client.ClientTick += Client_ClientTick;
+            Uni.TickEvent += Uni_TickEvent;
         }
 
-        private static void Client_ClientTick(object sender, ulong e)
+        private static void Uni_TickEvent(object sender, ulong e)
         {
-            //This needs to be changed, as the performance time WILL be awful.
-
-            foreach (Dimension ii in World.Dimensions)
+            lock (SyncObject)
             {
-                int chunkWidth = ii.Width;
-                int chunkHeight = ii.Height;
-
-                for (int chunkX = 0; chunkX < chunkWidth; chunkX++)
+                foreach (Dimension ii in World.Dimensions)
                 {
-                    for (int chunkY = 0; chunkY < chunkHeight; chunkY++)
+                    int chunkWidth = ii.Width;
+                    int chunkHeight = ii.Height;
+
+                    for (int chunkX = 0; chunkX < chunkWidth; chunkX++)
                     {
-                        Chunk chunk = ii.GetChunk(chunkX, chunkY);
-
-                        List<Guid> keys = chunk.Creatures.Keys.ToList();
-                        int length = keys.Count;
-                        for (int i = 0; i < length; i++)
+                        for (int chunkY = 0; chunkY < chunkHeight; chunkY++)
                         {
-                            chunk.Creatures.TryGetValue(keys[i], out Living l);
+                            Chunk chunk = ii.GetChunk(chunkX, chunkY);
 
-                            if (l != null)
+                            List<Guid> keys = chunk.Creatures.Keys.ToList();
+                            int length = keys.Count;
+                            for (int i = 0; i < length; i++)
                             {
-                                l.Movement.WearOff();
+                                chunk.Creatures.TryGetValue(keys[i], out Living l);
 
-                                if (l.QueuedMovement.Count > 0)
+                                if (l != null)
                                 {
-                                    EntityWorldMovement.MoveEntity(l);
-                                }
+                                    ComponentMovement movementComponent = l.GetExactComponent<ComponentMovement>();
+                                    movementComponent.Movement.WearOff();
 
-                                if (l.Task != null)
-                                {
-                                    l.Task.Tick(l);
-                                }
-                                else
-                                {
-                                    TaskManager.Manager.AssignTask(l);
-                                    //Find a job
+                                    if (movementComponent.QueuedMovement.Count > 0)
+                                    {
+                                        EntityWorldMovement.MoveEntity(l);
+                                    }
+
+                                    if (l.Task != null && !l.Task.IsFinished)
+                                    {
+                                        l.Task.Tick(l);
+                                    }
+                                    else
+                                    {
+                                        TaskManager.Manager.AssignTask(l);
+                                        //Find a job
+                                    }
                                 }
                             }
                         }

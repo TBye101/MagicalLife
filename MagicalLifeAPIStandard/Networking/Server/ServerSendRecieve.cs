@@ -17,12 +17,12 @@ namespace MagicalLifeAPI.Networking.Server
         /// </summary>
         private static EngineMode Local;
 
-        public static TCPServer TCPServer;
+        internal static TCPServer TCPServer;
 
         /// <summary>
         /// The messages that have been received and are yet unprocessed.
         /// </summary>
-        public static Queue<BaseMessage> RecievedMessages { get; set; } = new Queue<BaseMessage>();
+        internal static Queue<BaseMessage> RecievedMessages { get; set; } = new Queue<BaseMessage>();
 
         /// <summary>
         /// Raised whenever the server receives a message.

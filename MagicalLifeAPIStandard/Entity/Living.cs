@@ -1,4 +1,6 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
+﻿using MagicalLifeAPI.Components;
+using MagicalLifeAPI.Components.Entity;
+using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.DataTypes.Attribute;
 using MagicalLifeAPI.Entity.AI.Task;
@@ -17,67 +19,45 @@ namespace MagicalLifeAPI.Entity
     /// All living things inherit from this, and utilize it.
     /// </summary>
     [ProtoContract]
-    [ProtoInclude(8, typeof(Humanoid.Human))]
-    public abstract class Living : Selectable
+    public abstract class Living : HasComponents
     {
         /// <summary>
-        /// A queue that holds the queued movement steps up for this living creature.
+        /// How many hit points this creature has.
         /// </summary>
         [ProtoMember(1)]
-        public ProtoQueue<PathLink> QueuedMovement { get; set; } = new ProtoQueue<PathLink>();
-
-        /// <summary>
-        /// How many hit Point2Ds this creature has.
-        /// </summary>
-        [ProtoMember(2)]
         public Attribute32 Health { get; set; }
-
-        /// <summary>
-        /// How fast this creature can during a single tick.
-        /// </summary>
-        [ProtoMember(3)]
-        public AttributeDouble Movement { get; set; }
-
-        /// <summary>
-        /// The location of the creature on the screen. This represents the progress through a tile for a moving creature.
-        /// </summary>
-        [ProtoMember(4)]
-        public Point2DDouble TileLocation { get; set; }
 
         /// <summary>
         /// The dimension that this creature is in.
         /// </summary>
-        [ProtoMember(5)]
+        [ProtoMember(2)]
         public int Dimension { get; set; }
 
-        [ProtoMember(6)]
+        [ProtoMember(3)]
         public MagicalTask Task { get; set; }
 
         /// <summary>
         /// The ID of the player that this creature belongs to.
         /// </summary>
-        [ProtoMember(7)]
+        [ProtoMember(4)]
         public Guid PlayerID { get; set; }
 
-        [ProtoMember(9)]
-        public TickTimer FootStepTimer { get; set; }
-
-        [ProtoMember(10)]
+        [ProtoMember(5)]
         public Guid ID { get; }
 
-        [ProtoMember(11)]
+        [ProtoMember(6)]
         public abstract AbstractVisual Visual { get; set; }
 
-        [ProtoMember(12)]
+        [ProtoMember(7)]
         public List<Skill> CreatureSkills { get; set; }
 
-        [ProtoMember(13)]
+        [ProtoMember(8)]
         public string CreatureTypeName { get; set; }
 
-        [ProtoMember(14)]
+        [ProtoMember(9)]
         public string CreatureName { get; set; }
 
-        [ProtoMember(15)]
+        [ProtoMember(10)]
         public Inventory Inventory { get; set; }
 
         /// <summary>
@@ -102,7 +82,11 @@ namespace MagicalLifeAPI.Entity
         /// <param name="creatureName">The name of this specific creature.</param>
         protected Living(int health, double movementSpeed, Point2D location,
             int dimension, Guid playerID, string creatureTypeName, string creatureName)
+            : base(true)
         {
+            this.AddComponent(new ComponentSelectable(SelectionType.Creature));
+            this.AddComponent(new ComponentMovement(movementSpeed, location));
+
             this.ID = Guid.NewGuid();
             this.PlayerID = playerID;
             this.Initialize(health, movementSpeed, location, dimension);
@@ -112,19 +96,16 @@ namespace MagicalLifeAPI.Entity
             this.Inventory = new Inventory(true);
         }
 
+        protected Living()
+        {
+        }
+
         protected void Initialize(int health, double movementSpeed, Point2D location, int dimension)
         {
             this.Health = new Attribute32(health);
-            this.Movement = new AttributeDouble(movementSpeed);
-            this.MapLocation = location;
-            this.TileLocation = new Point2DDouble(location.X, location.Y);
+            this.GetExactComponent<ComponentSelectable>().MapLocation = location;
             this.Dimension = dimension;
             LivingCreatedHandler(new LivingEventArg(this, location));
-            this.FootStepTimer = new TickTimer(5);
-        }
-
-        protected Living()
-        {
         }
 
         public void AssignTask(MagicalTask task)

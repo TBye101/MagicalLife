@@ -1,5 +1,4 @@
-﻿using MagicalLifeAPI.Entity.AI.Task.Tasks;
-using ProtoBuf;
+﻿using ProtoBuf;
 using System;
 using System.Collections.Generic;
 
@@ -9,10 +8,6 @@ namespace MagicalLifeAPI.Entity.AI.Task
     /// Represents a task for the player to do.
     /// </summary>
     [ProtoContract]
-    [ProtoInclude(8, typeof(BecomeAdjacentTask))]
-    [ProtoInclude(9, typeof(MoveTask))]
-    [ProtoInclude(10, typeof(HarvestTask))]
-    [ProtoInclude(11, typeof(DropItemTask))]
     public abstract class MagicalTask
     {
         public delegate void CompletionEventHandler(MagicalTask task);
@@ -26,7 +21,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
         /// The dependencies of this task.
         /// </summary>
         [ProtoMember(1)]
-        public Dependencies Dependencies { get; private set; }
+        public Dependencies Dependencies { get; protected set; }
 
         [ProtoMember(2)]
         public Guid ID { get; private set; }
@@ -64,6 +59,15 @@ namespace MagicalLifeAPI.Entity.AI.Task
         public int TaskPriority { get; set; }
 
         /// <summary>
+        /// If true, this task's dynamic dependencies have already been generated.
+        /// </summary>
+        [ProtoMember(8)]
+        public bool DependenciesGenerated { get; set; }
+
+        [ProtoMember(9)]
+        public bool IsFinished { get; internal set; }
+
+        /// <summary>
         ///
         /// </summary>
         /// <param name="preRequisites">The dependencies of this task.</param>
@@ -97,6 +101,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
 
         protected void CompleteTask()
         {
+            this.IsFinished = true;
             this.Completed?.Invoke(this);
         }
 
@@ -115,6 +120,14 @@ namespace MagicalLifeAPI.Entity.AI.Task
         /// </summary>
         /// <param name="living"></param>
         public abstract void MakePreparations(Living living);
+
+        /// <summary>
+        /// Creates the dynamic dependencies of this task.
+        /// Returns true if the dependencies were successfully created.
+        /// If false, the framework will attempt to create them at another time.
+        /// </summary>
+        /// <param name="l"></param>
+        public abstract bool CreateDependencies(Living l);
 
         /// <summary>
         /// Resets the task, in order to prepare for something such as the assigned creature dying.

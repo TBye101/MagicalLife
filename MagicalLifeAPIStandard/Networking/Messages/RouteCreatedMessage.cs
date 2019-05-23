@@ -25,8 +25,9 @@ namespace MagicalLifeAPI.Networking.Messages
             this.Dimension = dimension;
         }
 
-        public RouteCreatedMessage() : base(NetMessageID.RouteCreatedMessage)
+        public RouteCreatedMessage()
         {
+            //Protobuf-net constructor.
         }
     }
 }

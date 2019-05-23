@@ -18,7 +18,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Qualifications
             this.CreatureID = creatureID;
         }
 
-        public SpecificCreatureQualification()
+        protected SpecificCreatureQualification()
         {
             //Protobuf-net constructor.
         }
@@ -26,6 +26,11 @@ namespace MagicalLifeAPI.Entity.AI.Task.Qualifications
         public override bool IsQualified(Living l)
         {
             return l.ID.Equals(this.CreatureID);
+        }
+
+        public override bool ArePreconditionsMet()
+        {
+            return true;
         }
     }
 }

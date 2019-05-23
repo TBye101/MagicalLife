@@ -25,7 +25,7 @@ namespace MagicalLifeAPI.Util
         {
             if (min < 0)
             {
-               throw new ArgumentOutOfRangeException(nameof(min), "Invalid minimum range: Values must be greater than 0.");
+                throw new ArgumentOutOfRangeException(nameof(min), "Invalid minimum range: Values must be greater than 0.");
             }
 
             if (max < 0)

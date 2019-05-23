@@ -2,7 +2,6 @@
 using MagicalLifeAPI.World.Base;
 using ProtoBuf;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace MagicalLifeAPI.Entity
 {
@@ -18,7 +17,7 @@ namespace MagicalLifeAPI.Entity
         /// Stored as: [itemID, itemObject]
         /// </summary>
         [ProtoMember(1)]
-        private readonly Dictionary<int, List<Item>> Items;
+        private Dictionary<int, List<Item>> Items;
 
         /// <summary>
         /// The combined weight of all the objects in the inventory.
@@ -27,7 +26,7 @@ namespace MagicalLifeAPI.Entity
         private double _Weight;
 
         [ProtoMember(3)]
-        public AttributeDouble Multiplyer;
+        public AttributeDouble Multiplyer { get; set; }
 
         /// <summary>
         /// The weight of all items in this inventory taking into account multipliers.
@@ -48,6 +47,15 @@ namespace MagicalLifeAPI.Entity
         protected Inventory()
         {
             //Protobuf-net constructor
+        }
+
+        [ProtoAfterDeserialization]
+        private void PostDeserialization()
+        {
+            if (this.Items == null)
+            {
+                this.Items = new Dictionary<int, List<Item>>();
+            }
         }
 
         /// <summary>
@@ -239,6 +247,7 @@ namespace MagicalLifeAPI.Entity
                 {
                     stored.Add(overflow);
                 }
+                this.Items.Add(item.ItemID, stored);
             }
         }
 

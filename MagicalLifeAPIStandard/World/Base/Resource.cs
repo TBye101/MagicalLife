@@ -1,13 +1,8 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
+﻿using MagicalLifeAPI.Components;
 using MagicalLifeAPI.Components.Resource;
 using MagicalLifeAPI.DataTypes.Attribute;
 using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Networking;
-using MagicalLifeAPI.Visual.Rendering;
-using MagicalLifeAPI.World.Resources;
 using ProtoBuf;
-using System;
-using System.Collections.Generic;
 
 namespace MagicalLifeAPI.World.Base
 {
@@ -16,12 +11,28 @@ namespace MagicalLifeAPI.World.Base
     /// Resources in tiles are things such as stone and minerals.
     /// </summary>
     [ProtoContract]
-    [ProtoInclude(7, typeof(RockBase))]
-    [ProtoInclude(8, typeof(TreeBase))]
-    public abstract class Resource : HasTexture, IHasSubclasses, IHarvestable, IRenderable
+    public abstract class Resource : HasComponents
     {
-        protected Resource(string name, int durability)
+        /// <summary>
+        /// The display name of the resource.
+        /// </summary>
+        [ProtoMember(1)]
+        public string DisplayName { get; private set; }
+
+        /// <summary>
+        /// How much of the resources is left.
+        /// </summary>
+        [ProtoMember(2)]
+        public int Durability { get; set; }
+
+        [ProtoMember(3)]
+        public Attribute32 MaxDurability { get; private set; }
+
+        protected Resource(string name, int durability, ComponentHarvestable harvestBehavior)
+            : base(true)
         {
+            this.AddComponent(new ComponentHasTexture(false));
+            this.AddComponent(harvestBehavior);
             this.DisplayName = name;
             this.Durability = durability;
             this.MaxDurability = new Attribute32(this.Durability);
@@ -30,40 +41,5 @@ namespace MagicalLifeAPI.World.Base
         protected Resource()
         {
         }
-
-        /// <summary>
-        /// The display name of the resource.
-        /// </summary>
-        [ProtoMember(3)]
-        public string DisplayName { get; }
-
-        /// <summary>
-        /// How much of the resources is left.
-        /// </summary>
-        [ProtoMember(4)]
-        public int Durability { get; set; }
-
-        [ProtoMember(5)]
-        public Attribute32 MaxDurability { get; }
-
-        [ProtoMember(6)]
-        public abstract AbstractHarvestable HarvestingBehavior { get; set; }
-
-        public Type GetBaseType()
-        {
-            return typeof(Resource);
-        }
-
-        public Dictionary<Type, int> GetSubclassInformation()
-        {
-            Dictionary<Type, int> ret = new Dictionary<Type, int>
-            {
-                { typeof(RockBase), 7 },
-                { typeof(TreeBase), 8 }
-            };
-            return ret;
-        }
-
-        public abstract List<AbstractVisual> GetVisuals();
     }
 }

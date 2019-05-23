@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Visual.Rendering.AbstractVisuals;
 using MagicalLifeGUIWindows.Rendering.Map;
 using ProtoBuf;
 
@@ -9,9 +8,6 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
     /// Used to abstract away the complexities of animations and static textures.
     /// </summary>
     [ProtoContract]
-    [ProtoInclude(3, typeof(StaticTexture))]
-    [ProtoInclude(4, typeof(AnimatedTexture))]
-    [ProtoInclude(5, typeof(OffsetTexture))]
     public abstract class AbstractVisual
     {
         /// <summary>
@@ -21,13 +17,13 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         /// Think of this like layers of a painting.
         /// </summary>
         [ProtoMember(1)]
-        public int Priority { get; set; }
+        protected int Priority { get; set; }
 
         /// <summary>
         /// The top left bound to render at that is relative to the tile position this AbstractVisual belongs to.
         /// </summary>
         [ProtoMember(2)]
-        public Point2D RelativeTopLeft { get; set; }
+        private Point2D RelativeTopLeft { get; set; }
 
         protected AbstractVisual(int priority)
         {

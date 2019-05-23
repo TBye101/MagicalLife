@@ -1,0 +1,7 @@
+
+-Default recipes stored as .json
+-Player tweaks to .json files override all modded recipes as well as vanilla recipes
+-Dynamically changing recipes are possible as long as the user hasn't manually tweaked that specific recipe
+-When a mod wants to change another mod's recipe, it must ask the other mod permission.
+-Skill levels have impact upon quantities of items required unless the recipe specifies not to for all or a item in the recipe
+-Character skill will have a huge impact upon the final product of a recipe

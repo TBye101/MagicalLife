@@ -1,5 +1,5 @@
 ﻿using ProtoBuf;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace MagicalLifeAPI.Entity.AI.Task
 {
@@ -10,7 +10,7 @@ namespace MagicalLifeAPI.Entity.AI.Task
     public class Dependencies
     {
         [ProtoMember(1)]
-        public List<MagicalTask> PreRequisite { get; private set; }
+        public ObservableCollection<MagicalTask> PreRequisite { get; private set; }
 
         /// <summary>
         /// The amount of prerequisites originally.
@@ -18,13 +18,40 @@ namespace MagicalLifeAPI.Entity.AI.Task
         [ProtoMember(2)]
         public int InitialCount;
 
-        public static readonly Dependencies None = new Dependencies(new List<MagicalTask>());
-
-        public Dependencies(List<MagicalTask> dependencies)
+        public Dependencies(ObservableCollection<MagicalTask> dependencies)
         {
             this.PreRequisite = dependencies;
             this.InitialCount = dependencies.Count;
 
+            foreach (MagicalTask item in this.PreRequisite)
+            {
+                item.Completed += this.Item_Completed;
+            }
+            this.PreRequisite.CollectionChanged += this.PreRequisite_CollectionChanged;
+        }
+
+        private void PreRequisite_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            System.Collections.IList newItems = e.NewItems;
+
+            if (newItems != null && newItems.Count > 0)
+            {
+                foreach (object item in newItems)
+                {
+                    MagicalTask task = (MagicalTask)item;
+                    task.Completed += this.Item_Completed;
+                }
+            }
+        }
+
+        protected Dependencies()
+        {
+            //Protobuf-net constructor
+        }
+
+        [ProtoAfterDeserialization]
+        protected void AfterDeserialization()
+        {
             foreach (MagicalTask item in this.PreRequisite)
             {
                 item.Completed += this.Item_Completed;
@@ -36,9 +63,13 @@ namespace MagicalLifeAPI.Entity.AI.Task
             this.PreRequisite.Remove(task);
         }
 
-        public Dependencies()
+        /// <summary>
+        /// Creates an empty dependencies object. For use when a task doesn't have dependencies.
+        /// </summary>
+        /// <returns></returns>
+        public static Dependencies CreateEmpty()
         {
-            //Protobuf-net constructor.
+            return new Dependencies(new ObservableCollection<MagicalTask>());
         }
     }
 }

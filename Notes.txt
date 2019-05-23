@@ -1,0 +1,5 @@
+Modding:
+
+Friend assemblies and the use of the "internal" keyword will be useful in forcing mod authors to go through
+the MagicalLifeModdingAPI instead of using things that might be subject to change.
+https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/assemblies-gac/friend-assemblies

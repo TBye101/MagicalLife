@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.Filing.Logging;
+using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using RoyT.AStar;
@@ -56,7 +57,8 @@ namespace MagicalLifeAPI.Pathfinding.AStar
             this.Grid = new Grid(dimension.Width * Chunk.Width, dimension.Height * Chunk.Height, 1);
             foreach (Tile item in dimension)
             {
-                Position pos = new Position(item.MapLocation.X, item.MapLocation.Y);
+                ComponentSelectable selected = item.GetExactComponent<ComponentSelectable>();
+                Position pos = new Position(selected.MapLocation.X, selected.MapLocation.Y);
 
                 this.Grid.SetCellCost(pos, item.MovementCost);
                 if (!item.IsWalkable)

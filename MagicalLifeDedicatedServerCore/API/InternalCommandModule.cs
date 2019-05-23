@@ -7,7 +7,7 @@ namespace MagicalLifeDedicatedServer.API
 {
     public class InternalCommandModule : ICommandModule
     {
-        public List<ICommand> getCommands()
+        public List<ICommand> GetCommands()
         {
             return new List<ICommand>()
             {
@@ -17,7 +17,7 @@ namespace MagicalLifeDedicatedServer.API
             };
         }
 
-        public string getCommandUsageName()
+        public string GetCommandUsageName()
         {
             return "ml";
         }
@@ -26,7 +26,7 @@ namespace MagicalLifeDedicatedServer.API
         /// The display name of this command module.
         /// </summary>
         /// <returns></returns>
-        public string getFullName()
+        public string GetFullName()
         {
             return DedicatedServer.MagicalLife;
         }

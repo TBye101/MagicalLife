@@ -1,10 +1,11 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
+﻿using MagicalLifeAPI.Components.Entity;
+using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.DataTypes.Attribute;
 using MagicalLifeAPI.Entity.Humanoid;
 using MagicalLifeAPI.Entity.Util.Modifier;
-using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.Filing;
+using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.World.Modifiers;
@@ -28,9 +29,10 @@ namespace MagicalLifeAPI.Entity.Movement
         /// <param name="entity"></param>
         public static void MoveEntity(Living entity)
         {
-            ProtoQueue<PathLink> path = entity.QueuedMovement;
+            ComponentMovement movementComponent = entity.GetExactComponent<ComponentMovement>();
+            ProtoQueue<PathLink> path = movementComponent.QueuedMovement;
 
-            while (entity.Movement.GetValue() > 0 && path.Count > 0)
+            while (movementComponent.Movement.GetValue() > 0 && path.Count > 0)
             {
                 PathLink section = path.Peek();
 
@@ -66,7 +68,9 @@ namespace MagicalLifeAPI.Entity.Movement
         /// <param name="destination"></param>
         public static void Move(Living entity, Tile source, Tile destination)
         {
-            Direction direction = DetermineMovementDirection(source.MapLocation, destination.MapLocation);
+            ComponentSelectable sLocation = source.GetExactComponent<ComponentSelectable>();
+            ComponentSelectable dLocation = destination.GetExactComponent<ComponentSelectable>();
+            Direction direction = DetermineMovementDirection(sLocation.MapLocation, dLocation.MapLocation);
 
             float xMove = 0;
             float yMove = 0;
@@ -119,41 +123,43 @@ namespace MagicalLifeAPI.Entity.Movement
                     throw new InvalidOperationException("Unexpected value for direction: " + direction.ToString());
             }
 
-            xMove *= (float)entity.Movement.GetValue();
-            yMove *= (float)entity.Movement.GetValue();
+            ComponentMovement movementComponent = entity.GetExactComponent<ComponentMovement>();
+            xMove *= (float)movementComponent.Movement.GetValue();
+            yMove *= (float)movementComponent.Movement.GetValue();
 
             float movementPenalty = (float)Math.Abs(CalculateMovementReduction(xMove, yMove)) * -1;
 
-            if (MathUtil.GetDistance(entity.TileLocation, destination.MapLocation) > entity.Movement.GetValue())
+            if (MathUtil.GetDistance(movementComponent.TileLocation, dLocation.MapLocation) > movementComponent.Movement.GetValue())
             {
                 //The character fell short of reaching the next tile
-                entity.TileLocation = new Point2DDouble((float)entity.TileLocation.X + xMove, (float)entity.TileLocation.Y + yMove);
+                movementComponent.TileLocation = new Point2DDouble((float)movementComponent.TileLocation.X + xMove, (float)movementComponent.TileLocation.Y + yMove);
                 FootStepSound(entity, source);
             }
             else
             {
                 //The character made it to the next tile.
-                entity.MapLocation = destination.MapLocation;
-                entity.TileLocation = new Point2DDouble(destination.MapLocation.X, destination.MapLocation.Y);
-                entity.QueuedMovement.Dequeue();
-                movementPenalty = (float)MathUtil.GetDistance(entity.TileLocation, destination.MapLocation);
+                entity.GetExactComponent<ComponentSelectable>().MapLocation = dLocation.MapLocation;
+                movementComponent.TileLocation = new DataTypes.Point2DDouble(dLocation.MapLocation.X, dLocation.MapLocation.Y);
+                movementComponent.QueuedMovement.Dequeue();
+                movementPenalty = (float)MathUtil.GetDistance(movementComponent.TileLocation, dLocation.MapLocation);
                 FootStepSound(entity, destination);
 
                 //If this entity is the current client's and therefore that clients responsibility to report about
                 if (entity.PlayerID == SettingsManager.PlayerSettings.Settings.PlayerID)
                 {
-                    ClientSendRecieve.Send(new WorldModifierMessage(new LivingLocationModifier(entity.ID, source.MapLocation, destination.MapLocation, entity.Dimension)));
+                    ClientSendRecieve.Send(new WorldModifierMessage(new LivingLocationModifier(entity.ID, sLocation.MapLocation, dLocation.MapLocation, entity.Dimension)));
                 }
             }
 
-            entity.Movement.AddModifier(new ModifierDouble(movementPenalty, new TimeRemoveCondition(1), Lang.NormalMovement));
+            movementComponent.Movement.AddModifier(new ModifierDouble(movementPenalty, new TimeRemoveCondition(1), Lang.NormalMovement));
         }
 
         private static void FootStepSound(Living living, Tile footStepsOn)
         {
-            if (living.FootStepTimer.Allow())
+            ComponentMovement movementComponent = living.GetExactComponent<ComponentMovement>();
+            if (movementComponent.FootStepTimer.Allow())
             {
-                Point2DFloat screenLocation = new Point2DFloat((float)living.TileLocation.X, (float)living.TileLocation.Y);
+                Point2DFloat screenLocation = new Point2DFloat((float)movementComponent.TileLocation.X, (float)movementComponent.TileLocation.Y);
 
                 screenLocation.X *= Tile.GetTileSize().X;
                 screenLocation.Y *= Tile.GetTileSize().Y;

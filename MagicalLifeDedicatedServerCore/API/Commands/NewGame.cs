@@ -1,12 +1,12 @@
 ﻿using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Server;
+using MagicalLifeAPI.Registry.WorldGeneration;
 using MagicalLifeAPI.Server;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Data.Disk;
 using MagicalLifeDedicatedServer.API.Settings;
 using MagicalLifeDedicatedServer.Properties;
 using MagicalLifeServer;
-using MagicalLifeServer.ServerWorld.World;
 using System.Collections.Generic;
 using System.Net.Sockets;
 
@@ -17,17 +17,17 @@ namespace MagicalLifeDedicatedServer.API.Commands
     /// </summary>
     public class NewGame : ICommand
     {
-        public string getHelp()
+        public string GetHelp()
         {
-            return DedicatedServer.NewGameCommandDesc;
+            return DedicatedServer.GeneratingWorld;
         }
 
-        public string getName()
+        public string GetName()
         {
             return "NewGame";
         }
 
-        public void run(List<string> input)
+        public void Run(List<string> input)
         {
             if (input.Count > 0)
             {
@@ -37,7 +37,7 @@ namespace MagicalLifeDedicatedServer.API.Commands
 
                 WorldGenerationSettings wset = SettingsHandler.WorldGenerationSettings.Settings;
                 Util.WriteLine(DedicatedServer.GeneratingWorld);
-                World.Initialize(wset.DimensionWidth, wset.DimensionHeight, new GrassAndDirt(0));
+                World.Initialize(wset.DimensionWidth, wset.DimensionHeight, WorldGeneratorRegistry.Generators[0], "Main");
                 Util.WriteLine(DedicatedServer.WorldGenerated);
 
                 Util.WriteLine(DedicatedServer.InitializingNetwork);
@@ -59,9 +59,9 @@ namespace MagicalLifeDedicatedServer.API.Commands
             Util.WriteLine(DedicatedServer.ClientDisconnected + ": " + e.Client.RemoteEndPoint.ToString());
         }
 
-        private static void Server_ClientConnected(object sender, System.Net.Sockets.TcpClient e)
+        private static void Server_ClientConnected(object sender, TcpClient e)
         {
-            Util.WriteLine(DedicatedServer.ClientConnected + ": "+ e.Client.RemoteEndPoint.ToString());
+            Util.WriteLine(DedicatedServer.ClientConnected + ": " + e.Client.RemoteEndPoint.ToString());
         }
     }
 }

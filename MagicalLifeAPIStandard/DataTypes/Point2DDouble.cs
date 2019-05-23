@@ -40,7 +40,7 @@ namespace MagicalLifeAPI.DataTypes
 
         public override int GetHashCode()
         {
-            return (int) X ^ (int) Y;
+            return (int)X ^ (int)Y;
         }
 
         public bool Equals(Point2DDouble other)

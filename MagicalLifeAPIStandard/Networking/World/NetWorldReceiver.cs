@@ -48,14 +48,14 @@ namespace MagicalLifeAPI.Networking.World
             MagicalLifeAPI.World.Data.World.RaiseChangeCameraDimension(0);
         }
 
-        public static void Receive(WorldTransferBodyMessage msg)
+        internal static void Receive(WorldTransferBodyMessage msg)
         {
             ReceivedChunks++;
             WorldStorage.ChunkStorage.SaveChunk(msg.Chunk, msg.DimensionID, DiskSink);
             CheckCompletion();
         }
 
-        public static void Receive(WorldTransferHeaderMessage msg)
+        internal static void Receive(WorldTransferHeaderMessage msg)
         {
             ExpectedChunks = 0;
             ExpectedItemRegistries = 0;
@@ -76,7 +76,7 @@ namespace MagicalLifeAPI.Networking.World
             }
         }
 
-        public static void Receive(WorldTransferRegistryMessage msg)
+        internal static void Receive(WorldTransferRegistryMessage msg)
         {
             ReceivedItemRegistries++;
             WorldStorage.ItemStorage.SaveItemRegistry(msg.ItemReg, DiskSink, msg.DimensionID);

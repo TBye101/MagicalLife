@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>MagicalLifeCoreMod</AssemblyName>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Core\Entities\**" />
+    <Compile Remove="Core\Tiles\**" />
+    <EmbeddedResource Remove="Core\Entities\**" />
+    <EmbeddedResource Remove="Core\Tiles\**" />
+    <None Remove="Core\Entities\**" />
+    <None Remove="Core\Tiles\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MagicalLifeAPIStandard\MagicalLifeAPIStandard.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Core\WorldGeneration\StructureGenerators\" />
+    <Folder Include="Core\WorldGeneration\VegetationGenerators\" />
+  </ItemGroup>
+
+</Project>

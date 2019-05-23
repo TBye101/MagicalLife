@@ -1,10 +1,8 @@
 ﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Properties;
 using MagicalLifeAPI.Visual.Rendering.Animation;
-using MagicalLifeAPI.World.Items;
 using MagicalLifeSettings;
 using ProtoBuf;
 using System;
@@ -52,8 +50,6 @@ namespace MagicalLifeAPI.Entity.Humanoid
             this.Visual = new AnimatedTexture(RenderLayer.Character, this.GetSequences(),
                 TextureLoader.AnimationBaseCharacter,
                 XMLPaths.BaseCharacterSpriteSheet, Assembly.GetAssembly(typeof(AssemblyGetter)));
-            this.Inventory.AddItem(new Log(15, 30));
-            this.Inventory.AddItem(new StoneRubble(25));
         }
 
         public Human() : base()
@@ -77,11 +73,6 @@ namespace MagicalLifeAPI.Entity.Humanoid
             AnimationSequence[] sequences = { down, left, right, up };
 
             return sequences;
-        }
-
-        public override SelectionType InGameObjectType(Selectable selectable)
-        {
-            return SelectionType.Creature;
         }
     }
 }

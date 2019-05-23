@@ -1,4 +1,5 @@
-﻿using ProtoBuf;
+﻿using MagicalLifeAPI.Components.Entity;
+using ProtoBuf;
 
 namespace MagicalLifeAPI.Entity.AI.Task.Qualifications
 {
@@ -12,9 +13,15 @@ namespace MagicalLifeAPI.Entity.AI.Task.Qualifications
         {
         }
 
+        public override bool ArePreconditionsMet()
+        {
+            return true;
+        }
+
         public override bool IsQualified(Living l)
         {
-            return l.Movement.GetValue() > 0;
+            ComponentMovement movementComponent = l.GetExactComponent<ComponentMovement>();
+            return movementComponent.Movement.GetValue() > 0;
         }
     }
 }

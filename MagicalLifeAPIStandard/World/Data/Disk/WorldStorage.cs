@@ -28,7 +28,7 @@ namespace MagicalLifeAPI.World.Data.Disk
         /// Key: The ID of the dimension.
         /// Value: The path to the root of where all of the chunks are stored for the dimension.
         /// </summary>
-        public static Dictionary<Guid, string> DimensionPaths { get; set; } = new Dictionary<Guid, string>();
+        public static Dictionary<Guid, string> DimensionPaths { get; private set; } = new Dictionary<Guid, string>();
 
         /// <summary>
         /// Knows how to save information about a dimension.
@@ -88,7 +88,7 @@ namespace MagicalLifeAPI.World.Data.Disk
             SerializeWorld(name, sink);
         }
 
-        public static void Initialize(string saveName)
+        internal static void Initialize(string saveName)
         {
             SaveName = saveName;
 
@@ -124,10 +124,14 @@ namespace MagicalLifeAPI.World.Data.Disk
         {
             if (World.Dimensions.Count > 0)
             {
+                //Regenerate dimension paths each time to support saving in multiple save slots from one game.
+                DimensionPaths.Clear();
+
                 //We are saving
                 foreach (Dimension item in World.Dimensions)
                 {
                     DirectoryInfo dirInfo = Directory.CreateDirectory(WorldStorage.DimensionSaveFolder + Path.DirectorySeparatorChar + item.ID);
+                    DimensionStorage.PrepareForDimension(item.ID);
 
                     if (!DimensionPaths.TryGetValue(item.ID, out string value))
                     {
@@ -151,7 +155,7 @@ namespace MagicalLifeAPI.World.Data.Disk
             }
         }
 
-        public static void LoadWorld(string saveName)
+        internal static void LoadWorld(string saveName)
         {
             Initialize(saveName);
 

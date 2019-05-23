@@ -1,0 +1,46 @@
+Requirements:
+Generic enough to easily support mods/new content
+Minimize network traffic
+Minimize memory usage
+Minimize CPU usage
+
+Design:
+https://www.gabrielgambetta.com/client-side-prediction-server-reconciliation.html
+https://www.gabrielgambetta.com/entity-interpolation.html
+
+-Server
+	-Receives commands from the players via the client
+		-Processes the client's command
+		-Responds with a change in the game state
+
+-Client
+	-Sends commands from the player to the server
+		-Predicts the server response, starts doing the predicted action
+		-Receives a response with a new game state
+			-Somehow gets back to the server's recorded state
+			-Stops doing the predicted action, starts doing the server's action
+			
+			
+			
+abstract INetSyncable
+{
+	NetObjectServerMessage predicted;
+	NetObjectServerMessage actual;
+	NetObjectClientMessage clientCommand;
+
+	//Mutates this object's state based upon received data from the client.
+	//Returns a response to the client's command.
+	NetObjectServerMessage ServerRecieveMessage(NetObjectClientMessage clientMessage);
+	
+	//Predict a response by the server
+	NetObjectServerMessage PredictResponse();
+	
+	//Recieve the authoratative response from the server.
+	void ClientRecieveMessage(NetObjectServerMessage serverMessage);
+	
+	//Begin carrying out the predicted response
+	void ClientExecutePrediction(NetObjectServerMessage predictedResponse);
+	
+	//Called until the client's syncable object matches with the server's response.
+	void Resolve();
+}

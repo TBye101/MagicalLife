@@ -10,18 +10,18 @@ namespace MagicalLifeAPI.Server
         /// <summary>
         /// All commands contained within this command module.
         /// </summary>
-        List<ICommand> getCommands();
+        List<ICommand> GetCommands();
 
         /// <summary>
         /// The name that must be used in front of each command to qualify that the command is meant for this module.
         /// Ex: interact help
         /// Would execute the command "help" in the module "interact" if it existed.
         /// </summary>
-        string getCommandUsageName();
+        string GetCommandUsageName();
 
         /// <summary>
         /// The display name of this command module.
         /// </summary>
-        string getFullName();
+        string GetFullName();
     }
 }

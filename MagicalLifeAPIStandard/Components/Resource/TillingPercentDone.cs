@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace MagicalLifeAPI.Components.Resource
 {
     [ProtoContract]
-    public class TillablePercentDone : AbstractTillable
+    public class TillablePercentDone : ComponentTillable
     {
         public TillablePercentDone()
         {
