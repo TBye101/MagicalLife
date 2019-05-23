@@ -20,6 +20,7 @@
 //  Ported to C# By Dror Gluska, April 9th, 2009
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
@@ -568,8 +569,7 @@ namespace MagicalLifeAPI.DataTypes.R
 
             Array.Copy(initialEntryStatus, 0, entryStatus, 0, maxNodeEntries);
 
-            Node<T> newNode = null;
-            newNode = new Node<T>(getNextNodeId(), n.level, maxNodeEntries);
+            Node<T> newNode = new Node<T>(getNextNodeId(), n.level, maxNodeEntries);
             nodeMap.Add(newNode.nodeId, newNode);
 
             PickSeeds(n, newRect, newId, newNode); // this also sets the entryCount to 1
@@ -1148,6 +1148,8 @@ namespace MagicalLifeAPI.DataTypes.R
             }
             return mbr;
         }
+
+
 
         public int Count
         {

@@ -1,6 +1,6 @@
 ﻿namespace MagicalLifeGUIWindows.GUI.New
 {
-    public class NewWorldMenuLayout1920x1080
+    public static class NewWorldMenuLayout1920x1080
     {
         /// <summary>
         /// The Y position at which all world size <see cref="InputBox"/>s are displayed at.

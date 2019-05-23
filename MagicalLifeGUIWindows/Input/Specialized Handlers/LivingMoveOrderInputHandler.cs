@@ -7,6 +7,7 @@ using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.Input.History;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -67,9 +68,6 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                             Extensions.EnqueueCollection(living.QueuedMovement, pth);
                             //ClientSendRecieve.Send<RouteCreatedMessage>(new RouteCreatedMessage(pth, living.ID, living.Dimension));
                         }
-                        break;
-
-                    default:
                         break;
                 }
             }
