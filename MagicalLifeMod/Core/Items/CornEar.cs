@@ -37,5 +37,10 @@ namespace MagicalLifeAPI.World.Items
         {
             return new CornEar(amount);
         }
+
+        public override bool IsWalkable()
+        {
+            return true;
+        }
     }
 }

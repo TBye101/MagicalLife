@@ -23,7 +23,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         public static Item RemoveAllItems(Point2D mapLocation, int dimension)//Gotta update the indexes
         {
             Tile tile = World.Data.World.GetTile(dimension, mapLocation.X, mapLocation.Y);
-            Item item = tile.Item;
+            Item item = tile.MainObject as Item;
 
             RemoveItem(tile, dimension);
             return item;
@@ -41,21 +41,18 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         {
             Tile tile = World.Data.World.GetTile(dimension, mapLocation.X, mapLocation.Y);
 
-            if (tile.Item == null)
+            Item removed = null;
+            if (tile.MainObject is Item tileItem)
             {
-                return null;
-            }
-
-            Item removed;
-
-            if (tile.Item.CurrentlyStacked > count)
-            {
-                removed = ItemRegistry.IDToItem[tile.Item.ItemID].GetDeepCopy(count);
-            }
-            else
-            {
-                removed = ItemRegistry.IDToItem[tile.Item.ItemID].GetDeepCopy(tile.Item.CurrentlyStacked);
-                RemoveItem(tile, dimension);
+                if (tileItem.CurrentlyStacked > count)
+                {
+                    removed = ItemRegistry.IDToItem[tileItem.ItemID].GetDeepCopy(count);
+                }
+                else
+                {
+                    removed = ItemRegistry.IDToItem[tileItem.ItemID].GetDeepCopy(tileItem.CurrentlyStacked);
+                    RemoveItem(tile, dimension);
+                }
             }
 
             return removed;
@@ -66,31 +63,34 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// </summary>
         private static void RemoveItem(Tile tile, int dimension)
         {
-            int itemID = tile.Item.ItemID;
-            Point2D l = tile.GetExactComponent<ComponentSelectable>().MapLocation;
-            Chunk chunk = World.Data.World.GetChunkByTile(dimension, l.X, l.Y);
-
-            if (chunk.Items.ContainsKey(itemID))
+            if (tile.MainObject is Item tileItem)
             {
-                RTree<Point2D> result = chunk.Items[itemID];
-                bool success = result.Delete(new Rectangle(l.X, l.Y, l.X, l.Y), new Point2D(l.X, l.Y));
+                int itemID = tileItem.ItemID;
+                Point2D l = tile.GetExactComponent<ComponentSelectable>().MapLocation;
+                Chunk chunk = World.Data.World.GetChunkByTile(dimension, l.X, l.Y);
 
-                if (!success)
+                if (chunk.Items.ContainsKey(itemID))
                 {
-                    throw new RegistryDeletionException("Failed to delete an item!");
-                }
+                    RTree<Point2D> result = chunk.Items[itemID];
+                    bool success = result.Delete(new Rectangle(l.X, l.Y, l.X, l.Y), new Point2D(l.X, l.Y));
 
-                if (result.Count == 0)
-                {
-                    RTree<Point2D> chunksContaining = World.Data.World.Dimensions[dimension].Items.ItemIDToChunk[itemID];
-                    bool succeed = chunksContaining.Delete(new Rectangle(chunk.ChunkLocation.X, chunk.ChunkLocation.Y, chunk.ChunkLocation.X, chunk.ChunkLocation.Y), new Point2D(chunk.ChunkLocation.X, chunk.ChunkLocation.Y));
-
-                    if (!succeed)
+                    if (!success)
                     {
-                        throw new RegistryDeletionException("Failed to delete a chunk containing an item!");
+                        throw new RegistryDeletionException("Failed to delete an item!");
                     }
+
+                    if (result.Count == 0)
+                    {
+                        RTree<Point2D> chunksContaining = World.Data.World.Dimensions[dimension].Items.ItemIDToChunk[itemID];
+                        bool succeed = chunksContaining.Delete(new Rectangle(chunk.ChunkLocation.X, chunk.ChunkLocation.Y, chunk.ChunkLocation.X, chunk.ChunkLocation.Y), new Point2D(chunk.ChunkLocation.X, chunk.ChunkLocation.Y));
+
+                        if (!succeed)
+                        {
+                            throw new RegistryDeletionException("Failed to delete a chunk containing an item!");
+                        }
+                    }
+                    tileItem = null;
                 }
-                tile.Item = null;
             }
         }
     }

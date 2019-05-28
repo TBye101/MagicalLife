@@ -2,6 +2,7 @@
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity.AI.Task.Qualifications;
 using MagicalLifeAPI.Entity.Skills;
+using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Registry.ItemRegistry;
@@ -59,10 +60,15 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         public override void MakePreparations(Living living)
         {
             Tile tile = World.Data.World.GetTile(living.Dimension, this.Target.X, this.Target.Y);
-            this.Harvestable = tile.Resources.GetComponent<ComponentHarvestable>();
-            if (tile.Resources == null)
+            Resource resource = tile.MainObject as Resource;
+
+            if (resource == null)
             {
-                MasterLog.DebugWriteLine("Minable is null");
+                throw new UnexpectedStateException();
+            }
+            else
+            {
+                this.Harvestable = resource.GetComponent<ComponentHarvestable>();
             }
         }
 
@@ -125,15 +131,16 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             //The tile the entity is standing on
             ComponentSelectable entityS = l.GetExactComponent<ComponentSelectable>();
             Tile entityOn = World.Data.World.GetTile(l.Dimension, entityS.MapLocation.X, entityS.MapLocation.Y);
+            
 
-            if (entityOn.Item == null || entityOn.Item.GetType() == drop.GetType())
+            if (entityOn.MainObject == null || entityOn.MainObject.GetType() == drop.GetType())
             {
                 ItemAdder.AddItem(drop, entityS.MapLocation, l.Dimension);
             }
             else
             {
                 l.Inventory.AddItem(drop);
-                Point2D emtpyTile = ItemFinder.FindItemEmptyTile(entityOn.GetExactComponent<ComponentSelectable>().MapLocation, l.Dimension);
+                Point2D emtpyTile = ItemFinder.FindMainObjectEmptyTile(entityOn.GetExactComponent<ComponentSelectable>().MapLocation, l.Dimension);
                 DropItemTask task = new DropItemTask(emtpyTile, l.Dimension, drop, l.ID, Guid.NewGuid());
                 task.ReservedFor = l.ID;
                 TaskManager.Manager.AddTask(task);
@@ -146,7 +153,13 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         private void RemoveResource(int dimension)
         {
             Tile tile = World.Data.World.GetTile(dimension, this.Target.X, this.Target.Y);
-            tile.Resources = null;
+
+            Resource resource = tile.MainObject as Resource;
+
+            if (resource != null)
+            {
+                tile.MainObject = null;
+            }
             tile.ImpendingAction = ActionSelected.None;
         }
 

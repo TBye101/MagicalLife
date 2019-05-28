@@ -42,13 +42,13 @@ namespace MagicalLifeMod.Core.WorldGeneration.TerrainGenerators
 
             if (seededRandom.Next(0, 5) == 3)
             {
-                dirt.Resources = new Rock(seededRandom.Next(1, 170));
+                dirt.MainObject = new Rock(seededRandom.Next(1, 170));
             }
             else
             {
                 if (seededRandom.Next(0, 10) == 4)
                 {
-                    dirt.Resources = new MapleTree(100);
+                    dirt.MainObject = new MapleTree(100);
                 }
             }
 

@@ -37,5 +37,10 @@ namespace MagicalLifeAPI.World.Items
         {
             return new Log(amount);
         }
+
+        public override bool IsWalkable()
+        {
+            return true;
+        }
     }
 }

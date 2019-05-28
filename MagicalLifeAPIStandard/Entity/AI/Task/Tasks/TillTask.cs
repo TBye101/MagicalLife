@@ -95,16 +95,6 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             }
         }
 
-        /// <summary>
-        /// Removes the resource from the world, as it has been completely mined up.
-        /// </summary>
-        private void RemoveResource(int dimension)
-        {
-            Tile tile = World.Data.World.GetTile(dimension, this.Target.X, this.Target.Y);
-            tile.Resources = null;
-            tile.ImpendingAction = ActionSelected.None;
-        }
-
         public override bool CreateDependencies(Living l)
         {
             return true;

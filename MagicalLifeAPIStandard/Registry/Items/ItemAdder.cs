@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.DataTypes.R;
+using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Messages;
@@ -135,13 +136,18 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
             Tile tile = WorldUtil.GetTile(mapLocation, chunk);
             Item overflow = null;
 
-            if (tile.Item == null)
+            if (tile.MainObject == null)
             {
-                tile.Item = item;
+                tile.MainObject = item;
             }
             else
             {
-                Item final = Item.Combine(tile.Item, item, out overflow);
+                Item existing = tile.MainObject as Item;
+                if (existing == null)
+                {
+                    throw new UnexpectedStateException("Invalid addition of an item to a tile with an object of another type occuping the main object slot.");
+                }
+                tile.MainObject = Item.Combine(existing, item, out overflow);
             }
 
             return overflow;

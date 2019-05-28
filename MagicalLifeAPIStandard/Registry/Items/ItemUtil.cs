@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Base;
 using System;
 using System.Collections.Generic;
@@ -18,8 +19,10 @@ namespace MagicalLifeAPI.Registry.Items
             Tile tile;
             foreach (Point2D item in locations)
             {
-                tile = World.Data.World.GetTile(dimension, item.X, item.Y);
-                tile.Item.ReservedID = reservingID;
+                tile = World.Data.World.GetTile(dimension,item.X, item.Y);
+
+                Item tileItem = tile.MainObject as Item;
+                tileItem.ReservedID = reservingID;
             }
         }
     }

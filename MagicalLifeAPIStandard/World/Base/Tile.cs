@@ -65,31 +65,23 @@ namespace MagicalLifeAPI.World.Base
             return new Point2D(64, 64);
         }
 
-        [ProtoMember(4)]
-        private Resource TileResource { get; set; }
-
+        [ProtoMember(6)]
+        private GameObject TileMainObject { get; set; }
+        
         /// <summary>
-        /// The resources that can be found in this tile.
+        /// The main object occupying this tile. Is null if there is no object here.
         /// </summary>
-        public Resource Resources
+        public GameObject MainObject
         {
             get
             {
-                return this.TileResource;
+                return this.TileMainObject;
             }
-
             set
             {
-                this.SetResource(value);
+                this.SetMainObject(value);
             }
         }
-
-        /// <summary>
-        /// The item(s) that is stored in this tile.
-        /// </summary>
-        [ProtoMember(6)]
-        public Item Item { get; set; }
-
 
 
         [ProtoMember(7)]
@@ -180,23 +172,6 @@ namespace MagicalLifeAPI.World.Base
         /// <returns></returns>
         public abstract string GetName();
 
-        private void SetResource(Resource resource)
-        {
-            if (this.TileResource == null)
-            {
-                this.TileResource = resource;
-
-                this.IsWalkable = (this.TileResource == null);
-                return;
-            }
-
-            this.UpdateVisuals(this.Resources, resource);
-
-            this.TileResource = resource;
-
-            this.IsWalkable = (this.TileResource == null);
-        }
-
         /// <summary>
         /// Swaps the old visuals with the new.
         /// Can handle null inputs.
@@ -222,6 +197,16 @@ namespace MagicalLifeAPI.World.Base
             }
         }
 
+        /// <summary>
+        /// Sets the main object of this tile.
+        /// </summary>
+        /// <param name="mainObject"></param>
+        private void SetMainObject(GameObject mainObject)
+        {
+            this.UpdateVisuals(this.MainObject, mainObject);
+            this.TileMainObject = mainObject;
+            this.UpdateWalkability();
+        }
 
         /// <summary>
         /// Sets the floor after updating the walkability of this tile and the visuals of this tile.
@@ -253,10 +238,10 @@ namespace MagicalLifeAPI.World.Base
             //Gather the walkability of all components of this tile.
             bool floor = this.Floor.IsWalkable();
             bool ceiling = this.Ceiling.IsWalkable();
-            bool resource = this.Resources.IsWalkable();
+            bool mainObject = this.MainObject.IsWalkable();
 
             //Determine if the tile is walkable or not.
-            bool composite = floor && ceiling && resource;
+            bool composite = floor && ceiling && mainObject;
 
             //Determine if the tile walkability state needs to change
             if ((composite && !this.IsWalkable) || (!composite && this.IsWalkable))

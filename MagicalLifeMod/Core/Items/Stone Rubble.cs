@@ -56,5 +56,10 @@ namespace MagicalLifeAPI.World.Items
         {
             return new StoneRubble(amount);
         }
+
+        public override bool IsWalkable()
+        {
+            return true;
+        }
     }
 }
