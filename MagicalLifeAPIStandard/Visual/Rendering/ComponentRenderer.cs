@@ -41,5 +41,10 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         {
             this.RenderQueue.Add(visual);
         }
+
+        public void RemoveVisuals(List<AbstractVisual> visuals)
+        {
+            this.RenderQueue.RemoveAll(x => visuals.Contains(x));
+        }
     }
 }

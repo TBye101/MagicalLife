@@ -11,7 +11,7 @@ namespace MagicalLifeAPI.World.Resources
     public abstract class TreeBase : Vegetation
     {
         protected TreeBase(string name, int durability, ComponentHarvestable harvestBehavior)
-            : base(name, durability, harvestBehavior)
+            : base(name, durability, harvestBehavior, true)
         {
         }
 

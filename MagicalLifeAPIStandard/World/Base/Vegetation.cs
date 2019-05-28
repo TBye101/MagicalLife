@@ -22,8 +22,8 @@ namespace MagicalLifeAPI.World.Base
         /// The constructor for <see cref="Vegetation"/>.
         /// </summary>
         /// <param name="name">The name of this vegetation.</param>
-        protected Vegetation(string name, int durability, ComponentHarvestable harvestBehavior)
-            : base(name, durability, harvestBehavior)
+        protected Vegetation(string name, int durability, ComponentHarvestable harvestBehavior, bool walkable)
+            : base(name, durability, harvestBehavior, walkable)
         {
         }
 

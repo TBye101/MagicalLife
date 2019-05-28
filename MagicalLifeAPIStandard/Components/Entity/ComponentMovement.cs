@@ -51,7 +51,9 @@ namespace MagicalLifeAPI.Components.Entity
         }
 
         [ProtoAfterDeserialization]
+#pragma warning disable IDE0051 // Remove unused private members
         private void PostDeserialization()
+#pragma warning restore IDE0051 // Remove unused private members
         {
             if (this.QueuedMovement == null)
             {

@@ -66,7 +66,7 @@ namespace MagicalLifeAPI.World.Base
         }
 
         [ProtoMember(4)]
-        private Resource resources;
+        private Resource TileResource { get; set; }
 
         /// <summary>
         /// The resources that can be found in this tile.
@@ -75,43 +75,12 @@ namespace MagicalLifeAPI.World.Base
         {
             get
             {
-                return this.resources;
+                return this.TileResource;
             }
 
             set
             {
-                if (this.resources == null)
-                {
-                    this.resources = value;
-
-                    if (value != null)
-                    {
-                        this.GetExactComponent<ComponentRenderer>().AddVisuals(value.GetExactComponent<ComponentHasTexture>().Visuals);
-                    }
-                    this.IsWalkable = (this.resources == null);
-                    return;
-                }
-
-                List<AbstractVisual> oldVisuals = this.resources.GetExactComponent<ComponentHasTexture>().Visuals;
-
-                if (value == null)
-                {
-                    this.RemoveVisual(oldVisuals);
-                }
-                else
-                {
-                    List<AbstractVisual> newVisuals = value.GetExactComponent<ComponentHasTexture>().Visuals;
-
-                    if (this.IsVisualDifferent(oldVisuals, newVisuals))
-                    {
-                        this.RemoveVisual(oldVisuals);
-                    }
-                    this.GetExactComponent<ComponentRenderer>().AddVisuals(newVisuals);
-                }
-
-                this.resources = value;
-
-                this.IsWalkable = (this.resources == null);
+                this.SetResource(value);
             }
         }
 
@@ -121,10 +90,56 @@ namespace MagicalLifeAPI.World.Base
         [ProtoMember(6)]
         public Item Item { get; set; }
 
+
+
         [ProtoMember(7)]
+        private GameObject TileFloor { get; set; }
+
+        /// <summary>
+        /// The flooring of this tile.
+        /// </summary>
+        public GameObject Floor
+        {
+            get
+            {
+                return this.TileFloor;
+            }
+
+            set
+            {
+                this.SetFloor(value);
+            }
+        }
+
+        [ProtoMember(8)]
+        private GameObject TileCeiling { get; set; }
+
+        public GameObject Ceiling
+        {
+            get
+            {
+                return this.TileCeiling;
+            }
+            set
+            {
+                this.SetCeiling(value);
+            }
+        }
+
+        [ProtoMember(9)]
         public ActionSelected ImpendingAction { get; set; }
 
         public readonly int FootStepSound;
+
+        /// <summary>
+        /// Raised whenever a tile is created after the world is finished generating for the first time.
+        /// </summary>
+        public static event EventHandler<TileEventArgs> TileCreated;
+
+        /// <summary>
+        /// Raised whenever this specific tile is modified.
+        /// </summary>
+        public event EventHandler<TileEventArgs> TileModified;
 
         /// <summary>
         /// Initializes a new tile object.
@@ -160,14 +175,95 @@ namespace MagicalLifeAPI.World.Base
         }
 
         /// <summary>
-        /// Raised whenever a tile is created after the world is finished generating for the first time.
+        /// Returns the name of this tile.
         /// </summary>
-        public static event EventHandler<TileEventArgs> TileCreated;
+        /// <returns></returns>
+        public abstract string GetName();
+
+        private void SetResource(Resource resource)
+        {
+            if (this.TileResource == null)
+            {
+                this.TileResource = resource;
+
+                this.IsWalkable = (this.TileResource == null);
+                return;
+            }
+
+            this.UpdateVisuals(this.Resources, resource);
+
+            this.TileResource = resource;
+
+            this.IsWalkable = (this.TileResource == null);
+        }
 
         /// <summary>
-        /// Raised whenever this specific tile is modified.
+        /// Swaps the old visuals with the new.
+        /// Can handle null inputs.
         /// </summary>
-        public event EventHandler<TileEventArgs> TileModified;
+        /// <param name="oldVisual">Should have a <see cref="ComponentHasTexture"/> component.</param>
+        /// <param name="newVisual">Should have a <see cref="ComponentHasTexture"/> component.</param>
+        private void UpdateVisuals(HasComponents oldVisual, HasComponents newVisual)
+        {
+            ComponentRenderer renderComponent = this.GetExactComponent<ComponentRenderer>();
+
+            if (oldVisual != null)
+            {
+                //Remove old visuals
+                ComponentHasTexture oldTextureComponent = oldVisual.GetExactComponent<ComponentHasTexture>();
+                renderComponent.RemoveVisuals(oldTextureComponent.Visuals);
+            }
+
+            if (newVisual != null)
+            {
+                //Add new visuals
+                ComponentHasTexture newTextureComponent = newVisual.GetExactComponent<ComponentHasTexture>();
+                renderComponent.AddVisuals(newTextureComponent.Visuals);
+            }
+        }
+
+
+        /// <summary>
+        /// Sets the floor after updating the walkability of this tile and the visuals of this tile.
+        /// </summary>
+        private void SetFloor(GameObject floor)
+        {
+            this.UpdateVisuals(this.Floor, floor);
+            this.TileFloor = floor;
+            this.UpdateWalkability();
+        }
+
+        /// <summary>
+        /// Sets the ceiling after updating the walkability of this tile and the visuals of this tile.
+        /// </summary>
+        private void SetCeiling(GameObject ceiling)
+        {
+            this.UpdateVisuals(this.Ceiling, ceiling);
+            this.TileCeiling = ceiling;
+            this.UpdateWalkability();
+        }
+
+        /// <summary>
+        /// Updates the walkability of this tile.
+        /// </summary>
+        /// <param name="oldValue"></param>
+        /// <param name="newValue"></param>
+        private void UpdateWalkability()
+        {
+            //Gather the walkability of all components of this tile.
+            bool floor = this.Floor.IsWalkable();
+            bool ceiling = this.Ceiling.IsWalkable();
+            bool resource = this.Resources.IsWalkable();
+
+            //Determine if the tile is walkable or not.
+            bool composite = floor && ceiling && resource;
+
+            //Determine if the tile walkability state needs to change
+            if ((composite && !this.IsWalkable) || (!composite && this.IsWalkable))
+            {
+                this.IsWalkable = composite;
+            }
+        }
 
         /// <summary>
         /// Raises the world generated event.
@@ -181,38 +277,6 @@ namespace MagicalLifeAPI.World.Base
         public void TileModifiedHandler(TileEventArgs e)
         {
             TileModified?.Invoke(this, e);
-        }
-
-        private void RemoveVisual(List<AbstractVisual> visuals)
-        {
-            foreach (AbstractVisual item in visuals)
-            {
-                this.GetExactComponent<ComponentRenderer>().RenderQueue.Remove(item);
-            }
-        }
-
-        /// <summary>
-        /// Returns the name of this tile.
-        /// </summary>
-        /// <returns></returns>
-        public abstract string GetName();
-
-        private bool IsVisualDifferent(List<AbstractVisual> visual, List<AbstractVisual> visual2)
-        {
-            if (visual.Count != visual2.Count)
-            {
-                return true;
-            }
-
-            for (int i = 0; i < visual.Count; i++)
-            {
-                if (!visual[i].Equals(visual2))
-                {
-                    return true;
-                }
-            }
-
-            return false;
         }
     }
 }
