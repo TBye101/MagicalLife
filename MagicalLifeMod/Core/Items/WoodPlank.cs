@@ -27,10 +27,5 @@ namespace MagicalLifeMod.Core.Items
         {
             return new WoodPlank(amount);
         }
-
-        public override bool IsWalkable()
-        {
-            return true;
-        }
     }
 }

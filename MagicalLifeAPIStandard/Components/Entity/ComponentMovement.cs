@@ -40,6 +40,7 @@ namespace MagicalLifeAPI.Components.Entity
 
         public ComponentMovement(double movementSpeed, Point2D location)
         {
+            this.QueuedMovement = new ProtoQueue<PathLink>();
             this.Movement = new AttributeDouble(movementSpeed);
             this.TileLocation = new Point2DDouble(location.X, location.Y);
             this.FootStepTimer = new TickTimer(FootStepCooldown);

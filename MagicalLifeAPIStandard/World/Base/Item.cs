@@ -234,6 +234,11 @@ namespace MagicalLifeAPI.World.Base
             }
         }
 
+        public override bool IsWalkable()
+        {
+            return true;
+        }
+
         public override int GetHashCode()
         {
             int hash = (this.Name != null ? this.Name.GetHashCode() : 0);

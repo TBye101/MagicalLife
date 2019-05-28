@@ -236,9 +236,9 @@ namespace MagicalLifeAPI.World.Base
         private void UpdateWalkability()
         {
             //Gather the walkability of all components of this tile.
-            bool floor = this.Floor.IsWalkable();
-            bool ceiling = this.Ceiling.IsWalkable();
-            bool mainObject = this.MainObject.IsWalkable();
+            bool floor = this.Floor  == null || (this.Floor != null && this.Floor.IsWalkable());
+            bool ceiling = this.Ceiling == null || (this.Ceiling != null && this.Ceiling.IsWalkable());
+            bool mainObject = this.MainObject == null || (this.MainObject != null && this.MainObject.IsWalkable());
 
             //Determine if the tile is walkable or not.
             bool composite = floor && ceiling && mainObject;
