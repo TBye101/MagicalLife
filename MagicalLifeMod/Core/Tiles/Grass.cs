@@ -21,7 +21,7 @@ namespace MagicalLifeAPI.World.Tiles
 
         private void InitializeComponents()
         {
-            ComponentTillable tillingBehavior = new TillablePercentDone();
+            ComponentTillable tillingBehavior = new TillablePercentDone(.02F);
             ComponentRenderer renderer = this.GetExactComponent<ComponentRenderer>();
             this.AddComponent(tillingBehavior);
 

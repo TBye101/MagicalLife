@@ -11,11 +11,8 @@
 
   <ItemGroup>
     <Compile Remove="Core\Entities\**" />
-    <Compile Remove="Core\Tiles\**" />
     <EmbeddedResource Remove="Core\Entities\**" />
-    <EmbeddedResource Remove="Core\Tiles\**" />
     <None Remove="Core\Entities\**" />
-    <None Remove="Core\Tiles\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Core\Floor\" />
     <Folder Include="Core\WorldGeneration\StructureGenerators\" />
     <Folder Include="Core\WorldGeneration\VegetationGenerators\" />
   </ItemGroup>

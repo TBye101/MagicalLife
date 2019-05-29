@@ -5,7 +5,6 @@ using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.Util.Reusable;
 using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Tiles;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
@@ -71,15 +70,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             {
                 Tile tile = World.Data.World.GetTile(l.Dimension, this.Target.X, this.Target.Y);
 
-                List<Item> drop = null;
-                if (tile is Grass)
-                {
-                    drop = this.Tillable.TillSomePercent(.02F, this.Target);
-                }
-                else if (tile is Dirt)
-                {
-                    drop = this.Tillable.TillSomePercent(.07F, this.Target);
-                }
+                List<Item> drop = this.Tillable.TillSomePercent(this.Tillable.PercentTillTick, this.Target);
 
                 if (drop?.Count > 0)
                 {
@@ -88,7 +79,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
                 if (this.Tillable.PercentTilled > 1)
                 {
-                    Tile tillableTile = new TilledDirt(new Point2D(this.Target.X, this.Target.Y), this.Dimension);
+                    Tile tillableTile = this.Tillable.ResultingTile(new Point2D(this.Target.X, this.Target.Y), this.Dimension);
                     World.Data.World.Dimensions[this.Dimension][this.Target.X, this.Target.Y] = tillableTile;
                     this.CompleteTask();
                 }
