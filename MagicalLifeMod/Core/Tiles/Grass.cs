@@ -5,6 +5,7 @@ using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Properties;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Base;
+using MagicalLifeMod.Core.Floor;
 using ProtoBuf;
 
 namespace MagicalLifeAPI.World.Tiles
@@ -17,6 +18,7 @@ namespace MagicalLifeAPI.World.Tiles
         public Grass(Point2D location, int dimension) : base(location, dimension, 11, 1)
         {
             this.InitializeComponents();
+            this.Floor = new GrassFloor(true);
         }
 
         private void InitializeComponents()
@@ -26,7 +28,6 @@ namespace MagicalLifeAPI.World.Tiles
             this.AddComponent(tillingBehavior);
 
             renderer.AddVisual(new StaticTexture(AssetManager.GetTextureIndex(this.GetRandomDirtTexture()), RenderLayer.DirtBase));
-            renderer.AddVisual(new StaticTexture(AssetManager.GetTextureIndex(this.GetRandomGrassTexture()), RenderLayer.GrassBase));
         }
 
         public Grass(int x, int y, int dimension) : this(new Point2D(x, y), dimension)

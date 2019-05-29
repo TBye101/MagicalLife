@@ -20,6 +20,7 @@ namespace MagicalLifeAPI.World.Base
         /// <param name="visual">The visual representation of this floor to render.</param>
         /// <param name="walkable">If true it is possible to walk on this tile.</param>
         public Floor(AbstractVisual visual, bool walkable)
+            : base(true)
         {
             ComponentHasTexture textureComponent = new ComponentHasTexture(false);
 

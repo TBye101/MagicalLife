@@ -20,7 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Core\Floor\" />
     <Folder Include="Core\WorldGeneration\StructureGenerators\" />
     <Folder Include="Core\WorldGeneration\VegetationGenerators\" />
   </ItemGroup>
