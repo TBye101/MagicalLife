@@ -1023,8 +1023,8 @@ namespace MagicalLifeAPI.Sound.FMOD
         private IntPtr functionname_internal;      /* Function that the error occurred on */
         private IntPtr functionparams_internal;    /* Function parameters that the error ocurred on */
 
-        public string functionname { get { return Marshal.PtrToStringAnsi(functionname_internal); } }
-        public string functionparams { get { return Marshal.PtrToStringAnsi(functionparams_internal); } }
+        public string functionname { get { return Marshal.PtrToStringAnsi(this.functionname_internal); } }
+        public string functionparams { get { return Marshal.PtrToStringAnsi(this.functionparams_internal); } }
     }
 
     /*
@@ -1299,7 +1299,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         public uint datalen;      /* [r] Length of the data contained in this tag */
         public bool updated;      /* [r] True if this tag has been updated since last being accessed with Sound::getTag */
 
-        public string name { get { return Marshal.PtrToStringAnsi(name_internal); } }
+        public string name { get { return Marshal.PtrToStringAnsi(this.name_internal); } }
     }
 
     /*
@@ -1522,18 +1522,18 @@ namespace MagicalLifeAPI.Sound.FMOD
             float hfDecayRatio, float diffusion, float density, float lowShelfFrequency, float lowShelfGain,
             float highCut, float earlyLateMix, float wetLevel)
         {
-            DecayTime = decayTime;
-            EarlyDelay = earlyDelay;
-            LateDelay = lateDelay;
-            HFReference = hfReference;
-            HFDecayRatio = hfDecayRatio;
-            Diffusion = diffusion;
-            Density = density;
-            LowShelfFrequency = lowShelfFrequency;
-            LowShelfGain = lowShelfGain;
-            HighCut = highCut;
-            EarlyLateMix = earlyLateMix;
-            WetLevel = wetLevel;
+            this.DecayTime = decayTime;
+            this.EarlyDelay = earlyDelay;
+            this.LateDelay = lateDelay;
+            this.HFReference = hfReference;
+            this.HFDecayRatio = hfDecayRatio;
+            this.Diffusion = diffusion;
+            this.Density = density;
+            this.LowShelfFrequency = lowShelfFrequency;
+            this.LowShelfGain = lowShelfGain;
+            this.HighCut = highCut;
+            this.EarlyLateMix = earlyLateMix;
+            this.WetLevel = wetLevel;
         }
 
         #endregion wrapperinternal
@@ -1831,17 +1831,17 @@ namespace MagicalLifeAPI.Sound.FMOD
     {
         public HandleBase(IntPtr newPtr)
         {
-            rawPtr = newPtr;
+            this.rawPtr = newPtr;
         }
 
         public bool isValid()
         {
-            return rawPtr != IntPtr.Zero;
+            return this.rawPtr != IntPtr.Zero;
         }
 
         public IntPtr getRaw()
         {
-            return rawPtr;
+            return this.rawPtr;
         }
 
         protected IntPtr rawPtr;
@@ -1850,18 +1850,18 @@ namespace MagicalLifeAPI.Sound.FMOD
 
         public override bool Equals(Object obj)
         {
-            return Equals(obj as HandleBase);
+            return this.Equals(obj as HandleBase);
         }
 
         public bool Equals(HandleBase p)
         {
             // Equals if p not null and handle is the same
-            return ((object)p != null && rawPtr == p.rawPtr);
+            return ((object)p != null && this.rawPtr == p.rawPtr);
         }
 
         public override int GetHashCode()
         {
-            return rawPtr.ToInt32();
+            return this.rawPtr.ToInt32();
         }
 
         public static bool operator ==(HandleBase a, HandleBase b)
@@ -1896,10 +1896,10 @@ namespace MagicalLifeAPI.Sound.FMOD
     {
         public RESULT release()
         {
-            RESULT result = FMOD_System_Release(rawPtr);
+            RESULT result = FMOD_System_Release(this.rawPtr);
             if (result == RESULT.OK)
             {
-                rawPtr = IntPtr.Zero;
+                this.rawPtr = IntPtr.Zero;
             }
             return result;
         }
@@ -1907,24 +1907,24 @@ namespace MagicalLifeAPI.Sound.FMOD
         // Pre-init functions.
         public RESULT setOutput(OUTPUTTYPE output)
         {
-            return FMOD_System_SetOutput(rawPtr, output);
+            return FMOD_System_SetOutput(this.rawPtr, output);
         }
 
         public RESULT getOutput(out OUTPUTTYPE output)
         {
-            return FMOD_System_GetOutput(rawPtr, out output);
+            return FMOD_System_GetOutput(this.rawPtr, out output);
         }
 
         public RESULT getNumDrivers(out int numdrivers)
         {
-            return FMOD_System_GetNumDrivers(rawPtr, out numdrivers);
+            return FMOD_System_GetNumDrivers(this.rawPtr, out numdrivers);
         }
 
         public RESULT getDriverInfo(int id, StringBuilder name, int namelen, out Guid guid, out int systemrate, out SPEAKERMODE speakermode, out int speakermodechannels)
         {
             IntPtr stringMem = Marshal.AllocHGlobal(name.Capacity);
 
-            RESULT result = FMOD_System_GetDriverInfo(rawPtr, id, stringMem, namelen, out guid, out systemrate, out speakermode, out speakermodechannels);
+            RESULT result = FMOD_System_GetDriverInfo(this.rawPtr, id, stringMem, namelen, out guid, out systemrate, out speakermode, out speakermodechannels);
 
             StringMarshalHelper.NativeToBuilder(name, stringMem);
             Marshal.FreeHGlobal(stringMem);
@@ -1934,117 +1934,117 @@ namespace MagicalLifeAPI.Sound.FMOD
 
         public RESULT setDriver(int driver)
         {
-            return FMOD_System_SetDriver(rawPtr, driver);
+            return FMOD_System_SetDriver(this.rawPtr, driver);
         }
 
         public RESULT getDriver(out int driver)
         {
-            return FMOD_System_GetDriver(rawPtr, out driver);
+            return FMOD_System_GetDriver(this.rawPtr, out driver);
         }
 
         public RESULT setSoftwareChannels(int numsoftwarechannels)
         {
-            return FMOD_System_SetSoftwareChannels(rawPtr, numsoftwarechannels);
+            return FMOD_System_SetSoftwareChannels(this.rawPtr, numsoftwarechannels);
         }
 
         public RESULT getSoftwareChannels(out int numsoftwarechannels)
         {
-            return FMOD_System_GetSoftwareChannels(rawPtr, out numsoftwarechannels);
+            return FMOD_System_GetSoftwareChannels(this.rawPtr, out numsoftwarechannels);
         }
 
         public RESULT setSoftwareFormat(int samplerate, SPEAKERMODE speakermode, int numrawspeakers)
         {
-            return FMOD_System_SetSoftwareFormat(rawPtr, samplerate, speakermode, numrawspeakers);
+            return FMOD_System_SetSoftwareFormat(this.rawPtr, samplerate, speakermode, numrawspeakers);
         }
 
         public RESULT getSoftwareFormat(out int samplerate, out SPEAKERMODE speakermode, out int numrawspeakers)
         {
-            return FMOD_System_GetSoftwareFormat(rawPtr, out samplerate, out speakermode, out numrawspeakers);
+            return FMOD_System_GetSoftwareFormat(this.rawPtr, out samplerate, out speakermode, out numrawspeakers);
         }
 
         public RESULT setDSPBufferSize(uint bufferlength, int numbuffers)
         {
-            return FMOD_System_SetDSPBufferSize(rawPtr, bufferlength, numbuffers);
+            return FMOD_System_SetDSPBufferSize(this.rawPtr, bufferlength, numbuffers);
         }
 
         public RESULT getDSPBufferSize(out uint bufferlength, out int numbuffers)
         {
-            return FMOD_System_GetDSPBufferSize(rawPtr, out bufferlength, out numbuffers);
+            return FMOD_System_GetDSPBufferSize(this.rawPtr, out bufferlength, out numbuffers);
         }
 
         public RESULT setFileSystem(FILE_OPENCALLBACK useropen, FILE_CLOSECALLBACK userclose, FILE_READCALLBACK userread, FILE_SEEKCALLBACK userseek, FILE_ASYNCREADCALLBACK userasyncread, FILE_ASYNCCANCELCALLBACK userasynccancel, int blockalign)
         {
-            return FMOD_System_SetFileSystem(rawPtr, useropen, userclose, userread, userseek, userasyncread, userasynccancel, blockalign);
+            return FMOD_System_SetFileSystem(this.rawPtr, useropen, userclose, userread, userseek, userasyncread, userasynccancel, blockalign);
         }
 
         public RESULT attachFileSystem(FILE_OPENCALLBACK useropen, FILE_CLOSECALLBACK userclose, FILE_READCALLBACK userread, FILE_SEEKCALLBACK userseek)
         {
-            return FMOD_System_AttachFileSystem(rawPtr, useropen, userclose, userread, userseek);
+            return FMOD_System_AttachFileSystem(this.rawPtr, useropen, userclose, userread, userseek);
         }
 
         public RESULT setAdvancedSettings(ref ADVANCEDSETTINGS settings)
         {
             settings.cbSize = Marshal.SizeOf(settings);
-            return FMOD_System_SetAdvancedSettings(rawPtr, ref settings);
+            return FMOD_System_SetAdvancedSettings(this.rawPtr, ref settings);
         }
 
         public RESULT getAdvancedSettings(ref ADVANCEDSETTINGS settings)
         {
             settings.cbSize = Marshal.SizeOf(settings);
-            return FMOD_System_GetAdvancedSettings(rawPtr, ref settings);
+            return FMOD_System_GetAdvancedSettings(this.rawPtr, ref settings);
         }
 
         public RESULT setCallback(SYSTEM_CALLBACK callback, SYSTEM_CALLBACK_TYPE callbackmask)
         {
-            return FMOD_System_SetCallback(rawPtr, callback, callbackmask);
+            return FMOD_System_SetCallback(this.rawPtr, callback, callbackmask);
         }
 
         // Plug-in support.
         public RESULT setPluginPath(string path)
         {
-            return FMOD_System_SetPluginPath(rawPtr, Encoding.UTF8.GetBytes(path + Char.MinValue));
+            return FMOD_System_SetPluginPath(this.rawPtr, Encoding.UTF8.GetBytes(path + Char.MinValue));
         }
 
         public RESULT loadPlugin(string filename, out uint handle, uint priority)
         {
-            return FMOD_System_LoadPlugin(rawPtr, Encoding.UTF8.GetBytes(filename + Char.MinValue), out handle, priority);
+            return FMOD_System_LoadPlugin(this.rawPtr, Encoding.UTF8.GetBytes(filename + Char.MinValue), out handle, priority);
         }
 
         public RESULT loadPlugin(string filename, out uint handle)
         {
-            return loadPlugin(filename, out handle, 0);
+            return this.loadPlugin(filename, out handle, 0);
         }
 
         public RESULT unloadPlugin(uint handle)
         {
-            return FMOD_System_UnloadPlugin(rawPtr, handle);
+            return FMOD_System_UnloadPlugin(this.rawPtr, handle);
         }
 
         public RESULT getNumNestedPlugins(uint handle, out int count)
         {
-            return FMOD_System_GetNumNestedPlugins(rawPtr, handle, out count);
+            return FMOD_System_GetNumNestedPlugins(this.rawPtr, handle, out count);
         }
 
         public RESULT getNestedPlugin(uint handle, int index, out uint nestedhandle)
         {
-            return FMOD_System_GetNestedPlugin(rawPtr, handle, index, out nestedhandle);
+            return FMOD_System_GetNestedPlugin(this.rawPtr, handle, index, out nestedhandle);
         }
 
         public RESULT getNumPlugins(PLUGINTYPE plugintype, out int numplugins)
         {
-            return FMOD_System_GetNumPlugins(rawPtr, plugintype, out numplugins);
+            return FMOD_System_GetNumPlugins(this.rawPtr, plugintype, out numplugins);
         }
 
         public RESULT getPluginHandle(PLUGINTYPE plugintype, int index, out uint handle)
         {
-            return FMOD_System_GetPluginHandle(rawPtr, plugintype, index, out handle);
+            return FMOD_System_GetPluginHandle(this.rawPtr, plugintype, index, out handle);
         }
 
         public RESULT getPluginInfo(uint handle, out PLUGINTYPE plugintype, StringBuilder name, int namelen, out uint version)
         {
             IntPtr stringMem = Marshal.AllocHGlobal(name.Capacity);
 
-            RESULT result = FMOD_System_GetPluginInfo(rawPtr, handle, out plugintype, stringMem, namelen, out version);
+            RESULT result = FMOD_System_GetPluginInfo(this.rawPtr, handle, out plugintype, stringMem, namelen, out version);
 
             StringMarshalHelper.NativeToBuilder(name, stringMem);
             Marshal.FreeHGlobal(stringMem);
@@ -2054,12 +2054,12 @@ namespace MagicalLifeAPI.Sound.FMOD
 
         public RESULT setOutputByPlugin(uint handle)
         {
-            return FMOD_System_SetOutputByPlugin(rawPtr, handle);
+            return FMOD_System_SetOutputByPlugin(this.rawPtr, handle);
         }
 
         public RESULT getOutputByPlugin(out uint handle)
         {
-            return FMOD_System_GetOutputByPlugin(rawPtr, out handle);
+            return FMOD_System_GetOutputByPlugin(this.rawPtr, out handle);
         }
 
         public RESULT createDSPByPlugin(uint handle, out DSP dsp)
@@ -2067,7 +2067,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             dsp = null;
 
             IntPtr dspraw;
-            RESULT result = FMOD_System_CreateDSPByPlugin(rawPtr, handle, out dspraw);
+            RESULT result = FMOD_System_CreateDSPByPlugin(this.rawPtr, handle, out dspraw);
             dsp = new DSP(dspraw);
 
             return result;
@@ -2075,7 +2075,7 @@ namespace MagicalLifeAPI.Sound.FMOD
 
         public RESULT getDSPInfoByPlugin(uint handle, out IntPtr description)
         {
-            return FMOD_System_GetDSPInfoByPlugin(rawPtr, handle, out description);
+            return FMOD_System_GetDSPInfoByPlugin(this.rawPtr, handle, out description);
         }
 
         /*
@@ -2087,7 +2087,7 @@ namespace MagicalLifeAPI.Sound.FMOD
 
         public RESULT registerDSP(ref DSP_DESCRIPTION description, out uint handle)
         {
-            return FMOD_System_RegisterDSP(rawPtr, ref description, out handle);
+            return FMOD_System_RegisterDSP(this.rawPtr, ref description, out handle);
         }
 
         /*
@@ -2100,124 +2100,124 @@ namespace MagicalLifeAPI.Sound.FMOD
         // Init/Close.
         public RESULT init(int maxchannels, INITFLAGS flags, IntPtr extradriverdata)
         {
-            return FMOD_System_Init(rawPtr, maxchannels, flags, extradriverdata);
+            return FMOD_System_Init(this.rawPtr, maxchannels, flags, extradriverdata);
         }
 
         public RESULT close()
         {
-            return FMOD_System_Close(rawPtr);
+            return FMOD_System_Close(this.rawPtr);
         }
 
         // General post-init system functions.
         public RESULT update()
         {
-            return FMOD_System_Update(rawPtr);
+            return FMOD_System_Update(this.rawPtr);
         }
 
         public RESULT setSpeakerPosition(SPEAKER speaker, float x, float y, bool active)
         {
-            return FMOD_System_SetSpeakerPosition(rawPtr, speaker, x, y, active);
+            return FMOD_System_SetSpeakerPosition(this.rawPtr, speaker, x, y, active);
         }
 
         public RESULT getSpeakerPosition(SPEAKER speaker, out float x, out float y, out bool active)
         {
-            return FMOD_System_GetSpeakerPosition(rawPtr, speaker, out x, out y, out active);
+            return FMOD_System_GetSpeakerPosition(this.rawPtr, speaker, out x, out y, out active);
         }
 
         public RESULT setStreamBufferSize(uint filebuffersize, TIMEUNIT filebuffersizetype)
         {
-            return FMOD_System_SetStreamBufferSize(rawPtr, filebuffersize, filebuffersizetype);
+            return FMOD_System_SetStreamBufferSize(this.rawPtr, filebuffersize, filebuffersizetype);
         }
 
         public RESULT getStreamBufferSize(out uint filebuffersize, out TIMEUNIT filebuffersizetype)
         {
-            return FMOD_System_GetStreamBufferSize(rawPtr, out filebuffersize, out filebuffersizetype);
+            return FMOD_System_GetStreamBufferSize(this.rawPtr, out filebuffersize, out filebuffersizetype);
         }
 
         public RESULT set3DSettings(float dopplerscale, float distancefactor, float rolloffscale)
         {
-            return FMOD_System_Set3DSettings(rawPtr, dopplerscale, distancefactor, rolloffscale);
+            return FMOD_System_Set3DSettings(this.rawPtr, dopplerscale, distancefactor, rolloffscale);
         }
 
         public RESULT get3DSettings(out float dopplerscale, out float distancefactor, out float rolloffscale)
         {
-            return FMOD_System_Get3DSettings(rawPtr, out dopplerscale, out distancefactor, out rolloffscale);
+            return FMOD_System_Get3DSettings(this.rawPtr, out dopplerscale, out distancefactor, out rolloffscale);
         }
 
         public RESULT set3DNumListeners(int numlisteners)
         {
-            return FMOD_System_Set3DNumListeners(rawPtr, numlisteners);
+            return FMOD_System_Set3DNumListeners(this.rawPtr, numlisteners);
         }
 
         public RESULT get3DNumListeners(out int numlisteners)
         {
-            return FMOD_System_Get3DNumListeners(rawPtr, out numlisteners);
+            return FMOD_System_Get3DNumListeners(this.rawPtr, out numlisteners);
         }
 
         public RESULT set3DListenerAttributes(int listener, ref VECTOR pos, ref VECTOR vel, ref VECTOR forward, ref VECTOR up)
         {
-            return FMOD_System_Set3DListenerAttributes(rawPtr, listener, ref pos, ref vel, ref forward, ref up);
+            return FMOD_System_Set3DListenerAttributes(this.rawPtr, listener, ref pos, ref vel, ref forward, ref up);
         }
 
         public RESULT get3DListenerAttributes(int listener, out VECTOR pos, out VECTOR vel, out VECTOR forward, out VECTOR up)
         {
-            return FMOD_System_Get3DListenerAttributes(rawPtr, listener, out pos, out vel, out forward, out up);
+            return FMOD_System_Get3DListenerAttributes(this.rawPtr, listener, out pos, out vel, out forward, out up);
         }
 
         public RESULT set3DRolloffCallback(CB_3D_ROLLOFFCALLBACK callback)
         {
-            return FMOD_System_Set3DRolloffCallback(rawPtr, callback);
+            return FMOD_System_Set3DRolloffCallback(this.rawPtr, callback);
         }
 
         public RESULT mixerSuspend()
         {
-            return FMOD_System_MixerSuspend(rawPtr);
+            return FMOD_System_MixerSuspend(this.rawPtr);
         }
 
         public RESULT mixerResume()
         {
-            return FMOD_System_MixerResume(rawPtr);
+            return FMOD_System_MixerResume(this.rawPtr);
         }
 
         public RESULT getDefaultMixMatrix(SPEAKERMODE sourcespeakermode, SPEAKERMODE targetspeakermode, float[] matrix, int matrixhop)
         {
-            return FMOD_System_GetDefaultMixMatrix(rawPtr, sourcespeakermode, targetspeakermode, matrix, matrixhop);
+            return FMOD_System_GetDefaultMixMatrix(this.rawPtr, sourcespeakermode, targetspeakermode, matrix, matrixhop);
         }
 
         public RESULT getSpeakerModeChannels(SPEAKERMODE mode, out int channels)
         {
-            return FMOD_System_GetSpeakerModeChannels(rawPtr, mode, out channels);
+            return FMOD_System_GetSpeakerModeChannels(this.rawPtr, mode, out channels);
         }
 
         // System information functions.
         public RESULT getVersion(out uint version)
         {
-            return FMOD_System_GetVersion(rawPtr, out version);
+            return FMOD_System_GetVersion(this.rawPtr, out version);
         }
 
         public RESULT getOutputHandle(out IntPtr handle)
         {
-            return FMOD_System_GetOutputHandle(rawPtr, out handle);
+            return FMOD_System_GetOutputHandle(this.rawPtr, out handle);
         }
 
         public RESULT getChannelsPlaying(out int channels, out int realchannels)
         {
-            return FMOD_System_GetChannelsPlaying(rawPtr, out channels, out realchannels);
+            return FMOD_System_GetChannelsPlaying(this.rawPtr, out channels, out realchannels);
         }
 
         public RESULT getCPUUsage(out float dsp, out float stream, out float geometry, out float update, out float total)
         {
-            return FMOD_System_GetCPUUsage(rawPtr, out dsp, out stream, out geometry, out update, out total);
+            return FMOD_System_GetCPUUsage(this.rawPtr, out dsp, out stream, out geometry, out update, out total);
         }
 
         public RESULT getFileUsage(out Int64 sampleBytesRead, out Int64 streamBytesRead, out Int64 otherBytesRead)
         {
-            return FMOD_System_GetFileUsage(rawPtr, out sampleBytesRead, out streamBytesRead, out otherBytesRead);
+            return FMOD_System_GetFileUsage(this.rawPtr, out sampleBytesRead, out streamBytesRead, out otherBytesRead);
         }
 
         public RESULT getSoundRAM(out int currentalloced, out int maxalloced, out int total)
         {
-            return FMOD_System_GetSoundRAM(rawPtr, out currentalloced, out maxalloced, out total);
+            return FMOD_System_GetSoundRAM(this.rawPtr, out currentalloced, out maxalloced, out total);
         }
 
         // Sound/DSP/Channel/FX creation and retrieval.
@@ -2231,7 +2231,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             exinfo.cbsize = Marshal.SizeOf(exinfo);
 
             IntPtr soundraw;
-            RESULT result = FMOD_System_CreateSound(rawPtr, stringData, mode, ref exinfo, out soundraw);
+            RESULT result = FMOD_System_CreateSound(this.rawPtr, stringData, mode, ref exinfo, out soundraw);
             sound = new Sound(soundraw);
 
             return result;
@@ -2244,7 +2244,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             exinfo.cbsize = Marshal.SizeOf(exinfo);
 
             IntPtr soundraw;
-            RESULT result = FMOD_System_CreateSound(rawPtr, data, mode, ref exinfo, out soundraw);
+            RESULT result = FMOD_System_CreateSound(this.rawPtr, data, mode, ref exinfo, out soundraw);
             sound = new Sound(soundraw);
 
             return result;
@@ -2255,7 +2255,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             CREATESOUNDEXINFO exinfo = new CREATESOUNDEXINFO();
             exinfo.cbsize = Marshal.SizeOf(exinfo);
 
-            return createSound(name, mode, ref exinfo, out sound);
+            return this.createSound(name, mode, ref exinfo, out sound);
         }
 
         public RESULT createStream(string name, MODE mode, ref CREATESOUNDEXINFO exinfo, out Sound sound)
@@ -2268,7 +2268,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             exinfo.cbsize = Marshal.SizeOf(exinfo);
 
             IntPtr soundraw;
-            RESULT result = FMOD_System_CreateStream(rawPtr, stringData, mode, ref exinfo, out soundraw);
+            RESULT result = FMOD_System_CreateStream(this.rawPtr, stringData, mode, ref exinfo, out soundraw);
             sound = new Sound(soundraw);
 
             return result;
@@ -2281,7 +2281,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             exinfo.cbsize = Marshal.SizeOf(exinfo);
 
             IntPtr soundraw;
-            RESULT result = FMOD_System_CreateStream(rawPtr, data, mode, ref exinfo, out soundraw);
+            RESULT result = FMOD_System_CreateStream(this.rawPtr, data, mode, ref exinfo, out soundraw);
             sound = new Sound(soundraw);
 
             return result;
@@ -2292,7 +2292,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             CREATESOUNDEXINFO exinfo = new CREATESOUNDEXINFO();
             exinfo.cbsize = Marshal.SizeOf(exinfo);
 
-            return createStream(name, mode, ref exinfo, out sound);
+            return this.createStream(name, mode, ref exinfo, out sound);
         }
 
         public RESULT createDSP(ref DSP_DESCRIPTION description, out DSP dsp)
@@ -2300,7 +2300,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             dsp = null;
 
             IntPtr dspraw;
-            RESULT result = FMOD_System_CreateDSP(rawPtr, ref description, out dspraw);
+            RESULT result = FMOD_System_CreateDSP(this.rawPtr, ref description, out dspraw);
             dsp = new DSP(dspraw);
 
             return result;
@@ -2311,7 +2311,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             dsp = null;
 
             IntPtr dspraw;
-            RESULT result = FMOD_System_CreateDSPByType(rawPtr, type, out dspraw);
+            RESULT result = FMOD_System_CreateDSPByType(this.rawPtr, type, out dspraw);
             dsp = new DSP(dspraw);
 
             return result;
@@ -2324,7 +2324,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             byte[] stringData = Encoding.UTF8.GetBytes(name + Char.MinValue);
 
             IntPtr channelgroupraw;
-            RESULT result = FMOD_System_CreateChannelGroup(rawPtr, stringData, out channelgroupraw);
+            RESULT result = FMOD_System_CreateChannelGroup(this.rawPtr, stringData, out channelgroupraw);
             channelgroup = new ChannelGroup(channelgroupraw);
 
             return result;
@@ -2337,7 +2337,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             byte[] stringData = Encoding.UTF8.GetBytes(name + Char.MinValue);
 
             IntPtr soundgroupraw;
-            RESULT result = FMOD_System_CreateSoundGroup(rawPtr, stringData, out soundgroupraw);
+            RESULT result = FMOD_System_CreateSoundGroup(this.rawPtr, stringData, out soundgroupraw);
             soundgroup = new SoundGroup(soundgroupraw);
 
             return result;
@@ -2346,7 +2346,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         public RESULT createReverb3D(out Reverb3D reverb)
         {
             IntPtr reverbraw;
-            RESULT result = FMOD_System_CreateReverb3D(rawPtr, out reverbraw);
+            RESULT result = FMOD_System_CreateReverb3D(this.rawPtr, out reverbraw);
             reverb = new Reverb3D(reverbraw);
 
             return result;
@@ -2359,7 +2359,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             IntPtr channelGroupRaw = (channelGroup != null) ? channelGroup.getRaw() : IntPtr.Zero;
 
             IntPtr channelraw;
-            RESULT result = FMOD_System_PlaySound(rawPtr, sound.getRaw(), channelGroupRaw, paused, out channelraw);
+            RESULT result = FMOD_System_PlaySound(this.rawPtr, sound.getRaw(), channelGroupRaw, paused, out channelraw);
             channel = new Channel(channelraw);
 
             return result;
@@ -2372,7 +2372,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             IntPtr channelGroupRaw = (channelGroup != null) ? channelGroup.getRaw() : IntPtr.Zero;
 
             IntPtr channelraw;
-            RESULT result = FMOD_System_PlayDSP(rawPtr, dsp.getRaw(), channelGroupRaw, paused, out channelraw);
+            RESULT result = FMOD_System_PlayDSP(this.rawPtr, dsp.getRaw(), channelGroupRaw, paused, out channelraw);
             channel = new Channel(channelraw);
 
             return result;
@@ -2383,7 +2383,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             channel = null;
 
             IntPtr channelraw;
-            RESULT result = FMOD_System_GetChannel(rawPtr, channelid, out channelraw);
+            RESULT result = FMOD_System_GetChannel(this.rawPtr, channelid, out channelraw);
             channel = new Channel(channelraw);
 
             return result;
@@ -2394,7 +2394,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             channelgroup = null;
 
             IntPtr channelgroupraw;
-            RESULT result = FMOD_System_GetMasterChannelGroup(rawPtr, out channelgroupraw);
+            RESULT result = FMOD_System_GetMasterChannelGroup(this.rawPtr, out channelgroupraw);
             channelgroup = new ChannelGroup(channelgroupraw);
 
             return result;
@@ -2405,7 +2405,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             soundgroup = null;
 
             IntPtr soundgroupraw;
-            RESULT result = FMOD_System_GetMasterSoundGroup(rawPtr, out soundgroupraw);
+            RESULT result = FMOD_System_GetMasterSoundGroup(this.rawPtr, out soundgroupraw);
             soundgroup = new SoundGroup(soundgroupraw);
 
             return result;
@@ -2414,47 +2414,47 @@ namespace MagicalLifeAPI.Sound.FMOD
         // Routing to ports.
         public RESULT attachChannelGroupToPort(uint portType, ulong portIndex, ChannelGroup channelgroup, bool passThru = false)
         {
-            return FMOD_System_AttachChannelGroupToPort(rawPtr, portType, portIndex, channelgroup.getRaw(), passThru);
+            return FMOD_System_AttachChannelGroupToPort(this.rawPtr, portType, portIndex, channelgroup.getRaw(), passThru);
         }
 
         public RESULT detachChannelGroupFromPort(ChannelGroup channelgroup)
         {
-            return FMOD_System_DetachChannelGroupFromPort(rawPtr, channelgroup.getRaw());
+            return FMOD_System_DetachChannelGroupFromPort(this.rawPtr, channelgroup.getRaw());
         }
 
         // Reverb api.
         public RESULT setReverbProperties(int instance, ref REVERB_PROPERTIES prop)
         {
-            return FMOD_System_SetReverbProperties(rawPtr, instance, ref prop);
+            return FMOD_System_SetReverbProperties(this.rawPtr, instance, ref prop);
         }
 
         public RESULT getReverbProperties(int instance, out REVERB_PROPERTIES prop)
         {
-            return FMOD_System_GetReverbProperties(rawPtr, instance, out prop);
+            return FMOD_System_GetReverbProperties(this.rawPtr, instance, out prop);
         }
 
         // System level DSP functionality.
         public RESULT lockDSP()
         {
-            return FMOD_System_LockDSP(rawPtr);
+            return FMOD_System_LockDSP(this.rawPtr);
         }
 
         public RESULT unlockDSP()
         {
-            return FMOD_System_UnlockDSP(rawPtr);
+            return FMOD_System_UnlockDSP(this.rawPtr);
         }
 
         // Recording api
         public RESULT getRecordNumDrivers(out int numdrivers, out int numconnected)
         {
-            return FMOD_System_GetRecordNumDrivers(rawPtr, out numdrivers, out numconnected);
+            return FMOD_System_GetRecordNumDrivers(this.rawPtr, out numdrivers, out numconnected);
         }
 
         public RESULT getRecordDriverInfo(int id, StringBuilder name, int namelen, out Guid guid, out int systemrate, out SPEAKERMODE speakermode, out int speakermodechannels, out DRIVER_STATE state)
         {
             IntPtr stringMem = Marshal.AllocHGlobal(name.Capacity);
 
-            RESULT result = FMOD_System_GetRecordDriverInfo(rawPtr, id, stringMem, namelen, out guid, out systemrate, out speakermode, out speakermodechannels, out state);
+            RESULT result = FMOD_System_GetRecordDriverInfo(this.rawPtr, id, stringMem, namelen, out guid, out systemrate, out speakermode, out speakermodechannels, out state);
 
             StringMarshalHelper.NativeToBuilder(name, stringMem);
             Marshal.FreeHGlobal(stringMem);
@@ -2464,22 +2464,22 @@ namespace MagicalLifeAPI.Sound.FMOD
 
         public RESULT getRecordPosition(int id, out uint position)
         {
-            return FMOD_System_GetRecordPosition(rawPtr, id, out position);
+            return FMOD_System_GetRecordPosition(this.rawPtr, id, out position);
         }
 
         public RESULT recordStart(int id, Sound sound, bool loop)
         {
-            return FMOD_System_RecordStart(rawPtr, id, sound.getRaw(), loop);
+            return FMOD_System_RecordStart(this.rawPtr, id, sound.getRaw(), loop);
         }
 
         public RESULT recordStop(int id)
         {
-            return FMOD_System_RecordStop(rawPtr, id);
+            return FMOD_System_RecordStop(this.rawPtr, id);
         }
 
         public RESULT isRecording(int id, out bool recording)
         {
-            return FMOD_System_IsRecording(rawPtr, id, out recording);
+            return FMOD_System_IsRecording(this.rawPtr, id, out recording);
         }
 
         // Geometry api
@@ -2488,7 +2488,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             geometry = null;
 
             IntPtr geometryraw;
-            RESULT result = FMOD_System_CreateGeometry(rawPtr, maxpolygons, maxvertices, out geometryraw);
+            RESULT result = FMOD_System_CreateGeometry(this.rawPtr, maxpolygons, maxvertices, out geometryraw);
             geometry = new Geometry(geometryraw);
 
             return result;
@@ -2496,12 +2496,12 @@ namespace MagicalLifeAPI.Sound.FMOD
 
         public RESULT setGeometrySettings(float maxworldsize)
         {
-            return FMOD_System_SetGeometrySettings(rawPtr, maxworldsize);
+            return FMOD_System_SetGeometrySettings(this.rawPtr, maxworldsize);
         }
 
         public RESULT getGeometrySettings(out float maxworldsize)
         {
-            return FMOD_System_GetGeometrySettings(rawPtr, out maxworldsize);
+            return FMOD_System_GetGeometrySettings(this.rawPtr, out maxworldsize);
         }
 
         public RESULT loadGeometry(IntPtr data, int datasize, out Geometry geometry)
@@ -2509,7 +2509,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             geometry = null;
 
             IntPtr geometryraw;
-            RESULT result = FMOD_System_LoadGeometry(rawPtr, data, datasize, out geometryraw);
+            RESULT result = FMOD_System_LoadGeometry(this.rawPtr, data, datasize, out geometryraw);
             geometry = new Geometry(geometryraw);
 
             return result;
@@ -2517,20 +2517,20 @@ namespace MagicalLifeAPI.Sound.FMOD
 
         public RESULT getGeometryOcclusion(ref VECTOR listener, ref VECTOR source, out float direct, out float reverb)
         {
-            return FMOD_System_GetGeometryOcclusion(rawPtr, ref listener, ref source, out direct, out reverb);
+            return FMOD_System_GetGeometryOcclusion(this.rawPtr, ref listener, ref source, out direct, out reverb);
         }
 
         // Network functions
         public RESULT setNetworkProxy(string proxy)
         {
-            return FMOD_System_SetNetworkProxy(rawPtr, Encoding.UTF8.GetBytes(proxy + Char.MinValue));
+            return FMOD_System_SetNetworkProxy(this.rawPtr, Encoding.UTF8.GetBytes(proxy + Char.MinValue));
         }
 
         public RESULT getNetworkProxy(StringBuilder proxy, int proxylen)
         {
             IntPtr stringMem = Marshal.AllocHGlobal(proxy.Capacity);
 
-            RESULT result = FMOD_System_GetNetworkProxy(rawPtr, stringMem, proxylen);
+            RESULT result = FMOD_System_GetNetworkProxy(this.rawPtr, stringMem, proxylen);
 
             StringMarshalHelper.NativeToBuilder(proxy, stringMem);
             Marshal.FreeHGlobal(stringMem);
@@ -2540,23 +2540,23 @@ namespace MagicalLifeAPI.Sound.FMOD
 
         public RESULT setNetworkTimeout(int timeout)
         {
-            return FMOD_System_SetNetworkTimeout(rawPtr, timeout);
+            return FMOD_System_SetNetworkTimeout(this.rawPtr, timeout);
         }
 
         public RESULT getNetworkTimeout(out int timeout)
         {
-            return FMOD_System_GetNetworkTimeout(rawPtr, out timeout);
+            return FMOD_System_GetNetworkTimeout(this.rawPtr, out timeout);
         }
 
         // Userdata set/get
         public RESULT setUserData(IntPtr userdata)
         {
-            return FMOD_System_SetUserData(rawPtr, userdata);
+            return FMOD_System_SetUserData(this.rawPtr, userdata);
         }
 
         public RESULT getUserData(out IntPtr userdata)
         {
-            return FMOD_System_GetUserData(rawPtr, out userdata);
+            return FMOD_System_GetUserData(this.rawPtr, out userdata);
         }
 
         #region importfunctions
@@ -2855,10 +2855,10 @@ namespace MagicalLifeAPI.Sound.FMOD
     {
         public RESULT release()
         {
-            RESULT result = FMOD_Sound_Release(rawPtr);
+            RESULT result = FMOD_Sound_Release(this.rawPtr);
             if (result == RESULT.OK)
             {
-                rawPtr = IntPtr.Zero;
+                this.rawPtr = IntPtr.Zero;
             }
             return result;
         }
@@ -2868,7 +2868,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             system = null;
 
             IntPtr systemraw;
-            RESULT result = FMOD_Sound_GetSystemObject(rawPtr, out systemraw);
+            RESULT result = FMOD_Sound_GetSystemObject(this.rawPtr, out systemraw);
             system = new System(systemraw);
 
             return result;
@@ -2877,52 +2877,52 @@ namespace MagicalLifeAPI.Sound.FMOD
         // Standard sound manipulation functions.
         public RESULT @lock(uint offset, uint length, out IntPtr ptr1, out IntPtr ptr2, out uint len1, out uint len2)
         {
-            return FMOD_Sound_Lock(rawPtr, offset, length, out ptr1, out ptr2, out len1, out len2);
+            return FMOD_Sound_Lock(this.rawPtr, offset, length, out ptr1, out ptr2, out len1, out len2);
         }
 
         public RESULT unlock(IntPtr ptr1, IntPtr ptr2, uint len1, uint len2)
         {
-            return FMOD_Sound_Unlock(rawPtr, ptr1, ptr2, len1, len2);
+            return FMOD_Sound_Unlock(this.rawPtr, ptr1, ptr2, len1, len2);
         }
 
         public RESULT setDefaults(float frequency, int priority)
         {
-            return FMOD_Sound_SetDefaults(rawPtr, frequency, priority);
+            return FMOD_Sound_SetDefaults(this.rawPtr, frequency, priority);
         }
 
         public RESULT getDefaults(out float frequency, out int priority)
         {
-            return FMOD_Sound_GetDefaults(rawPtr, out frequency, out priority);
+            return FMOD_Sound_GetDefaults(this.rawPtr, out frequency, out priority);
         }
 
         public RESULT set3DMinMaxDistance(float min, float max)
         {
-            return FMOD_Sound_Set3DMinMaxDistance(rawPtr, min, max);
+            return FMOD_Sound_Set3DMinMaxDistance(this.rawPtr, min, max);
         }
 
         public RESULT get3DMinMaxDistance(out float min, out float max)
         {
-            return FMOD_Sound_Get3DMinMaxDistance(rawPtr, out min, out max);
+            return FMOD_Sound_Get3DMinMaxDistance(this.rawPtr, out min, out max);
         }
 
         public RESULT set3DConeSettings(float insideconeangle, float outsideconeangle, float outsidevolume)
         {
-            return FMOD_Sound_Set3DConeSettings(rawPtr, insideconeangle, outsideconeangle, outsidevolume);
+            return FMOD_Sound_Set3DConeSettings(this.rawPtr, insideconeangle, outsideconeangle, outsidevolume);
         }
 
         public RESULT get3DConeSettings(out float insideconeangle, out float outsideconeangle, out float outsidevolume)
         {
-            return FMOD_Sound_Get3DConeSettings(rawPtr, out insideconeangle, out outsideconeangle, out outsidevolume);
+            return FMOD_Sound_Get3DConeSettings(this.rawPtr, out insideconeangle, out outsideconeangle, out outsidevolume);
         }
 
         public RESULT set3DCustomRolloff(ref VECTOR points, int numpoints)
         {
-            return FMOD_Sound_Set3DCustomRolloff(rawPtr, ref points, numpoints);
+            return FMOD_Sound_Set3DCustomRolloff(this.rawPtr, ref points, numpoints);
         }
 
         public RESULT get3DCustomRolloff(out IntPtr points, out int numpoints)
         {
-            return FMOD_Sound_Get3DCustomRolloff(rawPtr, out points, out numpoints);
+            return FMOD_Sound_Get3DCustomRolloff(this.rawPtr, out points, out numpoints);
         }
 
         public RESULT getSubSound(int index, out Sound subsound)
@@ -2930,7 +2930,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             subsound = null;
 
             IntPtr subsoundraw;
-            RESULT result = FMOD_Sound_GetSubSound(rawPtr, index, out subsoundraw);
+            RESULT result = FMOD_Sound_GetSubSound(this.rawPtr, index, out subsoundraw);
             subsound = new Sound(subsoundraw);
 
             return result;
@@ -2941,7 +2941,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             parentsound = null;
 
             IntPtr subsoundraw;
-            RESULT result = FMOD_Sound_GetSubSoundParent(rawPtr, out subsoundraw);
+            RESULT result = FMOD_Sound_GetSubSoundParent(this.rawPtr, out subsoundraw);
             parentsound = new Sound(subsoundraw);
 
             return result;
@@ -2951,7 +2951,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         {
             IntPtr stringMem = Marshal.AllocHGlobal(name.Capacity);
 
-            RESULT result = FMOD_Sound_GetName(rawPtr, stringMem, namelen);
+            RESULT result = FMOD_Sound_GetName(this.rawPtr, stringMem, namelen);
 
             StringMarshalHelper.NativeToBuilder(name, stringMem);
             Marshal.FreeHGlobal(stringMem);
@@ -2961,47 +2961,47 @@ namespace MagicalLifeAPI.Sound.FMOD
 
         public RESULT getLength(out uint length, TIMEUNIT lengthtype)
         {
-            return FMOD_Sound_GetLength(rawPtr, out length, lengthtype);
+            return FMOD_Sound_GetLength(this.rawPtr, out length, lengthtype);
         }
 
         public RESULT getFormat(out SOUND_TYPE type, out SOUND_FORMAT format, out int channels, out int bits)
         {
-            return FMOD_Sound_GetFormat(rawPtr, out type, out format, out channels, out bits);
+            return FMOD_Sound_GetFormat(this.rawPtr, out type, out format, out channels, out bits);
         }
 
         public RESULT getNumSubSounds(out int numsubsounds)
         {
-            return FMOD_Sound_GetNumSubSounds(rawPtr, out numsubsounds);
+            return FMOD_Sound_GetNumSubSounds(this.rawPtr, out numsubsounds);
         }
 
         public RESULT getNumTags(out int numtags, out int numtagsupdated)
         {
-            return FMOD_Sound_GetNumTags(rawPtr, out numtags, out numtagsupdated);
+            return FMOD_Sound_GetNumTags(this.rawPtr, out numtags, out numtagsupdated);
         }
 
         public RESULT getTag(string name, int index, out TAG tag)
         {
-            return FMOD_Sound_GetTag(rawPtr, name, index, out tag);
+            return FMOD_Sound_GetTag(this.rawPtr, name, index, out tag);
         }
 
         public RESULT getOpenState(out OPENSTATE openstate, out uint percentbuffered, out bool starving, out bool diskbusy)
         {
-            return FMOD_Sound_GetOpenState(rawPtr, out openstate, out percentbuffered, out starving, out diskbusy);
+            return FMOD_Sound_GetOpenState(this.rawPtr, out openstate, out percentbuffered, out starving, out diskbusy);
         }
 
         public RESULT readData(IntPtr buffer, uint length, out uint read)
         {
-            return FMOD_Sound_ReadData(rawPtr, buffer, length, out read);
+            return FMOD_Sound_ReadData(this.rawPtr, buffer, length, out read);
         }
 
         public RESULT seekData(uint pcm)
         {
-            return FMOD_Sound_SeekData(rawPtr, pcm);
+            return FMOD_Sound_SeekData(this.rawPtr, pcm);
         }
 
         public RESULT setSoundGroup(SoundGroup soundgroup)
         {
-            return FMOD_Sound_SetSoundGroup(rawPtr, soundgroup.getRaw());
+            return FMOD_Sound_SetSoundGroup(this.rawPtr, soundgroup.getRaw());
         }
 
         public RESULT getSoundGroup(out SoundGroup soundgroup)
@@ -3009,7 +3009,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             soundgroup = null;
 
             IntPtr soundgroupraw;
-            RESULT result = FMOD_Sound_GetSoundGroup(rawPtr, out soundgroupraw);
+            RESULT result = FMOD_Sound_GetSoundGroup(this.rawPtr, out soundgroupraw);
             soundgroup = new SoundGroup(soundgroupraw);
 
             return result;
@@ -3018,19 +3018,19 @@ namespace MagicalLifeAPI.Sound.FMOD
         // Synchronization point API.  These points can come from markers embedded in wav files, and can also generate channel callbacks.
         public RESULT getNumSyncPoints(out int numsyncpoints)
         {
-            return FMOD_Sound_GetNumSyncPoints(rawPtr, out numsyncpoints);
+            return FMOD_Sound_GetNumSyncPoints(this.rawPtr, out numsyncpoints);
         }
 
         public RESULT getSyncPoint(int index, out IntPtr point)
         {
-            return FMOD_Sound_GetSyncPoint(rawPtr, index, out point);
+            return FMOD_Sound_GetSyncPoint(this.rawPtr, index, out point);
         }
 
         public RESULT getSyncPointInfo(IntPtr point, StringBuilder name, int namelen, out uint offset, TIMEUNIT offsettype)
         {
             IntPtr stringMem = Marshal.AllocHGlobal(name.Capacity);
 
-            RESULT result = FMOD_Sound_GetSyncPointInfo(rawPtr, point, stringMem, namelen, out offset, offsettype);
+            RESULT result = FMOD_Sound_GetSyncPointInfo(this.rawPtr, point, stringMem, namelen, out offset, offsettype);
 
             StringMarshalHelper.NativeToBuilder(name, stringMem);
             Marshal.FreeHGlobal(stringMem);
@@ -3040,80 +3040,80 @@ namespace MagicalLifeAPI.Sound.FMOD
 
         public RESULT addSyncPoint(uint offset, TIMEUNIT offsettype, string name, out IntPtr point)
         {
-            return FMOD_Sound_AddSyncPoint(rawPtr, offset, offsettype, name, out point);
+            return FMOD_Sound_AddSyncPoint(this.rawPtr, offset, offsettype, name, out point);
         }
 
         public RESULT deleteSyncPoint(IntPtr point)
         {
-            return FMOD_Sound_DeleteSyncPoint(rawPtr, point);
+            return FMOD_Sound_DeleteSyncPoint(this.rawPtr, point);
         }
 
         // Functions also in Channel class but here they are the 'default' to save having to change it in Channel all the time.
         public RESULT setMode(MODE mode)
         {
-            return FMOD_Sound_SetMode(rawPtr, mode);
+            return FMOD_Sound_SetMode(this.rawPtr, mode);
         }
 
         public RESULT getMode(out MODE mode)
         {
-            return FMOD_Sound_GetMode(rawPtr, out mode);
+            return FMOD_Sound_GetMode(this.rawPtr, out mode);
         }
 
         public RESULT setLoopCount(int loopcount)
         {
-            return FMOD_Sound_SetLoopCount(rawPtr, loopcount);
+            return FMOD_Sound_SetLoopCount(this.rawPtr, loopcount);
         }
 
         public RESULT getLoopCount(out int loopcount)
         {
-            return FMOD_Sound_GetLoopCount(rawPtr, out loopcount);
+            return FMOD_Sound_GetLoopCount(this.rawPtr, out loopcount);
         }
 
         public RESULT setLoopPoints(uint loopstart, TIMEUNIT loopstarttype, uint loopend, TIMEUNIT loopendtype)
         {
-            return FMOD_Sound_SetLoopPoints(rawPtr, loopstart, loopstarttype, loopend, loopendtype);
+            return FMOD_Sound_SetLoopPoints(this.rawPtr, loopstart, loopstarttype, loopend, loopendtype);
         }
 
         public RESULT getLoopPoints(out uint loopstart, TIMEUNIT loopstarttype, out uint loopend, TIMEUNIT loopendtype)
         {
-            return FMOD_Sound_GetLoopPoints(rawPtr, out loopstart, loopstarttype, out loopend, loopendtype);
+            return FMOD_Sound_GetLoopPoints(this.rawPtr, out loopstart, loopstarttype, out loopend, loopendtype);
         }
 
         // For MOD/S3M/XM/IT/MID sequenced formats only.
         public RESULT getMusicNumChannels(out int numchannels)
         {
-            return FMOD_Sound_GetMusicNumChannels(rawPtr, out numchannels);
+            return FMOD_Sound_GetMusicNumChannels(this.rawPtr, out numchannels);
         }
 
         public RESULT setMusicChannelVolume(int channel, float volume)
         {
-            return FMOD_Sound_SetMusicChannelVolume(rawPtr, channel, volume);
+            return FMOD_Sound_SetMusicChannelVolume(this.rawPtr, channel, volume);
         }
 
         public RESULT getMusicChannelVolume(int channel, out float volume)
         {
-            return FMOD_Sound_GetMusicChannelVolume(rawPtr, channel, out volume);
+            return FMOD_Sound_GetMusicChannelVolume(this.rawPtr, channel, out volume);
         }
 
         public RESULT setMusicSpeed(float speed)
         {
-            return FMOD_Sound_SetMusicSpeed(rawPtr, speed);
+            return FMOD_Sound_SetMusicSpeed(this.rawPtr, speed);
         }
 
         public RESULT getMusicSpeed(out float speed)
         {
-            return FMOD_Sound_GetMusicSpeed(rawPtr, out speed);
+            return FMOD_Sound_GetMusicSpeed(this.rawPtr, out speed);
         }
 
         // Userdata set/get.
         public RESULT setUserData(IntPtr userdata)
         {
-            return FMOD_Sound_SetUserData(rawPtr, userdata);
+            return FMOD_Sound_SetUserData(this.rawPtr, userdata);
         }
 
         public RESULT getUserData(out IntPtr userdata)
         {
-            return FMOD_Sound_GetUserData(rawPtr, out userdata);
+            return FMOD_Sound_GetUserData(this.rawPtr, out userdata);
         }
 
         #region importfunctions
@@ -3270,7 +3270,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             system = null;
 
             IntPtr systemraw;
-            RESULT result = FMOD_ChannelGroup_GetSystemObject(rawPtr, out systemraw);
+            RESULT result = FMOD_ChannelGroup_GetSystemObject(this.rawPtr, out systemraw);
             system = new System(systemraw);
 
             return result;
@@ -3279,165 +3279,165 @@ namespace MagicalLifeAPI.Sound.FMOD
         // General control functionality for Channels and ChannelGroups.
         public RESULT stop()
         {
-            return FMOD_ChannelGroup_Stop(rawPtr);
+            return FMOD_ChannelGroup_Stop(this.rawPtr);
         }
 
         public RESULT setPaused(bool paused)
         {
-            return FMOD_ChannelGroup_SetPaused(rawPtr, paused);
+            return FMOD_ChannelGroup_SetPaused(this.rawPtr, paused);
         }
 
         public RESULT getPaused(out bool paused)
         {
-            return FMOD_ChannelGroup_GetPaused(rawPtr, out paused);
+            return FMOD_ChannelGroup_GetPaused(this.rawPtr, out paused);
         }
 
         public RESULT setVolume(float volume)
         {
-            return FMOD_ChannelGroup_SetVolume(rawPtr, volume);
+            return FMOD_ChannelGroup_SetVolume(this.rawPtr, volume);
         }
 
         public RESULT getVolume(out float volume)
         {
-            return FMOD_ChannelGroup_GetVolume(rawPtr, out volume);
+            return FMOD_ChannelGroup_GetVolume(this.rawPtr, out volume);
         }
 
         public RESULT setVolumeRamp(bool ramp)
         {
-            return FMOD_ChannelGroup_SetVolumeRamp(rawPtr, ramp);
+            return FMOD_ChannelGroup_SetVolumeRamp(this.rawPtr, ramp);
         }
 
         public RESULT getVolumeRamp(out bool ramp)
         {
-            return FMOD_ChannelGroup_GetVolumeRamp(rawPtr, out ramp);
+            return FMOD_ChannelGroup_GetVolumeRamp(this.rawPtr, out ramp);
         }
 
         public RESULT getAudibility(out float audibility)
         {
-            return FMOD_ChannelGroup_GetAudibility(rawPtr, out audibility);
+            return FMOD_ChannelGroup_GetAudibility(this.rawPtr, out audibility);
         }
 
         public RESULT setPitch(float pitch)
         {
-            return FMOD_ChannelGroup_SetPitch(rawPtr, pitch);
+            return FMOD_ChannelGroup_SetPitch(this.rawPtr, pitch);
         }
 
         public RESULT getPitch(out float pitch)
         {
-            return FMOD_ChannelGroup_GetPitch(rawPtr, out pitch);
+            return FMOD_ChannelGroup_GetPitch(this.rawPtr, out pitch);
         }
 
         public RESULT setMute(bool mute)
         {
-            return FMOD_ChannelGroup_SetMute(rawPtr, mute);
+            return FMOD_ChannelGroup_SetMute(this.rawPtr, mute);
         }
 
         public RESULT getMute(out bool mute)
         {
-            return FMOD_ChannelGroup_GetMute(rawPtr, out mute);
+            return FMOD_ChannelGroup_GetMute(this.rawPtr, out mute);
         }
 
         public RESULT setReverbProperties(int instance, float wet)
         {
-            return FMOD_ChannelGroup_SetReverbProperties(rawPtr, instance, wet);
+            return FMOD_ChannelGroup_SetReverbProperties(this.rawPtr, instance, wet);
         }
 
         public RESULT getReverbProperties(int instance, out float wet)
         {
-            return FMOD_ChannelGroup_GetReverbProperties(rawPtr, instance, out wet);
+            return FMOD_ChannelGroup_GetReverbProperties(this.rawPtr, instance, out wet);
         }
 
         public RESULT setLowPassGain(float gain)
         {
-            return FMOD_ChannelGroup_SetLowPassGain(rawPtr, gain);
+            return FMOD_ChannelGroup_SetLowPassGain(this.rawPtr, gain);
         }
 
         public RESULT getLowPassGain(out float gain)
         {
-            return FMOD_ChannelGroup_GetLowPassGain(rawPtr, out gain);
+            return FMOD_ChannelGroup_GetLowPassGain(this.rawPtr, out gain);
         }
 
         public RESULT setMode(MODE mode)
         {
-            return FMOD_ChannelGroup_SetMode(rawPtr, mode);
+            return FMOD_ChannelGroup_SetMode(this.rawPtr, mode);
         }
 
         public RESULT getMode(out MODE mode)
         {
-            return FMOD_ChannelGroup_GetMode(rawPtr, out mode);
+            return FMOD_ChannelGroup_GetMode(this.rawPtr, out mode);
         }
 
         public RESULT setCallback(CHANNEL_CALLBACK callback)
         {
-            return FMOD_ChannelGroup_SetCallback(rawPtr, callback);
+            return FMOD_ChannelGroup_SetCallback(this.rawPtr, callback);
         }
 
         public RESULT isPlaying(out bool isplaying)
         {
-            return FMOD_ChannelGroup_IsPlaying(rawPtr, out isplaying);
+            return FMOD_ChannelGroup_IsPlaying(this.rawPtr, out isplaying);
         }
 
         // Panning and level adjustment.
         public RESULT setPan(float pan)
         {
-            return FMOD_ChannelGroup_SetPan(rawPtr, pan);
+            return FMOD_ChannelGroup_SetPan(this.rawPtr, pan);
         }
 
         public RESULT setMixLevelsOutput(float frontleft, float frontright, float center, float lfe, float surroundleft, float surroundright, float backleft, float backright)
         {
-            return FMOD_ChannelGroup_SetMixLevelsOutput(rawPtr, frontleft, frontright, center, lfe,
+            return FMOD_ChannelGroup_SetMixLevelsOutput(this.rawPtr, frontleft, frontright, center, lfe,
                 surroundleft, surroundright, backleft, backright);
         }
 
         public RESULT setMixLevelsInput(float[] levels, int numlevels)
         {
-            return FMOD_ChannelGroup_SetMixLevelsInput(rawPtr, levels, numlevels);
+            return FMOD_ChannelGroup_SetMixLevelsInput(this.rawPtr, levels, numlevels);
         }
 
         public RESULT setMixMatrix(float[] matrix, int outchannels, int inchannels, int inchannel_hop)
         {
-            return FMOD_ChannelGroup_SetMixMatrix(rawPtr, matrix, outchannels, inchannels, inchannel_hop);
+            return FMOD_ChannelGroup_SetMixMatrix(this.rawPtr, matrix, outchannels, inchannels, inchannel_hop);
         }
 
         public RESULT getMixMatrix(float[] matrix, out int outchannels, out int inchannels, int inchannel_hop)
         {
-            return FMOD_ChannelGroup_GetMixMatrix(rawPtr, matrix, out outchannels, out inchannels, inchannel_hop);
+            return FMOD_ChannelGroup_GetMixMatrix(this.rawPtr, matrix, out outchannels, out inchannels, inchannel_hop);
         }
 
         // Clock based functionality.
         public RESULT getDSPClock(out ulong dspclock, out ulong parentclock)
         {
-            return FMOD_ChannelGroup_GetDSPClock(rawPtr, out dspclock, out parentclock);
+            return FMOD_ChannelGroup_GetDSPClock(this.rawPtr, out dspclock, out parentclock);
         }
 
         public RESULT setDelay(ulong dspclock_start, ulong dspclock_end, bool stopchannels)
         {
-            return FMOD_ChannelGroup_SetDelay(rawPtr, dspclock_start, dspclock_end, stopchannels);
+            return FMOD_ChannelGroup_SetDelay(this.rawPtr, dspclock_start, dspclock_end, stopchannels);
         }
 
         public RESULT getDelay(out ulong dspclock_start, out ulong dspclock_end, out bool stopchannels)
         {
-            return FMOD_ChannelGroup_GetDelay(rawPtr, out dspclock_start, out dspclock_end, out stopchannels);
+            return FMOD_ChannelGroup_GetDelay(this.rawPtr, out dspclock_start, out dspclock_end, out stopchannels);
         }
 
         public RESULT addFadePoint(ulong dspclock, float volume)
         {
-            return FMOD_ChannelGroup_AddFadePoint(rawPtr, dspclock, volume);
+            return FMOD_ChannelGroup_AddFadePoint(this.rawPtr, dspclock, volume);
         }
 
         public RESULT setFadePointRamp(ulong dspclock, float volume)
         {
-            return FMOD_ChannelGroup_SetFadePointRamp(rawPtr, dspclock, volume);
+            return FMOD_ChannelGroup_SetFadePointRamp(this.rawPtr, dspclock, volume);
         }
 
         public RESULT removeFadePoints(ulong dspclock_start, ulong dspclock_end)
         {
-            return FMOD_ChannelGroup_RemoveFadePoints(rawPtr, dspclock_start, dspclock_end);
+            return FMOD_ChannelGroup_RemoveFadePoints(this.rawPtr, dspclock_start, dspclock_end);
         }
 
         public RESULT getFadePoints(ref uint numpoints, ulong[] point_dspclock, float[] point_volume)
         {
-            return FMOD_ChannelGroup_GetFadePoints(rawPtr, ref numpoints, point_dspclock, point_volume);
+            return FMOD_ChannelGroup_GetFadePoints(this.rawPtr, ref numpoints, point_dspclock, point_volume);
         }
 
         // DSP effects.
@@ -3446,7 +3446,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             dsp = null;
 
             IntPtr dspraw;
-            RESULT result = FMOD_ChannelGroup_GetDSP(rawPtr, index, out dspraw);
+            RESULT result = FMOD_ChannelGroup_GetDSP(this.rawPtr, index, out dspraw);
             dsp = new DSP(dspraw);
 
             return result;
@@ -3454,139 +3454,139 @@ namespace MagicalLifeAPI.Sound.FMOD
 
         public RESULT addDSP(int index, DSP dsp)
         {
-            return FMOD_ChannelGroup_AddDSP(rawPtr, index, dsp.getRaw());
+            return FMOD_ChannelGroup_AddDSP(this.rawPtr, index, dsp.getRaw());
         }
 
         public RESULT removeDSP(DSP dsp)
         {
-            return FMOD_ChannelGroup_RemoveDSP(rawPtr, dsp.getRaw());
+            return FMOD_ChannelGroup_RemoveDSP(this.rawPtr, dsp.getRaw());
         }
 
         public RESULT getNumDSPs(out int numdsps)
         {
-            return FMOD_ChannelGroup_GetNumDSPs(rawPtr, out numdsps);
+            return FMOD_ChannelGroup_GetNumDSPs(this.rawPtr, out numdsps);
         }
 
         public RESULT setDSPIndex(DSP dsp, int index)
         {
-            return FMOD_ChannelGroup_SetDSPIndex(rawPtr, dsp.getRaw(), index);
+            return FMOD_ChannelGroup_SetDSPIndex(this.rawPtr, dsp.getRaw(), index);
         }
 
         public RESULT getDSPIndex(DSP dsp, out int index)
         {
-            return FMOD_ChannelGroup_GetDSPIndex(rawPtr, dsp.getRaw(), out index);
+            return FMOD_ChannelGroup_GetDSPIndex(this.rawPtr, dsp.getRaw(), out index);
         }
 
         // 3D functionality.
         public RESULT set3DAttributes(ref VECTOR pos, ref VECTOR vel, ref VECTOR alt_pan_pos)
         {
-            return FMOD_ChannelGroup_Set3DAttributes(rawPtr, ref pos, ref vel, ref alt_pan_pos);
+            return FMOD_ChannelGroup_Set3DAttributes(this.rawPtr, ref pos, ref vel, ref alt_pan_pos);
         }
 
         public RESULT get3DAttributes(out VECTOR pos, out VECTOR vel, out VECTOR alt_pan_pos)
         {
-            return FMOD_ChannelGroup_Get3DAttributes(rawPtr, out pos, out vel, out alt_pan_pos);
+            return FMOD_ChannelGroup_Get3DAttributes(this.rawPtr, out pos, out vel, out alt_pan_pos);
         }
 
         public RESULT set3DMinMaxDistance(float mindistance, float maxdistance)
         {
-            return FMOD_ChannelGroup_Set3DMinMaxDistance(rawPtr, mindistance, maxdistance);
+            return FMOD_ChannelGroup_Set3DMinMaxDistance(this.rawPtr, mindistance, maxdistance);
         }
 
         public RESULT get3DMinMaxDistance(out float mindistance, out float maxdistance)
         {
-            return FMOD_ChannelGroup_Get3DMinMaxDistance(rawPtr, out mindistance, out maxdistance);
+            return FMOD_ChannelGroup_Get3DMinMaxDistance(this.rawPtr, out mindistance, out maxdistance);
         }
 
         public RESULT set3DConeSettings(float insideconeangle, float outsideconeangle, float outsidevolume)
         {
-            return FMOD_ChannelGroup_Set3DConeSettings(rawPtr, insideconeangle, outsideconeangle, outsidevolume);
+            return FMOD_ChannelGroup_Set3DConeSettings(this.rawPtr, insideconeangle, outsideconeangle, outsidevolume);
         }
 
         public RESULT get3DConeSettings(out float insideconeangle, out float outsideconeangle, out float outsidevolume)
         {
-            return FMOD_ChannelGroup_Get3DConeSettings(rawPtr, out insideconeangle, out outsideconeangle, out outsidevolume);
+            return FMOD_ChannelGroup_Get3DConeSettings(this.rawPtr, out insideconeangle, out outsideconeangle, out outsidevolume);
         }
 
         public RESULT set3DConeOrientation(ref VECTOR orientation)
         {
-            return FMOD_ChannelGroup_Set3DConeOrientation(rawPtr, ref orientation);
+            return FMOD_ChannelGroup_Set3DConeOrientation(this.rawPtr, ref orientation);
         }
 
         public RESULT get3DConeOrientation(out VECTOR orientation)
         {
-            return FMOD_ChannelGroup_Get3DConeOrientation(rawPtr, out orientation);
+            return FMOD_ChannelGroup_Get3DConeOrientation(this.rawPtr, out orientation);
         }
 
         public RESULT set3DCustomRolloff(ref VECTOR points, int numpoints)
         {
-            return FMOD_ChannelGroup_Set3DCustomRolloff(rawPtr, ref points, numpoints);
+            return FMOD_ChannelGroup_Set3DCustomRolloff(this.rawPtr, ref points, numpoints);
         }
 
         public RESULT get3DCustomRolloff(out IntPtr points, out int numpoints)
         {
-            return FMOD_ChannelGroup_Get3DCustomRolloff(rawPtr, out points, out numpoints);
+            return FMOD_ChannelGroup_Get3DCustomRolloff(this.rawPtr, out points, out numpoints);
         }
 
         public RESULT set3DOcclusion(float directocclusion, float reverbocclusion)
         {
-            return FMOD_ChannelGroup_Set3DOcclusion(rawPtr, directocclusion, reverbocclusion);
+            return FMOD_ChannelGroup_Set3DOcclusion(this.rawPtr, directocclusion, reverbocclusion);
         }
 
         public RESULT get3DOcclusion(out float directocclusion, out float reverbocclusion)
         {
-            return FMOD_ChannelGroup_Get3DOcclusion(rawPtr, out directocclusion, out reverbocclusion);
+            return FMOD_ChannelGroup_Get3DOcclusion(this.rawPtr, out directocclusion, out reverbocclusion);
         }
 
         public RESULT set3DSpread(float angle)
         {
-            return FMOD_ChannelGroup_Set3DSpread(rawPtr, angle);
+            return FMOD_ChannelGroup_Set3DSpread(this.rawPtr, angle);
         }
 
         public RESULT get3DSpread(out float angle)
         {
-            return FMOD_ChannelGroup_Get3DSpread(rawPtr, out angle);
+            return FMOD_ChannelGroup_Get3DSpread(this.rawPtr, out angle);
         }
 
         public RESULT set3DLevel(float level)
         {
-            return FMOD_ChannelGroup_Set3DLevel(rawPtr, level);
+            return FMOD_ChannelGroup_Set3DLevel(this.rawPtr, level);
         }
 
         public RESULT get3DLevel(out float level)
         {
-            return FMOD_ChannelGroup_Get3DLevel(rawPtr, out level);
+            return FMOD_ChannelGroup_Get3DLevel(this.rawPtr, out level);
         }
 
         public RESULT set3DDopplerLevel(float level)
         {
-            return FMOD_ChannelGroup_Set3DDopplerLevel(rawPtr, level);
+            return FMOD_ChannelGroup_Set3DDopplerLevel(this.rawPtr, level);
         }
 
         public RESULT get3DDopplerLevel(out float level)
         {
-            return FMOD_ChannelGroup_Get3DDopplerLevel(rawPtr, out level);
+            return FMOD_ChannelGroup_Get3DDopplerLevel(this.rawPtr, out level);
         }
 
         public RESULT set3DDistanceFilter(bool custom, float customLevel, float centerFreq)
         {
-            return FMOD_ChannelGroup_Set3DDistanceFilter(rawPtr, custom, customLevel, centerFreq);
+            return FMOD_ChannelGroup_Set3DDistanceFilter(this.rawPtr, custom, customLevel, centerFreq);
         }
 
         public RESULT get3DDistanceFilter(out bool custom, out float customLevel, out float centerFreq)
         {
-            return FMOD_ChannelGroup_Get3DDistanceFilter(rawPtr, out custom, out customLevel, out centerFreq);
+            return FMOD_ChannelGroup_Get3DDistanceFilter(this.rawPtr, out custom, out customLevel, out centerFreq);
         }
 
         // Userdata set/get.
         public RESULT setUserData(IntPtr userdata)
         {
-            return FMOD_ChannelGroup_SetUserData(rawPtr, userdata);
+            return FMOD_ChannelGroup_SetUserData(this.rawPtr, userdata);
         }
 
         public RESULT getUserData(out IntPtr userdata)
         {
-            return FMOD_ChannelGroup_GetUserData(rawPtr, out userdata);
+            return FMOD_ChannelGroup_GetUserData(this.rawPtr, out userdata);
         }
 
         #region importfunctions
@@ -3795,37 +3795,37 @@ namespace MagicalLifeAPI.Sound.FMOD
         // Channel specific control functionality.
         public RESULT setFrequency(float frequency)
         {
-            return FMOD_Channel_SetFrequency(getRaw(), frequency);
+            return FMOD_Channel_SetFrequency(this.getRaw(), frequency);
         }
 
         public RESULT getFrequency(out float frequency)
         {
-            return FMOD_Channel_GetFrequency(getRaw(), out frequency);
+            return FMOD_Channel_GetFrequency(this.getRaw(), out frequency);
         }
 
         public RESULT setPriority(int priority)
         {
-            return FMOD_Channel_SetPriority(getRaw(), priority);
+            return FMOD_Channel_SetPriority(this.getRaw(), priority);
         }
 
         public RESULT getPriority(out int priority)
         {
-            return FMOD_Channel_GetPriority(getRaw(), out priority);
+            return FMOD_Channel_GetPriority(this.getRaw(), out priority);
         }
 
         public RESULT setPosition(uint position, TIMEUNIT postype)
         {
-            return FMOD_Channel_SetPosition(getRaw(), position, postype);
+            return FMOD_Channel_SetPosition(this.getRaw(), position, postype);
         }
 
         public RESULT getPosition(out uint position, TIMEUNIT postype)
         {
-            return FMOD_Channel_GetPosition(getRaw(), out position, postype);
+            return FMOD_Channel_GetPosition(this.getRaw(), out position, postype);
         }
 
         public RESULT setChannelGroup(ChannelGroup channelgroup)
         {
-            return FMOD_Channel_SetChannelGroup(getRaw(), channelgroup.getRaw());
+            return FMOD_Channel_SetChannelGroup(this.getRaw(), channelgroup.getRaw());
         }
 
         public RESULT getChannelGroup(out ChannelGroup channelgroup)
@@ -3833,7 +3833,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             channelgroup = null;
 
             IntPtr channelgroupraw;
-            RESULT result = FMOD_Channel_GetChannelGroup(getRaw(), out channelgroupraw);
+            RESULT result = FMOD_Channel_GetChannelGroup(this.getRaw(), out channelgroupraw);
             channelgroup = new ChannelGroup(channelgroupraw);
 
             return result;
@@ -3841,28 +3841,28 @@ namespace MagicalLifeAPI.Sound.FMOD
 
         public RESULT setLoopCount(int loopcount)
         {
-            return FMOD_Channel_SetLoopCount(getRaw(), loopcount);
+            return FMOD_Channel_SetLoopCount(this.getRaw(), loopcount);
         }
 
         public RESULT getLoopCount(out int loopcount)
         {
-            return FMOD_Channel_GetLoopCount(getRaw(), out loopcount);
+            return FMOD_Channel_GetLoopCount(this.getRaw(), out loopcount);
         }
 
         public RESULT setLoopPoints(uint loopstart, TIMEUNIT loopstarttype, uint loopend, TIMEUNIT loopendtype)
         {
-            return FMOD_Channel_SetLoopPoints(getRaw(), loopstart, loopstarttype, loopend, loopendtype);
+            return FMOD_Channel_SetLoopPoints(this.getRaw(), loopstart, loopstarttype, loopend, loopendtype);
         }
 
         public RESULT getLoopPoints(out uint loopstart, TIMEUNIT loopstarttype, out uint loopend, TIMEUNIT loopendtype)
         {
-            return FMOD_Channel_GetLoopPoints(getRaw(), out loopstart, loopstarttype, out loopend, loopendtype);
+            return FMOD_Channel_GetLoopPoints(this.getRaw(), out loopstart, loopstarttype, out loopend, loopendtype);
         }
 
         // Information only functions.
         public RESULT isVirtual(out bool isvirtual)
         {
-            return FMOD_Channel_IsVirtual(getRaw(), out isvirtual);
+            return FMOD_Channel_IsVirtual(this.getRaw(), out isvirtual);
         }
 
         public RESULT getCurrentSound(out Sound sound)
@@ -3870,7 +3870,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             sound = null;
 
             IntPtr soundraw;
-            RESULT result = FMOD_Channel_GetCurrentSound(getRaw(), out soundraw);
+            RESULT result = FMOD_Channel_GetCurrentSound(this.getRaw(), out soundraw);
             sound = new Sound(soundraw);
 
             return result;
@@ -3878,7 +3878,7 @@ namespace MagicalLifeAPI.Sound.FMOD
 
         public RESULT getIndex(out int index)
         {
-            return FMOD_Channel_GetIndex(getRaw(), out index);
+            return FMOD_Channel_GetIndex(this.getRaw(), out index);
         }
 
         #region importfunctions
@@ -3960,10 +3960,10 @@ namespace MagicalLifeAPI.Sound.FMOD
     {
         public RESULT release()
         {
-            RESULT result = FMOD_ChannelGroup_Release(getRaw());
+            RESULT result = FMOD_ChannelGroup_Release(this.getRaw());
             if (result == RESULT.OK)
             {
-                rawPtr = IntPtr.Zero;
+                this.rawPtr = IntPtr.Zero;
             }
             return result;
         }
@@ -3974,7 +3974,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             connection = null;
 
             IntPtr connectionRaw;
-            RESULT result = FMOD_ChannelGroup_AddGroup(getRaw(), group.getRaw(), propagatedspclock, out connectionRaw);
+            RESULT result = FMOD_ChannelGroup_AddGroup(this.getRaw(), group.getRaw(), propagatedspclock, out connectionRaw);
             connection = new DSPConnection(connectionRaw);
 
             return result;
@@ -3982,7 +3982,7 @@ namespace MagicalLifeAPI.Sound.FMOD
 
         public RESULT getNumGroups(out int numgroups)
         {
-            return FMOD_ChannelGroup_GetNumGroups(getRaw(), out numgroups);
+            return FMOD_ChannelGroup_GetNumGroups(this.getRaw(), out numgroups);
         }
 
         public RESULT getGroup(int index, out ChannelGroup group)
@@ -3990,7 +3990,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             group = null;
 
             IntPtr groupraw;
-            RESULT result = FMOD_ChannelGroup_GetGroup(getRaw(), index, out groupraw);
+            RESULT result = FMOD_ChannelGroup_GetGroup(this.getRaw(), index, out groupraw);
             group = new ChannelGroup(groupraw);
 
             return result;
@@ -4001,7 +4001,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             group = null;
 
             IntPtr groupraw;
-            RESULT result = FMOD_ChannelGroup_GetParentGroup(getRaw(), out groupraw);
+            RESULT result = FMOD_ChannelGroup_GetParentGroup(this.getRaw(), out groupraw);
             group = new ChannelGroup(groupraw);
 
             return result;
@@ -4012,7 +4012,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         {
             IntPtr stringMem = Marshal.AllocHGlobal(name.Capacity);
 
-            RESULT result = FMOD_ChannelGroup_GetName(getRaw(), stringMem, namelen);
+            RESULT result = FMOD_ChannelGroup_GetName(this.getRaw(), stringMem, namelen);
 
             StringMarshalHelper.NativeToBuilder(name, stringMem);
             Marshal.FreeHGlobal(stringMem);
@@ -4022,7 +4022,7 @@ namespace MagicalLifeAPI.Sound.FMOD
 
         public RESULT getNumChannels(out int numchannels)
         {
-            return FMOD_ChannelGroup_GetNumChannels(getRaw(), out numchannels);
+            return FMOD_ChannelGroup_GetNumChannels(this.getRaw(), out numchannels);
         }
 
         public RESULT getChannel(int index, out Channel channel)
@@ -4030,7 +4030,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             channel = null;
 
             IntPtr channelraw;
-            RESULT result = FMOD_ChannelGroup_GetChannel(getRaw(), index, out channelraw);
+            RESULT result = FMOD_ChannelGroup_GetChannel(this.getRaw(), index, out channelraw);
             channel = new Channel(channelraw);
 
             return result;
@@ -4082,10 +4082,10 @@ namespace MagicalLifeAPI.Sound.FMOD
     {
         public RESULT release()
         {
-            RESULT result = FMOD_SoundGroup_Release(getRaw());
+            RESULT result = FMOD_SoundGroup_Release(this.getRaw());
             if (result == RESULT.OK)
             {
-                rawPtr = IntPtr.Zero;
+                this.rawPtr = IntPtr.Zero;
             }
             return result;
         }
@@ -4095,7 +4095,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             system = null;
 
             IntPtr systemraw;
-            RESULT result = FMOD_SoundGroup_GetSystemObject(rawPtr, out systemraw);
+            RESULT result = FMOD_SoundGroup_GetSystemObject(this.rawPtr, out systemraw);
             system = new System(systemraw);
 
             return result;
@@ -4104,47 +4104,47 @@ namespace MagicalLifeAPI.Sound.FMOD
         // SoundGroup control functions.
         public RESULT setMaxAudible(int maxaudible)
         {
-            return FMOD_SoundGroup_SetMaxAudible(rawPtr, maxaudible);
+            return FMOD_SoundGroup_SetMaxAudible(this.rawPtr, maxaudible);
         }
 
         public RESULT getMaxAudible(out int maxaudible)
         {
-            return FMOD_SoundGroup_GetMaxAudible(rawPtr, out maxaudible);
+            return FMOD_SoundGroup_GetMaxAudible(this.rawPtr, out maxaudible);
         }
 
         public RESULT setMaxAudibleBehavior(SOUNDGROUP_BEHAVIOR behavior)
         {
-            return FMOD_SoundGroup_SetMaxAudibleBehavior(rawPtr, behavior);
+            return FMOD_SoundGroup_SetMaxAudibleBehavior(this.rawPtr, behavior);
         }
 
         public RESULT getMaxAudibleBehavior(out SOUNDGROUP_BEHAVIOR behavior)
         {
-            return FMOD_SoundGroup_GetMaxAudibleBehavior(rawPtr, out behavior);
+            return FMOD_SoundGroup_GetMaxAudibleBehavior(this.rawPtr, out behavior);
         }
 
         public RESULT setMuteFadeSpeed(float speed)
         {
-            return FMOD_SoundGroup_SetMuteFadeSpeed(rawPtr, speed);
+            return FMOD_SoundGroup_SetMuteFadeSpeed(this.rawPtr, speed);
         }
 
         public RESULT getMuteFadeSpeed(out float speed)
         {
-            return FMOD_SoundGroup_GetMuteFadeSpeed(rawPtr, out speed);
+            return FMOD_SoundGroup_GetMuteFadeSpeed(this.rawPtr, out speed);
         }
 
         public RESULT setVolume(float volume)
         {
-            return FMOD_SoundGroup_SetVolume(rawPtr, volume);
+            return FMOD_SoundGroup_SetVolume(this.rawPtr, volume);
         }
 
         public RESULT getVolume(out float volume)
         {
-            return FMOD_SoundGroup_GetVolume(rawPtr, out volume);
+            return FMOD_SoundGroup_GetVolume(this.rawPtr, out volume);
         }
 
         public RESULT stop()
         {
-            return FMOD_SoundGroup_Stop(rawPtr);
+            return FMOD_SoundGroup_Stop(this.rawPtr);
         }
 
         // Information only functions.
@@ -4152,7 +4152,7 @@ namespace MagicalLifeAPI.Sound.FMOD
         {
             IntPtr stringMem = Marshal.AllocHGlobal(name.Capacity);
 
-            RESULT result = FMOD_SoundGroup_GetName(rawPtr, stringMem, namelen);
+            RESULT result = FMOD_SoundGroup_GetName(this.rawPtr, stringMem, namelen);
 
             StringMarshalHelper.NativeToBuilder(name, stringMem);
             Marshal.FreeHGlobal(stringMem);
@@ -4162,7 +4162,7 @@ namespace MagicalLifeAPI.Sound.FMOD
 
         public RESULT getNumSounds(out int numsounds)
         {
-            return FMOD_SoundGroup_GetNumSounds(rawPtr, out numsounds);
+            return FMOD_SoundGroup_GetNumSounds(this.rawPtr, out numsounds);
         }
 
         public RESULT getSound(int index, out Sound sound)
@@ -4170,7 +4170,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             sound = null;
 
             IntPtr soundraw;
-            RESULT result = FMOD_SoundGroup_GetSound(rawPtr, index, out soundraw);
+            RESULT result = FMOD_SoundGroup_GetSound(this.rawPtr, index, out soundraw);
             sound = new Sound(soundraw);
 
             return result;
@@ -4178,18 +4178,18 @@ namespace MagicalLifeAPI.Sound.FMOD
 
         public RESULT getNumPlaying(out int numplaying)
         {
-            return FMOD_SoundGroup_GetNumPlaying(rawPtr, out numplaying);
+            return FMOD_SoundGroup_GetNumPlaying(this.rawPtr, out numplaying);
         }
 
         // Userdata set/get.
         public RESULT setUserData(IntPtr userdata)
         {
-            return FMOD_SoundGroup_SetUserData(rawPtr, userdata);
+            return FMOD_SoundGroup_SetUserData(this.rawPtr, userdata);
         }
 
         public RESULT getUserData(out IntPtr userdata)
         {
-            return FMOD_SoundGroup_GetUserData(rawPtr, out userdata);
+            return FMOD_SoundGroup_GetUserData(this.rawPtr, out userdata);
         }
 
         #region importfunctions
@@ -4265,10 +4265,10 @@ namespace MagicalLifeAPI.Sound.FMOD
     {
         public RESULT release()
         {
-            RESULT result = FMOD_DSP_Release(getRaw());
+            RESULT result = FMOD_DSP_Release(this.getRaw());
             if (result == RESULT.OK)
             {
-                rawPtr = IntPtr.Zero;
+                this.rawPtr = IntPtr.Zero;
             }
             return result;
         }
@@ -4278,7 +4278,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             system = null;
 
             IntPtr systemraw;
-            RESULT result = FMOD_DSP_GetSystemObject(rawPtr, out systemraw);
+            RESULT result = FMOD_DSP_GetSystemObject(this.rawPtr, out systemraw);
             system = new System(systemraw);
 
             return result;
@@ -4290,7 +4290,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             connection = null;
 
             IntPtr dspconnectionraw;
-            RESULT result = FMOD_DSP_AddInput(rawPtr, target.getRaw(), out dspconnectionraw, type);
+            RESULT result = FMOD_DSP_AddInput(this.rawPtr, target.getRaw(), out dspconnectionraw, type);
             connection = new DSPConnection(dspconnectionraw);
 
             return result;
@@ -4298,22 +4298,22 @@ namespace MagicalLifeAPI.Sound.FMOD
 
         public RESULT disconnectFrom(DSP target, DSPConnection connection)
         {
-            return FMOD_DSP_DisconnectFrom(rawPtr, target.getRaw(), connection.getRaw());
+            return FMOD_DSP_DisconnectFrom(this.rawPtr, target.getRaw(), connection.getRaw());
         }
 
         public RESULT disconnectAll(bool inputs, bool outputs)
         {
-            return FMOD_DSP_DisconnectAll(rawPtr, inputs, outputs);
+            return FMOD_DSP_DisconnectAll(this.rawPtr, inputs, outputs);
         }
 
         public RESULT getNumInputs(out int numinputs)
         {
-            return FMOD_DSP_GetNumInputs(rawPtr, out numinputs);
+            return FMOD_DSP_GetNumInputs(this.rawPtr, out numinputs);
         }
 
         public RESULT getNumOutputs(out int numoutputs)
         {
-            return FMOD_DSP_GetNumOutputs(rawPtr, out numoutputs);
+            return FMOD_DSP_GetNumOutputs(this.rawPtr, out numoutputs);
         }
 
         public RESULT getInput(int index, out DSP input, out DSPConnection inputconnection)
@@ -4323,7 +4323,7 @@ namespace MagicalLifeAPI.Sound.FMOD
 
             IntPtr dspinputraw;
             IntPtr dspconnectionraw;
-            RESULT result = FMOD_DSP_GetInput(rawPtr, index, out dspinputraw, out dspconnectionraw);
+            RESULT result = FMOD_DSP_GetInput(this.rawPtr, index, out dspinputraw, out dspconnectionraw);
             input = new DSP(dspinputraw);
             inputconnection = new DSPConnection(dspconnectionraw);
 
@@ -4337,7 +4337,7 @@ namespace MagicalLifeAPI.Sound.FMOD
 
             IntPtr dspoutputraw;
             IntPtr dspconnectionraw;
-            RESULT result = FMOD_DSP_GetOutput(rawPtr, index, out dspoutputraw, out dspconnectionraw);
+            RESULT result = FMOD_DSP_GetOutput(this.rawPtr, index, out dspoutputraw, out dspconnectionraw);
             output = new DSP(dspoutputraw);
             outputconnection = new DSPConnection(dspconnectionraw);
 
@@ -4347,106 +4347,106 @@ namespace MagicalLifeAPI.Sound.FMOD
         // DSP unit control.
         public RESULT setActive(bool active)
         {
-            return FMOD_DSP_SetActive(rawPtr, active);
+            return FMOD_DSP_SetActive(this.rawPtr, active);
         }
 
         public RESULT getActive(out bool active)
         {
-            return FMOD_DSP_GetActive(rawPtr, out active);
+            return FMOD_DSP_GetActive(this.rawPtr, out active);
         }
 
         public RESULT setBypass(bool bypass)
         {
-            return FMOD_DSP_SetBypass(rawPtr, bypass);
+            return FMOD_DSP_SetBypass(this.rawPtr, bypass);
         }
 
         public RESULT getBypass(out bool bypass)
         {
-            return FMOD_DSP_GetBypass(rawPtr, out bypass);
+            return FMOD_DSP_GetBypass(this.rawPtr, out bypass);
         }
 
         public RESULT setWetDryMix(float prewet, float postwet, float dry)
         {
-            return FMOD_DSP_SetWetDryMix(rawPtr, prewet, postwet, dry);
+            return FMOD_DSP_SetWetDryMix(this.rawPtr, prewet, postwet, dry);
         }
 
         public RESULT getWetDryMix(out float prewet, out float postwet, out float dry)
         {
-            return FMOD_DSP_GetWetDryMix(rawPtr, out prewet, out postwet, out dry);
+            return FMOD_DSP_GetWetDryMix(this.rawPtr, out prewet, out postwet, out dry);
         }
 
         public RESULT setChannelFormat(CHANNELMASK channelmask, int numchannels, SPEAKERMODE source_speakermode)
         {
-            return FMOD_DSP_SetChannelFormat(rawPtr, channelmask, numchannels, source_speakermode);
+            return FMOD_DSP_SetChannelFormat(this.rawPtr, channelmask, numchannels, source_speakermode);
         }
 
         public RESULT getChannelFormat(out CHANNELMASK channelmask, out int numchannels, out SPEAKERMODE source_speakermode)
         {
-            return FMOD_DSP_GetChannelFormat(rawPtr, out channelmask, out numchannels, out source_speakermode);
+            return FMOD_DSP_GetChannelFormat(this.rawPtr, out channelmask, out numchannels, out source_speakermode);
         }
 
         public RESULT getOutputChannelFormat(CHANNELMASK inmask, int inchannels, SPEAKERMODE inspeakermode, out CHANNELMASK outmask, out int outchannels, out SPEAKERMODE outspeakermode)
         {
-            return FMOD_DSP_GetOutputChannelFormat(rawPtr, inmask, inchannels, inspeakermode, out outmask, out outchannels, out outspeakermode);
+            return FMOD_DSP_GetOutputChannelFormat(this.rawPtr, inmask, inchannels, inspeakermode, out outmask, out outchannels, out outspeakermode);
         }
 
         public RESULT reset()
         {
-            return FMOD_DSP_Reset(rawPtr);
+            return FMOD_DSP_Reset(this.rawPtr);
         }
 
         // DSP parameter control.
         public RESULT setParameterFloat(int index, float value)
         {
-            return FMOD_DSP_SetParameterFloat(rawPtr, index, value);
+            return FMOD_DSP_SetParameterFloat(this.rawPtr, index, value);
         }
 
         public RESULT setParameterInt(int index, int value)
         {
-            return FMOD_DSP_SetParameterInt(rawPtr, index, value);
+            return FMOD_DSP_SetParameterInt(this.rawPtr, index, value);
         }
 
         public RESULT setParameterBool(int index, bool value)
         {
-            return FMOD_DSP_SetParameterBool(rawPtr, index, value);
+            return FMOD_DSP_SetParameterBool(this.rawPtr, index, value);
         }
 
         public RESULT setParameterData(int index, byte[] data)
         {
-            return FMOD_DSP_SetParameterData(rawPtr, index, Marshal.UnsafeAddrOfPinnedArrayElement(data, 0), (uint)data.Length);
+            return FMOD_DSP_SetParameterData(this.rawPtr, index, Marshal.UnsafeAddrOfPinnedArrayElement(data, 0), (uint)data.Length);
         }
 
         public RESULT getParameterFloat(int index, out float value)
         {
             IntPtr valuestr = IntPtr.Zero;
-            return FMOD_DSP_GetParameterFloat(rawPtr, index, out value, valuestr, 0);
+            return FMOD_DSP_GetParameterFloat(this.rawPtr, index, out value, valuestr, 0);
         }
 
         public RESULT getParameterInt(int index, out int value)
         {
             IntPtr valuestr = IntPtr.Zero;
-            return FMOD_DSP_GetParameterInt(rawPtr, index, out value, valuestr, 0);
+            return FMOD_DSP_GetParameterInt(this.rawPtr, index, out value, valuestr, 0);
         }
 
         public RESULT getParameterBool(int index, out bool value)
         {
-            return FMOD_DSP_GetParameterBool(rawPtr, index, out value, IntPtr.Zero, 0);
+            return FMOD_DSP_GetParameterBool(this.rawPtr, index, out value, IntPtr.Zero, 0);
         }
 
         public RESULT getParameterData(int index, out IntPtr data, out uint length)
         {
-            return FMOD_DSP_GetParameterData(rawPtr, index, out data, out length, IntPtr.Zero, 0);
+            return FMOD_DSP_GetParameterData(this.rawPtr, index, out data, out length, IntPtr.Zero, 0);
         }
 
         public RESULT getNumParameters(out int numparams)
         {
-            return FMOD_DSP_GetNumParameters(rawPtr, out numparams);
+            return FMOD_DSP_GetNumParameters(this.rawPtr, out numparams);
         }
 
         public RESULT getParameterInfo(int index, out DSP_PARAMETER_DESC desc)
         {
             IntPtr descPtr;
-            RESULT result = FMOD_DSP_GetParameterInfo(rawPtr, index, out descPtr);
+            RESULT result = FMOD_DSP_GetParameterInfo(this.rawPtr, index, out descPtr);
             if (result == RESULT.OK)
             {
                 desc = (DSP_PARAMETER_DESC)Marshal.PtrToStructure(descPtr, typeof(DSP_PARAMETER_DESC));
@@ -4460,19 +4460,19 @@ namespace MagicalLifeAPI.Sound.FMOD
 
         public RESULT getDataParameterIndex(int datatype, out int index)
         {
-            return FMOD_DSP_GetDataParameterIndex(rawPtr, datatype, out index);
+            return FMOD_DSP_GetDataParameterIndex(this.rawPtr, datatype, out index);
         }
 
         public RESULT showConfigDialog(IntPtr hwnd, bool show)
         {
-            return FMOD_DSP_ShowConfigDialog(rawPtr, hwnd, show);
+            return FMOD_DSP_ShowConfigDialog(this.rawPtr, hwnd, show);
         }
 
         //  DSP attributes.
         public RESULT getInfo(StringBuilder name, out uint version, out int channels, out int configwidth, out int configheight)
         {
             IntPtr nameMem = Marshal.AllocHGlobal(32);
-            RESULT result = FMOD_DSP_GetInfo(rawPtr, nameMem, out version, out channels, out configwidth, out configheight);
+            RESULT result = FMOD_DSP_GetInfo(this.rawPtr, nameMem, out version, out channels, out configwidth, out configheight);
             StringMarshalHelper.NativeToBuilder(name, nameMem);
             Marshal.FreeHGlobal(nameMem);
             return result;
@@ -4480,39 +4480,39 @@ namespace MagicalLifeAPI.Sound.FMOD
 
         public RESULT getType(out DSP_TYPE type)
         {
-            return FMOD_DSP_GetType(rawPtr, out type);
+            return FMOD_DSP_GetType(this.rawPtr, out type);
         }
 
         public RESULT getIdle(out bool idle)
         {
-            return FMOD_DSP_GetIdle(rawPtr, out idle);
+            return FMOD_DSP_GetIdle(this.rawPtr, out idle);
         }
 
         // Userdata set/get.
         public RESULT setUserData(IntPtr userdata)
         {
-            return FMOD_DSP_SetUserData(rawPtr, userdata);
+            return FMOD_DSP_SetUserData(this.rawPtr, userdata);
         }
 
         public RESULT getUserData(out IntPtr userdata)
         {
-            return FMOD_DSP_GetUserData(rawPtr, out userdata);
+            return FMOD_DSP_GetUserData(this.rawPtr, out userdata);
         }
 
         // Metering.
         public RESULT setMeteringEnabled(bool inputEnabled, bool outputEnabled)
         {
-            return FMOD_DSP_SetMeteringEnabled(rawPtr, inputEnabled, outputEnabled);
+            return FMOD_DSP_SetMeteringEnabled(this.rawPtr, inputEnabled, outputEnabled);
         }
 
         public RESULT getMeteringEnabled(out bool inputEnabled, out bool outputEnabled)
         {
-            return FMOD_DSP_GetMeteringEnabled(rawPtr, out inputEnabled, out outputEnabled);
+            return FMOD_DSP_GetMeteringEnabled(this.rawPtr, out inputEnabled, out outputEnabled);
         }
 
         public RESULT getMeteringInfo(DSP_METERING_INFO inputInfo, DSP_METERING_INFO outputInfo)
         {
-            return FMOD_DSP_GetMeteringInfo(rawPtr, inputInfo, outputInfo);
+            return FMOD_DSP_GetMeteringInfo(this.rawPtr, inputInfo, outputInfo);
         }
 
         #region importfunctions
@@ -4657,7 +4657,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             input = null;
 
             IntPtr dspraw;
-            RESULT result = FMOD_DSPConnection_GetInput(rawPtr, out dspraw);
+            RESULT result = FMOD_DSPConnection_GetInput(this.rawPtr, out dspraw);
             input = new DSP(dspraw);
 
             return result;
@@ -4668,7 +4668,7 @@ namespace MagicalLifeAPI.Sound.FMOD
             output = null;
 
             IntPtr dspraw;
-            RESULT result = FMOD_DSPConnection_GetOutput(rawPtr, out dspraw);
+            RESULT result = FMOD_DSPConnection_GetOutput(this.rawPtr, out dspraw);
             output = new DSP(dspraw);
 
             return result;
@@ -4676,38 +4676,38 @@ namespace MagicalLifeAPI.Sound.FMOD
 
         public RESULT setMix(float volume)
         {
-            return FMOD_DSPConnection_SetMix(rawPtr, volume);
+            return FMOD_DSPConnection_SetMix(this.rawPtr, volume);
         }
 
         public RESULT getMix(out float volume)
         {
-            return FMOD_DSPConnection_GetMix(rawPtr, out volume);
+            return FMOD_DSPConnection_GetMix(this.rawPtr, out volume);
         }
 
         public RESULT setMixMatrix(float[] matrix, int outchannels, int inchannels, int inchannel_hop)
         {
-            return FMOD_DSPConnection_SetMixMatrix(rawPtr, matrix, outchannels, inchannels, inchannel_hop);
+            return FMOD_DSPConnection_SetMixMatrix(this.rawPtr, matrix, outchannels, inchannels, inchannel_hop);
         }
 
         public RESULT getMixMatrix(float[] matrix, out int outchannels, out int inchannels, int inchannel_hop)
         {
-            return FMOD_DSPConnection_GetMixMatrix(rawPtr, matrix, out outchannels, out inchannels, inchannel_hop);
+            return FMOD_DSPConnection_GetMixMatrix(this.rawPtr, matrix, out outchannels, out inchannels, inchannel_hop);
         }
 
         public RESULT getType(out DSPCONNECTION_TYPE type)
         {
-            return FMOD_DSPConnection_GetType(rawPtr, out type);
+            return FMOD_DSPConnection_GetType(this.rawPtr, out type);
         }
 
         // Userdata set/get.
         public RESULT setUserData(IntPtr userdata)
         {
-            return FMOD_DSPConnection_SetUserData(rawPtr, userdata);
+            return FMOD_DSPConnection_SetUserData(this.rawPtr, userdata);
         }
 
         public RESULT getUserData(out IntPtr userdata)
         {
-            return FMOD_DSPConnection_GetUserData(rawPtr, out userdata);
+            return FMOD_DSPConnection_GetUserData(this.rawPtr, out userdata);
         }
 
         #region importfunctions
@@ -4759,10 +4759,10 @@ namespace MagicalLifeAPI.Sound.FMOD
     {
         public RESULT release()
         {
-            RESULT result = FMOD_Geometry_Release(getRaw());
+            RESULT result = FMOD_Geometry_Release(this.getRaw());
             if (result == RESULT.OK)
             {
-                rawPtr = IntPtr.Zero;
+                this.rawPtr = IntPtr.Zero;
             }
             return result;
         }
@@ -4770,99 +4770,99 @@ namespace MagicalLifeAPI.Sound.FMOD
         // Polygon manipulation.
         public RESULT addPolygon(float directocclusion, float reverbocclusion, bool doublesided, int numvertices, VECTOR[] vertices, out int polygonindex)
         {
-            return FMOD_Geometry_AddPolygon(rawPtr, directocclusion, reverbocclusion, doublesided, numvertices, vertices, out polygonindex);
+            return FMOD_Geometry_AddPolygon(this.rawPtr, directocclusion, reverbocclusion, doublesided, numvertices, vertices, out polygonindex);
         }
 
         public RESULT getNumPolygons(out int numpolygons)
         {
-            return FMOD_Geometry_GetNumPolygons(rawPtr, out numpolygons);
+            return FMOD_Geometry_GetNumPolygons(this.rawPtr, out numpolygons);
         }
 
         public RESULT getMaxPolygons(out int maxpolygons, out int maxvertices)
         {
-            return FMOD_Geometry_GetMaxPolygons(rawPtr, out maxpolygons, out maxvertices);
+            return FMOD_Geometry_GetMaxPolygons(this.rawPtr, out maxpolygons, out maxvertices);
         }
 
         public RESULT getPolygonNumVertices(int index, out int numvertices)
         {
-            return FMOD_Geometry_GetPolygonNumVertices(rawPtr, index, out numvertices);
+            return FMOD_Geometry_GetPolygonNumVertices(this.rawPtr, index, out numvertices);
         }
 
         public RESULT setPolygonVertex(int index, int vertexindex, ref VECTOR vertex)
         {
-            return FMOD_Geometry_SetPolygonVertex(rawPtr, index, vertexindex, ref vertex);
+            return FMOD_Geometry_SetPolygonVertex(this.rawPtr, index, vertexindex, ref vertex);
         }
 
         public RESULT getPolygonVertex(int index, int vertexindex, out VECTOR vertex)
         {
-            return FMOD_Geometry_GetPolygonVertex(rawPtr, index, vertexindex, out vertex);
+            return FMOD_Geometry_GetPolygonVertex(this.rawPtr, index, vertexindex, out vertex);
         }
 
         public RESULT setPolygonAttributes(int index, float directocclusion, float reverbocclusion, bool doublesided)
         {
-            return FMOD_Geometry_SetPolygonAttributes(rawPtr, index, directocclusion, reverbocclusion, doublesided);
+            return FMOD_Geometry_SetPolygonAttributes(this.rawPtr, index, directocclusion, reverbocclusion, doublesided);
         }
 
         public RESULT getPolygonAttributes(int index, out float directocclusion, out float reverbocclusion, out bool doublesided)
         {
-            return FMOD_Geometry_GetPolygonAttributes(rawPtr, index, out directocclusion, out reverbocclusion, out doublesided);
+            return FMOD_Geometry_GetPolygonAttributes(this.rawPtr, index, out directocclusion, out reverbocclusion, out doublesided);
         }
 
         // Object manipulation.
         public RESULT setActive(bool active)
         {
-            return FMOD_Geometry_SetActive(rawPtr, active);
+            return FMOD_Geometry_SetActive(this.rawPtr, active);
         }
 
         public RESULT getActive(out bool active)
         {
-            return FMOD_Geometry_GetActive(rawPtr, out active);
+            return FMOD_Geometry_GetActive(this.rawPtr, out active);
         }
 
         public RESULT setRotation(ref VECTOR forward, ref VECTOR up)
         {
-            return FMOD_Geometry_SetRotation(rawPtr, ref forward, ref up);
+            return FMOD_Geometry_SetRotation(this.rawPtr, ref forward, ref up);
         }
 
         public RESULT getRotation(out VECTOR forward, out VECTOR up)
         {
-            return FMOD_Geometry_GetRotation(rawPtr, out forward, out up);
+            return FMOD_Geometry_GetRotation(this.rawPtr, out forward, out up);
         }
 
         public RESULT setPosition(ref VECTOR position)
         {
-            return FMOD_Geometry_SetPosition(rawPtr, ref position);
+            return FMOD_Geometry_SetPosition(this.rawPtr, ref position);
         }
 
         public RESULT getPosition(out VECTOR position)
         {
-            return FMOD_Geometry_GetPosition(rawPtr, out position);
+            return FMOD_Geometry_GetPosition(this.rawPtr, out position);
         }
 
         public RESULT setScale(ref VECTOR scale)
         {
-            return FMOD_Geometry_SetScale(rawPtr, ref scale);
+            return FMOD_Geometry_SetScale(this.rawPtr, ref scale);
         }
 
         public RESULT getScale(out VECTOR scale)
         {
-            return FMOD_Geometry_GetScale(rawPtr, out scale);
+            return FMOD_Geometry_GetScale(this.rawPtr, out scale);
         }
 
         public RESULT save(IntPtr data, out int datasize)
         {
-            return FMOD_Geometry_Save(rawPtr, data, out datasize);
+            return FMOD_Geometry_Save(this.rawPtr, data, out datasize);
         }
 
         // Userdata set/get.
         public RESULT setUserData(IntPtr userdata)
         {
-            return FMOD_Geometry_SetUserData(rawPtr, userdata);
+            return FMOD_Geometry_SetUserData(this.rawPtr, userdata);
         }
 
         public RESULT getUserData(out IntPtr userdata)
         {
-            return FMOD_Geometry_GetUserData(rawPtr, out userdata);
+            return FMOD_Geometry_GetUserData(this.rawPtr, out userdata);
         }
 
         #region importfunctions
@@ -4947,10 +4947,10 @@ namespace MagicalLifeAPI.Sound.FMOD
     {
         public RESULT release()
         {
-            RESULT result = FMOD_Reverb3D_Release(getRaw());
+            RESULT result = FMOD_Reverb3D_Release(this.getRaw());
             if (result == RESULT.OK)
             {
-                rawPtr = IntPtr.Zero;
+                this.rawPtr = IntPtr.Zero;
             }
             return result;
         }
@@ -4958,43 +4958,43 @@ namespace MagicalLifeAPI.Sound.FMOD
         // Reverb manipulation.
         public RESULT set3DAttributes(ref VECTOR position, float mindistance, float maxdistance)
         {
-            return FMOD_Reverb3D_Set3DAttributes(rawPtr, ref position, mindistance, maxdistance);
+            return FMOD_Reverb3D_Set3DAttributes(this.rawPtr, ref position, mindistance, maxdistance);
         }
 
         public RESULT get3DAttributes(ref VECTOR position, ref float mindistance, ref float maxdistance)
         {
-            return FMOD_Reverb3D_Get3DAttributes(rawPtr, ref position, ref mindistance, ref maxdistance);
+            return FMOD_Reverb3D_Get3DAttributes(this.rawPtr, ref position, ref mindistance, ref maxdistance);
         }
 
         public RESULT setProperties(ref REVERB_PROPERTIES properties)
         {
-            return FMOD_Reverb3D_SetProperties(rawPtr, ref properties);
+            return FMOD_Reverb3D_SetProperties(this.rawPtr, ref properties);
         }
 
         public RESULT getProperties(ref REVERB_PROPERTIES properties)
         {
-            return FMOD_Reverb3D_GetProperties(rawPtr, ref properties);
+            return FMOD_Reverb3D_GetProperties(this.rawPtr, ref properties);
         }
 
         public RESULT setActive(bool active)
         {
-            return FMOD_Reverb3D_SetActive(rawPtr, active);
+            return FMOD_Reverb3D_SetActive(this.rawPtr, active);
         }
 
         public RESULT getActive(out bool active)
         {
-            return FMOD_Reverb3D_GetActive(rawPtr, out active);
+            return FMOD_Reverb3D_GetActive(this.rawPtr, out active);
         }
 
         // Userdata set/get.
         public RESULT setUserData(IntPtr userdata)
         {
-            return FMOD_Reverb3D_SetUserData(rawPtr, userdata);
+            return FMOD_Reverb3D_SetUserData(this.rawPtr, userdata);
         }
 
         public RESULT getUserData(out IntPtr userdata)
         {
-            return FMOD_Reverb3D_GetUserData(rawPtr, out userdata);
+            return FMOD_Reverb3D_GetUserData(this.rawPtr, out userdata);
         }
 
         #region importfunctions

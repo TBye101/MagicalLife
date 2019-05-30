@@ -16,7 +16,7 @@ namespace MagicalLifeAPI.World.Tiles
 
         private void InitializeComponents()
         {
-            ComponentRenderer renderer = GetComponent<ComponentRenderer>();
+            ComponentRenderer renderer = this.GetComponent<ComponentRenderer>();
             renderer.AddVisual(new StaticTexture(GetTextureID(), RenderLayer.DirtBase));
         }
 

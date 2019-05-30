@@ -39,7 +39,7 @@ namespace MagicalLifeAPI.GUI
         /// </summary>
         /// <param name="selectable"></param>
         /// <returns></returns>
-        public SelectionType InGameObjectType(ComponentSelectable selectable)
+        public SelectionType InGameObjectType()
         {
             return this.Type;
         }

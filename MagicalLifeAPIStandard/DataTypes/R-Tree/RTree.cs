@@ -52,7 +52,7 @@ namespace MagicalLifeAPI.DataTypes.R
     {
         private const int locking_timeout = 10000;
 
-        private ReaderWriterLock locker = new ReaderWriterLock();
+        private readonly ReaderWriterLock locker = new ReaderWriterLock();
         private const string version = "1.0b2p2";
 
         // parameters of the tree
@@ -65,7 +65,7 @@ namespace MagicalLifeAPI.DataTypes.R
         // [x] TODO eliminate this map - it should not be needed. Nodes
         // can be found by traversing the tree.
         //private TIntObjectHashMap nodeMap = new TIntObjectHashMap();
-        private Dictionary<int, Node<T>> nodeMap = new Dictionary<int, Node<T>>();
+        private readonly Dictionary<int, Node<T>> nodeMap = new Dictionary<int, Node<T>>();
 
         // internal consistency checking - set to true if debugging tree corruption
         public bool INTERNAL_CONSISTENCY_CHECKING = false;
@@ -81,10 +81,10 @@ namespace MagicalLifeAPI.DataTypes.R
         // from the root down to the leaf. Enables fast lookup
         // of nodes when a split is propagated up the tree.
         //private TIntStack parents = new TIntStack();
-        private Stack<int> parents = new Stack<int>();
+        private readonly Stack<int> parents = new Stack<int>();
 
         //private TIntStack parentsEntry = new TIntStack();
-        private Stack<int> parentsEntry = new Stack<int>();
+        private readonly Stack<int> parentsEntry = new Stack<int>();
 
         // initialization
         private int treeHeight = 1; // leaves are always level 1
@@ -100,7 +100,7 @@ namespace MagicalLifeAPI.DataTypes.R
         // so that they can be reused. Store the IDs of nodes
         // which can be reused.
         //private TIntStack deletedNodeIds = new TIntStack();
-        private Stack<int> deletedNodeIds = new Stack<int>();
+        private readonly Stack<int> deletedNodeIds = new Stack<int>();
 
         // List of nearest rectangles. Use a member variable to
         // avoid recreating the object each time nearest() is called.
@@ -109,9 +109,9 @@ namespace MagicalLifeAPI.DataTypes.R
 
         //Added dictionaries to support generic objects..
         //possibility to change the code to support objects without dictionaries.
-        private Dictionary<int, T> IdsToItems = new Dictionary<int, T>();
+        private readonly Dictionary<int, T> IdsToItems = new Dictionary<int, T>();
 
-        private Dictionary<T, int> ItemsToIds = new Dictionary<T, int>();
+        private readonly Dictionary<T, int> ItemsToIds = new Dictionary<T, int>();
         private volatile int idcounter = int.MinValue;
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace MagicalLifeAPI.DataTypes.R
         /// </summary>
         public RTree()
         {
-            Init();
+            this.Init();
         }
 
         /// <summary>
@@ -134,43 +134,43 @@ namespace MagicalLifeAPI.DataTypes.R
         ///</param>
         public RTree(int MaxNodeEntries, int MinNodeEntries)
         {
-            minNodeEntries = MinNodeEntries;
-            maxNodeEntries = MaxNodeEntries;
-            Init();
+            this.minNodeEntries = MinNodeEntries;
+            this.maxNodeEntries = MaxNodeEntries;
+            this.Init();
         }
 
         private void Init()
         {
-            locker.AcquireWriterLock(locking_timeout);
+            this.locker.AcquireWriterLock(locking_timeout);
             // Obviously a Node&lt;T&gt; with less than 2 entries cannot be split.
             // The Node&lt;T&gt; splitting algorithm will work with only 2 entries
             // per node, but will be inefficient.
-            if (maxNodeEntries < 2)
+            if (this.maxNodeEntries < 2)
             {
-                Debug.WriteLine($"Invalid MaxNodeEntries = {maxNodeEntries} Resetting to default value of {DEFAULT_MAX_NODE_ENTRIES}");
-                maxNodeEntries = DEFAULT_MAX_NODE_ENTRIES;
+                Debug.WriteLine($"Invalid MaxNodeEntries = {this.maxNodeEntries} Resetting to default value of {DEFAULT_MAX_NODE_ENTRIES}");
+                this.maxNodeEntries = DEFAULT_MAX_NODE_ENTRIES;
             }
 
             // The MinNodeEntries must be less than or equal to (int) (MaxNodeEntries / 2)
-            if (minNodeEntries < 1 || minNodeEntries > maxNodeEntries / 2)
+            if (this.minNodeEntries < 1 || this.minNodeEntries > this.maxNodeEntries / 2)
             {
                 Debug.WriteLine("MinNodeEntries must be between 1 and MaxNodeEntries / 2");
-                minNodeEntries = maxNodeEntries / 2;
+                this.minNodeEntries = this.maxNodeEntries / 2;
             }
 
-            entryStatus = new byte[maxNodeEntries];
-            initialEntryStatus = new byte[maxNodeEntries];
+            this.entryStatus = new byte[this.maxNodeEntries];
+            this.initialEntryStatus = new byte[this.maxNodeEntries];
 
-            for (int i = 0; i < maxNodeEntries; i++)
+            for (int i = 0; i < this.maxNodeEntries; i++)
             {
-                initialEntryStatus[i] = ENTRY_STATUS_UNASSIGNED;
+                this.initialEntryStatus[i] = ENTRY_STATUS_UNASSIGNED;
             }
 
-            Node<T> root = new Node<T>(rootNodeId, 1, maxNodeEntries);
-            nodeMap.Add(rootNodeId, root);
+            Node<T> root = new Node<T>(this.rootNodeId, 1, this.maxNodeEntries);
+            this.nodeMap.Add(this.rootNodeId, root);
 
-            Debug.WriteLine($"init()  MaxNodeEntries = {maxNodeEntries}, MinNodeEntries = {minNodeEntries}");
-            locker.ReleaseWriterLock();
+            Debug.WriteLine($"init()  MaxNodeEntries = {this.maxNodeEntries}, MinNodeEntries = {this.minNodeEntries}");
+            this.locker.ReleaseWriterLock();
         }
 
         /// <summary>
@@ -180,24 +180,24 @@ namespace MagicalLifeAPI.DataTypes.R
         /// <param name="item"></param>
         public void Add(Rectangle r, T item)
         {
-            locker.AcquireWriterLock(locking_timeout);
-            idcounter++;
-            int id = idcounter;
+            this.locker.AcquireWriterLock(locking_timeout);
+            this.idcounter++;
+            int id = this.idcounter;
 
-            IdsToItems.Add(id, item);
-            ItemsToIds.Add(item, id);
+            this.IdsToItems.Add(id, item);
+            this.ItemsToIds.Add(item, id);
 
-            Add(r, id);
-            locker.ReleaseWriterLock();
+            this.Add(r, id);
+            this.locker.ReleaseWriterLock();
         }
 
         private void Add(Rectangle r, int id)
         {
             Debug.WriteLine($"Adding rectangle {r}, id {id}");
 
-            Add(r.Copy(), id, 1);
+            this.Add(r.Copy(), id, 1);
 
-            msize++;
+            this.msize++;
         }
 
         /// <summary>
@@ -210,43 +210,43 @@ namespace MagicalLifeAPI.DataTypes.R
         {
             // I1 [Find position for new record] Invoke ChooseLeaf to select a
             // leaf Node&lt;T&gt; L in which to place r
-            Node<T> n = ChooseNode(r, level);
+            Node<T> n = this.ChooseNode(r, level);
             Node<T> newLeaf = null;
 
             // I2 [Add record to leaf node] If L has room for another entry,
             // install E. Otherwise invoke SplitNode to obtain L and LL containing
             // E and all the old entries of L
-            if (n.entryCount < maxNodeEntries)
+            if (n.entryCount < this.maxNodeEntries)
             {
                 n.AddEntryNoCopy(r, id);
             }
             else
             {
-                newLeaf = SplitNode(n, r, id);
+                newLeaf = this.SplitNode(n, r, id);
             }
 
             // I3 [Propagate changes upwards] Invoke AdjustTree on L, also passing LL
             // if a split was performed
-            Node<T> newNode = adjustTree(n, newLeaf);
+            Node<T> newNode = this.AdjustTree(n, newLeaf);
 
             // I4 [Grow tree taller] If Node&lt;T&gt; split propagation caused the root to
             // split, create a new root whose children are the two resulting nodes.
             if (newNode != null)
             {
-                int oldRootNodeId = rootNodeId;
-                Node<T> oldRoot = GetNode(oldRootNodeId);
+                int oldRootNodeId = this.rootNodeId;
+                Node<T> oldRoot = this.GetNode(oldRootNodeId);
 
-                rootNodeId = getNextNodeId();
-                treeHeight++;
-                Node<T> root = new Node<T>(rootNodeId, treeHeight, maxNodeEntries);
+                this.rootNodeId = this.GetNextNodeId();
+                this.treeHeight++;
+                Node<T> root = new Node<T>(this.rootNodeId, this.treeHeight, this.maxNodeEntries);
                 root.AddEntry(newNode.mbr, newNode.nodeId);
                 root.AddEntry(oldRoot.mbr, oldRoot.nodeId);
-                nodeMap.Add(rootNodeId, root);
+                this.nodeMap.Add(this.rootNodeId, root);
             }
 
-            if (INTERNAL_CONSISTENCY_CHECKING)
+            if (this.INTERNAL_CONSISTENCY_CHECKING)
             {
-                CheckConsistency(rootNodeId, treeHeight, null);
+                this.CheckConsistency(this.rootNodeId, this.treeHeight, null);
             }
         }
 
@@ -258,16 +258,16 @@ namespace MagicalLifeAPI.DataTypes.R
         /// <returns></returns>
         public bool Delete(Rectangle r, T item)
         {
-            locker.AcquireWriterLock(locking_timeout);
-            int id = ItemsToIds[item];
+            this.locker.AcquireWriterLock(locking_timeout);
+            int id = this.ItemsToIds[item];
 
-            bool success = Delete(r, id);
+            bool success = this.Delete(r, id);
             if (success)
             {
-                IdsToItems.Remove(id);
-                ItemsToIds.Remove(item);
+                this.IdsToItems.Remove(id);
+                this.ItemsToIds.Remove(item);
             }
-            locker.ReleaseWriterLock();
+            this.locker.ReleaseWriterLock();
             return success;
         }
 
@@ -284,18 +284,18 @@ namespace MagicalLifeAPI.DataTypes.R
             // to determine if it contains r. For each entry found, invoke
             // findLeaf on the Node&lt;T&gt; pointed to by the entry, until r is found or
             // all entries have been checked.
-            parents.Clear();
-            parents.Push(rootNodeId);
+            this.parents.Clear();
+            this.parents.Push(this.rootNodeId);
 
-            parentsEntry.Clear();
-            parentsEntry.Push(-1);
+            this.parentsEntry.Clear();
+            this.parentsEntry.Push(-1);
             Node<T> n = null;
             int foundIndex = -1;  // index of entry to be deleted in leaf
 
-            while (foundIndex == -1 && parents.Count > 0)
+            while (foundIndex == -1 && this.parents.Count > 0)
             {
-                n = GetNode(parents.Peek());
-                int startIndex = parentsEntry.Peek() + 1;
+                n = this.GetNode(this.parents.Peek());
+                int startIndex = this.parentsEntry.Peek() + 1;
 
                 if (!n.IsLeaf())
                 {
@@ -305,10 +305,10 @@ namespace MagicalLifeAPI.DataTypes.R
                     {
                         if (n.entries[i].Contains(r))
                         {
-                            parents.Push(n.ids[i]);
-                            parentsEntry.Pop();
-                            parentsEntry.Push(i); // this becomes the start index when the child has been searched
-                            parentsEntry.Push(-1);
+                            this.parents.Push(n.ids[i]);
+                            this.parentsEntry.Pop();
+                            this.parentsEntry.Push(i); // this becomes the start index when the child has been searched
+                            this.parentsEntry.Push(-1);
                             contains = true;
                             break; // IE go to next iteration of while()
                         }
@@ -323,26 +323,26 @@ namespace MagicalLifeAPI.DataTypes.R
                     foundIndex = n.FindEntry(r, id);
                 }
 
-                parents.Pop();
-                parentsEntry.Pop();
+                this.parents.Pop();
+                this.parentsEntry.Pop();
             } // while not found
 
             if (foundIndex != -1)
             {
-                n?.DeleteEntry(foundIndex, minNodeEntries);
-                condenseTree(n);
-                msize--;
+                n?.DeleteEntry(foundIndex, this.minNodeEntries);
+                this.CondenseTree(n);
+                this.msize--;
             }
 
             // shrink the tree if possible (i.e. if root Node&lt;T%gt; has exactly one entry,and that
             // entry is not a leaf node, delete the root (it's entry becomes the new root)
-            Node<T> root = GetNode(rootNodeId);
-            while (root.entryCount == 1 && treeHeight > 1)
+            Node<T> root = this.GetNode(this.rootNodeId);
+            while (root.entryCount == 1 && this.treeHeight > 1)
             {
                 root.entryCount = 0;
-                rootNodeId = root.ids[0];
-                treeHeight--;
-                root = GetNode(rootNodeId);
+                this.rootNodeId = root.ids[0];
+                this.treeHeight--;
+                root = this.GetNode(this.rootNodeId);
             }
 
             return foundIndex != -1;
@@ -357,22 +357,22 @@ namespace MagicalLifeAPI.DataTypes.R
         public List<T> Nearest(Point p, float furthestDistance)
         {
             List<T> retval = new List<T>();
-            locker.AcquireReaderLock(locking_timeout);
-            nearest(p, (int id) =>
+            this.locker.AcquireReaderLock(locking_timeout);
+            this.Nearest(p, (int id) =>
            {
-               retval.Add(IdsToItems[id]);
+               retval.Add(this.IdsToItems[id]);
            }, furthestDistance);
-            locker.ReleaseReaderLock();
+            this.locker.ReleaseReaderLock();
             return retval;
         }
 
-        private void nearest(Point p, Action<int> v, float furthestDistance)
+        private void Nearest(Point p, Action<int> v, float furthestDistance)
         {
-            Node<T> rootNode = GetNode(rootNodeId);
+            Node<T> rootNode = this.GetNode(this.rootNodeId);
 
             List<int> nearestIds = new List<int>();
 
-            Nearest(p, rootNode, nearestIds, furthestDistance);
+            this.Nearest(p, rootNode, nearestIds, furthestDistance);
 
             foreach (int id in nearestIds)
             {
@@ -390,16 +390,16 @@ namespace MagicalLifeAPI.DataTypes.R
         public List<T> Intersects(Rectangle r)
         {
             List<T> retval = new List<T>();
-            locker.AcquireReaderLock(locking_timeout);
-            Intersects(r, (id) => retval.Add(IdsToItems[id]));
-            locker.ReleaseReaderLock();
+            this.locker.AcquireReaderLock(locking_timeout);
+            this.Intersects(r, (id) => retval.Add(this.IdsToItems[id]));
+            this.locker.ReleaseReaderLock();
             return retval;
         }
 
         private void Intersects(Rectangle r, Action<int> v)
         {
-            Node<T> rootNode = GetNode(rootNodeId);
-            Intersects(r, v, rootNode);
+            Node<T> rootNode = this.GetNode(this.rootNodeId);
+            this.Intersects(r, v, rootNode);
         }
 
         /// <summary>
@@ -410,13 +410,13 @@ namespace MagicalLifeAPI.DataTypes.R
         public List<T> Contains(Rectangle r)
         {
             List<T> retval = new List<T>();
-            locker.AcquireReaderLock(locking_timeout);
-            Contains(r, (int id) =>
+            this.locker.AcquireReaderLock(locking_timeout);
+            this.Contains(r, (int id) =>
             {
-                retval.Add(IdsToItems[id]);
+                retval.Add(this.IdsToItems[id]);
             });
 
-            locker.ReleaseReaderLock();
+            this.locker.ReleaseReaderLock();
             return retval;
         }
 
@@ -429,7 +429,7 @@ namespace MagicalLifeAPI.DataTypes.R
             // find all rectangles in the tree that are contained by the passed rectangle
             // written to be non-recursive (should model other searches on this?)
 
-            _parents.Push(rootNodeId);
+            _parents.Push(this.rootNodeId);
 
             _parentsEntry.Push(-1);
 
@@ -438,7 +438,7 @@ namespace MagicalLifeAPI.DataTypes.R
 
             while (_parents.Count > 0)
             {
-                Node<T> n = GetNode(_parents.Peek());
+                Node<T> n = this.GetNode(_parents.Peek());
                 int startIndex = _parentsEntry.Peek() + 1;
 
                 if (!n.IsLeaf())
@@ -488,13 +488,13 @@ namespace MagicalLifeAPI.DataTypes.R
         {
             Rectangle bounds = null;
 
-            locker.AcquireReaderLock(locking_timeout);
-            Node<T> n = GetNode(getRootNodeId());
+            this.locker.AcquireReaderLock(locking_timeout);
+            Node<T> n = this.GetNode(this.GetRootNodeId());
             if (n?.GetMBR() != null)
             {
                 bounds = n.GetMBR().Copy();
             }
-            locker.ReleaseReaderLock();
+            this.locker.ReleaseReaderLock();
             return bounds;
         }
 
@@ -514,15 +514,15 @@ namespace MagicalLifeAPI.DataTypes.R
         /// Get the next available Node&lt;T&gt; ID. Reuse deleted Node&lt;T&gt; IDs if
         /// possible
         /// </summary>
-        private int getNextNodeId()
+        private int GetNextNodeId()
         {
-            if (deletedNodeIds.Count > 0)
+            if (this.deletedNodeIds.Count > 0)
             {
-                return deletedNodeIds.Pop();
+                return this.deletedNodeIds.Pop();
             }
             else
             {
-                return 1 + highestUsedNodeId++;
+                return 1 + this.highestUsedNodeId++;
             }
         }
 
@@ -533,16 +533,16 @@ namespace MagicalLifeAPI.DataTypes.R
         /// <returns></returns>
         private Node<T> GetNode(int index)
         {
-            return nodeMap[index];
+            return this.nodeMap[index];
         }
 
         /// <summary>
         /// Get the root Node&lt;T&gt; ID
         /// </summary>
         /// <returns></returns>
-        public int getRootNodeId()
+        public int GetRootNodeId()
         {
-            return rootNodeId;
+            return this.rootNodeId;
         }
 
         /// <summary>
@@ -566,41 +566,41 @@ namespace MagicalLifeAPI.DataTypes.R
             initialArea = union.Area();
 #endif
 
-            Array.Copy(initialEntryStatus, 0, entryStatus, 0, maxNodeEntries);
+            Array.Copy(this.initialEntryStatus, 0, this.entryStatus, 0, this.maxNodeEntries);
 
             Node<T> newNode = null;
-            newNode = new Node<T>(getNextNodeId(), n.level, maxNodeEntries);
-            nodeMap.Add(newNode.nodeId, newNode);
+            newNode = new Node<T>(this.GetNextNodeId(), n.level, this.maxNodeEntries);
+            this.nodeMap.Add(newNode.nodeId, newNode);
 
-            PickSeeds(n, newRect, newId, newNode); // this also sets the entryCount to 1
+            this.PickSeeds(n, newRect, newId, newNode); // this also sets the entryCount to 1
 
             // [Check if done] If all entries have been assigned, stop. If one
             // group has so few entries that all the rest must be assigned to it in
             // order for it to have the minimum number m, assign them and stop.
-            while (n.entryCount + newNode.entryCount < maxNodeEntries + 1)
+            while (n.entryCount + newNode.entryCount < this.maxNodeEntries + 1)
             {
-                if (maxNodeEntries + 1 - newNode.entryCount == minNodeEntries)
+                if (this.maxNodeEntries + 1 - newNode.entryCount == this.minNodeEntries)
                 {
                     // assign all remaining entries to original node
-                    for (int i = 0; i < maxNodeEntries; i++)
+                    for (int i = 0; i < this.maxNodeEntries; i++)
                     {
-                        if (entryStatus[i] == ENTRY_STATUS_UNASSIGNED)
+                        if (this.entryStatus[i] == ENTRY_STATUS_UNASSIGNED)
                         {
-                            entryStatus[i] = ENTRY_STATUS_ASSIGNED;
+                            this.entryStatus[i] = ENTRY_STATUS_ASSIGNED;
                             n.mbr.Add(n.entries[i]);
                             n.entryCount++;
                         }
                     }
                     break;
                 }
-                if (maxNodeEntries + 1 - n.entryCount == minNodeEntries)
+                if (this.maxNodeEntries + 1 - n.entryCount == this.minNodeEntries)
                 {
                     // assign all remaining entries to new node
-                    for (int i = 0; i < maxNodeEntries; i++)
+                    for (int i = 0; i < this.maxNodeEntries; i++)
                     {
-                        if (entryStatus[i] == ENTRY_STATUS_UNASSIGNED)
+                        if (this.entryStatus[i] == ENTRY_STATUS_UNASSIGNED)
                         {
-                            entryStatus[i] = ENTRY_STATUS_ASSIGNED;
+                            this.entryStatus[i] = ENTRY_STATUS_ASSIGNED;
                             newNode.AddEntryNoCopy(n.entries[i], n.ids[i]);
                             n.entries[i] = null;
                         }
@@ -613,20 +613,20 @@ namespace MagicalLifeAPI.DataTypes.R
                 // will have to be enlarged least to accommodate it. Resolve ties
                 // by adding the entry to the group with smaller area, then to the
                 // the one with fewer entries, then to either. Repeat from S2
-                PickNext(n, newNode);
+                this.PickNext(n, newNode);
             }
 
             n.Reorganize(this);
 
             // check that the MBR stored for each Node&lt;T&gt; is correct.
-            if (INTERNAL_CONSISTENCY_CHECKING)
+            if (this.INTERNAL_CONSISTENCY_CHECKING)
             {
-                if (!n.mbr.Equals(CalculateMBR(n)))
+                if (!n.mbr.Equals(this.CalculateMBR(n)))
                 {
                     Debug.WriteLine("Error: splitNode old Node<T> MBR wrong");
                 }
 
-                if (!newNode.mbr.Equals(CalculateMBR(newNode)))
+                if (!newNode.mbr.Equals(this.CalculateMBR(newNode)))
                 {
                     Debug.WriteLine("Error: splitNode new Node<T> MBR wrong");
                 }
@@ -736,7 +736,7 @@ namespace MagicalLifeAPI.DataTypes.R
                 lowestHighIndex = highestLowIndex;
             }
 
-            entryStatus[lowestHighIndex] = ENTRY_STATUS_ASSIGNED;
+            this.entryStatus[lowestHighIndex] = ENTRY_STATUS_ASSIGNED;
             n.entryCount = 1;
             n.mbr.Set(n.entries[lowestHighIndex].min, n.entries[lowestHighIndex].max);
         }
@@ -760,9 +760,9 @@ namespace MagicalLifeAPI.DataTypes.R
 
             Debug.WriteLine("pickNext()");
 
-            for (int i = 0; i < maxNodeEntries; i++)
+            for (int i = 0; i < this.maxNodeEntries; i++)
             {
-                if (entryStatus[i] == ENTRY_STATUS_UNASSIGNED)
+                if (this.entryStatus[i] == ENTRY_STATUS_UNASSIGNED)
                 {
                     if (n.entries[i] == null)
                     {
@@ -793,7 +793,7 @@ namespace MagicalLifeAPI.DataTypes.R
                         {
                             nextGroup = 1;
                         }
-                        else if (newNode.entryCount < maxNodeEntries / 2)
+                        else if (newNode.entryCount < this.maxNodeEntries / 2)
                         {
                             nextGroup = 0;
                         }
@@ -809,7 +809,7 @@ namespace MagicalLifeAPI.DataTypes.R
                 }
             }
 
-            entryStatus[next] = ENTRY_STATUS_ASSIGNED;
+            this.entryStatus[next] = ENTRY_STATUS_ASSIGNED;
 
             if (nextGroup == 0)
             {
@@ -861,7 +861,7 @@ namespace MagicalLifeAPI.DataTypes.R
                     if (tempDistance <= nearestDistance)
                     {
                         // search the child node
-                        distance = Nearest(p, GetNode(n.ids[i]), nearestIds, nearestDistance);
+                        distance = this.Nearest(p, this.GetNode(n.ids[i]), nearestIds, nearestDistance);
                     }
                 }
             }
@@ -890,14 +890,14 @@ namespace MagicalLifeAPI.DataTypes.R
                     }
                     else
                     {
-                        Node<T> childNode = GetNode(n.ids[i]);
-                        Intersects(r, v, childNode);
+                        Node<T> childNode = this.GetNode(n.ids[i]);
+                        this.Intersects(r, v, childNode);
                     }
                 }
             }
         }
 
-        private Rectangle oldRectangle = new Rectangle(0, 0, 0, 0);
+        private Rectangle OldRectangle { get; } = new Rectangle(0, 0, 0, 0);
 
         /// <summary>
         /// Used by delete(). Ensures that all nodes from the passed node
@@ -907,7 +907,7 @@ namespace MagicalLifeAPI.DataTypes.R
         /// contain the nodeIds of all parents up to the root.
         /// </para>
         /// </summary>
-        private void condenseTree(Node<T> l)
+        private void CondenseTree(Node<T> l)
         {
             // CT1 [Initialize] Set n=l. Set the list of eliminated
             // nodes to be empty.
@@ -920,16 +920,16 @@ namespace MagicalLifeAPI.DataTypes.R
 
             // CT2 [Find parent entry] If N is the root, go to CT6. Otherwise
             // let P be the parent of N, and let En be N's entry in P
-            while (n.level != treeHeight)
+            while (n.level != this.treeHeight)
             {
-                parent = GetNode(parents.Pop());
-                parentEntry = parentsEntry.Pop();
+                parent = this.GetNode(this.parents.Pop());
+                parentEntry = this.parentsEntry.Pop();
 
                 // CT3 [Eliminiate under-full node] If N has too few entries,
                 // delete En from P and add N to the list of eliminated nodes
-                if (n.entryCount < minNodeEntries)
+                if (n.entryCount < this.minNodeEntries)
                 {
-                    parent.DeleteEntry(parentEntry, minNodeEntries);
+                    parent.DeleteEntry(parentEntry, this.minNodeEntries);
                     eliminatedNodeIds.Push(n.nodeId);
                 }
                 else
@@ -938,9 +938,9 @@ namespace MagicalLifeAPI.DataTypes.R
                     // adjust EnI to tightly contain all entries in N
                     if (!n.mbr.Equals(parent.entries[parentEntry]))
                     {
-                        oldRectangle.Set(parent.entries[parentEntry].min, parent.entries[parentEntry].max);
+                        this.OldRectangle.Set(parent.entries[parentEntry].min, parent.entries[parentEntry].max);
                         parent.entries[parentEntry].Set(n.mbr.min, n.mbr.max);
-                        parent.RecalculateMBR(oldRectangle);
+                        parent.RecalculateMBR(this.OldRectangle);
                     }
                 }
                 // CT5 [Move up one level in tree] Set N=P and repeat from CT2
@@ -954,15 +954,15 @@ namespace MagicalLifeAPI.DataTypes.R
             // level as leaves of the main tree
             while (eliminatedNodeIds.Count > 0)
             {
-                Node<T> e = GetNode(eliminatedNodeIds.Pop());
+                Node<T> e = this.GetNode(eliminatedNodeIds.Pop());
                 for (int j = 0; j < e.entryCount; j++)
                 {
-                    Add(e.entries[j], e.ids[j], e.level);
+                    this.Add(e.entries[j], e.ids[j], e.level);
                     e.entries[j] = null;
                 }
                 e.entryCount = 0;
-                deletedNodeIds.Push(e.nodeId);
-                nodeMap.Remove(e.nodeId);
+                this.deletedNodeIds.Push(e.nodeId);
+                this.nodeMap.Remove(e.nodeId);
             }
         }
 
@@ -974,17 +974,17 @@ namespace MagicalLifeAPI.DataTypes.R
         private Node<T> ChooseNode(Rectangle r, int level)
         {
             // CL1 [Initialize] Set N to be the root node
-            Node<T> n = GetNode(rootNodeId);
-            parents.Clear();
-            parentsEntry.Clear();
+            Node<T> n = this.GetNode(this.rootNodeId);
+            this.parents.Clear();
+            this.parentsEntry.Clear();
 
             // CL2 [Leaf check] If N is a leaf, return N
             while (true)
             {
                 if (n == null)
                 {
-                    Debug.WriteLine($"Could not get root Node<T> ({rootNodeId})");
-                    throw new InvalidOperationException($"Could not get root Node<T> ({rootNodeId})");
+                    Debug.WriteLine($"Could not get root Node<T> ({this.rootNodeId})");
+                    throw new InvalidOperationException($"Could not get root Node<T> ({this.rootNodeId})");
                 }
 
                 if (n?.level == level)
@@ -1010,12 +1010,12 @@ namespace MagicalLifeAPI.DataTypes.R
                     }
                 }
 
-                parents.Push(n.nodeId);
-                parentsEntry.Push(index);
+                this.parents.Push(n.nodeId);
+                this.parentsEntry.Push(index);
 
                 // CL4 [Descend until a leaf is reached] Set N to be the child Node&lt;T&gt;
                 // pointed to by Fp and repeat from CL2
-                n = GetNode(n.ids[index]);
+                n = this.GetNode(n.ids[index]);
             }
         }
 
@@ -1023,19 +1023,19 @@ namespace MagicalLifeAPI.DataTypes.R
         /// Ascend from a leaf Node&lt;T&gt; L to the root, adjusting covering rectangles and
         /// propagating Node&lt;T&gt; splits as necessary.
         /// </summary>
-        private Node<T> adjustTree(Node<T> n, Node<T> nn)
+        private Node<T> AdjustTree(Node<T> n, Node<T> nn)
         {
             // AT1 [Initialize] Set N=L. If L was split previously, set NN to be
             // the resulting second node.
 
             // AT2 [Check if done] If N is the root, stop
-            while (n.level != treeHeight)
+            while (n.level != this.treeHeight)
             {
                 // AT3 [Adjust covering rectangle in parent entry] Let P be the parent
                 // Node<T> of N, and let En be N's entry in P. Adjust EnI so that it tightly
                 // encloses all entry rectangles in N.
-                Node<T> parent = GetNode(parents.Pop());
-                int entry = parentsEntry.Pop();
+                Node<T> parent = this.GetNode(this.parents.Pop());
+                int entry = this.parentsEntry.Pop();
 
                 if (parent.ids[entry] != n.nodeId)
                 {
@@ -1060,13 +1060,13 @@ namespace MagicalLifeAPI.DataTypes.R
                 Node<T> newNode = null;
                 if (nn != null)
                 {
-                    if (parent.entryCount < maxNodeEntries)
+                    if (parent.entryCount < this.maxNodeEntries)
                     {
                         parent.AddEntry(nn.mbr, nn.nodeId);
                     }
                     else
                     {
-                        newNode = SplitNode(parent, nn.mbr.Copy(), nn.nodeId);
+                        newNode = this.SplitNode(parent, nn.mbr.Copy(), nn.nodeId);
                     }
                 }
 
@@ -1089,7 +1089,7 @@ namespace MagicalLifeAPI.DataTypes.R
         {
             // go through the tree, and check that the internal data structures of
             // the tree are not corrupted.
-            Node<T> n = GetNode(nodeId);
+            Node<T> n = this.GetNode(nodeId);
 
             if (n == null)
             {
@@ -1101,7 +1101,7 @@ namespace MagicalLifeAPI.DataTypes.R
                 Debug.WriteLine($"Error: Node<T> {nodeId}, expected level {expectedLevel}, actual level {n?.level}");
             }
 
-            Rectangle calculatedMBR = CalculateMBR(n);
+            Rectangle calculatedMBR = this.CalculateMBR(n);
 
             if (n?.mbr.Equals(calculatedMBR) == false)
             {
@@ -1128,7 +1128,7 @@ namespace MagicalLifeAPI.DataTypes.R
 
                 if (n.level > 1)
                 { // if not a leaf
-                    CheckConsistency(n.ids[i], n.level - 1, n.entries[i]);
+                    this.CheckConsistency(n.ids[i], n.level - 1, n.entries[i]);
                 }
             }
         }
@@ -1153,11 +1153,11 @@ namespace MagicalLifeAPI.DataTypes.R
         {
             get
             {
-                locker.AcquireReaderLock(locking_timeout);
+                this.locker.AcquireReaderLock(locking_timeout);
 
                 int size = this.msize;
 
-                locker.ReleaseReaderLock();
+                this.locker.ReleaseReaderLock();
 
                 return size;
             }
