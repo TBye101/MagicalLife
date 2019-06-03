@@ -114,6 +114,8 @@ namespace MagicalLifeAPI.Asset
 
         #endregion Animations
 
+        public static readonly string Missing = "Missing";
+
         public TextureLoader(ContentManager manager)
         {
             this.Manager = manager;
@@ -180,6 +182,8 @@ namespace MagicalLifeAPI.Asset
             this.TexturesToLoad.Add(LogoMonoGame);
 
             this.TexturesToLoad.Add(AnimationBaseCharacter);
+
+            this.TexturesToLoad.Add(Missing);
         }
 
         public void InitialStartup()

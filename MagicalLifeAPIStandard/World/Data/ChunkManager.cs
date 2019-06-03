@@ -23,7 +23,7 @@ namespace MagicalLifeAPI.World.Data
         /// The ID of the dimension that this chunk manager services.
         /// </summary>
         [ProtoMember(2)]
-        private Guid DimensionID;
+        private readonly Guid DimensionID;
 
         /// <summary>
         /// The width of this dimension in chunks.
