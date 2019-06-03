@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -20,8 +20,24 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Core\GameStructures\Parts\" />
     <Folder Include="Core\WorldGeneration\StructureGenerators\" />
     <Folder Include="Core\WorldGeneration\VegetationGenerators\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="CoreLang.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CoreLang.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="CoreLang.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CoreLang.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

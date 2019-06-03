@@ -15,29 +15,36 @@ namespace MagicalLifeAPI.World.Base
     [ProtoContract]
     public class StructurePart : GameObject
     {
+        /// <summary>
+        /// A constant ID utilized to identify this part of a structure across all games and saves.
+        /// </summary>
         [ProtoMember(1)]
-        public Structure Parent { get; private set; }
-
-        [ProtoMember(2)]
         public Guid PartID { get; set; }
 
-        [ProtoMember(3)]
+        [ProtoMember(2)]
         public int Durability { get; set; }
 
-        [ProtoMember(4)]
-        public Point2D Location { get; private set; }
-
-        [ProtoMember(5)]
+        [ProtoMember(3)]
         private bool Walkable { get; set; }
 
-        public StructurePart(Structure parent, int durability, Point2D location, bool isWalkable, AbstractVisual visual)
+        /// <summary>
+        /// The unique ID of the structure this part belongs to.
+        /// </summary>
+        [ProtoMember(4)]
+        public Guid UniqueStructureID { get; }
+
+        /// <param name="durability"></param>
+        /// <param name="isWalkable"></param>
+        /// <param name="visual"></param>
+        /// <param name="partID">A constant ID utilized to identify this part of a structure across all games and saves.</param>
+        /// <param name="uniqueStructureID">The unique ID of the structure this part belongs to.</param>
+        public StructurePart(int durability, bool isWalkable, AbstractVisual visual, Guid partID, Guid uniqueStructureID)
             : base(false)
         {
-            this.Parent = parent;
-            this.PartID = Guid.NewGuid();
+            this.PartID = partID;
             this.Durability = durability;
-            this.Location = location;
             this.Walkable = isWalkable;
+            this.UniqueStructureID = uniqueStructureID;
 
             ComponentHasTexture textureComponent = new ComponentHasTexture(false);
             textureComponent.Visuals.Add(visual);

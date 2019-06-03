@@ -31,14 +31,19 @@ namespace MagicalLifeAPI.World.Data.Disk
         public static Dictionary<Guid, string> DimensionPaths { get; private set; } = new Dictionary<Guid, string>();
 
         /// <summary>
-        /// Knows how to save information about a dimension.
+        /// Knows how to load and save information about a dimension.
         /// </summary>
         public static DimensionStorage DimensionStorage { get; private set; }
 
         /// <summary>
-        /// Knows how to save a dimensions chunks.
+        /// Knows how to load and save a dimensions chunks.
         /// </summary>
         public static ChunkStorage ChunkStorage { get; private set; }
+
+        /// <summary>
+        /// Knows how to load and save structures.
+        /// </summary>
+        public static StructureStorage StructureStorage { get; private set; }
 
         /// <summary>
         /// Knows how to save a dimension's item registry.

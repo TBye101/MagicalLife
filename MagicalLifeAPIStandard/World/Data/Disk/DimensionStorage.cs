@@ -1,7 +1,9 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Networking.Serialization;
+using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data.Disk.DataStorage;
 using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace MagicalLifeAPI.World.Data.Disk
@@ -47,6 +49,7 @@ namespace MagicalLifeAPI.World.Data.Disk
         {
             this.SerializeDimensionHeader(dimension, sink);
             this.SerializeItemRegistry(dimension, sink);
+            this.SerializeStructures(dimension, sink);
 
             int width = dimension.Width;
             int height = dimension.Height;
@@ -64,6 +67,17 @@ namespace MagicalLifeAPI.World.Data.Disk
         private void SerializeItemRegistry(Dimension dimension, AbstractWorldSink sink)
         {
             WorldStorage.ItemStorage.SaveItemRegistry(dimension, sink);
+        }
+
+        private void SerializeStructures(Dimension dimension, AbstractWorldSink sink)
+        {
+            foreach (KeyValuePair<Guid, ObjectAccess<Structure>> item in dimension.StructureManage.StructureStorage)
+            {
+                if (item.Value.Object != null)
+                {
+                    WorldStorage.StructureStorage.SaveStructure(item.Value.Object, dimension.ID, sink);
+                }
+            }
         }
 
         /// <summary>

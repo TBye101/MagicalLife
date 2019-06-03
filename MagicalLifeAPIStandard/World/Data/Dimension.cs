@@ -8,15 +8,18 @@ namespace MagicalLifeAPI.World.Data
 {
     /// <summary>
     /// Holds some information about the level of the world.
-    /// Could be a dungeon, the starting Point2D, or some other thing.
     /// </summary>
-    //[ProtoContract]
     public class Dimension
     {
         /// <summary>
         /// Handles access to the chunks stored in this dimension.
         /// </summary>
-        private readonly ChunkManager Manager;
+        private readonly ChunkManager ChunkManage;
+
+        /// <summary>
+        /// Handles access to the structures stored in this dimension.
+        /// </summary>
+        internal readonly StructureManager StructureManage;
 
         /// <summary>
         /// The display name of the dimension.
@@ -34,7 +37,7 @@ namespace MagicalLifeAPI.World.Data
         {
             get
             {
-                return this.Manager.Width;
+                return this.ChunkManage.Width;
             }
         }
 
@@ -45,7 +48,7 @@ namespace MagicalLifeAPI.World.Data
         {
             get
             {
-                return this.Manager.Height;
+                return this.ChunkManage.Height;
             }
         }
 
@@ -53,11 +56,11 @@ namespace MagicalLifeAPI.World.Data
         {
             get
             {
-                return this.Manager[x, y];
+                return this.ChunkManage[x, y];
             }
             set
             {
-                this.Manager[x, y] = value;
+                this.ChunkManage[x, y] = value;
             }
         }
 
@@ -68,9 +71,10 @@ namespace MagicalLifeAPI.World.Data
         /// <param name="chunks"></param>
         public Dimension(string dimensionName, ProtoArray<Chunk> chunks)
         {
-            this.Manager = new ChunkManager(this.ID, chunks);
+            this.ChunkManage = new ChunkManager(this.ID, chunks);
             this.DimensionName = dimensionName;
             this.ID = Guid.NewGuid();
+            this.StructureManage = new StructureManager(this.ID);//Depends on the dimension ID to be initialized first.
             this.Items = new ItemRegistry(World.AddDimension(this));
         }
 
@@ -84,7 +88,7 @@ namespace MagicalLifeAPI.World.Data
         public Dimension(string dimensionName, ProtoArray<Chunk> chunks, Guid id, ItemRegistry registry)
         {
             this.ID = id;
-            this.Manager = new ChunkManager(id, chunks);
+            this.ChunkManage = new ChunkManager(id, chunks);
             this.DimensionName = dimensionName;
 
             int dimensionID = World.AddDimension(this);
@@ -95,7 +99,7 @@ namespace MagicalLifeAPI.World.Data
 
         public Chunk GetChunkForLocation(int x, int y)
         {
-            return this.Manager.GetChunkForLocation(x, y);
+            return this.ChunkManage.GetChunkForLocation(x, y);
         }
 
         /// <summary>
@@ -106,7 +110,7 @@ namespace MagicalLifeAPI.World.Data
         /// <returns></returns>
         public Chunk GetChunk(int chunkX, int chunkY)
         {
-            return this.Manager.GetChunk(chunkX, chunkY);
+            return this.ChunkManage.GetChunk(chunkX, chunkY);
         }
 
         /// <summary>
@@ -117,12 +121,12 @@ namespace MagicalLifeAPI.World.Data
         /// <returns></returns>
         public bool DoesTileExist(int x, int y)
         {
-            return this.Manager.DoesTileExist(x, y);
+            return this.ChunkManage.DoesTileExist(x, y);
         }
 
         public IEnumerator<Tile> GetEnumerator()
         {
-            foreach (Tile item in this.Manager)
+            foreach (Tile item in this.ChunkManage)
             {
                 yield return item;
             }

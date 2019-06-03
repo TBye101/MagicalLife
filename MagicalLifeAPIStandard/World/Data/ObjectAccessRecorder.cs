@@ -5,19 +5,13 @@ using System.Collections.Generic;
 namespace MagicalLifeAPI.World.Data
 {
     /// <summary>
-    /// Used to remember when and how many times chunk has been accessed.
+    /// Used to remember when and how many times an object has been accessed.
     /// </summary>
     [ProtoContract]
-    public class ChunkAccessRecorder
+    public class ObjectAccessRecorder
     {
         [ProtoMember(1)]
         private readonly List<DateTime> Accesses = new List<DateTime>();
-
-        [ProtoMember(2)]
-        private readonly int ChunkX;
-
-        [ProtoMember(3)]
-        private readonly int ChunkY;
 
         /// <summary>
         /// The time until a access is no longer counted in calculating how many times a chunk has been accessed.
@@ -25,20 +19,10 @@ namespace MagicalLifeAPI.World.Data
         [ProtoMember(4)]
         private readonly int MilliSecondTimeout;
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="chunkX">The x position of the chunk within a dimension.</param>
-        /// <param name="chunkY">The y position of the chunk within a dimension.</param>
-        public ChunkAccessRecorder(int chunkX, int chunkY)
+        public ObjectAccessRecorder()
         {
-            this.ChunkX = chunkX;
-            this.ChunkY = chunkY;
+            //Protobuf-net constructor.
             this.MilliSecondTimeout = this.CalculateTimeout();
-        }
-
-        public ChunkAccessRecorder()
-        {
         }
 
         /// <summary>
@@ -47,7 +31,7 @@ namespace MagicalLifeAPI.World.Data
         /// <returns></returns>
         private int CalculateTimeout()
         {
-            //Probably need an algorithm here to do this. Later...
+            //Probably need an algorithm here to do this. Project for another day when the project is more mature.
             return 1000;
         }
 
