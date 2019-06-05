@@ -42,7 +42,8 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
                     foreach (Point2D it in result)
                     {
                         Tile tile = World.Data.World.GetTile(dimension, it.X, it.Y);
-                        if (tile.Item != null && tile.Item.ReservedID == Guid.Empty)
+                        Item tileItem = tile.MainObject as Item;
+                        if (tileItem != null && tileItem.ReservedID == Guid.Empty)
                         {
                             allNear.Add(new Rectangle(it.X, it.Y, it.X, it.Y), it);
                         }
@@ -122,15 +123,15 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         }
 
         /// <summary>
-        /// Finds the nearest tile to a location without an item or a resource on it.
-        /// Returns null if all tiles have an item or a resource in the entire map.
+        /// Finds the nearest tile to a location without a main object in it.
+        /// Returns null if all tiles have a main object in the entire map.
         /// Will not ever return the starting point specified.
         /// Ensures that there is a walkable path for the creature to get there from the specific map location to the returned location.
         /// </summary>
         /// <param name="mapLocation"></param>
         /// <param name="dimension"></param>
         /// <returns></returns>
-        public static Point2D FindItemEmptyTile(Point2D mapLocation, int dimension)
+        public static Point2D FindMainObjectEmptyTile(Point2D mapLocation, int dimension)
         {
             List<Point2D> tilesChecking = WorldUtil.GetNeighboringTiles(mapLocation, dimension);
 
@@ -139,9 +140,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
                 Point2D currentlyChecking = tilesChecking[0];
                 Tile tile = World.Data.World.GetTile(dimension, currentlyChecking.X, currentlyChecking.Y);
 
-                if (tile.Item == null
-                    && tile.Resources == null
-                    && MainPathFinder.IsRoutePossible(dimension, mapLocation, currentlyChecking))
+                if (tile.MainObject == null && MainPathFinder.IsRoutePossible(dimension, mapLocation, currentlyChecking))
                 {
                     //Found one!
                     return currentlyChecking;
@@ -180,7 +179,8 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
                     foreach (Point2D it in result)
                     {
                         Tile tile = World.Data.World.GetTile(dimension, it.X, it.Y);
-                        if (tile.Item != null && tile.Item.ReservedID == Guid.Empty)
+                        Item tileItem = tile.MainObject as Item;
+                        if (tileItem != null && tileItem.ReservedID == Guid.Empty)
                         {
                             return true;
                         }
@@ -223,10 +223,11 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
                 {
                     Point2D item = allResults[i];
                     Tile containing = World.Data.World.GetTile(dimension, item.X, item.Y);
-                    if (containing.Item.ReservedID.Equals(Guid.Empty))
+                    Item tileItem = containing.MainObject as Item;
+                    if (tileItem.ReservedID.Equals(Guid.Empty))
                     {
                         locations.Add(item);
-                        quantityFound += containing.Item.CurrentlyStacked;
+                        quantityFound += tileItem.CurrentlyStacked;
                     }
                 }
             }

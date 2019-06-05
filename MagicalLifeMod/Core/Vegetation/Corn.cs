@@ -18,16 +18,17 @@ namespace MagicalLifeAPI.World.Resources
     {
         private static readonly string Name = "Corn Plant";
 
-        private const int MinimumCornYield = 1;
-        private const int MaximumCornYield = 7;
-        private const int DefaultCornDurability = 5;
+        private static readonly int MinimumCornYield = 1;
+        private static readonly int MaximumCornYield = 7;
+        private static readonly int DefaultCornDurability = 5;
 
         public static StaticTexture CornSeedling { get; set; }
         public static StaticTexture CornGrowth1 { get; set; }
         public static StaticTexture CornGrowth2 { get; set; }
         public static StaticTexture CornFullGrowth { get; set; }
 
-        public Corn(string name, int durability, ComponentHarvestable harvestBehavior) : base(Name, durability, harvestBehavior)
+        public Corn(string name, int durability, ComponentHarvestable harvestBehavior)
+            : base(Name, durability, harvestBehavior, true)
         {
             // Determine corn yield
             Random random = new Random();

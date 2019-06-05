@@ -11,7 +11,7 @@ namespace MagicalLifeAPI.World.Base
     /// Resources in tiles are things such as stone and minerals.
     /// </summary>
     [ProtoContract]
-    public abstract class Resource : HasComponents
+    public abstract class Resource : GameObject
     {
         /// <summary>
         /// The display name of the resource.
@@ -28,18 +28,28 @@ namespace MagicalLifeAPI.World.Base
         [ProtoMember(3)]
         public Attribute32 MaxDurability { get; private set; }
 
-        protected Resource(string name, int durability, ComponentHarvestable harvestBehavior)
+        [ProtoMember(4)]
+        private bool Walkable { get; set; }
+
+        protected Resource(string name, int durability, ComponentHarvestable harvestBehavior, bool walkable)
             : base(true)
         {
             this.AddComponent(new ComponentHasTexture(false));
             this.AddComponent(harvestBehavior);
+
             this.DisplayName = name;
             this.Durability = durability;
+            this.Walkable = walkable;
             this.MaxDurability = new Attribute32(this.Durability);
         }
 
         protected Resource()
         {
+        }
+
+        public override bool IsWalkable()
+        {
+            return this.Walkable;
         }
     }
 }

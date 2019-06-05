@@ -117,9 +117,10 @@ namespace MagicalLifeGUIWindows.Rendering.Map
 
         private static void DrawItems(Tile tile, Rectangle target)
         {
-            if (tile.Item != null)
+            Item tileItem = tile.MainObject as Item;
+            if (tileItem != null)
             {
-                ComponentHasTexture itemVisual = tile.Item.GetExactComponent<ComponentHasTexture>();
+                ComponentHasTexture itemVisual = tileItem.GetExactComponent<ComponentHasTexture>();
 
                 Point2D topLeft = new Point2D(0, 0);
                 int length = itemVisual.Visuals.Count;
@@ -134,7 +135,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
                 ItemCountBounds.X = target.Location.X + (TileSize.X / 2);
                 ItemCountBounds.Y = target.Location.Y + TileSize.Y;
 
-                MapDrawer.DrawText(tile.Item.CurrentlyStacked.ToString(), ItemCountBounds,
+                MapDrawer.DrawText(tileItem.CurrentlyStacked.ToString(), ItemCountBounds,
                     ItemCountFont, SimpleTextRenderer.Alignment.Left, RenderLayer.MapItemCount);
             }
         }

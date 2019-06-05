@@ -40,12 +40,12 @@ namespace MagicalLifeAPI.DataTypes
 
         public override int GetHashCode()
         {
-            return (int)X ^ (int)Y;
+            return (int)this.X ^ (int)this.Y;
         }
 
         public bool Equals(Point2DDouble other)
         {
-            return Math.Abs(other.X - X) < 0.00001f && Math.Abs(other.Y - Y) < 0.00001f;
+            return Math.Abs(other.X - this.X) < 0.00001f && Math.Abs(other.Y - Y) < 0.00001f;
         }
 
         public static bool operator ==(Point2DDouble left, Point2DDouble right)

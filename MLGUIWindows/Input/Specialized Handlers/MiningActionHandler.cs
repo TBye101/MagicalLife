@@ -30,9 +30,9 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                     ComponentSelectable selectable = item.GetExactComponent<ComponentSelectable>();
                     Tile tile = World.GetTile(RenderInfo.Dimension, selectable.MapLocation.X, selectable.MapLocation.Y);
 
-                    if (tile.Resources != null && tile.ImpendingAction == ActionSelected.None)
+                    if (tile.MainObject != null && tile.ImpendingAction == ActionSelected.None)
                     {
-                        if (tile.Resources is RockBase)
+                        if (tile.MainObject is RockBase)
                         {
                             HarvestTask task = new HarvestTask(selectable.MapLocation, Guid.NewGuid());
                             tile.ImpendingAction = ActionSelected.Mine;

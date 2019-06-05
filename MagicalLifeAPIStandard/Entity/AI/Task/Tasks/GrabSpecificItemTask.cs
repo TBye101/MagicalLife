@@ -48,9 +48,10 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         {
             Tile containing = World.Data.World.GetTile(dimension, itemLocation.X, itemLocation.Y);
 
-            if (containing.Item.ReservedID == Guid.Empty)
+            Item item = containing.MainObject as Item;
+            if (item != null && item.ReservedID == Guid.Empty)
             {
-                containing.Item.ReservedID = this.ID;
+                item.ReservedID = this.ID;
             }
             else
             {

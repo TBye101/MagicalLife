@@ -10,7 +10,8 @@ namespace MagicalLifeAPI.World.Resources
     [ProtoContract]
     public abstract class RockBase : Resource
     {
-        protected RockBase(string name, int durability, ComponentHarvestable harvestBehavior) : base(name, durability, harvestBehavior)
+        protected RockBase(string name, int durability, ComponentHarvestable harvestBehavior)
+            : base(name, durability, harvestBehavior, false)
         {
         }
 

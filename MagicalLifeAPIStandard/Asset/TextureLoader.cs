@@ -114,6 +114,15 @@ namespace MagicalLifeAPI.Asset
 
         #endregion Animations
 
+        #region Structure
+
+        public static readonly string StairDown1 = "Structure/StairDown1";
+        public static readonly string StairUp1 = "Structure/StairUp1";
+
+        #endregion
+
+        public static readonly string Missing = "Missing";
+
         public TextureLoader(ContentManager manager)
         {
             this.Manager = manager;
@@ -180,6 +189,11 @@ namespace MagicalLifeAPI.Asset
             this.TexturesToLoad.Add(LogoMonoGame);
 
             this.TexturesToLoad.Add(AnimationBaseCharacter);
+
+            this.TexturesToLoad.Add(Missing);
+
+            this.TexturesToLoad.Add(StairDown1);
+            this.TexturesToLoad.Add(StairUp1);
         }
 
         public void InitialStartup()

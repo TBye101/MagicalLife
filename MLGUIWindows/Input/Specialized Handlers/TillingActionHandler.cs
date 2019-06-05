@@ -32,7 +32,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
 
                     if (tile.HasComponent<ComponentTillable>()
                         && tile.ImpendingAction == ActionSelected.None
-                        && tile.Resources == null)
+                        && tile.MainObject == null)
                     {
                         TillTask task = new TillTask(tile.GetExactComponent<ComponentSelectable>().MapLocation, Guid.NewGuid(), RenderInfo.Dimension);
                         tile.ImpendingAction = ActionSelected.Till;

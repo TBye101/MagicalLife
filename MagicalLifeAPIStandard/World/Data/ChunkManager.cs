@@ -17,13 +17,13 @@ namespace MagicalLifeAPI.World.Data
         /// A 2D array that holds every chunk in the dimension that this chunk manager services.
         /// </summary>
         [ProtoMember(1)]
-        private ProtoArray<ChunkAccess> Chunks { get; set; }
+        private ProtoArray<ObjectAccess<Chunk>> Chunks { get; set; }
 
         /// <summary>
         /// The ID of the dimension that this chunk manager services.
         /// </summary>
         [ProtoMember(2)]
-        private Guid DimensionID;
+        private readonly Guid DimensionID;
 
         /// <summary>
         /// The width of this dimension in chunks.
@@ -43,7 +43,7 @@ namespace MagicalLifeAPI.World.Data
             this.Width = chunks.Width;
             this.Height = chunks.Height;
 
-            List<ChunkAccess> temp = new List<ChunkAccess>();
+            List<ObjectAccess<Chunk>> temp = new List<ObjectAccess<Chunk>>();
 
             int xLength = chunks.Width;
             int yLength = chunks.Height;
@@ -52,11 +52,11 @@ namespace MagicalLifeAPI.World.Data
             {
                 for (int y = 0; y < yLength; y++)
                 {
-                    temp.Add(new ChunkAccess(chunks[x, y], new ChunkAccessRecorder(x, y)));
+                    temp.Add(new ObjectAccess<Chunk>(chunks[x, y], new ObjectAccessRecorder()));
                 }
             }
 
-            this.Chunks = new ProtoArray<ChunkAccess>(chunks.Width, chunks.Height, temp.ToArray());
+            this.Chunks = new ProtoArray<ObjectAccess<Chunk>>(chunks.Width, chunks.Height, temp.ToArray());
         }
 
         public ChunkManager()
@@ -115,16 +115,16 @@ namespace MagicalLifeAPI.World.Data
         /// <returns></returns>
         private Chunk FetchChunk(int chunkX, int chunkY)
         {
-            ChunkAccess storage = this.Chunks[chunkX, chunkY];
+            ObjectAccess<Chunk> storage = this.Chunks[chunkX, chunkY];
             storage.Recorder.Access();
 
-            if (storage.Chunk == null)
+            if (storage.Object == null)
             {
                 return WorldStorage.ChunkStorage.LoadChunk(chunkX, chunkY, this.DimensionID);
             }
             else
             {
-                return storage.Chunk;
+                return storage.Object;
             }
         }
 
@@ -149,14 +149,14 @@ namespace MagicalLifeAPI.World.Data
             {
                 for (int y = 0; y < this.Height; y++)
                 {
-                    ChunkAccess item = this.Chunks[x, y];
+                    ObjectAccess<Chunk> item = this.Chunks[x, y];
 
-                    if (item.Chunk == null)
+                    if (item.Object == null)
                     {
-                        this.Chunks[x, y].Chunk = this.FetchChunk(x, y);
+                        this.Chunks[x, y].Object = this.FetchChunk(x, y);
                     }
 
-                    foreach (Tile item2 in item.Chunk)
+                    foreach (Tile item2 in item.Object)
                     {
                         yield return item2;
                     }

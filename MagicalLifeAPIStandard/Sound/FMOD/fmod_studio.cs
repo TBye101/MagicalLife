@@ -2560,7 +2560,7 @@ namespace MagicalLifeAPI.Sound.FMOD
 
             public RESULT setUserData(IntPtr userdata)
             {
-                return FMOD_Studio_CommandReplay_SetUserData(rawPtr, userdata);
+                return FMOD_Studio_CommandReplay_SetUserData(this.rawPtr, userdata);
             }
 
             #region importfunctions

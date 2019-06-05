@@ -40,6 +40,7 @@ namespace MagicalLifeAPI.Components.Entity
 
         public ComponentMovement(double movementSpeed, Point2D location)
         {
+            this.QueuedMovement = new ProtoQueue<PathLink>();
             this.Movement = new AttributeDouble(movementSpeed);
             this.TileLocation = new Point2DDouble(location.X, location.Y);
             this.FootStepTimer = new TickTimer(FootStepCooldown);
@@ -51,7 +52,9 @@ namespace MagicalLifeAPI.Components.Entity
         }
 
         [ProtoAfterDeserialization]
+#pragma warning disable IDE0051 // Remove unused private members
         private void PostDeserialization()
+#pragma warning restore IDE0051 // Remove unused private members
         {
             if (this.QueuedMovement == null)
             {

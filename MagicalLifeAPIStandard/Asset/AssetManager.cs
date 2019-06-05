@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Error.InternalExceptions;
+using MagicalLifeAPI.Filing.Logging;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
@@ -37,7 +38,15 @@ namespace MagicalLifeAPI.Asset
                 }
             }
 
-            throw new ResourceMissingException("Texture index not found! Texture: " + name);
+            if (name == TextureLoader.Missing)
+            {
+                throw new ResourceMissingException("Texture index not found! Texture: " + name);
+            }
+            else
+            {
+                MasterLog.DebugWriteLine("Texture index not found! Texture: " + name);
+                return GetTextureIndex(TextureLoader.Missing);
+            }
         }
     }
 }

@@ -1,0 +1,49 @@
+This document describes a basic design for how to handle objects such as:
+structures, creatures, items, floors, roof, resources
+
+Tile data layout:
+
+[0]				[1]						[2]			[3]
+				[PathBlockingResources]	[Roof]
+[structureFloor][Structures]						
+[items]			[Living]
+
+abstract class IGameObject
+{
+abstract bool IsUnwalkable();
+
+//If true the objects should be able to share the same tile space. 
+abstract bool IsCompatible(IGameObject other);
+}
+
+Tile
+{
+	Floor floor;//Floor could be grass, or natural stone
+	Item item;
+	Resource resource;//Cannot have a resource and a structure part in the same tile...
+	StructurePart structurePart;//A structure could have a natural stone floor, or grass for a floor too....
+	Roof roof;
+}
+
+//Structures must have all of their parts interconnected. There must be a part adjacent (left, right, up, down) from each part.
+class Structure
+{
+string name;
+Guid ownerID;//Could be playerID, it could be empty if it is unclaimed, or it could be claimed by an AI faction.
+
+Structure(string name, string ownerID, List<StructurePart> parts);
+
+List<StructurePart> Parts;
+
+}
+
+//A part of a structure.
+class StructurePart
+{
+Structure parent;
+Guid partID;
+int durability;
+Point2D location;
+bool walkable;
+
+}

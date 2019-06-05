@@ -14,7 +14,7 @@ namespace MagicalLifeAPI.World.Base
     /// Represents almost everything in a movable/harvested form.
     /// </summary>
     [ProtoContract]
-    public abstract class Item : HasComponents, IEquatable<Item>, IEquatable<object>
+    public abstract class Item : GameObject, IEquatable<Item>, IEquatable<object>
     {
         /// <summary>
         /// The name of this <see cref="Item"/>.
@@ -232,6 +232,11 @@ namespace MagicalLifeAPI.World.Base
             {
                 return this.Equals(item);
             }
+        }
+
+        public override bool IsWalkable()
+        {
+            return true;
         }
 
         public override int GetHashCode()

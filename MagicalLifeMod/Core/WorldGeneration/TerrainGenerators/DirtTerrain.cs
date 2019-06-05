@@ -42,7 +42,7 @@ namespace MagicalLifeMod.Core.WorldGeneration.TerrainGenerators
 
             if (seededRandom.Next(0, 5) == 3)
             {
-                dirt.Resources = new Rock(seededRandom.Next(1, 170));
+                dirt.MainObject = new Rock(seededRandom.Next(1, 170));
             }
 
             return dirt;

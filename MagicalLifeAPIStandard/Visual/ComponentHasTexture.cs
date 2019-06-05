@@ -13,7 +13,7 @@ namespace MagicalLifeAPI.GUI
     public class ComponentHasTexture : Component
     {
         /// <summary>
-        /// The index of the texture in our asset manager.
+        /// The visuals that this component stores.
         /// </summary>
         [ProtoMember(1)]
         public List<AbstractVisual> Visuals { get; set; }
