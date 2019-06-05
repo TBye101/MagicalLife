@@ -5,7 +5,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 ## [Version 0.1.3]
 
 #### API
-*
+*API now returns a texture designated as the missing texture should a texture not be found
 
 #### GUI
 *
