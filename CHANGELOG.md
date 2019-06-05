@@ -8,7 +8,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 *API now returns a texture designated as the missing texture should a texture not be found
 
 #### GUI
-*
+*Added stair case up and down textures
 
 #### Bugs
 *
