@@ -16,7 +16,7 @@ namespace MagicalLifeAPI.Pathfinding
         /// <param name="destination">The target location for the living to reach.</param>
         /// <param name="origin">The starting Point2D of the living.</param>
         /// <returns></returns>
-        List<PathLink> GetRoute(int dimension, Point2D origin, Point2D destination);
+        List<PathLink> GetRoute(int dimension, Point3D origin, Point3D destination);
 
         /// <summary>
         /// Determines whether or not there is a valid path from the origin to the destination.
@@ -25,7 +25,7 @@ namespace MagicalLifeAPI.Pathfinding
         /// <param name="origin"></param>
         /// <param name="destination"></param>
         /// <returns></returns>
-        bool IsRoutePossible(int dimension, Point2D origin, Point2D destination);
+        bool IsRoutePossible(int dimension, Point3D origin, Point3D destination);
 
         /// <summary>
         /// Run whatever startup code you need to before being capable of graph building  for the dimension.
@@ -37,13 +37,13 @@ namespace MagicalLifeAPI.Pathfinding
         /// Removes all links to the specified location.
         /// </summary>
         /// <param name="location"></param>
-        void RemoveConnections(Point2D location);
+        void RemoveConnections(Point3D location);
 
         /// <summary>
         /// Adds links to the specified location.
         /// </summary>
         /// <param name="location"></param>
 
-        void AddConnections(Point2D location);
+        void AddConnections(Point3D location);
     }
 }

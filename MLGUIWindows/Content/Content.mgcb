@@ -296,7 +296,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Structure/StairsUp1.png
+/build:Structure/StairsUp1.png;Structure/StairUp1.png
 
 #begin Textures/Items/Food/CornEar.png
 /importer:TextureImporter
