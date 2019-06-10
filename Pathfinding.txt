@@ -1,0 +1,9 @@
+Reimplement something like A*
+Assume tiles that *may* contain obstructions are walkable
+use found route
+if route is obstructed pathfind from location to next node that is walkable/unknown obstruction state
+
+https://en.wikipedia.org/wiki/Fringe_search
+Basically is this
+
+Just need to accomplish this with linked nodes or something in order to handle teleporter like things/dungeons.

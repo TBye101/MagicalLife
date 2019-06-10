@@ -67,7 +67,4 @@
       <LastGenOutput>Lang.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pathfinding\DStar\" />
-  </ItemGroup>
 </Project>

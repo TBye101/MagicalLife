@@ -9,11 +9,12 @@ namespace MagicalLifeAPI.DataTypes
 {
     /// <summary>
     /// A point class that includes the dimensionID.
+    /// AKA dimension point.
     /// </summary>
     [ProtoContract]
-    public class Point3D
+    public class DPoint
     {
-        public static readonly Point3D Zero = new Point3D(0, 0, Guid.Empty);
+        public static readonly DPoint Zero = new DPoint(0, 0, Guid.Empty);
 
         [ProtoMember(1)]
         public int X { get; set; }
@@ -24,23 +25,23 @@ namespace MagicalLifeAPI.DataTypes
         [ProtoMember(3)]
         public Guid DimensionID { get; set; }
 
-        public Point3D(int x, int y, Guid dimensionID)
+        public DPoint(int x, int y, Guid dimensionID)
         {
             this.X = x;
             this.Y = y;
             this.DimensionID = dimensionID;
         }
 
-        public Point3D()
+        public DPoint()
         {
             //Protobuf-net constructor.
         }
 
         public override bool Equals(object obj)
         {
-            if (obj is Point3D)
+            if (obj is DPoint)
             {
-                Point3D c = obj as Point3D;
+                DPoint c = obj as DPoint;
                 return this.X == c.X && this.Y == c.Y && this.DimensionID.Equals(c.DimensionID);
             }
 
@@ -52,22 +53,22 @@ namespace MagicalLifeAPI.DataTypes
             return 0;
         }
 
-        public static implicit operator Point(Point3D value)
+        public static implicit operator Point(DPoint value)
         {
             return new Point(value.X, value.Y);
         }
 
-        public static implicit operator Point2D(Point3D value)
+        public static implicit operator Point2D(DPoint value)
         {
             return new Point2D(value.X, value.Y);
         }
 
-        public static implicit operator Vector2(Point3D value)
+        public static implicit operator Vector2(DPoint value)
         {
             return new Vector2(value.X, value.Y);
         }
 
-        public static Point3D Parse(string str)
+        public static DPoint Parse(string str)
         {
             int x;
             int y;
@@ -85,7 +86,7 @@ namespace MagicalLifeAPI.DataTypes
             int dimensionEnd = str.Length - 2;
             dimensionID = Guid.Parse(str.Substring(dimensionStart, dimensionEnd));
 
-            return new Point3D(x, y, dimensionID);
+            return new DPoint(x, y, dimensionID);
         }
 
         public override string ToString()
