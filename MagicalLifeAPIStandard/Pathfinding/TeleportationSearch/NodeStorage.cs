@@ -36,20 +36,6 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             {
                 this.LocationToNode.Add(node.Location, node);
             }
-
-            foreach (Point3D item in node.Connections)
-            {
-                if (this.LocationToConnected.ContainsKey(item))
-                {
-                    this.LocationToConnected.TryGetValue(item, out List<SearchNode> connected);
-                    connected.Add(node);
-                }
-                else
-                {
-                    List<SearchNode> connected = new List<SearchNode> { node };
-                    this.LocationToConnected.Add(item, connected);
-                }
-            }
         }
 
         public SearchNode GetNode(Point3D nodeLocation)
@@ -92,6 +78,16 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             b.Connections.Add(a.Location);
             this.LocationToConnected.TryGetValue(a.Location, out List<SearchNode> aConnections);
             this.LocationToConnected.TryGetValue(b.Location, out List<SearchNode> bConnections);
+
+            if (aConnections == null)
+            {
+                aConnections = new List<SearchNode>();
+            }
+            if (bConnections == null)
+            {
+                bConnections = new List<SearchNode>();
+            }
+
             aConnections.Add(b);
             bConnections.Add(a);
         }

@@ -120,6 +120,12 @@ namespace MagicalLifeAPI.World.Base
         [ProtoMember(9)]
         public ActionSelected ImpendingAction { get; set; }
 
+        /// <summary>
+        /// If true this tile has been revealed to the player.
+        /// </summary>
+        [ProtoMember(10)]
+        public bool IsVisible { get; set; } = true;
+
         public readonly int FootStepSound;
 
         /// <summary>

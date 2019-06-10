@@ -49,23 +49,48 @@ namespace MagicalLifeAPI.World
         /// <returns></returns>
         public static List<Point2D> GetNeighboringTiles(Point2D tileLocation, int dimension)
         {
-            List<Point2D> neighborCandidates = new List<Point2D>();
             List<Point2D> neighbors = new List<Point2D>();
 
-            neighborCandidates.Add(new Point2D(tileLocation.X + 1, tileLocation.Y));
-            neighborCandidates.Add(new Point2D(tileLocation.X - 1, tileLocation.Y));
-            neighborCandidates.Add(new Point2D(tileLocation.X, tileLocation.Y + 1));
-            neighborCandidates.Add(new Point2D(tileLocation.X, tileLocation.Y - 1));
-            neighborCandidates.Add(new Point2D(tileLocation.X + 1, tileLocation.Y + 1));
-            neighborCandidates.Add(new Point2D(tileLocation.X + 1, tileLocation.Y - 1));
-            neighborCandidates.Add(new Point2D(tileLocation.X - 1, tileLocation.Y + 1));
-            neighborCandidates.Add(new Point2D(tileLocation.X - 1, tileLocation.Y - 1));
+            neighbors.Add(new Point2D(tileLocation.X + 1, tileLocation.Y));
+            neighbors.Add(new Point2D(tileLocation.X - 1, tileLocation.Y));
+            neighbors.Add(new Point2D(tileLocation.X, tileLocation.Y + 1));
+            neighbors.Add(new Point2D(tileLocation.X, tileLocation.Y - 1));
+            neighbors.Add(new Point2D(tileLocation.X + 1, tileLocation.Y + 1));
+            neighbors.Add(new Point2D(tileLocation.X + 1, tileLocation.Y - 1));
+            neighbors.Add(new Point2D(tileLocation.X - 1, tileLocation.Y + 1));
+            neighbors.Add(new Point2D(tileLocation.X - 1, tileLocation.Y - 1));
 
-            foreach (Point2D point2D in neighborCandidates)
+            for (int i = neighbors.Count - 1; i > -1; i--)
             {
-                if (DoesTileExist(point2D, dimension))
+                if (!DoesTileExist(neighbors[i], dimension))
                 {
-                    neighbors.Add(point2D);
+                    neighbors.RemoveAt(i);
+                }
+            }
+
+            return neighbors;
+        }
+
+        public static List<Point3D> GetNeighboringTiles(Point3D tileLocation, int dimension)
+        {
+            Guid dimensionID = World.Data.World.Dimensions[dimension].ID;
+
+            List<Point3D> neighbors = new List<Point3D>();
+
+            neighbors.Add(new Point3D(tileLocation.X + 1, tileLocation.Y, dimensionID));
+            neighbors.Add(new Point3D(tileLocation.X - 1, tileLocation.Y, dimensionID));
+            neighbors.Add(new Point3D(tileLocation.X, tileLocation.Y + 1, dimensionID));
+            neighbors.Add(new Point3D(tileLocation.X, tileLocation.Y - 1, dimensionID));
+            neighbors.Add(new Point3D(tileLocation.X + 1, tileLocation.Y + 1, dimensionID));
+            neighbors.Add(new Point3D(tileLocation.X + 1, tileLocation.Y - 1, dimensionID));
+            neighbors.Add(new Point3D(tileLocation.X - 1, tileLocation.Y + 1, dimensionID));
+            neighbors.Add(new Point3D(tileLocation.X - 1, tileLocation.Y - 1, dimensionID));
+
+            for (int i = neighbors.Count - 1; i > -1; i--)
+            {
+                if (!DoesTileExist(neighbors[i], dimension))
+                {
+                    neighbors.RemoveAt(i);
                 }
             }
 
