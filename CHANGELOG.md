@@ -17,30 +17,49 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 #### API
 *Now supports the tilling of dirt
+
 *Skills are now in
+
 *Harvest skill now has impact on the speed of harvesting resources
+
 *Removed Serilog dependency
+
 *Inventories are now baked in for creatures
+
 *Increased camera performance, 100x100 worlds are possible (~22 fps)
+
 *Now putting core game content in the "Magical Life Core" mod
+
 *Task manager rewrite to be more intelligent, offer more options for dynamic dependencies
+
 *Crafting is now supported
+
 *Protobuf-net inheritance and surrogates are now automatically handled
+
 *Mods are now supported, and when found will be loaded
 
 #### GUI
 *Tilling dirt is now available from the in game GUI
+
 *2K support (2560x1440)
+
 *Certain windows are now movable
+
 *Creatures can now be clicked upon to see their skills/creature window
+
 *Added the new log texture
+
 *Skills/creature window now has an inventory tab
+
 *Zooming out now supported
+
 *Added the Action Bar
 
 #### Bugs
 *Fixed PineTree class property Name's value (Thanks @a2937!)
+
 *Fixed mined stones not disappearing
+
 *Surround sound now functions like it should
 
 ---
@@ -49,23 +68,34 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 #### API
 *Audio now has multiple channels/can play multiple sounds simultaneously
+
 *Audio now has a surround sound effect
 	*Audio listening is set from the center of the screen
+	
 *API now works anywhere C# can run
+
 *Dedicated server now runs on Mac and Linux in addition to windows
+
 *Trees now in as a resource
+
 *Trees are now harvestable
+
 *Oak Trees are now in
+
 *Maple Trees are now in
+
 *Pine trees are now in
+
 *Now handles the dropping of an item on a tile that already has an item of a different type on it.
 
 #### GUI
 *Trees now render
+
 *Axe button now allows for the user to mark which trees to chop down
 
 #### Bugs
 *Items now render properly again
+
 *Reduced the occurrences of a saving bug
 
 ---
