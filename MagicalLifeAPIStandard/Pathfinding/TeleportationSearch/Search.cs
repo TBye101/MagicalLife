@@ -14,11 +14,6 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
     //https://brilliant.org/wiki/a-star-search/
     public class Search : IPathFinder
     {
-        private readonly List<SearchNode> Open = new List<SearchNode>();
-        private readonly List<SearchNode> Closed = new List<SearchNode>();
-
-        private bool DestinationReached = false;
-
         private readonly NodeStorage Storage = new NodeStorage();
 
         public Search()
@@ -65,9 +60,53 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             }
         }
 
-        public List<PathLink> GetRoute(int dimension, Point3D origin, Point3D destination)
+        public List<PathLink> GetRoute(Point3D origin, Point3D destination)
         {
-            throw new NotImplementedException();
+            if (origin.DimensionID.Equals(destination.DimensionID))
+            {
+                return this.SameDimensionRoute(origin, destination);
+            }
+            else
+            {
+                return this.DifferentDimensionsRoute(origin, destination);
+            }
+        }
+
+        private List<PathLink> SameDimensionRoute(Point3D origin, Point3D destination)
+        {
+            /*
+                f(n) = total estimated cost of path through node 
+                g(n) = cost so far to reach node 
+                h(n) = estimated cost from  to goal. This is the heuristic part of the cost function, so it is like a guess.
+            */
+
+            bool destinationReached = false;
+            SortedList<ExtraNodeData, SearchNode> open = new SortedList<ExtraNodeData, SearchNode>();
+            List<SearchNode> closed = new List<SearchNode>();
+
+            open.Add(this.Storage.GetNode(origin));
+
+            while (!destinationReached)
+            {
+
+            }
+        }
+
+        private List<PathLink> DifferentDimensionsRoute(Point3D origin, Point3D destination)
+        {
+
+        }
+
+        private int CalculateHScoreSameDim(Point3D node, Point3D destination)
+        {
+            return Math.Abs(node.X - destination.X) + Math.Abs(node.Y - destination.Y);
+            //Need to come up with a way to calculate distance between Point3D, even if they are in different dimensions.
+        }
+
+        private int CalculateHScoreDiffDim(Point3D node, Point3D destination)
+        {
+            List<SearchNode> connectingNodes = this.Storage.GetDimensionConnectors(node.DimensionID, destination.DimensionID);
+
         }
 
         public void Initialize(Dimension dimension)

@@ -44,6 +44,6 @@ namespace MagicalLifeAPI.Pathfinding
         /// </summary>
         /// <param name="location"></param>
 
-        void AddConnections(Point3D location);
+        void AddConnections(Point3D location, int dimension);
     }
 }

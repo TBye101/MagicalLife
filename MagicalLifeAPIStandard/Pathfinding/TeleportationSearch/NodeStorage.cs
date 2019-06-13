@@ -24,10 +24,30 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
         /// </summary>
         private readonly Dictionary<Point3D, List<SearchNode>> LocationToConnected;
 
+        /// <summary>
+        /// Key: The two dimensions that have connecting nodes.
+        /// Value: The nodes that are in the key's dimension that connect to another dimension.
+        /// </summary>
+        private readonly Dictionary<TwoGuid, List<SearchNode>> DimensionOutNodes;
+
         public NodeStorage()
         {
             this.LocationToNode = new Dictionary<Point3D, SearchNode>();
             this.LocationToConnected = new Dictionary<Point3D, List<SearchNode>>();
+            this.DimensionOutNodes = new Dictionary<TwoGuid, List<SearchNode>>();
+        }
+
+        /// <summary>
+        /// Returns a list of all the search nodes that connect the two dimensions.
+        /// </summary>
+        /// <param name="dimensionOne"></param>
+        /// <param name="dimensionTwo"></param>
+        /// <returns></returns>
+        public List<SearchNode> GetDimensionConnectors(Guid dimensionOne, Guid dimensionTwo)
+        {
+            TwoGuid dimData = new TwoGuid(dimensionOne, dimensionTwo);
+            this.DimensionOutNodes.TryGetValue(dimData, out List<SearchNode> dimConnections);
+            return dimConnections;
         }
 
         public void AddNode(SearchNode node)
@@ -81,15 +101,60 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 
             if (aConnections == null)
             {
-                aConnections = new List<SearchNode>();
+                this.LocationToConnected.Add(a.Location, new List<SearchNode>() { b });
             }
-            if (bConnections == null)
+            else
             {
-                bConnections = new List<SearchNode>();
+                if (!aConnections.Contains(b))
+                {
+                    aConnections.Add(b);
+                }
             }
 
-            aConnections.Add(b);
-            bConnections.Add(a);
+            if (bConnections == null)
+            {
+                this.LocationToConnected.Add(b.Location, new List<SearchNode>() { a });
+            }
+            else
+            {
+                if (!bConnections.Contains(a))
+                {
+                    bConnections.Add(a);
+                }
+            }
+
+            if (!a.Location.DimensionID.Equals(b.Location.DimensionID))
+            {
+                this.AddDimensionalConnections(a, b);
+            }
+        }
+
+        /// <summary>
+        /// Registers that there are connections between two dimensions in these nodes. 
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        private void AddDimensionalConnections(SearchNode a, SearchNode b)
+        {
+            TwoGuid dimData = new TwoGuid(a.Location.DimensionID, b.Location.DimensionID);
+
+            this.DimensionOutNodes.TryGetValue(dimData, out List<SearchNode> connections);
+
+            if (connections == null)
+            {
+                this.DimensionOutNodes.Add(dimData, new List<SearchNode>() { a, b });
+            }
+            else
+            {
+                if (!connections.Contains(a))
+                {
+                    connections.Add(a);
+                }
+                if (!connections.Contains(b))
+                {
+                    connections.Add(b);
+                }
+            }
         }
 
         /// <summary>
@@ -103,6 +168,14 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             this.LocationToConnected.TryGetValue(b.Location, out List<SearchNode> bConnections);
             aConnections.Remove(b);
             bConnections.Remove(a);
+
+            if (!a.Location.DimensionID.Equals(b.Location.DimensionID))
+            {
+                TwoGuid dimData = new TwoGuid(a.Location.DimensionID, b.Location.DimensionID);
+                this.DimensionOutNodes.TryGetValue(dimData, out List<SearchNode> connections);
+                connections.Remove(a);
+                connections.Remove(b);
+            }
         }
 
         /// <summary>
