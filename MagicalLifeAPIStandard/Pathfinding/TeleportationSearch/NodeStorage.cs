@@ -28,7 +28,7 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
         /// Key: The two dimensions that have connecting nodes.
         /// Value: The nodes that are in the key's dimension that connect to another dimension.
         /// </summary>
-        private readonly Dictionary<TwoGuid, List<SearchNode>> DimensionOutNodes;
+        public readonly Dictionary<TwoGuid, List<SearchNode>> DimensionOutNodes;
 
         public NodeStorage()
         {

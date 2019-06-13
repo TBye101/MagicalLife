@@ -107,6 +107,84 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
         {
             List<SearchNode> connectingNodes = this.Storage.GetDimensionConnectors(node.DimensionID, destination.DimensionID);
 
+            if (connectingNodes == null || connectingNodes.Count < 1)
+            {
+                //Calculate which dimensional entrances/exits and dimensions to use to get from node to destination.
+            }
+            else
+            {
+                return this.GuessBestJumpPath(node, destination, connectingNodes).Item2;
+            }
+
+
+            //Get all connections to the target dimension and calculate the costs from each to the destination.
+            //Pathfind to the lowest cost connection
+        }
+
+        /// <summary>
+        /// Calculates which nodes to other dimensions are needed to get into the same dimension as the destination from the starting node.
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="destination"></param>
+        /// <returns></returns>
+        private List<SearchNode> CalculateMultiDimensionalPath(Point3D node, Point3D destination)
+        {
+            List<SearchNode> openList = new List<SearchNode>();
+            List<SearchNode> closedList = new List<SearchNode>();
+            bool destinationReached = false;
+
+            openList.Add(this.Storage.GetNode(node));
+
+            while (!destinationReached)
+            {
+                //A* dim search
+            }
+        }
+        
+        /// <summary>
+        /// Guesses/calculates the dimensional entrance/exit to use to get to the destination with the least amount of distance.
+        /// This uses a found list of connecting nodes.
+        /// Only works if connecting nodes has direct connections between the dimension "node" is in, and the dimension "destination" is in.
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="destination"></param>
+        /// <returns></returns>
+        private ValueTuple<SearchNode, int> GuessBestJumpPath(Point3D node, Point3D destination, List<SearchNode> connectingNodes)
+        {
+            SearchNode bestEntrance = null;
+            int bestDistance = int.MaxValue;
+
+            if (connectingNodes != null && connectingNodes.Count > 0)
+            {
+                int sameDimCost;
+                int otherDimCost = int.MaxValue;
+
+                foreach (SearchNode item in connectingNodes)
+                {
+                    sameDimCost = this.CalculateHScoreSameDim(node, item.Location);
+
+                    foreach (Point3D connection in item.Connections)
+                    {
+                        if (connection.DimensionID.Equals(destination.DimensionID))
+                        {
+                            int otherDimTempCost = this.CalculateHScoreSameDim(connection, destination);
+
+                            if (otherDimTempCost < otherDimCost)
+                            {
+                                otherDimCost = otherDimTempCost;
+                            }
+                        }
+                    }
+
+                    if ((sameDimCost + otherDimCost) < bestDistance)
+                    {
+                        bestDistance = sameDimCost + otherDimCost;
+                        bestEntrance = item;
+                    }
+                }
+            }
+
+            return new ValueTuple<SearchNode, int>(bestEntrance, bestDistance);
         }
 
         public void Initialize(Dimension dimension)
