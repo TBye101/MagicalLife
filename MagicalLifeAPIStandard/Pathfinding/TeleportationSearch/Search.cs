@@ -8,6 +8,7 @@ using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
+using System.Linq;
 
 namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 {
@@ -20,9 +21,10 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
         {
         }
 
-        public void AddConnections(Point3D location, int dimension)
+        public void AddConnections(Point3D location)
         {
-            //Need to add special connections here like dungeons and teleporters
+            int dimension = World.Data.World.Dimensions.FindIndex(x => x.ID.Equals(location.DimensionID));
+
             List<Point3D> neighbors = WorldUtil.GetNeighboringTiles(location, dimension);
             foreach (Point3D item in neighbors)
             {
@@ -35,23 +37,34 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             GameObject ceiling = tile.Ceiling;
             GameObject floor = tile.Floor;
             GameObject mainObject = tile.MainObject;
-
-            PortalComponent ceilingPortals = ceiling.GetComponent<PortalComponent>();
-            PortalComponent floorPortals = floor.GetComponent<PortalComponent>();
-            PortalComponent mainObjectPortals = mainObject.GetComponent<PortalComponent>();
-
             List<Point3D> extraConnections = new List<Point3D>();
-            if (ceilingPortals != null)
+
+            if (ceiling != null)
             {
-                extraConnections.AddRange(ceilingPortals.Connections);
+                PortalComponent ceilingPortals = ceiling.GetComponent<PortalComponent>();
+
+                if (ceilingPortals != null)
+                {
+                    extraConnections.AddRange(ceilingPortals.Connections);
+                }
             }
-            if (floorPortals != null)
+
+            if (floor != null)
             {
-                extraConnections.AddRange(floorPortals.Connections);
+                PortalComponent floorPortals = floor.GetComponent<PortalComponent>();
+                if (floorPortals != null)
+                {
+                    extraConnections.AddRange(floorPortals.Connections);
+                }
             }
-            if (mainObjectPortals != null)
+
+            if (mainObject != null)
             {
-                extraConnections.AddRange(mainObjectPortals.Connections);
+                PortalComponent mainObjectPortals = mainObject.GetComponent<PortalComponent>();
+                if (mainObjectPortals != null)
+                {
+                    extraConnections.AddRange(mainObjectPortals.Connections);
+                }
             }
 
             foreach (Point3D item in extraConnections)
@@ -82,19 +95,75 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 
             bool destinationReached = false;
             SortedList<ExtraNodeData, SearchNode> open = new SortedList<ExtraNodeData, SearchNode>();
-            List<SearchNode> closed = new List<SearchNode>();
+            SortedList<ExtraNodeData, SearchNode> closed = new SortedList<ExtraNodeData, SearchNode>();
 
-            open.Add(this.Storage.GetNode(origin));
+            ExtraNodeData firstData = new ExtraNodeData(0, this.CalculateHScoreSameDim(origin, destination), null, origin);
+            open.Add(firstData, this.Storage.GetNode(origin));
 
             while (!destinationReached)
             {
+                ExtraNodeData lowestFKey = open.Keys[0];
+                open.TryGetValue(lowestFKey, out SearchNode value);
 
-            }
+                if (value.Location.Equals(destination))
+                {
+                    destinationReached = true;
+                }
+                else
+                {
+                    open.Remove(lowestFKey);
+                    closed.Add(lowestFKey, value);
+                    foreach (Point3D item in value.Connections)
+                    {
+                        SearchNode neighboringNode = this.Storage.GetNode(item);
+
+                        if (closed.ContainsValue(neighboringNode))
+                        {
+                            KeyValuePair<ExtraNodeData, SearchNode> neighbor = closed.ElementAt(closed.IndexOfValue(neighboringNode));
+                            if (lowestFKey.GScore < neighbor.Key.GScore)
+                            {
+                                ExtraNodeData key = neighbor.Key;
+                                SearchNode node = neighbor.Value;
+
+                                closed.Remove(neighbor.Key);
+
+                                key.GScore = lowestFKey.GScore;
+                                key.Parent = value;
+                                closed.Add(key, node);
+                            }
+                        }
+                        else if (open.ContainsValue(neighboringNode))
+                        {
+                            KeyValuePair<ExtraNodeData, SearchNode> neighbor = open.ElementAt(open.IndexOfValue(neighboringNode));
+
+                            if (lowestFKey.GScore < neighbor.Key.GScore)
+                            {
+                                ExtraNodeData key = neighbor.Key;
+                                SearchNode node = neighbor.Value;
+
+                                open.Remove(neighbor.Key);
+                                key.GScore = lowestFKey.GScore;
+                                key.Parent = value;
+                                open.Add(key, node);
+                            }
+                        }
+                        else
+                        {
+                            int hScore = this.CalculateHScoreSameDim(item, destination);
+                            int gScore = lowestFKey.GScore + neighboringNode.Cost;
+                            ExtraNodeData data = new ExtraNodeData(gScore, hScore, null, neighboringNode.Location);
+                            open.Add(data, neighboringNode);//Need to add a location to the key, so that they aren't as overlapping
+                        }
+                    }
+                }
+            }//Pathfinds to destination correctly, but is missing parent node need to find way to reconstruct the path from the nodes
+
+            return null;
         }
 
         private List<PathLink> DifferentDimensionsRoute(Point3D origin, Point3D destination)
         {
-
+            throw new NotImplementedException();
         }
 
         private int CalculateHScoreSameDim(Point3D node, Point3D destination)
@@ -116,7 +185,7 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
                 return this.GuessBestJumpPath(node, destination, connectingNodes).Item2;
             }
 
-
+            throw new NotImplementedException();
             //Get all connections to the target dimension and calculate the costs from each to the destination.
             //Pathfind to the lowest cost connection
         }
@@ -139,6 +208,7 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             {
                 //A* dim search
             }
+            throw new NotImplementedException();
         }
         
         /// <summary>
@@ -204,13 +274,13 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             {
                 ComponentSelectable selectable = item.GetExactComponent<ComponentSelectable>();
                 Point3D tileLocation = new Point3D(selectable.MapLocation.X, selectable.MapLocation.Y, dimension.ID);
-                this.AddConnections(tileLocation, dimID);
+                this.AddConnections(tileLocation);
             }
         }
 
-        public bool IsRoutePossible(int dimension, Point3D origin, Point3D destination)
+        public bool IsRoutePossible(Point3D origin, Point3D destination)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public void RemoveConnections(Point3D location)

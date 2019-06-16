@@ -1,5 +1,7 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Pathfinding.TeleportationSearch;
 using MagicalLifeAPI.World.Data;
+using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Pathfinding
@@ -30,16 +32,17 @@ namespace MagicalLifeAPI.Pathfinding
         /// <param name="dimension"></param>
         public static void PrepForDimension(Dimension dimension)
         {
-            AStar.AStar star = new AStar.AStar();
-            star.Initialize(dimension);
-            PathFinders.Add(star);
+            Search search = new Search();
+            search.Initialize(dimension);
+            PathFinders.Add(search);
         }
 
         public static void Block(Point2D tile, int dimension)
         {
             if (PathFinders.Count > 0)
             {
-                PathFinders[dimension].RemoveConnections(tile);
+                Guid dimensionID = World.Data.World.Dimensions[dimension].ID;
+                PathFinders[dimension].RemoveConnections(Point3D.From2D(tile, dimensionID));
             }
         }
 
@@ -47,18 +50,21 @@ namespace MagicalLifeAPI.Pathfinding
         {
             if (PathFinders.Count > 0)
             {
-                PathFinders[dimension].AddConnections(tile);
+                Guid dimensionID = World.Data.World.Dimensions[dimension].ID;
+                PathFinders[dimension].AddConnections(Point3D.From2D(tile, dimensionID));
             }
         }
 
         public static List<PathLink> GetRoute(int dimension, Point2D start, Point2D end)
         {
-            return PathFinders[dimension].GetRoute(dimension, start, end);
+            Guid dimensionID = World.Data.World.Dimensions[dimension].ID;
+            return PathFinders[dimension].GetRoute(Point3D.From2D(start, dimensionID), Point3D.From2D(end, dimensionID));
         }
 
         public static bool IsRoutePossible(int dimension, Point2D origin, Point2D destination)
         {
-            return PathFinders[dimension].IsRoutePossible(dimension, origin, destination);
+            Guid dimensionID = World.Data.World.Dimensions[dimension].ID;
+            return PathFinders[dimension].IsRoutePossible(Point3D.From2D(origin, dimensionID), Point3D.From2D(destination, dimensionID));
         }
     }
 }

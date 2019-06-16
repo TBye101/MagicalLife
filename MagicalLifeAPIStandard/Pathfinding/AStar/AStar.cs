@@ -12,7 +12,7 @@ namespace MagicalLifeAPI.Pathfinding.AStar
     /// <summary>
     /// Uses an A* algorithm.
     /// </summary>
-    public class AStar : IPathFinder
+    public class AStar /*: IPathFinder*/
     {
         private Grid Grid;
 
