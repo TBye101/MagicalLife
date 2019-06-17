@@ -9,6 +9,8 @@ using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using System.Linq;
+using MagicalLifeAPI.Error.InternalExceptions;
+using MagicalLifeAPI.Filing.Logging;
 
 namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 {
@@ -101,8 +103,8 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             ExtraNodeData firstData = new ExtraNodeData(0, this.CalculateHScoreSameDim(origin, destination), null, origin);
             open.Add(firstData, this.Storage.GetNode(origin));
 
-            ExtraNodeData destinationData;
-            SearchNode lastNode;
+            ExtraNodeData destinationData = default;
+            SearchNode lastNode = null;
 
             while (!destinationReached)
             {
@@ -122,12 +124,17 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
                     foreach (Point3D item in value.Connections)
                     {
                         SearchNode neighboringNode = this.Storage.GetNode(item);
+                        MasterLog.DebugWriteLine("Node: " + value.Location.ToString() + " Connection: " + item.ToString());
 
                         if (closed.ContainsValue(neighboringNode))
                         {
                             KeyValuePair<ExtraNodeData, SearchNode> neighbor = closed.ElementAt(closed.IndexOfValue(neighboringNode));
                             if (lowestFKey.GScore < neighbor.Key.GScore)
                             {
+                                if (!this.PassTest(neighbor.Key, value))
+                                {
+                                    int breaky = 0;
+                                }
                                 ExtraNodeData key = neighbor.Key;
                                 SearchNode node = neighbor.Value;
 
@@ -144,6 +151,10 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 
                             if (lowestFKey.GScore < neighbor.Key.GScore)
                             {
+                                if (!this.PassTest(neighbor.Key, value))
+                                {
+                                    int breaky = 0;
+                                }
                                 ExtraNodeData key = neighbor.Key;
                                 SearchNode node = neighbor.Value;
 
@@ -162,9 +173,14 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
                         }
                     }
                 }
-            }//Pathfinds to destination correctly?, but is missing parent node need to find way to reconstruct the path from the nodes
+            }
 
-            return null;
+            return this.ReconstructPath(destinationData, lastNode, open, closed);
+        }
+
+        private bool PassTest(ExtraNodeData key, SearchNode value)
+        {
+            return Math.Abs((key.NodeLocation.X - value.Location.X)) <= 1 && Math.Abs(key.NodeLocation.Y - value.Location.Y) <= 1;
         }
 
         /// <summary>
@@ -174,18 +190,30 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
         /// <param name="open"></param>
         /// <param name="closed"></param>
         /// <returns></returns>
-        private List<PathLink> ReconstructPath(ExtraNodeData lastNodeData, SortedList<ExtraNodeData, SearchNode> open, SortedList<ExtraNodeData, SearchNode> closed)
+        private List<PathLink> ReconstructPath(ExtraNodeData lastNodeData, SearchNode lastNode, SortedList<ExtraNodeData, SearchNode> open, SortedList<ExtraNodeData, SearchNode> closed)
         {
-            List<PathLink> path = new List<PathLink>();
+            List<Point3D> links = new List<Point3D>();
 
-            bool reconstructed = false;
+            ExtraNodeData data = lastNodeData;
 
-            while (!reconstructed)
+            while (data.Parent != null)
             {
-
+                links.Add(data.NodeLocation);
+                KeyValuePair<ExtraNodeData, SearchNode> searchResult = this.GetNodeFromLists(data.Parent, open, closed);
+                data = searchResult.Key;
             }
 
-            return null;
+            links.Add(data.NodeLocation);
+
+            List<PathLink> path = new List<PathLink>();
+
+            int length = links.Count;
+            for (int i = 0; i < length - 1; i++)
+            {
+                path.Add(new PathLink(links[i], links[i + 1]));
+            }
+
+            return path;
         }
 
         private KeyValuePair<ExtraNodeData, SearchNode> GetNodeFromLists(SearchNode node, SortedList<ExtraNodeData,
