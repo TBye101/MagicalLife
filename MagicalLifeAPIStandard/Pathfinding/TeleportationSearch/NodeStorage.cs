@@ -94,8 +94,15 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
         /// <param name="b"></param>
         public void AddConnection(SearchNode a, SearchNode b)
         {
-            a.Connections.Add(b.Location);
-            b.Connections.Add(a.Location);
+            if (!a.Connections.Contains(b.Location))
+            {
+                a.Connections.Add(b.Location);
+            }
+            if (!b.Connections.Contains(a.Location))
+            {
+                b.Connections.Add(a.Location);
+            }
+
             this.LocationToConnected.TryGetValue(a.Location, out List<SearchNode> aConnections);
             this.LocationToConnected.TryGetValue(b.Location, out List<SearchNode> bConnections);
 

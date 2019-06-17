@@ -11,7 +11,7 @@ namespace MagicalLifeAPI.DataTypes
     /// A point that includes and x, y, and dimension.
     /// </summary>
     [ProtoContract]
-    public class Point3D : IComparable<Point3D>
+    public class Point3D : IComparable<Point3D>, IEquatable<Point3D>
     {
         public static readonly Point3D Zero = new Point3D(0, 0, Guid.Empty);
 
@@ -124,6 +124,11 @@ namespace MagicalLifeAPI.DataTypes
             {
                 return xComparison;
             }
+        }
+
+        public bool Equals(Point3D other)
+        {
+            return other.X == this.X && other.Y == this.Y && other.DimensionID.Equals(this.DimensionID);
         }
     }
 }

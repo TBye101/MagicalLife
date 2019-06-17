@@ -13,6 +13,7 @@ using System.Linq;
 namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 {
     //https://brilliant.org/wiki/a-star-search/
+	//https://stackoverflow.com/questions/12401481/a-star-algorithm-reconstruct-path
     public class Search : IPathFinder
     {
         private readonly NodeStorage Storage = new NodeStorage();
@@ -100,14 +101,19 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             ExtraNodeData firstData = new ExtraNodeData(0, this.CalculateHScoreSameDim(origin, destination), null, origin);
             open.Add(firstData, this.Storage.GetNode(origin));
 
+            ExtraNodeData destinationData;
+            SearchNode lastNode;
+
             while (!destinationReached)
             {
-                ExtraNodeData lowestFKey = open.Keys[0];
+                ExtraNodeData lowestFKey = open.Keys[open.Count - 1];
                 open.TryGetValue(lowestFKey, out SearchNode value);
 
                 if (value.Location.Equals(destination))
                 {
                     destinationReached = true;
+                    destinationData = lowestFKey;
+                    lastNode = value;
                 }
                 else
                 {
@@ -156,9 +162,47 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
                         }
                     }
                 }
-            }//Pathfinds to destination correctly, but is missing parent node need to find way to reconstruct the path from the nodes
+            }//Pathfinds to destination correctly?, but is missing parent node need to find way to reconstruct the path from the nodes
 
             return null;
+        }
+
+        /// <summary>
+        /// Reconstructs the path from the first node and the open and closed list.
+        /// </summary>
+        /// <param name="firstNodeData"></param>
+        /// <param name="open"></param>
+        /// <param name="closed"></param>
+        /// <returns></returns>
+        private List<PathLink> ReconstructPath(ExtraNodeData lastNodeData, SortedList<ExtraNodeData, SearchNode> open, SortedList<ExtraNodeData, SearchNode> closed)
+        {
+            List<PathLink> path = new List<PathLink>();
+
+            bool reconstructed = false;
+
+            while (!reconstructed)
+            {
+
+            }
+
+            return null;
+        }
+
+        private KeyValuePair<ExtraNodeData, SearchNode> GetNodeFromLists(SearchNode node, SortedList<ExtraNodeData,
+            SearchNode> open, SortedList<ExtraNodeData, SearchNode> closed)
+        {
+            int openIndex = open.IndexOfValue(node);
+
+            if (openIndex == -1)
+            {
+                int closedIndex = closed.IndexOfValue(node);
+
+                return open.ElementAt(closedIndex);
+            }
+            else
+            {
+                return open.ElementAt(openIndex);
+            }
         }
 
         private List<PathLink> DifferentDimensionsRoute(Point3D origin, Point3D destination)

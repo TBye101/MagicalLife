@@ -10,19 +10,20 @@ namespace MagicalLifeAPI.Pathfinding
     public class PathLink
     {
         [ProtoMember(1)]
-        public Point2D Origin;
+        public Point3D Origin;
 
         [ProtoMember(2)]
-        public Point2D Destination;
+        public Point3D Destination;
 
-        public PathLink(Point2D origin, Point2D destination)
+        public PathLink(Point3D origin, Point3D destination)
         {
             this.Origin = origin;
             this.Destination = destination;
         }
 
-        public PathLink()
+        protected PathLink()
         {
+            //Protobuf-net constructor
         }
     }
 }
