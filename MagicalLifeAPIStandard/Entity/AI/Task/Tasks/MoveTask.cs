@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Components.Entity;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity.AI.Task.Qualifications;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Messages;
@@ -55,6 +56,13 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
                 else
                 {
                     pth = MainPathFinder.GetRoute(living.Dimension, start, this.Destination);
+
+                    MasterLog.DebugWriteLine("Path start: " + start.ToString() + " to " + this.Destination.ToString());
+                    foreach (PathLink item in pth)
+                    {
+                        MasterLog.DebugWriteLine("Link: " + item.Origin.ToString() + " to " + item.Destination.ToString());
+                    }
+                    MasterLog.DebugWriteLine("Path end: " + start.ToString() + " to " + this.Destination.ToString());
                 }
 
                 MagicalLifeAPI.Util.Extensions.EnqueueCollection(movementComponent.QueuedMovement, pth);

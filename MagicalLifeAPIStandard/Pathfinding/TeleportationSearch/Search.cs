@@ -29,12 +29,16 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             int dimension = World.Data.World.Dimensions.FindIndex(x => x.ID.Equals(location.DimensionID));
 
             List<Point3D> neighbors = WorldUtil.GetNeighboringTiles(location, dimension);
+            Dimension dim = World.Data.World.Dimensions[dimension];
             foreach (Point3D item in neighbors)
             {
-                this.Storage.AddConnection(location, item);
+                Tile t = dim[item.X, item.Y];
+                if (t.IsWalkable)
+                {
+                    this.Storage.AddConnection(location, item);
+                }
             }
 
-            Dimension dim = World.Data.World.Dimensions[dimension];
             Tile tile = dim[location.X, location.Y];
 
             GameObject ceiling = tile.Ceiling;
@@ -131,10 +135,6 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
                             KeyValuePair<ExtraNodeData, SearchNode> neighbor = closed.ElementAt(closed.IndexOfValue(neighboringNode));
                             if (lowestFKey.GScore < neighbor.Key.GScore)
                             {
-                                if (!this.PassTest(neighbor.Key, value))
-                                {
-                                    int breaky = 0;
-                                }
                                 ExtraNodeData key = neighbor.Key;
                                 SearchNode node = neighbor.Value;
 
@@ -151,10 +151,6 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 
                             if (lowestFKey.GScore < neighbor.Key.GScore)
                             {
-                                if (!this.PassTest(neighbor.Key, value))
-                                {
-                                    int breaky = 0;
-                                }
                                 ExtraNodeData key = neighbor.Key;
                                 SearchNode node = neighbor.Value;
 
@@ -176,11 +172,6 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             }
 
             return this.ReconstructPath(destinationData, lastNode, open, closed);
-        }
-
-        private bool PassTest(ExtraNodeData key, SearchNode value)
-        {
-            return Math.Abs((key.NodeLocation.X - value.Location.X)) <= 1 && Math.Abs(key.NodeLocation.Y - value.Location.Y) <= 1;
         }
 
         /// <summary>
@@ -208,9 +199,9 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             List<PathLink> path = new List<PathLink>();
 
             int length = links.Count;
-            for (int i = 0; i < length - 1; i++)
+            for (int i = length - 1; i > 0 ; i--)
             {
-                path.Add(new PathLink(links[i], links[i + 1]));
+                path.Add(new PathLink(links[i], links[i - 1]));
             }
 
             return path;
@@ -225,7 +216,7 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             {
                 int closedIndex = closed.IndexOfValue(node);
 
-                return open.ElementAt(closedIndex);
+                return closed.ElementAt(closedIndex);
             }
             else
             {
