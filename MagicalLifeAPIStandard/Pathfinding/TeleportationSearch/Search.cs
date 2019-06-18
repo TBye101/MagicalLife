@@ -30,53 +30,59 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 
             List<Point3D> neighbors = WorldUtil.GetNeighboringTiles(location, dimension);
             Dimension dim = World.Data.World.Dimensions[dimension];
-            foreach (Point3D item in neighbors)
+
+            Tile targetLocation = dim[location.X, location.Y];
+
+            if (targetLocation.IsWalkable)
             {
-                Tile t = dim[item.X, item.Y];
-                if (t.IsWalkable)
+                foreach (Point3D item in neighbors)
+                {
+                    Tile t = dim[item.X, item.Y];
+                    if (t.IsWalkable)
+                    {
+                        this.Storage.AddConnection(location, item);
+                    }
+                }
+
+                Tile tile = dim[location.X, location.Y];
+
+                GameObject ceiling = tile.Ceiling;
+                GameObject floor = tile.Floor;
+                GameObject mainObject = tile.MainObject;
+                List<Point3D> extraConnections = new List<Point3D>();
+
+                if (ceiling != null)
+                {
+                    PortalComponent ceilingPortals = ceiling.GetComponent<PortalComponent>();
+
+                    if (ceilingPortals != null)
+                    {
+                        extraConnections.AddRange(ceilingPortals.Connections);
+                    }
+                }
+
+                if (floor != null)
+                {
+                    PortalComponent floorPortals = floor.GetComponent<PortalComponent>();
+                    if (floorPortals != null)
+                    {
+                        extraConnections.AddRange(floorPortals.Connections);
+                    }
+                }
+
+                if (mainObject != null)
+                {
+                    PortalComponent mainObjectPortals = mainObject.GetComponent<PortalComponent>();
+                    if (mainObjectPortals != null)
+                    {
+                        extraConnections.AddRange(mainObjectPortals.Connections);
+                    }
+                }
+
+                foreach (Point3D item in extraConnections)
                 {
                     this.Storage.AddConnection(location, item);
                 }
-            }
-
-            Tile tile = dim[location.X, location.Y];
-
-            GameObject ceiling = tile.Ceiling;
-            GameObject floor = tile.Floor;
-            GameObject mainObject = tile.MainObject;
-            List<Point3D> extraConnections = new List<Point3D>();
-
-            if (ceiling != null)
-            {
-                PortalComponent ceilingPortals = ceiling.GetComponent<PortalComponent>();
-
-                if (ceilingPortals != null)
-                {
-                    extraConnections.AddRange(ceilingPortals.Connections);
-                }
-            }
-
-            if (floor != null)
-            {
-                PortalComponent floorPortals = floor.GetComponent<PortalComponent>();
-                if (floorPortals != null)
-                {
-                    extraConnections.AddRange(floorPortals.Connections);
-                }
-            }
-
-            if (mainObject != null)
-            {
-                PortalComponent mainObjectPortals = mainObject.GetComponent<PortalComponent>();
-                if (mainObjectPortals != null)
-                {
-                    extraConnections.AddRange(mainObjectPortals.Connections);
-                }
-            }
-
-            foreach (Point3D item in extraConnections)
-            {
-                this.Storage.AddConnection(location, item);
             }
         }
 
@@ -171,8 +177,38 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
                 }
             }
 
-            return this.ReconstructPath(destinationData, lastNode, open, closed);
+            List<PathLink> ret = this.ReconstructPath(destinationData, lastNode, open, closed, origin);
+            //this.Cleanup(open, closed);
+            return ret;
         }
+
+        /// <summary>
+        /// Cleans up the stored calculations from the most recent search.
+        /// </summary>
+        /// <param name="open"></param>
+        /// <param name="closed"></param>
+        //private void Cleanup(SortedList<ExtraNodeData, SearchNode> open, SortedList<ExtraNodeData, SearchNode> closed)
+        //{
+        //    int openLength = open.Count;
+        //    for (int i = 0; i < openLength; i++)
+        //    {
+        //        this.CleanNode(open.ElementAt(i).Value);
+        //    }
+
+        //    int closedLength = closed.Count;
+        //    for (int i = 0; i < closedLength; i++)
+        //    {
+        //        this.CleanNode(closed.ElementAt(i).Value);
+        //    }
+        //}
+
+        ///// <summary>
+        ///// Cleans up a single <see cref="SearchNode"/> object.
+        ///// </summary>
+        ///// <param name="node"></param>
+        //private void CleanNode(SearchNode node)
+        //{
+        //}
 
         /// <summary>
         /// Reconstructs the path from the first node and the open and closed list.
@@ -181,7 +217,7 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
         /// <param name="open"></param>
         /// <param name="closed"></param>
         /// <returns></returns>
-        private List<PathLink> ReconstructPath(ExtraNodeData lastNodeData, SearchNode lastNode, SortedList<ExtraNodeData, SearchNode> open, SortedList<ExtraNodeData, SearchNode> closed)
+        private List<PathLink> ReconstructPath(ExtraNodeData lastNodeData, SearchNode lastNode, SortedList<ExtraNodeData, SearchNode> open, SortedList<ExtraNodeData, SearchNode> closed, Point3D origin)
         {
             List<Point3D> links = new List<Point3D>();
 
@@ -195,6 +231,7 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             }
 
             links.Add(data.NodeLocation);
+            links.Add(origin);
 
             List<PathLink> path = new List<PathLink>();
 
