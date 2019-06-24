@@ -15,7 +15,10 @@ using MagicalLifeAPI.Filing.Logging;
 namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 {
     //https://brilliant.org/wiki/a-star-search/
-	//https://stackoverflow.com/questions/12401481/a-star-algorithm-reconstruct-path
+    //https://stackoverflow.com/questions/12401481/a-star-algorithm-reconstruct-path
+    //https://en.wikipedia.org/wiki/A*_search_algorithm
+    //https://github.com/roy-t/AStar/blob/master/Roy-T.AStar/PathFinder.cs
+
     public class Search : IPathFinder
     {
         private readonly NodeStorage Storage = new NodeStorage();
@@ -24,11 +27,43 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
         {
         }
 
+        /// <summary>
+        /// Gets all of the neighbors, but returns diagnol neighbors first.
+        /// </summary>
+        /// <param name="tileLocation"></param>
+        /// <param name="dimension"></param>
+        /// <returns></returns>
+        private List<Point3D> DiagnolFavorNeighboringTiles(Point3D tileLocation, int dimension)
+        {
+            Guid dimensionID = World.Data.World.Dimensions[dimension].ID;
+
+            List<Point3D> neighbors = new List<Point3D>();
+
+            neighbors.Add(new Point3D(tileLocation.X + 1, tileLocation.Y + 1, dimensionID));
+            neighbors.Add(new Point3D(tileLocation.X + 1, tileLocation.Y - 1, dimensionID));
+            neighbors.Add(new Point3D(tileLocation.X - 1, tileLocation.Y + 1, dimensionID));
+            neighbors.Add(new Point3D(tileLocation.X - 1, tileLocation.Y - 1, dimensionID));
+            neighbors.Add(new Point3D(tileLocation.X + 1, tileLocation.Y, dimensionID));
+            neighbors.Add(new Point3D(tileLocation.X - 1, tileLocation.Y, dimensionID));
+            neighbors.Add(new Point3D(tileLocation.X, tileLocation.Y + 1, dimensionID));
+            neighbors.Add(new Point3D(tileLocation.X, tileLocation.Y - 1, dimensionID));
+
+            for (int i = neighbors.Count - 1; i > -1; i--)
+            {
+                if (!WorldUtil.DoesTileExist(neighbors[i], dimension))
+                {
+                    neighbors.RemoveAt(i);
+                }
+            }
+
+            return neighbors;
+        }
+
         public void AddConnections(Point3D location)
         {
             int dimension = World.Data.World.Dimensions.FindIndex(x => x.ID.Equals(location.DimensionID));
 
-            List<Point3D> neighbors = WorldUtil.GetNeighboringTiles(location, dimension);
+            List<Point3D> neighbors = this.DiagnolFavorNeighboringTiles(location, dimension);
             Dimension dim = World.Data.World.Dimensions[dimension];
 
             Tile targetLocation = dim[location.X, location.Y];
@@ -98,7 +133,74 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             }
         }
 
-        private List<PathLink> SameDimensionRoute(Point3D origin, Point3D destination)
+        private List<PathLink> test(Point3D origin, Point3D destination)
+        {
+            if (origin.Equals(destination))
+            {
+                return new List<PathLink>();
+            }
+            else
+            {
+                SortedList<ExtraNodeData, SearchNode> open = new SortedList<ExtraNodeData, SearchNode>();
+                SortedList<ExtraNodeData, SearchNode> closed = new SortedList<ExtraNodeData, SearchNode>();
+
+                ExtraNodeData firstData = new ExtraNodeData(0, this.CalculateHScoreSameDim(origin, destination), null, origin);
+                open.Add(firstData, this.Storage.GetNode(origin));
+
+                while (open.Count > 0)
+                {
+                    ExtraNodeData lowestFKey = open.Keys[open.Count - 1];
+                    open.TryGetValue(lowestFKey, out SearchNode value);
+
+                    if (value.Location.Equals(destination))
+                    {
+                        return this.ReconstructPath(lowestFKey, value, open, closed, origin);
+                    }
+                    else
+                    {
+                        open.Remove(lowestFKey);
+                        closed.Add(lowestFKey, value);
+
+
+                        foreach (Point3D item in value.Connections)
+                        {
+                            SearchNode neighbor = this.Storage.GetNode(item);
+                            ExtraNodeData extraNeighborData;
+
+                            int openIndexPosition = open.IndexOfValue(neighbor);
+
+                            if (openIndexPosition == -1)
+                            {
+                                int closedIndexPosition = closed.IndexOfValue(neighbor);
+
+                                if (closedIndexPosition == -1)
+                                {
+                                    extraNeighborData = new ExtraNodeData(lowestFKey.GScore + neighbor.Cost, this.CalculateHScoreSameDim(neighbor.Location, destination), null, neighbor.Location);
+                                    open.Add(extraNeighborData, neighbor);
+                                }
+                                else
+                                {
+                                    extraNeighborData = closed.ElementAt(closedIndexPosition).Key;
+                                }
+                            }
+                            else
+                            {
+                                extraNeighborData = open.ElementAt(openIndexPosition).Key;
+                            }
+
+                            if ((extraNeighborData.HScore + neighbor.Cost < lowestFKey.HScore))
+                            {
+                                extraNeighborData.Parent = value;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        private List<PathLink> SameDimensionRoute(Point3D origin, Point3D destination)//Maybe weight diaganols less somehow
         {
             /*
                 f(n) = total estimated cost of path through node 
@@ -106,109 +208,115 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
                 h(n) = estimated cost from  to goal. This is the heuristic part of the cost function, so it is like a guess.
             */
 
-            bool destinationReached = false;
-            SortedList<ExtraNodeData, SearchNode> open = new SortedList<ExtraNodeData, SearchNode>();
-            SortedList<ExtraNodeData, SearchNode> closed = new SortedList<ExtraNodeData, SearchNode>();
+            return this.test(origin, destination);
 
-            ExtraNodeData firstData = new ExtraNodeData(0, this.CalculateHScoreSameDim(origin, destination), null, origin);
-            open.Add(firstData, this.Storage.GetNode(origin));
+            //bool destinationReached = false;
+            //SortedList<ExtraNodeData, SearchNode> open = new SortedList<ExtraNodeData, SearchNode>();
+            //SortedList<ExtraNodeData, SearchNode> closed = new SortedList<ExtraNodeData, SearchNode>();
 
-            ExtraNodeData destinationData = default;
-            SearchNode lastNode = null;
+            //ExtraNodeData firstData = new ExtraNodeData(0, this.CalculateHScoreSameDim(origin, destination), null, origin);
+            //open.Add(firstData, this.Storage.GetNode(origin));
 
-            while (!destinationReached)
+            //ExtraNodeData destinationData = default;
+            //SearchNode lastNode = null;
+
+            //while (!destinationReached)
+            //{
+            //    ExtraNodeData lowestFKey = open.Keys[open.Count - 1];
+            //    open.TryGetValue(lowestFKey, out SearchNode value);
+
+            //    if (value.Location.Equals(destination))
+            //    {
+            //        destinationReached = true;
+            //        destinationData = lowestFKey;
+            //        lastNode = value;
+            //    }
+            //    else
+            //    {
+            //        open.Remove(lowestFKey);
+            //        closed.Add(lowestFKey, value);
+            //        foreach (Point3D item in value.Connections)
+            //        {
+            //            SearchNode neighboringNode = this.Storage.GetNode(item);
+            //            MasterLog.DebugWriteLine("Node: " + value.Location.ToString() + " Connection: " + item.ToString());
+
+            //            if (closed.ContainsValue(neighboringNode))
+            //            {
+            //                KeyValuePair<ExtraNodeData, SearchNode> neighbor = closed.ElementAt(closed.IndexOfValue(neighboringNode));
+            //                if (lowestFKey.GScore < neighbor.Key.GScore)
+            //                {
+            //                    ExtraNodeData key = neighbor.Key;
+            //                    SearchNode node = neighbor.Value;
+
+            //                    closed.Remove(neighbor.Key);
+
+            //                    key.GScore = lowestFKey.GScore;
+            //                    key.Parent = value;
+            //                    closed.Add(key, node);
+            //                }
+            //            }
+            //            else if (open.ContainsValue(neighboringNode))
+            //            {
+            //                KeyValuePair<ExtraNodeData, SearchNode> neighbor = open.ElementAt(open.IndexOfValue(neighboringNode));
+
+            //                if (lowestFKey.GScore < neighbor.Key.GScore)
+            //                {
+            //                    ExtraNodeData key = neighbor.Key;
+            //                    SearchNode node = neighbor.Value;
+
+            //                    open.Remove(neighbor.Key);
+            //                    key.GScore = lowestFKey.GScore;
+            //                    key.Parent = value;
+            //                    open.Add(key, node);
+            //                }
+            //            }
+            //            else
+            //            {
+            //                int hScore = this.CalculateHScoreSameDim(item, destination);
+            //                float gScore = lowestFKey.GScore + neighboringNode.Cost;
+            //                ExtraNodeData data = new ExtraNodeData(gScore, hScore, null, neighboringNode.Location);
+            //                open.Add(data, neighboringNode);//Need to add a location to the key, so that they aren't as overlapping
+            //            }
+            //        }
+            //    }
+            //}
+
+            //List<PathLink> ret = this.ReconstructPath(destinationData, lastNode, open, closed, origin);
+            ////this.Cleanup(open, closed);
+            //return ret;
+        }
+
+        private Point3D getLowestGScore(List<Point3D> connections, SortedList<ExtraNodeData, SearchNode> open, SortedList<ExtraNodeData, SearchNode> closed)
+        {
+            int length = connections.Count;
+            ExtraNodeData lowestGNode = default;
+            lowestGNode.GScore = int.MaxValue;
+
+
+            for (int i = 0; i < length; i++)
             {
-                ExtraNodeData lowestFKey = open.Keys[open.Count - 1];
-                open.TryGetValue(lowestFKey, out SearchNode value);
+                Point3D connection = connections[i];
+                SearchNode connectedNode = this.Storage.GetNode(connection);
 
-                if (value.Location.Equals(destination))
+                KeyValuePair<ExtraNodeData, SearchNode> nodeData = this.GetNodeFromLists(connectedNode, open, closed);
+                if (!nodeData.Equals(default(KeyValuePair<ExtraNodeData, SearchNode>)))
                 {
-                    destinationReached = true;
-                    destinationData = lowestFKey;
-                    lastNode = value;
-                }
-                else
-                {
-                    open.Remove(lowestFKey);
-                    closed.Add(lowestFKey, value);
-                    foreach (Point3D item in value.Connections)
+                    if (nodeData.Key.GScore < lowestGNode.GScore)
                     {
-                        SearchNode neighboringNode = this.Storage.GetNode(item);
-                        MasterLog.DebugWriteLine("Node: " + value.Location.ToString() + " Connection: " + item.ToString());
-
-                        if (closed.ContainsValue(neighboringNode))
-                        {
-                            KeyValuePair<ExtraNodeData, SearchNode> neighbor = closed.ElementAt(closed.IndexOfValue(neighboringNode));
-                            if (lowestFKey.GScore < neighbor.Key.GScore)
-                            {
-                                ExtraNodeData key = neighbor.Key;
-                                SearchNode node = neighbor.Value;
-
-                                closed.Remove(neighbor.Key);
-
-                                key.GScore = lowestFKey.GScore;
-                                key.Parent = value;
-                                closed.Add(key, node);
-                            }
-                        }
-                        else if (open.ContainsValue(neighboringNode))
-                        {
-                            KeyValuePair<ExtraNodeData, SearchNode> neighbor = open.ElementAt(open.IndexOfValue(neighboringNode));
-
-                            if (lowestFKey.GScore < neighbor.Key.GScore)
-                            {
-                                ExtraNodeData key = neighbor.Key;
-                                SearchNode node = neighbor.Value;
-
-                                open.Remove(neighbor.Key);
-                                key.GScore = lowestFKey.GScore;
-                                key.Parent = value;
-                                open.Add(key, node);
-                            }
-                        }
-                        else
-                        {
-                            int hScore = this.CalculateHScoreSameDim(item, destination);
-                            int gScore = lowestFKey.GScore + neighboringNode.Cost;
-                            ExtraNodeData data = new ExtraNodeData(gScore, hScore, null, neighboringNode.Location);
-                            open.Add(data, neighboringNode);//Need to add a location to the key, so that they aren't as overlapping
-                        }
+                        lowestGNode = nodeData.Key;
                     }
                 }
             }
 
-            List<PathLink> ret = this.ReconstructPath(destinationData, lastNode, open, closed, origin);
-            //this.Cleanup(open, closed);
-            return ret;
+            if (lowestGNode.Equals(default(KeyValuePair<ExtraNodeData, SearchNode>)))
+            {
+                return null;
+            }
+            else
+            {
+                return lowestGNode.NodeLocation;
+            }
         }
-
-        /// <summary>
-        /// Cleans up the stored calculations from the most recent search.
-        /// </summary>
-        /// <param name="open"></param>
-        /// <param name="closed"></param>
-        //private void Cleanup(SortedList<ExtraNodeData, SearchNode> open, SortedList<ExtraNodeData, SearchNode> closed)
-        //{
-        //    int openLength = open.Count;
-        //    for (int i = 0; i < openLength; i++)
-        //    {
-        //        this.CleanNode(open.ElementAt(i).Value);
-        //    }
-
-        //    int closedLength = closed.Count;
-        //    for (int i = 0; i < closedLength; i++)
-        //    {
-        //        this.CleanNode(closed.ElementAt(i).Value);
-        //    }
-        //}
-
-        ///// <summary>
-        ///// Cleans up a single <see cref="SearchNode"/> object.
-        ///// </summary>
-        ///// <param name="node"></param>
-        //private void CleanNode(SearchNode node)
-        //{
-        //}
 
         /// <summary>
         /// Reconstructs the path from the first node and the open and closed list.
@@ -221,27 +329,51 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
         {
             List<Point3D> links = new List<Point3D>();
 
-            ExtraNodeData data = lastNodeData;
+            //ExtraNodeData data = lastNodeData;
+            SearchNode dataNode = lastNode;
 
-            while (data.Parent != null)
+            while (!dataNode.Location.Equals(origin))
             {
-                links.Add(data.NodeLocation);
-                KeyValuePair<ExtraNodeData, SearchNode> searchResult = this.GetNodeFromLists(data.Parent, open, closed);
-                data = searchResult.Key;
+                links.Add(dataNode.Location);
+                Point3D lowest = this.getLowestGScore(dataNode.Connections, open, closed);
+                dataNode = this.Storage.GetNode(lowest);
             }
 
-            links.Add(data.NodeLocation);
             links.Add(origin);
 
             List<PathLink> path = new List<PathLink>();
 
             int length = links.Count;
-            for (int i = length - 1; i > 0 ; i--)
+            for (int i = length - 1; i > 0; i--)
             {
                 path.Add(new PathLink(links[i], links[i - 1]));
             }
 
             return path;
+
+            //List<Point3D> links = new List<Point3D>();
+
+            //ExtraNodeData data = lastNodeData;
+
+            //while (data.Parent != null)
+            //{
+            //    links.Add(data.NodeLocation);
+            //    KeyValuePair<ExtraNodeData, SearchNode> searchResult = this.GetNodeFromLists(data.Parent, open, closed);
+            //    data = searchResult.Key;
+            //}
+
+            //links.Add(data.NodeLocation);
+            //links.Add(origin);
+
+            //List<PathLink> path = new List<PathLink>();
+
+            //int length = links.Count;
+            //for (int i = length - 1; i > 0 ; i--)
+            //{
+            //    path.Add(new PathLink(links[i], links[i - 1]));
+            //}
+
+            //return path;
         }
 
         private KeyValuePair<ExtraNodeData, SearchNode> GetNodeFromLists(SearchNode node, SortedList<ExtraNodeData,
@@ -253,7 +385,14 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             {
                 int closedIndex = closed.IndexOfValue(node);
 
-                return closed.ElementAt(closedIndex);
+                if (closedIndex == -1)
+                {
+                    return default;
+                }
+                else
+                {
+                    return closed.ElementAt(closedIndex);
+                }
             }
             else
             {
@@ -268,7 +407,8 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 
         private int CalculateHScoreSameDim(Point3D node, Point3D destination)
         {
-            return Math.Abs(node.X - destination.X) + Math.Abs(node.Y - destination.Y);
+            //return Math.Abs(node.X - destination.X) + Math.Abs(node.Y - destination.Y);
+            return (int)Math.Sqrt(Math.Pow(destination.X - node.X, 2) + Math.Pow(destination.Y - node.Y, 2));
             //Need to come up with a way to calculate distance between Point3D, even if they are in different dimensions.
         }
 

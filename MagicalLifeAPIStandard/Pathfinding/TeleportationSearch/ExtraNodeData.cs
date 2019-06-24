@@ -12,7 +12,7 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
     /// </summary>
     public struct ExtraNodeData : IComparable<ExtraNodeData>, IEquatable<ExtraNodeData>
     {
-        public int GScore { get; set; }
+        public float GScore { get; set; }
         public int HScore { get; set; }
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 
         public Point3D NodeLocation { get; set; }
 
-        public ExtraNodeData(int gScore, int hScore, SearchNode parent, Point3D nodeLocation)
+        public ExtraNodeData(float gScore, int hScore, SearchNode parent, Point3D nodeLocation)
         {
             this.GScore = gScore;
             this.HScore = hScore;
@@ -40,8 +40,8 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 
         public int CompareTo(ExtraNodeData other)
         {
-            int xF = other.GScore + other.HScore;
-            int yF = this.GScore + this.HScore;
+            float xF = other.GScore + other.HScore;
+            float yF = this.GScore + this.HScore;
 
             int fScoreComparison = xF.CompareTo(yF);
 
