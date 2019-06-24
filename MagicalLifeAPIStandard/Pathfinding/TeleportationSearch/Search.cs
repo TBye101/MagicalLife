@@ -11,6 +11,7 @@ using MagicalLifeAPI.World.Data;
 using System.Linq;
 using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.Filing.Logging;
+using System.Diagnostics;
 
 namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 {
@@ -298,6 +299,11 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 
         public void Initialize(Dimension dimension)
         {
+            GC.Collect();
+
+            Stopwatch sw = Stopwatch.StartNew();
+
+
             //I think I'll need to add all nodes from all dimensions to storage first before I can add connections.
             //Maybe
             foreach (Tile item in dimension)
@@ -313,8 +319,18 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             {
                 ComponentSelectable selectable = item.GetExactComponent<ComponentSelectable>();
                 Point3D tileLocation = new Point3D(selectable.MapLocation.X, selectable.MapLocation.Y, dimension.ID);
-                this.AddConnections(tileLocation);
+                this.AddConnections(tileLocation);//This gets more expensive as time goes on
             }
+
+            sw.Stop();
+            double milli = 1000;
+            double elapsedMill = sw.ElapsedMilliseconds;
+            double initTime = (elapsedMill / milli);
+            double aveTileTime = ((elapsedMill / (dimension.Width * dimension.Height)) / milli);
+
+            MasterLog.DebugWriteLine("Initialization time for dimension: " + initTime.ToString() + " seconds");
+            MasterLog.DebugWriteLine("Dimension size: " + (dimension.Width * Chunk.Width).ToString() + "X" + (dimension.Height * Chunk.Height).ToString());
+            MasterLog.DebugWriteLine("Average time per tile: " + aveTileTime.ToString() + " seconds");
         }
 
         public bool IsRoutePossible(Point3D origin, Point3D destination)

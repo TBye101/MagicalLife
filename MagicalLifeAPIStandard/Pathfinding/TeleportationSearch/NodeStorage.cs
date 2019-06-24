@@ -60,8 +60,9 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 
         public SearchNode GetNode(Point3D nodeLocation)
         {
-            this.LocationToNode.TryGetValue(nodeLocation, out SearchNode node);
-            return node;
+            //this.LocationToNode.TryGetValue(nodeLocation, out SearchNode node);
+            //return node;
+            return this.LocationToNode[nodeLocation];
         }
 
         /// <summary>
