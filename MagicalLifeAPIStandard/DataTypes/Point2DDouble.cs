@@ -40,7 +40,13 @@ namespace MagicalLifeAPI.DataTypes
 
         public override int GetHashCode()
         {
-            return (int)this.X ^ (int)this.Y;
+            unchecked
+            {
+                int hash = 17;
+                hash = (hash * 3) + this.X.GetHashCode();
+                hash = (hash * 3) + this.Y.GetHashCode();
+                return hash;
+            }
         }
 
         public bool Equals(Point2DDouble other)

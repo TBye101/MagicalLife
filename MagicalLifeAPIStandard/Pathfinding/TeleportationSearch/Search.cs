@@ -22,7 +22,7 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 
     public class Search : IPathFinder
     {
-        private readonly NodeStorage Storage = new NodeStorage();
+        private NodeStorage Storage;
 
         public Search()
         {
@@ -38,7 +38,7 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
         {
             Guid dimensionID = World.Data.World.Dimensions[dimension].ID;
 
-            List<Point3D> neighbors = new List<Point3D>();
+            List<Point3D> neighbors = new List<Point3D>(8);
 
             neighbors.Add(new Point3D(tileLocation.X + 1, tileLocation.Y + 1, dimensionID));
             neighbors.Add(new Point3D(tileLocation.X + 1, tileLocation.Y - 1, dimensionID));
@@ -60,10 +60,8 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             return neighbors;
         }
 
-        public void AddConnections(Point3D location)
+        public void AddConnections(Point3D location, int dimension)
         {
-            int dimension = World.Data.World.Dimensions.FindIndex(x => x.ID.Equals(location.DimensionID));
-
             List<Point3D> neighbors = this.DiagnolFavorNeighboringTiles(location, dimension);
             Dimension dim = World.Data.World.Dimensions[dimension];
 
@@ -303,7 +301,7 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 
             Stopwatch sw = Stopwatch.StartNew();
 
-
+            this.Storage = new NodeStorage(dimension.Width * Chunk.Width * dimension.Height * Chunk.Height);
             //I think I'll need to add all nodes from all dimensions to storage first before I can add connections.
             //Maybe
             foreach (Tile item in dimension)
@@ -314,12 +312,13 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
                 this.Storage.AddNode(newNode);
             }
 
+
             int dimID = World.Data.World.Dimensions.FindIndex(x => x.ID.Equals(dimension.ID));
             foreach (Tile item in dimension)
             {
                 ComponentSelectable selectable = item.GetExactComponent<ComponentSelectable>();
                 Point3D tileLocation = new Point3D(selectable.MapLocation.X, selectable.MapLocation.Y, dimension.ID);
-                this.AddConnections(tileLocation);//This gets more expensive as time goes on
+                this.AddConnections(tileLocation, dimID);//This gets more expensive as time goes on
             }
 
             sw.Stop();

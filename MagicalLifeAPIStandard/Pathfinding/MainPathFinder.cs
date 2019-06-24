@@ -51,7 +51,7 @@ namespace MagicalLifeAPI.Pathfinding
             if (PathFinders.Count > 0)
             {
                 Guid dimensionID = World.Data.World.Dimensions[dimension].ID;
-                PathFinders[dimension].AddConnections(Point3D.From2D(tile, dimensionID));
+                PathFinders[dimension].AddConnections(Point3D.From2D(tile, dimensionID), dimension);
             }
         }
 

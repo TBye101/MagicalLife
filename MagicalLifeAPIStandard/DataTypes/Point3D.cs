@@ -49,7 +49,14 @@ namespace MagicalLifeAPI.DataTypes
 
         public override int GetHashCode()
         {
-            return 0;
+            unchecked
+            {
+                int hash = 17;
+                hash = (hash * 3) + this.DimensionID.GetHashCode();
+                hash = (hash * 3) + this.X.GetHashCode();
+                hash = (hash * 3) + this.Y.GetHashCode();
+                return hash;
+            }
         }
 
         public static implicit operator Point(Point3D value)

@@ -16,13 +16,7 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
         /// Key: The location of the node.
         /// Value: the actual node.
         /// </summary>
-        private readonly Dictionary<Point3D, SearchNode> LocationToNode;
-
-        /// <summary>
-        /// Key: The location of a node.
-        /// Value: The connected nodes. 
-        /// </summary>
-        private readonly Dictionary<Point3D, List<SearchNode>> LocationToConnected;
+        public readonly Dictionary<Point3D, SearchNode> LocationToNode;
 
         /// <summary>
         /// Key: The two dimensions that have connecting nodes.
@@ -30,10 +24,9 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
         /// </summary>
         public readonly Dictionary<TwoGuid, List<SearchNode>> DimensionOutNodes;
 
-        public NodeStorage()
+        public NodeStorage(int nodes)
         {
-            this.LocationToNode = new Dictionary<Point3D, SearchNode>();
-            this.LocationToConnected = new Dictionary<Point3D, List<SearchNode>>();
+            this.LocationToNode = new Dictionary<Point3D, SearchNode>(nodes);
             this.DimensionOutNodes = new Dictionary<TwoGuid, List<SearchNode>>();
         }
 
@@ -70,10 +63,10 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
         /// </summary>
         /// <param name="nodeLocation"></param>
         /// <returns></returns>
-        public IReadOnlyList<SearchNode> GetConnected(Point3D nodeLocation)
+        public IReadOnlyList<Point3D> GetConnected(Point3D nodeLocation)
         {
-            this.LocationToConnected.TryGetValue(nodeLocation, out List<SearchNode> connected);
-            return connected;
+            this.LocationToNode.TryGetValue(nodeLocation, out SearchNode node);
+            return node.Connections;
         }
 
         /// <summary>
@@ -102,33 +95,6 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             if (!b.Connections.Contains(a.Location))
             {
                 b.Connections.Add(a.Location);
-            }
-
-            this.LocationToConnected.TryGetValue(a.Location, out List<SearchNode> aConnections);
-            this.LocationToConnected.TryGetValue(b.Location, out List<SearchNode> bConnections);
-
-            if (aConnections == null)
-            {
-                this.LocationToConnected.Add(a.Location, new List<SearchNode>() { b });
-            }
-            else
-            {
-                if (!aConnections.Contains(b))
-                {
-                    aConnections.Add(b);
-                }
-            }
-
-            if (bConnections == null)
-            {
-                this.LocationToConnected.Add(b.Location, new List<SearchNode>() { a });
-            }
-            else
-            {
-                if (!bConnections.Contains(a))
-                {
-                    bConnections.Add(a);
-                }
             }
 
             if (!a.Location.DimensionID.Equals(b.Location.DimensionID))
@@ -172,10 +138,8 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
         /// <param name="b"></param>
         public void RemoveConnection(SearchNode a, SearchNode b)
         {
-            this.LocationToConnected.TryGetValue(a.Location, out List<SearchNode> aConnections);
-            this.LocationToConnected.TryGetValue(b.Location, out List<SearchNode> bConnections);
-            aConnections.Remove(b);
-            bConnections.Remove(a);
+            a.Connections.Remove(b.Location);
+            b.Connections.Remove(a.Location);
 
             if (!a.Location.DimensionID.Equals(b.Location.DimensionID))
             {
