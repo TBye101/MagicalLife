@@ -9,6 +9,7 @@ using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -27,11 +28,11 @@ namespace MagicalLifeServer.Processing.Message
         {
             RouteCreatedMessage msg = (RouteCreatedMessage)message;
 
-            if (this.Validated(msg.Path, msg.Dimension))
+            if (this.Validated(msg.Path, msg.DimensionID))
             {
                 Point2D location = msg.Path[0].Origin;
                 Point2D chunkLocation = WorldUtil.CalculateChunkLocation(location);
-                Chunk chunk = World.GetChunk(msg.Dimension, chunkLocation.X, chunkLocation.Y);
+                Chunk chunk = World.GetChunk(msg.DimensionID, chunkLocation.X, chunkLocation.Y);
 
                 Living l = chunk.Creatures.Where(t => t.Value.GetExactComponent<ComponentSelectable>().MapLocation.Equals(location)).ElementAt(0).Value;
 
@@ -48,12 +49,12 @@ namespace MagicalLifeServer.Processing.Message
             }
         }
 
-        private bool Validated(List<PathLink> msg, int dimension)
+        private bool Validated(List<PathLink> msg, Guid dimensionID)
         {
             foreach (PathLink item in msg)
             {
-                bool a = World.Dimensions[dimension][item.Origin.X, item.Origin.Y].IsWalkable;
-                bool b = World.Dimensions[dimension][item.Destination.X, item.Destination.Y].IsWalkable;
+                bool a = World.Dimensions[dimensionID][item.Origin.X, item.Origin.Y].IsWalkable;
+                bool b = World.Dimensions[dimensionID][item.Destination.X, item.Destination.Y].IsWalkable;
 
                 if (!a || !b)
                 {

@@ -17,7 +17,7 @@ namespace MagicalLifeAPI.GUI
         /// The location of this selectable in game object.
         /// </summary>
         [ProtoMember(2)]
-        public Point2D MapLocation { get; set; }
+        public Point3D MapLocation { get; set; }
 
         [ProtoMember(3)]
         public int Dimension { get; set; }

@@ -21,7 +21,7 @@ namespace MagicalLifeAPI.Components.Resource
             //Protobuf-net constructor.
         }
 
-        public override Tile ResultingTile(Point3D location, int dimension)
+        public override Tile ResultingTile(Point3D location)
         {
             return new TilledDirt(location);
         }

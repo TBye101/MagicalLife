@@ -27,7 +27,7 @@ namespace MagicalLifeAPI.Networking.World.Modifiers
         public override void ModifyWorld()
         {
             ComponentSelectable livingData = this.Living.GetExactComponent<ComponentSelectable>();
-            Chunk chunk = MagicalLifeAPI.World.Data.World.GetChunkByTile(this.Living.Dimension, livingData.MapLocation.X, livingData.MapLocation.Y);
+            Chunk chunk = MagicalLifeAPI.World.Data.World.GetChunkByTile(this.Living.DimensionID, livingData.MapLocation.X, livingData.MapLocation.Y);
             chunk.Creatures.Add(this.Living.ID, this.Living);
         }
     }

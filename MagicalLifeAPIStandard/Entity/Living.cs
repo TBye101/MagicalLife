@@ -31,7 +31,7 @@ namespace MagicalLifeAPI.Entity
         /// The dimension that this creature is in.
         /// </summary>
         [ProtoMember(2)]
-        public int Dimension { get; set; }
+        public Guid DimensionID { get; set; }
 
         [ProtoMember(3)]
         public MagicalTask Task { get; set; }
@@ -80,8 +80,8 @@ namespace MagicalLifeAPI.Entity
         /// <param name="playerID"></param>
         /// <param name="creatureTypeName">The name of our creature's type. Ex: Lion, Human, Robot.</param>
         /// <param name="creatureName">The name of this specific creature.</param>
-        protected Living(int health, double movementSpeed, Point2D location,
-            int dimension, Guid playerID, string creatureTypeName, string creatureName)
+        protected Living(int health, double movementSpeed, Point3D location,
+            Guid dimensionID, Guid playerID, string creatureTypeName, string creatureName)
             : base(true)
         {
             this.AddComponent(new ComponentSelectable(SelectionType.Creature));
@@ -89,7 +89,7 @@ namespace MagicalLifeAPI.Entity
 
             this.ID = Guid.NewGuid();
             this.PlayerID = playerID;
-            this.Initialize(health, movementSpeed, location, dimension);
+            this.Initialize(health, movementSpeed, location, dimensionID);
             this.CreatureSkills = new List<Skill>();
             this.CreatureTypeName = creatureTypeName;
             this.CreatureName = creatureName;
@@ -100,11 +100,11 @@ namespace MagicalLifeAPI.Entity
         {
         }
 
-        protected void Initialize(int health, double movementSpeed, Point2D location, int dimension)
+        protected void Initialize(int health, double movementSpeed, Point3D location, Guid dimensionID)
         {
             this.Health = new Attribute32(health);
             this.GetExactComponent<ComponentSelectable>().MapLocation = location;
-            this.Dimension = dimension;
+            this.DimensionID = dimensionID;
             LivingCreatedHandler(new LivingEventArg(this, location));
         }
 

@@ -21,15 +21,15 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         [ProtoMember(2)]
         private int Amount;
 
-        public GrabItemQuantity(Guid boundID, int itemID, int amount, int dimension)
-            : base(Dependencies.CreateEmpty(), boundID, GetQualifications(itemID, dimension), PriorityLayers.Default)
+        public GrabItemQuantity(Guid boundID, int itemID, int amount, Guid dimensionID)
+            : base(Dependencies.CreateEmpty(), boundID, GetQualifications(itemID, dimensionID), PriorityLayers.Default)
         {
             this.ItemID = itemID;
             this.Amount = amount;
         }
 
-        public GrabItemQuantity(Guid boundID, Item item, int amount, int dimension)
-            : this(boundID, item.ItemID, amount, dimension)
+        public GrabItemQuantity(Guid boundID, Item item, int amount, Guid dimensionID)
+            : this(boundID, item.ItemID, amount, dimensionID)
         {
         }
 
@@ -38,24 +38,24 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             //Protobuf-net constructor.
         }
 
-        private static List<Qualification> GetQualifications(int itemID, int dimension)
+        private static List<Qualification> GetQualifications(int itemID, Guid dimensionID)
         {
             return new List<Qualification>
             {
                 new CanMoveQualification(),
-                new IsItemAvailibleQualification(itemID, dimension)
+                new IsItemAvailibleQualification(itemID, dimensionID)
             };
         }
 
         public override bool CreateDependencies(Living l)//Need to return a bool to say if this step was successful.
         {
-            List<Point2D> locations = ItemFinder.LocateUnreservedQuantityOfItem(this.ItemID, this.Amount, Point2D.Zero, l.Dimension);
+            List<Point3D> locations = ItemFinder.LocateUnreservedQuantityOfItem(this.ItemID, this.Amount, new Point3D(0, 0, l.DimensionID));
 
             if (locations != null && locations.Any())
             {
-                foreach (Point2D item in locations)
+                foreach (Point3D item in locations)
                 {
-                    GrabSpecificItemTask task = new GrabSpecificItemTask(this.BoundID, item, l.Dimension);
+                    GrabSpecificItemTask task = new GrabSpecificItemTask(this.BoundID, item);
                     this.Dependencies.PreRequisite.Add(task);
                 }
 

@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Visual.Rendering;
 using Microsoft.Xna.Framework;
+using System;
 
 namespace MagicalLifeAPI.Components.Generic.Renderable
 {
@@ -26,7 +27,7 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         /// <summary>
         /// The currently viewed dimension.
         /// </summary>
-        public static int Dimension { get; set; }
+        public static Guid DimensionID { get; set; }
 
         /// <summary>
         /// The game's current FPS.

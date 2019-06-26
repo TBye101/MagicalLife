@@ -36,8 +36,8 @@ namespace MagicalLifeAPI.Entity.Movement
             {
                 PathLink section = path.Peek();
 
-                Tile sourceTile = World.Data.World.Dimensions[entity.Dimension][section.Origin.X, section.Origin.Y];
-                Tile destinationTile = World.Data.World.Dimensions[entity.Dimension][section.Destination.X, section.Destination.Y];
+                Tile sourceTile = World.Data.World.Dimensions[entity.DimensionID][section.Origin.X, section.Origin.Y];
+                Tile destinationTile = World.Data.World.Dimensions[entity.DimensionID][section.Destination.X, section.Destination.Y];
                 Move(entity, sourceTile, destinationTile);
             }
         }
@@ -147,7 +147,7 @@ namespace MagicalLifeAPI.Entity.Movement
                 //If this entity is the current client's and therefore that clients responsibility to report about
                 if (entity.PlayerID == SettingsManager.PlayerSettings.Settings.PlayerID)
                 {
-                    ClientSendRecieve.Send(new WorldModifierMessage(new LivingLocationModifier(entity.ID, sLocation.MapLocation, dLocation.MapLocation, entity.Dimension)));
+                    ClientSendRecieve.Send(new WorldModifierMessage(new LivingLocationModifier(entity.ID, sLocation.MapLocation, dLocation.MapLocation)));
                 }
             }
 

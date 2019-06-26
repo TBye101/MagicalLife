@@ -24,9 +24,9 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// <param name="itemID"></param>
         /// <param name="mapLocation"></param>
         /// <returns>Returns the map location of the closest item of a specified spot.</returns>
-        public static Point2D FindNearestUnreserved(int itemID, Point2D mapLocation, int dimension)
+        public static Point2D FindNearestUnreserved(int itemID, Point3D mapLocation)
         {
-            List<Point2D> nearestChunks = FindNearestChunks(itemID, mapLocation, dimension);
+            List<Point2D> nearestChunks = FindNearestChunks(itemID, mapLocation);
 
             if (nearestChunks != null)
             {
@@ -35,13 +35,13 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
                 Chunk chunk;
                 foreach (Point2D item in nearestChunks)
                 {
-                    chunk = World.Data.World.GetChunk(dimension, item.X, item.Y);
+                    chunk = World.Data.World.GetChunk(mapLocation.DimensionID, item.X, item.Y);
                     RTree<Point2D> items = chunk.Items[itemID];
                     List<Point2D> result = items.Intersects(new Rectangle(0, 0, Chunk.Width, Chunk.Height));
 
                     foreach (Point2D it in result)
                     {
-                        Tile tile = World.Data.World.GetTile(dimension, it.X, it.Y);
+                        Tile tile = World.Data.World.GetTile(mapLocation.DimensionID, it.X, it.Y);
                         Item tileItem = tile.MainObject as Item;
                         if (tileItem != null && tileItem.ReservedID == Guid.Empty)
                         {
@@ -68,9 +68,9 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// <param name="itemID"></param>
         /// <param name="mapLocation"></param>
         /// <returns>Returns the map location of the closest item of a specified spot.</returns>
-        public static Point2D FindNearestLocation(int itemID, Point2D mapLocation, int dimension)
+        public static Point2D FindNearestLocation(int itemID, Point3D mapLocation)
         {
-            List<Point2D> nearestChunks = FindNearestChunks(itemID, mapLocation, dimension);
+            List<Point2D> nearestChunks = FindNearestChunks(itemID, mapLocation);
 
             if (nearestChunks != null)
             {
@@ -79,7 +79,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
                 Chunk chunk;
                 foreach (Point2D item in nearestChunks)
                 {
-                    chunk = World.Data.World.GetChunk(dimension, item.X, item.Y);
+                    chunk = World.Data.World.GetChunk(mapLocation.DimensionID, item.X, item.Y);
                     RTree<Point2D> items = chunk.Items[itemID];
                     List<Point2D> result = items.Intersects(new Rectangle(0, 0, Chunk.Width, Chunk.Height));
 
@@ -106,9 +106,9 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// <param name="itemID">The ID of the item in question.</param>
         /// <param name="mapLocation">The origin of the search in map locations.</param>
         /// <returns></returns>
-        public static List<Point2D> FindNearestChunks(int itemID, Point2D mapLocation, int dimension)
+        public static List<Point2D> FindNearestChunks(int itemID, Point3D mapLocation)
         {
-            RTree<Point2D> containingChunks = World.Data.World.Dimensions[dimension].Items.ItemIDToChunk[itemID];
+            RTree<Point2D> containingChunks = World.Data.World.Dimensions[mapLocation.DimensionID].Items.ItemIDToChunk[itemID];
 
             List<Point2D> result = containingChunks.Nearest(new Point(mapLocation.X / Chunk.Width, mapLocation.Y / Chunk.Height), SearchDistance);
 
@@ -131,23 +131,23 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// <param name="mapLocation"></param>
         /// <param name="dimension"></param>
         /// <returns></returns>
-        public static Point2D FindMainObjectEmptyTile(Point2D mapLocation, int dimension)
+        public static Point3D FindMainObjectEmptyTile(Point3D mapLocation)
         {
-            List<Point2D> tilesChecking = WorldUtil.GetNeighboringTiles(mapLocation, dimension);
+            List<Point3D> tilesChecking = WorldUtil.GetNeighboringTiles(mapLocation);
 
             while (tilesChecking.Count > 0)
             {
-                Point2D currentlyChecking = tilesChecking[0];
-                Tile tile = World.Data.World.GetTile(dimension, currentlyChecking.X, currentlyChecking.Y);
+                Point3D currentlyChecking = tilesChecking[0];
+                Tile tile = World.Data.World.GetTile(mapLocation.DimensionID, currentlyChecking.X, currentlyChecking.Y);
 
-                if (tile.MainObject == null && MainPathFinder.IsRoutePossible(dimension, mapLocation, currentlyChecking))
+                if (tile.MainObject == null && MainPathFinder.IsRoutePossible(mapLocation, Point3D.From2D(currentlyChecking, mapLocation.DimensionID)))
                 {
                     //Found one!
                     return currentlyChecking;
                 }
 
                 //Add all neighbors of the tile since it wasn't free from items and resources.
-                tilesChecking.AddRange(WorldUtil.GetNeighboringTiles(currentlyChecking, dimension));
+                tilesChecking.AddRange(WorldUtil.GetNeighboringTiles(currentlyChecking));
                 tilesChecking.RemoveAt(0);
             }
 
@@ -162,9 +162,9 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// <param name="dimension"></param>
         /// <param name="startingPoint"></param>
         /// <returns></returns>
-        public static bool IsItemAvailible(int itemID, int dimension, Point2D startingPoint)
+        public static bool IsItemAvailible(int itemID, Guid dimensionID, Point3D startingPoint)
         {
-            List<Point2D> nearestChunks = FindNearestChunks(itemID, startingPoint, dimension);
+            List<Point2D> nearestChunks = FindNearestChunks(itemID, startingPoint);
 
             if (nearestChunks != null && nearestChunks.Count > 0)
             {
@@ -172,13 +172,13 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
                 foreach (Point2D item in nearestChunks)
                 {
                     //0-15
-                    chunk = World.Data.World.GetChunk(dimension, item.X, item.Y);
+                    chunk = World.Data.World.GetChunk(dimensionID, item.X, item.Y);
                     RTree<Point2D> items = chunk.Items[itemID];
                     List<Point2D> result = items.Intersects(new Rectangle(WorldUtil.GetFirstTileLocation(chunk.ChunkLocation), WorldUtil.GetLastTileLocation(chunk.ChunkLocation)));
 
                     foreach (Point2D it in result)
                     {
-                        Tile tile = World.Data.World.GetTile(dimension, it.X, it.Y);
+                        Tile tile = World.Data.World.GetTile(startingPoint.DimensionID, it.X, it.Y);
                         Item tileItem = tile.MainObject as Item;
                         if (tileItem != null && tileItem.ReservedID == Guid.Empty)
                         {
@@ -196,9 +196,9 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// Returns null if not enough items were found to satisfy the request.
         /// </summary>
         /// <returns></returns>
-        public static List<Point2D> LocateUnreservedQuantityOfItem(int itemID, int quantityDesired, Point2D startingPoint, int dimension)
+        public static List<Point3D> LocateUnreservedQuantityOfItem(int itemID, int quantityDesired, Point3D startingPoint)
         {
-            List<Point2D> nearestChunks = FindNearestChunks(itemID, startingPoint, dimension);
+            List<Point2D> nearestChunks = FindNearestChunks(itemID, startingPoint);
 
             int quantityFound = 0;
             List<Point2D> locations = new List<Point2D>();
@@ -206,13 +206,13 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
             if (nearestChunks != null)
             {
                 Chunk chunk;
-                List<Point2D> allResults = new List<Point2D>();//Holds all found item locations.
+                List<Point3D> allResults = new List<Point3D>();//Holds all found item locations.
                 foreach (Point2D item in nearestChunks)
                 {
-                    chunk = World.Data.World.GetChunk(dimension, item.X, item.Y);
+                    chunk = World.Data.World.GetChunk(startingPoint.DimensionID, item.X, item.Y);
                     RTree<Point2D> items = chunk.Items[itemID];
                     List<Point2D> result = items.Intersects(new Rectangle(WorldUtil.GetFirstTileLocation(chunk.ChunkLocation), WorldUtil.GetLastTileLocation(chunk.ChunkLocation)));
-                    allResults.AddRange(result);
+                    allResults.AddRange(Point3D.From2D(result, startingPoint.DimensionID));
                 }
 
                 //Orders all items found by their proximity to the starting location.
@@ -222,7 +222,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
                 for (int i = 0; i < length && quantityFound < quantityDesired; i++)
                 {
                     Point2D item = allResults[i];
-                    Tile containing = World.Data.World.GetTile(dimension, item.X, item.Y);
+                    Tile containing = World.Data.World.GetTile(startingPoint.DimensionID, item.X, item.Y);
                     Item tileItem = containing.MainObject as Item;
                     if (tileItem.ReservedID.Equals(Guid.Empty))
                     {
@@ -234,7 +234,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
 
             if (quantityFound >= quantityDesired)
             {
-                return locations;
+                return Point3D.From2D(locations, startingPoint.DimensionID);
             }
             else
             {

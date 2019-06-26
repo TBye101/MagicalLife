@@ -28,17 +28,17 @@ namespace MagicalLifeGUIWindows.Input.History
         /// <summary>
         /// The location of the tile that the order was to.
         /// </summary>
-        public Point2D OrderPoint2D { get; set; }
+        public Point3D OrderPoint2D { get; set; }
 
         public HistoricalInput(ActionSelected selected)
         {
             this.ActionSelected = selected;
         }
 
-        public HistoricalInput(Point2D Point2D, ActionSelected selected) : this(selected)
+        public HistoricalInput(Point3D point, ActionSelected selected) : this(selected)
         {
             this.OrderedToTile = true;
-            this.OrderPoint2D = Point2D;
+            this.OrderPoint2D = point;
             this.DeselectingAll = false;
         }
 

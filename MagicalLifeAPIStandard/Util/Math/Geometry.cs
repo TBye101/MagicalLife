@@ -114,5 +114,12 @@ namespace MagicalLifeAPI.Util.Math
         {
             points.Sort((pointA, pointB) => MathUtil.GetDistanceFast(pointA, origin).CompareTo(MathUtil.GetDistanceFast(pointB, origin)));
         }
+
+        /// <param name="origin">The point to calculate distance to all points being ordered.</param>
+        /// <param name="points">The points to order by how close they are to the origin point.</param>
+        public static void OrderPointsByProximity(Point3D origin, List<Point3D> points)
+        {
+            points.Sort((pointA, pointB) => MathUtil.GetDistanceFast(pointA, origin).CompareTo(MathUtil.GetDistanceFast(pointB, origin)));
+        }
     }
 }

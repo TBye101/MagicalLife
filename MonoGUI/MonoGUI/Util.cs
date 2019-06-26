@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
+using System;
 
 namespace MagicalLifeGUIWindows
 {
@@ -15,17 +16,17 @@ namespace MagicalLifeGUIWindows
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public static Point2D GetMapLocation(int x, int y, int dimension, out bool success)
+        public static Point3D GetMapLocation(int x, int y, Guid dimensionID, out bool success)
         {
             Point2D size = Tile.GetTileSize();
 
             int tileX = x / size.X;
             int tileY = y / size.Y;
 
-            if (World.Dimensions.Count > 0 && World.Dimensions[dimension].DoesTileExist(tileX, tileY))
+            if (World.Dimensions.Count > 0 && World.Dimensions[dimensionID].DoesTileExist(tileX, tileY))
             {
                 success = true;
-                return new Point2D(tileX, tileY);
+                return new Point3D(tileX, tileY, dimensionID);
             }
             else
             {

@@ -26,16 +26,16 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         private bool MoveTaskCompleted;
 
         [ProtoMember(3)]
-        protected Point2D ReservedItemLocation;
+        protected Point3D ReservedItemLocation;
 
         private object SyncObject = new object();
 
-        public GrabSpecificItemTask(Guid boundID, Point2D itemLocation, int dimension)
+        public GrabSpecificItemTask(Guid boundID, Point3D itemLocation)
             : base(Dependencies.CreateEmpty(), boundID, GetQualifications(),
                   PriorityLayers.Default)
         {
             this.MoveTaskCompleted = false;
-            this.ReserveItem(itemLocation, dimension);
+            this.ReserveItem(itemLocation);
             this.ReservedItemLocation = itemLocation;
         }
 
@@ -44,9 +44,9 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             //Protobuf-net constructor
         }
 
-        private void ReserveItem(Point2D itemLocation, int dimension)
+        private void ReserveItem(Point3D itemLocation)
         {
-            Tile containing = World.Data.World.GetTile(dimension, itemLocation.X, itemLocation.Y);
+            Tile containing = World.Data.World.GetTile(itemLocation.DimensionID, itemLocation.X, itemLocation.Y);
 
             Item item = containing.MainObject as Item;
             if (item != null && item.ReservedID == Guid.Empty)
@@ -92,7 +92,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
                 if (this.MoveTaskCompleted)
                 {
                     //Pick it up
-                    Item pickedUp = ItemRemover.RemoveAllItems(this.ReservedItemLocation, l.Dimension);
+                    Item pickedUp = ItemRemover.RemoveAllItems(this.ReservedItemLocation);
                     pickedUp.ReservedID = Guid.Empty;
                     l.Inventory.AddItem(pickedUp);
                     this.CompleteTask();

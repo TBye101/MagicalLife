@@ -43,8 +43,8 @@ namespace MagicalLifeAPI.Entity.Humanoid
 
         public override AbstractVisual Visual { get; set; }
 
-        public Human(int health, float movementSpeed, Point2D location, int dimension, Guid playerID, string creatureName)
-            : base(health, movementSpeed, location, dimension, playerID, Lang.Human, creatureName)
+        public Human(int health, float movementSpeed, Point3D location, Guid dimensionID, Guid playerID, string creatureName)
+            : base(health, movementSpeed, location, dimensionID, playerID, Lang.Human, creatureName)
         {
             Filing.Logging.MasterLog.DebugWriteLine("Living spawned at: " + location.ToString());
             this.Visual = new AnimatedTexture(RenderLayer.Character, this.GetSequences(),

@@ -27,7 +27,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         [ProtoMember(3)]
         private TickTimer HitTimer { get; set; }
 
-        public HarvestTask(Point2D target, Guid boundID)
+        public HarvestTask(Point3D target, Guid boundID)
             : base(GetDependencies(boundID, target), boundID, GetQualifications(), PriorityLayers.Default)
         {
             this.Target = target;
@@ -47,7 +47,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             };
         }
 
-        protected static Dependencies GetDependencies(Guid boundID, Point2D target)
+        protected static Dependencies GetDependencies(Guid boundID, Point3D target)
         {
             ObservableCollection<MagicalTask> deps = new ObservableCollection<MagicalTask>
             {
@@ -59,7 +59,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         public override void MakePreparations(Living living)
         {
-            Tile tile = World.Data.World.GetTile(living.Dimension, this.Target.X, this.Target.Y);
+            Tile tile = World.Data.World.GetTile(living.DimensionID, this.Target.X, this.Target.Y);
             Resource resource = tile.MainObject as Resource;
 
             if (resource == null)
@@ -115,7 +115,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
                 if (this.Harvestable.PercentHarvested > 1)
                 {
-                    this.RemoveResource(l.Dimension);
+                    this.RemoveResource(l.DimensionID);
                     this.CompleteTask();
                 }
             }
@@ -130,18 +130,18 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         {
             //The tile the entity is standing on
             ComponentSelectable entityS = l.GetExactComponent<ComponentSelectable>();
-            Tile entityOn = World.Data.World.GetTile(l.Dimension, entityS.MapLocation.X, entityS.MapLocation.Y);
+            Tile entityOn = World.Data.World.GetTile(l.DimensionID, entityS.MapLocation.X, entityS.MapLocation.Y);
             
 
             if (entityOn.MainObject == null || entityOn.MainObject.GetType() == drop.GetType())
             {
-                ItemAdder.AddItem(drop, entityS.MapLocation, l.Dimension);
+                ItemAdder.AddItem(drop, entityS.MapLocation, l.DimensionID);
             }
             else
             {
                 l.Inventory.AddItem(drop);
-                Point2D emtpyTile = ItemFinder.FindMainObjectEmptyTile(entityOn.GetExactComponent<ComponentSelectable>().MapLocation, l.Dimension);
-                DropItemTask task = new DropItemTask(emtpyTile, l.Dimension, drop, l.ID, Guid.NewGuid());
+                Point3D emtpyTile = ItemFinder.FindMainObjectEmptyTile(entityOn.GetExactComponent<ComponentSelectable>().MapLocation);
+                DropItemTask task = new DropItemTask(emtpyTile, drop, l.ID, Guid.NewGuid());
                 task.ReservedFor = l.ID;
                 TaskManager.Manager.AddTask(task);
             }
@@ -150,9 +150,9 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         /// <summary>
         /// Removes the resource from the world, as it has been completely mined up.
         /// </summary>
-        private void RemoveResource(int dimension)
+        private void RemoveResource(Guid dimensionID)
         {
-            Tile tile = World.Data.World.GetTile(dimension, this.Target.X, this.Target.Y);
+            Tile tile = World.Data.World.GetTile(dimensionID, this.Target.X, this.Target.Y);
 
             Resource resource = tile.MainObject as Resource;
 

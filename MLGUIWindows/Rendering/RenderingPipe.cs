@@ -25,7 +25,7 @@ namespace MagicalLifeGUIWindows.Rendering
         {
             if (World.Dimensions.Count > 0)
             {
-                MapRenderer.DrawMap(spBatch, RenderInfo.Dimension);
+                MapRenderer.DrawMap(spBatch, RenderInfo.DimensionID);
             }
         }
 

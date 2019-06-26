@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Registry.ItemRegistry;
 using ProtoBuf;
+using System;
 
 namespace MagicalLifeAPI.Entity.AI.Task.Qualifications
 {
@@ -14,19 +15,20 @@ namespace MagicalLifeAPI.Entity.AI.Task.Qualifications
         protected int ItemID { get; set; }
 
         [ProtoMember(2)]
-        protected int Dimension { get; set; }
+        protected Guid DimensionID { get; set; }
 
-        protected Point2D SearchLocation { get; set; } = new Point2D(0, 0);
+        protected Point3D SearchLocation { get; set; }
 
-        public IsItemAvailibleQualification(int itemID, int dimension)
+        public IsItemAvailibleQualification(int itemID, Guid dimensionID)
         {
             this.ItemID = itemID;
-            this.Dimension = dimension;
+            this.DimensionID = dimensionID;
+            this.SearchLocation = new Point3D(0, 0, dimensionID);
         }
 
         public override bool ArePreconditionsMet()
         {
-            return ItemFinder.IsItemAvailible(this.ItemID, this.Dimension, this.SearchLocation);
+            return ItemFinder.IsItemAvailible(this.ItemID, this.DimensionID, this.SearchLocation);
         }
 
         public override bool IsQualified(Living l)

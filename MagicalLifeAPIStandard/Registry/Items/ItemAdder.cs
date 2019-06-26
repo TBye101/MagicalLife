@@ -52,9 +52,9 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// </summary>
         /// <param name="chunkLocation"></param>
         /// <param name="itemID"></param>
-        private static void RememberWhichChunk(Point2D chunkLocation, int itemID, int dimension)
+        private static void RememberWhichChunk(Point3D chunkLocation, int itemID)
         {
-            RTree<Point2D> chunkLocations = World.Data.World.Dimensions[dimension].Items.ItemIDToChunk[itemID];
+            RTree<Point2D> chunkLocations = World.Data.World.Dimensions[chunkLocation.DimensionID].Items.ItemIDToChunk[itemID];
             List<Point2D> result = chunkLocations.Contains(new Rectangle(chunkLocation.X, chunkLocation.Y, chunkLocation.X, chunkLocation.Y));
 
             if (result.Count > 0)
@@ -71,17 +71,17 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// <summary>
         /// Adds an item to the specified map location.
         /// </summary>
-        public static void AddItem(Item item, Point2D mapLocation, int dimension)
+        public static void AddItem(Item item, Point2D mapLocation, Guid dimensionID)
         {
             if (World.Data.World.Mode != Networking.EngineMode.ServerOnly)
             {
-                NetworkAdd(item, mapLocation, dimension);
+                NetworkAdd(item, mapLocation, dimensionID);
             }
 
-            Point2D chunkLocation = WorldUtil.CalculateChunkLocation(mapLocation);
-            Chunk chunk = World.Data.World.Dimensions[dimension].GetChunk(chunkLocation.X, chunkLocation.Y);
+            Point3D chunkLocation = Point3D.From2D(WorldUtil.CalculateChunkLocation(mapLocation), dimensionID);
+            Chunk chunk = World.Data.World.Dimensions[dimensionID].GetChunk(chunkLocation.X, chunkLocation.Y);
 
-            ItemAdder.RememberWhichChunk(chunkLocation, item.ItemID, dimension);
+            ItemAdder.RememberWhichChunk(chunkLocation, item.ItemID);
             ItemAdder.RememberWhichTile(item, mapLocation, chunk);
             ItemAdder.StoreItem(chunk, mapLocation, item);
         }
@@ -92,16 +92,16 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// <param name="item"></param>
         /// <param name="mapLocation"></param>
         /// <param name="dimension"></param>
-        private static void NetworkAdd(Item item, Point2D mapLocation, int dimension)
+        private static void NetworkAdd(Item item, Point2D mapLocation, Guid dimensionID)
         {
             switch (World.Data.World.Mode)
             {
                 case Networking.EngineMode.ServerOnly:
-                    ServerSendRecieve.SendAll(new WorldModifierMessage(new ItemCreatedModifier(item, mapLocation, dimension)));
+                    ServerSendRecieve.SendAll(new WorldModifierMessage(new ItemCreatedModifier(item, mapLocation, dimensionID)));
                     break;
 
                 case Networking.EngineMode.ClientOnly:
-                    ClientSendRecieve.Send(new WorldModifierMessage(new ItemCreatedModifier(item, mapLocation, dimension)));
+                    ClientSendRecieve.Send(new WorldModifierMessage(new ItemCreatedModifier(item, mapLocation, dimensionID)));
                     break;
 
                 case Networking.EngineMode.ServerAndClient:
@@ -115,12 +115,12 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// <summary>
         /// Adds an item during the ongoing world generation.
         /// </summary>
-        public static void AddItemWorldGen(Item item, Point2D mapLocation, ProtoArray<Chunk> map, int dimension)
+        public static void AddItemWorldGen(Item item, Point3D mapLocation, ProtoArray<Chunk> map)
         {
-            Point2D chunkLocation = WorldUtil.CalculateChunkLocation(mapLocation);
+            Point3D chunkLocation = Point3D.From2D(WorldUtil.CalculateChunkLocation(mapLocation), mapLocation.DimensionID);
             Chunk chunk = map[chunkLocation.X, chunkLocation.Y];
 
-            ItemAdder.RememberWhichChunk(chunkLocation, item.ItemID, dimension);
+            ItemAdder.RememberWhichChunk(chunkLocation, item.ItemID);
             ItemAdder.RememberWhichTile(item, mapLocation, chunk);
             ItemAdder.StoreItem(chunk, mapLocation, item);
         }

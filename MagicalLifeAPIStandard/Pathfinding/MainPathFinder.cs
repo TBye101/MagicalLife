@@ -13,15 +13,17 @@ namespace MagicalLifeAPI.Pathfinding
     {
         /// <summary>
         /// Pathfinders for all dimensions.
+        /// Key: dimensionID
+        /// Value: Pathfinder
         /// </summary>
-        private static List<IPathFinder> PathFinders = new List<IPathFinder>();
+        private static IPathFinder Pathfinder;
 
         public static void Initialize()
         {
-            World.Data.World.DimensionAdded += World_DimensionAdded;
+            World.Data.World.DimensionAdded += World_DimensionAdded1;
         }
 
-        private static void World_DimensionAdded(object sender, int e)
+        private static void World_DimensionAdded1(object sender, Guid e)
         {
             PrepForDimension(World.Data.World.Dimensions[e]);
         }
@@ -32,39 +34,31 @@ namespace MagicalLifeAPI.Pathfinding
         /// <param name="dimension"></param>
         public static void PrepForDimension(Dimension dimension)
         {
-            Search search = new Search();
-            search.Initialize(dimension);
-            PathFinders.Add(search);
-        }
-
-        public static void Block(Point2D tile, int dimension)
-        {
-            if (PathFinders.Count > 0)
+            if (Pathfinder == null)
             {
-                Guid dimensionID = World.Data.World.Dimensions[dimension].ID;
-                PathFinders[dimension].RemoveConnections(Point3D.From2D(tile, dimensionID));
+                Pathfinder = new Search();
             }
+            Pathfinder.Initialize(dimension);
         }
 
-        public static void UnBlock(Point2D tile, int dimension)
+        public static void Block(Point3D tile)
         {
-            if (PathFinders.Count > 0)
-            {
-                Guid dimensionID = World.Data.World.Dimensions[dimension].ID;
-                PathFinders[dimension].AddConnections(Point3D.From2D(tile, dimensionID), dimension);
-            }
+            Pathfinder.RemoveConnections(tile);
         }
 
-        public static List<PathLink> GetRoute(int dimension, Point2D start, Point2D end)
+        public static void UnBlock(Point3D tile)
         {
-            Guid dimensionID = World.Data.World.Dimensions[dimension].ID;
-            return PathFinders[dimension].GetRoute(Point3D.From2D(start, dimensionID), Point3D.From2D(end, dimensionID));
+            Pathfinder.AddConnections(tile);
         }
 
-        public static bool IsRoutePossible(int dimension, Point2D origin, Point2D destination)
+        public static List<PathLink> GetRoute(Point3D start, Point3D end)
         {
-            Guid dimensionID = World.Data.World.Dimensions[dimension].ID;
-            return PathFinders[dimension].IsRoutePossible(Point3D.From2D(origin, dimensionID), Point3D.From2D(destination, dimensionID));
+            return Pathfinder.GetRoute(start, end);
+        }
+
+        public static bool IsRoutePossible(Point3D origin, Point3D destination)
+        {
+            return Pathfinder.IsRoutePossible(origin, destination);
         }
     }
 }

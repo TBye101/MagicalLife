@@ -9,6 +9,7 @@ using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.Rendering.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -56,7 +57,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// Draws the tiles that make up the map.
         /// </summary>
         /// <param name="spBatch"></param>
-        public static void DrawMap(SpriteBatch spBatch, int dimension)
+        public static void DrawMap(SpriteBatch spBatch, Guid dimensionID)
         {
             MapDrawer.UpdateSpriteBatch(spBatch);
             List<Point2D> result = Culler.GetChunksInView();
@@ -70,15 +71,15 @@ namespace MagicalLifeGUIWindows.Rendering.Map
 
                 if (chunkCoordinates.X != -1 && chunkCoordinates.Y != -1)
                 {
-                    Chunk chunk = World.GetChunk(dimension, chunkCoordinates.X, chunkCoordinates.Y);
-                    RenderChunk(chunk, dimension);
+                    Chunk chunk = World.GetChunk(dimensionID, chunkCoordinates.X, chunkCoordinates.Y);
+                    RenderChunk(chunk, dimensionID);
                 }
             }
 
             MapDrawer.RenderAll();
         }
 
-        private static void RenderChunk(Chunk chunk, int dimension)
+        private static void RenderChunk(Chunk chunk, Guid dimensionID)
         {
             foreach (Tile tile in chunk)
             {
@@ -88,7 +89,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
                 DrawTile(tile, StartingPoint);
             }
 
-            DrawEntities(dimension, chunk);
+            DrawEntities(chunk);
         }
 
         /// <summary>
@@ -96,7 +97,7 @@ namespace MagicalLifeGUIWindows.Rendering.Map
         /// </summary>
         /// <param name="dimension">The dimension.</param>
         /// <param name="chunk">The chunk.</param>
-        public static void DrawEntities(int dimension, Chunk chunk)
+        public static void DrawEntities(Chunk chunk)
         {
             int length = chunk.Creatures.Count;
             lock (chunk.Creatures)

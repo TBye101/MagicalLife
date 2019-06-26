@@ -110,6 +110,35 @@ namespace MagicalLifeAPI.DataTypes
             return new Point3D(point.X, point.Y, dimensionID);
         }
 
+        public static List<Point3D> From2D(IEnumerable<Point2D> points, Guid dimensionID)
+        {
+            List<Point3D> points3D = new List<Point3D>();
+
+            foreach (Point2D item in points)
+            {
+                points3D.Add(Point3D.From2D(item, dimensionID));
+            }
+
+            return points3D;
+        }
+
+        public static Point2D To2D(Point3D point)
+        {
+            return new Point2D(point.X, point.Y);
+        }
+
+        public static List<Point2D> To2D(IEnumerable<Point3D> points)
+        {
+            List<Point2D> points2D = new List<Point2D>();
+
+            foreach (Point3D item in points)
+            {
+                points2D.Add(Point3D.To2D(item));
+            }
+
+            return points2D;
+        }
+
         public int CompareTo(Point3D other)
         {
             int xComparison = other.X.CompareTo(this.X);

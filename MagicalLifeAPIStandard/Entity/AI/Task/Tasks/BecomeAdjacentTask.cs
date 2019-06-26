@@ -13,9 +13,9 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
     public class BecomeAdjacentTask : MagicalTask
     {
         [ProtoMember(1)]
-        public Point2D Target { get; private set; }
+        public Point3D Target { get; private set; }
 
-        public BecomeAdjacentTask(Guid boundID, Point2D target) : base(Dependencies.CreateEmpty(), boundID, new List<Qualification> { new CanMoveQualification() }, PriorityLayers.Default)
+        public BecomeAdjacentTask(Guid boundID, Point3D target) : base(Dependencies.CreateEmpty(), boundID, new List<Qualification> { new CanMoveQualification() }, PriorityLayers.Default)
         {
             this.Target = target;
         }
@@ -36,11 +36,11 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         public override bool CreateDependencies(Living l)
         {
-            List<Point2D> result = WorldUtil.GetNeighboringTiles(this.Target, l.Dimension);
-            result.RemoveAll(x => !World.Data.World.GetTile(l.Dimension, x.X, x.Y).IsWalkable);
+            List<Point3D> result = WorldUtil.GetNeighboringTiles(this.Target);
+            result.RemoveAll(x => !World.Data.World.GetTile(l.DimensionID, x.X, x.Y).IsWalkable);
 
             ComponentSelectable entitySelected = l.GetExactComponent<ComponentSelectable>();
-            Point2D adjacentLocation = PathUtil.GetFirstReachable(result, entitySelected.MapLocation, l.Dimension);
+            Point3D adjacentLocation = PathUtil.GetFirstReachable(result, entitySelected.MapLocation);
 
             if (adjacentLocation == null)
             {

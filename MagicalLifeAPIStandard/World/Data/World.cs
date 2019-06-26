@@ -20,7 +20,7 @@ namespace MagicalLifeAPI.World.Data
         /// After that, anything goes.
         /// </summary>
         [ProtoMember(1)]
-        public static List<Dimension> Dimensions { get; set; } = new List<Dimension>();
+        public static Dictionary<Guid, Dimension> Dimensions { get; set; } = new Dictionary<Guid, Dimension>();
 
         public static EngineMode Mode { get; set; }
 
@@ -28,14 +28,14 @@ namespace MagicalLifeAPI.World.Data
 
         /// <summary>
         /// Raised when a dimension is added for the first time.
-        /// The int is the dimension ID aka where it can be found within <see cref="Dimensions"/>.
+        /// The Guid is the dimension ID aka where it can be found within <see cref="Dimensions"/>.
         /// </summary>
-        public static event EventHandler<int> DimensionAdded;
+        public static event EventHandler<Guid> DimensionAdded;
 
         /// <summary>
         /// Raised when the camera needs to recalibrate for a different dimension.
         /// </summary>
-        public static event EventHandler<int> ChangeCameraDimension;
+        public static event EventHandler<Guid> ChangeCameraDimension;
 
         protected World()
         {
@@ -48,8 +48,8 @@ namespace MagicalLifeAPI.World.Data
         /// <returns>The dimension ID.</returns>
         public static int AddDimension(Dimension dimension)
         {
-            World.Dimensions.Add(dimension);
-            World.DimensionAddedHandler(World.Dimensions.Count - 1);
+            World.Dimensions.Add(dimension.ID, dimension);
+            World.DimensionAddedHandler(dimension.ID);
             return World.Dimensions.Count - 1;
         }
 
@@ -57,9 +57,9 @@ namespace MagicalLifeAPI.World.Data
         /// Used to raise the <see cref="ChangeCameraDimension"/> event.
         /// </summary>
         /// <param name="dimension"></param>
-        public static void RaiseChangeCameraDimension(int dimension)
+        public static void RaiseChangeCameraDimension(Guid dimensionID)
         {
-            ChangeCameraDimension?.Invoke(null, dimension);
+            ChangeCameraDimension?.Invoke(null, dimensionID);
         }
 
         /// <summary>
@@ -69,9 +69,9 @@ namespace MagicalLifeAPI.World.Data
         /// <param name="chunkX"></param>
         /// <param name="chunkY"></param>
         /// <returns></returns>
-        public static Chunk GetChunk(int dimension, int chunkX, int chunkY)
+        public static Chunk GetChunk(Guid dimensionID, int chunkX, int chunkY)
         {
-            return World.Dimensions[dimension].GetChunk(chunkX, chunkY);
+            return World.Dimensions[dimensionID].GetChunk(chunkX, chunkY);
         }
 
         /// <summary>
@@ -81,9 +81,9 @@ namespace MagicalLifeAPI.World.Data
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public static Chunk GetChunkByTile(int dimension, int x, int y)
+        public static Chunk GetChunkByTile(Guid dimensionID, int x, int y)
         {
-            return World.Dimensions[dimension].GetChunkForLocation(x, y);
+            return World.Dimensions[dimensionID].GetChunkForLocation(x, y);
         }
 
         /// <summary>
@@ -93,9 +93,9 @@ namespace MagicalLifeAPI.World.Data
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public static Tile GetTile(int dimension, int x, int y)
+        public static Tile GetTile(Guid dimensionID, int x, int y)
         {
-            return World.Dimensions[dimension][x, y];
+            return World.Dimensions[dimensionID][x, y];
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace MagicalLifeAPI.World.Data
         /// Raises the dimension added event.
         /// </summary>
         /// <param name="e"></param>
-        public static void DimensionAddedHandler(int e)
+        public static void DimensionAddedHandler(Guid e)
         {
             DimensionAdded?.Invoke(null, e);
         }

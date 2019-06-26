@@ -12,9 +12,9 @@ namespace MagicalLifeAPI.Entity.AI.Task.Qualifications
     public class IsRoutePossibleQualification : Qualification
     {
         [ProtoMember(1)]
-        protected Point2D Destination { get; set; }
+        protected Point3D Destination { get; set; }
 
-        public IsRoutePossibleQualification(Point2D destination)
+        public IsRoutePossibleQualification(Point3D destination)
         {
             this.Destination = destination;
         }
@@ -31,8 +31,8 @@ namespace MagicalLifeAPI.Entity.AI.Task.Qualifications
 
         public override bool IsQualified(Living living)
         {
-            Point2D mapLocation = living.GetExactComponent<ComponentSelectable>().MapLocation;
-            return MainPathFinder.IsRoutePossible(living.Dimension, mapLocation, this.Destination);
+            Point3D mapLocation = living.GetExactComponent<ComponentSelectable>().MapLocation;
+            return MainPathFinder.IsRoutePossible(mapLocation, this.Destination);
         }
     }
 }

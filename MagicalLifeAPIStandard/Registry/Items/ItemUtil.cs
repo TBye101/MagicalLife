@@ -14,12 +14,12 @@ namespace MagicalLifeAPI.Registry.Items
         /// <summary>
         /// Reserves the items at the specified locations with the provided ID.
         /// </summary>
-        public static void ReserveItems(List<Point2D> locations, Guid reservingID, int dimension)
+        public static void ReserveItems(List<Point3D> locations, Guid reservingID)
         {
             Tile tile;
-            foreach (Point2D item in locations)
+            foreach (Point3D item in locations)
             {
-                tile = World.Data.World.GetTile(dimension,item.X, item.Y);
+                tile = World.Data.World.GetTile(item.DimensionID, item.X, item.Y);
 
                 Item tileItem = tile.MainObject as Item;
                 tileItem.ReservedID = reservingID;

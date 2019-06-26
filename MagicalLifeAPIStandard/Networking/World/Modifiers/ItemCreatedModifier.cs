@@ -2,6 +2,7 @@
 using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.World.Base;
 using ProtoBuf;
+using System;
 
 namespace MagicalLifeAPI.Networking.World.Modifiers
 {
@@ -18,16 +19,16 @@ namespace MagicalLifeAPI.Networking.World.Modifiers
         public Point2D Location { get; private set; }
 
         [ProtoMember(3)]
-        public int Dimension { get; private set; }
+        public Guid DimensionID { get; private set; }
 
         /// <param name="item">The item which is being added, and needs to be synced.</param>
         /// <param name="mapLocation">The location at which the item was added at.</param>
         /// <param name="dimension">The dimension in which the item was added at.</param>
-        public ItemCreatedModifier(Item item, Point2D mapLocation, int dimension)
+        public ItemCreatedModifier(Item item, Point2D mapLocation, Guid dimensionID)
         {
             this.Item = item;
             this.Location = mapLocation;
-            this.Dimension = dimension;
+            this.DimensionID = dimensionID;
         }
 
         private ItemCreatedModifier()
@@ -37,7 +38,7 @@ namespace MagicalLifeAPI.Networking.World.Modifiers
 
         public override void ModifyWorld()
         {
-            ItemAdder.AddItem(this.Item, this.Location, this.Dimension);
+            ItemAdder.AddItem(this.Item, this.Location, this.DimensionID);
         }
     }
 }

@@ -43,7 +43,7 @@ namespace MagicalLifeAPI.Components.Resource
         /// </summary>
         /// <param name="percentMined"></param>
         /// <returns>Any items that should be dropped due to the progress in tilled the object. Return null to drop nothing.</returns>
-        public List<Item> TillSomePercent(float percentTilled, Point2D position)
+        public List<Item> TillSomePercent(float percentTilled, Point3D position)
         {
             this.PercentTilled += percentTilled;
 
@@ -62,12 +62,12 @@ namespace MagicalLifeAPI.Components.Resource
         /// </summary>
         /// <param name="percent">The total percent tilled so far.</param>
         /// <returns></returns>
-        protected abstract List<Item> TillPercent(float percent, Point2D position);
+        protected abstract List<Item> TillPercent(float percent, Point3D position);
 
         /// <summary>
         /// Returns the finished product of the tiling.
         /// </summary>
         /// <returns></returns>
-        public abstract Tile ResultingTile(Point2D location, int dimension);
+        public abstract Tile ResultingTile(Point3D location);
     }
 }

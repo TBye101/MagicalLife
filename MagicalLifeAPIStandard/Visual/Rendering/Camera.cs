@@ -23,7 +23,7 @@ namespace MagicalLifeAPI.Visual.Rendering
 
         public int ViewportHeight { get; set; }
 
-        public int Dimension { get; set; } = -1;
+        public Guid DimensionID { get; set; }
 
         /// <summary>
         /// The width of the dimension in tiles.
@@ -64,19 +64,19 @@ namespace MagicalLifeAPI.Visual.Rendering
         public Camera()
         {
             this.Zoom = 1.0f;
-            World.Data.World.ChangeCameraDimension += this.World_ChangeCameraDimension;
+            World.Data.World.ChangeCameraDimension += this.World_ChangeCameraDimension1;
         }
 
-        private void World_ChangeCameraDimension(object sender, int e)
+        private void World_ChangeCameraDimension1(object sender, Guid e)
         {
             this.InitializeForDimension(e);
         }
 
-        public void InitializeForDimension(int dimension)
+        public void InitializeForDimension(Guid dimensionID)
         {
-            this.Dimension = dimension;
-            this.DimensionWidth = World.Data.World.Dimensions[dimension].Width;
-            this.DimensionHeight = World.Data.World.Dimensions[dimension].Height;
+            this.DimensionID = dimensionID;
+            this.DimensionWidth = World.Data.World.Dimensions[this.DimensionID].Width;
+            this.DimensionHeight = World.Data.World.Dimensions[this.DimensionID].Height;
         }
 
         // Call this method with negative values to zoom out

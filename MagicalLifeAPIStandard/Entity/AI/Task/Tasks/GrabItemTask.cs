@@ -21,15 +21,15 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         [ProtoMember(2)]
         protected Point2D ReservedItemLocation;
 
-        public GrabItemTask(Guid boundID, int itemID, int dimension)
-            : base(Dependencies.CreateEmpty(), boundID, GetQualifications(itemID, dimension),
+        public GrabItemTask(Guid boundID, int itemID, Guid dimensionID)
+            : base(Dependencies.CreateEmpty(), boundID, GetQualifications(itemID, dimensionID),
                   PriorityLayers.Default)
         {
             this.ItemID = itemID;
         }
 
-        public GrabItemTask(Guid boundID, Item item, int dimension)
-            : this(boundID, item.ItemID, dimension)
+        public GrabItemTask(Guid boundID, Item item, Guid dimensionID)
+            : this(boundID, item.ItemID, dimensionID)
         {
         }
 
@@ -38,30 +38,30 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             //Protobuf-net constructor
         }
 
-        private static Dependencies GetDependencies(Guid boundID, int itemID, int dimension)
+        private static Dependencies GetDependencies(Guid boundID, int itemID, Guid dimensionID)
         {
-            Point2D nearest = ItemFinder.FindNearestUnreserved(itemID, Point2D.Zero, dimension);
+            Point2D nearest = ItemFinder.FindNearestUnreserved(itemID, new Point3D(0, 0, dimensionID));
 
             ObservableCollection<MagicalTask> dependency = new ObservableCollection<MagicalTask>
             {
-                new GrabSpecificItemTask(boundID, nearest, dimension)
+                new GrabSpecificItemTask(boundID, Point3D.From2D(nearest, dimensionID))
             };
 
             return new Dependencies(dependency);
         }
 
-        private static List<Qualification> GetQualifications(int itemID, int dimension)
+        private static List<Qualification> GetQualifications(int itemID, Guid dimensionID)
         {
             return new List<Qualification>
             {
                 new CanMoveQualification(),
-                new IsItemAvailibleQualification(itemID, dimension)
+                new IsItemAvailibleQualification(itemID, dimensionID)
             };
         }
 
         public override bool CreateDependencies(Living l)
         {
-            this.Dependencies = GetDependencies(this.BoundID, this.ItemID, l.Dimension);
+            this.Dependencies = GetDependencies(this.BoundID, this.ItemID, l.DimensionID);
             return true;
         }
 

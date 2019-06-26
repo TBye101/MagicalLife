@@ -16,7 +16,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
     public class TillTask : MagicalTask
     {
         [ProtoMember(1)]
-        public Point2D Target { get; private set; }
+        public Point3D Target { get; private set; }
 
         /// <summary>
         /// The tillable component of the tile this task is supposed to till.
@@ -27,13 +27,9 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         [ProtoMember(3)]
         private TickTimer HitTimer { get; set; }
 
-        [ProtoMember(4)]
-        private int Dimension { get; set; }
-
-        public TillTask(Point2D target, Guid boundID, int dimension)
+        public TillTask(Point3D target, Guid boundID)
             : base(GetDependencies(boundID, target), boundID, new List<Qualification>(), PriorityLayers.Default)
         {
-            this.Dimension = dimension;
             this.Target = target;
             MasterLog.DebugWriteLine("Target: " + this.Target.ToString());
             this.HitTimer = new TickTimer(30);
@@ -43,7 +39,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         {
         }
 
-        protected static Dependencies GetDependencies(Guid boundID, Point2D target)
+        protected static Dependencies GetDependencies(Guid boundID, Point3D target)
         {
             ObservableCollection<MagicalTask> deps = new ObservableCollection<MagicalTask>
             {
@@ -55,7 +51,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 
         public override void MakePreparations(Living living)
         {
-            Tile tile = World.Data.World.GetTile(living.Dimension, this.Target.X, this.Target.Y);
+            Tile tile = World.Data.World.GetTile(living.DimensionID, this.Target.X, this.Target.Y);
             this.Tillable = tile.GetComponent<ComponentTillable>();
         }
 
@@ -68,19 +64,19 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         {
             if (this.HitTimer.Allow())
             {
-                Tile tile = World.Data.World.GetTile(l.Dimension, this.Target.X, this.Target.Y);
+                Tile tile = World.Data.World.GetTile(l.DimensionID, this.Target.X, this.Target.Y);
 
                 List<Item> drop = this.Tillable.TillSomePercent(this.Tillable.PercentTillTick, this.Target);
 
                 if (drop?.Count > 0)
                 {
-                    ItemAdder.AddItem(drop[0], l.GetExactComponent<ComponentSelectable>().MapLocation, l.Dimension);
+                    ItemAdder.AddItem(drop[0], l.GetExactComponent<ComponentSelectable>().MapLocation, l.DimensionID);
                 }
 
                 if (this.Tillable.PercentTilled > 1)
                 {
-                    Tile tillableTile = this.Tillable.ResultingTile(new Point2D(this.Target.X, this.Target.Y), this.Dimension);
-                    World.Data.World.Dimensions[this.Dimension][this.Target.X, this.Target.Y] = tillableTile;
+                    Tile tillableTile = this.Tillable.ResultingTile(this.Target);
+                    World.Data.World.Dimensions[this.Target.DimensionID][this.Target.X, this.Target.Y] = tillableTile;
                     this.CompleteTask();
                 }
             }

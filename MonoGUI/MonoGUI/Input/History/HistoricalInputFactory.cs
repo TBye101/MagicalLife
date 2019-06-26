@@ -72,11 +72,11 @@ namespace MagicalLifeGUIWindows.Input.History
         /// <returns></returns>
         private HistoricalInput GenericAction(InputEventArgs e, ActionSelected action)
         {
-            Point2D mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y, RenderInfo.Dimension, out bool success);
+            Point2D mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y, RenderInfo.DimensionID, out bool success);
 
             if (success)
             {
-                Tile tile = World.GetTile(RenderInfo.Dimension, mapSpot.X, mapSpot.Y);
+                Tile tile = World.GetTile(RenderInfo.DimensionID, mapSpot.X, mapSpot.Y);
 
                 if (tile != null)
                 {
@@ -112,13 +112,13 @@ namespace MagicalLifeGUIWindows.Input.History
         /// <returns></returns>
         private HistoricalInput NoAction(InputEventArgs e)
         {
-            Point2D mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y, RenderInfo.Dimension, out bool success);
+            Point2D mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y, RenderInfo.DimensionID, out bool success);
 
             if (success)
             {
                 Living select = null;
 
-                Chunk chunk = World.Dimensions[RenderInfo.Dimension].GetChunkForLocation(mapSpot.X, mapSpot.Y);
+                Chunk chunk = World.Dimensions[RenderInfo.DimensionID].GetChunkForLocation(mapSpot.X, mapSpot.Y);
                 KeyValuePair<System.Guid, Living> result = chunk.Creatures.FirstOrDefault
                     (x => mapSpot.Equals(x.Value.GetExactComponent<ComponentSelectable>().MapLocation));
 
@@ -175,7 +175,7 @@ namespace MagicalLifeGUIWindows.Input.History
         {
             Point2D screenLocation = e.MouseEventArgs.Position;
 
-            Point2D mapLocation = Util.GetMapLocation(screenLocation.X, screenLocation.Y, RenderInfo.Dimension, out bool success);
+            Point3D mapLocation = Util.GetMapLocation(screenLocation.X, screenLocation.Y, RenderInfo.DimensionID, out bool success);
 
             if (success)
             {

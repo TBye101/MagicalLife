@@ -81,9 +81,9 @@ namespace MagicalLifeAPI.World.Data.Disk
         {
             Initialize(saveName);
 
-            foreach (Dimension item in World.Dimensions)
+            foreach (KeyValuePair<Guid, Dimension> item in World.Dimensions)
             {
-                DimensionStorage.Serialize(item, sink);
+                DimensionStorage.Serialize(item.Value, sink);
             }
         }
 
@@ -133,14 +133,14 @@ namespace MagicalLifeAPI.World.Data.Disk
                 DimensionPaths.Clear();
 
                 //We are saving
-                foreach (Dimension item in World.Dimensions)
+                foreach (KeyValuePair<Guid, Dimension> item in World.Dimensions)
                 {
-                    DirectoryInfo dirInfo = Directory.CreateDirectory(WorldStorage.DimensionSaveFolder + Path.DirectorySeparatorChar + item.ID);
-                    DimensionStorage.PrepareForDimension(item.ID);
+                    DirectoryInfo dirInfo = Directory.CreateDirectory(WorldStorage.DimensionSaveFolder + Path.DirectorySeparatorChar + item.Value.ID);
+                    DimensionStorage.PrepareForDimension(item.Value.ID);
 
-                    if (!DimensionPaths.TryGetValue(item.ID, out string value))
+                    if (!DimensionPaths.TryGetValue(item.Value.ID, out string value))
                     {
-                        DimensionPaths.Add(item.ID, dirInfo.FullName);
+                        DimensionPaths.Add(item.Value.ID, dirInfo.FullName);
                     }
                 }
             }

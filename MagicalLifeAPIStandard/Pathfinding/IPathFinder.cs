@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.World.Data;
+using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Pathfinding
@@ -44,6 +45,6 @@ namespace MagicalLifeAPI.Pathfinding
         /// </summary>
         /// <param name="location"></param>
 
-        void AddConnections(Point3D location, int dimension);
+        void AddConnections(Point3D location);
     }
 }

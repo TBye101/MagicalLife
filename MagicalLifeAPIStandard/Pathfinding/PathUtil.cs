@@ -16,11 +16,11 @@ namespace MagicalLifeAPI.Pathfinding
         /// <param name="origin">The starting location to attempt to reach the destinations from.</param>
         /// <param name="dimension"></param>
         /// <returns></returns>
-        public static Point2D GetFirstReachable(List<Point2D> destinations, Point2D origin, int dimension)
+        public static Point3D GetFirstReachable(List<Point3D> destinations, Point3D origin)
         {
-            foreach (Point2D item in destinations)
+            foreach (Point3D item in destinations)
             {
-                if (MainPathFinder.IsRoutePossible(dimension, origin, item))
+                if (MainPathFinder.IsRoutePossible(origin, item))
                 {
                     return item;
                 }

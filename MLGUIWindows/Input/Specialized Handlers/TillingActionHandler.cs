@@ -28,13 +28,13 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                 foreach (HasComponents item in last.Selected)
                 {
                     ComponentSelectable selected = item.GetExactComponent<ComponentSelectable>();
-                    Tile tile = World.GetTile(RenderInfo.Dimension, selected.MapLocation.X, selected.MapLocation.Y);
+                    Tile tile = World.GetTile(RenderInfo.DimensionID, selected.MapLocation.X, selected.MapLocation.Y);
 
                     if (tile.HasComponent<ComponentTillable>()
                         && tile.ImpendingAction == ActionSelected.None
                         && tile.MainObject == null)
                     {
-                        TillTask task = new TillTask(tile.GetExactComponent<ComponentSelectable>().MapLocation, Guid.NewGuid(), RenderInfo.Dimension);
+                        TillTask task = new TillTask(tile.GetExactComponent<ComponentSelectable>().MapLocation, Guid.NewGuid());
                         tile.ImpendingAction = ActionSelected.Till;
                         TaskManager.Manager.AddTask(task);
                     }

@@ -4,6 +4,7 @@ using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
+using System;
 
 namespace MagicalLifeAPI.Registry.ItemRegistry
 {
@@ -20,12 +21,12 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// <param name="itemID"></param>
         /// <param name="mapLocation"></param>
         /// <param name="dimension"></param>
-        public static Item RemoveAllItems(Point2D mapLocation, int dimension)//Gotta update the indexes
+        public static Item RemoveAllItems(Point3D mapLocation)//Gotta update the indexes
         {
-            Tile tile = World.Data.World.GetTile(dimension, mapLocation.X, mapLocation.Y);
+            Tile tile = World.Data.World.GetTile(mapLocation.DimensionID, mapLocation.X, mapLocation.Y);
             Item item = tile.MainObject as Item;
 
-            RemoveItem(tile, dimension);
+            RemoveItem(tile, mapLocation.DimensionID);
             return item;
         }
 
@@ -37,9 +38,9 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// <param name="dimension">The dimension to remove items from.</param>
         /// <param name="count">How many items to remove.</param>
         /// <returns>Returns null if there was no item(s) stored in the specified location.</returns>
-        public static Item RemoveSome(Point2D mapLocation, int dimension, int count)
+        public static Item RemoveSome(Point3D mapLocation, int count)
         {
-            Tile tile = World.Data.World.GetTile(dimension, mapLocation.X, mapLocation.Y);
+            Tile tile = World.Data.World.GetTile(mapLocation.DimensionID, mapLocation.X, mapLocation.Y);
 
             Item removed = null;
             if (tile.MainObject is Item tileItem)
@@ -51,7 +52,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
                 else
                 {
                     removed = ItemRegistry.IDToItem[tileItem.ItemID].GetDeepCopy(tileItem.CurrentlyStacked);
-                    RemoveItem(tile, dimension);
+                    RemoveItem(tile, mapLocation.DimensionID);
                 }
             }
 
@@ -61,13 +62,13 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         /// <summary>
         /// Removes the item in the specified tile from the game, and updates the indexes.
         /// </summary>
-        private static void RemoveItem(Tile tile, int dimension)
+        private static void RemoveItem(Tile tile, Guid dimensionID)
         {
             if (tile.MainObject is Item tileItem)
             {
                 int itemID = tileItem.ItemID;
                 Point2D l = tile.GetExactComponent<ComponentSelectable>().MapLocation;
-                Chunk chunk = World.Data.World.GetChunkByTile(dimension, l.X, l.Y);
+                Chunk chunk = World.Data.World.GetChunkByTile(dimensionID, l.X, l.Y);
 
                 if (chunk.Items.ContainsKey(itemID))
                 {
@@ -81,7 +82,7 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
 
                     if (result.Count == 0)
                     {
-                        RTree<Point2D> chunksContaining = World.Data.World.Dimensions[dimension].Items.ItemIDToChunk[itemID];
+                        RTree<Point2D> chunksContaining = World.Data.World.Dimensions[dimensionID].Items.ItemIDToChunk[itemID];
                         bool succeed = chunksContaining.Delete(new Rectangle(chunk.ChunkLocation.X, chunk.ChunkLocation.Y, chunk.ChunkLocation.X, chunk.ChunkLocation.Y), new Point2D(chunk.ChunkLocation.X, chunk.ChunkLocation.Y));
 
                         if (!succeed)

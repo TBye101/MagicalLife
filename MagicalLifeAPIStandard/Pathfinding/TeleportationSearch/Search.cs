@@ -34,10 +34,8 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
         /// <param name="tileLocation"></param>
         /// <param name="dimension"></param>
         /// <returns></returns>
-        private List<Point3D> DiagnolFavorNeighboringTiles(Point3D tileLocation, int dimension)
+        private List<Point3D> DiagnolFavorNeighboringTiles(Point3D tileLocation, Guid dimensionID)
         {
-            Guid dimensionID = World.Data.World.Dimensions[dimension].ID;
-
             List<Point3D> neighbors = new List<Point3D>(8);
 
             neighbors.Add(new Point3D(tileLocation.X + 1, tileLocation.Y + 1, dimensionID));
@@ -51,7 +49,7 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 
             for (int i = neighbors.Count - 1; i > -1; i--)
             {
-                if (!WorldUtil.DoesTileExist(neighbors[i], dimension))
+                if (!WorldUtil.DoesTileExist(neighbors[i], dimensionID))
                 {
                     neighbors.RemoveAt(i);
                 }
@@ -60,10 +58,10 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             return neighbors;
         }
 
-        public void AddConnections(Point3D location, int dimension)
+        public void AddConnections(Point3D location)
         {
-            List<Point3D> neighbors = this.DiagnolFavorNeighboringTiles(location, dimension);
-            Dimension dim = World.Data.World.Dimensions[dimension];
+            List<Point3D> neighbors = this.DiagnolFavorNeighboringTiles(location, location.DimensionID);
+            Dimension dim = World.Data.World.Dimensions[location.DimensionID];
 
             Tile targetLocation = dim[location.X, location.Y];
 
@@ -301,7 +299,11 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 
             Stopwatch sw = Stopwatch.StartNew();
 
-            this.Storage = new NodeStorage(dimension.Width * Chunk.Width * dimension.Height * Chunk.Height);
+            if (this.Storage == null)
+            {
+                this.Storage = new NodeStorage(dimension.Width * Chunk.Width * dimension.Height * Chunk.Height);
+            }
+
             //I think I'll need to add all nodes from all dimensions to storage first before I can add connections.
             //Maybe
             foreach (Tile item in dimension)
@@ -313,12 +315,11 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             }
 
 
-            int dimID = World.Data.World.Dimensions.FindIndex(x => x.ID.Equals(dimension.ID));
             foreach (Tile item in dimension)
             {
                 ComponentSelectable selectable = item.GetExactComponent<ComponentSelectable>();
                 Point3D tileLocation = new Point3D(selectable.MapLocation.X, selectable.MapLocation.Y, dimension.ID);
-                this.AddConnections(tileLocation, dimID);//This gets more expensive as time goes on
+                this.AddConnections(tileLocation);//This gets more expensive as time goes on
             }
 
             sw.Stop();

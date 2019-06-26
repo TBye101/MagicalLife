@@ -17,20 +17,16 @@ namespace MagicalLifeAPI.Networking.World.Modifiers
         public Guid EntityID { get; private set; }
 
         [ProtoMember(2)]
-        public Point2D OldLocation { get; private set; }
+        public Point3D OldLocation { get; private set; }
 
         [ProtoMember(3)]
-        public Point2D NewLocation { get; private set; }
+        public Point3D NewLocation { get; private set; }
 
-        [ProtoMember(4)]
-        public int Dimension { get; private set; }
-
-        public LivingLocationModifier(Guid entityID, Point2D oldLocation, Point2D newLocation, int dimension)
+        public LivingLocationModifier(Guid entityID, Point3D oldLocation, Point3D newLocation)
         {
             this.EntityID = entityID;
             this.OldLocation = oldLocation;
             this.NewLocation = newLocation;
-            this.Dimension = dimension;
         }
 
         protected LivingLocationModifier()
@@ -40,8 +36,8 @@ namespace MagicalLifeAPI.Networking.World.Modifiers
 
         public override void ModifyWorld()
         {
-            Chunk oldChunk = MagicalLifeAPI.World.Data.World.GetChunkByTile(this.Dimension, this.OldLocation.X, this.OldLocation.Y);
-            Chunk newChunk = MagicalLifeAPI.World.Data.World.GetChunkByTile(this.Dimension, this.NewLocation.X, this.NewLocation.Y);
+            Chunk oldChunk = MagicalLifeAPI.World.Data.World.GetChunkByTile(this.OldLocation.DimensionID, this.OldLocation.X, this.OldLocation.Y);
+            Chunk newChunk = MagicalLifeAPI.World.Data.World.GetChunkByTile(this.NewLocation.DimensionID, this.NewLocation.X, this.NewLocation.Y);
             Living l = oldChunk.Creatures[this.EntityID];
 
             l.GetExactComponent<ComponentSelectable>().MapLocation = this.NewLocation;

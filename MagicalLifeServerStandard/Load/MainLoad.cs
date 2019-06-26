@@ -11,12 +11,7 @@ namespace MagicalLifeServer.Load
     {
         public void InitialStartup()
         {
-            World.DimensionAdded += this.World_DimensionGenerated;
             ServerProcessor.Initialize();
-        }
-
-        private void World_DimensionGenerated(object sender, int e)
-        {
         }
     }
 }

@@ -31,6 +31,11 @@ namespace MagicalLifeAPI.Util
             return Convert.ToInt32(System.Math.Pow(b.X - a.X, 2) + System.Math.Pow(b.Y - a.Y, 2));
         }
 
+        public static int GetDistanceFast(Point3D a, Point3D b)
+        {
+            return Convert.ToInt32(System.Math.Pow(b.X - a.X, 2) + System.Math.Pow(b.Y - a.Y, 2));
+        }
+
         /// <summary>
         /// Returns the distance between Point2D a and Point2D b.
         /// </summary>

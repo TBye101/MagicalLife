@@ -35,12 +35,12 @@ namespace MagicalLifeAPI.Entity.Entity
         /// Returns a fully generated human character.
         /// </summary>
         /// <returns></returns>
-        public Human GenerateHuman(Point2D location, int dimension, Guid playerID)
+        public Human GenerateHuman(Point3D location, Guid dimensionID, Guid playerID)
         {
             int health = StaticRandom.Rand(this.MinHumanHealthPerLevel, this.MaxHumanHealthPerLevel);
             float movement = (float)StaticRandom.Rand(this.MinHumanMovement, this.MaxHumanMovement);
 
-            Human h = new Human(health, movement, location, dimension, playerID, this.GenerateRandomName());
+            Human h = new Human(health, movement, location, dimensionID, playerID, this.GenerateRandomName());
             h.CreatureSkills.Add(new HarvestingSkill(new DataTypes.Attribute.ComboAttribute(1, 1), true));
 
             return h;

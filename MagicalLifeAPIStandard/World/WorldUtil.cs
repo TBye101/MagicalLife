@@ -47,7 +47,7 @@ namespace MagicalLifeAPI.World
         /// Returns all the tiles that neighbor the specified tile.
         /// </summary>
         /// <returns></returns>
-        public static List<Point2D> GetNeighboringTiles(Point2D tileLocation, int dimension)
+        public static List<Point2D> GetNeighboringTiles(Point2D tileLocation, Guid dimensionID)
         {
             List<Point2D> neighbors = new List<Point2D>();
 
@@ -62,7 +62,7 @@ namespace MagicalLifeAPI.World
 
             for (int i = neighbors.Count - 1; i > -1; i--)
             {
-                if (!DoesTileExist(neighbors[i], dimension))
+                if (!DoesTileExist(neighbors[i], dimensionID))
                 {
                     neighbors.RemoveAt(i);
                 }
@@ -71,24 +71,22 @@ namespace MagicalLifeAPI.World
             return neighbors;
         }
 
-        public static List<Point3D> GetNeighboringTiles(Point3D tileLocation, int dimension)
+        public static List<Point3D> GetNeighboringTiles(Point3D tileLocation)
         {
-            Guid dimensionID = World.Data.World.Dimensions[dimension].ID;
-
             List<Point3D> neighbors = new List<Point3D>();
 
-            neighbors.Add(new Point3D(tileLocation.X + 1, tileLocation.Y, dimensionID));
-            neighbors.Add(new Point3D(tileLocation.X - 1, tileLocation.Y, dimensionID));
-            neighbors.Add(new Point3D(tileLocation.X, tileLocation.Y + 1, dimensionID));
-            neighbors.Add(new Point3D(tileLocation.X, tileLocation.Y - 1, dimensionID));
-            neighbors.Add(new Point3D(tileLocation.X + 1, tileLocation.Y + 1, dimensionID));
-            neighbors.Add(new Point3D(tileLocation.X + 1, tileLocation.Y - 1, dimensionID));
-            neighbors.Add(new Point3D(tileLocation.X - 1, tileLocation.Y + 1, dimensionID));
-            neighbors.Add(new Point3D(tileLocation.X - 1, tileLocation.Y - 1, dimensionID));
+            neighbors.Add(new Point3D(tileLocation.X + 1, tileLocation.Y, tileLocation.DimensionID));
+            neighbors.Add(new Point3D(tileLocation.X - 1, tileLocation.Y, tileLocation.DimensionID));
+            neighbors.Add(new Point3D(tileLocation.X, tileLocation.Y + 1, tileLocation.DimensionID));
+            neighbors.Add(new Point3D(tileLocation.X, tileLocation.Y - 1, tileLocation.DimensionID));
+            neighbors.Add(new Point3D(tileLocation.X + 1, tileLocation.Y + 1, tileLocation.DimensionID));
+            neighbors.Add(new Point3D(tileLocation.X + 1, tileLocation.Y - 1, tileLocation.DimensionID));
+            neighbors.Add(new Point3D(tileLocation.X - 1, tileLocation.Y + 1, tileLocation.DimensionID));
+            neighbors.Add(new Point3D(tileLocation.X - 1, tileLocation.Y - 1, tileLocation.DimensionID));
 
             for (int i = neighbors.Count - 1; i > -1; i--)
             {
-                if (!DoesTileExist(neighbors[i], dimension))
+                if (!DoesTileExist(neighbors[i], tileLocation.DimensionID))
                 {
                     neighbors.RemoveAt(i);
                 }
@@ -102,9 +100,9 @@ namespace MagicalLifeAPI.World
         /// </summary>
         /// <param name="tileLocation"></param>
         /// <returns></returns>
-        public static bool DoesTileExist(Point2D tileLocation, int dimension)
+        public static bool DoesTileExist(Point2D tileLocation, Guid dimensionID)
         {
-            return Data.World.Dimensions[dimension].DoesTileExist(tileLocation.X, tileLocation.Y);
+            return Data.World.Dimensions[dimensionID].DoesTileExist(tileLocation.X, tileLocation.Y);
         }
 
         /// <summary>
@@ -139,9 +137,9 @@ namespace MagicalLifeAPI.World
         /// </summary>
         /// <param name="dimension"></param>
         /// <returns></returns>
-        public static Point2D FindRandomLocation(int dimension)
+        public static Point3D FindRandomLocation(Guid dimensionID)
         {
-            Dimension dim = Data.World.Dimensions[dimension];
+            Dimension dim = Data.World.Dimensions[dimensionID];
 
             //The coordinates of the random chunk
             int randomChunkX = StaticRandom.Rand(0, dim.Width);
@@ -157,11 +155,11 @@ namespace MagicalLifeAPI.World
 
             if (dim[x, y].IsWalkable)
             {
-                return new Point2D(x, y);
+                return new Point3D(x, y, dimensionID);
             }
             else
             {
-                return FindRandomLocation(dimension);
+                return FindRandomLocation(dimensionID);
             }
         }
 
@@ -169,14 +167,14 @@ namespace MagicalLifeAPI.World
         /// Spawns a character at a random position in the map without spawning the character in the same space as another character.
         /// </summary>
         /// <param name="playerID"></param>
-        public static void SpawnRandomCharacter(Guid playerID, int dimension)
+        public static void SpawnRandomCharacter(Guid playerID, Guid dimensionID)
         {
-            Point2D randomLocation = FindRandomLocation(dimension);
+            Point3D randomLocation = FindRandomLocation(dimensionID);
 
             HumanFactory humanFactory = new HumanFactory();
-            Human human = humanFactory.GenerateHuman(randomLocation, dimension, playerID);
+            Human human = humanFactory.GenerateHuman(randomLocation, dimensionID, playerID);
 
-            Data.World.GetChunkByTile(dimension, randomLocation.X, randomLocation.Y).Creatures.Add(human.ID, human);
+            Data.World.GetChunkByTile(dimensionID, randomLocation.X, randomLocation.Y).Creatures.Add(human.ID, human);
 
             if (Data.World.Mode == Networking.EngineMode.ServerOnly)
             {
@@ -190,9 +188,9 @@ namespace MagicalLifeAPI.World
         /// </summary>
         /// <param name="tileLocation"></param>
         /// <returns></returns>
-        public static Living GetCreature(Point2D tileLocation, int dimension)
+        public static Living GetCreature(Point3D tileLocation)
         {
-            Chunk chunk = Data.World.GetChunkByTile(dimension, tileLocation.X, tileLocation.Y);
+            Chunk chunk = Data.World.GetChunkByTile(tileLocation.DimensionID, tileLocation.X, tileLocation.Y);
             chunk.GetCreature(tileLocation, out Living creature);
             return creature;
         }
@@ -203,13 +201,13 @@ namespace MagicalLifeAPI.World
         /// <returns></returns>
         public static bool PlayerHasCharacter(Guid playerID)
         {
-            foreach (Dimension dimension in Data.World.Dimensions)
+            foreach (KeyValuePair<Guid, Dimension> item in Data.World.Dimensions)
             {
-                for (int x = 0; x < dimension.Width; x++)
+                for (int x = 0; x < item.Value.Width; x++)
                 {
-                    for (int y = 0; y < dimension.Height; y++)
+                    for (int y = 0; y < item.Value.Height; y++)
                     {
-                        Chunk chunk = dimension.GetChunk(x, y);
+                        Chunk chunk = item.Value.GetChunk(x, y);
                         if (chunk.Creatures.Any(living => living.Value.PlayerID.Equals(playerID)))
                         {
                             return true;

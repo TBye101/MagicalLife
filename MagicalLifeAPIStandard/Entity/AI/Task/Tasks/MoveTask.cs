@@ -16,15 +16,15 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
     public class MoveTask : MagicalTask
     {
         [ProtoMember(1)]
-        public Point2D Destination { get; private set; }
+        public Point3D Destination { get; private set; }
 
-        public MoveTask(Guid boundID, Point2D destination, int taskPriority)
+        public MoveTask(Guid boundID, Point3D destination, int taskPriority)
             : base(Dependencies.CreateEmpty(), boundID, new List<Qualification> { new CanMoveQualification(), new IsRoutePossibleQualification(destination) }, taskPriority)
         {
             this.Destination = destination;
         }
 
-        public MoveTask(Guid boundID, Point2D destination)
+        public MoveTask(Guid boundID, Point3D destination)
             : this(boundID, destination, PriorityLayers.Default)
         {
         }
@@ -37,7 +37,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
         public override void MakePreparations(Living living)
         {
             ComponentSelectable entityData = living.GetExactComponent<ComponentSelectable>();
-            Point2D start = entityData.MapLocation;
+            Point3D start = entityData.MapLocation;
             if (start != this.Destination)
             {
                 List<PathLink> pth;
@@ -50,12 +50,12 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
                     PathLink previous = movementComponent.QueuedMovement.Peek();
                     movementComponent.QueuedMovement.Clear();
                     movementComponent.QueuedMovement.Enqueue(previous);
-                    pth = MainPathFinder.GetRoute(living.Dimension, previous.Destination, this.Destination);
+                    pth = MainPathFinder.GetRoute(previous.Destination, this.Destination);
                 }
                 //No reroute
                 else
                 {
-                    pth = MainPathFinder.GetRoute(living.Dimension, start, this.Destination);
+                    pth = MainPathFinder.GetRoute(start, this.Destination);
 
                     MasterLog.DebugWriteLine("Path start: " + start.ToString() + " to " + this.Destination.ToString());
                     foreach (PathLink item in pth)
@@ -66,7 +66,7 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
                 }
 
                 MagicalLifeAPI.Util.Extensions.EnqueueCollection(movementComponent.QueuedMovement, pth);
-                ClientSendRecieve.Send<RouteCreatedMessage>(new RouteCreatedMessage(pth, living.ID, living.Dimension));
+                ClientSendRecieve.Send<RouteCreatedMessage>(new RouteCreatedMessage(pth, living.ID, living.DimensionID));
             }
         }
 

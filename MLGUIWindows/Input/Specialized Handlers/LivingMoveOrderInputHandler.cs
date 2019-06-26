@@ -38,15 +38,15 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
             }
         }
 
-        private void Move(HasComponents selectable, Point2D target)
+        private void Move(HasComponents selectable, Point3D target)
         {
-            if (World.Dimensions[RenderInfo.Dimension][target.X, target.Y].IsWalkable)
+            if (World.Dimensions[RenderInfo.DimensionID][target.X, target.Y].IsWalkable)
             {
                 switch (selectable)
                 {
                     case Living living:
                         ComponentSelectable positionData = living.GetExactComponent<ComponentSelectable>();
-                        Point2D start = positionData.MapLocation;
+                        Point3D start = positionData.MapLocation;
                         if (start != target)
                         {
                             List<PathLink> pth;
@@ -59,12 +59,12 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                                 PathLink previous = movementComponent.QueuedMovement.Peek();
                                 movementComponent.QueuedMovement.Clear();
                                 movementComponent.QueuedMovement.Enqueue(previous);
-                                pth = MainPathFinder.GetRoute(RenderInfo.Dimension, previous.Destination, target);
+                                pth = MainPathFinder.GetRoute(previous.Destination, target);
                             }
                             //No reroute
                             else
                             {
-                                pth = MainPathFinder.GetRoute(RenderInfo.Dimension, positionData.MapLocation, target);
+                                pth = MainPathFinder.GetRoute(positionData.MapLocation, target);
                             }
 
                             Extensions.EnqueueCollection(movementComponent.QueuedMovement, pth);
