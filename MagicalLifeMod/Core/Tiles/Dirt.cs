@@ -6,6 +6,7 @@ using MagicalLifeAPI.Properties;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World.Base;
 using ProtoBuf;
+using System;
 
 namespace MagicalLifeAPI.World.Tiles
 {
@@ -15,14 +16,14 @@ namespace MagicalLifeAPI.World.Tiles
     [ProtoContract]
     public class Dirt : Tile
     {
-        public Dirt(Point2D location, int dimension) : base(location, dimension, 10, 0)
+        public Dirt(Point3D location) : base(location, 10, 0)
         {
             this.AddComponent(new TillablePercentDone(.07F));
             this.GetExactComponent<ComponentRenderer>().RenderQueue.Add(
                 new StaticTexture(Dirt.GetTextureID(), RenderLayer.DirtBase));
         }
 
-        public Dirt(int x, int y, int dimension) : this(new Point2D(x, y), dimension)
+        public Dirt(int x, int y, Guid dimensionID) : this(new Point3D(x, y, dimensionID))
         {
         }
 

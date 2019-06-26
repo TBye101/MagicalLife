@@ -143,12 +143,11 @@ namespace MagicalLifeAPI.World.Base
         /// </summary>
         /// <param name="location">The 3D location of this tile in the map.</param>
         /// <param name="movementCost">This value is the movement cost of walking on this tile. It should be between 1 and 100</param>
-        protected Tile(Point2D location, int dimension, int movementCost, int footStepSound)
+        protected Tile(Point3D location, int movementCost, int footStepSound)
             : base(true)
         {
             ComponentSelectable selectable = new ComponentSelectable(SelectionType.Tile);
             selectable.MapLocation = location;
-            selectable.Dimension = dimension;
 
             this.AddComponent(selectable);
             this.AddComponent(new ComponentRenderer());
@@ -159,8 +158,8 @@ namespace MagicalLifeAPI.World.Base
             this.FootStepSound = footStepSound;
         }
 
-        protected Tile(int x, int y, int dimension, int movementCost, int footStepSound)
-            : this(new Point2D(x, y), dimension, movementCost, footStepSound)
+        protected Tile(int x, int y, Guid dimensionID, int movementCost, int footStepSound)
+            : this(new Point3D(x, y, dimensionID), movementCost, footStepSound)
         {
         }
 

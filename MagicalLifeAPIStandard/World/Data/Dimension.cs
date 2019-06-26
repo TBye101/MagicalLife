@@ -69,11 +69,11 @@ namespace MagicalLifeAPI.World.Data
         /// </summary>
         /// <param name="dimensionName"></param>
         /// <param name="chunks"></param>
-        public Dimension(string dimensionName, ProtoArray<Chunk> chunks)
+        public Dimension(string dimensionName, ProtoArray<Chunk> chunks, Guid dimensionID)
         {
             this.ChunkManage = new ChunkManager(this.ID, chunks);
             this.DimensionName = dimensionName;
-            this.ID = Guid.NewGuid();
+            this.ID = dimensionID;
             this.StructureManage = new StructureManager(this.ID);//Depends on the dimension ID to be initialized first.
             this.Items = new ItemRegistry(World.AddDimension(this));
         }

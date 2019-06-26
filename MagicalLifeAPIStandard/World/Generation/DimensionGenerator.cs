@@ -32,12 +32,12 @@ namespace MagicalLifeAPI.World
         /// <param name="width"></param>
         /// <param name="height"></param>
         /// <returns></returns>
-        public ProtoArray<Chunk> Generate(int width, int height, string dimensionName, Random r)
+        public ProtoArray<Chunk> Generate(int width, int height, string dimensionName, Random r, Guid dimensionID)
         {
-            return this.GenerateWorld(this.GenerateBlank(width, height), dimensionName, r);
+            return this.GenerateWorld(this.GenerateBlank(width, height), dimensionName, r, dimensionID);
         }
 
-        protected abstract ProtoArray<Chunk> GenerateWorld(ProtoArray<Chunk> blankWorld, string dimensionName, Random r);
+        protected abstract ProtoArray<Chunk> GenerateWorld(ProtoArray<Chunk> blankWorld, string dimensionName, Random r, Guid dimensionID);
 
         internal ProtoArray<Chunk> GenerateBlank(int chunkWidth, int chunkHeight)
         {

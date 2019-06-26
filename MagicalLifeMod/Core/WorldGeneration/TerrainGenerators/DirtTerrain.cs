@@ -15,7 +15,7 @@ namespace MagicalLifeMod.Core.WorldGeneration.TerrainGenerators
         {
         }
 
-        public override Chunk[] GenerateTerrain(Chunk[] blankChunks, string dimensionName, Random seededRandom)
+        public override Chunk[] GenerateTerrain(Chunk[] blankChunks, string dimensionName, Random seededRandom, Guid dimensionID)
         {
             foreach (Chunk chunk in blankChunks)
             {
@@ -28,7 +28,7 @@ namespace MagicalLifeMod.Core.WorldGeneration.TerrainGenerators
                         Point2D chunkLocation = chunk.ChunkLocation;
                         int x = (chunkLocation.X * Chunk.Width) + i;
                         int y = (chunkLocation.Y * Chunk.Height) + j;
-                        chunk.Tiles[i, j] = this.GenerateTile(x, y, seededRandom);
+                        chunk.Tiles[i, j] = this.GenerateTile(x, y, seededRandom, dimensionID);
                     }
                 }
             }
@@ -36,9 +36,9 @@ namespace MagicalLifeMod.Core.WorldGeneration.TerrainGenerators
             return blankChunks;
         }
 
-        private Tile GenerateTile(int x, int y, Random seededRandom)
+        private Tile GenerateTile(int x, int y, Random seededRandom, Guid dimensionID)
         {
-            Dirt dirt = new Dirt(x, y, this.Dimension);
+            Dirt dirt = new Dirt(x, y, dimensionID);
 
             if (seededRandom.Next(0, 5) == 3)
             {

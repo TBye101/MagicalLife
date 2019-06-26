@@ -9,7 +9,7 @@ namespace MagicalLifeAPI.World.Tiles
     [ProtoBuf.ProtoContract]
     internal class TilledDirt : Tile
     {
-        public TilledDirt(Point2D location, int dimension) : base(location, dimension, 10, 0)
+        public TilledDirt(Point3D location) : base(location, 10, 0)
         {
             this.InitializeComponents();
         }

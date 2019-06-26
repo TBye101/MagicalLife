@@ -14,6 +14,6 @@ namespace MagicalLifeAPI.World.Generation
         /// <param name="blankChunks"></param>
         /// <param name="biomeName">The name of the biome that is being worked with.</param>
         /// <returns></returns>
-        public abstract Chunk[] GenerateVegetation(Chunk[] blankChunks, string dimensionName, Random random);
+        public abstract Chunk[] GenerateVegetation(Chunk[] chunks, string dimensionName, Random random);
     }
 }

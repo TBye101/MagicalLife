@@ -108,7 +108,8 @@ namespace MagicalLifeAPI.World.Data
         public static void Initialize(int chunkWidth, int chunkHeight, DimensionGenerator generator, string dimensionName)
         {
             Random r = new Random();
-            new Dimension("First Reality", generator.Generate(chunkWidth, chunkHeight, dimensionName, r));
+            Guid dimensionID = Guid.NewGuid();
+            new Dimension("First Reality", generator.Generate(chunkWidth, chunkHeight, dimensionName, r, dimensionID), dimensionID);
             WorldStorage.SerializeWorld(WorldStorage.SaveName, new WorldDiskSink());
         }
 

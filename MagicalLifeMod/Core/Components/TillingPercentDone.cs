@@ -21,12 +21,12 @@ namespace MagicalLifeAPI.Components.Resource
             //Protobuf-net constructor.
         }
 
-        public override Tile ResultingTile(Point2D location, int dimension)
+        public override Tile ResultingTile(Point3D location, int dimension)
         {
-            return new TilledDirt(location, dimension);
+            return new TilledDirt(location);
         }
 
-        protected override List<Item> TillPercent(float percent, Point2D position)
+        protected override List<Item> TillPercent(float percent, Point3D position)
         {
             FMODUtil.RaiseEvent(SoundsTable.PickaxeHit, "", 0, position);
             return default;
