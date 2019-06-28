@@ -13,6 +13,7 @@ using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.Filing.Logging;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using MagicalLifeAPI.Util;
 
 namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 {
@@ -33,7 +34,25 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 
         public List<PathLink> GetRoute(Point3D origin, Point3D destination)
         {
-            return this.SameDimensionRoute(origin, destination);
+            MasterLog.DebugWriteLine("Path from: " + origin.ToString() + " " + destination.ToString());
+            MasterLog.DebugWriteLine("Estimated distance: " + MathUtil.GetDistance(origin, destination).ToString());
+            Stopwatch sw = Stopwatch.StartNew();
+
+            List<PathLink> path = this.SameDimensionRoute(origin, destination);
+
+            sw.Stop();
+            double milli = 1000;
+            double elapsedMill = sw.ElapsedMilliseconds;
+            double totalTime = elapsedMill / milli;
+            double pathfindingVelocity = MathUtil.GetDistance(origin, destination) / totalTime;
+            double timePerLink = totalTime / path.Count;
+
+            MasterLog.DebugWriteLine("Path links: " + path.Count.ToString());
+            MasterLog.DebugWriteLine("Time per link: " + timePerLink.ToString() + " seconds");
+            MasterLog.DebugWriteLine("Pathfinding velocity: " + pathfindingVelocity.ToString() + " tiles/s");
+            MasterLog.DebugWriteLine("Total time: " + totalTime.ToString() + " seconds");
+
+            return path;
         }
 
         private List<PathLink> SameDimensionRoute(Point3D origin, Point3D destination)//Maybe weight diaganols less somehow
@@ -66,6 +85,9 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
                     ComponentSelectable valueSelectable = value.GetExactComponent<ComponentSelectable>();
                     if (valueSelectable.MapLocation.Equals(destination))
                     {
+                        MasterLog.DebugWriteLine("Open nodes: " + open.Count.ToString());
+                        MasterLog.DebugWriteLine("Closed nodes: " + closed.Count.ToString());
+
                         return this.ReconstructPath(lowestFKey, value, open, closed, origin);
                     }
                     else
