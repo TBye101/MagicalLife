@@ -1,7 +1,10 @@
 ﻿using MagicalLifeAPI.Filing;
 using MagicalLifeAPI.Networking.Messages;
+using MagicalLifeAPI.Properties;
+using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data.Disk;
 using MagicalLifeAPI.World.Data.Disk.DataStorage;
+using System;
 using System.IO;
 
 namespace MagicalLifeAPI.Networking.World
@@ -45,7 +48,8 @@ namespace MagicalLifeAPI.Networking.World
         private static void HandleCompletion()
         {
             WorldStorage.LoadWorld(SaveName);
-            MagicalLifeAPI.World.Data.World.RaiseChangeCameraDimension(0);
+            Guid firstDimensionID = WorldUtil.GetDimensionByName(Lang._1stDimensionName).Key;
+            MagicalLifeAPI.World.Data.World.RaiseChangeCameraDimension(firstDimensionID);
         }
 
         internal static void Receive(WorldTransferBodyMessage msg)

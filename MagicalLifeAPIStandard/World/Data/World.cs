@@ -1,4 +1,6 @@
-﻿using MagicalLifeAPI.Networking;
+﻿using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.Networking;
+using MagicalLifeAPI.Properties;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data.Disk;
 using MagicalLifeAPI.World.Data.Disk.DataStorage;
@@ -109,7 +111,8 @@ namespace MagicalLifeAPI.World.Data
         {
             Random r = new Random();
             Guid dimensionID = Guid.NewGuid();
-            new Dimension("First Reality", generator.Generate(chunkWidth, chunkHeight, dimensionName, r, dimensionID), dimensionID);
+            Dimension firstDim = new Dimension(Lang._1stDimensionName, generator.Generate(chunkWidth, chunkHeight, dimensionName, r, dimensionID), dimensionID);
+            RenderInfo.DimensionID = firstDim.ID;
             WorldStorage.SerializeWorld(WorldStorage.SaveName, new WorldDiskSink());
         }
 

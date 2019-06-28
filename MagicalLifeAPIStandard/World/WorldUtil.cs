@@ -241,5 +241,15 @@ namespace MagicalLifeAPI.World
             first.Y += Chunk.Height - 1;
             return first;
         }
+
+        /// <summary>
+        /// Returns the dimension that has the specified name.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static KeyValuePair<Guid, Dimension> GetDimensionByName(string name)
+        {
+            return World.Data.World.Dimensions.First(x => x.Value.DimensionName.Equals(name));
+        }
     }
 }

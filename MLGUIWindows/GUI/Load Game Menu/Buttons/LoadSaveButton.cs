@@ -2,7 +2,9 @@
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Server;
+using MagicalLifeAPI.Properties;
 using MagicalLifeAPI.Sound;
+using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Data.Disk;
 using MagicalLifeClient;
@@ -12,6 +14,7 @@ using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Properties;
 using MagicalLifeServer;
 using Microsoft.Xna.Framework;
+using System;
 
 namespace MagicalLifeGUIWindows.GUI.Load
 {
@@ -42,7 +45,8 @@ namespace MagicalLifeGUIWindows.GUI.Load
                 BoundHandler.HideAll();
                 InGameGUI.Initialize();
                 BoundHandler.Popup(InGameGUI.InGame);
-                RenderInfo.Camera2D.InitializeForDimension(0);
+                Guid firstDimensionID = WorldUtil.GetDimensionByName(Lang._1stDimensionName).Key;
+                RenderInfo.Camera2D.InitializeForDimension(firstDimensionID);
             }
         }
 

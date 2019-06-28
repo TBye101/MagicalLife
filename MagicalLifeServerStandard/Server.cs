@@ -6,6 +6,7 @@ using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Networking.Server;
+using MagicalLifeAPI.Properties;
 using MagicalLifeAPI.Time;
 using MagicalLifeAPI.Universal;
 using MagicalLifeAPI.Util.Reusable;
@@ -69,9 +70,10 @@ namespace MagicalLifeServer
                 {
                     if (!WorldUtil.PlayerHasCharacter(item.Key))
                     {
-                        WorldUtil.SpawnRandomCharacter(item.Key, 0);
-                        WorldUtil.SpawnRandomCharacter(item.Key, 0);
-                        WorldUtil.SpawnRandomCharacter(item.Key, 0);
+                        Guid firstDimensionID = WorldUtil.GetDimensionByName(Lang._1stDimensionName).Key;
+                        WorldUtil.SpawnRandomCharacter(item.Key, firstDimensionID);
+                        WorldUtil.SpawnRandomCharacter(item.Key, firstDimensionID);
+                        WorldUtil.SpawnRandomCharacter(item.Key, firstDimensionID);
                     }
                 }
             }
@@ -80,9 +82,10 @@ namespace MagicalLifeServer
             {
                 if (!WorldUtil.PlayerHasCharacter(SettingsManager.PlayerSettings.Settings.PlayerID))
                 {
-                    WorldUtil.SpawnRandomCharacter(SettingsManager.PlayerSettings.Settings.PlayerID, 0);
-                    WorldUtil.SpawnRandomCharacter(SettingsManager.PlayerSettings.Settings.PlayerID, 0);
-                    WorldUtil.SpawnRandomCharacter(SettingsManager.PlayerSettings.Settings.PlayerID, 0);
+                    Guid firstDimensionID = WorldUtil.GetDimensionByName(Lang._1stDimensionName).Key;
+                    WorldUtil.SpawnRandomCharacter(SettingsManager.PlayerSettings.Settings.PlayerID, firstDimensionID);
+                    WorldUtil.SpawnRandomCharacter(SettingsManager.PlayerSettings.Settings.PlayerID, firstDimensionID);
+                    WorldUtil.SpawnRandomCharacter(SettingsManager.PlayerSettings.Settings.PlayerID, firstDimensionID);
                 }
             }
         }

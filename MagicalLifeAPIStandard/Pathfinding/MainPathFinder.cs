@@ -18,6 +18,11 @@ namespace MagicalLifeAPI.Pathfinding
         /// </summary>
         private static IPathFinder Pathfinder;
 
+        /// <summary>
+        /// If true the path finder has been properly initialized. 
+        /// </summary>
+        public static bool Initialized { get; set; } = false;
+
         public static void Initialize()
         {
             World.Data.World.DimensionAdded += World_DimensionAdded1;
@@ -36,6 +41,7 @@ namespace MagicalLifeAPI.Pathfinding
         {
             if (Pathfinder == null)
             {
+                Initialized = true;
                 Pathfinder = new Search();
             }
             Pathfinder.Initialize(dimension);
