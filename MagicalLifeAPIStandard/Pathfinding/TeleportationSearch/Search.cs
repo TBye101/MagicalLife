@@ -12,6 +12,7 @@ using System.Linq;
 using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.Filing.Logging;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 {
@@ -23,99 +24,11 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
     public class Search : IPathFinder
     {
         private NodeStorage Storage;
+        private readonly ConnectionAdder Cadder;
 
         public Search()
         {
-        }
-
-        /// <summary>
-        /// Gets all of the neighbors, but returns diagnol neighbors first.
-        /// </summary>
-        /// <param name="tileLocation"></param>
-        /// <param name="dimension"></param>
-        /// <returns></returns>
-        private List<Point3D> DiagnolFavorNeighboringTiles(Point3D tileLocation, Guid dimensionID)
-        {
-            List<Point3D> neighbors = new List<Point3D>(8);
-
-            neighbors.Add(new Point3D(tileLocation.X + 1, tileLocation.Y + 1, dimensionID));
-            neighbors.Add(new Point3D(tileLocation.X + 1, tileLocation.Y - 1, dimensionID));
-            neighbors.Add(new Point3D(tileLocation.X - 1, tileLocation.Y + 1, dimensionID));
-            neighbors.Add(new Point3D(tileLocation.X - 1, tileLocation.Y - 1, dimensionID));
-            neighbors.Add(new Point3D(tileLocation.X + 1, tileLocation.Y, dimensionID));
-            neighbors.Add(new Point3D(tileLocation.X - 1, tileLocation.Y, dimensionID));
-            neighbors.Add(new Point3D(tileLocation.X, tileLocation.Y + 1, dimensionID));
-            neighbors.Add(new Point3D(tileLocation.X, tileLocation.Y - 1, dimensionID));
-
-            for (int i = neighbors.Count - 1; i > -1; i--)
-            {
-                if (!WorldUtil.DoesTileExist(neighbors[i], dimensionID))
-                {
-                    neighbors.RemoveAt(i);
-                }
-            }
-
-            return neighbors;
-        }
-
-        public void AddConnections(Point3D location)
-        {
-            List<Point3D> neighbors = this.DiagnolFavorNeighboringTiles(location, location.DimensionID);
-            Dimension dim = World.Data.World.Dimensions[location.DimensionID];
-
-            Tile targetLocation = dim[location.X, location.Y];
-
-            if (targetLocation.IsWalkable)
-            {
-                foreach (Point3D item in neighbors)
-                {
-                    Tile t = dim[item.X, item.Y];
-                    if (t.IsWalkable)
-                    {
-                        this.Storage.AddConnection(location, item);
-                    }
-                }
-
-                Tile tile = dim[location.X, location.Y];
-
-                GameObject ceiling = tile.Ceiling;
-                GameObject floor = tile.Floor;
-                GameObject mainObject = tile.MainObject;
-                List<Point3D> extraConnections = new List<Point3D>();
-
-                if (ceiling != null)
-                {
-                    PortalComponent ceilingPortals = ceiling.GetComponent<PortalComponent>();
-
-                    if (ceilingPortals != null)
-                    {
-                        extraConnections.AddRange(ceilingPortals.Connections);
-                    }
-                }
-
-                if (floor != null)
-                {
-                    PortalComponent floorPortals = floor.GetComponent<PortalComponent>();
-                    if (floorPortals != null)
-                    {
-                        extraConnections.AddRange(floorPortals.Connections);
-                    }
-                }
-
-                if (mainObject != null)
-                {
-                    PortalComponent mainObjectPortals = mainObject.GetComponent<PortalComponent>();
-                    if (mainObjectPortals != null)
-                    {
-                        extraConnections.AddRange(mainObjectPortals.Connections);
-                    }
-                }
-
-                foreach (Point3D item in extraConnections)
-                {
-                    this.Storage.AddConnection(location, item);
-                }
-            }
+            this.Cadder = new ConnectionAdder();
         }
 
         public List<PathLink> GetRoute(Point3D origin, Point3D destination)
@@ -196,7 +109,7 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             return null;
         }
 
-        private Point3D getLowestGScore(List<Point3D> connections, SortedList<ExtraNodeData, SearchNode> open, SortedList<ExtraNodeData, SearchNode> closed)
+        private Point3D GetLowestGScore(List<Point3D> connections, SortedList<ExtraNodeData, SearchNode> open, SortedList<ExtraNodeData, SearchNode> closed)
         {
             int length = connections.Count;
             ExtraNodeData lowestGNode = default;
@@ -245,7 +158,7 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             while (!dataNode.Location.Equals(origin))
             {
                 links.Add(dataNode.Location);
-                Point3D lowest = this.getLowestGScore(dataNode.Connections, open, closed);
+                Point3D lowest = this.GetLowestGScore(dataNode.Connections, open, closed);
                 dataNode = this.Storage.GetNode(lowest);
             }
 
@@ -309,8 +222,7 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             foreach (Tile item in dimension)
             {
                 ComponentSelectable selectable = item.GetExactComponent<ComponentSelectable>();
-                Point3D tileLocation = new Point3D(selectable.MapLocation.X, selectable.MapLocation.Y, dimension.ID);
-                SearchNode newNode = new SearchNode(tileLocation, item.MovementCost, true, item.IsVisible);
+                SearchNode newNode = new SearchNode(selectable.MapLocation, item.MovementCost, true, item.IsVisible);
                 this.Storage.AddNode(newNode);
             }
 
@@ -318,8 +230,7 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             foreach (Tile item in dimension)
             {
                 ComponentSelectable selectable = item.GetExactComponent<ComponentSelectable>();
-                Point3D tileLocation = new Point3D(selectable.MapLocation.X, selectable.MapLocation.Y, dimension.ID);
-                this.AddConnections(tileLocation);//This gets more expensive as time goes on
+                this.AddConnections(selectable.MapLocation);//This gets more expensive as time goes on
             }
 
             sw.Stop();
@@ -341,6 +252,11 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
         public void RemoveConnections(Point3D location)
         {
             this.Storage.RemoveAllConnections(location);
+        }
+
+        public void AddConnections(Point3D location)
+        {
+            this.Cadder.AddConnections(location, this.Storage);
         }
     }
 }
