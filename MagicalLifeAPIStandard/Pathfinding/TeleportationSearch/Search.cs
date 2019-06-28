@@ -24,18 +24,15 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 
     public class Search : IPathFinder
     {
-        //private NodeStorage Storage;
-        //private readonly ConnectionAdder Cadder;
-
         public Search()
         {
-            //this.Cadder = new ConnectionAdder();
         }
 
         public List<PathLink> GetRoute(Point3D origin, Point3D destination)
         {
             MasterLog.DebugWriteLine("Path from: " + origin.ToString() + " " + destination.ToString());
             MasterLog.DebugWriteLine("Estimated distance: " + MathUtil.GetDistance(origin, destination).ToString());
+            GC.Collect();
             Stopwatch sw = Stopwatch.StartNew();
 
             List<PathLink> path = this.SameDimensionRoute(origin, destination);
@@ -74,7 +71,7 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
                 SortedList<ExtraNodeData, Tile> open = new SortedList<ExtraNodeData, Tile>();
                 SortedList<ExtraNodeData, Tile> closed = new SortedList<ExtraNodeData, Tile>();
 
-                ExtraNodeData firstData = new ExtraNodeData(0, this.CalculateHScoreSameDim(origin, destination), null, origin);
+                ExtraNodeData firstData = new ExtraNodeData(0, this.CalculateHScoreSameDim(origin, destination), origin);
                 open.Add(firstData, originDim[origin.X, origin.Y]);
 
                 while (open.Count > 0)
@@ -110,7 +107,7 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
                                 if (closedIndexPosition == -1)
                                 {
                                     ComponentSelectable selectable = neighbor.GetExactComponent<ComponentSelectable>();
-                                    extraNeighborData = new ExtraNodeData(lowestFKey.GScore + neighbor.MovementCost, this.CalculateHScoreSameDim(selectable.MapLocation, destination), null, selectable.MapLocation);
+                                    extraNeighborData = new ExtraNodeData(lowestFKey.GScore + neighbor.MovementCost, this.CalculateHScoreSameDim(selectable.MapLocation, destination), selectable.MapLocation);
                                     open.Add(extraNeighborData, neighbor);
                                 }
                                 else
@@ -307,47 +304,13 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 
         private int CalculateHScoreSameDim(Point3D node, Point3D destination)
         {
-            //return Math.Abs(node.X - destination.X) + Math.Abs(node.Y - destination.Y);
-            return (int)Math.Sqrt(Math.Pow(destination.X - node.X, 2) + Math.Pow(destination.Y - node.Y, 2));
+            return Math.Abs(node.X - destination.X) + Math.Abs(node.Y - destination.Y);
+            //return (int)Math.Sqrt(Math.Pow(destination.X - node.X, 2) + Math.Pow(destination.Y - node.Y, 2));
             //Need to come up with a way to calculate distance between Point3D, even if they are in different dimensions.
         }
 
         public void Initialize(Dimension dimension)
         {
-            GC.Collect();
-
-            Stopwatch sw = Stopwatch.StartNew();
-
-            //if (this.Storage == null)
-            //{
-            //    this.Storage = new NodeStorage(dimension.Width * Chunk.Width * dimension.Height * Chunk.Height);
-            //}
-
-            //I think I'll need to add all nodes from all dimensions to storage first before I can add connections.
-            //Maybe
-            //foreach (Tile item in dimension)
-            //{
-            //    ComponentSelectable selectable = item.GetExactComponent<ComponentSelectable>();
-            //    SearchNode newNode = new SearchNode(selectable.MapLocation, item.MovementCost, true, item.IsVisible);
-            //    this.Storage.AddNode(newNode);
-            //}
-
-
-            //foreach (Tile item in dimension)
-            //{
-            //    ComponentSelectable selectable = item.GetExactComponent<ComponentSelectable>();
-            //    this.AddConnections(selectable.MapLocation);//This gets more expensive as time goes on
-            //}
-
-            sw.Stop();
-            double milli = 1000;
-            double elapsedMill = sw.ElapsedMilliseconds;
-            double initTime = (elapsedMill / milli);
-            double aveTileTime = ((elapsedMill / (dimension.Width * dimension.Height)) / milli);
-
-            MasterLog.DebugWriteLine("Initialization time for dimension: " + initTime.ToString() + " seconds");
-            MasterLog.DebugWriteLine("Dimension size: " + (dimension.Width * Chunk.Width).ToString() + "X" + (dimension.Height * Chunk.Height).ToString());
-            MasterLog.DebugWriteLine("Average time per tile: " + aveTileTime.ToString() + " seconds");
         }
 
         public bool IsRoutePossible(Point3D origin, Point3D destination)

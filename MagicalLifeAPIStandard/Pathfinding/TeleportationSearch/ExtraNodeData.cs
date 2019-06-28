@@ -15,18 +15,12 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
         public float GScore { get; set; }
         public int HScore { get; set; }
 
-        /// <summary>
-        /// The previous node step in our calculated path.
-        /// </summary>
-        public SearchNode Parent { get; set; }
-
         public Point3D NodeLocation { get; set; }
 
-        public ExtraNodeData(float gScore, int hScore, SearchNode parent, Point3D nodeLocation)
+        public ExtraNodeData(float gScore, int hScore, Point3D nodeLocation)
         {
             this.GScore = gScore;
             this.HScore = hScore;
-            this.Parent = parent;
             this.NodeLocation = nodeLocation;
         }
 
@@ -34,7 +28,6 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
         {
             return other.GScore.Equals(this.GScore) 
                 && other.HScore.Equals(this.HScore) 
-                && other.Parent.Equals(this.Parent)
                 && other.NodeLocation.Equals(this.NodeLocation);
         }
 
