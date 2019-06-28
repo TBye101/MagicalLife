@@ -112,45 +112,49 @@ namespace MagicalLifeGUIWindows.Input.History
         /// <returns></returns>
         private HistoricalInput NoAction(InputEventArgs e)
         {
-            Point2D mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y, RenderInfo.DimensionID, out bool success);
-
-            if (success)
+            if (!RenderInfo.DimensionID.Equals(Guid.Empty))
             {
-                Living select = null;
+                Point2D mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y, RenderInfo.DimensionID, out bool success);
 
-                Chunk chunk = World.Dimensions[RenderInfo.DimensionID].GetChunkForLocation(mapSpot.X, mapSpot.Y);
-                KeyValuePair<System.Guid, Living> result = chunk.Creatures.FirstOrDefault
-                    (x => mapSpot.Equals(x.Value.GetExactComponent<ComponentSelectable>().MapLocation));
-
-                select = result.Value;
-
-                if (select != null)
+                if (success)
                 {
-                    //Null check select, as it is null when an entity is not found
-                    List<HasComponents> selected = new List<HasComponents>
+                    Living select = null;
+
+                    Chunk chunk = World.Dimensions[RenderInfo.DimensionID].GetChunkForLocation(mapSpot.X, mapSpot.Y);
+                    KeyValuePair<System.Guid, Living> result = chunk.Creatures.FirstOrDefault
+                        (x => mapSpot.Equals(x.Value.GetExactComponent<ComponentSelectable>().MapLocation));
+
+                    select = result.Value;
+
+                    if (select != null)
+                    {
+                        //Null check select, as it is null when an entity is not found
+                        List<HasComponents> selected = new List<HasComponents>
                     {
                         select
                     };
 
-                    if (e.ShiftDown)
-                    {
-                        if (this.IsSelectableSelected(select))
+                        if (e.ShiftDown)
                         {
-                            return new HistoricalInput(false, selected, ActionSelected.None);
+                            if (this.IsSelectableSelected(select))
+                            {
+                                return new HistoricalInput(false, selected, ActionSelected.None);
+                            }
+                            else
+                            {
+                                return new HistoricalInput(selected, ActionSelected.None);
+                            }
                         }
                         else
                         {
-                            return new HistoricalInput(selected, ActionSelected.None);
+                            return new HistoricalInput(selected, true, ActionSelected.None);
                         }
                     }
-                    else
-                    {
-                        return new HistoricalInput(selected, true, ActionSelected.None);
-                    }
                 }
-            }
 
-            return new HistoricalInput(true, InputHistory.Selected, ActionSelected.None);
+                return new HistoricalInput(true, InputHistory.Selected, ActionSelected.None);
+            }
+            return new HistoricalInput(ActionSelected.None);
         }
 
         /// <summary>

@@ -52,9 +52,7 @@ namespace MagicalLifeAPI.DataTypes
             unchecked
             {
                 int hash = 17;
-                hash = (hash * 3) + this.DimensionID.GetHashCode();
-                hash = (hash * 3) + this.X.GetHashCode();
-                hash = (hash * 3) + this.Y.GetHashCode();
+                hash = this.X ^ this.Y ^ this.DimensionID.GetHashCode();
                 return hash;
             }
         }

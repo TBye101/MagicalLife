@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Networking;
 using MagicalLifeAPI.Properties;
 using MagicalLifeAPI.World.Base;
@@ -98,6 +99,11 @@ namespace MagicalLifeAPI.World.Data
         public static Tile GetTile(Guid dimensionID, int x, int y)
         {
             return World.Dimensions[dimensionID][x, y];
+        }
+
+        public static Tile GetTile(Point3D location)
+        {
+            return World.Dimensions[location.DimensionID][location.X, location.Y];
         }
 
         /// <summary>
