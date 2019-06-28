@@ -68,19 +68,18 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             {
                 Dimension originDim = World.Data.World.Dimensions[origin.DimensionID];
 
-                SortedList<ExtraNodeData, Tile> open = new SortedList<ExtraNodeData, Tile>();
-                SortedList<ExtraNodeData, Tile> closed = new SortedList<ExtraNodeData, Tile>();
+                SortedList<Point3D, ExtraNodeData> open = new SortedList<Point3D, ExtraNodeData>();
+                SortedList<Point3D, ExtraNodeData> closed = new SortedList<Point3D, ExtraNodeData>();
 
                 ExtraNodeData firstData = new ExtraNodeData(0, this.CalculateHScoreSameDim(origin, destination), origin);
-                open.Add(firstData, originDim[origin.X, origin.Y]);
+                open.Add(firstData.NodeLocation, firstData);
 
                 while (open.Count > 0)
                 {
-                    ExtraNodeData lowestFKey = open.Keys[open.Count - 1];
-                    open.TryGetValue(lowestFKey, out Tile value);
+                    Point3D lowestFKey = open.Keys[open.Count - 1];
+                    open.TryGetValue(lowestFKey, out ExtraNodeData value);
 
-                    ComponentSelectable valueSelectable = value.GetExactComponent<ComponentSelectable>();
-                    if (valueSelectable.MapLocation.Equals(destination))
+                    if (lowestFKey.Equals(destination))
                     {
                         MasterLog.DebugWriteLine("Open nodes: " + open.Count.ToString());
                         MasterLog.DebugWriteLine("Closed nodes: " + closed.Count.ToString());
@@ -92,32 +91,31 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
                         open.Remove(lowestFKey);
                         closed.Add(lowestFKey, value);
 
-
-                        foreach (Point3D item in this.CalculateConnections(value))
+                        Tile tile = World.Data.World.GetTile(value.NodeLocation);
+                        foreach (Point3D item in this.CalculateConnections(tile))
                         {
-                            Tile neighbor = World.Data.World.GetTile(item);
+                            Tile neighborTile = World.Data.World.GetTile(item);
                             ExtraNodeData extraNeighborData;
 
-                            int openIndexPosition = open.IndexOfValue(neighbor);
+                            bool inOpen = open.TryGetValue(item, out ExtraNodeData neighborData);
 
-                            if (openIndexPosition == -1)
+                            if (!inOpen)
                             {
-                                int closedIndexPosition = closed.IndexOfValue(neighbor);
+                                bool inClosed = closed.TryGetValue(item, out ExtraNodeData closedNeighborData);
 
-                                if (closedIndexPosition == -1)
+                                if (!inClosed)
                                 {
-                                    ComponentSelectable selectable = neighbor.GetExactComponent<ComponentSelectable>();
-                                    extraNeighborData = new ExtraNodeData(lowestFKey.GScore + neighbor.MovementCost, this.CalculateHScoreSameDim(selectable.MapLocation, destination), selectable.MapLocation);
-                                    open.Add(extraNeighborData, neighbor);
+                                    extraNeighborData = new ExtraNodeData(value.GScore + neighborTile.MovementCost, this.CalculateHScoreSameDim(item, destination), item);
+                                    open.Add(item, extraNeighborData);
                                 }
                                 else
                                 {
-                                    extraNeighborData = closed.ElementAt(closedIndexPosition).Key;
+                                    extraNeighborData = closedNeighborData;
                                 }
                             }
                             else
                             {
-                                extraNeighborData = open.ElementAt(openIndexPosition).Key;
+                                extraNeighborData = neighborData;
                             }
                         }
                     }
@@ -127,36 +125,32 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             return null;
         }
 
-        private Point3D GetLowestGScore(List<Point3D> connections, SortedList<ExtraNodeData, Tile> open, SortedList<ExtraNodeData, Tile> closed)
+        private List<PathLink> ReconstructPath(Point3D lastNode, ExtraNodeData value, SortedList<Point3D, ExtraNodeData> open, SortedList<Point3D, ExtraNodeData> closed, Point3D origin)
         {
-            int length = connections.Count;
-            ExtraNodeData lowestGNode = default;
-            lowestGNode.GScore = int.MaxValue;
+            List<Point3D> links = new List<Point3D>();
 
+            Tile dataNode = World.Data.World.GetTile(lastNode);
+            Point3D location = lastNode;
 
-            for (int i = 0; i < length; i++)
+            while (!location.Equals(origin))
             {
-                Point3D connection = connections[i];
-                Tile connectedNode = World.Data.World.GetTile(connection);
-
-                KeyValuePair<ExtraNodeData, Tile> nodeData = this.GetNodeFromLists(connectedNode, open, closed);
-                if (!nodeData.Equals(default(KeyValuePair<ExtraNodeData, Tile>)))
-                {
-                    if (nodeData.Key.GScore < lowestGNode.GScore)
-                    {
-                        lowestGNode = nodeData.Key;
-                    }
-                }
+                links.Add(location);
+                Point3D lowest = this.GetLowestGScore(this.CalculateConnections(dataNode), open, closed);
+                dataNode = dataNode = World.Data.World.GetTile(lowest);
+                location = lowest;
             }
 
-            if (lowestGNode.Equals(default(KeyValuePair<ExtraNodeData, Tile>)))
+            links.Add(origin);
+
+            List<PathLink> path = new List<PathLink>();
+
+            int length = links.Count;
+            for (int i = length - 1; i > 0; i--)
             {
-                return null;
+                path.Add(new PathLink(links[i], links[i - 1]));
             }
-            else
-            {
-                return lowestGNode.NodeLocation;
-            }
+
+            return path;
         }
 
         /// <summary>
@@ -166,7 +160,7 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
         /// <param name="open"></param>
         /// <param name="closed"></param>
         /// <returns></returns>
-        private List<PathLink> ReconstructPath(ExtraNodeData lastNodeData, Tile lastNode, SortedList<ExtraNodeData, Tile> open, SortedList<ExtraNodeData, Tile> closed, Point3D origin)
+        private List<PathLink> ReconstructPath(ExtraNodeData lastNodeData, Tile lastNode, SortedList<Point3D, ExtraNodeData> open, SortedList<Point3D, ExtraNodeData> closed, Point3D origin)
         {
             List<Point3D> links = new List<Point3D>();
 
@@ -192,6 +186,38 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             }
 
             return path;
+        }
+
+        private Point3D GetLowestGScore(List<Point3D> connections, SortedList<Point3D, ExtraNodeData> open, SortedList<Point3D, ExtraNodeData> closed)
+        {
+            int length = connections.Count;
+            ExtraNodeData lowestGNode = default;
+            lowestGNode.GScore = int.MaxValue;
+
+
+            for (int i = 0; i < length; i++)
+            {
+                Point3D connection = connections[i];
+                Tile connectedNode = World.Data.World.GetTile(connection);
+
+                ExtraNodeData nodeData = this.GetNodeFromLists(connection, open, closed);
+                if (!nodeData.Equals(default(ExtraNodeData)))
+                {
+                    if (nodeData.GScore < lowestGNode.GScore)
+                    {
+                        lowestGNode = nodeData;
+                    }
+                }
+            }
+
+            if (lowestGNode.Equals(default(KeyValuePair<ExtraNodeData, Tile>)))
+            {
+                return null;
+            }
+            else
+            {
+                return lowestGNode.NodeLocation;
+            }
         }
 
         private List<Point3D> CalculateConnections(Tile tile)
@@ -278,27 +304,27 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             return neighbors;
         }
 
-        private KeyValuePair<ExtraNodeData, Tile> GetNodeFromLists(Tile node, SortedList<ExtraNodeData,
-            Tile> open, SortedList<ExtraNodeData, Tile> closed)
+        private ExtraNodeData GetNodeFromLists(Point3D node, SortedList<Point3D,
+            ExtraNodeData> open, SortedList<Point3D, ExtraNodeData> closed)
         {
-            int openIndex = open.IndexOfValue(node);
+            bool inOpen = open.TryGetValue(node, out ExtraNodeData openValue);
 
-            if (openIndex == -1)
+            if (inOpen)
             {
-                int closedIndex = closed.IndexOfValue(node);
-
-                if (closedIndex == -1)
-                {
-                    return default;
-                }
-                else
-                {
-                    return closed.ElementAt(closedIndex);
-                }
+                return openValue;
             }
             else
             {
-                return open.ElementAt(openIndex);
+                bool inClosed = closed.TryGetValue(node, out ExtraNodeData closedValue);
+
+                if (inClosed)
+                {
+                    return closedValue;
+                }
+                else
+                {
+                    return default;
+                }
             }
         }
 

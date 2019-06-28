@@ -26,9 +26,28 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 
         public bool Equals(ExtraNodeData other)
         {
-            return other.GScore.Equals(this.GScore) 
-                && other.HScore.Equals(this.HScore) 
-                && other.NodeLocation.Equals(this.NodeLocation);
+            bool numsSame = other.GScore.Equals(this.GScore)
+                && other.HScore.Equals(this.HScore);
+
+            if (numsSame)
+            {
+                if (other.NodeLocation == null)
+                {
+                    if (this.NodeLocation == null)
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    if (this.NodeLocation != null)
+                    {
+                        return other.NodeLocation.Equals(this.NodeLocation);
+                    }
+                }
+            }
+
+            return false;
         }
 
         public int CompareTo(ExtraNodeData other)
