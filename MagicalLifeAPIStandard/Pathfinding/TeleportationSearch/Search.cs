@@ -17,11 +17,10 @@ using MagicalLifeAPI.Util;
 
 namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 {
-    //https://brilliant.org/wiki/a-star-search/
-    //https://stackoverflow.com/questions/12401481/a-star-algorithm-reconstruct-path
-    //https://en.wikipedia.org/wiki/A*_search_algorithm
-    //https://github.com/roy-t/AStar/blob/master/Roy-T.AStar/PathFinder.cs
 
+    /// <summary>
+    /// Used to do pathfinding
+    /// </summary>
     public class Search : IPathFinder
     {
         public Search()
@@ -66,8 +65,6 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             }
             else
             {
-                Dimension originDim = World.Data.World.Dimensions[origin.DimensionID];
-
                 SortedList<Point3D, ExtraNodeData> open = new SortedList<Point3D, ExtraNodeData>();
                 SortedList<Point3D, ExtraNodeData> closed = new SortedList<Point3D, ExtraNodeData>();
 
@@ -135,49 +132,13 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             while (!location.Equals(origin))
             {
                 links.Add(location);
-                Point3D lowest = this.GetLowestGScore(this.CalculateConnections(dataNode), open, closed);
-                dataNode = dataNode = World.Data.World.GetTile(lowest);
-                location = lowest;
+                location = this.GetLowestGScore(this.CalculateConnections(dataNode), open, closed);
+                dataNode = World.Data.World.GetTile(location);
             }
 
             links.Add(origin);
 
-            List<PathLink> path = new List<PathLink>();
-
-            int length = links.Count;
-            for (int i = length - 1; i > 0; i--)
-            {
-                path.Add(new PathLink(links[i], links[i - 1]));
-            }
-
-            return path;
-        }
-
-        /// <summary>
-        /// Reconstructs the path from the first node and the open and closed list.
-        /// </summary>
-        /// <param name="firstNodeData"></param>
-        /// <param name="open"></param>
-        /// <param name="closed"></param>
-        /// <returns></returns>
-        private List<PathLink> ReconstructPath(ExtraNodeData lastNodeData, Tile lastNode, SortedList<Point3D, ExtraNodeData> open, SortedList<Point3D, ExtraNodeData> closed, Point3D origin)
-        {
-            List<Point3D> links = new List<Point3D>();
-
-            ComponentSelectable selectable = lastNode.GetExactComponent<ComponentSelectable>();
-            Tile dataNode = lastNode;
-
-            while (!selectable.MapLocation.Equals(origin))
-            {
-                links.Add(selectable.MapLocation);
-                Point3D lowest = this.GetLowestGScore(this.CalculateConnections(dataNode), open, closed);
-                dataNode = dataNode = World.Data.World.GetTile(lowest);
-                selectable = dataNode.GetExactComponent<ComponentSelectable>();
-            }
-
-            links.Add(origin);
-
-            List<PathLink> path = new List<PathLink>();
+            List<PathLink> path = new List<PathLink>(links.Count + 1);
 
             int length = links.Count;
             for (int i = length - 1; i > 0; i--)
@@ -198,10 +159,9 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             for (int i = 0; i < length; i++)
             {
                 Point3D connection = connections[i];
-                Tile connectedNode = World.Data.World.GetTile(connection);
 
                 ExtraNodeData nodeData = this.GetNodeFromLists(connection, open, closed);
-                if (!nodeData.Equals(default(ExtraNodeData)))
+                if (!nodeData.Equals(default))
                 {
                     if (nodeData.GScore < lowestGNode.GScore)
                     {
@@ -224,7 +184,6 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
         {
             Point3D location = tile.GetExactComponent<ComponentSelectable>().MapLocation;
             List<Point3D> neighbors = this.DiagnolFavorNeighboringTiles(location, location.DimensionID);
-            Dimension dim = World.Data.World.Dimensions[location.DimensionID];
 
             if (tile.IsWalkable)
             {
@@ -283,15 +242,17 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
         /// <returns></returns>
         private List<Point3D> DiagnolFavorNeighboringTiles(Point3D tileLocation, Guid dimensionID)
         {
-            List<Point3D> neighbors = new List<Point3D>(8);
-            neighbors.Add(new Point3D(tileLocation.X + 1, tileLocation.Y + 1, dimensionID));
-            neighbors.Add(new Point3D(tileLocation.X + 1, tileLocation.Y - 1, dimensionID));
-            neighbors.Add(new Point3D(tileLocation.X - 1, tileLocation.Y + 1, dimensionID));
-            neighbors.Add(new Point3D(tileLocation.X - 1, tileLocation.Y - 1, dimensionID));
-            neighbors.Add(new Point3D(tileLocation.X + 1, tileLocation.Y, dimensionID));
-            neighbors.Add(new Point3D(tileLocation.X - 1, tileLocation.Y, dimensionID));
-            neighbors.Add(new Point3D(tileLocation.X, tileLocation.Y + 1, dimensionID));
-            neighbors.Add(new Point3D(tileLocation.X, tileLocation.Y - 1, dimensionID));
+            List<Point3D> neighbors = new List<Point3D>(8)
+            {
+                new Point3D(tileLocation.X + 1, tileLocation.Y + 1, dimensionID),
+                new Point3D(tileLocation.X + 1, tileLocation.Y - 1, dimensionID),
+                new Point3D(tileLocation.X - 1, tileLocation.Y + 1, dimensionID),
+                new Point3D(tileLocation.X - 1, tileLocation.Y - 1, dimensionID),
+                new Point3D(tileLocation.X + 1, tileLocation.Y, dimensionID),
+                new Point3D(tileLocation.X - 1, tileLocation.Y, dimensionID),
+                new Point3D(tileLocation.X, tileLocation.Y + 1, dimensionID),
+                new Point3D(tileLocation.X, tileLocation.Y - 1, dimensionID)
+            };
 
             for (int i = neighbors.Count - 1; i > -1; i--)
             {

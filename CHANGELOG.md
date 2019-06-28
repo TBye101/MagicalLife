@@ -6,6 +6,9 @@ SneakyTactician  <SneakyTactician@outlook.com>
 
 #### API
 *API now returns a texture designated as the missing texture should a texture not be found
+*Dependency on RoyT's A* library is now removed
+*Wrote new pathfinding algorithm
+    *More capable of handling multiple dimensions and teleporters
 
 #### GUI
 *Added stair case up and down textures
