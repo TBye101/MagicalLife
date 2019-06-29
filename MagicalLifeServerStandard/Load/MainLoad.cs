@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.Load;
-using MagicalLifeAPI.World.Data;
 using MagicalLifeServer.Processing;
 
 namespace MagicalLifeServer.Load

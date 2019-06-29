@@ -119,7 +119,7 @@ namespace MagicalLifeAPI.Asset
         public static readonly string StairDown1 = "Structure/StairDown1";
         public static readonly string StairUp1 = "Structure/StairUp1";
 
-        #endregion
+        #endregion Structure
 
         public static readonly string Missing = "Missing";
 

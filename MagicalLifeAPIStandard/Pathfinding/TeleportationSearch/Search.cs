@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MagicalLifeAPI.Components.Entity;
-using MagicalLifeAPI.Components.MAP_GUI;
+﻿using MagicalLifeAPI.Components.MAP_GUI;
 using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.GUI;
+using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
-using System.Linq;
-using MagicalLifeAPI.Error.InternalExceptions;
-using MagicalLifeAPI.Filing.Logging;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
-using System.Threading.Tasks;
-using MagicalLifeAPI.Util;
 
 namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 {
-
     /// <summary>
     /// Used to do pathfinding
     /// </summary>
@@ -54,8 +48,8 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
         private List<PathLink> SameDimensionRoute(Point3D origin, Point3D destination)//Maybe weight diaganols less somehow
         {
             /*
-                f(n) = total estimated cost of path through node 
-                g(n) = cost so far to reach node 
+                f(n) = total estimated cost of path through node
+                g(n) = cost so far to reach node
                 h(n) = estimated cost from  to goal. This is the heuristic part of the cost function, so it is like a guess.
             */
 
@@ -154,7 +148,6 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             int length = connections.Count;
             ExtraNodeData lowestGNode = default;
             lowestGNode.GScore = int.MaxValue;
-
 
             for (int i = 0; i < length; i++)
             {

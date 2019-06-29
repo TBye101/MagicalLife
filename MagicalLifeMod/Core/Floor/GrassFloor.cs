@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MagicalLifeAPI.Asset;
+﻿using MagicalLifeAPI.Asset;
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Util;
 using ProtoBuf;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace MagicalLifeMod.Core.Floor
 {
@@ -30,12 +30,15 @@ namespace MagicalLifeMod.Core.Floor
                 case 0:
                     textureName = TextureLoader.TextureGrass1;
                     break;
+
                 case 1:
                     textureName = TextureLoader.TextureGrass2;
                     break;
+
                 case 2:
                     textureName = TextureLoader.TextureGrass3;
                     break;
+
                 default:
                     textureName = TextureLoader.TextureGrass4;
                     break;

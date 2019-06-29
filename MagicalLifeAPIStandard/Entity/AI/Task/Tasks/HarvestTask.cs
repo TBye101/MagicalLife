@@ -131,7 +131,6 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
             //The tile the entity is standing on
             ComponentSelectable entityS = l.GetExactComponent<ComponentSelectable>();
             Tile entityOn = World.Data.World.GetTile(l.DimensionID, entityS.MapLocation.X, entityS.MapLocation.Y);
-            
 
             if (entityOn.MainObject == null || entityOn.MainObject.GetType() == drop.GetType())
             {

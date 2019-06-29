@@ -1,11 +1,8 @@
-﻿using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Networking.Client;
-using MagicalLifeAPI.Networking.Messages;
+﻿using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeClient.Entity;
 using MagicalLifeClient.Message;
-using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeClient

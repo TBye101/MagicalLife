@@ -1,6 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.World.Data;
-using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Pathfinding

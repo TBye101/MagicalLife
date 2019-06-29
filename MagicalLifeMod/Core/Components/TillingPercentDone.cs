@@ -13,7 +13,6 @@ namespace MagicalLifeAPI.Components.Resource
         public TillablePercentDone(float percentTillTick)
             : base(percentTillTick)
         {
-
         }
 
         protected TillablePercentDone()

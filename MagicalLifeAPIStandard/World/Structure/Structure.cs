@@ -2,7 +2,6 @@
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeAPI.World.Base
 {
@@ -19,7 +18,7 @@ namespace MagicalLifeAPI.World.Base
         public string Name { get; private set; }
 
         /// <summary>
-        /// The unique ID of the player/faction that "owns" this structure. Should be equal to <see cref="Guid.Empty"/> if unowned. 
+        /// The unique ID of the player/faction that "owns" this structure. Should be equal to <see cref="Guid.Empty"/> if unowned.
         /// </summary>
         [ProtoMember(2)]
         public Guid OwnerID { get; private set; }
@@ -31,7 +30,7 @@ namespace MagicalLifeAPI.World.Base
         public List<Point2D> Parts { get; private set; }
 
         /// <summary>
-        /// The id that is shared by all instances of this structure. 
+        /// The id that is shared by all instances of this structure.
         /// </summary>
         [ProtoMember(4)]
         public Guid StructureID { get; private set; }

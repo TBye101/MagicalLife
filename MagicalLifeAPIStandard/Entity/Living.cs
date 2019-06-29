@@ -7,8 +7,6 @@ using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.Entity.Eventing;
 using MagicalLifeAPI.Entity.Skills;
 using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Pathfinding;
-using MagicalLifeAPI.Util.Reusable;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;

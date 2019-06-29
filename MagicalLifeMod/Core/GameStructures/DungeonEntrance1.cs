@@ -8,7 +8,7 @@ namespace MagicalLifeMod.Core.GameStructures
 {
     public class DungeonEntrance1 : Structure
     {
-        public DungeonEntrance1(Guid ownerID, List<Point2D> parts, Guid structureID) 
+        public DungeonEntrance1(Guid ownerID, List<Point2D> parts, Guid structureID)
             : base(CoreLang.DungeonEntranceName, ownerID, parts, structureID)
         {
         }

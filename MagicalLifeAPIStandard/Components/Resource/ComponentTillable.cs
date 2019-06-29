@@ -16,7 +16,7 @@ namespace MagicalLifeAPI.Components.Resource
         public float PercentTilled { get; private set; }
 
         /// <summary>
-        /// The percentage to till each tick this tillable is tilled. 
+        /// The percentage to till each tick this tillable is tilled.
         /// </summary>
         [ProtoMember(2)]
         public float PercentTillTick { get; private set; }

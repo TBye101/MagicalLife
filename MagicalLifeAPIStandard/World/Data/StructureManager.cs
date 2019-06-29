@@ -3,12 +3,11 @@ using MagicalLifeAPI.World.Data.Disk;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeAPI.World.Data
 {
     /// <summary>
-    /// Handles entire structure knowledge in a similar fashion to the chunk manager.  
+    /// Handles entire structure knowledge in a similar fashion to the chunk manager.
     /// </summary>
     public class StructureManager
     {

@@ -1,12 +1,10 @@
 ﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components;
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Registry.ItemRegistry;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace MagicalLifeAPI.World.Base
 {
@@ -127,7 +125,7 @@ namespace MagicalLifeAPI.World.Base
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <exception cref="ArgumentOutOfRangeException">Is thrown when there is less than one item stacked, or the stackable limit is less than one.</exception>
         protected internal void Validate()

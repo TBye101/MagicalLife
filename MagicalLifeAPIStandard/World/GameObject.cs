@@ -1,19 +1,15 @@
 ﻿using MagicalLifeAPI.Components;
 using ProtoBuf;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeAPI.World
 {
     /// <summary>
     /// All game objects implement this.
-    /// Examples of a game object would be items, resources, structure parts, floors, and ceilings. 
+    /// Examples of a game object would be items, resources, structure parts, floors, and ceilings.
     /// </summary>
     [ProtoContract]
     public abstract class GameObject : HasComponents
     {
-
         public GameObject(bool irrelevant) : base(irrelevant)
         {
         }

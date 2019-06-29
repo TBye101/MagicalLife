@@ -1,8 +1,6 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using ProtoBuf;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeAPI.Components.MAP_GUI
 {

@@ -3,9 +3,6 @@ using MagicalLifeAPI.DataTypes.Attribute;
 using MagicalLifeAPI.Pathfinding;
 using MagicalLifeAPI.Util.Reusable;
 using ProtoBuf;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeAPI.Components.Entity
 {

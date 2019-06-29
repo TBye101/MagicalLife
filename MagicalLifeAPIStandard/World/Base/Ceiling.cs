@@ -1,10 +1,6 @@
-﻿using MagicalLifeAPI.Components;
-using MagicalLifeAPI.Components.Generic.Renderable;
+﻿using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.GUI;
 using ProtoBuf;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeAPI.World.Base
 {

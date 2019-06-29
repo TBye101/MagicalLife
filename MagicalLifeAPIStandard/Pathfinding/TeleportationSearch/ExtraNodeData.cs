@@ -1,13 +1,10 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 {
     /// <summary>
-    /// Used to store the f(n) score and its components for the search, 
+    /// Used to store the f(n) score and its components for the search,
     /// as well as a node's "parent".
     /// </summary>
     public struct ExtraNodeData : IComparable<ExtraNodeData>, IEquatable<ExtraNodeData>

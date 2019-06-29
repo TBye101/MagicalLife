@@ -1,5 +1,4 @@
-﻿using MagicalLifeAPI.Components;
-using MagicalLifeAPI.Components.Resource;
+﻿using MagicalLifeAPI.Components.Resource;
 using MagicalLifeAPI.DataTypes.Attribute;
 using MagicalLifeAPI.GUI;
 using ProtoBuf;

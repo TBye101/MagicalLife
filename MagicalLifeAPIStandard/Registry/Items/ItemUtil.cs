@@ -1,5 +1,4 @@
 ﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Base;
 using System;
 using System.Collections.Generic;

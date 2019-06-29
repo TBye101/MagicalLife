@@ -72,7 +72,6 @@ namespace MagicalLifeAPI.Universal
             handler?.Invoke(null, null);
         }
 
-
         /// <summary>
         /// How the server handles tick messages.
         /// </summary>

@@ -1,6 +1,5 @@
 ﻿using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.World.Data.Disk.DataStorage;
-using System;
 using System.Collections.Generic;
 
 namespace MagicalLifeAPI.Networking.Messages

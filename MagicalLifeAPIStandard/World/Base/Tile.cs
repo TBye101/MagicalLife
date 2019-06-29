@@ -6,7 +6,6 @@ using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Pathfinding;
 using ProtoBuf;
 using System;
-using System.Collections.Generic;
 
 namespace MagicalLifeAPI.World.Base
 {
@@ -69,7 +68,7 @@ namespace MagicalLifeAPI.World.Base
 
         [ProtoMember(6)]
         private GameObject TileMainObject { get; set; }
-        
+
         /// <summary>
         /// The main object occupying this tile. Is null if there is no object here.
         /// </summary>
@@ -84,7 +83,6 @@ namespace MagicalLifeAPI.World.Base
                 this.SetMainObject(value);
             }
         }
-
 
         [ProtoMember(7)]
         private GameObject TileFloor { get; set; }
@@ -243,7 +241,7 @@ namespace MagicalLifeAPI.World.Base
         private void UpdateWalkability()
         {
             //Gather the walkability of all components of this tile.
-            bool floor = this.Floor  == null || (this.Floor != null && this.Floor.IsWalkable());
+            bool floor = this.Floor == null || (this.Floor != null && this.Floor.IsWalkable());
             bool ceiling = this.Ceiling == null || (this.Ceiling != null && this.Ceiling.IsWalkable());
             bool mainObject = this.MainObject == null || (this.MainObject != null && this.MainObject.IsWalkable());
 

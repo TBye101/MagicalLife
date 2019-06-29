@@ -19,7 +19,7 @@ namespace MagicalLifeAPI.Pathfinding
         private static IPathFinder Pathfinder;
 
         /// <summary>
-        /// If true the path finder has been properly initialized. 
+        /// If true the path finder has been properly initialized.
         /// </summary>
         public static bool Initialized { get; set; } = false;
 
