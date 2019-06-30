@@ -25,7 +25,7 @@ namespace MagicalLifeAPI.World.Items
         private void InitializeComponents()
         {
             ComponentHasTexture visualComponent = this.GetExactComponent<ComponentHasTexture>();
-            visualComponent.Visuals.Add(new StaticTexture(AssetManager.NameToIndex[TextureLoader.CornEar], RenderLayer.Items));
+            visualComponent.Visuals.Add(new StaticTexture(AssetManager.NameToIndex[TextureLoader.CornEar], RenderLayer.MainObject));
         }
 
         protected CornEar()

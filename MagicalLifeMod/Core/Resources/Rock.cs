@@ -33,7 +33,7 @@ namespace MagicalLifeAPI.World.Resources
 
         public Rock()
         {
-            visual = new StaticTexture(AssetManager.NameToIndex[this.GetRandomStoneTexture()], RenderLayer.Stone);
+            visual = new StaticTexture(AssetManager.NameToIndex[this.GetRandomStoneTexture()], RenderLayer.MainObject);
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace MagicalLifeAPI.World.Resources
         /// <returns></returns>
         private AbstractVisual GetTextureInstance()
         {
-            return new StaticTexture(AssetManager.NameToIndex[this.GetRandomStoneTexture()], RenderLayer.Stone);
+            return new StaticTexture(AssetManager.NameToIndex[this.GetRandomStoneTexture()], RenderLayer.MainObject);
         }
 
         private string GetRandomStoneTexture()

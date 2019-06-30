@@ -119,7 +119,7 @@ namespace MagicalLifeAPI.World.Base
             int textureIndex = AssetManager.GetTextureIndex(this.TextureName);
 
             ComponentHasTexture textureComponent = new ComponentHasTexture(false);
-            textureComponent.Visuals.Add(new StaticTexture(textureIndex, RenderLayer.Items));
+            textureComponent.Visuals.Add(new StaticTexture(textureIndex, RenderLayer.MainObject));
 
             this.AddComponent(new ComponentHasTexture(false));
         }

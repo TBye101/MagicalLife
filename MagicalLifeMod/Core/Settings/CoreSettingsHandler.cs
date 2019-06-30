@@ -10,6 +10,7 @@ namespace MagicalLifeMod.Core.Settings
     public static class CoreSettingsHandler
     {
         public static Setting<DefaultGenerationSettings> GenerationSettings { get; set; }
+        public static Setting<StructurePartConfig> PartConfig { get; set; }
 
         private static readonly string CoreSettingsFolder = FileSystemManager.RootDirectory + Path.DirectorySeparatorChar + "Config" + Path.DirectorySeparatorChar + "MagicalLifeCore";
 
@@ -17,6 +18,7 @@ namespace MagicalLifeMod.Core.Settings
         {
             Directory.CreateDirectory(CoreSettingsFolder);
             GenerationSettings = new Setting<DefaultGenerationSettings>(CoreSettingsFolder + Path.DirectorySeparatorChar + "WorldGenerationDefault.json", new DefaultGenerationSettings());
+            PartConfig = new Setting<StructurePartConfig>(CoreSettingsFolder + Path.DirectorySeparatorChar + "StructureParts.json", new StructurePartConfig());
         }
     }
 }

@@ -28,7 +28,7 @@ namespace MagicalLifeAPI.World.Items
         private void InitializeComponents()
         {
             ComponentHasTexture visuals = this.GetExactComponent<ComponentHasTexture>();
-            visuals.Visuals.Add(new StaticTexture(AssetManager.NameToIndex[this.GetRandomStoneRubbleTexture()], RenderLayer.Items));
+            visuals.Visuals.Add(new StaticTexture(AssetManager.NameToIndex[this.GetRandomStoneRubbleTexture()], RenderLayer.MainObject));
         }
 
         public StoneRubble()
