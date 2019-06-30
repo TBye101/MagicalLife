@@ -1,8 +1,13 @@
-﻿using MagicalLifeAPI.DataTypes;
+﻿using MagicalLifeAPI.Components.Entity;
+using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Entity;
+using MagicalLifeAPI.Networking.Client;
+using MagicalLifeAPI.Networking.Messages;
 using MagicalLifeAPI.Pathfinding.TeleportationSearch;
 using MagicalLifeAPI.World.Data;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Pathfinding
 {
@@ -65,6 +70,23 @@ namespace MagicalLifeAPI.Pathfinding
         public static bool IsRoutePossible(Point3D origin, Point3D destination)
         {
             return Pathfinder.IsRoutePossible(origin, destination);
+        }
+
+        /// <summary>
+        /// Gives the living a route from start to end asynchronously. 
+        /// </summary>
+        /// <param name="living"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        public static void GiveRouteAsync(Living living, Point3D start, Point3D end)
+        {
+            Task routeTask = Task.Run(() =>
+            {
+                List<PathLink> path = MainPathFinder.GetRoute(start, end);
+                ComponentMovement movementComponent = living.GetExactComponent<ComponentMovement>();
+                Util.Extensions.EnqueueCollection(movementComponent.QueuedMovement, path);
+                ClientSendRecieve.Send<RouteCreatedMessage>(new RouteCreatedMessage(path, living.ID, living.DimensionID));
+            });
         }
     }
 }

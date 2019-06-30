@@ -49,7 +49,6 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                         Point3D start = positionData.MapLocation;
                         if (start != target)
                         {
-                            List<PathLink> pth;
                             ComponentMovement movementComponent = living.GetExactComponent<ComponentMovement>();
 
                             //Handle reroute
@@ -59,15 +58,13 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                                 PathLink previous = movementComponent.QueuedMovement.Peek();
                                 movementComponent.QueuedMovement.Clear();
                                 movementComponent.QueuedMovement.Enqueue(previous);
-                                pth = MainPathFinder.GetRoute(previous.Destination, target);
+                                MainPathFinder.GiveRouteAsync(living, previous.Destination, target);
                             }
                             //No reroute
                             else
                             {
-                                pth = MainPathFinder.GetRoute(positionData.MapLocation, target);
+                                MainPathFinder.GiveRouteAsync(living, positionData.MapLocation, target);
                             }
-
-                            Extensions.EnqueueCollection(movementComponent.QueuedMovement, pth);
                         }
                         break;
 
