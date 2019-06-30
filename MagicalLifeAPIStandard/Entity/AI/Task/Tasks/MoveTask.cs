@@ -9,6 +9,7 @@ using MagicalLifeAPI.Pathfinding;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Entity.AI.Task.Tasks
 {
@@ -50,24 +51,39 @@ namespace MagicalLifeAPI.Entity.AI.Task.Tasks
                     PathLink previous = movementComponent.QueuedMovement.Peek();
                     movementComponent.QueuedMovement.Clear();
                     movementComponent.QueuedMovement.Enqueue(previous);
-                    pth = MainPathFinder.GetRoute(previous.Destination, this.Destination);
+                    //pth = MainPathFinder.GetRoute(previous.Destination, this.Destination);
+                    //this.GiveRoute(living, previous.Destination, this.Destination);
+                    System.Threading.Tasks.Task.Run(() => this.GiveRoute(living, previous.Destination, this.Destination));
                 }
                 //No reroute
                 else
                 {
-                    pth = MainPathFinder.GetRoute(start, this.Destination);
+                    System.Threading.Tasks.Task.Run(() => this.GiveRoute(living, start, this.Destination));
+                    //this.GiveRoute(living, start, this.Destination);
+                    //pth = MainPathFinder.GetRoute(start, this.Destination);
 
-                    MasterLog.DebugWriteLine("Path start: " + start.ToString() + " to " + this.Destination.ToString());
-                    foreach (PathLink item in pth)
-                    {
-                        MasterLog.DebugWriteLine("Link: " + item.Origin.ToString() + " to " + item.Destination.ToString());
-                    }
-                    MasterLog.DebugWriteLine("Path end: " + start.ToString() + " to " + this.Destination.ToString());
+                    //MasterLog.DebugWriteLine("Path start: " + start.ToString() + " to " + this.Destination.ToString());
+                    //foreach (PathLink item in pth)
+                    //{
+                    //    MasterLog.DebugWriteLine("Link: " + item.Origin.ToString() + " to " + item.Destination.ToString());
+                    //}
+                    //MasterLog.DebugWriteLine("Path end: " + start.ToString() + " to " + this.Destination.ToString());
                 }
 
-                MagicalLifeAPI.Util.Extensions.EnqueueCollection(movementComponent.QueuedMovement, pth);
-                ClientSendRecieve.Send<RouteCreatedMessage>(new RouteCreatedMessage(pth, living.ID, living.DimensionID));
+                //MagicalLifeAPI.Util.Extensions.EnqueueCollection(movementComponent.QueuedMovement, pth);
+                //ClientSendRecieve.Send<RouteCreatedMessage>(new RouteCreatedMessage(pth, living.ID, living.DimensionID));
             }
+        }
+
+        private void GiveRoute(Living living, Point3D start, Point3D end)
+        {
+            Task<List<PathLink>> routeTask = Task<List<PathLink>>.Run(() => MainPathFinder.GetRoute(start, end));
+            ComponentMovement movementComponent = living.GetExactComponent<ComponentMovement>();
+            //List<PathLink> pth = MainPathFinder.GetRoute(start, this.Destination);
+            MagicalLifeAPI.Util.Extensions.EnqueueCollection(movementComponent.QueuedMovement, routeTask.Result);
+            ClientSendRecieve.Send<RouteCreatedMessage>(new RouteCreatedMessage(routeTask.Result, living.ID, living.DimensionID));
+            //MagicalLifeAPI.Util.Extensions.EnqueueCollection(movementComponent.QueuedMovement, pth);
+            //ClientSendRecieve.Send<RouteCreatedMessage>(new RouteCreatedMessage(pth, living.ID, living.DimensionID));
         }
 
         public override void Reset()

@@ -9,6 +9,8 @@ using MagicalLifeAPI.World.Data;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 {
@@ -23,26 +25,37 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 
         public List<PathLink> GetRoute(Point3D origin, Point3D destination)
         {
-            MasterLog.DebugWriteLine("Path from: " + origin.ToString() + " " + destination.ToString());
-            MasterLog.DebugWriteLine("Estimated distance: " + MathUtil.GetDistance(origin, destination).ToString());
-            GC.Collect();
-            Stopwatch sw = Stopwatch.StartNew();
+            //Understand it, don't want to do it
+            //System.Threading.Thread
+
+            //Huh?
+            //Parallel.
+            //System.Threading.Tasks.Task
+            //async await
+
+
+            //MasterLog.DebugWriteLine("Path from: " + origin.ToString() + " " + destination.ToString());
+            //MasterLog.DebugWriteLine("Estimated distance: " + MathUtil.GetDistance(origin, destination).ToString());
+            //GC.Collect();
+            //Stopwatch sw = Stopwatch.StartNew();
 
             List<PathLink> path = this.SameDimensionRoute(origin, destination);
 
-            sw.Stop();
-            double milli = 1000;
-            double elapsedMill = sw.ElapsedMilliseconds;
-            double totalTime = elapsedMill / milli;
-            double pathfindingVelocity = MathUtil.GetDistance(origin, destination) / totalTime;
-            double timePerLink = totalTime / path.Count;
+            //sw.Stop();
+            //double milli = 1000;
+            //double elapsedMill = sw.ElapsedMilliseconds;
+            //double totalTime = elapsedMill / milli;
+            //double pathfindingVelocity = MathUtil.GetDistance(origin, destination) / totalTime;
+            //double timePerLink = totalTime / path.Count;
 
-            MasterLog.DebugWriteLine("Path links: " + path.Count.ToString());
-            MasterLog.DebugWriteLine("Time per link: " + timePerLink.ToString() + " seconds");
-            MasterLog.DebugWriteLine("Pathfinding velocity: " + pathfindingVelocity.ToString() + " tiles/s");
-            MasterLog.DebugWriteLine("Total time: " + totalTime.ToString() + " seconds");
+            //MasterLog.DebugWriteLine("Path links: " + path.Count.ToString());
+            //MasterLog.DebugWriteLine("Time per link: " + timePerLink.ToString() + " seconds");
+            //MasterLog.DebugWriteLine("Pathfinding velocity: " + pathfindingVelocity.ToString() + " tiles/s");
+            //MasterLog.DebugWriteLine("Total time: " + totalTime.ToString() + " seconds");
 
             return path;
+            //Thread.Sleep(5000);
+            //return new List<PathLink>();
         }
 
         private List<PathLink> SameDimensionRoute(Point3D origin, Point3D destination)//Maybe weight diaganols less somehow
