@@ -8,6 +8,7 @@ using MagicalLifeAPI.World.Data.Disk.DataStorage;
 using ProtoBuf;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.World.Data
 {
@@ -119,7 +120,7 @@ namespace MagicalLifeAPI.World.Data
             Guid dimensionID = Guid.NewGuid();
             Dimension firstDim = new Dimension(Lang._1stDimensionName, generator.Generate(chunkWidth, chunkHeight, dimensionName, r, dimensionID), dimensionID);
             RenderInfo.DimensionID = firstDim.ID;
-            WorldStorage.SerializeWorld(WorldStorage.SaveName, new WorldDiskSink());
+            Task.Run(() => WorldStorage.SerializeWorld(WorldStorage.SaveName, new WorldDiskSink()));
         }
 
         /// <summary>
