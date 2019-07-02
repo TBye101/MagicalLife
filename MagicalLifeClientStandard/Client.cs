@@ -1,6 +1,7 @@
 ﻿using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Serialization;
 using MagicalLifeAPI.Pathfinding;
+using MagicalLifeAPI.Time;
 using MagicalLifeClient.Entity;
 using MagicalLifeClient.Message;
 using System.Collections.Generic;
