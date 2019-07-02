@@ -241,12 +241,6 @@ Released under the [MIT License](https://github.com/craftworkgames/MonoGame.Exte
 #### Used to capture keyboard and mouse input
 
 ---
-[A* Algorithm](https://github.com/roy-t/AStar) by Roy-T
-
-Released under the [MIT License](https://github.com/roy-t/AStar/blob/master/LICENSE)
-
-#### Provides the pathfinding for Magical Life
----
 [ProtoBuf-net](https://github.com/mgravell/protobuf-net)
 
 Released under the [Apache License 2.0](https://github.com/mgravell/protobuf-net/blob/master/Licence.txt)
