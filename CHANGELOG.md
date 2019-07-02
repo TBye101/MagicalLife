@@ -14,7 +14,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 *Added stair case up and down textures
 
 #### Bugs
-*
+*Fixed a bug where clicking off the map would cause an exception
 
 ## [Version 0.1.2]
 

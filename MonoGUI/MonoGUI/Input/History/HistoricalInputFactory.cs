@@ -72,7 +72,7 @@ namespace MagicalLifeGUIWindows.Input.History
         /// <returns></returns>
         private HistoricalInput GenericAction(InputEventArgs e, ActionSelected action)
         {
-            Point2D mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y, RenderInfo.DimensionID, out bool success);
+            Point3D mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y, RenderInfo.DimensionID, out bool success);
 
             if (success)
             {
@@ -114,14 +114,14 @@ namespace MagicalLifeGUIWindows.Input.History
         {
             if (!RenderInfo.DimensionID.Equals(Guid.Empty))
             {
-                Point2D mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y, RenderInfo.DimensionID, out bool success);
+                Point3D mapSpot = Util.GetMapLocation(e.MouseEventArgs.Position.X, e.MouseEventArgs.Position.Y, RenderInfo.DimensionID, out bool success);
 
                 if (success)
                 {
                     Living select = null;
 
                     Chunk chunk = World.Dimensions[RenderInfo.DimensionID].GetChunkForLocation(mapSpot.X, mapSpot.Y);
-                    KeyValuePair<System.Guid, Living> result = chunk.Creatures.FirstOrDefault
+                    KeyValuePair<Guid, Living> result = chunk.Creatures.FirstOrDefault
                         (x => mapSpot.Equals(x.Value.GetExactComponent<ComponentSelectable>().MapLocation));
 
                     select = result.Value;

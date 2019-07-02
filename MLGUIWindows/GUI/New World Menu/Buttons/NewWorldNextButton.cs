@@ -50,6 +50,7 @@ namespace MagicalLifeGUIWindows.GUI.New
             MenuHandler.Clear();
             BoundHandler.HideAll();
             InGameGUI.Initialize();
+            InputHandlers.MapLoadInitialize();
             BoundHandler.Popup(InGameGUI.InGame);
         }
 

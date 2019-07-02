@@ -19,7 +19,7 @@ namespace MagicalLifeGUIWindows.Load
             }
 
             InputHistory.Initialize();
-            InputHandlers.Initialize();
+            InputHandlers.GameLoadInitialize();
             MusicPlayer.Init();
             this.SaveSettings();
         }

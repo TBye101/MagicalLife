@@ -98,11 +98,26 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// Determines if the specified location is actually a tile in the current map.
         /// </summary>
-        /// <param name="tileLocation"></param>
-        /// <returns></returns>
         public static bool DoesTileExist(Point2D tileLocation, Guid dimensionID)
         {
-            return Data.World.Dimensions[dimensionID].DoesTileExist(tileLocation.X, tileLocation.Y);
+            return DoesTileExist(Point3D.From2D(tileLocation, dimensionID));
+        }
+
+        /// <summary>
+        /// Determines if the specified location is actually a tile in the current map.
+        /// </summary>
+        public static bool DoesTileExist(Point3D tileLocation)
+        {
+            Data.World.Dimensions.TryGetValue(tileLocation.DimensionID, out Dimension dimension);
+            if (dimension == null)
+            {
+                return false;
+            }
+            else
+            {
+                return dimension.DoesTileExist(tileLocation.X, tileLocation.Y);
+            }
+
         }
 
         /// <summary>

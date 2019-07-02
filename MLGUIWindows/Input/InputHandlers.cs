@@ -27,17 +27,21 @@ namespace MagicalLifeGUIWindows.Input
 
         public static ActionMenuHandler ActionMenu { get; set; }
 
-        public static void Initialize()
+        public static void GameLoadInitialize()
+        {
+            LogoSkipper = new LogoSkip();
+            EscHandler = new EscapeHandler();
+            DragHandler = new ContainerDragHandler();
+        }
+
+        public static void MapLoadInitialize()
         {
             LivingMove = new LivingMoveOrderInputHandler();
-            LogoSkipper = new LogoSkip();
             MiningAction = new MiningActionHandler();
             TillingAction = new TillingActionHandler();
             StrafingHandler = new StrafeHandler();
-            EscHandler = new EscapeHandler();
             ChopAction = new ChopActionHandler();
             LivingMenuHandler = new LivingMenuHandler();
-            DragHandler = new ContainerDragHandler();
             ActionMenu = new ActionMenuHandler();
         }
     }

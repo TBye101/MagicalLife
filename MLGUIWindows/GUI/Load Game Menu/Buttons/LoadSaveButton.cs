@@ -44,6 +44,7 @@ namespace MagicalLifeGUIWindows.GUI.Load
                 MenuHandler.Clear();
                 BoundHandler.HideAll();
                 InGameGUI.Initialize();
+                InputHandlers.MapLoadInitialize();
                 BoundHandler.Popup(InGameGUI.InGame);
                 Guid firstDimensionID = WorldUtil.GetDimensionByName(Lang._1stDimensionName).Key;
                 RenderInfo.Camera2D.InitializeForDimension(firstDimensionID);
