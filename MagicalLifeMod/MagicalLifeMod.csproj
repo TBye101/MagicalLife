@@ -22,6 +22,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Core\WorldGeneration\CreatureGenerators\" />
+    <Folder Include="Core\WorldGeneration\HallwayGenerators\" />
+    <Folder Include="Core\WorldGeneration\RoomGenerators\" />
+    <Folder Include="Core\WorldGeneration\RoomDecorators\" />
     <Folder Include="Core\WorldGeneration\StructureGenerators\" />
     <Folder Include="Core\WorldGeneration\VegetationGenerators\" />
   </ItemGroup>

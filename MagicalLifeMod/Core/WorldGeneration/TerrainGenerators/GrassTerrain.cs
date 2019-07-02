@@ -4,8 +4,11 @@ using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Resources;
 using MagicalLifeAPI.World.Tiles;
+using MagicalLifeMod.Core.GameStructures;
+using MagicalLifeMod.Core.GameStructures.Parts;
 using MagicalLifeMod.Core.Settings;
 using System;
+using System.Collections.Generic;
 
 namespace MagicalLifeMod.Core.WorldGeneration.TerrainGenerators
 {
@@ -49,6 +52,19 @@ namespace MagicalLifeMod.Core.WorldGeneration.TerrainGenerators
                 if (seededRandom.Next(0, 10) == 4)
                 {
                     dirt.MainObject = new MapleTree(100);
+                }
+                else
+                {
+                    if (seededRandom.Next(0, 20) == 10)
+                    {
+                        List<Point3D> partLocations = new List<Point3D>
+                        {
+                            new Point3D(x, y, dimensionID)
+                        };
+
+                        DungeonEntrance1 dungeonEntrance = new DungeonEntrance1(partLocations);
+                        dirt.MainObject = new DungeonStairDown(dungeonEntrance.StructureID, new Point3D(0, 0, Guid.NewGuid()));
+                    }
                 }
             }
 

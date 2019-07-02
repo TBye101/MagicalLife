@@ -18,11 +18,11 @@ namespace MagicalLifeAPI.Time
         /// <summary>
         /// The task to run at the specified time.
         /// </summary>
-        public Task Task;
+        public Action Task;
 
         /// <param name="wakeUp">The tick to execute this task at.</param>
         /// <param name="task">The task to run at the specified time.</param>
-        public SchedulerTask(UInt64 wakeUp, Task task)
+        public SchedulerTask(UInt64 wakeUp, Action task)
         {
             this.WakeUp = wakeUp;
             this.Task = task;
