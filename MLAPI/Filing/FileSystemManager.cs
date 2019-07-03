@@ -54,9 +54,9 @@ namespace MagicalLifeAPI.Filing
 
             foreach (FileInfo item in files)
             {
-                if (item.Name == "MagicalLifeCoreMod.dll")
+                if (item.Name == "MLCoreMod.dll")
                 {
-                    item.CopyTo(ModDirectory + Path.DirectorySeparatorChar + "MagicalLifeCoreMod.dll", true);
+                    item.CopyTo(ModDirectory + Path.DirectorySeparatorChar + "MLCoreMod.dll", true);
                     break;
                 }
             }

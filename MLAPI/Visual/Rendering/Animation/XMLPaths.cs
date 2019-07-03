@@ -5,6 +5,6 @@
     /// </summary>
     public static class XMLPaths
     {
-        public static readonly string BaseCharacterSpriteSheet = "MagicalLifeSettings.Animation.BaseCharacterData.xml";
+        public static readonly string BaseCharacterSpriteSheet = "MLSettings.Animation.BaseCharacterData.xml";
     }
 }

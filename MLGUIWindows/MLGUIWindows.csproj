@@ -297,6 +297,10 @@
       <Project>{7D3F4934-4120-41FD-93FE-68E3072D3C1E}</Project>
       <Name>MLClient</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MLCoreMod\MLCoreMod.csproj">
+      <Project>{00b41d85-00a2-4ff7-b911-49a0725ec17e}</Project>
+      <Name>MLCoreMod</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MLServer\MLServer.csproj">
       <Project>{BABBECFA-F304-4BDC-AAE9-AEC009678F6A}</Project>
       <Name>MLServer</Name>
