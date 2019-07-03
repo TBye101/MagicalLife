@@ -1,0 +1,69 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>7.3</LangVersion>
+    <RootNamespace>MLAPI</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Components\Generic\**" />
+    <Compile Remove="Components\Item\**" />
+    <Compile Remove="Entity\Animal\**" />
+    <Compile Remove="Entity\Entity Components\**" />
+    <Compile Remove="World\Veggies\**" />
+    <EmbeddedResource Remove="Components\Generic\**" />
+    <EmbeddedResource Remove="Components\Item\**" />
+    <EmbeddedResource Remove="Entity\Animal\**" />
+    <EmbeddedResource Remove="Entity\Entity Components\**" />
+    <EmbeddedResource Remove="World\Veggies\**" />
+    <None Remove="Components\Generic\**" />
+    <None Remove="Components\Item\**" />
+    <None Remove="Entity\Animal\**" />
+    <None Remove="Entity\Entity Components\**" />
+    <None Remove="World\Veggies\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Framework.Portable" Version="3.7.1.189" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="protobuf-net" Version="2.4.0" />
+    <PackageReference Include="SimpleTCP" Version="1.0.24" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <Content Include="..\Included DLL\fmodstudio64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <Content Include="..\Included DLL\fmodstudio64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <Content Include="..\Included DLL\fmod64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <Content Include="..\Included DLL\fmod64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MLSettings\MLSettings.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Lang.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Lang.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Lang.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Lang.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

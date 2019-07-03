@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>7.3</LangVersion>
+    <RootNamespace>MLSettings</RootNamespace>
+    <AssemblyName>MLSettings</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -10,13 +12,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MonoGame.Extended" Version="1.1.0" />
-    <PackageReference Include="MonoGame.Extended.Input" Version="1.1.0" />
-    <PackageReference Include="MonoGame.Framework.Portable" Version="3.7.1.189" />
+    <None Remove="Animation\BaseCharacterData.xml" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MLAPI\MLAPI.csproj" />
+    <EmbeddedResource Include="Animation\BaseCharacterData.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
   </ItemGroup>
 
 </Project>

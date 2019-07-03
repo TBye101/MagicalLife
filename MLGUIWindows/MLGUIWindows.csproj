@@ -289,21 +289,17 @@
     <Folder Include="Rendering\Text\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MagicalLifeAPIStandard\MagicalLifeAPIStandard.csproj">
-      <Project>{1f068781-8fee-4ac2-a8ae-2251c558cf28}</Project>
-      <Name>MagicalLifeAPIStandard</Name>
+    <ProjectReference Include="..\MLAPI\MLAPI.csproj">
+      <Project>{85EB1AC5-CCA9-439B-A19D-DE8D596FCB4C}</Project>
+      <Name>MLAPI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MagicalLifeClientStandard\MagicalLifeClientStandard.csproj">
-      <Project>{6ef2d2b5-bfcb-4eb7-b3a0-57a9b32e37ce}</Project>
-      <Name>MagicalLifeClientStandard</Name>
+    <ProjectReference Include="..\MLClient\MLClient.csproj">
+      <Project>{7D3F4934-4120-41FD-93FE-68E3072D3C1E}</Project>
+      <Name>MLClient</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MagicalLifeMod\MagicalLifeMod.csproj">
-      <Project>{89b9dd2d-4904-4491-b111-e43a750e440b}</Project>
-      <Name>MagicalLifeMod</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MagicalLifeServerStandard\MagicalLifeServerStandard.csproj">
-      <Project>{551af4ec-5ae6-408c-9825-1471b53d4414}</Project>
-      <Name>MagicalLifeServerStandard</Name>
+    <ProjectReference Include="..\MLServer\MLServer.csproj">
+      <Project>{BABBECFA-F304-4BDC-AAE9-AEC009678F6A}</Project>
+      <Name>MLServer</Name>
     </ProjectReference>
     <ProjectReference Include="..\MonoGUI\MonoGUI.csproj">
       <Project>{251190F6-AC08-4274-895D-E806FD2D16C4}</Project>

@@ -2,7 +2,6 @@
 using MagicalLifeAPI.Components.Generic.Renderable;
 using MagicalLifeAPI.Networking.Client;
 using MagicalLifeAPI.Networking.Server;
-using MagicalLifeAPI.Properties;
 using MagicalLifeAPI.Sound;
 using MagicalLifeAPI.World;
 using MagicalLifeAPI.World.Data;
@@ -14,6 +13,7 @@ using MagicalLifeGUIWindows.Input;
 using MagicalLifeGUIWindows.Properties;
 using MagicalLifeServer;
 using Microsoft.Xna.Framework;
+using MLAPI.Properties;
 using System;
 
 namespace MagicalLifeGUIWindows.GUI.Load
