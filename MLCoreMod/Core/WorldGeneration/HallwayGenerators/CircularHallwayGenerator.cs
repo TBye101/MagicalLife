@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.Util.Math;
 using MagicalLifeAPI.World;
@@ -48,6 +49,11 @@ namespace MagicalLifeMod.Core.WorldGeneration.HallwayGenerators
                 Point3D origin = this.GetRandomPoint(dimensionTileWidth, dimensionTileHeight, dimensionID, random);
                 List<Point3D> elipseCoordinates = Geometry.GetPointsOnElipse(elipseWidth, elipseHeight, elipseThickness, dimensionID, dimensionTileWidth, dimensionTileHeight, origin);
                 this.TurnToHallway(chunks, elipseCoordinates);
+                MasterLog.DebugWriteLine("Generating elipse hallway: ");
+                MasterLog.DebugWriteLine("Thickness: " + elipseThickness.ToString());
+                MasterLog.DebugWriteLine("Width: " + elipseWidth.ToString());
+                MasterLog.DebugWriteLine("Height: " + elipseHeight.ToString());
+                MasterLog.DebugWriteLine("Origin: " + origin.ToString());
             }
 
             return chunks;

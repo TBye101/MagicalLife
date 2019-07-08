@@ -132,10 +132,14 @@ namespace MagicalLifeAPI.Util.Math
         {
             //Courtesy of:
             //https://www.geeksforgeeks.org/check-if-a-point-is-inside-outside-or-on-the-ellipse/
-            int p = ((int)System.Math.Pow((x - h), 2) /
-                     (int)System.Math.Pow(a, 2)) +
-                    ((int)System.Math.Pow((y - k), 2) /
-                     (int)System.Math.Pow(b, 2));
+            //int p = ((int)System.Math.Pow((x - h), 2) /
+            //         (int)System.Math.Pow(a, 2)) +
+            //        ((int)System.Math.Pow((y - k), 2) /
+            //         (int)System.Math.Pow(b, 2));
+            int p = (int)(System.Math.Pow((x - h), 2) /
+                     (System.Math.Pow(a, 2)) +
+                    ((System.Math.Pow((y - k), 2) /
+                     (System.Math.Pow(b, 2)))));
 
             return p;
         }
@@ -182,6 +186,11 @@ namespace MagicalLifeAPI.Util.Math
                     //Check each point in elipse bounds to see if it's within the two elipses
                     int elipse2Result = ElipseCheckPoint(h, k, x, y, a2, b2);
                     int elipse1Result = ElipseCheckPoint(h, k, x, y, a1, b1);
+
+                    //if (elipse2Result <= 1 && elipse1Result > 1)
+                    //{
+                    //    points.Add(new Point3D(x, y, dimensionID));
+                    //}
 
                     if (elipse2Result <= 1)
                     {

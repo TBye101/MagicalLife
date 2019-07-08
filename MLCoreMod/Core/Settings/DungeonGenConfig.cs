@@ -14,12 +14,12 @@ namespace MLCoreMod.Core.Settings
         /// <summary>
         /// The minimum number of circular hallways to generate.
         /// </summary>
-        public int MinCircleHallways { get; set; } = 1;
+        public int MinCircleHallways { get; set; } = 8;
 
         /// <summary>
         /// The maximum number of circular hallways to generate.
         /// </summary>
-        public int MaxCircleHallways { get; set; } = 2;
+        public int MaxCircleHallways { get; set; } = 16;
 
         /// <summary>
         /// The minimum size of the circular hallway to generate.
@@ -29,7 +29,7 @@ namespace MLCoreMod.Core.Settings
         /// <summary>
         /// The maximum size of the circular hallway to generate. 
         /// </summary>
-        public int MaxCircleThickness { get; set; } = 8;
+        public int MaxCircleThickness { get; set; } = 4;
 
         #endregion
     }
