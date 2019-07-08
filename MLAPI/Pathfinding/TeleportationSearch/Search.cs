@@ -28,7 +28,7 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             GC.Collect();
             Stopwatch sw = Stopwatch.StartNew();
 
-            List<PathLink> path = this.SameDimensionRoute(origin, destination);
+            List<PathLink> path = this.DimensionRoute(origin, destination);
 
             sw.Stop();
             double milli = 1000;
@@ -45,7 +45,7 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
             return path;
         }
 
-        private List<PathLink> SameDimensionRoute(Point3D origin, Point3D destination)//Maybe weight diaganols less somehow
+        private List<PathLink> DimensionRoute(Point3D origin, Point3D destination)//Maybe weight diaganols less somehow
         {
             /*
                 f(n) = total estimated cost of path through node

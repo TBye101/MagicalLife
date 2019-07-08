@@ -20,11 +20,11 @@ namespace MagicalLifeMod.Core.GameStructures.Parts
             new StaticTexture(AssetManager.GetTextureIndex(TextureLoader.StairDown1), RenderLayer.MainObject);
 
         /// <param name="uniqueStructureID"></param>
-        /// <param name="dungeonEntrance">The location of the dungeon entrance in the dungeon.</param>
-        public DungeonStairDown(Guid uniqueStructureID, Point3D dungeonEntrance)
+        /// <param name="connection">The location of the corrosponding entrance/exit to the dungeon.</param>
+        public DungeonStairDown(Guid uniqueStructureID, Point3D connection)
             : base(CoreSettingsHandler.PartConfig.Settings.DungeonStairDownDurability, true, Visual, PartID, uniqueStructureID)
         {
-            PortalComponent dungeonConnection = new PortalComponent(new List<Point3D> { dungeonEntrance });
+            PortalComponent dungeonConnection = new PortalComponent(new List<Point3D> { connection });
 
             this.AddComponent(dungeonConnection);
         }
