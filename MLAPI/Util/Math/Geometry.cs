@@ -121,5 +121,81 @@ namespace MagicalLifeAPI.Util.Math
         {
             points.Sort((pointA, pointB) => MathUtil.GetDistanceFast(pointA, origin).CompareTo(MathUtil.GetDistanceFast(pointB, origin)));
         }
+
+        /// <summary>
+        /// If in the inequation, results comes less than 1 then the point lies within, 
+        /// else if it comes exact 1 then the point lies on the ellipse, 
+        /// and if the inequation is unsatisfied then point lies outside of the ellipse.
+        /// </summary>
+        private static int ElipseCheckPoint(int h, int k, int x,
+                  int y, int a, int b)
+        {
+            //Courtesy of:
+            //https://www.geeksforgeeks.org/check-if-a-point-is-inside-outside-or-on-the-ellipse/
+            int p = ((int)System.Math.Pow((x - h), 2) /
+                     (int)System.Math.Pow(a, 2)) +
+                    ((int)System.Math.Pow((y - k), 2) /
+                     (int)System.Math.Pow(b, 2));
+
+            return p;
+        }
+
+        /// <summary>
+        /// Returns a list of the points within the elipse of specified thickness and origin.
+        /// </summary>
+        public static List<Point3D> GetPointsOnElipse(int elipseWidth, int elipseHeight, int elipseThickness, Guid dimensionID, int dimensionWidth, int dimensionHeight, Point3D origin)
+        {
+            //(((x - h)^2) / a^2) + (((y - k)^2) / b^2) = 1
+            //ellipse center at (h, k)
+            //Horizontal radius is 'a' and vertical radius is 'b'
+
+            //Elipse 1 is the smaller inner elipse
+            //Elipse 2 is the larger outer elipse
+            //The distance between the two is roughly the thickness property of the elipse
+            //This allows for the checking of the points in a thick elipse
+
+            int elipse2Width = elipseWidth + (2 * elipseThickness);
+            int elipse2Height = elipseHeight + (2 * elipseThickness);
+            int a1 = elipseWidth / 2;
+            int a2 = elipse2Width / 2;
+            int b1 = elipseHeight / 2;
+            int b2 = elipse2Height / 2;
+            int h = origin.X;
+            int k = origin.Y;
+            int leftBoundX = origin.X - (elipse2Width / 2);
+            int rightBoundX = origin.X + (elipse2Width / 2);
+            int topBoundY = origin.Y - (elipse2Height / 2);
+            int bottomBoundY = origin.Y + (elipse2Height / 2);
+
+            List<Point3D> points = new List<Point3D>();
+
+            //Check elipse bounds for non-existant positions
+            leftBoundX = System.Math.Max(0, leftBoundX);
+            rightBoundX = System.Math.Min(dimensionWidth, rightBoundX);
+            topBoundY = System.Math.Max(0, topBoundY);
+            bottomBoundY = System.Math.Min(dimensionHeight, bottomBoundY);
+
+            for (int x = leftBoundX; x < rightBoundX; x++)
+            {
+                for (int y = topBoundY; y < bottomBoundY; y++)
+                {
+                    //Check each point in elipse bounds to see if it's within the two elipses
+                    int elipse2Result = ElipseCheckPoint(h, k, x, y, a2, b2);
+                    int elipse1Result = ElipseCheckPoint(h, k, x, y, a1, b1);
+
+                    if (elipse2Result <= 1)
+                    {
+                        //inside or on elipse2
+                        if (elipse1Result >= 1)
+                        {
+                            //On or outside elipse1
+                            points.Add(new Point3D(x, y, dimensionID));
+                        }
+                    }
+                }
+            }
+
+            return points;
+        }
     }
 }

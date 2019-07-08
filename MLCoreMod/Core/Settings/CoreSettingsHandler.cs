@@ -1,5 +1,6 @@
 ﻿using MagicalLifeAPI.Filing;
 using MagicalLifeMod.Core.WorldGeneration.Default;
+using MLCoreMod.Core.Settings;
 using System.IO;
 
 namespace MagicalLifeMod.Core.Settings
@@ -11,6 +12,7 @@ namespace MagicalLifeMod.Core.Settings
     {
         public static Setting<DefaultGenerationSettings> GenerationSettings { get; set; }
         public static Setting<StructurePartConfig> PartConfig { get; set; }
+        public static Setting<DungeonGenConfig> DungeonGenerationConfig { get; set; }
 
         private static readonly string CoreSettingsFolder = FileSystemManager.RootDirectory + Path.DirectorySeparatorChar + "Config" + Path.DirectorySeparatorChar + "MagicalLifeCore";
 
@@ -19,6 +21,7 @@ namespace MagicalLifeMod.Core.Settings
             Directory.CreateDirectory(CoreSettingsFolder);
             GenerationSettings = new Setting<DefaultGenerationSettings>(CoreSettingsFolder + Path.DirectorySeparatorChar + "WorldGenerationDefault.json", new DefaultGenerationSettings());
             PartConfig = new Setting<StructurePartConfig>(CoreSettingsFolder + Path.DirectorySeparatorChar + "StructureParts.json", new StructurePartConfig());
+            DungeonGenerationConfig = new Setting<DungeonGenConfig>(CoreSettingsFolder + Path.DirectorySeparatorChar + "DungeonGenerationConfig.json", new DungeonGenConfig());
         }
     }
 }

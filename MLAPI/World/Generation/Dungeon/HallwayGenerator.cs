@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.World.Data;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.World.Data;
 using System;
 
 namespace MagicalLifeAPI.World.Generation.Dungeon
@@ -9,6 +10,6 @@ namespace MagicalLifeAPI.World.Generation.Dungeon
     /// </summary>
     public abstract class HallwayGenerator
     {
-        public abstract Chunk[] GenerateHallways(Chunk[] chunks, string dimensionName, Random random, Guid dimensionID);
+        public abstract ProtoArray<Chunk> GenerateHallways(ProtoArray<Chunk> chunks, string dimensionName, Random random, Guid dimensionID);
     }
 }

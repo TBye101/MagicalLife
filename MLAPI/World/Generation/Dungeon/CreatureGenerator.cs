@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.World.Data;
+﻿using MagicalLifeAPI.DataTypes;
+using MagicalLifeAPI.World.Data;
 using System;
 
 namespace MagicalLifeAPI.World.Generation.Dungeon
@@ -9,6 +10,6 @@ namespace MagicalLifeAPI.World.Generation.Dungeon
     /// </summary>
     public abstract class CreatureGenerator
     {
-        public abstract Chunk[] GenerateCreatures(Chunk[] chunks, string dimensionName, Random random);
+        public abstract ProtoArray<Chunk> GenerateCreatures(ProtoArray<Chunk> chunks, string dimensionName, Random random);
     }
 }

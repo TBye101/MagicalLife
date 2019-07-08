@@ -32,13 +32,12 @@ namespace MagicalLifeMod.Core.WorldGeneration.Default
                 MasterLog.DebugWriteLine("A dungeon generation component was missing");
             }
 
-            Chunk[] hallways = hallwayGen.GenerateHallways(blankWorld.Data, dimensionName, r, dimensionID);
-            Chunk[] rooms = roomGen.GenerateEmptyRoom(hallways, dimensionName, r);
-            Chunk[] decoratedRooms = roomDecorator.PopulateRoom(rooms, dimensionName, r);
-            Chunk[] creaturesGenerated = creatureGen.GenerateCreatures(decoratedRooms, dimensionName, r);
+            ProtoArray<Chunk> hallways = hallwayGen.GenerateHallways(blankWorld, dimensionName, r, dimensionID);
+            ProtoArray<Chunk> rooms = roomGen.GenerateEmptyRoom(hallways, dimensionName, r);
+            ProtoArray<Chunk> decoratedRooms = roomDecorator.PopulateRoom(rooms, dimensionName, r);
+            ProtoArray<Chunk> creaturesGenerated = creatureGen.GenerateCreatures(decoratedRooms, dimensionName, r);
 
-            blankWorld.Data = creaturesGenerated;
-            return blankWorld;
+            return creaturesGenerated;
         }
 
         /// <summary>
