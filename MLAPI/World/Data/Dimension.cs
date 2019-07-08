@@ -1,8 +1,11 @@
 ﻿using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Registry.ItemRegistry;
 using MagicalLifeAPI.World.Base;
+using MagicalLifeAPI.World.Data.Disk;
+using MagicalLifeAPI.World.Data.Disk.DataStorage;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MagicalLifeAPI.World.Data
 {
@@ -76,6 +79,7 @@ namespace MagicalLifeAPI.World.Data
             this.ID = dimensionID;
             this.StructureManage = new StructureManager(this.ID);//Depends on the dimension ID to be initialized first.
             this.Items = new ItemRegistry(World.AddDimension(this));
+            Task.Run(() => WorldStorage.SerializeWorld(WorldStorage.SaveName, new WorldDiskSink()));
         }
 
         /// <summary>

@@ -24,10 +24,23 @@ namespace MagicalLifeAPI.Components.Generic.Renderable
         /// </summary>
         public static float Zoom { get; set; } = 1F;
 
+        private static Guid _DimensionID;
+
         /// <summary>
         /// The currently viewed dimension.
         /// </summary>
-        public static Guid DimensionID { get; set; }
+        public static Guid DimensionID
+        {
+            get
+            {
+                return _DimensionID;
+            }
+            set
+            {
+                _DimensionID = value;
+                Camera2D.InitializeForDimension(value);
+            }
+        }
 
         /// <summary>
         /// The game's current FPS.

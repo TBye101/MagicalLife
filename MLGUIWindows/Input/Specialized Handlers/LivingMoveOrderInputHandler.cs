@@ -96,6 +96,7 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                         DungeonGenerator generator = WorldGeneratorRegistry.DungeonGenerators.GetRandomItem();
                         ProtoArray<Chunk> generated = generator.Generate(25, 25, "Dungeon", new System.Random(1020239), connection.DimensionID, connection, target);
                         Dimension dim = new Dimension("Dungeon", generated, connection.DimensionID);
+                        RenderInfo.DimensionID = connection.DimensionID;
                     }
 
                     MainPathFinder.GiveRouteAsync(living, start, connection);

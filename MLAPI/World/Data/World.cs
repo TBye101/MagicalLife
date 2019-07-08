@@ -120,7 +120,6 @@ namespace MagicalLifeAPI.World.Data
             Guid dimensionID = Guid.NewGuid();
             Dimension firstDim = new Dimension(Lang._1stDimensionName, generator.Generate(chunkWidth, chunkHeight, dimensionName, r, dimensionID), dimensionID);
             RenderInfo.DimensionID = firstDim.ID;
-            Task.Run(() => WorldStorage.SerializeWorld(WorldStorage.SaveName, new WorldDiskSink()));
         }
 
         /// <summary>
