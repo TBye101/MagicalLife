@@ -32,7 +32,7 @@ namespace MagicalLifeAPI.World
 
         protected abstract ProtoArray<Chunk> GenerateDungeon(ProtoArray<Chunk> blankWorld, string dimensionName, Random r, Guid dimensionID);
 
-        internal ProtoArray<Chunk> GenerateBlank(int chunkWidth, int chunkHeight)
+        private ProtoArray<Chunk> GenerateBlank(int chunkWidth, int chunkHeight)
         {
             ProtoArray<Chunk> blank = new ProtoArray<Chunk>(chunkWidth, chunkHeight);
 

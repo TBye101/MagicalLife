@@ -16,6 +16,11 @@ namespace MagicalLifeAPI.Registry.WorldGeneration
         public static List<DimensionGenerator> Generators { get; } = new List<DimensionGenerator>();
 
         /// <summary>
+        /// All known dungeon generators are stored in this list. 
+        /// </summary>
+        public static List<DungeonGenerator> DungeonGenerators { get; } = new List<DungeonGenerator>();
+
+        /// <summary>
         /// All known terrain generators are to be stored in this list.
         /// </summary>
         public static List<TerrainGenerator> TerrainGenerators { get; } = new List<TerrainGenerator>();

@@ -22,10 +22,10 @@ namespace MagicalLifeMod.Core.WorldGeneration.Default
 
         protected override ProtoArray<Chunk> GenerateDungeon(ProtoArray<Chunk> blankWorld, string dimensionName, Random r, Guid dimensionID)
         {
-            HallwayGenerator hallwayGen = this.GetRandomItem<HallwayGenerator>(WorldGeneratorRegistry.HallwayGenerators);
-            RoomGenerator roomGen = this.GetRandomItem<RoomGenerator>(WorldGeneratorRegistry.RoomGenerators);
-            RoomDecorationGenerator roomDecorator = this.GetRandomItem<RoomDecorationGenerator>(WorldGeneratorRegistry.RoomDecorators);
-            CreatureGenerator creatureGen = this.GetRandomItem<CreatureGenerator>(WorldGeneratorRegistry.CreatureGenerators);
+            HallwayGenerator hallwayGen = WorldGeneratorRegistry.HallwayGenerators.GetRandomItem();
+            RoomGenerator roomGen = WorldGeneratorRegistry.RoomGenerators.GetRandomItem();
+            RoomDecorationGenerator roomDecorator = WorldGeneratorRegistry.RoomDecorators.GetRandomItem();
+            CreatureGenerator creatureGen = WorldGeneratorRegistry.CreatureGenerators.GetRandomItem();
 
             if (hallwayGen == null || roomGen == null || roomDecorator == null || creatureGen == null)
             {
@@ -38,25 +38,6 @@ namespace MagicalLifeMod.Core.WorldGeneration.Default
             ProtoArray<Chunk> creaturesGenerated = creatureGen.GenerateCreatures(decoratedRooms, dimensionName, r);
 
             return creaturesGenerated;
-        }
-
-        /// <summary>
-        /// Gets a random item from the list.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="items"></param>
-        /// <returns></returns>
-        private T GetRandomItem<T>(IList<T> items)
-        {
-            if (items.Count < 1)
-            {
-                return default;
-            }
-            else
-            {
-                int randomIndex = StaticRandom.Rand(0, items.Count);
-                return items[randomIndex];
-            }
         }
     }
 }

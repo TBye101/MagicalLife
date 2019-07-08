@@ -1,13 +1,19 @@
 ﻿using MagicalLifeAPI.Components;
 using MagicalLifeAPI.Components.Entity;
 using MagicalLifeAPI.Components.Generic.Renderable;
+using MagicalLifeAPI.Components.MAP_GUI;
 using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.Entity.AI.Task;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.Pathfinding;
+using MagicalLifeAPI.Registry.WorldGeneration;
+using MagicalLifeAPI.Util;
+using MagicalLifeAPI.World;
+using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeGUIWindows.Input.History;
+using System;
 using System.Linq;
 
 namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
@@ -56,7 +62,36 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                                 PathLink previous = movementComponent.QueuedMovement.Peek();
                                 movementComponent.QueuedMovement.Clear();
                                 movementComponent.QueuedMovement.Enqueue(previous);
-                                MainPathFinder.GiveRouteAsync(living, previous.Destination, target);
+
+                                Tile tile = World.GetTile(target);
+
+                                if (tile.MainObject != null)
+                                {
+                                    PortalComponent portalComponent = tile.MainObject.GetComponent<PortalComponent>();
+
+                                    if (portalComponent != null)
+                                    {
+                                        Point3D connection = portalComponent.Connections[0];
+                                        MainPathFinder.GiveRouteAsync(living, previous.Destination, connection);
+
+                                        if (!World.Dimensions.ContainsKey(connection.DimensionID))
+                                        {
+                                            //Need to generate the dungeon first.
+                                            DungeonGenerator generator = WorldGeneratorRegistry.DungeonGenerators.GetRandomItem();
+                                            Guid newDimID = Guid.NewGuid();
+                                            ProtoArray<Chunk> generated = generator.Generate(25, 25, "Dungeon", new System.Random(1020239), newDimID);
+                                            Dimension dim = new Dimension("Dungeon", generated, newDimID);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MainPathFinder.GiveRouteAsync(living, previous.Destination, target);
+                                    }
+                                }
+                                else
+                                {
+                                    MainPathFinder.GiveRouteAsync(living, previous.Destination, target);
+                                }
                             }
                             //No reroute
                             else

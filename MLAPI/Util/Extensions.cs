@@ -24,5 +24,24 @@ namespace MagicalLifeAPI.Util
 
             return new Point2D(int.Parse(x), int.Parse(y));
         }
+
+        /// <summary>
+        /// Gets a random item from the list.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="items"></param>
+        /// <returns></returns>
+        public static T GetRandomItem<T>(this IList<T> items)
+        {
+            if (items.Count < 1)
+            {
+                return default;
+            }
+            else
+            {
+                int randomIndex = StaticRandom.Rand(0, items.Count);
+                return items[randomIndex];
+            }
+        }
     }
 }
