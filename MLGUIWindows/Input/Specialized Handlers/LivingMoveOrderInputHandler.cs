@@ -62,41 +62,12 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                                 PathLink previous = movementComponent.QueuedMovement.Peek();
                                 movementComponent.QueuedMovement.Clear();
                                 movementComponent.QueuedMovement.Enqueue(previous);
-
-                                Tile tile = World.GetTile(target);
-
-                                if (tile.MainObject != null)
-                                {
-                                    PortalComponent portalComponent = tile.MainObject.GetComponent<PortalComponent>();
-
-                                    if (portalComponent != null)
-                                    {
-                                        Point3D connection = portalComponent.Connections[0];
-                                        MainPathFinder.GiveRouteAsync(living, previous.Destination, connection);
-
-                                        if (!World.Dimensions.ContainsKey(connection.DimensionID))
-                                        {
-                                            //Need to generate the dungeon first.
-                                            DungeonGenerator generator = WorldGeneratorRegistry.DungeonGenerators.GetRandomItem();
-                                            Guid newDimID = Guid.NewGuid();
-                                            ProtoArray<Chunk> generated = generator.Generate(25, 25, "Dungeon", new System.Random(1020239), newDimID);
-                                            Dimension dim = new Dimension("Dungeon", generated, newDimID);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        MainPathFinder.GiveRouteAsync(living, previous.Destination, target);
-                                    }
-                                }
-                                else
-                                {
-                                    MainPathFinder.GiveRouteAsync(living, previous.Destination, target);
-                                }
+                                this.HandleOrder(living, target, previous.Destination);
                             }
                             //No reroute
                             else
                             {
-                                MainPathFinder.GiveRouteAsync(living, positionData.MapLocation, target);
+                                this.HandleOrder(living, target, positionData.MapLocation);
                             }
                         }
                         break;
@@ -104,6 +75,39 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
                     default:
                         break;
                 }
+            }
+        }
+
+        private void HandleOrder(Living living, Point3D target, Point3D start)
+        {
+            Tile tile = World.GetTile(target);
+
+            if (tile.MainObject != null)
+            {
+                PortalComponent portalComponent = tile.MainObject.GetComponent<PortalComponent>();
+
+                if (portalComponent != null)
+                {
+                    Point3D connection = portalComponent.Connections[0];
+
+                    if (!World.Dimensions.ContainsKey(connection.DimensionID))
+                    {
+                        //Need to generate the dungeon first.
+                        DungeonGenerator generator = WorldGeneratorRegistry.DungeonGenerators.GetRandomItem();
+                        ProtoArray<Chunk> generated = generator.Generate(25, 25, "Dungeon", new System.Random(1020239), connection.DimensionID, connection, target);
+                        Dimension dim = new Dimension("Dungeon", generated, connection.DimensionID);
+                    }
+
+                    MainPathFinder.GiveRouteAsync(living, start, connection);
+                }
+                else
+                {
+                    MainPathFinder.GiveRouteAsync(living, start, target);
+                }
+            }
+            else
+            {
+                MainPathFinder.GiveRouteAsync(living, start, target);
             }
         }
     }

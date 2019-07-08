@@ -3,8 +3,10 @@ using MagicalLifeAPI.Filing.Logging;
 using MagicalLifeAPI.Registry.WorldGeneration;
 using MagicalLifeAPI.Util;
 using MagicalLifeAPI.World;
+using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Generation.Dungeon;
+using MagicalLifeMod.Core.GameStructures.Parts;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,7 +22,7 @@ namespace MagicalLifeMod.Core.WorldGeneration.Default
         {
         }
 
-        protected override ProtoArray<Chunk> GenerateDungeon(ProtoArray<Chunk> blankWorld, string dimensionName, Random r, Guid dimensionID)
+        protected override ProtoArray<Chunk> GenerateDungeon(ProtoArray<Chunk> blankWorld, string dimensionName, Random r, Guid dimensionID, Point3D exitLocation, Point3D entranceLocation)
         {
             HallwayGenerator hallwayGen = WorldGeneratorRegistry.HallwayGenerators.GetRandomItem();
             RoomGenerator roomGen = WorldGeneratorRegistry.RoomGenerators.GetRandomItem();
@@ -33,11 +35,20 @@ namespace MagicalLifeMod.Core.WorldGeneration.Default
             }
 
             ProtoArray<Chunk> hallways = hallwayGen.GenerateHallways(blankWorld, dimensionName, r, dimensionID);
-            ProtoArray<Chunk> rooms = roomGen.GenerateEmptyRoom(hallways, dimensionName, r);
-            ProtoArray<Chunk> decoratedRooms = roomDecorator.PopulateRoom(rooms, dimensionName, r);
-            ProtoArray<Chunk> creaturesGenerated = creatureGen.GenerateCreatures(decoratedRooms, dimensionName, r);
+            //ProtoArray<Chunk> rooms = roomGen.GenerateEmptyRoom(hallways, dimensionName, r);
+            //ProtoArray<Chunk> decoratedRooms = roomDecorator.PopulateRoom(rooms, dimensionName, r);
+            //ProtoArray<Chunk> creaturesGenerated = creatureGen.GenerateCreatures(decoratedRooms, dimensionName, r);
 
-            return creaturesGenerated;
+            int chunkX = exitLocation.X / Chunk.Width;
+            int chunkY = exitLocation.Y / Chunk.Height;
+            int tileX = exitLocation.X % Chunk.Width;
+            int tileY = exitLocation.Y % Chunk.Height;
+            Chunk chunk = hallways[chunkX, chunkY];
+            Tile entranceTile = chunk.Tiles[tileX, tileY];
+            entranceTile.MainObject = new DungeonStairDown(Guid.NewGuid(), entranceLocation);
+
+            //return creaturesGenerated;
+            return hallways;
         }
     }
 }

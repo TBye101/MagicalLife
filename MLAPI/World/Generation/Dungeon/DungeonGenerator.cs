@@ -24,13 +24,18 @@ namespace MagicalLifeAPI.World
         /// </summary>
         /// <param name="width"></param>
         /// <param name="height"></param>
+        /// <param name="dimensionName"></param>
+        /// <param name="r"></param>
+        /// <param name="dimensionID"></param>
+        /// <param name="exitLocation">The location within the dungeon of the dungeon stairs.</param>
+        /// <param name="entranceLocation">The location outside of the dungeon that leads into the dungeon.</param>
         /// <returns></returns>
-        public ProtoArray<Chunk> Generate(int width, int height, string dimensionName, Random r, Guid dimensionID)
+        public ProtoArray<Chunk> Generate(int width, int height, string dimensionName, Random r, Guid dimensionID, Point3D exitLocation, Point3D entranceLocation)
         {
-            return this.GenerateDungeon(this.GenerateBlank(width, height), dimensionName, r, dimensionID);
+            return this.GenerateDungeon(this.GenerateBlank(width, height), dimensionName, r, dimensionID, exitLocation, entranceLocation);
         }
 
-        protected abstract ProtoArray<Chunk> GenerateDungeon(ProtoArray<Chunk> blankWorld, string dimensionName, Random r, Guid dimensionID);
+        protected abstract ProtoArray<Chunk> GenerateDungeon(ProtoArray<Chunk> blankWorld, string dimensionName, Random r, Guid dimensionID, Point3D exitLocation, Point3D entranceLocation);
 
         private ProtoArray<Chunk> GenerateBlank(int chunkWidth, int chunkHeight)
         {
