@@ -163,6 +163,7 @@ namespace MagicalLifeAPI.Entity.Movement
                 ComponentMovement movementComponent = entity.GetExactComponent<ComponentMovement>();
                 movementComponent.QueuedMovement.Dequeue();
                 movementComponent.Movement.AddModifier(new ModifierDouble(100, new TimeRemoveCondition(1), Lang.NormalMovement));
+                //movementComponent.TileLocation = new Point2DDouble(dLocation.MapLocation.X, dLocation.MapLocation.Y);
                 if (entity.PlayerID == SettingsManager.PlayerSettings.Settings.PlayerID)
                 {
                     ClientSendRecieve.Send(new WorldModifierMessage(new LivingLocationModifier(entity.ID, sLocation.MapLocation, dLocation.MapLocation)));

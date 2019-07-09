@@ -1,4 +1,5 @@
-﻿using MagicalLifeAPI.DataTypes;
+﻿using MagicalLifeAPI.Components.Entity;
+using MagicalLifeAPI.DataTypes;
 using MagicalLifeAPI.Entity;
 using MagicalLifeAPI.GUI;
 using MagicalLifeAPI.World.Data;
@@ -39,8 +40,11 @@ namespace MagicalLifeAPI.Networking.World.Modifiers
             Chunk oldChunk = MagicalLifeAPI.World.Data.World.GetChunkByTile(this.OldLocation.DimensionID, this.OldLocation.X, this.OldLocation.Y);
             Chunk newChunk = MagicalLifeAPI.World.Data.World.GetChunkByTile(this.NewLocation.DimensionID, this.NewLocation.X, this.NewLocation.Y);
             Living l = oldChunk.Creatures[this.EntityID];
+            ComponentSelectable selectable = l.GetExactComponent<ComponentSelectable>();
+            ComponentMovement movement = l.GetExactComponent<ComponentMovement>();
 
-            l.GetExactComponent<ComponentSelectable>().MapLocation = this.NewLocation;
+            movement.TileLocation = new Point2DDouble(this.NewLocation.X, this.NewLocation.Y);
+            selectable.MapLocation = this.NewLocation;
             oldChunk.Creatures.Remove(this.EntityID);
             newChunk.Creatures.Add(this.EntityID, l);
         }
