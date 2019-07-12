@@ -8,6 +8,8 @@ namespace MagicalLifeAPI.DataTypes.Attribute
     [ProtoContract]
     public class Attribute32
     {
+        private static readonly string BaseValueText = "Base Value";
+
         /// <summary>
         /// The int value is applied to the value of this attribute, while the <see cref="IModifierRemoveCondition"/> is used to determine if the modifier will wear off.
         /// The string value is a display message/reason as to why the modifier was applied.
@@ -17,7 +19,7 @@ namespace MagicalLifeAPI.DataTypes.Attribute
 
         public Attribute32(Int32 value) : this()
         {
-            this.AddModifier(new Modifier32(value, new NeverRemoveCondition(), "Base value"));
+            this.Modifiers.Add(new Modifier32(value, new NeverRemoveCondition(), BaseValueText));
         }
 
         public Attribute32()
@@ -41,6 +43,11 @@ namespace MagicalLifeAPI.DataTypes.Attribute
         public void AddModifier(Modifier32 modifier)
         {
             this.Modifiers.Add(modifier);
+        }
+
+        public void AddModifiers(IList<Modifier32> modifiers)
+        {
+            this.Modifiers.AddRange(modifiers);
         }
 
         public void WearOff()
@@ -69,6 +76,34 @@ namespace MagicalLifeAPI.DataTypes.Attribute
 
             this.Modifiers.RemoveAt(0);
             this.Modifiers.Insert(0, baseValue);
+        }
+
+        public static Attribute32 operator+ (Attribute32 a, Attribute32 b)
+        {
+            Attribute32 ret = new Attribute32();
+            ret.AddModifiers(a.Modifiers);
+            ret.AddModifiers(b.Modifiers);
+            return ret;
+        }
+
+        public static Attribute32 operator- (Attribute32 a, Attribute32 b)//Write tests, test, then come up with generic solution to combine with the other types of attributes
+        {
+            Attribute32 ret = new Attribute32();
+            ret.AddModifiers(a.Modifiers);
+
+            foreach (Modifier32 item in b.Modifiers)
+            {
+                if (ret.Modifiers.Contains(item))
+                {
+                    ret.Modifiers.Remove(item);
+                }
+                else
+                {
+                    ret.Modifiers.Add(new Modifier32(item.Value * -1, item.RemoveCondition, "-" + item.Explanation));
+                }
+            }
+
+            return ret;
         }
     }
 }
