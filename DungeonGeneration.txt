@@ -1,0 +1,13 @@
+file:///C:/Users/sneak/Downloads/Vvaltchanov_c3s2e12.pdf
+
+High level graph
+-Nodes (rooms and hallways)
+	-Nodes have connections to eachother
+
+Genetic Algorithm
+-Builds the graph
+-Fitness Functions
+	-The way to control what the map will look like at a high level
+
+Constructors
+-Convert the high level graph into real game tile mappings
