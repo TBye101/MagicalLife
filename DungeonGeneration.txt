@@ -3,9 +3,10 @@ file:///C:/Users/sneak/Downloads/Vvaltchanov_c3s2e12.pdf
 High level graph
 -Nodes (rooms and hallways)
 	-Nodes have connections to eachother
+	-What kind of node (type of room / hallway) is specified
 
 Genetic Algorithm
--Builds the graph
+-Generates the probabilities and capabilities that are turned on for generation of the high level graph
 -Fitness Functions
 	-The way to control what the map will look like at a high level
 

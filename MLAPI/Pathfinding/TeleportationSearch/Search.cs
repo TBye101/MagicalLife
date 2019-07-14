@@ -303,7 +303,7 @@ namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
 
         public bool IsRoutePossible(Point3D origin, Point3D destination)
         {
-            return true;
+            return this.GetRoute(origin, destination) != null;
         }
 
         public void RemoveConnections(Point3D location)

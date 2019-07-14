@@ -13,16 +13,30 @@
 
   <ItemGroup>
     <Compile Remove="Core\Entities\**" />
+    <Compile Remove="Core\WorldGeneration\CreatureGenerators\**" />
+    <Compile Remove="Core\WorldGeneration\RoomDecorators\**" />
+    <Compile Remove="Core\WorldGeneration\RoomGenerators\**" />
     <EmbeddedResource Remove="Core\Entities\**" />
+    <EmbeddedResource Remove="Core\WorldGeneration\CreatureGenerators\**" />
+    <EmbeddedResource Remove="Core\WorldGeneration\RoomDecorators\**" />
+    <EmbeddedResource Remove="Core\WorldGeneration\RoomGenerators\**" />
     <None Remove="Core\Entities\**" />
+    <None Remove="Core\WorldGeneration\CreatureGenerators\**" />
+    <None Remove="Core\WorldGeneration\RoomDecorators\**" />
+    <None Remove="Core\WorldGeneration\RoomGenerators\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Core\WorldGeneration\CreatureGenerators\" />
-    <Folder Include="Core\WorldGeneration\RoomGenerators\" />
-    <Folder Include="Core\WorldGeneration\RoomDecorators\" />
+    <Folder Include="Core\WorldGeneration\Dungeon\Constructors\CreatureGenerators\" />
+    <Folder Include="Core\WorldGeneration\Dungeon\DesignGraph\Genetic\FitnessEvaluators\" />
+    <Folder Include="Core\WorldGeneration\Dungeon\Constructors\RoomDecorator\" />
+    <Folder Include="Core\WorldGeneration\Dungeon\Constructors\RoomGenerator\" />
     <Folder Include="Core\WorldGeneration\StructureGenerators\" />
     <Folder Include="Core\WorldGeneration\VegetationGenerators\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GeneticSharp" Version="2.6.0" />
   </ItemGroup>
 
   <ItemGroup>
