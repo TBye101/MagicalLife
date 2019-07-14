@@ -32,5 +32,15 @@ namespace MLCoreMod.Core.Settings
         public int MaxCircleThickness { get; set; } = 4;
 
         #endregion
+
+        #region DungeonDesignGraph
+
+        #region Fitness
+
+        public bool TreasureRoomRequiresBossRoomRuleEnabled { get; set; } = true;
+
+        #endregion
+
+        #endregion
     }
 }

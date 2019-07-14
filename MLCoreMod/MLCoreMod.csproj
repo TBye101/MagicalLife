@@ -28,7 +28,6 @@
 
   <ItemGroup>
     <Folder Include="Core\WorldGeneration\Dungeon\Constructors\CreatureGenerators\" />
-    <Folder Include="Core\WorldGeneration\Dungeon\DesignGraph\Genetic\FitnessEvaluators\" />
     <Folder Include="Core\WorldGeneration\Dungeon\Constructors\RoomDecorator\" />
     <Folder Include="Core\WorldGeneration\Dungeon\Constructors\RoomGenerator\" />
     <Folder Include="Core\WorldGeneration\StructureGenerators\" />

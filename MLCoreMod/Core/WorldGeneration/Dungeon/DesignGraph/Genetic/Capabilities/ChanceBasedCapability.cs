@@ -61,7 +61,10 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.Capabilitie
 
             if (addNode)
             {
-                node.Connections.Add(new DungeonNode(this.NodeTypeToCreate, node.NodeDistance));
+                DungeonNode newNode = new DungeonNode(this.NodeTypeToCreate, node.NodeDistance + 1);
+
+                newNode.Connections.Add(node);
+                node.Connections.Add(newNode);
             }
         }
 

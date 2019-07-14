@@ -16,6 +16,8 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph
         /// </summary>
         public int NodeDistance { get; set; }
 
+        public Guid NodeID { get; set; }
+
         public List<DungeonNode> Connections { get; set; }
 
         /// <param name="nodeNumber">The number of nodes in this dungeon design graph when this node was created.</param>
@@ -24,6 +26,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph
             this.NodeType = nodeType;
             this.Connections = new List<DungeonNode>();
             this.NodeDistance = nodeNumber;
+            this.NodeID = Guid.NewGuid();
         }
     }
 }
