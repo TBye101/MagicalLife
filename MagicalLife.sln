@@ -42,6 +42,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MLServer", "MLServer\MLServ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MLSettings", "MLSettings\MLSettings.csproj", "{5427DC40-6D0F-4C76-893E-F78772792351}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MLDedicatedServer", "MLDedicatedServer\MLDedicatedServer.csproj", "{B6B6E2A5-13BA-4560-947F-90C53CAAD6C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -145,6 +147,18 @@ Global
 		{5427DC40-6D0F-4C76-893E-F78772792351}.Release|x64.Build.0 = Release|Any CPU
 		{5427DC40-6D0F-4C76-893E-F78772792351}.Release|x86.ActiveCfg = Release|Any CPU
 		{5427DC40-6D0F-4C76-893E-F78772792351}.Release|x86.Build.0 = Release|Any CPU
+		{B6B6E2A5-13BA-4560-947F-90C53CAAD6C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6B6E2A5-13BA-4560-947F-90C53CAAD6C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6B6E2A5-13BA-4560-947F-90C53CAAD6C9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B6B6E2A5-13BA-4560-947F-90C53CAAD6C9}.Debug|x64.Build.0 = Debug|Any CPU
+		{B6B6E2A5-13BA-4560-947F-90C53CAAD6C9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B6B6E2A5-13BA-4560-947F-90C53CAAD6C9}.Debug|x86.Build.0 = Debug|Any CPU
+		{B6B6E2A5-13BA-4560-947F-90C53CAAD6C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6B6E2A5-13BA-4560-947F-90C53CAAD6C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6B6E2A5-13BA-4560-947F-90C53CAAD6C9}.Release|x64.ActiveCfg = Release|Any CPU
+		{B6B6E2A5-13BA-4560-947F-90C53CAAD6C9}.Release|x64.Build.0 = Release|Any CPU
+		{B6B6E2A5-13BA-4560-947F-90C53CAAD6C9}.Release|x86.ActiveCfg = Release|Any CPU
+		{B6B6E2A5-13BA-4560-947F-90C53CAAD6C9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

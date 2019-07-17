@@ -7,6 +7,7 @@ using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Generation.Dungeon;
 using MagicalLifeMod.Core.GameStructures.Parts;
+using MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,6 +25,9 @@ namespace MagicalLifeMod.Core.WorldGeneration.Default
 
         protected override ProtoArray<Chunk> GenerateDungeon(ProtoArray<Chunk> blankWorld, string dimensionName, Random r, Guid dimensionID, Point3D exitLocation, Point3D entranceLocation)
         {
+            DungeonDesigner designer = new DungeonDesigner();
+            DungeonNode dungeonDesign = designer.DesignDungeon();
+
             HallwayGenerator hallwayGen = WorldGeneratorRegistry.HallwayGenerators.GetRandomItem();
             RoomGenerator roomGen = WorldGeneratorRegistry.RoomGenerators.GetRandomItem();
             RoomDecorationGenerator roomDecorator = WorldGeneratorRegistry.RoomDecorators.GetRandomItem();

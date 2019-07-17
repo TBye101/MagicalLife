@@ -1,5 +1,7 @@
 ﻿using GeneticSharp.Domain.Chromosomes;
 using GeneticSharp.Domain.Fitnesses;
+using MagicalLifeAPI.Filing.Logging;
+using MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.Fitness;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,13 +10,39 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.FitnessEval
 {
     public class ConfigurableEvaluator1 : IFitness
     {
+        private List<FitnessRule> ScoringRules;
+
         public ConfigurableEvaluator1()
         {
+            this.ScoringRules = new List<FitnessRule>
+            {
+                new TreasureRoomRequiresBossRoomRule()
+            };
         }
 
         public double Evaluate(IChromosome chromosome)
         {
-            throw new NotImplementedException();
+            DungeonCapabilitiesChromosome dungeonCapabilities = chromosome as DungeonCapabilitiesChromosome;
+
+            if (dungeonCapabilities == null)
+            {
+                return 0;
+            }
+            else
+            {
+                double totalPointsAvailible = 0;
+                double pointsScored = 0;
+                DungeonNode dungeonDesign = dungeonCapabilities.GenerateDungeonDesign();
+
+                for (int i = 0; i < this.ScoringRules.Count; i++)
+                {
+                    FitnessRule rule = this.ScoringRules[i];
+                    totalPointsAvailible += rule.GetTotalPoints(dungeonDesign);
+                    pointsScored += rule.GetCurrentPoints(dungeonDesign);
+                }
+
+                return pointsScored / totalPointsAvailible;
+            }
         }
     }
 }

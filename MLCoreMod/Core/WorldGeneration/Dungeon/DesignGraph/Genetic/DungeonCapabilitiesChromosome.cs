@@ -1,4 +1,5 @@
 ﻿using GeneticSharp.Domain.Chromosomes;
+using MagicalLifeAPI.Filing.Logging;
 using MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.Capabilities;
 using System;
 using System.Collections.Generic;
@@ -91,6 +92,52 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic
             Gene[] newGenes = new Gene[newLength];
             Array.Copy(this.Genes, newGenes, this.Genes.Length);
             this.Genes = newGenes;
+        }
+
+        public DungeonNode GenerateDungeonDesign()
+        {
+            Gene[] genes = this.GetGenes();
+
+            DungeonNode entrance = new DungeonNode(DungeonNodeType.EntranceRoom, 0);
+
+            List<DungeonNode> nodeQueue = new List<DungeonNode>
+            {
+                entrance
+            };
+
+            int length = 35;
+            int i = 0;
+            while (i < length && nodeQueue.Count > 0)
+            {
+                DungeonNode nextNode = nodeQueue[0];
+                List<DungeonNode> nodes = this.GenerateConnections(genes, nextNode);
+
+                nextNode.Connections = nodes;
+                nodeQueue.RemoveAt(0);
+                nodeQueue.AddRange(nodes);
+                i++;
+            }
+
+            return entrance;
+        }
+
+        private List<DungeonNode> GenerateConnections(Gene[] genes, DungeonNode node)
+        {
+            for (int i = 0; i < genes.Length; i++)
+            {
+                Capability capability = genes[i].Value as Capability;
+
+                if (capability == null)
+                {
+                    MasterLog.DebugWriteLine("Null/invalid dungeon design capability");
+                }
+                else
+                {
+                    capability.Activate(node);
+                }
+            }
+
+            return node.Connections;
         }
     }
 }

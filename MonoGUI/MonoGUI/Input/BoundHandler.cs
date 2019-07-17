@@ -161,7 +161,6 @@ namespace MagicalLifeGUIWindows.Input
                 else
                 {
                     item.HasFocus = false;
-                    MasterLog.DebugWriteLine(item.GetType().ToString() + " with a bounds of " + item.MouseBounds.Bounds.ToString() + "was not scrolled on");
                 }
             }
 
@@ -199,7 +198,6 @@ namespace MagicalLifeGUIWindows.Input
                 else
                 {
                     item.HasFocus = false;
-                    MasterLog.DebugWriteLine(item.GetType().ToString() + " with a bounds of " + item.MouseBounds.Bounds.ToString() + "was not clicked on");
                 }
             }
 
@@ -254,7 +252,6 @@ namespace MagicalLifeGUIWindows.Input
                 else
                 {
                     item.HasFocus = false;
-                    MasterLog.DebugWriteLine(item.GetType().ToString() + " with a bounds of " + item.MouseBounds.Bounds.ToString() + "was not double clicked on");
                 }
             }
 
