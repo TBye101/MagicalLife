@@ -67,4 +67,10 @@
       <LastGenOutput>Lang.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Genetic\Crossovers\" />
+    <Folder Include="Genetic\GeneGenerators\" />
+    <Folder Include="Genetic\Selections\" />
+    <Folder Include="Genetic\Populations\" />
+  </ItemGroup>
 </Project>

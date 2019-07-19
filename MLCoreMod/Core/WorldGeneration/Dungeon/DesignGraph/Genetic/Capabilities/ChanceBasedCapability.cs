@@ -1,4 +1,5 @@
 ﻿using MagicalLifeAPI.Error.InternalExceptions;
+using MagicalLifeAPI.Util;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,7 +16,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.Capabilitie
         private double GenerationChanceOnStandardRoom;
         private double GenerationChanceOnTreasureRoom;
 
-        private DungeonNodeType NodeTypeToCreate;
+        public DungeonNodeType NodeTypeToCreate { get; set; }
 
         private Random Rand = new Random();
 
@@ -77,6 +78,25 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.Capabilitie
             this.GenerationChanceOnMinionRoom = this.Rand.NextDouble();
             this.GenerationChanceOnStandardRoom = this.Rand.NextDouble();
             this.GenerationChanceOnTreasureRoom = this.Rand.NextDouble();
+        }
+
+        public override bool SameGeneType(Capability other)
+        {
+            ChanceBasedCapability chanceCapability = other as ChanceBasedCapability;
+
+            if (chanceCapability == null)
+            {
+                return false;
+            }
+            else
+            {
+                return this.NodeTypeToCreate == chanceCapability.NodeTypeToCreate;
+            }
+        }
+
+        public override void Mutate()
+        {
+            this.SetRandomStats();
         }
     }
 }

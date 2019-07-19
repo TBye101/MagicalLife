@@ -3,6 +3,7 @@ using MagicalLifeAPI.Filing.Logging;
 using MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.Capabilities;
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic
@@ -15,9 +16,11 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic
 
         Gene[] Genes { get; set; }
 
-        public DungeonCapabilitiesChromosome()
+        public DungeonCapabilitiesChromosome(int length)
         {
-
+            this.Genes = new Gene[length];
+            this.Length = length;
+            this.GenerateGenes();
         }
 
         private DungeonCapabilitiesChromosome(Gene[] genes, int length, double? fitness)
@@ -25,6 +28,14 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic
             this.Genes = genes;
             this.Length = length;
             this.Fitness = fitness;
+        }
+
+        private void GenerateGenes()
+        {
+            for (int i = 0; i < this.Genes.Length; i++)
+            {
+                this.Genes[i] = this.GenerateGene(i);
+            }
         }
 
         public IChromosome Clone()
@@ -57,13 +68,18 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic
 
         public IChromosome CreateNew()
         {
-            return new DungeonCapabilitiesChromosome();
+            return new DungeonCapabilitiesChromosome(7);
         }
 
         public Gene GenerateGene(int geneIndex)
         {
+            MasterLog.DebugWriteLine("Generating gene: ");
+            MasterLog.DebugWriteLine("Index: " + geneIndex.ToString());
             int chanceBasedCap = geneIndex % 7;
-            Gene gene = new Gene(new ChanceBasedCapability((DungeonNodeType)chanceBasedCap));
+            ChanceBasedCapability capability = new ChanceBasedCapability((DungeonNodeType)chanceBasedCap);
+            capability.SetRandomStats();
+            Gene gene = new Gene(capability);
+            MasterLog.DebugWriteLine("Type: " + capability.NodeTypeToCreate.ToString());
             return gene;
         }
 
@@ -92,7 +108,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic
             Gene[] newGenes = new Gene[newLength];
             Array.Copy(this.Genes, newGenes, this.Genes.Length);
             this.Genes = newGenes;
-        }
+         }
 
         public DungeonNode GenerateDungeonDesign()
         {
@@ -117,7 +133,6 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic
                 nodeQueue.AddRange(nodes);
                 i++;
             }
-
             return entrance;
         }
 

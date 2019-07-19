@@ -20,5 +20,17 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic
         /// </summary>
         /// <param name="node"></param>
         public abstract void Activate(DungeonNode node);
+
+        /// <summary>
+        /// Used to determine if two capabilities are of the same type/gene type.
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public abstract bool SameGeneType(Capability other);
+
+        /// <summary>
+        /// Perform a mutation of some sort onto this capability.
+        /// </summary>
+        public abstract void Mutate();
     }
 }

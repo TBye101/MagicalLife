@@ -53,7 +53,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.Fitness
 
         private DungeonNode[] GetTreasureRooms(DungeonNode node)
         {
-            List<DungeonNode> dungeonNodes = new List<DungeonNode>();
+            List<DungeonNode> treasureNodes = new List<DungeonNode>();
             HashSet<Guid> checkedNodes = new HashSet<Guid>();
 
             List<DungeonNode> toCheck = new List<DungeonNode>
@@ -65,9 +65,10 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.Fitness
             {
                 DungeonNode toCheckNode = toCheck[0];
                 checkedNodes.Add(toCheckNode.NodeID);
+                toCheck.RemoveAt(0);
                 if (toCheckNode.NodeType == DungeonNodeType.TreasureRoom)
                 {
-                    dungeonNodes.Add(toCheckNode);
+                    treasureNodes.Add(toCheckNode);
                 }
 
                 for (int i = 0; i < toCheckNode.Connections.Count; i++)
@@ -80,7 +81,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.Fitness
                 }
             }
 
-            return dungeonNodes.ToArray();
+            return treasureNodes.ToArray();
         }
     }
 }
