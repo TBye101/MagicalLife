@@ -13,7 +13,7 @@ namespace MLAPI.Genetic
         public int Generation { get; set; }
 
         /// <summary>
-        /// The size of the population when fully created, and not in the middle of selection operations.
+        /// The size of the population when fully created.
         /// </summary>
         public int FullSize { get; set; }
 

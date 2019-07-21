@@ -14,24 +14,21 @@ namespace MLAPI.Genetic
 
         public double? Fitness {get; set;}
 
-        private IGeneFactory GeneFactory { get; set; }
-
         public Gene[] Genes { get; set; }
 
-        public Chromosome(int length, IGeneFactory geneFactory)
+        public Chromosome(Gene[] genes)
         {
-            this.Length = length;
-            this.GeneFactory = geneFactory;
-            this.GenerateGenes(this.Length);
+            this.Length = genes.Length;
+            this.Genes = genes;
         }
 
         protected Chromosome()
         {
         }
 
-        public Gene[] GenerateGenes(int length)
+        public Chromosome NewChromosome(IGeneFactory factory)
         {
-            return this.GeneFactory.GenerateGenes(length);
+            return new Chromosome(factory.GenerateGenes(this.Length));
         }
     }
 }

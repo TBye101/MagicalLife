@@ -9,5 +9,6 @@ namespace MLAPI.Genetic
     /// </summary>
     public interface IReinsertion
     {
+        void Reinsert(List<Chromosome> parents, List<Chromosome> offspring, Population population);
     }
 }
