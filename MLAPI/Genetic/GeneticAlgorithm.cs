@@ -15,18 +15,18 @@ namespace MLAPI.Genetic
         public ITermination Termination { get; set; }
         public IMutation Mutation { get; set; }
         public IReinsertion Reinsertion { get; set; }
-        public IGeneFactory GeneFactory { get; set; }
-
-        public float CrossoverProbability { get; set; }
-        public float MutationProbability { get; set; }
-
 
         public Population Pop { get; set; }
         public Chromosome BestChromosome { get; set; }
 
+        /// <summary>
+        /// Should be raised whenever a genetic cycle has been completed.
+        /// </summary>
+        public event EventHandler<GeneticAlgorithm> GenerationChange;
+
         public GeneticAlgorithm(
             IFitness fitness, ICrossover crossover, ISelection selection, ITermination termination,
-            IMutation mutation, IReinsertion reinsertion, IGeneFactory geneFactory, Population population, float crossoverProbability, float mutationProbability)
+            IMutation mutation, IReinsertion reinsertion, Population population)
         {
             this.Fitness = fitness;
             this.Crossover = crossover;
@@ -34,12 +34,14 @@ namespace MLAPI.Genetic
             this.Termination = termination;
             this.Pop = population;
             this.Mutation = mutation;
-            this.CrossoverProbability = crossoverProbability;
-            this.MutationProbability = mutationProbability;
             this.Reinsertion = reinsertion;
-            this.GeneFactory = geneFactory;
         }
 
         public abstract void Start();
+
+        public void RaiseGenerationChange(GeneticAlgorithm algorithm)
+        {
+            this.GenerationChange?.Invoke(algorithm, algorithm);
+        }
     }
 }

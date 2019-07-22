@@ -10,20 +10,6 @@ namespace MLAPITest.Genetic
 {
     public static class GeneticTestUtil
     {
-        public static List<Chromosome> GenerateChromosomes(int count)
-        {
-            TestGeneFactory factory = new TestGeneFactory();
-            List<Chromosome> chromosomes = new List<Chromosome>();
-
-            for (int i = 0; i < count; i++)
-            {
-                Chromosome newChromosome = new Chromosome(factory.GenerateGenes(10));
-                chromosomes.Add(newChromosome);
-            }
-
-            return chromosomes;
-        }
-
         public static void CalculateFitnesses(List<Chromosome> chromosomes, IFitness fitness)
         {
             foreach (Chromosome item in chromosomes)

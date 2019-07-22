@@ -1,13 +1,12 @@
-﻿using GeneticSharp.Domain;
-using GeneticSharp.Domain.Crossovers;
-using GeneticSharp.Domain.Mutations;
-using GeneticSharp.Domain.Populations;
-using GeneticSharp.Domain.Selections;
-using GeneticSharp.Domain.Terminations;
-using MagicalLifeAPI.Error.InternalExceptions;
+﻿using MagicalLifeAPI.Error.InternalExceptions;
 using MagicalLifeAPI.Filing.Logging;
+using MLAPI.Genetic;
+using MLAPI.Genetic.Algorithms;
+using MLAPI.Genetic.Crossovers;
+using MLAPI.Genetic.Reinsertions;
+using MLAPI.Genetic.Selections;
+using MLAPI.Genetic.Terminations;
 using MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic;
-using MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.Crossover;
 using MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.FitnessEvaluators;
 using MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.Mutations;
 using System;
@@ -21,22 +20,38 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph
     /// </summary>
     public class DungeonDesigner
     {
+        private static readonly int populationSize = 100;
+        private static readonly float selectTopPercent = .1F;
+        private static readonly int crossoverPoints = 2;
+        private static readonly float mutationChance = .2F;
+        private static readonly int terminationGeneration = 10;
+
         public DungeonNode DesignDungeon()
         {
-            EliteSelection selection = new EliteSelection();
-            var crossover = new GeneSwapCrossover();
-            var mutation = new CapabilityMutation();  
-            ConfigurableEvaluator1 fitness = new ConfigurableEvaluator1();
-            DungeonCapabilitiesChromosome chromosome = new DungeonCapabilitiesChromosome(7);
-            Population population = new Population(50, 100, chromosome);
-            GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm(population, fitness, selection, crossover, mutation);
-            geneticAlgorithm.Termination = new GenerationNumberTermination(100000);
-            geneticAlgorithm.MutationProbability = .7F;
-            geneticAlgorithm.GenerationRan += this.GeneticAlgorithm_GenerationRan;
-            geneticAlgorithm.Start();
-            DungeonCapabilitiesChromosome bestChromosome = geneticAlgorithm.BestChromosome as DungeonCapabilitiesChromosome;
+            IGeneFactory geneFactory = null;
+            Chromosome initialPopulation = new Chromosome(geneFactory.GenerateGenes());
 
-            if (bestChromosome == null)
+            ISelection selection = new PercentSelection(selectTopPercent);
+            ICrossover crossover = new KPointCrossover(crossoverPoints, initialPopulation.Genes.Length);
+            IMutation mutation = new RoomGenChanceMutator(mutationChance);
+            IFitness fitness = new ConfigurableEvaluator1();
+            IReinsertion reinsertion = new ReplaceThenGenerate(geneFactory);
+            ITermination termination = new GenerationCountTermination(terminationGeneration);
+
+            GeneticAlgorithm algorithm =
+                new GenericGeneticAlgorithm(fitness, crossover, selection, termination, mutation, reinsertion, populationSize,
+                initialPopulation, geneFactory);
+
+            algorithm.Start();
+
+            //GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm(population, fitness, selection, crossover, mutation);
+            //geneticAlgorithm.Termination = new GenerationNumberTermination(1000);
+            //geneticAlgorithm.MutationProbability = .7F;
+            //geneticAlgorithm.GenerationRan += this.GeneticAlgorithm_GenerationRan;
+            //geneticAlgorithm.Start();
+            //DungeonCapabilitiesChromosome bestChromosome = geneticAlgorithm.BestChromosome as DungeonCapabilitiesChromosome;
+
+            if (algorithm.BestChromosome == null)
             {
                 throw new UnexpectedStateException();
             }

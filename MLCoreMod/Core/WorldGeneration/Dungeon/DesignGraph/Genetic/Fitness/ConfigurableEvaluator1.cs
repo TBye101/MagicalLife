@@ -1,6 +1,5 @@
-﻿using GeneticSharp.Domain.Chromosomes;
-using GeneticSharp.Domain.Fitnesses;
-using MagicalLifeAPI.Filing.Logging;
+﻿using MagicalLifeAPI.Filing.Logging;
+using MLAPI.Genetic;
 using MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.Fitness;
 using System;
 using System.Collections.Generic;
@@ -18,6 +17,11 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.FitnessEval
             {
                 new TreasureRoomRequiresBossRoomRule()
             };
+        }
+
+        public double CalculateFitness(Chromosome chromosome)
+        {
+            throw new NotImplementedException();
         }
 
         public double Evaluate(IChromosome chromosome)

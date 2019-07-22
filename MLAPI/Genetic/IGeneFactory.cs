@@ -16,5 +16,11 @@ namespace MLAPI.Genetic
         /// <param name="length"></param>
         /// <returns></returns>
         Gene[] GenerateGenes(int length);
+        
+        /// <summary>
+        /// Generates a recommended number of genes.
+        /// </summary>
+        /// <returns></returns>
+        Gene[] GenerateGenes();
     }
 }

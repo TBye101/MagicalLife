@@ -7,9 +7,9 @@ namespace MLAPI.Genetic.Algorithms
     public class GenericGeneticAlgorithm : GeneticAlgorithm
     {
         public GenericGeneticAlgorithm(IFitness fitness, ICrossover crossover, ISelection selection, ITermination termination, 
-            IMutation mutation, IReinsertion reinsertion, int populationSize, float crossoverProbability, float mutationProbability,
+            IMutation mutation, IReinsertion reinsertion, int populationSize,
             Chromosome chromosome, IGeneFactory geneFactory)
-            : base(fitness, crossover, selection, termination, mutation, reinsertion, geneFactory, GeneratePopulation(chromosome, populationSize, geneFactory), crossoverProbability, mutationProbability)
+            : base(fitness, crossover, selection, termination, mutation, reinsertion, GeneratePopulation(chromosome, populationSize, geneFactory))
         {
         }
 
@@ -31,6 +31,7 @@ namespace MLAPI.Genetic.Algorithms
             {
                 this.RunGeneration();
                 this.Pop.Generation++;
+                this.RaiseGenerationChange(this);
             }
         }
 

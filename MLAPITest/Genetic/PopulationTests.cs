@@ -17,7 +17,7 @@ namespace MLAPITest.Genetic
         public void TestMethod1(int populationSize)
         {
             // Arrange
-            List<Chromosome> generatedChromosomes = GeneticTestUtil.GenerateChromosomes(populationSize);
+            List<Chromosome> generatedChromosomes = GeneticUtil.GenerateChromosomes(populationSize, new TestGeneFactory());
             Population population = new Population(generatedChromosomes, populationSize);
             IFitness fitness = new TestFitness();
             GeneticTestUtil.CalculateFitnesses(population.Chromosomes, fitness);

@@ -21,7 +21,7 @@ namespace MLAPITest.Genetic.Selections
             // Arrange
             PercentSelection percentSelection = new PercentSelection(percent);
             IGeneFactory geneFactory = new TestGeneFactory();
-            List<Chromosome> initialPopulation = GeneticTestUtil.GenerateChromosomes(100);
+            List<Chromosome> initialPopulation = GeneticUtil.GenerateChromosomes(100, new TestGeneFactory());
             IFitness fitness = new TestFitness();
             Population pop = new Population(initialPopulation, 100);
 

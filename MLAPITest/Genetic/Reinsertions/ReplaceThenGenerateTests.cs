@@ -22,7 +22,7 @@ namespace MLAPITest.Genetic.Reinsertions
             ReplaceThenGenerate replaceThenGenerate = new ReplaceThenGenerate(geneFactory);
             ICrossover crossover = new KPointCrossover(2, 10);
             ISelection selection = new PercentSelection(.05F);
-            List<Chromosome> initialPopulation = GeneticTestUtil.GenerateChromosomes(100);
+            List<Chromosome> initialPopulation = GeneticUtil.GenerateChromosomes(100, new TestGeneFactory());
 
             Population population = new Population(initialPopulation, 100);
             GeneticTestUtil.CalculateFitnesses(population.Chromosomes, fitness);

@@ -20,7 +20,7 @@ namespace MLAPITest.Genetic.Crossovers
         public void CrossParents_StateUnderTest_ExpectedBehavior(int k)
         {
             // Arrange
-            List<Chromosome> initialPopulation = GeneticTestUtil.GenerateChromosomes(100);
+            List<Chromosome> initialPopulation = GeneticUtil.GenerateChromosomes(100, new TestGeneFactory());
             Population pop = new Population(initialPopulation, 100);
             KPointCrossover kPointCrossover = new KPointCrossover(k, 10);
             ISelection selection = new PercentSelection(.1F);
