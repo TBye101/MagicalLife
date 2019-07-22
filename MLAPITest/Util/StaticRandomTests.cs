@@ -1,13 +1,14 @@
 ﻿using MagicalLifeAPI.Util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using Xunit;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace MagicalLifeTests.Util
 {
-    [TestClass]
     public class StaticRandomTests
     {
-        [TestMethod]
+        [Fact]
         public void RandTest()
         {
             this.TestPositive();

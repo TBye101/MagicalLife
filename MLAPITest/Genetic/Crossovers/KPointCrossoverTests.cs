@@ -22,12 +22,14 @@ namespace MLAPITest.Genetic.Crossovers
             // Arrange
             List<Chromosome> initialPopulation = GeneticTestUtil.GenerateChromosomes(100);
             Population pop = new Population(initialPopulation, 100);
-            KPointCrossover kPointCrossover = new KPointCrossover(k);
+            KPointCrossover kPointCrossover = new KPointCrossover(k, 10);
             ISelection selection = new PercentSelection(.1F);
+            GeneticTestUtil.CalculateFitnesses(pop.Chromosomes, new TestFitness());
             List<Chromosome> parents = selection.SelectParents(pop);
 
             // Act
             List<Chromosome> result = kPointCrossover.CrossParents(parents);
+            GeneticTestUtil.CalculateFitnesses(result, new TestFitness());
 
             // Assert
             Assert.IsNotNull(initialPopulation);

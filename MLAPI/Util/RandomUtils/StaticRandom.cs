@@ -23,13 +23,13 @@ namespace MagicalLifeAPI.Util
 
         public static double Rand(double min, double max)
         {
-            if (   min < 0 
-                || max < 0 
-                || min > 1 
-                || max > 1)
-            {
-                throw new ArgumentOutOfRangeException();
-            }
+            //if (   min < 0 
+            //    || max < 0 
+            //    || min > 1 
+            //    || max > 1)
+            //{
+            //    throw new ArgumentOutOfRangeException();
+            //}
 
             return (random.Value.NextDouble() * (max - min)) + min;
         }

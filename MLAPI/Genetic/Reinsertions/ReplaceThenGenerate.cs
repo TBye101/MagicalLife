@@ -23,7 +23,7 @@ namespace MLAPI.Genetic.Reinsertions
             population.Chromosomes.Clear();
             population.Chromosomes.AddRange(offspring);
 
-            int numberOfParentsToTake = population.FullSize - population.Chromosomes.Count;
+            int numberOfParentsToTake = Math.Min(population.FullSize - population.Chromosomes.Count, parents.Count);
             if (numberOfParentsToTake > 0)
             {
                 population.Chromosomes.AddRange(parents.GetRange(0, numberOfParentsToTake));

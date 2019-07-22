@@ -30,6 +30,7 @@ namespace MLAPI.Genetic.Algorithms
             while (!this.Termination.ShouldStopEvolving(this))
             {
                 this.RunGeneration();
+                this.Pop.Generation++;
             }
         }
 

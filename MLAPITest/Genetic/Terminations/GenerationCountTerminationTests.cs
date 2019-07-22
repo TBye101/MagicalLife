@@ -52,13 +52,13 @@ namespace MLAPITest.Genetic.Terminations
             {
                 IGeneFactory factory = new TestGeneFactory();
 
-                yield return new object[] {new TestFitness(), new KPointCrossover(1), new PercentSelection(.1F), new TestMutation(),
+                yield return new object[] {new TestFitness(), new KPointCrossover(1, 10), new PercentSelection(.1F), new TestMutation(),
                     new ReplaceThenGenerate(factory), 100, .3F, .1F, new Chromosome(factory.GenerateGenes(10)), factory };
 
-                yield return new object[] {new TestFitness(), new KPointCrossover(2), new PercentSelection(.2F), new TestMutation(),
+                yield return new object[] {new TestFitness(), new KPointCrossover(2, 10), new PercentSelection(.2F), new TestMutation(),
     new ReplaceThenGenerate(factory), 50, .4F, .2F, new Chromosome(factory.GenerateGenes(10)), factory };
 
-                yield return new object[] {new TestFitness(), new KPointCrossover(3), new PercentSelection(.2F), new TestMutation(),
+                yield return new object[] {new TestFitness(), new KPointCrossover(3, 10), new PercentSelection(.2F), new TestMutation(),
     new ReplaceThenGenerate(factory), 200, .3F, .1F, new Chromosome(factory.GenerateGenes(10)), factory };
             }
         }

@@ -17,15 +17,18 @@ namespace MLAPITest.Genetic.Reinsertions
         public void Reinsert_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
+            IFitness fitness = new TestFitness();
             TestGeneFactory geneFactory = new TestGeneFactory();
             ReplaceThenGenerate replaceThenGenerate = new ReplaceThenGenerate(geneFactory);
-            ICrossover crossover = new KPointCrossover(2);
+            ICrossover crossover = new KPointCrossover(2, 10);
             ISelection selection = new PercentSelection(.05F);
             List<Chromosome> initialPopulation = GeneticTestUtil.GenerateChromosomes(100);
 
             Population population = new Population(initialPopulation, 100);
+            GeneticTestUtil.CalculateFitnesses(population.Chromosomes, fitness);
             List<Chromosome> parents = selection.SelectParents(population);
             List<Chromosome> offspring = crossover.CrossParents(parents);
+            GeneticTestUtil.CalculateFitnesses(offspring, fitness);
 
 
             // Act
@@ -41,6 +44,7 @@ namespace MLAPITest.Genetic.Reinsertions
             Assert.IsNotNull(parents);
             Assert.IsNotNull(offspring);
 
+            GeneticTestUtil.CalculateFitnesses(population.Chromosomes, fitness);
             GeneticTestUtil.ValidateChromosomes(population.Chromosomes);
             GeneticTestUtil.ValidateChromosomes(parents);
             GeneticTestUtil.ValidateChromosomes(offspring);

@@ -15,9 +15,12 @@ namespace MLAPITest.Genetic
             // Arrange
             IGeneFactory factory = new TestGeneFactory();
             Chromosome chromosome = new Chromosome(factory.GenerateGenes(10));
+            IFitness fitness = new TestFitness();
 
             // Act
             Chromosome result = chromosome.NewChromosome(factory);
+
+            GeneticTestUtil.CalculateFitnesses(new List<Chromosome> { result, chromosome }, fitness);
 
             // Assert
             Assert.IsNotNull(factory);

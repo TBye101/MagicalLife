@@ -16,10 +16,10 @@ namespace MLAPI.Genetic.Crossovers
 
         private NonDuplicateRandomRange NonDuplicateRNG { get; set; }
 
-        public KPointCrossover(int k)
+        public KPointCrossover(int k, int genesCount)
         {
             this.K = k;
-            this.NonDuplicateRNG = new NonDuplicateRandomRange(1, k);
+            this.NonDuplicateRNG = new NonDuplicateRandomRange(0, genesCount);
         }
 
         public List<Chromosome> CrossParents(List<Chromosome> parents)
