@@ -1,4 +1,6 @@
-﻿namespace MagicalLifeAPI.Util
+﻿using System;
+
+namespace MagicalLifeAPI.Util
 {
     /// <summary>
     /// Some basic array utilities.
@@ -22,6 +24,44 @@
                 {
                     array[x, y] = value;
                 }
+            }
+        }
+
+        /// <summary>
+        /// Fills an array with numbers in order from the inclusive minimum to the exlusive maximum.
+        /// </summary>
+        public static int[] FillNumericalRange(int inclusiveMin, int exclusiveMax)
+        {
+            int[] numbers = new int[exclusiveMax - inclusiveMin];
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                numbers[i] = inclusiveMin + i;
+            }
+
+            return numbers;
+        }
+
+        /// <summary>
+        /// Swaps elements between the two arrays from the inclusive start point to the exclusive end point.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="inclusiveStart"></param>
+        /// <param name="exclusiveStop"></param>
+        public static void SwapBetweenArrays<T>(T[] a, T[] b, int inclusiveStart, int exclusiveStop)
+        {
+            if (a.Length < exclusiveStop || b.Length < exclusiveStop)
+            {
+                throw new InvalidOperationException("Swapping would go out of bounds in at least one array");
+            }
+
+            for (int i = inclusiveStart; i < exclusiveStop; i++)
+            {
+                T temp = a[i];
+                a[i] = b[i];
+                b[i] = temp;
             }
         }
     }

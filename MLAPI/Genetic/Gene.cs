@@ -7,21 +7,13 @@ namespace MLAPI.Genetic
     /// <summary>
     /// Represents some genetic information that is utilized in a genetic algorithm.
     /// </summary>
-    public abstract class Gene
+    public struct Gene
     {
-        /// <summary>
-        /// If true, then this gene can reproduce with the specified gene.
-        /// </summary>
-        /// <param name="gene"></param>
-        /// <returns></returns>
-        public abstract bool CanReproduce(Gene gene);
+        public object Value { get; set; }
 
-        /// <summary>
-        /// Returns the child of the two genes.
-        /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
-        public abstract Gene Reproduce(Gene a, Gene b);
+        public Gene(object value)
+        {
+            this.Value = value;
+        }
     }
 }
