@@ -116,8 +116,8 @@ namespace MagicalLifeAPI.Asset
 
         #region Structure
 
-        public static readonly string StairDown1 = "Structure/StairDown1";
-        public static readonly string StairUp1 = "Structure/StairUp1";
+        public static readonly string StairDown1 = "Structure/StairsDown1";
+        public static readonly string StairUp1 = "Structure/StairsUp1";
 
         #endregion Structure
 
