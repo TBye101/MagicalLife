@@ -52,8 +52,11 @@ namespace MLAPI.Genetic.Crossovers
             List<int> crossPoints = this.GetCrossPoints();
             crossPoints.Sort((x, y) => x.CompareTo(y));
 
-            Gene[] offspring1Genes = parent1.Genes;
-            Gene[] offspring2Genes = parent2.Genes;
+            Gene[] offspring1Genes = new Gene[parent1.Genes.Length];
+            Gene[] offspring2Genes = new Gene[parent2.Genes.Length];
+
+            Array.Copy(parent1.Genes, offspring1Genes, parent1.Genes.Length);
+            Array.Copy(parent2.Genes, offspring2Genes, parent2.Genes.Length);
 
             while (crossPoints.Count > 0)
             {

@@ -21,7 +21,7 @@ namespace MLAPI.Genetic.Selections
             int numberToSelect = (int)(pop.Chromosomes.Count * this.TopPercent);
 
             pop.Chromosomes.Sort((x, y) => x.Fitness.Value.CompareTo(y.Fitness.Value));
-            return pop.Chromosomes.GetRange(0, numberToSelect);
+            return pop.Chromosomes.GetRange(pop.Chromosomes.Count - numberToSelect, numberToSelect);
         }
     }
 }

@@ -9,15 +9,20 @@ namespace MLAPITest.Genetic
 {
     public class TestGeneFactory : IGeneFactory
     {
+        private Random RNG { get; set; }
+
+        public TestGeneFactory()
+        {
+            this.RNG = new Random();
+        }
+
         public Gene[] GenerateGenes(int length)
         {
             Gene[] genes = new Gene[length];
 
-            Random r = new Random();
-
             for (int i = 0; i < genes.Length; i++)
             {
-                genes[i] = new Gene(r.Next(0, 100));
+                genes[i] = new Gene(this.RNG.Next(0, 100));
             }
 
             return genes;
