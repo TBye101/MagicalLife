@@ -8,12 +8,13 @@ using MLAPI.Genetic.Terminations;
 using System;
 using System.Collections.Generic;
 using Xunit;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace MLAPITest.Genetic.Terminations
 {
     public class GenerationCountTerminationTests
     {
-        [Fact]
+        [Theory]
         [MemberData(nameof(GetData))]
         public void ShouldStopEvolving_StateUnderTest_ExpectedBehavior(IFitness fitness, ICrossover crossover, ISelection selection,
             IMutation mutation, IReinsertion reinsertion, int populationSize, float crossoverProbability, float mutationPossibility,
@@ -45,7 +46,7 @@ namespace MLAPITest.Genetic.Terminations
             Assert.IsTrue(afterStop);
         }
 
-        private IEnumerable<object[]> GetData
+        public static IEnumerable<object[]> GetData
         {
             get
             {

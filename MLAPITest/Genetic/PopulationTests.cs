@@ -3,12 +3,13 @@ using MLAPI.Genetic;
 using System;
 using System.Collections.Generic;
 using Xunit;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace MLAPITest.Genetic
 {
     public class PopulationTests
     {
-        [Fact]
+        [Theory]
         [InlineData(1)]
         [InlineData(100)]
         [InlineData(-1)]

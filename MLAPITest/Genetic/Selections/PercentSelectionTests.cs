@@ -4,12 +4,13 @@ using MLAPI.Genetic.Selections;
 using System;
 using System.Collections.Generic;
 using Xunit;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace MLAPITest.Genetic.Selections
 {
     public class PercentSelectionTests
     {
-        [Fact]
+        [Theory]
         [InlineData(.1)]
         [InlineData(.2)]
         [InlineData(.5)]

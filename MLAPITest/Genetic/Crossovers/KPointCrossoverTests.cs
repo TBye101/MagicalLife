@@ -5,12 +5,13 @@ using MLAPI.Genetic.Selections;
 using System;
 using System.Collections.Generic;
 using Xunit;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace MLAPITest.Genetic.Crossovers
 {
     public class KPointCrossoverTests
     {
-        [Fact]
+        [Theory]
         [InlineData(-1)]
         [InlineData(0)]
         [InlineData(1)]

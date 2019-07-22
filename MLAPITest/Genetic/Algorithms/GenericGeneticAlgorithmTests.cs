@@ -8,12 +8,13 @@ using MLAPI.Genetic.Terminations;
 using System;
 using System.Collections.Generic;
 using Xunit;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace MLAPITest.Genetic.Algorithms
 {
     public class GenericGeneticAlgorithmTests
     {
-        [Fact]
+        [Theory]
         [MemberData(nameof(GetData))]
         public void Start_StateUnderTest_ExpectedBehavior(IFitness fitness, ICrossover crossover, ISelection selection, ITermination termination,
             IMutation mutation, IReinsertion reinsertion, int populationSize, float crossoverProbability, float mutationPossibility,
@@ -42,7 +43,7 @@ namespace MLAPITest.Genetic.Algorithms
             GeneticTestUtil.ValidateChromosomes(new List<Chromosome> { algorithm.BestChromosome });
         }
 
-        private static IEnumerable<object[]> GetData
+        public static IEnumerable<object[]> GetData
         {
             get
             {
