@@ -27,5 +27,10 @@ namespace MLAPITest.Genetic
 
             return genes;
         }
+
+        public Gene[] GenerateGenes()
+        {
+            return this.GenerateGenes(10);
+        }
     }
 }

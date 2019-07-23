@@ -7,7 +7,9 @@ using MagicalLifeAPI.World.Base;
 using MagicalLifeAPI.World.Data;
 using MagicalLifeAPI.World.Generation.Dungeon;
 using MagicalLifeMod.Core.GameStructures.Parts;
+using MLAPI.Genetic;
 using MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph;
+using MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.DesignGenerators;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -25,8 +27,10 @@ namespace MagicalLifeMod.Core.WorldGeneration.Default
 
         protected override ProtoArray<Chunk> GenerateDungeon(ProtoArray<Chunk> blankWorld, string dimensionName, Random r, Guid dimensionID, Point3D exitLocation, Point3D entranceLocation)
         {
-            DungeonDesigner designer = new DungeonDesigner();
-            DungeonNode dungeonDesign = designer.DesignDungeon();
+            DungeonDesignRuleGenerator geneticDesigner = new DungeonDesignRuleGenerator();
+            DungeonDesigner designer = new RoomGenChanceDesignGenerator();
+            Chromosome dungeonDesignRules = geneticDesigner.AdaptDungeonDesignRules();
+            DungeonNode dungeonDesign = designer.GetDungeonDesign(dungeonDesignRules);
 
             HallwayGenerator hallwayGen = WorldGeneratorRegistry.HallwayGenerators.GetRandomItem();
             RoomGenerator roomGen = WorldGeneratorRegistry.RoomGenerators.GetRandomItem();

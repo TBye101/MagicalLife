@@ -5,48 +5,37 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.FitnessEvaluators
+namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.Fitness
 {
     public class ConfigurableEvaluator1 : IFitness
     {
-        private List<FitnessRule> ScoringRules;
+        private List<FitnessRule> ScoringRules { get; set; }
 
-        public ConfigurableEvaluator1()
+        private DungeonDesigner Designer { get; set; }
+
+        public ConfigurableEvaluator1(DungeonDesigner designer)
         {
             this.ScoringRules = new List<FitnessRule>
             {
                 new TreasureRoomRequiresBossRoomRule()
             };
+            this.Designer = designer;
         }
 
         public double CalculateFitness(Chromosome chromosome)
         {
-            throw new NotImplementedException();
-        }
+            double totalPointsAvailible = 0;
+            double pointsScored = 0;
+            DungeonNode dungeonDesign = this.Designer.GetDungeonDesign(chromosome);
 
-        public double Evaluate(IChromosome chromosome)
-        {
-            DungeonCapabilitiesChromosome dungeonCapabilities = chromosome as DungeonCapabilitiesChromosome;
-
-            if (dungeonCapabilities == null)
+            for (int i = 0; i < this.ScoringRules.Count; i++)
             {
-                return 0;
+                FitnessRule rule = this.ScoringRules[i];
+                totalPointsAvailible += rule.GetTotalPoints(dungeonDesign);
+                pointsScored += rule.GetCurrentPoints(dungeonDesign);
             }
-            else
-            {
-                double totalPointsAvailible = 0;
-                double pointsScored = 0;
-                DungeonNode dungeonDesign = dungeonCapabilities.GenerateDungeonDesign();
 
-                for (int i = 0; i < this.ScoringRules.Count; i++)
-                {
-                    FitnessRule rule = this.ScoringRules[i];
-                    totalPointsAvailible += rule.GetTotalPoints(dungeonDesign);
-                    pointsScored += rule.GetCurrentPoints(dungeonDesign);
-                }
-
-                return pointsScored / totalPointsAvailible;
-            }
+            return pointsScored / totalPointsAvailible;
         }
     }
 }

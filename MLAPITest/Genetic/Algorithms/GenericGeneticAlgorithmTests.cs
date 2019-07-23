@@ -17,13 +17,13 @@ namespace MLAPITest.Genetic.Algorithms
         [Theory]
         [MemberData(nameof(GetData))]
         public void Start_StateUnderTest_ExpectedBehavior(IFitness fitness, ICrossover crossover, ISelection selection, ITermination termination,
-            IMutation mutation, IReinsertion reinsertion, int populationSize, float crossoverProbability, float mutationPossibility,
+            IMutation mutation, IReinsertion reinsertion, int populationSize,
             Chromosome chromosome, IGeneFactory geneFactory)
         {
             // Arrange
             GenericGeneticAlgorithm algorithm =
                 new GenericGeneticAlgorithm(fitness, crossover, selection, termination, mutation, reinsertion, populationSize,
-                crossoverProbability, mutationPossibility, chromosome, geneFactory);
+                    chromosome, geneFactory);
 
             // Act
             algorithm.Start();
@@ -50,13 +50,13 @@ namespace MLAPITest.Genetic.Algorithms
                 IGeneFactory factory = new TestGeneFactory();
 
                 yield return new object[] {new TestFitness(), new KPointCrossover(1, 10), new PercentSelection(.1F), new GenerationCountTermination(10), new TestMutation(),
-                    new ReplaceThenGenerate(factory), 100, .3F, .1F, new Chromosome(factory.GenerateGenes(10)), factory };
+                    new ReplaceThenGenerate(factory), 100, new Chromosome(factory.GenerateGenes(10)), factory };
 
                 yield return new object[] { new TestFitness(), new KPointCrossover(2, 10), new PercentSelection(.2F), new GenerationCountTermination(10), new TestMutation(),
-                    new ReplaceThenGenerate(factory), 50, .4F, .2F, new Chromosome(factory.GenerateGenes(10)), factory};
+                    new ReplaceThenGenerate(factory), 50, new Chromosome(factory.GenerateGenes(10)), factory};
 
                 yield return new object[] { new TestFitness(), new KPointCrossover(3, 10), new PercentSelection(.2F), new GenerationCountTermination(10), new TestMutation(),
-                    new ReplaceThenGenerate(factory), 200, .3F, .1F, new Chromosome(factory.GenerateGenes(10)), factory };
+                    new ReplaceThenGenerate(factory), 200, new Chromosome(factory.GenerateGenes(10)), factory };
             }
         }
     }

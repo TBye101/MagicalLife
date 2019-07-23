@@ -22,7 +22,7 @@ namespace MLAPI.Genetic
         /// <summary>
         /// Should be raised whenever a genetic cycle has been completed.
         /// </summary>
-        public event EventHandler<GeneticAlgorithm> GenerationChange;
+        public event EventHandler<GeneticAlgorithm> GenerationEvolved;
 
         public GeneticAlgorithm(
             IFitness fitness, ICrossover crossover, ISelection selection, ITermination termination,
@@ -41,7 +41,7 @@ namespace MLAPI.Genetic
 
         public void RaiseGenerationChange(GeneticAlgorithm algorithm)
         {
-            this.GenerationChange?.Invoke(algorithm, algorithm);
+            this.GenerationEvolved?.Invoke(algorithm, algorithm);
         }
     }
 }

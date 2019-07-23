@@ -88,6 +88,13 @@ namespace MLCoreMod.Core.Settings
 
         #endregion
 
+        #region Design
+
+        public int MaxRoomsAdjacentToNode { get; set; } = 10;
+        public int MinRoomsAdjacentToNode { get; set; } = 0;
+
+        #endregion
+
         #endregion
     }
 }
