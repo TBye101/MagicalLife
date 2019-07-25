@@ -1,9 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>7.3</LangVersion>
-	<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	  <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <Version>0.1.2.1</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -14,6 +16,10 @@
     <PackageReference Include="MonoGame.Extended" Version="1.1.0" />
     <PackageReference Include="MonoGame.Extended.Input" Version="1.1.0" />
     <PackageReference Include="MonoGame.Framework.Portable" Version="3.7.1.189" />
+    <PackageReference Include="MSBump" Version="2.3.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
