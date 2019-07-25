@@ -12,3 +12,9 @@ Genetic Algorithm
 
 Constructors
 -Convert the high level graph into real game tile mappings
+--Planning stage
+	-Convert rooms and hallways to rectangles with defined sizes that is big enough to provide enough connections for all node connections
+	-Define room positions as offsets from the entrance
+	-Give the entrance room a random position, and map all rooms and hallways to real coordinates
+	-Create rooms and hallways in the real map tiles
+	-Decorate and flesh out rooms with creatures, furniture, traps...
