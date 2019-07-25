@@ -4,6 +4,7 @@ using System.Text;
 using MagicalLifeAPI.Util;
 using MagicalLifeMod.Core.Settings;
 using MLAPI.Genetic;
+using MLAPI.Util.RandomUtils;
 
 namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.DesignGenerators
 {
@@ -36,10 +37,13 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.DesignGener
                 //Generate on node
                 DungeonNode node = toRunRulesOn[0];
                 toRunRulesOn.RemoveAt(0);
+
                 if (this.CanAnyRoomGenerateOn(node, dungeonGenRules))
                 {
+                    List<RoomGenChance> applicableRules = this.GetValidRules(node, dungeonGenRules);
+                    NonDuplicateElementSelector<RoomGenChance> randomGenChanceSelector = new NonDuplicateElementSelector<RoomGenChance>(applicableRules);
                     int roomsToGenerate = StaticRandom.Rand(minRoomsOnNode, maxRoomsOnNode);
-                    List<DungeonNode> connections = this.GenerateAdjacentRooms(node, roomsToGenerate, dungeonGenRules);
+                    List<DungeonNode> connections = this.GenerateAdjacentRooms(node, roomsToGenerate, randomGenChanceSelector);
                     roomsGenerated += connections.Count;
                     toRunRulesOn.AddRange(connections);
                     node.Connections.AddRange(connections);
@@ -47,6 +51,26 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.DesignGener
             }
 
             return entranceNode;
+        }
+
+        /// <summary>
+        /// Gets the rules that apply to the specified node type.
+        /// </summary>
+        /// <returns></returns>
+        private List<RoomGenChance> GetValidRules(DungeonNode node, RoomGenChance[] genRules)
+        {
+            List<RoomGenChance> chances = new List<RoomGenChance>();
+
+            for (int i = 0; i < genRules.Length; i++)
+            {
+                RoomGenChance chance = genRules[i];
+                if (chance.RoomTypeToGenerateOn == node.NodeType)
+                {
+                    chances.Add(chance);
+                }
+            }
+
+            return chances;
         }
 
         private bool CanAnyRoomGenerateOn(DungeonNode node, RoomGenChance[] dungeonGenRules)
@@ -64,29 +88,32 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.DesignGener
             return false;
         }
 
-        private List<DungeonNode> GenerateAdjacentRooms(DungeonNode node, int roomsToGenerate, RoomGenChance[] genRules)
+        private List<DungeonNode> GenerateAdjacentRooms(DungeonNode node, int roomsToGenerate, NonDuplicateElementSelector<RoomGenChance> genChancePicker)
         {
             int roomsGenerated = 0;
             List<DungeonNode> connections = new List<DungeonNode>();
 
+
             while (roomsGenerated < roomsToGenerate)
             {
-                for (int i = 0; i < genRules.Length; i++)
+                if (genChancePicker.ElementLeft < 1)
                 {
-                    RoomGenChance genRule = genRules[i];
+                    genChancePicker.Reset();
+                }
 
-                    double chance = StaticRandom.Rand(0, 1);
-                    if (chance < genRule.ChanceToGenerate)
-                    {
-                        DungeonNode newNode = new DungeonNode(genRule.RoomTypeToGenerate);
-                        connections.Add(newNode);
-                        roomsGenerated++;
-                    }
+                RoomGenChance genRule = genChancePicker.GetRandomElement();
 
-                    if (roomsGenerated >= roomsToGenerate)
-                    {
-                        break;
-                    }
+                double chance = StaticRandom.Rand(0F, 1F);
+                if (chance < genRule.ChanceToGenerate)
+                {
+                    DungeonNode newNode = new DungeonNode(genRule.RoomTypeToGenerate);
+                    connections.Add(newNode);
+                    roomsGenerated++;
+                }
+
+                if (roomsGenerated >= roomsToGenerate)
+                {
+                    break;
                 }
             }
 
