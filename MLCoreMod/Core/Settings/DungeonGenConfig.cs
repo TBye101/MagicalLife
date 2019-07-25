@@ -92,6 +92,7 @@ namespace MLCoreMod.Core.Settings
 
         public int MaxRoomsAdjacentToNode { get; set; } = 10;
         public int MinRoomsAdjacentToNode { get; set; } = 0;
+        public int MaxRoomsInDungeon { get; set; } = 50;
 
         #endregion
 

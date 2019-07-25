@@ -33,7 +33,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph
         /// <returns></returns>
         public Chromosome AdaptDungeonDesignRules()
         {
-            IGeneFactory geneFactory = null;
+            IGeneFactory geneFactory = new RoomGenChanceFactory();
             Chromosome initialPopulation = new Chromosome(geneFactory.GenerateGenes());
 
             ISelection selection = new PercentSelection(selectTopPercent);
