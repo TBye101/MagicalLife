@@ -17,7 +17,8 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.Fitness
         {
             this.ScoringRules = new List<FitnessRule>
             {
-                new TreasureRoomRequiresBossRoomRule()
+                new TreasureRoomRequiresBossRoomRule(),
+                new NoConnectedBossRoomsRule()
             };
             this.Designer = designer;
         }

@@ -38,6 +38,7 @@ namespace MLCoreMod.Core.Settings
         #region Fitness
 
         public bool TreasureRoomRequiresBossRoomRuleEnabled { get; set; } = true;
+        public bool NoConnectedBossRoomsRuleEnabled { get; set; } = true;
 
         #endregion
 

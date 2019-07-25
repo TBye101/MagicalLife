@@ -9,19 +9,26 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.Fitness
     {
         public override double GetCurrentPoints(DungeonNode graphStart)
         {
-            DungeonNode[] treasureRooms = this.GetTreasureRooms(graphStart);
-
-            double points = 0;
-
-            for (int i = 0; i < treasureRooms.Length; i++)
+            if (CoreSettingsHandler.DungeonGenerationConfig.Settings.TreasureRoomRequiresBossRoomRuleEnabled)
             {
-                if (this.MeetsRule(treasureRooms[i]))
-                {
-                    points++;
-                }
-            }
+                IList<DungeonNode> treasureRooms = DungeonNodeUtil.GetAllRoomType(graphStart, DungeonNodeType.TreasureRoom);
 
-            return points;
+                double points = 0;
+
+                for (int i = 0; i < treasureRooms.Count; i++)
+                {
+                    if (this.MeetsRule(treasureRooms[i]))
+                    {
+                        points++;
+                    }
+                }
+
+                return points;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         private bool MeetsRule(DungeonNode treasureRoom)
@@ -42,46 +49,13 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.Fitness
         {
             if (CoreSettingsHandler.DungeonGenerationConfig.Settings.TreasureRoomRequiresBossRoomRuleEnabled)
             {
-                DungeonNode[] treasureRooms = this.GetTreasureRooms(graphStart);
-                return treasureRooms.Length;
+                IList<DungeonNode> treasureRooms = DungeonNodeUtil.GetAllRoomType(graphStart, DungeonNodeType.TreasureRoom);
+                return treasureRooms.Count;
             }
             else
             {
                 return 0;
             }
-        }
-
-        private DungeonNode[] GetTreasureRooms(DungeonNode node)
-        {
-            List<DungeonNode> treasureNodes = new List<DungeonNode>();
-            HashSet<Guid> checkedNodes = new HashSet<Guid>();
-
-            List<DungeonNode> toCheck = new List<DungeonNode>
-            {
-                node
-            };
-
-            while (toCheck.Count > 0)
-            {
-                DungeonNode toCheckNode = toCheck[0];
-                checkedNodes.Add(toCheckNode.NodeID);
-                toCheck.RemoveAt(0);
-                if (toCheckNode.NodeType == DungeonNodeType.TreasureRoom)
-                {
-                    treasureNodes.Add(toCheckNode);
-                }
-
-                for (int i = 0; i < toCheckNode.Connections.Count; i++)
-                {
-                    DungeonNode connectionCheck = toCheckNode.Connections[i];
-                    if (!checkedNodes.Contains(connectionCheck.NodeID))
-                    {
-                        toCheck.Add(connectionCheck);
-                    }
-                }
-            }
-
-            return treasureNodes.ToArray();
         }
     }
 }
