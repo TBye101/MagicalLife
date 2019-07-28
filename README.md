@@ -191,32 +191,32 @@ Batarian711 - Created the logo for this project
 
 ## Assembly Descriptions
 
-### MagicalLifeAPIStandard
+### MLAPI
 * The main game API, manages most things except for graphics and server commands
 
-### MagicalLifeAPIClientStandard
+### MLClient
 * Manages how the client interprets messages from the server
 
-### MagicalLifeDedicatedServerCore
+### MLDedicatedServer
 * Controls the server
 * Run server commands
 
 ### MLGUIWindows
 * Windows only graphical client
 
-### MagicalLifeMod
+### MLCoreMod
 * The core game content, added into the game in the form of a mod
 	*This is done to ensure that mods have a good API to interact with, and not limit modding capabilities
 		*If the main game can do it, so can any mod
 
-### MagicalLifeServerStandard
+### MLServer
 * Handles server functionality such as:
 	* Sending information to clients
 	* Handling information from clients
 	* Generating the world
 * Handles both dedicated and local server logic
 
-### MagicalLifeSettingsStandard
+### MLSettings
 * Holds some settings for all of the assemblies in the project
 
 ## Libraries Utilized
