@@ -22,11 +22,6 @@ namespace MagicalLifeAPI.World
         /// <summary>
         /// Generates width * height chunks.
         /// </summary>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
-        /// <param name="dimensionName"></param>
-        /// <param name="r"></param>
-        /// <param name="dimensionID"></param>
         /// <param name="exitLocation">The location within the dungeon of the dungeon stairs.</param>
         /// <param name="entranceLocation">The location outside of the dungeon that leads into the dungeon.</param>
         /// <returns></returns>

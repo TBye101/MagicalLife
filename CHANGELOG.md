@@ -9,6 +9,7 @@ SneakyTactician  <SneakyTactician@outlook.com>
 * Dependency on RoyT's A* library is now removed
 * Wrote new pathfinding algorithm
     *More capable of handling multiple dimensions and teleporters
+* Assembly versions are now incremented on every build
 
 #### GUI
 * Added stair case up and down textures

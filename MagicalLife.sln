@@ -17,7 +17,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Recipe System Design.txt = Recipe System Design.txt
 		Task System Design 2.txt = Task System Design 2.txt
 		TestSettings.runsettings = TestSettings.runsettings
-		Vision.md = Vision.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Included DLL", "Included DLL", "{010D1A58-0BFA-4DE4-818D-CE960B66C4CE}"
