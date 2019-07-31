@@ -32,7 +32,7 @@ namespace MagicalLifeMod.Core.WorldGeneration.Default
             DungeonDesigner designer = new RoomGenChanceDesignGenerator();
             Chromosome dungeonDesignRules = geneticDesigner.AdaptDungeonDesignRules();
             DungeonNode dungeonDesign = designer.GetDungeonDesign(dungeonDesignRules);
-            IDungeonDesignTranslator translator = null;
+            IDungeonDesignTranslator translator = new DefaultTranslator();
 
             return translator.Translate(dungeonDesign, exitLocation);
             //HallwayGenerator hallwayGen = WorldGeneratorRegistry.HallwayGenerators.GetRandomItem();

@@ -49,10 +49,5 @@ namespace MagicalLifeAPI.Registry.WorldGeneration
         /// All known room decorators are to be stored in this list.
         /// </summary>
         public static List<RoomDecorationGenerator> RoomDecorators { get; } = new List<RoomDecorationGenerator>();
-
-        /// <summary>
-        /// All known room generators are to be stored in this list.
-        /// </summary>
-        public static List<RoomGenerator> RoomGenerators { get; set; } = new List<RoomGenerator>();
     }
 }

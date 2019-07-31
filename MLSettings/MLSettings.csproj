@@ -7,7 +7,7 @@
     <RootNamespace>MLSettings</RootNamespace>
     <AssemblyName>MLSettings</AssemblyName>
 	  <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <Version>0.1.2.2</Version>
+    <Version>0.1.2.5</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

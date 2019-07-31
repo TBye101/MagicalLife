@@ -3,7 +3,7 @@
 namespace MagicalLifeAPI.DataTypes
 {
     /// <summary>
-    /// An 2D array that should have the basic functions of a normal 2D array, but must be compatible with Protobuf-net.
+    /// A 2D array wrapper that is compatible with Protobuf-net.
     /// </summary>
     [ProtoBuf.ProtoContract(IgnoreListHandling = true)]
     public class ProtoArray<T>

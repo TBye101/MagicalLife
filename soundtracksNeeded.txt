@@ -1,0 +1,15 @@
+Overworld Sound tracks
+* Happy tracks
+* Battle track, intense, energetic
+
+Dungeon tracks
+* Ominous track, should keep the player on edge
+* Dungeon battle track, intense, energetic, but kind of scary too
+
+Misc:
+* Funeral track, somber, sad
+* Marriage track, happy, maybe incorperate some melodies of "here comes the bride"
+* Death track, will be played when a player's character died, sad
+
+
+Any other music is welcome. Music of any type can have a spot in this game. The more music the better.
