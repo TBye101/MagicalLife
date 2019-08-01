@@ -5,7 +5,7 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <RootNamespace>MLDedicatedServer</RootNamespace>
     <LangVersion>7.3</LangVersion>
-    <Version>0.1.2.1</Version>
+    <Version>0.1.2.2</Version>
 	<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

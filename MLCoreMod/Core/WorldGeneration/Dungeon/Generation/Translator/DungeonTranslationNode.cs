@@ -8,7 +8,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Constructors.Translator
 {
     public class DungeonTranslationNode
     {
-        public DungeonNode DNode { get; set; }
+        public DungeonNode DesignNode { get; set; }
 
         public int? SectionWidth { get; set; }
         public int? SectionHeight { get; set; }
@@ -25,7 +25,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Constructors.Translator
 
         public DungeonTranslationNode(DungeonNode dungeonNode)
         {
-            this.DNode = dungeonNode;
+            this.DesignNode = dungeonNode;
         }
     }
 }

@@ -62,5 +62,10 @@ namespace MagicalLifeAPI.Util
         {
             return System.Math.Sqrt(System.Math.Pow(b.X - a.X, 2) + System.Math.Pow(b.Y - a.Y, 2));
         }
+
+        public static double GetDistance(int x1, int y1, int x2, int y2)
+        {
+            return System.Math.Sqrt(System.Math.Pow(x2 - x1, 2) + System.Math.Pow(y2 - y1, 2));
+        }
     }
 }

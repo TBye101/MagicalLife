@@ -109,7 +109,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Constructors
                 translatedNode.SectionXOffset = 0;
                 translatedNode.SectionYOffset = 0;
 
-                ret.Add(translatedNode.DNode.NodeID, translatedNode);
+                ret.Add(translatedNode.DesignNode.NodeID, translatedNode);
 
                 for (int i = 0; i < node.Connections.Count; i++)
                 {

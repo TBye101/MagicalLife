@@ -56,7 +56,6 @@ namespace MagicalLifeAPI.Registry.ItemRegistry
         {
             RTree<Point2D> chunkLocations = World.Data.World.Dimensions[chunkLocation.DimensionID].Items.ItemIDToChunk[itemID];
             List<Point2D> result = chunkLocations.Contains(new Rectangle(chunkLocation.X, chunkLocation.Y, chunkLocation.X, chunkLocation.Y));
-
             if (result.Count > 0)
             {
                 //We already know that the specified chunk contains at least one of the item type.
