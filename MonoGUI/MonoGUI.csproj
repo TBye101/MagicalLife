@@ -5,7 +5,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>7.3</LangVersion>
 	  <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <Version>0.1.2.16</Version>
+    <Version>0.1.2.18</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

@@ -13,12 +13,13 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator.ForceDire
         private static readonly int ConnectedRepulsionDistance = 2;
         private static readonly int UnconnectedRepulsionDistance = 10;
         private static readonly int MaxAttraction = 10000;
-        private static readonly int MaxRepulsion = 110;
+        private static readonly int MaxRepulsion = 1;
         private static readonly int MinNodeDispersal = -10000;
         private static readonly int MaxNodeDispersal = 10000;
         private static readonly int Timeout = 10000;
 
         //private static readonly int SimulationTimeOut = 10000;
+        //https://www.brad-smith.info/blog/archives/129
 
         public ForceDirectedArranger()
         {
@@ -89,11 +90,14 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator.ForceDire
 
             foreach (KeyValuePair<Guid, DungeonTranslationNode> item in nodes)
             {
-                Vector2 force = this.CalculateForce(translationNode, item);
-
-                if (!force.Equals(Vector2.Zero))
+                if (!translationNode.DesignNode.NodeId.Equals(item.Value.DesignNode.NodeId))
                 {
-                    forces.Add(force);
+                    Vector2 force = this.CalculateForce(translationNode, item);
+
+                    if (!force.Equals(Vector2.Zero))
+                    {
+                        forces.Add(force);
+                    }
                 }
             }
 
@@ -135,7 +139,8 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator.ForceDire
         private Vector2 CalculateAttraction(double radianAngle, int distance)
         {
             distance = Math.Max(distance, 1);
-            double totalAttraction = (AttractionDistance / distance) * MaxAttraction;
+            float totalAttraction = (AttractionDistance / distance) * MaxAttraction;
+            totalAttraction = MathHelper.Clamp(totalAttraction, 0, 100);
             float xForce = (float)(totalAttraction * Math.Cos(totalAttraction));
             float yForce = (float)(totalAttraction * Math.Sin(totalAttraction));
             return new Vector2(xForce, yForce);
@@ -144,7 +149,8 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator.ForceDire
         private Vector2 CalculateRepulsion(double radianAngle, int distance)
         {
             distance = Math.Max(distance, 1);
-            double totalRepulsion = (UnconnectedRepulsionDistance / distance) * MaxRepulsion;
+            float totalRepulsion = (UnconnectedRepulsionDistance / distance) * MaxRepulsion;
+            totalRepulsion = MathHelper.Clamp(totalRepulsion, 0, 100);
             float xForce = (float)(totalRepulsion * Math.Cos(totalRepulsion));
             float yForce = (float)(totalRepulsion * Math.Sin(totalRepulsion));
             return new Vector2(xForce * -1, yForce * -1);
