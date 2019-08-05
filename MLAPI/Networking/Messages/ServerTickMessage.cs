@@ -6,7 +6,7 @@ namespace MLAPI.Networking.Messages
     [ProtoContract]
     public class ServerTickMessage : BaseMessage
     {
-        public ServerTickMessage() : base(NetMessageID.ServerTickMessage)
+        public ServerTickMessage() : base(NetMessageId.ServerTickMessage)
         {
         }
     }

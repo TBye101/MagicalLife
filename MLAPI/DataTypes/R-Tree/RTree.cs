@@ -50,57 +50,57 @@ namespace MLAPI.DataTypes
     /// <typeparam name="T"></typeparam>
     public class RTree<T>
     {
-        private const int locking_timeout = 10000;
+        private const int LOCKING_TIMEOUT = 10000;
 
-        private readonly ReaderWriterLock locker = new ReaderWriterLock();
-        private const string version = "1.0b2p2";
+        private readonly ReaderWriterLock Locker = new ReaderWriterLock();
+        private const string VERSION = "1.0b2p2";
 
         // parameters of the tree
         private const int DEFAULT_MAX_NODE_ENTRIES = 10;
 
-        internal int maxNodeEntries;
-        private int minNodeEntries;
+        internal int MaxNodeEntries;
+        private int MinNodeEntries;
 
         // map of nodeId -&gt; Node&lt;T&gt; object
         // [x] TODO eliminate this map - it should not be needed. Nodes
         // can be found by traversing the tree.
         //private TIntObjectHashMap nodeMap = new TIntObjectHashMap();
-        private readonly Dictionary<int, Node<T>> nodeMap = new Dictionary<int, Node<T>>();
+        private readonly Dictionary<int, Node<T>> NodeMap = new Dictionary<int, Node<T>>();
 
         // internal consistency checking - set to true if debugging tree corruption
-        public bool INTERNAL_CONSISTENCY_CHECKING = false;
+        public bool InternalConsistencyChecking = false;
 
         // used to mark the status of entries during a Node&lt;T&gt; split
         private const int ENTRY_STATUS_ASSIGNED = 0;
 
         private const int ENTRY_STATUS_UNASSIGNED = 1;
-        private byte[] entryStatus = null;
-        private byte[] initialEntryStatus = null;
+        private byte[] EntryStatus = null;
+        private byte[] InitialEntryStatus = null;
 
         // stacks used to store nodeId and entry index of each Node&lt;T&gt;
         // from the root down to the leaf. Enables fast lookup
         // of nodes when a split is propagated up the tree.
         //private TIntStack parents = new TIntStack();
-        private readonly Stack<int> parents = new Stack<int>();
+        private readonly Stack<int> Parents = new Stack<int>();
 
         //private TIntStack parentsEntry = new TIntStack();
-        private readonly Stack<int> parentsEntry = new Stack<int>();
+        private readonly Stack<int> ParentsEntry = new Stack<int>();
 
         // initialization
-        private int treeHeight = 1; // leaves are always level 1
+        private int TreeHeight = 1; // leaves are always level 1
 
-        private int rootNodeId = 0;
-        private int msize = 0;
+        private int RootNodeId = 0;
+        private int Msize = 0;
 
         // Enables creation of new nodes
         //private int highestUsedNodeId = rootNodeId;
-        private int highestUsedNodeId = 0;
+        private int HighestUsedNodeId = 0;
 
         // Deleted Node&lt;T&gt; objects are retained in the nodeMap,
         // so that they can be reused. Store the IDs of nodes
         // which can be reused.
         //private TIntStack deletedNodeIds = new TIntStack();
-        private readonly Stack<int> deletedNodeIds = new Stack<int>();
+        private readonly Stack<int> DeletedNodeIds = new Stack<int>();
 
         // List of nearest rectangles. Use a member variable to
         // avoid recreating the object each time nearest() is called.
@@ -112,7 +112,7 @@ namespace MLAPI.DataTypes
         private readonly Dictionary<int, T> IdsToItems = new Dictionary<int, T>();
 
         private readonly Dictionary<T, int> ItemsToIds = new Dictionary<T, int>();
-        private volatile int idcounter = int.MinValue;
+        private volatile int Idcounter = int.MinValue;
 
         /// <summary>
         /// Initialize implementation dependent properties of the RTree.
@@ -125,52 +125,52 @@ namespace MLAPI.DataTypes
         /// <summary>
         /// Initialize implementation dependent properties of the RTree.
         /// </summary>
-        /// <param name="MaxNodeEntries">his specifies the maximum number of entries
+        /// <param name="maxNodeEntries">his specifies the maximum number of entries
         ///in a node. The default value is 10, which is used if the property is
         ///not specified, or is less than 2.</param>
-        /// <param name="MinNodeEntries">This specifies the minimum number of entries
+        /// <param name="minNodeEntries">This specifies the minimum number of entries
         ///in a node. The default value is half of the MaxNodeEntries value (rounded
         ///down), which is used if the property is not specified or is less than 1.
         ///</param>
-        public RTree(int MaxNodeEntries, int MinNodeEntries)
+        public RTree(int maxNodeEntries, int minNodeEntries)
         {
-            this.minNodeEntries = MinNodeEntries;
-            this.maxNodeEntries = MaxNodeEntries;
+            this.MinNodeEntries = minNodeEntries;
+            this.MaxNodeEntries = maxNodeEntries;
             this.Init();
         }
 
         private void Init()
         {
-            this.locker.AcquireWriterLock(locking_timeout);
+            this.Locker.AcquireWriterLock(LOCKING_TIMEOUT);
             // Obviously a Node&lt;T&gt; with less than 2 entries cannot be split.
             // The Node&lt;T&gt; splitting algorithm will work with only 2 entries
             // per node, but will be inefficient.
-            if (this.maxNodeEntries < 2)
+            if (this.MaxNodeEntries < 2)
             {
-                Debug.WriteLine($"Invalid MaxNodeEntries = {this.maxNodeEntries} Resetting to default value of {DEFAULT_MAX_NODE_ENTRIES}");
-                this.maxNodeEntries = DEFAULT_MAX_NODE_ENTRIES;
+                Debug.WriteLine($"Invalid MaxNodeEntries = {this.MaxNodeEntries} Resetting to default value of {DEFAULT_MAX_NODE_ENTRIES}");
+                this.MaxNodeEntries = DEFAULT_MAX_NODE_ENTRIES;
             }
 
             // The MinNodeEntries must be less than or equal to (int) (MaxNodeEntries / 2)
-            if (this.minNodeEntries < 1 || this.minNodeEntries > this.maxNodeEntries / 2)
+            if (this.MinNodeEntries < 1 || this.MinNodeEntries > this.MaxNodeEntries / 2)
             {
                 Debug.WriteLine("MinNodeEntries must be between 1 and MaxNodeEntries / 2");
-                this.minNodeEntries = this.maxNodeEntries / 2;
+                this.MinNodeEntries = this.MaxNodeEntries / 2;
             }
 
-            this.entryStatus = new byte[this.maxNodeEntries];
-            this.initialEntryStatus = new byte[this.maxNodeEntries];
+            this.EntryStatus = new byte[this.MaxNodeEntries];
+            this.InitialEntryStatus = new byte[this.MaxNodeEntries];
 
-            for (int i = 0; i < this.maxNodeEntries; i++)
+            for (int i = 0; i < this.MaxNodeEntries; i++)
             {
-                this.initialEntryStatus[i] = ENTRY_STATUS_UNASSIGNED;
+                this.InitialEntryStatus[i] = ENTRY_STATUS_UNASSIGNED;
             }
 
-            Node<T> root = new Node<T>(this.rootNodeId, 1, this.maxNodeEntries);
-            this.nodeMap.Add(this.rootNodeId, root);
+            Node<T> root = new Node<T>(this.RootNodeId, 1, this.MaxNodeEntries);
+            this.NodeMap.Add(this.RootNodeId, root);
 
-            Debug.WriteLine($"init()  MaxNodeEntries = {this.maxNodeEntries}, MinNodeEntries = {this.minNodeEntries}");
-            this.locker.ReleaseWriterLock();
+            Debug.WriteLine($"init()  MaxNodeEntries = {this.MaxNodeEntries}, MinNodeEntries = {this.MinNodeEntries}");
+            this.Locker.ReleaseWriterLock();
         }
 
         /// <summary>
@@ -180,15 +180,15 @@ namespace MLAPI.DataTypes
         /// <param name="item"></param>
         public void Add(Rectangle r, T item)
         {
-            this.locker.AcquireWriterLock(locking_timeout);
-            this.idcounter++;
-            int id = this.idcounter;
+            this.Locker.AcquireWriterLock(LOCKING_TIMEOUT);
+            this.Idcounter++;
+            int id = this.Idcounter;
 
             this.IdsToItems.Add(id, item);
             this.ItemsToIds.Add(item, id);
 
             this.Add(r, id);
-            this.locker.ReleaseWriterLock();
+            this.Locker.ReleaseWriterLock();
         }
 
         private void Add(Rectangle r, int id)
@@ -197,7 +197,7 @@ namespace MLAPI.DataTypes
 
             this.Add(r.Copy(), id, 1);
 
-            this.msize++;
+            this.Msize++;
         }
 
         /// <summary>
@@ -216,7 +216,7 @@ namespace MLAPI.DataTypes
             // I2 [Add record to leaf node] If L has room for another entry,
             // install E. Otherwise invoke SplitNode to obtain L and LL containing
             // E and all the old entries of L
-            if (n.entryCount < this.maxNodeEntries)
+            if (n.EntryCount < this.MaxNodeEntries)
             {
                 n.AddEntryNoCopy(r, id);
             }
@@ -233,20 +233,20 @@ namespace MLAPI.DataTypes
             // split, create a new root whose children are the two resulting nodes.
             if (newNode != null)
             {
-                int oldRootNodeId = this.rootNodeId;
+                int oldRootNodeId = this.RootNodeId;
                 Node<T> oldRoot = this.GetNode(oldRootNodeId);
 
-                this.rootNodeId = this.GetNextNodeId();
-                this.treeHeight++;
-                Node<T> root = new Node<T>(this.rootNodeId, this.treeHeight, this.maxNodeEntries);
-                root.AddEntry(newNode.mbr, newNode.nodeId);
-                root.AddEntry(oldRoot.mbr, oldRoot.nodeId);
-                this.nodeMap.Add(this.rootNodeId, root);
+                this.RootNodeId = this.GetNextNodeId();
+                this.TreeHeight++;
+                Node<T> root = new Node<T>(this.RootNodeId, this.TreeHeight, this.MaxNodeEntries);
+                root.AddEntry(newNode.Mbr, newNode.NodeId);
+                root.AddEntry(oldRoot.Mbr, oldRoot.NodeId);
+                this.NodeMap.Add(this.RootNodeId, root);
             }
 
-            if (this.INTERNAL_CONSISTENCY_CHECKING)
+            if (this.InternalConsistencyChecking)
             {
-                this.CheckConsistency(this.rootNodeId, this.treeHeight, null);
+                this.CheckConsistency(this.RootNodeId, this.TreeHeight, null);
             }
         }
 
@@ -258,7 +258,7 @@ namespace MLAPI.DataTypes
         /// <returns></returns>
         public bool Delete(Rectangle r, T item)
         {
-            this.locker.AcquireWriterLock(locking_timeout);
+            this.Locker.AcquireWriterLock(LOCKING_TIMEOUT);
             int id = this.ItemsToIds[item];
 
             bool success = this.Delete(r, id);
@@ -267,7 +267,7 @@ namespace MLAPI.DataTypes
                 this.IdsToItems.Remove(id);
                 this.ItemsToIds.Remove(item);
             }
-            this.locker.ReleaseWriterLock();
+            this.Locker.ReleaseWriterLock();
             return success;
         }
 
@@ -284,31 +284,31 @@ namespace MLAPI.DataTypes
             // to determine if it contains r. For each entry found, invoke
             // findLeaf on the Node&lt;T&gt; pointed to by the entry, until r is found or
             // all entries have been checked.
-            this.parents.Clear();
-            this.parents.Push(this.rootNodeId);
+            this.Parents.Clear();
+            this.Parents.Push(this.RootNodeId);
 
-            this.parentsEntry.Clear();
-            this.parentsEntry.Push(-1);
+            this.ParentsEntry.Clear();
+            this.ParentsEntry.Push(-1);
             Node<T> n = null;
             int foundIndex = -1;  // index of entry to be deleted in leaf
 
-            while (foundIndex == -1 && this.parents.Count > 0)
+            while (foundIndex == -1 && this.Parents.Count > 0)
             {
-                n = this.GetNode(this.parents.Peek());
-                int startIndex = this.parentsEntry.Peek() + 1;
+                n = this.GetNode(this.Parents.Peek());
+                int startIndex = this.ParentsEntry.Peek() + 1;
 
                 if (!n.IsLeaf())
                 {
-                    Debug.WriteLine($"searching Node<T> {n.nodeId}, from index {startIndex}");
+                    Debug.WriteLine($"searching Node<T> {n.NodeId}, from index {startIndex}");
                     bool contains = false;
-                    for (int i = startIndex; i < n.entryCount; i++)
+                    for (int i = startIndex; i < n.EntryCount; i++)
                     {
-                        if (n.entries[i].Contains(r))
+                        if (n.Entries[i].Contains(r))
                         {
-                            this.parents.Push(n.ids[i]);
-                            this.parentsEntry.Pop();
-                            this.parentsEntry.Push(i); // this becomes the start index when the child has been searched
-                            this.parentsEntry.Push(-1);
+                            this.Parents.Push(n.Ids[i]);
+                            this.ParentsEntry.Pop();
+                            this.ParentsEntry.Push(i); // this becomes the start index when the child has been searched
+                            this.ParentsEntry.Push(-1);
                             contains = true;
                             break; // IE go to next iteration of while()
                         }
@@ -323,26 +323,26 @@ namespace MLAPI.DataTypes
                     foundIndex = n.FindEntry(r, id);
                 }
 
-                this.parents.Pop();
-                this.parentsEntry.Pop();
+                this.Parents.Pop();
+                this.ParentsEntry.Pop();
             } // while not found
 
             if (foundIndex != -1)
             {
-                n?.DeleteEntry(foundIndex, this.minNodeEntries);
+                n?.DeleteEntry(foundIndex, this.MinNodeEntries);
                 this.CondenseTree(n);
-                this.msize--;
+                this.Msize--;
             }
 
             // shrink the tree if possible (i.e. if root Node&lt;T%gt; has exactly one entry,and that
             // entry is not a leaf node, delete the root (it's entry becomes the new root)
-            Node<T> root = this.GetNode(this.rootNodeId);
-            while (root.entryCount == 1 && this.treeHeight > 1)
+            Node<T> root = this.GetNode(this.RootNodeId);
+            while (root.EntryCount == 1 && this.TreeHeight > 1)
             {
-                root.entryCount = 0;
-                this.rootNodeId = root.ids[0];
-                this.treeHeight--;
-                root = this.GetNode(this.rootNodeId);
+                root.EntryCount = 0;
+                this.RootNodeId = root.Ids[0];
+                this.TreeHeight--;
+                root = this.GetNode(this.RootNodeId);
             }
 
             return foundIndex != -1;
@@ -357,18 +357,18 @@ namespace MLAPI.DataTypes
         public List<T> Nearest(Point p, float furthestDistance)
         {
             List<T> retval = new List<T>();
-            this.locker.AcquireReaderLock(locking_timeout);
+            this.Locker.AcquireReaderLock(LOCKING_TIMEOUT);
             this.Nearest(p, (int id) =>
            {
                retval.Add(this.IdsToItems[id]);
            }, furthestDistance);
-            this.locker.ReleaseReaderLock();
+            this.Locker.ReleaseReaderLock();
             return retval;
         }
 
         private void Nearest(Point p, Action<int> v, float furthestDistance)
         {
-            Node<T> rootNode = this.GetNode(this.rootNodeId);
+            Node<T> rootNode = this.GetNode(this.RootNodeId);
 
             List<int> nearestIds = new List<int>();
 
@@ -390,15 +390,15 @@ namespace MLAPI.DataTypes
         public List<T> Intersects(Rectangle r)
         {
             List<T> retval = new List<T>();
-            this.locker.AcquireReaderLock(locking_timeout);
+            this.Locker.AcquireReaderLock(LOCKING_TIMEOUT);
             this.Intersects(r, (id) => retval.Add(this.IdsToItems[id]));
-            this.locker.ReleaseReaderLock();
+            this.Locker.ReleaseReaderLock();
             return retval;
         }
 
         private void Intersects(Rectangle r, Action<int> v)
         {
-            Node<T> rootNode = this.GetNode(this.rootNodeId);
+            Node<T> rootNode = this.GetNode(this.RootNodeId);
             this.Intersects(r, v, rootNode);
         }
 
@@ -410,36 +410,36 @@ namespace MLAPI.DataTypes
         public List<T> Contains(Rectangle r)
         {
             List<T> retval = new List<T>();
-            this.locker.AcquireReaderLock(locking_timeout);
+            this.Locker.AcquireReaderLock(LOCKING_TIMEOUT);
             this.Contains(r, (int id) =>
             {
                 retval.Add(this.IdsToItems[id]);
             });
 
-            this.locker.ReleaseReaderLock();
+            this.Locker.ReleaseReaderLock();
             return retval;
         }
 
         private void Contains(Rectangle r, Action<int> v)
         {
-            Stack<int> _parents = new Stack<int>();
+            Stack<int> parents = new Stack<int>();
             //private TIntStack parentsEntry = new TIntStack();
-            Stack<int> _parentsEntry = new Stack<int>();
+            Stack<int> parentsEntry = new Stack<int>();
 
             // find all rectangles in the tree that are contained by the passed rectangle
             // written to be non-recursive (should model other searches on this?)
 
-            _parents.Push(this.rootNodeId);
+            parents.Push(this.RootNodeId);
 
-            _parentsEntry.Push(-1);
+            parentsEntry.Push(-1);
 
             // TODO: possible shortcut here - could test for intersection with the
             // MBR of the root node. If no intersection, return immediately.
 
-            while (_parents.Count > 0)
+            while (parents.Count > 0)
             {
-                Node<T> n = this.GetNode(_parents.Peek());
-                int startIndex = _parentsEntry.Peek() + 1;
+                Node<T> n = this.GetNode(parents.Peek());
+                int startIndex = parentsEntry.Peek() + 1;
 
                 if (!n.IsLeaf())
                 {
@@ -447,14 +447,14 @@ namespace MLAPI.DataTypes
                     // if it intersects the passed rectangle. If so, it
                     // could contain entries that are contained.
                     bool intersects = false;
-                    for (int i = startIndex; i < n.entryCount; i++)
+                    for (int i = startIndex; i < n.EntryCount; i++)
                     {
-                        if (r.Intersects(n.entries[i]))
+                        if (r.Intersects(n.Entries[i]))
                         {
-                            _parents.Push(n.ids[i]);
-                            _parentsEntry.Pop();
-                            _parentsEntry.Push(i); // this becomes the start index when the child has been searched
-                            _parentsEntry.Push(-1);
+                            parents.Push(n.Ids[i]);
+                            parentsEntry.Pop();
+                            parentsEntry.Push(i); // this becomes the start index when the child has been searched
+                            parentsEntry.Push(-1);
                             intersects = true;
                             break; // ie go to next iteration of while()
                         }
@@ -468,16 +468,16 @@ namespace MLAPI.DataTypes
                 {
                     // go through every entry in the leaf to check if
                     // it is contained by the passed rectangle
-                    for (int i = 0; i < n.entryCount; i++)
+                    for (int i = 0; i < n.EntryCount; i++)
                     {
-                        if (r.Contains(n.entries[i]))
+                        if (r.Contains(n.Entries[i]))
                         {
-                            v(n.ids[i]);
+                            v(n.Ids[i]);
                         }
                     }
                 }
-                _parents.Pop();
-                _parentsEntry.Pop();
+                parents.Pop();
+                parentsEntry.Pop();
             }
         }
 
@@ -488,13 +488,13 @@ namespace MLAPI.DataTypes
         {
             Rectangle bounds = null;
 
-            this.locker.AcquireReaderLock(locking_timeout);
+            this.Locker.AcquireReaderLock(LOCKING_TIMEOUT);
             Node<T> n = this.GetNode(this.GetRootNodeId());
-            if (n?.GetMBR() != null)
+            if (n?.GetMbr() != null)
             {
-                bounds = n.GetMBR().Copy();
+                bounds = n.GetMbr().Copy();
             }
-            this.locker.ReleaseReaderLock();
+            this.Locker.ReleaseReaderLock();
             return bounds;
         }
 
@@ -503,7 +503,7 @@ namespace MLAPI.DataTypes
         /// </summary>
         public string GetVersion()
         {
-            return "RTree-" + version;
+            return "RTree-" + VERSION;
         }
 
         //-------------------------------------------------------------------------
@@ -516,13 +516,13 @@ namespace MLAPI.DataTypes
         /// </summary>
         private int GetNextNodeId()
         {
-            if (this.deletedNodeIds.Count > 0)
+            if (this.DeletedNodeIds.Count > 0)
             {
-                return this.deletedNodeIds.Pop();
+                return this.DeletedNodeIds.Pop();
             }
             else
             {
-                return 1 + this.highestUsedNodeId++;
+                return 1 + this.HighestUsedNodeId++;
             }
         }
 
@@ -533,7 +533,7 @@ namespace MLAPI.DataTypes
         /// <returns></returns>
         private Node<T> GetNode(int index)
         {
-            return this.nodeMap[index];
+            return this.NodeMap[index];
         }
 
         /// <summary>
@@ -542,7 +542,7 @@ namespace MLAPI.DataTypes
         /// <returns></returns>
         public int GetRootNodeId()
         {
-            return this.rootNodeId;
+            return this.RootNodeId;
         }
 
         /// <summary>
@@ -562,47 +562,47 @@ namespace MLAPI.DataTypes
             // debug code
 #if DEBUG
             float initialArea = 0;
-            Rectangle union = n.mbr.Union(newRect);
+            Rectangle union = n.Mbr.Union(newRect);
             initialArea = union.Area();
 #endif
 
-            Array.Copy(this.initialEntryStatus, 0, this.entryStatus, 0, this.maxNodeEntries);
+            Array.Copy(this.InitialEntryStatus, 0, this.EntryStatus, 0, this.MaxNodeEntries);
 
             Node<T> newNode = null;
-            newNode = new Node<T>(this.GetNextNodeId(), n.level, this.maxNodeEntries);
-            this.nodeMap.Add(newNode.nodeId, newNode);
+            newNode = new Node<T>(this.GetNextNodeId(), n.Level, this.MaxNodeEntries);
+            this.NodeMap.Add(newNode.NodeId, newNode);
 
             this.PickSeeds(n, newRect, newId, newNode); // this also sets the entryCount to 1
 
             // [Check if done] If all entries have been assigned, stop. If one
             // group has so few entries that all the rest must be assigned to it in
             // order for it to have the minimum number m, assign them and stop.
-            while (n.entryCount + newNode.entryCount < this.maxNodeEntries + 1)
+            while (n.EntryCount + newNode.EntryCount < this.MaxNodeEntries + 1)
             {
-                if (this.maxNodeEntries + 1 - newNode.entryCount == this.minNodeEntries)
+                if (this.MaxNodeEntries + 1 - newNode.EntryCount == this.MinNodeEntries)
                 {
                     // assign all remaining entries to original node
-                    for (int i = 0; i < this.maxNodeEntries; i++)
+                    for (int i = 0; i < this.MaxNodeEntries; i++)
                     {
-                        if (this.entryStatus[i] == ENTRY_STATUS_UNASSIGNED)
+                        if (this.EntryStatus[i] == ENTRY_STATUS_UNASSIGNED)
                         {
-                            this.entryStatus[i] = ENTRY_STATUS_ASSIGNED;
-                            n.mbr.Add(n.entries[i]);
-                            n.entryCount++;
+                            this.EntryStatus[i] = ENTRY_STATUS_ASSIGNED;
+                            n.Mbr.Add(n.Entries[i]);
+                            n.EntryCount++;
                         }
                     }
                     break;
                 }
-                if (this.maxNodeEntries + 1 - n.entryCount == this.minNodeEntries)
+                if (this.MaxNodeEntries + 1 - n.EntryCount == this.MinNodeEntries)
                 {
                     // assign all remaining entries to new node
-                    for (int i = 0; i < this.maxNodeEntries; i++)
+                    for (int i = 0; i < this.MaxNodeEntries; i++)
                     {
-                        if (this.entryStatus[i] == ENTRY_STATUS_UNASSIGNED)
+                        if (this.EntryStatus[i] == ENTRY_STATUS_UNASSIGNED)
                         {
-                            this.entryStatus[i] = ENTRY_STATUS_ASSIGNED;
-                            newNode.AddEntryNoCopy(n.entries[i], n.ids[i]);
-                            n.entries[i] = null;
+                            this.EntryStatus[i] = ENTRY_STATUS_ASSIGNED;
+                            newNode.AddEntryNoCopy(n.Entries[i], n.Ids[i]);
+                            n.Entries[i] = null;
                         }
                     }
                     break;
@@ -619,14 +619,14 @@ namespace MLAPI.DataTypes
             n.Reorganize(this);
 
             // check that the MBR stored for each Node&lt;T&gt; is correct.
-            if (this.INTERNAL_CONSISTENCY_CHECKING)
+            if (this.InternalConsistencyChecking)
             {
-                if (!n.mbr.Equals(this.CalculateMBR(n)))
+                if (!n.Mbr.Equals(this.CalculateMbr(n)))
                 {
                     Debug.WriteLine("Error: splitNode old Node<T> MBR wrong");
                 }
 
-                if (!newNode.mbr.Equals(this.CalculateMBR(newNode)))
+                if (!newNode.Mbr.Equals(this.CalculateMbr(newNode)))
                 {
                     Debug.WriteLine("Error: splitNode new Node<T> MBR wrong");
                 }
@@ -634,9 +634,9 @@ namespace MLAPI.DataTypes
 
             // debug code
 #if DEBUG
-            float newArea = n.mbr.Area() + newNode.mbr.Area();
+            float newArea = n.Mbr.Area() + newNode.Mbr.Area();
             float percentageIncrease = (100 * (newArea - initialArea)) / initialArea;
-            Debug.WriteLine($"Node { n.nodeId} split. New area increased by {percentageIncrease}%");
+            Debug.WriteLine($"Node { n.NodeId} split. New area increased by {percentageIncrease}%");
 #endif
 
             return newNode;
@@ -661,21 +661,21 @@ namespace MLAPI.DataTypes
 
             // for the purposes of picking seeds, take the MBR of the Node&lt;T&gt; to include
             // the new rectangle aswell.
-            n.mbr.Add(newRect);
+            n.Mbr.Add(newRect);
 
-            Debug.WriteLine($"pickSeeds(): NodeId = {n.nodeId}, newRect = {newRect}");
+            Debug.WriteLine($"pickSeeds(): NodeId = {n.NodeId}, newRect = {newRect}");
 
-            for (int d = 0; d < Rectangle.DIMENSIONS; d++)
+            for (int d = 0; d < Rectangle.Dimensions; d++)
             {
-                float tempHighestLow = newRect.min[d];
+                float tempHighestLow = newRect.Min[d];
                 int tempHighestLowIndex = -1; // -1 indicates the new rectangle is the seed
 
-                float tempLowestHigh = newRect.max[d];
+                float tempLowestHigh = newRect.Max[d];
                 int tempLowestHighIndex = -1;
 
-                for (int i = 0; i < n.entryCount; i++)
+                for (int i = 0; i < n.EntryCount; i++)
                 {
-                    float tempLow = n.entries[i].min[d];
+                    float tempLow = n.Entries[i].Min[d];
                     if (tempLow >= tempHighestLow)
                     {
                         tempHighestLow = tempLow;
@@ -683,7 +683,7 @@ namespace MLAPI.DataTypes
                     }
                     else
                     {  // ensure that the same index cannot be both lowestHigh and highestLow
-                        float tempHigh = n.entries[i].max[d];
+                        float tempHigh = n.Entries[i].Max[d];
                         if (tempHigh <= tempLowestHigh)
                         {
                             tempLowestHigh = tempHigh;
@@ -694,7 +694,7 @@ namespace MLAPI.DataTypes
                     // PS2 [Adjust for shape of the rectangle cluster] Normalize the separations
                     // by dividing by the widths of the entire set along the corresponding
                     // dimension
-                    float normalizedSeparation = (tempHighestLow - tempLowestHigh) / (n.mbr.max[d] - n.mbr.min[d]);
+                    float normalizedSeparation = (tempHighestLow - tempLowestHigh) / (n.Mbr.Max[d] - n.Mbr.Min[d]);
 
                     if (normalizedSeparation > 1 || normalizedSeparation < -1)
                     {
@@ -722,12 +722,12 @@ namespace MLAPI.DataTypes
             }
             else
             {
-                newNode.AddEntryNoCopy(n.entries[highestLowIndex], n.ids[highestLowIndex]);
-                n.entries[highestLowIndex] = null;
+                newNode.AddEntryNoCopy(n.Entries[highestLowIndex], n.Ids[highestLowIndex]);
+                n.Entries[highestLowIndex] = null;
 
                 // move the new rectangle into the space vacated by the seed for the new node
-                n.entries[highestLowIndex] = newRect;
-                n.ids[highestLowIndex] = newId;
+                n.Entries[highestLowIndex] = newRect;
+                n.Ids[highestLowIndex] = newId;
             }
 
             // lowestHighIndex is the seed for the original node.
@@ -736,9 +736,9 @@ namespace MLAPI.DataTypes
                 lowestHighIndex = highestLowIndex;
             }
 
-            this.entryStatus[lowestHighIndex] = ENTRY_STATUS_ASSIGNED;
-            n.entryCount = 1;
-            n.mbr.Set(n.entries[lowestHighIndex].min, n.entries[lowestHighIndex].max);
+            this.EntryStatus[lowestHighIndex] = ENTRY_STATUS_ASSIGNED;
+            n.EntryCount = 1;
+            n.Mbr.Set(n.Entries[lowestHighIndex].Min, n.Entries[lowestHighIndex].Max);
         }
 
         /// <summary>
@@ -760,17 +760,17 @@ namespace MLAPI.DataTypes
 
             Debug.WriteLine("pickNext()");
 
-            for (int i = 0; i < this.maxNodeEntries; i++)
+            for (int i = 0; i < this.MaxNodeEntries; i++)
             {
-                if (this.entryStatus[i] == ENTRY_STATUS_UNASSIGNED)
+                if (this.EntryStatus[i] == ENTRY_STATUS_UNASSIGNED)
                 {
-                    if (n.entries[i] == null)
+                    if (n.Entries[i] == null)
                     {
-                        Debug.WriteLine($"Error: Node<T> {n.nodeId}, entry {i} is null");
+                        Debug.WriteLine($"Error: Node<T> {n.NodeId}, entry {i} is null");
                     }
 
-                    float nIncrease = n.mbr.Enlargement(n.entries[i]);
-                    float newNodeIncrease = newNode.mbr.Enlargement(n.entries[i]);
+                    float nIncrease = n.Mbr.Enlargement(n.Entries[i]);
+                    float newNodeIncrease = newNode.Mbr.Enlargement(n.Entries[i]);
                     float difference = Math.Abs(nIncrease - newNodeIncrease);
 
                     if (difference > maxDifference)
@@ -785,15 +785,15 @@ namespace MLAPI.DataTypes
                         {
                             nextGroup = 1;
                         }
-                        else if (n.mbr.Area() < newNode.mbr.Area())
+                        else if (n.Mbr.Area() < newNode.Mbr.Area())
                         {
                             nextGroup = 0;
                         }
-                        else if (newNode.mbr.Area() < n.mbr.Area())
+                        else if (newNode.Mbr.Area() < n.Mbr.Area())
                         {
                             nextGroup = 1;
                         }
-                        else if (newNode.entryCount < this.maxNodeEntries / 2)
+                        else if (newNode.EntryCount < this.MaxNodeEntries / 2)
                         {
                             nextGroup = 0;
                         }
@@ -809,18 +809,18 @@ namespace MLAPI.DataTypes
                 }
             }
 
-            this.entryStatus[next] = ENTRY_STATUS_ASSIGNED;
+            this.EntryStatus[next] = ENTRY_STATUS_ASSIGNED;
 
             if (nextGroup == 0)
             {
-                n.mbr.Add(n.entries[next]);
-                n.entryCount++;
+                n.Mbr.Add(n.Entries[next]);
+                n.EntryCount++;
             }
             else
             {
                 // move to new node.
-                newNode.AddEntryNoCopy(n.entries[next], n.ids[next]);
-                n.entries[next] = null;
+                newNode.AddEntryNoCopy(n.Entries[next], n.Ids[next]);
+                n.Entries[next] = null;
             }
         }
 
@@ -840,9 +840,9 @@ namespace MLAPI.DataTypes
         private float Nearest(Point p, Node<T> n, List<int> nearestIds, float nearestDistance)
         {
             float distance = nearestDistance;
-            for (int i = 0; i < n.entryCount; i++)
+            for (int i = 0; i < n.EntryCount; i++)
             {
-                float tempDistance = n.entries[i].Distance(p);
+                float tempDistance = n.Entries[i].Distance(p);
                 if (n.IsLeaf())
                 { // for leaves, the distance is an actual nearest distance
                     if (tempDistance < nearestDistance)
@@ -852,7 +852,7 @@ namespace MLAPI.DataTypes
                     }
                     if (tempDistance <= nearestDistance)
                     {
-                        nearestIds.Add(n.ids[i]);
+                        nearestIds.Add(n.Ids[i]);
                     }
                 }
                 else
@@ -861,7 +861,7 @@ namespace MLAPI.DataTypes
                     if (tempDistance <= nearestDistance)
                     {
                         // search the child node
-                        distance = this.Nearest(p, this.GetNode(n.ids[i]), nearestIds, nearestDistance);
+                        distance = this.Nearest(p, this.GetNode(n.Ids[i]), nearestIds, nearestDistance);
                     }
                 }
             }
@@ -880,17 +880,17 @@ namespace MLAPI.DataTypes
         /// <param name="n"></param>
         private void Intersects(Rectangle r, Action<int> v, Node<T> n)
         {
-            for (int i = 0; i < n.entryCount; i++)
+            for (int i = 0; i < n.EntryCount; i++)
             {
-                if (r.Intersects(n.entries[i]))
+                if (r.Intersects(n.Entries[i]))
                 {
                     if (n.IsLeaf())
                     {
-                        v(n.ids[i]);
+                        v(n.Ids[i]);
                     }
                     else
                     {
-                        Node<T> childNode = this.GetNode(n.ids[i]);
+                        Node<T> childNode = this.GetNode(n.Ids[i]);
                         this.Intersects(r, v, childNode);
                     }
                 }
@@ -920,27 +920,27 @@ namespace MLAPI.DataTypes
 
             // CT2 [Find parent entry] If N is the root, go to CT6. Otherwise
             // let P be the parent of N, and let En be N's entry in P
-            while (n.level != this.treeHeight)
+            while (n.Level != this.TreeHeight)
             {
-                parent = this.GetNode(this.parents.Pop());
-                parentEntry = this.parentsEntry.Pop();
+                parent = this.GetNode(this.Parents.Pop());
+                parentEntry = this.ParentsEntry.Pop();
 
                 // CT3 [Eliminiate under-full node] If N has too few entries,
                 // delete En from P and add N to the list of eliminated nodes
-                if (n.entryCount < this.minNodeEntries)
+                if (n.EntryCount < this.MinNodeEntries)
                 {
-                    parent.DeleteEntry(parentEntry, this.minNodeEntries);
-                    eliminatedNodeIds.Push(n.nodeId);
+                    parent.DeleteEntry(parentEntry, this.MinNodeEntries);
+                    eliminatedNodeIds.Push(n.NodeId);
                 }
                 else
                 {
                     // CT4 [Adjust covering rectangle] If N has not been eliminated,
                     // adjust EnI to tightly contain all entries in N
-                    if (!n.mbr.Equals(parent.entries[parentEntry]))
+                    if (!n.Mbr.Equals(parent.Entries[parentEntry]))
                     {
-                        this.OldRectangle.Set(parent.entries[parentEntry].min, parent.entries[parentEntry].max);
-                        parent.entries[parentEntry].Set(n.mbr.min, n.mbr.max);
-                        parent.RecalculateMBR(this.OldRectangle);
+                        this.OldRectangle.Set(parent.Entries[parentEntry].Min, parent.Entries[parentEntry].Max);
+                        parent.Entries[parentEntry].Set(n.Mbr.Min, n.Mbr.Max);
+                        parent.RecalculateMbr(this.OldRectangle);
                     }
                 }
                 // CT5 [Move up one level in tree] Set N=P and repeat from CT2
@@ -955,14 +955,14 @@ namespace MLAPI.DataTypes
             while (eliminatedNodeIds.Count > 0)
             {
                 Node<T> e = this.GetNode(eliminatedNodeIds.Pop());
-                for (int j = 0; j < e.entryCount; j++)
+                for (int j = 0; j < e.EntryCount; j++)
                 {
-                    this.Add(e.entries[j], e.ids[j], e.level);
-                    e.entries[j] = null;
+                    this.Add(e.Entries[j], e.Ids[j], e.Level);
+                    e.Entries[j] = null;
                 }
-                e.entryCount = 0;
-                this.deletedNodeIds.Push(e.nodeId);
-                this.nodeMap.Remove(e.nodeId);
+                e.EntryCount = 0;
+                this.DeletedNodeIds.Push(e.NodeId);
+                this.NodeMap.Remove(e.NodeId);
             }
         }
 
@@ -974,20 +974,20 @@ namespace MLAPI.DataTypes
         private Node<T> ChooseNode(Rectangle r, int level)
         {
             // CL1 [Initialize] Set N to be the root node
-            Node<T> n = this.GetNode(this.rootNodeId);
-            this.parents.Clear();
-            this.parentsEntry.Clear();
+            Node<T> n = this.GetNode(this.RootNodeId);
+            this.Parents.Clear();
+            this.ParentsEntry.Clear();
 
             // CL2 [Leaf check] If N is a leaf, return N
             while (true)
             {
                 if (n == null)
                 {
-                    Debug.WriteLine($"Could not get root Node<T> ({this.rootNodeId})");
-                    throw new InvalidOperationException($"Could not get root Node<T> ({this.rootNodeId})");
+                    Debug.WriteLine($"Could not get root Node<T> ({this.RootNodeId})");
+                    throw new InvalidOperationException($"Could not get root Node<T> ({this.RootNodeId})");
                 }
 
-                if (n?.level == level)
+                if (n?.Level == level)
                 {
                     return n;
                 }
@@ -997,7 +997,7 @@ namespace MLAPI.DataTypes
                 // ties by choosing the entry with the rectangle of smaller area.
                 float leastEnlargement = n.GetEntry(0).Enlargement(r);
                 int index = 0; // index of rectangle in subtree
-                for (int i = 1; i < n.entryCount; i++)
+                for (int i = 1; i < n.EntryCount; i++)
                 {
                     Rectangle tempRectangle = n.GetEntry(i);
                     float tempEnlargement = tempRectangle.Enlargement(r);
@@ -1010,12 +1010,12 @@ namespace MLAPI.DataTypes
                     }
                 }
 
-                this.parents.Push(n.nodeId);
-                this.parentsEntry.Push(index);
+                this.Parents.Push(n.NodeId);
+                this.ParentsEntry.Push(index);
 
                 // CL4 [Descend until a leaf is reached] Set N to be the child Node&lt;T&gt;
                 // pointed to by Fp and repeat from CL2
-                n = this.GetNode(n.ids[index]);
+                n = this.GetNode(n.Ids[index]);
             }
         }
 
@@ -1029,26 +1029,26 @@ namespace MLAPI.DataTypes
             // the resulting second node.
 
             // AT2 [Check if done] If N is the root, stop
-            while (n.level != this.treeHeight)
+            while (n.Level != this.TreeHeight)
             {
                 // AT3 [Adjust covering rectangle in parent entry] Let P be the parent
                 // Node<T> of N, and let En be N's entry in P. Adjust EnI so that it tightly
                 // encloses all entry rectangles in N.
-                Node<T> parent = this.GetNode(this.parents.Pop());
-                int entry = this.parentsEntry.Pop();
+                Node<T> parent = this.GetNode(this.Parents.Pop());
+                int entry = this.ParentsEntry.Pop();
 
-                if (parent.ids[entry] != n.nodeId)
+                if (parent.Ids[entry] != n.NodeId)
                 {
-                    Debug.WriteLine($"Error: entry {entry} in Node<T> {parent.nodeId} should point to Node<T> {n.nodeId}; actually points to Node<T> {parent.ids[entry]}");
+                    Debug.WriteLine($"Error: entry {entry} in Node<T> {parent.NodeId} should point to Node<T> {n.NodeId}; actually points to Node<T> {parent.Ids[entry]}");
                 }
 
-                if (!parent.entries[entry].Equals(n.mbr))
+                if (!parent.Entries[entry].Equals(n.Mbr))
                 {
-                    parent.entries[entry].Set(n.mbr.min, n.mbr.max);
-                    parent.mbr.Set(parent.entries[0].min, parent.entries[0].max);
-                    for (int i = 1; i < parent.entryCount; i++)
+                    parent.Entries[entry].Set(n.Mbr.Min, n.Mbr.Max);
+                    parent.Mbr.Set(parent.Entries[0].Min, parent.Entries[0].Max);
+                    for (int i = 1; i < parent.EntryCount; i++)
                     {
-                        parent.mbr.Add(parent.entries[i]);
+                        parent.Mbr.Add(parent.Entries[i]);
                     }
                 }
 
@@ -1060,13 +1060,13 @@ namespace MLAPI.DataTypes
                 Node<T> newNode = null;
                 if (nn != null)
                 {
-                    if (parent.entryCount < this.maxNodeEntries)
+                    if (parent.EntryCount < this.MaxNodeEntries)
                     {
-                        parent.AddEntry(nn.mbr, nn.nodeId);
+                        parent.AddEntry(nn.Mbr, nn.NodeId);
                     }
                     else
                     {
-                        newNode = this.SplitNode(parent, nn.mbr.Copy(), nn.nodeId);
+                        newNode = this.SplitNode(parent, nn.Mbr.Copy(), nn.NodeId);
                     }
                 }
 
@@ -1085,7 +1085,7 @@ namespace MLAPI.DataTypes
         /// <summary>
         /// Check the consistency of the tree.
         /// </summary>
-        private void CheckConsistency(int nodeId, int expectedLevel, Rectangle expectedMBR)
+        private void CheckConsistency(int nodeId, int expectedLevel, Rectangle expectedMbr)
         {
             // go through the tree, and check that the internal data structures of
             // the tree are not corrupted.
@@ -1096,39 +1096,39 @@ namespace MLAPI.DataTypes
                 Debug.WriteLine($"Error: Could not read Node<T> {nodeId}");
             }
 
-            if (n?.level != expectedLevel)
+            if (n?.Level != expectedLevel)
             {
-                Debug.WriteLine($"Error: Node<T> {nodeId}, expected level {expectedLevel}, actual level {n?.level}");
+                Debug.WriteLine($"Error: Node<T> {nodeId}, expected level {expectedLevel}, actual level {n?.Level}");
             }
 
-            Rectangle calculatedMBR = this.CalculateMBR(n);
+            Rectangle calculatedMbr = this.CalculateMbr(n);
 
-            if (n?.mbr.Equals(calculatedMBR) == false)
+            if (n?.Mbr.Equals(calculatedMbr) == false)
             {
                 Debug.WriteLine($"Error: Node<T> {nodeId}, calculated MBR does not equal stored MBR");
             }
 
-            if (expectedMBR != null && !n.mbr.Equals(expectedMBR))
+            if (expectedMbr != null && !n.Mbr.Equals(expectedMbr))
             {
                 Debug.WriteLine($"Error: Node<T> {nodeId}, expected MBR (from parent) does not equal stored MBR");
             }
 
             // Check for corruption where a parent entry is the same object as the child MBR
-            if (expectedMBR != null && n.mbr.SameObject(expectedMBR))
+            if (expectedMbr != null && n.Mbr.SameObject(expectedMbr))
             {
                 Debug.WriteLine($"Error: Node<T> {nodeId} MBR using same rectangle object as parent's entry");
             }
 
-            for (int i = 0; i < n.entryCount; i++)
+            for (int i = 0; i < n.EntryCount; i++)
             {
-                if (n.entries[i] == null)
+                if (n.Entries[i] == null)
                 {
                     Debug.WriteLine($"Error: Node<T> {nodeId}, Entry {i} is null");
                 }
 
-                if (n.level > 1)
+                if (n.Level > 1)
                 { // if not a leaf
-                    this.CheckConsistency(n.ids[i], n.level - 1, n.entries[i]);
+                    this.CheckConsistency(n.Ids[i], n.Level - 1, n.Entries[i]);
                 }
             }
         }
@@ -1138,13 +1138,13 @@ namespace MLAPI.DataTypes
         /// Used in consistency checking
         /// </summary>
         /// <param name="n"></param>
-        private Rectangle CalculateMBR(Node<T> n)
+        private Rectangle CalculateMbr(Node<T> n)
         {
-            Rectangle mbr = new Rectangle(n.entries[0].min, n.entries[0].max);
+            Rectangle mbr = new Rectangle(n.Entries[0].Min, n.Entries[0].Max);
 
-            for (int i = 1; i < n.entryCount; i++)
+            for (int i = 1; i < n.EntryCount; i++)
             {
-                mbr.Add(n.entries[i]);
+                mbr.Add(n.Entries[i]);
             }
             return mbr;
         }
@@ -1153,11 +1153,11 @@ namespace MLAPI.DataTypes
         {
             get
             {
-                this.locker.AcquireReaderLock(locking_timeout);
+                this.Locker.AcquireReaderLock(LOCKING_TIMEOUT);
 
-                int size = this.msize;
+                int size = this.Msize;
 
-                this.locker.ReleaseReaderLock();
+                this.Locker.ReleaseReaderLock();
 
                 return size;
             }

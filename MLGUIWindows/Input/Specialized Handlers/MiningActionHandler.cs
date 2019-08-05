@@ -27,7 +27,7 @@ namespace MLGUIWindows.Input.Specialized_Handlers
                 foreach (HasComponents item in last.Selected)
                 {
                     ComponentSelectable selectable = item.GetExactComponent<ComponentSelectable>();
-                    Tile tile = World.GetTile(RenderInfo.DimensionID, selectable.MapLocation.X, selectable.MapLocation.Y);
+                    Tile tile = World.GetTile(RenderInfo.DimensionId, selectable.MapLocation.X, selectable.MapLocation.Y);
 
                     if (tile.MainObject != null && tile.ImpendingAction == ActionSelected.None)
                     {

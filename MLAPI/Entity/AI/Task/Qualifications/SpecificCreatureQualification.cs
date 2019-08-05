@@ -10,12 +10,12 @@ namespace MLAPI.Entity.AI.Task.Qualifications
     public class SpecificCreatureQualification : Qualification
     {
         [ProtoMember(1)]
-        public Guid CreatureID { get; set; }
+        public Guid CreatureId { get; set; }
 
-        /// <param name="creatureID">The ID of the only creature allowed to do a task.</param>
-        public SpecificCreatureQualification(Guid creatureID)
+        /// <param name="creatureId">The ID of the only creature allowed to do a task.</param>
+        public SpecificCreatureQualification(Guid creatureId)
         {
-            this.CreatureID = creatureID;
+            this.CreatureId = creatureId;
         }
 
         protected SpecificCreatureQualification()
@@ -25,7 +25,7 @@ namespace MLAPI.Entity.AI.Task.Qualifications
 
         public override bool IsQualified(Living l)
         {
-            return l.ID.Equals(this.CreatureID);
+            return l.Id.Equals(this.CreatureId);
         }
 
         public override bool ArePreconditionsMet()

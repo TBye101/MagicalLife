@@ -27,8 +27,8 @@ namespace MLAPI.Networking.World.Modifiers
         public override void ModifyWorld()
         {
             ComponentSelectable livingData = this.Living.GetExactComponent<ComponentSelectable>();
-            Chunk chunk = MLAPI.World.Data.World.GetChunkByTile(this.Living.DimensionID, livingData.MapLocation.X, livingData.MapLocation.Y);
-            chunk.Creatures.Add(this.Living.ID, this.Living);
+            Chunk chunk = MLAPI.World.Data.World.GetChunkByTile(this.Living.DimensionId, livingData.MapLocation.X, livingData.MapLocation.Y);
+            chunk.Creatures.Add(this.Living.Id, this.Living);
         }
     }
 }

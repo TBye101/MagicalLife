@@ -11,8 +11,8 @@ namespace MLGUIWindows.GUI.Character_Menu.Buttons
     public class SkillsTabButton : MonoButton
     {
         public SkillsTabButton()
-            : base(TextureLoader.GUIMenuButton, CharacterMenuLayout.GetSkillsButtonBounds(),
-                  true, TextureLoader.FontMainMenuFont12x, Resources.SkillsTab)
+            : base(TextureLoader.GuiMenuButton, CharacterMenuLayout.GetSkillsButtonBounds(),
+                  true, TextureLoader.FontMainMenuFont12X, Resources.SkillsTab)
         {
             this.ClickEvent += this.SkillsTabButton_ClickEvent;
         }

@@ -15,7 +15,7 @@ namespace MLAPI.Networking.World.Modifiers
     public class LivingLocationModifier : AbstractWorldModifier
     {
         [ProtoMember(1)]
-        public Guid EntityID { get; private set; }
+        public Guid EntityId { get; private set; }
 
         [ProtoMember(2)]
         public Point3D OldLocation { get; private set; }
@@ -23,9 +23,9 @@ namespace MLAPI.Networking.World.Modifiers
         [ProtoMember(3)]
         public Point3D NewLocation { get; private set; }
 
-        public LivingLocationModifier(Guid entityID, Point3D oldLocation, Point3D newLocation)
+        public LivingLocationModifier(Guid entityId, Point3D oldLocation, Point3D newLocation)
         {
-            this.EntityID = entityID;
+            this.EntityId = entityId;
             this.OldLocation = oldLocation;
             this.NewLocation = newLocation;
         }
@@ -37,16 +37,16 @@ namespace MLAPI.Networking.World.Modifiers
 
         public override void ModifyWorld()
         {
-            Chunk oldChunk = MLAPI.World.Data.World.GetChunkByTile(this.OldLocation.DimensionID, this.OldLocation.X, this.OldLocation.Y);
-            Chunk newChunk = MLAPI.World.Data.World.GetChunkByTile(this.NewLocation.DimensionID, this.NewLocation.X, this.NewLocation.Y);
-            Living l = oldChunk.Creatures[this.EntityID];
+            Chunk oldChunk = MLAPI.World.Data.World.GetChunkByTile(this.OldLocation.DimensionId, this.OldLocation.X, this.OldLocation.Y);
+            Chunk newChunk = MLAPI.World.Data.World.GetChunkByTile(this.NewLocation.DimensionId, this.NewLocation.X, this.NewLocation.Y);
+            Living l = oldChunk.Creatures[this.EntityId];
             ComponentSelectable selectable = l.GetExactComponent<ComponentSelectable>();
             ComponentMovement movement = l.GetExactComponent<ComponentMovement>();
 
             movement.TileLocation = new Point2DDouble(this.NewLocation.X, this.NewLocation.Y);
             selectable.MapLocation = this.NewLocation;
-            oldChunk.Creatures.Remove(this.EntityID);
-            newChunk.Creatures.Add(this.EntityID, l);
+            oldChunk.Creatures.Remove(this.EntityId);
+            newChunk.Creatures.Add(this.EntityId, l);
         }
     }
 }

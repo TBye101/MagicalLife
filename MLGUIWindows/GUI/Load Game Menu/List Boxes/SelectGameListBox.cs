@@ -11,9 +11,9 @@ namespace MLGUIWindows.GUI.Load_Game_Menu.List_Boxes
 {
     public class SelectGameListBox : ListBox
     {
-        private static SpriteFont ItemFont = Game1.AssetManager.Load<SpriteFont>(TextureLoader.FontMainMenuFont12x);
+        private static SpriteFont ItemFont = Game1.AssetManager.Load<SpriteFont>(TextureLoader.FontMainMenuFont12X);
 
-        public SelectGameListBox() : base(GetDrawingBounds(), 1, true, TextureLoader.FontMainMenuFont12x, LoadGameMenuLayout.ItemRenderCount, GetAllSaveGames())
+        public SelectGameListBox() : base(GetDrawingBounds(), 1, true, TextureLoader.FontMainMenuFont12X, LoadGameMenuLayout.ItemRenderCount, GetAllSaveGames())
         {
         }
 
@@ -27,11 +27,11 @@ namespace MLGUIWindows.GUI.Load_Game_Menu.List_Boxes
             return new Rectangle(x, y, width, height);
         }
 
-        private static List<GUIElement> GetAllSaveGames()
+        private static List<GuiElement> GetAllSaveGames()
         {
             IEnumerable<string> saves = FileSystemManager.GetAllSaveNames();
 
-            List<GUIElement> ret = new List<GUIElement>();
+            List<GuiElement> ret = new List<GuiElement>();
             foreach (string item in saves)
             {
                 ret.Add(new RenderableString(ItemFont, item, SimpleTextRenderer.Alignment.Center));

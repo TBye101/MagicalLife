@@ -11,7 +11,7 @@ namespace MLGUIWindows.GUI.Load_Game_Menu
         public SelectGameListBox SaveSelectListBox { get; private set; } = new SelectGameListBox();
         public LoadSaveButton LoadSaveButton { get; private set; } = new LoadSaveButton();
 
-        public LoadGameMenuContainer() : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow, false)
+        public LoadGameMenuContainer() : base(TextureLoader.GuiMenuBackground, RenderInfo.FullScreenWindow, false)
         {
             this.Controls.Add(this.SaveSelectListBox);
             this.Controls.Add(this.LoadSaveButton);
@@ -19,7 +19,7 @@ namespace MLGUIWindows.GUI.Load_Game_Menu
 
         public override string GetTextureName()
         {
-            return TextureLoader.GUIMenuBackground;
+            return TextureLoader.GuiMenuBackground;
         }
     }
 }

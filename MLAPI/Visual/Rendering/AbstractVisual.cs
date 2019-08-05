@@ -39,6 +39,6 @@ namespace MLAPI.Visual.Rendering
         /// </summary>
         /// <param name="batch"></param>
         /// <param name="bounds">The bounds to render the texture at.</param>
-        public abstract void Render(MapBatch batch, Point2D ScreenTopLeft);
+        public abstract void Render(MapBatch batch, Point2D screenTopLeft);
     }
 }

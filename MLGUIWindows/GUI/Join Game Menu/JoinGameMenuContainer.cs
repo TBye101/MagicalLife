@@ -9,10 +9,10 @@ namespace MLGUIWindows.GUI.Join_Game_Menu
     public class JoinGameMenuContainer : GuiContainer
     {
         public JoinButton JoinButton = new JoinButton();
-        public IPInputBox IpInputBox = new IPInputBox(false);
+        public IpInputBox IpInputBox = new IpInputBox(false);
         public PortInputBox PortInputBox = new PortInputBox(false);
 
-        public JoinGameMenuContainer() : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow, false)
+        public JoinGameMenuContainer() : base(TextureLoader.GuiMenuBackground, RenderInfo.FullScreenWindow, false)
         {
             this.Controls.Add(this.JoinButton);
             this.Controls.Add(this.IpInputBox);
@@ -21,7 +21,7 @@ namespace MLGUIWindows.GUI.Join_Game_Menu
 
         public override string GetTextureName()
         {
-            return TextureLoader.GUIMenuBackground;
+            return TextureLoader.GuiMenuBackground;
         }
     }
 }

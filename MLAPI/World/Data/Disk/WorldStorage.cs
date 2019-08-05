@@ -89,7 +89,7 @@ namespace MLAPI.World.Data.Disk
 
         public static void AutoSave(string saveName, AbstractWorldSink sink)
         {
-            string name = saveName + "-" + FileSystemManager.GetIOSafeTime();
+            string name = saveName + "-" + FileSystemManager.GetIoSafeTime();
             SerializeWorld(name, sink);
         }
 
@@ -135,12 +135,12 @@ namespace MLAPI.World.Data.Disk
                 //We are saving
                 foreach (KeyValuePair<Guid, Dimension> item in World.Dimensions)
                 {
-                    DirectoryInfo dirInfo = Directory.CreateDirectory(WorldStorage.DimensionSaveFolder + Path.DirectorySeparatorChar + item.Value.ID);
-                    DimensionStorage.PrepareForDimension(item.Value.ID);
+                    DirectoryInfo dirInfo = Directory.CreateDirectory(WorldStorage.DimensionSaveFolder + Path.DirectorySeparatorChar + item.Value.Id);
+                    DimensionStorage.PrepareForDimension(item.Value.Id);
 
-                    if (!DimensionPaths.TryGetValue(item.Value.ID, out string value))
+                    if (!DimensionPaths.TryGetValue(item.Value.Id, out string value))
                     {
-                        DimensionPaths.Add(item.Value.ID, dirInfo.FullName);
+                        DimensionPaths.Add(item.Value.Id, dirInfo.FullName);
                     }
                 }
             }
@@ -152,9 +152,9 @@ namespace MLAPI.World.Data.Disk
                     string dirName = Path.GetFileName(item);
                     DimensionHeader header = DimensionStorage.LoadDimensionHeader(Guid.Parse(dirName), item);
 
-                    if (!DimensionPaths.ContainsKey(header.ID))
+                    if (!DimensionPaths.ContainsKey(header.Id))
                     {
-                        DimensionPaths.Add(header.ID, item);
+                        DimensionPaths.Add(header.Id, item);
                     }
                 }
             }

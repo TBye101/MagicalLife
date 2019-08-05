@@ -15,18 +15,18 @@ namespace MLAPI.Visual.Rendering.Map
         /// <summary>
         /// The number in line to be rendered.
         /// </summary>
-        public int RenderCallID { get; set; }
+        public int RenderCallId { get; set; }
 
         /// <summary>
         /// The method stored that will render something.
         /// </summary>
         public Action Action { get; set; }
 
-        public RenderCallHolder(int renderLayer, Action action, int renderCallID)
+        public RenderCallHolder(int renderLayer, Action action, int renderCallId)
         {
             this.RenderLayer = renderLayer;
             this.Action = action;
-            this.RenderCallID = renderCallID;
+            this.RenderCallId = renderCallId;
         }
 
         public bool Equals(RenderCallHolder other)

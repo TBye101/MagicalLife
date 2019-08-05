@@ -5,10 +5,10 @@ namespace MLAPI.Util.RandomUtils
 {
     public static class StaticRandom
     {
-        private static int seed = Environment.TickCount;
+        private static int Seed = Environment.TickCount;
 
-        private static readonly ThreadLocal<Random> random =
-            new ThreadLocal<Random>(() => new Random(Interlocked.Increment(ref seed)));
+        private static readonly ThreadLocal<Random> Random =
+            new ThreadLocal<Random>(() => new Random(Interlocked.Increment(ref Seed)));
 
         /// <summary>
         /// Returns a random number.
@@ -18,7 +18,7 @@ namespace MLAPI.Util.RandomUtils
         /// <returns></returns>
         public static int Rand(int min, int max)
         {
-            return random.Value.Next(min, max);
+            return Random.Value.Next(min, max);
         }
 
         public static double Rand(double min, double max)
@@ -31,7 +31,7 @@ namespace MLAPI.Util.RandomUtils
             //    throw new ArgumentOutOfRangeException();
             //}
 
-            return (random.Value.NextDouble() * (max - min)) + min;
+            return (Random.Value.NextDouble() * (max - min)) + min;
         }
     }
 }

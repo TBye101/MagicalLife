@@ -15,14 +15,14 @@ namespace MLAPI.Entity.AI.Task.Tasks
         [ProtoMember(1)]
         public Point3D Destination { get; private set; }
 
-        public MoveTask(Guid boundID, Point3D destination, int taskPriority)
-            : base(Dependencies.CreateEmpty(), boundID, new List<Qualification> { new CanMoveQualification(), new IsRoutePossibleQualification(destination) }, taskPriority)
+        public MoveTask(Guid boundId, Point3D destination, int taskPriority)
+            : base(Dependencies.CreateEmpty(), boundId, new List<Qualification> { new CanMoveQualification(), new IsRoutePossibleQualification(destination) }, taskPriority)
         {
             this.Destination = destination;
         }
 
-        public MoveTask(Guid boundID, Point3D destination)
-            : this(boundID, destination, PriorityLayers.Default)
+        public MoveTask(Guid boundId, Point3D destination)
+            : this(boundId, destination, PriorityLayers.Default)
         {
         }
 

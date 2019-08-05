@@ -9,7 +9,7 @@ namespace MLGUIWindows.GUI.Settings_Menu
 {
     public class SettingsGameMenuContainer : GuiContainer
     {
-        public SettingsGameMenuContainer(bool fromMainMenu) : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow, false)
+        public SettingsGameMenuContainer(bool fromMainMenu) : base(TextureLoader.GuiMenuBackground, RenderInfo.FullScreenWindow, false)
         {
             this.Controls.Add(new MainMenuButton(fromMainMenu));
             this.Controls.Add(new MasterVolumeInputBox());
@@ -18,7 +18,7 @@ namespace MLGUIWindows.GUI.Settings_Menu
 
         public override string GetTextureName()
         {
-            return TextureLoader.GUIMenuBackground;
+            return TextureLoader.GuiMenuBackground;
         }
     }
 }

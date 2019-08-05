@@ -7,7 +7,7 @@ namespace MLAPI.Networking.Client
     /// <summary>
     /// The TCP client for communicating with the server.
     /// </summary>
-    public class TCPClient
+    public class TcpClient
     {
         internal SimpleTcpClient Client;
 

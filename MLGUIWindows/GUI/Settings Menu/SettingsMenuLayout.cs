@@ -12,10 +12,10 @@ namespace MLGUIWindows.GUI.Settings_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return SetingsMenuLayout2560x1440.MainMenuButtonY;
+                        return SetingsMenuLayout2560X1440.MainMenuButtonY;
 
                     default:
-                        return SettingsMenuLayout1920x1080.MainMenuButtonY;
+                        return SettingsMenuLayout1920X1080.MainMenuButtonY;
                 }
             }
         }
@@ -27,10 +27,10 @@ namespace MLGUIWindows.GUI.Settings_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return SetingsMenuLayout2560x1440.MasterVolumeInputBoxX;
+                        return SetingsMenuLayout2560X1440.MasterVolumeInputBoxX;
 
                     default:
-                        return SettingsMenuLayout1920x1080.MasterVolumeInputBoxX;
+                        return SettingsMenuLayout1920X1080.MasterVolumeInputBoxX;
                 }
             }
         }
@@ -42,10 +42,10 @@ namespace MLGUIWindows.GUI.Settings_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return SetingsMenuLayout2560x1440.MasterVolumeInputBoxY;
+                        return SetingsMenuLayout2560X1440.MasterVolumeInputBoxY;
 
                     default:
-                        return SettingsMenuLayout1920x1080.MasterVolumeInputBoxY;
+                        return SettingsMenuLayout1920X1080.MasterVolumeInputBoxY;
                 }
             }
         }
@@ -57,10 +57,10 @@ namespace MLGUIWindows.GUI.Settings_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return SetingsMenuLayout2560x1440.MasterVolumeInputBoxWidth;
+                        return SetingsMenuLayout2560X1440.MasterVolumeInputBoxWidth;
 
                     default:
-                        return SettingsMenuLayout1920x1080.MasterVolumeInputBoxWidth;
+                        return SettingsMenuLayout1920X1080.MasterVolumeInputBoxWidth;
                 }
             }
         }
@@ -72,10 +72,10 @@ namespace MLGUIWindows.GUI.Settings_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return SetingsMenuLayout2560x1440.MasterVolumeInputBoxHeight;
+                        return SetingsMenuLayout2560X1440.MasterVolumeInputBoxHeight;
 
                     default:
-                        return SettingsMenuLayout1920x1080.MasterVolumeInputBoxHeight;
+                        return SettingsMenuLayout1920X1080.MasterVolumeInputBoxHeight;
                 }
             }
         }
@@ -87,10 +87,10 @@ namespace MLGUIWindows.GUI.Settings_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return SetingsMenuLayout2560x1440.MasterVolumeLabelX;
+                        return SetingsMenuLayout2560X1440.MasterVolumeLabelX;
 
                     default:
-                        return SettingsMenuLayout1920x1080.MasterVolumeLabelX;
+                        return SettingsMenuLayout1920X1080.MasterVolumeLabelX;
                 }
             }
         }
@@ -102,10 +102,10 @@ namespace MLGUIWindows.GUI.Settings_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return SetingsMenuLayout2560x1440.MasterVolumeLabelY;
+                        return SetingsMenuLayout2560X1440.MasterVolumeLabelY;
 
                     default:
-                        return SettingsMenuLayout1920x1080.MasterVolumeLabelY;
+                        return SettingsMenuLayout1920X1080.MasterVolumeLabelY;
                 }
             }
         }
@@ -117,10 +117,10 @@ namespace MLGUIWindows.GUI.Settings_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return SetingsMenuLayout2560x1440.MasterVolumeLabelWidth;
+                        return SetingsMenuLayout2560X1440.MasterVolumeLabelWidth;
 
                     default:
-                        return SettingsMenuLayout1920x1080.MasterVolumeLabelWidth;
+                        return SettingsMenuLayout1920X1080.MasterVolumeLabelWidth;
                 }
             }
         }
@@ -132,10 +132,10 @@ namespace MLGUIWindows.GUI.Settings_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return SetingsMenuLayout2560x1440.MasterVolumeLabelHeight;
+                        return SetingsMenuLayout2560X1440.MasterVolumeLabelHeight;
 
                     default:
-                        return SettingsMenuLayout1920x1080.MasterVolumeLabelHeight;
+                        return SettingsMenuLayout1920X1080.MasterVolumeLabelHeight;
                 }
             }
         }

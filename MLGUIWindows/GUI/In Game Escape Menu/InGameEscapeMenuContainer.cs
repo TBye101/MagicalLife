@@ -16,7 +16,7 @@ namespace MLGUIWindows.GUI.In_Game_Escape_Menu
         public SettingsButton Settings { get; private set; } = new SettingsButton();
 
         public InGameEscapeMenuContainer()
-            : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow, false)
+            : base(TextureLoader.GuiMenuBackground, RenderInfo.FullScreenWindow, false)
         {
             this.Controls.Add(this.Quit);
             this.Controls.Add(this.Save);
@@ -26,7 +26,7 @@ namespace MLGUIWindows.GUI.In_Game_Escape_Menu
 
         public override string GetTextureName()
         {
-            return TextureLoader.GUIMenuBackground;
+            return TextureLoader.GuiMenuBackground;
         }
     }
 }

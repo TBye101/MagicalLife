@@ -11,7 +11,7 @@
         public static readonly string AxeHit = "event:/Work/Foresting/Axe_Hit";
         public static readonly string TreeFall = "event:/Work/Foresting/Tree_Fall";
 
-        public static readonly string UIClick = "event:/UI/Main/Click";
+        public static readonly string UiClick = "event:/UI/Main/Click";
         public static readonly string FootSteps = "event:/Characters/Footsteps";
 
         public static readonly string Ambience = "event:/Ambience/Ambience";

@@ -9,11 +9,11 @@ namespace MLAPI.World.Generation
     /// </summary>
     public abstract class DimensionGenerator
     {
-        public Guid ID { get; }
+        public Guid Id { get; }
 
         protected DimensionGenerator()
         {
-            this.ID = Guid.NewGuid();
+            this.Id = Guid.NewGuid();
         }
 
         /// <summary>
@@ -22,11 +22,11 @@ namespace MLAPI.World.Generation
         /// <param name="width"></param>
         /// <param name="height"></param>
         /// <returns></returns>
-        public ProtoArray<Chunk> Generate(int width, int height, string dimensionName, Random r, Guid dimensionID)
+        public ProtoArray<Chunk> Generate(int width, int height, string dimensionName, Random r, Guid dimensionId)
         {
-            return this.GenerateWorld(WorldUtil.GenerateBlankChunks(width, height), dimensionName, r, dimensionID);
+            return this.GenerateWorld(WorldUtil.GenerateBlankChunks(width, height), dimensionName, r, dimensionId);
         }
 
-        protected abstract ProtoArray<Chunk> GenerateWorld(ProtoArray<Chunk> blankWorld, string dimensionName, Random r, Guid dimensionID);
+        protected abstract ProtoArray<Chunk> GenerateWorld(ProtoArray<Chunk> blankWorld, string dimensionName, Random r, Guid dimensionId);
     }
 }

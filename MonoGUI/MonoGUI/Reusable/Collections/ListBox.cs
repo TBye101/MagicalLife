@@ -10,14 +10,14 @@ namespace MonoGUI.MonoGUI.Reusable.Collections
     /// <summary>
     /// Used to display a list of things.
     /// </summary>
-    public class ListBox : GUIElement, IScrollable
+    public class ListBox : GuiElement, IScrollable
     {
         private int ItemBackgroundTexture { get; set; }
 
         /// <summary>
         /// The items that are displayed in this <see cref="ListBox"/>.
         /// </summary>
-        public List<GUIElement> Items { get; set; }
+        public List<GuiElement> Items { get; set; }
 
         /// <summary>
         /// Width and height of an item display.
@@ -59,10 +59,10 @@ namespace MonoGUI.MonoGUI.Reusable.Collections
         /// <param name="font"></param>
         /// <param name="itemRenderCount">How many items should be displayed at any given time.</param>
         /// <param name="items">The items that will be displayed.</param>
-        public ListBox(Rectangle drawingBounds, int priority, bool isContained, string font, int itemRenderCount, List<GUIElement> items)
+        public ListBox(Rectangle drawingBounds, int priority, bool isContained, string font, int itemRenderCount, List<GuiElement> items)
             : base(drawingBounds, priority, isContained, font)
         {
-            this.ItemBackgroundTexture = AssetManager.GetTextureIndex(TextureLoader.GUIListBoxItemBackground);
+            this.ItemBackgroundTexture = AssetManager.GetTextureIndex(TextureLoader.GuiListBoxItemBackground);
             this.ItemRenderCount = itemRenderCount;
             this.Items = items;
             this.ItemDisplayBounds = this.CalculateItemBounds();
@@ -71,7 +71,7 @@ namespace MonoGUI.MonoGUI.Reusable.Collections
 
         private void ListBox_ClickEvent(object sender, Event.ClickEventArgs e)
         {
-            this.SelectedIndex = ((e.MouseEventArgs.Position.Y + e.GUIContainer.DrawingBounds.Y) / this.ItemDisplayBounds.Y) - 1;
+            this.SelectedIndex = ((e.MouseEventArgs.Position.Y + e.GuiContainer.DrawingBounds.Y) / this.ItemDisplayBounds.Y) - 1;
             this.ItemClickHandler(this.SelectedIndex);
         }
 

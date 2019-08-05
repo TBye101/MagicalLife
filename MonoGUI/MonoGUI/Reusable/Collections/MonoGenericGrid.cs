@@ -13,8 +13,8 @@ namespace MonoGUI.MonoGUI.Reusable.Collections
     /// <summary>
     /// A scrollable grid element.
     /// </summary>
-    public class MonoGenericGrid<T> : GUIElement, IScrollable
-        where T : GUIElement
+    public class MonoGenericGrid<T> : GuiElement, IScrollable
+        where T : GuiElement
     {
         private int ItemBackgroundTexture { get; set; }
 
@@ -69,7 +69,7 @@ namespace MonoGUI.MonoGUI.Reusable.Collections
             this.InitializeItems();
             this.ItemDisplayBounds = displayBounds;
 
-            this.ItemBackgroundTexture = AssetManager.GetTextureIndex(TextureLoader.GUIListBoxItemBackground);
+            this.ItemBackgroundTexture = AssetManager.GetTextureIndex(TextureLoader.GuiListBoxItemBackground);
             this.ItemRenderCount = itemRenderCount;
 
             this.ClickEvent += this.ScrollableGrid_ClickEvent;
@@ -78,13 +78,13 @@ namespace MonoGUI.MonoGUI.Reusable.Collections
 
         private void MonoGenericGrid_DoubleClickEvent(object sender, Event.ClickEventArgs e)
         {
-            this.SelectedIndex = ((e.MouseEventArgs.Position.Y + e.GUIContainer.DrawingBounds.Y) / this.ItemDisplayBounds.Y) - 1;
+            this.SelectedIndex = ((e.MouseEventArgs.Position.Y + e.GuiContainer.DrawingBounds.Y) / this.ItemDisplayBounds.Y) - 1;
             this.ItemDoubleClickHandler(this.SelectedIndex);
         }
 
         private void ScrollableGrid_ClickEvent(object sender, Event.ClickEventArgs e)
         {
-            this.SelectedIndex = ((e.MouseEventArgs.Position.Y + e.GUIContainer.DrawingBounds.Y) / this.ItemDisplayBounds.Y) - 1;
+            this.SelectedIndex = ((e.MouseEventArgs.Position.Y + e.GuiContainer.DrawingBounds.Y) / this.ItemDisplayBounds.Y) - 1;
             this.ItemClickHandler(this.SelectedIndex);
         }
 

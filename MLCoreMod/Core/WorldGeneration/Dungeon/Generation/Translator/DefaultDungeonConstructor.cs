@@ -36,18 +36,18 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
             this.GenerateStoneMap(dungeonChunks, Guid.NewGuid());
         }
 
-        private ProtoArray<Chunk> GenerateStoneMap(ProtoArray<Chunk> chunks, Guid dimensionID)
+        private ProtoArray<Chunk> GenerateStoneMap(ProtoArray<Chunk> chunks, Guid dimensionId)
         {
             for (int i = chunks.Data.Length - 1; i > -1; i--)
             {
                 Chunk chunk = chunks.Data[i];
-                chunk = this.GenerateStone(chunk, dimensionID);
+                chunk = this.GenerateStone(chunk, dimensionId);
             }
 
             return chunks;
         }
 
-        private Chunk GenerateStone(Chunk chunk, Guid dimensionID)
+        private Chunk GenerateStone(Chunk chunk, Guid dimensionId)
         {
             int startingX = chunk.ChunkLocation.X * Chunk.Width;
             int startingY = chunk.ChunkLocation.Y * Chunk.Height;
@@ -58,7 +58,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
                 {
                     int tileX = x + startingX;
                     int tileY = y + startingY;
-                    Dirt dirt = new Dirt(new Point3D(tileX, tileY, dimensionID));
+                    Dirt dirt = new Dirt(new Point3D(tileX, tileY, dimensionId));
                     dirt.MainObject = new Rock(100);
 
                     chunk.Tiles[x, y] = dirt;

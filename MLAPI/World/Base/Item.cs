@@ -45,26 +45,26 @@ namespace MLAPI.World.Base
         [ProtoMember(5)]
         public int CurrentlyStacked { get; set; }
 
-        private int _itemID = int.MinValue;
+        private int _ItemId = int.MinValue;
 
         /// <summary>
         /// The ID that describes this item to the <see cref="ItemRegistry"/>.
         /// </summary>
         [ProtoMember(6)]
-        public int ItemID
+        public int ItemId
         {
             get
             {
-                if (this._itemID == int.MinValue)
+                if (this._ItemId == int.MinValue)
                 {
-                    this._itemID = ItemRegistry.ItemToID[this];
+                    this._ItemId = ItemRegistry.ItemToId[this];
                 }
-                return this._itemID;
+                return this._ItemId;
             }
 
             private set
             {
-                this._itemID = value;
+                this._ItemId = value;
             }
         }
 
@@ -75,14 +75,14 @@ namespace MLAPI.World.Base
         public double ItemWeight { get; set; }
 
         [ProtoMember(9)]
-        public Guid ID { get; set; }
+        public Guid Id { get; set; }
 
         /// <summary>
         /// The ID of the job that this item is reserved for.
         /// Empty Guid signifies that this item is not reserved for a job.
         /// </summary>
         [ProtoMember(10)]
-        public Guid ReservedID { get; set; }
+        public Guid ReservedId { get; set; }
 
         /// <summary>
         ///
@@ -103,8 +103,8 @@ namespace MLAPI.World.Base
             this.CurrentlyStacked = count;
             this.TextureName = textureName;
             this.ItemWeight = itemWeight;
-            this.ID = Guid.NewGuid();
-            this.ReservedID = Guid.Empty;
+            this.Id = Guid.NewGuid();
+            this.ReservedId = Guid.Empty;
             this.InitializeComponents();
             this.Validate();
         }

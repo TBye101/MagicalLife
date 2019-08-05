@@ -42,10 +42,10 @@ namespace MLAPI.Networking.Serialization
             }
 
             MetaType baseMessageType = current.Add(typeof(BaseMessage), true);
-            List<IHasSubclasses> ToProcess = new List<IHasSubclasses>();
-            ToProcess.AddRange(ReflectionUtil.LoadAllInterface<IHasSubclasses>(Assembly.GetAssembly(typeof(Tile))));
+            List<IHasSubclasses> toProcess = new List<IHasSubclasses>();
+            toProcess.AddRange(ReflectionUtil.LoadAllInterface<IHasSubclasses>(Assembly.GetAssembly(typeof(Tile))));
 
-            foreach (IHasSubclasses item in ToProcess)
+            foreach (IHasSubclasses item in toProcess)
             {
                 if (item.GetType().IsAbstract)
                 {
@@ -67,9 +67,9 @@ namespace MLAPI.Networking.Serialization
                 baseMessageType.AddSubType(i, this.Messages[i - 3]);
 
                 BaseMessage sample = (BaseMessage)Activator.CreateInstance(this.Messages[i - 3]);
-                if (!ProtoUtil.IDToMessage.ContainsKey(sample.ID))
+                if (!ProtoUtil.IdToMessage.ContainsKey(sample.Id))
                 {
-                    ProtoUtil.IDToMessage.Add(sample.ID, this.Messages[i - 3]);
+                    ProtoUtil.IdToMessage.Add(sample.Id, this.Messages[i - 3]);
                 }
 
                 i++;

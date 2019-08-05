@@ -16,17 +16,17 @@ namespace MonoGUI.MonoGUI
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public static Point3D GetMapLocation(int x, int y, Guid dimensionID, out bool success)
+        public static Point3D GetMapLocation(int x, int y, Guid dimensionId, out bool success)
         {
             Point2D size = Tile.GetTileSize();
 
             int tileX = x / size.X;
             int tileY = y / size.Y;
 
-            if (World.Dimensions.Count > 0 && World.Dimensions[dimensionID].DoesTileExist(tileX, tileY))
+            if (World.Dimensions.Count > 0 && World.Dimensions[dimensionId].DoesTileExist(tileX, tileY))
             {
                 success = true;
-                return new Point3D(tileX, tileY, dimensionID);
+                return new Point3D(tileX, tileY, dimensionId);
             }
             else
             {

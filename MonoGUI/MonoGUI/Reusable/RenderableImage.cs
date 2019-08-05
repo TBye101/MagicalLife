@@ -8,7 +8,7 @@ namespace MonoGUI.MonoGUI.Reusable
     /// <summary>
     /// A generic label class.
     /// </summary>
-    public class RenderableImage : GUIElement
+    public class RenderableImage : GuiElement
     {
         private int TextureIndex;
 
@@ -19,15 +19,15 @@ namespace MonoGUI.MonoGUI.Reusable
         /// <param name="image"></param>
         /// <param name="isContained">If true, this GUI element is within a container.</param>
         public RenderableImage(Rectangle bounds, string image, bool isContained)
-            : base(bounds, int.MinValue, isContained, TextureLoader.FontMainMenuFont12x)
+            : base(bounds, int.MinValue, isContained, TextureLoader.FontMainMenuFont12X)
         {
             this.TextureIndex = AssetManager.NameToIndex[image];
         }
 
-        public RenderableImage(Rectangle bounds, int textureID, bool isContained)
-            : base(bounds, int.MinValue, isContained, TextureLoader.FontMainMenuFont12x)
+        public RenderableImage(Rectangle bounds, int textureId, bool isContained)
+            : base(bounds, int.MinValue, isContained, TextureLoader.FontMainMenuFont12X)
         {
-            this.TextureIndex = textureID;
+            this.TextureIndex = textureId;
         }
 
         public RenderableImage() : base()
@@ -41,14 +41,14 @@ namespace MonoGUI.MonoGUI.Reusable
             int width = this.DrawingBounds.Width;
             int height = this.DrawingBounds.Height;
 
-            Rectangle Bounds = new Rectangle(x, y, width, height);
+            Rectangle bounds = new Rectangle(x, y, width, height);
 
             if (width == 0 || height == 0)
             {
                 throw new ArgumentException("Width or height cannot be 0");
             }
 
-            spBatch.Draw(AssetManager.Textures[this.TextureIndex], Bounds, Color.White);
+            spBatch.Draw(AssetManager.Textures[this.TextureIndex], bounds, Color.White);
         }
     }
 }

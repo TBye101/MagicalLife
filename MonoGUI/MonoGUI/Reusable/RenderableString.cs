@@ -7,7 +7,7 @@ namespace MonoGUI.MonoGUI.Reusable
     /// <summary>
     /// A generic label class.
     /// </summary>
-    public class RenderableString : GUIElement
+    public class RenderableString : GuiElement
     {
         public string Text { get; private set; }
         private SimpleTextRenderer.Alignment Alignment { get; }
@@ -21,7 +21,7 @@ namespace MonoGUI.MonoGUI.Reusable
 
         public override void Render(SpriteBatch spBatch, Rectangle targetLocation)
         {
-            SimpleTextRenderer.DrawString(this.Font, this.Text, targetLocation, this.Alignment, Color.White, spBatch, RenderLayer.GUI);
+            SimpleTextRenderer.DrawString(this.Font, this.Text, targetLocation, this.Alignment, Color.White, spBatch, RenderLayer.Gui);
         }
     }
 }

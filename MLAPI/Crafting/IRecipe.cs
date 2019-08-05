@@ -20,6 +20,6 @@ namespace MLAPI.Crafting
         /// </summary>
         /// <returns></returns>
 
-        Guid GetUniqueID();
+        Guid GetUniqueId();
     }
 }

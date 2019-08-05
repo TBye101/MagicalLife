@@ -11,21 +11,21 @@ namespace MLAPI.World.Data.Disk
     /// </summary>
     public class ItemRegistryStorage
     {
-        internal void SaveItemRegistry(ItemRegistry registry, AbstractWorldSink sink, Guid dimensionID)
+        internal void SaveItemRegistry(ItemRegistry registry, AbstractWorldSink sink, Guid dimensionId)
         {
-            string result = WorldStorage.DimensionPaths[dimensionID];
-            sink.Receive(registry, result + Path.DirectorySeparatorChar + dimensionID + ".itemreg", dimensionID);
+            string result = WorldStorage.DimensionPaths[dimensionId];
+            sink.Receive(registry, result + Path.DirectorySeparatorChar + dimensionId + ".itemreg", dimensionId);
         }
 
         internal void SaveItemRegistry(Dimension dimension, AbstractWorldSink sink)
         {
-            string result = WorldStorage.DimensionPaths[dimension.ID];
-            sink.Receive(dimension.Items, result + Path.DirectorySeparatorChar + dimension.ID + ".itemreg", dimension.ID);
+            string result = WorldStorage.DimensionPaths[dimension.Id];
+            sink.Receive(dimension.Items, result + Path.DirectorySeparatorChar + dimension.Id + ".itemreg", dimension.Id);
         }
 
-        internal ItemRegistry LoadItemRegistry(Guid dimensionID)
+        internal ItemRegistry LoadItemRegistry(Guid dimensionId)
         {
-            using (StreamReader sr = new StreamReader(WorldStorage.DimensionPaths[dimensionID] + Path.DirectorySeparatorChar + dimensionID + ".itemreg"))
+            using (StreamReader sr = new StreamReader(WorldStorage.DimensionPaths[dimensionId] + Path.DirectorySeparatorChar + dimensionId + ".itemreg"))
             {
                 ItemRegistry reg = (ItemRegistry)ProtoUtil.TypeModel.DeserializeWithLengthPrefix(sr.BaseStream, null, typeof(ItemRegistry), ProtoBuf.PrefixStyle.Base128, 0);
 

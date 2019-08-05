@@ -10,16 +10,16 @@ namespace MLGUIWindows.GUI.MainMenu.Buttons
 {
     public class LoadGameButton : MonoButton
     {
-        public LoadGameButton() : base(TextureLoader.GUIMenuButton, GetLocation(), true, Resources.LoadGame)
+        public LoadGameButton() : base(TextureLoader.GuiMenuButton, GetLocation(), true, Resources.LoadGame)
         {
             this.ClickEvent += this.LoadGameButton_ClickEvent;
         }
 
         private void LoadGameButton_ClickEvent(object sender, ClickEventArgs e)
         {
-            FMODUtil.RaiseEvent(SoundsTable.UIClick);
+            FmodUtil.RaiseEvent(SoundsTable.UiClick);
             LoadGameMenu.Initialize();
-            MainMenu.MainMenuID.PopupChild(LoadGameMenu.Menu);
+            MainMenu.MainMenuId.PopupChild(LoadGameMenu.Menu);
         }
 
         private static Rectangle GetLocation()

@@ -7,7 +7,7 @@ namespace MLClient.Message_Handlers
 {
     public class WorldTransferRegistryMessageHandler : MessageHandler
     {
-        public WorldTransferRegistryMessageHandler() : base(NetMessageID.WorldTransferRegistryMessage)
+        public WorldTransferRegistryMessageHandler() : base(NetMessageId.WorldTransferRegistryMessage)
         {
         }
 

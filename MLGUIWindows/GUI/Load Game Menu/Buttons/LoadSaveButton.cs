@@ -24,7 +24,7 @@ namespace MLGUIWindows.GUI.Load_Game_Menu.Buttons
 {
     public class LoadSaveButton : MonoButton
     {
-        public LoadSaveButton() : base(TextureLoader.GUIMenuButton, GetDisplayArea(), true, Resources.LoadSave)
+        public LoadSaveButton() : base(TextureLoader.GuiMenuButton, GetDisplayArea(), true, Resources.LoadSave)
         {
             this.ClickEvent += this.LoadSaveButton_ClickEvent;
         }
@@ -34,7 +34,7 @@ namespace MLGUIWindows.GUI.Load_Game_Menu.Buttons
             int selected = LoadGameMenu.Menu.SaveSelectListBox.SelectedIndex;
             if (selected != -1)
             {
-                FMODUtil.RaiseEvent(SoundsTable.UIClick);
+                FmodUtil.RaiseEvent(SoundsTable.UiClick);
                 World.Mode = EngineMode.ServerAndClient;
                 RenderableString selectedItem = (RenderableString)LoadGameMenu.Menu.SaveSelectListBox.Items[selected];
                 WorldStorage.LoadWorld(selectedItem.Text);
@@ -47,11 +47,11 @@ namespace MLGUIWindows.GUI.Load_Game_Menu.Buttons
                 BoundHandler.RemoveContainer(LoadGameMenu.Menu);
                 MenuHandler.Clear();
                 BoundHandler.HideAll();
-                InGameGUI.Initialize();
+                InGameGui.Initialize();
                 InputHandlers.MapLoadInitialize();
-                BoundHandler.Popup(InGameGUI.InGame);
-                Guid firstDimensionID = WorldUtil.GetDimensionByName(Lang._1stDimensionName).Key;
-                RenderInfo.Camera2D.InitializeForDimension(firstDimensionID);
+                BoundHandler.Popup(InGameGui.InGame);
+                Guid firstDimensionId = WorldUtil.GetDimensionByName(Lang._1stDimensionName).Key;
+                RenderInfo.Camera2D.InitializeForDimension(firstDimensionId);
             }
         }
 

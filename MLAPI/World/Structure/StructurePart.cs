@@ -15,7 +15,7 @@ namespace MLAPI.World.Structure
         /// A constant ID utilized to identify this part of a structure across all games and saves.
         /// </summary>
         [ProtoMember(1)]
-        public Guid PartID { get; set; }
+        public Guid PartId { get; set; }
 
         [ProtoMember(2)]
         public int Durability { get; set; }
@@ -27,20 +27,20 @@ namespace MLAPI.World.Structure
         /// The unique ID of the structure this part belongs to.
         /// </summary>
         [ProtoMember(4)]
-        public Guid UniqueStructureID { get; }
+        public Guid UniqueStructureId { get; }
 
         /// <param name="durability"></param>
         /// <param name="isWalkable"></param>
         /// <param name="visual"></param>
-        /// <param name="partID">A constant ID utilized to identify this part of a structure across all games and saves.</param>
-        /// <param name="uniqueStructureID">The unique ID of the structure this part belongs to.</param>
-        public StructurePart(int durability, bool isWalkable, AbstractVisual visual, Guid partID, Guid uniqueStructureID)
+        /// <param name="partId">A constant ID utilized to identify this part of a structure across all games and saves.</param>
+        /// <param name="uniqueStructureId">The unique ID of the structure this part belongs to.</param>
+        public StructurePart(int durability, bool isWalkable, AbstractVisual visual, Guid partId, Guid uniqueStructureId)
             : base(false)
         {
-            this.PartID = partID;
+            this.PartId = partId;
             this.Durability = durability;
             this.Walkable = isWalkable;
-            this.UniqueStructureID = uniqueStructureID;
+            this.UniqueStructureId = uniqueStructureId;
 
             ComponentHasTexture textureComponent = new ComponentHasTexture(false);
             textureComponent.Visuals.Add(visual);

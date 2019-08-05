@@ -19,7 +19,7 @@ namespace MLCoreMod.Core.Resources
     [ProtoContract]
     public class Rock : RockBase
     {
-        private AbstractVisual visual;
+        private AbstractVisual Visual;
 
         public Rock(int count) : base(Lang.StoneName, count, GetHarvestBehavior(count))
         {
@@ -36,7 +36,7 @@ namespace MLCoreMod.Core.Resources
 
         public Rock()
         {
-            visual = new StaticTexture(AssetManager.NameToIndex[this.GetRandomStoneTexture()], RenderLayer.MainObject);
+            Visual = new StaticTexture(AssetManager.NameToIndex[this.GetRandomStoneTexture()], RenderLayer.MainObject);
         }
 
         /// <summary>

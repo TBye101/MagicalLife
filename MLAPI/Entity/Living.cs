@@ -29,7 +29,7 @@ namespace MLAPI.Entity
         /// The dimension that this creature is in.
         /// </summary>
         [ProtoMember(2)]
-        public Guid DimensionID { get; set; }
+        public Guid DimensionId { get; set; }
 
         [ProtoMember(3)]
         public MagicalTask Task { get; set; }
@@ -38,10 +38,10 @@ namespace MLAPI.Entity
         /// The ID of the player that this creature belongs to.
         /// </summary>
         [ProtoMember(4)]
-        public Guid PlayerID { get; set; }
+        public Guid PlayerId { get; set; }
 
         [ProtoMember(5)]
-        public Guid ID { get; }
+        public Guid Id { get; }
 
         [ProtoMember(6)]
         public abstract AbstractVisual Visual { get; set; }
@@ -75,19 +75,19 @@ namespace MLAPI.Entity
         /// <param name="movementSpeed"></param>
         /// <param name="location"></param>
         /// <param name="dimension"></param>
-        /// <param name="playerID"></param>
+        /// <param name="playerId"></param>
         /// <param name="creatureTypeName">The name of our creature's type. Ex: Lion, Human, Robot.</param>
         /// <param name="creatureName">The name of this specific creature.</param>
         protected Living(int health, double movementSpeed, Point3D location,
-            Guid dimensionID, Guid playerID, string creatureTypeName, string creatureName)
+            Guid dimensionId, Guid playerId, string creatureTypeName, string creatureName)
             : base(true)
         {
             this.AddComponent(new ComponentSelectable(SelectionType.Creature));
             this.AddComponent(new ComponentMovement(movementSpeed, location));
 
-            this.ID = Guid.NewGuid();
-            this.PlayerID = playerID;
-            this.Initialize(health, movementSpeed, location, dimensionID);
+            this.Id = Guid.NewGuid();
+            this.PlayerId = playerId;
+            this.Initialize(health, movementSpeed, location, dimensionId);
             this.CreatureSkills = new List<Skill>();
             this.CreatureTypeName = creatureTypeName;
             this.CreatureName = creatureName;
@@ -98,11 +98,11 @@ namespace MLAPI.Entity
         {
         }
 
-        protected void Initialize(int health, double movementSpeed, Point3D location, Guid dimensionID)
+        protected void Initialize(int health, double movementSpeed, Point3D location, Guid dimensionId)
         {
             this.Health = new Attribute32(health);
             this.GetExactComponent<ComponentSelectable>().MapLocation = location;
-            this.DimensionID = dimensionID;
+            this.DimensionId = dimensionId;
             LivingCreatedHandler(new LivingEventArg(this, location));
         }
 

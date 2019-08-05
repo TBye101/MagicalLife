@@ -35,12 +35,12 @@ namespace MLAPI.Entity.Entity_Factory
         /// Returns a fully generated human character.
         /// </summary>
         /// <returns></returns>
-        public Human GenerateHuman(Point3D location, Guid dimensionID, Guid playerID)
+        public Human GenerateHuman(Point3D location, Guid dimensionId, Guid playerId)
         {
             int health = StaticRandom.Rand(this.MinHumanHealthPerLevel, this.MaxHumanHealthPerLevel);
             float movement = (float)StaticRandom.Rand(this.MinHumanMovement, this.MaxHumanMovement);
 
-            Human h = new Human(health, movement, location, dimensionID, playerID, this.GenerateRandomName());
+            Human h = new Human(health, movement, location, dimensionId, playerId, this.GenerateRandomName());
             h.CreatureSkills.Add(new HarvestingSkill(new DataTypes.Attribute.ComboAttribute(1, 1), true));
 
             return h;

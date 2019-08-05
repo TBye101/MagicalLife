@@ -10,11 +10,11 @@ namespace MLAPI.Components
     [ProtoContract]
     public class Component : IEquatable<Component>
     {
-        public Guid ID { get; set; }
+        public Guid Id { get; set; }
 
         public Component()
         {
-            this.ID = Guid.NewGuid();
+            this.Id = Guid.NewGuid();
         }
 
         public override bool Equals(object obj)
@@ -33,12 +33,12 @@ namespace MLAPI.Components
 
         public bool Equals(Component other)
         {
-            return this.ID.Equals(other.ID);
+            return this.Id.Equals(other.Id);
         }
 
         public override int GetHashCode()
         {
-            return 1213502048 + EqualityComparer<Guid>.Default.GetHashCode(this.ID);
+            return 1213502048 + EqualityComparer<Guid>.Default.GetHashCode(this.Id);
         }
     }
 }

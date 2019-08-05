@@ -17,15 +17,15 @@ namespace MLAPI.GameRegistry.Items
         public static readonly float SearchDistance = 10000;
 
         /// <summary>
-        /// Finds the item(s) closest to the <paramref name="mapLocation"/> that matches the <paramref name="itemID"/> that are not already reserved for a job.
+        /// Finds the item(s) closest to the <paramref name="mapLocation"/> that matches the <paramref name="itemId"/> that are not already reserved for a job.
         /// Returns null if no result found.
         /// </summary>
-        /// <param name="itemID"></param>
+        /// <param name="itemId"></param>
         /// <param name="mapLocation"></param>
         /// <returns>Returns the map location of the closest item of a specified spot.</returns>
-        public static Point2D FindNearestUnreserved(int itemID, Point3D mapLocation)
+        public static Point2D FindNearestUnreserved(int itemId, Point3D mapLocation)
         {
-            List<Point2D> nearestChunks = FindNearestChunks(itemID, mapLocation);
+            List<Point2D> nearestChunks = FindNearestChunks(itemId, mapLocation);
 
             if (nearestChunks != null)
             {
@@ -34,15 +34,15 @@ namespace MLAPI.GameRegistry.Items
                 Chunk chunk;
                 foreach (Point2D item in nearestChunks)
                 {
-                    chunk = World.Data.World.GetChunk(mapLocation.DimensionID, item.X, item.Y);
-                    RTree<Point2D> items = chunk.Items[itemID];
+                    chunk = World.Data.World.GetChunk(mapLocation.DimensionId, item.X, item.Y);
+                    RTree<Point2D> items = chunk.Items[itemId];
                     List<Point2D> result = items.Intersects(new Rectangle(0, 0, Chunk.Width, Chunk.Height));
 
                     foreach (Point2D it in result)
                     {
-                        Tile tile = World.Data.World.GetTile(mapLocation.DimensionID, it.X, it.Y);
+                        Tile tile = World.Data.World.GetTile(mapLocation.DimensionId, it.X, it.Y);
                         Item tileItem = tile.MainObject as Item;
-                        if (tileItem != null && tileItem.ReservedID == Guid.Empty)
+                        if (tileItem != null && tileItem.ReservedId == Guid.Empty)
                         {
                             allNear.Add(new Rectangle(it.X, it.Y, it.X, it.Y), it);
                         }
@@ -61,15 +61,15 @@ namespace MLAPI.GameRegistry.Items
         }
 
         /// <summary>
-        /// Finds the item(s) closest to the <paramref name="mapLocation"/> that matches the <paramref name="itemID"/>.
+        /// Finds the item(s) closest to the <paramref name="mapLocation"/> that matches the <paramref name="itemId"/>.
         /// Returns null if no result found.
         /// </summary>
-        /// <param name="itemID"></param>
+        /// <param name="itemId"></param>
         /// <param name="mapLocation"></param>
         /// <returns>Returns the map location of the closest item of a specified spot.</returns>
-        public static Point2D FindNearestLocation(int itemID, Point3D mapLocation)
+        public static Point2D FindNearestLocation(int itemId, Point3D mapLocation)
         {
-            List<Point2D> nearestChunks = FindNearestChunks(itemID, mapLocation);
+            List<Point2D> nearestChunks = FindNearestChunks(itemId, mapLocation);
 
             if (nearestChunks != null)
             {
@@ -78,8 +78,8 @@ namespace MLAPI.GameRegistry.Items
                 Chunk chunk;
                 foreach (Point2D item in nearestChunks)
                 {
-                    chunk = World.Data.World.GetChunk(mapLocation.DimensionID, item.X, item.Y);
-                    RTree<Point2D> items = chunk.Items[itemID];
+                    chunk = World.Data.World.GetChunk(mapLocation.DimensionId, item.X, item.Y);
+                    RTree<Point2D> items = chunk.Items[itemId];
                     List<Point2D> result = items.Intersects(new Rectangle(0, 0, Chunk.Width, Chunk.Height));
 
                     foreach (Point2D it in result)
@@ -102,12 +102,12 @@ namespace MLAPI.GameRegistry.Items
         /// <summary>
         /// Finds the nearest chunk(s) that contains at least one of the item.
         /// </summary>
-        /// <param name="itemID">The ID of the item in question.</param>
+        /// <param name="itemId">The ID of the item in question.</param>
         /// <param name="mapLocation">The origin of the search in map locations.</param>
         /// <returns></returns>
-        public static List<Point2D> FindNearestChunks(int itemID, Point3D mapLocation)
+        public static List<Point2D> FindNearestChunks(int itemId, Point3D mapLocation)
         {
-            RTree<Point2D> containingChunks = World.Data.World.Dimensions[mapLocation.DimensionID].Items.ItemIDToChunk[itemID];
+            RTree<Point2D> containingChunks = World.Data.World.Dimensions[mapLocation.DimensionId].Items.ItemIdToChunk[itemId];
 
             List<Point2D> result = containingChunks.Nearest(new Point(mapLocation.X / Chunk.Width, mapLocation.Y / Chunk.Height), SearchDistance);
 
@@ -137,9 +137,9 @@ namespace MLAPI.GameRegistry.Items
             while (tilesChecking.Count > 0)
             {
                 Point3D currentlyChecking = tilesChecking[0];
-                Tile tile = World.Data.World.GetTile(mapLocation.DimensionID, currentlyChecking.X, currentlyChecking.Y);
+                Tile tile = World.Data.World.GetTile(mapLocation.DimensionId, currentlyChecking.X, currentlyChecking.Y);
 
-                if (tile.MainObject == null && MainPathFinder.IsRoutePossible(mapLocation, Point3D.From2D(currentlyChecking, mapLocation.DimensionID)))
+                if (tile.MainObject == null && MainPathFinder.IsRoutePossible(mapLocation, Point3D.From2D(currentlyChecking, mapLocation.DimensionId)))
                 {
                     //Found one!
                     return currentlyChecking;
@@ -157,13 +157,13 @@ namespace MLAPI.GameRegistry.Items
         /// <summary>
         /// Returns true if there exists a certain item that is unreserved.
         /// </summary>
-        /// <param name="itemID"></param>
+        /// <param name="itemId"></param>
         /// <param name="dimension"></param>
         /// <param name="startingPoint"></param>
         /// <returns></returns>
-        public static bool IsItemAvailible(int itemID, Guid dimensionID, Point3D startingPoint)
+        public static bool IsItemAvailible(int itemId, Guid dimensionId, Point3D startingPoint)
         {
-            List<Point2D> nearestChunks = FindNearestChunks(itemID, startingPoint);
+            List<Point2D> nearestChunks = FindNearestChunks(itemId, startingPoint);
 
             if (nearestChunks != null && nearestChunks.Count > 0)
             {
@@ -171,15 +171,15 @@ namespace MLAPI.GameRegistry.Items
                 foreach (Point2D item in nearestChunks)
                 {
                     //0-15
-                    chunk = World.Data.World.GetChunk(dimensionID, item.X, item.Y);
-                    RTree<Point2D> items = chunk.Items[itemID];
+                    chunk = World.Data.World.GetChunk(dimensionId, item.X, item.Y);
+                    RTree<Point2D> items = chunk.Items[itemId];
                     List<Point2D> result = items.Intersects(new Rectangle(WorldUtil.GetFirstTileLocation(chunk.ChunkLocation), WorldUtil.GetLastTileLocation(chunk.ChunkLocation)));
 
                     foreach (Point2D it in result)
                     {
-                        Tile tile = World.Data.World.GetTile(startingPoint.DimensionID, it.X, it.Y);
+                        Tile tile = World.Data.World.GetTile(startingPoint.DimensionId, it.X, it.Y);
                         Item tileItem = tile.MainObject as Item;
-                        if (tileItem != null && tileItem.ReservedID == Guid.Empty)
+                        if (tileItem != null && tileItem.ReservedId == Guid.Empty)
                         {
                             return true;
                         }
@@ -195,9 +195,9 @@ namespace MLAPI.GameRegistry.Items
         /// Returns null if not enough items were found to satisfy the request.
         /// </summary>
         /// <returns></returns>
-        public static List<Point3D> LocateUnreservedQuantityOfItem(int itemID, int quantityDesired, Point3D startingPoint)
+        public static List<Point3D> LocateUnreservedQuantityOfItem(int itemId, int quantityDesired, Point3D startingPoint)
         {
-            List<Point2D> nearestChunks = FindNearestChunks(itemID, startingPoint);
+            List<Point2D> nearestChunks = FindNearestChunks(itemId, startingPoint);
 
             int quantityFound = 0;
             List<Point2D> locations = new List<Point2D>();
@@ -208,10 +208,10 @@ namespace MLAPI.GameRegistry.Items
                 List<Point3D> allResults = new List<Point3D>();//Holds all found item locations.
                 foreach (Point2D item in nearestChunks)
                 {
-                    chunk = World.Data.World.GetChunk(startingPoint.DimensionID, item.X, item.Y);
-                    RTree<Point2D> items = chunk.Items[itemID];
+                    chunk = World.Data.World.GetChunk(startingPoint.DimensionId, item.X, item.Y);
+                    RTree<Point2D> items = chunk.Items[itemId];
                     List<Point2D> result = items.Intersects(new Rectangle(WorldUtil.GetFirstTileLocation(chunk.ChunkLocation), WorldUtil.GetLastTileLocation(chunk.ChunkLocation)));
-                    allResults.AddRange(Point3D.From2D(result, startingPoint.DimensionID));
+                    allResults.AddRange(Point3D.From2D(result, startingPoint.DimensionId));
                 }
 
                 //Orders all items found by their proximity to the starting location.
@@ -221,9 +221,9 @@ namespace MLAPI.GameRegistry.Items
                 for (int i = 0; i < length && quantityFound < quantityDesired; i++)
                 {
                     Point2D item = allResults[i];
-                    Tile containing = World.Data.World.GetTile(startingPoint.DimensionID, item.X, item.Y);
+                    Tile containing = World.Data.World.GetTile(startingPoint.DimensionId, item.X, item.Y);
                     Item tileItem = containing.MainObject as Item;
-                    if (tileItem.ReservedID.Equals(Guid.Empty))
+                    if (tileItem.ReservedId.Equals(Guid.Empty))
                     {
                         locations.Add(item);
                         quantityFound += tileItem.CurrentlyStacked;
@@ -233,7 +233,7 @@ namespace MLAPI.GameRegistry.Items
 
             if (quantityFound >= quantityDesired)
             {
-                return Point3D.From2D(locations, startingPoint.DimensionID);
+                return Point3D.From2D(locations, startingPoint.DimensionId);
             }
             else
             {

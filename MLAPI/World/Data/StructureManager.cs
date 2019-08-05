@@ -20,11 +20,11 @@ namespace MLAPI.World.Data
         /// The ID of the dimension that this chunk manager services.
         /// </summary>
         [ProtoMember(2)]
-        private readonly Guid DimensionID;
+        private readonly Guid DimensionId;
 
-        public StructureManager(Guid dimensionID)
+        public StructureManager(Guid dimensionId)
         {
-            this.DimensionID = dimensionID;
+            this.DimensionId = dimensionId;
             this.StructureStorage = new Dictionary<Guid, ObjectAccess<Structure.Structure>>();
         }
 
@@ -37,14 +37,14 @@ namespace MLAPI.World.Data
         /// Attempts to return a structure. Returns null if no structure was found.
         /// </summary>
         /// <returns></returns>
-        public Structure.Structure GetStructure(Guid structureID)
+        public Structure.Structure GetStructure(Guid structureId)
         {
-            ObjectAccess<Structure.Structure> storage = this.StructureStorage[structureID];
+            ObjectAccess<Structure.Structure> storage = this.StructureStorage[structureId];
             storage.Recorder.Access();
 
             if (storage.Object == null)
             {
-                return WorldStorage.StructureStorage.LoadStructure(structureID, this.DimensionID);
+                return WorldStorage.StructureStorage.LoadStructure(structureId, this.DimensionId);
             }
             else
             {

@@ -36,7 +36,7 @@ namespace MLGUIWindows.Input.Specialized_Handlers
         {
             List<GuiContainer> windows = new List<GuiContainer>();
 
-            foreach (GuiContainer item in BoundHandler.GUIWindows)
+            foreach (GuiContainer item in BoundHandler.GuiWindows)
             {
                 //If the container contains the mouse position
                 if (item.DrawingBounds.Contains(e.Position.X, e.Position.Y))

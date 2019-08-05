@@ -19,8 +19,8 @@ namespace MLAPI.Visual.Rendering.Animation
         /// Reads the XML file describing the spritesheet.
         /// </summary>
         /// <param name="path">The internal resource path to the XML file.</param>
-        /// <param name="textureID">The textureID of the SpriteSheet.</param>
-        public SpriteSheet Read(string path, int textureID, Assembly containingAssembly)
+        /// <param name="textureId">The textureID of the SpriteSheet.</param>
+        public SpriteSheet Read(string path, int textureId, Assembly containingAssembly)
         {
             SpriteSheet sheet;
 
@@ -44,7 +44,7 @@ namespace MLAPI.Visual.Rendering.Animation
                     int tileWidthValue = Convert.ToInt32(tileWidth.Value);
                     int tileHeightValue = Convert.ToInt32(tileHeight.Value);
 
-                    sheet = new SpriteSheet(textureID, sheetWidthValue, sheetHeightValue, tileWidthValue, tileHeightValue);
+                    sheet = new SpriteSheet(textureId, sheetWidthValue, sheetHeightValue, tileWidthValue, tileHeightValue);
                 }
             }
 

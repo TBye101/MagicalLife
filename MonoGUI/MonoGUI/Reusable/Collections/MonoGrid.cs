@@ -14,7 +14,7 @@ namespace MonoGUI.MonoGUI.Reusable.Collections
     /// <summary>
     /// A scrollable grid element.
     /// </summary>
-    public class MonoGrid : GUIElement, IScrollable
+    public class MonoGrid : GuiElement, IScrollable
     {
         private int ItemBackgroundTexture { get; set; }
 
@@ -22,7 +22,7 @@ namespace MonoGUI.MonoGUI.Reusable.Collections
         /// The items that are displayed in this <see cref="ListBox"/>.
         /// The elements within the list are each row.
         /// </summary>
-        public List<GUIElement[]> Items { get; set; }
+        public List<GuiElement[]> Items { get; set; }
 
         /// <summary>
         /// How many items should be displayed at any given time.
@@ -69,7 +69,7 @@ namespace MonoGUI.MonoGUI.Reusable.Collections
             this.InitializeItems();
             this.ItemDisplayBounds = displayBounds;
 
-            this.ItemBackgroundTexture = AssetManager.GetTextureIndex(TextureLoader.GUIListBoxItemBackground);
+            this.ItemBackgroundTexture = AssetManager.GetTextureIndex(TextureLoader.GuiListBoxItemBackground);
             this.ItemRenderCount = itemRenderCount;
 
             this.ClickEvent += this.ScrollableGrid_ClickEvent;
@@ -78,21 +78,21 @@ namespace MonoGUI.MonoGUI.Reusable.Collections
 
         private void MonoGrid_DoubleClickEvent(object sender, ClickEventArgs e)
         {
-            int y = (e.MouseEventArgs.Position.Y - e.GUIContainer.DrawingBounds.Y) / this.ItemDisplayBounds.Y;
-            int x = (e.MouseEventArgs.Position.X - e.GUIContainer.DrawingBounds.X) / this.ItemDisplayBounds.X;
+            int y = (e.MouseEventArgs.Position.Y - e.GuiContainer.DrawingBounds.Y) / this.ItemDisplayBounds.Y;
+            int x = (e.MouseEventArgs.Position.X - e.GuiContainer.DrawingBounds.X) / this.ItemDisplayBounds.X;
             this.ItemDoubleClickHandler(new Point2D(x, y), e);
         }
 
         private void ScrollableGrid_ClickEvent(object sender, ClickEventArgs e)
         {
-            int y = (e.MouseEventArgs.Position.Y - e.GUIContainer.DrawingBounds.Y) / this.ItemDisplayBounds.Y;
-            int x = (e.MouseEventArgs.Position.X - e.GUIContainer.DrawingBounds.X) / this.ItemDisplayBounds.X;
+            int y = (e.MouseEventArgs.Position.Y - e.GuiContainer.DrawingBounds.Y) / this.ItemDisplayBounds.Y;
+            int x = (e.MouseEventArgs.Position.X - e.GuiContainer.DrawingBounds.X) / this.ItemDisplayBounds.X;
             this.ItemClickHandler(new Point2D(x, y), e);
         }
 
         private void InitializeItems()
         {
-            this.Items = new List<GUIElement[]>();
+            this.Items = new List<GuiElement[]>();
         }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace MonoGUI.MonoGUI.Reusable.Collections
         /// <summary>
         /// Adds an item to this grid.
         /// </summary>
-        public void Add(params GUIElement[] elements)
+        public void Add(params GuiElement[] elements)
         {
             if (elements.Length > this.Columns)
             {
@@ -191,13 +191,13 @@ namespace MonoGUI.MonoGUI.Reusable.Collections
         private void ItemClickHandler(Point2D indexClicked, ClickEventArgs args)
         {
             this.ItemClick?.Invoke(this, indexClicked);
-            this.Items[indexClicked.Y][indexClicked.X].Click(args.MouseEventArgs, args.GUIContainer);
+            this.Items[indexClicked.Y][indexClicked.X].Click(args.MouseEventArgs, args.GuiContainer);
         }
 
         private void ItemDoubleClickHandler(Point2D indexClicked, ClickEventArgs args)
         {
             this.ItemDoubleClick?.Invoke(this, indexClicked);
-            this.Items[indexClicked.Y][indexClicked.X].DoubleClick(args.MouseEventArgs, args.GUIContainer);
+            this.Items[indexClicked.Y][indexClicked.X].DoubleClick(args.MouseEventArgs, args.GuiContainer);
         }
     }
 }

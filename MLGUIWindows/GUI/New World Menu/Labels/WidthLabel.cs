@@ -10,7 +10,7 @@ namespace MLGUIWindows.GUI.New_World_Menu.Labels
     /// </summary>
     public class WidthLabel : MonoLabel
     {
-        public WidthLabel() : base(GetLocation(), TextureLoader.GUIInputBox100x50, true, Resources.WorldWidth)
+        public WidthLabel() : base(GetLocation(), TextureLoader.GuiInputBox100X50, true, Resources.WorldWidth)
         {
         }
 

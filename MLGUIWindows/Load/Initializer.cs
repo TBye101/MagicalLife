@@ -13,9 +13,9 @@ namespace MLGUIWindows.Load
         {
             SettingsManager.Initialize();
 
-            if (SettingsManager.PlayerSettings.Settings.PlayerID == Guid.Empty)
+            if (SettingsManager.PlayerSettings.Settings.PlayerId == Guid.Empty)
             {
-                SettingsManager.PlayerSettings.Settings.PlayerID = Guid.NewGuid();
+                SettingsManager.PlayerSettings.Settings.PlayerId = Guid.NewGuid();
             }
 
             InputHistory.Initialize();

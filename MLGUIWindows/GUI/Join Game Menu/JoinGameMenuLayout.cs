@@ -8,17 +8,17 @@ namespace MLGUIWindows.GUI.Join_Game_Menu
         /// <summary>
         /// The height of the IP input box.
         /// </summary>
-        public static int IPInputBoxHeight
+        public static int IpInputBoxHeight
         {
             get
             {
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return JoinGameMenuLayout2560x1440.IPInputBoxHeight;
+                        return JoinGameMenuLayout2560X1440.IpInputBoxHeight;
 
                     default:
-                        return JoinGameMenuLayout1920x1080.IPInputBoxHeight;
+                        return JoinGameMenuLayout1920X1080.IpInputBoxHeight;
                 }
             }
         }
@@ -26,17 +26,17 @@ namespace MLGUIWindows.GUI.Join_Game_Menu
         /// <summary>
         /// The width of the IP input box.
         /// </summary>
-        public static int IPInputBoxWidth
+        public static int IpInputBoxWidth
         {
             get
             {
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return JoinGameMenuLayout2560x1440.IPInputBoxWidth;
+                        return JoinGameMenuLayout2560X1440.IpInputBoxWidth;
 
                     default:
-                        return JoinGameMenuLayout1920x1080.IPInputBoxWidth;
+                        return JoinGameMenuLayout1920X1080.IpInputBoxWidth;
                 }
             }
         }
@@ -44,17 +44,17 @@ namespace MLGUIWindows.GUI.Join_Game_Menu
         /// <summary>
         /// The x location of the IP input box.
         /// </summary>
-        public static int IPInputBoxX
+        public static int IpInputBoxX
         {
             get
             {
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return JoinGameMenuLayout2560x1440.IPInputBoxX;
+                        return JoinGameMenuLayout2560X1440.IpInputBoxX;
 
                     default:
-                        return JoinGameMenuLayout1920x1080.IPInputBoxX;
+                        return JoinGameMenuLayout1920X1080.IpInputBoxX;
                 }
             }
         }
@@ -62,17 +62,17 @@ namespace MLGUIWindows.GUI.Join_Game_Menu
         /// <summary>
         /// The y location of the IP input box.
         /// </summary>
-        public static int IPInputBoxY
+        public static int IpInputBoxY
         {
             get
             {
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return JoinGameMenuLayout2560x1440.IPInputBoxY;
+                        return JoinGameMenuLayout2560X1440.IpInputBoxY;
 
                     default:
-                        return JoinGameMenuLayout1920x1080.IPInputBoxY;
+                        return JoinGameMenuLayout1920X1080.IpInputBoxY;
                 }
             }
         }
@@ -87,10 +87,10 @@ namespace MLGUIWindows.GUI.Join_Game_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return JoinGameMenuLayout2560x1440.PortInputBoxX;
+                        return JoinGameMenuLayout2560X1440.PortInputBoxX;
 
                     default:
-                        return JoinGameMenuLayout1920x1080.PortInputBoxX;
+                        return JoinGameMenuLayout1920X1080.PortInputBoxX;
                 }
             }
         }
@@ -105,10 +105,10 @@ namespace MLGUIWindows.GUI.Join_Game_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return JoinGameMenuLayout2560x1440.JoinButtonX;
+                        return JoinGameMenuLayout2560X1440.JoinButtonX;
 
                     default:
-                        return JoinGameMenuLayout1920x1080.JoinButtonX;
+                        return JoinGameMenuLayout1920X1080.JoinButtonX;
                 }
             }
         }

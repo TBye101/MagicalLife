@@ -27,7 +27,7 @@ namespace MLGUIWindows.GUI.New_World_Menu.Buttons
     /// </summary>
     public class NewWorldNextButton : MonoButton
     {
-        public NewWorldNextButton() : base(TextureLoader.GUIMenuButton, GetLocation(), true, Resources.Next)
+        public NewWorldNextButton() : base(TextureLoader.GuiMenuButton, GetLocation(), true, Resources.Next)
         {
             this.ClickEvent += this.NewWorldNextButton_ClickEvent;
         }
@@ -37,8 +37,8 @@ namespace MLGUIWindows.GUI.New_World_Menu.Buttons
             World.Mode = EngineMode.ServerAndClient;
             Server.Load();
             ClientSendRecieve.Initialize(new NetworkSettings(EngineMode.ServerAndClient));
-            FMODUtil.RaiseEvent(SoundsTable.UIClick);
-            FMODUtil.RaiseEvent(SoundsTable.Ambience);
+            FmodUtil.RaiseEvent(SoundsTable.UiClick);
+            FmodUtil.RaiseEvent(SoundsTable.Ambience);
             ServerSendRecieve.Initialize(new NetworkSettings(EngineMode.ServerAndClient));
             Client.Load();
             NewGameInputHandler a = new NewGameInputHandler();
@@ -48,14 +48,14 @@ namespace MLGUIWindows.GUI.New_World_Menu.Buttons
                 return;
             }
             Server.StartGame();
-            Guid firstDimensionID = WorldUtil.GetDimensionByName(Lang._1stDimensionName).Key;
-            RenderInfo.Camera2D.InitializeForDimension(firstDimensionID);
+            Guid firstDimensionId = WorldUtil.GetDimensionByName(Lang._1stDimensionName).Key;
+            RenderInfo.Camera2D.InitializeForDimension(firstDimensionId);
             BoundHandler.RemoveContainer(NewWorldMenu.NewWorldMenuM);
             MenuHandler.Clear();
             BoundHandler.HideAll();
-            InGameGUI.Initialize();
+            InGameGui.Initialize();
             InputHandlers.MapLoadInitialize();
-            BoundHandler.Popup(InGameGUI.InGame);
+            BoundHandler.Popup(InGameGui.InGame);
         }
 
         private static Rectangle GetLocation()

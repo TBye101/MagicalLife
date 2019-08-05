@@ -43,24 +43,24 @@ namespace MLAPI.Visual.Rendering.Animation
         /// <param name="sequences"></param>
         /// <param name="spriteSheet">The texture name of the sprite sheet.</param>
         /// <param name="xmlResourcePath">The resource path to load the XML data about the sprite sheet as an embedded resource.</param>
-        public AnimatedTexture(int priority, AnimationSequence[] sequences, string spriteSheet, string xmlResourcePath, Assembly containingASM) : base(priority)
+        public AnimatedTexture(int priority, AnimationSequence[] sequences, string spriteSheet, string xmlResourcePath, Assembly containingAsm) : base(priority)
         {
             this.Sequences = sequences;
 
             SpriteSheetReader reader = new SpriteSheetReader();
-            this.AnimationFrames = reader.Read(xmlResourcePath, AssetManager.NameToIndex[spriteSheet], containingASM);
+            this.AnimationFrames = reader.Read(xmlResourcePath, AssetManager.NameToIndex[spriteSheet], containingAsm);
         }
 
         public AnimatedTexture()
         {
         }
 
-        public override void Render(MapBatch batch, Point2D ScreenTopLeft)
+        public override void Render(MapBatch batch, Point2D screenTopLeft)
         {
             if (this.PlayingSequence == -1)
             {
                 batch.Draw(this.AnimationFrames.Sprites,
-                    ScreenTopLeft, this.AnimationFrames.GetSection(this.LastFrame), this.Priority);
+                    screenTopLeft, this.AnimationFrames.GetSection(this.LastFrame), this.Priority);
             }
             else
             {
@@ -70,7 +70,7 @@ namespace MLAPI.Visual.Rendering.Animation
                 this.HasFinished = isDone;
 
                 batch.Draw(this.AnimationFrames.Sprites,
-                    ScreenTopLeft, this.AnimationFrames.GetSection(frame), this.Priority);
+                    screenTopLeft, this.AnimationFrames.GetSection(frame), this.Priority);
 
                 if (this.HasFinished)
                 {
@@ -82,8 +82,8 @@ namespace MLAPI.Visual.Rendering.Animation
         /// <summary>
         /// Starts playing the specified animation sequence. Stops and resets any previously playing sequences.
         /// </summary>
-        /// <param name="SequenceID">The ID of the sequence to initiate.</param>
-        public void StartSequence(int SequenceID)
+        /// <param name="sequenceId">The ID of the sequence to initiate.</param>
+        public void StartSequence(int sequenceId)
         {
             if (this.PlayingSequence != -1 && this.HasFinished)
             {
@@ -92,7 +92,7 @@ namespace MLAPI.Visual.Rendering.Animation
 
             if (this.HasFinished)
             {
-                this.PlayingSequence = SequenceID;
+                this.PlayingSequence = sequenceId;
             }
         }
     }

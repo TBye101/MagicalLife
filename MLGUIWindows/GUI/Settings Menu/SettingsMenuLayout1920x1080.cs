@@ -1,6 +1,6 @@
 ﻿namespace MLGUIWindows.GUI.Settings_Menu
 {
-    public static class SettingsMenuLayout1920x1080
+    public static class SettingsMenuLayout1920X1080
     {
         /// <summary>
         /// The y position of the top of the host game button.

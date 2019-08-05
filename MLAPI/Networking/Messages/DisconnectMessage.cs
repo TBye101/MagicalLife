@@ -11,15 +11,15 @@ namespace MLAPI.Networking.Messages
     public class DisconnectMessage : BaseMessage
     {
         [ProtoMember(3)]
-        public Guid ClientPlayerID { get; set; }
+        public Guid ClientPlayerId { get; set; }
 
         /// <summary>
         ///
         /// </summary>
-        /// <param name="playerID">The ID of the player client that is disconnecting.</param>
-        public DisconnectMessage(Guid playerID) : base(NetMessageID.DisconnectMessage)
+        /// <param name="playerId">The ID of the player client that is disconnecting.</param>
+        public DisconnectMessage(Guid playerId) : base(NetMessageId.DisconnectMessage)
         {
-            this.ClientPlayerID = playerID;
+            this.ClientPlayerId = playerId;
         }
 
         public DisconnectMessage()

@@ -9,7 +9,7 @@ namespace MLGUIWindows.GUI.In_Game_Escape_Menu.Buttons
 {
     public class BackButton : MonoButton
     {
-        public BackButton() : base(TextureLoader.GUIMenuButton, GetDisplayArea(), true, Resources.Back)
+        public BackButton() : base(TextureLoader.GuiMenuButton, GetDisplayArea(), true, Resources.Back)
         {
             this.ClickEvent += this.BackButton_ClickEvent;
         }

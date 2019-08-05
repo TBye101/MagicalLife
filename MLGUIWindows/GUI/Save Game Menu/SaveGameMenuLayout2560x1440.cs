@@ -1,6 +1,6 @@
 ﻿namespace MLGUIWindows.GUI.Save_Game_Menu
 {
-    public static class SaveGameMenuLayout2560x1440
+    public static class SaveGameMenuLayout2560X1440
     {
         public static readonly int OverwriteSaveListBoxX = 50;
 

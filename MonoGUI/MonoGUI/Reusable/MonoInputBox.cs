@@ -9,7 +9,7 @@ using MonoGUI.MonoGUI.Input;
 
 namespace MonoGUI.MonoGUI.Reusable
 {
-    public class MonoInputBox : GUIElement
+    public class MonoInputBox : GuiElement
     {
         private string _text = "";
 
@@ -57,7 +57,7 @@ namespace MonoGUI.MonoGUI.Reusable
         /// </summary>
         public SimpleTextRenderer.Alignment TextAlignment { get; private set; }
 
-        private int TextureID { get; set; }
+        private int TextureId { get; set; }
 
         public event System.EventHandler TextChanged;
 
@@ -65,20 +65,20 @@ namespace MonoGUI.MonoGUI.Reusable
         ///
         /// </summary>
         /// <param name="image"></param>
-        /// <param name="CarrotTexture"></param>
+        /// <param name="carrotTexture"></param>
         /// <param name="drawingBounds"></param>
         /// <param name="priority"></param>
         /// <param name="font"></param>
         /// <param name="isLocked"></param>
         /// <param name="textAlignment"></param>
         /// <param name="isContained">If true, this GUI element is within a container.</param>
-        public MonoInputBox(string image, string CarrotTexture, Rectangle drawingBounds, int priority, string font, bool isLocked, SimpleTextRenderer.Alignment textAlignment, bool isContained)
+        public MonoInputBox(string image, string carrotTexture, Rectangle drawingBounds, int priority, string font, bool isLocked, SimpleTextRenderer.Alignment textAlignment, bool isContained)
             : base(drawingBounds, priority, isContained, font)
         {
             KeyboardHandler.KeysPressed += this.KeyboardHandler_KeysPressed;
             this.CarrotPosition = this.Text.Length;
-            this.CarrotTexture = AssetManager.Textures[AssetManager.GetTextureIndex(CarrotTexture)];
-            this.TextureID = AssetManager.GetTextureIndex(image);
+            this.CarrotTexture = AssetManager.Textures[AssetManager.GetTextureIndex(carrotTexture)];
+            this.TextureId = AssetManager.GetTextureIndex(image);
             this.IsLocked = isLocked;
             this.LoadCarrotInformation(font);
             this.TextAlignment = textAlignment;
@@ -213,8 +213,8 @@ namespace MonoGUI.MonoGUI.Reusable
             int x = this.DrawingBounds.X + containerBounds.X;
             int y = this.DrawingBounds.Y + containerBounds.Y;
             location = new Rectangle(x, y, this.DrawingBounds.Width, this.DrawingBounds.Height);
-            spBatch.Draw(AssetManager.Textures[this.TextureID], location, Color.White);
-            SimpleTextRenderer.DrawString(this.Font, this.Text, location, SimpleTextRenderer.Alignment.Left, Color.White, spBatch, RenderLayer.GUI);
+            spBatch.Draw(AssetManager.Textures[this.TextureId], location, Color.White);
+            SimpleTextRenderer.DrawString(this.Font, this.Text, location, SimpleTextRenderer.Alignment.Left, Color.White, spBatch, RenderLayer.Gui);
 
             Rectangle carrotLocation = this.CalculateCarrotBounds(this, containerBounds);
 
@@ -251,17 +251,17 @@ namespace MonoGUI.MonoGUI.Reusable
                 origin.Y -= (textbox.DrawingBounds.Height / 2) - (size.Y / 2);
             }
 
-            string TextBeforeCarrot = textbox.Text.Substring(0, textbox.CarrotPosition);
-            int XPos = (int)Math.Round(origin.X + textbox.DrawingBounds.X + textbox.Font.MeasureString(TextBeforeCarrot).X) + containerBounds.X;
-            int YPos = (int)Math.Round(origin.Y + textbox.DrawingBounds.Y) + containerBounds.Y;
+            string textBeforeCarrot = textbox.Text.Substring(0, textbox.CarrotPosition);
+            int xPos = (int)Math.Round(origin.X + textbox.DrawingBounds.X + textbox.Font.MeasureString(textBeforeCarrot).X) + containerBounds.X;
+            int yPos = (int)Math.Round(origin.Y + textbox.DrawingBounds.Y) + containerBounds.Y;
 
             if (textbox.TextAlignment == SimpleTextRenderer.Alignment.Left)
             {
-                XPos -= (int)Math.Round(origin.X);
-                YPos += (int)Math.Round(origin.Y);
+                xPos -= (int)Math.Round(origin.X);
+                yPos += (int)Math.Round(origin.Y);
             }
 
-            return new Rectangle(XPos, YPos, textbox.CarrotWidth, textbox.CarrotHeight);
+            return new Rectangle(xPos, yPos, textbox.CarrotWidth, textbox.CarrotHeight);
         }
     }
 }

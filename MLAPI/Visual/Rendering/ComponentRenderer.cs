@@ -20,13 +20,13 @@ namespace MLAPI.Visual.Rendering
             this.RenderQueue = new List<AbstractVisual>();
         }
 
-        public void Render(MapBatch batch, Point2D ScreenTopLeft)
+        public void Render(MapBatch batch, Point2D screenTopLeft)
         {
             int length = this.RenderQueue.Count;
             for (int i = 0; i < length; i++)
             {
                 AbstractVisual item = this.RenderQueue[i];
-                item.Render(batch, ScreenTopLeft);
+                item.Render(batch, screenTopLeft);
             }
         }
 

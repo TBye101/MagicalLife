@@ -7,7 +7,7 @@ namespace MLGUIWindows.GUI.MainMenu
 {
     public class MainMenuContainer : GuiContainer
     {
-        public MainMenuContainer(bool visible) : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow, false)
+        public MainMenuContainer(bool visible) : base(TextureLoader.GuiMenuBackground, RenderInfo.FullScreenWindow, false)
         {
             this.Visible = visible;
             this.Controls.Add(new NewGameButton());
@@ -23,7 +23,7 @@ namespace MLGUIWindows.GUI.MainMenu
 
         public override string GetTextureName()
         {
-            return TextureLoader.GUIMenuBackground;
+            return TextureLoader.GuiMenuBackground;
         }
     }
 }

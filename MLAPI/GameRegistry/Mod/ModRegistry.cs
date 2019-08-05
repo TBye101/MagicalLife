@@ -26,11 +26,11 @@ namespace MLAPI.GameRegistry.Mod
             foreach (IMod item in LoadedMods)
             {
                 ModInformation info = item.GetInfo();
-                MasterLog.DebugWriteLine("Loading mod: " + info.DisplayName + "(" + info.ModID + ")");
+                MasterLog.DebugWriteLine("Loading mod: " + info.DisplayName + "(" + info.ModId + ")");
                 ProtoUtil.RegisterAssembly(item.GetType().Assembly);
                 List<Load.IGameLoader> loadJobs = item.Load();
                 loader.LoadAll(ref message, loadJobs);
-                MasterLog.DebugWriteLine("Done loading: " + info.DisplayName + "(" + info.ModID + ")");
+                MasterLog.DebugWriteLine("Done loading: " + info.DisplayName + "(" + info.ModId + ")");
             }
         }
     }

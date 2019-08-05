@@ -30,29 +30,29 @@ namespace MLAPI.GameRegistry.Items
         /// Holds which item id is associated with item.
         /// </summary>
         [ProtoMember(1)]
-        internal static Dictionary<int, Item> IDToItem { get; set; } = new Dictionary<int, Item>();
+        internal static Dictionary<int, Item> IdToItem { get; set; } = new Dictionary<int, Item>();
 
         /// <summary>
         /// Holds which item is associated with which item id.
         /// </summary>
         [ProtoMember(2)]
-        internal static Dictionary<Item, int> ItemToID { get; set; } = new Dictionary<Item, int>();
+        internal static Dictionary<Item, int> ItemToId { get; set; } = new Dictionary<Item, int>();
 
         /// <summary>
         /// For each item in the dimension, this dictionary holds a R-Tree that contains chunk coordinates for every chunk that has at least one of that item.
         /// </summary>
         [ProtoMember(3)]
-        internal Dictionary<int, RTree<Point2D>> ItemIDToChunk { get; set; }
+        internal Dictionary<int, RTree<Point2D>> ItemIdToChunk { get; set; }
 
         [ProtoMember(4)]
-        public Guid ID { get; }
+        public Guid Id { get; }
 
         [ProtoMember(5)]
         public int Dimension { get; }
 
         public ItemRegistry(int dimension)
         {
-            this.ID = Guid.NewGuid();
+            this.Id = Guid.NewGuid();
             this.Dimension = dimension;
             this.BakeItemChunks();
         }
@@ -69,20 +69,20 @@ namespace MLAPI.GameRegistry.Items
         /// <param name="item"></param>
         public static void RegisterItemType(Item item)
         {
-            IDToItem.Add(IDToItem.Count, item);
-            ItemToID.Add(item, ItemToID.Count);
+            IdToItem.Add(IdToItem.Count, item);
+            ItemToId.Add(item, ItemToId.Count);
         }
 
         /// <summary>
-        /// Initializes <see cref="ItemIDToChunk"/> for the first time.
+        /// Initializes <see cref="ItemIdToChunk"/> for the first time.
         /// </summary>
         internal void BakeItemChunks()
         {
-            this.ItemIDToChunk = new Dictionary<int, RTree<Point2D>>(IDToItem.Count);
+            this.ItemIdToChunk = new Dictionary<int, RTree<Point2D>>(IdToItem.Count);
 
-            foreach (KeyValuePair<int, Item> item in IDToItem)
+            foreach (KeyValuePair<int, Item> item in IdToItem)
             {
-                this.ItemIDToChunk.Add(item.Key, new RTree<Point2D>());
+                this.ItemIdToChunk.Add(item.Key, new RTree<Point2D>());
             }
         }
     }

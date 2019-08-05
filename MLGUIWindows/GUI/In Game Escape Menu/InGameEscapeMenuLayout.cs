@@ -12,10 +12,10 @@ namespace MLGUIWindows.GUI.In_Game_Escape_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return InGameEscapeMenuLayout2560x1440.ButtonX;
+                        return InGameEscapeMenuLayout2560X1440.ButtonX;
 
                     default:
-                        return InGameEscapeMenuLayout1920x1080.ButtonX;
+                        return InGameEscapeMenuLayout1920X1080.ButtonX;
                 }
             }
         }
@@ -27,10 +27,10 @@ namespace MLGUIWindows.GUI.In_Game_Escape_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return InGameEscapeMenuLayout2560x1440.ButtonWidth;
+                        return InGameEscapeMenuLayout2560X1440.ButtonWidth;
 
                     default:
-                        return InGameEscapeMenuLayout1920x1080.ButtonWidth;
+                        return InGameEscapeMenuLayout1920X1080.ButtonWidth;
                 }
             }
         }
@@ -42,10 +42,10 @@ namespace MLGUIWindows.GUI.In_Game_Escape_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return InGameEscapeMenuLayout2560x1440.ButtonHeight;
+                        return InGameEscapeMenuLayout2560X1440.ButtonHeight;
 
                     default:
-                        return InGameEscapeMenuLayout1920x1080.ButtonHeight;
+                        return InGameEscapeMenuLayout1920X1080.ButtonHeight;
                 }
             }
         }
@@ -57,10 +57,10 @@ namespace MLGUIWindows.GUI.In_Game_Escape_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return InGameEscapeMenuLayout2560x1440.SaveButtonY;
+                        return InGameEscapeMenuLayout2560X1440.SaveButtonY;
 
                     default:
-                        return InGameEscapeMenuLayout1920x1080.SaveButtonY;
+                        return InGameEscapeMenuLayout1920X1080.SaveButtonY;
                 }
             }
         }
@@ -72,10 +72,10 @@ namespace MLGUIWindows.GUI.In_Game_Escape_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return InGameEscapeMenuLayout2560x1440.QuitButtonY;
+                        return InGameEscapeMenuLayout2560X1440.QuitButtonY;
 
                     default:
-                        return InGameEscapeMenuLayout1920x1080.QuitButtonY;
+                        return InGameEscapeMenuLayout1920X1080.QuitButtonY;
                 }
             }
         }
@@ -87,10 +87,10 @@ namespace MLGUIWindows.GUI.In_Game_Escape_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return InGameEscapeMenuLayout2560x1440.BackButtonY;
+                        return InGameEscapeMenuLayout2560X1440.BackButtonY;
 
                     default:
-                        return InGameEscapeMenuLayout1920x1080.BackButtonY;
+                        return InGameEscapeMenuLayout1920X1080.BackButtonY;
                 }
             }
         }
@@ -102,10 +102,10 @@ namespace MLGUIWindows.GUI.In_Game_Escape_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return InGameEscapeMenuLayout2560x1440.SettingsButtonY;
+                        return InGameEscapeMenuLayout2560X1440.SettingsButtonY;
 
                     default:
-                        return InGameEscapeMenuLayout1920x1080.SettingsButtonY;
+                        return InGameEscapeMenuLayout1920X1080.SettingsButtonY;
                 }
             }
         }

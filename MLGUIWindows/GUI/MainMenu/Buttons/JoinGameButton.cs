@@ -10,16 +10,16 @@ namespace MLGUIWindows.GUI.MainMenu.Buttons
 {
     public class JoinGameButton : MonoButton
     {
-        public JoinGameButton() : base(TextureLoader.GUIMenuButton, GetLocation(), true, Resources.JoinGame)
+        public JoinGameButton() : base(TextureLoader.GuiMenuButton, GetLocation(), true, Resources.JoinGame)
         {
             this.ClickEvent += this.JoinGameButton_ClickEvent;
         }
 
         private void JoinGameButton_ClickEvent(object sender, ClickEventArgs e)
         {
-            FMODUtil.RaiseEvent(SoundsTable.UIClick);
+            FmodUtil.RaiseEvent(SoundsTable.UiClick);
             JoinGameMenu.Initialize();
-            MainMenu.MainMenuID.PopupChild(JoinGameMenu.Menu);
+            MainMenu.MainMenuId.PopupChild(JoinGameMenu.Menu);
         }
 
         private static Rectangle GetLocation()

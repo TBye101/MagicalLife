@@ -14,12 +14,12 @@ namespace MLAPI.Genetic.Crossovers
     {
         private int K { get; set; }
 
-        private NonDuplicateElementSelector<int> NonDuplicateRNG { get; set; }
+        private NonDuplicateElementSelector<int> NonDuplicateRng { get; set; }
 
         public KPointCrossover(int k, int genesCount)
         {
             this.K = k;
-            this.NonDuplicateRNG = new NonDuplicateElementSelector<int>(ArrayUtil.FillNumericalRange(0, genesCount));
+            this.NonDuplicateRng = new NonDuplicateElementSelector<int>(ArrayUtil.FillNumericalRange(0, genesCount));
         }
 
         public List<Chromosome> CrossParents(List<Chromosome> parents)
@@ -86,11 +86,11 @@ namespace MLAPI.Genetic.Crossovers
         private List<int> GetCrossPoints()
         {
             List<int> crossPoints = new List<int>();
-            this.NonDuplicateRNG.Reset();
+            this.NonDuplicateRng.Reset();
 
             for (int i = 0; i < this.K; i++)
             {
-                crossPoints.Add(this.NonDuplicateRNG.GetRandomElement());
+                crossPoints.Add(this.NonDuplicateRng.GetRandomElement());
             }
 
             return crossPoints;

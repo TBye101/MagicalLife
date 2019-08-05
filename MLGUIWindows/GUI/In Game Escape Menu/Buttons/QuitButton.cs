@@ -12,14 +12,14 @@ namespace MLGUIWindows.GUI.In_Game_Escape_Menu.Buttons
 {
     public class QuitButton : MonoButton
     {
-        public QuitButton() : base(TextureLoader.GUIMenuButton, GetDisplayArea(), true, GetText())
+        public QuitButton() : base(TextureLoader.GuiMenuButton, GetDisplayArea(), true, GetText())
         {
             this.ClickEvent += this.QuitButton_ClickEvent;
         }
 
         private void QuitButton_ClickEvent(object sender, ClickEventArgs e)
         {
-            FMODUtil.RaiseEvent(SoundsTable.UIClick);
+            FmodUtil.RaiseEvent(SoundsTable.UiClick);
         }
 
         public static string GetText()

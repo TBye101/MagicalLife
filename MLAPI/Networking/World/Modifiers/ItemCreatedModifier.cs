@@ -19,16 +19,16 @@ namespace MLAPI.Networking.World.Modifiers
         public Point2D Location { get; private set; }
 
         [ProtoMember(3)]
-        public Guid DimensionID { get; private set; }
+        public Guid DimensionId { get; private set; }
 
         /// <param name="item">The item which is being added, and needs to be synced.</param>
         /// <param name="mapLocation">The location at which the item was added at.</param>
         /// <param name="dimension">The dimension in which the item was added at.</param>
-        public ItemCreatedModifier(Item item, Point2D mapLocation, Guid dimensionID)
+        public ItemCreatedModifier(Item item, Point2D mapLocation, Guid dimensionId)
         {
             this.Item = item;
             this.Location = mapLocation;
-            this.DimensionID = dimensionID;
+            this.DimensionId = dimensionId;
         }
 
         private ItemCreatedModifier()
@@ -38,7 +38,7 @@ namespace MLAPI.Networking.World.Modifiers
 
         public override void ModifyWorld()
         {
-            ItemAdder.AddItem(this.Item, this.Location, this.DimensionID);
+            ItemAdder.AddItem(this.Item, this.Location, this.DimensionId);
         }
     }
 }

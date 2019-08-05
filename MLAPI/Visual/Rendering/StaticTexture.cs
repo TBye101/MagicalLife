@@ -12,20 +12,20 @@ namespace MLAPI.Visual.Rendering
     public class StaticTexture : AbstractVisual
     {
         [ProtoMember(1)]
-        private int TextureID { get; set; }
+        private int TextureId { get; set; }
 
-        public StaticTexture(int textureID, int priority) : base(priority)
+        public StaticTexture(int textureId, int priority) : base(priority)
         {
-            this.TextureID = textureID;
+            this.TextureId = textureId;
         }
 
         public StaticTexture()
         {
         }
 
-        public override void Render(MapBatch batch, Point2D ScreenTopLeft)
+        public override void Render(MapBatch batch, Point2D screenTopLeft)
         {
-            batch.Draw(AssetManager.Textures[this.TextureID], ScreenTopLeft, this.Priority);
+            batch.Draw(AssetManager.Textures[this.TextureId], screenTopLeft, this.Priority);
         }
     }
 }

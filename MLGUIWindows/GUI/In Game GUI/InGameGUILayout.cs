@@ -6,7 +6,7 @@ namespace MLGUIWindows.GUI.In_Game_GUI
     /// <summary>
     /// Returns the correct hardcoded values for the current screen resolution for the new world menu.
     /// </summary>
-    public static class InGameGUILayout
+    public static class InGameGuiLayout
     {
         /// <summary>
         /// The x position at which the in game GUI container is drawn.
@@ -18,10 +18,10 @@ namespace MLGUIWindows.GUI.In_Game_GUI
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return InGameGUILayout2560x1440.ContainerX;
+                        return InGameGuiLayout2560X1440.ContainerX;
 
                     default:
-                        return InGameGUILayout1920x1080.ContainerX;
+                        return InGameGuiLayout1920X1080.ContainerX;
                 }
             }
         }
@@ -36,10 +36,10 @@ namespace MLGUIWindows.GUI.In_Game_GUI
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return InGameGUILayout2560x1440.ContainerY;
+                        return InGameGuiLayout2560X1440.ContainerY;
 
                     default:
-                        return InGameGUILayout1920x1080.ContainerY;
+                        return InGameGuiLayout1920X1080.ContainerY;
                 }
             }
         }
@@ -54,10 +54,10 @@ namespace MLGUIWindows.GUI.In_Game_GUI
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return InGameGUILayout2560x1440.ContainerWidth;
+                        return InGameGuiLayout2560X1440.ContainerWidth;
 
                     default:
-                        return InGameGUILayout1920x1080.ContainerWidth;
+                        return InGameGuiLayout1920X1080.ContainerWidth;
                 }
             }
         }
@@ -72,10 +72,10 @@ namespace MLGUIWindows.GUI.In_Game_GUI
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return InGameGUILayout2560x1440.ContainerHeight;
+                        return InGameGuiLayout2560X1440.ContainerHeight;
 
                     default:
-                        return InGameGUILayout1920x1080.ContainerHeight;
+                        return InGameGuiLayout1920X1080.ContainerHeight;
                 }
             }
         }
@@ -90,10 +90,10 @@ namespace MLGUIWindows.GUI.In_Game_GUI
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return InGameGUILayout2560x1440.ActionButtonY;
+                        return InGameGuiLayout2560X1440.ActionButtonY;
 
                     default:
-                        return InGameGUILayout1920x1080.ActionButtonY;
+                        return InGameGuiLayout1920X1080.ActionButtonY;
                 }
             }
         }
@@ -108,10 +108,10 @@ namespace MLGUIWindows.GUI.In_Game_GUI
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return InGameGUILayout2560x1440.ActionButtonSize;
+                        return InGameGuiLayout2560X1440.ActionButtonSize;
 
                     default:
-                        return InGameGUILayout1920x1080.ActionButtonSize;
+                        return InGameGuiLayout1920X1080.ActionButtonSize;
                 }
             }
         }
@@ -126,10 +126,10 @@ namespace MLGUIWindows.GUI.In_Game_GUI
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return InGameGUILayout2560x1440.MineActionButtonX;
+                        return InGameGuiLayout2560X1440.MineActionButtonX;
 
                     default:
-                        return InGameGUILayout1920x1080.MineActionButtonX;
+                        return InGameGuiLayout1920X1080.MineActionButtonX;
                 }
             }
         }
@@ -144,10 +144,10 @@ namespace MLGUIWindows.GUI.In_Game_GUI
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return InGameGUILayout2560x1440.HoeActionButtonX;
+                        return InGameGuiLayout2560X1440.HoeActionButtonX;
 
                     default:
-                        return InGameGUILayout1920x1080.HoeActionButtonX;
+                        return InGameGuiLayout1920X1080.HoeActionButtonX;
                 }
             }
         }
@@ -162,10 +162,10 @@ namespace MLGUIWindows.GUI.In_Game_GUI
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return InGameGUILayout2560x1440.ChopActionButtonX;
+                        return InGameGuiLayout2560X1440.ChopActionButtonX;
 
                     default:
-                        return InGameGUILayout1920x1080.ChopActionButtonX;
+                        return InGameGuiLayout1920X1080.ChopActionButtonX;
                 }
             }
         }

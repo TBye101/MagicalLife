@@ -23,7 +23,7 @@ namespace MLAPI.World.Data
         /// The ID of the dimension that this chunk manager services.
         /// </summary>
         [ProtoMember(2)]
-        private readonly Guid DimensionID;
+        private readonly Guid DimensionId;
 
         /// <summary>
         /// The width of this dimension in chunks.
@@ -37,9 +37,9 @@ namespace MLAPI.World.Data
         [ProtoMember(4)]
         public int Height { get; set; }
 
-        public ChunkManager(Guid dimensionID, ProtoArray<Chunk> chunks)
+        public ChunkManager(Guid dimensionId, ProtoArray<Chunk> chunks)
         {
-            this.DimensionID = dimensionID;
+            this.DimensionId = dimensionId;
             this.Width = chunks.Width;
             this.Height = chunks.Height;
 
@@ -120,7 +120,7 @@ namespace MLAPI.World.Data
 
             if (storage.Object == null)
             {
-                return WorldStorage.ChunkStorage.LoadChunk(chunkX, chunkY, this.DimensionID);
+                return WorldStorage.ChunkStorage.LoadChunk(chunkX, chunkY, this.DimensionId);
             }
             else
             {

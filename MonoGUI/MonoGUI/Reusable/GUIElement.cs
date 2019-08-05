@@ -12,7 +12,7 @@ namespace MonoGUI.MonoGUI.Reusable
     /// <summary>
     /// Implemented by all GUI elements.
     /// </summary>
-    public abstract class GUIElement
+    public abstract class GuiElement
     {
         /// <summary>
         /// The visibility of this button.
@@ -68,14 +68,14 @@ namespace MonoGUI.MonoGUI.Reusable
         /// <param name="priority">Determines if this GUI element should have priority over other GUI elements when sorting through input.</param>
         /// <param name="isContained">If true, this GUI element is within a container.</param>
         /// <param name="font">The Name of the font to use</param>
-        protected GUIElement(Rectangle drawingBounds, int priority, bool isContained, string font)
+        protected GuiElement(Rectangle drawingBounds, int priority, bool isContained, string font)
         {
             this.DrawingBounds = drawingBounds;
             this.MouseBounds = new ClickBounds(drawingBounds, priority);
 
             if (!isContained)
             {
-                BoundHandler.AddGUIElement(this);
+                BoundHandler.AddGuiElement(this);
             }
 
             if (!string.IsNullOrWhiteSpace(font))
@@ -84,7 +84,7 @@ namespace MonoGUI.MonoGUI.Reusable
             }
         }
 
-        protected GUIElement()
+        protected GuiElement()
         {
         }
 

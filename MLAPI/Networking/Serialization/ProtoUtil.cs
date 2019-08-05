@@ -20,7 +20,7 @@ namespace MLAPI.Networking.Serialization
         /// Value: The ID of a base message.
         /// Key: The type of the base message that the ID is connected with.
         /// </summary>
-        public static Dictionary<NetMessageID, Type> IDToMessage { get; private set; } = new Dictionary<NetMessageID, Type>();
+        public static Dictionary<NetMessageId, Type> IdToMessage { get; private set; } = new Dictionary<NetMessageId, Type>();
 
         /// <summary>
         /// Serializes the object to string.

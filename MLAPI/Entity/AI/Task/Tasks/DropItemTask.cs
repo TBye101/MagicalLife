@@ -22,32 +22,32 @@ namespace MLAPI.Entity.AI.Task.Tasks
         /// The ID of the item to drop.
         /// </summary>
         [ProtoMember(2)]
-        private int ItemID;
+        private readonly int ItemId;
 
         /// <summary>
         /// The amount of the item to drop.
         /// </summary>
         [ProtoMember(3)]
-        private int ItemAmount;
+        private readonly int ItemAmount;
 
         /// <param name="location">The location to drop the item at.</param>
         /// <param name="dimension">The dimension to drop the item in.</param>
         /// <param name="item">The item to drop.</param>
-        /// <param name="creatureID">The id of the creature with the object.</param>
-        public DropItemTask(Point3D location, Item item, Guid creatureID, Guid boundID)
-            : base(GetDependencies(boundID, location, creatureID),
-                  boundID, GetQualifications(creatureID), PriorityLayers.SpecificCreature)
+        /// <param name="creatureId">The id of the creature with the object.</param>
+        public DropItemTask(Point3D location, Item item, Guid creatureId, Guid boundId)
+            : base(GetDependencies(boundId, location, creatureId),
+                  boundId, GetQualifications(creatureId), PriorityLayers.SpecificCreature)
         {
             this.Location = location;
-            this.ItemID = item.ItemID;
+            this.ItemId = item.ItemId;
             this.ItemAmount = item.CurrentlyStacked;
         }
 
-        private static List<Qualification> GetQualifications(Guid creatureID)
+        private static List<Qualification> GetQualifications(Guid creatureId)
         {
             return new List<Qualification>
             {
-                new SpecificCreatureQualification(creatureID)
+                new SpecificCreatureQualification(creatureId)
             };
         }
 
@@ -56,10 +56,10 @@ namespace MLAPI.Entity.AI.Task.Tasks
             //Protobuf-net constructor
         }
 
-        protected static Dependencies GetDependencies(Guid boundID, Point3D target, Guid creatureID)
+        protected static Dependencies GetDependencies(Guid boundId, Point3D target, Guid creatureId)
         {
-            MoveTask move = new MoveTask(boundID, target, PriorityLayers.SpecificCreature);
-            move.Qualifications.Add(new SpecificCreatureQualification(creatureID));
+            MoveTask move = new MoveTask(boundId, target, PriorityLayers.SpecificCreature);
+            move.Qualifications.Add(new SpecificCreatureQualification(creatureId));
 
             ObservableCollection<MagicalTask> deps = new ObservableCollection<MagicalTask>
             {
@@ -81,14 +81,14 @@ namespace MLAPI.Entity.AI.Task.Tasks
 
         public override void Tick(Living l)
         {
-            List<Item> toDrop = l.Inventory.RemoveSomeOfItem(this.ItemID, this.ItemAmount);
+            List<Item> toDrop = l.Inventory.RemoveSomeOfItem(this.ItemId, this.ItemAmount);
 
             if (toDrop != null)
             {
                 //Drop all of the items that should be dropped.
                 foreach (Item item in toDrop)
                 {
-                    ItemAdder.AddItem(item, this.Location, this.Location.DimensionID);
+                    ItemAdder.AddItem(item, this.Location, this.Location.DimensionId);
                 }
             }
 

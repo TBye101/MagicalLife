@@ -8,11 +8,11 @@
         /// <summary>
         /// The ID of the <see cref="BaseMessage"/> that this handler knows what to do with.
         /// </summary>
-        public NetMessageID MessageID { get; protected set; }
+        public NetMessageId MessageId { get; protected set; }
 
-        public MessageHandler(NetMessageID ID)
+        public MessageHandler(NetMessageId id)
         {
-            this.MessageID = ID;
+            this.MessageId = id;
         }
 
         /// <summary>

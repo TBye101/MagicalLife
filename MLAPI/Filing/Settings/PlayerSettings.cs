@@ -10,6 +10,6 @@ namespace MLAPI.Filing.Settings
         /// <summary>
         /// The ID of the player.
         /// </summary>
-        public Guid PlayerID { get; set; }
+        public Guid PlayerId { get; set; }
     }
 }

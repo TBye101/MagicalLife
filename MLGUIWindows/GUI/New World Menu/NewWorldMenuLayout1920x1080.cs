@@ -5,7 +5,7 @@ using MLGUIWindows.GUI.New_World_Menu.Labels;
 
 namespace MLGUIWindows.GUI.New_World_Menu
 {
-    public class NewWorldMenuLayout1920x1080
+    public class NewWorldMenuLayout1920X1080
     {
         /// <summary>
         /// The Y position at which all world size <see cref="InputBox"/>s are displayed at.

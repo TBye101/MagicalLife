@@ -11,7 +11,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph
     {
         public DungeonNodeType NodeType { get; set; }
 
-        public Guid NodeID { get; set; }
+        public Guid NodeId { get; set; }
 
         public List<DungeonNode> Connections { get; set; }
 
@@ -20,7 +20,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph
         {
             this.NodeType = nodeType;
             this.Connections = new List<DungeonNode>();
-            this.NodeID = Guid.NewGuid();
+            this.NodeId = Guid.NewGuid();
         }
     }
 }

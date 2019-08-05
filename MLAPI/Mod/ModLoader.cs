@@ -50,11 +50,11 @@ namespace MLAPI.Mod
             foreach (IMod item in mods)
             {
                 ModInformation info = item.GetInfo();
-                if (idToMods.ContainsKey(info.ModID))
+                if (idToMods.ContainsKey(info.ModId))
                 {
-                    idToMods.TryGetValue(info.ModID, out IMod value);
-                    MasterLog.DebugWriteLine("Mod conflict: " + info.DisplayName + "(" + info.ModID +
-                        ") has an identical ModID to " + value.GetInfo().DisplayName + "(" + value.GetInfo().ModID + ")");
+                    idToMods.TryGetValue(info.ModId, out IMod value);
+                    MasterLog.DebugWriteLine("Mod conflict: " + info.DisplayName + "(" + info.ModId +
+                        ") has an identical ModID to " + value.GetInfo().DisplayName + "(" + value.GetInfo().ModId + ")");
                     mods.Remove(item);
                     mods.Remove(value);
                     MasterLog.DebugWriteLine("Refusing to load either mod due to the ModID conflict");

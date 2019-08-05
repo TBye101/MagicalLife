@@ -12,7 +12,7 @@ namespace MonoGUI.Game.Custom
     {
         private readonly IActionBarItem BarItem;
 
-        public RenderableIRecipe(Rectangle bounds, int textureID, bool isContained, IActionBarItem actionBarItem) : base(bounds, textureID, isContained)
+        public RenderableIRecipe(Rectangle bounds, int textureId, bool isContained, IActionBarItem actionBarItem) : base(bounds, textureId, isContained)
         {
             this.BarItem = actionBarItem;
             this.ClickEvent += this.RenderableIRecipe_ClickEvent;

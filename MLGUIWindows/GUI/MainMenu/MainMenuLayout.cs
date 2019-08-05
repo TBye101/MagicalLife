@@ -15,7 +15,7 @@ namespace MLGUIWindows.GUI.MainMenu
             switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
             {
                 default:
-                    MainMenuFont = Game1.AssetManager.Load<SpriteFont>(TextureLoader.FontMainMenuFont24x);
+                    MainMenuFont = Game1.AssetManager.Load<SpriteFont>(TextureLoader.FontMainMenuFont24X);
                     break;
             }
         }
@@ -32,10 +32,10 @@ namespace MLGUIWindows.GUI.MainMenu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return MainMenuLayout2560x1440.ButtonX;
+                        return MainMenuLayout2560X1440.ButtonX;
 
                     default:
-                        return MainMenuLayout1920x1080.ButtonX;
+                        return MainMenuLayout1920X1080.ButtonX;
                 }
             }
         }
@@ -50,10 +50,10 @@ namespace MLGUIWindows.GUI.MainMenu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return MainMenuLayout2560x1440.ButtonWidth;
+                        return MainMenuLayout2560X1440.ButtonWidth;
 
                     default:
-                        return MainMenuLayout1920x1080.ButtonWidth;
+                        return MainMenuLayout1920X1080.ButtonWidth;
                 }
             }
         }
@@ -68,10 +68,10 @@ namespace MLGUIWindows.GUI.MainMenu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return MainMenuLayout2560x1440.ButtonHeight;
+                        return MainMenuLayout2560X1440.ButtonHeight;
 
                     default:
-                        return MainMenuLayout1920x1080.ButtonHeight;
+                        return MainMenuLayout1920X1080.ButtonHeight;
                 }
             }
         }
@@ -86,10 +86,10 @@ namespace MLGUIWindows.GUI.MainMenu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return MainMenuLayout2560x1440.NewGameButtonY;
+                        return MainMenuLayout2560X1440.NewGameButtonY;
 
                     default:
-                        return MainMenuLayout1920x1080.NewGameButtonY;
+                        return MainMenuLayout1920X1080.NewGameButtonY;
                 }
             }
         }
@@ -104,10 +104,10 @@ namespace MLGUIWindows.GUI.MainMenu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return MainMenuLayout2560x1440.LoadGameButtonY;
+                        return MainMenuLayout2560X1440.LoadGameButtonY;
 
                     default:
-                        return MainMenuLayout1920x1080.LoadGameButtonY;
+                        return MainMenuLayout1920X1080.LoadGameButtonY;
                 }
             }
         }
@@ -122,10 +122,10 @@ namespace MLGUIWindows.GUI.MainMenu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return MainMenuLayout2560x1440.JoinGameButtonY;
+                        return MainMenuLayout2560X1440.JoinGameButtonY;
 
                     default:
-                        return MainMenuLayout1920x1080.JoinGameButtonY;
+                        return MainMenuLayout1920X1080.JoinGameButtonY;
                 }
             }
         }
@@ -140,10 +140,10 @@ namespace MLGUIWindows.GUI.MainMenu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return MainMenuLayout2560x1440.SettingButtonY;
+                        return MainMenuLayout2560X1440.SettingButtonY;
 
                     default:
-                        return MainMenuLayout1920x1080.SettingButtonY;
+                        return MainMenuLayout1920X1080.SettingButtonY;
                 }
             }
         }
@@ -158,10 +158,10 @@ namespace MLGUIWindows.GUI.MainMenu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return MainMenuLayout2560x1440.QuitButtonY;
+                        return MainMenuLayout2560X1440.QuitButtonY;
 
                     default:
-                        return MainMenuLayout1920x1080.QuitButtonY;
+                        return MainMenuLayout1920X1080.QuitButtonY;
                 }
             }
         }

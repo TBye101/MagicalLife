@@ -62,14 +62,14 @@ namespace MLAPI.Entity
         /// Returns all of the item contained in this inventory, and removes the item from this inventory.
         /// Returns an empty list if the item is not contained in this inventory.
         /// </summary>
-        /// <param name="itemID"></param>
+        /// <param name="itemId"></param>
         /// <returns></returns>
-        public List<Item> RemoveAllOfItem(int itemID)
+        public List<Item> RemoveAllOfItem(int itemId)
         {
-            if (this.Items.ContainsKey(itemID))
+            if (this.Items.ContainsKey(itemId))
             {
-                List<Item> stacks = this.Items[itemID];
-                this.Items.Remove(itemID);
+                List<Item> stacks = this.Items[itemId];
+                this.Items.Remove(itemId);
 
                 int amount = 0;
                 double weight = 0;
@@ -95,22 +95,22 @@ namespace MLAPI.Entity
         /// Removes all items requested from this inventory.
         /// Returns an empty collection if this inventory stores non of the requested item.
         /// </summary>
-        /// <param name="itemID"></param>
+        /// <param name="itemId"></param>
         /// <param name="amount">The amount to remove.</param>
         /// <returns></returns>
-        public List<Item> RemoveSomeOfItem(int itemID, int amount)
+        public List<Item> RemoveSomeOfItem(int itemId, int amount)
         {
-            int itemAmountContained = this.HasItem(itemID);
+            int itemAmountContained = this.HasItem(itemId);
 
             if (itemAmountContained > 0)
             {
                 if (itemAmountContained > amount)
                 {
-                    return this.RemoveSomeSplit(itemID, amount);
+                    return this.RemoveSomeSplit(itemId, amount);
                 }
                 else
                 {
-                    return this.RemoveAllOfItem(itemID);
+                    return this.RemoveAllOfItem(itemId);
                 }
             }
             else
@@ -122,14 +122,14 @@ namespace MLAPI.Entity
         /// <summary>
         /// Removes some when the inventory stores more of the item than the amount which is requested.
         /// </summary>
-        /// <param name="itemID"></param>
+        /// <param name="itemId"></param>
         /// <param name="amount"></param>
         /// <returns></returns>
-        private List<Item> RemoveSomeSplit(int itemID, int amount)
+        private List<Item> RemoveSomeSplit(int itemId, int amount)
         {
-            List<Item> Grabbed = new List<Item>();
-            List<Item> allContained = this.Items[itemID];
-            this.Items.Remove(itemID);
+            List<Item> grabbed = new List<Item>();
+            List<Item> allContained = this.Items[itemId];
+            this.Items.Remove(itemId);
 
             int totalGrabbed = 0;
             int i = 0;
@@ -141,7 +141,7 @@ namespace MLAPI.Entity
                 {
                     //The stack isn't too big, grab it
                     allContained.RemoveAt(i);
-                    Grabbed.Add(current);
+                    grabbed.Add(current);
                     totalGrabbed += current.CurrentlyStacked;
                     this.AdjustWeight(current.ItemWeight, current.CurrentlyStacked, false);
                 }
@@ -151,7 +151,7 @@ namespace MLAPI.Entity
                     (Item, Item) result = Item.Split(current, amount - totalGrabbed);
                     allContained.RemoveAt(i);
 
-                    Grabbed.Add(result.Item1);
+                    grabbed.Add(result.Item1);
                     totalGrabbed += result.Item1.CurrentlyStacked;
                     allContained.Add(result.Item2);
                     this.AdjustWeight(result.Item1.ItemWeight, result.Item1.CurrentlyStacked, false);
@@ -159,23 +159,23 @@ namespace MLAPI.Entity
                 i++;
             }
 
-            this.Items.Add(itemID, allContained);
+            this.Items.Add(itemId, allContained);
 
-            return Grabbed;
+            return grabbed;
         }
 
         /// <summary>
         /// Returns how much of a certain item is stored in this inventory.
         /// </summary>
-        /// <param name="itemID"></param>
+        /// <param name="itemId"></param>
         /// <returns></returns>
-        public int HasItem(int itemID)
+        public int HasItem(int itemId)
         {
             int count = 0;
 
-            if (this.Items.ContainsKey(itemID))
+            if (this.Items.ContainsKey(itemId))
             {
-                List<Item> stacks = this.Items[itemID];
+                List<Item> stacks = this.Items[itemId];
 
                 foreach (Item item in stacks)
                 {
@@ -194,7 +194,7 @@ namespace MLAPI.Entity
         {
             this.AdjustWeight(item.ItemWeight, item.CurrentlyStacked, true);
 
-            if (this.Items.ContainsKey(item.ItemID))
+            if (this.Items.ContainsKey(item.ItemId))
             {
                 this.AddItemContaining(item);
             }
@@ -205,7 +205,7 @@ namespace MLAPI.Entity
                     item
                 };
 
-                this.Items.Add(item.ItemID, toAdd);
+                this.Items.Add(item.ItemId, toAdd);
             }
         }
 
@@ -215,8 +215,8 @@ namespace MLAPI.Entity
         /// <param name="item"></param>
         private void AddItemContaining(Item item)
         {
-            List<Item> stored = this.Items[item.ItemID];
-            this.Items.Remove(item.ItemID);
+            List<Item> stored = this.Items[item.ItemId];
+            this.Items.Remove(item.ItemId);
 
             int resultIndex = -1;
             int length = stored.Count;
@@ -247,7 +247,7 @@ namespace MLAPI.Entity
                 {
                     stored.Add(overflow);
                 }
-                this.Items.Add(item.ItemID, stored);
+                this.Items.Add(item.ItemId, stored);
             }
         }
 

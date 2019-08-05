@@ -5,20 +5,20 @@ using MonoGUI.MonoGUI.Reusable;
 
 namespace MLGUIWindows.GUI.Join_Game_Menu.Input_Boxes
 {
-    public class IPInputBox : MonoInputBox
+    public class IpInputBox : MonoInputBox
     {
-        public IPInputBox(bool isLocked)
-            : base(TextureLoader.GUIInputBox100x50, TextureLoader.GUICursorCarrot, GetInitialLocation(),
-                  int.MaxValue, TextureLoader.FontMainMenuFont12x, isLocked, SimpleTextRenderer.Alignment.Left, true)
+        public IpInputBox(bool isLocked)
+            : base(TextureLoader.GuiInputBox100X50, TextureLoader.GuiCursorCarrot, GetInitialLocation(),
+                  int.MaxValue, TextureLoader.FontMainMenuFont12X, isLocked, SimpleTextRenderer.Alignment.Left, true)
         {
         }
 
         private static Rectangle GetInitialLocation()
         {
-            int x = JoinGameMenuLayout.IPInputBoxX;
-            int y = JoinGameMenuLayout.IPInputBoxY;
-            int width = JoinGameMenuLayout.IPInputBoxWidth;
-            int height = JoinGameMenuLayout.IPInputBoxHeight;
+            int x = JoinGameMenuLayout.IpInputBoxX;
+            int y = JoinGameMenuLayout.IpInputBoxY;
+            int width = JoinGameMenuLayout.IpInputBoxWidth;
+            int height = JoinGameMenuLayout.IpInputBoxHeight;
             return new Rectangle(x, y, width, height);
         }
     }

@@ -12,34 +12,34 @@ namespace MLAPI.Visual.Rendering
         /// <summary>
         /// The standard size of the tiles.
         /// </summary>
-        public static readonly Point tileSize = Tile.GetTileSize();
+        public static readonly Point TileSize = Tile.GetTileSize();
 
         public static Rectangle FullScreenWindow { get; set; }
 
         /// <summary>
         /// The standard color mask to apply to all tiles.
         /// </summary>
-        public static readonly Color colorMask = Color.White;
+        public static readonly Color ColorMask = Color.White;
 
         /// <summary>
         /// The zoom level of the map.
         /// </summary>
         public static float Zoom { get; set; } = 1F;
 
-        private static Guid _DimensionID;
+        private static Guid _DimensionId;
 
         /// <summary>
         /// The currently viewed dimension.
         /// </summary>
-        public static Guid DimensionID
+        public static Guid DimensionId
         {
             get
             {
-                return _DimensionID;
+                return _DimensionId;
             }
             set
             {
-                _DimensionID = value;
+                _DimensionId = value;
                 Camera2D.InitializeForDimension(value);
             }
         }
@@ -47,7 +47,7 @@ namespace MLAPI.Visual.Rendering
         /// <summary>
         /// The game's current FPS.
         /// </summary>
-        public static int GameFPS { get; private set; } = 60;
+        public static int GameFps { get; private set; } = 60;
 
         public static Camera Camera2D { get; set; } = new Camera();
 

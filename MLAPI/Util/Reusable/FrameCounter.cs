@@ -14,7 +14,7 @@ namespace MLAPI.Util.Reusable
         public float AverageFramesPerSecond { get; private set; }
         public float CurrentFramesPerSecond { get; private set; }
 
-        public static readonly int MAXIMUM_SAMPLES = 100;
+        public static readonly int MaximumSamples = 100;
 
         private readonly Queue<float> SampleBuffer = new Queue<float>();
 
@@ -24,7 +24,7 @@ namespace MLAPI.Util.Reusable
 
             this.SampleBuffer.Enqueue(this.CurrentFramesPerSecond);
 
-            if (this.SampleBuffer.Count > MAXIMUM_SAMPLES)
+            if (this.SampleBuffer.Count > MaximumSamples)
             {
                 this.SampleBuffer.Dequeue();
                 this.AverageFramesPerSecond = this.SampleBuffer.Average(i => i);

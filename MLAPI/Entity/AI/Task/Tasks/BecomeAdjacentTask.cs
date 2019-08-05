@@ -15,7 +15,7 @@ namespace MLAPI.Entity.AI.Task.Tasks
         [ProtoMember(1)]
         public Point3D Target { get; private set; }
 
-        public BecomeAdjacentTask(Guid boundID, Point3D target) : base(Dependencies.CreateEmpty(), boundID, new List<Qualification> { new CanMoveQualification() }, PriorityLayers.Default)
+        public BecomeAdjacentTask(Guid boundId, Point3D target) : base(Dependencies.CreateEmpty(), boundId, new List<Qualification> { new CanMoveQualification() }, PriorityLayers.Default)
         {
             this.Target = target;
         }
@@ -37,7 +37,7 @@ namespace MLAPI.Entity.AI.Task.Tasks
         public override bool CreateDependencies(Living l)
         {
             List<Point3D> result = WorldUtil.GetNeighboringTiles(this.Target);
-            result.RemoveAll(x => !World.Data.World.GetTile(l.DimensionID, x.X, x.Y).IsWalkable);
+            result.RemoveAll(x => !World.Data.World.GetTile(l.DimensionId, x.X, x.Y).IsWalkable);
 
             ComponentSelectable entitySelected = l.GetExactComponent<ComponentSelectable>();
             Point3D adjacentLocation = PathUtil.GetFirstReachable(result, entitySelected.MapLocation);
@@ -48,7 +48,7 @@ namespace MLAPI.Entity.AI.Task.Tasks
             }
             else
             {
-                MoveTask task = new MoveTask(this.BoundID, adjacentLocation);
+                MoveTask task = new MoveTask(this.BoundId, adjacentLocation);
                 this.Dependencies.PreRequisite.Add(task);
                 return true;
             }

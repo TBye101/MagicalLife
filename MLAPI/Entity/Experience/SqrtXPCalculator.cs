@@ -7,7 +7,7 @@ namespace MLAPI.Entity.Experience
     /// Calculates XP to the next level based on a sqrt function.
     /// </summary>
     [ProtoContract]
-    public class SqrtXPCalculator : IXPCalculator
+    public class SqrtXpCalculator : IXpCalculator
     {
         [ProtoMember(1)]
         private readonly int Constant;
@@ -16,17 +16,17 @@ namespace MLAPI.Entity.Experience
         ///
         /// </summary>
         /// <param name="constant">A constant to scale the results by.</param>
-        public SqrtXPCalculator(int constant)
+        public SqrtXpCalculator(int constant)
         {
             this.Constant = constant;
         }
 
-        protected SqrtXPCalculator()
+        protected SqrtXpCalculator()
         {
             //Protobuf-net constructor
         }
 
-        public ulong GetRequiredXP(int newLevel)
+        public ulong GetRequiredXp(int newLevel)
         {
             return (ulong)(this.Constant * (int)Math.Sqrt(newLevel));
         }

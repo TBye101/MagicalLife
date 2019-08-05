@@ -17,10 +17,10 @@ namespace MLCoreMod.Core.Tiles
         private void InitializeComponents()
         {
             ComponentRenderer renderer = this.GetComponent<ComponentRenderer>();
-            renderer.AddVisual(new StaticTexture(GetTextureID(), RenderLayer.DirtBase));
+            renderer.AddVisual(new StaticTexture(GetTextureId(), RenderLayer.DirtBase));
         }
 
-        private static int GetTextureID()
+        private static int GetTextureId()
         {
             return AssetManager.GetTextureIndex(TextureLoader.TextureTilledDirt);
         }

@@ -11,7 +11,7 @@ namespace MLGUIWindows.Screens
     /// </summary>
     public class LogoScreen
     {
-        protected const int FPS = 60;
+        protected const int Fps = 60;
 
         protected Rectangle DisplayZone { get; set; }
 
@@ -19,7 +19,7 @@ namespace MLGUIWindows.Screens
 
         protected string Text { get; set; }
 
-        protected SpriteFont Font = Game1.AssetManager.Load<SpriteFont>(TextureLoader.FontMainMenuFont12x);
+        protected SpriteFont Font = Game1.AssetManager.Load<SpriteFont>(TextureLoader.FontMainMenuFont12X);
 
         /// <summary>
         /// How many frames to show the splash screen.
@@ -42,7 +42,7 @@ namespace MLGUIWindows.Screens
         /// <param name="duration">How many seconds to show the logo.</param>
         public LogoScreen(string logo, float duration, string text = "")
         {
-            this.Frames = (int)duration * LogoScreen.FPS;
+            this.Frames = (int)duration * LogoScreen.Fps;
             this.Half = this.Frames / 2;
             this.Logo = Game1.AssetManager.Load<Texture2D>(logo);
             this.DisplayZone = this.CalculateDisplayLocation();
@@ -70,7 +70,7 @@ namespace MLGUIWindows.Screens
             spBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
 
             spBatch.Draw(this.Logo, this.DisplayZone.Center.ToVector2(), null, this.CalculateMask(), 0, new Vector2(this.Logo.Width / 2, this.Logo.Height / 2), 1.0f, SpriteEffects.None, 1.0f);
-            SimpleTextRenderer.DrawString(this.Font, this.Text, this.TextZone, SimpleTextRenderer.Alignment.Left, Color.White, spBatch, RenderLayer.GUI);
+            SimpleTextRenderer.DrawString(this.Font, this.Text, this.TextZone, SimpleTextRenderer.Alignment.Left, Color.White, spBatch, RenderLayer.Gui);
 
             this.Frames--;
             spBatch.End();

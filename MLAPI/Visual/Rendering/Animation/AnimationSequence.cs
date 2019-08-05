@@ -19,7 +19,7 @@ namespace MLAPI.Visual.Rendering.Animation
         /// The target FPS for this animation.
         /// </summary>
         [ProtoMember(2)]
-        public int FPS { get; private set; }
+        public int Fps { get; private set; }
 
         /// <summary>
         /// Used to determine when to change frames.
@@ -31,12 +31,12 @@ namespace MLAPI.Visual.Rendering.Animation
         private int CurrentFrame;
 
         /// <param name="frameOrder">The order the frames should be played in.</param>
-        /// <param name="FPS">The target FPS for this animation.</param>
-        public AnimationSequence(int[] frameOrder, int FPS)
+        /// <param name="fps">The target FPS for this animation.</param>
+        public AnimationSequence(int[] frameOrder, int fps)
         {
             this.FrameOrder = frameOrder;
-            this.FPS = FPS;
-            this.FrameTimer = new TickTimer(RenderInfo.GameFPS / FPS);
+            this.Fps = fps;
+            this.FrameTimer = new TickTimer(RenderInfo.GameFps / fps);
         }
 
         private AnimationSequence()
@@ -53,13 +53,13 @@ namespace MLAPI.Visual.Rendering.Animation
         /// <summary>
         ///
         /// </summary>
-        /// <param name="Frame">The position within a sprite sheet that should be played next.</param>
+        /// <param name="frame">The position within a sprite sheet that should be played next.</param>
         /// <returns>Returns true if the AnimationSequence has completed, and has been reset.</returns>
-        public bool Tick(out int Frame)
+        public bool Tick(out int frame)
         {
             bool done = this.ShiftFrame();
 
-            Frame = this.FrameOrder[this.CurrentFrame];
+            frame = this.FrameOrder[this.CurrentFrame];
             return done;
         }
 

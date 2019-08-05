@@ -8,7 +8,7 @@ namespace MLGUIWindows.GUI.Save_Game_Menu.InputBoxes
     public class NewSaveInputBox : MonoInputBox
     {
         public NewSaveInputBox() :
-            base(TextureLoader.GUIInputBox100x50, TextureLoader.GUICursorCarrot, GetInitialLocation(), int.MaxValue, TextureLoader.FontMainMenuFont12x,
+            base(TextureLoader.GuiInputBox100X50, TextureLoader.GuiCursorCarrot, GetInitialLocation(), int.MaxValue, TextureLoader.FontMainMenuFont12X,
                 false, SimpleTextRenderer.Alignment.Left, true)
         {
         }

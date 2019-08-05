@@ -8,7 +8,7 @@ namespace MLGUIWindows.GUI.In_Game_GUI
     /// <summary>
     /// The in game GUI container.
     /// </summary>
-    public class InGameGUIContainer : GuiContainer
+    public class InGameGuiContainer : GuiContainer
     {
         public MineActionButton MineActionButton { get; set; } = new MineActionButton();
 
@@ -16,8 +16,8 @@ namespace MLGUIWindows.GUI.In_Game_GUI
 
         public ChopActionButton ChopActionButton { get; set; } = new ChopActionButton();
 
-        public InGameGUIContainer(bool visible)
-            : base(TextureLoader.GUIMenuBackground, GetDrawingBounds(), false, true)
+        public InGameGuiContainer(bool visible)
+            : base(TextureLoader.GuiMenuBackground, GetDrawingBounds(), false, true)
         {
             this.Visible = visible;
             this.Controls.Add(this.MineActionButton);
@@ -31,17 +31,17 @@ namespace MLGUIWindows.GUI.In_Game_GUI
         /// <returns></returns>
         public static Rectangle GetDrawingBounds()
         {
-            int x = InGameGUILayout.ContainerX;
-            int y = InGameGUILayout.ContainerY;
-            int width = InGameGUILayout.ContainerWidth;
-            int height = InGameGUILayout.ContainerHeight;
+            int x = InGameGuiLayout.ContainerX;
+            int y = InGameGuiLayout.ContainerY;
+            int width = InGameGuiLayout.ContainerWidth;
+            int height = InGameGuiLayout.ContainerHeight;
 
             return new Rectangle(x, y, width, height);
         }
 
         public override string GetTextureName()
         {
-            return TextureLoader.GUIMenuBackground;
+            return TextureLoader.GuiMenuBackground;
         }
     }
 }

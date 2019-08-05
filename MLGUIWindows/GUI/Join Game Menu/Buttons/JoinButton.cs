@@ -16,7 +16,7 @@ namespace MLGUIWindows.GUI.Join_Game_Menu.Buttons
 {
     public class JoinButton : MonoButton
     {
-        public JoinButton() : base(TextureLoader.GUIMenuBackground, GetDisplayArea(), true, Resources.JoinGame)
+        public JoinButton() : base(TextureLoader.GuiMenuBackground, GetDisplayArea(), true, Resources.JoinGame)
         {
             this.ClickEvent += this.JoinButton_ClickEvent;
         }
@@ -24,20 +24,20 @@ namespace MLGUIWindows.GUI.Join_Game_Menu.Buttons
         private void JoinButton_ClickEvent(object sender, ClickEventArgs e)
         {
             World.Mode = EngineMode.ClientOnly;
-            FMODUtil.RaiseEvent(SoundsTable.UIClick);
+            FmodUtil.RaiseEvent(SoundsTable.UiClick);
             ClientSendRecieve.Initialize(new NetworkSettings(JoinGameMenu.Menu.IpInputBox.Text, int.Parse(JoinGameMenu.Menu.PortInputBox.Text)));
             Client.Load();
             MenuHandler.Clear();
-            InGameGUI.Initialize();
-            BoundHandler.Popup(InGameGUI.InGame);
+            InGameGui.Initialize();
+            BoundHandler.Popup(InGameGui.InGame);
         }
 
         private static Rectangle GetDisplayArea()
         {
             int x = JoinGameMenuLayout.JoinButtonX;
-            int y = JoinGameMenuLayout.IPInputBoxY;
-            int width = JoinGameMenuLayout.IPInputBoxWidth;
-            int height = JoinGameMenuLayout.IPInputBoxHeight;
+            int y = JoinGameMenuLayout.IpInputBoxY;
+            int width = JoinGameMenuLayout.IpInputBoxWidth;
+            int height = JoinGameMenuLayout.IpInputBoxHeight;
             return new Rectangle(x, y, width, height);
         }
     }

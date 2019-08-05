@@ -13,7 +13,7 @@
         /// <summary>
         /// The IP of the server.
         /// </summary>
-        public string ServerIP { get; set; }
+        public string ServerIp { get; set; }
 
         /// <summary>
         /// The port the server is listening on.
@@ -31,10 +31,10 @@
             this.Mode = EngineMode.ServerOnly;
         }
 
-        public NetworkSettings(string serverIP, int port)
+        public NetworkSettings(string serverIp, int port)
         {
             this.Mode = EngineMode.ClientOnly;
-            this.ServerIP = serverIP;
+            this.ServerIp = serverIp;
             this.Port = port;
         }
     }

@@ -3,7 +3,7 @@
     /// <summary>
     /// Holds some constants used to render the main menu when at the 1920 by 1080 resolution.
     /// </summary>
-    public static class MainMenuLayout1920x1080
+    public static class MainMenuLayout1920X1080
     {
         /// <summary>
         /// The x position at which the left part of the buttons on the main menu begin.

@@ -34,7 +34,7 @@ namespace MLAPI.DataTypes
         /// <summary>
         /// The (x, y) coordinates of the point.
         /// </summary>
-        internal float[] coordinates;
+        internal float[] Coordinates;
 
         /// <summary>
         /// Constructor.
@@ -44,9 +44,9 @@ namespace MLAPI.DataTypes
         /// <param name="z">The z coordinate of the point</param>
         public Point(float x, float y)
         {
-            this.coordinates = new float[DIMENSIONS];
-            this.coordinates[0] = x;
-            this.coordinates[1] = y;
+            this.Coordinates = new float[DIMENSIONS];
+            this.Coordinates[0] = x;
+            this.Coordinates[1] = y;
         }
 
         /// <summary>
@@ -54,11 +54,11 @@ namespace MLAPI.DataTypes
         /// <para>probable dimensions:</para>
         /// <para>X = 0, Y = 1, Z = 2</para>
         /// </summary>
-        public float? get(int dimension)
+        public float? Get(int dimension)
         {
-            if (this.coordinates.Length >= dimension)
+            if (this.Coordinates.Length >= dimension)
             {
-                return this.coordinates[dimension];
+                return this.Coordinates[dimension];
             }
 
             return null;

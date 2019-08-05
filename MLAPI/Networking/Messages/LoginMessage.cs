@@ -9,7 +9,7 @@ namespace MLAPI.Networking.Messages
     [ProtoContract]
     public class LoginMessage : BaseMessage
     {
-        public LoginMessage() : base(NetMessageID.LoginMessage)
+        public LoginMessage() : base(NetMessageId.LoginMessage)
         {
         }
     }

@@ -9,11 +9,11 @@ namespace MLAPITest.Genetic
 {
     public class TestGeneFactory : IGeneFactory
     {
-        private Random RNG { get; set; }
+        private Random Rng { get; set; }
 
         public TestGeneFactory()
         {
-            this.RNG = new Random();
+            this.Rng = new Random();
         }
 
         public Gene[] GenerateGenes(int length)
@@ -22,7 +22,7 @@ namespace MLAPITest.Genetic
 
             for (int i = 0; i < genes.Length; i++)
             {
-                genes[i] = new Gene(this.RNG.Next(0, 100));
+                genes[i] = new Gene(this.Rng.Next(0, 100));
             }
 
             return genes;

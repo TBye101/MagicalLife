@@ -19,12 +19,12 @@ namespace MLAPI.Visual.Rendering.Animation
         {
             get
             {
-                return AssetManager.Textures[this.TextureID];
+                return AssetManager.Textures[this.TextureId];
             }
         }
 
         [ProtoMember(1)]
-        public int TextureID { get; private set; }
+        public int TextureId { get; private set; }
 
         /// <summary>
         /// How many sprites wide is the sheet.
@@ -50,10 +50,10 @@ namespace MLAPI.Visual.Rendering.Animation
         [ProtoMember(5)]
         private int SpritePixelHeight { get; set; }
 
-        public SpriteSheet(int textureID, int sheetWidth, int sheetHeight,
+        public SpriteSheet(int textureId, int sheetWidth, int sheetHeight,
             int spritePixelWidth, int spritePixelHeight)
         {
-            this.TextureID = textureID;
+            this.TextureId = textureId;
             this.SheetWidth = sheetWidth;
             this.SheetHeight = sheetHeight;
             this.SpritePixelWidth = spritePixelWidth;

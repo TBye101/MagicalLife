@@ -20,18 +20,18 @@ namespace MonoGUI.MonoGUI.Input
         /// <summary>
         /// Contains all of the ClickBounds this class handles.
         /// </summary>
-        private static List<GUIElement> Bounds = new List<GUIElement>();
+        private static List<GuiElement> Bounds = new List<GuiElement>();
 
         /// <summary>
         /// All of the GUI windows.
         /// </summary>
-        public static List<GuiContainer> GUIWindows { get; private set; } = new List<GuiContainer>();
+        public static List<GuiContainer> GuiWindows { get; private set; } = new List<GuiContainer>();
 
         public static MouseListener MouseListener { get; set; }
 
         private static readonly BoundsSorter BoundSorter = new BoundsSorter();
 
-        private static readonly ContainerSorter containerSorter = new ContainerSorter();
+        private static readonly ContainerSorter ContainerSorter = new ContainerSorter();
 
         private static readonly ClickBoundsSorter ClickBoundsSorter = new ClickBoundsSorter();
 
@@ -84,7 +84,7 @@ namespace MonoGUI.MonoGUI.Input
         /// <returns></returns>
         private static void ContainerClick(MouseEventArgs clickData)
         {
-            foreach (GuiContainer item in GUIWindows)
+            foreach (GuiContainer item in GuiWindows)
             {
                 GuiContainer youngest = GetYoungestChild(item);
                 if (youngest.Visible && youngest.DrawingBounds.Contains(clickData.Position))
@@ -102,7 +102,7 @@ namespace MonoGUI.MonoGUI.Input
 
         private static void ContainerMouseScroll(MouseEventArgs e)
         {
-            foreach (GuiContainer item in GUIWindows)
+            foreach (GuiContainer item in GuiWindows)
             {
                 GuiContainer youngest = GetYoungestChild(item);
                 if (youngest.Visible && youngest.DrawingBounds.Contains(e.Position))
@@ -138,11 +138,11 @@ namespace MonoGUI.MonoGUI.Input
         /// Handles who gets the scroll event from the options provided.
         /// For use if a container is being used.
         /// </summary>
-        private static void Scroll(MouseEventArgs scrollData, List<GUIElement> options, GuiContainer container)
+        private static void Scroll(MouseEventArgs scrollData, List<GuiElement> options, GuiContainer container)
         {
             int focus = -1;
             int length = options.Count;
-            GUIElement item = null;
+            GuiElement item = null;
             MasterLog.DebugWriteLine("Scroll position: " + scrollData.Position.ToString());
 
             for (int i = 0; i < length; i++)
@@ -175,16 +175,16 @@ namespace MonoGUI.MonoGUI.Input
         /// For use if a container is being used.
         /// </summary>
         /// <param name="clickData"></param>
-        private static void Click(MouseEventArgs clickData, List<GUIElement> Options, GuiContainer container)
+        private static void Click(MouseEventArgs clickData, List<GuiElement> options, GuiContainer container)
         {
             int focus = -1;
-            int length = Options.Count;
-            GUIElement item = null;
+            int length = options.Count;
+            GuiElement item = null;
             MasterLog.DebugWriteLine("Click position: " + clickData.Position.ToString());
 
             for (int i = 0; i < length; i++)
             {
-                item = Options[i];
+                item = options[i];
 
                 MasterLog.DebugWriteLine(item.GetType().ToString() + " gui bounds: " + item.MouseBounds.Bounds.ToString());
 
@@ -202,14 +202,14 @@ namespace MonoGUI.MonoGUI.Input
 
             if (focus != -1)
             {
-                MasterLog.DebugWriteLine("Clicking on item: " + Options[focus].GetType().FullName);
-                Options[focus].Click(clickData, container);
+                MasterLog.DebugWriteLine("Clicking on item: " + options[focus].GetType().FullName);
+                options[focus].Click(clickData, container);
             }
         }
 
         private static void ContainerDoubleClick(MouseEventArgs clickData)
         {
-            foreach (GuiContainer item in GUIWindows)
+            foreach (GuiContainer item in GuiWindows)
             {
                 GuiContainer youngest = GetYoungestChild(item);
                 if (youngest.Visible && youngest.DrawingBounds.Contains(clickData.Position))
@@ -228,17 +228,17 @@ namespace MonoGUI.MonoGUI.Input
         /// Handles who gets the double click event.
         /// </summary>
         /// <param name="clickData"></param>
-        private static void DoubleClick(MouseEventArgs clickData, List<GUIElement> Options, GuiContainer container)
+        private static void DoubleClick(MouseEventArgs clickData, List<GuiElement> options, GuiContainer container)
         {
             int focus = -1;
-            int length = Options.Count;
-            GUIElement item = null;
+            int length = options.Count;
+            GuiElement item = null;
 
             MasterLog.DebugWriteLine("Double click position: " + clickData.Position.ToString());
 
             for (int i = 0; i < length; i++)
             {
-                item = Options[i];
+                item = options[i];
 
                 MasterLog.DebugWriteLine(item.GetType().ToString() + " gui bounds: " + item.MouseBounds.Bounds.ToString());
 
@@ -256,7 +256,7 @@ namespace MonoGUI.MonoGUI.Input
 
             if (focus != -1)
             {
-                Options[focus].DoubleClick(clickData, container);
+                options[focus].DoubleClick(clickData, container);
             }
         }
 
@@ -285,13 +285,13 @@ namespace MonoGUI.MonoGUI.Input
         /// <param name="container"></param>
         public static void AddContainer(GuiContainer container)
         {
-            int index = GUIWindows.BinarySearch(container, containerSorter);
+            int index = GuiWindows.BinarySearch(container, ContainerSorter);
             if (index < 0)
             {
                 index = ~index;
             }
 
-            GUIWindows.Insert(index, container);
+            GuiWindows.Insert(index, container);
         }
 
         /// <summary>
@@ -300,7 +300,7 @@ namespace MonoGUI.MonoGUI.Input
         /// <param name="container"></param>
         public static void RemoveContainer(GuiContainer container)
         {
-            GUIWindows.Remove(container);
+            GuiWindows.Remove(container);
 
             if (container.Visible)
             {
@@ -312,7 +312,7 @@ namespace MonoGUI.MonoGUI.Input
         /// Adds a <see cref="ClickBounds"/> object to the system to be handled.
         /// </summary>
         /// <param name="bounds"></param>
-        public static void AddGUIElement(GUIElement bounds)
+        public static void AddGuiElement(GuiElement bounds)
         {
             int index = Bounds.BinarySearch(bounds, BoundSorter);
             if (index < 0)
@@ -325,7 +325,7 @@ namespace MonoGUI.MonoGUI.Input
 
         private static void ShowLast()
         {
-            GUIWindows[GUIWindows.Count - 1].Visible = true;
+            GuiWindows[GuiWindows.Count - 1].Visible = true;
         }
 
         /// <summary>
@@ -335,28 +335,28 @@ namespace MonoGUI.MonoGUI.Input
         /// <param name="container"></param>
         public static void Popup(GuiContainer container)
         {
-            if (GUIWindows.Contains(container))
+            if (GuiWindows.Contains(container))
             {
                 MenuHandler.Clear();
                 container.Visible = true;
-                container.Priority = RenderingData.GetGUIContainerPriority();
+                container.Priority = RenderingData.GetGuiContainerPriority();
 
-                GUIWindows.Remove(container);
-                GUIWindows.Add(container);
+                GuiWindows.Remove(container);
+                GuiWindows.Add(container);
             }
             else
             {
                 MenuHandler.Clear();
                 container.Visible = true;
-                container.Priority = RenderingData.GetGUIContainerPriority();
+                container.Priority = RenderingData.GetGuiContainerPriority();
 
-                GUIWindows.Add(container);
+                GuiWindows.Add(container);
             }
         }
 
         public static void HideAll()
         {
-            foreach (GuiContainer item in GUIWindows)
+            foreach (GuiContainer item in GuiWindows)
             {
                 item.Visible = false;
             }

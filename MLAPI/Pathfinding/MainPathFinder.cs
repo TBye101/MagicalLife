@@ -85,7 +85,7 @@ namespace MLAPI.Pathfinding
                 List<PathLink> path = MainPathFinder.GetRoute(start, end);
                 ComponentMovement movementComponent = living.GetExactComponent<ComponentMovement>();
                 Util.Extensions.EnqueueCollection(movementComponent.QueuedMovement, path);
-                ClientSendRecieve.Send<RouteCreatedMessage>(new RouteCreatedMessage(path, living.ID, living.DimensionID));
+                ClientSendRecieve.Send<RouteCreatedMessage>(new RouteCreatedMessage(path, living.Id, living.DimensionId));
             });
         }
     }

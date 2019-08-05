@@ -10,12 +10,12 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.Mutations
     {
         private double ChanceToMutate { get; set; }
 
-        private Random RNG { get; set; }
+        private Random Rng { get; set; }
 
         public RoomGenChanceMutator(double chanceToMutate)
         {
             this.ChanceToMutate = chanceToMutate;
-            this.RNG = new Random();
+            this.Rng = new Random();
         }
 
         public void MutateChromosomes(List<Chromosome> chromosomes)
@@ -24,13 +24,13 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.Mutations
             {
                 Chromosome chromo = chromosomes[i];
 
-                double randomNumber = this.RNG.NextDouble();
+                double randomNumber = this.Rng.NextDouble();
 
                 if (randomNumber < this.ChanceToMutate)
                 {
-                    int randomIndex = this.RNG.Next(0, chromo.Genes.Length);
+                    int randomIndex = this.Rng.Next(0, chromo.Genes.Length);
                     RoomGenChance geneValue = (RoomGenChance)chromo.Genes[randomIndex].Value;
-                    geneValue.ChanceToGenerate = this.RNG.NextDouble();
+                    geneValue.ChanceToGenerate = this.Rng.NextDouble();
                     chromo.Genes[randomIndex].Value = geneValue;
                 }
             }

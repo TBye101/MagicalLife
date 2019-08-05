@@ -24,13 +24,13 @@ namespace MLAPI.GameRegistry.Items
         /// </summary>
         private static void RememberWhichTile(Item item, Point2D mapLocation, Chunk chunk)
         {
-            if (!chunk.Items.ContainsKey(item.ItemID))
+            if (!chunk.Items.ContainsKey(item.ItemId))
             {
                 //chunk.Items doesn't store one key and value for every item in the game upfront.
-                chunk.Items.Add(item.ItemID, new RTree<Point2D>());
+                chunk.Items.Add(item.ItemId, new RTree<Point2D>());
             }
 
-            RTree<Point2D> itemLocations = chunk.Items[item.ItemID];
+            RTree<Point2D> itemLocations = chunk.Items[item.ItemId];
             List<Point2D> result = itemLocations.Contains(new Rectangle(mapLocation.X, mapLocation.Y, mapLocation.X, mapLocation.Y));
 
             if (result.Count > 0)
@@ -51,10 +51,10 @@ namespace MLAPI.GameRegistry.Items
         /// Internally stores that a certain chunk has at least one item of the specified item ID.
         /// </summary>
         /// <param name="chunkLocation"></param>
-        /// <param name="itemID"></param>
-        private static void RememberWhichChunk(Point3D chunkLocation, int itemID)
+        /// <param name="itemId"></param>
+        private static void RememberWhichChunk(Point3D chunkLocation, int itemId)
         {
-            RTree<Point2D> chunkLocations = World.Data.World.Dimensions[chunkLocation.DimensionID].Items.ItemIDToChunk[itemID];
+            RTree<Point2D> chunkLocations = World.Data.World.Dimensions[chunkLocation.DimensionId].Items.ItemIdToChunk[itemId];
             List<Point2D> result = chunkLocations.Contains(new Rectangle(chunkLocation.X, chunkLocation.Y, chunkLocation.X, chunkLocation.Y));
             if (result.Count > 0)
             {
@@ -70,17 +70,17 @@ namespace MLAPI.GameRegistry.Items
         /// <summary>
         /// Adds an item to the specified map location.
         /// </summary>
-        public static void AddItem(Item item, Point2D mapLocation, Guid dimensionID)
+        public static void AddItem(Item item, Point2D mapLocation, Guid dimensionId)
         {
             if (World.Data.World.Mode != Networking.EngineMode.ServerOnly)
             {
-                NetworkAdd(item, mapLocation, dimensionID);
+                NetworkAdd(item, mapLocation, dimensionId);
             }
 
-            Point3D chunkLocation = Point3D.From2D(WorldUtil.CalculateChunkLocation(mapLocation), dimensionID);
-            Chunk chunk = World.Data.World.Dimensions[dimensionID].GetChunk(chunkLocation.X, chunkLocation.Y);
+            Point3D chunkLocation = Point3D.From2D(WorldUtil.CalculateChunkLocation(mapLocation), dimensionId);
+            Chunk chunk = World.Data.World.Dimensions[dimensionId].GetChunk(chunkLocation.X, chunkLocation.Y);
 
-            ItemAdder.RememberWhichChunk(chunkLocation, item.ItemID);
+            ItemAdder.RememberWhichChunk(chunkLocation, item.ItemId);
             ItemAdder.RememberWhichTile(item, mapLocation, chunk);
             ItemAdder.StoreItem(chunk, mapLocation, item);
         }
@@ -91,16 +91,16 @@ namespace MLAPI.GameRegistry.Items
         /// <param name="item"></param>
         /// <param name="mapLocation"></param>
         /// <param name="dimension"></param>
-        private static void NetworkAdd(Item item, Point2D mapLocation, Guid dimensionID)
+        private static void NetworkAdd(Item item, Point2D mapLocation, Guid dimensionId)
         {
             switch (World.Data.World.Mode)
             {
                 case Networking.EngineMode.ServerOnly:
-                    ServerSendRecieve.SendAll(new WorldModifierMessage(new ItemCreatedModifier(item, mapLocation, dimensionID)));
+                    ServerSendRecieve.SendAll(new WorldModifierMessage(new ItemCreatedModifier(item, mapLocation, dimensionId)));
                     break;
 
                 case Networking.EngineMode.ClientOnly:
-                    ClientSendRecieve.Send(new WorldModifierMessage(new ItemCreatedModifier(item, mapLocation, dimensionID)));
+                    ClientSendRecieve.Send(new WorldModifierMessage(new ItemCreatedModifier(item, mapLocation, dimensionId)));
                     break;
 
                 case Networking.EngineMode.ServerAndClient:
@@ -116,10 +116,10 @@ namespace MLAPI.GameRegistry.Items
         /// </summary>
         public static void AddItemWorldGen(Item item, Point3D mapLocation, ProtoArray<Chunk> map)
         {
-            Point3D chunkLocation = Point3D.From2D(WorldUtil.CalculateChunkLocation(mapLocation), mapLocation.DimensionID);
+            Point3D chunkLocation = Point3D.From2D(WorldUtil.CalculateChunkLocation(mapLocation), mapLocation.DimensionId);
             Chunk chunk = map[chunkLocation.X, chunkLocation.Y];
 
-            ItemAdder.RememberWhichChunk(chunkLocation, item.ItemID);
+            ItemAdder.RememberWhichChunk(chunkLocation, item.ItemId);
             ItemAdder.RememberWhichTile(item, mapLocation, chunk);
             ItemAdder.StoreItem(chunk, mapLocation, item);
         }

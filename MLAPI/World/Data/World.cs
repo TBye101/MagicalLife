@@ -50,8 +50,8 @@ namespace MLAPI.World.Data
         /// <returns>The dimension ID.</returns>
         public static int AddDimension(Dimension dimension)
         {
-            World.Dimensions.Add(dimension.ID, dimension);
-            World.DimensionAddedHandler(dimension.ID);
+            World.Dimensions.Add(dimension.Id, dimension);
+            World.DimensionAddedHandler(dimension.Id);
             return World.Dimensions.Count - 1;
         }
 
@@ -59,9 +59,9 @@ namespace MLAPI.World.Data
         /// Used to raise the <see cref="ChangeCameraDimension"/> event.
         /// </summary>
         /// <param name="dimension"></param>
-        public static void RaiseChangeCameraDimension(Guid dimensionID)
+        public static void RaiseChangeCameraDimension(Guid dimensionId)
         {
-            ChangeCameraDimension?.Invoke(null, dimensionID);
+            ChangeCameraDimension?.Invoke(null, dimensionId);
         }
 
         /// <summary>
@@ -71,9 +71,9 @@ namespace MLAPI.World.Data
         /// <param name="chunkX"></param>
         /// <param name="chunkY"></param>
         /// <returns></returns>
-        public static Chunk GetChunk(Guid dimensionID, int chunkX, int chunkY)
+        public static Chunk GetChunk(Guid dimensionId, int chunkX, int chunkY)
         {
-            return World.Dimensions[dimensionID].GetChunk(chunkX, chunkY);
+            return World.Dimensions[dimensionId].GetChunk(chunkX, chunkY);
         }
 
         /// <summary>
@@ -83,9 +83,9 @@ namespace MLAPI.World.Data
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public static Chunk GetChunkByTile(Guid dimensionID, int x, int y)
+        public static Chunk GetChunkByTile(Guid dimensionId, int x, int y)
         {
-            return World.Dimensions[dimensionID].GetChunkForLocation(x, y);
+            return World.Dimensions[dimensionId].GetChunkForLocation(x, y);
         }
 
         /// <summary>
@@ -95,14 +95,14 @@ namespace MLAPI.World.Data
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public static Tile GetTile(Guid dimensionID, int x, int y)
+        public static Tile GetTile(Guid dimensionId, int x, int y)
         {
-            return World.Dimensions[dimensionID][x, y];
+            return World.Dimensions[dimensionId][x, y];
         }
 
         public static Tile GetTile(Point3D location)
         {
-            return World.Dimensions[location.DimensionID][location.X, location.Y];
+            return World.Dimensions[location.DimensionId][location.X, location.Y];
         }
 
         /// <summary>
@@ -115,9 +115,9 @@ namespace MLAPI.World.Data
         public static void Initialize(int chunkWidth, int chunkHeight, DimensionGenerator generator, string dimensionName)
         {
             Random r = new Random();
-            Guid dimensionID = Guid.NewGuid();
-            Dimension firstDim = new Dimension(Lang._1stDimensionName, generator.Generate(chunkWidth, chunkHeight, dimensionName, r, dimensionID), dimensionID);
-            RenderInfo.DimensionID = firstDim.ID;
+            Guid dimensionId = Guid.NewGuid();
+            Dimension firstDim = new Dimension(Lang._1stDimensionName, generator.Generate(chunkWidth, chunkHeight, dimensionName, r, dimensionId), dimensionId);
+            RenderInfo.DimensionId = firstDim.Id;
         }
 
         /// <summary>

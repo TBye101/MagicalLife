@@ -23,7 +23,7 @@ namespace MLAPI.Visual.Rendering
 
         public int ViewportHeight { get; set; }
 
-        public Guid DimensionID { get; set; }
+        public Guid DimensionId { get; set; }
 
         /// <summary>
         /// The width of the dimension in tiles.
@@ -72,11 +72,11 @@ namespace MLAPI.Visual.Rendering
             this.InitializeForDimension(e);
         }
 
-        public void InitializeForDimension(Guid dimensionID)
+        public void InitializeForDimension(Guid dimensionId)
         {
-            this.DimensionID = dimensionID;
-            this.DimensionWidth = World.Data.World.Dimensions[this.DimensionID].Width;
-            this.DimensionHeight = World.Data.World.Dimensions[this.DimensionID].Height;
+            this.DimensionId = dimensionId;
+            this.DimensionWidth = World.Data.World.Dimensions[this.DimensionId].Width;
+            this.DimensionHeight = World.Data.World.Dimensions[this.DimensionId].Height;
         }
 
         // Call this method with negative values to zoom out

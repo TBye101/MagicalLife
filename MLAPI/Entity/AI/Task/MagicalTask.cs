@@ -24,14 +24,14 @@ namespace MLAPI.Entity.AI.Task
         public Dependencies Dependencies { get; protected set; }
 
         [ProtoMember(2)]
-        public Guid ID { get; private set; }
+        public Guid Id { get; private set; }
 
         /// <summary>
         /// An ID used to determine if multiple tasks must be completed by the same worker.
         /// If multiple tasks have the same BoundID, then they must all be completed by the same worker.
         /// </summary>
         [ProtoMember(3)]
-        public Guid BoundID { get; private set; }
+        public Guid BoundId { get; private set; }
 
         /// <summary>
         /// The criteria to determine if a worker is qualified to do a job.
@@ -71,13 +71,13 @@ namespace MLAPI.Entity.AI.Task
         ///
         /// </summary>
         /// <param name="preRequisites">The dependencies of this task.</param>
-        /// <param name="boundID">An ID used to determine if multiple tasks must be completed by the same worker.
-        /// If multiple tasks have the same <paramref name="boundID"/>,
+        /// <param name="boundId">An ID used to determine if multiple tasks must be completed by the same worker.
+        /// If multiple tasks have the same <paramref name="boundId"/>,
         /// then they must all be completed by the same worker.</param>
-        protected MagicalTask(Dependencies preRequisites, Guid boundID, List<Qualification> qualifications, int taskPriority)
+        protected MagicalTask(Dependencies preRequisites, Guid boundId, List<Qualification> qualifications, int taskPriority)
             : this(preRequisites, qualifications)
         {
-            this.BoundID = boundID;
+            this.BoundId = boundId;
             this.TaskPriority = taskPriority;
         }
 
@@ -90,7 +90,7 @@ namespace MLAPI.Entity.AI.Task
             this.Dependencies = preRequisites;
             this.Qualifications = qualifications;
             this.ReservedFor = Guid.Empty;
-            this.ID = Guid.NewGuid();
+            this.Id = Guid.NewGuid();
             this.ToilingWorker = Guid.Empty;
         }
 
@@ -111,8 +111,8 @@ namespace MLAPI.Entity.AI.Task
         /// <param name="l"></param>
         public void AssignTask(Living living)
         {
-            this.ReservedFor = living.ID;
-            this.ToilingWorker = living.ID;
+            this.ReservedFor = living.Id;
+            this.ToilingWorker = living.Id;
         }
 
         /// <summary>

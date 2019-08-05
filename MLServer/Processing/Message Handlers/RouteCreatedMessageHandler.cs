@@ -21,7 +21,7 @@ namespace MLServer.Processing.Message_Handlers
     /// </summary>
     public class RouteCreatedMessageHandler : MessageHandler
     {
-        public RouteCreatedMessageHandler() : base(NetMessageID.RouteCreatedMessage)
+        public RouteCreatedMessageHandler() : base(NetMessageId.RouteCreatedMessage)
         {
         }
 
@@ -29,15 +29,15 @@ namespace MLServer.Processing.Message_Handlers
         {
             RouteCreatedMessage msg = (RouteCreatedMessage)message;
 
-            if (this.Validated(msg.Path, msg.DimensionID))
+            if (this.Validated(msg.Path, msg.DimensionId))
             {
                 Point2D location = msg.Path[0].Origin;
                 Point2D chunkLocation = WorldUtil.CalculateChunkLocation(location);
-                Chunk chunk = World.GetChunk(msg.DimensionID, chunkLocation.X, chunkLocation.Y);
+                Chunk chunk = World.GetChunk(msg.DimensionId, chunkLocation.X, chunkLocation.Y);
 
                 Living l = chunk.Creatures.Where(t => t.Value.GetExactComponent<ComponentSelectable>().MapLocation.Equals(location)).ElementAt(0).Value;
 
-                if (l != null && l.ID == msg.LivingID)
+                if (l != null && l.Id == msg.LivingId)
                 {
                     ComponentMovement movementComponent = l.GetExactComponent<ComponentMovement>();
                     movementComponent.QueuedMovement.Clear();
@@ -50,12 +50,12 @@ namespace MLServer.Processing.Message_Handlers
             }
         }
 
-        private bool Validated(List<PathLink> msg, Guid dimensionID)
+        private bool Validated(List<PathLink> msg, Guid dimensionId)
         {
             foreach (PathLink item in msg)
             {
-                bool a = World.Dimensions[dimensionID][item.Origin.X, item.Origin.Y].IsWalkable;
-                bool b = World.Dimensions[dimensionID][item.Destination.X, item.Destination.Y].IsWalkable;
+                bool a = World.Dimensions[dimensionId][item.Origin.X, item.Origin.Y].IsWalkable;
+                bool b = World.Dimensions[dimensionId][item.Destination.X, item.Destination.Y].IsWalkable;
 
                 if (!a || !b)
                 {

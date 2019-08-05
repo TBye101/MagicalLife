@@ -7,18 +7,18 @@ namespace MLGUIWindows.GUI.MainMenu
     /// </summary>
     public static class MainMenu
     {
-        public static MainMenuContainer MainMenuID { get; private set; }
+        public static MainMenuContainer MainMenuId { get; private set; }
 
         internal static void Initialize()
         {
             MainMenuContainer mainMenu = new MainMenuContainer(true);
-            MainMenuID = mainMenu;
-            MenuHandler.DisplayMenu(MainMenuID);
+            MainMenuId = mainMenu;
+            MenuHandler.DisplayMenu(MainMenuId);
         }
 
         internal static void ToggleMainMenu()
         {
-            MenuHandler.DisplayMenu(MainMenuID);
+            MenuHandler.DisplayMenu(MainMenuId);
         }
     }
 }

@@ -19,8 +19,8 @@ namespace MLAPI.Entity.AI.Task.Tasks
         [ProtoMember(2)]
         protected int Quantity { get; set; }
 
-        public CraftSimpleItemTask(Guid boundID, SimpleItemRecipe simpleRecipe, int quantity)
-            : base(Dependencies.CreateEmpty(), boundID, new List<Qualification>(), PriorityLayers.Default)
+        public CraftSimpleItemTask(Guid boundId, SimpleItemRecipe simpleRecipe, int quantity)
+            : base(Dependencies.CreateEmpty(), boundId, new List<Qualification>(), PriorityLayers.Default)
         {
             this.SimpleRecipe = simpleRecipe;
             this.Quantity = quantity;
@@ -52,8 +52,8 @@ namespace MLAPI.Entity.AI.Task.Tasks
         {
             foreach (RequiredItem requiredItem in this.SimpleRecipe.RequiredItems)
             {
-                this.Dependencies.PreRequisite.Add(new GrabItemQuantity(this.BoundID, requiredItem.Item.ItemID, requiredItem.Count, l.DimensionID));
-                this.Qualifications.Add(new IsItemAvailibleQualification(requiredItem.Item.ItemID, l.DimensionID));
+                this.Dependencies.PreRequisite.Add(new GrabItemQuantity(this.BoundId, requiredItem.Item.ItemId, requiredItem.Count, l.DimensionId));
+                this.Qualifications.Add(new IsItemAvailibleQualification(requiredItem.Item.ItemId, l.DimensionId));
             }
             return true;
         }

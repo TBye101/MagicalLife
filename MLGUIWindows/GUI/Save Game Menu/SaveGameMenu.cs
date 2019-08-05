@@ -2,11 +2,11 @@
 {
     public static class SaveGameMenu
     {
-        public static SaveGameMenuContainer menu { get; private set; }
+        public static SaveGameMenuContainer Menu { get; private set; }
 
         internal static void Initialize()
         {
-            menu = new SaveGameMenuContainer();
+            Menu = new SaveGameMenuContainer();
         }
     }
 }

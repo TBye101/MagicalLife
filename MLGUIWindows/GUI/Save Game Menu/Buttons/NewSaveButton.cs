@@ -11,7 +11,7 @@ namespace MLGUIWindows.GUI.Save_Game_Menu.Buttons
 {
     public class NewSaveButton : MonoButton
     {
-        public NewSaveButton() : base(TextureLoader.GUIMenuButton, GetDrawingBounds(), true, Resources.NewSave)
+        public NewSaveButton() : base(TextureLoader.GuiMenuButton, GetDrawingBounds(), true, Resources.NewSave)
         {
             this.ClickEvent += this.NewSaveButton_ClickEvent;
         }
@@ -33,9 +33,9 @@ namespace MLGUIWindows.GUI.Save_Game_Menu.Buttons
 
         private void NewSave()
         {
-            if (!string.IsNullOrWhiteSpace(SaveGameMenu.menu.SaveInputBox.Text))
+            if (!string.IsNullOrWhiteSpace(SaveGameMenu.Menu.SaveInputBox.Text))
             {
-                WorldStorage.SerializeWorld(SaveGameMenu.menu.SaveInputBox.Text, new WorldDiskSink());
+                WorldStorage.SerializeWorld(SaveGameMenu.Menu.SaveInputBox.Text, new WorldDiskSink());
             }
             MenuHandler.Back();
         }

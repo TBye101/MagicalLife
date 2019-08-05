@@ -23,6 +23,6 @@
         public static readonly int Ceiling = 5000;
 
         public static readonly int MapItemCount = int.MaxValue - 1;
-        public static readonly int GUI = int.MaxValue;
+        public static readonly int Gui = int.MaxValue;
     }
 }

@@ -9,7 +9,7 @@ namespace MonoGUI.MonoGUI.Reusable
     /// <summary>
     /// A generic label class.
     /// </summary>
-    public class MonoLabel : GUIElement
+    public class MonoLabel : GuiElement
     {
         /// <summary>
         /// The text contained in this label box.
@@ -28,7 +28,7 @@ namespace MonoGUI.MonoGUI.Reusable
         /// <param name="image"></param>
         /// <param name="font"></param>
         /// <param name="isContained">If true, this GUI element is within a container.</param>
-        public MonoLabel(Rectangle bounds, string image, bool isContained, string text) : base(bounds, int.MinValue, isContained, TextureLoader.FontMainMenuFont12x)
+        public MonoLabel(Rectangle bounds, string image, bool isContained, string text) : base(bounds, int.MinValue, isContained, TextureLoader.FontMainMenuFont12X)
         {
             this.Text = text;
         }
@@ -44,7 +44,7 @@ namespace MonoGUI.MonoGUI.Reusable
             int width = this.DrawingBounds.Width;
             int height = this.DrawingBounds.Height;
 
-            Rectangle Bounds = new Rectangle(x, y, width, height);
+            Rectangle bounds = new Rectangle(x, y, width, height);
 
             if (width == 0 || height == 0)
             {
@@ -53,7 +53,7 @@ namespace MonoGUI.MonoGUI.Reusable
 
             if (this.Text != null)
             {
-                SimpleTextRenderer.DrawString(this.Font, this.Text, Bounds, this.TextAlignment, Color.White, spBatch, RenderLayer.GUI);
+                SimpleTextRenderer.DrawString(this.Font, this.Text, bounds, this.TextAlignment, Color.White, spBatch, RenderLayer.Gui);
             }
         }
     }

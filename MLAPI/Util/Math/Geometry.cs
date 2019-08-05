@@ -17,19 +17,19 @@ namespace MLAPI.Util.Math
         /// <returns></returns>
         public static List<Point2D> GetAllPointsOnRectangle(MagicRectangle rectangle)
         {
-            Point2D TopRight = new Point2D(rectangle.BottomRight.X, rectangle.TopLeft.Y);
-            Point2D BottomLeft = new Point2D(rectangle.TopLeft.X, rectangle.BottomRight.Y);
+            Point2D topRight = new Point2D(rectangle.BottomRight.X, rectangle.TopLeft.Y);
+            Point2D bottomLeft = new Point2D(rectangle.TopLeft.X, rectangle.BottomRight.Y);
 
-            HashSet<Point2D> TopLine = new HashSet<Point2D>(GetPointsOnHorizontalLine(rectangle.TopLeft, TopRight));
-            HashSet<Point2D> RightLine = new HashSet<Point2D>(GetPointsOnVerticalLine(TopRight, rectangle.BottomRight));
-            HashSet<Point2D> BottomLine = new HashSet<Point2D>(GetPointsOnHorizontalLine(BottomLeft, rectangle.BottomRight));
-            HashSet<Point2D> LeftLine = new HashSet<Point2D>(GetPointsOnVerticalLine(rectangle.TopLeft, BottomLeft));
+            HashSet<Point2D> topLine = new HashSet<Point2D>(GetPointsOnHorizontalLine(rectangle.TopLeft, topRight));
+            HashSet<Point2D> rightLine = new HashSet<Point2D>(GetPointsOnVerticalLine(topRight, rectangle.BottomRight));
+            HashSet<Point2D> bottomLine = new HashSet<Point2D>(GetPointsOnHorizontalLine(bottomLeft, rectangle.BottomRight));
+            HashSet<Point2D> leftLine = new HashSet<Point2D>(GetPointsOnVerticalLine(rectangle.TopLeft, bottomLeft));
 
-            TopLine.UnionWith(RightLine);
-            TopLine.UnionWith(BottomLine);
-            TopLine.UnionWith(LeftLine);
+            topLine.UnionWith(rightLine);
+            topLine.UnionWith(bottomLine);
+            topLine.UnionWith(leftLine);
 
-            return TopLine.ToList();
+            return topLine.ToList();
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace MLAPI.Util.Math
         /// <summary>
         /// Returns a list of the points within the elipse of specified thickness and origin.
         /// </summary>
-        public static List<Point3D> GetPointsOnElipse(int elipseWidth, int elipseHeight, int elipseThickness, Guid dimensionID, int dimensionWidth, int dimensionHeight, Point3D origin)
+        public static List<Point3D> GetPointsOnElipse(int elipseWidth, int elipseHeight, int elipseThickness, Guid dimensionId, int dimensionWidth, int dimensionHeight, Point3D origin)
         {
             //(((x - h)^2) / a^2) + (((y - k)^2) / b^2) = 1
             //ellipse center at (h, k)
@@ -198,7 +198,7 @@ namespace MLAPI.Util.Math
                         if (elipse1Result >= 1)
                         {
                             //On or outside elipse1
-                            points.Add(new Point3D(x, y, dimensionID));
+                            points.Add(new Point3D(x, y, dimensionId));
                         }
                     }
                 }

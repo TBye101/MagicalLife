@@ -12,13 +12,13 @@ namespace MLAPI.Networking.Messages
         public ItemRegistry ItemReg { get; private set; }
 
         [ProtoMember(2)]
-        public Guid DimensionID { get; private set; }
+        public Guid DimensionId { get; private set; }
 
-        public WorldTransferRegistryMessage(ItemRegistry itemReg, Guid dimensionID)
-            : base(NetMessageID.WorldTransferRegistryMessage)
+        public WorldTransferRegistryMessage(ItemRegistry itemReg, Guid dimensionId)
+            : base(NetMessageId.WorldTransferRegistryMessage)
         {
             this.ItemReg = itemReg;
-            this.DimensionID = dimensionID;
+            this.DimensionId = dimensionId;
         }
 
         public WorldTransferRegistryMessage()

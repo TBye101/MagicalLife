@@ -13,11 +13,11 @@ namespace MLAPI.World.Generation.Dungeon
     /// </summary>
     public abstract class DungeonGenerator
     {
-        public Guid ID { get; }
+        public Guid Id { get; }
 
         protected DungeonGenerator()
         {
-            this.ID = Guid.NewGuid();
+            this.Id = Guid.NewGuid();
         }
 
         /// <summary>
@@ -26,12 +26,12 @@ namespace MLAPI.World.Generation.Dungeon
         /// <param name="exitLocation">The location within the dungeon of the dungeon stairs.</param>
         /// <param name="entranceLocation">The location outside of the dungeon that leads into the dungeon.</param>
         /// <returns></returns>
-        public ProtoArray<Chunk> Generate(int width, int height, string dimensionName, Random r, Guid dimensionID, Point3D exitLocation, Point3D entranceLocation)
+        public ProtoArray<Chunk> Generate(int width, int height, string dimensionName, Random r, Guid dimensionId, Point3D exitLocation, Point3D entranceLocation)
         {
-            return this.GenerateDungeon(this.GenerateBlank(width, height), dimensionName, r, dimensionID, exitLocation, entranceLocation);
+            return this.GenerateDungeon(this.GenerateBlank(width, height), dimensionName, r, dimensionId, exitLocation, entranceLocation);
         }
 
-        protected abstract ProtoArray<Chunk> GenerateDungeon(ProtoArray<Chunk> blankWorld, string dimensionName, Random r, Guid dimensionID, Point3D exitLocation, Point3D entranceLocation);
+        protected abstract ProtoArray<Chunk> GenerateDungeon(ProtoArray<Chunk> blankWorld, string dimensionName, Random r, Guid dimensionId, Point3D exitLocation, Point3D entranceLocation);
 
         private ProtoArray<Chunk> GenerateBlank(int chunkWidth, int chunkHeight)
         {

@@ -23,7 +23,7 @@ namespace MLAPI.Crafting
         /// The itemID of the item that this recipe constructs.
         /// </summary>
         [ProtoMember(2)]
-        public int OutputItemID { get; internal set; }
+        public int OutputItemId { get; internal set; }
 
         /// <summary>
         /// An example of the output that this recipe creates.
@@ -34,7 +34,7 @@ namespace MLAPI.Crafting
         private Item ExampleOutput { get; set; }
 
         [ProtoMember(4)]
-        private Guid ID { get; set; }
+        private Guid Id { get; set; }
 
         /// <summary>
         /// Keywords that can be used to more easily find this recipe.
@@ -46,7 +46,7 @@ namespace MLAPI.Crafting
         {
             this.RequiredItems = requiredItems;
             this.ExampleOutput = exampleOutput;
-            this.ID = constantGuid;
+            this.Id = constantGuid;
             this.RecipeKeywords = recipeKeywords;
         }
 
@@ -62,7 +62,7 @@ namespace MLAPI.Crafting
             {
                 foreach (RequiredItem requiredItem in this.RequiredItems)
                 {
-                    inventory.RemoveSomeOfItem(requiredItem.Item.ItemID, requiredItem.Count);
+                    inventory.RemoveSomeOfItem(requiredItem.Item.ItemId, requiredItem.Count);
                 }
 
                 Item output = this.ExampleOutput.GetDeepCopy(craftAmount);
@@ -87,7 +87,7 @@ namespace MLAPI.Crafting
             foreach (RequiredItem requiredItem in this.RequiredItems)
             {
                 //The amount the inventory has of the item.
-                int quantityStored = inventory.HasItem(requiredItem.Item.ItemID);
+                int quantityStored = inventory.HasItem(requiredItem.Item.ItemId);
                 //The amount of this recipe we could craft if this were the only item.
                 int craftable = quantityStored / requiredItem.Count;
 
@@ -105,12 +105,12 @@ namespace MLAPI.Crafting
             return this.ExampleOutput;
         }
 
-        public Guid GetUniqueID()
+        public Guid GetUniqueId()
         {
-            return this.ID;
+            return this.Id;
         }
 
-        public int GetDisplayTextureID()
+        public int GetDisplayTextureId()
         {
             return AssetManager.NameToIndex[this.ExampleOutput.TextureName];
         }

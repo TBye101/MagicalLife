@@ -10,16 +10,16 @@ namespace MLGUIWindows.GUI.MainMenu.Buttons
 {
     public class SettingsButton : MonoButton
     {
-        public SettingsButton() : base(TextureLoader.GUIMenuButton, GetLocation(), true, Resources.Settings)
+        public SettingsButton() : base(TextureLoader.GuiMenuButton, GetLocation(), true, Resources.Settings)
         {
             this.ClickEvent += this.SettingsGameButton_ClickEvent;
         }
 
         private void SettingsGameButton_ClickEvent(object sender, ClickEventArgs e)
         {
-            FMODUtil.RaiseEvent(SoundsTable.UIClick);
+            FmodUtil.RaiseEvent(SoundsTable.UiClick);
             SettingsGameMenu.Initialize(true);
-            MainMenu.MainMenuID.PopupChild(SettingsGameMenu.Menu);
+            MainMenu.MainMenuId.PopupChild(SettingsGameMenu.Menu);
         }
 
         private static Rectangle GetLocation()

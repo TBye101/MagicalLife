@@ -12,41 +12,41 @@ namespace MLCoreMod.Core.Load
     {
         public void InitialStartup()
         {
-            StaticTexture MapleStump = new StaticTexture(AssetManager.NameToIndex[TextureLoader.MapleStump], RenderLayer.TreeStump);
-            StaticTexture MapleTrunk = new StaticTexture(AssetManager.NameToIndex[TextureLoader.MapleTrunk], RenderLayer.TreeTrunk);
-            StaticTexture MapleLeaves = new StaticTexture(AssetManager.NameToIndex[TextureLoader.MapleLeaves1], RenderLayer.TreeLeaves);
+            StaticTexture mapleStump = new StaticTexture(AssetManager.NameToIndex[TextureLoader.MapleStump], RenderLayer.TreeStump);
+            StaticTexture mapleTrunk = new StaticTexture(AssetManager.NameToIndex[TextureLoader.MapleTrunk], RenderLayer.TreeTrunk);
+            StaticTexture mapleLeaves = new StaticTexture(AssetManager.NameToIndex[TextureLoader.MapleLeaves1], RenderLayer.TreeLeaves);
 
-            OffsetTexture OffsetMapleStump = new OffsetTexture(RenderLayer.TreeStump, MapleStump, MapleTree.XOffset, MapleTree.YOffset);
-            OffsetTexture OffsetMapleTrunk = new OffsetTexture(RenderLayer.TreeTrunk, MapleTrunk, MapleTree.XOffset, MapleTree.YOffset);
-            OffsetTexture OffsetMapleLeaves = new OffsetTexture(RenderLayer.TreeLeaves, MapleLeaves, MapleTree.XOffset, MapleTree.YOffset);
+            OffsetTexture offsetMapleStump = new OffsetTexture(RenderLayer.TreeStump, mapleStump, MapleTree.XOffset, MapleTree.YOffset);
+            OffsetTexture offsetMapleTrunk = new OffsetTexture(RenderLayer.TreeTrunk, mapleTrunk, MapleTree.XOffset, MapleTree.YOffset);
+            OffsetTexture offsetMapleLeaves = new OffsetTexture(RenderLayer.TreeLeaves, mapleLeaves, MapleTree.XOffset, MapleTree.YOffset);
 
-            MapleTree.OffsetStump = OffsetMapleStump;
-            MapleTree.OffsetTrunk = OffsetMapleTrunk;
-            MapleTree.OffsetLeaves = OffsetMapleLeaves;
+            MapleTree.OffsetStump = offsetMapleStump;
+            MapleTree.OffsetTrunk = offsetMapleTrunk;
+            MapleTree.OffsetLeaves = offsetMapleLeaves;
 
-            StaticTexture OakStump = new StaticTexture(AssetManager.NameToIndex[TextureLoader.OakStump], RenderLayer.TreeStump);
-            StaticTexture OakTrunk = new StaticTexture(AssetManager.NameToIndex[TextureLoader.OakTrunk], RenderLayer.TreeTrunk);
-            StaticTexture OakLeaves = new StaticTexture(AssetManager.NameToIndex[TextureLoader.OakLeaves1], RenderLayer.TreeLeaves);
+            StaticTexture oakStump = new StaticTexture(AssetManager.NameToIndex[TextureLoader.OakStump], RenderLayer.TreeStump);
+            StaticTexture oakTrunk = new StaticTexture(AssetManager.NameToIndex[TextureLoader.OakTrunk], RenderLayer.TreeTrunk);
+            StaticTexture oakLeaves = new StaticTexture(AssetManager.NameToIndex[TextureLoader.OakLeaves1], RenderLayer.TreeLeaves);
 
-            OffsetTexture OffsetOakStump = new OffsetTexture(RenderLayer.TreeStump, OakStump, OakTree.XOffset, OakTree.YOffset);
-            OffsetTexture OffsetOakTrunk = new OffsetTexture(RenderLayer.TreeTrunk, OakTrunk, OakTree.XOffset, OakTree.YOffset);
-            OffsetTexture OffsetOakLeaves = new OffsetTexture(RenderLayer.TreeLeaves, OakLeaves, OakTree.XOffset, OakTree.YOffset);
+            OffsetTexture offsetOakStump = new OffsetTexture(RenderLayer.TreeStump, oakStump, OakTree.XOffset, OakTree.YOffset);
+            OffsetTexture offsetOakTrunk = new OffsetTexture(RenderLayer.TreeTrunk, oakTrunk, OakTree.XOffset, OakTree.YOffset);
+            OffsetTexture offsetOakLeaves = new OffsetTexture(RenderLayer.TreeLeaves, oakLeaves, OakTree.XOffset, OakTree.YOffset);
 
-            OakTree.OffsetStump = OffsetOakStump;
-            OakTree.OffsetTrunk = OffsetOakTrunk;
-            OakTree.OffsetLeaves = OffsetOakLeaves;
+            OakTree.OffsetStump = offsetOakStump;
+            OakTree.OffsetTrunk = offsetOakTrunk;
+            OakTree.OffsetLeaves = offsetOakLeaves;
 
-            StaticTexture PineStump = new StaticTexture(AssetManager.NameToIndex[TextureLoader.PineStump], RenderLayer.TreeStump);
-            StaticTexture PineTrunk = new StaticTexture(AssetManager.NameToIndex[TextureLoader.PineTrunk], RenderLayer.TreeTrunk);
-            StaticTexture PineLeaves = new StaticTexture(AssetManager.NameToIndex[TextureLoader.PineLeaves1], RenderLayer.TreeLeaves);
+            StaticTexture pineStump = new StaticTexture(AssetManager.NameToIndex[TextureLoader.PineStump], RenderLayer.TreeStump);
+            StaticTexture pineTrunk = new StaticTexture(AssetManager.NameToIndex[TextureLoader.PineTrunk], RenderLayer.TreeTrunk);
+            StaticTexture pineLeaves = new StaticTexture(AssetManager.NameToIndex[TextureLoader.PineLeaves1], RenderLayer.TreeLeaves);
 
-            OffsetTexture OffsetPineStump = new OffsetTexture(RenderLayer.TreeStump, PineStump, PineTree.XOffset, PineTree.YOffset);
-            OffsetTexture OffsetPineTrunk = new OffsetTexture(RenderLayer.TreeTrunk, PineTrunk, PineTree.XOffset, PineTree.YOffset);
-            OffsetTexture OffsetPineLeaves = new OffsetTexture(RenderLayer.TreeLeaves, PineLeaves, PineTree.XOffset, PineTree.YOffset);
+            OffsetTexture offsetPineStump = new OffsetTexture(RenderLayer.TreeStump, pineStump, PineTree.XOffset, PineTree.YOffset);
+            OffsetTexture offsetPineTrunk = new OffsetTexture(RenderLayer.TreeTrunk, pineTrunk, PineTree.XOffset, PineTree.YOffset);
+            OffsetTexture offsetPineLeaves = new OffsetTexture(RenderLayer.TreeLeaves, pineLeaves, PineTree.XOffset, PineTree.YOffset);
 
-            PineTree.OffsetStump = OffsetPineStump;
-            PineTree.OffsetTrunk = OffsetPineTrunk;
-            PineTree.OffsetLeaves = OffsetPineLeaves;
+            PineTree.OffsetStump = offsetPineStump;
+            PineTree.OffsetTrunk = offsetPineTrunk;
+            PineTree.OffsetLeaves = offsetPineLeaves;
         }
     }
 }

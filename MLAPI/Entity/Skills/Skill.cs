@@ -39,7 +39,7 @@ namespace MLAPI.Entity.Skills
         /// Do not use this to get current level, use <see cref="SkillAmount"/>.
         /// </summary>
         [ProtoMember(6)]
-        public XP Experience { get; private set; }
+        public Xp Experience { get; private set; }
 
         /// <summary>
         /// The current level of the skill.
@@ -60,13 +60,13 @@ namespace MLAPI.Entity.Skills
         /// <param name="learnable">If true the creature is capable of learning the skill.</param>
         /// <param name="internalName"></param>
         /// <param name="xpProgression"></param>
-        public Skill(string displayName, ComboAttribute skillAmount, bool learnable, string internalName, IXPCalculator xpProgression)
+        public Skill(string displayName, ComboAttribute skillAmount, bool learnable, string internalName, IXpCalculator xpProgression)
         {
             this.DisplayName = displayName;
             this.SkillAmount = skillAmount;
             this.Learnable = learnable;
             this.InternalName = internalName;
-            this.Experience = new XP(1, skillAmount.BaseValue.GetValue(), xpProgression);
+            this.Experience = new Xp(1, skillAmount.BaseValue.GetValue(), xpProgression);
         }
 
         protected Skill()
@@ -74,15 +74,15 @@ namespace MLAPI.Entity.Skills
             //Protobuf-net Constructor
         }
 
-        public void GainXP(UInt64 xp)
+        public void GainXp(UInt64 xp)
         {
-            this.Experience.AddXP(xp);
+            this.Experience.AddXp(xp);
             this.SkillAmount.SetBaseValue(Convert.ToInt32(this.Experience.CurrentLevel));
         }
 
-        public void RemoveXP(UInt64 xp)
+        public void RemoveXp(UInt64 xp)
         {
-            this.Experience.RemoveXP(xp);
+            this.Experience.RemoveXp(xp);
             this.SkillAmount.SetBaseValue(Convert.ToInt32(this.Experience.CurrentLevel));
         }
     }

@@ -47,7 +47,7 @@ namespace MLAPI.Components.Resource
             if (!string.IsNullOrWhiteSpace(this.CompletionSound))
             {
                 Point2D screenPosition = new Point2D(position.X * Tile.GetTileSize().X, position.Y * Tile.GetTileSize().Y);
-                FMODUtil.RaiseEvent(this.CompletionSound, "", 0, screenPosition);
+                FmodUtil.RaiseEvent(this.CompletionSound, "", 0, screenPosition);
             }
             return this.Items;
         }
@@ -57,7 +57,7 @@ namespace MLAPI.Components.Resource
             if (!string.IsNullOrWhiteSpace(this.HarvestSound))
             {
                 Point2D screenPosition = new Point2D(position.X * Tile.GetTileSize().X, position.Y * Tile.GetTileSize().Y);
-                FMODUtil.RaiseEvent(this.HarvestSound, "", 0, screenPosition);
+                FmodUtil.RaiseEvent(this.HarvestSound, "", 0, screenPosition);
             }
             return default;
         }

@@ -11,7 +11,7 @@ namespace MLGUIWindows.GUI.Save_Game_Menu.Buttons
 {
     public class OverwriteButton : MonoButton
     {
-        public OverwriteButton() : base(TextureLoader.GUIMenuButton, GetDrawingBounds(), true, Resources.OverwriteSave)
+        public OverwriteButton() : base(TextureLoader.GuiMenuButton, GetDrawingBounds(), true, Resources.OverwriteSave)
         {
             this.ClickEvent += this.OverwriteButton_ClickEvent;
         }
@@ -33,11 +33,11 @@ namespace MLGUIWindows.GUI.Save_Game_Menu.Buttons
 
         private void Overwrite()
         {
-            int selected = SaveGameMenu.menu.SavesList.SelectedIndex;
+            int selected = SaveGameMenu.Menu.SavesList.SelectedIndex;
 
             if (selected != -1)
             {
-                RenderableString selectedItem = (RenderableString)SaveGameMenu.menu.SavesList.Items[selected];
+                RenderableString selectedItem = (RenderableString)SaveGameMenu.Menu.SavesList.Items[selected];
                 WorldStorage.SerializeWorld(selectedItem.Text, new WorldDiskSink());
             }
             MenuHandler.Back();

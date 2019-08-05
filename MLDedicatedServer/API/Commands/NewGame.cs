@@ -43,8 +43,8 @@ namespace MLDedicatedServer.API.Commands
                 Util.WriteLine(DedicatedServer.InitializingNetwork);
                 int port = SettingsHandler.NetworkSettings.Settings.Port;
                 ServerSendRecieve.Initialize(new NetworkSettings(port));
-                ServerSendRecieve.TCPServer.Server.ClientConnected += Server_ClientConnected;
-                ServerSendRecieve.TCPServer.Server.ClientDisconnected += Server_ClientDisconnected;
+                ServerSendRecieve.TcpServer.Server.ClientConnected += Server_ClientConnected;
+                ServerSendRecieve.TcpServer.Server.ClientDisconnected += Server_ClientDisconnected;
 
                 Util.WriteLine(DedicatedServer.Done);
             }

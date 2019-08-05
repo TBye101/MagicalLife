@@ -22,10 +22,10 @@ namespace MLGUIWindows.GUI.New_World_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return NewWorldMenuLayout2560x1440.WorldSizeInputBoxY;
+                        return NewWorldMenuLayout2560X1440.WorldSizeInputBoxY;
 
                     default:
-                        return NewWorldMenuLayout1920x1080.WorldSizeInputBoxY;
+                        return NewWorldMenuLayout1920X1080.WorldSizeInputBoxY;
                 }
             }
         }
@@ -40,10 +40,10 @@ namespace MLGUIWindows.GUI.New_World_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return NewWorldMenuLayout2560x1440.WorldSizeInputBoxHeight;
+                        return NewWorldMenuLayout2560X1440.WorldSizeInputBoxHeight;
 
                     default:
-                        return NewWorldMenuLayout1920x1080.WorldSizeInputBoxHeight;
+                        return NewWorldMenuLayout1920X1080.WorldSizeInputBoxHeight;
                 }
             }
         }
@@ -58,10 +58,10 @@ namespace MLGUIWindows.GUI.New_World_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return NewWorldMenuLayout2560x1440.WorldSizeInputBoxWidth;
+                        return NewWorldMenuLayout2560X1440.WorldSizeInputBoxWidth;
 
                     default:
-                        return NewWorldMenuLayout1920x1080.WorldSizeInputBoxWidth;
+                        return NewWorldMenuLayout1920X1080.WorldSizeInputBoxWidth;
                 }
             }
         }
@@ -76,10 +76,10 @@ namespace MLGUIWindows.GUI.New_World_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return NewWorldMenuLayout2560x1440.WorldWidthInputBoxX;
+                        return NewWorldMenuLayout2560X1440.WorldWidthInputBoxX;
 
                     default:
-                        return NewWorldMenuLayout1920x1080.WorldWidthInputBoxX;
+                        return NewWorldMenuLayout1920X1080.WorldWidthInputBoxX;
                 }
             }
         }
@@ -94,10 +94,10 @@ namespace MLGUIWindows.GUI.New_World_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return NewWorldMenuLayout2560x1440.WorldLengthInputBoxX;
+                        return NewWorldMenuLayout2560X1440.WorldLengthInputBoxX;
 
                     default:
-                        return NewWorldMenuLayout1920x1080.WorldLengthInputBoxX;
+                        return NewWorldMenuLayout1920X1080.WorldLengthInputBoxX;
                 }
             }
         }
@@ -112,10 +112,10 @@ namespace MLGUIWindows.GUI.New_World_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return NewWorldMenuLayout2560x1440.NextButtonX;
+                        return NewWorldMenuLayout2560X1440.NextButtonX;
 
                     default:
-                        return NewWorldMenuLayout1920x1080.NextButtonX;
+                        return NewWorldMenuLayout1920X1080.NextButtonX;
                 }
             }
         }
@@ -130,10 +130,10 @@ namespace MLGUIWindows.GUI.New_World_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return NewWorldMenuLayout2560x1440.LabelY;
+                        return NewWorldMenuLayout2560X1440.LabelY;
 
                     default:
-                        return NewWorldMenuLayout1920x1080.LabelY;
+                        return NewWorldMenuLayout1920X1080.LabelY;
                 }
             }
         }
@@ -148,10 +148,10 @@ namespace MLGUIWindows.GUI.New_World_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return NewWorldMenuLayout2560x1440.GameNameInputBox;
+                        return NewWorldMenuLayout2560X1440.GameNameInputBox;
 
                     default:
-                        return NewWorldMenuLayout1920x1080.GameNameInputBox;
+                        return NewWorldMenuLayout1920X1080.GameNameInputBox;
                 }
             }
         }

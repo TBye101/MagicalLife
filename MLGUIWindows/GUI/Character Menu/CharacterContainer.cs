@@ -30,7 +30,7 @@ namespace MLGUIWindows.GUI.Character_Menu
 
         public SkillsTabButton SkillsButton { get; set; } = new SkillsTabButton();
 
-        private static readonly SpriteFont ItemFont = Game1.AssetManager.Load<SpriteFont>(TextureLoader.FontMainMenuFont12x);
+        private static readonly SpriteFont ItemFont = Game1.AssetManager.Load<SpriteFont>(TextureLoader.FontMainMenuFont12X);
 
         /// <summary>
         /// The creature that has information being displayed about it.
@@ -38,13 +38,13 @@ namespace MLGUIWindows.GUI.Character_Menu
         public Living Creature { get; set; }
 
         /// <param name="creature">The creature that has information being displayed about it.</param>
-        public CharacterContainer(Living creature) : base(TextureLoader.GUIMenuBackground, CharacterMenuLayout.GetMenuBounds(), true)
+        public CharacterContainer(Living creature) : base(TextureLoader.GuiMenuBackground, CharacterMenuLayout.GetMenuBounds(), true)
         {
             this.Creature = creature;
 
             this.X = new WindowX(new Point2D(this.DrawingBounds.Width, this.DrawingBounds.Height));
             this.X.ClickEvent += this.X_ClickEvent;
-            this.CharacterName = new MonoLabel(CharacterMenuLayout.GetNameBounds(), TextureLoader.GUIMenuBackground, true, creature.CreatureName);
+            this.CharacterName = new MonoLabel(CharacterMenuLayout.GetNameBounds(), TextureLoader.GuiMenuBackground, true, creature.CreatureName);
             this.Skills = this.InitializeSkills(creature);
             this.Inventory = this.InitializeInventory(creature);
             this.Inventory.Visible = false;
@@ -80,7 +80,7 @@ namespace MLGUIWindows.GUI.Character_Menu
 
         private ScrollableGrid InitializeInventory(Living creature)
         {
-            ScrollableGrid grid = new ScrollableGrid(4, CharacterMenuLayout.GetInventoryBounds(), int.MaxValue, true, TextureLoader.FontMainMenuFont12x, 10);
+            ScrollableGrid grid = new ScrollableGrid(4, CharacterMenuLayout.GetInventoryBounds(), int.MaxValue, true, TextureLoader.FontMainMenuFont12X, 10);
 
             Dictionary<int, List<Item>> inventoryItems = creature.Inventory.GetAllInventoryItems();
             foreach (KeyValuePair<int, List<Item>> item in inventoryItems)
@@ -107,7 +107,7 @@ namespace MLGUIWindows.GUI.Character_Menu
 
         private ListBox InitializeSkills(Living creature)
         {
-            List<GUIElement> skills = new List<GUIElement>();
+            List<GuiElement> skills = new List<GuiElement>();
 
             foreach (Skill item in creature.CreatureSkills)
             {
@@ -116,8 +116,8 @@ namespace MLGUIWindows.GUI.Character_Menu
 
                 if (item.Learnable)
                 {
-                    skillText += item.Experience.CurrentXP.ToString()
-                        + "/" + item.Experience.NextLevelXPRequired.ToString() + "XP";
+                    skillText += item.Experience.CurrentXp.ToString()
+                        + "/" + item.Experience.NextLevelXpRequired.ToString() + "XP";
                 }
                 else
                 {
@@ -131,17 +131,17 @@ namespace MLGUIWindows.GUI.Character_Menu
             return new ListBox(
                 CharacterMenuLayout.GetSkillsBounds(),
                 int.MaxValue, true,
-                TextureLoader.FontMainMenuFont12x, 10, skills);
+                TextureLoader.FontMainMenuFont12X, 10, skills);
         }
 
         public override string GetTextureName()
         {
-            return TextureLoader.GUIMenuBackground;
+            return TextureLoader.GuiMenuBackground;
         }
 
         public void HideAllControls()
         {
-            foreach (GUIElement item in this.Controls)
+            foreach (GuiElement item in this.Controls)
             {
                 item.Visible = false;
             }

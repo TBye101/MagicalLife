@@ -13,7 +13,7 @@ namespace MonoGUI.MonoGUI.Reusable.Event
         /// <summary>
         /// The container which was clicked in.
         /// </summary>
-        public GuiContainer GUIContainer { get; set; }
+        public GuiContainer GuiContainer { get; set; }
 
         /// <summary>
         ///
@@ -23,7 +23,7 @@ namespace MonoGUI.MonoGUI.Reusable.Event
         public ClickEventArgs(MouseEventArgs mouseEventArgs, GuiContainer guiContainer)
         {
             this.MouseEventArgs = mouseEventArgs;
-            this.GUIContainer = guiContainer;
+            this.GuiContainer = guiContainer;
         }
     }
 }

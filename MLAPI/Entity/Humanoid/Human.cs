@@ -43,13 +43,13 @@ namespace MLAPI.Entity.Humanoid
 
         public override AbstractVisual Visual { get; set; }
 
-        public Human(int health, float movementSpeed, Point3D location, Guid dimensionID, Guid playerID, string creatureName)
-            : base(health, movementSpeed, location, dimensionID, playerID, Lang.Human, creatureName)
+        public Human(int health, float movementSpeed, Point3D location, Guid dimensionId, Guid playerId, string creatureName)
+            : base(health, movementSpeed, location, dimensionId, playerId, Lang.Human, creatureName)
         {
             Filing.Logging.MasterLog.DebugWriteLine("Living spawned at: " + location.ToString());
             this.Visual = new AnimatedTexture(RenderLayer.Character, this.GetSequences(),
                 TextureLoader.AnimationBaseCharacter,
-                XMLPaths.BaseCharacterSpriteSheet, Assembly.GetAssembly(typeof(AssemblyGetter)));
+                XmlPaths.BaseCharacterSpriteSheet, Assembly.GetAssembly(typeof(AssemblyGetter)));
         }
 
         public Human() : base()

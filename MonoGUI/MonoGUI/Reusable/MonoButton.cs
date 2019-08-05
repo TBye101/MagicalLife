@@ -8,14 +8,14 @@ namespace MonoGUI.MonoGUI.Reusable
     /// <summary>
     /// A generic button class for use with the monogame framework, as well as the MagicalLifeGUI and API.
     /// </summary>
-    public class MonoButton : GUIElement
+    public class MonoButton : GuiElement
     {
         /// <summary>
         /// The text to display on the monolith.
         /// </summary>
         public string Text { get; set; }
 
-        protected int TextureID { get; set; }
+        protected int TextureId { get; set; }
 
         /// <summary>
         ///
@@ -28,13 +28,13 @@ namespace MonoGUI.MonoGUI.Reusable
         protected MonoButton(string imageName, Rectangle displayArea, bool isContained, string font, string text = "") : base(displayArea, int.MaxValue, isContained, font)
         {
             this.Text = text;
-            this.TextureID = AssetManager.GetTextureIndex(imageName);
+            this.TextureId = AssetManager.GetTextureIndex(imageName);
         }
 
-        protected MonoButton(string imageName, Rectangle displayArea, bool isContained, string text = "") : base(displayArea, int.MaxValue, isContained, TextureLoader.FontMainMenuFont12x)
+        protected MonoButton(string imageName, Rectangle displayArea, bool isContained, string text = "") : base(displayArea, int.MaxValue, isContained, TextureLoader.FontMainMenuFont12X)
         {
             this.Text = text;
-            this.TextureID = AssetManager.GetTextureIndex(imageName);
+            this.TextureId = AssetManager.GetTextureIndex(imageName);
         }
 
         public override void Render(SpriteBatch spBatch, Rectangle containerBounds)
@@ -43,8 +43,8 @@ namespace MonoGUI.MonoGUI.Reusable
             int x = this.DrawingBounds.X + containerBounds.X;
             int y = this.DrawingBounds.Y + containerBounds.Y;
             location = new Rectangle(x, y, this.DrawingBounds.Width, this.DrawingBounds.Height);
-            spBatch.Draw(AssetManager.Textures[this.TextureID], location, Color.White);
-            SimpleTextRenderer.DrawString(this.Font, this.Text, location, SimpleTextRenderer.Alignment.Center, Color.White, spBatch, RenderLayer.GUI);
+            spBatch.Draw(AssetManager.Textures[this.TextureId], location, Color.White);
+            SimpleTextRenderer.DrawString(this.Font, this.Text, location, SimpleTextRenderer.Alignment.Center, Color.White, spBatch, RenderLayer.Gui);
         }
     }
 }

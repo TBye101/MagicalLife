@@ -13,15 +13,15 @@ namespace MLAPI.GameRegistry.Items
         /// <summary>
         /// Reserves the items at the specified locations with the provided ID.
         /// </summary>
-        public static void ReserveItems(List<Point3D> locations, Guid reservingID)
+        public static void ReserveItems(List<Point3D> locations, Guid reservingId)
         {
             Tile tile;
             foreach (Point3D item in locations)
             {
-                tile = World.Data.World.GetTile(item.DimensionID, item.X, item.Y);
+                tile = World.Data.World.GetTile(item.DimensionId, item.X, item.Y);
 
                 Item tileItem = tile.MainObject as Item;
-                tileItem.ReservedID = reservingID;
+                tileItem.ReservedId = reservingId;
             }
         }
     }

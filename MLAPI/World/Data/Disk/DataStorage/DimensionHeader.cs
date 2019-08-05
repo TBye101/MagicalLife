@@ -19,7 +19,7 @@ namespace MLAPI.World.Data.Disk.DataStorage
         /// The unique ID of the dimension.
         /// </summary>
         [ProtoMember(2)]
-        public Guid ID { get; private set; }
+        public Guid Id { get; private set; }
 
         /// <summary>
         /// The width of the dimension in chunks.
@@ -36,7 +36,7 @@ namespace MLAPI.World.Data.Disk.DataStorage
         public DimensionHeader(string dimensionName, Guid id, int width, int height)
         {
             this.DimensionName = dimensionName;
-            this.ID = id;
+            this.Id = id;
             this.Width = width;
             this.Height = height;
         }

@@ -13,26 +13,26 @@ namespace MLAPI.Util
         /// Returns the index of the closest Point2D to the target.
         /// Returns -1 if the list was empty.
         /// </summary>
-        /// <param name="Point2Ds"></param>
+        /// <param name="point2Ds"></param>
         /// <param name="target"></param>
         /// <returns></returns>
-        public static int GetClosestPoint2D(List<Point2D> Point2Ds, Point2D target)//TODO: Improve performance
+        public static int GetClosestPoint2D(List<Point2D> point2Ds, Point2D target)//TODO: Improve performance
         {
             int index = -1;
             int closestDistance = -1;
 
-            int length = Point2Ds.Count;
+            int length = point2Ds.Count;
 
             for (int i = 0; i < length; i++)
             {
                 if (index == -1)
                 {
                     index = i;
-                    closestDistance = MathUtil.GetDistanceFast(Point2Ds[i], target);
+                    closestDistance = MathUtil.GetDistanceFast(point2Ds[i], target);
                 }
                 else
                 {
-                    int newDistance = MathUtil.GetDistanceFast(Point2Ds[i], target);
+                    int newDistance = MathUtil.GetDistanceFast(point2Ds[i], target);
 
                     if (newDistance < closestDistance)
                     {

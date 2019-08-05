@@ -1,11 +1,11 @@
 ﻿namespace MLGUIWindows.GUI.Join_Game_Menu
 {
-    public static class JoinGameMenuLayout1920x1080
+    public static class JoinGameMenuLayout1920X1080
     {
-        public static readonly int IPInputBoxX = 20;
-        public static readonly int IPInputBoxY = 120;
-        public static readonly int IPInputBoxWidth = 200;
-        public static readonly int IPInputBoxHeight = 50;
+        public static readonly int IpInputBoxX = 20;
+        public static readonly int IpInputBoxY = 120;
+        public static readonly int IpInputBoxWidth = 200;
+        public static readonly int IpInputBoxHeight = 50;
 
         public static readonly int PortInputBoxX = 250;
 

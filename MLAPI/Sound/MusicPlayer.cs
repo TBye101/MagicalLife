@@ -7,12 +7,12 @@ namespace MLAPI.Sound
 {
     public class MusicPlayer
     {
-        public static int SONG_MAIN_MENU { get; private set; }
+        public static int SongMainMenu { get; private set; }
 
-        private readonly FMOD.System FMODSystem;
+        private readonly FMOD.System FmodSystem;
         private FMOD.Channel Channel;
         private readonly List<FMOD.Sound> Songs = new List<FMOD.Sound>();
-        private int _current_song_id = -1;
+        private int CurrentSongId = -1;
 
         public static MusicPlayer Instance { get; private set; }
 
@@ -25,27 +25,27 @@ namespace MLAPI.Sound
             LoadLibrary(fullPath);
             Instance = new MusicPlayer();
 
-            MusicPlayer.SONG_MAIN_MENU = Instance.LoadSong("MainMenu1");
+            MusicPlayer.SongMainMenu = Instance.LoadSong("MainMenu1");
             //Instance.Play(SONG_MAIN_MENU);
-            FMODUtil.Init();
+            FmodUtil.Init();
         }
 
         public void Unload()
         {
-            this.FMODSystem.release();
+            this.FmodSystem.release();
         }
 
         private MusicPlayer()
         {
-            FMOD.Factory.System_Create(out this.FMODSystem);
+            FMOD.Factory.System_Create(out this.FmodSystem);
 
-            this.FMODSystem.setDSPBufferSize(1024, 10);
-            this.FMODSystem.init(32, FMOD.INITFLAGS.NORMAL, (IntPtr)0);
+            this.FmodSystem.setDSPBufferSize(1024, 10);
+            this.FmodSystem.init(32, FMOD.INITFLAGS.NORMAL, (IntPtr)0);
         }
 
         private int LoadSong(string name)
         {
-            FMOD.RESULT r = this.FMODSystem.createStream("Content/Music/" + name + ".flac", FMOD.MODE.DEFAULT, out FMOD.Sound s);
+            FMOD.RESULT r = this.FmodSystem.createStream("Content/Music/" + name + ".flac", FMOD.MODE.DEFAULT, out FMOD.Sound s);
 
             int c = this.Songs.Count;
             this.Songs.Add(s);
@@ -69,18 +69,18 @@ namespace MLAPI.Sound
         {
             Console.WriteLine("Play(" + songId + ")");
 
-            if (this._current_song_id != songId)
+            if (this.CurrentSongId != songId)
             {
                 this.Stop();
 
                 if (songId >= 0 && songId < this.Songs.Count && this.Songs[songId] != null)
                 {
-                    this.FMODSystem.playSound(this.Songs[songId], null, false, out this.Channel);
+                    this.FmodSystem.playSound(this.Songs[songId], null, false, out this.Channel);
                     this.UpdateVolume();
                     this.Channel.setMode(FMOD.MODE.LOOP_NORMAL);
                     this.Channel.setLoopCount(-1);
 
-                    this._current_song_id = songId;
+                    this.CurrentSongId = songId;
                 }
             }
         }
@@ -100,7 +100,7 @@ namespace MLAPI.Sound
                 this.Channel.stop();
             }
 
-            this._current_song_id = -1;
+            this.CurrentSongId = -1;
         }
     }
 }

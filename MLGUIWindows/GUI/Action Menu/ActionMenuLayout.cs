@@ -19,10 +19,10 @@ namespace MLGUIWindows.GUI.Action_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return ActionMenuLayout2560x1440.ActionMenuLocation;
+                        return ActionMenuLayout2560X1440.ActionMenuLocation;
 
                     default:
-                        return ActionMenuLayout1920x1080.ActionMenuLocation;
+                        return ActionMenuLayout1920X1080.ActionMenuLocation;
                 }
             }
         }
@@ -37,10 +37,10 @@ namespace MLGUIWindows.GUI.Action_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return ActionMenuLayout2560x1440.ActionGridBounds;
+                        return ActionMenuLayout2560X1440.ActionGridBounds;
 
                     default:
-                        return ActionMenuLayout1920x1080.ActionGridBounds;
+                        return ActionMenuLayout1920X1080.ActionGridBounds;
                 }
             }
         }

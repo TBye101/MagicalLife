@@ -10,7 +10,7 @@ namespace MLAPI.Sound
     /// <summary>
     /// Some FMOD related utilities.
     /// </summary>
-    public static class FMODUtil
+    public static class FmodUtil
     {
         private static FMOD.Studio.System _System;
 
@@ -50,9 +50,9 @@ namespace MLAPI.Sound
 
             low.setSoftwareFormat(0, FMOD.SPEAKERMODE._5POINT1, 0);
             _System.initialize(64, FMOD.Studio.INITFLAGS.LIVEUPDATE, FMOD.INITFLAGS.NORMAL, IntPtr.Zero);
-            _System.loadBankFile(FileSystemManager.RootDirectory + "/Content/Banks/Master_Bank.bank", FMOD.Studio.LOAD_BANK_FLAGS.NORMAL, out Bank MainBank);
-            _System.loadBankFile(FileSystemManager.RootDirectory + "/Content/Banks/Master_Bank.strings.bank", LOAD_BANK_FLAGS.NORMAL, out Bank MainBankStrings);
-            MainBank.getEventList(out MainEvents);
+            _System.loadBankFile(FileSystemManager.RootDirectory + "/Content/Banks/Master_Bank.bank", FMOD.Studio.LOAD_BANK_FLAGS.NORMAL, out Bank mainBank);
+            _System.loadBankFile(FileSystemManager.RootDirectory + "/Content/Banks/Master_Bank.strings.bank", LOAD_BANK_FLAGS.NORMAL, out Bank mainBankStrings);
+            mainBank.getEventList(out MainEvents);
             DumpEventInformation();
         }
 

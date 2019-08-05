@@ -21,13 +21,13 @@ namespace MLAPI.DataTypes
         public int Y { get; set; }
 
         [ProtoMember(3)]
-        public Guid DimensionID { get; set; }
+        public Guid DimensionId { get; set; }
 
-        public Point3D(int x, int y, Guid dimensionID)
+        public Point3D(int x, int y, Guid dimensionId)
         {
             this.X = x;
             this.Y = y;
-            this.DimensionID = dimensionID;
+            this.DimensionId = dimensionId;
         }
 
         public Point3D()
@@ -40,7 +40,7 @@ namespace MLAPI.DataTypes
             if (obj is Point3D)
             {
                 Point3D c = obj as Point3D;
-                return this.X == c.X && this.Y == c.Y && this.DimensionID.Equals(c.DimensionID);
+                return this.X == c.X && this.Y == c.Y && this.DimensionId.Equals(c.DimensionId);
             }
 
             return false;
@@ -51,7 +51,7 @@ namespace MLAPI.DataTypes
             unchecked
             {
                 int hash = 17;
-                hash = this.X ^ this.Y ^ this.DimensionID.GetHashCode();
+                hash = this.X ^ this.Y ^ this.DimensionId.GetHashCode();
                 return hash;
             }
         }
@@ -75,7 +75,7 @@ namespace MLAPI.DataTypes
         {
             int x;
             int y;
-            Guid dimensionID;
+            Guid dimensionId;
 
             const int xStart = 2;
             int xEnd = str.IndexOf(',');
@@ -87,14 +87,14 @@ namespace MLAPI.DataTypes
 
             int dimensionStart = yEnd + 2;
             int dimensionEnd = str.Length - 2;
-            dimensionID = Guid.Parse(str.Substring(dimensionStart, dimensionEnd));
+            dimensionId = Guid.Parse(str.Substring(dimensionStart, dimensionEnd));
 
-            return new Point3D(x, y, dimensionID);
+            return new Point3D(x, y, dimensionId);
         }
 
         public override string ToString()
         {
-            return "{ " + this.X.ToString(CultureInfo.InvariantCulture) + ", " + this.Y.ToString(CultureInfo.InvariantCulture) + ", " + this.DimensionID.ToString() + " }";
+            return "{ " + this.X.ToString(CultureInfo.InvariantCulture) + ", " + this.Y.ToString(CultureInfo.InvariantCulture) + ", " + this.DimensionId.ToString() + " }";
         }
 
         public virtual bool Equals(Point2D other)
@@ -102,18 +102,18 @@ namespace MLAPI.DataTypes
             return other.X == this.X && other.Y == this.Y;
         }
 
-        public static Point3D From2D(Point2D point, Guid dimensionID)
+        public static Point3D From2D(Point2D point, Guid dimensionId)
         {
-            return new Point3D(point.X, point.Y, dimensionID);
+            return new Point3D(point.X, point.Y, dimensionId);
         }
 
-        public static List<Point3D> From2D(IEnumerable<Point2D> points, Guid dimensionID)
+        public static List<Point3D> From2D(IEnumerable<Point2D> points, Guid dimensionId)
         {
             List<Point3D> points3D = new List<Point3D>();
 
             foreach (Point2D item in points)
             {
-                points3D.Add(Point3D.From2D(item, dimensionID));
+                points3D.Add(Point3D.From2D(item, dimensionId));
             }
 
             return points3D;
@@ -146,7 +146,7 @@ namespace MLAPI.DataTypes
 
                 if (yComparison == 0)
                 {
-                    return other.DimensionID.CompareTo(this.DimensionID);
+                    return other.DimensionId.CompareTo(this.DimensionId);
                 }
                 else
                 {
@@ -161,7 +161,7 @@ namespace MLAPI.DataTypes
 
         public bool Equals(Point3D other)
         {
-            return other.X == this.X && other.Y == this.Y && other.DimensionID.Equals(this.DimensionID);
+            return other.X == this.X && other.Y == this.Y && other.DimensionId.Equals(this.DimensionId);
         }
     }
 }

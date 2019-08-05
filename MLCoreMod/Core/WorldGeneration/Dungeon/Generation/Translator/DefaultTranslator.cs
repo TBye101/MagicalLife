@@ -30,7 +30,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
             //Convert coordinates to real tiles
             IDungeonConstructor constructor = new DefaultDungeonConstructor();
 
-            DungeonTranslationNode entranceNode = translatedNodes[dungeonDesign.NodeID];
+            DungeonTranslationNode entranceNode = translatedNodes[dungeonDesign.NodeId];
             Point2D dungeonSizeNeeded = this.CalculateDungeonSize(translatedNodes);
             ProtoArray<Chunk> dungeonChunks = WorldUtil.GenerateBlankChunks(dungeonSizeNeeded.X, dungeonSizeNeeded.Y);
 
@@ -107,13 +107,13 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
                 translatedNode.SectionXOffset = 0;
                 translatedNode.SectionYOffset = 0;
 
-                ret.Add(translatedNode.DesignNode.NodeID, translatedNode);
+                ret.Add(translatedNode.DesignNode.NodeId, translatedNode);
 
                 for (int i = 0; i < node.Connections.Count; i++)
                 {
                     DungeonNode connectedNode = node.Connections[i];
 
-                    if (!ret.ContainsKey(connectedNode.NodeID))
+                    if (!ret.ContainsKey(connectedNode.NodeId))
                     {
                         toConvert.Add(connectedNode);
                     }

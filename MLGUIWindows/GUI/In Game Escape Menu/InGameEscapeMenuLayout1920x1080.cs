@@ -1,6 +1,6 @@
 ﻿namespace MLGUIWindows.GUI.In_Game_Escape_Menu
 {
-    public static class InGameEscapeMenuLayout1920x1080
+    public static class InGameEscapeMenuLayout1920X1080
     {
         public static readonly int ButtonX = 860;
 

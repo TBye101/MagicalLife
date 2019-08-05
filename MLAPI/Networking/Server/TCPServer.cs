@@ -15,7 +15,7 @@ namespace MLAPI.Networking.Server
     /// The TCP server for communicating with clients.
     /// This should be initialized and ONLY utilized after the world has been generated.
     /// </summary>
-    public class TCPServer
+    public class TcpServer
     {
         internal SimpleTcpServer Server = new SimpleTcpServer();
 
@@ -23,7 +23,7 @@ namespace MLAPI.Networking.Server
 
         private MessageBuffer MsgBuffer { get; } = new MessageBuffer();
 
-        public TCPServer()
+        public TcpServer()
         {
         }
 
@@ -53,7 +53,7 @@ namespace MLAPI.Networking.Server
                 BaseMessage msg = this.MsgBuffer.GetMessageData();
                 if (msg is LoginMessage login)
                 {
-                    this.PlayerToSocket.Add(login.PlayerID, e.TcpClient.Client);
+                    this.PlayerToSocket.Add(login.PlayerId, e.TcpClient.Client);
                 }
 
                 ServerSendRecieve.Recieve(msg);

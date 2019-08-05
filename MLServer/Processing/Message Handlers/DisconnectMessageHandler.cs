@@ -6,7 +6,7 @@ namespace MLServer.Processing.Message_Handlers
 {
     public class DisconnectMessageHandler : MessageHandler
     {
-        public DisconnectMessageHandler() : base(NetMessageID.DisconnectMessage)
+        public DisconnectMessageHandler() : base(NetMessageId.DisconnectMessage)
         {
         }
 

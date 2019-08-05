@@ -7,8 +7,8 @@ using MonoGUI.Game;
 namespace MonoGUI.MonoGUI.Reusable
 {
     /// <summary>
-    /// Contains other <see cref="GUIElement"/>s.
-    /// All coordinates of <see cref="GUIElement"/> objects are relative to the position of this container.
+    /// Contains other <see cref="GuiElement"/>s.
+    /// All coordinates of <see cref="GuiElement"/> objects are relative to the position of this container.
     /// </summary>
     public abstract class GuiContainer
     {
@@ -22,7 +22,7 @@ namespace MonoGUI.MonoGUI.Reusable
         /// <summary>
         /// If true, this container is part of the HUD and shouldn't be cleared from the screen. Ever.
         /// </summary>
-        public bool IsHUD { get; set; }
+        public bool IsHud { get; set; }
 
         /// <summary>
         /// Constructs a new instance of the <see cref="GUIContainer"/> class.
@@ -36,16 +36,16 @@ namespace MonoGUI.MonoGUI.Reusable
         {
             this.Image = AssetManager.Textures[AssetManager.GetTextureIndex(image)];
             this.DrawingBounds = drawingBounds;
-            this.Controls = new List<GUIElement>();
-            this.Priority = RenderingData.GetGUIContainerPriority();
+            this.Controls = new List<GuiElement>();
+            this.Priority = RenderingData.GetGuiContainerPriority();
             this.IsMovable = isMovable;
         }
 
-        /// <param name="isHUD">If true, this container is part of the HUD and shouldn't be cleared from the screen. Ever.</param>
-        protected GuiContainer(string image, Rectangle drawingBounds, bool isMovable, bool isHUD)
+        /// <param name="isHud">If true, this container is part of the HUD and shouldn't be cleared from the screen. Ever.</param>
+        protected GuiContainer(string image, Rectangle drawingBounds, bool isMovable, bool isHud)
             : this(image, drawingBounds, isMovable)
         {
-            this.IsHUD = isHUD;
+            this.IsHud = isHud;
         }
 
         protected GuiContainer()
@@ -76,7 +76,7 @@ namespace MonoGUI.MonoGUI.Reusable
         /// <summary>
         /// The controls that are within this <see cref="GuiContainer"/>
         /// </summary>
-        public List<GUIElement> Controls { get; set; }
+        public List<GuiElement> Controls { get; set; }
 
         public abstract string GetTextureName();
 

@@ -10,7 +10,7 @@ namespace MLGUIWindows.GUI.In_Game_Escape_Menu.Buttons
 {
     public class SettingsButton : MonoButton
     {
-        public SettingsButton() : base(TextureLoader.GUIMenuButton, GetDisplayArea(), true, Resources.Settings)
+        public SettingsButton() : base(TextureLoader.GuiMenuButton, GetDisplayArea(), true, Resources.Settings)
         {
             this.ClickEvent += this.SettingsButton_ClickEvent;
         }
@@ -32,9 +32,9 @@ namespace MLGUIWindows.GUI.In_Game_Escape_Menu.Buttons
 
         private void OpenSettingsMenu()
         {
-            FMODUtil.RaiseEvent(SoundsTable.UIClick);
+            FmodUtil.RaiseEvent(SoundsTable.UiClick);
             SettingsGameMenu.Initialize(false);
-            InGameEscapeMenu.menu.PopupChild(SettingsGameMenu.Menu);
+            InGameEscapeMenu.Menu.PopupChild(SettingsGameMenu.Menu);
         }
     }
 }

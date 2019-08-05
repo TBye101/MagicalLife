@@ -22,10 +22,10 @@ namespace MLAPI.GameRegistry.Items
         /// <param name="dimension"></param>
         public static Item RemoveAllItems(Point3D mapLocation)//Gotta update the indexes
         {
-            Tile tile = World.Data.World.GetTile(mapLocation.DimensionID, mapLocation.X, mapLocation.Y);
+            Tile tile = World.Data.World.GetTile(mapLocation.DimensionId, mapLocation.X, mapLocation.Y);
             Item item = tile.MainObject as Item;
 
-            RemoveItem(tile, mapLocation.DimensionID);
+            RemoveItem(tile, mapLocation.DimensionId);
             return item;
         }
 
@@ -39,19 +39,19 @@ namespace MLAPI.GameRegistry.Items
         /// <returns>Returns null if there was no item(s) stored in the specified location.</returns>
         public static Item RemoveSome(Point3D mapLocation, int count)
         {
-            Tile tile = World.Data.World.GetTile(mapLocation.DimensionID, mapLocation.X, mapLocation.Y);
+            Tile tile = World.Data.World.GetTile(mapLocation.DimensionId, mapLocation.X, mapLocation.Y);
 
             Item removed = null;
             if (tile.MainObject is Item tileItem)
             {
                 if (tileItem.CurrentlyStacked > count)
                 {
-                    removed = ItemRegistry.IDToItem[tileItem.ItemID].GetDeepCopy(count);
+                    removed = ItemRegistry.IdToItem[tileItem.ItemId].GetDeepCopy(count);
                 }
                 else
                 {
-                    removed = ItemRegistry.IDToItem[tileItem.ItemID].GetDeepCopy(tileItem.CurrentlyStacked);
-                    RemoveItem(tile, mapLocation.DimensionID);
+                    removed = ItemRegistry.IdToItem[tileItem.ItemId].GetDeepCopy(tileItem.CurrentlyStacked);
+                    RemoveItem(tile, mapLocation.DimensionId);
                 }
             }
 
@@ -61,17 +61,17 @@ namespace MLAPI.GameRegistry.Items
         /// <summary>
         /// Removes the item in the specified tile from the game, and updates the indexes.
         /// </summary>
-        private static void RemoveItem(Tile tile, Guid dimensionID)
+        private static void RemoveItem(Tile tile, Guid dimensionId)
         {
             if (tile.MainObject is Item tileItem)
             {
-                int itemID = tileItem.ItemID;
+                int itemId = tileItem.ItemId;
                 Point2D l = tile.GetExactComponent<ComponentSelectable>().MapLocation;
-                Chunk chunk = World.Data.World.GetChunkByTile(dimensionID, l.X, l.Y);
+                Chunk chunk = World.Data.World.GetChunkByTile(dimensionId, l.X, l.Y);
 
-                if (chunk.Items.ContainsKey(itemID))
+                if (chunk.Items.ContainsKey(itemId))
                 {
-                    RTree<Point2D> result = chunk.Items[itemID];
+                    RTree<Point2D> result = chunk.Items[itemId];
                     bool success = result.Delete(new Rectangle(l.X, l.Y, l.X, l.Y), new Point2D(l.X, l.Y));
 
                     if (!success)
@@ -81,7 +81,7 @@ namespace MLAPI.GameRegistry.Items
 
                     if (result.Count == 0)
                     {
-                        RTree<Point2D> chunksContaining = World.Data.World.Dimensions[dimensionID].Items.ItemIDToChunk[itemID];
+                        RTree<Point2D> chunksContaining = World.Data.World.Dimensions[dimensionId].Items.ItemIdToChunk[itemId];
                         bool succeed = chunksContaining.Delete(new Rectangle(chunk.ChunkLocation.X, chunk.ChunkLocation.Y, chunk.ChunkLocation.X, chunk.ChunkLocation.Y), new Point2D(chunk.ChunkLocation.X, chunk.ChunkLocation.Y));
 
                         if (!succeed)

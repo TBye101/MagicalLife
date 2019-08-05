@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using MLAPI.Filing.Logging;
 using MLAPI.Util.Math;
 using MLAPI.Util.RandomUtils;
 
@@ -11,7 +12,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator.ForceDire
         private static readonly int AttractionDistance = 100000;
         private static readonly int ConnectedRepulsionDistance = 2;
         private static readonly int UnconnectedRepulsionDistance = 10;
-        private static readonly int MaxAttraction = 100;
+        private static readonly int MaxAttraction = 10000;
         private static readonly int MaxRepulsion = 110;
         private static readonly int MinNodeDispersal = -10000;
         private static readonly int MaxNodeDispersal = 10000;
@@ -31,6 +32,8 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator.ForceDire
 
         private void RecursiveArrange(Dictionary<Guid, DungeonTranslationNode> nodes, int iteration)
         {
+            MasterLog.DebugWriteLine("Iteration: " + iteration.ToString());
+            this.LogNodes(nodes);
             List<SimulationNode> tempNodeChanges = this.CalculateSystemChanges(nodes);
             this.ApplySystemChanges(nodes, tempNodeChanges);
 
@@ -40,12 +43,23 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator.ForceDire
             }
         }
 
+        private void LogNodes(Dictionary<Guid, DungeonTranslationNode> nodes)
+        {
+            foreach (KeyValuePair<Guid, DungeonTranslationNode> item in nodes)
+            {
+                string toLog = "Translation Node [" + item.Value.DesignNode.NodeType.ToString() + "]" + ": " + item.Value.DesignNode.NodeId.ToString() + ", X: " +
+                               item.Value.SectionXOffset.Value.ToString() + ", Y: " +
+                               item.Value.SectionYOffset.Value.ToString();
+                MasterLog.DebugWriteLine(toLog);
+            }
+        }
+
         private void ApplySystemChanges(Dictionary<Guid, DungeonTranslationNode> nodes, List<SimulationNode> tempNodeChanges)
         {
             for (int i = 0; i < tempNodeChanges.Count; i++)
             {
                 SimulationNode changesNode = tempNodeChanges[i];
-                DungeonTranslationNode translationNode = nodes[changesNode.TranslationNode.DesignNode.NodeID];
+                DungeonTranslationNode translationNode = nodes[changesNode.TranslationNode.DesignNode.NodeId];
                 translationNode.SectionXOffset += (int)changesNode.Force.X;
                 translationNode.SectionYOffset += (int)changesNode.Force.Y;
             }

@@ -21,7 +21,7 @@ namespace MLCoreMod.Core.WorldGeneration.Default
         {
         }
 
-        private ProtoArray<Chunk> GenerateTerrain(ProtoArray<Chunk> blankWorld, string dimensionName, Random seededRandom, Guid dimensionID)
+        private ProtoArray<Chunk> GenerateTerrain(ProtoArray<Chunk> blankWorld, string dimensionName, Random seededRandom, Guid dimensionId)
         {
             int[,] terrainGeneratorMap = this.AssignGenerators(blankWorld.Width, blankWorld.Height, seededRandom);
 
@@ -73,7 +73,7 @@ namespace MLCoreMod.Core.WorldGeneration.Default
                     toGenerator[i] = blankWorld[location.X, location.Y];
                 }
 
-                WorldGeneratorRegistry.TerrainGenerators[item.Key].GenerateTerrain(toGenerator, dimensionName, seededRandom, dimensionID);
+                WorldGeneratorRegistry.TerrainGenerators[item.Key].GenerateTerrain(toGenerator, dimensionName, seededRandom, dimensionId);
                 done++;
                 MasterLog.DebugWriteLine(done.ToString() + "/" + toDo.ToString());
             }
@@ -176,9 +176,9 @@ namespace MLCoreMod.Core.WorldGeneration.Default
             }
         }
 
-        protected override ProtoArray<Chunk> GenerateWorld(ProtoArray<Chunk> blankWorld, string dimensionName, Random seededRandom, Guid dimensionID)
+        protected override ProtoArray<Chunk> GenerateWorld(ProtoArray<Chunk> blankWorld, string dimensionName, Random seededRandom, Guid dimensionId)
         {
-            this.GenerateTerrain(blankWorld, dimensionName, seededRandom, dimensionID);
+            this.GenerateTerrain(blankWorld, dimensionName, seededRandom, dimensionId);
 
             //Let all the vegetation generators decide for themselves if they want to generate
             foreach (VegetationGenerator item in WorldGeneratorRegistry.VegetationGenerators)

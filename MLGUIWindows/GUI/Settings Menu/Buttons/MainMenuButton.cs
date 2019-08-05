@@ -13,7 +13,7 @@ namespace MLGUIWindows.GUI.Settings_Menu.Buttons
     {
         private bool FromMainMenu { get; set; }
 
-        public MainMenuButton(bool fromMainMenu) : base(TextureLoader.GUIMenuButton, GetLocation(), true, Resources.Back)
+        public MainMenuButton(bool fromMainMenu) : base(TextureLoader.GuiMenuButton, GetLocation(), true, Resources.Back)
         {
             this.ClickEvent += this.MainMenuButton_ClickEvent;
             this.FromMainMenu = fromMainMenu;
@@ -21,7 +21,7 @@ namespace MLGUIWindows.GUI.Settings_Menu.Buttons
 
         private void MainMenuButton_ClickEvent(object sender, ClickEventArgs e)
         {
-            FMODUtil.RaiseEvent(SoundsTable.UIClick);
+            FmodUtil.RaiseEvent(SoundsTable.UiClick);
             MenuHandler.Clear();
             if (this.FromMainMenu)
             {

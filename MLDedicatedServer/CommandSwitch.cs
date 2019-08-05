@@ -13,9 +13,9 @@ namespace MLDedicatedServer
         /// <summary>
         /// All found commands.
         /// </summary>
-        private static readonly List<ICommandModule> modules = Util.LoadAllModules();
+        private static readonly List<ICommandModule> Modules = Util.LoadAllModules();
 
-        private static bool commandFound = false;
+        private static bool CommandFound = false;
 
         static CommandSwitch()
         {
@@ -27,17 +27,17 @@ namespace MLDedicatedServer
         /// <param name="input"></param>
         public static void RecieveInput(string input)
         {
-            commandFound = false;
+            CommandFound = false;
             string inpt = input.ToLower();
             string[] inp = inpt.Split(' ');
 
             MaybeDisplayHelp(inp);
-            if (!commandFound)
+            if (!CommandFound)
             {
                 FindCommand(inp);
             }
 
-            if (!commandFound)
+            if (!CommandFound)
             {
                 Util.WriteLine(DedicatedServer.CommandNotFound);
             }
@@ -45,7 +45,7 @@ namespace MLDedicatedServer
 
         private static void FindCommand(string[] inp)
         {
-            foreach (ICommandModule item in modules)
+            foreach (ICommandModule item in Modules)
             {
                 if (item.GetCommandUsageName().ToLower() == inp[0])
                 {
@@ -53,7 +53,7 @@ namespace MLDedicatedServer
                     {
                         if (iitem.GetName().ToLower() == inp[1])
                         {
-                            commandFound = true;
+                            CommandFound = true;
                             if (inp.Length >= 3)
                             {
                                 iitem.Run(inp.ToList().GetRange(2, inp.Length - 2));
@@ -72,19 +72,19 @@ namespace MLDedicatedServer
         {
             if (inp[0] == "help")
             {
-                commandFound = true;
+                CommandFound = true;
                 DisplayModulesHelp();
             }
 
             if (inp.Length >= 2 && inp[1] == "help")
             {
-                commandFound = true;
+                CommandFound = true;
                 DisplayModuleHelp(inp);
             }
 
             if (inp.Length >= 3 && inp[2] == "help")
             {
-                commandFound = true;
+                CommandFound = true;
                 DisplayCommandHelp(inp);
             }
         }
@@ -96,7 +96,7 @@ namespace MLDedicatedServer
         private static void DisplayCommandHelp(string[] inp)
         {
             bool cf = false;
-            foreach (ICommandModule item in modules)
+            foreach (ICommandModule item in Modules)
             {
                 if (item.GetCommandUsageName().ToLower() == inp[0])
                 {
@@ -125,7 +125,7 @@ namespace MLDedicatedServer
         {
             Util.WriteLine(DedicatedServer.ListCommands);
 
-            foreach (ICommandModule item in modules)
+            foreach (ICommandModule item in Modules)
             {
                 if (item.GetCommandUsageName().ToLower() == inp[0])
                 {
@@ -144,7 +144,7 @@ namespace MLDedicatedServer
         {
             Util.WriteLine(DedicatedServer.DisplayCommandNames);
             Util.WriteLine("");
-            foreach (ICommandModule item in modules)
+            foreach (ICommandModule item in Modules)
             {
                 Util.WriteLine(item.GetCommandUsageName());
             }

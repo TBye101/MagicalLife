@@ -17,7 +17,7 @@ namespace MLAPI.Networking.Server
         /// </summary>
         private static EngineMode Local;
 
-        internal static TCPServer TCPServer;
+        internal static TcpServer TcpServer;
 
         /// <summary>
         /// The messages that have been received and are yet unprocessed.
@@ -35,8 +35,8 @@ namespace MLAPI.Networking.Server
 
             if (Local == EngineMode.ServerAndClient || Local == EngineMode.ServerOnly)
             {
-                TCPServer = new TCPServer();
-                TCPServer.Start(networkSettings.Port);
+                TcpServer = new TcpServer();
+                TcpServer.Start(networkSettings.Port);
             }
         }
 
@@ -53,7 +53,7 @@ namespace MLAPI.Networking.Server
             }
             else
             {
-                TCPServer.Send<T>(message, client);
+                TcpServer.Send<T>(message, client);
             }
         }
 
@@ -66,7 +66,7 @@ namespace MLAPI.Networking.Server
             }
             else
             {
-                TCPServer.Send(message, player);
+                TcpServer.Send(message, player);
             }
         }
 
@@ -83,7 +83,7 @@ namespace MLAPI.Networking.Server
             }
             else
             {
-                TCPServer.Broadcast<T>(message);
+                TcpServer.Broadcast<T>(message);
             }
         }
 
@@ -101,11 +101,11 @@ namespace MLAPI.Networking.Server
             }
             else
             {
-                foreach (KeyValuePair<Guid, Socket> item in TCPServer.PlayerToSocket)
+                foreach (KeyValuePair<Guid, Socket> item in TcpServer.PlayerToSocket)
                 {
                     if (item.Key != playerException)
                     {
-                        TCPServer.Send(message, item.Key);
+                        TcpServer.Send(message, item.Key);
                     }
                 }
             }

@@ -24,7 +24,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph
             while (toCheck.Count > 0)
             {
                 DungeonNode toCheckNode = toCheck[0];
-                checkedNodes.Add(toCheckNode.NodeID);
+                checkedNodes.Add(toCheckNode.NodeId);
                 toCheck.RemoveAt(0);
                 if (toCheckNode.NodeType == type)
                 {
@@ -34,7 +34,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph
                 for (int i = 0; i < toCheckNode.Connections.Count; i++)
                 {
                     DungeonNode connectionCheck = toCheckNode.Connections[i];
-                    if (!checkedNodes.Contains(connectionCheck.NodeID))
+                    if (!checkedNodes.Contains(connectionCheck.NodeId))
                     {
                         toCheck.Add(connectionCheck);
                     }

@@ -7,7 +7,7 @@ namespace MLServer.Processing.Message_Handlers
 {
     public class WorldModifierMessageHandler : MessageHandler
     {
-        public WorldModifierMessageHandler() : base(NetMessageID.WorldModifierMessage)
+        public WorldModifierMessageHandler() : base(NetMessageId.WorldModifierMessage)
         {
         }
 
@@ -15,7 +15,7 @@ namespace MLServer.Processing.Message_Handlers
         {
             WorldModifierMessage msg = (WorldModifierMessage)message;
 
-            ServerSendRecieve.SendAllExcept(msg, msg.PlayerID);
+            ServerSendRecieve.SendAllExcept(msg, msg.PlayerId);
             msg.WorldModifier.ModifyWorld();
         }
     }

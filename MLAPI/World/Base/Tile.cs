@@ -143,8 +143,8 @@ namespace MLAPI.World.Base
             this.FootStepSound = footStepSound;
         }
 
-        protected Tile(int x, int y, Guid dimensionID, int movementCost, int footStepSound)
-            : this(new Point3D(x, y, dimensionID), movementCost, footStepSound)
+        protected Tile(int x, int y, Guid dimensionId, int movementCost, int footStepSound)
+            : this(new Point3D(x, y, dimensionId), movementCost, footStepSound)
         {
         }
 

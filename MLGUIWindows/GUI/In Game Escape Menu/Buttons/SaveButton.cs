@@ -10,7 +10,7 @@ namespace MLGUIWindows.GUI.In_Game_Escape_Menu.Buttons
 {
     public class SaveButton : MonoButton
     {
-        public SaveButton() : base(TextureLoader.GUIMenuButton, GetDisplayArea(), true, Resources.Save)
+        public SaveButton() : base(TextureLoader.GuiMenuButton, GetDisplayArea(), true, Resources.Save)
         {
             this.ClickEvent += this.SaveButton_ClickEvent;
         }
@@ -32,9 +32,9 @@ namespace MLGUIWindows.GUI.In_Game_Escape_Menu.Buttons
 
         private void Save()
         {
-            FMODUtil.RaiseEvent(SoundsTable.UIClick);
+            FmodUtil.RaiseEvent(SoundsTable.UiClick);
             SaveGameMenu.Initialize();
-            InGameEscapeMenu.menu.PopupChild(SaveGameMenu.menu);
+            InGameEscapeMenu.Menu.PopupChild(SaveGameMenu.Menu);
         }
     }
 }

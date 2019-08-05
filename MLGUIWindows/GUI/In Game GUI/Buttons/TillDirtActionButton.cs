@@ -11,33 +11,33 @@ namespace MLGUIWindows.GUI.In_Game_GUI.Buttons
         protected int HoeTextureIndex;
         protected int GoldTextureIndex;
 
-        public TillDirtActionButton() : base(TextureLoader.GUIHoeButtonGrey, GetDisplayArea(), true)
+        public TillDirtActionButton() : base(TextureLoader.GuiHoeButtonGrey, GetDisplayArea(), true)
         {
-            this.HoeTextureIndex = AssetManager.GetTextureIndex(TextureLoader.GUIHoeButtonGrey);
-            this.GoldTextureIndex = AssetManager.GetTextureIndex(TextureLoader.GUIHoeButtonGold);
+            this.HoeTextureIndex = AssetManager.GetTextureIndex(TextureLoader.GuiHoeButtonGrey);
+            this.GoldTextureIndex = AssetManager.GetTextureIndex(TextureLoader.GuiHoeButtonGold);
             this.ClickEvent += this.TillDirtActionButton_ClickEvent;
         }
 
         private void TillDirtActionButton_ClickEvent(object sender, ClickEventArgs e)
         {
-            if (InGameGUI.Selected == ActionSelected.Till)
+            if (InGameGui.Selected == ActionSelected.Till)
             {
-                InGameGUI.Selected = ActionSelected.None;
-                this.TextureID = this.HoeTextureIndex;
+                InGameGui.Selected = ActionSelected.None;
+                this.TextureId = this.HoeTextureIndex;
             }
             else
             {
-                InGameGUI.Selected = ActionSelected.Till;
-                this.TextureID = this.GoldTextureIndex;
+                InGameGui.Selected = ActionSelected.Till;
+                this.TextureId = this.GoldTextureIndex;
             }
         }
 
         private static Rectangle GetDisplayArea()
         {
-            int x = InGameGUILayout.HoeActionButtonX;
-            int y = InGameGUILayout.ActionButtonY;
-            int width = InGameGUILayout.ActionButtonSize;
-            int height = InGameGUILayout.ActionButtonSize;
+            int x = InGameGuiLayout.HoeActionButtonX;
+            int y = InGameGuiLayout.ActionButtonY;
+            int width = InGameGuiLayout.ActionButtonSize;
+            int height = InGameGuiLayout.ActionButtonSize;
 
             return new Rectangle(x, y, width, height);
         }

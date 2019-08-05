@@ -19,12 +19,12 @@ namespace MLGUIWindows.GUI.New_World_Menu
         public WidthLabel WidthLabel { get; } = new WidthLabel();
         public MonoInputBox GameName { get; private set; }
 
-        public NewWorldMenuContainer(bool visible) : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow, false)
+        public NewWorldMenuContainer(bool visible) : base(TextureLoader.GuiMenuBackground, RenderInfo.FullScreenWindow, false)
         {
             this.Visible = visible;
 
-            this.GameName = new MonoInputBox(TextureLoader.GUIInputBox100x50, TextureLoader.GUICursorCarrot, NewWorldMenuLayout.GameNameInputBox,
-      int.MaxValue, TextureLoader.FontMainMenuFont12x, false,
+            this.GameName = new MonoInputBox(TextureLoader.GuiInputBox100X50, TextureLoader.GuiCursorCarrot, NewWorldMenuLayout.GameNameInputBox,
+      int.MaxValue, TextureLoader.FontMainMenuFont12X, false,
       SimpleTextRenderer.Alignment.Left, true);
 
             this.Controls.Add(this.WorldWidth);
@@ -41,7 +41,7 @@ namespace MLGUIWindows.GUI.New_World_Menu
 
         public override string GetTextureName()
         {
-            return TextureLoader.GUIMenuBackground;
+            return TextureLoader.GuiMenuBackground;
         }
     }
 }

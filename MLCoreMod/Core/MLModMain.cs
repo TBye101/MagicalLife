@@ -8,9 +8,9 @@ namespace MLCoreMod.Core
     /// <summary>
     /// The entry point of the vanilla game mod.
     /// </summary>
-    public class MLModMain : IMod
+    public class MlModMain : IMod
     {
-        private readonly ModInformation Info = new ModInformation(DescriptionValues.ModID, DescriptionValues.DisplayName,
+        private readonly ModInformation Info = new ModInformation(DescriptionValues.ModId, DescriptionValues.DisplayName,
             DescriptionValues.AuthorName, DescriptionValues.Description, DescriptionValues.Version);
 
         public ModInformation GetInfo()

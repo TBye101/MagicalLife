@@ -16,20 +16,20 @@ namespace MLAPI.Entity.AI.Task.Tasks
     public class GrabItemTask : MagicalTask
     {
         [ProtoMember(1)]
-        protected readonly int ItemID;
+        protected readonly int ItemId;
 
         [ProtoMember(2)]
         protected Point2D ReservedItemLocation;
 
-        public GrabItemTask(Guid boundID, int itemID, Guid dimensionID)
-            : base(Dependencies.CreateEmpty(), boundID, GetQualifications(itemID, dimensionID),
+        public GrabItemTask(Guid boundId, int itemId, Guid dimensionId)
+            : base(Dependencies.CreateEmpty(), boundId, GetQualifications(itemId, dimensionId),
                   PriorityLayers.Default)
         {
-            this.ItemID = itemID;
+            this.ItemId = itemId;
         }
 
-        public GrabItemTask(Guid boundID, Item item, Guid dimensionID)
-            : this(boundID, item.ItemID, dimensionID)
+        public GrabItemTask(Guid boundId, Item item, Guid dimensionId)
+            : this(boundId, item.ItemId, dimensionId)
         {
         }
 
@@ -38,30 +38,30 @@ namespace MLAPI.Entity.AI.Task.Tasks
             //Protobuf-net constructor
         }
 
-        private static Dependencies GetDependencies(Guid boundID, int itemID, Guid dimensionID)
+        private static Dependencies GetDependencies(Guid boundId, int itemId, Guid dimensionId)
         {
-            Point2D nearest = ItemFinder.FindNearestUnreserved(itemID, new Point3D(0, 0, dimensionID));
+            Point2D nearest = ItemFinder.FindNearestUnreserved(itemId, new Point3D(0, 0, dimensionId));
 
             ObservableCollection<MagicalTask> dependency = new ObservableCollection<MagicalTask>
             {
-                new GrabSpecificItemTask(boundID, Point3D.From2D(nearest, dimensionID))
+                new GrabSpecificItemTask(boundId, Point3D.From2D(nearest, dimensionId))
             };
 
             return new Dependencies(dependency);
         }
 
-        private static List<Qualification> GetQualifications(int itemID, Guid dimensionID)
+        private static List<Qualification> GetQualifications(int itemId, Guid dimensionId)
         {
             return new List<Qualification>
             {
                 new CanMoveQualification(),
-                new IsItemAvailibleQualification(itemID, dimensionID)
+                new IsItemAvailibleQualification(itemId, dimensionId)
             };
         }
 
         public override bool CreateDependencies(Living l)
         {
-            this.Dependencies = GetDependencies(this.BoundID, this.ItemID, l.DimensionID);
+            this.Dependencies = GetDependencies(this.BoundId, this.ItemId, l.DimensionId);
             return true;
         }
 

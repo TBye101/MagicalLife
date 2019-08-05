@@ -13,16 +13,16 @@ namespace MLAPI.Networking.Messages
         public List<PathLink> Path;
 
         [ProtoMember(6)]
-        public Guid LivingID;
+        public Guid LivingId;
 
         [ProtoMember(7)]
-        public Guid DimensionID;
+        public Guid DimensionId;
 
-        public RouteCreatedMessage(List<PathLink> path, Guid livingID, Guid dimensionID) : base(NetMessageID.RouteCreatedMessage)
+        public RouteCreatedMessage(List<PathLink> path, Guid livingId, Guid dimensionId) : base(NetMessageId.RouteCreatedMessage)
         {
             this.Path = path;
-            this.LivingID = livingID;
-            this.DimensionID = dimensionID;
+            this.LivingId = livingId;
+            this.DimensionId = dimensionId;
         }
 
         public RouteCreatedMessage()

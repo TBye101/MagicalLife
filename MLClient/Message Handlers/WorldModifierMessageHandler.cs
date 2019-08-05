@@ -9,7 +9,7 @@ namespace MLClient.Message_Handlers
     /// </summary>
     public class WorldModifierMessageHandler : MessageHandler
     {
-        public WorldModifierMessageHandler() : base(NetMessageID.WorldModifierMessage)
+        public WorldModifierMessageHandler() : base(NetMessageId.WorldModifierMessage)
         {
         }
 

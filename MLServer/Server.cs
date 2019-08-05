@@ -59,26 +59,26 @@ namespace MLServer
             if (World.Mode == EngineMode.ServerOnly)
             {
                 foreach (KeyValuePair<Guid, System.Net.Sockets.Socket> item
-                    in ServerSendRecieve.TCPServer.PlayerToSocket)
+                    in ServerSendRecieve.TcpServer.PlayerToSocket)
                 {
                     if (!WorldUtil.PlayerHasCharacter(item.Key))
                     {
-                        Guid firstDimensionID = WorldUtil.GetDimensionByName(Lang._1stDimensionName).Key;
-                        WorldUtil.SpawnRandomCharacter(item.Key, firstDimensionID);
-                        WorldUtil.SpawnRandomCharacter(item.Key, firstDimensionID);
-                        WorldUtil.SpawnRandomCharacter(item.Key, firstDimensionID);
+                        Guid firstDimensionId = WorldUtil.GetDimensionByName(Lang._1stDimensionName).Key;
+                        WorldUtil.SpawnRandomCharacter(item.Key, firstDimensionId);
+                        WorldUtil.SpawnRandomCharacter(item.Key, firstDimensionId);
+                        WorldUtil.SpawnRandomCharacter(item.Key, firstDimensionId);
                     }
                 }
             }
 
             if (World.Mode == EngineMode.ServerAndClient)
             {
-                if (!WorldUtil.PlayerHasCharacter(SettingsManager.PlayerSettings.Settings.PlayerID))
+                if (!WorldUtil.PlayerHasCharacter(SettingsManager.PlayerSettings.Settings.PlayerId))
                 {
-                    Guid firstDimensionID = WorldUtil.GetDimensionByName(Lang._1stDimensionName).Key;
-                    WorldUtil.SpawnRandomCharacter(SettingsManager.PlayerSettings.Settings.PlayerID, firstDimensionID);
-                    WorldUtil.SpawnRandomCharacter(SettingsManager.PlayerSettings.Settings.PlayerID, firstDimensionID);
-                    WorldUtil.SpawnRandomCharacter(SettingsManager.PlayerSettings.Settings.PlayerID, firstDimensionID);
+                    Guid firstDimensionId = WorldUtil.GetDimensionByName(Lang._1stDimensionName).Key;
+                    WorldUtil.SpawnRandomCharacter(SettingsManager.PlayerSettings.Settings.PlayerId, firstDimensionId);
+                    WorldUtil.SpawnRandomCharacter(SettingsManager.PlayerSettings.Settings.PlayerId, firstDimensionId);
+                    WorldUtil.SpawnRandomCharacter(SettingsManager.PlayerSettings.Settings.PlayerId, firstDimensionId);
                 }
             }
         }

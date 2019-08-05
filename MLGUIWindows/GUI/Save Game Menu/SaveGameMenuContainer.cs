@@ -17,7 +17,7 @@ namespace MLGUIWindows.GUI.Save_Game_Menu
 
         public NewSaveButton NewButton { get; private set; } = new NewSaveButton();
 
-        public SaveGameMenuContainer() : base(TextureLoader.GUIMenuBackground, RenderInfo.FullScreenWindow, false)
+        public SaveGameMenuContainer() : base(TextureLoader.GuiMenuBackground, RenderInfo.FullScreenWindow, false)
         {
             this.Controls.Add(this.SavesList);
             this.Controls.Add(this.OverwriteButton);
@@ -27,7 +27,7 @@ namespace MLGUIWindows.GUI.Save_Game_Menu
 
         public override string GetTextureName()
         {
-            return TextureLoader.GUIMenuBackground;
+            return TextureLoader.GuiMenuBackground;
         }
     }
 }

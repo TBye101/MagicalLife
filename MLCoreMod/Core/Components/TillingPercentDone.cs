@@ -28,7 +28,7 @@ namespace MLCoreMod.Core.Components
 
         protected override List<Item> TillPercent(float percent, Point3D position)
         {
-            FMODUtil.RaiseEvent(SoundsTable.PickaxeHit, "", 0, position);
+            FmodUtil.RaiseEvent(SoundsTable.PickaxeHit, "", 0, position);
             return default;
         }
     }

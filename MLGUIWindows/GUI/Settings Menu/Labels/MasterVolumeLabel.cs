@@ -7,7 +7,7 @@ namespace MLGUIWindows.GUI.Settings_Menu.Labels
 {
     public class MasterVolumeLabel : MonoLabel
     {
-        public MasterVolumeLabel() : base(GetLocation(), TextureLoader.GUIInputBox100x50, true, Resources.MasterVolume)
+        public MasterVolumeLabel() : base(GetLocation(), TextureLoader.GuiInputBox100X50, true, Resources.MasterVolume)
         {
         }
 

@@ -28,6 +28,6 @@ namespace MLAPI.World.Generation
         /// <param name="blankChunks"></param>
         /// <param name="biomeName">The name of the biome that is being worked with.</param>
         /// <returns></returns>
-        public abstract Chunk[] GenerateTerrain(Chunk[] blankChunks, string dimensionName, Random random, Guid dimensionID);
+        public abstract Chunk[] GenerateTerrain(Chunk[] blankChunks, string dimensionName, Random random, Guid dimensionId);
     }
 }

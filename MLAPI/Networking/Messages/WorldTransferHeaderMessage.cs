@@ -14,7 +14,7 @@ namespace MLAPI.Networking.Messages
         public List<DimensionHeader> DimensionHeaders { get; private set; }
 
         public WorldTransferHeaderMessage(List<DimensionHeader> dimensionHeaders)
-            : base(NetMessageID.WorldTransferHeaderMessage)
+            : base(NetMessageId.WorldTransferHeaderMessage)
         {
             this.DimensionHeaders = dimensionHeaders;
         }

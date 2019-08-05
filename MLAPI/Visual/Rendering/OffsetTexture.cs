@@ -37,9 +37,9 @@ namespace MLAPI.Visual.Rendering
         {
         }
 
-        public override void Render(MapBatch batch, Point2D ScreenTopLeft)
+        public override void Render(MapBatch batch, Point2D screenTopLeft)
         {
-            this.Texture.Render(batch, new Point2D(ScreenTopLeft.X + this.XOffset, ScreenTopLeft.Y + this.YOffset));
+            this.Texture.Render(batch, new Point2D(screenTopLeft.X + this.XOffset, screenTopLeft.Y + this.YOffset));
         }
     }
 }

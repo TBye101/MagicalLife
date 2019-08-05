@@ -16,7 +16,7 @@ namespace MLAPI.Networking.Client
         /// </summary>
         private static NetworkSettings NetworkSettings;
 
-        private static TCPClient TCPClient;
+        private static TcpClient TcpClient;
 
         /// <summary>
         /// Raised whenever a message is received
@@ -29,8 +29,8 @@ namespace MLAPI.Networking.Client
 
             if (networkSettings.Mode == EngineMode.ClientOnly)
             {
-                TCPClient = new TCPClient();
-                TCPClient.Start(NetworkSettings.Port, NetworkSettings.ServerIP);
+                TcpClient = new TcpClient();
+                TcpClient.Start(NetworkSettings.Port, NetworkSettings.ServerIp);
             }
             else
             {
@@ -55,7 +55,7 @@ namespace MLAPI.Networking.Client
             }
             else
             {
-                TCPClient.Send<T>(message);
+                TcpClient.Send<T>(message);
             }
         }
 

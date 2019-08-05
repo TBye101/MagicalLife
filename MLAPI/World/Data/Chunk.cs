@@ -32,7 +32,7 @@ namespace MLAPI.World.Data
         public Dictionary<int, RTree<Point2D>> Items = new Dictionary<int, RTree<Point2D>>();
 
         [ProtoMember(6)]
-        public Guid ID { get; }
+        public Guid Id { get; }
 
         /// <summary>
         /// The width of this chunk in tiles.
@@ -46,7 +46,7 @@ namespace MLAPI.World.Data
 
         public Chunk(Dictionary<Guid, Living> creatures, ProtoArray<Tile> tiles, Point2D location)
         {
-            this.ID = Guid.NewGuid();
+            this.Id = Guid.NewGuid();
             this.Creatures = creatures;
             this.Tiles = tiles;
             this.ChunkLocation = location;
@@ -76,14 +76,14 @@ namespace MLAPI.World.Data
         /// Returns the creature in the specified location.
         /// The overload of this method fetching based upon a <see cref="Guid"/> should be preferred over this, as it has faster performance in highly populated chunks.
         /// </summary>
-        /// <param name="Point2D">The location to search.</param>
+        /// <param name="point2D">The location to search.</param>
         /// <param name="living"></param>
         /// <returns>Returns whether or not a creature was found in the specified location.</returns>
-        public bool GetCreature(Point2D Point2D, out Living living)
+        public bool GetCreature(Point2D point2D, out Living living)
         {
             living = null;
             IEnumerable<KeyValuePair<Guid, Living>> result =
-                this.Creatures.Where(x => Point2D.Equals(x.Value.GetExactComponent<ComponentSelectable>().MapLocation));
+                this.Creatures.Where(x => point2D.Equals(x.Value.GetExactComponent<ComponentSelectable>().MapLocation));
 
             if (result.Any())
             {
@@ -99,12 +99,12 @@ namespace MLAPI.World.Data
         /// <summary>
         /// The fastest way of getting a creature.
         /// </summary>
-        /// <param name="creatureID"></param>
+        /// <param name="creatureId"></param>
         /// <param name="living"></param>
         /// <returns></returns>
-        public bool GetCreature(Guid creatureID, out Living living)
+        public bool GetCreature(Guid creatureId, out Living living)
         {
-            return this.Creatures.TryGetValue(creatureID, out living);
+            return this.Creatures.TryGetValue(creatureId, out living);
         }
 
         public IEnumerator<Tile> GetEnumerator()

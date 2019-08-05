@@ -10,9 +10,9 @@ namespace MLAPI.Comparators
     {
         public int Compare(Item x, Item y)
         {
-            if (x.ID != y.ID)
+            if (x.Id != y.Id)
             {
-                return x.ID.CompareTo(y);
+                return x.Id.CompareTo(y);
             }
             else
             {

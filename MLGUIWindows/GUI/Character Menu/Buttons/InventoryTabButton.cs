@@ -11,8 +11,8 @@ namespace MLGUIWindows.GUI.Character_Menu.Buttons
     public class InventoryTabButton : MonoButton
     {
         public InventoryTabButton()
-            : base(TextureLoader.GUIMenuButton, CharacterMenuLayout.GetInventoryButtonBounds(),
-                  true, TextureLoader.FontMainMenuFont12x, Resources.InventoryTab)
+            : base(TextureLoader.GuiMenuButton, CharacterMenuLayout.GetInventoryButtonBounds(),
+                  true, TextureLoader.FontMainMenuFont12X, Resources.InventoryTab)
         {
             this.ClickEvent += this.InventoryTabButton_ClickEvent;
         }

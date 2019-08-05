@@ -11,14 +11,14 @@ namespace MonoGUI.MonoGUI.Reusable.Collections
     /// <summary>
     /// Used to display a list of things.
     /// </summary>
-    public class ScrollableGrid : GUIElement, IScrollable
+    public class ScrollableGrid : GuiElement, IScrollable
     {
         private int ItemBackgroundTexture { get; set; }
 
         /// <summary>
         /// The items that are displayed in this <see cref="ListBox"/>.
         /// </summary>
-        public List<GUIElement>[] Items { get; set; }
+        public List<GuiElement>[] Items { get; set; }
 
         /// <summary>
         /// Width and height of an item display.
@@ -76,7 +76,7 @@ namespace MonoGUI.MonoGUI.Reusable.Collections
             }
             this.InitializeItems();
 
-            this.ItemBackgroundTexture = AssetManager.GetTextureIndex(TextureLoader.GUIListBoxItemBackground);
+            this.ItemBackgroundTexture = AssetManager.GetTextureIndex(TextureLoader.GuiListBoxItemBackground);
             this.ItemRenderCount = itemRenderCount;
             this.ItemDisplayBounds = this.CalculateItemBounds();
 
@@ -85,17 +85,17 @@ namespace MonoGUI.MonoGUI.Reusable.Collections
 
         private void ScrollableGrid_ClickEvent(object sender, Event.ClickEventArgs e)
         {
-            this.SelectedIndex = ((e.MouseEventArgs.Position.Y + e.GUIContainer.DrawingBounds.Y) / this.ItemDisplayBounds.Y) - 1;
+            this.SelectedIndex = ((e.MouseEventArgs.Position.Y + e.GuiContainer.DrawingBounds.Y) / this.ItemDisplayBounds.Y) - 1;
             this.ItemClickHandler(this.SelectedIndex);
         }
 
         private void InitializeItems()
         {
-            this.Items = new List<GUIElement>[this.Columns];
+            this.Items = new List<GuiElement>[this.Columns];
 
             for (int i = 0; i < this.Columns; i++)
             {
-                this.Items[i] = new List<GUIElement>();
+                this.Items[i] = new List<GuiElement>();
             }
         }
 
@@ -182,7 +182,7 @@ namespace MonoGUI.MonoGUI.Reusable.Collections
         /// </summary>
         /// <param name="column"></param>
         /// <param name="element"></param>
-        public void Add(int column, GUIElement element)
+        public void Add(int column, GuiElement element)
         {
             this.Items[column].Add(element);
         }

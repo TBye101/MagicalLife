@@ -10,7 +10,7 @@ namespace MLGUIWindows.GUI.New_World_Menu.Labels
     /// </summary>
     public class LengthLabel : MonoLabel
     {
-        public LengthLabel() : base(GetLocation(), TextureLoader.GUIInputBox100x50, true, Resources.WorldLength)
+        public LengthLabel() : base(GetLocation(), TextureLoader.GuiInputBox100X50, true, Resources.WorldLength)
         {
         }
 

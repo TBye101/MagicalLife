@@ -26,12 +26,12 @@ namespace MLAPI.World.Data.Disk.DataStorage
             this.Client.Send(data);
         }
 
-        public override void Receive<T>(T data, string filePath, Guid dimensionID)
+        public override void Receive<T>(T data, string filePath, Guid dimensionId)
         {
             switch (data)
             {
                 case Chunk chunk:
-                    this.Send(new WorldTransferBodyMessage(chunk, dimensionID));
+                    this.Send(new WorldTransferBodyMessage(chunk, dimensionId));
                     break;
 
                 case List<DimensionHeader> headers:
@@ -39,12 +39,12 @@ namespace MLAPI.World.Data.Disk.DataStorage
                     break;
 
                 case ItemRegistry registry:
-                    this.Send(new WorldTransferRegistryMessage(registry, dimensionID));
+                    this.Send(new WorldTransferRegistryMessage(registry, dimensionId));
                     break;
 
                 case DimensionHeader header:
                     WorldDiskSink sink = new WorldDiskSink();
-                    sink.Receive(header, filePath, dimensionID);
+                    sink.Receive(header, filePath, dimensionId);
                     break;
 
                 default:

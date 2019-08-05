@@ -12,10 +12,10 @@ namespace MLGUIWindows.GUI.Save_Game_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return SaveGameMenuLayout2560x1440.OverwriteSaveListBoxX;
+                        return SaveGameMenuLayout2560X1440.OverwriteSaveListBoxX;
 
                     default:
-                        return SaveGameMenuLayout1920x1080.OverwriteSaveListBoxX;
+                        return SaveGameMenuLayout1920X1080.OverwriteSaveListBoxX;
                 }
             }
         }
@@ -27,10 +27,10 @@ namespace MLGUIWindows.GUI.Save_Game_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return SaveGameMenuLayout2560x1440.OverwriteSaveListBoxY;
+                        return SaveGameMenuLayout2560X1440.OverwriteSaveListBoxY;
 
                     default:
-                        return SaveGameMenuLayout1920x1080.OverwriteSaveListBoxY;
+                        return SaveGameMenuLayout1920X1080.OverwriteSaveListBoxY;
                 }
             }
         }
@@ -42,10 +42,10 @@ namespace MLGUIWindows.GUI.Save_Game_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return SaveGameMenuLayout2560x1440.OverwriteSaveBoxWidth;
+                        return SaveGameMenuLayout2560X1440.OverwriteSaveBoxWidth;
 
                     default:
-                        return SaveGameMenuLayout1920x1080.OverwriteSaveBoxWidth;
+                        return SaveGameMenuLayout1920X1080.OverwriteSaveBoxWidth;
                 }
             }
         }
@@ -57,10 +57,10 @@ namespace MLGUIWindows.GUI.Save_Game_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return SaveGameMenuLayout2560x1440.OverwriteSaveBoxHeight;
+                        return SaveGameMenuLayout2560X1440.OverwriteSaveBoxHeight;
 
                     default:
-                        return SaveGameMenuLayout1920x1080.OverwriteSaveBoxHeight;
+                        return SaveGameMenuLayout1920X1080.OverwriteSaveBoxHeight;
                 }
             }
         }
@@ -75,10 +75,10 @@ namespace MLGUIWindows.GUI.Save_Game_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return SaveGameMenuLayout2560x1440.ItemRenderCount;
+                        return SaveGameMenuLayout2560X1440.ItemRenderCount;
 
                     default:
-                        return SaveGameMenuLayout1920x1080.ItemRenderCount;
+                        return SaveGameMenuLayout1920X1080.ItemRenderCount;
                 }
             }
         }
@@ -90,10 +90,10 @@ namespace MLGUIWindows.GUI.Save_Game_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return SaveGameMenuLayout2560x1440.OverwriteButtonX;
+                        return SaveGameMenuLayout2560X1440.OverwriteButtonX;
 
                     default:
-                        return SaveGameMenuLayout1920x1080.OverwriteButtonX;
+                        return SaveGameMenuLayout1920X1080.OverwriteButtonX;
                 }
             }
         }
@@ -105,10 +105,10 @@ namespace MLGUIWindows.GUI.Save_Game_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return SaveGameMenuLayout2560x1440.OverwriteButtonY;
+                        return SaveGameMenuLayout2560X1440.OverwriteButtonY;
 
                     default:
-                        return SaveGameMenuLayout1920x1080.OverwriteButtonY;
+                        return SaveGameMenuLayout1920X1080.OverwriteButtonY;
                 }
             }
         }
@@ -120,10 +120,10 @@ namespace MLGUIWindows.GUI.Save_Game_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return SaveGameMenuLayout2560x1440.OverwriteButtonWidth;
+                        return SaveGameMenuLayout2560X1440.OverwriteButtonWidth;
 
                     default:
-                        return SaveGameMenuLayout1920x1080.OverwriteButtonWidth;
+                        return SaveGameMenuLayout1920X1080.OverwriteButtonWidth;
                 }
             }
         }
@@ -135,10 +135,10 @@ namespace MLGUIWindows.GUI.Save_Game_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return SaveGameMenuLayout2560x1440.OverwriteButtonHeight;
+                        return SaveGameMenuLayout2560X1440.OverwriteButtonHeight;
 
                     default:
-                        return SaveGameMenuLayout1920x1080.OverwriteButtonHeight;
+                        return SaveGameMenuLayout1920X1080.OverwriteButtonHeight;
                 }
             }
         }
@@ -150,10 +150,10 @@ namespace MLGUIWindows.GUI.Save_Game_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return SaveGameMenuLayout2560x1440.NewSaveInputBoxX;
+                        return SaveGameMenuLayout2560X1440.NewSaveInputBoxX;
 
                     default:
-                        return SaveGameMenuLayout1920x1080.NewSaveInputBoxX;
+                        return SaveGameMenuLayout1920X1080.NewSaveInputBoxX;
                 }
             }
         }
@@ -165,10 +165,10 @@ namespace MLGUIWindows.GUI.Save_Game_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return SaveGameMenuLayout2560x1440.NewSaveInputBoxY;
+                        return SaveGameMenuLayout2560X1440.NewSaveInputBoxY;
 
                     default:
-                        return SaveGameMenuLayout1920x1080.NewSaveInputBoxY;
+                        return SaveGameMenuLayout1920X1080.NewSaveInputBoxY;
                 }
             }
         }
@@ -180,10 +180,10 @@ namespace MLGUIWindows.GUI.Save_Game_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return SaveGameMenuLayout2560x1440.NewSaveInputBoxWidth;
+                        return SaveGameMenuLayout2560X1440.NewSaveInputBoxWidth;
 
                     default:
-                        return SaveGameMenuLayout1920x1080.NewSaveInputBoxWidth;
+                        return SaveGameMenuLayout1920X1080.NewSaveInputBoxWidth;
                 }
             }
         }
@@ -195,10 +195,10 @@ namespace MLGUIWindows.GUI.Save_Game_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return SaveGameMenuLayout2560x1440.NewSaveInputBoxHeight;
+                        return SaveGameMenuLayout2560X1440.NewSaveInputBoxHeight;
 
                     default:
-                        return SaveGameMenuLayout1920x1080.NewSaveInputBoxHeight;
+                        return SaveGameMenuLayout1920X1080.NewSaveInputBoxHeight;
                 }
             }
         }
@@ -210,10 +210,10 @@ namespace MLGUIWindows.GUI.Save_Game_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return SaveGameMenuLayout2560x1440.NewSaveButtonX;
+                        return SaveGameMenuLayout2560X1440.NewSaveButtonX;
 
                     default:
-                        return SaveGameMenuLayout1920x1080.NewSaveButtonX;
+                        return SaveGameMenuLayout1920X1080.NewSaveButtonX;
                 }
             }
         }
@@ -225,10 +225,10 @@ namespace MLGUIWindows.GUI.Save_Game_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return SaveGameMenuLayout2560x1440.NewSaveButtonY;
+                        return SaveGameMenuLayout2560X1440.NewSaveButtonY;
 
                     default:
-                        return SaveGameMenuLayout1920x1080.NewSaveButtonY;
+                        return SaveGameMenuLayout1920X1080.NewSaveButtonY;
                 }
             }
         }
@@ -240,10 +240,10 @@ namespace MLGUIWindows.GUI.Save_Game_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return SaveGameMenuLayout2560x1440.NewSaveButtonWidth;
+                        return SaveGameMenuLayout2560X1440.NewSaveButtonWidth;
 
                     default:
-                        return SaveGameMenuLayout1920x1080.NewSaveButtonWidth;
+                        return SaveGameMenuLayout1920X1080.NewSaveButtonWidth;
                 }
             }
         }
@@ -255,10 +255,10 @@ namespace MLGUIWindows.GUI.Save_Game_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return SaveGameMenuLayout2560x1440.NewSaveButtonHeight;
+                        return SaveGameMenuLayout2560X1440.NewSaveButtonHeight;
 
                     default:
-                        return SaveGameMenuLayout1920x1080.NewSaveButtonHeight;
+                        return SaveGameMenuLayout1920X1080.NewSaveButtonHeight;
                 }
             }
         }

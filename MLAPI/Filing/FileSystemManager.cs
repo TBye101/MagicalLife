@@ -77,7 +77,7 @@ namespace MLAPI.Filing
             InstanceRootFolder += "Instances";
             Directory.CreateDirectory(InstanceRootFolder);
             InstanceRootFolder += Path.DirectorySeparatorChar;
-            InstanceRootFolder += GetIOSafeTime();
+            InstanceRootFolder += GetIoSafeTime();
             Directory.CreateDirectory(InstanceRootFolder);
         }
 
@@ -85,7 +85,7 @@ namespace MLAPI.Filing
         /// Returns a IO (file and directory) safe time.
         /// </summary>
         /// <returns></returns>
-        public static string GetIOSafeTime()
+        public static string GetIoSafeTime()
         {
             return string.Format("{0:[yyyy-MM-dd][hh-mm-ss-tt}]",
             DateTime.Now);

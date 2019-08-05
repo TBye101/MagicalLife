@@ -27,8 +27,8 @@ namespace MLAPI.Entity.AI.Task.Tasks
         [ProtoMember(3)]
         private TickTimer HitTimer { get; set; }
 
-        public HarvestTask(Point3D target, Guid boundID)
-            : base(GetDependencies(boundID, target), boundID, GetQualifications(), PriorityLayers.Default)
+        public HarvestTask(Point3D target, Guid boundId)
+            : base(GetDependencies(boundId, target), boundId, GetQualifications(), PriorityLayers.Default)
         {
             this.Target = target;
             MasterLog.DebugWriteLine("Target: " + this.Target.ToString());
@@ -43,15 +43,15 @@ namespace MLAPI.Entity.AI.Task.Tasks
         {
             return new List<Qualification>
             {
-                new HasSkillQualification(HarvestingSkill.InternalIDName)
+                new HasSkillQualification(HarvestingSkill.InternalIdName)
             };
         }
 
-        protected static Dependencies GetDependencies(Guid boundID, Point3D target)
+        protected static Dependencies GetDependencies(Guid boundId, Point3D target)
         {
             ObservableCollection<MagicalTask> deps = new ObservableCollection<MagicalTask>
             {
-                new BecomeAdjacentTask(boundID, target)
+                new BecomeAdjacentTask(boundId, target)
             };
 
             return new Dependencies(deps);
@@ -59,7 +59,7 @@ namespace MLAPI.Entity.AI.Task.Tasks
 
         public override void MakePreparations(Living living)
         {
-            Tile tile = World.Data.World.GetTile(living.DimensionID, this.Target.X, this.Target.Y);
+            Tile tile = World.Data.World.GetTile(living.DimensionId, this.Target.X, this.Target.Y);
             Resource resource = tile.MainObject as Resource;
 
             if (resource == null)
@@ -92,7 +92,7 @@ namespace MLAPI.Entity.AI.Task.Tasks
             if (this.HitTimer.Allow())
             {
                 //Locate harvest skill.
-                Skill skill = l.CreatureSkills.Find(x => x.InternalName == HarvestingSkill.InternalIDName);
+                Skill skill = l.CreatureSkills.Find(x => x.InternalName == HarvestingSkill.InternalIdName);
                 HarvestingSkill harvestSkill = (HarvestingSkill)skill;
 
                 //Calculate how much to mine based upon skill of creature in harvesting
@@ -102,7 +102,7 @@ namespace MLAPI.Entity.AI.Task.Tasks
                 List<Item> drop = this.Harvestable.HarvestSomePercent(amount, this.Target);
 
                 //Give out XP for the harvest skill.
-                skill.GainXP(1);
+                skill.GainXp(1);
 
                 if (drop?.Count > 0 && drop != null)
                 {
@@ -115,7 +115,7 @@ namespace MLAPI.Entity.AI.Task.Tasks
 
                 if (this.Harvestable.PercentHarvested > 1)
                 {
-                    this.RemoveResource(l.DimensionID);
+                    this.RemoveResource(l.DimensionId);
                     this.CompleteTask();
                 }
             }
@@ -130,18 +130,18 @@ namespace MLAPI.Entity.AI.Task.Tasks
         {
             //The tile the entity is standing on
             ComponentSelectable entityS = l.GetExactComponent<ComponentSelectable>();
-            Tile entityOn = World.Data.World.GetTile(l.DimensionID, entityS.MapLocation.X, entityS.MapLocation.Y);
+            Tile entityOn = World.Data.World.GetTile(l.DimensionId, entityS.MapLocation.X, entityS.MapLocation.Y);
 
             if (entityOn.MainObject == null || entityOn.MainObject.GetType() == drop.GetType())
             {
-                ItemAdder.AddItem(drop, entityS.MapLocation, l.DimensionID);
+                ItemAdder.AddItem(drop, entityS.MapLocation, l.DimensionId);
             }
             else
             {
                 l.Inventory.AddItem(drop);
                 Point3D emtpyTile = ItemFinder.FindMainObjectEmptyTile(entityOn.GetExactComponent<ComponentSelectable>().MapLocation);
-                DropItemTask task = new DropItemTask(emtpyTile, drop, l.ID, Guid.NewGuid());
-                task.ReservedFor = l.ID;
+                DropItemTask task = new DropItemTask(emtpyTile, drop, l.Id, Guid.NewGuid());
+                task.ReservedFor = l.Id;
                 TaskManager.Manager.AddTask(task);
             }
         }
@@ -149,9 +149,9 @@ namespace MLAPI.Entity.AI.Task.Tasks
         /// <summary>
         /// Removes the resource from the world, as it has been completely mined up.
         /// </summary>
-        private void RemoveResource(Guid dimensionID)
+        private void RemoveResource(Guid dimensionId)
         {
-            Tile tile = World.Data.World.GetTile(dimensionID, this.Target.X, this.Target.Y);
+            Tile tile = World.Data.World.GetTile(dimensionId, this.Target.X, this.Target.Y);
 
             Resource resource = tile.MainObject as Resource;
 

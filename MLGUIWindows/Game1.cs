@@ -29,7 +29,7 @@ namespace MLGUIWindows
     public class Game1 : Game
     {
         public GraphicsDeviceManager Graphics { get; set; }
-        public SpriteBatch GUIBatch { get; set; }
+        public SpriteBatch GuiBatch { get; set; }
         public SpriteBatch MapSpriteBatch { get; set; }
 
         public static ContentManager AssetManager { get; set; }
@@ -41,7 +41,7 @@ namespace MLGUIWindows
         /// </summary>
         internal static bool SplashDone { get; set; } = false;
 
-        public static FrameCounter FPS { get; private set; } = new FrameCounter();
+        public static FrameCounter Fps { get; private set; } = new FrameCounter();
 
         public Game1()
         {
@@ -62,7 +62,7 @@ namespace MLGUIWindows
             SplashScreens = new List<LogoScreen>()
             {
                 new LogoScreen(TextureLoader.LogoMonoGame, 5F),
-                new LogoScreen(TextureLoader.LogoFMOD, 5F, "\"FMOD\" and \"FMOD Studio\" are licensed by \"Firelight Technologies Pty Ltd\"")
+                new LogoScreen(TextureLoader.LogoFmod, 5F, "\"FMOD\" and \"FMOD Studio\" are licensed by \"Firelight Technologies Pty Ltd\"")
             };
         }
 
@@ -95,7 +95,7 @@ namespace MLGUIWindows
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            this.GUIBatch = new SpriteBatch(this.GraphicsDevice);
+            this.GuiBatch = new SpriteBatch(this.GraphicsDevice);
             this.MapSpriteBatch = new SpriteBatch(this.GraphicsDevice);
 
             Loader load = new Loader();
@@ -148,7 +148,7 @@ namespace MLGUIWindows
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             this.DisplayInGame();
-            FMODUtil.Update();
+            FmodUtil.Update();
 
             //Used to render things to a buffer that will have a zoom multiplier applied before rendering.
             this.GraphicsDevice.Clear(Color.Black);
@@ -165,9 +165,9 @@ namespace MLGUIWindows
                     this.MapSpriteBatch.End();
                 }
 
-                this.GUIBatch.Begin();
-                RenderingPipe.DrawGUI(this.GUIBatch);
-                this.GUIBatch.End();
+                this.GuiBatch.Begin();
+                RenderingPipe.DrawGui(this.GuiBatch);
+                this.GuiBatch.End();
             }
             else
             {
@@ -198,9 +198,9 @@ namespace MLGUIWindows
         {
             if (World.Dimensions.Count > 0)
             {
-                if (!BoundHandler.GUIWindows.Contains(InGameGUI.InGame))
+                if (!BoundHandler.GuiWindows.Contains(InGameGui.InGame))
                 {
-                    InGameGUI.Initialize();
+                    InGameGui.Initialize();
                 }
             }
         }

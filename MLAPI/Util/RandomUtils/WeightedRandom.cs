@@ -10,7 +10,7 @@ namespace MLAPI.Util.RandomUtils
     {
         private readonly List<int> Weights;
 
-        private readonly Random RNG;
+        private readonly Random Rng;
 
         private readonly int TotalWeight;
 
@@ -19,7 +19,7 @@ namespace MLAPI.Util.RandomUtils
         public WeightedRandom(List<int> weights, Random seededRandom)
         {
             this.Weights = weights;
-            this.RNG = seededRandom;
+            this.Rng = seededRandom;
 
             int length = this.Weights.Count;
             for (int i = 0; i < length; i++)
@@ -34,7 +34,7 @@ namespace MLAPI.Util.RandomUtils
         /// <returns></returns>
         public int GetNext()
         {
-            int rn = this.RNG.Next(0, this.TotalWeight);
+            int rn = this.Rng.Next(0, this.TotalWeight);
             int currentWeightSum = 0;
 
             int i = 0;

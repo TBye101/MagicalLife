@@ -19,22 +19,22 @@ namespace MLAPI.Asset
 
         #region GUI
 
-        public static readonly string GUIListBoxItemBackground = "GUI/ListBoxItemBackground";
-        public static readonly string GUIPickaxeButtonGold = "GUI/PickaxeButton_Gold";
-        public static readonly string GUIPickaxeButtonGrey = "GUI/PickaxeButton_Grey";
-        public static readonly string GUIAxeButtonGray = "GUI/AxeButton_Grey";
-        public static readonly string GUIAxeButtonGold = "GUI/AxeButton_Gold";
-        public static readonly string GUICursorCarrot = "GUI/CursorCarrot";
-        public static readonly string GUIInputBox100x50 = "GUI/InputBox100x50";
-        public static readonly string GUIMenuBackground = "GUI/MenuBackground";
-        public static readonly string GUIMenuButton = "GUI/MenuButton";
-        public static readonly string GUIHoeButtonGrey = "GUI/HoeButton_Grey";
-        public static readonly string GUIHoeButtonGold = "GUI/HoeButton_Gold";
-        public static readonly string GUIX = "GUI/X";
+        public static readonly string GuiListBoxItemBackground = "GUI/ListBoxItemBackground";
+        public static readonly string GuiPickaxeButtonGold = "GUI/PickaxeButton_Gold";
+        public static readonly string GuiPickaxeButtonGrey = "GUI/PickaxeButton_Grey";
+        public static readonly string GuiAxeButtonGray = "GUI/AxeButton_Grey";
+        public static readonly string GuiAxeButtonGold = "GUI/AxeButton_Gold";
+        public static readonly string GuiCursorCarrot = "GUI/CursorCarrot";
+        public static readonly string GuiInputBox100X50 = "GUI/InputBox100x50";
+        public static readonly string GuiMenuBackground = "GUI/MenuBackground";
+        public static readonly string GuiMenuButton = "GUI/MenuButton";
+        public static readonly string GuiHoeButtonGrey = "GUI/HoeButton_Grey";
+        public static readonly string GuiHoeButtonGold = "GUI/HoeButton_Gold";
+        public static readonly string Guix = "GUI/X";
 
-        public static readonly string GUIPickaxeMapIcon = "GUI/PickaxeMapIcon";
-        public static readonly string GUIAxeMapIcon = "GUI/AxeMapIcon";
-        public static readonly string GUIHoeMapIcon = "GUI/HoeMapIcon";
+        public static readonly string GuiPickaxeMapIcon = "GUI/PickaxeMapIcon";
+        public static readonly string GuiAxeMapIcon = "GUI/AxeMapIcon";
+        public static readonly string GuiHoeMapIcon = "GUI/HoeMapIcon";
 
         #endregion GUI
 
@@ -96,14 +96,14 @@ namespace MLAPI.Asset
 
         #region Fonts
 
-        public static readonly string FontMainMenuFont12x = "Fonts/MainMenuFont12x";
-        public static readonly string FontMainMenuFont24x = "Fonts/MainMenuFont24x";
+        public static readonly string FontMainMenuFont12X = "Fonts/MainMenuFont12x";
+        public static readonly string FontMainMenuFont24X = "Fonts/MainMenuFont24x";
 
         #endregion Fonts
 
         #region Logos
 
-        public static readonly string LogoFMOD = "Logo/FMODLogo";
+        public static readonly string LogoFmod = "Logo/FMODLogo";
         public static readonly string LogoMonoGame = "Logo/MonoGameLogo";
 
         #endregion Logos
@@ -137,22 +137,22 @@ namespace MLAPI.Asset
         private void Prepare()
         {
             this.TexturesToLoad.Add("Character/Character");
-            this.TexturesToLoad.Add(GUIListBoxItemBackground);
-            this.TexturesToLoad.Add(GUIPickaxeButtonGold);
-            this.TexturesToLoad.Add(GUIPickaxeButtonGrey);
-            this.TexturesToLoad.Add(GUIAxeButtonGold);
-            this.TexturesToLoad.Add(GUIAxeButtonGray);
-            this.TexturesToLoad.Add(GUICursorCarrot);
-            this.TexturesToLoad.Add(GUIInputBox100x50);
-            this.TexturesToLoad.Add(GUIMenuBackground);
-            this.TexturesToLoad.Add(GUIMenuButton);
-            this.TexturesToLoad.Add(GUIHoeButtonGrey);
-            this.TexturesToLoad.Add(GUIHoeButtonGold);
-            this.TexturesToLoad.Add(GUIX);
+            this.TexturesToLoad.Add(GuiListBoxItemBackground);
+            this.TexturesToLoad.Add(GuiPickaxeButtonGold);
+            this.TexturesToLoad.Add(GuiPickaxeButtonGrey);
+            this.TexturesToLoad.Add(GuiAxeButtonGold);
+            this.TexturesToLoad.Add(GuiAxeButtonGray);
+            this.TexturesToLoad.Add(GuiCursorCarrot);
+            this.TexturesToLoad.Add(GuiInputBox100X50);
+            this.TexturesToLoad.Add(GuiMenuBackground);
+            this.TexturesToLoad.Add(GuiMenuButton);
+            this.TexturesToLoad.Add(GuiHoeButtonGrey);
+            this.TexturesToLoad.Add(GuiHoeButtonGold);
+            this.TexturesToLoad.Add(Guix);
 
-            this.TexturesToLoad.Add(GUIPickaxeMapIcon);
-            this.TexturesToLoad.Add(GUIAxeMapIcon);
-            this.TexturesToLoad.Add(GUIHoeMapIcon);
+            this.TexturesToLoad.Add(GuiPickaxeMapIcon);
+            this.TexturesToLoad.Add(GuiAxeMapIcon);
+            this.TexturesToLoad.Add(GuiHoeMapIcon);
 
             this.TexturesToLoad.Add(TextureDirt1);
             this.TexturesToLoad.Add(TextureDirt2);
@@ -185,7 +185,7 @@ namespace MLAPI.Asset
             this.TexturesToLoad.Add(PineLeaves1);
             this.TexturesToLoad.Add(PineLeaves2);
 
-            this.TexturesToLoad.Add(LogoFMOD);
+            this.TexturesToLoad.Add(LogoFmod);
             this.TexturesToLoad.Add(LogoMonoGame);
 
             this.TexturesToLoad.Add(AnimationBaseCharacter);

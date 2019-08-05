@@ -7,7 +7,7 @@ namespace MLGUIWindows.GUI.In_Game_GUI
     /// <summary>
     /// Holds the container which is the in game GUI.
     /// </summary>
-    public static class InGameGUI
+    public static class InGameGui
     {
         public static ActionSelected Selected
         {
@@ -21,11 +21,11 @@ namespace MLGUIWindows.GUI.In_Game_GUI
             }
         }
 
-        public static InGameGUIContainer InGame;
+        public static InGameGuiContainer InGame;
 
         internal static void Initialize()
         {
-            InGame = new InGameGUIContainer(true);
+            InGame = new InGameGuiContainer(true);
             MenuHandler.DisplayMenu(InGame);
             Selected = ActionSelected.None;
         }

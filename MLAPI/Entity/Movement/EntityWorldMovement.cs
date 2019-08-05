@@ -38,8 +38,8 @@ namespace MLAPI.Entity.Movement
             {
                 PathLink section = path.Peek();
 
-                Tile sourceTile = World.Data.World.Dimensions[entity.DimensionID][section.Origin.X, section.Origin.Y];
-                Tile destinationTile = World.Data.World.Dimensions[section.Destination.DimensionID][section.Destination.X, section.Destination.Y];
+                Tile sourceTile = World.Data.World.Dimensions[entity.DimensionId][section.Origin.X, section.Origin.Y];
+                Tile destinationTile = World.Data.World.Dimensions[section.Destination.DimensionId][section.Destination.X, section.Destination.Y];
                 Move(entity, sourceTile, destinationTile);
             }
         }
@@ -74,7 +74,7 @@ namespace MLAPI.Entity.Movement
             ComponentSelectable dLocation = destination.GetExactComponent<ComponentSelectable>();
             MasterLog.DebugWriteLine("Moving from: " + sLocation.MapLocation.ToString() + " to " + dLocation.MapLocation.ToString());
 
-            if (sLocation.MapLocation.DimensionID.Equals(dLocation.MapLocation.DimensionID))
+            if (sLocation.MapLocation.DimensionId.Equals(dLocation.MapLocation.DimensionId))
             {
                 Direction direction = DetermineMovementDirection(sLocation.MapLocation, dLocation.MapLocation);
 
@@ -151,9 +151,9 @@ namespace MLAPI.Entity.Movement
                     FootStepSound(entity, destination);
 
                     //If this entity is the current client's and therefore that clients responsibility to report about
-                    if (entity.PlayerID == SettingsManager.PlayerSettings.Settings.PlayerID)
+                    if (entity.PlayerId == SettingsManager.PlayerSettings.Settings.PlayerId)
                     {
-                        ClientSendRecieve.Send(new WorldModifierMessage(new LivingLocationModifier(entity.ID, sLocation.MapLocation, dLocation.MapLocation)));
+                        ClientSendRecieve.Send(new WorldModifierMessage(new LivingLocationModifier(entity.Id, sLocation.MapLocation, dLocation.MapLocation)));
                     }
                 }
 
@@ -165,9 +165,9 @@ namespace MLAPI.Entity.Movement
                 movementComponent.QueuedMovement.Dequeue();
                 movementComponent.Movement.AddModifier(new ModifierDouble(100, new TimeRemoveCondition(1), Lang.NormalMovement));
                 //movementComponent.TileLocation = new Point2DDouble(dLocation.MapLocation.X, dLocation.MapLocation.Y);
-                if (entity.PlayerID == SettingsManager.PlayerSettings.Settings.PlayerID)
+                if (entity.PlayerId == SettingsManager.PlayerSettings.Settings.PlayerId)
                 {
-                    ClientSendRecieve.Send(new WorldModifierMessage(new LivingLocationModifier(entity.ID, sLocation.MapLocation, dLocation.MapLocation)));
+                    ClientSendRecieve.Send(new WorldModifierMessage(new LivingLocationModifier(entity.Id, sLocation.MapLocation, dLocation.MapLocation)));
                 }
             }
         }
@@ -182,7 +182,7 @@ namespace MLAPI.Entity.Movement
                 screenLocation.X *= Tile.GetTileSize().X;
                 screenLocation.Y *= Tile.GetTileSize().Y;
 
-                FMODUtil.RaiseEvent(SoundsTable.FootSteps, "Material", footStepsOn.FootStepSound, screenLocation.ToPoint2D());
+                FmodUtil.RaiseEvent(SoundsTable.FootSteps, "Material", footStepsOn.FootStepSound, screenLocation.ToPoint2D());
             }
         }
 

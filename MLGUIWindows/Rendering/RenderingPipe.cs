@@ -24,7 +24,7 @@ namespace MLGUIWindows.Rendering
         {
             if (World.Dimensions.Count > 0)
             {
-                MapRenderer.DrawMap(spBatch, RenderInfo.DimensionID);
+                MapRenderer.DrawMap(spBatch, RenderInfo.DimensionId);
             }
         }
 
@@ -33,21 +33,21 @@ namespace MLGUIWindows.Rendering
             int x = Mouse.GetState().X;
             int y = Mouse.GetState().Y;
             string mouseLocation = "{ " + x + ", " + y + " }";
-            SimpleTextRenderer.DrawString(MainMenuLayout.MainMenuFont, mouseLocation, new Rectangle(500, 500, 200, 50), SimpleTextRenderer.Alignment.Center, Color.AliceBlue, spBatch, RenderLayer.GUI);
+            SimpleTextRenderer.DrawString(MainMenuLayout.MainMenuFont, mouseLocation, new Rectangle(500, 500, 200, 50), SimpleTextRenderer.Alignment.Center, Color.AliceBlue, spBatch, RenderLayer.Gui);
         }
 
         /// <summary>
         /// Draws the GUI onto the screen.
         /// </summary>
         /// <param name="spBatch"></param>
-        public static void DrawGUI(SpriteBatch spBatch)
+        public static void DrawGui(SpriteBatch spBatch)
         {
             DrawContainers(spBatch);
         }
 
         private static void DrawContainers(SpriteBatch spBatch)
         {
-            foreach (GuiContainer item in Enumerable.Reverse(BoundHandler.GUIWindows))
+            foreach (GuiContainer item in Enumerable.Reverse(BoundHandler.GuiWindows))
             {
                 if (item.Visible)
                 {
@@ -62,7 +62,7 @@ namespace MLGUIWindows.Rendering
             {
                 spBatch.Draw(item.Image, item.DrawingBounds, Color.White);
 
-                foreach (GUIElement control in item.Controls)
+                foreach (GuiElement control in item.Controls)
                 {
                     if (control.Visible)
                     {

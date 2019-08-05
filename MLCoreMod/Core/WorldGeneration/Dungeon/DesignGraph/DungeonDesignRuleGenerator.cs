@@ -21,11 +21,11 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph
     /// </summary>
     public class DungeonDesignRuleGenerator
     {
-        private static readonly int populationSize = 100;
-        private static readonly float selectTopPercent = .1F;
-        private static readonly int crossoverPoints = 2;
-        private static readonly float mutationChance = .2F;
-        private static readonly int terminationGeneration = 10;
+        private static readonly int PopulationSize = 100;
+        private static readonly float SelectTopPercent = .1F;
+        private static readonly int CrossoverPoints = 2;
+        private static readonly float MutationChance = .2F;
+        private static readonly int TerminationGeneration = 10;
 
         /// <summary>
         /// Gets a chromosome containing rules utilized to generate a dungeon design as bounded by specified constraints.
@@ -36,16 +36,16 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph
             IGeneFactory geneFactory = new RoomGenChanceFactory();
             Chromosome initialPopulation = new Chromosome(geneFactory.GenerateGenes());
 
-            ISelection selection = new PercentSelection(selectTopPercent);
-            ICrossover crossover = new KPointCrossover(crossoverPoints, initialPopulation.Genes.Length);
-            IMutation mutation = new RoomGenChanceMutator(mutationChance);
+            ISelection selection = new PercentSelection(SelectTopPercent);
+            ICrossover crossover = new KPointCrossover(CrossoverPoints, initialPopulation.Genes.Length);
+            IMutation mutation = new RoomGenChanceMutator(MutationChance);
             DungeonDesigner dungeonDesigner = new RoomGenChanceDesignGenerator();
             IFitness fitness = new ConfigurableEvaluator1(dungeonDesigner);
             IReinsertion reinsertion = new ReplaceThenGenerate(geneFactory);
-            ITermination termination = new GenerationCountTermination(terminationGeneration);
+            ITermination termination = new GenerationCountTermination(TerminationGeneration);
 
             GeneticAlgorithm algorithm =
-                new GenericGeneticAlgorithm(fitness, crossover, selection, termination, mutation, reinsertion, populationSize,
+                new GenericGeneticAlgorithm(fitness, crossover, selection, termination, mutation, reinsertion, PopulationSize,
                 initialPopulation, geneFactory);
             algorithm.GenerationEvolved += this.Algorithm_GenerationChange;
 

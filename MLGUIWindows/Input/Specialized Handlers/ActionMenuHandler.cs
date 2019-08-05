@@ -15,7 +15,7 @@ namespace MLGUIWindows.Input.Specialized_Handlers
         {
             if (e == SettingsManager.Keybindings.Settings.OpenActionMenu)
             {
-                if (BoundHandler.GUIWindows.Contains(ActionMenu.AMenu))
+                if (BoundHandler.GuiWindows.Contains(ActionMenu.AMenu))
                 {
                     BoundHandler.RemoveContainer(ActionMenu.AMenu);
                 }

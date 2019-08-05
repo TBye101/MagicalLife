@@ -3,7 +3,7 @@
     /// <summary>
     /// The layout of the in game GUI for 1920x1080 resolution.
     /// </summary>
-    public static class InGameGUILayout1920x1080
+    public static class InGameGuiLayout1920X1080
     {
         /// <summary>
         /// The x position at which the in game GUI container is drawn.

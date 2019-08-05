@@ -19,9 +19,9 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.HallwayGenerators
         {
         }
 
-        public override ProtoArray<Chunk> GenerateHallways(ProtoArray<Chunk> chunks, string dimensionName, Random random, Guid dimensionID)
+        public override ProtoArray<Chunk> GenerateHallways(ProtoArray<Chunk> chunks, string dimensionName, Random random, Guid dimensionId)
         {
-            chunks = this.GenerateStoneMap(chunks, dimensionID);
+            chunks = this.GenerateStoneMap(chunks, dimensionId);
 
             int minElipseHallways = CoreSettingsHandler.DungeonGenerationConfig.Settings.MinCircleHallways;
             int maxElipseHallways = CoreSettingsHandler.DungeonGenerationConfig.Settings.MaxCircleHallways;
@@ -44,8 +44,8 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.HallwayGenerators
                 int elipseThickness = random.Next(minElipseThickness, maxElipseThickness + 1);
                 int elipseWidth = random.Next(minElipseWidth, maxElipseWidth);
                 int elipseHeight = random.Next(minElipseHeight, maxElipseHeight);
-                Point3D origin = this.GetRandomPoint(dimensionTileWidth, dimensionTileHeight, dimensionID, random);
-                List<Point3D> elipseCoordinates = Geometry.GetPointsOnElipse(elipseWidth, elipseHeight, elipseThickness, dimensionID, dimensionTileWidth, dimensionTileHeight, origin);
+                Point3D origin = this.GetRandomPoint(dimensionTileWidth, dimensionTileHeight, dimensionId, random);
+                List<Point3D> elipseCoordinates = Geometry.GetPointsOnElipse(elipseWidth, elipseHeight, elipseThickness, dimensionId, dimensionTileWidth, dimensionTileHeight, origin);
                 this.TurnToHallway(chunks, elipseCoordinates);
                 MasterLog.DebugWriteLine("Generating elipse hallway: ");
                 MasterLog.DebugWriteLine("Thickness: " + elipseThickness.ToString());
@@ -79,25 +79,25 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.HallwayGenerators
         /// <summary>
         /// Gets a random point within the dimension.
         /// </summary>
-        private Point3D GetRandomPoint(int dimensionTileWidth, int dimensionTileHeight, Guid dimensionID, Random random)
+        private Point3D GetRandomPoint(int dimensionTileWidth, int dimensionTileHeight, Guid dimensionId, Random random)
         {
             int x = random.Next(0, dimensionTileWidth);
             int y = random.Next(0, dimensionTileHeight);
-            return new Point3D(x, y, dimensionID);
+            return new Point3D(x, y, dimensionId);
         }
 
-        private ProtoArray<Chunk> GenerateStoneMap(ProtoArray<Chunk> chunks, Guid dimensionID)
+        private ProtoArray<Chunk> GenerateStoneMap(ProtoArray<Chunk> chunks, Guid dimensionId)
         {
             for (int i = chunks.Data.Length - 1; i > -1; i--)
             {
                 Chunk chunk = chunks.Data[i];
-                chunk = this.GenerateStone(chunk, dimensionID);
+                chunk = this.GenerateStone(chunk, dimensionId);
             }
 
             return chunks;
         }
 
-        private Chunk GenerateStone(Chunk chunk, Guid dimensionID)
+        private Chunk GenerateStone(Chunk chunk, Guid dimensionId)
         {
             int startingX = chunk.ChunkLocation.X * Chunk.Width;
             int startingY = chunk.ChunkLocation.Y * Chunk.Height;
@@ -108,7 +108,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.HallwayGenerators
                 {
                     int tileX = x + startingX;
                     int tileY = y + startingY;
-                    Dirt dirt = new Dirt(new Point3D(tileX, tileY, dimensionID));
+                    Dirt dirt = new Dirt(new Point3D(tileX, tileY, dimensionId));
                     dirt.MainObject = new Rock(100);
 
                     chunk.Tiles[x, y] = dirt;

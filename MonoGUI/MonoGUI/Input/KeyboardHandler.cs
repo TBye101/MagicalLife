@@ -97,24 +97,24 @@ namespace MonoGUI.MonoGUI.Input
         /// <summary>
         /// Calculate the changes made to the keyboard since the last calculation.
         /// </summary>
-        /// <param name="Pressed">The keys newly pressed down.</param>
-        /// <param name="Down">The keys that were already down.</param>
-        /// <param name="Released">The keys newly released.</param>
-        private static void GetChanges(out List<Keys> Pressed, out List<Keys> Down, out List<Keys> Released)
+        /// <param name="pressed">The keys newly pressed down.</param>
+        /// <param name="down">The keys that were already down.</param>
+        /// <param name="released">The keys newly released.</param>
+        private static void GetChanges(out List<Keys> pressed, out List<Keys> down, out List<Keys> released)
         {
             KeyboardState key = Keyboard.GetState();
 
-            Keys[] OldDown = Old.GetPressedKeys();
-            Keys[] NewDown = key.GetPressedKeys();
+            Keys[] oldDown = Old.GetPressedKeys();
+            Keys[] newDown = key.GetPressedKeys();
 
             //Figures out which keys are newly pressed
-            Pressed = NewDown.Where(x => !OldDown.Contains(x)).ToList();
+            pressed = newDown.Where(x => !oldDown.Contains(x)).ToList();
 
             //Figure out which keys are still staying down
-            Down = NewDown.Where(x => OldDown.Contains(x)).ToList();
+            down = newDown.Where(x => oldDown.Contains(x)).ToList();
 
             //Figure out which keys were released
-            Released = OldDown.Where(x => !NewDown.Contains(x)).ToList();
+            released = oldDown.Where(x => !newDown.Contains(x)).ToList();
 
             //This function is done with the new keyboard state, so the new becomes the old.
             Old = key;

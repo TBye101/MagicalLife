@@ -58,8 +58,8 @@ namespace MLAPI.Visual.Rendering.Map
         /// <param name="renderLayer">The layer in which this rendering call should be made.</param>
         public void Draw(Texture2D texture, Rectangle target, int renderLayer)
         {
-            void renderCall() => this.Draw(texture, target);
-            this.RenderActions.Add(new RenderCallHolder(renderLayer, renderCall, this.CallCounter.Increment()));
+            void RenderCall() => this.Draw(texture, target);
+            this.RenderActions.Add(new RenderCallHolder(renderLayer, RenderCall, this.CallCounter.Increment()));
         }
 
         /// <summary>
@@ -67,8 +67,8 @@ namespace MLAPI.Visual.Rendering.Map
         /// </summary>
         public void DrawText(string text, Rectangle target, SpriteFont font, SimpleTextRenderer.Alignment alignment, int renderLayer)
         {
-            void renderCall() => this.DrawText(text, target, font, alignment);
-            this.RenderActions.Add(new RenderCallHolder(renderLayer, renderCall, this.CallCounter.Increment()));
+            void RenderCall() => this.DrawText(text, target, font, alignment);
+            this.RenderActions.Add(new RenderCallHolder(renderLayer, RenderCall, this.CallCounter.Increment()));
         }
 
         private void DrawText(string text, Rectangle target, SpriteFont font, SimpleTextRenderer.Alignment alignment)
@@ -94,8 +94,8 @@ namespace MLAPI.Visual.Rendering.Map
         /// <param name="textureSection">The section of the texture that will be drawn.</param>
         public void Draw(Texture2D texture, Vector2 target, Rectangle textureSection, int renderLayer)
         {
-            void renderCall() => this.Draw(texture, target, textureSection);
-            this.RenderActions.Add(new RenderCallHolder(renderLayer, renderCall, this.CallCounter.Increment()));
+            void RenderCall() => this.Draw(texture, target, textureSection);
+            this.RenderActions.Add(new RenderCallHolder(renderLayer, RenderCall, this.CallCounter.Increment()));
         }
 
         /// <summary>
@@ -111,8 +111,8 @@ namespace MLAPI.Visual.Rendering.Map
 
         public void Draw(Texture2D texture, Vector2 target, int renderLayer)
         {
-            void renderCall() => this.Draw(texture, target);
-            this.RenderActions.Add(new RenderCallHolder(renderLayer, renderCall, this.CallCounter.Increment()));
+            void RenderCall() => this.Draw(texture, target);
+            this.RenderActions.Add(new RenderCallHolder(renderLayer, RenderCall, this.CallCounter.Increment()));
         }
 
         private void Draw(Texture2D texture, Vector2 target)

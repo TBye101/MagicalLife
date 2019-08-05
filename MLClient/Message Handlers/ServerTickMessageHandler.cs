@@ -7,7 +7,7 @@ namespace MLClient.Message_Handlers
 {
     public class ServerTickMessageHandler : MessageHandler
     {
-        public ServerTickMessageHandler() : base(NetMessageID.ServerTickMessage)
+        public ServerTickMessageHandler() : base(NetMessageId.ServerTickMessage)
         {
         }
 

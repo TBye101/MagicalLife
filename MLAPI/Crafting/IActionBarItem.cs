@@ -10,7 +10,7 @@
         /// Must be 32x32 pixels.
         /// </summary>
         /// <returns></returns>
-        int GetDisplayTextureID();
+        int GetDisplayTextureId();
 
         /// <summary>
         /// The name of this action bar item.

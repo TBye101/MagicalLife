@@ -18,7 +18,7 @@ namespace MLCoreMod.Core.WorldGeneration.TerrainGenerators
         {
         }
 
-        public override Chunk[] GenerateTerrain(Chunk[] blankChunks, string dimensionName, Random seededRandom, Guid dimensionID)
+        public override Chunk[] GenerateTerrain(Chunk[] blankChunks, string dimensionName, Random seededRandom, Guid dimensionId)
         {
             foreach (Chunk chunk in blankChunks)
             {
@@ -31,7 +31,7 @@ namespace MLCoreMod.Core.WorldGeneration.TerrainGenerators
                         Point2D chunkLocation = chunk.ChunkLocation;
                         int x = (chunkLocation.X * Chunk.Width) + i;
                         int y = (chunkLocation.Y * Chunk.Height) + j;
-                        chunk.Tiles[i, j] = this.GenerateTile(x, y, seededRandom, dimensionID);
+                        chunk.Tiles[i, j] = this.GenerateTile(x, y, seededRandom, dimensionId);
                     }
                 }
             }
@@ -39,9 +39,9 @@ namespace MLCoreMod.Core.WorldGeneration.TerrainGenerators
             return blankChunks;
         }
 
-        private Tile GenerateTile(int x, int y, Random seededRandom, Guid dimensionID)
+        private Tile GenerateTile(int x, int y, Random seededRandom, Guid dimensionId)
         {
-            Grass dirt = new Grass(x, y, dimensionID);
+            Grass dirt = new Grass(x, y, dimensionId);
 
             if (seededRandom.Next(0, 5) == 3)
             {
@@ -59,11 +59,11 @@ namespace MLCoreMod.Core.WorldGeneration.TerrainGenerators
                     {
                         List<Point3D> partLocations = new List<Point3D>
                         {
-                            new Point3D(x, y, dimensionID)
+                            new Point3D(x, y, dimensionId)
                         };
 
                         DungeonEntrance1 dungeonEntrance = new DungeonEntrance1(partLocations);
-                        dirt.MainObject = new DungeonStairDown(dungeonEntrance.StructureID, new Point3D(0, 0, Guid.NewGuid()));
+                        dirt.MainObject = new DungeonStairDown(dungeonEntrance.StructureId, new Point3D(0, 0, Guid.NewGuid()));
                     }
                 }
             }

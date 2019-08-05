@@ -28,7 +28,7 @@ namespace MLAPI.World
         /// <param name="tiles"></param>
         /// <param name="str"></param>
         /// <returns></returns>
-        public static Tile GetTileByID(ProtoArray<Tile> tiles, string str)
+        public static Tile GetTileById(ProtoArray<Tile> tiles, string str)
         {
             int x = 0;
             int y = 0;
@@ -49,22 +49,24 @@ namespace MLAPI.World
         /// Returns all the tiles that neighbor the specified tile.
         /// </summary>
         /// <returns></returns>
-        public static List<Point2D> GetNeighboringTiles(Point2D tileLocation, Guid dimensionID)
+        public static List<Point2D> GetNeighboringTiles(Point2D tileLocation, Guid dimensionId)
         {
-            List<Point2D> neighbors = new List<Point2D>();
+            List<Point2D> neighbors = new List<Point2D>
+            {
+                new Point2D(tileLocation.X + 1, tileLocation.Y),
+                new Point2D(tileLocation.X - 1, tileLocation.Y),
+                new Point2D(tileLocation.X, tileLocation.Y + 1),
+                new Point2D(tileLocation.X, tileLocation.Y - 1),
+                new Point2D(tileLocation.X + 1, tileLocation.Y + 1),
+                new Point2D(tileLocation.X + 1, tileLocation.Y - 1),
+                new Point2D(tileLocation.X - 1, tileLocation.Y + 1),
+                new Point2D(tileLocation.X - 1, tileLocation.Y - 1)
+            };
 
-            neighbors.Add(new Point2D(tileLocation.X + 1, tileLocation.Y));
-            neighbors.Add(new Point2D(tileLocation.X - 1, tileLocation.Y));
-            neighbors.Add(new Point2D(tileLocation.X, tileLocation.Y + 1));
-            neighbors.Add(new Point2D(tileLocation.X, tileLocation.Y - 1));
-            neighbors.Add(new Point2D(tileLocation.X + 1, tileLocation.Y + 1));
-            neighbors.Add(new Point2D(tileLocation.X + 1, tileLocation.Y - 1));
-            neighbors.Add(new Point2D(tileLocation.X - 1, tileLocation.Y + 1));
-            neighbors.Add(new Point2D(tileLocation.X - 1, tileLocation.Y - 1));
 
             for (int i = neighbors.Count - 1; i > -1; i--)
             {
-                if (!DoesTileExist(neighbors[i], dimensionID))
+                if (!DoesTileExist(neighbors[i], dimensionId))
                 {
                     neighbors.RemoveAt(i);
                 }
@@ -75,20 +77,22 @@ namespace MLAPI.World
 
         public static List<Point3D> GetNeighboringTiles(Point3D tileLocation)
         {
-            List<Point3D> neighbors = new List<Point3D>();
+            List<Point3D> neighbors = new List<Point3D>
+            {
+                new Point3D(tileLocation.X + 1, tileLocation.Y, tileLocation.DimensionId),
+                new Point3D(tileLocation.X - 1, tileLocation.Y, tileLocation.DimensionId),
+                new Point3D(tileLocation.X, tileLocation.Y + 1, tileLocation.DimensionId),
+                new Point3D(tileLocation.X, tileLocation.Y - 1, tileLocation.DimensionId),
+                new Point3D(tileLocation.X + 1, tileLocation.Y + 1, tileLocation.DimensionId),
+                new Point3D(tileLocation.X + 1, tileLocation.Y - 1, tileLocation.DimensionId),
+                new Point3D(tileLocation.X - 1, tileLocation.Y + 1, tileLocation.DimensionId),
+                new Point3D(tileLocation.X - 1, tileLocation.Y - 1, tileLocation.DimensionId)
+            };
 
-            neighbors.Add(new Point3D(tileLocation.X + 1, tileLocation.Y, tileLocation.DimensionID));
-            neighbors.Add(new Point3D(tileLocation.X - 1, tileLocation.Y, tileLocation.DimensionID));
-            neighbors.Add(new Point3D(tileLocation.X, tileLocation.Y + 1, tileLocation.DimensionID));
-            neighbors.Add(new Point3D(tileLocation.X, tileLocation.Y - 1, tileLocation.DimensionID));
-            neighbors.Add(new Point3D(tileLocation.X + 1, tileLocation.Y + 1, tileLocation.DimensionID));
-            neighbors.Add(new Point3D(tileLocation.X + 1, tileLocation.Y - 1, tileLocation.DimensionID));
-            neighbors.Add(new Point3D(tileLocation.X - 1, tileLocation.Y + 1, tileLocation.DimensionID));
-            neighbors.Add(new Point3D(tileLocation.X - 1, tileLocation.Y - 1, tileLocation.DimensionID));
 
             for (int i = neighbors.Count - 1; i > -1; i--)
             {
-                if (!DoesTileExist(neighbors[i], tileLocation.DimensionID))
+                if (!DoesTileExist(neighbors[i], tileLocation.DimensionId))
                 {
                     neighbors.RemoveAt(i);
                 }
@@ -100,9 +104,9 @@ namespace MLAPI.World
         /// <summary>
         /// Determines if the specified location is actually a tile in the current map.
         /// </summary>
-        public static bool DoesTileExist(Point2D tileLocation, Guid dimensionID)
+        public static bool DoesTileExist(Point2D tileLocation, Guid dimensionId)
         {
-            return DoesTileExist(Point3D.From2D(tileLocation, dimensionID));
+            return DoesTileExist(Point3D.From2D(tileLocation, dimensionId));
         }
 
         /// <summary>
@@ -110,7 +114,7 @@ namespace MLAPI.World
         /// </summary>
         public static bool DoesTileExist(Point3D tileLocation)
         {
-            Data.World.Dimensions.TryGetValue(tileLocation.DimensionID, out Dimension dimension);
+            Data.World.Dimensions.TryGetValue(tileLocation.DimensionId, out Dimension dimension);
             if (dimension == null)
             {
                 return false;
@@ -154,9 +158,9 @@ namespace MLAPI.World
         /// </summary>
         /// <param name="dimension"></param>
         /// <returns></returns>
-        public static Point3D FindRandomLocation(Guid dimensionID)
+        public static Point3D FindRandomLocation(Guid dimensionId)
         {
-            Dimension dim = Data.World.Dimensions[dimensionID];
+            Dimension dim = Data.World.Dimensions[dimensionId];
 
             //The coordinates of the random chunk
             int randomChunkX = StaticRandom.Rand(0, dim.Width);
@@ -172,26 +176,26 @@ namespace MLAPI.World
 
             if (dim[x, y].IsWalkable)
             {
-                return new Point3D(x, y, dimensionID);
+                return new Point3D(x, y, dimensionId);
             }
             else
             {
-                return FindRandomLocation(dimensionID);
+                return FindRandomLocation(dimensionId);
             }
         }
 
         /// <summary>
         /// Spawns a character at a random position in the map without spawning the character in the same space as another character.
         /// </summary>
-        /// <param name="playerID"></param>
-        public static void SpawnRandomCharacter(Guid playerID, Guid dimensionID)
+        /// <param name="playerId"></param>
+        public static void SpawnRandomCharacter(Guid playerId, Guid dimensionId)
         {
-            Point3D randomLocation = FindRandomLocation(dimensionID);
+            Point3D randomLocation = FindRandomLocation(dimensionId);
 
             HumanFactory humanFactory = new HumanFactory();
-            Human human = humanFactory.GenerateHuman(randomLocation, dimensionID, playerID);
+            Human human = humanFactory.GenerateHuman(randomLocation, dimensionId, playerId);
 
-            Data.World.GetChunkByTile(dimensionID, randomLocation.X, randomLocation.Y).Creatures.Add(human.ID, human);
+            Data.World.GetChunkByTile(dimensionId, randomLocation.X, randomLocation.Y).Creatures.Add(human.Id, human);
 
             if (Data.World.Mode == Networking.EngineMode.ServerOnly)
             {
@@ -207,7 +211,7 @@ namespace MLAPI.World
         /// <returns></returns>
         public static Living GetCreature(Point3D tileLocation)
         {
-            Chunk chunk = Data.World.GetChunkByTile(tileLocation.DimensionID, tileLocation.X, tileLocation.Y);
+            Chunk chunk = Data.World.GetChunkByTile(tileLocation.DimensionId, tileLocation.X, tileLocation.Y);
             chunk.GetCreature(tileLocation, out Living creature);
             return creature;
         }
@@ -216,7 +220,7 @@ namespace MLAPI.World
         /// Determines if a player has a character within the world somewhere.
         /// </summary>
         /// <returns></returns>
-        public static bool PlayerHasCharacter(Guid playerID)
+        public static bool PlayerHasCharacter(Guid playerId)
         {
             foreach (KeyValuePair<Guid, Dimension> item in Data.World.Dimensions)
             {
@@ -225,7 +229,7 @@ namespace MLAPI.World
                     for (int y = 0; y < item.Value.Height; y++)
                     {
                         Chunk chunk = item.Value.GetChunk(x, y);
-                        if (chunk.Creatures.Any(living => living.Value.PlayerID.Equals(playerID)))
+                        if (chunk.Creatures.Any(living => living.Value.PlayerId.Equals(playerId)))
                         {
                             return true;
                         }

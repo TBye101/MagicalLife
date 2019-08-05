@@ -20,10 +20,10 @@ namespace MLCoreMod.Core.Tiles
         {
             this.AddComponent(new TillablePercentDone(.07F));
             this.GetExactComponent<ComponentRenderer>().RenderQueue.Add(
-                new StaticTexture(Dirt.GetTextureID(), RenderLayer.DirtBase));
+                new StaticTexture(Dirt.GetTextureId(), RenderLayer.DirtBase));
         }
 
-        public Dirt(int x, int y, Guid dimensionID) : this(new Point3D(x, y, dimensionID))
+        public Dirt(int x, int y, Guid dimensionId) : this(new Point3D(x, y, dimensionId))
         {
         }
 
@@ -34,7 +34,7 @@ namespace MLCoreMod.Core.Tiles
         protected static ComponentRenderer GetRenderer()
         {
             ComponentRenderer renderer = new ComponentRenderer();
-            StaticTexture texture = new StaticTexture(GetTextureID(), RenderLayer.DirtBase);
+            StaticTexture texture = new StaticTexture(GetTextureId(), RenderLayer.DirtBase);
 
             renderer.RenderQueue.Add(texture);
             return renderer;
@@ -45,7 +45,7 @@ namespace MLCoreMod.Core.Tiles
             return Lang.Dirt;
         }
 
-        public static int GetTextureID()
+        public static int GetTextureId()
         {
             return AssetManager.GetTextureIndex(GetRandomDirtTexture());
         }

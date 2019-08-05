@@ -24,7 +24,7 @@ namespace MLGUIWindows.Rendering.Map
     {
         public static MapBatch MapDrawer { get; private set; } = new MapBatch();
 
-        private static SpriteFont ItemCountFont { get; set; } = Game1.AssetManager.Load<SpriteFont>(TextureLoader.FontMainMenuFont12x);
+        private static SpriteFont ItemCountFont { get; set; } = Game1.AssetManager.Load<SpriteFont>(TextureLoader.FontMainMenuFont12X);
 
         private static MapCuller Culler = new MapCuller(RenderInfo.FullScreenWindow);
 
@@ -59,7 +59,7 @@ namespace MLGUIWindows.Rendering.Map
         /// Draws the tiles that make up the map.
         /// </summary>
         /// <param name="spBatch"></param>
-        public static void DrawMap(SpriteBatch spBatch, Guid dimensionID)
+        public static void DrawMap(SpriteBatch spBatch, Guid dimensionId)
         {
             MapDrawer.UpdateSpriteBatch(spBatch);
             List<Point2D> result = Culler.GetChunksInView();
@@ -73,21 +73,21 @@ namespace MLGUIWindows.Rendering.Map
 
                 if (chunkCoordinates.X != -1 && chunkCoordinates.Y != -1)
                 {
-                    Chunk chunk = World.GetChunk(dimensionID, chunkCoordinates.X, chunkCoordinates.Y);
-                    RenderChunk(chunk, dimensionID);
+                    Chunk chunk = World.GetChunk(dimensionId, chunkCoordinates.X, chunkCoordinates.Y);
+                    RenderChunk(chunk, dimensionId);
                 }
             }
 
             MapDrawer.RenderAll();
         }
 
-        private static void RenderChunk(Chunk chunk, Guid dimensionID)
+        private static void RenderChunk(Chunk chunk, Guid dimensionId)
         {
             foreach (Tile tile in chunk)
             {
                 ComponentSelectable selectable = tile.GetExactComponent<ComponentSelectable>();
-                StartingPoint.X = RenderInfo.tileSize.X * selectable.MapLocation.X;
-                StartingPoint.Y = RenderInfo.tileSize.Y * selectable.MapLocation.Y;
+                StartingPoint.X = RenderInfo.TileSize.X * selectable.MapLocation.X;
+                StartingPoint.Y = RenderInfo.TileSize.Y * selectable.MapLocation.Y;
                 DrawTile(tile, StartingPoint);
             }
 
@@ -163,11 +163,11 @@ namespace MLGUIWindows.Rendering.Map
             switch (tile.ImpendingAction)
             {
                 case ActionSelected.Mine:
-                    MapDrawer.Draw(AssetManager.Textures[AssetManager.NameToIndex[TextureLoader.GUIPickaxeMapIcon]], X32Target, RenderLayer.GUI);
+                    MapDrawer.Draw(AssetManager.Textures[AssetManager.NameToIndex[TextureLoader.GuiPickaxeMapIcon]], X32Target, RenderLayer.Gui);
                     break;
 
                 case ActionSelected.Chop:
-                    MapDrawer.Draw(AssetManager.Textures[AssetManager.NameToIndex[TextureLoader.GUIAxeMapIcon]], X32Target, RenderLayer.GUI);
+                    MapDrawer.Draw(AssetManager.Textures[AssetManager.NameToIndex[TextureLoader.GuiAxeMapIcon]], X32Target, RenderLayer.Gui);
                     break;
 
                 default:

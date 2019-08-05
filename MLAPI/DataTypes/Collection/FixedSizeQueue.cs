@@ -8,7 +8,7 @@ namespace MLAPI.DataTypes.Collection
     /// <typeparam name="T"></typeparam>
     public class FixedSizedQueue<T> : ConcurrentQueue<T>
     {
-        private readonly object syncObject = new object();
+        private readonly object SyncObject = new object();
 
         public int Size { get; private set; }
 
@@ -20,7 +20,7 @@ namespace MLAPI.DataTypes.Collection
         public new void Enqueue(T obj)
         {
             base.Enqueue(obj);
-            lock (this.syncObject)
+            lock (this.SyncObject)
             {
                 while (base.Count > this.Size)
                 {

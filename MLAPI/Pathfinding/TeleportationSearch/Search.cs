@@ -175,7 +175,7 @@ namespace MLAPI.Pathfinding.TeleportationSearch
         private List<Point3D> CalculateConnections(Tile tile)
         {
             Point3D location = tile.GetExactComponent<ComponentSelectable>().MapLocation;
-            List<Point3D> neighbors = this.DiagnolFavorNeighboringTiles(location, location.DimensionID);
+            List<Point3D> neighbors = this.DiagnolFavorNeighboringTiles(location, location.DimensionId);
 
             if (tile.IsWalkable)
             {
@@ -240,23 +240,23 @@ namespace MLAPI.Pathfinding.TeleportationSearch
         /// <param name="tileLocation"></param>
         /// <param name="dimension"></param>
         /// <returns></returns>
-        private List<Point3D> DiagnolFavorNeighboringTiles(Point3D tileLocation, Guid dimensionID)
+        private List<Point3D> DiagnolFavorNeighboringTiles(Point3D tileLocation, Guid dimensionId)
         {
             List<Point3D> neighbors = new List<Point3D>(8)
             {
-                new Point3D(tileLocation.X + 1, tileLocation.Y + 1, dimensionID),
-                new Point3D(tileLocation.X + 1, tileLocation.Y - 1, dimensionID),
-                new Point3D(tileLocation.X - 1, tileLocation.Y + 1, dimensionID),
-                new Point3D(tileLocation.X - 1, tileLocation.Y - 1, dimensionID),
-                new Point3D(tileLocation.X + 1, tileLocation.Y, dimensionID),
-                new Point3D(tileLocation.X - 1, tileLocation.Y, dimensionID),
-                new Point3D(tileLocation.X, tileLocation.Y + 1, dimensionID),
-                new Point3D(tileLocation.X, tileLocation.Y - 1, dimensionID)
+                new Point3D(tileLocation.X + 1, tileLocation.Y + 1, dimensionId),
+                new Point3D(tileLocation.X + 1, tileLocation.Y - 1, dimensionId),
+                new Point3D(tileLocation.X - 1, tileLocation.Y + 1, dimensionId),
+                new Point3D(tileLocation.X - 1, tileLocation.Y - 1, dimensionId),
+                new Point3D(tileLocation.X + 1, tileLocation.Y, dimensionId),
+                new Point3D(tileLocation.X - 1, tileLocation.Y, dimensionId),
+                new Point3D(tileLocation.X, tileLocation.Y + 1, dimensionId),
+                new Point3D(tileLocation.X, tileLocation.Y - 1, dimensionId)
             };
 
             for (int i = neighbors.Count - 1; i > -1; i--)
             {
-                if (!WorldUtil.DoesTileExist(neighbors[i], dimensionID))
+                if (!WorldUtil.DoesTileExist(neighbors[i], dimensionId))
                 {
                     neighbors.RemoveAt(i);
                 }

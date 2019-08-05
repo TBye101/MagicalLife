@@ -29,7 +29,7 @@ namespace MLAPI.World.Data
         /// </summary>
         public string DimensionName { get; set; }
 
-        public Guid ID { get; }
+        public Guid Id { get; }
 
         public ItemRegistry Items { get; set; }
 
@@ -72,12 +72,12 @@ namespace MLAPI.World.Data
         /// </summary>
         /// <param name="dimensionName"></param>
         /// <param name="chunks"></param>
-        public Dimension(string dimensionName, ProtoArray<Chunk> chunks, Guid dimensionID)
+        public Dimension(string dimensionName, ProtoArray<Chunk> chunks, Guid dimensionId)
         {
-            this.ChunkManage = new ChunkManager(this.ID, chunks);
+            this.ChunkManage = new ChunkManager(this.Id, chunks);
             this.DimensionName = dimensionName;
-            this.ID = dimensionID;
-            this.StructureManage = new StructureManager(this.ID);//Depends on the dimension ID to be initialized first.
+            this.Id = dimensionId;
+            this.StructureManage = new StructureManager(this.Id);//Depends on the dimension ID to be initialized first.
             this.Items = new ItemRegistry(World.AddDimension(this));
             Task.Run(() => WorldStorage.SerializeWorld(WorldStorage.SaveName, new WorldDiskSink()));
         }
@@ -91,11 +91,11 @@ namespace MLAPI.World.Data
         /// <param name="registry"></param>
         public Dimension(string dimensionName, ProtoArray<Chunk> chunks, Guid id, ItemRegistry registry)
         {
-            this.ID = id;
+            this.Id = id;
             this.ChunkManage = new ChunkManager(id, chunks);
             this.DimensionName = dimensionName;
 
-            int dimensionID = World.AddDimension(this);
+            int dimensionId = World.AddDimension(this);
 
             //Anything that needs a dimensionID
             this.Items = registry;

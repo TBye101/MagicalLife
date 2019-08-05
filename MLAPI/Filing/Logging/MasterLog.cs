@@ -50,17 +50,17 @@ namespace MLAPI.Filing.Logging
 
         #region IDisposable Support
 
-        private bool disposedValue; // To detect redundant calls
+        private bool DisposedValue; // To detect redundant calls
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.disposedValue)
+            if (!this.DisposedValue)
             {
                 if (disposing)
                 {
                     Writer.Dispose();
                 }
-                this.disposedValue = true;
+                this.DisposedValue = true;
             }
         }
 

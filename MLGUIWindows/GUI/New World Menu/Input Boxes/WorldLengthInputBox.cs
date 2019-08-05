@@ -11,8 +11,8 @@ namespace MLGUIWindows.GUI.New_World_Menu.Input_Boxes
     public class WorldLengthInputBox : MonoInputBox
     {
         public WorldLengthInputBox(bool isLocked)
-            : base(TextureLoader.GUIInputBox100x50, TextureLoader.GUICursorCarrot, GetInitialLocation(),
-                  int.MaxValue, TextureLoader.FontMainMenuFont12x, isLocked,
+            : base(TextureLoader.GuiInputBox100X50, TextureLoader.GuiCursorCarrot, GetInitialLocation(),
+                  int.MaxValue, TextureLoader.FontMainMenuFont12X, isLocked,
                   SimpleTextRenderer.Alignment.Left, true)
         {
         }

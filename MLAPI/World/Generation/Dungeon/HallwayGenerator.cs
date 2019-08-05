@@ -10,6 +10,6 @@ namespace MLAPI.World.Generation.Dungeon
     /// </summary>
     public abstract class HallwayGenerator
     {
-        public abstract ProtoArray<Chunk> GenerateHallways(ProtoArray<Chunk> chunks, string dimensionName, Random random, Guid dimensionID);
+        public abstract ProtoArray<Chunk> GenerateHallways(ProtoArray<Chunk> chunks, string dimensionName, Random random, Guid dimensionId);
     }
 }

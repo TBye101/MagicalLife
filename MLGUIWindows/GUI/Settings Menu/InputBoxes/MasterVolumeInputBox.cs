@@ -10,7 +10,7 @@ namespace MLGUIWindows.GUI.Settings_Menu.InputBoxes
     public class MasterVolumeInputBox : MonoInputBox
     {
         public MasterVolumeInputBox() :
-           base(TextureLoader.GUIInputBox100x50, TextureLoader.GUICursorCarrot, GetInitialLocation(), int.MaxValue, TextureLoader.FontMainMenuFont12x,
+           base(TextureLoader.GuiInputBox100X50, TextureLoader.GuiCursorCarrot, GetInitialLocation(), int.MaxValue, TextureLoader.FontMainMenuFont12X,
                false, SimpleTextRenderer.Alignment.Left, true)
         {
             TextChanged += this.UpdateAudio;

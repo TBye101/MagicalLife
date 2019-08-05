@@ -12,7 +12,7 @@ namespace MLAPI.Networking.Client
         /// Key: The ID of the message to be handled.
         /// Value: The handler for that ID.
         /// </summary>
-        private static Dictionary<NetMessageID, MessageHandler> MessageHandlers = new Dictionary<NetMessageID, MessageHandler>();
+        private static Dictionary<NetMessageId, MessageHandler> MessageHandlers = new Dictionary<NetMessageId, MessageHandler>();
 
         internal static void Initialize(List<MessageHandler> handlers)
         {
@@ -24,7 +24,7 @@ namespace MLAPI.Networking.Client
 
         public static void Process(BaseMessage msg)
         {
-            MessageHandlers.TryGetValue(msg.ID, out MessageHandler handler);
+            MessageHandlers.TryGetValue(msg.Id, out MessageHandler handler);
             handler.HandleMessage(msg);
         }
 
@@ -34,7 +34,7 @@ namespace MLAPI.Networking.Client
         /// <param name="handler"></param>
         public static void AddHandler(MessageHandler handler)
         {
-            MessageHandlers.Add(handler.MessageID, handler);
+            MessageHandlers.Add(handler.MessageId, handler);
         }
     }
 }

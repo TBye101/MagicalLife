@@ -12,12 +12,12 @@ namespace MLAPI.Networking.Messages
         public Chunk Chunk { get; private set; }
 
         [ProtoMember(2)]
-        public Guid DimensionID { get; private set; }
+        public Guid DimensionId { get; private set; }
 
-        public WorldTransferBodyMessage(Chunk chunk, Guid dimensionID) : base(NetMessageID.WorldTransferBodyMessage)
+        public WorldTransferBodyMessage(Chunk chunk, Guid dimensionId) : base(NetMessageId.WorldTransferBodyMessage)
         {
             this.Chunk = chunk;
-            this.DimensionID = dimensionID;
+            this.DimensionId = dimensionId;
         }
 
         public WorldTransferBodyMessage()

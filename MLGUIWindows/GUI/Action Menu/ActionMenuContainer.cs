@@ -18,12 +18,12 @@ namespace MLGUIWindows.GUI.Action_Menu
     {
         public MonoGrid ActionGrid { get; set; }
 
-        public ActionMenuContainer(bool visible) : base(TextureLoader.GUIMenuBackground, ActionMenuLayout.ActionMenuLocation, false)
+        public ActionMenuContainer(bool visible) : base(TextureLoader.GuiMenuBackground, ActionMenuLayout.ActionMenuLocation, false)
         {
             this.Visible = visible;
 
             this.ActionGrid = new MonoGrid(new Point2D(32, 32), ActionMenuLayout.ActionGridBounds, int.MaxValue,
-                true, TextureLoader.FontMainMenuFont12x, 5);
+                true, TextureLoader.FontMainMenuFont12X, 5);
             this.PopulateActionGrid();
 
             this.Controls.Add(this.ActionGrid);
@@ -36,7 +36,7 @@ namespace MLGUIWindows.GUI.Action_Menu
             {
                 foreach (IRecipe item2 in item.Value)
                 {
-                    RenderableImage recipeImage = new RenderableIRecipe(zero, item2.GetDisplayTextureID(), true, item2);
+                    RenderableImage recipeImage = new RenderableIRecipe(zero, item2.GetDisplayTextureId(), true, item2);
                     this.ActionGrid.Add(recipeImage);
                 }
             }
@@ -44,7 +44,7 @@ namespace MLGUIWindows.GUI.Action_Menu
 
         public override string GetTextureName()
         {
-            return TextureLoader.GUIMenuBackground;
+            return TextureLoader.GuiMenuBackground;
         }
     }
 }

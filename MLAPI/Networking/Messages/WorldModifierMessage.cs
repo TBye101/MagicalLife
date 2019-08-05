@@ -13,7 +13,7 @@ namespace MLAPI.Networking.Messages
         [ProtoMember(1)]
         public AbstractWorldModifier WorldModifier { get; private set; }
 
-        public WorldModifierMessage(AbstractWorldModifier worldModifier) : base(NetMessageID.WorldModifierMessage)
+        public WorldModifierMessage(AbstractWorldModifier worldModifier) : base(NetMessageId.WorldModifierMessage)
         {
             this.WorldModifier = worldModifier;
         }

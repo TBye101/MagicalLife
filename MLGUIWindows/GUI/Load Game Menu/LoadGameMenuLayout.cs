@@ -12,10 +12,10 @@ namespace MLGUIWindows.GUI.Load_Game_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return LoadGameMenuLayout2560x1440.LoadSaveListBoxX;
+                        return LoadGameMenuLayout2560X1440.LoadSaveListBoxX;
 
                     default:
-                        return LoadGameMenuLayout1920x1080.LoadSaveListBoxX;
+                        return LoadGameMenuLayout1920X1080.LoadSaveListBoxX;
                 }
             }
         }
@@ -27,10 +27,10 @@ namespace MLGUIWindows.GUI.Load_Game_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return LoadGameMenuLayout2560x1440.LoadSaveListBoxY;
+                        return LoadGameMenuLayout2560X1440.LoadSaveListBoxY;
 
                     default:
-                        return LoadGameMenuLayout1920x1080.LoadSaveListBoxY;
+                        return LoadGameMenuLayout1920X1080.LoadSaveListBoxY;
                 }
             }
         }
@@ -42,10 +42,10 @@ namespace MLGUIWindows.GUI.Load_Game_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return LoadGameMenuLayout2560x1440.LoadSaveListBoxWidth;
+                        return LoadGameMenuLayout2560X1440.LoadSaveListBoxWidth;
 
                     default:
-                        return LoadGameMenuLayout1920x1080.LoadSaveListBoxWidth;
+                        return LoadGameMenuLayout1920X1080.LoadSaveListBoxWidth;
                 }
             }
         }
@@ -57,10 +57,10 @@ namespace MLGUIWindows.GUI.Load_Game_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return LoadGameMenuLayout2560x1440.LoadSaveListBoxHeight;
+                        return LoadGameMenuLayout2560X1440.LoadSaveListBoxHeight;
 
                     default:
-                        return LoadGameMenuLayout1920x1080.LoadSaveListBoxHeight;
+                        return LoadGameMenuLayout1920X1080.LoadSaveListBoxHeight;
                 }
             }
         }
@@ -72,10 +72,10 @@ namespace MLGUIWindows.GUI.Load_Game_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return LoadGameMenuLayout2560x1440.ItemRenderCount;
+                        return LoadGameMenuLayout2560X1440.ItemRenderCount;
 
                     default:
-                        return LoadGameMenuLayout1920x1080.ItemRenderCount;
+                        return LoadGameMenuLayout1920X1080.ItemRenderCount;
                 }
             }
         }
@@ -87,10 +87,10 @@ namespace MLGUIWindows.GUI.Load_Game_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return LoadGameMenuLayout2560x1440.LoadSaveButtonX;
+                        return LoadGameMenuLayout2560X1440.LoadSaveButtonX;
 
                     default:
-                        return LoadGameMenuLayout1920x1080.LoadSaveButtonX;
+                        return LoadGameMenuLayout1920X1080.LoadSaveButtonX;
                 }
             }
         }
@@ -102,10 +102,10 @@ namespace MLGUIWindows.GUI.Load_Game_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return LoadGameMenuLayout2560x1440.LoadSaveButtonY;
+                        return LoadGameMenuLayout2560X1440.LoadSaveButtonY;
 
                     default:
-                        return LoadGameMenuLayout1920x1080.LoadSaveButtonY;
+                        return LoadGameMenuLayout1920X1080.LoadSaveButtonY;
                 }
             }
         }
@@ -117,10 +117,10 @@ namespace MLGUIWindows.GUI.Load_Game_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return LoadGameMenuLayout2560x1440.LoadSaveButtonWidth;
+                        return LoadGameMenuLayout2560X1440.LoadSaveButtonWidth;
 
                     default:
-                        return LoadGameMenuLayout1920x1080.LoadSaveButtonWidth;
+                        return LoadGameMenuLayout1920X1080.LoadSaveButtonWidth;
                 }
             }
         }
@@ -132,10 +132,10 @@ namespace MLGUIWindows.GUI.Load_Game_Menu
                 switch ((Resolution)SettingsManager.WindowSettings.Settings.Resolution)
                 {
                     case Resolution._2560x1440:
-                        return LoadGameMenuLayout2560x1440.LoadSaveButtonHeight;
+                        return LoadGameMenuLayout2560X1440.LoadSaveButtonHeight;
 
                     default:
-                        return LoadGameMenuLayout1920x1080.LoadSaveButtonHeight;
+                        return LoadGameMenuLayout1920X1080.LoadSaveButtonHeight;
                 }
             }
         }

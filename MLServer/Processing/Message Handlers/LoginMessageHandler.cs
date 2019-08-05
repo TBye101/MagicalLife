@@ -6,7 +6,7 @@ namespace MLServer.Processing.Message_Handlers
 {
     public class LoginMessageHandler : MessageHandler
     {
-        public LoginMessageHandler() : base(NetMessageID.LoginMessage)
+        public LoginMessageHandler() : base(NetMessageId.LoginMessage)
         {
         }
 

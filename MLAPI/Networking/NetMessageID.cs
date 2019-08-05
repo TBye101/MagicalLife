@@ -4,7 +4,7 @@
     /// Used to make message IDs a little less like magic numbers.
     /// 0 is invalid in Protobuf-net, so it cannot be used here.
     /// </summary>
-    public enum NetMessageID
+    public enum NetMessageId
     {
         BaseMessage = 1,
         WorldTransferHeaderMessage = 2,

@@ -15,21 +15,21 @@ namespace MLAPI.Networking.Serialization
         /// The id of this base message. Used to determine what message to deserialize this into.
         /// </summary>
         [ProtoMember(1)]
-        public NetMessageID ID { get; }
+        public NetMessageId Id { get; }
 
         /// <summary>
         /// The ID of the player that sent this message.
         /// </summary>
         [ProtoMember(2)]
-        public Guid PlayerID { get; }
+        public Guid PlayerId { get; }
 
         [ProtoMember(3)]
         public UInt64 TickSent { get; private set; }
 
-        public BaseMessage(NetMessageID id)
+        public BaseMessage(NetMessageId id)
         {
-            this.ID = id;
-            this.PlayerID = SettingsManager.PlayerSettings.Settings.PlayerID;
+            this.Id = id;
+            this.PlayerId = SettingsManager.PlayerSettings.Settings.PlayerId;
             this.TickSent = Uni.GameTick;
         }
 

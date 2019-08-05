@@ -20,7 +20,7 @@ namespace MLCoreMod.Core.WorldGeneration.Default
         {
         }
 
-        protected override ProtoArray<Chunk> GenerateDungeon(ProtoArray<Chunk> blankWorld, string dimensionName, Random r, Guid dimensionID, Point3D exitLocation, Point3D entranceLocation)
+        protected override ProtoArray<Chunk> GenerateDungeon(ProtoArray<Chunk> blankWorld, string dimensionName, Random r, Guid dimensionId, Point3D exitLocation, Point3D entranceLocation)
         {
             DungeonDesignRuleGenerator geneticDesigner = new DungeonDesignRuleGenerator();
             DungeonDesigner designer = new RoomGenChanceDesignGenerator();

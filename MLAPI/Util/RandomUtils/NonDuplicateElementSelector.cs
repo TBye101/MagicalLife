@@ -20,7 +20,7 @@ namespace MLAPI.Util.RandomUtils
         /// </summary>
         private int DiscardedIndex { get; set; }
 
-        private Random RNG { get; set; }
+        private Random Rng { get; set; }
 
         /// <summary>
         /// The number of elements left before this must be reset.
@@ -36,7 +36,7 @@ namespace MLAPI.Util.RandomUtils
         public NonDuplicateElementSelector(IList<T> elements)
         {
             this.ElementRange = elements;
-            this.RNG = new Random();
+            this.Rng = new Random();
             this.Shuffle(this.ElementRange);
             this.DiscardedIndex = this.ElementRange.Count;
         }
@@ -48,7 +48,7 @@ namespace MLAPI.Util.RandomUtils
                 throw new UnexpectedStateException("Too many random elements were requested, not enough non duplicate values within the specified range exist");
             }
 
-            int index = this.RNG.Next(0, this.DiscardedIndex);
+            int index = this.Rng.Next(0, this.DiscardedIndex);
             T element = this.ElementRange[index];
 
             this.DiscardedIndex--;
@@ -72,7 +72,7 @@ namespace MLAPI.Util.RandomUtils
         {
             for (int i = 0; i < numericRange.Count; i++)
             {
-                int j = this.RNG.Next(0, i + 1);
+                int j = this.Rng.Next(0, i + 1);
                 T swap = numericRange[i];
                 numericRange[i] = numericRange[j];
                 numericRange[j] = swap;

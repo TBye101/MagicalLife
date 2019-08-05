@@ -30,8 +30,8 @@ namespace MLAPI.Entity.AI.Task.Tasks
 
         private object SyncObject = new object();
 
-        public GrabSpecificItemTask(Guid boundID, Point3D itemLocation)
-            : base(Dependencies.CreateEmpty(), boundID, GetQualifications(),
+        public GrabSpecificItemTask(Guid boundId, Point3D itemLocation)
+            : base(Dependencies.CreateEmpty(), boundId, GetQualifications(),
                   PriorityLayers.Default)
         {
             this.MoveTaskCompleted = false;
@@ -46,12 +46,12 @@ namespace MLAPI.Entity.AI.Task.Tasks
 
         private void ReserveItem(Point3D itemLocation)
         {
-            Tile containing = World.Data.World.GetTile(itemLocation.DimensionID, itemLocation.X, itemLocation.Y);
+            Tile containing = World.Data.World.GetTile(itemLocation.DimensionId, itemLocation.X, itemLocation.Y);
 
             Item item = containing.MainObject as Item;
-            if (item != null && item.ReservedID == Guid.Empty)
+            if (item != null && item.ReservedId == Guid.Empty)
             {
-                item.ReservedID = this.ID;
+                item.ReservedId = this.Id;
             }
             else
             {
@@ -70,7 +70,7 @@ namespace MLAPI.Entity.AI.Task.Tasks
         public override void MakePreparations(Living l)
         {
             //Setup the task to move to the reserved item
-            this.Move = new MoveTask(this.BoundID, this.ReservedItemLocation);
+            this.Move = new MoveTask(this.BoundId, this.ReservedItemLocation);
             this.Move.Completed += this.Move_Completed;
             this.Move.MakePreparations(l);
         }
@@ -93,7 +93,7 @@ namespace MLAPI.Entity.AI.Task.Tasks
                 {
                     //Pick it up
                     Item pickedUp = ItemRemover.RemoveAllItems(this.ReservedItemLocation);
-                    pickedUp.ReservedID = Guid.Empty;
+                    pickedUp.ReservedId = Guid.Empty;
                     l.Inventory.AddItem(pickedUp);
                     this.CompleteTask();
                 }

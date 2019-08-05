@@ -10,14 +10,14 @@ namespace MLGUIWindows.GUI.MainMenu.Buttons
 {
     public class QuitButton : MonoButton
     {
-        public QuitButton() : base(TextureLoader.GUIMenuButton, GetLocation(), true, Resources.Quit)
+        public QuitButton() : base(TextureLoader.GuiMenuButton, GetLocation(), true, Resources.Quit)
         {
             this.ClickEvent += this.QuitButton_ClickEvent;
         }
 
         private void QuitButton_ClickEvent(object sender, ClickEventArgs e)
         {
-            FMODUtil.RaiseEvent(SoundsTable.UIClick);
+            FmodUtil.RaiseEvent(SoundsTable.UiClick);
             Uni.GameExitHandler();
         }
 

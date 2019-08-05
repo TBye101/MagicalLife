@@ -8,7 +8,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.GeneFactori
 {
     public class RoomGenChanceFactory : IGeneFactory
     {
-        private Random RNG { get; set; }
+        private Random Rng { get; set; }
 
         /// <summary>
         /// A list of gene presets to pull from, and then randomize the stats.
@@ -20,7 +20,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.GeneFactori
         public RoomGenChanceFactory()
         {
             this.DungeonConfig = CoreSettingsHandler.DungeonGenerationConfig.Settings;
-            this.RNG = new Random();
+            this.Rng = new Random();
             this.AllGenes = new List<Gene>();
             this.GenerateAllGeneTypes();
         }
@@ -118,7 +118,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.GeneFactori
         private Gene Randomize(Gene gene)
         {
             RoomGenChance value = (RoomGenChance)gene.Value;
-            value.ChanceToGenerate = this.RNG.NextDouble();
+            value.ChanceToGenerate = this.Rng.NextDouble();
             gene.Value = value;
             return gene;
         }
@@ -139,7 +139,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.GeneFactori
 
         private Gene GenerateSingleGene(DungeonNodeType typeToGenerate, DungeonNodeType typeToGenerateOn)
         {
-            RoomGenChance roomGenGene = new RoomGenChance(typeToGenerate, typeToGenerateOn, this.RNG.NextDouble());
+            RoomGenChance roomGenGene = new RoomGenChance(typeToGenerate, typeToGenerateOn, this.Rng.NextDouble());
             Gene gene = new Gene(roomGenGene);
             return gene;
         }

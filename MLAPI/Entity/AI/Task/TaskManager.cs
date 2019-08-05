@@ -49,7 +49,7 @@ namespace MLAPI.Entity.AI.Task
 
                 if (validTasks.Any())
                 {
-                    MasterLog.DebugWriteLine("Creature searching for job: " + living.ID.ToString());
+                    MasterLog.DebugWriteLine("Creature searching for job: " + living.Id.ToString());
                     //Get the first task and dynamically create it's dependencies
 
                     for (int i = 0; i < validTasks.Count; i++)
@@ -67,7 +67,7 @@ namespace MLAPI.Entity.AI.Task
                         {
                             //Reserve the tasks that must all be done by the same creature for this creature.
                             MagicalTask nextTask = possibleTasks[0];
-                            this.ReserveBoundTree(living, nextTask.BoundID, taskGoal);
+                            this.ReserveBoundTree(living, nextTask.BoundId, taskGoal);
                             this.AssignJob(living, nextTask);
                             break;
                         }
@@ -89,11 +89,11 @@ namespace MLAPI.Entity.AI.Task
             int lessThan = 1; //x is less than y.
             int greaterThan = -1; //x is greater than y.
 
-            if (x.ReservedFor.Equals(living.ID) && !y.ReservedFor.Equals(living.ID))
+            if (x.ReservedFor.Equals(living.Id) && !y.ReservedFor.Equals(living.Id))
             {
                 return greaterThan;
             }
-            if (!x.ReservedFor.Equals(living.ID) && y.ReservedFor.Equals(living.ID))
+            if (!x.ReservedFor.Equals(living.Id) && y.ReservedFor.Equals(living.Id))
             {
                 return lessThan;
             }
@@ -136,10 +136,10 @@ namespace MLAPI.Entity.AI.Task
         /// <returns></returns>
         private void AssignJob(Living l, MagicalTask task)
         {
-            MasterLog.DebugWriteLine("Assigning job: " + task.ID.ToString() + " " + task.GetType().FullName);
+            MasterLog.DebugWriteLine("Assigning job: " + task.Id.ToString() + " " + task.GetType().FullName);
             task.MakePreparations(l);
             l.AssignTask(task);
-            task.ToilingWorker = l.ID;
+            task.ToilingWorker = l.Id;
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace MLAPI.Entity.AI.Task
             for (int i = 0; i < tasks.Count; i++)
             {
                 MagicalTask task = tasks[i];
-                if (task.ReservedFor.Equals(living.ID))
+                if (task.ReservedFor.Equals(living.Id))
                 {
                     validTasks.Add(task);
                 }
@@ -277,21 +277,21 @@ namespace MLAPI.Entity.AI.Task
         /// </summary>
         /// <param name="task"></param>
         /// <param name="l"></param>
-        /// <param name="boundID"></param>
+        /// <param name="boundId"></param>
         /// <param name="recursionTask">The task to recurse over.</param>
-        private void ReserveBoundTree(Living l, Guid boundID, MagicalTask recursionTask)
+        private void ReserveBoundTree(Living l, Guid boundId, MagicalTask recursionTask)
         {
             //If the same creature that needs to do the parent task needs to do the child task too...
-            if (recursionTask.BoundID.Equals(boundID))
+            if (recursionTask.BoundId.Equals(boundId))
             {
-                recursionTask.ReservedFor = l.ID;
+                recursionTask.ReservedFor = l.Id;
             }
 
             if (recursionTask.Dependencies.PreRequisite.Count > 0)
             {
                 foreach (MagicalTask item in recursionTask.Dependencies.PreRequisite)
                 {
-                    this.ReserveBoundTree(l, boundID, item);
+                    this.ReserveBoundTree(l, boundId, item);
                 }
             }
         }

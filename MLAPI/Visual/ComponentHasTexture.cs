@@ -21,7 +21,7 @@ namespace MLAPI.Visual
         /// <param name="irrelevant">Used to disallow Protobuf-net from using this constructor.</param>
         public ComponentHasTexture(bool irrelevant)
         {
-            this.ID = Guid.NewGuid();
+            this.Id = Guid.NewGuid();
             this.Visuals = new List<AbstractVisual>();
         }
 

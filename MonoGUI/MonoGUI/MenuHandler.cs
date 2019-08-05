@@ -42,7 +42,7 @@ namespace MonoGUI.MonoGUI
             }
             else
             {
-                NullChild(BoundHandler.GUIWindows[DisplayIndex]);
+                NullChild(BoundHandler.GuiWindows[DisplayIndex]);
             }
         }
 
@@ -52,7 +52,7 @@ namespace MonoGUI.MonoGUI
             {
                 if (DisplayIndex > 0)
                 {
-                    BoundHandler.GUIWindows.Remove(container);
+                    BoundHandler.GuiWindows.Remove(container);
                 }
             }
             else
@@ -74,7 +74,7 @@ namespace MonoGUI.MonoGUI
         /// </summary>
         public static void Clear()
         {
-            BoundHandler.GUIWindows.RemoveAll(x => !x.IsHUD);
+            BoundHandler.GuiWindows.RemoveAll(x => !x.IsHud);
             Containers.Clear();
         }
     }

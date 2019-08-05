@@ -10,7 +10,7 @@ namespace MLCoreMod.Core
         /// <summary>
         /// The ID of this mod.
         /// </summary>
-        internal static readonly string ModID = "BD541FE2-D5D3-471E-963F-1A7AA5A14AF9";
+        internal static readonly string ModId = "BD541FE2-D5D3-471E-963F-1A7AA5A14AF9";
 
         /// <summary>
         /// The display name of this mod.

@@ -32,7 +32,7 @@ namespace MLCoreMod.Core.Tiles
             renderer.AddVisual(new StaticTexture(AssetManager.GetTextureIndex(this.GetRandomDirtTexture()), RenderLayer.DirtBase));
         }
 
-        public Grass(int x, int y, Guid dimensionID) : this(new Point3D(x, y, dimensionID))
+        public Grass(int x, int y, Guid dimensionId) : this(new Point3D(x, y, dimensionId))
         {
         }
 

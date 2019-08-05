@@ -8,7 +8,7 @@ namespace MLAPI.Visual.Rendering.Map
         {
             if (x.RenderLayer == y.RenderLayer)
             {
-                if (x.RenderCallID >= y.RenderCallID)
+                if (x.RenderCallId >= y.RenderCallId)
                 {
                     //x should be before y in priority.
                     return 1;

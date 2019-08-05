@@ -1,6 +1,6 @@
 ﻿namespace MLGUIWindows.GUI.Load_Game_Menu
 {
-    public static class LoadGameMenuLayout2560x1440
+    public static class LoadGameMenuLayout2560X1440
     {
         public static readonly int LoadSaveListBoxX = 50;
 

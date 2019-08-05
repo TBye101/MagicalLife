@@ -25,48 +25,48 @@ namespace MLAPI.DataTypes
     /// </summary>
     internal class Node<T>
     {
-        internal int nodeId;
-        internal Rectangle mbr;
-        internal Rectangle[] entries;
-        internal int[] ids;
-        internal int level;
-        internal int entryCount;
+        internal int NodeId;
+        internal Rectangle Mbr;
+        internal Rectangle[] Entries;
+        internal int[] Ids;
+        internal int Level;
+        internal int EntryCount;
 
         public Node(int nodeId, int level, int maxNodeEntries)
         {
-            this.nodeId = nodeId;
-            this.level = level;
-            this.entries = new Rectangle[maxNodeEntries];
-            this.ids = new int[maxNodeEntries];
+            this.NodeId = nodeId;
+            this.Level = level;
+            this.Entries = new Rectangle[maxNodeEntries];
+            this.Ids = new int[maxNodeEntries];
         }
 
         internal void AddEntry(Rectangle r, int id)
         {
-            this.ids[this.entryCount] = id;
-            this.entries[this.entryCount] = r.Copy();
-            this.entryCount++;
-            if (this.mbr == null)
+            this.Ids[this.EntryCount] = id;
+            this.Entries[this.EntryCount] = r.Copy();
+            this.EntryCount++;
+            if (this.Mbr == null)
             {
-                this.mbr = r.Copy();
+                this.Mbr = r.Copy();
             }
             else
             {
-                this.mbr.Add(r);
+                this.Mbr.Add(r);
             }
         }
 
         internal void AddEntryNoCopy(Rectangle r, int id)
         {
-            this.ids[this.entryCount] = id;
-            this.entries[this.entryCount] = r;
-            this.entryCount++;
-            if (this.mbr == null)
+            this.Ids[this.EntryCount] = id;
+            this.Entries[this.EntryCount] = r;
+            this.EntryCount++;
+            if (this.Mbr == null)
             {
-                this.mbr = r.Copy();
+                this.Mbr = r.Copy();
             }
             else
             {
-                this.mbr.Add(r);
+                this.Mbr.Add(r);
             }
         }
 
@@ -77,9 +77,9 @@ namespace MLAPI.DataTypes
         /// <param name="id"></param>
         internal int FindEntry(Rectangle r, int id)
         {
-            for (int i = 0; i < this.entryCount; i++)
+            for (int i = 0; i < this.EntryCount; i++)
             {
-                if (id == this.ids[i] && r.Equals(this.entries[i]))
+                if (id == this.Ids[i] && r.Equals(this.Entries[i]))
                 {
                     return i;
                 }
@@ -96,23 +96,23 @@ namespace MLAPI.DataTypes
         /// <param name="minNodeEntries"></param>
         internal void DeleteEntry(int i, int minNodeEntries)
         {
-            int lastIndex = this.entryCount - 1;
-            Rectangle deletedRectangle = this.entries[i];
-            this.entries[i] = null;
+            int lastIndex = this.EntryCount - 1;
+            Rectangle deletedRectangle = this.Entries[i];
+            this.Entries[i] = null;
             if (i != lastIndex)
             {
-                this.entries[i] = this.entries[lastIndex];
-                this.ids[i] = this.ids[lastIndex];
-                this.entries[lastIndex] = null;
+                this.Entries[i] = this.Entries[lastIndex];
+                this.Ids[i] = this.Ids[lastIndex];
+                this.Entries[lastIndex] = null;
             }
-            this.entryCount--;
+            this.EntryCount--;
 
             // if there are at least minNodeEntries, adjust the MBR.
             // otherwise, don't bother, as the Node<T> will be
             // eliminated anyway.
-            if (this.entryCount >= minNodeEntries)
+            if (this.EntryCount >= minNodeEntries)
             {
-                this.RecalculateMBR(deletedRectangle);
+                this.RecalculateMbr(deletedRectangle);
             }
         }
 
@@ -121,15 +121,15 @@ namespace MLAPI.DataTypes
         /// Thus, the MBR is only recalculated if the OldRectangle influenced the old MBR
         /// </summary>
         /// <param name="deletedRectangle"></param>
-        internal void RecalculateMBR(Rectangle deletedRectangle)
+        internal void RecalculateMbr(Rectangle deletedRectangle)
         {
-            if (this.mbr.EdgeOverlaps(deletedRectangle))
+            if (this.Mbr.EdgeOverlaps(deletedRectangle))
             {
-                this.mbr.Set(this.entries[0].min, this.entries[0].max);
+                this.Mbr.Set(this.Entries[0].Min, this.Entries[0].Max);
 
-                for (int i = 1; i < this.entryCount; i++)
+                for (int i = 1; i < this.EntryCount; i++)
                 {
-                    this.mbr.Add(this.entries[i]);
+                    this.Mbr.Add(this.Entries[i]);
                 }
             }
         }
@@ -140,7 +140,7 @@ namespace MLAPI.DataTypes
         /// <returns></returns>
         public int GetEntryCount()
         {
-            return this.entryCount;
+            return this.EntryCount;
         }
 
         /// <summary>
@@ -150,9 +150,9 @@ namespace MLAPI.DataTypes
         /// <returns></returns>
         public Rectangle GetEntry(int index)
         {
-            if (index < this.entryCount)
+            if (index < this.EntryCount)
             {
-                return this.entries[index];
+                return this.Entries[index];
             }
             return null;
         }
@@ -162,11 +162,11 @@ namespace MLAPI.DataTypes
         /// </summary>
         /// <param name="index">The index.</param>
         /// <returns></returns>
-        public int getId(int index)
+        public int GetId(int index)
         {
-            if (index < this.entryCount)
+            if (index < this.EntryCount)
             {
-                return this.ids[index];
+                return this.Ids[index];
             }
             return -1;
         }
@@ -177,25 +177,25 @@ namespace MLAPI.DataTypes
         /// <param name="rtree"></param>
         internal void Reorganize(RTree<T> rtree)
         {
-            int countdownIndex = rtree.maxNodeEntries - 1;
-            for (int index = 0; index < this.entryCount; index++)
+            int countdownIndex = rtree.MaxNodeEntries - 1;
+            for (int index = 0; index < this.EntryCount; index++)
             {
-                if (this.entries[index] == null)
+                if (this.Entries[index] == null)
                 {
-                    while (this.entries[countdownIndex] == null && countdownIndex > index)
+                    while (this.Entries[countdownIndex] == null && countdownIndex > index)
                     {
                         countdownIndex--;
                     }
-                    this.entries[index] = this.entries[countdownIndex];
-                    this.ids[index] = this.ids[countdownIndex];
-                    this.entries[countdownIndex] = null;
+                    this.Entries[index] = this.Entries[countdownIndex];
+                    this.Ids[index] = this.Ids[countdownIndex];
+                    this.Entries[countdownIndex] = null;
                 }
             }
         }
 
         internal bool IsLeaf()
         {
-            return (this.level == 1);
+            return (this.Level == 1);
         }
 
         /// <summary>
@@ -204,16 +204,16 @@ namespace MLAPI.DataTypes
         /// <returns></returns>
         public int GetLevel()
         {
-            return this.level;
+            return this.Level;
         }
 
         /// <summary>
         /// Gets the MBR.
         /// </summary>
         /// <returns></returns>
-        public Rectangle GetMBR()
+        public Rectangle GetMbr()
         {
-            return this.mbr;
+            return this.Mbr;
         }
     }
 }

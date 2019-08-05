@@ -10,16 +10,16 @@ namespace MLGUIWindows.GUI.MainMenu.Buttons
 {
     public class NewGameButton : MonoButton
     {
-        public NewGameButton() : base(TextureLoader.GUIMenuButton, GetLocation(), true, Resources.NewGame)
+        public NewGameButton() : base(TextureLoader.GuiMenuButton, GetLocation(), true, Resources.NewGame)
         {
             this.ClickEvent += this.NewGameButton_ClickEvent;
         }
 
         private void NewGameButton_ClickEvent(object sender, ClickEventArgs e)
         {
-            FMODUtil.RaiseEvent(SoundsTable.UIClick);
+            FmodUtil.RaiseEvent(SoundsTable.UiClick);
             NewWorldMenu.Initialize();
-            MainMenu.MainMenuID.PopupChild(NewWorldMenu.NewWorldMenuM);
+            MainMenu.MainMenuId.PopupChild(NewWorldMenu.NewWorldMenuM);
         }
 
         private static Rectangle GetLocation()

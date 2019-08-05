@@ -27,7 +27,7 @@ namespace MonoGUI.Game
         /// Returns an ever increasing number for pop-up window priorities.
         /// </summary>
         /// <returns></returns>
-        public static int GetGUIContainerPriority()
+        public static int GetGuiContainerPriority()
         {
             CurrentPriority += 1;
             return CurrentPriority;

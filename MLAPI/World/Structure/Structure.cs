@@ -21,7 +21,7 @@ namespace MLAPI.World.Structure
         /// The unique ID of the player/faction that "owns" this structure. Should be equal to <see cref="Guid.Empty"/> if unowned.
         /// </summary>
         [ProtoMember(2)]
-        public Guid OwnerID { get; private set; }
+        public Guid OwnerId { get; private set; }
 
         /// <summary>
         /// Holds the location of all the parts of this structure.
@@ -33,25 +33,25 @@ namespace MLAPI.World.Structure
         /// The id that is shared by all instances of this structure.
         /// </summary>
         [ProtoMember(4)]
-        public Guid StructureID { get; private set; }
+        public Guid StructureId { get; private set; }
 
         /// <summary>
         /// The unique ID of this specific structure.
         /// </summary>
         [ProtoMember(5)]
-        public Guid UniqueID { get; private set; }
+        public Guid UniqueId { get; private set; }
 
         /// <param name="name">The display name of this structure.</param>
-        /// <param name="ownerID">The unique ID of the player/faction that "owns" this structure. Should be equal to <see cref="Guid.Empty"/> if unowned.</param>
+        /// <param name="ownerId">The unique ID of the player/faction that "owns" this structure. Should be equal to <see cref="Guid.Empty"/> if unowned.</param>
         /// <param name="parts">Holds all of the locations of the parts of this structure.</param>
-        /// <param name="structureID">Should be a constant ID that is usable to identify a structure across all games and saves.</param>
-        public Structure(string name, Guid ownerID, List<Point3D> parts, Guid structureID)
+        /// <param name="structureId">Should be a constant ID that is usable to identify a structure across all games and saves.</param>
+        public Structure(string name, Guid ownerId, List<Point3D> parts, Guid structureId)
         {
             this.Name = name;
-            this.OwnerID = ownerID;
+            this.OwnerId = ownerId;
             this.Parts = parts;
-            this.StructureID = structureID;
-            this.UniqueID = Guid.NewGuid();
+            this.StructureId = structureId;
+            this.UniqueId = Guid.NewGuid();
         }
 
         protected Structure()

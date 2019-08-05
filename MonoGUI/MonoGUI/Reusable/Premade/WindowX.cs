@@ -9,16 +9,16 @@ namespace MonoGUI.MonoGUI.Reusable.Premade
     /// </summary>
     public class WindowX : MonoButton
     {
-        private const int TextureWidth = 32;
-        private const int TextureHeight = 32;
+        private const int TEXTURE_WIDTH = 32;
+        private const int TEXTURE_HEIGHT = 32;
 
         /// <summary>
         ///
         /// </summary>
         /// <param name="containingSize">The size of the containing form.</param>
         public WindowX(Point2D containingSize) :
-            base(TextureLoader.GUIX,
-                new Rectangle(containingSize.X - TextureWidth, 0, TextureWidth, TextureHeight), true, "")
+            base(TextureLoader.Guix,
+                new Rectangle(containingSize.X - TEXTURE_WIDTH, 0, TEXTURE_WIDTH, TEXTURE_HEIGHT), true, "")
         {
         }
     }

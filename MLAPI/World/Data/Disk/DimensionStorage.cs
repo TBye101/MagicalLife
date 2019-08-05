@@ -15,10 +15,10 @@ namespace MLAPI.World.Data.Disk
         /// <summary>
         /// Creates folders for a new dimension.
         /// </summary>
-        public void PrepareForDimension(Guid dimensionID)
+        public void PrepareForDimension(Guid dimensionId)
         {
-            DirectoryInfo info = Directory.CreateDirectory(WorldStorage.DimensionSaveFolder + Path.DirectorySeparatorChar + dimensionID);
-            WorldStorage.DimensionPaths.Add(dimensionID, info.FullName);
+            DirectoryInfo info = Directory.CreateDirectory(WorldStorage.DimensionSaveFolder + Path.DirectorySeparatorChar + dimensionId);
+            WorldStorage.DimensionPaths.Add(dimensionId, info.FullName);
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace MLAPI.World.Data.Disk
             //A array of unloaded chunks.
             ProtoArray<Chunk> chunks = new ProtoArray<Chunk>(header.Width, header.Height);
 
-            dimension = new Dimension(header.DimensionName, chunks, header.ID, WorldStorage.ItemStorage.LoadItemRegistry(id));
+            dimension = new Dimension(header.DimensionName, chunks, header.Id, WorldStorage.ItemStorage.LoadItemRegistry(id));
 
             return dimension;
         }
@@ -58,7 +58,7 @@ namespace MLAPI.World.Data.Disk
                 for (int y = 0; y < height; y++)
                 {
                     Chunk chunk = dimension.GetChunk(x, y);
-                    WorldStorage.ChunkStorage.SaveChunk(chunk, dimension.ID, sink);
+                    WorldStorage.ChunkStorage.SaveChunk(chunk, dimension.Id, sink);
                 }
             }
         }
@@ -74,7 +74,7 @@ namespace MLAPI.World.Data.Disk
             {
                 if (item.Value.Object != null)
                 {
-                    WorldStorage.StructureStorage.SaveStructure(item.Value.Object, dimension.ID, sink);
+                    WorldStorage.StructureStorage.SaveStructure(item.Value.Object, dimension.Id, sink);
                 }
             }
         }
@@ -108,14 +108,14 @@ namespace MLAPI.World.Data.Disk
 
         private void SerializeDimensionHeader(Dimension dimension, AbstractWorldSink sink)
         {
-            string dimensionRoot = WorldStorage.DimensionPaths[dimension.ID];
-            DimensionHeader header = new DimensionHeader(dimension.DimensionName, dimension.ID, dimension.Width, dimension.Height);
+            string dimensionRoot = WorldStorage.DimensionPaths[dimension.Id];
+            DimensionHeader header = new DimensionHeader(dimension.DimensionName, dimension.Id, dimension.Width, dimension.Height);
             this.SerializeDimensionHeader(header, sink, dimensionRoot);
         }
 
         internal void SerializeDimensionHeader(DimensionHeader header, AbstractWorldSink sink, string dimensionRoot)
         {
-            sink.Receive(header, dimensionRoot + Path.DirectorySeparatorChar + header.ID + ".header", header.ID);
+            sink.Receive(header, dimensionRoot + Path.DirectorySeparatorChar + header.Id + ".header", header.Id);
         }
     }
 }

@@ -11,11 +11,11 @@ namespace MLAPI.Load
         /// Loads all content.
         /// </summary>
         /// <param name="message">The message to display while loading.</param>
-        internal void LoadAll(ref string message, List<IGameLoader> AllJobs)
+        internal void LoadAll(ref string message, List<IGameLoader> allJobs)
         {
             LoadMoniter loadMoniter = new LoadMoniter();
 
-            loadMoniter.AddJobs(AllJobs);
+            loadMoniter.AddJobs(allJobs);
             loadMoniter.ExecuteJobs(ref message);
         }
     }

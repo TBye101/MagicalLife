@@ -43,7 +43,7 @@ namespace MLGUIWindows.Input.Specialized_Handlers
 
         private void Move(HasComponents selectable, Point3D target)
         {
-            if (World.Dimensions[RenderInfo.DimensionID][target.X, target.Y].IsWalkable)
+            if (World.Dimensions[RenderInfo.DimensionId][target.X, target.Y].IsWalkable)
             {
                 switch (selectable)
                 {
@@ -89,13 +89,13 @@ namespace MLGUIWindows.Input.Specialized_Handlers
                 {
                     Point3D connection = portalComponent.Connections[0];
 
-                    if (!World.Dimensions.ContainsKey(connection.DimensionID))
+                    if (!World.Dimensions.ContainsKey(connection.DimensionId))
                     {
                         //Need to generate the dungeon first.
                         DungeonGenerator generator = WorldGeneratorRegistry.DungeonGenerators.GetRandomItem();
-                        ProtoArray<Chunk> generated = generator.Generate(25, 25, "Dungeon", new System.Random(), connection.DimensionID, connection, target);
-                        Dimension dim = new Dimension("Dungeon", generated, connection.DimensionID);
-                        RenderInfo.DimensionID = connection.DimensionID;
+                        ProtoArray<Chunk> generated = generator.Generate(25, 25, "Dungeon", new System.Random(), connection.DimensionId, connection, target);
+                        Dimension dim = new Dimension("Dungeon", generated, connection.DimensionId);
+                        RenderInfo.DimensionId = connection.DimensionId;
                     }
 
                     MainPathFinder.GiveRouteAsync(living, start, connection);

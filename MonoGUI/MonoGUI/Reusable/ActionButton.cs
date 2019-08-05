@@ -8,15 +8,15 @@ namespace MonoGUI.MonoGUI.Reusable
 {
     public class ActionButton : MonoButton
     {
-        protected int SelectedTextureID { get; set; }
+        protected int SelectedTextureId { get; set; }
 
         public bool IsSelected { get; set; }
 
-        protected int CorrectTextureID
+        protected int CorrectTextureId
         {
             get
             {
-                return this.IsSelected ? this.SelectedTextureID : this.TextureID;
+                return this.IsSelected ? this.SelectedTextureId : this.TextureId;
             }
         }
 
@@ -34,8 +34,8 @@ namespace MonoGUI.MonoGUI.Reusable
             int x = this.DrawingBounds.X + containerBounds.X;
             int y = this.DrawingBounds.Y + containerBounds.Y;
             location = new Rectangle(x, y, this.DrawingBounds.Width, this.DrawingBounds.Height);
-            spBatch.Draw(AssetManager.Textures[this.CorrectTextureID], location, Color.White);
-            SimpleTextRenderer.DrawString(this.Font, this.Text, location, Alignment.Center, Color.White, spBatch, RenderLayer.GUI);
+            spBatch.Draw(AssetManager.Textures[this.CorrectTextureId], location, Color.White);
+            SimpleTextRenderer.DrawString(this.Font, this.Text, location, Alignment.Center, Color.White, spBatch, RenderLayer.Gui);
         }
     }
 }

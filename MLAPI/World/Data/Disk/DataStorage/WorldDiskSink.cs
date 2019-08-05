@@ -10,7 +10,7 @@ namespace MLAPI.World.Data.Disk.DataStorage
     /// </summary>
     public class WorldDiskSink : AbstractWorldSink
     {
-        public override void Receive<T>(T data, string filePath, Guid dimensionID)
+        public override void Receive<T>(T data, string filePath, Guid dimensionId)
         {
             this.ValidateData(data);
             byte[] worldData = ProtoUtil.Serialize(data);

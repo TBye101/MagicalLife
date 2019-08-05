@@ -48,14 +48,14 @@ namespace MLAPI.Networking.World
         private static void HandleCompletion()
         {
             WorldStorage.LoadWorld(SaveName);
-            Guid firstDimensionID = WorldUtil.GetDimensionByName(Lang._1stDimensionName).Key;
-            MLAPI.World.Data.World.RaiseChangeCameraDimension(firstDimensionID);
+            Guid firstDimensionId = WorldUtil.GetDimensionByName(Lang._1stDimensionName).Key;
+            MLAPI.World.Data.World.RaiseChangeCameraDimension(firstDimensionId);
         }
 
         internal static void Receive(WorldTransferBodyMessage msg)
         {
             ReceivedChunks++;
-            WorldStorage.ChunkStorage.SaveChunk(msg.Chunk, msg.DimensionID, DiskSink);
+            WorldStorage.ChunkStorage.SaveChunk(msg.Chunk, msg.DimensionId, DiskSink);
             CheckCompletion();
         }
 
@@ -66,7 +66,7 @@ namespace MLAPI.Networking.World
             ReceivedChunks = 0;
             ReceivedItemRegistries = 0;
 
-            SaveName = FileSystemManager.GetIOSafeTime();
+            SaveName = FileSystemManager.GetIoSafeTime();
             WorldStorage.Initialize(SaveName);
 
             foreach (DimensionHeader item in msg.DimensionHeaders)
@@ -74,8 +74,8 @@ namespace MLAPI.Networking.World
                 ExpectedChunks += item.Height * item.Width;
                 ExpectedItemRegistries++;
 
-                DirectoryInfo dirInfo = Directory.CreateDirectory(WorldStorage.DimensionSaveFolder + Path.DirectorySeparatorChar + item.ID);
-                WorldStorage.DimensionPaths.Add(item.ID, dirInfo.FullName);
+                DirectoryInfo dirInfo = Directory.CreateDirectory(WorldStorage.DimensionSaveFolder + Path.DirectorySeparatorChar + item.Id);
+                WorldStorage.DimensionPaths.Add(item.Id, dirInfo.FullName);
                 WorldStorage.DimensionStorage.SerializeDimensionHeader(item, DiskSink, dirInfo.FullName);
             }
         }
@@ -83,7 +83,7 @@ namespace MLAPI.Networking.World
         internal static void Receive(WorldTransferRegistryMessage msg)
         {
             ReceivedItemRegistries++;
-            WorldStorage.ItemStorage.SaveItemRegistry(msg.ItemReg, DiskSink, msg.DimensionID);
+            WorldStorage.ItemStorage.SaveItemRegistry(msg.ItemReg, DiskSink, msg.DimensionId);
             CheckCompletion();
         }
     }
