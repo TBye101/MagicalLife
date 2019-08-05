@@ -1,8 +1,8 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.World.Data;
-using System;
+﻿using System;
+using MLAPI.DataTypes.Collection;
+using MLAPI.World.Data;
 
-namespace MagicalLifeAPI.World.Generation.Dungeon
+namespace MLAPI.World.Generation.Dungeon
 {
     /// <summary>
     /// Implementers of this generator populate empty rooms with objects, traps, etc...

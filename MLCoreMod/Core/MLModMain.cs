@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.Load;
-using MagicalLifeAPI.Mod;
-using MagicalLifeMod.Core.Load;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MLAPI.Load;
+using MLAPI.Mod;
+using MLCoreMod.Core.Load;
 
-namespace MagicalLifeMod.Core
+namespace MLCoreMod.Core
 {
     /// <summary>
     /// The entry point of the vanilla game mod.

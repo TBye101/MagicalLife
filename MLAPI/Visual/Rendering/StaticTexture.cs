@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeGUIWindows.Rendering.Map;
+﻿using MLAPI.Asset;
+using MLAPI.DataTypes;
+using MLAPI.Visual.Rendering.Map;
 using ProtoBuf;
 
-namespace MagicalLifeAPI.Components.Generic.Renderable
+namespace MLAPI.Visual.Rendering
 {
     /// <summary>
     /// For when an object has only one texture, that always is the same.

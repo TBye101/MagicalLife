@@ -1,21 +1,15 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Registry.WorldGeneration;
-using MagicalLifeAPI.Util;
-using MagicalLifeAPI.World;
-using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Data;
-using MagicalLifeAPI.World.Generation.Dungeon;
-using MagicalLifeMod.Core.GameStructures.Parts;
+﻿using System;
+using MLAPI.DataTypes;
+using MLAPI.DataTypes.Collection;
 using MLAPI.Genetic;
-using MLCoreMod.Core.WorldGeneration.Dungeon.Constructors;
+using MLAPI.World.Data;
+using MLAPI.World.Generation.Dungeon;
 using MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph;
 using MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.DesignGenerators;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using MLCoreMod.Core.WorldGeneration.Dungeon.Generation;
+using MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator;
 
-namespace MagicalLifeMod.Core.WorldGeneration.Default
+namespace MLCoreMod.Core.WorldGeneration.Default
 {
     /// <summary>
     /// The default dungeon generator engine.

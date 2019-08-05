@@ -1,10 +1,10 @@
-﻿using Microsoft.Xna.Framework;
-using ProtoBuf;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using Microsoft.Xna.Framework;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.DataTypes
+namespace MLAPI.DataTypes
 {
     /// <summary>
     /// A point that includes and x, y, and dimension.
@@ -56,9 +56,9 @@ namespace MagicalLifeAPI.DataTypes
             }
         }
 
-        public static implicit operator Point(Point3D value)
+        public static implicit operator Microsoft.Xna.Framework.Point(Point3D value)
         {
-            return new Point(value.X, value.Y);
+            return new Microsoft.Xna.Framework.Point(value.X, value.Y);
         }
 
         public static implicit operator Point2D(Point3D value)

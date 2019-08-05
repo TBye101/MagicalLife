@@ -1,11 +1,12 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Sound;
-using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Tiles;
+﻿using System.Collections.Generic;
+using MLAPI.Components.Resource;
+using MLAPI.DataTypes;
+using MLAPI.Sound;
+using MLAPI.World.Base;
+using MLCoreMod.Core.Tiles;
 using ProtoBuf;
-using System.Collections.Generic;
 
-namespace MagicalLifeAPI.Components.Resource
+namespace MLCoreMod.Core.Components
 {
     [ProtoContract]
     public class TillablePercentDone : ComponentTillable

@@ -1,12 +1,11 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.DataTypes.R;
-using MagicalLifeAPI.Error.InternalExceptions;
-using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Data;
-using System;
+﻿using System;
+using MLAPI.Components;
+using MLAPI.DataTypes;
+using MLAPI.Error.InternalExceptions;
+using MLAPI.World.Base;
+using MLAPI.World.Data;
 
-namespace MagicalLifeAPI.Registry.ItemRegistry
+namespace MLAPI.GameRegistry.Items
 {
     /// <summary>
     /// Used to remove items from the world, via the <see cref="ItemRegistry"/>.

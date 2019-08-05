@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MagicalLifeAPI.Networking
+namespace MLAPI.Networking
 {
     /// <summary>
     /// Implemented by all classes that must be serialized and have subclasses.

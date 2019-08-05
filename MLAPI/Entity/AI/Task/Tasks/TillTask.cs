@@ -1,16 +1,16 @@
-﻿using MagicalLifeAPI.Components.Resource;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Registry.ItemRegistry;
-using MagicalLifeAPI.Util.Reusable;
-using MagicalLifeAPI.World.Base;
-using ProtoBuf;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using MLAPI.Components;
+using MLAPI.Components.Resource;
+using MLAPI.DataTypes;
+using MLAPI.Filing.Logging;
+using MLAPI.GameRegistry.Items;
+using MLAPI.Util.Reusable;
+using MLAPI.World.Base;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.Entity.AI.Task.Tasks
+namespace MLAPI.Entity.AI.Task.Tasks
 {
     [ProtoContract]
     public class TillTask : MagicalTask

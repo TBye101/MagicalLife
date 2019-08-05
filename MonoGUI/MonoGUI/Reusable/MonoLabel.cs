@@ -1,12 +1,10 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeGUIWindows.Rendering.Text;
+﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
+using MLAPI.Asset;
+using MLAPI.Visual.Rendering;
 
-namespace MagicalLifeGUIWindows.GUI.Reusable
+namespace MonoGUI.MonoGUI.Reusable
 {
     /// <summary>
     /// A generic label class.
@@ -21,7 +19,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// <summary>
         /// The text alignment of this <see cref="MonoLabel"/>.
         /// </summary>
-        public Alignment TextAlignment { get; private set; }
+        public SimpleTextRenderer.Alignment TextAlignment { get; private set; }
 
         /// <summary>
         ///

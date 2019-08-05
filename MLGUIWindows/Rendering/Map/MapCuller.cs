@@ -1,12 +1,12 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Data;
-using Microsoft.Xna.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using MLAPI.DataTypes;
+using MLAPI.Visual.Rendering;
+using MLAPI.World.Base;
+using MLAPI.World.Data;
+using Rectangle = Microsoft.Xna.Framework.Rectangle;
 
-namespace MagicalLifeGUIWindows.Rendering.Map
+namespace MLGUIWindows.Rendering.Map
 {
     /// <summary>
     /// Utilized to Perform some calculations that essentially cull

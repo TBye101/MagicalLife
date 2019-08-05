@@ -1,12 +1,12 @@
-﻿using MagicalLifeAPI.Components.Entity;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entity;
-using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.World.Data;
+﻿using System;
+using MLAPI.Components;
+using MLAPI.Components.Entity;
+using MLAPI.DataTypes;
+using MLAPI.Entity;
+using MLAPI.World.Data;
 using ProtoBuf;
-using System;
 
-namespace MagicalLifeAPI.Networking.World.Modifiers
+namespace MLAPI.Networking.World.Modifiers
 {
     /// <summary>
     /// Used to update the location of an entity.
@@ -37,8 +37,8 @@ namespace MagicalLifeAPI.Networking.World.Modifiers
 
         public override void ModifyWorld()
         {
-            Chunk oldChunk = MagicalLifeAPI.World.Data.World.GetChunkByTile(this.OldLocation.DimensionID, this.OldLocation.X, this.OldLocation.Y);
-            Chunk newChunk = MagicalLifeAPI.World.Data.World.GetChunkByTile(this.NewLocation.DimensionID, this.NewLocation.X, this.NewLocation.Y);
+            Chunk oldChunk = MLAPI.World.Data.World.GetChunkByTile(this.OldLocation.DimensionID, this.OldLocation.X, this.OldLocation.Y);
+            Chunk newChunk = MLAPI.World.Data.World.GetChunkByTile(this.NewLocation.DimensionID, this.NewLocation.X, this.NewLocation.Y);
             Living l = oldChunk.Creatures[this.EntityID];
             ComponentSelectable selectable = l.GetExactComponent<ComponentSelectable>();
             ComponentMovement movement = l.GetExactComponent<ComponentMovement>();

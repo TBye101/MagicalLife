@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeAPI.Entity.AI.Task
+﻿namespace MLAPI.Entity.AI.Task
 {
     /// <summary>
     /// Holds priority levels for various tasks.

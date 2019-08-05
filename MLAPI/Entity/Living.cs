@@ -1,17 +1,17 @@
-﻿using MagicalLifeAPI.Components;
-using MagicalLifeAPI.Components.Entity;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.DataTypes.Attribute;
-using MagicalLifeAPI.Entity.AI.Task;
-using MagicalLifeAPI.Entity.Eventing;
-using MagicalLifeAPI.Entity.Skills;
-using MagicalLifeAPI.GUI;
-using ProtoBuf;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using MLAPI.Components;
+using MLAPI.Components.Entity;
+using MLAPI.DataTypes;
+using MLAPI.DataTypes.Attribute;
+using MLAPI.Entity.AI.Task;
+using MLAPI.Entity.Eventing;
+using MLAPI.Entity.Skills;
+using MLAPI.Visual;
+using MLAPI.Visual.Rendering;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.Entity
+namespace MLAPI.Entity
 {
     /// <summary>
     /// All living things inherit from this, and utilize it.

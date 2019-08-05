@@ -1,11 +1,10 @@
-﻿using MagicalLifeMod.Core.Settings;
+﻿using System;
+using System.Collections.Generic;
 using MLAPI.Genetic;
 using MLCoreMod.Core.Settings;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.DesignRules;
 
-namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic
+namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.GeneFactories
 {
     public class RoomGenChanceFactory : IGeneFactory
     {

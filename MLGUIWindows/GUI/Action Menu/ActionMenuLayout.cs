@@ -1,7 +1,8 @@
-﻿using MagicalLifeAPI.Filing;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using MLAPI.Filing;
+using MonoGUI.MonoGUI;
 
-namespace MagicalLifeGUIWindows.GUI.Action_Menu
+namespace MLGUIWindows.GUI.Action_Menu
 {
     /// <summary>
     /// Positioning data for the action menu.

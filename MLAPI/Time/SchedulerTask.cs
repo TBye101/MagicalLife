@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MagicalLifeAPI.Time
+namespace MLAPI.Time
 {
     /// <summary>
     /// Used to hold information needed to start a task from the scheduler.

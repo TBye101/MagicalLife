@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeAPI.GUI
+﻿namespace MLAPI.Visual
 {
     /// <summary>
     /// Used to differentiate what type of object the user is clicking on when selecting in game objects.

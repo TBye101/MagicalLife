@@ -1,8 +1,8 @@
-﻿using ProtoBuf;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.Entity.AI.Task
+namespace MLAPI.Entity.AI.Task
 {
     /// <summary>
     /// Represents a task for the player to do.

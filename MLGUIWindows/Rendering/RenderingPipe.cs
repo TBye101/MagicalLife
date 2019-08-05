@@ -1,16 +1,15 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.World.Data;
-using MagicalLifeGUIWindows.GUI.MainMenu;
-using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeGUIWindows.Input;
-using MagicalLifeGUIWindows.Rendering.Map;
+﻿using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System.Linq;
-using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
+using MLAPI.Visual.Rendering;
+using MLAPI.World.Data;
+using MLGUIWindows.GUI.MainMenu;
+using MLGUIWindows.Rendering.Map;
+using MonoGUI.MonoGUI.Input;
+using MonoGUI.MonoGUI.Reusable;
 
-namespace MagicalLifeGUIWindows.Rendering
+namespace MLGUIWindows.Rendering
 {
     /// <summary>
     /// Handles drawing the entire screen.
@@ -34,7 +33,7 @@ namespace MagicalLifeGUIWindows.Rendering
             int x = Mouse.GetState().X;
             int y = Mouse.GetState().Y;
             string mouseLocation = "{ " + x + ", " + y + " }";
-            DrawString(MainMenuLayout.MainMenuFont, mouseLocation, new Rectangle(500, 500, 200, 50), Alignment.Center, Color.AliceBlue, spBatch, RenderLayer.GUI);
+            SimpleTextRenderer.DrawString(MainMenuLayout.MainMenuFont, mouseLocation, new Rectangle(500, 500, 200, 50), SimpleTextRenderer.Alignment.Center, Color.AliceBlue, spBatch, RenderLayer.GUI);
         }
 
         /// <summary>

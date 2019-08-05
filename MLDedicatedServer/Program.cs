@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.Filing.Logging;
-using System;
+﻿using System;
+using MLAPI.Filing.Logging;
 
-namespace MagicalLifeDedicatedServer
+namespace MLDedicatedServer
 {
     internal static class Program
     {

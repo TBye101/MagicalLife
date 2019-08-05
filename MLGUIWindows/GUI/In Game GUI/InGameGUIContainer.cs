@@ -1,8 +1,9 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeGUIWindows.GUI.Reusable;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using MLAPI.Asset;
+using MLGUIWindows.GUI.In_Game_GUI.Buttons;
+using MonoGUI.MonoGUI.Reusable;
 
-namespace MagicalLifeGUIWindows.GUI.In
+namespace MLGUIWindows.GUI.In_Game_GUI
 {
     /// <summary>
     /// The in game GUI container.

@@ -1,12 +1,11 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Util;
-using MagicalLifeAPI.World.Base;
-using MagicalLifeMod.Core;
+﻿using MLAPI.Asset;
+using MLAPI.Util.RandomUtils;
+using MLAPI.Visual;
+using MLAPI.Visual.Rendering;
+using MLAPI.World.Base;
 using ProtoBuf;
 
-namespace MagicalLifeAPI.World.Items
+namespace MLCoreMod.Core.Items
 {
     [ProtoContract]
     public class StoneRubble : Item

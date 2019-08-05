@@ -1,6 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
+using MLGUIWindows.GUI.New_World_Menu.Buttons;
+using MLGUIWindows.GUI.New_World_Menu.Input_Boxes;
+using MLGUIWindows.GUI.New_World_Menu.Labels;
 
-namespace MagicalLifeGUIWindows.GUI.New
+namespace MLGUIWindows.GUI.New_World_Menu
 {
     public class NewWorldMenuLayout1920x1080
     {

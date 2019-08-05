@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.Error;
-using MagicalLifeAPI.Filing;
-using MagicalLifeAPI.Filing.Logging;
-using System;
+﻿using System;
+using MLAPI.Error;
+using MLAPI.Filing;
+using MLAPI.Filing.Logging;
 
-namespace MagicalLifeGUIWindows
+namespace MLGUIWindows
 {
 #if WINDOWS || LINUX
 

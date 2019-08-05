@@ -1,15 +1,15 @@
-﻿using MagicalLifeAPI.Components.Entity;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entity;
-using MagicalLifeAPI.Networking.Client;
-using MagicalLifeAPI.Networking.Messages;
-using MagicalLifeAPI.Pathfinding.TeleportationSearch;
-using MagicalLifeAPI.World.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using MLAPI.Components.Entity;
+using MLAPI.DataTypes;
+using MLAPI.Entity;
+using MLAPI.Networking.Client;
+using MLAPI.Networking.Messages;
+using MLAPI.Pathfinding.TeleportationSearch;
+using Dimension = MLAPI.World.Data.Dimension;
 
-namespace MagicalLifeAPI.Pathfinding
+namespace MLAPI.Pathfinding
 {
     /// <summary>
     /// Handles who finds the path to destinations.

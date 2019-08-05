@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeAPI.Networking
+﻿namespace MLAPI.Networking
 {
     /// <summary>
     /// Used to make message IDs a little less like magic numbers.

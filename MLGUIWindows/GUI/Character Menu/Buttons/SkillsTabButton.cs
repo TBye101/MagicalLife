@@ -1,8 +1,9 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeGUIWindows.Properties;
+﻿using MLAPI.Asset;
+using MLGUIWindows.Properties;
+using MonoGUI.MonoGUI.Reusable;
+using MonoGUI.MonoGUI.Reusable.Event;
 
-namespace MagicalLifeGUIWindows.GUI.Character_Menu.Buttons
+namespace MLGUIWindows.GUI.Character_Menu.Buttons
 {
     /// <summary>
     /// Moves the character menu to the inventory section.
@@ -16,7 +17,7 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu.Buttons
             this.ClickEvent += this.SkillsTabButton_ClickEvent;
         }
 
-        private void SkillsTabButton_ClickEvent(object sender, Reusable.Event.ClickEventArgs e)
+        private void SkillsTabButton_ClickEvent(object sender, ClickEventArgs e)
         {
             CharacterMenu.Menu.HideAllControls();
             //Show the inventory menu.

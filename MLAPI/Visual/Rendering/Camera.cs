@@ -1,10 +1,10 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.World.Base;
-using MagicalLifeGUIWindows.Rendering.Map;
+﻿using System;
 using Microsoft.Xna.Framework;
-using System;
+using MLAPI.DataTypes;
+using MLAPI.World.Base;
+using Rectangle = Microsoft.Xna.Framework.Rectangle;
 
-namespace MagicalLifeAPI.Visual.Rendering
+namespace MLAPI.Visual.Rendering
 {
     public class Camera
     {

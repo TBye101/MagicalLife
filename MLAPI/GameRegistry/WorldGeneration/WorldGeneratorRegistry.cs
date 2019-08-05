@@ -1,9 +1,8 @@
-﻿using MagicalLifeAPI.World;
-using MagicalLifeAPI.World.Generation;
-using MagicalLifeAPI.World.Generation.Dungeon;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MLAPI.World.Generation;
+using MLAPI.World.Generation.Dungeon;
 
-namespace MagicalLifeAPI.Registry.WorldGeneration
+namespace MLAPI.GameRegistry.WorldGeneration
 {
     /// <summary>
     /// Holds all of the world generators.

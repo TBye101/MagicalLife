@@ -1,8 +1,8 @@
-﻿using ProtoBuf;
-using System;
+﻿using System;
 using System.Globalization;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.DataTypes
+namespace MLAPI.DataTypes
 {
     [ProtoBuf.ProtoContract]
     public struct Point2DFloat : IEquatable<Point2DFloat>

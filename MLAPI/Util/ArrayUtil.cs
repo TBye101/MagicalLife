@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MagicalLifeAPI.Util
+namespace MLAPI.Util
 {
     /// <summary>
     /// Some basic array utilities.

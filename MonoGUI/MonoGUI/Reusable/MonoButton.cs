@@ -1,11 +1,9 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeGUIWindows.Rendering.Text;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
+using MLAPI.Asset;
+using MLAPI.Visual.Rendering;
 
-namespace MagicalLifeGUIWindows.GUI.Reusable
+namespace MonoGUI.MonoGUI.Reusable
 {
     /// <summary>
     /// A generic button class for use with the monogame framework, as well as the MagicalLifeGUI and API.
@@ -46,7 +44,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             int y = this.DrawingBounds.Y + containerBounds.Y;
             location = new Rectangle(x, y, this.DrawingBounds.Width, this.DrawingBounds.Height);
             spBatch.Draw(AssetManager.Textures[this.TextureID], location, Color.White);
-            SimpleTextRenderer.DrawString(this.Font, this.Text, location, Alignment.Center, Color.White, spBatch, RenderLayer.GUI);
+            SimpleTextRenderer.DrawString(this.Font, this.Text, location, SimpleTextRenderer.Alignment.Center, Color.White, spBatch, RenderLayer.GUI);
         }
     }
 }

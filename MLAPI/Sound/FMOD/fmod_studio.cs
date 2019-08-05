@@ -9,7 +9,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace MagicalLifeAPI.Sound.FMOD
+namespace MLAPI.Sound.FMOD
 {
     namespace Studio
     {

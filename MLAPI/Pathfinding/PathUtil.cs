@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.DataTypes;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MLAPI.DataTypes;
 
-namespace MagicalLifeAPI.Pathfinding
+namespace MLAPI.Pathfinding
 {
     /// <summary>
     /// Holds some pathfinding utilities.

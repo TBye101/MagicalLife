@@ -1,4 +1,6 @@
-﻿namespace MagicalLifeGUIWindows.GUI.MainMenu
+﻿using MonoGUI.MonoGUI;
+
+namespace MLGUIWindows.GUI.MainMenu
 {
     /// <summary>
     /// Handles some main menu stuff.

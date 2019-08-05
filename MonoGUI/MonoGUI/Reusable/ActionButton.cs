@@ -1,10 +1,8 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeGUIWindows.Rendering.Text;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
+using MLAPI.Asset;
+using MLAPI.Visual.Rendering;
+using static MLAPI.Visual.Rendering.SimpleTextRenderer;
 
 namespace MonoGUI.MonoGUI.Reusable
 {

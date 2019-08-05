@@ -1,8 +1,8 @@
-﻿using MagicalLifeAPI.Networking.Serialization;
+﻿using System;
+using MLAPI.Networking.Serialization;
 using ProtoBuf;
-using System;
 
-namespace MagicalLifeAPI.Networking.Messages
+namespace MLAPI.Networking.Messages
 {
     /// <summary>
     /// Used by the API to tell the server that a specific client has disconnected.

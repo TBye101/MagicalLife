@@ -1,11 +1,9 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.World.Data;
+﻿using MLAPI.DataTypes;
+using MLAPI.DataTypes.Collection;
+using MLAPI.World.Data;
 using MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace MLCoreMod.Core.WorldGeneration.Dungeon.Constructors
+namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation
 {
     /// <summary>
     /// Used to translate a dungeon design into coordinate data for rooms and hallways.

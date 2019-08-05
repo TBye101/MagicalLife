@@ -1,18 +1,18 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Filing;
-using MagicalLifeAPI.Load;
-using MagicalLifeAPI.Mod;
-using MagicalLifeAPI.Networking;
-using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeAPI.Networking.Server;
-using MagicalLifeAPI.World;
-using MagicalLifeAPI.World.Data;
-using MagicalLifeServer.Load;
-using MLAPI.Properties;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using MLAPI.Asset;
+using MLAPI.Filing;
+using MLAPI.Load;
+using MLAPI.Mod;
+using MLAPI.Networking;
+using MLAPI.Networking.Serialization;
+using MLAPI.Networking.Server;
+using MLAPI.Properties;
+using MLAPI.World;
+using MLAPI.World.Data;
+using MLServer.Load;
 
-namespace MagicalLifeServer
+namespace MLServer
 {
     /// <summary>
     /// Commands some high level functions of a server.

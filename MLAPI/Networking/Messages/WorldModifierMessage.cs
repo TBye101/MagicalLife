@@ -1,8 +1,8 @@
-﻿using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeAPI.Networking.World.Modifiers;
+﻿using MLAPI.Networking.Serialization;
+using MLAPI.Networking.World.Modifiers;
 using ProtoBuf;
 
-namespace MagicalLifeAPI.Networking.Messages
+namespace MLAPI.Networking.Messages
 {
     /// <summary>
     /// Used to transfer <see cref="AbstractWorldModifier"/>s.

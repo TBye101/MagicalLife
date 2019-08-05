@@ -1,14 +1,14 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.DataTypes.R;
-using MagicalLifeAPI.Entity;
-using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.World.Base;
-using ProtoBuf;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using MLAPI.Components;
+using MLAPI.DataTypes;
+using MLAPI.DataTypes.Collection;
+using MLAPI.Entity;
+using MLAPI.World.Base;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.World.Data
+namespace MLAPI.World.Data
 {
     /// <summary>
     /// Holds a section of the world.

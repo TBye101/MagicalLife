@@ -1,7 +1,7 @@
-﻿using ProtoBuf;
-using System;
+﻿using System;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.World.Data.Disk.DataStorage
+namespace MLAPI.World.Data.Disk.DataStorage
 {
     /// <summary>
     /// Holds the header information for a dimension.

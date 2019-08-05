@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.Server;
-using MLDedicatedServer.Properties;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using MLAPI.Server;
+using MLDedicatedServer.Properties;
 
-namespace MagicalLifeDedicatedServer
+namespace MLDedicatedServer
 {
     /// <summary>
     /// Used to determine which command to call, if any.

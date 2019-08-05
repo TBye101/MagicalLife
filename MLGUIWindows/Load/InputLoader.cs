@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.Load;
-using MagicalLifeGUIWindows.Input;
+﻿using MLAPI.Load;
+using MonoGUI.MonoGUI.Input;
 
-namespace MagicalLifeGUIWindows.Load
+namespace MLGUIWindows.Load
 {
     /// <summary>
     /// Initializes some input related things.

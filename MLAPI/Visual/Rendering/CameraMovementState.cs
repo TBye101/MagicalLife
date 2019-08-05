@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeGUIWindows.Rendering.Map
+﻿namespace MLAPI.Visual.Rendering
 {
     /// <summary>
     /// Used to specify which way to move the camera.

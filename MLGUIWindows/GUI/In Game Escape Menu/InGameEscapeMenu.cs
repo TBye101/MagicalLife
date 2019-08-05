@@ -1,4 +1,6 @@
-﻿namespace MagicalLifeGUIWindows.GUI.In
+﻿using MonoGUI.MonoGUI;
+
+namespace MLGUIWindows.GUI.In_Game_Escape_Menu
 {
     public static class InGameEscapeMenu
     {

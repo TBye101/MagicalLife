@@ -1,6 +1,6 @@
 ﻿using ProtoBuf;
 
-namespace MagicalLifeAPI.DataTypes.Attribute
+namespace MLAPI.DataTypes.Attribute
 {
     /// <summary>
     /// This type of attribute combines both whole number attributes

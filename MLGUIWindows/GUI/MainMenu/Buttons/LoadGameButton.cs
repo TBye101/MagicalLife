@@ -1,11 +1,12 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Sound;
-using MagicalLifeGUIWindows.GUI.Load;
-using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeGUIWindows.Properties;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using MLAPI.Asset;
+using MLAPI.Sound;
+using MLGUIWindows.GUI.Load_Game_Menu;
+using MLGUIWindows.Properties;
+using MonoGUI.MonoGUI.Reusable;
+using MonoGUI.MonoGUI.Reusable.Event;
 
-namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
+namespace MLGUIWindows.GUI.MainMenu.Buttons
 {
     public class LoadGameButton : MonoButton
     {
@@ -14,7 +15,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
             this.ClickEvent += this.LoadGameButton_ClickEvent;
         }
 
-        private void LoadGameButton_ClickEvent(object sender, Reusable.Event.ClickEventArgs e)
+        private void LoadGameButton_ClickEvent(object sender, ClickEventArgs e)
         {
             FMODUtil.RaiseEvent(SoundsTable.UIClick);
             LoadGameMenu.Initialize();

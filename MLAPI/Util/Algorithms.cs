@@ -1,7 +1,8 @@
-﻿using MagicalLifeAPI.DataTypes;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MLAPI.DataTypes;
+using MLAPI.Util.Math;
 
-namespace MagicalLifeAPI.Util
+namespace MLAPI.Util
 {
     /// <summary>
     /// Holds some commonly used algorithms for use throughout the project.

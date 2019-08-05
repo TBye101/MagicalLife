@@ -1,8 +1,8 @@
-﻿using MagicalLifeAPI.World.Base;
+﻿using System.Collections.Generic;
+using MLAPI.World.Base;
 using ProtoBuf;
-using System.Collections.Generic;
 
-namespace MagicalLifeAPI.World.Data
+namespace MLAPI.World.Data
 {
     /// <summary>
     /// Used to hold and manage groups of items that have specific and differing data.

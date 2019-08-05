@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.Filing;
-using MagicalLifeAPI.Universal;
+﻿using System;
+using MLAPI.Filing;
+using MLAPI.Universal;
 using ProtoBuf;
-using System;
 
-namespace MagicalLifeAPI.Networking.Serialization
+namespace MLAPI.Networking.Serialization
 {
     /// <summary>
     /// The base of every message.

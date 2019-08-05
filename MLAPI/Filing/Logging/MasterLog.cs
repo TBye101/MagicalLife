@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 
-namespace MagicalLifeAPI.Filing.Logging
+namespace MLAPI.Filing.Logging
 {
     /// <summary>
     /// The master log class where we log everything that happens, that isn't historical/statistical information.

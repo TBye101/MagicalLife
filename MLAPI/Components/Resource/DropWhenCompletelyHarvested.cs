@@ -1,10 +1,10 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Sound;
-using MagicalLifeAPI.World.Base;
+﻿using System.Collections.Generic;
+using MLAPI.DataTypes;
+using MLAPI.Sound;
+using MLAPI.World.Base;
 using ProtoBuf;
-using System.Collections.Generic;
 
-namespace MagicalLifeAPI.Components.Resource
+namespace MLAPI.Components.Resource
 {
     [ProtoContract]
     public class DropWhenCompletelyHarvested : ComponentHarvestable

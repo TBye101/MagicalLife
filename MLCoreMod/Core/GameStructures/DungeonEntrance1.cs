@@ -1,11 +1,9 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.World.Base;
-using MLCoreMod;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using MLAPI.DataTypes;
+using MLAPI.World.Structure;
 
-namespace MagicalLifeMod.Core.GameStructures
+namespace MLCoreMod.Core.GameStructures
 {
     public class DungeonEntrance1 : Structure
     {

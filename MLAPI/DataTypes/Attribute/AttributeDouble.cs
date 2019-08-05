@@ -1,8 +1,8 @@
-﻿using MagicalLifeAPI.Entity.Util.Modifier;
+﻿using System.Collections.Generic;
+using MLAPI.Entity.Util.Modifier_Remove_Conditions;
 using ProtoBuf;
-using System.Collections.Generic;
 
-namespace MagicalLifeAPI.DataTypes.Attribute
+namespace MLAPI.DataTypes.Attribute
 {
     [ProtoContract]
     public class AttributeDouble

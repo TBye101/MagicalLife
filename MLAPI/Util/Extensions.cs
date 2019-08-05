@@ -1,7 +1,9 @@
-﻿using MagicalLifeAPI.DataTypes;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MLAPI.DataTypes;
+using MLAPI.DataTypes.Collection;
+using MLAPI.Util.RandomUtils;
 
-namespace MagicalLifeAPI.Util
+namespace MLAPI.Util
 {
     public static class Extensions
     {

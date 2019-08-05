@@ -1,9 +1,9 @@
-﻿using ProtoBuf;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.DataTypes
+namespace MLAPI.DataTypes.Collection
 {
     /// <summary>
     /// A protobuf-net compatible FIFO (first in first out) Queue class

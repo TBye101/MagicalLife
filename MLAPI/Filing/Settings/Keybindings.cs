@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Input;
 
-namespace MagicalLifeAPI.Filing.Settings
+namespace MLAPI.Filing.Settings
 {
     /// <summary>
     /// Keybindings for everything in the base game.

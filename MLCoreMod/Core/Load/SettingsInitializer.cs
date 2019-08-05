@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.Load;
-using MagicalLifeMod.Core.Settings;
+﻿using MLAPI.Load;
+using MLCoreMod.Core.Settings;
 
-namespace MagicalLifeMod.Core.Load
+namespace MLCoreMod.Core.Load
 {
     /// <summary>
     /// Initializes the settings for this core mod.

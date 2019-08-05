@@ -1,15 +1,14 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.Components.MAP_GUI;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.World.Base;
-using MagicalLifeMod.Core.Settings;
-using ProtoBuf;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using MLAPI.Asset;
+using MLAPI.Components;
+using MLAPI.DataTypes;
+using MLAPI.Visual.Rendering;
+using MLAPI.World.Structure;
+using MLCoreMod.Core.Settings;
+using ProtoBuf;
 
-namespace MagicalLifeMod.Core.GameStructures.Parts
+namespace MLCoreMod.Core.GameStructures.Parts
 {
     [ProtoContract]
     public class DungeonStairDown : StructurePart

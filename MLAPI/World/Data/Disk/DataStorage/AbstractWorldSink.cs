@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MagicalLifeAPI.World.Data.Disk.DataStorage
+namespace MLAPI.World.Data.Disk.DataStorage
 {
     /// <summary>
     /// Implementers of this handle what happens to the sections of serialized world data.

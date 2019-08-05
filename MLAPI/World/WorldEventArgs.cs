@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MagicalLifeAPI.World
+namespace MLAPI.World
 {
     /// <summary>
     /// Event arguments for any event involving the world.

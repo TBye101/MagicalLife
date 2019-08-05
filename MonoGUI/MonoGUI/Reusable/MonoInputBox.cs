@@ -1,14 +1,13 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeGUIWindows.Input;
-using MagicalLifeGUIWindows.Map;
+﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
-using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
+using MLAPI.Asset;
+using MLAPI.Visual.Rendering;
+using MonoGUI.Game;
+using MonoGUI.MonoGUI.Input;
 
-namespace MagicalLifeGUIWindows.GUI.Reusable
+namespace MonoGUI.MonoGUI.Reusable
 {
     public class MonoInputBox : GUIElement
     {
@@ -56,7 +55,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// <summary>
         /// The text alignment of this <see cref="MonoInputBox"/>.
         /// </summary>
-        public Alignment TextAlignment { get; private set; }
+        public SimpleTextRenderer.Alignment TextAlignment { get; private set; }
 
         private int TextureID { get; set; }
 
@@ -73,7 +72,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
         /// <param name="isLocked"></param>
         /// <param name="textAlignment"></param>
         /// <param name="isContained">If true, this GUI element is within a container.</param>
-        public MonoInputBox(string image, string CarrotTexture, Rectangle drawingBounds, int priority, string font, bool isLocked, Alignment textAlignment, bool isContained)
+        public MonoInputBox(string image, string CarrotTexture, Rectangle drawingBounds, int priority, string font, bool isLocked, SimpleTextRenderer.Alignment textAlignment, bool isContained)
             : base(drawingBounds, priority, isContained, font)
         {
             KeyboardHandler.KeysPressed += this.KeyboardHandler_KeysPressed;
@@ -215,7 +214,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             int y = this.DrawingBounds.Y + containerBounds.Y;
             location = new Rectangle(x, y, this.DrawingBounds.Width, this.DrawingBounds.Height);
             spBatch.Draw(AssetManager.Textures[this.TextureID], location, Color.White);
-            DrawString(this.Font, this.Text, location, Alignment.Left, Color.White, spBatch, RenderLayer.GUI);
+            SimpleTextRenderer.DrawString(this.Font, this.Text, location, SimpleTextRenderer.Alignment.Left, Color.White, spBatch, RenderLayer.GUI);
 
             Rectangle carrotLocation = this.CalculateCarrotBounds(this, containerBounds);
 
@@ -232,22 +231,22 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             Vector2 size = textbox.Font.MeasureString(textbox.Text);
             Vector2 origin = size * 0.5f;
 
-            if ((textbox.TextAlignment & Alignment.Left) != 0)
+            if ((textbox.TextAlignment & SimpleTextRenderer.Alignment.Left) != 0)
             {
                 origin.X += (textbox.DrawingBounds.Width / 2) - (size.X / 2);
             }
 
-            if ((textbox.TextAlignment & Alignment.Right) != 0)
+            if ((textbox.TextAlignment & SimpleTextRenderer.Alignment.Right) != 0)
             {
                 origin.X -= (textbox.DrawingBounds.Width / 2) - (size.X / 2);
             }
 
-            if ((textbox.TextAlignment & Alignment.Top) != 0)
+            if ((textbox.TextAlignment & SimpleTextRenderer.Alignment.Top) != 0)
             {
                 origin.Y += (textbox.DrawingBounds.Height / 2) - (size.Y / 2);
             }
 
-            if ((textbox.TextAlignment & Alignment.Bottom) != 0)
+            if ((textbox.TextAlignment & SimpleTextRenderer.Alignment.Bottom) != 0)
             {
                 origin.Y -= (textbox.DrawingBounds.Height / 2) - (size.Y / 2);
             }
@@ -256,7 +255,7 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
             int XPos = (int)Math.Round(origin.X + textbox.DrawingBounds.X + textbox.Font.MeasureString(TextBeforeCarrot).X) + containerBounds.X;
             int YPos = (int)Math.Round(origin.Y + textbox.DrawingBounds.Y) + containerBounds.Y;
 
-            if (textbox.TextAlignment == Alignment.Left)
+            if (textbox.TextAlignment == SimpleTextRenderer.Alignment.Left)
             {
                 XPos -= (int)Math.Round(origin.X);
                 YPos += (int)Math.Round(origin.Y);

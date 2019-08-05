@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeAPI.Entity.Movement
+﻿namespace MLAPI.Entity.Movement
 {
     /// <summary>
     /// Represents the cardinal directions.

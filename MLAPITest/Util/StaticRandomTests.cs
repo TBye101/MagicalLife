@@ -1,10 +1,9 @@
-﻿using MagicalLifeAPI.Util;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
+using MLAPI.Util.RandomUtils;
 using Xunit;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
-namespace MagicalLifeTests.Util
+namespace MLAPITest.Util
 {
     public class StaticRandomTests
     {

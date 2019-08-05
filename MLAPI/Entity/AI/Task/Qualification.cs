@@ -1,6 +1,6 @@
 ﻿using ProtoBuf;
 
-namespace MagicalLifeAPI.Entity.AI.Task
+namespace MLAPI.Entity.AI.Task
 {
     /// <summary>
     /// Is used determine if a creature is suited to do a task, or if a job is ready to begin.

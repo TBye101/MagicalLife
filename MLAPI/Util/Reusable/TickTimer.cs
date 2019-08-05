@@ -1,7 +1,7 @@
-﻿using ProtoBuf;
-using System;
+﻿using System;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.Util.Reusable
+namespace MLAPI.Util.Reusable
 {
     /// <summary>
     /// Used to allow something to happen every so many ticks.

@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeGUIWindows.GUI.MainMenu
+﻿namespace MLGUIWindows.GUI.MainMenu
 {
     /// <summary>
     /// Holds some constants used to render the main menu when at the 1920 by 1080 resolution.

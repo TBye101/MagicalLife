@@ -1,7 +1,7 @@
-﻿using MagicalLifeMod.Core.Settings;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MLCoreMod.Core.Settings;
 
 namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.Fitness
 {

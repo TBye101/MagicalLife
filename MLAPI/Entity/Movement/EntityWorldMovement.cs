@@ -1,23 +1,24 @@
-﻿using MagicalLifeAPI.Components.Entity;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.DataTypes.Attribute;
-using MagicalLifeAPI.Entity.Humanoid;
-using MagicalLifeAPI.Entity.Util.Modifier;
-using MagicalLifeAPI.Filing;
-using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Networking.Client;
-using MagicalLifeAPI.Networking.Messages;
-using MagicalLifeAPI.Networking.World.Modifiers;
-using MagicalLifeAPI.Pathfinding;
-using MagicalLifeAPI.Sound;
-using MagicalLifeAPI.Util;
-using MagicalLifeAPI.World.Base;
+﻿using System;
+using MLAPI.Components;
+using MLAPI.Components.Entity;
+using MLAPI.DataTypes;
+using MLAPI.DataTypes.Attribute;
+using MLAPI.DataTypes.Collection;
+using MLAPI.Entity.Humanoid;
+using MLAPI.Entity.Util.Modifier_Remove_Conditions;
+using MLAPI.Filing;
+using MLAPI.Filing.Logging;
+using MLAPI.Networking.Client;
+using MLAPI.Networking.Messages;
+using MLAPI.Networking.World.Modifiers;
+using MLAPI.Pathfinding;
 using MLAPI.Properties;
-using System;
+using MLAPI.Sound;
+using MLAPI.Util.Math;
+using MLAPI.Visual.Rendering.Animation;
+using MLAPI.World.Base;
 
-namespace MagicalLifeAPI.Entity.Movement
+namespace MLAPI.Entity.Movement
 {
     /// <summary>
     /// Used to move entities.

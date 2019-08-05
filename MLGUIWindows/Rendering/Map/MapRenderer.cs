@@ -1,19 +1,21 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Entity;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entity;
-using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Data;
-using MagicalLifeGUIWindows.Rendering.Text;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Xna.Framework.Graphics;
+using MLAPI.Asset;
+using MLAPI.Components;
+using MLAPI.Components.Entity;
+using MLAPI.DataTypes;
+using MLAPI.Entity;
+using MLAPI.Entity.AI.Task;
+using MLAPI.Visual;
+using MLAPI.Visual.Rendering;
+using MLAPI.Visual.Rendering.Map;
+using MLAPI.World.Base;
+using MLAPI.World.Data;
+using Rectangle = Microsoft.Xna.Framework.Rectangle;
 
-namespace MagicalLifeGUIWindows.Rendering.Map
+namespace MLGUIWindows.Rendering.Map
 {
     /// <summary>
     /// Handles rendering the map.
@@ -160,11 +162,11 @@ namespace MagicalLifeGUIWindows.Rendering.Map
 
             switch (tile.ImpendingAction)
             {
-                case MagicalLifeAPI.Entity.AI.Task.ActionSelected.Mine:
+                case ActionSelected.Mine:
                     MapDrawer.Draw(AssetManager.Textures[AssetManager.NameToIndex[TextureLoader.GUIPickaxeMapIcon]], X32Target, RenderLayer.GUI);
                     break;
 
-                case MagicalLifeAPI.Entity.AI.Task.ActionSelected.Chop:
+                case ActionSelected.Chop:
                     MapDrawer.Draw(AssetManager.Textures[AssetManager.NameToIndex[TextureLoader.GUIAxeMapIcon]], X32Target, RenderLayer.GUI);
                     break;
 

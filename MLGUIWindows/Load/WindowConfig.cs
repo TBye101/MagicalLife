@@ -1,14 +1,15 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Filing;
-using MagicalLifeGUIWindows.GUI;
-using Microsoft.Xna.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using MLAPI.DataTypes;
+using MLAPI.Filing;
+using MLAPI.Visual.Rendering;
+using MonoGUI.MonoGUI;
+using Point = Microsoft.Xna.Framework.Point;
+using Rectangle = Microsoft.Xna.Framework.Rectangle;
 
-namespace MagicalLifeGUIWindows.Load
+namespace MLGUIWindows.Load
 {
     /// <summary>
     /// Handles configuring the main window.

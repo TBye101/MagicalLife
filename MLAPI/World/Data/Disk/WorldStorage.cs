@@ -1,10 +1,10 @@
-﻿using MagicalLifeAPI.Filing;
-using MagicalLifeAPI.World.Data.Disk.DataStorage;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using MLAPI.Filing;
+using MLAPI.World.Data.Disk.DataStorage;
 
-namespace MagicalLifeAPI.World.Data.Disk
+namespace MLAPI.World.Data.Disk
 {
     /// <summary>
     /// The access point for accessing every class that knows how to load something about the world.

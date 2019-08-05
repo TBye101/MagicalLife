@@ -1,13 +1,13 @@
-﻿using MagicalLifeAPI.Components.Entity;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entity.AI.Task.Qualifications;
-using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Pathfinding;
-using ProtoBuf;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using MLAPI.Components;
+using MLAPI.Components.Entity;
+using MLAPI.DataTypes;
+using MLAPI.Entity.AI.Task.Qualifications;
+using MLAPI.Pathfinding;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.Entity.AI.Task.Tasks
+namespace MLAPI.Entity.AI.Task.Tasks
 {
     [ProtoContract]
     public class MoveTask : MagicalTask

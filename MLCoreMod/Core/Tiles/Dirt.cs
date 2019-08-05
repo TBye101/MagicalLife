@@ -1,14 +1,14 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.Components.Resource;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Util;
-using MagicalLifeAPI.World.Base;
+﻿using System;
+using MLAPI.Asset;
+using MLAPI.DataTypes;
 using MLAPI.Properties;
+using MLAPI.Util.RandomUtils;
+using MLAPI.Visual.Rendering;
+using MLAPI.World.Base;
+using MLCoreMod.Core.Components;
 using ProtoBuf;
-using System;
 
-namespace MagicalLifeAPI.World.Tiles
+namespace MLCoreMod.Core.Tiles
 {
     /// <summary>
     /// A dirt tile.

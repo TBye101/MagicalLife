@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.World.Data;
-using System;
+﻿using System;
+using MLAPI.World.Data;
 
-namespace MagicalLifeAPI.World
+namespace MLAPI.World.Generation
 {
     /// <summary>
     /// Classes that implements this are responsible for generating the terrain for the specified chunks.

@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeAPI.Networking
+﻿namespace MLAPI.Networking
 {
     /// <summary>
     /// Contains network settings to be used when setting up the game.

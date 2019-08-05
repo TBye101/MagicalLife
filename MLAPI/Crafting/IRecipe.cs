@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.World.Base;
-using System;
+﻿using System;
+using MLAPI.World.Base;
 
-namespace MagicalLifeAPI.Crafting
+namespace MLAPI.Crafting
 {
     /// <summary>
     /// All recipes implement this.

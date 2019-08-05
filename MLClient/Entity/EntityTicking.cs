@@ -1,14 +1,14 @@
-﻿using MagicalLifeAPI.Components.Entity;
-using MagicalLifeAPI.Entity;
-using MagicalLifeAPI.Entity.AI.Task;
-using MagicalLifeAPI.Entity.Movement;
-using MagicalLifeAPI.Universal;
-using MagicalLifeAPI.World.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using MLAPI.Components.Entity;
+using MLAPI.Entity;
+using MLAPI.Entity.AI.Task;
+using MLAPI.Entity.Movement;
+using MLAPI.Universal;
+using MLAPI.World.Data;
 
-namespace MagicalLifeClient.Entity
+namespace MLClient.Entity
 {
     /// <summary>
     /// Used to do client side entity operations every tick.

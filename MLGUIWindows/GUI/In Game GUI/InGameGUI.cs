@@ -1,7 +1,8 @@
-﻿using MagicalLifeAPI.Entity.AI.Task;
-using MagicalLifeGUIWindows.Map;
+﻿using MLAPI.Entity.AI.Task;
+using MonoGUI.Game;
+using MonoGUI.MonoGUI;
 
-namespace MagicalLifeGUIWindows.GUI.In
+namespace MLGUIWindows.GUI.In_Game_GUI
 {
     /// <summary>
     /// Holds the container which is the in game GUI.

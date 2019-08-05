@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MagicalLifeAPI.Networking.Serialization
+namespace MLAPI.Networking.Serialization
 {
     /// <summary>
     /// Used to discover which class is a protobuf-net surrogate for which class.

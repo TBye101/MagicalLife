@@ -1,9 +1,10 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Entity.AI.Task;
-using MagicalLifeGUIWindows.GUI.Reusable;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using MLAPI.Asset;
+using MLAPI.Entity.AI.Task;
+using MonoGUI.MonoGUI.Reusable;
+using MonoGUI.MonoGUI.Reusable.Event;
 
-namespace MagicalLifeGUIWindows.GUI.In
+namespace MLGUIWindows.GUI.In_Game_GUI.Buttons
 {
     public class TillDirtActionButton : MonoButton
     {
@@ -17,7 +18,7 @@ namespace MagicalLifeGUIWindows.GUI.In
             this.ClickEvent += this.TillDirtActionButton_ClickEvent;
         }
 
-        private void TillDirtActionButton_ClickEvent(object sender, Reusable.Event.ClickEventArgs e)
+        private void TillDirtActionButton_ClickEvent(object sender, ClickEventArgs e)
         {
             if (InGameGUI.Selected == ActionSelected.Till)
             {

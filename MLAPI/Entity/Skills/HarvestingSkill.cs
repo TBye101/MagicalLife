@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.DataTypes.Attribute;
-using MagicalLifeAPI.Entity.Experience;
+﻿using MLAPI.DataTypes.Attribute;
+using MLAPI.Entity.Experience;
 using MLAPI.Properties;
 using ProtoBuf;
 
-namespace MagicalLifeAPI.Entity.Skills
+namespace MLAPI.Entity.Skills
 {
     /// <summary>
     /// The skill of a creature in mining.

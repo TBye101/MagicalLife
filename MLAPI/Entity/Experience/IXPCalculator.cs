@@ -1,7 +1,7 @@
-﻿using ProtoBuf;
-using System;
+﻿using System;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.Entity.Experience
+namespace MLAPI.Entity.Experience
 {
     /// <summary>
     /// Classes that implement this have custom algorithms for how to calculate the XP required to get to the next level.

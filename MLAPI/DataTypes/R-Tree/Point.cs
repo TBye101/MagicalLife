@@ -18,7 +18,7 @@
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 
 // Ported to C# By Dror Gluska, April 9th, 2009
-namespace MagicalLifeAPI.DataTypes.R
+namespace MLAPI.DataTypes
 {
     /// <summary>
     /// Currently hardcoded to 3 dimensions, but could be extended.

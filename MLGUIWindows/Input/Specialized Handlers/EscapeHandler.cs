@@ -1,11 +1,12 @@
-﻿using MagicalLifeAPI.Filing;
-using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.World.Data;
-using MagicalLifeGUIWindows.GUI;
-using MagicalLifeGUIWindows.GUI.Action_Menu;
-using MagicalLifeGUIWindows.GUI.In;
+﻿using MLAPI.Filing;
+using MLAPI.Filing.Logging;
+using MLAPI.World.Data;
+using MLGUIWindows.GUI.Action_Menu;
+using MLGUIWindows.GUI.In_Game_Escape_Menu;
+using MonoGUI.MonoGUI;
+using MonoGUI.MonoGUI.Input;
 
-namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
+namespace MLGUIWindows.Input.Specialized_Handlers
 {
     /// <summary>
     /// Used to handle the escape key, and it's many uses.

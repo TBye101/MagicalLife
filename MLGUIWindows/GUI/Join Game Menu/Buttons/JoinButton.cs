@@ -1,15 +1,18 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Networking.Client;
-using MagicalLifeAPI.Sound;
-using MagicalLifeAPI.World.Data;
-using MagicalLifeClient;
-using MagicalLifeGUIWindows.GUI.In;
-using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeGUIWindows.Input;
-using MagicalLifeGUIWindows.Properties;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using MLAPI.Asset;
+using MLAPI.Networking;
+using MLAPI.Networking.Client;
+using MLAPI.Sound;
+using MLAPI.World.Data;
+using MLClient;
+using MLGUIWindows.GUI.In_Game_GUI;
+using MLGUIWindows.Properties;
+using MonoGUI.MonoGUI;
+using MonoGUI.MonoGUI.Input;
+using MonoGUI.MonoGUI.Reusable;
+using MonoGUI.MonoGUI.Reusable.Event;
 
-namespace MagicalLifeGUIWindows.GUI.Join
+namespace MLGUIWindows.GUI.Join_Game_Menu.Buttons
 {
     public class JoinButton : MonoButton
     {
@@ -18,11 +21,11 @@ namespace MagicalLifeGUIWindows.GUI.Join
             this.ClickEvent += this.JoinButton_ClickEvent;
         }
 
-        private void JoinButton_ClickEvent(object sender, Reusable.Event.ClickEventArgs e)
+        private void JoinButton_ClickEvent(object sender, ClickEventArgs e)
         {
-            World.Mode = MagicalLifeAPI.Networking.EngineMode.ClientOnly;
+            World.Mode = EngineMode.ClientOnly;
             FMODUtil.RaiseEvent(SoundsTable.UIClick);
-            ClientSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(JoinGameMenu.Menu.IpInputBox.Text, int.Parse(JoinGameMenu.Menu.PortInputBox.Text)));
+            ClientSendRecieve.Initialize(new NetworkSettings(JoinGameMenu.Menu.IpInputBox.Text, int.Parse(JoinGameMenu.Menu.PortInputBox.Text)));
             Client.Load();
             MenuHandler.Clear();
             InGameGUI.Initialize();

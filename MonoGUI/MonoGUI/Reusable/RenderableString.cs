@@ -1,10 +1,8 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeGUIWindows.Rendering.Text;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using static MagicalLifeGUIWindows.Rendering.Text.SimpleTextRenderer;
+using MLAPI.Visual.Rendering;
 
-namespace MagicalLifeGUIWindows.GUI.Reusable
+namespace MonoGUI.MonoGUI.Reusable
 {
     /// <summary>
     /// A generic label class.
@@ -12,9 +10,9 @@ namespace MagicalLifeGUIWindows.GUI.Reusable
     public class RenderableString : GUIElement
     {
         public string Text { get; private set; }
-        private Alignment Alignment { get; }
+        private SimpleTextRenderer.Alignment Alignment { get; }
 
-        public RenderableString(SpriteFont font, string text, Alignment alignment)
+        public RenderableString(SpriteFont font, string text, SimpleTextRenderer.Alignment alignment)
         {
             this.Font = font;
             this.Text = text;

@@ -1,9 +1,8 @@
-﻿using MagicalLifeAPI.Load;
-using MagicalLifeAPI.Registry.ItemRegistry;
-using MagicalLifeAPI.World.Items;
-using MagicalLifeMod.Core.Items;
+﻿using MLAPI.GameRegistry.Items;
+using MLAPI.Load;
+using MLCoreMod.Core.Items;
 
-namespace MagicalLifeMod.Core.Load
+namespace MLCoreMod.Core.Load
 {
     /// <summary>
     /// Registers the items.

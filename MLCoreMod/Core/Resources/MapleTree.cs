@@ -1,14 +1,15 @@
-﻿using MagicalLifeAPI.Components.Resource;
-using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Sound;
-using MagicalLifeAPI.Visual.Rendering.AbstractVisuals;
-using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Items;
+﻿using System.Collections.Generic;
+using MLAPI.Components.Resource;
 using MLAPI.Properties;
+using MLAPI.Sound;
+using MLAPI.Visual;
+using MLAPI.Visual.Rendering;
+using MLAPI.World.Base;
+using MLAPI.World.Resources;
+using MLCoreMod.Core.Items;
 using ProtoBuf;
-using System.Collections.Generic;
 
-namespace MagicalLifeAPI.World.Resources
+namespace MLCoreMod.Core.Resources
 {
     /// <summary>
     /// A maple tree.

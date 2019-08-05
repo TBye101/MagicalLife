@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.Filing.Logging;
-using System;
+﻿using System;
+using MLAPI.Filing.Logging;
 
-namespace MagicalLifeAPI.Error
+namespace MLAPI.Error
 {
     /// <summary>
     /// Reports all exceptions thrown in Magical Life.

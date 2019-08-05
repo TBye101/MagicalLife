@@ -1,15 +1,17 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.Components.Resource;
-using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Sound;
-using MagicalLifeAPI.Util;
-using MagicalLifeAPI.World.Items;
+﻿using System.Collections.Generic;
+using MLAPI.Asset;
+using MLAPI.Components.Resource;
 using MLAPI.Properties;
+using MLAPI.Sound;
+using MLAPI.Util.RandomUtils;
+using MLAPI.Visual;
+using MLAPI.Visual.Rendering;
+using MLAPI.World.Base;
+using MLAPI.World.Resources;
+using MLCoreMod.Core.Items;
 using ProtoBuf;
-using System.Collections.Generic;
 
-namespace MagicalLifeAPI.World.Resources
+namespace MLCoreMod.Core.Resources
 {
     /// <summary>
     /// Stone as a resource.
@@ -26,7 +28,7 @@ namespace MagicalLifeAPI.World.Resources
 
         private static ComponentHarvestable GetHarvestBehavior(int count)
         {
-            return new DropWhenCompletelyHarvested(new List<Base.Item>
+            return new DropWhenCompletelyHarvested(new List<Item>
             {
                 new StoneRubble(count)
             }, SoundsTable.PickaxeHit, SoundsTable.MiningFinish);

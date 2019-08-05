@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeGUIWindows.GUI
+﻿namespace MonoGUI.MonoGUI
 {
     /// <summary>
     /// The resolutions we support.

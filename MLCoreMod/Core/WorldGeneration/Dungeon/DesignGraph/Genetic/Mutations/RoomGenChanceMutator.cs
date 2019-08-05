@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.DesignRules;
 
 namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.Mutations
 {

@@ -1,13 +1,13 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Registry.ItemRegistry;
-using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Data.Disk;
-using MagicalLifeAPI.World.Data.Disk.DataStorage;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using MLAPI.DataTypes.Collection;
+using MLAPI.GameRegistry.Items;
+using MLAPI.World.Base;
+using MLAPI.World.Data.Disk;
+using MLAPI.World.Data.Disk.DataStorage;
 
-namespace MagicalLifeAPI.World.Data
+namespace MLAPI.World.Data
 {
     /// <summary>
     /// Holds some information about the level of the world.

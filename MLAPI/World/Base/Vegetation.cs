@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.Components.Resource;
+﻿using MLAPI.Components.Resource;
 using ProtoBuf;
 
-namespace MagicalLifeAPI.World.Base
+namespace MLAPI.World.Base
 {
     /// <summary>
     /// A base class used by anything that can grow, and is alive.

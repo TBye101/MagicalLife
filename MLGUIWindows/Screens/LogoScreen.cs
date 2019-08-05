@@ -1,11 +1,10 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeGUIWindows.Rendering.Text;
+﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
+using MLAPI.Asset;
+using MLAPI.Visual.Rendering;
 
-namespace MagicalLifeGUIWindows.Screens
+namespace MLGUIWindows.Screens
 {
     /// <summary>
     /// A splash screen that displays an logo, then goes away.

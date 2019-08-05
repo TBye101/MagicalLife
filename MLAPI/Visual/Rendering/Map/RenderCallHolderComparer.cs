@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MagicalLifeAPI.Visual.Rendering.Renderer
+namespace MLAPI.Visual.Rendering.Map
 {
     public class RenderCallHolderComparer : IComparer<RenderCallHolder>
     {

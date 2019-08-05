@@ -1,7 +1,7 @@
-﻿using ProtoBuf;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.Entity.AI.Task
+namespace MLAPI.Entity.AI.Task
 {
     /// <summary>
     /// Holds tasks that must be completed before another task can begin.

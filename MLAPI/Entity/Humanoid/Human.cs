@@ -1,14 +1,14 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Visual.Rendering.Animation;
-using MagicalLifeSettings;
-using MLAPI.Properties;
-using ProtoBuf;
-using System;
+﻿using System;
 using System.Reflection;
+using MLAPI.Asset;
+using MLAPI.DataTypes;
+using MLAPI.Properties;
+using MLAPI.Visual.Rendering;
+using MLAPI.Visual.Rendering.Animation;
+using MLSettings;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.Entity.Humanoid
+namespace MLAPI.Entity.Humanoid
 {
     /// <summary>
     /// A class that holds logic for control of regular humans.

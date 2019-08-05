@@ -1,10 +1,10 @@
-﻿using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeAPI.Registry.ItemRegistry;
-using MagicalLifeAPI.World.Data.Disk.DataStorage;
-using System;
+﻿using System;
 using System.IO;
+using MLAPI.GameRegistry.Items;
+using MLAPI.Networking.Serialization;
+using MLAPI.World.Data.Disk.DataStorage;
 
-namespace MagicalLifeAPI.World.Data.Disk
+namespace MLAPI.World.Data.Disk
 {
     /// <summary>
     /// Used to store and load an item registry.

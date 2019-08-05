@@ -1,11 +1,11 @@
-﻿using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Networking.Serialization;
-using ProtoBuf;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using MLAPI.Filing.Logging;
+using MLAPI.Networking.Serialization;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.Networking
+namespace MLAPI.Networking
 {
     /// <summary>
     /// Used to buffer Protobuf-net (<see cref="BaseMessage"/>) messages correctly in order to handle a TCP connection.

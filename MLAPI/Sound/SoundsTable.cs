@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeAPI.Sound
+﻿namespace MLAPI.Sound
 {
     /// <summary>
     /// Holds the event names of various sound effects.

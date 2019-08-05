@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.Networking.Serialization;
-using System.Reflection;
+﻿using System.Reflection;
+using MLAPI.Networking.Serialization;
 
-namespace MagicalLifeAPI.Load
+namespace MLAPI.Load
 {
     internal class ProtoManager : IGameLoader
     {

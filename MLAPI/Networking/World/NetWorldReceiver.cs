@@ -1,13 +1,13 @@
-﻿using MagicalLifeAPI.Filing;
-using MagicalLifeAPI.Networking.Messages;
-using MagicalLifeAPI.World;
-using MagicalLifeAPI.World.Data.Disk;
-using MagicalLifeAPI.World.Data.Disk.DataStorage;
-using MLAPI.Properties;
-using System;
+﻿using System;
 using System.IO;
+using MLAPI.Filing;
+using MLAPI.Networking.Messages;
+using MLAPI.Properties;
+using MLAPI.World;
+using MLAPI.World.Data.Disk;
+using MLAPI.World.Data.Disk.DataStorage;
 
-namespace MagicalLifeAPI.Networking.World
+namespace MLAPI.Networking.World
 {
     /// <summary>
     /// Knows how to handle the world from network messages.
@@ -49,7 +49,7 @@ namespace MagicalLifeAPI.Networking.World
         {
             WorldStorage.LoadWorld(SaveName);
             Guid firstDimensionID = WorldUtil.GetDimensionByName(Lang._1stDimensionName).Key;
-            MagicalLifeAPI.World.Data.World.RaiseChangeCameraDimension(firstDimensionID);
+            MLAPI.World.Data.World.RaiseChangeCameraDimension(firstDimensionID);
         }
 
         internal static void Receive(WorldTransferBodyMessage msg)

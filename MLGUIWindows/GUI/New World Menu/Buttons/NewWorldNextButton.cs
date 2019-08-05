@@ -1,22 +1,26 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.Networking.Client;
-using MagicalLifeAPI.Networking.Server;
-using MagicalLifeAPI.Sound;
-using MagicalLifeAPI.World;
-using MagicalLifeAPI.World.Data;
-using MagicalLifeClient;
-using MagicalLifeGUIWindows.GUI.In;
-using MagicalLifeGUIWindows.GUI.MainMenu;
-using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeGUIWindows.Input;
-using MagicalLifeGUIWindows.Properties;
-using MagicalLifeServer;
+﻿using System;
 using Microsoft.Xna.Framework;
+using MLAPI.Asset;
+using MLAPI.Networking;
+using MLAPI.Networking.Client;
+using MLAPI.Networking.Server;
 using MLAPI.Properties;
-using System;
+using MLAPI.Sound;
+using MLAPI.Visual.Rendering;
+using MLAPI.World;
+using MLAPI.World.Data;
+using MLClient;
+using MLGUIWindows.GUI.In_Game_GUI;
+using MLGUIWindows.GUI.MainMenu;
+using MLGUIWindows.Input;
+using MLGUIWindows.Properties;
+using MLServer;
+using MonoGUI.MonoGUI;
+using MonoGUI.MonoGUI.Input;
+using MonoGUI.MonoGUI.Reusable;
+using MonoGUI.MonoGUI.Reusable.Event;
 
-namespace MagicalLifeGUIWindows.GUI.New
+namespace MLGUIWindows.GUI.New_World_Menu.Buttons
 {
     /// <summary>
     /// The next button on the new game form.
@@ -28,14 +32,14 @@ namespace MagicalLifeGUIWindows.GUI.New
             this.ClickEvent += this.NewWorldNextButton_ClickEvent;
         }
 
-        private void NewWorldNextButton_ClickEvent(object sender, Reusable.Event.ClickEventArgs e)
+        private void NewWorldNextButton_ClickEvent(object sender, ClickEventArgs e)
         {
-            World.Mode = MagicalLifeAPI.Networking.EngineMode.ServerAndClient;
+            World.Mode = EngineMode.ServerAndClient;
             Server.Load();
-            ClientSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(MagicalLifeAPI.Networking.EngineMode.ServerAndClient));
+            ClientSendRecieve.Initialize(new NetworkSettings(EngineMode.ServerAndClient));
             FMODUtil.RaiseEvent(SoundsTable.UIClick);
             FMODUtil.RaiseEvent(SoundsTable.Ambience);
-            ServerSendRecieve.Initialize(new MagicalLifeAPI.Networking.NetworkSettings(MagicalLifeAPI.Networking.EngineMode.ServerAndClient));
+            ServerSendRecieve.Initialize(new NetworkSettings(EngineMode.ServerAndClient));
             Client.Load();
             NewGameInputHandler a = new NewGameInputHandler();
             if (!a.StartNewGame())

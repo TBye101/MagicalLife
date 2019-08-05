@@ -1,12 +1,12 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Registry.ItemRegistry;
-using ProtoBuf;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using MLAPI.Asset;
+using MLAPI.GameRegistry.Items;
+using MLAPI.Visual;
+using MLAPI.Visual.Rendering;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.World.Base
+namespace MLAPI.World.Base
 {
     /// <summary>
     /// Represents almost everything in a movable/harvested form.

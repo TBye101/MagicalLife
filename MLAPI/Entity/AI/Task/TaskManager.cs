@@ -1,10 +1,10 @@
-﻿using MagicalLifeAPI.Filing.Logging;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using MLAPI.Filing.Logging;
 
-namespace MagicalLifeAPI.Entity.AI.Task
+namespace MLAPI.Entity.AI.Task
 {
     /// <summary>
     /// Manages task assignments to creatures.

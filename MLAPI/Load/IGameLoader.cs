@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeAPI.Load
+﻿namespace MLAPI.Load
 {
     /// <summary>
     /// Implemented by anything that does initial startup code.

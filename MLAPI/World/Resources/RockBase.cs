@@ -1,8 +1,8 @@
-﻿using MagicalLifeAPI.Components.Resource;
-using MagicalLifeAPI.World.Base;
+﻿using MLAPI.Components.Resource;
+using MLAPI.World.Base;
 using ProtoBuf;
 
-namespace MagicalLifeAPI.World.Resources
+namespace MLAPI.World.Resources
 {
     /// <summary>
     /// The base class for all stone-like resources.

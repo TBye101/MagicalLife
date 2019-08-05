@@ -1,6 +1,6 @@
-﻿using MagicalLifeGUIWindows.Input.Specialized_Handlers;
+﻿using MLGUIWindows.Input.Specialized_Handlers;
 
-namespace MagicalLifeGUIWindows.Input
+namespace MLGUIWindows.Input
 {
     /// <summary>
     /// Holds all of the specialized input handlers.

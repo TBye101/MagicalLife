@@ -1,15 +1,15 @@
-﻿using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Networking;
-using MagicalLifeAPI.Networking.Messages;
-using MagicalLifeAPI.Networking.Server;
-using MagicalLifeAPI.Time;
-using MagicalLifeAPI.Util.Reusable;
-using MagicalLifeAPI.World.Data.Disk;
-using MagicalLifeAPI.World.Data.Disk.DataStorage;
-using System;
+﻿using System;
 using System.Timers;
+using MLAPI.Filing.Logging;
+using MLAPI.Networking;
+using MLAPI.Networking.Messages;
+using MLAPI.Networking.Server;
+using MLAPI.Time;
+using MLAPI.Util.Reusable;
+using MLAPI.World.Data.Disk;
+using MLAPI.World.Data.Disk.DataStorage;
 
-namespace MagicalLifeAPI.Universal
+namespace MLAPI.Universal
 {
     /// <summary>
     /// Holds some universal events.

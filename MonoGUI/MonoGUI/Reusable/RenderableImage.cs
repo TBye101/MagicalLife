@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.Asset;
+﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
+using MLAPI.Asset;
 
-namespace MagicalLifeGUIWindows.GUI.Reusable
+namespace MonoGUI.MonoGUI.Reusable
 {
     /// <summary>
     /// A generic label class.

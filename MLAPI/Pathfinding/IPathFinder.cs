@@ -1,8 +1,8 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.World.Data;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MLAPI.DataTypes;
+using Dimension = MLAPI.World.Data.Dimension;
 
-namespace MagicalLifeAPI.Pathfinding
+namespace MLAPI.Pathfinding
 {
     /// <summary>
     /// All pathfinding algorithms must implement this.

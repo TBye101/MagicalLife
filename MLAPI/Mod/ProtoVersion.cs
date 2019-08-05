@@ -1,6 +1,6 @@
 ﻿using ProtoBuf;
 
-namespace MagicalLifeAPI.Mod
+namespace MLAPI.Mod
 {
     /// <summary>
     /// A protobuf-net compatible version class.

@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using MLAPI.Visual.Rendering;
 
-namespace MagicalLifeGUIWindows.Rendering.Map
+namespace MLGUIWindows.Rendering.Map
 {
     /// <summary>
     /// Used to calculate the visible area of the camera.

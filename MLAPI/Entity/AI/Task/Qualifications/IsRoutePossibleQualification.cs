@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Pathfinding;
+﻿using MLAPI.Components;
+using MLAPI.DataTypes;
+using MLAPI.Pathfinding;
 using ProtoBuf;
 
-namespace MagicalLifeAPI.Entity.AI.Task.Qualifications
+namespace MLAPI.Entity.AI.Task.Qualifications
 {
     /// <summary>
     /// Makes a requirement that the destination specified must be reachable.

@@ -1,10 +1,10 @@
-﻿using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Load;
-using MagicalLifeAPI.Mod;
-using MagicalLifeAPI.Networking.Serialization;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MLAPI.Filing.Logging;
+using MLAPI.Load;
+using MLAPI.Mod;
+using MLAPI.Networking.Serialization;
 
-namespace MagicalLifeAPI.Registry.Mod
+namespace MLAPI.GameRegistry.Mod
 {
     /// <summary>
     /// Holds all of the loaded mods in the current game.

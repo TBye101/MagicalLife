@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.Components.Resource;
-using MagicalLifeAPI.DataTypes.Attribute;
-using MagicalLifeAPI.GUI;
+﻿using MLAPI.Components.Resource;
+using MLAPI.DataTypes.Attribute;
+using MLAPI.Visual;
 using ProtoBuf;
 
-namespace MagicalLifeAPI.World.Base
+namespace MLAPI.World.Base
 {
     /// <summary>
     /// A base class for all resources.

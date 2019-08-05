@@ -1,12 +1,12 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Sound;
-using MagicalLifeGUIWindows.GUI.In;
-using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeGUIWindows.GUI.Settings_Menu;
-using MagicalLifeGUIWindows.Properties;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using MLAPI.Asset;
+using MLAPI.Sound;
+using MLGUIWindows.GUI.Settings_Menu;
+using MLGUIWindows.Properties;
+using MonoGUI.MonoGUI.Reusable;
+using MonoGUI.MonoGUI.Reusable.Event;
 
-namespace MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu.Buttons
+namespace MLGUIWindows.GUI.In_Game_Escape_Menu.Buttons
 {
     public class SettingsButton : MonoButton
     {
@@ -15,7 +15,7 @@ namespace MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu.Buttons
             this.ClickEvent += this.SettingsButton_ClickEvent;
         }
 
-        private void SettingsButton_ClickEvent(object sender, Reusable.Event.ClickEventArgs e)
+        private void SettingsButton_ClickEvent(object sender, ClickEventArgs e)
         {
             this.OpenSettingsMenu();
         }

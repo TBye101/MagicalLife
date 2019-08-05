@@ -1,10 +1,10 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Registry.ItemRegistry;
-using MagicalLifeAPI.World.Base;
+﻿using System;
+using MLAPI.DataTypes;
+using MLAPI.GameRegistry.Items;
+using MLAPI.World.Base;
 using ProtoBuf;
-using System;
 
-namespace MagicalLifeAPI.Networking.World.Modifiers
+namespace MLAPI.Networking.World.Modifiers
 {
     /// <summary>
     /// Creates a new item in a server/client that receives this message to keep them in sync.

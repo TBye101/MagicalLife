@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeDedicatedServer.API.Settings
+﻿namespace MLDedicatedServer.API.Settings
 {
     /// <summary>
     /// Holds some settings that determines how the next generated world will turn out.

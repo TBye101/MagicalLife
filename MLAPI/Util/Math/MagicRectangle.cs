@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.DataTypes;
+﻿using MLAPI.DataTypes;
 using ProtoBuf;
 
-namespace MagicalLifeAPI.Util.Math
+namespace MLAPI.Util.Math
 {
     /// <summary>
     /// Just another rectangle class.

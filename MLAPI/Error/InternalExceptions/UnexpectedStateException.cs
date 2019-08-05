@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MagicalLifeAPI.Error.InternalExceptions
+namespace MLAPI.Error.InternalExceptions
 {
     public class UnexpectedStateException : Exception
     {

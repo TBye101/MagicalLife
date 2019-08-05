@@ -1,11 +1,8 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entity;
-using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Data;
-using System;
-using System.Collections.Generic;
+﻿using System;
+using MLAPI.DataTypes.Collection;
+using MLAPI.World.Data;
 
-namespace MagicalLifeAPI.World
+namespace MLAPI.World.Generation
 {
     /// <summary>
     /// All classes that implement <see cref="DimensionGenerator"/> control what generators are applied to which chunks.

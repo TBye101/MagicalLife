@@ -1,7 +1,11 @@
-﻿using MagicalLifeAPI.Filing;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using MLAPI.Filing;
+using MLGUIWindows.GUI.New_World_Menu.Buttons;
+using MLGUIWindows.GUI.New_World_Menu.Input_Boxes;
+using MLGUIWindows.GUI.New_World_Menu.Labels;
+using MonoGUI.MonoGUI;
 
-namespace MagicalLifeGUIWindows.GUI.New
+namespace MLGUIWindows.GUI.New_World_Menu
 {
     /// <summary>
     /// Returns the correct hard coded values for the current screen resolution for the new world menu.

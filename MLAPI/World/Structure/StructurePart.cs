@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.GUI;
+﻿using System;
+using MLAPI.Visual;
+using MLAPI.Visual.Rendering;
 using ProtoBuf;
-using System;
 
-namespace MagicalLifeAPI.World.Base
+namespace MLAPI.World.Structure
 {
     /// <summary>
     /// A part of a structure.

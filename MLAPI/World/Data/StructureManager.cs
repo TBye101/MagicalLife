@@ -1,10 +1,9 @@
-﻿using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Data.Disk;
-using ProtoBuf;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using MLAPI.World.Data.Disk;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.World.Data
+namespace MLAPI.World.Data
 {
     /// <summary>
     /// Handles entire structure knowledge in a similar fashion to the chunk manager.
@@ -15,7 +14,7 @@ namespace MagicalLifeAPI.World.Data
         /// Holds all currently loaded structures.
         /// </summary>
         [ProtoMember(1)]
-        public Dictionary<Guid, ObjectAccess<Structure>> StructureStorage { get; private set; }
+        public Dictionary<Guid, ObjectAccess<Structure.Structure>> StructureStorage { get; private set; }
 
         /// <summary>
         /// The ID of the dimension that this chunk manager services.
@@ -26,7 +25,7 @@ namespace MagicalLifeAPI.World.Data
         public StructureManager(Guid dimensionID)
         {
             this.DimensionID = dimensionID;
-            this.StructureStorage = new Dictionary<Guid, ObjectAccess<Structure>>();
+            this.StructureStorage = new Dictionary<Guid, ObjectAccess<Structure.Structure>>();
         }
 
         public StructureManager()
@@ -38,9 +37,9 @@ namespace MagicalLifeAPI.World.Data
         /// Attempts to return a structure. Returns null if no structure was found.
         /// </summary>
         /// <returns></returns>
-        public Structure GetStructure(Guid structureID)
+        public Structure.Structure GetStructure(Guid structureID)
         {
-            ObjectAccess<Structure> storage = this.StructureStorage[structureID];
+            ObjectAccess<Structure.Structure> storage = this.StructureStorage[structureID];
             storage.Recorder.Access();
 
             if (storage.Object == null)

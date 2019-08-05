@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.World.Data;
-using System;
+﻿using System;
+using MLAPI.World.Data;
 
-namespace MagicalLifeAPI.World.Generation
+namespace MLAPI.World.Generation
 {
     /// <summary>
     /// Classes that implements this are responsible for generating the vegetation for the specified chunks.

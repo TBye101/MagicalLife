@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.DataTypes.Attribute;
-using MagicalLifeAPI.World.Base;
+﻿using System.Collections.Generic;
+using MLAPI.DataTypes.Attribute;
+using MLAPI.World.Base;
 using ProtoBuf;
-using System.Collections.Generic;
 
-namespace MagicalLifeAPI.Entity
+namespace MLAPI.Entity
 {
     /// <summary>
     /// Holds the inventory for a creature.

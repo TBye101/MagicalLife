@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.DataTypes;
-using System;
+﻿using System;
+using MLAPI.DataTypes;
 
-namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
+namespace MLAPI.Pathfinding.TeleportationSearch
 {
     /// <summary>
     /// Used to store the f(n) score and its components for the search,

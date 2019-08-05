@@ -1,11 +1,11 @@
-﻿using MagicalLifeAPI.Networking.Messages;
-using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeAPI.Registry.ItemRegistry;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
+using MLAPI.GameRegistry.Items;
+using MLAPI.Networking.Messages;
+using MLAPI.Networking.Serialization;
 
-namespace MagicalLifeAPI.World.Data.Disk.DataStorage
+namespace MLAPI.World.Data.Disk.DataStorage
 {
     /// <summary>
     /// Used to send the parts of the world to the client piece by piece.

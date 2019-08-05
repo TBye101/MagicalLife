@@ -1,16 +1,16 @@
-using MagicalLifeAPI.Components;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.Components.Resource;
-using MagicalLifeAPI.Filing;
-using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Load;
-using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeAPI.World.Base;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MLAPI.Components;
+using MLAPI.Components.Resource;
+using MLAPI.Filing;
+using MLAPI.Filing.Logging;
+using MLAPI.Load;
+using MLAPI.Networking.Serialization;
+using MLAPI.Visual;
+using MLAPI.Visual.Rendering;
+using MLAPI.World.Base;
 
-namespace MagicalLifeAPITest.Components
+namespace MLAPITest.Components
 {
     [TestClass]
     public class HasComponentsTests

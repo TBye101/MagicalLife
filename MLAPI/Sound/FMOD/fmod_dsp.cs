@@ -11,7 +11,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace MagicalLifeAPI.Sound.FMOD
+namespace MLAPI.Sound.FMOD
 {
     /*$ preserve end $*/
 

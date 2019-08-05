@@ -1,10 +1,10 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Error.InternalExceptions;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MLAPI.Asset;
+using MLAPI.Error.InternalExceptions;
 using ProtoBuf;
 
-namespace MagicalLifeAPI.Visual.Animation
+namespace MLAPI.Visual.Rendering.Animation
 {
     /// <summary>
     /// Holds a sprite sheet texture, as well as the positioning data that goes along with it.

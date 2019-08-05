@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Util;
-using MagicalLifeAPI.World;
-using MagicalLifeAPI.World.Data;
-using Microsoft.Xna.Framework;
-using MLCoreMod.Core.WorldGeneration.Dungeon.Constructors.Translator;
-using MLCoreMod.Core.WorldGeneration.Dungeon.Constructors.Translator.ForceDirectedGraph;
+using MLAPI.DataTypes;
+using MLAPI.DataTypes.Collection;
+using MLAPI.Util.RandomUtils;
+using MLAPI.World;
+using MLAPI.World.Data;
 using MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph;
-using MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator;
+using MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator.ForceDirectedGraph;
 
-namespace MLCoreMod.Core.WorldGeneration.Dungeon.Constructors
+namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
 {
     /// <summary>
     /// Lays out rooms and hallways, and then fills them through random assignment of room generators and other features.
@@ -27,6 +24,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Constructors
 
             //Run simulation
             IDungeonGraphArranger arranger = new ForceDirectedArranger();
+            arranger.Setup(translatedNodes);
             translatedNodes = arranger.Arrange(translatedNodes);
 
             //Convert coordinates to real tiles

@@ -1,15 +1,15 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Crafting;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Registry.Recipe;
-using MagicalLifeAPI.World.Base;
-using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeGUIWindows.GUI.Reusable.Collections;
-using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using MLAPI.Asset;
+using MLAPI.Crafting;
+using MLAPI.DataTypes;
+using MLAPI.GameRegistry.Recipe;
+using MLAPI.World.Base;
 using MonoGUI.Game.Custom;
-using System.Collections.Generic;
+using MonoGUI.MonoGUI.Reusable;
+using MonoGUI.MonoGUI.Reusable.Collections;
+using Rectangle = Microsoft.Xna.Framework.Rectangle;
 
-namespace MagicalLifeGUIWindows.GUI.Action_Menu
+namespace MLGUIWindows.GUI.Action_Menu
 {
     /// <summary>
     /// The action menu container.

@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.World.Base;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using MLAPI.DataTypes;
+using MLAPI.World.Base;
 
-namespace MagicalLifeAPI.Registry.Items
+namespace MLAPI.GameRegistry.Items
 {
     /// <summary>
     /// A Item related utility class.

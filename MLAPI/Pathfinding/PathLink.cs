@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.DataTypes;
+﻿using MLAPI.DataTypes;
 using ProtoBuf;
 
-namespace MagicalLifeAPI.Pathfinding
+namespace MLAPI.Pathfinding
 {
     /// <summary>
     /// Used to describe the steps a entity will take between two Point2Ds for path finding.

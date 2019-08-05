@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeAPI.Networking
+﻿namespace MLAPI.Networking
 {
     /// <summary>
     /// Expresses the various modes that the Magical Life engine operates in.

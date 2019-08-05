@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeGUIWindows.GUI.Settings_Menu
+﻿namespace MLGUIWindows.GUI.Settings_Menu
 {
     public static class SetingsMenuLayout2560x1440
     {

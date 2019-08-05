@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Data;
-using System;
+﻿using System;
+using MLAPI.DataTypes;
+using MLAPI.World.Base;
+using MLAPI.World.Data;
 
-namespace MagicalLifeGUIWindows
+namespace MonoGUI.MonoGUI
 {
     /// <summary>
     /// Various utilities.

@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.DataTypes;
-using ProtoBuf;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using MLAPI.DataTypes;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.World.Base
+namespace MLAPI.World.Structure
 {
     /// <summary>
     /// Represents an entire structure in the world.

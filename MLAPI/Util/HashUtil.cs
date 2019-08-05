@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeAPI.Util
+﻿namespace MLAPI.Util
 {
     /// <summary>
     /// Has various hashing functionality.

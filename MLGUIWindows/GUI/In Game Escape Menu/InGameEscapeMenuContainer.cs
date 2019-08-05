@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeGUIWindows.GUI.In_Game_Escape_Menu.Buttons;
-using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MLAPI.Asset;
+using MLAPI.Visual.Rendering;
+using MLGUIWindows.GUI.In_Game_Escape_Menu.Buttons;
+using MonoGUI.MonoGUI.Reusable;
 
-namespace MagicalLifeGUIWindows.GUI.In
+namespace MLGUIWindows.GUI.In_Game_Escape_Menu
 {
     public class InGameEscapeMenuContainer : GuiContainer
     {

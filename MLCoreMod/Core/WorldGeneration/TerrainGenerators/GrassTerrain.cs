@@ -1,16 +1,16 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.World;
-using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Data;
-using MagicalLifeAPI.World.Resources;
-using MagicalLifeAPI.World.Tiles;
-using MagicalLifeMod.Core.GameStructures;
-using MagicalLifeMod.Core.GameStructures.Parts;
-using MagicalLifeMod.Core.Settings;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using MLAPI.DataTypes;
+using MLAPI.World.Base;
+using MLAPI.World.Data;
+using MLAPI.World.Generation;
+using MLCoreMod.Core.GameStructures;
+using MLCoreMod.Core.GameStructures.Parts;
+using MLCoreMod.Core.Resources;
+using MLCoreMod.Core.Settings;
+using MLCoreMod.Core.Tiles;
 
-namespace MagicalLifeMod.Core.WorldGeneration.TerrainGenerators
+namespace MLCoreMod.Core.WorldGeneration.TerrainGenerators
 {
     public class GrassTerrain : TerrainGenerator
     {

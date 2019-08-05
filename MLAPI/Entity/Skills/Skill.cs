@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.DataTypes.Attribute;
-using MagicalLifeAPI.Entity.Experience;
+﻿using System;
+using MLAPI.DataTypes.Attribute;
+using MLAPI.Entity.Experience;
 using ProtoBuf;
-using System;
 
-namespace MagicalLifeAPI.Entity.Skills
+namespace MLAPI.Entity.Skills
 {
     /// <summary>
     /// Holds data about a specific skill.

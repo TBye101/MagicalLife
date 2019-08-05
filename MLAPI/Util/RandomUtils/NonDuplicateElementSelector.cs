@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.Error.InternalExceptions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MLAPI.Error.InternalExceptions;
 
 namespace MLAPI.Util.RandomUtils
 {

@@ -1,11 +1,10 @@
-﻿using MagicalLifeAPI.Load;
-using MagicalLifeAPI.Registry.WorldGeneration;
-using MagicalLifeMod.Core.WorldGeneration;
-using MagicalLifeMod.Core.WorldGeneration.Default;
-using MagicalLifeMod.Core.WorldGeneration.HallwayGenerators;
-using MagicalLifeMod.Core.WorldGeneration.TerrainGenerators;
+﻿using MLAPI.GameRegistry.WorldGeneration;
+using MLAPI.Load;
+using MLCoreMod.Core.WorldGeneration.Default;
+using MLCoreMod.Core.WorldGeneration.Dungeon.Generation.HallwayGenerators;
+using MLCoreMod.Core.WorldGeneration.TerrainGenerators;
 
-namespace MagicalLifeMod.Core.Load
+namespace MLCoreMod.Core.Load
 {
     /// <summary>
     /// Registers all world generators with the world registry.

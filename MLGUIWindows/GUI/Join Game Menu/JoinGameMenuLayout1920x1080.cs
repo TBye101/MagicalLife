@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeGUIWindows.GUI.Join
+﻿namespace MLGUIWindows.GUI.Join_Game_Menu
 {
     public static class JoinGameMenuLayout1920x1080
     {

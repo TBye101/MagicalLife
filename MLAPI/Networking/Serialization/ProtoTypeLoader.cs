@@ -1,13 +1,13 @@
-﻿using MagicalLifeAPI.Load;
-using MagicalLifeAPI.Networking.External;
-using MagicalLifeAPI.Util;
-using MagicalLifeAPI.World.Base;
-using ProtoBuf.Meta;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using MLAPI.Load;
+using MLAPI.Networking.External_Type_Serialization;
+using MLAPI.Util;
+using MLAPI.World.Base;
+using ProtoBuf.Meta;
 
-namespace MagicalLifeAPI.Networking.Serialization
+namespace MLAPI.Networking.Serialization
 {
     /// <summary>
     /// Used to create the <see cref="RuntimeTypeModel"/> for our use of Protobuf-net.

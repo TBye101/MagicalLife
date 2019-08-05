@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeGUIWindows.Properties;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using MLAPI.Asset;
+using MLGUIWindows.Properties;
+using MonoGUI.MonoGUI.Reusable;
 
-namespace MagicalLifeGUIWindows.GUI.Settings_Menu.Labels
+namespace MLGUIWindows.GUI.Settings_Menu.Labels
 {
     public class MasterVolumeLabel : MonoLabel
     {

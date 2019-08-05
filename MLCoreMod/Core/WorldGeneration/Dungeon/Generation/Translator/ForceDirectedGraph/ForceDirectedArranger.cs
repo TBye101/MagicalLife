@@ -1,21 +1,22 @@
-﻿using MagicalLifeAPI.DataTypes.R;
-using MagicalLifeAPI.Util;
-using Microsoft.Xna.Framework;
-using MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator.ForceDirectedGraph;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Microsoft.Xna.Framework;
+using MLAPI.Util.Math;
+using MLAPI.Util.RandomUtils;
 
-namespace MLCoreMod.Core.WorldGeneration.Dungeon.Constructors.Translator.ForceDirectedGraph
+namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator.ForceDirectedGraph
 {
     public class ForceDirectedArranger : IDungeonGraphArranger
     {
-        private static readonly int AttractionDistance = 1000;
+        private static readonly int AttractionDistance = 100000;
         private static readonly int ConnectedRepulsionDistance = 2;
         private static readonly int UnconnectedRepulsionDistance = 10;
         private static readonly int MaxAttraction = 100;
         private static readonly int MaxRepulsion = 110;
+        private static readonly int MinNodeDispersal = -10000;
+        private static readonly int MaxNodeDispersal = 10000;
+        private static readonly int Timeout = 10000;
+
         //private static readonly int SimulationTimeOut = 10000;
 
         public ForceDirectedArranger()
@@ -24,18 +25,18 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Constructors.Translator.ForceDi
 
         public Dictionary<Guid, DungeonTranslationNode> Arrange(Dictionary<Guid, DungeonTranslationNode> nodes)
         {
+            this.RecursiveArrange(nodes, 1);
+            return nodes;
+        }
+
+        private void RecursiveArrange(Dictionary<Guid, DungeonTranslationNode> nodes, int iteration)
+        {
             List<SimulationNode> tempNodeChanges = this.CalculateSystemChanges(nodes);
             this.ApplySystemChanges(nodes, tempNodeChanges);
 
-            //Is system in equilibrium?
-            if (tempNodeChanges.Count < 1)
+            if (tempNodeChanges.Count > 0 && iteration < Timeout)
             {
-                return nodes;
-            }
-            else
-            {
-                //Keep running the simulation
-                return this.Arrange(nodes);
+                this.RecursiveArrange(nodes, iteration + 1);
             }
         }
 
@@ -165,6 +166,15 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Constructors.Translator.ForceDi
             }
 
             return false;
+        }
+
+        public void Setup(Dictionary<Guid, DungeonTranslationNode> nodes)
+        {
+            foreach (KeyValuePair<Guid, DungeonTranslationNode> item in nodes)
+            {
+                item.Value.SectionXOffset = StaticRandom.Rand(MinNodeDispersal, MaxNodeDispersal);
+                item.Value.SectionYOffset = StaticRandom.Rand(MinNodeDispersal, MaxNodeDispersal);
+            }
         }
     }
 }

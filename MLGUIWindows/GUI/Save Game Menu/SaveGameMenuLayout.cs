@@ -1,6 +1,7 @@
-﻿using MagicalLifeAPI.Filing;
+﻿using MLAPI.Filing;
+using MonoGUI.MonoGUI;
 
-namespace MagicalLifeGUIWindows.GUI.Save
+namespace MLGUIWindows.GUI.Save_Game_Menu
 {
     public static class SaveGameMenuLayout
     {

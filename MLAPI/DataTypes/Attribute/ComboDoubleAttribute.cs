@@ -1,6 +1,6 @@
 ﻿using ProtoBuf;
 
-namespace MagicalLifeAPI.DataTypes.Attribute
+namespace MLAPI.DataTypes.Attribute
 {
     /// <summary>
     /// Supports a double value that has a double multiplying it.

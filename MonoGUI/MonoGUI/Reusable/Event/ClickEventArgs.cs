@@ -1,7 +1,7 @@
-﻿using MonoGame.Extended.Input.InputListeners;
-using System;
+﻿using System;
+using MonoGame.Extended.Input.InputListeners;
 
-namespace MagicalLifeGUIWindows.GUI.Reusable.Event
+namespace MonoGUI.MonoGUI.Reusable.Event
 {
     /// <summary>
     /// Holds some data about click events.

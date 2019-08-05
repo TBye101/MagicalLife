@@ -1,11 +1,12 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Sound;
-using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeGUIWindows.GUI.Save;
-using MagicalLifeGUIWindows.Properties;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using MLAPI.Asset;
+using MLAPI.Sound;
+using MLGUIWindows.GUI.Save_Game_Menu;
+using MLGUIWindows.Properties;
+using MonoGUI.MonoGUI.Reusable;
+using MonoGUI.MonoGUI.Reusable.Event;
 
-namespace MagicalLifeGUIWindows.GUI.In
+namespace MLGUIWindows.GUI.In_Game_Escape_Menu.Buttons
 {
     public class SaveButton : MonoButton
     {
@@ -14,7 +15,7 @@ namespace MagicalLifeGUIWindows.GUI.In
             this.ClickEvent += this.SaveButton_ClickEvent;
         }
 
-        private void SaveButton_ClickEvent(object sender, Reusable.Event.ClickEventArgs e)
+        private void SaveButton_ClickEvent(object sender, ClickEventArgs e)
         {
             this.Save();
         }

@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeAPI.Components.Generic.Renderable
+﻿namespace MLAPI.Visual.Rendering
 {
     /// <summary>
     /// Keeps track of what priority things have when rendering.

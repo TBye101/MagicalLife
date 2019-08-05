@@ -1,13 +1,12 @@
-﻿using MagicalLifeAPI.Components;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.GUI;
-using MonoGame.Extended.Input.InputListeners;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using MLAPI.Components;
+using MLAPI.DataTypes.Collection;
+using MLAPI.Filing.Logging;
+using MonoGame.Extended.Input.InputListeners;
 
-namespace MagicalLifeGUIWindows.Input.History
+namespace MonoGUI.MonoGUI.Input.History
 {
     /// <summary>
     /// Used to keep a history of input.

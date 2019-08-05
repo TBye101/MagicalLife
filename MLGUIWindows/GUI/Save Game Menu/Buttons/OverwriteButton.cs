@@ -1,11 +1,13 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.World.Data.Disk;
-using MagicalLifeAPI.World.Data.Disk.DataStorage;
-using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeGUIWindows.Properties;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using MLAPI.Asset;
+using MLAPI.World.Data.Disk;
+using MLAPI.World.Data.Disk.DataStorage;
+using MLGUIWindows.Properties;
+using MonoGUI.MonoGUI;
+using MonoGUI.MonoGUI.Reusable;
+using MonoGUI.MonoGUI.Reusable.Event;
 
-namespace MagicalLifeGUIWindows.GUI.Save
+namespace MLGUIWindows.GUI.Save_Game_Menu.Buttons
 {
     public class OverwriteButton : MonoButton
     {
@@ -14,7 +16,7 @@ namespace MagicalLifeGUIWindows.GUI.Save
             this.ClickEvent += this.OverwriteButton_ClickEvent;
         }
 
-        private void OverwriteButton_ClickEvent(object sender, Reusable.Event.ClickEventArgs e)
+        private void OverwriteButton_ClickEvent(object sender, ClickEventArgs e)
         {
             this.Overwrite();
         }

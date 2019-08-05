@@ -1,8 +1,9 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Filing;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
+using MLAPI.Asset;
+using MLAPI.Filing;
+using MonoGUI.MonoGUI;
 
-namespace MagicalLifeGUIWindows.GUI.MainMenu
+namespace MLGUIWindows.GUI.MainMenu
 {
     /// <summary>
     /// Returns the correct hardcoded values for the current screen resolution.

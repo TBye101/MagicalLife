@@ -1,8 +1,8 @@
-﻿using MagicalLifeAPI.World.Base;
+﻿using System;
+using MLAPI.World.Base;
 using ProtoBuf;
-using System;
 
-namespace MagicalLifeAPI.Crafting
+namespace MLAPI.Crafting
 {
     /// <summary>
     /// Holds an item and the amount required for various crafting purposes.

@@ -1,16 +1,18 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Visual.Rendering;
+﻿using System;
 using Microsoft.Xna.Framework;
-using System;
+using MLAPI.DataTypes;
+using MLAPI.World.Base;
+using Point = Microsoft.Xna.Framework.Point;
+using Rectangle = Microsoft.Xna.Framework.Rectangle;
 
-namespace MagicalLifeAPI.Components.Generic.Renderable
+namespace MLAPI.Visual.Rendering
 {
     public static class RenderInfo
     {
         /// <summary>
         /// The standard size of the tiles.
         /// </summary>
-        public static readonly Point tileSize = MagicalLifeAPI.World.Base.Tile.GetTileSize();
+        public static readonly Point tileSize = Tile.GetTileSize();
 
         public static Rectangle FullScreenWindow { get; set; }
 

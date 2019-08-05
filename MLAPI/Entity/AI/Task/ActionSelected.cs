@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeAPI.Entity.AI.Task
+﻿namespace MLAPI.Entity.AI.Task
 {
     /// <summary>
     /// Used to determine which action button is active.

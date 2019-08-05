@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Util;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MLAPI.DataTypes.Collection;
+using MLAPI.Filing.Logging;
+using MLAPI.Util;
 
-namespace MagicalLifeAPI.Load
+namespace MLAPI.Load
 {
     /// <summary>
     /// Used to handle calculating how many jobs to do, and how many completed.

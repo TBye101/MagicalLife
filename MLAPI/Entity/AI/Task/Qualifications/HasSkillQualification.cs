@@ -1,6 +1,6 @@
 ﻿using ProtoBuf;
 
-namespace MagicalLifeAPI.Entity.AI.Task.Qualifications
+namespace MLAPI.Entity.AI.Task.Qualifications
 {
     /// <summary>
     /// Requires a creature to have a certain skill to do something.

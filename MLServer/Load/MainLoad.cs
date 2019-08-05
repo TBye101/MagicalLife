@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.Load;
-using MagicalLifeServer.Processing;
+﻿using MLAPI.Load;
+using MLServer.Processing;
 
-namespace MagicalLifeServer.Load
+namespace MLServer.Load
 {
     /// <summary>
     /// Does some loading for the server.

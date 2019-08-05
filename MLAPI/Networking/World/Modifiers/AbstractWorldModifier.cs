@@ -1,6 +1,6 @@
 ﻿using ProtoBuf;
 
-namespace MagicalLifeAPI.Networking.World.Modifiers
+namespace MLAPI.Networking.World.Modifiers
 {
     /// <summary>
     /// Implementers of this do operations on the world to change its state.

@@ -1,9 +1,10 @@
-﻿using MagicalLifeAPI.Crafting;
-using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeGUIWindows.GUI.Reusable;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MLAPI.Crafting;
+using MLAPI.Filing.Logging;
+using MonoGUI.MonoGUI.Reusable;
+using MonoGUI.MonoGUI.Reusable.Event;
 
 namespace MonoGUI.Game.Custom
 {
@@ -18,7 +19,7 @@ namespace MonoGUI.Game.Custom
             this.DoubleClickEvent += this.RenderableIRecipe_ClickEvent;
         }
 
-        private void RenderableIRecipe_ClickEvent(object sender, MagicalLifeGUIWindows.GUI.Reusable.Event.ClickEventArgs e)
+        private void RenderableIRecipe_ClickEvent(object sender, ClickEventArgs e)
         {
             if (Keyboard.GetState().IsKeyDown(Keys.LeftShift))
             {

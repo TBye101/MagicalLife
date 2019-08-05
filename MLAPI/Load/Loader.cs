@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MagicalLifeAPI.Load
+namespace MLAPI.Load
 {
     /// <summary>
     /// Handles loading everything at startup.

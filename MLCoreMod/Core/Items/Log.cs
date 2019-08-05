@@ -1,12 +1,11 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.World.Base;
-using MagicalLifeMod.Core;
+﻿using System.Collections.Generic;
+using MLAPI.Asset;
+using MLAPI.Visual;
+using MLAPI.Visual.Rendering;
+using MLAPI.World.Base;
 using ProtoBuf;
-using System.Collections.Generic;
 
-namespace MagicalLifeAPI.World.Items
+namespace MLCoreMod.Core.Items
 {
     /// <summary>
     /// Represents a log in the world.

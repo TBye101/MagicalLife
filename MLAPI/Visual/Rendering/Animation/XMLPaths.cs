@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeAPI.Visual.Rendering.Animation
+﻿namespace MLAPI.Visual.Rendering.Animation
 {
     /// <summary>
     /// Used to hold resource paths to XML files that contain information about sprite sheets.

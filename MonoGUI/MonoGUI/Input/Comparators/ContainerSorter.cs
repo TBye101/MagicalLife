@@ -1,7 +1,7 @@
-﻿using MagicalLifeGUIWindows.GUI.Reusable;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MonoGUI.MonoGUI.Reusable;
 
-namespace MagicalLifeGUIWindows.Input.Comparators
+namespace MonoGUI.MonoGUI.Input.Comparators
 {
     /// <summary>
     /// This class knows how to compare two <see cref="GuiContainer"/> objects.

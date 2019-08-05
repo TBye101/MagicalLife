@@ -1,8 +1,8 @@
-﻿using ProtoBuf;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.DataTypes
+namespace MLAPI.DataTypes.Collection
 {
     /// <summary>
     /// A wrapper around dictionaries that allows for the simplification of having multiple values per key.

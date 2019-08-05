@@ -8,10 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MagicalLifeGUIWindows.Properties {
-    using System;
-    
-    
+namespace MLGUIWindows.Properties {
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>

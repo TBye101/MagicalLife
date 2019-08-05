@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeGUIWindows.GUI.Load
+﻿namespace MLGUIWindows.GUI.Load_Game_Menu
 {
     public static class LoadGameMenuLayout1920x1080
     {

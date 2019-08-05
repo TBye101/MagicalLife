@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.Server;
-using MagicalLifeServer;
+﻿using System.Collections.Generic;
+using MLAPI.Server;
 using MLDedicatedServer.Properties;
-using System.Collections.Generic;
+using MLServer;
 
-namespace MagicalLifeDedicatedServer.API.Commands
+namespace MLDedicatedServer.API.Commands
 {
     public class StartGame : ICommand
     {

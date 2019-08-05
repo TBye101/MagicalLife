@@ -1,6 +1,6 @@
 ﻿using ProtoBuf;
 
-namespace MagicalLifeAPI.World.Data
+namespace MLAPI.World.Data
 {
     /// <summary>
     /// Holds an object and it's access recorder.

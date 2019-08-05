@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.Components;
+﻿using MLAPI.Components;
 using ProtoBuf;
 
-namespace MagicalLifeAPI.World
+namespace MLAPI.World
 {
     /// <summary>
     /// All game objects implement this.

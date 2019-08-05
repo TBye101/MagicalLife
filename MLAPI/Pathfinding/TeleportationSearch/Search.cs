@@ -1,16 +1,15 @@
-﻿using MagicalLifeAPI.Components.MAP_GUI;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Util;
-using MagicalLifeAPI.World;
-using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using MLAPI.Components;
+using MLAPI.DataTypes;
+using MLAPI.Filing.Logging;
+using MLAPI.Util.Math;
+using MLAPI.World;
+using MLAPI.World.Base;
+using Dimension = MLAPI.World.Data.Dimension;
 
-namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
+namespace MLAPI.Pathfinding.TeleportationSearch
 {
     /// <summary>
     /// Used to do pathfinding

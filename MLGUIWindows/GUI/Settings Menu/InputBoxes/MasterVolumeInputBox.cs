@@ -1,11 +1,11 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Filing;
-using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeGUIWindows.Rendering.Text;
+﻿using System;
 using Microsoft.Xna.Framework;
-using System;
+using MLAPI.Asset;
+using MLAPI.Filing;
+using MLAPI.Visual.Rendering;
+using MonoGUI.MonoGUI.Reusable;
 
-namespace MagicalLifeGUIWindows.GUI.Settings_Menu.InputBoxes
+namespace MLGUIWindows.GUI.Settings_Menu.InputBoxes
 {
     public class MasterVolumeInputBox : MonoInputBox
     {

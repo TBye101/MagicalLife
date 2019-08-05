@@ -1,12 +1,10 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Visual.Animation;
-using MagicalLifeAPI.Visual.Rendering.Animation;
-using MagicalLifeGUIWindows.Rendering.Map;
+﻿using System.Reflection;
+using MLAPI.Asset;
+using MLAPI.DataTypes;
+using MLAPI.Visual.Rendering.Map;
 using ProtoBuf;
-using System.Reflection;
 
-namespace MagicalLifeAPI.Components.Generic.Renderable
+namespace MLAPI.Visual.Rendering.Animation
 {
     /// <summary>
     /// Animations.

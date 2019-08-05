@@ -1,19 +1,17 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Util;
-using MagicalLifeAPI.Util.Math;
-using MagicalLifeAPI.World;
-using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Data;
-using MagicalLifeAPI.World.Generation.Dungeon;
-using MagicalLifeAPI.World.Resources;
-using MagicalLifeAPI.World.Tiles;
-using MagicalLifeMod.Core.Settings;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using MLAPI.DataTypes;
+using MLAPI.DataTypes.Collection;
+using MLAPI.Filing.Logging;
+using MLAPI.Util.Math;
+using MLAPI.World.Base;
+using MLAPI.World.Data;
+using MLAPI.World.Generation.Dungeon;
+using MLCoreMod.Core.Resources;
+using MLCoreMod.Core.Settings;
+using MLCoreMod.Core.Tiles;
 
-namespace MagicalLifeMod.Core.WorldGeneration.HallwayGenerators
+namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.HallwayGenerators
 {
     public class CircularHallwayGenerator : HallwayGenerator
     {

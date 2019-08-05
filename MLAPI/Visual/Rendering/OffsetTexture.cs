@@ -1,9 +1,8 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeGUIWindows.Rendering.Map;
+﻿using MLAPI.DataTypes;
+using MLAPI.Visual.Rendering.Map;
 using ProtoBuf;
 
-namespace MagicalLifeAPI.Visual.Rendering.AbstractVisuals
+namespace MLAPI.Visual.Rendering
 {
     /// <summary>
     /// Used to offset a texture by a certain amount.

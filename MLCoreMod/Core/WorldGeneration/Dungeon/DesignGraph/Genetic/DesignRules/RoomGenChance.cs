@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic
+﻿namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.DesignRules
 {
     public struct RoomGenChance
     {

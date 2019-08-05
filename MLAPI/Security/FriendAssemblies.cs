@@ -9,7 +9,7 @@
 [assembly: InternalsVisibleTo("MLSettings")]
 [assembly: InternalsVisibleTo("MonoGUI")]
 
-namespace MagicalLifeAPI.Security
+namespace MLAPI.Security
 {
     /// <summary>
     /// This class determines who can access classes and objects marked with "internal".

@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.World.Base;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MLAPI.World.Base;
 
-namespace MagicalLifeAPI.Comparators
+namespace MLAPI.Comparators
 {
     /// <summary>
     /// This comparators sorts items based upon ID, then world location.

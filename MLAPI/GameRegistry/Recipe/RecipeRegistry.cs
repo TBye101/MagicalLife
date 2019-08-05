@@ -1,8 +1,8 @@
-﻿using MagicalLifeAPI.Crafting;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.World.Base;
+﻿using MLAPI.Crafting;
+using MLAPI.DataTypes.Collection;
+using MLAPI.World.Base;
 
-namespace MagicalLifeAPI.Registry.Recipe
+namespace MLAPI.GameRegistry.Recipe
 {
     /// <summary>
     /// The registry for all recipes.

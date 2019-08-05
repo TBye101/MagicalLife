@@ -1,10 +1,10 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.World.Base;
-using ProtoBuf;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using MLAPI.DataTypes;
+using MLAPI.World.Base;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.Components.Resource
+namespace MLAPI.Components.Resource
 {
     /// <summary>
     /// Anything that implements this must describe its behavior in terms of mining.

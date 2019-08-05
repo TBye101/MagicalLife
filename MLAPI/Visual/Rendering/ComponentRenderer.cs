@@ -1,9 +1,10 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeGUIWindows.Rendering.Map;
+﻿using System.Collections.Generic;
+using MLAPI.Components;
+using MLAPI.DataTypes;
+using MLAPI.Visual.Rendering.Map;
 using ProtoBuf;
-using System.Collections.Generic;
 
-namespace MagicalLifeAPI.Components.Generic.Renderable
+namespace MLAPI.Visual.Rendering
 {
     /// <summary>
     /// A renderer that takes various visual pieces and renders them in a meaningful fashion.

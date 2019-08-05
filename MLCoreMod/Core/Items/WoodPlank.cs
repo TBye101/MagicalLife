@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.World.Base;
+﻿using System.Collections.Generic;
+using MLAPI.Asset;
+using MLAPI.World.Base;
 using ProtoBuf;
-using System.Collections.Generic;
 
-namespace MagicalLifeMod.Core.Items
+namespace MLCoreMod.Core.Items
 {
     /// <summary>
     /// A wooden plank item, created from logs.

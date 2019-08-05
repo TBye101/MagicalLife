@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeGUIWindows.Rendering.Text;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using MLAPI.Asset;
+using MLAPI.Visual.Rendering;
+using MonoGUI.MonoGUI.Reusable;
 
-namespace MagicalLifeGUIWindows.GUI.Save
+namespace MLGUIWindows.GUI.Save_Game_Menu.InputBoxes
 {
     public class NewSaveInputBox : MonoInputBox
     {

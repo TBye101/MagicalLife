@@ -1,9 +1,7 @@
-﻿using MagicalLifeAPI.Filing;
-using MagicalLifeMod.Core.WorldGeneration.Default;
-using MLCoreMod.Core.Settings;
-using System.IO;
+﻿using System.IO;
+using MLAPI.Filing;
 
-namespace MagicalLifeMod.Core.Settings
+namespace MLCoreMod.Core.Settings
 {
     /// <summary>
     /// Handles the settings for the core mod.

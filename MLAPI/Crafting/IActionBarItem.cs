@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeAPI.Crafting
+﻿namespace MLAPI.Crafting
 {
     /// <summary>
     /// Implementers of this belong on the action bar.

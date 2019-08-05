@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.DataTypes;
-using System;
+﻿using System;
+using MLAPI.DataTypes;
 
-namespace MagicalLifeAPI.Util
+namespace MLAPI.Util.Math
 {
     /// <summary>
     /// Holds various math utilities.

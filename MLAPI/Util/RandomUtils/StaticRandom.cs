@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace MagicalLifeAPI.Util
+namespace MLAPI.Util.RandomUtils
 {
     public static class StaticRandom
     {

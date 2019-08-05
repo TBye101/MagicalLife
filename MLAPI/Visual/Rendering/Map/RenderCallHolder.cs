@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MagicalLifeAPI.Visual.Rendering.Renderer
+namespace MLAPI.Visual.Rendering.Map
 {
     /// <summary>
     /// Holds a call to a rendering method in <see cref="MapBatch"/>, as well as holding its render layer.

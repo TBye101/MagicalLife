@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.Filing.Logging;
+﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
+using MLAPI.Filing.Logging;
 
-namespace MagicalLifeGUIWindows.Rendering.Text
+namespace MLAPI.Visual.Rendering
 {
     /// <summary>
     /// Handles simple text rendering.

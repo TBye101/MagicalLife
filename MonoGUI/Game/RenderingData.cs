@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.Entity.AI.Task;
-using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework.Content;
+using MLAPI.Entity.AI.Task;
 
-namespace MagicalLifeGUIWindows.Map
+namespace MonoGUI.Game
 {
     /// <summary>
     /// Holds rendering information about the map, as well as a few utilities.

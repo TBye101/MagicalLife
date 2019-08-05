@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.Error.InternalExceptions;
-using MagicalLifeAPI.Util;
-using MLAPI.Util.RandomUtils;
+﻿using MLAPI.Util.RandomUtils;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using MLAPI.Error.InternalExceptions;
+using MLAPI.Util;
 
 namespace MLAPI.Genetic.Crossovers
 {

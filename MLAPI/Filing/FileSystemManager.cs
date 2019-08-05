@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 
-namespace MagicalLifeAPI.Filing
+namespace MLAPI.Filing
 {
     /// <summary>
     /// Manages file system operations.

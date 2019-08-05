@@ -1,10 +1,11 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.DataTypes.Attribute;
-using MagicalLifeAPI.Pathfinding;
-using MagicalLifeAPI.Util.Reusable;
+﻿using MLAPI.DataTypes;
+using MLAPI.DataTypes.Attribute;
+using MLAPI.DataTypes.Collection;
+using MLAPI.Pathfinding;
+using MLAPI.Util.Reusable;
 using ProtoBuf;
 
-namespace MagicalLifeAPI.Components.Entity
+namespace MLAPI.Components.Entity
 {
     [ProtoContract]
     public class ComponentMovement : Component

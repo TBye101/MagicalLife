@@ -1,8 +1,8 @@
-﻿using MagicalLifeAPI.Networking.Messages;
-using MagicalLifeAPI.Networking.Serialization;
+﻿using MLAPI.Networking.Messages;
+using MLAPI.Networking.Serialization;
 using SimpleTCP;
 
-namespace MagicalLifeAPI.Networking.Client
+namespace MLAPI.Networking.Client
 {
     /// <summary>
     /// The TCP client for communicating with the server.

@@ -1,15 +1,12 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.Util;
+﻿using MLAPI.Asset;
+using MLAPI.Util.RandomUtils;
+using MLAPI.Visual.Rendering;
 using ProtoBuf;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace MagicalLifeMod.Core.Floor
+namespace MLCoreMod.Core.Floor
 {
     [ProtoContract]
-    public class GrassFloor : MagicalLifeAPI.World.Base.Floor
+    public class GrassFloor : MLAPI.World.Base.Floor
     {
         public GrassFloor(bool walkable) : base(GetVisual(), walkable)
         {

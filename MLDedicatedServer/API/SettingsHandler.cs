@@ -1,8 +1,8 @@
-﻿using MagicalLifeAPI.Filing;
-using MagicalLifeDedicatedServer.API.Settings;
-using System.IO;
+﻿using System.IO;
+using MLAPI.Filing;
+using MLDedicatedServer.API.Settings;
 
-namespace MagicalLifeDedicatedServer.API
+namespace MLDedicatedServer.API
 {
     /// <summary>
     /// Handles all settings for the dedicated server.

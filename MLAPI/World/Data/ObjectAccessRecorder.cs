@@ -1,8 +1,8 @@
-﻿using ProtoBuf;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.World.Data
+namespace MLAPI.World.Data
 {
     /// <summary>
     /// Used to remember when and how many times an object has been accessed.

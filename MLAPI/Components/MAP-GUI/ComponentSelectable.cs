@@ -1,8 +1,8 @@
-﻿using MagicalLifeAPI.Components;
-using MagicalLifeAPI.DataTypes;
+﻿using MLAPI.DataTypes;
+using MLAPI.Visual;
 using ProtoBuf;
 
-namespace MagicalLifeAPI.GUI
+namespace MLAPI.Components
 {
     /// <summary>
     /// All objects in the game that can be clicked have this.

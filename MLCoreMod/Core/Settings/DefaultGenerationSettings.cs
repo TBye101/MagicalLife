@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeMod.Core.WorldGeneration.Default
+﻿namespace MLCoreMod.Core.Settings
 {
     /// <summary>
     /// Settings for how the default world generator should behave.

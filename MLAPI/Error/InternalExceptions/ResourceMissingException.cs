@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace MagicalLifeAPI.Error.InternalExceptions
+namespace MLAPI.Error.InternalExceptions
 {
     [Serializable]
     public class ResourceMissingException : Exception

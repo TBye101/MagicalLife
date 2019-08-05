@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.Networking;
-using MagicalLifeAPI.Networking.Messages;
-using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeAPI.Networking.World;
+﻿using MLAPI.Networking;
+using MLAPI.Networking.Messages;
+using MLAPI.Networking.Serialization;
+using MLAPI.Networking.World;
 
-namespace MagicalLifeClient.Message
+namespace MLClient.Message_Handlers
 {
     public class WorldTransferBodyMessageHandler : MessageHandler
     {

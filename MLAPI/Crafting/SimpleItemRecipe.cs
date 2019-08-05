@@ -1,12 +1,12 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Entity;
-using MagicalLifeAPI.Entity.AI.Task;
-using MagicalLifeAPI.Entity.AI.Task.Tasks;
-using MagicalLifeAPI.World.Base;
+﻿using System;
+using MLAPI.Asset;
+using MLAPI.Entity;
+using MLAPI.Entity.AI.Task;
+using MLAPI.Entity.AI.Task.Tasks;
+using MLAPI.World.Base;
 using ProtoBuf;
-using System;
 
-namespace MagicalLifeAPI.Crafting
+namespace MLAPI.Crafting
 {
     /// <summary>
     /// For simple item recipes.

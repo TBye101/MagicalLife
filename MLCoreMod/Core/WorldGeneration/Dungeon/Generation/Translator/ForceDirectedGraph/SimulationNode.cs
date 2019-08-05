@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework;
-using MLCoreMod.Core.WorldGeneration.Dungeon.Constructors.Translator;
 
 namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator.ForceDirectedGraph
 {

@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using System.IO;
+﻿using System.IO;
+using Newtonsoft.Json;
 
-namespace MagicalLifeAPI.Filing
+namespace MLAPI.Filing
 {
     /// <summary>
     /// Handles various things for a settings file.

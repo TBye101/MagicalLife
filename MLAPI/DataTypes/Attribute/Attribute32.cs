@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.Entity.Util.Modifier;
-using ProtoBuf;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using MLAPI.Entity.Util.Modifier_Remove_Conditions;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.DataTypes.Attribute
+namespace MLAPI.DataTypes.Attribute
 {
     [ProtoContract]
     public class Attribute32

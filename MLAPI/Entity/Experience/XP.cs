@@ -1,7 +1,7 @@
-﻿using ProtoBuf;
-using System;
+﻿using System;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.Entity.Experience
+namespace MLAPI.Entity.Experience
 {
     /// <summary>
     /// Holds XP data for something.

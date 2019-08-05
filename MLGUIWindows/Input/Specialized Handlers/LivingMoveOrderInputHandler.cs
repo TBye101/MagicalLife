@@ -1,22 +1,21 @@
-﻿using MagicalLifeAPI.Components;
-using MagicalLifeAPI.Components.Entity;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.Components.MAP_GUI;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entity;
-using MagicalLifeAPI.Entity.AI.Task;
-using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Pathfinding;
-using MagicalLifeAPI.Registry.WorldGeneration;
-using MagicalLifeAPI.Util;
-using MagicalLifeAPI.World;
-using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Data;
-using MagicalLifeGUIWindows.Input.History;
-using System;
-using System.Linq;
+﻿using System.Linq;
+using MLAPI.Components;
+using MLAPI.Components.Entity;
+using MLAPI.DataTypes;
+using MLAPI.DataTypes.Collection;
+using MLAPI.Entity;
+using MLAPI.Entity.AI.Task;
+using MLAPI.GameRegistry.WorldGeneration;
+using MLAPI.Pathfinding;
+using MLAPI.Util;
+using MLAPI.Visual.Rendering;
+using MLAPI.World.Base;
+using MLAPI.World.Data;
+using MLAPI.World.Generation.Dungeon;
+using MonoGUI.MonoGUI.Input.History;
+using Dimension = MLAPI.World.Data.Dimension;
 
-namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
+namespace MLGUIWindows.Input.Specialized_Handlers
 {
     /// <summary>
     /// Used to check if the correct sequence of events has occurred to order a <see cref="Living"/> to move.

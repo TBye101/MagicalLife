@@ -22,7 +22,7 @@
 using System;
 using System.Text;
 
-namespace MagicalLifeAPI.DataTypes.R
+namespace MLAPI.DataTypes
 {
     public struct Dimension : IEquatable<Dimension>
     {

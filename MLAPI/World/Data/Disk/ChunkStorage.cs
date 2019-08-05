@@ -1,10 +1,10 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeAPI.World.Data.Disk.DataStorage;
-using System;
+﻿using System;
 using System.IO;
+using MLAPI.DataTypes;
+using MLAPI.Networking.Serialization;
+using MLAPI.World.Data.Disk.DataStorage;
 
-namespace MagicalLifeAPI.World.Data.Disk
+namespace MLAPI.World.Data.Disk
 {
     /// <summary>
     /// Knows how to load and save chunks from every dimension in the world.

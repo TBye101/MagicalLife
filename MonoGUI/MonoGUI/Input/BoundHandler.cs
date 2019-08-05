@@ -1,17 +1,16 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.World.Data;
-using MagicalLifeGUIWindows.GUI;
-using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeGUIWindows.Input.Comparators;
-using MagicalLifeGUIWindows.Input.History;
-using MagicalLifeGUIWindows.Map;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using MLAPI.Filing.Logging;
+using MLAPI.Visual.Rendering;
+using MLAPI.World.Data;
 using MonoGame.Extended.Input.InputListeners;
-using System.Collections.Generic;
+using MonoGUI.Game;
+using MonoGUI.MonoGUI.Input.Comparators;
+using MonoGUI.MonoGUI.Input.History;
+using MonoGUI.MonoGUI.Reusable;
 
-namespace MagicalLifeGUIWindows.Input
+namespace MonoGUI.MonoGUI.Input
 {
     /// <summary>
     /// Determines who is being clicked on when the user clicks.
@@ -127,11 +126,11 @@ namespace MagicalLifeGUIWindows.Input
 
             if (change > 0)
             {
-                RenderInfo.Camera2D.HandleInput(Rendering.Map.CameraMovementState.ZoomIn);
+                RenderInfo.Camera2D.HandleInput(CameraMovementState.ZoomIn);
             }
             if (change < 0)
             {
-                RenderInfo.Camera2D.HandleInput(Rendering.Map.CameraMovementState.ZoomOut);
+                RenderInfo.Camera2D.HandleInput(CameraMovementState.ZoomOut);
             }
         }
 

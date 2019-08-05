@@ -1,11 +1,11 @@
-﻿using MagicalLifeAPI.Filing;
-using MagicalLifeAPI.Load;
-using MagicalLifeAPI.Sound;
-using MagicalLifeGUIWindows.Input;
-using MagicalLifeGUIWindows.Input.History;
-using System;
+﻿using System;
+using MLAPI.Filing;
+using MLAPI.Load;
+using MLAPI.Sound;
+using MLGUIWindows.Input;
+using MonoGUI.MonoGUI.Input.History;
 
-namespace MagicalLifeGUIWindows.Load
+namespace MLGUIWindows.Load
 {
     public class Initializer : IGameLoader
     {

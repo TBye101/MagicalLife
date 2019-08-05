@@ -1,8 +1,8 @@
-﻿using MagicalLifeAPI.DataTypes;
+﻿using System.Collections.Generic;
+using MLAPI.DataTypes;
 using ProtoBuf;
-using System.Collections.Generic;
 
-namespace MagicalLifeAPI.Components.MAP_GUI
+namespace MLAPI.Components
 {
     /// <summary>
     /// This component specifies an extra link between the containing tile's location and another spot on the map in terms of pathfinding as added by the containing <see cref="GameObject"/>.

@@ -1,20 +1,20 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.Components.Resource;
-using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Sound;
-using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Items;
-using ProtoBuf;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using MLAPI.Components.Resource;
+using MLAPI.Sound;
+using MLAPI.Visual;
+using MLAPI.Visual.Rendering;
+using MLAPI.World.Base;
+using MLCoreMod.Core.Items;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.World.Resources
+namespace MLCoreMod.Core.Vegetation
 {
     /// <summary>
     /// A maple tree.
     /// </summary>
     [ProtoContract]
-    public class Corn : Vegetation
+    public class Corn : MLAPI.World.Base.Vegetation
     {
         private static readonly string Name = "Corn Plant";
 
@@ -37,7 +37,7 @@ namespace MagicalLifeAPI.World.Resources
             this.Durability = DefaultCornDurability;
 
             // initialize harvesting list
-            List<Base.Item> list = new List<Base.Item>
+            List<Item> list = new List<Item>
             {
                 new CornEar(cornYield)
             };

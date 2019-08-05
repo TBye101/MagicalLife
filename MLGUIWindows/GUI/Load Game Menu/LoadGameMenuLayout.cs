@@ -1,6 +1,7 @@
-﻿using MagicalLifeAPI.Filing;
+﻿using MLAPI.Filing;
+using MonoGUI.MonoGUI;
 
-namespace MagicalLifeGUIWindows.GUI.Load
+namespace MLGUIWindows.GUI.Load_Game_Menu
 {
     public static class LoadGameMenuLayout
     {

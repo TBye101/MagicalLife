@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace MagicalLifeGUIWindows.GUI.Character_Menu
+namespace MLGUIWindows.GUI.Character_Menu
 {
     /// <summary>
     /// Layout for the character menu.

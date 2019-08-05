@@ -1,8 +1,7 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.Util.Reusable;
+﻿using MLAPI.Util.Reusable;
 using ProtoBuf;
 
-namespace MagicalLifeAPI.Visual.Rendering.Animation
+namespace MLAPI.Visual.Rendering.Animation
 {
     /// <summary>
     /// Used to hold the order of an animation sequence.

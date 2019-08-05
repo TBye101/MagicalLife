@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.Filing;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using MLAPI.Filing;
 
-namespace MagicalLifeAPI.Sound
+namespace MLAPI.Sound
 {
     public class MusicPlayer
     {

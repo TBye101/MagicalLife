@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.World.Data;
-using System;
+﻿using System;
+using MLAPI.World.Data;
 
-namespace MagicalLifeAPI.World.Generation
+namespace MLAPI.World.Generation
 {
     /// <summary>
     /// Classes that implement this are responsible for generating structures within the given chunks.

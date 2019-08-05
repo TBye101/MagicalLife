@@ -1,13 +1,13 @@
-﻿using MagicalLifeAPI.Filing;
-using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Load;
-using MagicalLifeAPI.Registry.Mod;
-using MagicalLifeAPI.Util;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using MLAPI.Filing;
+using MLAPI.Filing.Logging;
+using MLAPI.GameRegistry.Mod;
+using MLAPI.Load;
+using MLAPI.Util;
 
-namespace MagicalLifeAPI.Mod
+namespace MLAPI.Mod
 {
     /// <summary>
     /// Used to load mods that are found in the mods directory.

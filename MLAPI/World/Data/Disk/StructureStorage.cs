@@ -1,10 +1,9 @@
-﻿using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Data.Disk.DataStorage;
-using System;
+﻿using System;
 using System.IO;
+using MLAPI.Networking.Serialization;
+using MLAPI.World.Data.Disk.DataStorage;
 
-namespace MagicalLifeAPI.World.Data.Disk
+namespace MLAPI.World.Data.Disk
 {
     /// <summary>
     /// Used to save and read structures from the disk.
@@ -20,7 +19,7 @@ namespace MagicalLifeAPI.World.Data.Disk
         /// </summary>
         /// <param name="structure">The structure to save.</param>
         /// <param name="dimensionID">The ID of the dimension the structure belongs to.</param>
-        internal void SaveStructure(Structure structure, Guid dimensionID, AbstractWorldSink sink)
+        internal void SaveStructure(Structure.Structure structure, Guid dimensionID, AbstractWorldSink sink)
         {
             bool dimensionExists = WorldStorage.DimensionPaths.TryGetValue(dimensionID, out string path);
 
@@ -37,7 +36,7 @@ namespace MagicalLifeAPI.World.Data.Disk
         /// </summary>
         /// <param name="dimensionID">The ID of the dimension that the structure belongs to.</param>
         /// <returns></returns>
-        internal Structure LoadStructure(Guid structureID, Guid dimensionID)
+        internal Structure.Structure LoadStructure(Guid structureID, Guid dimensionID)
         {
             bool dimensionExists = WorldStorage.DimensionPaths.TryGetValue(dimensionID, out string path);
 
@@ -48,7 +47,7 @@ namespace MagicalLifeAPI.World.Data.Disk
 
             using (StreamReader sr = new StreamReader(path + Path.DirectorySeparatorChar + structureID + ".struct"))
             {
-                return (Structure)ProtoUtil.TypeModel.DeserializeWithLengthPrefix(sr.BaseStream, null, typeof(Structure), ProtoBuf.PrefixStyle.Base128, 0);
+                return (Structure.Structure)ProtoUtil.TypeModel.DeserializeWithLengthPrefix(sr.BaseStream, null, typeof(Structure.Structure), ProtoBuf.PrefixStyle.Base128, 0);
             }
         }
     }

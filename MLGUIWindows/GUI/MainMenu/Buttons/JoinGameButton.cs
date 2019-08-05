@@ -1,11 +1,12 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Sound;
-using MagicalLifeGUIWindows.GUI.Join;
-using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeGUIWindows.Properties;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using MLAPI.Asset;
+using MLAPI.Sound;
+using MLGUIWindows.GUI.Join_Game_Menu;
+using MLGUIWindows.Properties;
+using MonoGUI.MonoGUI.Reusable;
+using MonoGUI.MonoGUI.Reusable.Event;
 
-namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
+namespace MLGUIWindows.GUI.MainMenu.Buttons
 {
     public class JoinGameButton : MonoButton
     {
@@ -14,7 +15,7 @@ namespace MagicalLifeGUIWindows.GUI.MainMenu.Buttons
             this.ClickEvent += this.JoinGameButton_ClickEvent;
         }
 
-        private void JoinGameButton_ClickEvent(object sender, Reusable.Event.ClickEventArgs e)
+        private void JoinGameButton_ClickEvent(object sender, ClickEventArgs e)
         {
             FMODUtil.RaiseEvent(SoundsTable.UIClick);
             JoinGameMenu.Initialize();

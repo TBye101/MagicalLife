@@ -1,10 +1,6 @@
-﻿using Microsoft.Xna.Framework;
-using MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph;
 
-namespace MLCoreMod.Core.WorldGeneration.Dungeon.Constructors.Translator
+namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
 {
     public class DungeonTranslationNode
     {

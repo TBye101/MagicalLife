@@ -1,8 +1,8 @@
-﻿using MagicalLifeAPI.Networking;
-using MagicalLifeAPI.Networking.Messages;
-using MagicalLifeAPI.Networking.Serialization;
+﻿using MLAPI.Networking;
+using MLAPI.Networking.Messages;
+using MLAPI.Networking.Serialization;
 
-namespace MagicalLifeClient.Message
+namespace MLClient.Message_Handlers
 {
     /// <summary>
     /// Handles the <see cref="WorldModifierMessage"/> for the client.

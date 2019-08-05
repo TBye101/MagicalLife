@@ -1,18 +1,18 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.DataTypes.R;
-using MagicalLifeAPI.Error.InternalExceptions;
-using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Networking.Client;
-using MagicalLifeAPI.Networking.Messages;
-using MagicalLifeAPI.Networking.Server;
-using MagicalLifeAPI.Networking.World.Modifiers;
-using MagicalLifeAPI.World;
-using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using MLAPI.Components;
+using MLAPI.DataTypes;
+using MLAPI.DataTypes.Collection;
+using MLAPI.Error.InternalExceptions;
+using MLAPI.Networking.Client;
+using MLAPI.Networking.Messages;
+using MLAPI.Networking.Server;
+using MLAPI.Networking.World.Modifiers;
+using MLAPI.World;
+using MLAPI.World.Base;
+using MLAPI.World.Data;
 
-namespace MagicalLifeAPI.Registry.ItemRegistry
+namespace MLAPI.GameRegistry.Items
 {
     /// <summary>
     /// Used to add items to the world, via the <see cref="ItemRegistry"/>.

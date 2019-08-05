@@ -8,7 +8,7 @@
 [assembly: InternalsVisibleTo("MagicalLifeServerStandard")]
 [assembly: InternalsVisibleTo("MagicalLifeAPIStandard")]
 
-namespace MagicalLifeSettings
+namespace MLSettings
 {
     /// <summary>
     /// Used to control who has access to internal members of this assembly.

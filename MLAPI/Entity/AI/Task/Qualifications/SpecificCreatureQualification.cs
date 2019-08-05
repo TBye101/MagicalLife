@@ -1,7 +1,7 @@
-﻿using ProtoBuf;
-using System;
+﻿using System;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.Entity.AI.Task.Qualifications
+namespace MLAPI.Entity.AI.Task.Qualifications
 {
     /// <summary>
     /// Used to require that only a certain creature may do a task.

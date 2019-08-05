@@ -1,13 +1,13 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entity;
-using MagicalLifeAPI.Entity.AI.Task;
-using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.World;
-using MagicalLifeGUIWindows.GUI.Character_Menu;
-using MagicalLifeGUIWindows.Input.History;
-using System.Linq;
+﻿using System.Linq;
+using MLAPI.Components;
+using MLAPI.DataTypes;
+using MLAPI.Entity;
+using MLAPI.Entity.AI.Task;
+using MLAPI.World;
+using MLGUIWindows.GUI.Character_Menu;
+using MonoGUI.MonoGUI.Input.History;
 
-namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
+namespace MLGUIWindows.Input.Specialized_Handlers
 {
     /// <summary>
     /// Handles players clicking on single creatures and pulls up menu.

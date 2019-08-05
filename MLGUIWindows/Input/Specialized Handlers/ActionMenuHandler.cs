@@ -1,7 +1,8 @@
-﻿using MagicalLifeAPI.Filing;
-using MagicalLifeGUIWindows.GUI.Action_Menu;
+﻿using MLAPI.Filing;
+using MLGUIWindows.GUI.Action_Menu;
+using MonoGUI.MonoGUI.Input;
 
-namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
+namespace MLGUIWindows.Input.Specialized_Handlers
 {
     public class ActionMenuHandler
     {

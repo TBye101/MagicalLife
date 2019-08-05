@@ -1,13 +1,13 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entity.AI.Task.Qualifications;
-using MagicalLifeAPI.Error.InternalExceptions;
-using MagicalLifeAPI.Registry.ItemRegistry;
-using MagicalLifeAPI.World.Base;
-using ProtoBuf;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using MLAPI.DataTypes;
+using MLAPI.Entity.AI.Task.Qualifications;
+using MLAPI.Error.InternalExceptions;
+using MLAPI.GameRegistry.Items;
+using MLAPI.World.Base;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.Entity.AI.Task.Tasks
+namespace MLAPI.Entity.AI.Task.Tasks
 {
     /// <summary>
     /// Has the character pick up the item specified.

@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.Components;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entity.AI.Task;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MLAPI.Components;
+using MLAPI.DataTypes;
+using MLAPI.Entity.AI.Task;
 
-namespace MagicalLifeGUIWindows.Input.History
+namespace MonoGUI.MonoGUI.Input.History
 {
     /// <summary>
     /// Holds information about the actions of some user input.

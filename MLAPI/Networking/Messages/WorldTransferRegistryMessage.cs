@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeAPI.Registry.ItemRegistry;
+﻿using System;
+using MLAPI.GameRegistry.Items;
+using MLAPI.Networking.Serialization;
 using ProtoBuf;
-using System;
 
-namespace MagicalLifeAPI.Networking.Messages
+namespace MLAPI.Networking.Messages
 {
     [ProtoContract]
     public class WorldTransferRegistryMessage : BaseMessage

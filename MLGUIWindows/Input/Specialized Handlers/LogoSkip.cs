@@ -1,6 +1,7 @@
-﻿using MagicalLifeGUIWindows.Screens;
+﻿using MLGUIWindows.Screens;
+using MonoGUI.MonoGUI.Input;
 
-namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
+namespace MLGUIWindows.Input.Specialized_Handlers
 {
     public class LogoSkip
     {

@@ -1,8 +1,9 @@
-﻿using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using System.Collections.Generic;
+using MonoGUI.MonoGUI.Input;
+using MonoGUI.MonoGUI.Reusable;
 
-namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
+namespace MLGUIWindows.Input.Specialized_Handlers
 {
     /// <summary>
     /// Handles GUI containers being dragged.

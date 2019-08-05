@@ -1,10 +1,10 @@
-﻿using MagicalLifeAPI.Server;
-using MagicalLifeAPI.World.Data.Disk;
-using MagicalLifeAPI.World.Data.Disk.DataStorage;
+﻿using System.Collections.Generic;
+using MLAPI.Server;
+using MLAPI.World.Data.Disk;
+using MLAPI.World.Data.Disk.DataStorage;
 using MLDedicatedServer.Properties;
-using System.Collections.Generic;
 
-namespace MagicalLifeDedicatedServer.API.Commands
+namespace MLDedicatedServer.API.Commands
 {
     public class SaveGame : ICommand
     {

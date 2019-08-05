@@ -1,8 +1,8 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeGUIWindows.Rendering.Map;
+﻿using MLAPI.DataTypes;
+using MLAPI.Visual.Rendering.Map;
 using ProtoBuf;
 
-namespace MagicalLifeAPI.Components.Generic.Renderable
+namespace MLAPI.Visual.Rendering
 {
     /// <summary>
     /// Used to abstract away the complexities of animations and static textures.

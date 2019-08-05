@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.Error.InternalExceptions;
-using MagicalLifeAPI.Filing.Logging;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
+using MLAPI.Error.InternalExceptions;
+using MLAPI.Filing.Logging;
 
-namespace MagicalLifeAPI.Asset
+namespace MLAPI.Asset
 {
     /// <summary>
     /// Used to handle assets.

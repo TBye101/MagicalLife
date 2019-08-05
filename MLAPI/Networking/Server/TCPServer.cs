@@ -1,15 +1,15 @@
-﻿using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Networking.Messages;
-using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeAPI.World.Data.Disk;
-using MagicalLifeAPI.World.Data.Disk.DataStorage;
-using SimpleTCP;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
+using MLAPI.Filing.Logging;
+using MLAPI.Networking.Messages;
+using MLAPI.Networking.Serialization;
+using MLAPI.World.Data.Disk;
+using MLAPI.World.Data.Disk.DataStorage;
+using SimpleTCP;
 
-namespace MagicalLifeAPI.Networking.Server
+namespace MLAPI.Networking.Server
 {
     /// <summary>
     /// The TCP server for communicating with clients.

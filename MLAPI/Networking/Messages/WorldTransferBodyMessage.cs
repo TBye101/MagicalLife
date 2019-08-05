@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeAPI.World.Data;
+﻿using System;
+using MLAPI.Networking.Serialization;
+using MLAPI.World.Data;
 using ProtoBuf;
-using System;
 
-namespace MagicalLifeAPI.Networking.Messages
+namespace MLAPI.Networking.Messages
 {
     [ProtoContract]
     public class WorldTransferBodyMessage : BaseMessage

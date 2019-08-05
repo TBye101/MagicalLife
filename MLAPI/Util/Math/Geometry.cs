@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.DataTypes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using MLAPI.DataTypes;
 
-namespace MagicalLifeAPI.Util.Math
+namespace MLAPI.Util.Math
 {
     /// <summary>
     /// Does some basic geometry.

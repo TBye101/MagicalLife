@@ -1,8 +1,11 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MLAPI.Asset;
+using MLAPI.Visual.Rendering;
+using MLGUIWindows.GUI.New_World_Menu.Buttons;
+using MLGUIWindows.GUI.New_World_Menu.Input_Boxes;
+using MLGUIWindows.GUI.New_World_Menu.Labels;
+using MonoGUI.MonoGUI.Reusable;
 
-namespace MagicalLifeGUIWindows.GUI.New
+namespace MLGUIWindows.GUI.New_World_Menu
 {
     /// <summary>
     /// The menu that pops up when the user creates a new world.
@@ -22,7 +25,7 @@ namespace MagicalLifeGUIWindows.GUI.New
 
             this.GameName = new MonoInputBox(TextureLoader.GUIInputBox100x50, TextureLoader.GUICursorCarrot, NewWorldMenuLayout.GameNameInputBox,
       int.MaxValue, TextureLoader.FontMainMenuFont12x, false,
-      Rendering.Text.SimpleTextRenderer.Alignment.Left, true);
+      SimpleTextRenderer.Alignment.Left, true);
 
             this.Controls.Add(this.WorldWidth);
             this.Controls.Add(this.WorldLength);

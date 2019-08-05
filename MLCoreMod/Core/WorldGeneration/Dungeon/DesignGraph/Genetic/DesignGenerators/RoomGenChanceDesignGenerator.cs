@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using MagicalLifeAPI.Util;
-using MagicalLifeMod.Core.Settings;
 using MLAPI.Genetic;
 using MLAPI.Util.RandomUtils;
+using MLCoreMod.Core.Settings;
+using MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.DesignRules;
 
 namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.DesignGenerators
 {

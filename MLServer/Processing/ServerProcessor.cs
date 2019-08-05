@@ -1,11 +1,11 @@
-﻿using MagicalLifeAPI.Error.InternalExceptions;
-using MagicalLifeAPI.Networking;
-using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeAPI.Networking.Server;
-using MagicalLifeServer.Processing.Message;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MLAPI.Error.InternalExceptions;
+using MLAPI.Networking;
+using MLAPI.Networking.Serialization;
+using MLAPI.Networking.Server;
+using MLServer.Processing.Message_Handlers;
 
-namespace MagicalLifeServer.Processing
+namespace MLServer.Processing
 {
     public static class ServerProcessor
     {

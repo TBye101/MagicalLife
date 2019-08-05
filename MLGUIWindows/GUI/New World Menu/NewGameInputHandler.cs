@@ -1,8 +1,8 @@
-﻿using MagicalLifeAPI.Registry.WorldGeneration;
-using MagicalLifeAPI.World.Data;
-using MagicalLifeAPI.World.Data.Disk;
+﻿using MLAPI.GameRegistry.WorldGeneration;
+using MLAPI.World.Data;
+using MLAPI.World.Data.Disk;
 
-namespace MagicalLifeGUIWindows.GUI.New
+namespace MLGUIWindows.GUI.New_World_Menu
 {
     /// <summary>
     /// Handles all input from the new world menu.

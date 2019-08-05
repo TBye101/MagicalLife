@@ -1,13 +1,14 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Networking;
-using MagicalLifeAPI.Sound;
-using MagicalLifeAPI.World.Data;
-using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeGUIWindows.Properties;
+﻿using System;
 using Microsoft.Xna.Framework;
-using System;
+using MLAPI.Asset;
+using MLAPI.Networking;
+using MLAPI.Sound;
+using MLAPI.World.Data;
+using MLGUIWindows.Properties;
+using MonoGUI.MonoGUI.Reusable;
+using MonoGUI.MonoGUI.Reusable.Event;
 
-namespace MagicalLifeGUIWindows.GUI.In
+namespace MLGUIWindows.GUI.In_Game_Escape_Menu.Buttons
 {
     public class QuitButton : MonoButton
     {
@@ -16,7 +17,7 @@ namespace MagicalLifeGUIWindows.GUI.In
             this.ClickEvent += this.QuitButton_ClickEvent;
         }
 
-        private void QuitButton_ClickEvent(object sender, Reusable.Event.ClickEventArgs e)
+        private void QuitButton_ClickEvent(object sender, ClickEventArgs e)
         {
             FMODUtil.RaiseEvent(SoundsTable.UIClick);
         }

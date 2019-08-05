@@ -1,11 +1,11 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Filing;
-using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Sound.FMOD.Studio;
-using System;
+﻿using System;
+using MLAPI.DataTypes;
+using MLAPI.Filing;
+using MLAPI.Filing.Logging;
+using MLAPI.Sound.FMOD.Studio;
+using MLAPI.Visual.Rendering;
 
-namespace MagicalLifeAPI.Sound
+namespace MLAPI.Sound
 {
     /// <summary>
     /// Some FMOD related utilities.

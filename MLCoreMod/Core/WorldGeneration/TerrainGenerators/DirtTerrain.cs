@@ -1,13 +1,13 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.World;
-using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Data;
-using MagicalLifeAPI.World.Resources;
-using MagicalLifeAPI.World.Tiles;
-using MagicalLifeMod.Core.Settings;
-using System;
+﻿using System;
+using MLAPI.DataTypes;
+using MLAPI.World.Base;
+using MLAPI.World.Data;
+using MLAPI.World.Generation;
+using MLCoreMod.Core.Resources;
+using MLCoreMod.Core.Settings;
+using MLCoreMod.Core.Tiles;
 
-namespace MagicalLifeMod.Core.WorldGeneration.TerrainGenerators
+namespace MLCoreMod.Core.WorldGeneration.TerrainGenerators
 {
     public class DirtTerrain : TerrainGenerator
     {

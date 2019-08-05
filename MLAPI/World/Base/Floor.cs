@@ -1,8 +1,8 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.GUI;
+﻿using MLAPI.Visual;
+using MLAPI.Visual.Rendering;
 using ProtoBuf;
 
-namespace MagicalLifeAPI.World.Base
+namespace MLAPI.World.Base
 {
     /// <summary>
     /// Represents the floor of a tile.

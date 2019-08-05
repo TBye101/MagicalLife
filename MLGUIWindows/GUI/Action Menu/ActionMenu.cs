@@ -1,4 +1,6 @@
-﻿namespace MagicalLifeGUIWindows.GUI.Action_Menu
+﻿using MonoGUI.MonoGUI;
+
+namespace MLGUIWindows.GUI.Action_Menu
 {
     /// <summary>
     /// The action menu on the right side of the screen, when the correct key is pressed.

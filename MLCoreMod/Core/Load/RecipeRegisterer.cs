@@ -1,10 +1,10 @@
-﻿using MagicalLifeAPI.Crafting;
-using MagicalLifeAPI.Load;
-using MagicalLifeAPI.Registry.Recipe;
-using MagicalLifeMod.Core.Items;
-using System;
+﻿using System;
+using MLAPI.Crafting;
+using MLAPI.GameRegistry.Recipe;
+using MLAPI.Load;
+using MLCoreMod.Core.Items;
 
-namespace MagicalLifeMod.Core.Load
+namespace MLCoreMod.Core.Load
 {
     public class RecipeRegisterer : IGameLoader
     {

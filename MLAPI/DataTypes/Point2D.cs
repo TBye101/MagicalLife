@@ -1,9 +1,9 @@
-﻿using Microsoft.Xna.Framework;
-using ProtoBuf;
-using System;
+﻿using System;
 using System.Globalization;
+using Microsoft.Xna.Framework;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.DataTypes
+namespace MLAPI.DataTypes
 {
     [ProtoContract]
     public class Point2D : IEquatable<Point2D>
@@ -48,14 +48,14 @@ namespace MagicalLifeAPI.DataTypes
             }
         }
 
-        public static implicit operator Point2D(Point value)
+        public static implicit operator Point2D(Microsoft.Xna.Framework.Point value)
         {
             return new Point2D(value.X, value.Y);
         }
 
-        public static implicit operator Point(Point2D value)
+        public static implicit operator Microsoft.Xna.Framework.Point(Point2D value)
         {
-            return new Point(value.X, value.Y);
+            return new Microsoft.Xna.Framework.Point(value.X, value.Y);
         }
 
         public static implicit operator Vector2(Point2D value)

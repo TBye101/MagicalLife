@@ -1,10 +1,10 @@
-﻿using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeAPI.Pathfinding;
-using ProtoBuf;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using MLAPI.Networking.Serialization;
+using MLAPI.Pathfinding;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.Networking.Messages
+namespace MLAPI.Networking.Messages
 {
     [ProtoContract]
     public class RouteCreatedMessage : BaseMessage

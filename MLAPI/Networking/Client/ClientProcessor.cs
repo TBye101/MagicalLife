@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.Networking.Serialization;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MLAPI.Networking.Serialization;
 
-namespace MagicalLifeAPI.Networking.Client
+namespace MLAPI.Networking.Client
 {
     /// <summary>
     /// Handles client side message processing.

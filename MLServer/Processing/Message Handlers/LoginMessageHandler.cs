@@ -1,8 +1,8 @@
-﻿using MagicalLifeAPI.Networking;
-using MagicalLifeAPI.Networking.Messages;
-using MagicalLifeAPI.Networking.Serialization;
+﻿using MLAPI.Networking;
+using MLAPI.Networking.Messages;
+using MLAPI.Networking.Serialization;
 
-namespace MagicalLifeServer.Processing.Message
+namespace MLServer.Processing.Message_Handlers
 {
     public class LoginMessageHandler : MessageHandler
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MagicalLifeAPI.Time
+namespace MLAPI.Time
 {
     /// <summary>
     /// Used to compare <see cref="SchedulerTask"/>.

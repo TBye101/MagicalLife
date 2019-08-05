@@ -1,8 +1,8 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.DataTypes;
-using Microsoft.Xna.Framework;
+﻿using MLAPI.Asset;
+using MLAPI.DataTypes;
+using Rectangle = Microsoft.Xna.Framework.Rectangle;
 
-namespace MagicalLifeGUIWindows.GUI.Reusable.Premade
+namespace MonoGUI.MonoGUI.Reusable.Premade
 {
     /// <summary>
     /// The x in the corner of the window to close the window.

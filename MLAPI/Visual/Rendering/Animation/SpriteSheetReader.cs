@@ -3,7 +3,7 @@ using System.IO;
 using System.Reflection;
 using System.Xml;
 
-namespace MagicalLifeAPI.Visual.Animation
+namespace MLAPI.Visual.Rendering.Animation
 {
     /// <summary>
     /// Reads a XML document which describes sprite information.

@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.Networking.Serialization;
+﻿using MLAPI.Networking.Serialization;
 using ProtoBuf;
 
-namespace MagicalLifeAPI.Networking.Messages
+namespace MLAPI.Networking.Messages
 {
     [ProtoContract]
     public class ServerTickMessage : BaseMessage

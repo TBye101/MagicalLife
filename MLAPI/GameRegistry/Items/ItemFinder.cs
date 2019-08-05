@@ -1,14 +1,13 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.DataTypes.R;
-using MagicalLifeAPI.Pathfinding;
-using MagicalLifeAPI.Util.Math;
-using MagicalLifeAPI.World;
-using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using MLAPI.DataTypes;
+using MLAPI.Pathfinding;
+using MLAPI.Util.Math;
+using MLAPI.World;
+using MLAPI.World.Base;
+using MLAPI.World.Data;
 
-namespace MagicalLifeAPI.Registry.ItemRegistry
+namespace MLAPI.GameRegistry.Items
 {
     /// <summary>
     /// This class finds items that match various search parameters.

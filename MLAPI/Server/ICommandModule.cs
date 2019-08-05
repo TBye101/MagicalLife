@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MagicalLifeAPI.Server
+namespace MLAPI.Server
 {
     /// <summary>
     /// For each package to implement once and have each command within.

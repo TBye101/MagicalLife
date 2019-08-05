@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.Networking.Serialization;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
+using MLAPI.Networking.Serialization;
 
-namespace MagicalLifeAPI.World.Data.Disk.DataStorage
+namespace MLAPI.World.Data.Disk.DataStorage
 {
     /// <summary>
     /// Serializes Protobuf-net objects to disk.

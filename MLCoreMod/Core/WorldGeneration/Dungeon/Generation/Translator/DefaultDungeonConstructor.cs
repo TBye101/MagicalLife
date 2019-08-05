@@ -1,12 +1,11 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.World;
-using MagicalLifeAPI.World.Data;
-using MagicalLifeAPI.World.Resources;
-using MagicalLifeAPI.World.Tiles;
-using MLCoreMod.Core.WorldGeneration.Dungeon.Constructors;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MLAPI.DataTypes;
+using MLAPI.DataTypes.Collection;
+using MLAPI.World.Data;
+using MLCoreMod.Core.Resources;
+using MLCoreMod.Core.Tiles;
 
 namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
 {

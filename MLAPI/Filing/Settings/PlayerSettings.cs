@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MagicalLifeAPI.Filing.Settings
+namespace MLAPI.Filing.Settings
 {
     /// <summary>
     /// Has some settings for the human player.

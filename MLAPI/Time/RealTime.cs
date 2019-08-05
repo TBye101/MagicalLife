@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeAPI.Time
+﻿namespace MLAPI.Time
 {
     /// <summary>
     /// Knows various things about real life time, measured in ticks.

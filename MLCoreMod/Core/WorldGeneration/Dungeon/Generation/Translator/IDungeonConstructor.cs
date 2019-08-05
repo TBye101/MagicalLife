@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.World.Data;
+﻿using MLAPI.DataTypes.Collection;
+using MLAPI.World.Data;
 
-namespace MLCoreMod.Core.WorldGeneration.Dungeon.Constructors
+namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
 {
     /// <summary>
     /// Used to create dungeon tiles and empty rooms/hallways.

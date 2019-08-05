@@ -1,8 +1,9 @@
-﻿using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.Filing;
-using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework.Input;
+using MLAPI.Filing;
+using MLAPI.Visual.Rendering;
+using MonoGUI.MonoGUI.Input;
 
-namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
+namespace MLGUIWindows.Input.Specialized_Handlers
 {
     public class StrafeHandler
     {
@@ -20,22 +21,22 @@ namespace MagicalLifeGUIWindows.Input.Specialized_Handlers
         {
             if (e == SettingsManager.Keybindings.Settings.StrafeDown)
             {
-                RenderInfo.Camera2D.HandleInput(Rendering.Map.CameraMovementState.Down);
+                RenderInfo.Camera2D.HandleInput(CameraMovementState.Down);
             }
 
             if (e == SettingsManager.Keybindings.Settings.StrafeLeft)
             {
-                RenderInfo.Camera2D.HandleInput(Rendering.Map.CameraMovementState.Left);
+                RenderInfo.Camera2D.HandleInput(CameraMovementState.Left);
             }
 
             if (e == SettingsManager.Keybindings.Settings.StrafeRight)
             {
-                RenderInfo.Camera2D.HandleInput(Rendering.Map.CameraMovementState.Right);
+                RenderInfo.Camera2D.HandleInput(CameraMovementState.Right);
             }
 
             if (e == SettingsManager.Keybindings.Settings.StrafeUp)
             {
-                RenderInfo.Camera2D.HandleInput(Rendering.Map.CameraMovementState.Up);
+                RenderInfo.Camera2D.HandleInput(CameraMovementState.Up);
             }
         }
     }

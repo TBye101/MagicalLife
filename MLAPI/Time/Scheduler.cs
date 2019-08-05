@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MagicalLifeAPI.Time
+namespace MLAPI.Time
 {
     /// <summary>
     /// Used to schedule when things are run,

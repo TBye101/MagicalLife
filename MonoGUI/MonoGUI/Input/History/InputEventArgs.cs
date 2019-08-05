@@ -1,6 +1,6 @@
 ﻿using MonoGame.Extended.Input.InputListeners;
 
-namespace MagicalLifeGUIWindows.Input.History
+namespace MonoGUI.MonoGUI.Input.History
 {
     /// <summary>
     /// Used to hold the keyboard hotkey states and the mouse information.

@@ -1,15 +1,16 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Registry.WorldGeneration;
-using MagicalLifeAPI.Util;
-using MagicalLifeAPI.World;
-using MagicalLifeAPI.World.Data;
-using MagicalLifeAPI.World.Generation;
-using MagicalLifeMod.Core.Settings;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using MLAPI.DataTypes;
+using MLAPI.DataTypes.Collection;
+using MLAPI.Filing.Logging;
+using MLAPI.GameRegistry.WorldGeneration;
+using MLAPI.Util;
+using MLAPI.Util.RandomUtils;
+using MLAPI.World.Data;
+using MLAPI.World.Generation;
+using MLCoreMod.Core.Settings;
 
-namespace MagicalLifeMod.Core.WorldGeneration
+namespace MLCoreMod.Core.WorldGeneration.Default
 {
     /// <summary>
     /// Default control of how the world is generated.

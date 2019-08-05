@@ -1,13 +1,12 @@
-﻿using MagicalLifeAPI.Components;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entity.AI.Task;
-using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Pathfinding;
+﻿using System;
+using MLAPI.Components;
+using MLAPI.DataTypes;
+using MLAPI.Entity.AI.Task;
+using MLAPI.Visual;
+using MLAPI.Visual.Rendering;
 using ProtoBuf;
-using System;
 
-namespace MagicalLifeAPI.World.Base
+namespace MLAPI.World.Base
 {
     /// <summary>
     /// Every tile that implements this class must provide a parameterless version of itself for reflection purposes. That constructor will not be used during gameplay.

@@ -1,10 +1,9 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.Visual.Rendering.AbstractVisuals;
-using MagicalLifeAPI.World.Resources;
-using MagicalLifeAPI.World.Resources.Tree;
+﻿using MLAPI.Asset;
+using MLAPI.Load;
+using MLAPI.Visual.Rendering;
+using MLCoreMod.Core.Resources;
 
-namespace MagicalLifeAPI.Load
+namespace MLCoreMod.Core.Load
 {
     /// <summary>
     /// Loads specific textures for specific classes such as the trees.

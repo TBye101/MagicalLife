@@ -1,10 +1,10 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.World.Base;
-using ProtoBuf;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using MLAPI.DataTypes;
+using MLAPI.World.Base;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.Components.Resource
+namespace MLAPI.Components.Resource
 {
     /// <summary>
     /// Holds logic to do with the tilling of tiles.

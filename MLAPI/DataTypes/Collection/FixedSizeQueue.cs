@@ -1,6 +1,6 @@
 ﻿using System.Collections.Concurrent;
 
-namespace MagicalLifeAPI.DataTypes
+namespace MLAPI.DataTypes.Collection
 {
     /// <summary>
     /// Shamelessly borrowed from https://stackoverflow.com/a/10299662/5294414

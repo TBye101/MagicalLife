@@ -1,6 +1,7 @@
-﻿using MagicalLifeAPI.Filing;
+﻿using MLAPI.Filing;
+using MonoGUI.MonoGUI;
 
-namespace MagicalLifeGUIWindows.GUI.In
+namespace MLGUIWindows.GUI.In_Game_GUI
 {
     /// <summary>
     /// Returns the correct hardcoded values for the current screen resolution for the new world menu.

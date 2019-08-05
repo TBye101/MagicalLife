@@ -1,17 +1,16 @@
-﻿using MagicalLifeAPI.Components;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entity;
-using MagicalLifeAPI.Entity.AI.Task;
-using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Data;
-using MagicalLifeGUIWindows.Map;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using MLAPI.Components;
+using MLAPI.DataTypes;
+using MLAPI.Entity;
+using MLAPI.Entity.AI.Task;
+using MLAPI.Visual.Rendering;
+using MLAPI.World.Base;
+using MLAPI.World.Data;
+using MonoGUI.Game;
 
-namespace MagicalLifeGUIWindows.Input.History
+namespace MonoGUI.MonoGUI.Input.History
 {
     /// <summary>
     /// Used to generate <see cref="HistoricalInput"/>.

@@ -1,27 +1,27 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.Filing;
-using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Load;
-using MagicalLifeAPI.Mod;
-using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeAPI.Sound;
-using MagicalLifeAPI.Universal;
-using MagicalLifeAPI.Util.Reusable;
-using MagicalLifeAPI.World.Data;
-using MagicalLifeGUIWindows.GUI.In;
-using MagicalLifeGUIWindows.Input;
-using MagicalLifeGUIWindows.Load;
-using MagicalLifeGUIWindows.Map;
-using MagicalLifeGUIWindows.Rendering;
-using MagicalLifeGUIWindows.Screens;
+﻿using System.Collections.Generic;
+using System.Windows.Forms;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
-using System.Windows.Forms;
+using MLAPI.Asset;
+using MLAPI.Filing;
+using MLAPI.Filing.Logging;
+using MLAPI.Load;
+using MLAPI.Mod;
+using MLAPI.Networking.Serialization;
+using MLAPI.Sound;
+using MLAPI.Universal;
+using MLAPI.Util.Reusable;
+using MLAPI.Visual.Rendering;
+using MLAPI.World.Data;
+using MLGUIWindows.GUI.In_Game_GUI;
+using MLGUIWindows.Load;
+using MLGUIWindows.Rendering;
+using MLGUIWindows.Screens;
+using MonoGUI.Game;
+using MonoGUI.MonoGUI.Input;
 
-namespace MagicalLifeGUIWindows
+namespace MLGUIWindows
 {
     /// <summary>
     /// This is the main type for your game.

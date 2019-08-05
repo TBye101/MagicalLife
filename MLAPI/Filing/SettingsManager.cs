@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.Filing.Settings;
-using System.IO;
+﻿using System.IO;
+using MLAPI.Filing.Settings;
 
-namespace MagicalLifeAPI.Filing
+namespace MLAPI.Filing
 {
     /// <summary>
     /// Holds all of the settings in the game, except for the dedicated server specific settings.

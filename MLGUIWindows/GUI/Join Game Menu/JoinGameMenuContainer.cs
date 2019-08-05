@@ -1,8 +1,10 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MLAPI.Asset;
+using MLAPI.Visual.Rendering;
+using MLGUIWindows.GUI.Join_Game_Menu.Buttons;
+using MLGUIWindows.GUI.Join_Game_Menu.Input_Boxes;
+using MonoGUI.MonoGUI.Reusable;
 
-namespace MagicalLifeGUIWindows.GUI.Join
+namespace MLGUIWindows.GUI.Join_Game_Menu
 {
     public class JoinGameMenuContainer : GuiContainer
     {

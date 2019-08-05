@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.Load;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MLAPI.Load;
 
-namespace MagicalLifeAPI.Mod
+namespace MLAPI.Mod
 {
     /// <summary>
     /// Implemented by mods to be executed when the game starts up.

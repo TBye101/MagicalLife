@@ -1,9 +1,4 @@
-﻿using ProtoBuf;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MagicalLifeMod.Core.Settings
+﻿namespace MLCoreMod.Core.Settings
 {
     /// <summary>
     /// Holds config for all MLCoreMod structure parts.

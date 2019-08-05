@@ -1,11 +1,12 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entity;
-using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using MLAPI.DataTypes;
+using MLAPI.DataTypes.Collection;
+using MLAPI.Entity;
+using MLAPI.World.Base;
+using MLAPI.World.Data;
 
-namespace MagicalLifeAPI.World
+namespace MLAPI.World.Generation.Dungeon
 {
     /// <summary>
     /// All classes that implement <see cref="DungeonGenerator"/> control what generators are applied to which chunks.

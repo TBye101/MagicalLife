@@ -1,13 +1,15 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeGUIWindows.GUI.Reusable.API;
-using MagicalLifeGUIWindows.GUI.Reusable.Event;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
+using MLAPI.Asset;
+using MLAPI.DataTypes;
+using MonoGUI.MonoGUI.Reusable.API;
+using MonoGUI.MonoGUI.Reusable.Event;
+using Point = Microsoft.Xna.Framework.Point;
+using Rectangle = Microsoft.Xna.Framework.Rectangle;
 
-namespace MagicalLifeGUIWindows.GUI.Reusable.Collections
+namespace MonoGUI.MonoGUI.Reusable.Collections
 {
     /// <summary>
     /// A scrollable grid element.

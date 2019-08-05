@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.Entity;
-using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.World.Data;
+﻿using MLAPI.Components;
+using MLAPI.Entity;
+using MLAPI.World.Data;
 using ProtoBuf;
 
-namespace MagicalLifeAPI.Networking.World.Modifiers
+namespace MLAPI.Networking.World.Modifiers
 {
     /// <summary>
     /// Used to spawn a creature in the world in a multiplayer game.
@@ -27,7 +27,7 @@ namespace MagicalLifeAPI.Networking.World.Modifiers
         public override void ModifyWorld()
         {
             ComponentSelectable livingData = this.Living.GetExactComponent<ComponentSelectable>();
-            Chunk chunk = MagicalLifeAPI.World.Data.World.GetChunkByTile(this.Living.DimensionID, livingData.MapLocation.X, livingData.MapLocation.Y);
+            Chunk chunk = MLAPI.World.Data.World.GetChunkByTile(this.Living.DimensionID, livingData.MapLocation.X, livingData.MapLocation.Y);
             chunk.Creatures.Add(this.Living.ID, this.Living);
         }
     }

@@ -1,13 +1,13 @@
-﻿using MagicalLifeAPI.Filing.Logging;
-using ProtoBuf;
-using ProtoBuf.Meta;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using MLAPI.Filing.Logging;
+using ProtoBuf;
+using ProtoBuf.Meta;
 
-namespace MagicalLifeAPI.Networking.Serialization
+namespace MLAPI.Networking.Serialization
 {
     /// <summary>
     /// Used to serialize and deserialize using https://github.com/mgravell/protobuf-net.

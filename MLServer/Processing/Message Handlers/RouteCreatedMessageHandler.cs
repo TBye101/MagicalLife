@@ -1,19 +1,20 @@
-﻿using MagicalLifeAPI.Components.Entity;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entity;
-using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.GUI;
-using MagicalLifeAPI.Networking;
-using MagicalLifeAPI.Networking.Messages;
-using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeAPI.Pathfinding;
-using MagicalLifeAPI.World;
-using MagicalLifeAPI.World.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using MLAPI.Components;
+using MLAPI.Components.Entity;
+using MLAPI.DataTypes;
+using MLAPI.Entity;
+using MLAPI.Filing.Logging;
+using MLAPI.Networking;
+using MLAPI.Networking.Messages;
+using MLAPI.Networking.Serialization;
+using MLAPI.Pathfinding;
+using MLAPI.Util;
+using MLAPI.World;
+using MLAPI.World.Data;
 
-namespace MagicalLifeServer.Processing.Message
+namespace MLServer.Processing.Message_Handlers
 {
     /// <summary>
     /// How the server handles receiving route data for a creature.
@@ -40,7 +41,7 @@ namespace MagicalLifeServer.Processing.Message
                 {
                     ComponentMovement movementComponent = l.GetExactComponent<ComponentMovement>();
                     movementComponent.QueuedMovement.Clear();
-                    MagicalLifeAPI.Util.Extensions.EnqueueCollection<PathLink>(movementComponent.QueuedMovement, msg.Path);
+                    Extensions.EnqueueCollection<PathLink>(movementComponent.QueuedMovement, msg.Path);
                 }
             }
             else

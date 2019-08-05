@@ -1,8 +1,8 @@
-﻿using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeAPI.World.Data.Disk.DataStorage;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MLAPI.Networking.Serialization;
+using MLAPI.World.Data.Disk.DataStorage;
 
-namespace MagicalLifeAPI.Networking.Messages
+namespace MLAPI.Networking.Messages
 {
     /// <summary>
     /// Used to describe the following messages that contain the world.

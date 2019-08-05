@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeAPI.Util.Reusable
+﻿namespace MLAPI.Util.Reusable
 {
     /// <summary>
     /// Used to count things.

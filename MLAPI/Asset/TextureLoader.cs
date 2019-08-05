@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.Load;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
+using MLAPI.Load;
 
-namespace MagicalLifeAPI.Asset
+namespace MLAPI.Asset
 {
     /// <summary>
     /// Loads all internal textures.

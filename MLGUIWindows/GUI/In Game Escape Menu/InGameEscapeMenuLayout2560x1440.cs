@@ -1,4 +1,4 @@
-﻿namespace MagicalLifeGUIWindows.GUI.In
+﻿namespace MLGUIWindows.GUI.In_Game_Escape_Menu
 {
     public static class InGameEscapeMenuLayout2560x1440
     {

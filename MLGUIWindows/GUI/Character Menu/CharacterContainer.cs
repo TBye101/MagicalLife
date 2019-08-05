@@ -1,15 +1,20 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Entity;
-using MagicalLifeAPI.World.Base;
-using MagicalLifeGUIWindows.GUI.Character_Menu.Buttons;
-using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeGUIWindows.GUI.Reusable.Premade;
-using MagicalLifeGUIWindows.Input;
-using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
+using MLAPI.Asset;
+using MLAPI.DataTypes;
+using MLAPI.Entity;
+using MLAPI.Entity.Skills;
+using MLAPI.Visual.Rendering;
+using MLAPI.World.Base;
+using MLGUIWindows.GUI.Character_Menu.Buttons;
+using MonoGUI.MonoGUI.Input;
+using MonoGUI.MonoGUI.Reusable;
+using MonoGUI.MonoGUI.Reusable.Collections;
+using MonoGUI.MonoGUI.Reusable.Event;
+using MonoGUI.MonoGUI.Reusable.Premade;
+using Rectangle = Microsoft.Xna.Framework.Rectangle;
 
-namespace MagicalLifeGUIWindows.GUI.Character_Menu
+namespace MLGUIWindows.GUI.Character_Menu
 {
     public class CharacterContainer : GuiContainer
     {
@@ -37,7 +42,7 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu
         {
             this.Creature = creature;
 
-            this.X = new WindowX(new MagicalLifeAPI.DataTypes.Point2D(this.DrawingBounds.Width, this.DrawingBounds.Height));
+            this.X = new WindowX(new Point2D(this.DrawingBounds.Width, this.DrawingBounds.Height));
             this.X.ClickEvent += this.X_ClickEvent;
             this.CharacterName = new MonoLabel(CharacterMenuLayout.GetNameBounds(), TextureLoader.GUIMenuBackground, true, creature.CreatureName);
             this.Skills = this.InitializeSkills(creature);
@@ -52,7 +57,7 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu
             this.Controls.Add(this.Inventory);
         }
 
-        private void X_ClickEvent(object sender, Reusable.Event.ClickEventArgs e)
+        private void X_ClickEvent(object sender, ClickEventArgs e)
         {
             BoundHandler.RemoveContainer(this);
         }
@@ -84,12 +89,12 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu
 
                 Rectangle imageBounds = new Rectangle(0, 0, 32, 32);
                 RenderableImage itemImage = new RenderableImage(imageBounds, item.Value[0].TextureName, true);
-                RenderableString itemName = new RenderableString(ItemFont, item.Value[0].Name, Rendering.Text.SimpleTextRenderer.Alignment.Left);
+                RenderableString itemName = new RenderableString(ItemFont, item.Value[0].Name, SimpleTextRenderer.Alignment.Left);
 
                 double stackWeight = item.Value[0].ItemWeight * itemCount;
-                RenderableString itemWeight = new RenderableString(ItemFont, "Weight: " + stackWeight.ToString(), Rendering.Text.SimpleTextRenderer.Alignment.Left);
+                RenderableString itemWeight = new RenderableString(ItemFont, "Weight: " + stackWeight.ToString(), SimpleTextRenderer.Alignment.Left);
 
-                RenderableString itemNumber = new RenderableString(ItemFont, "Count: " + itemCount.ToString(), Rendering.Text.SimpleTextRenderer.Alignment.Right);
+                RenderableString itemNumber = new RenderableString(ItemFont, "Count: " + itemCount.ToString(), SimpleTextRenderer.Alignment.Right);
 
                 grid.Add(0, itemImage);
                 grid.Add(1, itemName);
@@ -104,7 +109,7 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu
         {
             List<GUIElement> skills = new List<GUIElement>();
 
-            foreach (MagicalLifeAPI.Entity.Skills.Skill item in creature.CreatureSkills)
+            foreach (Skill item in creature.CreatureSkills)
             {
                 string skillText = "" + item.DisplayName + ": ("
                     + item.SkillAmount.GetValue().ToString() + "), ";
@@ -119,7 +124,7 @@ namespace MagicalLifeGUIWindows.GUI.Character_Menu
                     skillText += "Not Able to Learn";
                 }
 
-                RenderableString result = new RenderableString(ItemFont, skillText, Rendering.Text.SimpleTextRenderer.Alignment.Center);
+                RenderableString result = new RenderableString(ItemFont, skillText, SimpleTextRenderer.Alignment.Center);
                 skills.Add(result);
             }
 

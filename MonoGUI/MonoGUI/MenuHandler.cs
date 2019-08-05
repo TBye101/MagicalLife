@@ -1,8 +1,8 @@
-﻿using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeGUIWindows.Input;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MonoGUI.MonoGUI.Input;
+using MonoGUI.MonoGUI.Reusable;
 
-namespace MagicalLifeGUIWindows.GUI
+namespace MonoGUI.MonoGUI
 {
     /// <summary>
     /// Handles transitioning between menus.

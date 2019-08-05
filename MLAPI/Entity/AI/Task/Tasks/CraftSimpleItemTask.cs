@@ -1,11 +1,11 @@
-﻿using MagicalLifeAPI.Crafting;
-using MagicalLifeAPI.Entity.AI.Task.Qualifications;
-using MagicalLifeAPI.World.Base;
-using ProtoBuf;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using MLAPI.Crafting;
+using MLAPI.Entity.AI.Task.Qualifications;
+using MLAPI.World.Base;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.Entity.AI.Task.Tasks
+namespace MLAPI.Entity.AI.Task.Tasks
 {
     [ProtoContract]
     public class CraftSimpleItemTask : MagicalTask

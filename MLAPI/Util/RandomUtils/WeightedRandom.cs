@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MagicalLifeAPI.Util
+namespace MLAPI.Util.RandomUtils
 {
     /// <summary>
     /// Used to choose values from a list of values with unequal weights.

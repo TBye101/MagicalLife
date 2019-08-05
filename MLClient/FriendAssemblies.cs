@@ -8,7 +8,7 @@
 [assembly: InternalsVisibleTo("MLServer")]
 [assembly: InternalsVisibleTo("MLSettings")]
 
-namespace MagicalLifeClient
+namespace MLClient
 {
     /// <summary>
     /// Used to control access to internal members of this assembly.

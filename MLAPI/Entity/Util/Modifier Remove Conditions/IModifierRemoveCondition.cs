@@ -1,6 +1,6 @@
 ﻿using ProtoBuf;
 
-namespace MagicalLifeAPI.Entity.Util.Modifier
+namespace MLAPI.Entity.Util.Modifier_Remove_Conditions
 {
     /// <summary>
     /// Utilized to allow for custom events/circumstances to be used to determine when a modifier wears off.

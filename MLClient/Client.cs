@@ -1,11 +1,11 @@
-﻿using MagicalLifeAPI.Networking.Client;
-using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeAPI.Pathfinding;
-using MagicalLifeClient.Entity;
-using MagicalLifeClient.Message;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MLAPI.Networking.Client;
+using MLAPI.Networking.Serialization;
+using MLAPI.Pathfinding;
+using MLClient.Entity;
+using MLClient.Message_Handlers;
 
-namespace MagicalLifeClient
+namespace MLClient
 {
     /// <summary>
     /// Controls some high level functions of the server.

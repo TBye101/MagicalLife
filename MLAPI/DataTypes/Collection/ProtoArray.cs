@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace MagicalLifeAPI.DataTypes
+namespace MLAPI.DataTypes.Collection
 {
     /// <summary>
     /// A 2D array wrapper that is compatible with Protobuf-net.

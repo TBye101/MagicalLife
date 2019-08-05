@@ -1,10 +1,10 @@
-﻿using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeAPI.Networking.Messages;
-using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeAPI.Networking.Server;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MLAPI.Filing.Logging;
+using MLAPI.Networking.Messages;
+using MLAPI.Networking.Serialization;
+using MLAPI.Networking.Server;
 
-namespace MagicalLifeAPI.Networking.Client
+namespace MLAPI.Networking.Client
 {
     /// <summary>
     /// Used to hide the complexity of understanding where to send and receive data from.

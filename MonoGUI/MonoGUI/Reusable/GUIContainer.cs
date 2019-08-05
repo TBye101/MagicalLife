@@ -1,10 +1,10 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeGUIWindows.Map;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
+using MLAPI.Asset;
+using MonoGUI.Game;
 
-namespace MagicalLifeGUIWindows.GUI.Reusable
+namespace MonoGUI.MonoGUI.Reusable
 {
     /// <summary>
     /// Contains other <see cref="GUIElement"/>s.

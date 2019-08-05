@@ -1,12 +1,11 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Networking.Serialization;
-using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Data.Disk.DataStorage;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using MLAPI.DataTypes.Collection;
+using MLAPI.Networking.Serialization;
+using MLAPI.World.Data.Disk.DataStorage;
 
-namespace MagicalLifeAPI.World.Data.Disk
+namespace MLAPI.World.Data.Disk
 {
     /// <summary>
     /// Knows how to serialize a dimension.
@@ -71,7 +70,7 @@ namespace MagicalLifeAPI.World.Data.Disk
 
         private void SerializeStructures(Dimension dimension, AbstractWorldSink sink)
         {
-            foreach (KeyValuePair<Guid, ObjectAccess<Structure>> item in dimension.StructureManage.StructureStorage)
+            foreach (KeyValuePair<Guid, ObjectAccess<Structure.Structure>> item in dimension.StructureManage.StructureStorage)
             {
                 if (item.Value.Object != null)
                 {

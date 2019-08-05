@@ -1,14 +1,15 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeGUIWindows.GUI.Reusable;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using MLAPI.Asset;
+using MLAPI.Visual.Rendering;
+using MonoGUI.MonoGUI.Reusable;
 
-namespace MagicalLifeGUIWindows.GUI.Join
+namespace MLGUIWindows.GUI.Join_Game_Menu.Input_Boxes
 {
     public class IPInputBox : MonoInputBox
     {
         public IPInputBox(bool isLocked)
             : base(TextureLoader.GUIInputBox100x50, TextureLoader.GUICursorCarrot, GetInitialLocation(),
-                  int.MaxValue, TextureLoader.FontMainMenuFont12x, isLocked, Rendering.Text.SimpleTextRenderer.Alignment.Left, true)
+                  int.MaxValue, TextureLoader.FontMainMenuFont12x, isLocked, SimpleTextRenderer.Alignment.Left, true)
         {
         }
 

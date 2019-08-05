@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.Components.Entity;
+﻿using MLAPI.Components.Entity;
 using ProtoBuf;
 
-namespace MagicalLifeAPI.Entity.AI.Task.Qualifications
+namespace MLAPI.Entity.AI.Task.Qualifications
 {
     /// <summary>
     /// A creature must be able to move to meet this criteria.

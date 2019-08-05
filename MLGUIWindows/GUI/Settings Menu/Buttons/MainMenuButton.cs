@@ -1,11 +1,13 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Sound;
-using MagicalLifeGUIWindows.GUI.MainMenu;
-using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeGUIWindows.Properties;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using MLAPI.Asset;
+using MLAPI.Sound;
+using MLGUIWindows.GUI.MainMenu;
+using MLGUIWindows.Properties;
+using MonoGUI.MonoGUI;
+using MonoGUI.MonoGUI.Reusable;
+using MonoGUI.MonoGUI.Reusable.Event;
 
-namespace MagicalLifeGUIWindows.GUI.Settings_Menu.Buttons
+namespace MLGUIWindows.GUI.Settings_Menu.Buttons
 {
     public class MainMenuButton : MonoButton
     {
@@ -17,7 +19,7 @@ namespace MagicalLifeGUIWindows.GUI.Settings_Menu.Buttons
             FromMainMenu = fromMainMenu;
         }
 
-        private void MainMenuButton_ClickEvent(object sender, Reusable.Event.ClickEventArgs e)
+        private void MainMenuButton_ClickEvent(object sender, ClickEventArgs e)
         {
             FMODUtil.RaiseEvent(SoundsTable.UIClick);
             MenuHandler.Clear();

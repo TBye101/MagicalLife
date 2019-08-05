@@ -1,8 +1,8 @@
-﻿using ProtoBuf;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.Pathfinding.TeleportationSearch
+namespace MLAPI.DataTypes
 {
     /// <summary>
     /// Used to hold two guids.

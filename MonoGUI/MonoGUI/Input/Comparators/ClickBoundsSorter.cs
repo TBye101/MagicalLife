@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MagicalLifeGUIWindows.Input.Comparators
+namespace MonoGUI.MonoGUI.Input.Comparators
 {
     /// <summary>
     /// Used to sort <see cref="ClickBounds"/>

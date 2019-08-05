@@ -1,6 +1,4 @@
-﻿using MagicalLifeAPI.Error.InternalExceptions;
-using MagicalLifeAPI.Filing.Logging;
-using MLAPI.Genetic;
+﻿using MLAPI.Genetic;
 using MLAPI.Genetic.Algorithms;
 using MLAPI.Genetic.Crossovers;
 using MLAPI.Genetic.Reinsertions;
@@ -13,6 +11,8 @@ using MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.Mutations;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using MLAPI.Filing.Logging;
+using MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.GeneFactories;
 
 namespace MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph
 {

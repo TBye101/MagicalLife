@@ -1,6 +1,6 @@
 ﻿using ProtoBuf.Meta;
 
-namespace MagicalLifeAPI.Networking
+namespace MLAPI.Networking
 {
     /// <summary>
     /// Any class that implements this teaches the serializer how to serialize some external type.

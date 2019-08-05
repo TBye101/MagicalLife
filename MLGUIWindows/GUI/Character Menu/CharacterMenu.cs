@@ -1,6 +1,7 @@
-﻿using MagicalLifeAPI.Entity;
+﻿using MLAPI.Entity;
+using MonoGUI.MonoGUI;
 
-namespace MagicalLifeGUIWindows.GUI.Character_Menu
+namespace MLGUIWindows.GUI.Character_Menu
 {
     public static class CharacterMenu
     {

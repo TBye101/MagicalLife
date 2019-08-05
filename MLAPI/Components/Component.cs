@@ -1,8 +1,8 @@
-﻿using ProtoBuf;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.Components
+namespace MLAPI.Components
 {
     /// <summary>
     /// The base class for all components.

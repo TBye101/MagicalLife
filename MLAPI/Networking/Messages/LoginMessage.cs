@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.Networking.Serialization;
+﻿using MLAPI.Networking.Serialization;
 using ProtoBuf;
 
-namespace MagicalLifeAPI.Networking.Messages
+namespace MLAPI.Networking.Messages
 {
     /// <summary>
     /// Used by the client to tell the server which player in the game it is.

@@ -1,11 +1,11 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeGUIWindows.GUI.Reusable;
-using MagicalLifeGUIWindows.GUI.Settings_Menu.Buttons;
-using MagicalLifeGUIWindows.GUI.Settings_Menu.InputBoxes;
-using MagicalLifeGUIWindows.GUI.Settings_Menu.Labels;
+﻿using MLAPI.Asset;
+using MLAPI.Visual.Rendering;
+using MLGUIWindows.GUI.Settings_Menu.Buttons;
+using MLGUIWindows.GUI.Settings_Menu.InputBoxes;
+using MLGUIWindows.GUI.Settings_Menu.Labels;
+using MonoGUI.MonoGUI.Reusable;
 
-namespace MagicalLifeGUIWindows.GUI.Settings_Menu
+namespace MLGUIWindows.GUI.Settings_Menu
 {
     public class SettingsGameMenuContainer : GuiContainer
     {

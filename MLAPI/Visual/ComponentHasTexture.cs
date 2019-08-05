@@ -1,10 +1,10 @@
-﻿using MagicalLifeAPI.Components;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using ProtoBuf;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using MLAPI.Components;
+using MLAPI.Visual.Rendering;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.GUI
+namespace MLAPI.Visual
 {
     /// <summary>
     /// Any class that inherits from this has a texture.

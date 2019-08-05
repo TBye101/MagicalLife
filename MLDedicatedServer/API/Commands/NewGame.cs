@@ -1,16 +1,16 @@
-﻿using MagicalLifeAPI.Networking;
-using MagicalLifeAPI.Networking.Server;
-using MagicalLifeAPI.Registry.WorldGeneration;
-using MagicalLifeAPI.Server;
-using MagicalLifeAPI.World.Data;
-using MagicalLifeAPI.World.Data.Disk;
-using MagicalLifeDedicatedServer.API.Settings;
-using MagicalLifeServer;
-using MLDedicatedServer.Properties;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net.Sockets;
+using MLAPI.GameRegistry.WorldGeneration;
+using MLAPI.Networking;
+using MLAPI.Networking.Server;
+using MLAPI.Server;
+using MLAPI.World.Data;
+using MLAPI.World.Data.Disk;
+using MLDedicatedServer.API.Settings;
+using MLDedicatedServer.Properties;
+using MLServer;
 
-namespace MagicalLifeDedicatedServer.API.Commands
+namespace MLDedicatedServer.API.Commands
 {
     /// <summary>
     /// Creates a new world and launches a new game.

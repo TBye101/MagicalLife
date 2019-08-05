@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace MagicalLifeGUIWindows.GUI.Action_Menu
+namespace MLGUIWindows.GUI.Action_Menu
 {
     /// <summary>
     /// Holds positioning information for the action menu.

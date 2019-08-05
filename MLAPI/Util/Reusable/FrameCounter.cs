@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace MagicalLifeAPI.Util.Reusable
+namespace MLAPI.Util.Reusable
 {
     /// <summary>
     /// An FPS counter.

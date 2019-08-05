@@ -1,11 +1,11 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.World.Base;
-using MagicalLifeAPI.World.Data.Disk;
-using ProtoBuf;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using MLAPI.DataTypes.Collection;
+using MLAPI.World.Base;
+using MLAPI.World.Data.Disk;
+using ProtoBuf;
 
-namespace MagicalLifeAPI.World.Data
+namespace MLAPI.World.Data
 {
     /// <summary>
     /// Manages what chunks are loaded and cached from a given list of chunks.

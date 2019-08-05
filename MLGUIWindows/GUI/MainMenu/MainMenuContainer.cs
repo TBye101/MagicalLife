@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeGUIWindows.GUI.MainMenu.Buttons;
-using MagicalLifeGUIWindows.GUI.Reusable;
+﻿using MLAPI.Asset;
+using MLAPI.Visual.Rendering;
+using MLGUIWindows.GUI.MainMenu.Buttons;
+using MonoGUI.MonoGUI.Reusable;
 
-namespace MagicalLifeGUIWindows.GUI.MainMenu
+namespace MLGUIWindows.GUI.MainMenu
 {
     public class MainMenuContainer : GuiContainer
     {

@@ -1,10 +1,10 @@
-﻿using MagicalLifeAPI.Asset;
-using MagicalLifeAPI.Components.Generic.Renderable;
-using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.World.Base;
+﻿using MLAPI.Asset;
+using MLAPI.DataTypes;
 using MLAPI.Properties;
+using MLAPI.Visual.Rendering;
+using MLAPI.World.Base;
 
-namespace MagicalLifeAPI.World.Tiles
+namespace MLCoreMod.Core.Tiles
 {
     [ProtoBuf.ProtoContract]
     internal class TilledDirt : Tile

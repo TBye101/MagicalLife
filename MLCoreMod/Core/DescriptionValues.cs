@@ -1,6 +1,6 @@
-﻿using MagicalLifeAPI.Mod;
+﻿using MLAPI.Mod;
 
-namespace MagicalLifeMod.Core
+namespace MLCoreMod.Core
 {
     /// <summary>
     /// Holds some information about the core game mod.

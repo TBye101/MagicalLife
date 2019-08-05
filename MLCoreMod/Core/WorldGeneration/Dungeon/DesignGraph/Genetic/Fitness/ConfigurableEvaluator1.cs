@@ -1,5 +1,4 @@
-﻿using MagicalLifeAPI.Filing.Logging;
-using MLAPI.Genetic;
+﻿using MLAPI.Genetic;
 using MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph.Genetic.Fitness;
 using System;
 using System.Collections.Generic;

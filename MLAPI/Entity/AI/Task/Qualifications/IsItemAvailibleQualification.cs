@@ -1,9 +1,9 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Registry.ItemRegistry;
+﻿using System;
+using MLAPI.DataTypes;
+using MLAPI.GameRegistry.Items;
 using ProtoBuf;
-using System;
 
-namespace MagicalLifeAPI.Entity.AI.Task.Qualifications
+namespace MLAPI.Entity.AI.Task.Qualifications
 {
     /// <summary>
     /// Determines whether an item of the specified type is unreserved in the world.

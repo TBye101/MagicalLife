@@ -1,7 +1,7 @@
-﻿using MagicalLifeAPI.DataTypes;
+﻿using MLAPI.DataTypes;
 using ProtoBuf.Meta;
 
-namespace MagicalLifeAPI.Networking.External
+namespace MLAPI.Networking.External_Type_Serialization
 {
     public class Point2DTeacher : ITeachSerialization
     {

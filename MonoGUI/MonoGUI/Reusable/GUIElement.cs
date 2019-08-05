@@ -1,13 +1,13 @@
-﻿using MagicalLifeAPI.Filing.Logging;
-using MagicalLifeGUIWindows.GUI.Reusable.Event;
-using MagicalLifeGUIWindows.Input;
-using MagicalLifeGUIWindows.Map;
+﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MLAPI.Filing.Logging;
 using MonoGame.Extended.Input.InputListeners;
-using System;
+using MonoGUI.Game;
+using MonoGUI.MonoGUI.Input;
+using MonoGUI.MonoGUI.Reusable.Event;
 
-namespace MagicalLifeGUIWindows.GUI.Reusable
+namespace MonoGUI.MonoGUI.Reusable
 {
     /// <summary>
     /// Implemented by all GUI elements.

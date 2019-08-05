@@ -1,10 +1,10 @@
-﻿using MagicalLifeAPI.DataTypes;
-using MagicalLifeAPI.Entity.Humanoid;
-using MagicalLifeAPI.Entity.Skills;
-using MagicalLifeAPI.Util;
-using System;
+﻿using System;
+using MLAPI.DataTypes;
+using MLAPI.Entity.Humanoid;
+using MLAPI.Entity.Skills;
+using MLAPI.Util.RandomUtils;
 
-namespace MagicalLifeAPI.Entity.Entity
+namespace MLAPI.Entity.Entity_Factory
 {
     /// <summary>
     /// Used to initialize a new human properly.
