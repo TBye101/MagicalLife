@@ -18,8 +18,8 @@ namespace MonoGUI.MonoGUI.Reusable
         /// </summary>
         public string Text
         {
-            get { return _text; }
-            set { _text = value; OnTextChanged(); }
+            get { return this._text; }
+            set { this._text = value; this.OnTextChanged(); }
         }
 
         /// <summary>

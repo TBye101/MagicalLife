@@ -13,7 +13,7 @@ namespace MLGUIWindows.GUI.Settings_Menu.InputBoxes
            base(TextureLoader.GUIInputBox100x50, TextureLoader.GUICursorCarrot, GetInitialLocation(), int.MaxValue, TextureLoader.FontMainMenuFont12x,
                false, SimpleTextRenderer.Alignment.Left, true)
         {
-            TextChanged += UpdateAudio;
+            TextChanged += this.UpdateAudio;
         }
 
         /// <summary>

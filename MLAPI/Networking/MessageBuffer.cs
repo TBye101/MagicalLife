@@ -29,7 +29,7 @@ namespace MLAPI.Networking
         {
             this.Buffer.AddRange(data);
 
-            if (NextMessageLength == -1)
+            if (this.NextMessageLength == -1)
             {
                 this.CalculateNextMessageLength();
             }

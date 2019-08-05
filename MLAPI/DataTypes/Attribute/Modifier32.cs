@@ -40,12 +40,12 @@ namespace MLAPI.DataTypes.Attribute
 
         public override int GetHashCode()
         {
-            return Explanation.GetHashCode() ^ Value;
+            return this.Explanation.GetHashCode() ^ this.Value;
         }
 
         public bool Equals(Modifier32 other)
         {
-            return other.Explanation == Explanation && other.Value == Value;
+            return other.Explanation == this.Explanation && other.Value == this.Value;
         }
 
         public static bool operator ==(Modifier32 left, Modifier32 right)

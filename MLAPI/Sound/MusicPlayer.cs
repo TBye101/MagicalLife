@@ -71,12 +71,12 @@ namespace MLAPI.Sound
 
             if (this._current_song_id != songId)
             {
-                Stop();
+                this.Stop();
 
                 if (songId >= 0 && songId < this.Songs.Count && this.Songs[songId] != null)
                 {
                     this.FMODSystem.playSound(this.Songs[songId], null, false, out this.Channel);
-                    UpdateVolume();
+                    this.UpdateVolume();
                     this.Channel.setMode(FMOD.MODE.LOOP_NORMAL);
                     this.Channel.setLoopCount(-1);
 
@@ -95,7 +95,7 @@ namespace MLAPI.Sound
 
         public void Stop()
         {
-            if (IsPlaying())
+            if (this.IsPlaying())
             {
                 this.Channel.stop();
             }

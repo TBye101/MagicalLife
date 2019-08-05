@@ -72,10 +72,10 @@ namespace MLAPI.DataTypes.Collection
         /// <exception cref="InvalidOperationException">The Queue is empty</exception>
         public T Dequeue()
         {
-            if (Data.Count > 0)
+            if (this.Data.Count > 0)
             {
-                T item = Data[0];
-                Data.Remove(item);
+                T item = this.Data[0];
+                this.Data.Remove(item);
                 return item;
             }
             else
@@ -86,7 +86,7 @@ namespace MLAPI.DataTypes.Collection
 
         public void Enqueue(T item)
         {
-            Data.Add(item);
+            this.Data.Add(item);
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace MLAPI.DataTypes.Collection
         /// </summary>
         public void Clear()
         {
-            Data.Clear();
+            this.Data.Clear();
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace MLAPI.DataTypes.Collection
         /// </returns>
         public bool Contains(T item)
         {
-            return Data.Contains(item);
+            return this.Data.Contains(item);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace MLAPI.DataTypes.Collection
         /// <param name="arrayIndex">The zero-based index in array at which copying begins.</param>
         public void CopyTo(T[] array, int arrayIndex)
         {
-            Data.CopyTo(array, arrayIndex);
+            this.Data.CopyTo(array, arrayIndex);
         }
 
         /// <summary>
@@ -127,9 +127,9 @@ namespace MLAPI.DataTypes.Collection
         /// <exception cref="InvalidOperationException">The Queue is empty.</exception>
         public T Peek()
         {
-            if (Data.Count > 0)
+            if (this.Data.Count > 0)
             {
-                return Data[0];
+                return this.Data[0];
             }
             else
             {
@@ -152,7 +152,7 @@ namespace MLAPI.DataTypes.Collection
         /// <param name="item">The object to add to the <see cref="T:System.Collections.Generic.ICollection`1"></see>.</param>
         public void Add(T item)
         {
-            Enqueue(item);
+            this.Enqueue(item);
         }
 
         /// <summary>

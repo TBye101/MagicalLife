@@ -45,12 +45,12 @@ namespace MLGUIWindows
 
         public Game1()
         {
-            Graphics = new GraphicsDeviceManager(this);
+            this.Graphics = new GraphicsDeviceManager(this);
             this.Content.RootDirectory = "Content";
             Game1.AssetManager = this.Content;
             RenderingData.AssetManagerClone = Game1.AssetManager;
             Uni.GameExit += this.UniversalEvents_GameExit;
-            Graphics.HardwareModeSwitch = false;
+            this.Graphics.HardwareModeSwitch = false;
             OutputDebugInfo();
         }
 
@@ -83,8 +83,8 @@ namespace MLGUIWindows
 
             SettingsManager.UniversalSettings.Settings.GameHasRunBefore = true;
             SettingsManager.UniversalSettings.Save();
-            RenderInfo.Camera2D.ViewportHeight = Graphics.GraphicsDevice.Viewport.Height;
-            RenderInfo.Camera2D.ViewportWidth = Graphics.GraphicsDevice.Viewport.Width;
+            RenderInfo.Camera2D.ViewportHeight = this.Graphics.GraphicsDevice.Viewport.Height;
+            RenderInfo.Camera2D.ViewportWidth = this.Graphics.GraphicsDevice.Viewport.Width;
             RenderInfo.Camera2D.CenterOn(new Vector2(8, 8));
         }
 

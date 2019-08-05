@@ -25,9 +25,9 @@ namespace MonoGUI.MonoGUI.Reusable.Collections
         {
             get
             {
-                if (index >= 0 && index <= ActionButtons.Count - 1)
+                if (index >= 0 && index <= this.ActionButtons.Count - 1)
                 {
-                    return ActionButtons[index];
+                    return this.ActionButtons[index];
                 }
                 else
                 {
@@ -36,25 +36,25 @@ namespace MonoGUI.MonoGUI.Reusable.Collections
             }
             set
             {
-                if (index >= 0 && index <= Count - 1)
+                if (index >= 0 && index <= this.Count - 1)
                 {
-                    ActionButtons[index] = value;
+                    this.ActionButtons[index] = value;
                 }
             }
         }
 
         public void AddItem(ActionButton actionButton)
         {
-            ActionButtons.Add(actionButton);
+            this.ActionButtons.Add(actionButton);
         }
 
         public void SetButtonActive(int index)
         {
-            if (index >= 0 && index <= ActionButtons.Count - 1)
+            if (index >= 0 && index <= this.ActionButtons.Count - 1)
             {
-                ActionButtons[SelectedIndex].IsSelected = false;
-                SelectedIndex = index;
-                ActionButtons[index].IsSelected = true;
+                this.ActionButtons[this.SelectedIndex].IsSelected = false;
+                this.SelectedIndex = index;
+                this.ActionButtons[index].IsSelected = true;
             }
         }
     }

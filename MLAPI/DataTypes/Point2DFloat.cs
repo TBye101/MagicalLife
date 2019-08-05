@@ -31,7 +31,7 @@ namespace MLAPI.DataTypes
 
         public bool Equals(Point2DFloat other)
         {
-            return Math.Abs(other.X - X) < 0.00001f && Math.Abs(other.Y - Y) < 0.00001f;
+            return Math.Abs(other.X - this.X) < 0.00001f && Math.Abs(other.Y - this.Y) < 0.00001f;
         }
 
         public override bool Equals(object obj)

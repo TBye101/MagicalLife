@@ -34,7 +34,7 @@ namespace MonoGUI.MonoGUI.Reusable
             int x = this.DrawingBounds.X + containerBounds.X;
             int y = this.DrawingBounds.Y + containerBounds.Y;
             location = new Rectangle(x, y, this.DrawingBounds.Width, this.DrawingBounds.Height);
-            spBatch.Draw(AssetManager.Textures[CorrectTextureID], location, Color.White);
+            spBatch.Draw(AssetManager.Textures[this.CorrectTextureID], location, Color.White);
             SimpleTextRenderer.DrawString(this.Font, this.Text, location, Alignment.Center, Color.White, spBatch, RenderLayer.GUI);
         }
     }

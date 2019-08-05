@@ -87,9 +87,9 @@ namespace MLAPI.DataTypes
         /// <param name="z2">coordinate of the opposite corner</param>
         public Rectangle(float x1, float y1, float x2, float y2)
         {
-            min = new float[DIMENSIONS];
-            max = new float[DIMENSIONS];
-            Set(x1, y1, x2, y2);
+            this.min = new float[DIMENSIONS];
+            this.max = new float[DIMENSIONS];
+            this.Set(x1, y1, x2, y2);
         }
 
         public Rectangle(Point2D a, Point2D b)
@@ -113,7 +113,7 @@ namespace MLAPI.DataTypes
             this.min = new float[DIMENSIONS];
             this.max = new float[DIMENSIONS];
 
-            Set(min, max);
+            this.Set(min, max);
         }
 
         /// <summary>
@@ -127,10 +127,10 @@ namespace MLAPI.DataTypes
         /// <param name="z2">coordinate of the opposite corner</param>
         internal void Set(float x1, float y1, float x2, float y2)
         {
-            min[0] = Math.Min(x1, x2);
-            min[1] = Math.Min(y1, y2);
-            max[0] = Math.Max(x1, x2);
-            max[1] = Math.Max(y1, y2);
+            this.min[0] = Math.Min(x1, x2);
+            this.min[1] = Math.Min(y1, y2);
+            this.max[0] = Math.Max(x1, x2);
+            this.max[1] = Math.Max(y1, y2);
         }
 
         /// <summary>
@@ -140,12 +140,12 @@ namespace MLAPI.DataTypes
         /// </summary>
         public Dimension? Get(int dimension)
         {
-            if ((min.Length >= dimension) && (max.Length >= dimension))
+            if ((this.min.Length >= dimension) && (this.max.Length >= dimension))
             {
                 Dimension retval = new Dimension
                 {
-                    Min = min[dimension],
-                    Max = max[dimension]
+                    Min = this.min[dimension],
+                    Max = this.max[dimension]
                 };
                 return retval;
             }
@@ -169,7 +169,7 @@ namespace MLAPI.DataTypes
         /// <returns>copy of this rectangle</returns>
         internal Rectangle Copy()
         {
-            return new Rectangle(min, max);
+            return new Rectangle(this.min, this.max);
         }
 
         /// <summary>
@@ -180,7 +180,7 @@ namespace MLAPI.DataTypes
         {
             for (int i = 0; i < DIMENSIONS; i++)
             {
-                if (min[i] == r.min[i] || max[i] == r.max[i])
+                if (this.min[i] == r.min[i] || this.max[i] == r.max[i])
                 {
                     return true;
                 }
@@ -199,7 +199,7 @@ namespace MLAPI.DataTypes
             // does not intersect, return false immediately.
             for (int i = 0; i < DIMENSIONS; i++)
             {
-                if (max[i] < r.min[i] || min[i] > r.max[i])
+                if (this.max[i] < r.min[i] || this.min[i] > r.max[i])
                 {
                     return false;
                 }
@@ -216,7 +216,7 @@ namespace MLAPI.DataTypes
         {
             for (int i = 0; i < DIMENSIONS; i++)
             {
-                if (max[i] < r.max[i] || min[i] > r.min[i])
+                if (this.max[i] < r.max[i] || this.min[i] > r.min[i])
                 {
                     return false;
                 }
@@ -233,7 +233,7 @@ namespace MLAPI.DataTypes
         {
             for (int i = 0; i < DIMENSIONS; i++)
             {
-                if (max[i] > r.max[i] || min[i] < r.min[i])
+                if (this.max[i] > r.max[i] || this.min[i] < r.min[i])
                 {
                     return false;
                 }
@@ -252,8 +252,8 @@ namespace MLAPI.DataTypes
             float distanceSquared = 0;
             for (int i = 0; i < DIMENSIONS; i++)
             {
-                float greatestMin = Math.Max(min[i], p.coordinates[i]);
-                float leastMax = Math.Min(max[i], p.coordinates[i]);
+                float greatestMin = Math.Max(this.min[i], p.coordinates[i]);
+                float leastMax = Math.Min(this.max[i], p.coordinates[i]);
                 if (greatestMin > leastMax)
                 {
                     distanceSquared += ((greatestMin - leastMax) * (greatestMin - leastMax));
@@ -273,8 +273,8 @@ namespace MLAPI.DataTypes
             float distanceSquared = 0;
             for (int i = 0; i < DIMENSIONS; i++)
             {
-                float greatestMin = Math.Max(min[i], r.min[i]);
-                float leastMax = Math.Min(max[i], r.max[i]);
+                float greatestMin = Math.Max(this.min[i], r.min[i]);
+                float leastMax = Math.Min(this.max[i], r.max[i]);
                 if (greatestMin > leastMax)
                 {
                     distanceSquared += ((greatestMin - leastMax) * (greatestMin - leastMax));
@@ -291,7 +291,7 @@ namespace MLAPI.DataTypes
         internal float DistanceSquared(int dimension, float point)
         {
             float distanceSquared = 0;
-            float tempDistance = point - max[dimension];
+            float tempDistance = point - this.max[dimension];
             for (int i = 0; i < 2; i++)
             {
                 if (tempDistance > 0)
@@ -299,7 +299,7 @@ namespace MLAPI.DataTypes
                     distanceSquared = (tempDistance * tempDistance);
                     break;
                 }
-                tempDistance = min[dimension] - point;
+                tempDistance = this.min[dimension] - point;
             }
             return distanceSquared;
         }
@@ -337,10 +337,10 @@ namespace MLAPI.DataTypes
         /// </param>
         internal float Enlargement(Rectangle r)
         {
-            float enlargedArea = (Math.Max(max[0], r.max[0]) - Math.Min(min[0], r.min[0])) *
-                                 (Math.Max(max[1], r.max[1]) - Math.Min(min[1], r.min[1]));
+            float enlargedArea = (Math.Max(this.max[0], r.max[0]) - Math.Min(this.min[0], r.min[0])) *
+                                 (Math.Max(this.max[1], r.max[1]) - Math.Min(this.min[1], r.min[1]));
 
-            return enlargedArea - Area();
+            return enlargedArea - this.Area();
         }
 
         /// <summary>
@@ -349,7 +349,7 @@ namespace MLAPI.DataTypes
         /// <returns> The area of this rectangle</returns>
         internal float Area()
         {
-            return (max[0] - min[0]) * (max[1] - min[1]);
+            return (this.max[0] - this.min[0]) * (this.max[1] - this.min[1]);
         }
 
         /// <summary>
@@ -361,13 +361,13 @@ namespace MLAPI.DataTypes
         {
             for (int i = 0; i < DIMENSIONS; i++)
             {
-                if (r.min[i] < min[i])
+                if (r.min[i] < this.min[i])
                 {
-                    min[i] = r.min[i];
+                    this.min[i] = r.min[i];
                 }
-                if (r.max[i] > max[i])
+                if (r.max[i] > this.max[i])
                 {
-                    max[i] = r.max[i];
+                    this.max[i] = r.max[i];
                 }
             }
         }
@@ -416,8 +416,8 @@ namespace MLAPI.DataTypes
         public override bool Equals(object obj)
         {
             bool equals = false;
-            if (obj is Rectangle r && CompareArrays(r.min, min)
-                && CompareArrays(r.max, max))
+            if (obj is Rectangle r && this.CompareArrays(r.min, this.min)
+                && this.CompareArrays(r.max, this.max))
             {
                 equals = true;
             }
@@ -462,7 +462,7 @@ namespace MLAPI.DataTypes
                 {
                     sb.Append(", ");
                 }
-                sb.Append(min[i]);
+                sb.Append(this.min[i]);
             }
             sb.Append("), (");
 
@@ -473,7 +473,7 @@ namespace MLAPI.DataTypes
                 {
                     sb.Append(", ");
                 }
-                sb.Append(max[i]);
+                sb.Append(this.max[i]);
             }
             sb.Append(')');
             return sb.ToString();
@@ -481,8 +481,8 @@ namespace MLAPI.DataTypes
 
         public bool Equals(Rectangle other)
         {
-            return CompareArrays(other.min, min)
-                    && CompareArrays(other.max, max);
+            return this.CompareArrays(other.min, this.min)
+                    && this.CompareArrays(other.max, this.max);
         }
     }
 }

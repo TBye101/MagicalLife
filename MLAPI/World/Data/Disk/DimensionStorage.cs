@@ -110,7 +110,7 @@ namespace MLAPI.World.Data.Disk
         {
             string dimensionRoot = WorldStorage.DimensionPaths[dimension.ID];
             DimensionHeader header = new DimensionHeader(dimension.DimensionName, dimension.ID, dimension.Width, dimension.Height);
-            SerializeDimensionHeader(header, sink, dimensionRoot);
+            this.SerializeDimensionHeader(header, sink, dimensionRoot);
         }
 
         internal void SerializeDimensionHeader(DimensionHeader header, AbstractWorldSink sink, string dimensionRoot)

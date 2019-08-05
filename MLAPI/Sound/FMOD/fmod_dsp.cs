@@ -655,10 +655,10 @@ namespace MLAPI.Sound.FMOD
             {
                 float[][] buffer = new float[this.numchannels][];
 
-                for (int i = 0; i < numchannels; ++i)
+                for (int i = 0; i < this.numchannels; ++i)
                 {
-                    buffer[i] = new float[length];
-                    Marshal.Copy(spectrum_internal[i], buffer[i], 0, length);
+                    buffer[i] = new float[this.length];
+                    Marshal.Copy(this.spectrum_internal[i], buffer[i], 0, this.length);
                 }
 
                 return buffer;

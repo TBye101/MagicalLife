@@ -169,12 +169,12 @@ namespace MLAPI.Sound.FMOD
             // Helper functions
             public void assign(out PARAMETER_DESCRIPTION publicDesc)
             {
-                publicDesc.name = MarshallingHelper.stringFromNativeUtf8(name);
-                publicDesc.index = index;
-                publicDesc.minimum = minimum;
-                publicDesc.maximum = maximum;
-                publicDesc.defaultvalue = defaultvalue;
-                publicDesc.type = type;
+                publicDesc.name = MarshallingHelper.stringFromNativeUtf8(this.name);
+                publicDesc.index = this.index;
+                publicDesc.minimum = this.minimum;
+                publicDesc.maximum = this.maximum;
+                publicDesc.defaultvalue = this.defaultvalue;
+                publicDesc.type = this.type;
             }
         }
 
@@ -204,12 +204,12 @@ namespace MLAPI.Sound.FMOD
             {
                 get
                 {
-                    if (((mode & (MODE.OPENMEMORY | MODE.OPENMEMORY_POINT)) == 0) && (name_or_data != null))
+                    if (((this.mode & (MODE.OPENMEMORY | MODE.OPENMEMORY_POINT)) == 0) && (this.name_or_data != null))
                     {
-                        int strlen = Array.IndexOf(name_or_data, (byte)0);
+                        int strlen = Array.IndexOf(this.name_or_data, (byte)0);
                         if (strlen > 0)
                         {
-                            return Encoding.UTF8.GetString(name_or_data, 0, strlen);
+                            return Encoding.UTF8.GetString(this.name_or_data, 0, strlen);
                         }
                         else
                         {
@@ -227,10 +227,10 @@ namespace MLAPI.Sound.FMOD
 
             ~SOUND_INFO()
             {
-                if (exinfo.inclusionlist != IntPtr.Zero)
+                if (this.exinfo.inclusionlist != IntPtr.Zero)
                 {
                     // Allocated in SOUND_INFO_INTERNAL::assign()
-                    Marshal.FreeHGlobal(exinfo.inclusionlist);
+                    Marshal.FreeHGlobal(this.exinfo.inclusionlist);
                 }
             }
 
@@ -253,42 +253,42 @@ namespace MLAPI.Sound.FMOD
             {
                 publicInfo = new SOUND_INFO();
 
-                publicInfo.mode = mode;
-                publicInfo.exinfo = exinfo;
+                publicInfo.mode = this.mode;
+                publicInfo.exinfo = this.exinfo;
 
                 // Somewhat hacky: we know the inclusion list always points to subsoundindex, so recreate it here
                 publicInfo.exinfo.inclusionlist = Marshal.AllocHGlobal(Marshal.SizeOf(typeof(Int32)));
-                Marshal.WriteInt32(publicInfo.exinfo.inclusionlist, subsoundindex);
+                Marshal.WriteInt32(publicInfo.exinfo.inclusionlist, this.subsoundindex);
                 publicInfo.exinfo.inclusionlistnum = 1;
 
-                publicInfo.subsoundindex = subsoundindex;
+                publicInfo.subsoundindex = this.subsoundindex;
 
-                if (name_or_data != IntPtr.Zero)
+                if (this.name_or_data != IntPtr.Zero)
                 {
                     int offset;
                     int length;
 
-                    if ((mode & (MODE.OPENMEMORY | MODE.OPENMEMORY_POINT)) != 0)
+                    if ((this.mode & (MODE.OPENMEMORY | MODE.OPENMEMORY_POINT)) != 0)
                     {
                         // OPENMEMORY_POINT won't work, so force it to OPENMEMORY
                         publicInfo.mode = (publicInfo.mode & ~MODE.OPENMEMORY_POINT) | MODE.OPENMEMORY;
 
                         // We want the data from (name_or_data + offset) to (name_or_data + offset + length)
-                        offset = (int)exinfo.fileoffset;
+                        offset = (int)this.exinfo.fileoffset;
 
                         // We'll copy the data taking fileoffset into account, so reset it to 0
                         publicInfo.exinfo.fileoffset = 0;
 
-                        length = (int)exinfo.length;
+                        length = (int)this.exinfo.length;
                     }
                     else
                     {
                         offset = 0;
-                        length = MarshallingHelper.stringLengthUtf8(name_or_data) + 1;
+                        length = MarshallingHelper.stringLengthUtf8(this.name_or_data) + 1;
                     }
 
                     publicInfo.name_or_data = new byte[length];
-                    Marshal.Copy(new IntPtr(name_or_data.ToInt64() + offset), publicInfo.name_or_data, 0, length);
+                    Marshal.Copy(new IntPtr(this.name_or_data.ToInt64() + offset), publicInfo.name_or_data, 0, length);
                 }
                 else
                 {
@@ -333,25 +333,25 @@ namespace MLAPI.Sound.FMOD
             public USER_PROPERTY createPublic()
             {
                 USER_PROPERTY publicProperty = new USER_PROPERTY();
-                publicProperty.name = MarshallingHelper.stringFromNativeUtf8(name);
-                publicProperty.type = type;
+                publicProperty.name = MarshallingHelper.stringFromNativeUtf8(this.name);
+                publicProperty.type = this.type;
 
-                switch (type)
+                switch (this.type)
                 {
                     case USER_PROPERTY_TYPE.INTEGER:
-                        publicProperty.intvalue = value.intvalue;
+                        publicProperty.intvalue = this.value.intvalue;
                         break;
 
                     case USER_PROPERTY_TYPE.BOOLEAN:
-                        publicProperty.boolvalue = value.boolvalue;
+                        publicProperty.boolvalue = this.value.boolvalue;
                         break;
 
                     case USER_PROPERTY_TYPE.FLOAT:
-                        publicProperty.floatvalue = value.floatvalue;
+                        publicProperty.floatvalue = this.value.floatvalue;
                         break;
 
                     case USER_PROPERTY_TYPE.STRING:
-                        publicProperty.stringvalue = MarshallingHelper.stringFromNativeUtf8(value.stringvalue);
+                        publicProperty.stringvalue = MarshallingHelper.stringFromNativeUtf8(this.value.stringvalue);
                         break;
                 }
 
@@ -375,14 +375,14 @@ namespace MLAPI.Sound.FMOD
             public COMMAND_INFO createPublic()
             {
                 COMMAND_INFO publicInfo = new COMMAND_INFO();
-                publicInfo.commandname = MarshallingHelper.stringFromNativeUtf8(commandname);
-                publicInfo.parentcommandindex = parentcommandindex;
-                publicInfo.framenumber = framenumber;
-                publicInfo.frametime = frametime;
-                publicInfo.instancetype = instancetype;
-                publicInfo.outputtype = outputtype;
-                publicInfo.instancehandle = instancehandle;
-                publicInfo.outputhandle = outputhandle;
+                publicInfo.commandname = MarshallingHelper.stringFromNativeUtf8(this.commandname);
+                publicInfo.parentcommandindex = this.parentcommandindex;
+                publicInfo.framenumber = this.framenumber;
+                publicInfo.frametime = this.frametime;
+                publicInfo.instancetype = this.instancetype;
+                publicInfo.outputtype = this.outputtype;
+                publicInfo.instancehandle = this.instancehandle;
+                publicInfo.outputhandle = this.outputhandle;
                 return publicInfo;
             }
         }
@@ -540,19 +540,19 @@ namespace MLAPI.Sound.FMOD
         {
             public HandleBase(IntPtr newPtr)
             {
-                rawPtr = newPtr;
+                this.rawPtr = newPtr;
             }
 
             public bool isValid()
             {
-                return (rawPtr != IntPtr.Zero) && isValidInternal();
+                return (this.rawPtr != IntPtr.Zero) && this.isValidInternal();
             }
 
             protected abstract bool isValidInternal();
 
             public IntPtr getRaw()
             {
-                return rawPtr;
+                return this.rawPtr;
             }
 
             protected IntPtr rawPtr;
@@ -561,18 +561,18 @@ namespace MLAPI.Sound.FMOD
 
             public override bool Equals(Object obj)
             {
-                return Equals(obj as HandleBase);
+                return this.Equals(obj as HandleBase);
             }
 
             public bool Equals(HandleBase p)
             {
                 // Equals if p not null and handle is the same
-                return ((object)p != null && rawPtr == p.rawPtr);
+                return ((object)p != null && this.rawPtr == p.rawPtr);
             }
 
             public override int GetHashCode()
             {
-                return rawPtr.ToInt32();
+                return this.rawPtr.ToInt32();
             }
 
             public static bool operator ==(HandleBase a, HandleBase b)
@@ -622,28 +622,28 @@ namespace MLAPI.Sound.FMOD
             public RESULT setAdvancedSettings(ADVANCEDSETTINGS settings)
             {
                 settings.cbsize = Marshal.SizeOf(typeof(ADVANCEDSETTINGS));
-                return FMOD_Studio_System_SetAdvancedSettings(rawPtr, ref settings);
+                return FMOD_Studio_System_SetAdvancedSettings(this.rawPtr, ref settings);
             }
 
             public RESULT getAdvancedSettings(out ADVANCEDSETTINGS settings)
             {
                 settings.cbsize = Marshal.SizeOf(typeof(ADVANCEDSETTINGS));
-                return FMOD_Studio_System_GetAdvancedSettings(rawPtr, out settings);
+                return FMOD_Studio_System_GetAdvancedSettings(this.rawPtr, out settings);
             }
 
             public RESULT initialize(int maxchannels, INITFLAGS studioFlags, FMOD.INITFLAGS flags, IntPtr extradriverdata)
             {
-                return FMOD_Studio_System_Initialize(rawPtr, maxchannels, studioFlags, flags, extradriverdata);
+                return FMOD_Studio_System_Initialize(this.rawPtr, maxchannels, studioFlags, flags, extradriverdata);
             }
 
             public RESULT release()
             {
-                return FMOD_Studio_System_Release(rawPtr);
+                return FMOD_Studio_System_Release(this.rawPtr);
             }
 
             public RESULT update()
             {
-                return FMOD_Studio_System_Update(rawPtr);
+                return FMOD_Studio_System_Update(this.rawPtr);
             }
 
             public RESULT getLowLevelSystem(out FMOD.System system)
@@ -651,7 +651,7 @@ namespace MLAPI.Sound.FMOD
                 system = null;
 
                 IntPtr systemraw = new IntPtr();
-                RESULT result = FMOD_Studio_System_GetLowLevelSystem(rawPtr, out systemraw);
+                RESULT result = FMOD_Studio_System_GetLowLevelSystem(this.rawPtr, out systemraw);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -667,7 +667,7 @@ namespace MLAPI.Sound.FMOD
                 _event = null;
 
                 IntPtr eventraw = new IntPtr();
-                RESULT result = FMOD_Studio_System_GetEvent(rawPtr, Encoding.UTF8.GetBytes(path + Char.MinValue), out eventraw);
+                RESULT result = FMOD_Studio_System_GetEvent(this.rawPtr, Encoding.UTF8.GetBytes(path + Char.MinValue), out eventraw);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -682,7 +682,7 @@ namespace MLAPI.Sound.FMOD
                 bus = null;
 
                 IntPtr newPtr = new IntPtr();
-                RESULT result = FMOD_Studio_System_GetBus(rawPtr, Encoding.UTF8.GetBytes(path + Char.MinValue), out newPtr);
+                RESULT result = FMOD_Studio_System_GetBus(this.rawPtr, Encoding.UTF8.GetBytes(path + Char.MinValue), out newPtr);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -697,7 +697,7 @@ namespace MLAPI.Sound.FMOD
                 vca = null;
 
                 IntPtr newPtr = new IntPtr();
-                RESULT result = FMOD_Studio_System_GetVCA(rawPtr, Encoding.UTF8.GetBytes(path + Char.MinValue), out newPtr);
+                RESULT result = FMOD_Studio_System_GetVCA(this.rawPtr, Encoding.UTF8.GetBytes(path + Char.MinValue), out newPtr);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -712,7 +712,7 @@ namespace MLAPI.Sound.FMOD
                 bank = null;
 
                 IntPtr newPtr = new IntPtr();
-                RESULT result = FMOD_Studio_System_GetBank(rawPtr, Encoding.UTF8.GetBytes(path + Char.MinValue), out newPtr);
+                RESULT result = FMOD_Studio_System_GetBank(this.rawPtr, Encoding.UTF8.GetBytes(path + Char.MinValue), out newPtr);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -727,7 +727,7 @@ namespace MLAPI.Sound.FMOD
                 _event = null;
 
                 IntPtr eventraw = new IntPtr();
-                RESULT result = FMOD_Studio_System_GetEventByID(rawPtr, ref guid, out eventraw);
+                RESULT result = FMOD_Studio_System_GetEventByID(this.rawPtr, ref guid, out eventraw);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -742,7 +742,7 @@ namespace MLAPI.Sound.FMOD
                 bus = null;
 
                 IntPtr newPtr = new IntPtr();
-                RESULT result = FMOD_Studio_System_GetBusByID(rawPtr, ref guid, out newPtr);
+                RESULT result = FMOD_Studio_System_GetBusByID(this.rawPtr, ref guid, out newPtr);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -757,7 +757,7 @@ namespace MLAPI.Sound.FMOD
                 vca = null;
 
                 IntPtr newPtr = new IntPtr();
-                RESULT result = FMOD_Studio_System_GetVCAByID(rawPtr, ref guid, out newPtr);
+                RESULT result = FMOD_Studio_System_GetVCAByID(this.rawPtr, ref guid, out newPtr);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -772,7 +772,7 @@ namespace MLAPI.Sound.FMOD
                 bank = null;
 
                 IntPtr newPtr = new IntPtr();
-                RESULT result = FMOD_Studio_System_GetBankByID(rawPtr, ref guid, out newPtr);
+                RESULT result = FMOD_Studio_System_GetBankByID(this.rawPtr, ref guid, out newPtr);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -786,7 +786,7 @@ namespace MLAPI.Sound.FMOD
             {
                 SOUND_INFO_INTERNAL internalInfo;
 
-                RESULT result = FMOD_Studio_System_GetSoundInfo(rawPtr, Encoding.UTF8.GetBytes(key + Char.MinValue), out internalInfo);
+                RESULT result = FMOD_Studio_System_GetSoundInfo(this.rawPtr, Encoding.UTF8.GetBytes(key + Char.MinValue), out internalInfo);
                 if (result != RESULT.OK)
                 {
                     info = new SOUND_INFO();
@@ -800,7 +800,7 @@ namespace MLAPI.Sound.FMOD
 
             public RESULT lookupID(string path, out Guid guid)
             {
-                return FMOD_Studio_System_LookupID(rawPtr, Encoding.UTF8.GetBytes(path + Char.MinValue), out guid);
+                return FMOD_Studio_System_LookupID(this.rawPtr, Encoding.UTF8.GetBytes(path + Char.MinValue), out guid);
             }
 
             public RESULT lookupPath(Guid guid, out string path)
@@ -809,12 +809,12 @@ namespace MLAPI.Sound.FMOD
 
                 byte[] buffer = new byte[256];
                 int retrieved = 0;
-                RESULT result = FMOD_Studio_System_LookupPath(rawPtr, ref guid, buffer, buffer.Length, out retrieved);
+                RESULT result = FMOD_Studio_System_LookupPath(this.rawPtr, ref guid, buffer, buffer.Length, out retrieved);
 
                 if (result == RESULT.ERR_TRUNCATED)
                 {
                     buffer = new byte[retrieved];
-                    result = FMOD_Studio_System_LookupPath(rawPtr, ref guid, buffer, buffer.Length, out retrieved);
+                    result = FMOD_Studio_System_LookupPath(this.rawPtr, ref guid, buffer, buffer.Length, out retrieved);
                 }
 
                 if (result == RESULT.OK)
@@ -827,32 +827,32 @@ namespace MLAPI.Sound.FMOD
 
             public RESULT getNumListeners(out int numlisteners)
             {
-                return FMOD_Studio_System_GetNumListeners(rawPtr, out numlisteners);
+                return FMOD_Studio_System_GetNumListeners(this.rawPtr, out numlisteners);
             }
 
             public RESULT setNumListeners(int numlisteners)
             {
-                return FMOD_Studio_System_SetNumListeners(rawPtr, numlisteners);
+                return FMOD_Studio_System_SetNumListeners(this.rawPtr, numlisteners);
             }
 
             public RESULT getListenerAttributes(int listener, out _3D_ATTRIBUTES attributes)
             {
-                return FMOD_Studio_System_GetListenerAttributes(rawPtr, listener, out attributes);
+                return FMOD_Studio_System_GetListenerAttributes(this.rawPtr, listener, out attributes);
             }
 
             public RESULT setListenerAttributes(int listener, _3D_ATTRIBUTES attributes)
             {
-                return FMOD_Studio_System_SetListenerAttributes(rawPtr, listener, ref attributes);
+                return FMOD_Studio_System_SetListenerAttributes(this.rawPtr, listener, ref attributes);
             }
 
             public RESULT getListenerWeight(int listener, out float weight)
             {
-                return FMOD_Studio_System_GetListenerWeight(rawPtr, listener, out weight);
+                return FMOD_Studio_System_GetListenerWeight(this.rawPtr, listener, out weight);
             }
 
             public RESULT setListenerWeight(int listener, float weight)
             {
-                return FMOD_Studio_System_SetListenerWeight(rawPtr, listener, weight);
+                return FMOD_Studio_System_SetListenerWeight(this.rawPtr, listener, weight);
             }
 
             public RESULT loadBankFile(string name, LOAD_BANK_FLAGS flags, out Bank bank)
@@ -860,7 +860,7 @@ namespace MLAPI.Sound.FMOD
                 bank = null;
 
                 IntPtr newPtr = new IntPtr();
-                RESULT result = FMOD_Studio_System_LoadBankFile(rawPtr, Encoding.UTF8.GetBytes(name + Char.MinValue), flags, out newPtr);
+                RESULT result = FMOD_Studio_System_LoadBankFile(this.rawPtr, Encoding.UTF8.GetBytes(name + Char.MinValue), flags, out newPtr);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -875,7 +875,7 @@ namespace MLAPI.Sound.FMOD
                 bank = null;
 
                 IntPtr newPtr = new IntPtr();
-                RESULT result = FMOD_Studio_System_LoadBankMemory(rawPtr, buffer, buffer.Length, LOAD_MEMORY_MODE.LOAD_MEMORY, flags, out newPtr);
+                RESULT result = FMOD_Studio_System_LoadBankMemory(this.rawPtr, buffer, buffer.Length, LOAD_MEMORY_MODE.LOAD_MEMORY, flags, out newPtr);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -892,7 +892,7 @@ namespace MLAPI.Sound.FMOD
                 info.size = Marshal.SizeOf(info);
 
                 IntPtr newPtr = new IntPtr();
-                RESULT result = FMOD_Studio_System_LoadBankCustom(rawPtr, ref info, flags, out newPtr);
+                RESULT result = FMOD_Studio_System_LoadBankCustom(this.rawPtr, ref info, flags, out newPtr);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -904,34 +904,34 @@ namespace MLAPI.Sound.FMOD
 
             public RESULT unloadAll()
             {
-                return FMOD_Studio_System_UnloadAll(rawPtr);
+                return FMOD_Studio_System_UnloadAll(this.rawPtr);
             }
 
             public RESULT flushCommands()
             {
-                return FMOD_Studio_System_FlushCommands(rawPtr);
+                return FMOD_Studio_System_FlushCommands(this.rawPtr);
             }
 
             public RESULT flushSampleLoading()
             {
-                return FMOD_Studio_System_FlushSampleLoading(rawPtr);
+                return FMOD_Studio_System_FlushSampleLoading(this.rawPtr);
             }
 
             public RESULT startCommandCapture(string path, COMMANDCAPTURE_FLAGS flags)
             {
-                return FMOD_Studio_System_StartCommandCapture(rawPtr, Encoding.UTF8.GetBytes(path + Char.MinValue), flags);
+                return FMOD_Studio_System_StartCommandCapture(this.rawPtr, Encoding.UTF8.GetBytes(path + Char.MinValue), flags);
             }
 
             public RESULT stopCommandCapture()
             {
-                return FMOD_Studio_System_StopCommandCapture(rawPtr);
+                return FMOD_Studio_System_StopCommandCapture(this.rawPtr);
             }
 
             public RESULT loadCommandReplay(string path, COMMANDREPLAY_FLAGS flags, out CommandReplay replay)
             {
                 replay = null;
                 IntPtr newPtr = new IntPtr();
-                RESULT result = FMOD_Studio_System_LoadCommandReplay(rawPtr, Encoding.UTF8.GetBytes(path + Char.MinValue), flags, out newPtr);
+                RESULT result = FMOD_Studio_System_LoadCommandReplay(this.rawPtr, Encoding.UTF8.GetBytes(path + Char.MinValue), flags, out newPtr);
                 if (result == RESULT.OK)
                 {
                     replay = new CommandReplay(newPtr);
@@ -941,7 +941,7 @@ namespace MLAPI.Sound.FMOD
 
             public RESULT getBankCount(out int count)
             {
-                return FMOD_Studio_System_GetBankCount(rawPtr, out count);
+                return FMOD_Studio_System_GetBankCount(this.rawPtr, out count);
             }
 
             public RESULT getBankList(out Bank[] array)
@@ -950,7 +950,7 @@ namespace MLAPI.Sound.FMOD
 
                 RESULT result;
                 int capacity;
-                result = FMOD_Studio_System_GetBankCount(rawPtr, out capacity);
+                result = FMOD_Studio_System_GetBankCount(this.rawPtr, out capacity);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -963,7 +963,7 @@ namespace MLAPI.Sound.FMOD
 
                 IntPtr[] rawArray = new IntPtr[capacity];
                 int actualCount;
-                result = FMOD_Studio_System_GetBankList(rawPtr, rawArray, capacity, out actualCount);
+                result = FMOD_Studio_System_GetBankList(this.rawPtr, rawArray, capacity, out actualCount);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -982,32 +982,32 @@ namespace MLAPI.Sound.FMOD
 
             public RESULT getCPUUsage(out CPU_USAGE usage)
             {
-                return FMOD_Studio_System_GetCPUUsage(rawPtr, out usage);
+                return FMOD_Studio_System_GetCPUUsage(this.rawPtr, out usage);
             }
 
             public RESULT getBufferUsage(out BUFFER_USAGE usage)
             {
-                return FMOD_Studio_System_GetBufferUsage(rawPtr, out usage);
+                return FMOD_Studio_System_GetBufferUsage(this.rawPtr, out usage);
             }
 
             public RESULT resetBufferUsage()
             {
-                return FMOD_Studio_System_ResetBufferUsage(rawPtr);
+                return FMOD_Studio_System_ResetBufferUsage(this.rawPtr);
             }
 
             public RESULT setCallback(SYSTEM_CALLBACK callback, SYSTEM_CALLBACK_TYPE callbackmask = SYSTEM_CALLBACK_TYPE.ALL)
             {
-                return FMOD_Studio_System_SetCallback(rawPtr, callback, callbackmask);
+                return FMOD_Studio_System_SetCallback(this.rawPtr, callback, callbackmask);
             }
 
             public RESULT getUserData(out IntPtr userdata)
             {
-                return FMOD_Studio_System_GetUserData(rawPtr, out userdata);
+                return FMOD_Studio_System_GetUserData(this.rawPtr, out userdata);
             }
 
             public RESULT setUserData(IntPtr userdata)
             {
-                return FMOD_Studio_System_SetUserData(rawPtr, userdata);
+                return FMOD_Studio_System_SetUserData(this.rawPtr, userdata);
             }
 
             #region importfunctions
@@ -1149,7 +1149,7 @@ namespace MLAPI.Sound.FMOD
 
             protected override bool isValidInternal()
             {
-                return FMOD_Studio_System_IsValid(rawPtr);
+                return FMOD_Studio_System_IsValid(this.rawPtr);
             }
 
             #endregion wrapperinternal
@@ -1159,7 +1159,7 @@ namespace MLAPI.Sound.FMOD
         {
             public RESULT getID(out Guid id)
             {
-                return FMOD_Studio_EventDescription_GetID(rawPtr, out id);
+                return FMOD_Studio_EventDescription_GetID(this.rawPtr, out id);
             }
 
             public RESULT getPath(out string path)
@@ -1168,12 +1168,12 @@ namespace MLAPI.Sound.FMOD
 
                 byte[] buffer = new byte[256];
                 int retrieved = 0;
-                RESULT result = FMOD_Studio_EventDescription_GetPath(rawPtr, buffer, buffer.Length, out retrieved);
+                RESULT result = FMOD_Studio_EventDescription_GetPath(this.rawPtr, buffer, buffer.Length, out retrieved);
 
                 if (result == RESULT.ERR_TRUNCATED)
                 {
                     buffer = new byte[retrieved];
-                    result = FMOD_Studio_EventDescription_GetPath(rawPtr, buffer, buffer.Length, out retrieved);
+                    result = FMOD_Studio_EventDescription_GetPath(this.rawPtr, buffer, buffer.Length, out retrieved);
                 }
 
                 if (result == RESULT.OK)
@@ -1186,7 +1186,7 @@ namespace MLAPI.Sound.FMOD
 
             public RESULT getParameterCount(out int count)
             {
-                return FMOD_Studio_EventDescription_GetParameterCount(rawPtr, out count);
+                return FMOD_Studio_EventDescription_GetParameterCount(this.rawPtr, out count);
             }
 
             public RESULT getParameterByIndex(int index, out PARAMETER_DESCRIPTION parameter)
@@ -1194,7 +1194,7 @@ namespace MLAPI.Sound.FMOD
                 parameter = new PARAMETER_DESCRIPTION();
 
                 PARAMETER_DESCRIPTION_INTERNAL paramInternal;
-                RESULT result = FMOD_Studio_EventDescription_GetParameterByIndex(rawPtr, index, out paramInternal);
+                RESULT result = FMOD_Studio_EventDescription_GetParameterByIndex(this.rawPtr, index, out paramInternal);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -1208,7 +1208,7 @@ namespace MLAPI.Sound.FMOD
                 parameter = new PARAMETER_DESCRIPTION();
 
                 PARAMETER_DESCRIPTION_INTERNAL paramInternal;
-                RESULT result = FMOD_Studio_EventDescription_GetParameter(rawPtr, Encoding.UTF8.GetBytes(name + Char.MinValue), out paramInternal);
+                RESULT result = FMOD_Studio_EventDescription_GetParameter(this.rawPtr, Encoding.UTF8.GetBytes(name + Char.MinValue), out paramInternal);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -1219,14 +1219,14 @@ namespace MLAPI.Sound.FMOD
 
             public RESULT getUserPropertyCount(out int count)
             {
-                return FMOD_Studio_EventDescription_GetUserPropertyCount(rawPtr, out count);
+                return FMOD_Studio_EventDescription_GetUserPropertyCount(this.rawPtr, out count);
             }
 
             public RESULT getUserPropertyByIndex(int index, out USER_PROPERTY property)
             {
                 USER_PROPERTY_INTERNAL propertyInternal;
 
-                RESULT result = FMOD_Studio_EventDescription_GetUserPropertyByIndex(rawPtr, index, out propertyInternal);
+                RESULT result = FMOD_Studio_EventDescription_GetUserPropertyByIndex(this.rawPtr, index, out propertyInternal);
                 if (result != RESULT.OK)
                 {
                     property = new USER_PROPERTY();
@@ -1243,7 +1243,7 @@ namespace MLAPI.Sound.FMOD
                 USER_PROPERTY_INTERNAL propertyInternal;
 
                 RESULT result = FMOD_Studio_EventDescription_GetUserProperty(
-                    rawPtr, Encoding.UTF8.GetBytes(name + Char.MinValue), out propertyInternal);
+                    this.rawPtr, Encoding.UTF8.GetBytes(name + Char.MinValue), out propertyInternal);
                 if (result != RESULT.OK)
                 {
                     property = new USER_PROPERTY();
@@ -1257,47 +1257,47 @@ namespace MLAPI.Sound.FMOD
 
             public RESULT getLength(out int length)
             {
-                return FMOD_Studio_EventDescription_GetLength(rawPtr, out length);
+                return FMOD_Studio_EventDescription_GetLength(this.rawPtr, out length);
             }
 
             public RESULT getMinimumDistance(out float distance)
             {
-                return FMOD_Studio_EventDescription_GetMinimumDistance(rawPtr, out distance);
+                return FMOD_Studio_EventDescription_GetMinimumDistance(this.rawPtr, out distance);
             }
 
             public RESULT getMaximumDistance(out float distance)
             {
-                return FMOD_Studio_EventDescription_GetMaximumDistance(rawPtr, out distance);
+                return FMOD_Studio_EventDescription_GetMaximumDistance(this.rawPtr, out distance);
             }
 
             public RESULT getSoundSize(out float size)
             {
-                return FMOD_Studio_EventDescription_GetSoundSize(rawPtr, out size);
+                return FMOD_Studio_EventDescription_GetSoundSize(this.rawPtr, out size);
             }
 
             public RESULT isSnapshot(out bool snapshot)
             {
-                return FMOD_Studio_EventDescription_IsSnapshot(rawPtr, out snapshot);
+                return FMOD_Studio_EventDescription_IsSnapshot(this.rawPtr, out snapshot);
             }
 
             public RESULT isOneshot(out bool oneshot)
             {
-                return FMOD_Studio_EventDescription_IsOneshot(rawPtr, out oneshot);
+                return FMOD_Studio_EventDescription_IsOneshot(this.rawPtr, out oneshot);
             }
 
             public RESULT isStream(out bool isStream)
             {
-                return FMOD_Studio_EventDescription_IsStream(rawPtr, out isStream);
+                return FMOD_Studio_EventDescription_IsStream(this.rawPtr, out isStream);
             }
 
             public RESULT is3D(out bool is3D)
             {
-                return FMOD_Studio_EventDescription_Is3D(rawPtr, out is3D);
+                return FMOD_Studio_EventDescription_Is3D(this.rawPtr, out is3D);
             }
 
             public RESULT hasCue(out bool cue)
             {
-                return FMOD_Studio_EventDescription_HasCue(rawPtr, out cue);
+                return FMOD_Studio_EventDescription_HasCue(this.rawPtr, out cue);
             }
 
             public RESULT createInstance(out EventInstance instance)
@@ -1305,7 +1305,7 @@ namespace MLAPI.Sound.FMOD
                 instance = null;
 
                 IntPtr newPtr = new IntPtr();
-                RESULT result = FMOD_Studio_EventDescription_CreateInstance(rawPtr, out newPtr);
+                RESULT result = FMOD_Studio_EventDescription_CreateInstance(this.rawPtr, out newPtr);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -1316,7 +1316,7 @@ namespace MLAPI.Sound.FMOD
 
             public RESULT getInstanceCount(out int count)
             {
-                return FMOD_Studio_EventDescription_GetInstanceCount(rawPtr, out count);
+                return FMOD_Studio_EventDescription_GetInstanceCount(this.rawPtr, out count);
             }
 
             public RESULT getInstanceList(out EventInstance[] array)
@@ -1325,7 +1325,7 @@ namespace MLAPI.Sound.FMOD
 
                 RESULT result;
                 int capacity;
-                result = FMOD_Studio_EventDescription_GetInstanceCount(rawPtr, out capacity);
+                result = FMOD_Studio_EventDescription_GetInstanceCount(this.rawPtr, out capacity);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -1338,7 +1338,7 @@ namespace MLAPI.Sound.FMOD
 
                 IntPtr[] rawArray = new IntPtr[capacity];
                 int actualCount;
-                result = FMOD_Studio_EventDescription_GetInstanceList(rawPtr, rawArray, capacity, out actualCount);
+                result = FMOD_Studio_EventDescription_GetInstanceList(this.rawPtr, rawArray, capacity, out actualCount);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -1357,37 +1357,37 @@ namespace MLAPI.Sound.FMOD
 
             public RESULT loadSampleData()
             {
-                return FMOD_Studio_EventDescription_LoadSampleData(rawPtr);
+                return FMOD_Studio_EventDescription_LoadSampleData(this.rawPtr);
             }
 
             public RESULT unloadSampleData()
             {
-                return FMOD_Studio_EventDescription_UnloadSampleData(rawPtr);
+                return FMOD_Studio_EventDescription_UnloadSampleData(this.rawPtr);
             }
 
             public RESULT getSampleLoadingState(out LOADING_STATE state)
             {
-                return FMOD_Studio_EventDescription_GetSampleLoadingState(rawPtr, out state);
+                return FMOD_Studio_EventDescription_GetSampleLoadingState(this.rawPtr, out state);
             }
 
             public RESULT releaseAllInstances()
             {
-                return FMOD_Studio_EventDescription_ReleaseAllInstances(rawPtr);
+                return FMOD_Studio_EventDescription_ReleaseAllInstances(this.rawPtr);
             }
 
             public RESULT setCallback(EVENT_CALLBACK callback, EVENT_CALLBACK_TYPE callbackmask = EVENT_CALLBACK_TYPE.ALL)
             {
-                return FMOD_Studio_EventDescription_SetCallback(rawPtr, callback, callbackmask);
+                return FMOD_Studio_EventDescription_SetCallback(this.rawPtr, callback, callbackmask);
             }
 
             public RESULT getUserData(out IntPtr userdata)
             {
-                return FMOD_Studio_EventDescription_GetUserData(rawPtr, out userdata);
+                return FMOD_Studio_EventDescription_GetUserData(this.rawPtr, out userdata);
             }
 
             public RESULT setUserData(IntPtr userdata)
             {
-                return FMOD_Studio_EventDescription_SetUserData(rawPtr, userdata);
+                return FMOD_Studio_EventDescription_SetUserData(this.rawPtr, userdata);
             }
 
             #region importfunctions
@@ -1487,7 +1487,7 @@ namespace MLAPI.Sound.FMOD
 
             protected override bool isValidInternal()
             {
-                return FMOD_Studio_EventDescription_IsValid(rawPtr);
+                return FMOD_Studio_EventDescription_IsValid(this.rawPtr);
             }
 
             #endregion wrapperinternal
@@ -1500,7 +1500,7 @@ namespace MLAPI.Sound.FMOD
                 description = null;
 
                 IntPtr newPtr;
-                RESULT result = FMOD_Studio_EventInstance_GetDescription(rawPtr, out newPtr);
+                RESULT result = FMOD_Studio_EventInstance_GetDescription(this.rawPtr, out newPtr);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -1511,97 +1511,97 @@ namespace MLAPI.Sound.FMOD
 
             public RESULT getVolume(out float volume, out float finalvolume)
             {
-                return FMOD_Studio_EventInstance_GetVolume(rawPtr, out volume, out finalvolume);
+                return FMOD_Studio_EventInstance_GetVolume(this.rawPtr, out volume, out finalvolume);
             }
 
             public RESULT setVolume(float volume)
             {
-                return FMOD_Studio_EventInstance_SetVolume(rawPtr, volume);
+                return FMOD_Studio_EventInstance_SetVolume(this.rawPtr, volume);
             }
 
             public RESULT getPitch(out float pitch, out float finalpitch)
             {
-                return FMOD_Studio_EventInstance_GetPitch(rawPtr, out pitch, out finalpitch);
+                return FMOD_Studio_EventInstance_GetPitch(this.rawPtr, out pitch, out finalpitch);
             }
 
             public RESULT setPitch(float pitch)
             {
-                return FMOD_Studio_EventInstance_SetPitch(rawPtr, pitch);
+                return FMOD_Studio_EventInstance_SetPitch(this.rawPtr, pitch);
             }
 
             public RESULT get3DAttributes(out _3D_ATTRIBUTES attributes)
             {
-                return FMOD_Studio_EventInstance_Get3DAttributes(rawPtr, out attributes);
+                return FMOD_Studio_EventInstance_Get3DAttributes(this.rawPtr, out attributes);
             }
 
             public RESULT set3DAttributes(_3D_ATTRIBUTES attributes)
             {
-                return FMOD_Studio_EventInstance_Set3DAttributes(rawPtr, ref attributes);
+                return FMOD_Studio_EventInstance_Set3DAttributes(this.rawPtr, ref attributes);
             }
 
             public RESULT getListenerMask(out uint mask)
             {
-                return FMOD_Studio_EventInstance_GetListenerMask(rawPtr, out mask);
+                return FMOD_Studio_EventInstance_GetListenerMask(this.rawPtr, out mask);
             }
 
             public RESULT setListenerMask(uint mask)
             {
-                return FMOD_Studio_EventInstance_SetListenerMask(rawPtr, mask);
+                return FMOD_Studio_EventInstance_SetListenerMask(this.rawPtr, mask);
             }
 
             public RESULT getProperty(EVENT_PROPERTY index, out float value)
             {
-                return FMOD_Studio_EventInstance_GetProperty(rawPtr, index, out value);
+                return FMOD_Studio_EventInstance_GetProperty(this.rawPtr, index, out value);
             }
 
             public RESULT setProperty(EVENT_PROPERTY index, float value)
             {
-                return FMOD_Studio_EventInstance_SetProperty(rawPtr, index, value);
+                return FMOD_Studio_EventInstance_SetProperty(this.rawPtr, index, value);
             }
 
             public RESULT getReverbLevel(int index, out float level)
             {
-                return FMOD_Studio_EventInstance_GetReverbLevel(rawPtr, index, out level);
+                return FMOD_Studio_EventInstance_GetReverbLevel(this.rawPtr, index, out level);
             }
 
             public RESULT setReverbLevel(int index, float level)
             {
-                return FMOD_Studio_EventInstance_SetReverbLevel(rawPtr, index, level);
+                return FMOD_Studio_EventInstance_SetReverbLevel(this.rawPtr, index, level);
             }
 
             public RESULT getPaused(out bool paused)
             {
-                return FMOD_Studio_EventInstance_GetPaused(rawPtr, out paused);
+                return FMOD_Studio_EventInstance_GetPaused(this.rawPtr, out paused);
             }
 
             public RESULT setPaused(bool paused)
             {
-                return FMOD_Studio_EventInstance_SetPaused(rawPtr, paused);
+                return FMOD_Studio_EventInstance_SetPaused(this.rawPtr, paused);
             }
 
             public RESULT start()
             {
-                return FMOD_Studio_EventInstance_Start(rawPtr);
+                return FMOD_Studio_EventInstance_Start(this.rawPtr);
             }
 
             public RESULT stop(STOP_MODE mode)
             {
-                return FMOD_Studio_EventInstance_Stop(rawPtr, mode);
+                return FMOD_Studio_EventInstance_Stop(this.rawPtr, mode);
             }
 
             public RESULT getTimelinePosition(out int position)
             {
-                return FMOD_Studio_EventInstance_GetTimelinePosition(rawPtr, out position);
+                return FMOD_Studio_EventInstance_GetTimelinePosition(this.rawPtr, out position);
             }
 
             public RESULT setTimelinePosition(int position)
             {
-                return FMOD_Studio_EventInstance_SetTimelinePosition(rawPtr, position);
+                return FMOD_Studio_EventInstance_SetTimelinePosition(this.rawPtr, position);
             }
 
             public RESULT getPlaybackState(out PLAYBACK_STATE state)
             {
-                return FMOD_Studio_EventInstance_GetPlaybackState(rawPtr, out state);
+                return FMOD_Studio_EventInstance_GetPlaybackState(this.rawPtr, out state);
             }
 
             public RESULT getChannelGroup(out FMOD.ChannelGroup group)
@@ -1609,7 +1609,7 @@ namespace MLAPI.Sound.FMOD
                 group = null;
 
                 IntPtr groupraw = new IntPtr();
-                RESULT result = FMOD_Studio_EventInstance_GetChannelGroup(rawPtr, out groupraw);
+                RESULT result = FMOD_Studio_EventInstance_GetChannelGroup(this.rawPtr, out groupraw);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -1622,12 +1622,12 @@ namespace MLAPI.Sound.FMOD
 
             public RESULT release()
             {
-                return FMOD_Studio_EventInstance_Release(rawPtr);
+                return FMOD_Studio_EventInstance_Release(this.rawPtr);
             }
 
             public RESULT isVirtual(out bool virtualState)
             {
-                return FMOD_Studio_EventInstance_IsVirtual(rawPtr, out virtualState);
+                return FMOD_Studio_EventInstance_IsVirtual(this.rawPtr, out virtualState);
             }
 
             public RESULT getParameter(string name, out ParameterInstance instance)
@@ -1635,7 +1635,7 @@ namespace MLAPI.Sound.FMOD
                 instance = null;
 
                 IntPtr newPtr = new IntPtr();
-                RESULT result = FMOD_Studio_EventInstance_GetParameter(rawPtr, Encoding.UTF8.GetBytes(name + Char.MinValue), out newPtr);
+                RESULT result = FMOD_Studio_EventInstance_GetParameter(this.rawPtr, Encoding.UTF8.GetBytes(name + Char.MinValue), out newPtr);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -1647,7 +1647,7 @@ namespace MLAPI.Sound.FMOD
 
             public RESULT getParameterCount(out int count)
             {
-                return FMOD_Studio_EventInstance_GetParameterCount(rawPtr, out count);
+                return FMOD_Studio_EventInstance_GetParameterCount(this.rawPtr, out count);
             }
 
             public RESULT getParameterByIndex(int index, out ParameterInstance instance)
@@ -1655,7 +1655,7 @@ namespace MLAPI.Sound.FMOD
                 instance = null;
 
                 IntPtr newPtr = new IntPtr();
-                RESULT result = FMOD_Studio_EventInstance_GetParameterByIndex(rawPtr, index, out newPtr);
+                RESULT result = FMOD_Studio_EventInstance_GetParameterByIndex(this.rawPtr, index, out newPtr);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -1667,47 +1667,47 @@ namespace MLAPI.Sound.FMOD
 
             public RESULT getParameterValue(string name, out float value, out float finalvalue)
             {
-                return FMOD_Studio_EventInstance_GetParameterValue(rawPtr, Encoding.UTF8.GetBytes(name + Char.MinValue), out value, out finalvalue);
+                return FMOD_Studio_EventInstance_GetParameterValue(this.rawPtr, Encoding.UTF8.GetBytes(name + Char.MinValue), out value, out finalvalue);
             }
 
             public RESULT setParameterValue(string name, float value)
             {
-                return FMOD_Studio_EventInstance_SetParameterValue(rawPtr, Encoding.UTF8.GetBytes(name + Char.MinValue), value);
+                return FMOD_Studio_EventInstance_SetParameterValue(this.rawPtr, Encoding.UTF8.GetBytes(name + Char.MinValue), value);
             }
 
             public RESULT getParameterValueByIndex(int index, out float value, out float finalvalue)
             {
-                return FMOD_Studio_EventInstance_GetParameterValueByIndex(rawPtr, index, out value, out finalvalue);
+                return FMOD_Studio_EventInstance_GetParameterValueByIndex(this.rawPtr, index, out value, out finalvalue);
             }
 
             public RESULT setParameterValueByIndex(int index, float value)
             {
-                return FMOD_Studio_EventInstance_SetParameterValueByIndex(rawPtr, index, value);
+                return FMOD_Studio_EventInstance_SetParameterValueByIndex(this.rawPtr, index, value);
             }
 
             public RESULT setParameterValuesByIndices(int[] indices, float[] values, int count)
             {
-                return FMOD_Studio_EventInstance_SetParameterValuesByIndices(rawPtr, indices, values, count);
+                return FMOD_Studio_EventInstance_SetParameterValuesByIndices(this.rawPtr, indices, values, count);
             }
 
             public RESULT triggerCue()
             {
-                return FMOD_Studio_EventInstance_TriggerCue(rawPtr);
+                return FMOD_Studio_EventInstance_TriggerCue(this.rawPtr);
             }
 
             public RESULT setCallback(EVENT_CALLBACK callback, EVENT_CALLBACK_TYPE callbackmask = EVENT_CALLBACK_TYPE.ALL)
             {
-                return FMOD_Studio_EventInstance_SetCallback(rawPtr, callback, callbackmask);
+                return FMOD_Studio_EventInstance_SetCallback(this.rawPtr, callback, callbackmask);
             }
 
             public RESULT getUserData(out IntPtr userdata)
             {
-                return FMOD_Studio_EventInstance_GetUserData(rawPtr, out userdata);
+                return FMOD_Studio_EventInstance_GetUserData(this.rawPtr, out userdata);
             }
 
             public RESULT setUserData(IntPtr userdata)
             {
-                return FMOD_Studio_EventInstance_SetUserData(rawPtr, userdata);
+                return FMOD_Studio_EventInstance_SetUserData(this.rawPtr, userdata);
             }
 
             #region importfunctions
@@ -1831,7 +1831,7 @@ namespace MLAPI.Sound.FMOD
 
             protected override bool isValidInternal()
             {
-                return FMOD_Studio_EventInstance_IsValid(rawPtr);
+                return FMOD_Studio_EventInstance_IsValid(this.rawPtr);
             }
 
             #endregion wrapperinternal
@@ -1844,7 +1844,7 @@ namespace MLAPI.Sound.FMOD
                 description = new PARAMETER_DESCRIPTION();
 
                 PARAMETER_DESCRIPTION_INTERNAL paramInternal;
-                RESULT result = FMOD_Studio_ParameterInstance_GetDescription(rawPtr, out paramInternal);
+                RESULT result = FMOD_Studio_ParameterInstance_GetDescription(this.rawPtr, out paramInternal);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -1855,12 +1855,12 @@ namespace MLAPI.Sound.FMOD
 
             public RESULT getValue(out float value)
             {
-                return FMOD_Studio_ParameterInstance_GetValue(rawPtr, out value);
+                return FMOD_Studio_ParameterInstance_GetValue(this.rawPtr, out value);
             }
 
             public RESULT setValue(float value)
             {
-                return FMOD_Studio_ParameterInstance_SetValue(rawPtr, value);
+                return FMOD_Studio_ParameterInstance_SetValue(this.rawPtr, value);
             }
 
             #region importfunctions
@@ -1888,7 +1888,7 @@ namespace MLAPI.Sound.FMOD
 
             protected override bool isValidInternal()
             {
-                return FMOD_Studio_ParameterInstance_IsValid(rawPtr);
+                return FMOD_Studio_ParameterInstance_IsValid(this.rawPtr);
             }
 
             #endregion wrapperinternal
@@ -1898,7 +1898,7 @@ namespace MLAPI.Sound.FMOD
         {
             public RESULT getID(out Guid id)
             {
-                return FMOD_Studio_Bus_GetID(rawPtr, out id);
+                return FMOD_Studio_Bus_GetID(this.rawPtr, out id);
             }
 
             public RESULT getPath(out string path)
@@ -1907,12 +1907,12 @@ namespace MLAPI.Sound.FMOD
 
                 byte[] buffer = new byte[256];
                 int retrieved = 0;
-                RESULT result = FMOD_Studio_Bus_GetPath(rawPtr, buffer, buffer.Length, out retrieved);
+                RESULT result = FMOD_Studio_Bus_GetPath(this.rawPtr, buffer, buffer.Length, out retrieved);
 
                 if (result == RESULT.ERR_TRUNCATED)
                 {
                     buffer = new byte[retrieved];
-                    result = FMOD_Studio_Bus_GetPath(rawPtr, buffer, buffer.Length, out retrieved);
+                    result = FMOD_Studio_Bus_GetPath(this.rawPtr, buffer, buffer.Length, out retrieved);
                 }
 
                 if (result == RESULT.OK)
@@ -1925,47 +1925,47 @@ namespace MLAPI.Sound.FMOD
 
             public RESULT getVolume(out float volume, out float finalvolume)
             {
-                return FMOD_Studio_Bus_GetVolume(rawPtr, out volume, out finalvolume);
+                return FMOD_Studio_Bus_GetVolume(this.rawPtr, out volume, out finalvolume);
             }
 
             public RESULT setVolume(float volume)
             {
-                return FMOD_Studio_Bus_SetVolume(rawPtr, volume);
+                return FMOD_Studio_Bus_SetVolume(this.rawPtr, volume);
             }
 
             public RESULT getPaused(out bool paused)
             {
-                return FMOD_Studio_Bus_GetPaused(rawPtr, out paused);
+                return FMOD_Studio_Bus_GetPaused(this.rawPtr, out paused);
             }
 
             public RESULT setPaused(bool paused)
             {
-                return FMOD_Studio_Bus_SetPaused(rawPtr, paused);
+                return FMOD_Studio_Bus_SetPaused(this.rawPtr, paused);
             }
 
             public RESULT getMute(out bool mute)
             {
-                return FMOD_Studio_Bus_GetMute(rawPtr, out mute);
+                return FMOD_Studio_Bus_GetMute(this.rawPtr, out mute);
             }
 
             public RESULT setMute(bool mute)
             {
-                return FMOD_Studio_Bus_SetMute(rawPtr, mute);
+                return FMOD_Studio_Bus_SetMute(this.rawPtr, mute);
             }
 
             public RESULT stopAllEvents(STOP_MODE mode)
             {
-                return FMOD_Studio_Bus_StopAllEvents(rawPtr, mode);
+                return FMOD_Studio_Bus_StopAllEvents(this.rawPtr, mode);
             }
 
             public RESULT lockChannelGroup()
             {
-                return FMOD_Studio_Bus_LockChannelGroup(rawPtr);
+                return FMOD_Studio_Bus_LockChannelGroup(this.rawPtr);
             }
 
             public RESULT unlockChannelGroup()
             {
-                return FMOD_Studio_Bus_UnlockChannelGroup(rawPtr);
+                return FMOD_Studio_Bus_UnlockChannelGroup(this.rawPtr);
             }
 
             public RESULT getChannelGroup(out FMOD.ChannelGroup group)
@@ -1973,7 +1973,7 @@ namespace MLAPI.Sound.FMOD
                 group = null;
 
                 IntPtr groupraw = new IntPtr();
-                RESULT result = FMOD_Studio_Bus_GetChannelGroup(rawPtr, out groupraw);
+                RESULT result = FMOD_Studio_Bus_GetChannelGroup(this.rawPtr, out groupraw);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -2036,7 +2036,7 @@ namespace MLAPI.Sound.FMOD
 
             protected override bool isValidInternal()
             {
-                return FMOD_Studio_Bus_IsValid(rawPtr);
+                return FMOD_Studio_Bus_IsValid(this.rawPtr);
             }
 
             #endregion wrapperinternal
@@ -2046,7 +2046,7 @@ namespace MLAPI.Sound.FMOD
         {
             public RESULT getID(out Guid id)
             {
-                return FMOD_Studio_VCA_GetID(rawPtr, out id);
+                return FMOD_Studio_VCA_GetID(this.rawPtr, out id);
             }
 
             public RESULT getPath(out string path)
@@ -2055,12 +2055,12 @@ namespace MLAPI.Sound.FMOD
 
                 byte[] buffer = new byte[256];
                 int retrieved = 0;
-                RESULT result = FMOD_Studio_VCA_GetPath(rawPtr, buffer, buffer.Length, out retrieved);
+                RESULT result = FMOD_Studio_VCA_GetPath(this.rawPtr, buffer, buffer.Length, out retrieved);
 
                 if (result == RESULT.ERR_TRUNCATED)
                 {
                     buffer = new byte[retrieved];
-                    result = FMOD_Studio_VCA_GetPath(rawPtr, buffer, buffer.Length, out retrieved);
+                    result = FMOD_Studio_VCA_GetPath(this.rawPtr, buffer, buffer.Length, out retrieved);
                 }
 
                 if (result == RESULT.OK)
@@ -2073,12 +2073,12 @@ namespace MLAPI.Sound.FMOD
 
             public RESULT getVolume(out float volume, out float finalvolume)
             {
-                return FMOD_Studio_VCA_GetVolume(rawPtr, out volume, out finalvolume);
+                return FMOD_Studio_VCA_GetVolume(this.rawPtr, out volume, out finalvolume);
             }
 
             public RESULT setVolume(float volume)
             {
-                return FMOD_Studio_VCA_SetVolume(rawPtr, volume);
+                return FMOD_Studio_VCA_SetVolume(this.rawPtr, volume);
             }
 
             #region importfunctions
@@ -2109,7 +2109,7 @@ namespace MLAPI.Sound.FMOD
 
             protected override bool isValidInternal()
             {
-                return FMOD_Studio_VCA_IsValid(rawPtr);
+                return FMOD_Studio_VCA_IsValid(this.rawPtr);
             }
 
             #endregion wrapperinternal
@@ -2121,7 +2121,7 @@ namespace MLAPI.Sound.FMOD
 
             public RESULT getID(out Guid id)
             {
-                return FMOD_Studio_Bank_GetID(rawPtr, out id);
+                return FMOD_Studio_Bank_GetID(this.rawPtr, out id);
             }
 
             public RESULT getPath(out string path)
@@ -2130,12 +2130,12 @@ namespace MLAPI.Sound.FMOD
 
                 byte[] buffer = new byte[256];
                 int retrieved = 0;
-                RESULT result = FMOD_Studio_Bank_GetPath(rawPtr, buffer, buffer.Length, out retrieved);
+                RESULT result = FMOD_Studio_Bank_GetPath(this.rawPtr, buffer, buffer.Length, out retrieved);
 
                 if (result == RESULT.ERR_TRUNCATED)
                 {
                     buffer = new byte[retrieved];
-                    result = FMOD_Studio_Bank_GetPath(rawPtr, buffer, buffer.Length, out retrieved);
+                    result = FMOD_Studio_Bank_GetPath(this.rawPtr, buffer, buffer.Length, out retrieved);
                 }
 
                 if (result == RESULT.OK)
@@ -2148,42 +2148,42 @@ namespace MLAPI.Sound.FMOD
 
             public RESULT unload()
             {
-                RESULT result = FMOD_Studio_Bank_Unload(rawPtr);
+                RESULT result = FMOD_Studio_Bank_Unload(this.rawPtr);
 
                 if (result != RESULT.OK)
                 {
                     return result;
                 }
 
-                rawPtr = IntPtr.Zero;
+                this.rawPtr = IntPtr.Zero;
 
                 return RESULT.OK;
             }
 
             public RESULT loadSampleData()
             {
-                return FMOD_Studio_Bank_LoadSampleData(rawPtr);
+                return FMOD_Studio_Bank_LoadSampleData(this.rawPtr);
             }
 
             public RESULT unloadSampleData()
             {
-                return FMOD_Studio_Bank_UnloadSampleData(rawPtr);
+                return FMOD_Studio_Bank_UnloadSampleData(this.rawPtr);
             }
 
             public RESULT getLoadingState(out LOADING_STATE state)
             {
-                return FMOD_Studio_Bank_GetLoadingState(rawPtr, out state);
+                return FMOD_Studio_Bank_GetLoadingState(this.rawPtr, out state);
             }
 
             public RESULT getSampleLoadingState(out LOADING_STATE state)
             {
-                return FMOD_Studio_Bank_GetSampleLoadingState(rawPtr, out state);
+                return FMOD_Studio_Bank_GetSampleLoadingState(this.rawPtr, out state);
             }
 
             // Enumeration
             public RESULT getStringCount(out int count)
             {
-                return FMOD_Studio_Bank_GetStringCount(rawPtr, out count);
+                return FMOD_Studio_Bank_GetStringCount(this.rawPtr, out count);
             }
 
             public RESULT getStringInfo(int index, out Guid id, out string path)
@@ -2192,12 +2192,12 @@ namespace MLAPI.Sound.FMOD
 
                 byte[] buffer = new byte[256];
                 int retrieved = 0;
-                RESULT result = FMOD_Studio_Bank_GetStringInfo(rawPtr, index, out id, buffer, buffer.Length, out retrieved);
+                RESULT result = FMOD_Studio_Bank_GetStringInfo(this.rawPtr, index, out id, buffer, buffer.Length, out retrieved);
 
                 if (result == RESULT.ERR_TRUNCATED)
                 {
                     buffer = new byte[retrieved];
-                    result = FMOD_Studio_Bank_GetStringInfo(rawPtr, index, out id, buffer, buffer.Length, out retrieved);
+                    result = FMOD_Studio_Bank_GetStringInfo(this.rawPtr, index, out id, buffer, buffer.Length, out retrieved);
                 }
 
                 if (result == RESULT.OK)
@@ -2210,7 +2210,7 @@ namespace MLAPI.Sound.FMOD
 
             public RESULT getEventCount(out int count)
             {
-                return FMOD_Studio_Bank_GetEventCount(rawPtr, out count);
+                return FMOD_Studio_Bank_GetEventCount(this.rawPtr, out count);
             }
 
             public RESULT getEventList(out EventDescription[] array)
@@ -2219,7 +2219,7 @@ namespace MLAPI.Sound.FMOD
 
                 RESULT result;
                 int capacity;
-                result = FMOD_Studio_Bank_GetEventCount(rawPtr, out capacity);
+                result = FMOD_Studio_Bank_GetEventCount(this.rawPtr, out capacity);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -2232,7 +2232,7 @@ namespace MLAPI.Sound.FMOD
 
                 IntPtr[] rawArray = new IntPtr[capacity];
                 int actualCount;
-                result = FMOD_Studio_Bank_GetEventList(rawPtr, rawArray, capacity, out actualCount);
+                result = FMOD_Studio_Bank_GetEventList(this.rawPtr, rawArray, capacity, out actualCount);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -2251,7 +2251,7 @@ namespace MLAPI.Sound.FMOD
 
             public RESULT getBusCount(out int count)
             {
-                return FMOD_Studio_Bank_GetBusCount(rawPtr, out count);
+                return FMOD_Studio_Bank_GetBusCount(this.rawPtr, out count);
             }
 
             public RESULT getBusList(out Bus[] array)
@@ -2260,7 +2260,7 @@ namespace MLAPI.Sound.FMOD
 
                 RESULT result;
                 int capacity;
-                result = FMOD_Studio_Bank_GetBusCount(rawPtr, out capacity);
+                result = FMOD_Studio_Bank_GetBusCount(this.rawPtr, out capacity);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -2273,7 +2273,7 @@ namespace MLAPI.Sound.FMOD
 
                 IntPtr[] rawArray = new IntPtr[capacity];
                 int actualCount;
-                result = FMOD_Studio_Bank_GetBusList(rawPtr, rawArray, capacity, out actualCount);
+                result = FMOD_Studio_Bank_GetBusList(this.rawPtr, rawArray, capacity, out actualCount);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -2292,7 +2292,7 @@ namespace MLAPI.Sound.FMOD
 
             public RESULT getVCACount(out int count)
             {
-                return FMOD_Studio_Bank_GetVCACount(rawPtr, out count);
+                return FMOD_Studio_Bank_GetVCACount(this.rawPtr, out count);
             }
 
             public RESULT getVCAList(out VCA[] array)
@@ -2301,7 +2301,7 @@ namespace MLAPI.Sound.FMOD
 
                 RESULT result;
                 int capacity;
-                result = FMOD_Studio_Bank_GetVCACount(rawPtr, out capacity);
+                result = FMOD_Studio_Bank_GetVCACount(this.rawPtr, out capacity);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -2314,7 +2314,7 @@ namespace MLAPI.Sound.FMOD
 
                 IntPtr[] rawArray = new IntPtr[capacity];
                 int actualCount;
-                result = FMOD_Studio_Bank_GetVCAList(rawPtr, rawArray, capacity, out actualCount);
+                result = FMOD_Studio_Bank_GetVCAList(this.rawPtr, rawArray, capacity, out actualCount);
                 if (result != RESULT.OK)
                 {
                     return result;
@@ -2333,12 +2333,12 @@ namespace MLAPI.Sound.FMOD
 
             public RESULT getUserData(out IntPtr userdata)
             {
-                return FMOD_Studio_Bank_GetUserData(rawPtr, out userdata);
+                return FMOD_Studio_Bank_GetUserData(this.rawPtr, out userdata);
             }
 
             public RESULT setUserData(IntPtr userdata)
             {
-                return FMOD_Studio_Bank_SetUserData(rawPtr, userdata);
+                return FMOD_Studio_Bank_SetUserData(this.rawPtr, userdata);
             }
 
             #region importfunctions
@@ -2408,7 +2408,7 @@ namespace MLAPI.Sound.FMOD
 
             protected override bool isValidInternal()
             {
-                return FMOD_Studio_Bank_IsValid(rawPtr);
+                return FMOD_Studio_Bank_IsValid(this.rawPtr);
             }
 
             #endregion wrapperinternal
@@ -2421,7 +2421,7 @@ namespace MLAPI.Sound.FMOD
             {
                 system = null;
                 IntPtr newPtr = new IntPtr();
-                RESULT result = FMOD_Studio_CommandReplay_GetSystem(rawPtr, out newPtr);
+                RESULT result = FMOD_Studio_CommandReplay_GetSystem(this.rawPtr, out newPtr);
                 if (result == RESULT.OK)
                 {
                     system = new System(newPtr);
@@ -2431,18 +2431,18 @@ namespace MLAPI.Sound.FMOD
 
             public RESULT getLength(out float totalTime)
             {
-                return FMOD_Studio_CommandReplay_GetLength(rawPtr, out totalTime);
+                return FMOD_Studio_CommandReplay_GetLength(this.rawPtr, out totalTime);
             }
 
             public RESULT getCommandCount(out int count)
             {
-                return FMOD_Studio_CommandReplay_GetCommandCount(rawPtr, out count);
+                return FMOD_Studio_CommandReplay_GetCommandCount(this.rawPtr, out count);
             }
 
             public RESULT getCommandInfo(int commandIndex, out COMMAND_INFO info)
             {
                 COMMAND_INFO_INTERNAL internalInfo = new COMMAND_INFO_INTERNAL();
-                FMOD.RESULT result = FMOD_Studio_CommandReplay_GetCommandInfo(rawPtr, commandIndex, out internalInfo);
+                FMOD.RESULT result = FMOD_Studio_CommandReplay_GetCommandInfo(this.rawPtr, commandIndex, out internalInfo);
                 if (result != FMOD.RESULT.OK)
                 {
                     info = new COMMAND_INFO();
@@ -2458,7 +2458,7 @@ namespace MLAPI.Sound.FMOD
                 byte[] buffer = new byte[8];
                 while (true)
                 {
-                    RESULT result = FMOD_Studio_CommandReplay_GetCommandString(rawPtr, commandIndex, buffer, buffer.Length);
+                    RESULT result = FMOD_Studio_CommandReplay_GetCommandString(this.rawPtr, commandIndex, buffer, buffer.Length);
                     if (result == RESULT.ERR_TRUNCATED)
                     {
                         buffer = new byte[2 * buffer.Length];
@@ -2482,80 +2482,80 @@ namespace MLAPI.Sound.FMOD
 
             public RESULT getCommandAtTime(float time, out int commandIndex)
             {
-                return FMOD_Studio_CommandReplay_GetCommandAtTime(rawPtr, time, out commandIndex);
+                return FMOD_Studio_CommandReplay_GetCommandAtTime(this.rawPtr, time, out commandIndex);
             }
 
             // Playback
             public RESULT setBankPath(string bankPath)
             {
-                return FMOD_Studio_CommandReplay_SetBankPath(rawPtr, Encoding.UTF8.GetBytes(bankPath + Char.MinValue));
+                return FMOD_Studio_CommandReplay_SetBankPath(this.rawPtr, Encoding.UTF8.GetBytes(bankPath + Char.MinValue));
             }
 
             public RESULT start()
             {
-                return FMOD_Studio_CommandReplay_Start(rawPtr);
+                return FMOD_Studio_CommandReplay_Start(this.rawPtr);
             }
 
             public RESULT stop()
             {
-                return FMOD_Studio_CommandReplay_Stop(rawPtr);
+                return FMOD_Studio_CommandReplay_Stop(this.rawPtr);
             }
 
             public RESULT seekToTime(float time)
             {
-                return FMOD_Studio_CommandReplay_SeekToTime(rawPtr, time);
+                return FMOD_Studio_CommandReplay_SeekToTime(this.rawPtr, time);
             }
 
             public RESULT seekToCommand(int commandIndex)
             {
-                return FMOD_Studio_CommandReplay_SeekToCommand(rawPtr, commandIndex);
+                return FMOD_Studio_CommandReplay_SeekToCommand(this.rawPtr, commandIndex);
             }
 
             public RESULT getPaused(out bool paused)
             {
-                return FMOD_Studio_CommandReplay_GetPaused(rawPtr, out paused);
+                return FMOD_Studio_CommandReplay_GetPaused(this.rawPtr, out paused);
             }
 
             public RESULT setPaused(bool paused)
             {
-                return FMOD_Studio_CommandReplay_SetPaused(rawPtr, paused);
+                return FMOD_Studio_CommandReplay_SetPaused(this.rawPtr, paused);
             }
 
             public RESULT getPlaybackState(out PLAYBACK_STATE state)
             {
-                return FMOD_Studio_CommandReplay_GetPlaybackState(rawPtr, out state);
+                return FMOD_Studio_CommandReplay_GetPlaybackState(this.rawPtr, out state);
             }
 
             public RESULT getCurrentCommand(out int commandIndex, out float currentTime)
             {
-                return FMOD_Studio_CommandReplay_GetCurrentCommand(rawPtr, out commandIndex, out currentTime);
+                return FMOD_Studio_CommandReplay_GetCurrentCommand(this.rawPtr, out commandIndex, out currentTime);
             }
 
             // Release
             public RESULT release()
             {
-                return FMOD_Studio_CommandReplay_Release(rawPtr);
+                return FMOD_Studio_CommandReplay_Release(this.rawPtr);
             }
 
             // Callbacks
             public RESULT setFrameCallback(COMMANDREPLAY_FRAME_CALLBACK callback)
             {
-                return FMOD_Studio_CommandReplay_SetFrameCallback(rawPtr, callback);
+                return FMOD_Studio_CommandReplay_SetFrameCallback(this.rawPtr, callback);
             }
 
             public RESULT setLoadBankCallback(COMMANDREPLAY_LOAD_BANK_CALLBACK callback)
             {
-                return FMOD_Studio_CommandReplay_SetLoadBankCallback(rawPtr, callback);
+                return FMOD_Studio_CommandReplay_SetLoadBankCallback(this.rawPtr, callback);
             }
 
             public RESULT setCreateInstanceCallback(COMMANDREPLAY_CREATE_INSTANCE_CALLBACK callback)
             {
-                return FMOD_Studio_CommandReplay_SetCreateInstanceCallback(rawPtr, callback);
+                return FMOD_Studio_CommandReplay_SetCreateInstanceCallback(this.rawPtr, callback);
             }
 
             public RESULT getUserData(out IntPtr userdata)
             {
-                return FMOD_Studio_CommandReplay_GetUserData(rawPtr, out userdata);
+                return FMOD_Studio_CommandReplay_GetUserData(this.rawPtr, out userdata);
             }
 
             public RESULT setUserData(IntPtr userdata)
@@ -2642,7 +2642,7 @@ namespace MLAPI.Sound.FMOD
 
             protected override bool isValidInternal()
             {
-                return FMOD_Studio_CommandReplay_IsValid(rawPtr);
+                return FMOD_Studio_CommandReplay_IsValid(this.rawPtr);
             }
 
             #endregion wrapperinternal

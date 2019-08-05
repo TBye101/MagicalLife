@@ -16,14 +16,14 @@ namespace MLGUIWindows.GUI.Settings_Menu.Buttons
         public MainMenuButton(bool fromMainMenu) : base(TextureLoader.GUIMenuButton, GetLocation(), true, Resources.Back)
         {
             this.ClickEvent += this.MainMenuButton_ClickEvent;
-            FromMainMenu = fromMainMenu;
+            this.FromMainMenu = fromMainMenu;
         }
 
         private void MainMenuButton_ClickEvent(object sender, ClickEventArgs e)
         {
             FMODUtil.RaiseEvent(SoundsTable.UIClick);
             MenuHandler.Clear();
-            if (FromMainMenu)
+            if (this.FromMainMenu)
             {
                 MainMenu.MainMenu.Initialize();
             }

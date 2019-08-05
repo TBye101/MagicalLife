@@ -54,27 +54,27 @@ namespace MLAPI.Filing.Logging
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposedValue)
+            if (!this.disposedValue)
             {
                 if (disposing)
                 {
                     Writer.Dispose();
                 }
-                disposedValue = true;
+                this.disposedValue = true;
             }
         }
 
         ~MasterLog()
         {
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-            Dispose(false);
+            this.Dispose(false);
         }
 
         // This code added to correctly implement the disposable pattern.
         public void Dispose()
         {
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-            Dispose(true);
+            this.Dispose(true);
             GC.SuppressFinalize(this);
         }
 

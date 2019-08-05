@@ -44,9 +44,9 @@ namespace MLAPI.DataTypes
         /// <param name="z">The z coordinate of the point</param>
         public Point(float x, float y)
         {
-            coordinates = new float[DIMENSIONS];
-            coordinates[0] = x;
-            coordinates[1] = y;
+            this.coordinates = new float[DIMENSIONS];
+            this.coordinates[0] = x;
+            this.coordinates[1] = y;
         }
 
         /// <summary>
@@ -56,9 +56,9 @@ namespace MLAPI.DataTypes
         /// </summary>
         public float? get(int dimension)
         {
-            if (coordinates.Length >= dimension)
+            if (this.coordinates.Length >= dimension)
             {
-                return coordinates[dimension];
+                return this.coordinates[dimension];
             }
 
             return null;
