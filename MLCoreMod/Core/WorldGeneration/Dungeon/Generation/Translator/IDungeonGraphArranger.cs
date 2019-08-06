@@ -8,11 +8,11 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
     /// </summary>
     public interface IDungeonGraphArranger
     {
-        void Setup(Dictionary<Guid, DungeonTranslationNode> nodes);
+        void Setup(List<DungeonTranslationNode> nodes);
 
         /// <summary>
         /// Modifies dungeon translation nodes in a specific fashion to satisfy their connections while providing real tile mapping coordinates relative to the entrance.
         /// </summary>
-        Dictionary<Guid, DungeonTranslationNode> Arrange(Dictionary<Guid, DungeonTranslationNode> nodes);
+        List<DungeonTranslationNode> Arrange(List<DungeonTranslationNode> nodes);
     }
 }

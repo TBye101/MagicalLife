@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using MLAPI.DataTypes;
 using MLAPI.DataTypes.Collection;
 using MLAPI.Util.RandomUtils;
@@ -13,35 +15,35 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
     /// <summary>
     /// Lays out rooms and hallways, and then fills them through random assignment of room generators and other features.
     /// </summary>
-    class DefaultTranslator : IDungeonDesignTranslator
+    public class DefaultTranslator : IDungeonDesignTranslator
     {
         public ProtoArray<Chunk> Translate(DungeonNode dungeonDesign, Point3D exitLocation)
         {
             //Figure out sizes and offsets...
             //https://en.wikipedia.org/wiki/Force-directed_graph_drawing
             //Use a physics simulation to arrange them with attracting and repulsing forces
-            Dictionary<Guid, DungeonTranslationNode> translatedNodes = this.CreateTranslationNodes(dungeonDesign);
+            List<DungeonTranslationNode> translatedNodes = CreateTranslationNodes(dungeonDesign);
 
             //Run simulation
-            IDungeonGraphArranger arranger = new ForceDirectedArranger();
+            IDungeonGraphArranger arranger = new PhysicsDirectedArranger();
             arranger.Setup(translatedNodes);
             translatedNodes = arranger.Arrange(translatedNodes);
 
             //Convert coordinates to real tiles
             IDungeonConstructor constructor = new DefaultDungeonConstructor();
 
-            DungeonTranslationNode entranceNode = translatedNodes[dungeonDesign.NodeId];
-            Point2D dungeonSizeNeeded = this.CalculateDungeonSize(translatedNodes);
+            DungeonTranslationNode entranceNode = translatedNodes.Find(x => x.DesignNode.NodeId.Equals(dungeonDesign.NodeId));
+            Point2D dungeonSizeNeeded = CalculateDungeonSize(translatedNodes);
             ProtoArray<Chunk> dungeonChunks = WorldUtil.GenerateBlankChunks(dungeonSizeNeeded.X, dungeonSizeNeeded.Y);
 
             constructor.Setup(dungeonChunks);
 
-            foreach (KeyValuePair<Guid, DungeonTranslationNode> item in translatedNodes)
+            foreach (DungeonTranslationNode item in translatedNodes)
             {
-                int x = item.Value.SectionXOffset.Value + entranceNode.SectionXOffset.Value;
-                int y = item.Value.SectionYOffset.Value + entranceNode.SectionYOffset.Value;
-                int width = item.Value.SectionWidth.Value;
-                int height = item.Value.SectionHeight.Value;
+                int x = item.Offset.X + entranceNode.Offset.X;
+                int y = item.Offset.Y + entranceNode.Offset.Y;
+                int width = item.SectionWidth;
+                int height = item.SectionHeight;
                 constructor.CreateRoomOrHallway(dungeonChunks, x, y, width, height);
             }
 
@@ -55,17 +57,17 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
         /// </summary>
         /// <param name="translatedNodes"></param>
         /// <returns></returns>
-        private Point2D CalculateDungeonSize(Dictionary<Guid, DungeonTranslationNode> translatedNodes)
+        private static Point2D CalculateDungeonSize(List<DungeonTranslationNode> translatedNodes)
         {
             int lowestXPosition = 0;
             int highestXPosition = 0;
             int lowestYPosition = 0;
             int highestYPosition = 0;
 
-            foreach (KeyValuePair<Guid, DungeonTranslationNode> item in translatedNodes)
+            foreach (DungeonTranslationNode item in translatedNodes)
             {
-                int xPosition = item.Value.SectionXOffset.Value + item.Value.SectionWidth.Value;
-                int yPosition = item.Value.SectionYOffset.Value + item.Value.SectionHeight.Value;
+                int xPosition = item.Offset.X + item.SectionWidth;
+                int yPosition = item.Offset.Y + item.SectionHeight;
 
                 lowestXPosition = Math.Min(lowestXPosition, xPosition);
                 highestXPosition = Math.Max(highestXPosition, xPosition);
@@ -86,9 +88,9 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
         /// </summary>
         /// <param name="dungeonDesign"></param>
         /// <returns></returns>
-        private Dictionary<Guid, DungeonTranslationNode> CreateTranslationNodes(DungeonNode dungeonDesign)
+        private static List<DungeonTranslationNode> CreateTranslationNodes(DungeonNode dungeonDesign)
         {
-            Dictionary<Guid, DungeonTranslationNode> ret = new Dictionary<Guid, DungeonTranslationNode>();
+            List<DungeonTranslationNode> ret = new List<DungeonTranslationNode>();
             List<DungeonNode> toConvert = new List<DungeonNode>
             {
                 dungeonDesign
@@ -99,21 +101,23 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
                 DungeonNode node = toConvert[0];
                 toConvert.RemoveAt(0);
 
-                DungeonTranslationNode translatedNode = new DungeonTranslationNode(node);
+                DungeonTranslationNode translatedNode = new DungeonTranslationNode(node)
+                {
+                    SectionHeight = StaticRandom.Rand(6, 20),
+                    SectionWidth = StaticRandom.Rand(6, 20),
+                    Offset = new Point2D(0, 0)
+                };
 
                 //Randomize initial node height and width.
-                translatedNode.SectionHeight = StaticRandom.Rand(6, 20);
-                translatedNode.SectionWidth = StaticRandom.Rand(6, 20);
-                translatedNode.SectionXOffset = 0;
-                translatedNode.SectionYOffset = 0;
+                translatedNode.Offset = new Point2D(0, 0);
 
-                ret.Add(translatedNode.DesignNode.NodeId, translatedNode);
+                ret.Add(translatedNode);
 
                 for (int i = 0; i < node.Connections.Count; i++)
                 {
                     DungeonNode connectedNode = node.Connections[i];
 
-                    if (!ret.ContainsKey(connectedNode.NodeId))
+                    if (!ret.Exists(x => x.DesignNode.NodeId.Equals(connectedNode.NodeId)))
                     {
                         toConvert.Add(connectedNode);
                     }

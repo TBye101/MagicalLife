@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\HasComponentsTests.cs" />
+    <Compile Include="DataTypes\Collection\ProtoArrayTests.cs" />
     <Compile Include="Genetic\Algorithms\GenericGeneticAlgorithmTests.cs" />
     <Compile Include="Genetic\ChromosomeTests.cs" />
     <Compile Include="Genetic\Crossovers\KPointCrossoverTests.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="Genetic\TestMutation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\StaticRandomTests.cs" />
+    <Compile Include="World\WorldUtilTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MLAPI\MLAPI.csproj">
