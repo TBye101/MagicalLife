@@ -17,16 +17,20 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
 
         public void CreateRoomOrHallway(ProtoArray<Chunk> dungeonChunks, int x, int y, int width, int height)
         {
-            for (int i = 1; i < width; i++)
+            for (int i = 0; i < width; i++)
             {
-                for (int j = 1; j < height; j++)
+                for (int j = 0; j < height; j++)
                 {
-                    int chunkX = i / Chunk.Width;
-                    int chunkY = j / Chunk.Height;
-                    int tileX = i % Chunk.Width;
-                    int tileY = j % Chunk.Height;
-                    Chunk chunk = dungeonChunks[chunkX, chunkY];
-                    chunk.Tiles[tileX, tileY].MainObject = null;
+                    int chunkX = (x + i) / Chunk.Width;
+                    int chunkY = (y + j) / Chunk.Height;
+                    int tileX = (x + i) % Chunk.Width;
+                    int tileY = (y + j) % Chunk.Height;
+
+                    if (chunkX < dungeonChunks.Width && chunkY < dungeonChunks.Height)
+                    {
+                        Chunk chunk = dungeonChunks[chunkX, chunkY];
+                        chunk.Tiles[tileX, tileY].MainObject = null;
+                    }
                 }
             }
         }

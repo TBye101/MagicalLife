@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using MLAPI.DataTypes;
 using MLAPI.DataTypes.Collection;
+using MLAPI.Filing.Logging;
 using MLAPI.Util.RandomUtils;
 using MLAPI.World;
 using MLAPI.World.Data;
@@ -45,6 +46,9 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
                 int y = item.Offset.Y + entranceLocation.Y;
                 int width = item.SectionWidth;
                 int height = item.SectionHeight;
+                MasterLog.DebugWriteLine("Making room/hallway: ");
+                var debugInfo = new {x, y, width, height};
+                MasterLog.DebugWriteParams(debugInfo);
                 constructor.CreateRoomOrHallway(dungeonChunks, x, y, width, height);
             }
 
@@ -83,8 +87,8 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
 
             foreach (DungeonTranslationNode item in translatedNodes)
             {
-                int xPosition = item.Offset.X + item.SectionWidth;
-                int yPosition = item.Offset.Y + item.SectionHeight;
+                int xPosition = item.Offset.X;
+                int yPosition = item.Offset.Y;
 
                 bounds.LowestXPosition = Math.Min(bounds.LowestXPosition, xPosition);
                 bounds.HighestXPosition = Math.Max(bounds.HighestXPosition, xPosition);

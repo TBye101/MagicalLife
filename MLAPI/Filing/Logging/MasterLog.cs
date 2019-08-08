@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 
 namespace MLAPI.Filing.Logging
 {
@@ -26,6 +27,20 @@ namespace MLAPI.Filing.Logging
         {
             string time = DateTime.UtcNow.ToString("[yyyy-MM-dd HH:mm:ss.fff]");
             Writer.WriteLine(time + " [DBG]: " + msg);
+            Writer.Flush();
+        }
+
+        /// <summary>
+        /// Writes information about a bunch of parameters stored within an anonymous type to the log.
+        /// </summary>
+        [Conditional("DEBUG")]
+        public static void DebugWriteParams(object parameters)
+        {
+            string time = DateTime.UtcNow.ToString("[yyyy-MM-dd HH:mm:ss.fff]");
+            foreach (PropertyInfo pi in parameters.GetType().GetProperties())
+            {
+                Writer.WriteLine(time + " [DBG]: " + "{0}: {1}", pi.Name, pi.GetValue(parameters, null));
+            }
             Writer.Flush();
         }
 
