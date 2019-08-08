@@ -20,14 +20,14 @@ namespace MLAPI.Pathfinding.TeleportationSearch
         {
         }
 
-        public List<PathLink> GetRoute(Point3D origin, Point3D destination)
+        public List<PathLink> GetRoute(Point3D origin, Point3D destination, IConnectionProvider connectionProvider)
         {
             MasterLog.DebugWriteLine("Path from: " + origin.ToString() + " " + destination.ToString());
             MasterLog.DebugWriteLine("Estimated distance: " + MathUtil.GetDistance(origin, destination));
             GC.Collect();
             Stopwatch sw = Stopwatch.StartNew();
 
-            List<PathLink> path = this.SameDimensionRoute(origin, destination);
+            List<PathLink> path = this.SameDimensionRoute(origin, destination, connectionProvider);
 
             sw.Stop();
 
@@ -37,22 +37,22 @@ namespace MLAPI.Pathfinding.TeleportationSearch
             }
             else
             {
-                double milli = 1000;
+                const double milliseconds = 1000;
                 double elapsedMill = sw.ElapsedMilliseconds;
-                double totalTime = elapsedMill / milli;
+                double totalTime = elapsedMill / milliseconds;
                 double pathfindingVelocity = MathUtil.GetDistance(origin, destination) / totalTime;
                 double timePerLink = totalTime / path.Count;
 
-                MasterLog.DebugWriteLine("Path links: " + path.Count.ToString());
-                MasterLog.DebugWriteLine("Time per link: " + timePerLink.ToString() + " seconds");
-                MasterLog.DebugWriteLine("Pathfinding velocity: " + pathfindingVelocity.ToString() + " tiles/s");
-                MasterLog.DebugWriteLine("Total time: " + totalTime.ToString() + " seconds");
+                MasterLog.DebugWriteLine("Path links: " + path.Count);
+                MasterLog.DebugWriteLine("Time per link: " + timePerLink + " seconds");
+                MasterLog.DebugWriteLine("Pathfinding velocity: " + pathfindingVelocity + " tiles/s");
+                MasterLog.DebugWriteLine("Total time: " + totalTime + " seconds");
             }
 
             return path;
         }
 
-        private List<PathLink> SameDimensionRoute(Point3D origin, Point3D destination)//Maybe weight diaganols less somehow
+        private List<PathLink> SameDimensionRoute(Point3D origin, Point3D destination, IConnectionProvider connectionProvider)
         {
             /*
                 f(n) = total estimated cost of path through node
@@ -82,7 +82,7 @@ namespace MLAPI.Pathfinding.TeleportationSearch
                         MasterLog.DebugWriteLine("Open nodes: " + open.Count.ToString());
                         MasterLog.DebugWriteLine("Closed nodes: " + closed.Count.ToString());
 
-                        return this.ReconstructPath(lowestFKey, value, open, closed, origin);
+                        return this.ReconstructPath(lowestFKey, value, open, closed, origin, connectionProvider);
                     }
                     else
                     {
@@ -90,7 +90,7 @@ namespace MLAPI.Pathfinding.TeleportationSearch
                         closed.Add(lowestFKey, value);
 
                         Tile tile = World.Data.World.GetTile(value.NodeLocation);
-                        foreach (Point3D item in this.CalculateConnections(tile))
+                        foreach (Point3D item in connectionProvider.CalculateConnections(tile))
                         {
                             Tile neighborTile = World.Data.World.GetTile(item);
                             ExtraNodeData extraNeighborData;
@@ -123,7 +123,7 @@ namespace MLAPI.Pathfinding.TeleportationSearch
             return null;
         }
 
-        private List<PathLink> ReconstructPath(Point3D lastNode, ExtraNodeData value, SortedList<Point3D, ExtraNodeData> open, SortedList<Point3D, ExtraNodeData> closed, Point3D origin)
+        private List<PathLink> ReconstructPath(Point3D lastNode, ExtraNodeData value, SortedList<Point3D, ExtraNodeData> open, SortedList<Point3D, ExtraNodeData> closed, Point3D origin, IConnectionProvider connectionProvider)
         {
             List<Point3D> links = new List<Point3D>();
 
@@ -133,7 +133,7 @@ namespace MLAPI.Pathfinding.TeleportationSearch
             while (!location.Equals(origin))
             {
                 links.Add(location);
-                location = this.GetLowestGScore(this.CalculateConnections(dataNode), open, closed);
+                location = this.GetLowestGScore(connectionProvider.CalculateConnections(dataNode), open, closed);
 
                 if (location == null)
                 {
@@ -185,99 +185,6 @@ namespace MLAPI.Pathfinding.TeleportationSearch
             }
         }
 
-        private List<Point3D> CalculateConnections(Tile tile)
-        {
-            Point3D location = tile.GetExactComponent<ComponentSelectable>().MapLocation;
-            List<Point3D> neighbors = this.DiagnolFavorNeighboringTiles(location, location.DimensionId);
-
-            if (tile.IsWalkable)
-            {
-                for (int i = neighbors.Count - 1; i > -1; i--)
-                {
-                    Tile t = World.Data.World.GetTile(neighbors[i]);
-                    if (!t.IsWalkable)
-                    {
-                        neighbors.RemoveAt(i);
-                    }
-                }
-
-                GameObject ceiling = tile.Ceiling;
-                GameObject floor = tile.Floor;
-                GameObject mainObject = tile.MainObject;
-
-                if (ceiling != null)
-                {
-                    PortalComponent ceilingPortals = ceiling.GetComponent<PortalComponent>();
-
-                    if (ceilingPortals != null)
-                    {
-                        neighbors.AddRange(ceilingPortals.Connections);
-                    }
-                }
-
-                if (floor != null)
-                {
-                    PortalComponent floorPortals = floor.GetComponent<PortalComponent>();
-                    if (floorPortals != null)
-                    {
-                        neighbors.AddRange(floorPortals.Connections);
-                    }
-                }
-
-                if (mainObject != null)
-                {
-                    PortalComponent mainObjectPortals = mainObject.GetComponent<PortalComponent>();
-                    if (mainObjectPortals != null)
-                    {
-                        neighbors.AddRange(mainObjectPortals.Connections);
-                    }
-                }
-
-                for (int i = neighbors.Count - 1; i > -1; i--)
-                {
-                    if (!WorldUtil.DoesTileExist(neighbors[i]))
-                    {
-                        neighbors.RemoveAt(i);
-                    }
-                }
-
-                return neighbors;
-            }
-
-            return new List<Point3D>();
-        }
-
-        /// <summary>
-        /// Gets all of the neighbors, but returns diagnol neighbors first.
-        /// </summary>
-        /// <param name="tileLocation"></param>
-        /// <param name="dimension"></param>
-        /// <returns></returns>
-        private List<Point3D> DiagnolFavorNeighboringTiles(Point3D tileLocation, Guid dimensionId)
-        {
-            List<Point3D> neighbors = new List<Point3D>(8)
-            {
-                new Point3D(tileLocation.X + 1, tileLocation.Y + 1, dimensionId),
-                new Point3D(tileLocation.X + 1, tileLocation.Y - 1, dimensionId),
-                new Point3D(tileLocation.X - 1, tileLocation.Y + 1, dimensionId),
-                new Point3D(tileLocation.X - 1, tileLocation.Y - 1, dimensionId),
-                new Point3D(tileLocation.X + 1, tileLocation.Y, dimensionId),
-                new Point3D(tileLocation.X - 1, tileLocation.Y, dimensionId),
-                new Point3D(tileLocation.X, tileLocation.Y + 1, dimensionId),
-                new Point3D(tileLocation.X, tileLocation.Y - 1, dimensionId)
-            };
-
-            for (int i = neighbors.Count - 1; i > -1; i--)
-            {
-                if (!WorldUtil.DoesTileExist(neighbors[i], dimensionId))
-                {
-                    neighbors.RemoveAt(i);
-                }
-            }
-
-            return neighbors;
-        }
-
         private ExtraNodeData GetNodeFromLists(Point3D node, SortedList<Point3D,
             ExtraNodeData> open, SortedList<Point3D, ExtraNodeData> closed)
         {
@@ -305,7 +212,6 @@ namespace MLAPI.Pathfinding.TeleportationSearch
         private int CalculateHScoreSameDim(Point3D node, Point3D destination)
         {
             return Math.Abs(node.X - destination.X) + Math.Abs(node.Y - destination.Y);
-            //return (int)Math.Sqrt(Math.Pow(destination.X - node.X, 2) + Math.Pow(destination.Y - node.Y, 2));
             //Need to come up with a way to calculate distance between Point3D, even if they are in different dimensions.
         }
 
@@ -313,19 +219,17 @@ namespace MLAPI.Pathfinding.TeleportationSearch
         {
         }
 
-        public bool IsRoutePossible(Point3D origin, Point3D destination)
-        {
-            return this.GetRoute(origin, destination) != null;
-        }
-
         public void RemoveConnections(Point3D location)
         {
-            //this.Storage.RemoveAllConnections(location);
         }
 
         public void AddConnections(Point3D location)
         {
-            //this.Cadder.AddConnections(location, this.Storage);
+        }
+
+        public bool IsRoutePossible(Point3D origin, Point3D destination, IConnectionProvider connectionProvider)
+        {
+            return this.GetRoute(origin, destination, connectionProvider) != null;
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using MLAPI.DataTypes;
+using MLAPI.Entity;
+using MLAPI.Pathfinding.TeleportationSearch;
 using Dimension = MLAPI.World.Data.Dimension;
 
 namespace MLAPI.Pathfinding
@@ -16,7 +18,7 @@ namespace MLAPI.Pathfinding
         /// <param name="destination">The target location for the living to reach.</param>
         /// <param name="origin">The starting Point2D of the living.</param>
         /// <returns></returns>
-        List<PathLink> GetRoute(Point3D origin, Point3D destination);
+        List<PathLink> GetRoute(Point3D origin, Point3D destination, IConnectionProvider connectionProvider);
 
         /// <summary>
         /// Determines whether or not there is a valid path from the origin to the destination.
@@ -25,7 +27,7 @@ namespace MLAPI.Pathfinding
         /// <param name="origin"></param>
         /// <param name="destination"></param>
         /// <returns></returns>
-        bool IsRoutePossible(Point3D origin, Point3D destination);
+        bool IsRoutePossible(Point3D origin, Point3D destination, IConnectionProvider connectionProvider);
 
         /// <summary>
         /// Run whatever startup code you need to before being capable of graph building  for the dimension.

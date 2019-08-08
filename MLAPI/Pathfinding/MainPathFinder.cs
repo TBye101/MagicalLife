@@ -22,6 +22,7 @@ namespace MLAPI.Pathfinding
         /// Value: Pathfinder
         /// </summary>
         private static IPathFinder Pathfinder;
+        public static readonly IConnectionProvider DefaultConnectionProvider = new WalkableConnectionProvider();
 
         /// <summary>
         /// If true the path finder has been properly initialized.
@@ -64,25 +65,46 @@ namespace MLAPI.Pathfinding
 
         public static List<PathLink> GetRoute(Point3D start, Point3D end)
         {
-            return Pathfinder.GetRoute(start, end);
+            return Pathfinder.GetRoute(start, end, DefaultConnectionProvider);
+        }
+
+        public static List<PathLink> GetRoute(Point3D start, Point3D end, IConnectionProvider connectionProvider)
+        {
+            return Pathfinder.GetRoute(start, end, connectionProvider);
         }
 
         public static bool IsRoutePossible(Point3D origin, Point3D destination)
         {
-            return Pathfinder.IsRoutePossible(origin, destination);
+            return Pathfinder.IsRoutePossible(origin, destination, DefaultConnectionProvider);
+        }
+
+        public static bool IsRoutePossible(Point3D origin, Point3D destination, IConnectionProvider connectionProvider)
+        {
+            return Pathfinder.IsRoutePossible(origin, destination, connectionProvider);
         }
 
         /// <summary>
         /// Gives the living a route from start to end asynchronously. 
         /// </summary>
-        /// <param name="living"></param>
-        /// <param name="start"></param>
-        /// <param name="end"></param>
         public static void GiveRouteAsync(Living living, Point3D start, Point3D end)
         {
             Task.Run(() =>
             {
                 List<PathLink> path = MainPathFinder.GetRoute(start, end);
+                ComponentMovement movementComponent = living.GetExactComponent<ComponentMovement>();
+                Util.Extensions.EnqueueCollection(movementComponent.QueuedMovement, path);
+                ClientSendRecieve.Send<RouteCreatedMessage>(new RouteCreatedMessage(path, living.Id, living.DimensionId));
+            });
+        }
+
+        /// <summary>
+        /// Gives the living a route from start to end asynchronously. 
+        /// </summary>
+        public static void GiveRouteAsync(Living living, Point3D start, Point3D end, IConnectionProvider connectionProvider)
+        {
+            Task.Run(() =>
+            {
+                List<PathLink> path = MainPathFinder.GetRoute(start, end, connectionProvider);
                 ComponentMovement movementComponent = living.GetExactComponent<ComponentMovement>();
                 Util.Extensions.EnqueueCollection(movementComponent.QueuedMovement, path);
                 ClientSendRecieve.Send<RouteCreatedMessage>(new RouteCreatedMessage(path, living.Id, living.DimensionId));
