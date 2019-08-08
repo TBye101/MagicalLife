@@ -223,7 +223,7 @@ Batarian711 - Created the logo for this project
 ### MLSettings
 * Holds some settings for all of the assemblies in the project
 
-## Libraries Utilized
+## Libraries Utilized at Runtime
 [MonoGame](http://www.monogame.net/)
 
 Released under the [Microsoft Public License and the MIT License](https://github.com/MonoGame/MonoGame/blob/develop/LICENSE.txt)
@@ -251,6 +251,10 @@ Released under the [Apache License 2.0](https://github.com/mgravell/protobuf-net
 
 #### Used for quickly serializing objects into a small payload to be sent over the network
 ---
+[Json.net](https://github.com/JamesNK/Newtonsoft.Json)
+Released under the MIT license
+#### Used for (de)serialization of settings and other config. 
+---
 [Simple TCP](https://github.com/BrandonPotter/SimpleTCP)
 
 Released under the [Apache License 2.0](https://github.com/BrandonPotter/SimpleTCP/blob/master/LICENSE)
@@ -264,4 +268,10 @@ Released under the [GNU Lesser General Public License](https://github.com/Sneaky
 #### Used for quickly finding objects nearest to a location, or getting all objects within a certain area.
 ---
 
+## Other Things Used
 
+[AppVeyor](https://www.appveyor.com/) for [continous integration](https://en.wikipedia.org/wiki/Continuous_integration)
+
+[MSBump](https://github.com/BalassaMarton/MSBump) for bumping the version of assemblies each build.
+
+[XUnit](https://github.com/xunit/xunit) for unit testing
