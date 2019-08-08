@@ -98,7 +98,10 @@ namespace MLGUIWindows.Input.Specialized_Handlers
                         RenderInfo.DimensionId = connection.DimensionId;
                     }
 
-                    MainPathFinder.GiveRouteAsync(living, start, connection);
+                    if (MainPathFinder.IsRoutePossible(start, connection))
+                    {
+                        MainPathFinder.GiveRouteAsync(living, start, connection);
+                    }
                 }
                 else
                 {

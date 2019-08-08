@@ -23,23 +23,31 @@ namespace MLAPI.Pathfinding.TeleportationSearch
         public List<PathLink> GetRoute(Point3D origin, Point3D destination)
         {
             MasterLog.DebugWriteLine("Path from: " + origin.ToString() + " " + destination.ToString());
-            MasterLog.DebugWriteLine("Estimated distance: " + MathUtil.GetDistance(origin, destination).ToString());
+            MasterLog.DebugWriteLine("Estimated distance: " + MathUtil.GetDistance(origin, destination));
             GC.Collect();
             Stopwatch sw = Stopwatch.StartNew();
 
             List<PathLink> path = this.SameDimensionRoute(origin, destination);
 
             sw.Stop();
-            double milli = 1000;
-            double elapsedMill = sw.ElapsedMilliseconds;
-            double totalTime = elapsedMill / milli;
-            double pathfindingVelocity = MathUtil.GetDistance(origin, destination) / totalTime;
-            double timePerLink = totalTime / path.Count;
 
-            MasterLog.DebugWriteLine("Path links: " + path.Count.ToString());
-            MasterLog.DebugWriteLine("Time per link: " + timePerLink.ToString() + " seconds");
-            MasterLog.DebugWriteLine("Pathfinding velocity: " + pathfindingVelocity.ToString() + " tiles/s");
-            MasterLog.DebugWriteLine("Total time: " + totalTime.ToString() + " seconds");
+            if (path == null)
+            {
+                MasterLog.DebugWriteLine("No Path found / Error");
+            }
+            else
+            {
+                double milli = 1000;
+                double elapsedMill = sw.ElapsedMilliseconds;
+                double totalTime = elapsedMill / milli;
+                double pathfindingVelocity = MathUtil.GetDistance(origin, destination) / totalTime;
+                double timePerLink = totalTime / path.Count;
+
+                MasterLog.DebugWriteLine("Path links: " + path.Count.ToString());
+                MasterLog.DebugWriteLine("Time per link: " + timePerLink.ToString() + " seconds");
+                MasterLog.DebugWriteLine("Pathfinding velocity: " + pathfindingVelocity.ToString() + " tiles/s");
+                MasterLog.DebugWriteLine("Total time: " + totalTime.ToString() + " seconds");
+            }
 
             return path;
         }
@@ -126,6 +134,11 @@ namespace MLAPI.Pathfinding.TeleportationSearch
             {
                 links.Add(location);
                 location = this.GetLowestGScore(this.CalculateConnections(dataNode), open, closed);
+
+                if (location == null)
+                {
+                    return null;
+                }
                 dataNode = World.Data.World.GetTile(location);
             }
 
@@ -162,7 +175,7 @@ namespace MLAPI.Pathfinding.TeleportationSearch
                 }
             }
 
-            if (lowestGNode.Equals(default(KeyValuePair<ExtraNodeData, Tile>)))
+            if (lowestGNode.Equals(default))
             {
                 return null;
             }

@@ -80,7 +80,7 @@ namespace MLAPI.Pathfinding
         /// <param name="end"></param>
         public static void GiveRouteAsync(Living living, Point3D start, Point3D end)
         {
-            Task routeTask = Task.Run(() =>
+            Task.Run(() =>
             {
                 List<PathLink> path = MainPathFinder.GetRoute(start, end);
                 ComponentMovement movementComponent = living.GetExactComponent<ComponentMovement>();
