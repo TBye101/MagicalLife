@@ -38,7 +38,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
             ProtoArray<Chunk> dungeonChunks = WorldUtil.GenerateBlankChunks(dungeonSizeNeeded.X, dungeonSizeNeeded.Y);
 
             constructor.Setup(dungeonChunks);
-            Point2D entranceLocation = this.CalculateEntranceLocation(entranceNode, translatedNodes);
+            Point2D entranceLocation = CalculateEntranceLocation(entranceNode, translatedNodes);
 
             foreach (DungeonTranslationNode item in translatedNodes)
             {
@@ -57,7 +57,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
             return dungeonChunks;
         }
 
-        private Point2D CalculateEntranceLocation(DungeonTranslationNode entranceNode, List<DungeonTranslationNode> translatedNodes)
+        private static Point2D CalculateEntranceLocation(DungeonTranslationNode entranceNode, List<DungeonTranslationNode> translatedNodes)
         {
             GraphBounds graphBounds = CalculateGraphBounds(translatedNodes);
 

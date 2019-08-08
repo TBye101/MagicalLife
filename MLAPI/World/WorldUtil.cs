@@ -140,6 +140,19 @@ namespace MLAPI.World
         }
 
         /// <summary>
+        /// Calculates the location within its corresponding chunk that the tile location is at.
+        /// </summary>
+        /// <param name="tileLocation"></param>
+        /// <returns></returns>
+        public static Point2D CalculateTileLocationInChunk(Point2D tileLocation)
+        {
+            int x = tileLocation.X % Chunk.Width;
+            int y = tileLocation.Y % Chunk.Height;
+
+            return new Point2D(x, y);
+        }
+
+        /// <summary>
         /// Gets a tile from a chunk via its map location.
         /// </summary>
         /// <param name="mapLocation">The location of the tile.</param>

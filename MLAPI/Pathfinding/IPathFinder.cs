@@ -18,7 +18,7 @@ namespace MLAPI.Pathfinding
         /// <param name="destination">The target location for the living to reach.</param>
         /// <param name="origin">The starting Point2D of the living.</param>
         /// <returns></returns>
-        List<PathLink> GetRoute(Point3D origin, Point3D destination, IConnectionProvider connectionProvider);
+        List<PathLink> GetRoute(Point3D origin, Point3D destination, IConnectionProvider connectionProvider, IWorldProvider worldProvider);
 
         /// <summary>
         /// Determines whether or not there is a valid path from the origin to the destination.
@@ -27,7 +27,7 @@ namespace MLAPI.Pathfinding
         /// <param name="origin"></param>
         /// <param name="destination"></param>
         /// <returns></returns>
-        bool IsRoutePossible(Point3D origin, Point3D destination, IConnectionProvider connectionProvider);
+        bool IsRoutePossible(Point3D origin, Point3D destination, IConnectionProvider connectionProvider, IWorldProvider worldProvider);
 
         /// <summary>
         /// Run whatever startup code you need to before being capable of graph building  for the dimension.
@@ -39,13 +39,13 @@ namespace MLAPI.Pathfinding
         /// Removes all links to the specified location.
         /// </summary>
         /// <param name="location"></param>
-        void RemoveConnections(Point3D location);
+        void RemoveConnections(Point3D location, IConnectionProvider connectionProvider, IWorldProvider worldProvider);
 
         /// <summary>
         /// Adds links to the specified location.
         /// </summary>
         /// <param name="location"></param>
 
-        void AddConnections(Point3D location);
+        void AddConnections(Point3D location, IConnectionProvider connectionProvider, IWorldProvider worldProvider);
     }
 }

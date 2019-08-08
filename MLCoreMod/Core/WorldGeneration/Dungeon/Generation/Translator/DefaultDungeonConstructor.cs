@@ -71,5 +71,10 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
 
             return chunk;
         }
+
+        public void ConnectRooms(List<DungeonTranslationNode> translatedNodes)
+        {
+            
+        }
     }
 }

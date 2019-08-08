@@ -14,20 +14,20 @@ namespace MLAPI.Pathfinding.TeleportationSearch
     /// <summary>
     /// Used to do pathfinding
     /// </summary>
-    public class Search : IPathFinder
+    public class DynamicAStar : IPathFinder
     {
-        public Search()
+        public DynamicAStar()
         {
         }
 
-        public List<PathLink> GetRoute(Point3D origin, Point3D destination, IConnectionProvider connectionProvider)
+        public List<PathLink> GetRoute(Point3D origin, Point3D destination, IConnectionProvider connectionProvider, IWorldProvider worldProvider)
         {
             MasterLog.DebugWriteLine("Path from: " + origin.ToString() + " " + destination.ToString());
             MasterLog.DebugWriteLine("Estimated distance: " + MathUtil.GetDistance(origin, destination));
             GC.Collect();
             Stopwatch sw = Stopwatch.StartNew();
 
-            List<PathLink> path = this.SameDimensionRoute(origin, destination, connectionProvider);
+            List<PathLink> path = this.SameDimensionRoute(origin, destination, connectionProvider, worldProvider);
 
             sw.Stop();
 
@@ -52,7 +52,7 @@ namespace MLAPI.Pathfinding.TeleportationSearch
             return path;
         }
 
-        private List<PathLink> SameDimensionRoute(Point3D origin, Point3D destination, IConnectionProvider connectionProvider)
+        private List<PathLink> SameDimensionRoute(Point3D origin, Point3D destination, IConnectionProvider connectionProvider, IWorldProvider worldProvider)
         {
             /*
                 f(n) = total estimated cost of path through node
@@ -82,17 +82,17 @@ namespace MLAPI.Pathfinding.TeleportationSearch
                         MasterLog.DebugWriteLine("Open nodes: " + open.Count.ToString());
                         MasterLog.DebugWriteLine("Closed nodes: " + closed.Count.ToString());
 
-                        return this.ReconstructPath(lowestFKey, value, open, closed, origin, connectionProvider);
+                        return this.ReconstructPath(lowestFKey, value, open, closed, origin, connectionProvider, worldProvider);
                     }
                     else
                     {
                         open.Remove(lowestFKey);
                         closed.Add(lowestFKey, value);
 
-                        Tile tile = World.Data.World.GetTile(value.NodeLocation);
+                        Tile tile = worldProvider.GetTile(value.NodeLocation);
                         foreach (Point3D item in connectionProvider.CalculateConnections(tile))
                         {
-                            Tile neighborTile = World.Data.World.GetTile(item);
+                            Tile neighborTile = worldProvider.GetTile(item);
                             ExtraNodeData extraNeighborData;
 
                             bool inOpen = open.TryGetValue(item, out ExtraNodeData neighborData);
@@ -123,11 +123,12 @@ namespace MLAPI.Pathfinding.TeleportationSearch
             return null;
         }
 
-        private List<PathLink> ReconstructPath(Point3D lastNode, ExtraNodeData value, SortedList<Point3D, ExtraNodeData> open, SortedList<Point3D, ExtraNodeData> closed, Point3D origin, IConnectionProvider connectionProvider)
+        private List<PathLink> ReconstructPath(Point3D lastNode, ExtraNodeData value, SortedList<Point3D, ExtraNodeData> open,
+            SortedList<Point3D, ExtraNodeData> closed, Point3D origin, IConnectionProvider connectionProvider, IWorldProvider worldProvider)
         {
             List<Point3D> links = new List<Point3D>();
 
-            Tile dataNode = World.Data.World.GetTile(lastNode);
+            Tile dataNode = worldProvider.GetTile(lastNode);
             Point3D location = lastNode;
 
             while (!location.Equals(origin))
@@ -139,7 +140,7 @@ namespace MLAPI.Pathfinding.TeleportationSearch
                 {
                     return null;
                 }
-                dataNode = World.Data.World.GetTile(location);
+                dataNode = worldProvider.GetTile(location);
             }
 
             links.Add(origin);
@@ -219,17 +220,19 @@ namespace MLAPI.Pathfinding.TeleportationSearch
         {
         }
 
-        public void RemoveConnections(Point3D location)
+        public void RemoveConnections(Point3D location, IConnectionProvider connectionProvider, IWorldProvider worldProvider)
         {
+            //Don't need to manually remove connections for this algorithm.
         }
 
-        public void AddConnections(Point3D location)
+        public void AddConnections(Point3D location, IConnectionProvider connectionProvider, IWorldProvider worldProvider)
         {
+            //Don't need to manually add connections for this algorithm.
         }
 
-        public bool IsRoutePossible(Point3D origin, Point3D destination, IConnectionProvider connectionProvider)
+        public bool IsRoutePossible(Point3D origin, Point3D destination, IConnectionProvider connectionProvider, IWorldProvider worldProvider)
         {
-            return this.GetRoute(origin, destination, connectionProvider) != null;
+            return this.GetRoute(origin, destination, connectionProvider, worldProvider) != null;
         }
     }
 }
