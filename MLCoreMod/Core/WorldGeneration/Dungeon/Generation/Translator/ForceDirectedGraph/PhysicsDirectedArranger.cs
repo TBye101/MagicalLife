@@ -23,11 +23,11 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator.ForceDire
         private static readonly int MinNodeDispersal = 0;
 
         private const double ATTRACTION_CONSTANT = 0.1;		// spring constant
-        private const double REPULSION_CONSTANT = 10000;	// charge constant
-        private const double DEFAULT_DAMPING = 0.5;
-        private const int DEFAULT_SPRING_LENGTH = 100;
+        private const double REPULSION_CONSTANT = 225;	// charge constant
+        private const double DEFAULT_DAMPING = .5;
+        private const int DEFAULT_SPRING_LENGTH = 200;
         private const int DEFAULT_MAX_ITERATIONS = 500;
-        private List<DungeonTranslationNode> mNodes;
+        private List<DungeonTranslationNode> MNodes;
 
         public PhysicsDirectedArranger()
         {
@@ -36,7 +36,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator.ForceDire
 
         public void Setup(List<DungeonTranslationNode> nodes)
         {
-            this.mNodes = nodes;
+            this.MNodes = nodes;
             foreach (DungeonTranslationNode item in nodes)
             {
                 int x = StaticRandom.Rand(MinNodeDispersal, MaxNodeDispersal);
@@ -48,7 +48,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator.ForceDire
         public List<DungeonTranslationNode> Arrange(List<DungeonTranslationNode> nodes)
         {
             this.Arrange(DEFAULT_DAMPING, DEFAULT_SPRING_LENGTH, DEFAULT_MAX_ITERATIONS, true);
-            return this.mNodes;
+            return this.MNodes;
         }
 
         private void LogNodes(List<DungeonTranslationNode> nodes)
@@ -120,9 +120,9 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator.ForceDire
 		    Random rnd = deterministic ? new Random(0) : new Random();
 
 		    // copy nodes into an array of metadata and randomise initial coordinates for each node
-		    NodeLayoutInfo[] layout = new NodeLayoutInfo[this.mNodes.Count];
-		    for (int i = 0; i < this.mNodes.Count; i++) {
-			    layout[i] = new NodeLayoutInfo(this.mNodes[i], new ForceVector(), Point2D.Zero);
+		    NodeLayoutInfo[] layout = new NodeLayoutInfo[this.MNodes.Count];
+		    for (int i = 0; i < this.MNodes.Count; i++) {
+			    layout[i] = new NodeLayoutInfo(this.MNodes[i], new ForceVector(), Point2D.Zero);
 			    layout[i].Node.Offset = new Point2D(rnd.Next(-50, 50), rnd.Next(-50, 50));
 		    }
 
@@ -131,7 +131,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator.ForceDire
 
 		    while (true)
             {
-                this.LogNodes(this.mNodes);
+                this.LogNodes(this.MNodes);
 			    double totalDisplacement = 0;
 
 			    for (int i=0; i<layout.Length; i++)
@@ -143,7 +143,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator.ForceDire
                     ForceVector netForce = new ForceVector(0, 0);
 
 				    // determine repulsion between nodes
-				    foreach (DungeonTranslationNode other in this.mNodes)
+				    foreach (DungeonTranslationNode other in this.MNodes)
                     {
 					    if (other != current.Node)
                         {
@@ -157,7 +157,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator.ForceDire
                     {
 					    netForce += this.CalcAttractionForce(current.Node, child, springLength);
 				    }
-				    foreach (DungeonTranslationNode parent in this.mNodes)
+				    foreach (DungeonTranslationNode parent in this.MNodes)
                     {
                         List<DungeonTranslationNode> parentConnections = this.GetConnections(parent);
 					    if (parentConnections.Contains(current.Node))
@@ -214,7 +214,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator.ForceDire
             List<DungeonTranslationNode> connections = new List<DungeonTranslationNode>();
             foreach (DungeonNode item in node.DesignNode.Connections)
             {
-                DungeonTranslationNode foundNode = this.mNodes.Find(x => x.DesignNode.NodeId.Equals(item.NodeId));
+                DungeonTranslationNode foundNode = this.MNodes.Find(x => x.DesignNode.NodeId.Equals(item.NodeId));
                 connections.Add(foundNode);
             }
 
