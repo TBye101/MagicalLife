@@ -37,11 +37,12 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
             ProtoArray<Chunk> dungeonChunks = WorldUtil.GenerateBlankChunks(dungeonSizeNeeded.X, dungeonSizeNeeded.Y);
 
             constructor.Setup(dungeonChunks);
+            Point2D entranceLocation = this.CalculateEntranceLocation(entranceNode, translatedNodes);
 
             foreach (DungeonTranslationNode item in translatedNodes)
             {
-                int x = item.Offset.X + entranceNode.Offset.X;
-                int y = item.Offset.Y + entranceNode.Offset.Y;
+                int x = item.Offset.X + entranceLocation.X;
+                int y = item.Offset.Y + entranceLocation.Y;
                 int width = item.SectionWidth;
                 int height = item.SectionHeight;
                 constructor.CreateRoomOrHallway(dungeonChunks, x, y, width, height);
@@ -52,6 +53,48 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
             return dungeonChunks;
         }
 
+        private Point2D CalculateEntranceLocation(DungeonTranslationNode entranceNode, List<DungeonTranslationNode> translatedNodes)
+        {
+            GraphBounds graphBounds = CalculateGraphBounds(translatedNodes);
+
+            Point2D entranceLocation = new Point2D(0, 0);
+
+            if (graphBounds.LowestXPosition < 0)
+            {
+                entranceLocation.X = -1 * graphBounds.LowestXPosition;
+            }
+
+            if (graphBounds.LowestYPosition < 0)
+            {
+                entranceLocation.Y = -1 * graphBounds.LowestYPosition;
+            }
+
+            return entranceLocation;
+        }
+
+        /// <summary>
+        /// Calculates the furthest spread of nodes in the graph.
+        /// </summary>
+        /// <param name="translatedNodes"></param>
+        /// <returns></returns>
+        private static GraphBounds CalculateGraphBounds(List<DungeonTranslationNode> translatedNodes)
+        {
+            GraphBounds bounds = new GraphBounds();
+
+            foreach (DungeonTranslationNode item in translatedNodes)
+            {
+                int xPosition = item.Offset.X + item.SectionWidth;
+                int yPosition = item.Offset.Y + item.SectionHeight;
+
+                bounds.LowestXPosition = Math.Min(bounds.LowestXPosition, xPosition);
+                bounds.HighestXPosition = Math.Max(bounds.HighestXPosition, xPosition);
+                bounds.LowestYPosition = Math.Min(bounds.LowestYPosition, yPosition);
+                bounds.HighestYPosition = Math.Max(bounds.HighestYPosition, yPosition);
+            }
+
+            return bounds;
+        }
+
         /// <summary>
         /// Calculates the size requirements for the dungeon in chunks.
         /// </summary>
@@ -59,24 +102,10 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
         /// <returns></returns>
         private static Point2D CalculateDungeonSize(List<DungeonTranslationNode> translatedNodes)
         {
-            int lowestXPosition = 0;
-            int highestXPosition = 0;
-            int lowestYPosition = 0;
-            int highestYPosition = 0;
+            GraphBounds graphBounds = CalculateGraphBounds(translatedNodes);
 
-            foreach (DungeonTranslationNode item in translatedNodes)
-            {
-                int xPosition = item.Offset.X + item.SectionWidth;
-                int yPosition = item.Offset.Y + item.SectionHeight;
-
-                lowestXPosition = Math.Min(lowestXPosition, xPosition);
-                highestXPosition = Math.Max(highestXPosition, xPosition);
-                lowestYPosition = Math.Min(lowestYPosition, yPosition);
-                highestYPosition = Math.Max(highestYPosition, yPosition);
-            }
-
-            int tileWidth = highestXPosition - lowestXPosition;
-            int tileHeight = highestYPosition - lowestYPosition;
+            int tileWidth = graphBounds.HighestXPosition - graphBounds.LowestXPosition;
+            int tileHeight = graphBounds.HighestYPosition - graphBounds.LowestYPosition;
             int chunkWidth = (tileWidth / Chunk.Width) + 1;
             int chunkHeight = (tileHeight / Chunk.Height) + 1;
 
