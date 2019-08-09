@@ -45,5 +45,21 @@ namespace MLAPI.Util
                 return items[randomIndex];
             }
         }
+
+        /// <summary>
+        /// Removes all elements that are shared between this collection and the specified collection.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="collection"></param>
+        /// <param name="items"></param>
+        /// <returns></returns>
+        public static void RemoveShared<T>(this IList<T> collection, IList<T> items)
+        {
+            for (int index = 0; index < items.Count; index++)
+            {
+                T item = items[index];
+                collection.Remove(item);
+            }
+        }
     }
 }

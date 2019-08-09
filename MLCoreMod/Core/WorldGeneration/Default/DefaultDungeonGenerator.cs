@@ -28,7 +28,7 @@ namespace MLCoreMod.Core.WorldGeneration.Default
             DungeonNode dungeonDesign = designer.GetDungeonDesign(dungeonDesignRules);
             IDungeonDesignTranslator translator = new DefaultTranslator();
 
-            return translator.Translate(dungeonDesign, exitLocation);
+            return translator.Translate(dungeonDesign, exitLocation, dimensionId);
             //HallwayGenerator hallwayGen = WorldGeneratorRegistry.HallwayGenerators.GetRandomItem();
             //RoomGenerator roomGen = WorldGeneratorRegistry.RoomGenerators.GetRandomItem();
             //RoomDecorationGenerator roomDecorator = WorldGeneratorRegistry.RoomDecorators.GetRandomItem();

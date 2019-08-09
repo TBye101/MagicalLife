@@ -49,7 +49,7 @@ namespace MLAPI.World
         /// Returns all the tiles that neighbor the specified tile.
         /// </summary>
         /// <returns></returns>
-        public static List<Point2D> GetNeighboringTiles(Point2D tileLocation, Guid dimensionId)
+        public static List<Point2D> GetAdjacentTiles(Point2D tileLocation, Guid dimensionId)
         {
             List<Point2D> neighbors = new List<Point2D>
             {
@@ -75,7 +75,37 @@ namespace MLAPI.World
             return neighbors;
         }
 
-        public static List<Point3D> GetNeighboringTiles(Point3D tileLocation)
+        /// <summary>
+        /// Returns all the tiles that neighbor the specified tile except for the diagonals.
+        /// </summary>
+        /// <returns></returns>
+        public static List<Point3D> GetNonDiagonalAdjacentTiles(Point3D tileLocation)
+        {
+            List<Point3D> neighbors = new List<Point3D>
+            {
+                new Point3D(tileLocation.X + 1, tileLocation.Y, tileLocation.DimensionId),
+                new Point3D(tileLocation.X - 1, tileLocation.Y, tileLocation.DimensionId),
+                new Point3D(tileLocation.X, tileLocation.Y + 1, tileLocation.DimensionId),
+                new Point3D(tileLocation.X, tileLocation.Y - 1, tileLocation.DimensionId)
+            };
+
+
+            for (int i = neighbors.Count - 1; i > -1; i--)
+            {
+                if (!DoesTileExist(neighbors[i], tileLocation.DimensionId))
+                {
+                    neighbors.RemoveAt(i);
+                }
+            }
+
+            return neighbors;
+        }
+
+        /// <summary>
+        /// Returns all the tiles that neighbor the specified tile.
+        /// </summary>
+        /// <returns></returns>
+        public static List<Point3D> GetAdjacentTiles(Point3D tileLocation)
         {
             List<Point3D> neighbors = new List<Point3D>
             {

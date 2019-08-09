@@ -1,4 +1,5 @@
-﻿using MLAPI.DataTypes;
+﻿using System;
+using MLAPI.DataTypes;
 using MLAPI.DataTypes.Collection;
 using MLAPI.World.Data;
 using MLCoreMod.Core.WorldGeneration.Dungeon.DesignGraph;
@@ -14,6 +15,6 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation
         /// <param name="dungeonDesign"></param>
         /// <param name="exitLocation">The exit location of the dungeon. AKA the stairs back up.</param>
         /// <returns></returns>
-        ProtoArray<Chunk> Translate(DungeonNode dungeonDesign, Point3D exitLocation);
+        ProtoArray<Chunk> Translate(DungeonNode dungeonDesign, Point3D exitLocation, Guid dimensionId);
     }
 }

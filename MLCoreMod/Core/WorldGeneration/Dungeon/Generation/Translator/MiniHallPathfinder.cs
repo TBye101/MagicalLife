@@ -5,6 +5,7 @@ using MLAPI.Components;
 using MLAPI.Components.Entity;
 using MLAPI.DataTypes;
 using MLAPI.Pathfinding.TeleportationSearch;
+using MLAPI.Util.Math;
 using MLAPI.World;
 using MLAPI.World.Base;
 
@@ -27,7 +28,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
         public List<Point3D> CalculateConnections(Tile tile)
         {
             ComponentSelectable selectable = tile.GetExactComponent<ComponentSelectable>();
-            List<Point3D> neighbors = WorldUtil.GetNeighboringTiles(selectable.MapLocation);
+            List<Point3D> neighbors = WorldUtil.GetNonDiagonalAdjacentTiles(selectable.MapLocation);
 
             for (int i = neighbors.Count - 1; i > -1; i--)
             {
@@ -50,7 +51,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
                 int x = item.Offset.X + this.EntranceLocation.X;
                 int y = item.Offset.Y + this.EntranceLocation.Y;
 
-                if (this.IsInOrAdjacentToRectangle(location, x, y, item.SectionWidth,
+                if (Geometry.IsInOrAdjacentToRectangle(location, x, y, item.SectionWidth,
                     item.SectionHeight))
                 {
                     return false;
@@ -58,12 +59,6 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
             }
 
             return true;
-        }
-
-        private bool IsInOrAdjacentToRectangle(Point2D location, int rectangleX, int rectangleY, int rectangleWidth, int rectangleHeight)
-        {
-            return (location.X >= (rectangleX - 1) && location.X <= (rectangleX + rectangleWidth + 1)) &&
-                   (location.Y >= (rectangleY - 1) && location.Y <= (rectangleY + rectangleHeight + 1));
         }
     }
 }

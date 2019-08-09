@@ -33,6 +33,25 @@ namespace MLAPI.Util.Math
         }
 
         /// <summary>
+        /// Returns all of the points on the actual lines that make up the rectangle except for the corner points.
+        /// </summary>
+        /// <param name="rectangle"></param>
+        /// <returns></returns>
+        public static List<Point2D> GetAllPointsOnRectangleExceptCorners(MagicRectangle rectangle)
+        {
+            List<Point2D> rectanglePoints = GetAllPointsOnRectangle(rectangle);
+            Point2D topRight = new Point2D(rectangle.BottomRight.X, rectangle.TopLeft.Y);
+            Point2D bottomLeft = new Point2D(rectangle.TopLeft.X, rectangle.BottomRight.Y);
+
+            rectanglePoints.Remove(rectangle.TopLeft);
+            rectanglePoints.Remove(topRight);
+            rectanglePoints.Remove(bottomLeft);
+            rectanglePoints.Remove(rectangle.BottomRight);
+
+            return rectanglePoints;
+        }
+
+        /// <summary>
         /// Returns all of the points that fall on the horizontal line.
         /// </summary>
         /// <param name="start"></param>
@@ -205,6 +224,33 @@ namespace MLAPI.Util.Math
             }
 
             return points;
+        }
+
+        /// <summary>
+        /// Returns true if the location is within or adjacent to the rectangle.
+        /// </summary>
+        /// <param name="location"></param>
+        /// <param name="rectangleX"></param>
+        /// <param name="rectangleY"></param>
+        /// <param name="rectangleWidth"></param>
+        /// <param name="rectangleHeight"></param>
+        /// <returns></returns>
+        public static bool IsInOrAdjacentToRectangle(Point2D location, int rectangleX, int rectangleY, int rectangleWidth, int rectangleHeight)
+        {
+            return (location.X >= (rectangleX - 1) && location.X <= (rectangleX + rectangleWidth + 1)) &&
+                   (location.Y >= (rectangleY - 1) && location.Y <= (rectangleY + rectangleHeight + 1));
+        }
+
+        /// <summary>
+        /// Returns true if the rectangles overlap.
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static bool DoRectanglesOverlap(MagicRectangle a, MagicRectangle b)
+        {
+            return (b.BottomRight.X >= a.TopLeft.X && b.TopLeft.X <= b.BottomRight.X) &&
+                   (b.BottomRight.Y >= a.TopLeft.Y && b.TopLeft.Y <= a.BottomRight.Y);
         }
     }
 }

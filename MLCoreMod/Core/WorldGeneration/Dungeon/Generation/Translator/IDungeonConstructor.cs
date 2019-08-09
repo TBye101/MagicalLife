@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MLAPI.DataTypes;
 using MLAPI.DataTypes.Collection;
 using MLAPI.World.Data;
@@ -10,17 +11,17 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
     /// </summary>
     public interface IDungeonConstructor
     {
-        void Setup(ProtoArray<Chunk> dungeonChunks);
+        void Setup(ProtoArray<Chunk> dungeonChunks, Guid dimensionId);
 
         /// <summary>
         /// Creates a room or hallway.
         /// </summary>
-        void CreateRoomOrHallway(ProtoArray<Chunk> dungeonChunks, int x, int y, int width, int height);
+        void CreateRoomOrHallway(ProtoArray<Chunk> dungeonChunks, Guid dimensionId, int x, int y, int width, int height);
 
         /// <summary>
         /// Connects all rooms that should be connected without overlapping.
         /// </summary>
         /// <param name="translatedNodes"></param>
-        void ConnectRooms(ProtoArray<Chunk> dungeonChunks, List<DungeonTranslationNode> translatedNodes, Point2D entranceLocation);
+        void ConnectRooms(ProtoArray<Chunk> dungeonChunks, Guid dimensionId, List<DungeonTranslationNode> translatedNodes, Point2D entranceLocation);
     }
 }

@@ -132,7 +132,7 @@ namespace MLAPI.GameRegistry.Items
         /// <returns></returns>
         public static Point3D FindMainObjectEmptyTile(Point3D mapLocation)
         {
-            List<Point3D> tilesChecking = WorldUtil.GetNeighboringTiles(mapLocation);
+            List<Point3D> tilesChecking = WorldUtil.GetAdjacentTiles(mapLocation);
 
             while (tilesChecking.Count > 0)
             {
@@ -146,7 +146,7 @@ namespace MLAPI.GameRegistry.Items
                 }
 
                 //Add all neighbors of the tile since it wasn't free from items and resources.
-                tilesChecking.AddRange(WorldUtil.GetNeighboringTiles(currentlyChecking));
+                tilesChecking.AddRange(WorldUtil.GetAdjacentTiles(currentlyChecking));
                 tilesChecking.RemoveAt(0);
             }
 

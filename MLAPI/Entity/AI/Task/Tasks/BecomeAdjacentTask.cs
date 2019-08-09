@@ -36,7 +36,7 @@ namespace MLAPI.Entity.AI.Task.Tasks
 
         public override bool CreateDependencies(Living l)
         {
-            List<Point3D> result = WorldUtil.GetNeighboringTiles(this.Target);
+            List<Point3D> result = WorldUtil.GetAdjacentTiles(this.Target);
             result.RemoveAll(x => !World.Data.World.GetTile(l.DimensionId, x.X, x.Y).IsWalkable);
 
             ComponentSelectable entitySelected = l.GetExactComponent<ComponentSelectable>();

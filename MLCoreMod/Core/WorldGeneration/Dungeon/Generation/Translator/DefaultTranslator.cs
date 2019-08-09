@@ -18,7 +18,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
     /// </summary>
     public class DefaultTranslator : IDungeonDesignTranslator
     {
-        public ProtoArray<Chunk> Translate(DungeonNode dungeonDesign, Point3D exitLocation)
+        public ProtoArray<Chunk> Translate(DungeonNode dungeonDesign, Point3D exitLocation, Guid dimensionId)
         {
             //Figure out sizes and offsets...
             //https://en.wikipedia.org/wiki/Force-directed_graph_drawing
@@ -37,7 +37,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
             Point2D dungeonSizeNeeded = CalculateDungeonSize(translatedNodes);
             ProtoArray<Chunk> dungeonChunks = WorldUtil.GenerateBlankChunks(dungeonSizeNeeded.X, dungeonSizeNeeded.Y);
 
-            constructor.Setup(dungeonChunks);
+            constructor.Setup(dungeonChunks, dimensionId);
             Point2D entranceLocation = CalculateEntranceLocation(entranceNode, translatedNodes);
 
             foreach (DungeonTranslationNode item in translatedNodes)
@@ -49,8 +49,10 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
                 MasterLog.DebugWriteLine("Making room/hallway: ");
                 var debugInfo = new {x, y, width, height};
                 MasterLog.DebugWriteParams(debugInfo);
-                constructor.CreateRoomOrHallway(dungeonChunks, x, y, width, height);
+                constructor.CreateRoomOrHallway(dungeonChunks, dimensionId, x, y, width, height);
             }
+
+            constructor.ConnectRooms(dungeonChunks, dimensionId, translatedNodes, entranceLocation);
 
             //Fill rooms and hallways with content from generators
 
