@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using MLAPI.DataTypes;
 using MLAPI.DataTypes.Collection;
+using MLAPI.Pathfinding;
+using MLAPI.Pathfinding.AStar.Providers;
+using MLAPI.Pathfinding.TeleportationSearch;
 using MLAPI.World.Data;
 using MLCoreMod.Core.Resources;
 using MLCoreMod.Core.Tiles;
@@ -72,9 +75,14 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
             return chunk;
         }
 
-        public void ConnectRooms(List<DungeonTranslationNode> translatedNodes)
+        public void ConnectRooms(ProtoArray<Chunk> dungeonChunks, List<DungeonTranslationNode> translatedNodes, Point2D entranceLocation)
         {
-            
+            IWorldProvider worldProvider = new ChunkedWorldProvider(dungeonChunks);
+            IConnectionProvider connectionProvider = new MiniHallPathfinder(translatedNodes, entranceLocation);
+
+            //Figure out which ones I want to connect
+            //Then, calculate connection path and points at each room
+            //Use path and make hallway
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using MLAPI.DataTypes;
 using MLAPI.DataTypes.Collection;
 using MLAPI.World.Data;
 
@@ -20,6 +21,6 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
         /// Connects all rooms that should be connected without overlapping.
         /// </summary>
         /// <param name="translatedNodes"></param>
-        void ConnectRooms(List<DungeonTranslationNode> translatedNodes);
+        void ConnectRooms(ProtoArray<Chunk> dungeonChunks, List<DungeonTranslationNode> translatedNodes, Point2D entranceLocation);
     }
 }
