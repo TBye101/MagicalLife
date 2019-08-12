@@ -22,7 +22,7 @@ namespace MLAPI.Pathfinding.TeleportationSearch
 
         public List<PathLink> GetRoute(Point3D origin, Point3D destination, IConnectionProvider connectionProvider, IWorldProvider worldProvider)
         {
-            MasterLog.DebugWriteLine("Path from: " + origin.ToString() + " " + destination.ToString());
+            MasterLog.DebugWriteLine("Path from: " + origin + " " + destination);
             MasterLog.DebugWriteLine("Estimated distance: " + MathUtil.GetDistance(origin, destination));
             //GC.Collect();
             Stopwatch sw = Stopwatch.StartNew();
@@ -43,6 +43,7 @@ namespace MLAPI.Pathfinding.TeleportationSearch
                 double pathfindingVelocity = MathUtil.GetDistance(origin, destination) / totalTime;
                 double timePerLink = totalTime / path.Count;
 
+                MasterLog.DebugWriteLine("Time results from path: " + origin + " to " + destination);
                 MasterLog.DebugWriteLine("Path links: " + path.Count);
                 MasterLog.DebugWriteLine("Time per link: " + timePerLink + " seconds");
                 MasterLog.DebugWriteLine("Pathfinding velocity: " + pathfindingVelocity + " tiles/s");
@@ -67,7 +68,7 @@ namespace MLAPI.Pathfinding.TeleportationSearch
             else
             {
                 SortedList<Point3D, ExtraNodeData> open = new SortedList<Point3D, ExtraNodeData>();
-                SortedList<Point3D, ExtraNodeData> closed = new SortedList<Point3D, ExtraNodeData>();
+                Dictionary<Point3D, ExtraNodeData> closed = new Dictionary<Point3D, ExtraNodeData>();
 
                 ExtraNodeData firstData = new ExtraNodeData(0, this.CalculateHScoreSameDim(origin, destination), origin);
                 open.Add(firstData.NodeLocation, firstData);
@@ -93,7 +94,6 @@ namespace MLAPI.Pathfinding.TeleportationSearch
                         foreach (Point3D item in connectionProvider.CalculateConnections(tile, worldProvider, origin, destination))
                         {
                             Tile neighborTile = worldProvider.GetTile(item);
-                            ExtraNodeData extraNeighborData;
 
                             bool inOpen = open.TryGetValue(item, out ExtraNodeData neighborData);
 
@@ -103,17 +103,9 @@ namespace MLAPI.Pathfinding.TeleportationSearch
 
                                 if (!inClosed)
                                 {
-                                    extraNeighborData = new ExtraNodeData(value.GScore + neighborTile.MovementCost, this.CalculateHScoreSameDim(item, destination), item);
+                                    ExtraNodeData extraNeighborData = new ExtraNodeData(value.GScore + neighborTile.MovementCost, this.CalculateHScoreSameDim(item, destination), item);
                                     open.Add(item, extraNeighborData);
                                 }
-                                else
-                                {
-                                    extraNeighborData = closedNeighborData;
-                                }
-                            }
-                            else
-                            {
-                                extraNeighborData = neighborData;
                             }
                         }
                     }
@@ -124,7 +116,7 @@ namespace MLAPI.Pathfinding.TeleportationSearch
         }
 
         private List<PathLink> ReconstructPath(Point3D lastNode, ExtraNodeData value, SortedList<Point3D, ExtraNodeData> open,
-            SortedList<Point3D, ExtraNodeData> closed, Point3D origin, IConnectionProvider connectionProvider, IWorldProvider worldProvider)
+            Dictionary<Point3D, ExtraNodeData> closed, Point3D origin, IConnectionProvider connectionProvider, IWorldProvider worldProvider)
         {
             List<Point3D> links = new List<Point3D>();
 
@@ -156,7 +148,7 @@ namespace MLAPI.Pathfinding.TeleportationSearch
             return path;
         }
 
-        private Point3D GetLowestGScore(List<Point3D> connections, SortedList<Point3D, ExtraNodeData> open, SortedList<Point3D, ExtraNodeData> closed)
+        private Point3D GetLowestGScore(List<Point3D> connections, SortedList<Point3D, ExtraNodeData> open, Dictionary<Point3D, ExtraNodeData> closed)
         {
             int length = connections.Count;
             ExtraNodeData lowestGNode = default;
@@ -187,7 +179,7 @@ namespace MLAPI.Pathfinding.TeleportationSearch
         }
 
         private ExtraNodeData GetNodeFromLists(Point3D node, SortedList<Point3D,
-            ExtraNodeData> open, SortedList<Point3D, ExtraNodeData> closed)
+            ExtraNodeData> open, Dictionary<Point3D, ExtraNodeData> closed)
         {
             bool inOpen = open.TryGetValue(node, out ExtraNodeData openValue);
 

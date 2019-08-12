@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
 using MLAPI.DataTypes;
@@ -52,7 +53,10 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
                 constructor.CreateRoomOrHallway(dungeonChunks, dimensionId, x, y, width, height);
             }
 
+            Stopwatch sw = Stopwatch.StartNew();
             constructor.ConnectRooms(dungeonChunks, dimensionId, translatedNodes, entranceLocation);
+            MasterLog.DebugWriteLine("Time elapsed: " + sw.Elapsed);
+            MasterLog.DebugWriteLine("Time per room (in seconds): " + (sw.Elapsed.TotalSeconds / translatedNodes.Count));
 
             //Fill rooms and hallways with content from generators
 
