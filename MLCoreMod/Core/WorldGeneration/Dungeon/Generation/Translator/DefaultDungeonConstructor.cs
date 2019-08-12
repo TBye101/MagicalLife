@@ -196,8 +196,12 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
 
                 if (Geometry.DoRectanglesOverlap(itemRectangle, nodeRectangle))
                 {
-                    points.RemoveShared<Point2D>(Geometry.GetAllPointsOnRectangle(nodeRectangle));
+                    List<Point2D> nodePoints = Geometry.GetAllPointsOnRectangle(nodeRectangle);
+                    points.RemoveShared<Point2D>(nodePoints);
                 }
+
+                //List<Point2D> nodePoints = Geometry.GetAllPointsOnRectangle(nodeRectangle);
+                //points.RemoveShared(nodePoints);
             }
 
             //Translate offset coordinates to real coordinates
