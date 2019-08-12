@@ -13,16 +13,16 @@ namespace MLAPI.Pathfinding.TeleportationSearch
     /// </summary>
     public class WalkableConnectionProvider : IConnectionProvider
     {
-        public List<Point3D> CalculateConnections(Tile tile)
+        public List<Point3D> CalculateConnections(Tile tile, IWorldProvider worldProvider, Point3D origin, Point3D destination)
         {
             Point3D location = tile.GetExactComponent<ComponentSelectable>().MapLocation;
-            List<Point3D> neighbors = this.DiagnolFavorNeighboringTiles(location, location.DimensionId);
+            List<Point3D> neighbors = this.DiagnolFavorNeighboringTiles(location, location.DimensionId, worldProvider);
 
             if (tile.IsWalkable)
             {
                 for (int i = neighbors.Count - 1; i > -1; i--)
                 {
-                    Tile t = World.Data.World.GetTile(neighbors[i]);
+                    Tile t = worldProvider.GetTile(neighbors[i]);
                     if (!t.IsWalkable)
                     {
                         neighbors.RemoveAt(i);
@@ -63,7 +63,7 @@ namespace MLAPI.Pathfinding.TeleportationSearch
 
                 for (int i = neighbors.Count - 1; i > -1; i--)
                 {
-                    if (!WorldUtil.DoesTileExist(neighbors[i]))
+                    if (!worldProvider.DoesTileExist(neighbors[i]))
                     {
                         neighbors.RemoveAt(i);
                     }
@@ -81,7 +81,7 @@ namespace MLAPI.Pathfinding.TeleportationSearch
         /// <param name="tileLocation"></param>
         /// <param name="dimension"></param>
         /// <returns></returns>
-        private List<Point3D> DiagnolFavorNeighboringTiles(Point3D tileLocation, Guid dimensionId)
+        private List<Point3D> DiagnolFavorNeighboringTiles(Point3D tileLocation, Guid dimensionId, IWorldProvider worldProvider)
         {
             List<Point3D> neighbors = new List<Point3D>(8)
             {
@@ -97,7 +97,7 @@ namespace MLAPI.Pathfinding.TeleportationSearch
 
             for (int i = neighbors.Count - 1; i > -1; i--)
             {
-                if (!WorldUtil.DoesTileExist(neighbors[i], dimensionId))
+                if (!worldProvider.DoesTileExist(neighbors[i]))
                 {
                     neighbors.RemoveAt(i);
                 }

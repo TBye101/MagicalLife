@@ -18,10 +18,12 @@ namespace MLAPI.Pathfinding.AStar.Providers
     public class ChunkedWorldProvider : IWorldProvider
     {
         private readonly ProtoArray<Chunk> Chunks;
+        private readonly Guid DimensionId;
 
-        public ChunkedWorldProvider(ProtoArray<Chunk> chunks)
+        public ChunkedWorldProvider(ProtoArray<Chunk> chunks, Guid dimensionId)
         {
             this.Chunks = chunks;
+            this.DimensionId = dimensionId;
         }
 
         public Tile GetTile(Point3D location)
@@ -41,6 +43,21 @@ namespace MLAPI.Pathfinding.AStar.Providers
                 throw new UnexpectedStateException(
                     "A tile was requested that is not of the same dimension as those that are stored");
             }
+        }
+
+        public bool DoesTileExist(Point3D location)
+        {
+            if (location.DimensionId.Equals(this.DimensionId))
+            {
+                Point2D chunkLocation = WorldUtil.CalculateChunkLocation(location);
+
+                return chunkLocation.X < this.Chunks.Width &&
+                       chunkLocation.X > -1 &&
+                       chunkLocation.Y > -1 &&
+                       chunkLocation.Y < this.Chunks.Height;
+            }
+            
+            return false;
         }
     }
 }

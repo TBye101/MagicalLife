@@ -16,6 +16,6 @@ namespace MLAPI.Pathfinding.TeleportationSearch
         /// </summary>
         /// <param name="tile"></param>
         /// <returns></returns>
-        List<Point3D> CalculateConnections(Tile tile);
+        List<Point3D> CalculateConnections(Tile tile, IWorldProvider worldProvider, Point3D origin, Point3D destination);
     }
 }

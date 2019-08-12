@@ -242,6 +242,21 @@ namespace MLAPI.Util.Math
         }
 
         /// <summary>
+        /// Returns true if the location is within or adjacent to the rectangle.
+        /// </summary>
+        /// <param name="location"></param>
+        /// <param name="rectangleX"></param>
+        /// <param name="rectangleY"></param>
+        /// <param name="rectangleWidth"></param>
+        /// <param name="rectangleHeight"></param>
+        /// <returns></returns>
+        public static bool IsInRectangle(Point2D location, int rectangleX, int rectangleY, int rectangleWidth, int rectangleHeight)
+        {
+            return (location.X > (rectangleX) && location.X < (rectangleX + rectangleWidth)) &&
+                   (location.Y > (rectangleY) && location.Y < (rectangleY + rectangleHeight));
+        }
+
+        /// <summary>
         /// Returns true if the rectangles overlap.
         /// </summary>
         /// <param name="a"></param>

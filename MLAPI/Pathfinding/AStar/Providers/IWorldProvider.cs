@@ -12,5 +12,6 @@ namespace MLAPI.Pathfinding.TeleportationSearch
     public interface IWorldProvider
     {
         Tile GetTile(Point3D location);
+        bool DoesTileExist(Point3D location);
     }
 }

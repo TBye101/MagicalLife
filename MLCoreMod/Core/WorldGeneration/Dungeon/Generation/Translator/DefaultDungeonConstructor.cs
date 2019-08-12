@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using MLAPI.DataTypes;
 using MLAPI.DataTypes.Collection;
+using MLAPI.Filing.Logging;
 using MLAPI.Pathfinding;
 using MLAPI.Pathfinding.AStar.Providers;
 using MLAPI.Pathfinding.TeleportationSearch;
@@ -82,23 +84,40 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
 
         public void ConnectRooms(ProtoArray<Chunk> dungeonChunks, Guid dimensionId, List<DungeonTranslationNode> translatedNodes, Point2D entranceLocation)
         {
-            IWorldProvider worldProvider = new ChunkedWorldProvider(dungeonChunks);
+            MasterLog.DebugWriteLine("Connecting rooms");
+            IWorldProvider worldProvider = new ChunkedWorldProvider(dungeonChunks, dimensionId);
             IConnectionProvider connectionProvider = new MiniHallPathfinder(translatedNodes, entranceLocation);
 
+            List<Task> hallwayTasks = new List<Task>();
             for (int index = 0; index < translatedNodes.Count; index++)
             {
-                DungeonTranslationNode item = translatedNodes[index];
-                List<Point2D> validRoomEntrances = this.GetValidRoomEntrances(item, translatedNodes, entranceLocation);
-
-                for (int i = 0; i < item.DesignNode.Connections.Count; i++)
+                int index1 = index;
+                Task makeHallwayConnectionsTask = new Task(() =>
                 {
-                    DungeonNode connectedNode = item.DesignNode.Connections[i];
-                    DungeonTranslationNode connectedTranslationNode =
-                        translatedNodes.Find(x => x.DesignNode.NodeId.Equals(connectedNode.NodeId));
-                    List<Point2D> validNeighborRoomEntrances = this.GetValidRoomEntrances(item, translatedNodes, entranceLocation);
-                    this.TryMakeConnection(dungeonChunks, dimensionId, validRoomEntrances, validNeighborRoomEntrances, worldProvider, connectionProvider);
-                }
+
+                    DungeonTranslationNode item = translatedNodes[index1];
+                    List<Point2D> validRoomEntrances =
+                        this.GetValidRoomEntrances(item, translatedNodes, entranceLocation);
+
+                    for (int i = 0; i < item.DesignNode.Connections.Count; i++)
+                    {
+                        DungeonNode connectedNode = item.DesignNode.Connections[i];
+                        DungeonTranslationNode connectedTranslationNode =
+                            translatedNodes.Find(x => x.DesignNode.NodeId.Equals(connectedNode.NodeId));
+                        List<Point2D> validNeighborRoomEntrances =
+                            this.GetValidRoomEntrances(connectedTranslationNode, translatedNodes,
+                                entranceLocation);
+                        this.TryMakeConnection(dungeonChunks, dimensionId, validRoomEntrances,
+                            validNeighborRoomEntrances, worldProvider, connectionProvider);
+                    }
+                });
+                makeHallwayConnectionsTask.Start();
+                hallwayTasks.Add(makeHallwayConnectionsTask);
             }
+
+            Task.WaitAll(hallwayTasks.ToArray());
+
+            MasterLog.DebugWriteLine("Done connecting rooms");
         }
 
         /// <summary>
@@ -122,8 +141,12 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
 
                     if (success)
                     {
+                        MasterLog.DebugWriteLine("Made a hallway from " + roomEntrance + " to " + neighborEntrance);
                         return;
                     }
+
+                    MasterLog.DebugWriteLine(
+                        "Failed to make a hallway from " + roomEntrance + " to " + neighborEntrance);
                 }
             }
         }
@@ -149,6 +172,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
             }
             else
             {
+                MasterLog.DebugWriteLine("Invalid/no hallway path");
                 return false;
             }
         }

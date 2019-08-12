@@ -9,6 +9,7 @@ using MLAPI.Entity.Humanoid;
 using MLAPI.Networking.Messages;
 using MLAPI.Networking.Server;
 using MLAPI.Networking.World.Modifiers;
+using MLAPI.Pathfinding.TeleportationSearch;
 using MLAPI.Util.RandomUtils;
 using MLAPI.World.Base;
 using MLAPI.World.Data;
@@ -79,7 +80,7 @@ namespace MLAPI.World
         /// Returns all the tiles that neighbor the specified tile except for the diagonals.
         /// </summary>
         /// <returns></returns>
-        public static List<Point3D> GetNonDiagonalAdjacentTiles(Point3D tileLocation)
+        public static List<Point3D> GetNonDiagonalAdjacentTiles(Point3D tileLocation, IWorldProvider worldProvider)
         {
             List<Point3D> neighbors = new List<Point3D>
             {
@@ -92,7 +93,8 @@ namespace MLAPI.World
 
             for (int i = neighbors.Count - 1; i > -1; i--)
             {
-                if (!DoesTileExist(neighbors[i], tileLocation.DimensionId))
+                if (!worldProvider.DoesTileExist(neighbors[i]))
+
                 {
                     neighbors.RemoveAt(i);
                 }
@@ -165,6 +167,16 @@ namespace MLAPI.World
         {
             int x = mapLocation.X / Chunk.Width;
             int y = mapLocation.Y / Chunk.Height;
+
+            if (mapLocation.X < 0)
+            {
+                x = -1;
+            }
+
+            if (mapLocation.Y < 0)
+            {
+                y = -1;
+            }
 
             return new Point2D(x, y);
         }

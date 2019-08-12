@@ -24,7 +24,7 @@ namespace MLAPI.Pathfinding.TeleportationSearch
         {
             MasterLog.DebugWriteLine("Path from: " + origin.ToString() + " " + destination.ToString());
             MasterLog.DebugWriteLine("Estimated distance: " + MathUtil.GetDistance(origin, destination));
-            GC.Collect();
+            //GC.Collect();
             Stopwatch sw = Stopwatch.StartNew();
 
             List<PathLink> path = this.SameDimensionRoute(origin, destination, connectionProvider, worldProvider);
@@ -90,7 +90,7 @@ namespace MLAPI.Pathfinding.TeleportationSearch
                         closed.Add(lowestFKey, value);
 
                         Tile tile = worldProvider.GetTile(value.NodeLocation);
-                        foreach (Point3D item in connectionProvider.CalculateConnections(tile))
+                        foreach (Point3D item in connectionProvider.CalculateConnections(tile, worldProvider, origin, destination))
                         {
                             Tile neighborTile = worldProvider.GetTile(item);
                             ExtraNodeData extraNeighborData;
@@ -134,7 +134,7 @@ namespace MLAPI.Pathfinding.TeleportationSearch
             while (!location.Equals(origin))
             {
                 links.Add(location);
-                location = this.GetLowestGScore(connectionProvider.CalculateConnections(dataNode), open, closed);
+                location = this.GetLowestGScore(connectionProvider.CalculateConnections(dataNode, worldProvider, lastNode, origin), open, closed);
 
                 if (location == null)
                 {
