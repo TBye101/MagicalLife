@@ -80,10 +80,10 @@ namespace MLAPI.Pathfinding.TeleportationSearch
 
                     if (lowestFKey.Equals(destination))
                     {
-                        MasterLog.DebugWriteLine("Open nodes: " + open.Count.ToString());
-                        MasterLog.DebugWriteLine("Closed nodes: " + closed.Count.ToString());
+                        MasterLog.DebugWriteLine("Open nodes: " + open.Count);
+                        MasterLog.DebugWriteLine("Closed nodes: " + closed.Count);
 
-                        return this.ReconstructPath(lowestFKey, value, open, closed, origin, connectionProvider, worldProvider);
+                        return this.ReconstructPath(lowestFKey, open, closed, origin, connectionProvider, worldProvider);
                     }
                     else
                     {
@@ -115,7 +115,7 @@ namespace MLAPI.Pathfinding.TeleportationSearch
             return null;
         }
 
-        private List<PathLink> ReconstructPath(Point3D lastNode, ExtraNodeData value, SortedList<Point3D, ExtraNodeData> open,
+        private List<PathLink> ReconstructPath(Point3D lastNode, SortedList<Point3D, ExtraNodeData> open,
             Dictionary<Point3D, ExtraNodeData> closed, Point3D origin, IConnectionProvider connectionProvider, IWorldProvider worldProvider)
         {
             List<Point3D> links = new List<Point3D>();

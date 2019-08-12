@@ -39,7 +39,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
 
                 if (neighbor.Equals(destination))
                 {
-                    MasterLog.DebugWriteLine("Evaluating destination: " + destination);
+                    //MasterLog.DebugWriteLine("Evaluating destination: " + destination);
                 }
 
                 if (!this.IsValidForPath(neighbor, worldProvider) && (!neighbor.Equals(destination) && !neighbor.Equals(origin)))
@@ -47,7 +47,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
                     neighbors.RemoveAt(i);
                     if (neighbor.Equals(destination))
                     {
-                        MasterLog.DebugWriteLine("Removed destination: " + destination);
+                        //MasterLog.DebugWriteLine("Removed destination: " + destination);
                     }
                 }
             }

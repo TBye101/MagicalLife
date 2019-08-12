@@ -1,6 +1,19 @@
 Trial 1
-
+-No changes
 [2019-08-12 18:27:23.195] [DBG]: Time elapsed: 00:09:48.8556424
 [2019-08-12 18:27:23.195] [DBG]: Time per room (in seconds): 11.5461898607843
 
 Trial 2:
+-Removed unused branches
+-Switched closed list to Dictionary type
+[2019-08-12 18:44:57.139] [DBG]: Time elapsed: 00:00:27.7473943
+[2019-08-12 18:44:57.139] [DBG]: Time per room (in seconds): 0.544067111764706
+
+Trial 3:
+-Added a new overload for IsInRectangle()
+[2019-08-12 19:02:45.436] [DBG]: Time elapsed: 00:00:35.5327415
+[2019-08-12 19:02:45.436] [DBG]: Time per room (in seconds): 0.634513741071429
+
+Trial 4:
+[2019-08-12 19:06:18.924] [DBG]: Time elapsed: 00:00:22.2218787
+[2019-08-12 19:06:18.924] [DBG]: Time per room (in seconds): 0.389858014035088
