@@ -47,6 +47,11 @@ namespace MLAPI.Util.Math
             return System.Math.Sqrt(System.Math.Pow(b.X - a.X, 2) + System.Math.Pow(b.Y - a.Y, 2));
         }
 
+        public static double GetDistance(Point3D a, Point3D b)
+        {
+            return System.Math.Sqrt(System.Math.Pow(b.X - a.X, 2) + System.Math.Pow(b.Y - a.Y, 2));
+        }
+
         /// <summary>
         /// Returns the distance between Point2DDouble a and Point2D b.
         /// </summary>

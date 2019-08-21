@@ -16,8 +16,17 @@ namespace MLAPI.Pathfinding.TeleportationSearch
     /// </summary>
     public class DynamicAStar : IPathFinder
     {
+
+        /*
+         * Performance ideas:
+         * Cache routes and store path finds as extra vertices to consider
+         * Object pooling of open and closed lists
+         */
+         
+
         public DynamicAStar()
         {
+
         }
 
         public List<PathLink> GetRoute(Point3D origin, Point3D destination, IConnectionProvider connectionProvider, IWorldProvider worldProvider)
@@ -82,6 +91,8 @@ namespace MLAPI.Pathfinding.TeleportationSearch
                     {
                         MasterLog.DebugWriteLine("Open nodes: " + open.Count);
                         MasterLog.DebugWriteLine("Closed nodes: " + closed.Count);
+                        MasterLog.DebugWriteLine("Ratio of distance to nodes: (" + MathUtil.GetDistance(origin, destination) +
+                                                 ", " + (open.Count + closed.Count) + ")");
 
                         return this.ReconstructPath(lowestFKey, open, closed, origin, connectionProvider, worldProvider);
                     }
@@ -91,10 +102,10 @@ namespace MLAPI.Pathfinding.TeleportationSearch
                         closed.Add(lowestFKey, value);
 
                         Tile tile = worldProvider.GetTile(value.NodeLocation);
-                        foreach (Point3D item in connectionProvider.CalculateConnections(tile, worldProvider, origin, destination))
+                        List<Point3D> list = connectionProvider.CalculateConnections(tile, worldProvider, origin, destination);
+                        for (int index = 0; index < list.Count; index++)
                         {
-                            Tile neighborTile = worldProvider.GetTile(item);
-
+                            Point3D item = list[index];
                             bool inOpen = open.TryGetValue(item, out ExtraNodeData neighborData);
 
                             if (!inOpen)
@@ -103,7 +114,10 @@ namespace MLAPI.Pathfinding.TeleportationSearch
 
                                 if (!inClosed)
                                 {
-                                    ExtraNodeData extraNeighborData = new ExtraNodeData(value.GScore + neighborTile.MovementCost, this.CalculateHScoreSameDim(item, destination), item);
+                                    Tile neighborTile = worldProvider.GetTile(item);
+                                    ExtraNodeData extraNeighborData = new ExtraNodeData(
+                                        value.GScore + neighborTile.MovementCost,
+                                        this.CalculateHScoreSameDim(item, destination), item);
                                     open.Add(item, extraNeighborData);
                                 }
                             }
@@ -204,7 +218,8 @@ namespace MLAPI.Pathfinding.TeleportationSearch
 
         private int CalculateHScoreSameDim(Point3D node, Point3D destination)
         {
-            return Math.Abs(node.X - destination.X) + Math.Abs(node.Y - destination.Y);
+            //return Math.Abs(node.X - destination.X) + Math.Abs(node.Y - destination.Y);
+            return (int) MathUtil.GetDistance(node, destination);
             //Need to come up with a way to calculate distance between Point3D, even if they are in different dimensions.
         }
 
