@@ -146,16 +146,7 @@ namespace MLAPI.World
         /// </summary>
         public static bool DoesTileExist(Point3D tileLocation)
         {
-            Data.World.Dimensions.TryGetValue(tileLocation.DimensionId, out Dimension dimension);
-            if (dimension == null)
-            {
-                return false;
-            }
-            else
-            {
-                return dimension.DoesTileExist(tileLocation.X, tileLocation.Y);
-            }
-
+            return Data.World.DefaultWorldProvider.DoesTileExist(tileLocation);
         }
 
         /// <summary>
@@ -215,7 +206,7 @@ namespace MLAPI.World
         /// <returns></returns>
         public static Point3D FindRandomLocation(Guid dimensionId)
         {
-            Dimension dim = Data.World.Dimensions[dimensionId];
+            Dimension dim = Data.World.DefaultWorldProvider.GetDimension(dimensionId);
 
             //The coordinates of the random chunk
             int randomChunkX = StaticRandom.Rand(0, dim.Width);
@@ -277,13 +268,13 @@ namespace MLAPI.World
         /// <returns></returns>
         public static bool PlayerHasCharacter(Guid playerId)
         {
-            foreach (KeyValuePair<Guid, Dimension> item in Data.World.Dimensions)
+            foreach (Dimension item in Data.World.DefaultWorldProvider)
             {
-                for (int x = 0; x < item.Value.Width; x++)
+                for (int x = 0; x < item.Width; x++)
                 {
-                    for (int y = 0; y < item.Value.Height; y++)
+                    for (int y = 0; y < item.Height; y++)
                     {
-                        Chunk chunk = item.Value.GetChunk(x, y);
+                        Chunk chunk = item.GetChunk(x, y);
                         if (chunk.Creatures.Any(living => living.Value.PlayerId.Equals(playerId)))
                         {
                             return true;
@@ -325,7 +316,15 @@ namespace MLAPI.World
         /// <returns></returns>
         public static KeyValuePair<Guid, Dimension> GetDimensionByName(string name)
         {
-            return World.Data.World.Dimensions.First(x => x.Value.DimensionName.Equals(name));
+            foreach (Dimension item in World.Data.World.DefaultWorldProvider)
+            {
+                if (item.DimensionName.Equals(name))
+                {
+                    return new KeyValuePair<Guid, Dimension>(item.Id, item);
+                }
+            }
+
+            return default;
         }
 
         public static ProtoArray<Chunk> GenerateBlankChunks(int chunkWidth, int chunkHeight)

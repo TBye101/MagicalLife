@@ -369,7 +369,7 @@ namespace MonoGUI.MonoGUI.Input
         /// <returns></returns>
         public static MouseEventArgs TransformViaCamera(MouseEventArgs old)
         {
-            if (World.Dimensions.Count > 0)
+            if (World.DefaultWorldProvider.GetNumberOfDimensions() > 0)
             {
                 //The new position adjusted for the camera
                 Point position = RenderInfo.Camera2D.ScreenToWorld(old.Position.ToVector2()).ToPoint();

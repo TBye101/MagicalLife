@@ -6,6 +6,7 @@ using MLAPI.Util.Math;
 using MLAPI.World;
 using MLAPI.World.Base;
 using MLAPI.World.Data;
+using Dimension = MLAPI.World.Data.Dimension;
 
 namespace MLAPI.GameRegistry.Items
 {
@@ -107,7 +108,8 @@ namespace MLAPI.GameRegistry.Items
         /// <returns></returns>
         public static List<Point2D> FindNearestChunks(int itemId, Point3D mapLocation)
         {
-            RTree<Point2D> containingChunks = World.Data.World.Dimensions[mapLocation.DimensionId].Items.ItemIdToChunk[itemId];
+            Dimension dimension = World.Data.World.DefaultWorldProvider.GetDimension(mapLocation.DimensionId);
+            RTree<Point2D> containingChunks = dimension.Items.ItemIdToChunk[itemId];
 
             List<Point2D> result = containingChunks.Nearest(new Point(mapLocation.X / Chunk.Width, mapLocation.Y / Chunk.Height), SearchDistance);
 

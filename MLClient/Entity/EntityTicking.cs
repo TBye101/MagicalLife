@@ -26,16 +26,16 @@ namespace MLClient.Entity
         {
             lock (SyncObject)
             {
-                foreach (KeyValuePair<Guid, Dimension> ii in World.Dimensions)
+                foreach (Dimension ii in World.DefaultWorldProvider)
                 {
-                    int chunkWidth = ii.Value.Width;
-                    int chunkHeight = ii.Value.Height;
+                    int chunkWidth = ii.Width;
+                    int chunkHeight = ii.Height;
 
                     for (int chunkX = 0; chunkX < chunkWidth; chunkX++)
                     {
                         for (int chunkY = 0; chunkY < chunkHeight; chunkY++)
                         {
-                            Chunk chunk = ii.Value.GetChunk(chunkX, chunkY);
+                            Chunk chunk = ii.GetChunk(chunkX, chunkY);
 
                             List<Guid> keys = chunk.Creatures.Keys.ToList();
                             int length = keys.Count;

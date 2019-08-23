@@ -76,7 +76,7 @@ namespace MLAPI.Entity.AI.Task.Tasks
                 if (this.Tillable.PercentTilled > 1)
                 {
                     Tile tillableTile = this.Tillable.ResultingTile(this.Target);
-                    World.Data.World.Dimensions[this.Target.DimensionId][this.Target.X, this.Target.Y] = tillableTile;
+                    World.Data.World.DefaultWorldProvider.SetTile(this.Target, tillableTile);
                     this.CompleteTask();
                 }
             }

@@ -4,6 +4,7 @@ using MLAPI.DataTypes;
 using MLAPI.Error.InternalExceptions;
 using MLAPI.World.Base;
 using MLAPI.World.Data;
+using Dimension = MLAPI.World.Data.Dimension;
 
 namespace MLAPI.GameRegistry.Items
 {
@@ -81,7 +82,8 @@ namespace MLAPI.GameRegistry.Items
 
                     if (result.Count == 0)
                     {
-                        RTree<Point2D> chunksContaining = World.Data.World.Dimensions[dimensionId].Items.ItemIdToChunk[itemId];
+                        Dimension dimension = World.Data.World.DefaultWorldProvider.GetDimension(dimensionId);
+                        RTree<Point2D> chunksContaining = dimension.Items.ItemIdToChunk[itemId];
                         bool succeed = chunksContaining.Delete(new Rectangle(chunk.ChunkLocation.X, chunk.ChunkLocation.Y, chunk.ChunkLocation.X, chunk.ChunkLocation.Y), new Point2D(chunk.ChunkLocation.X, chunk.ChunkLocation.Y));
 
                         if (!succeed)

@@ -38,6 +38,11 @@ namespace MLAPI.Universal
         /// </summary>
         public static event EventHandler GameExit;
 
+        /// <summary>
+        /// Raised to trigger the capture of an entire dimension to a screenshot.
+        /// </summary>
+        public static event EventHandler<Guid> ScreenshotDimension;
+
         static Uni()
         {
             TickTimer.Elapsed += TickTimer_Elapsed;
@@ -104,6 +109,11 @@ namespace MLAPI.Universal
                 TickEvent?.Invoke(null, GameTick);
                 i++;
             }
+        }
+
+        private static void OnScreenshotDimension(Guid dimension)
+        {
+            ScreenshotDimension?.Invoke(null, dimension);
         }
     }
 }

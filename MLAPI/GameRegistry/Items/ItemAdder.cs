@@ -11,6 +11,7 @@ using MLAPI.Networking.World.Modifiers;
 using MLAPI.World;
 using MLAPI.World.Base;
 using MLAPI.World.Data;
+using Dimension = MLAPI.World.Data.Dimension;
 
 namespace MLAPI.GameRegistry.Items
 {
@@ -54,7 +55,8 @@ namespace MLAPI.GameRegistry.Items
         /// <param name="itemId"></param>
         private static void RememberWhichChunk(Point3D chunkLocation, int itemId)
         {
-            RTree<Point2D> chunkLocations = World.Data.World.Dimensions[chunkLocation.DimensionId].Items.ItemIdToChunk[itemId];
+            Dimension dimension = World.Data.World.DefaultWorldProvider.GetDimension(chunkLocation.DimensionId);
+            RTree<Point2D> chunkLocations = dimension.Items.ItemIdToChunk[itemId];
             List<Point2D> result = chunkLocations.Contains(new Rectangle(chunkLocation.X, chunkLocation.Y, chunkLocation.X, chunkLocation.Y));
             if (result.Count > 0)
             {
@@ -78,7 +80,7 @@ namespace MLAPI.GameRegistry.Items
             }
 
             Point3D chunkLocation = Point3D.From2D(WorldUtil.CalculateChunkLocation(mapLocation), dimensionId);
-            Chunk chunk = World.Data.World.Dimensions[dimensionId].GetChunk(chunkLocation.X, chunkLocation.Y);
+            Chunk chunk = World.Data.World.DefaultWorldProvider.GetChunk(chunkLocation);
 
             ItemAdder.RememberWhichChunk(chunkLocation, item.ItemId);
             ItemAdder.RememberWhichTile(item, mapLocation, chunk);

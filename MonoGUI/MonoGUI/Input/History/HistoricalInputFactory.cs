@@ -119,7 +119,7 @@ namespace MonoGUI.MonoGUI.Input.History
                 {
                     Living select = null;
 
-                    Chunk chunk = World.Dimensions[RenderInfo.DimensionId].GetChunkForLocation(mapSpot.X, mapSpot.Y);
+                    Chunk chunk = World.DefaultWorldProvider.GetChunkByTile(mapSpot);
                     KeyValuePair<Guid, Living> result = chunk.Creatures.FirstOrDefault
                         (x => mapSpot.Equals(x.Value.GetExactComponent<ComponentSelectable>().MapLocation));
 

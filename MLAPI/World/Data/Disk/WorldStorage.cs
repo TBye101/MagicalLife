@@ -81,9 +81,9 @@ namespace MLAPI.World.Data.Disk
         {
             Initialize(saveName);
 
-            foreach (KeyValuePair<Guid, Dimension> item in World.Dimensions)
+            foreach (Dimension item in World.DefaultWorldProvider)
             {
-                DimensionStorage.Serialize(item.Value, sink);
+                DimensionStorage.Serialize(item, sink);
             }
         }
 
@@ -127,20 +127,20 @@ namespace MLAPI.World.Data.Disk
         /// <param name="saveName"></param>
         private static void ParseDimensions()
         {
-            if (World.Dimensions.Count > 0)
+            if (World.DefaultWorldProvider.GetNumberOfDimensions() > 0)
             {
                 //Regenerate dimension paths each time to support saving in multiple save slots from one game.
                 DimensionPaths.Clear();
 
                 //We are saving
-                foreach (KeyValuePair<Guid, Dimension> item in World.Dimensions)
+                foreach (Dimension item in World.DefaultWorldProvider)
                 {
-                    DirectoryInfo dirInfo = Directory.CreateDirectory(WorldStorage.DimensionSaveFolder + Path.DirectorySeparatorChar + item.Value.Id);
-                    DimensionStorage.PrepareForDimension(item.Value.Id);
+                    DirectoryInfo dirInfo = Directory.CreateDirectory(WorldStorage.DimensionSaveFolder + Path.DirectorySeparatorChar + item.Id);
+                    DimensionStorage.PrepareForDimension(item.Id);
 
-                    if (!DimensionPaths.TryGetValue(item.Value.Id, out string value))
+                    if (!DimensionPaths.TryGetValue(item.Id, out string value))
                     {
-                        DimensionPaths.Add(item.Value.Id, dirInfo.FullName);
+                        DimensionPaths.Add(item.Id, dirInfo.FullName);
                     }
                 }
             }

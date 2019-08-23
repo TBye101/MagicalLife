@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using MLAPI.DataTypes;
 using MLAPI.Networking;
+using MLAPI.Pathfinding.AStar.Providers;
+using MLAPI.Pathfinding.TeleportationSearch;
 using MLAPI.Properties;
 using MLAPI.Visual.Rendering;
 using MLAPI.World.Base;
@@ -22,7 +24,8 @@ namespace MLAPI.World.Data
         /// After that, anything goes.
         /// </summary>
         [ProtoMember(1)]
-        public static Dictionary<Guid, Dimension> Dimensions { get; set; } = new Dictionary<Guid, Dimension>();
+        //public static Dictionary<Guid, Dimension> Dimensions { get; set; } = new Dictionary<Guid, Dimension>();
+        public static StoredWorldProvider DefaultWorldProvider = new StoredWorldProvider(new Dictionary<Guid, Dimension>());
 
         public static EngineMode Mode { get; set; }
 
@@ -50,9 +53,9 @@ namespace MLAPI.World.Data
         /// <returns>The dimension ID.</returns>
         public static int AddDimension(Dimension dimension)
         {
-            World.Dimensions.Add(dimension.Id, dimension);
+            World.DefaultWorldProvider.AddDimension(dimension);
             World.DimensionAddedHandler(dimension.Id);
-            return World.Dimensions.Count - 1;
+            return World.DefaultWorldProvider.GetNumberOfDimensions() - 1;
         }
 
         /// <summary>
@@ -73,7 +76,12 @@ namespace MLAPI.World.Data
         /// <returns></returns>
         public static Chunk GetChunk(Guid dimensionId, int chunkX, int chunkY)
         {
-            return World.Dimensions[dimensionId].GetChunk(chunkX, chunkY);
+            return World.DefaultWorldProvider.GetChunk(new Point3D(chunkX, chunkY, dimensionId));
+        }
+
+        public static Chunk GetChunk(Point3D chunkCoordinates)
+        {
+            return World.DefaultWorldProvider.GetChunk(chunkCoordinates);
         }
 
         /// <summary>
@@ -85,7 +93,12 @@ namespace MLAPI.World.Data
         /// <returns></returns>
         public static Chunk GetChunkByTile(Guid dimensionId, int x, int y)
         {
-            return World.Dimensions[dimensionId].GetChunkForLocation(x, y);
+            return World.DefaultWorldProvider.GetChunkByTile(new Point3D(x, y, dimensionId));
+        }
+
+        public static Chunk GetChunkByTile(Point3D tileLocation)
+        {
+            return World.DefaultWorldProvider.GetChunkByTile(tileLocation);
         }
 
         /// <summary>
@@ -97,12 +110,12 @@ namespace MLAPI.World.Data
         /// <returns></returns>
         public static Tile GetTile(Guid dimensionId, int x, int y)
         {
-            return World.Dimensions[dimensionId][x, y];
+            return World.DefaultWorldProvider.GetTile(new Point3D(x, y, dimensionId));
         }
 
         public static Tile GetTile(Point3D location)
         {
-            return World.Dimensions[location.DimensionId][location.X, location.Y];
+            return World.DefaultWorldProvider.GetTile(location);
         }
 
         /// <summary>

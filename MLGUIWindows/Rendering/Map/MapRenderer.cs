@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MLAPI.Asset;
 using MLAPI.Components;
@@ -13,6 +15,7 @@ using MLAPI.Visual.Rendering;
 using MLAPI.Visual.Rendering.Map;
 using MLAPI.World.Base;
 using MLAPI.World.Data;
+using Dimension = MLAPI.World.Data.Dimension;
 using Rectangle = Microsoft.Xna.Framework.Rectangle;
 
 namespace MLGUIWindows.Rendering.Map
@@ -63,6 +66,39 @@ namespace MLGUIWindows.Rendering.Map
         {
             MapDrawer.UpdateSpriteBatch(spBatch);
             List<Point2D> result = Culler.GetChunksInView();
+
+            //Iterates over all the chunks that are within view of the client's screen.
+            int length = result.Count;
+
+            for (int i = 0; i < length; i++)
+            {
+                Point2D chunkCoordinates = result[i];
+
+                if (chunkCoordinates.X != -1 && chunkCoordinates.Y != -1)
+                {
+                    Chunk chunk = World.GetChunk(dimensionId, chunkCoordinates.X, chunkCoordinates.Y);
+                    RenderChunk(chunk, dimensionId);
+                }
+            }
+
+            MapDrawer.RenderAll();
+        }
+
+        public static void DrawDimensionEntirely(SpriteBatch spBatch, Guid dimensionId)
+        {
+            MapDrawer.UpdateSpriteBatch(spBatch);
+
+            Dimension dim = World.DefaultWorldProvider.GetDimension(dimensionId);
+
+            List<Point2D> result = new List<Point2D>();
+
+            for (int x = 0; x < dim.Width; x++)
+            {
+                for (int y = 0; y < dim.Height; y++)
+                {
+                    result.Add(new Point2D(x, y));
+                }
+            }
 
             //Iterates over all the chunks that are within view of the client's screen.
             int length = result.Count;

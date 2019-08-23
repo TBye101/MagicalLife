@@ -36,7 +36,7 @@ namespace MLGUIWindows.Input.Specialized_Handlers
                 BoundHandler.RemoveContainer(ActionMenu.AMenu);
             }
 
-            if (World.Dimensions.Count > 0)
+            if (World.DefaultWorldProvider.GetNumberOfDimensions() > 0)
             {
                 //Ingame: Open up in game menu
                 InGameEscapeMenu.Initialize();

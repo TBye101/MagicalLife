@@ -22,7 +22,7 @@ namespace MLGUIWindows.Rendering
         /// <param name="spBatch"></param>
         public static void DrawScreen(SpriteBatch spBatch)
         {
-            if (World.Dimensions.Count > 0)
+            if (World.DefaultWorldProvider.GetNumberOfDimensions() > 0)
             {
                 MapRenderer.DrawMap(spBatch, RenderInfo.DimensionId);
             }

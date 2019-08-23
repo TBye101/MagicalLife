@@ -29,7 +29,8 @@ namespace MLServer.Processing.Message_Handlers
         {
             RouteCreatedMessage msg = (RouteCreatedMessage)message;
 
-            if (this.Validated(msg.Path, msg.DimensionId))
+            if (this.Validated(msg.Path, msg.DimensionId) &&
+                msg.Path.Count > 0)
             {
                 Point2D location = msg.Path[0].Origin;
                 Point2D chunkLocation = WorldUtil.CalculateChunkLocation(location);
@@ -54,8 +55,8 @@ namespace MLServer.Processing.Message_Handlers
         {
             foreach (PathLink item in msg)
             {
-                bool a = World.Dimensions[dimensionId][item.Origin.X, item.Origin.Y].IsWalkable;
-                bool b = World.Dimensions[dimensionId][item.Destination.X, item.Destination.Y].IsWalkable;
+                bool a = World.DefaultWorldProvider.GetTile(item.Origin).IsWalkable;
+                bool b = World.DefaultWorldProvider.GetTile(item.Destination).IsWalkable;
 
                 if (!a || !b)
                 {

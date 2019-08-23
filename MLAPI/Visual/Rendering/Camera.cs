@@ -74,9 +74,10 @@ namespace MLAPI.Visual.Rendering
 
         public void InitializeForDimension(Guid dimensionId)
         {
+            World.Data.Dimension dimension = World.Data.World.DefaultWorldProvider.GetDimension(dimensionId);
             this.DimensionId = dimensionId;
-            this.DimensionWidth = World.Data.World.Dimensions[this.DimensionId].Width;
-            this.DimensionHeight = World.Data.World.Dimensions[this.DimensionId].Height;
+            this.DimensionWidth = dimension.Width;
+            this.DimensionHeight = dimension.Height;
         }
 
         // Call this method with negative values to zoom out

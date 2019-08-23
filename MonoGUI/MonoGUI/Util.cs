@@ -23,7 +23,8 @@ namespace MonoGUI.MonoGUI
             int tileX = x / size.X;
             int tileY = y / size.Y;
 
-            if (World.Dimensions.Count > 0 && World.Dimensions[dimensionId].DoesTileExist(tileX, tileY))
+            if (World.DefaultWorldProvider.GetNumberOfDimensions() > 0 &&
+                World.DefaultWorldProvider.DoesTileExist(new Point3D(tileX, tileY, dimensionId)))
             {
                 success = true;
                 return new Point3D(tileX, tileY, dimensionId);

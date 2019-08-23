@@ -43,7 +43,7 @@ namespace MLGUIWindows.Input.Specialized_Handlers
 
         private void Move(HasComponents selectable, Point3D target)
         {
-            if (World.Dimensions[RenderInfo.DimensionId][target.X, target.Y].IsWalkable)
+            if (World.DefaultWorldProvider.GetTile(target).IsWalkable)
             {
                 switch (selectable)
                 {
@@ -89,7 +89,7 @@ namespace MLGUIWindows.Input.Specialized_Handlers
                 {
                     Point3D connection = portalComponent.Connections[0];
 
-                    if (!World.Dimensions.ContainsKey(connection.DimensionId))
+                    if (!World.DefaultWorldProvider.DoesDimensionExist(connection.DimensionId))
                     {
                         //Need to generate the dungeon first.
                         DungeonGenerator generator = WorldGeneratorRegistry.DungeonGenerators.GetRandomItem();

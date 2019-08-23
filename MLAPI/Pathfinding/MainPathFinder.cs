@@ -24,7 +24,6 @@ namespace MLAPI.Pathfinding
         /// </summary>
         private static IPathFinder Pathfinder;
         public static readonly IConnectionProvider DefaultConnectionProvider = new WalkableConnectionProvider();
-        public static readonly IWorldProvider DefaultWorldProvider = new StoredWorldProvider();
 
         /// <summary>
         /// If true the path finder has been properly initialized.
@@ -38,7 +37,7 @@ namespace MLAPI.Pathfinding
 
         private static void World_DimensionAdded1(object sender, Guid e)
         {
-            PrepForDimension(World.Data.World.Dimensions[e]);
+            PrepForDimension(World.Data.World.DefaultWorldProvider.GetDimension(e));
         }
 
         /// <summary>
@@ -57,12 +56,12 @@ namespace MLAPI.Pathfinding
 
         public static void Block(Point3D tile)
         {
-            Pathfinder.RemoveConnections(tile, DefaultConnectionProvider, DefaultWorldProvider);
+            Pathfinder.RemoveConnections(tile, DefaultConnectionProvider, World.Data.World.DefaultWorldProvider);
         }
 
         public static void Block(Point3D tile, IConnectionProvider connectionProvider)
         {
-            Pathfinder.RemoveConnections(tile, connectionProvider, DefaultWorldProvider);
+            Pathfinder.RemoveConnections(tile, connectionProvider, World.Data.World.DefaultWorldProvider);
         }
 
         public static void Block(Point3D tile, IConnectionProvider connectionProvider, IWorldProvider worldProvider)
@@ -72,12 +71,12 @@ namespace MLAPI.Pathfinding
 
         public static void UnBlock(Point3D tile)
         {
-            Pathfinder.AddConnections(tile, DefaultConnectionProvider, DefaultWorldProvider);
+            Pathfinder.AddConnections(tile, DefaultConnectionProvider, World.Data.World.DefaultWorldProvider);
         }
 
         public static void UnBlock(Point3D tile, IConnectionProvider connectionProvider)
         {
-            Pathfinder.AddConnections(tile, connectionProvider, DefaultWorldProvider);
+            Pathfinder.AddConnections(tile, connectionProvider, World.Data.World.DefaultWorldProvider);
         }
 
         public static void UnBlock(Point3D tile, IConnectionProvider connectionProvider, IWorldProvider worldProvider)
@@ -87,12 +86,12 @@ namespace MLAPI.Pathfinding
 
         public static List<PathLink> GetRoute(Point3D start, Point3D end)
         {
-            return Pathfinder.GetRoute(start, end, DefaultConnectionProvider, DefaultWorldProvider);
+            return Pathfinder.GetRoute(start, end, DefaultConnectionProvider, World.Data.World.DefaultWorldProvider);
         }
 
         public static List<PathLink> GetRoute(Point3D start, Point3D end, IConnectionProvider connectionProvider)
         {
-            return Pathfinder.GetRoute(start, end, connectionProvider, DefaultWorldProvider);
+            return Pathfinder.GetRoute(start, end, connectionProvider, World.Data.World.DefaultWorldProvider);
         }
 
         public static List<PathLink> GetRoute(Point3D start, Point3D end, IConnectionProvider connectionProvider, IWorldProvider worldProvider)
@@ -102,12 +101,12 @@ namespace MLAPI.Pathfinding
 
         public static bool IsRoutePossible(Point3D origin, Point3D destination)
         {
-            return Pathfinder.IsRoutePossible(origin, destination, DefaultConnectionProvider, DefaultWorldProvider);
+            return Pathfinder.IsRoutePossible(origin, destination, DefaultConnectionProvider, World.Data.World.DefaultWorldProvider);
         }
 
         public static bool IsRoutePossible(Point3D origin, Point3D destination, IConnectionProvider connectionProvider)
         {
-            return Pathfinder.IsRoutePossible(origin, destination, connectionProvider, DefaultWorldProvider);
+            return Pathfinder.IsRoutePossible(origin, destination, connectionProvider, World.Data.World.DefaultWorldProvider);
         }
 
         public static bool IsRoutePossible(Point3D origin, Point3D destination, IConnectionProvider connectionProvider, IWorldProvider worldProvider)
@@ -120,7 +119,7 @@ namespace MLAPI.Pathfinding
         /// </summary>
         public static void GiveRouteAsync(Living living, Point3D start, Point3D end)
         {
-            GiveRouteAsync(living, start, end, DefaultConnectionProvider, DefaultWorldProvider);
+            GiveRouteAsync(living, start, end, DefaultConnectionProvider, World.Data.World.DefaultWorldProvider);
         }
 
         /// <summary>
@@ -128,7 +127,7 @@ namespace MLAPI.Pathfinding
         /// </summary>
         public static void GiveRouteAsync(Living living, Point3D start, Point3D end, IConnectionProvider connectionProvider)
         {
-            GiveRouteAsync(living, start, end, connectionProvider, DefaultWorldProvider);
+            GiveRouteAsync(living, start, end, connectionProvider, World.Data.World.DefaultWorldProvider);
         }
 
         /// <summary>

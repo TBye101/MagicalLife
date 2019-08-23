@@ -1,9 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using MLAPI.Asset;
+using MLAPI.Components;
+using MLAPI.Components.Entity;
+using MLAPI.DataTypes;
+using MLAPI.Entity;
+using MLAPI.Entity.AI.Task;
 using MLAPI.Filing;
 using MLAPI.Filing.Logging;
 using MLAPI.Load;
@@ -12,14 +20,19 @@ using MLAPI.Networking.Serialization;
 using MLAPI.Sound;
 using MLAPI.Universal;
 using MLAPI.Util.Reusable;
+using MLAPI.Visual;
 using MLAPI.Visual.Rendering;
+using MLAPI.Visual.Rendering.Map;
+using MLAPI.World.Base;
 using MLAPI.World.Data;
 using MLGUIWindows.GUI.In_Game_GUI;
 using MLGUIWindows.Load;
 using MLGUIWindows.Rendering;
+using MLGUIWindows.Rendering.Map;
 using MLGUIWindows.Screens;
 using MonoGUI.Game;
 using MonoGUI.MonoGUI.Input;
+using Rectangle = System.Drawing.Rectangle;
 
 namespace MLGUIWindows
 {
@@ -50,6 +63,7 @@ namespace MLGUIWindows
             Game1.AssetManager = this.Content;
             RenderingData.AssetManagerClone = Game1.AssetManager;
             Uni.GameExit += this.UniversalEvents_GameExit;
+            Uni.ScreenshotDimension += this.Uni_ScreenshotDimension;
             this.Graphics.HardwareModeSwitch = false;
             OutputDebugInfo();
         }
@@ -155,7 +169,7 @@ namespace MLGUIWindows
 
             if (Game1.SplashDone)
             {
-                if (World.Dimensions.Count > 0)
+                if (World.DefaultWorldProvider.GetNumberOfDimensions() > 0)
                 {
                     //Never set this to SpriteSortMode.Texture, as that causes bugs.
                     this.MapSpriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend,
@@ -196,13 +210,38 @@ namespace MLGUIWindows
 
         private void DisplayInGame()
         {
-            if (World.Dimensions.Count > 0)
+            if (World.DefaultWorldProvider.GetNumberOfDimensions() > 0)
             {
                 if (!BoundHandler.GuiWindows.Contains(InGameGui.InGame))
                 {
                     InGameGui.Initialize();
                 }
             }
+        }
+
+        public void ScreenShotDimension(Guid dimensionId)
+        {
+            int width = GraphicsDevice.PresentationParameters.BackBufferWidth;
+            int height = GraphicsDevice.PresentationParameters.BackBufferHeight;
+
+            //Force a frame to be drawn (otherwise back buffer is empty) 
+            MapRenderer.DrawDimensionEntirely(this.MapSpriteBatch, dimensionId);
+
+            //Pull the picture from the buffer 
+            int[] backBuffer = new int[width * height];
+            GraphicsDevice.GetBackBufferData(backBuffer);
+
+            //Copy to texture
+            Texture2D texture = new Texture2D(GraphicsDevice, width, height, false, GraphicsDevice.PresentationParameters.BackBufferFormat);
+            texture.SetData(backBuffer);
+            //Get a date for file name
+            DateTime date = DateTime.Now; //Get the date for the file name
+            Stream stream = File.Create(FileSystemManager.InstanceRootFolder + date.ToString("MM-dd-yy H;mm;ss") + ".png"); 
+
+            //Save as PNG
+            texture.SaveAsPng(stream, width, height);
+            stream.Dispose();
+            texture.Dispose();
         }
 
         private static void OutputDebugInfo()
@@ -233,6 +272,11 @@ namespace MLGUIWindows
                 MasterLog.DebugWriteLine("Sub System ID: " + item.SubSystemId.ToString());
                 MasterLog.DebugWriteLine("Vendor ID: " + item.VendorId.ToString());
             }
+        }
+
+        private void Uni_ScreenshotDimension(object sender, Guid e)
+        {
+            this.ScreenShotDimension(e);
         }
     }
 }

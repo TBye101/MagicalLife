@@ -38,8 +38,12 @@ namespace MLAPI.Entity.Movement
             {
                 PathLink section = path.Peek();
 
-                Tile sourceTile = World.Data.World.Dimensions[entity.DimensionId][section.Origin.X, section.Origin.Y];
-                Tile destinationTile = World.Data.World.Dimensions[section.Destination.DimensionId][section.Destination.X, section.Destination.Y];
+                Point3D sourceTileLocation = new Point3D(section.Origin.X, section.Origin.Y, entity.DimensionId);
+                Point3D destinationTileLocation = new Point3D(section.Destination.X, section.Destination.Y,
+                    section.Destination.DimensionId);
+
+                Tile sourceTile = World.Data.World.DefaultWorldProvider.GetTile(sourceTileLocation);
+                Tile destinationTile = World.Data.World.DefaultWorldProvider.GetTile(destinationTileLocation);
                 Move(entity, sourceTile, destinationTile);
             }
         }

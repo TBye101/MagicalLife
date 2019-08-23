@@ -9,6 +9,7 @@ using MLAPI.Filing.Logging;
 using MLAPI.Pathfinding;
 using MLAPI.Pathfinding.AStar.Providers;
 using MLAPI.Pathfinding.TeleportationSearch;
+using MLAPI.Universal;
 using MLAPI.Util.Math;
 using MLAPI.World.Data;
 using MLAPI.Util;
@@ -110,6 +111,7 @@ namespace MLCoreMod.Core.WorldGeneration.Dungeon.Generation.Translator
                         this.TryMakeConnection(dungeonChunks, dimensionId, validRoomEntrances,
                             validNeighborRoomEntrances, worldProvider, connectionProvider);
                     }
+                    //Uni.ScreenshotDimension//Need to change the screenshot to work with an IWorldProvider
                 });
                 makeHallwayConnectionsTask.Start();
                 hallwayTasks.Add(makeHallwayConnectionsTask);
