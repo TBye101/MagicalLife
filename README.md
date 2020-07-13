@@ -5,7 +5,7 @@ Thanks for the logo Batarian711!
 # Magical Life
 A fantasy world that imagines what a Rimworld style game could truly do if it had more elements in common with an RPG.
 
-# Status Update: This project is no longer in active development, but will remain an example of how to implement various game systems from scratch such as multiplayer support, modding, game saves, pathfinding (The most impressive subsystem IMO), and an example of genetic algorithms for dungeon generation. 
+# Status Update: This project has resume development, albeit at a slower pace than in the past.
 
 Master Branch:
 [![Build status](https://ci.appveyor.com/api/projects/status/utahvkv3dvsp330m/branch/master?svg=true)](https://ci.appveyor.com/project/SneakyTactician/magicallife/branch/master)
